@@ -1,0 +1,254 @@
+[
+  {
+    "agent_id": "SL-01",
+    "title": "Secular Change Analyst",
+    "domain": "structural_leadership",
+    "role": "bull_analyst",
+    "instructions": "agents/01_structural_leadership/secular_change/AGENTS.md"
+  },
+  {
+    "agent_id": "SL-02",
+    "title": "Category Leadership Analyst",
+    "domain": "structural_leadership",
+    "role": "bull_analyst",
+    "instructions": "agents/01_structural_leadership/category_leader/AGENTS.md"
+  },
+  {
+    "agent_id": "SL-03",
+    "title": "Cycle & TAM Skeptic",
+    "domain": "structural_leadership",
+    "role": "skeptic",
+    "instructions": "agents/01_structural_leadership/cycle_skeptic/AGENTS.md"
+  },
+  {
+    "agent_id": "CP-01",
+    "title": "Customer Value Analyst",
+    "domain": "customer_product",
+    "role": "bull_analyst",
+    "instructions": "agents/02_customer_product/customer_value/AGENTS.md"
+  },
+  {
+    "agent_id": "CP-02",
+    "title": "Retention & Usage Analyst",
+    "domain": "customer_product",
+    "role": "verifier",
+    "instructions": "agents/02_customer_product/customer_behavior/AGENTS.md"
+  },
+  {
+    "agent_id": "CP-03",
+    "title": "Subsidy & Marketing Skeptic",
+    "domain": "customer_product",
+    "role": "skeptic",
+    "instructions": "agents/02_customer_product/subsidy_skeptic/AGENTS.md"
+  },
+  {
+    "agent_id": "MT-01",
+    "title": "Moat Trajectory Analyst",
+    "domain": "moat_trajectory",
+    "role": "bull_analyst",
+    "instructions": "agents/03_moat_trajectory/moat_builder/AGENTS.md"
+  },
+  {
+    "agent_id": "MT-02",
+    "title": "Network & Ecosystem Analyst",
+    "domain": "moat_trajectory",
+    "role": "verifier",
+    "instructions": "agents/03_moat_trajectory/network_ecosystem/AGENTS.md"
+  },
+  {
+    "agent_id": "MT-03",
+    "title": "Moat Decay & Disruption Skeptic",
+    "domain": "moat_trajectory",
+    "role": "skeptic",
+    "instructions": "agents/03_moat_trajectory/disruption_skeptic/AGENTS.md"
+  },
+  {
+    "agent_id": "RF-01",
+    "title": "Incremental ROIC Analyst",
+    "domain": "reinvestment_fcf",
+    "role": "bull_analyst",
+    "instructions": "agents/04_reinvestment_fcf/incremental_roic/AGENTS.md"
+  },
+  {
+    "agent_id": "RF-02",
+    "title": "FCF per Share Analyst",
+    "domain": "reinvestment_fcf",
+    "role": "verifier",
+    "instructions": "agents/04_reinvestment_fcf/fcf_per_share/AGENTS.md"
+  },
+  {
+    "agent_id": "RF-03",
+    "title": "Reinvestment Runway Skeptic",
+    "domain": "reinvestment_fcf",
+    "role": "skeptic",
+    "instructions": "agents/04_reinvestment_fcf/reinvestment_skeptic/AGENTS.md"
+  },
+  {
+    "agent_id": "MA-01",
+    "title": "Capital Allocation Analyst",
+    "domain": "management_allocation",
+    "role": "bull_analyst",
+    "instructions": "agents/05_management_allocation/capital_allocator/AGENTS.md"
+  },
+  {
+    "agent_id": "MA-02",
+    "title": "Governance & Integrity Analyst",
+    "domain": "management_allocation",
+    "role": "verifier",
+    "instructions": "agents/05_management_allocation/governance_integrity/AGENTS.md"
+  },
+  {
+    "agent_id": "MA-03",
+    "title": "Execution & Incentive Skeptic",
+    "domain": "management_allocation",
+    "role": "skeptic",
+    "instructions": "agents/05_management_allocation/execution_skeptic/AGENTS.md"
+  },
+  {
+    "agent_id": "FS-01",
+    "title": "Balance Sheet Analyst",
+    "domain": "financial_survival",
+    "role": "verifier",
+    "instructions": "agents/06_financial_survival/balance_sheet/AGENTS.md"
+  },
+  {
+    "agent_id": "FS-02",
+    "title": "Funding Runway Analyst",
+    "domain": "financial_survival",
+    "role": "bull_analyst",
+    "instructions": "agents/06_financial_survival/funding_runway/AGENTS.md"
+  },
+  {
+    "agent_id": "FS-03",
+    "title": "Dilution & Downside Stress Analyst",
+    "domain": "financial_survival",
+    "role": "skeptic",
+    "instructions": "agents/06_financial_survival/dilution_stress/AGENTS.md"
+  },
+  {
+    "agent_id": "EV-01",
+    "title": "Reverse DCF Analyst",
+    "domain": "expectation_valuation",
+    "role": "verifier",
+    "instructions": "agents/07_expectation_valuation/reverse_dcf/AGENTS.md"
+  },
+  {
+    "agent_id": "EV-02",
+    "title": "Bear/Base/Bull Scenario Analyst",
+    "domain": "expectation_valuation",
+    "role": "bull_analyst",
+    "instructions": "agents/07_expectation_valuation/scenario_model/AGENTS.md"
+  },
+  {
+    "agent_id": "EV-03",
+    "title": "Expectation Gap Skeptic",
+    "domain": "expectation_valuation",
+    "role": "skeptic",
+    "instructions": "agents/07_expectation_valuation/valuation_skeptic/AGENTS.md"
+  },
+  {
+    "agent_id": "AS-01",
+    "title": "Permanent Loss Analyst",
+    "domain": "asymmetry",
+    "role": "skeptic",
+    "instructions": "agents/08_asymmetry/permanent_loss/AGENTS.md"
+  },
+  {
+    "agent_id": "AS-02",
+    "title": "Power Law Upside Analyst",
+    "domain": "asymmetry",
+    "role": "bull_analyst",
+    "instructions": "agents/08_asymmetry/power_law_upside/AGENTS.md"
+  },
+  {
+    "agent_id": "AS-03",
+    "title": "Probability Calibration Analyst",
+    "domain": "asymmetry",
+    "role": "verifier",
+    "instructions": "agents/08_asymmetry/probability_calibration/AGENTS.md"
+  },
+  {
+    "agent_id": "ED-01",
+    "title": "Source Quality Auditor",
+    "domain": "evidence_quality",
+    "role": "verifier",
+    "instructions": "agents/09_evidence/source_auditor/AGENTS.md"
+  },
+  {
+    "agent_id": "ED-02",
+    "title": "KPI Evidence Tracker",
+    "domain": "evidence_quality",
+    "role": "verifier",
+    "instructions": "agents/09_evidence/kpi_tracker/AGENTS.md"
+  },
+  {
+    "agent_id": "ED-03",
+    "title": "Falsification Editor",
+    "domain": "evidence_quality",
+    "role": "skeptic",
+    "instructions": "agents/09_evidence/falsification_editor/AGENTS.md"
+  },
+  {
+    "agent_id": "RT-01",
+    "title": "Forensic Accounting Red Team",
+    "domain": "red_team",
+    "role": "red_team",
+    "instructions": "agents/10_red_team/forensic_accounting/AGENTS.md"
+  },
+  {
+    "agent_id": "RT-02",
+    "title": "Short Seller Red Team",
+    "domain": "red_team",
+    "role": "red_team",
+    "instructions": "agents/10_red_team/short_seller/AGENTS.md"
+  },
+  {
+    "agent_id": "RT-03",
+    "title": "Technology Disruption Red Team",
+    "domain": "red_team",
+    "role": "red_team",
+    "instructions": "agents/10_red_team/technology_disruption/AGENTS.md"
+  },
+  {
+    "agent_id": "RT-04",
+    "title": "Regulatory & Concentration Red Team",
+    "domain": "red_team",
+    "role": "red_team",
+    "instructions": "agents/10_red_team/regulatory_concentration/AGENTS.md"
+  },
+  {
+    "agent_id": "MO-01",
+    "title": "Liquidity Regime Analyst",
+    "domain": "macro_overlay",
+    "role": "overlay",
+    "instructions": "agents/11_macro_overlay/liquidity_regime/AGENTS.md"
+  },
+  {
+    "agent_id": "MO-02",
+    "title": "Credit & Funding Stress Analyst",
+    "domain": "macro_overlay",
+    "role": "overlay",
+    "instructions": "agents/11_macro_overlay/credit_stress/AGENTS.md"
+  },
+  {
+    "agent_id": "IC-01",
+    "title": "Scorekeeper",
+    "domain": "investment_committee",
+    "role": "aggregator",
+    "instructions": "agents/12_investment_committee/scorekeeper/AGENTS.md"
+  },
+  {
+    "agent_id": "IC-02",
+    "title": "IC Devil’s Advocate",
+    "domain": "investment_committee",
+    "role": "skeptic",
+    "instructions": "agents/12_investment_committee/devils_advocate/AGENTS.md"
+  },
+  {
+    "agent_id": "IC-03",
+    "title": "Investment Committee Chair",
+    "domain": "investment_committee",
+    "role": "chair",
+    "instructions": "agents/12_investment_committee/chair/AGENTS.md"
+  }
+]

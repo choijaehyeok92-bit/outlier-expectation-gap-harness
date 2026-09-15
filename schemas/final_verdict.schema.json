@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Final IC Verdict",
+  "type": "object",
+  "required": [
+    "ticker",
+    "as_of_date",
+    "score_100",
+    "classification",
+    "hard_veto_status",
+    "ic_state",
+    "position_range",
+    "domain_scores",
+    "disputes",
+    "falsifiers"
+  ],
+  "properties": {
+    "ticker": {
+      "type": "string"
+    },
+    "as_of_date": {
+      "type": "string"
+    },
+    "score_100": {
+      "type": "number"
+    },
+    "classification": {
+      "type": "string"
+    },
+    "hard_veto_status": {
+      "type": "string"
+    },
+    "ic_state": {
+      "type": "string"
+    },
+    "position_range": {
+      "type": "string"
+    },
+    "domain_scores": {
+      "type": "object"
+    },
+    "disputes": {
+      "type": "array"
+    },
+    "falsifiers": {
+      "type": "array"
+    },
+    "macro_pacing_multiplier": {
+      "type": "number"
+    }
+  }
+}

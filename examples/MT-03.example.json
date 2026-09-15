@@ -1,0 +1,50 @@
+{
+  "agent_id": "MT-03",
+  "ticker": "EXAMPLE",
+  "as_of_date": "2026-09-15",
+  "domain": "moat_trajectory",
+  "role": "skeptic",
+  "analysis_status": "complete",
+  "score_0_100": 58,
+  "confidence_0_1": 0.72,
+  "thesis": "기존 해자는 강하지만 차세대 대체기술이 진입장벽을 낮출 수 있어 방향성 확신이 낮다.",
+  "evidence": [
+    {
+      "claim": "예시 근거",
+      "source_type": "filing",
+      "source": "example source",
+      "period": "FY2025",
+      "as_of_date": "2026-09-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "고객 전환비용은 여전히 높음"
+  ],
+  "unknowns": [
+    "신제품 코호트 유지율"
+  ],
+  "falsifiers": [
+    "대체기술 도입에도 2년 연속 유지율과 가격결정력이 개선"
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "candidate",
+      "rationale": "추세 확인 필요"
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "NRR",
+      "direction": "up",
+      "threshold": ">110%",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "다음 분기 cohort 데이터"
+  ],
+  "verdict": "neutral"
+}

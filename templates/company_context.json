@@ -1,0 +1,16 @@
+{
+  "ticker": "",
+  "company_name": "",
+  "as_of_date": "YYYY-MM-DD",
+  "currency": "USD",
+  "current_price": null,
+  "shares_diluted": null,
+  "enterprise_value": null,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [],
+  "special_questions": []
+}

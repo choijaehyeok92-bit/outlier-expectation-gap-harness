@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Report",
+  "type": "object",
+  "required": [
+    "agent_id",
+    "ticker",
+    "as_of_date",
+    "domain",
+    "role",
+    "analysis_status",
+    "score_0_100",
+    "confidence_0_1",
+    "thesis",
+    "evidence",
+    "counterevidence",
+    "unknowns",
+    "falsifiers",
+    "hard_veto_flags",
+    "key_kpis",
+    "next_checks",
+    "verdict"
+  ],
+  "properties": {
+    "agent_id": {
+      "type": "string"
+    },
+    "ticker": {
+      "type": "string"
+    },
+    "as_of_date": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "analysis_status": {
+      "enum": [
+        "pending",
+        "complete"
+      ]
+    },
+    "score_0_100": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "confidence_0_1": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "thesis": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim",
+          "source_type",
+          "source",
+          "period",
+          "as_of_date"
+        ],
+        "properties": {
+          "claim": {
+            "type": "string"
+          },
+          "source_type": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "period": {
+            "type": "string"
+          },
+          "as_of_date": {
+            "type": "string"
+          },
+          "value": {},
+          "fact_or_estimate": {
+            "enum": [
+              "fact",
+              "estimate",
+              "interpretation"
+            ]
+          }
+        }
+      }
+    },
+    "counterevidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "falsifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hard_veto_flags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "veto",
+          "status",
+          "rationale"
+        ],
+        "properties": {
+          "veto": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "none",
+              "candidate",
+              "conditional",
+              "confirmed",
+              "cleared"
+            ]
+          },
+          "rationale": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "key_kpis": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "direction": {
+            "type": "string"
+          },
+          "threshold": {
+            "type": "string"
+          },
+          "cadence": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "next_checks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "verdict": {
+      "enum": [
+        "support",
+        "neutral",
+        "oppose"
+      ]
+    },
+    "risk_budget_multiplier": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 2
+    }
+  },
+  "additionalProperties": true
+}

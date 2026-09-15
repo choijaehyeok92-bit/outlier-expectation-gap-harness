@@ -1,0 +1,107 @@
+{
+  "name": "Long Outlier Expectation Gap Strategy v2.0",
+  "language": "ko",
+  "definition": "시장이 기업 성장의 규모와 지속기간을 과소평가한 기업 중, 시간이 흐를수록 경쟁우위가 강화되고 높은 증분자본수익률로 재투자할 수 있으며 현재 가격 대비 성공 시 상승잠재력이 실패 시 영구손실보다 현저히 큰 기업을 장기 보유한다.",
+  "principles": [
+    "성장률이 아니라 주당 FCF와 주당 경제가치의 장기 성장을 산다.",
+    "좋은 기업이 아니라 실제 미래와 현재가격 내재 기대 사이의 기대차가 큰 기업을 산다.",
+    "현재 해자의 크기보다 Moat Trajectory를 본다.",
+    "소수의 아웃라이어가 전체 성과를 결정하므로 승자를 충분히 오래 보유한다.",
+    "가격이 아니라 사업 증거에 반응한다."
+  ],
+  "scorecard": [
+    {
+      "id": "structural_leadership",
+      "name": "구조적 변화와 시장 리더십",
+      "weight": 15
+    },
+    {
+      "id": "customer_product",
+      "name": "고객가치와 제품력",
+      "weight": 10
+    },
+    {
+      "id": "moat_trajectory",
+      "name": "Moat Trajectory",
+      "weight": 15
+    },
+    {
+      "id": "reinvestment_fcf",
+      "name": "증분 ROIC와 주당 FCF 성장",
+      "weight": 15
+    },
+    {
+      "id": "management_allocation",
+      "name": "경영진과 자본배분",
+      "weight": 10
+    },
+    {
+      "id": "financial_survival",
+      "name": "재무적 생존능력",
+      "weight": 10
+    },
+    {
+      "id": "expectation_valuation",
+      "name": "기대차와 밸류에이션",
+      "weight": 15
+    },
+    {
+      "id": "asymmetry",
+      "name": "Power Law와 비대칭성",
+      "weight": 10
+    }
+  ],
+  "classifications": [
+    {
+      "min": 90,
+      "max": 100,
+      "label": "Exceptional Outlier"
+    },
+    {
+      "min": 85,
+      "max": 89.999,
+      "label": "Core Outlier"
+    },
+    {
+      "min": 75,
+      "max": 84.999,
+      "label": "Emerging Outlier"
+    },
+    {
+      "min": 65,
+      "max": 74.999,
+      "label": "Starter / Watch"
+    },
+    {
+      "min": 0,
+      "max": 64.999,
+      "label": "Reject"
+    }
+  ],
+  "hard_vetoes": [
+    "경영진 정직성 또는 회계 신뢰성 훼손",
+    "구조적으로 과도한 외부자본 조달 의존",
+    "장기간 지속되는 과도한 희석",
+    "고객가치 없이 마케팅·보조금에 의존하는 성장",
+    "증분 ROIC의 구조적 붕괴",
+    "해자의 지속적인 축소",
+    "현재가격이 비현실적인 Bull Case 이상을 요구",
+    "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+    "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+  ],
+  "position_sizing": {
+    "starter": "1-2%",
+    "normal": "2-4%",
+    "high_conviction": "4-6%",
+    "core_winner": "6-8%",
+    "exceptional_winner": "up to ~10%"
+  },
+  "macro_rule": "Macro는 종목 점수에 포함하지 않고 위험예산과 매수속도만 조절한다.",
+  "increase_rule": "Position Increase ∝ Evidence Increase",
+  "review_cadence": {
+    "quarterly": "핵심 KPI",
+    "semiannual": "경쟁환경·Moat Trajectory·고객행동·산업구조",
+    "annual": "투자가설과 밸류에이션을 처음부터 재작성",
+    "3-5y": "성장 규모·지속기간·경쟁우위·자본수익률 사후검증"
+  }
+}

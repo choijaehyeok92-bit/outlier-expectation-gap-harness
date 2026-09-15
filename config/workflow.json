@@ -1,0 +1,75 @@
+{
+  "phases": [
+    {
+      "phase": 0,
+      "name": "intake",
+      "outputs": [
+        "company_context.json",
+        "as_of_date",
+        "portfolio_context"
+      ]
+    },
+    {
+      "phase": 1,
+      "name": "blind_domain_analysis",
+      "parallel_domains": [
+        "structural_leadership",
+        "customer_product",
+        "moat_trajectory",
+        "reinvestment_fcf",
+        "management_allocation",
+        "financial_survival",
+        "expectation_valuation",
+        "asymmetry"
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "domain_cross_examination",
+      "rule": "bull/skeptic/verifier compare evidence after phase 1 lock"
+    },
+    {
+      "phase": 3,
+      "name": "evidence_audit_and_red_team",
+      "parallel_domains": [
+        "evidence_quality",
+        "red_team"
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "hard_veto_gate",
+      "rule": "confirmed or unresolved candidate => no automatic buy approval"
+    },
+    {
+      "phase": 5,
+      "name": "score_and_ic",
+      "order": [
+        "IC-01",
+        "IC-02",
+        "IC-03"
+      ]
+    },
+    {
+      "phase": 6,
+      "name": "macro_overlay",
+      "agents": [
+        "MO-01",
+        "MO-02"
+      ],
+      "score_effect": 0,
+      "pacing_only": true
+    },
+    {
+      "phase": 7,
+      "name": "position_and_monitoring",
+      "outputs": [
+        "position_range",
+        "increase_evidence",
+        "sell_evidence",
+        "quarterly_kpis",
+        "annual_rewrite_date"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "agent_id": "",
+  "ticker": "",
+  "as_of_date": "",
+  "domain": "",
+  "role": "",
+  "analysis_status": "pending",
+  "score_0_100": 50,
+  "confidence_0_1": 0.5,
+  "thesis": "",
+  "evidence": [],
+  "counterevidence": [],
+  "unknowns": [],
+  "falsifiers": [],
+  "hard_veto_flags": [],
+  "key_kpis": [],
+  "next_checks": [],
+  "verdict": "neutral"
+}
