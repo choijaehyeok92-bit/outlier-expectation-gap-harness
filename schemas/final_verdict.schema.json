@@ -7,6 +7,8 @@
     "as_of_date",
     "score_100",
     "classification",
+    "disruptive_innovation_score",
+    "archetype",
     "hard_veto_status",
     "ic_state",
     "position_range",
@@ -26,6 +28,30 @@
     },
     "classification": {
       "type": "string"
+    },
+    "disruptive_innovation_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "archetype": {
+      "enum": [
+        "moonshot",
+        "compounder",
+        "emerging_outlier",
+        "expectation_gap",
+        "non_fit"
+      ]
+    },
+    "secondary_archetypes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "archetype_rationale": {
+      "type": "string",
+      "description": "기계적 유형과 다르게 판정했다면 그 근거"
     },
     "hard_veto_status": {
       "type": "string"

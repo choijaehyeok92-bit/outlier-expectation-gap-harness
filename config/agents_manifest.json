@@ -168,6 +168,27 @@
     "instructions": "agents/08_asymmetry/probability_calibration/AGENTS.md"
   },
   {
+    "agent_id": "DI-01",
+    "title": "Disruptive Innovation Analyst",
+    "domain": "disruptive_innovation",
+    "role": "bull_analyst",
+    "instructions": "agents/13_disruptive_innovation/innovation_analyst/AGENTS.md"
+  },
+  {
+    "agent_id": "DI-02",
+    "title": "Adoption Curve & Platform Optionality Verifier",
+    "domain": "disruptive_innovation",
+    "role": "verifier",
+    "instructions": "agents/13_disruptive_innovation/adoption_curve/AGENTS.md"
+  },
+  {
+    "agent_id": "DI-03",
+    "title": "Disruption Hype Skeptic",
+    "domain": "disruptive_innovation",
+    "role": "skeptic",
+    "instructions": "agents/13_disruptive_innovation/hype_skeptic/AGENTS.md"
+  },
+  {
     "agent_id": "ED-01",
     "title": "Source Quality Auditor",
     "domain": "evidence_quality",

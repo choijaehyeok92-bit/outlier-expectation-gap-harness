@@ -15,5 +15,10 @@
   "hard_veto_flags": [],
   "key_kpis": [],
   "next_checks": [],
+  "archetype_signals": {
+    "price_to_base_value": null,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null
+  },
   "verdict": "neutral"
 }

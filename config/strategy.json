@@ -51,6 +51,88 @@
       "weight": 10
     }
   ],
+  "evaluation_axes": [
+    {
+      "id": "disruptive_innovation",
+      "name": "파괴적 혁신",
+      "in_core_score": false,
+      "note": "100점 핵심 점수에는 합산하지 않는 독립 평가축. 종목 유형(archetype) 분류와 IC 판단에 사용한다. 컴파운더형 기업이 혁신 축 때문에 부당하게 감점되지 않도록 분리했다."
+    }
+  ],
+  "archetypes": {
+    "min_gate_score": 65,
+    "fallback": "non_fit",
+    "buy_state_cap_for_fallback": "STARTER_OR_WATCH",
+    "types": [
+      {
+        "id": "moonshot",
+        "label": "문샷형",
+        "label_en": "Moonshot",
+        "description": "테슬라·팔란티어·엔비디아·구글·아마존의 초기 형태처럼 산업을 재편하는 파괴적 혁신성을 가진 기업. 고밸류에이션을 용인한다.",
+        "valuation_tolerant": true,
+        "conditions": [
+          {"field": "domain.disruptive_innovation", "op": ">=", "value": 80},
+          {"field": "domain.structural_leadership", "op": ">=", "value": 75},
+          {"field": "domain.asymmetry", "op": ">=", "value": 75},
+          {"field": "domain.financial_survival", "op": ">=", "value": 60}
+        ],
+        "position_cap": "1-3% (문샷 초기 상한 — 채택·단위경제 증거 증가 시 IC 승인으로 단계 확대)",
+        "position_guidance": "고밸류에이션은 용인하되 '현재가격이 비현실적인 Bull Case 이상을 요구' Hard Veto는 그대로 적용한다. 진입은 소액으로 하고 증거에 비례해 늘린다."
+      },
+      {
+        "id": "compounder",
+        "label": "컴파운더",
+        "label_en": "Compounder",
+        "description": "넓어지는 해자, 높은 증분 ROIC와 재투자 여력으로 장기 복리를 창출하는 능력이 뛰어난 기업.",
+        "valuation_tolerant": false,
+        "conditions": [
+          {"field": "domain.moat_trajectory", "op": ">=", "value": 80},
+          {"field": "domain.reinvestment_fcf", "op": ">=", "value": 80},
+          {"field": "domain.management_allocation", "op": ">=", "value": 75},
+          {"field": "domain.financial_survival", "op": ">=", "value": 75},
+          {"field": "domain.expectation_valuation", "op": ">=", "value": 50}
+        ],
+        "position_guidance": "장기 보유가 기본이다. 밸류에이션 과열 시 매도보다 추가매수 속도를 조절한다."
+      },
+      {
+        "id": "emerging_outlier",
+        "label": "이머징 아웃라이어",
+        "label_en": "Emerging Outlier",
+        "description": "현재가격이 Base 가치 전후에 있으면서 아웃라이어 성격(구조적 리더십·비대칭 상승여력)이 강한 기업.",
+        "valuation_tolerant": false,
+        "conditions": [
+          {"field": "signal.price_to_base_value", "op": "between", "value": [0.8, 1.2]},
+          {"field": "domain.structural_leadership", "op": ">=", "value": 75},
+          {"field": "domain.asymmetry", "op": ">=", "value": 75},
+          {"field": "domain.moat_trajectory", "op": ">=", "value": 70}
+        ],
+        "position_guidance": "Base 가격대 진입이므로 기대수익은 Bull 경로 실현 증거에서 나온다. 핵심 KPI 확인 시 확대한다."
+      },
+      {
+        "id": "expectation_gap",
+        "label": "기대차형",
+        "label_en": "Expectation Gap",
+        "description": "적당한 성장성에도 밸류에이션이 크게 낮아져 시장이 잘못 판단하고 있을 가능성이 있는 기업.",
+        "valuation_tolerant": false,
+        "conditions": [
+          {"field": "signal.price_to_base_value", "op": "<=", "value": 0.8},
+          {"field": "signal.valuation_percentile_5y", "op": "<=", "value": 0.3},
+          {"field": "signal.revenue_cagr_next_3y", "op": "between", "value": [0.03, 0.2]},
+          {"field": "domain.expectation_valuation", "op": ">=", "value": 75},
+          {"field": "domain.financial_survival", "op": ">=", "value": 65}
+        ],
+        "position_guidance": "시장 오판의 원인과 재평가 촉매를 명시한다. 밸류 트랩(구조적 쇠퇴) 반증조건을 우선 추적한다."
+      },
+      {
+        "id": "non_fit",
+        "label": "관망·회피형",
+        "label_en": "Non-fit / Avoid",
+        "description": "Hard Veto 확정, 게이트 점수 미달, 또는 네 유형 어디에도 해당하지 않는 기업. 신규 매수는 최대 Starter/Watch로 제한한다.",
+        "conditions": [],
+        "position_guidance": "유형 적합성이 확인되기 전까지 신규 비중 확대 금지."
+      }
+    ]
+  },
   "classifications": [
     {
       "min": 90,

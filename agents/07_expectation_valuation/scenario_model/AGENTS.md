@@ -16,6 +16,9 @@ Bear/Base/Bull을 독립 작성하고 기대수익 범위와 기대차를 계산
 ## Hard Veto 중점
 없음. 단, 발견 시 관련 Hard Veto 후보를 보고한다.
 
+## 종목 유형 신호 (`archetype_signals`)
+독립적으로 추정해 `price_to_base_value`(현재가 / Base 주당가치), `valuation_percentile_5y`, `revenue_cagr_next_3y`(Base)를 기록한다. 추정할 수 없으면 `null`로 둔다.
+
 
 ## 공통 수행 규칙
 - 기준일을 먼저 선언한다.

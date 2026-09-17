@@ -16,6 +16,9 @@
 ## Hard Veto 중점
 현재가격이 비현실적인 Bull Case 이상을 요구
 
+## 종목 유형 신호 (`archetype_signals`)
+보수적 Base 가정으로 `price_to_base_value`, `valuation_percentile_5y`, `revenue_cagr_next_3y`를 독립 추정한다. 기대차형으로 보이는 저밸류에이션이 구조적 쇠퇴(밸류 트랩)에서 온 것은 아닌지 `counterevidence`에 기록한다.
+
 
 ## 공통 수행 규칙
 - 기준일을 먼저 선언한다.
