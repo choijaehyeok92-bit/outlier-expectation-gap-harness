@@ -20,8 +20,10 @@
         "management_allocation",
         "financial_survival",
         "expectation_valuation",
-        "asymmetry"
-      ]
+        "asymmetry",
+        "disruptive_innovation"
+      ],
+      "note": "disruptive_innovation은 100점 점수에 합산하지 않는 독립 축이다."
     },
     {
       "phase": 2,
@@ -43,7 +45,15 @@
     },
     {
       "phase": 5,
-      "name": "score_and_ic",
+      "name": "score_archetype_and_ic",
+      "archetypes": [
+        "moonshot",
+        "compounder",
+        "emerging_outlier",
+        "expectation_gap",
+        "non_fit"
+      ],
+      "rule": "harness가 config/strategy.json의 조건으로 기계적 유형을 산출하고, IC Chair가 확정 또는 근거와 함께 변경한다.",
       "order": [
         "IC-01",
         "IC-02",

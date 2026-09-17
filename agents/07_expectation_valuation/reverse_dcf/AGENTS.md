@@ -16,6 +16,9 @@
 ## Hard Veto 중점
 현재가격이 비현실적인 Bull Case 이상을 요구
 
+## 종목 유형 신호 (`archetype_signals`)
+독립적으로 추정해 `price_to_base_value`, `valuation_percentile_5y`, `revenue_cagr_next_3y`를 기록한다. 핵심 멀티플(EV/FCF, EV/Sales 등)을 무엇으로 썼는지 `evidence`에 남긴다. 추정할 수 없으면 `null`로 둔다.
+
 
 ## 공통 수행 규칙
 - 기준일을 먼저 선언한다.

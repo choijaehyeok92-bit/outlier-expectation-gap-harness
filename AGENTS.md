@@ -12,6 +12,8 @@
 6. `Hard Veto`는 100점 스코어보다 우선한다.
 7. Macro는 종목선정 점수에 섞지 않는다. Macro는 Risk Budget / Position Pacing 전용이다.
 8. 추가매수는 `Position Increase ∝ Evidence Increase` 원칙을 따른다. 하락 자체는 추가매수 사유가 아니다.
+9. **파괴적 혁신**은 100점 점수와 분리된 독립 평가축이다. 종목 유형 분류와 IC 판단에만 사용한다.
+10. 모든 종목은 평가 후 **컴파운더 / 이머징 아웃라이어 / 기대차형 / 문샷형 / 관망·회피형** 중 하나로 분류한다. 문샷형의 고밸류에이션 용인은 Hard Veto를 면제하지 않는다.
 
 ## Evidence policy
 - 모든 사실은 `as_of_date`, `source_type`, `source`, `period`, `value`를 남긴다.
@@ -49,6 +51,7 @@ Scorekeeper는 점수를 집계하고, Devil's Advocate는 가장 강한 반론�
 - `falsifiers`, `hard_veto_flags`
 - `key_kpis`, `next_checks`
 - `verdict`: `support | neutral | oppose`
+- `archetype_signals` (expectation_valuation 도메인만): `price_to_base_value`, `valuation_percentile_5y`, `revenue_cagr_next_3y`
 
 ## Scoring discipline
 - 에이전트의 `score_0_100`은 **자기 도메인 내부 품질 점수**다.
@@ -73,6 +76,13 @@ Scorekeeper는 점수를 집계하고, Devil's Advocate는 가장 강한 반론�
 - `TRIM_THESIS_RISK`
 - `EXIT_THESIS_BROKEN`
 
+## Archetypes
+- `moonshot` — 문샷형
+- `compounder` — 컴파운더
+- `emerging_outlier` — 이머징 아웃라이어
+- `expectation_gap` — 기대차형
+- `non_fit` — 관망·회피형
+
 ## Forbidden shortcuts
 - P/E가 낮다는 이유만으로 저평가 판정 금지.
 - P/E가 높다는 이유만으로 위험 판정 금지.
@@ -81,4 +91,5 @@ Scorekeeper는 점수를 집계하고, Devil's Advocate는 가장 강한 반론�
 - 단기 EPS surprise를 장기 투자근거로 승격 금지.
 - Macro 전망으로 기업가설 점수를 수정 금지.
 - TAM만으로 구조적 성장 점수 부여 금지.
+- "제2의 테슬라/엔비디아" 같은 비유만으로 파괴적 혁신 점수 부여 또는 문샷형 분류 금지.
 - 경영진 발언을 검증 없이 증거로 취급 금지.
