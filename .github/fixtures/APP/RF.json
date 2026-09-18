@@ -1,0 +1,151 @@
+{
+  "agent_id": "RF",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 90,
+  "confidence_0_1": 0.92,
+  "bull_score": 95,
+  "bear_score": 70,
+  "bull_case": "APP converts incremental revenue into exceptional FCF with minimal physical capex, while Axon, e-commerce and CTV provide long reinvestment runway. Buybacks convert enterprise growth into faster per-share compounding.",
+  "bear_case": "Reported capital intensity may understate the economic cost of data centers, cloud commitments, SBC and model talent. If current margins are peak, incremental ROIC can fall sharply despite low PP&E capex.",
+  "thesis": "Reinvestment quality is exceptional on observed numbers. FY2025 FCF nearly doubled and H1 2026 FCF grew strongly, while physical capex is minimal and share count is falling. The company can fund AI/model investment internally and still repurchase large amounts of stock. The main caution is economic rather than accounting capex: cloud commitments, SBC and high-value engineering talent are real reinvestment costs, and current margins leave limited room for further operating leverage.",
+  "evidence": [
+    {
+      "claim": "FY2025 FCF was $3.952B versus $2.073B in 2024 and $1.037B in 2023.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K",
+      "period": "FY2023-FY2025",
+      "as_of_date": "2026-02-19",
+      "value": "FCF $1.037B -> $2.073B -> $3.952B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 2026 FCF was $2.150B versus $1.594B in H1 2025.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "FCF +35%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 2026 PP&E purchases were only $1.84M and finance-lease principal $8.53M.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "Very low physical capex",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Shares outstanding fell from 338.313M at 2025 year-end to 334.651M by July 31, 2026 despite $169.0M H1 SBC.",
+      "source_type": "filing",
+      "source": "Uploaded 10-K/Q2 10-Q",
+      "period": "2025-12-31 to 2026-07-31",
+      "as_of_date": "2026-08-05",
+      "value": "Net share count down ~1.1%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "A $1.3B three-year cloud commitment had $953.5M paid by June 30, 2026, showing material off-PPE infrastructure spend.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-05",
+      "value": "Cloud commitment $1.3B; $953.5M paid",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Cloud and personnel costs are economically capital-like even when PP&E capex is tiny.",
+    "Current 80%+ EBITDA margins may not persist under stronger competition.",
+    "Aggressive buybacks can destroy value if executed above intrinsic value.",
+    "New verticals may require higher sales investment than the gaming core."
+  ],
+  "unknowns": [
+    "Incremental ROIC by e-commerce/CTV cohort.",
+    "Normalized cloud cost per incremental ad dollar.",
+    "Long-run SBC as a percent of FCF.",
+    "Buyback execution relative to intrinsic value."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "minor",
+      "rationale": "Observed FCF growth on limited incremental capital is exceptionally strong."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "minor",
+      "rationale": "Gaming share gains plus e-commerce/CTV create multiple long-duration paths."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "minor",
+      "rationale": "High FCF and declining share count provide unusually clean per-share compounding."
+    }
+  ],
+  "falsifiers": [
+    "FCF grows slower than revenue for multiple years while margins compress materially.",
+    "Share count stops falling despite continued large SBC and buybacks.",
+    "New vertical reinvestment fails to earn returns above the cost of capital."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "FCF has compounded rapidly on limited incremental physical capital; no evidence of structural ROIC collapse."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Net shares are declining because repurchases more than offset equity compensation."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "FCF/share",
+      "direction": "up",
+      "threshold": "Double-digit multi-year compounding",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Net share count",
+      "direction": "down",
+      "threshold": "Repurchases offset SBC",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Incremental cloud/personnel efficiency",
+      "direction": "up",
+      "threshold": "Revenue and FCF grow faster than infrastructure/talent spend",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 FCF/share.",
+    "Buyback price/volume.",
+    "New-vertical reinvestment returns."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 90,
+      "rationale": "FCF growth relative to incremental capital is exceptional."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 90,
+      "rationale": "Core share gains and new verticals provide long reinvestment runway."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 90,
+      "rationale": "Large FCF plus shrinking share count creates strong owner-economics compounding."
+    }
+  ]
+}
