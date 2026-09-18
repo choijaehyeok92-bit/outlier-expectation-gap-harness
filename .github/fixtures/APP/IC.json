@@ -37,7 +37,7 @@
       "fact_or_estimate": "fact"
     },
     {
-      "claim": "Locked DCF is approximately $166.86 Bear, $429.37 Base and $771.95 Bull versus frozen price $321.49, or price/Base 0.7488x.",
+      "claim": "Locked DCF is approximately $166.86 Bear, $429.37 Base and $771.95 Bull versus frozen price $321.60, or price/Base 0.7488x.",
       "source_type": "other",
       "source": "Deterministic harness valuation",
       "period": "10-year model",
@@ -68,7 +68,7 @@
     "The most plausible failure path is peak economics: Axon's advantage narrows while Apple/Google privacy or attribution changes and hyperscale competition compress both growth and the current 80%+ EBITDA margin.",
     "The Base DCF depends on sustained FCF/share growth and a large terminal component; margin normalization can remove the apparent valuation discount even without a revenue collapse.",
     "Class B carries 20 votes per share and voting-agreement parties held roughly 67% of voting power at 2025 year-end, creating a structural minority-governance discount.",
-    "DI is high at 81.75, but APP is not a Moonshot under the configured strategy because frozen market cap is about $107.6B, far above the $20B ceiling."
+    "DI is high at 81.75, but APP is not a Moonshot under the configured strategy because frozen market cap is about $107.62B, far above the $20B ceiling."
   ],
   "unknowns": [
     "Normalized operating and FCF margin after full competitive response.",
