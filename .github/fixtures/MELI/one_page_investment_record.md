@@ -14,7 +14,7 @@
 12. Financial Survival: **81** — company-defined net debt $6.425B, available cash/investments $6.751B; share dilution negligible.
 13. Expectation/Valuation: **55.5** — 싸다고 보기 어렵고 Base 근처.
 14. Asymmetry: **75**.
-15. Disruptive Innovation: **85** — 문샷 자격과 별개로 파괴적 혁신성은 높음.
+15. Disruptive Innovation: **85.25** — 문샷 자격과 별개로 파괴적 혁신성은 높음.
 16. Turnaround Quality: **51.75** — 현재는 턴어라운드가 아니라 전략적 재투자 압력.
 17. Locked DCF Bear/Base/Bull: 약 **$138 / $1,979 / $4,720**.
 18. Price/Base: 약 **0.922x**.
