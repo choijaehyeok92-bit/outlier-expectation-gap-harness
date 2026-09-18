@@ -1,0 +1,51 @@
+{
+  "agent_id":"TQ","ticker":"PL","as_of_date":"2026-09-17","domain":"turnaround_quality","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":68.75,"confidence_0_1":0.84,"bull_score":80,"bear_score":50,
+  "bull_case":"Planet has moved from negative adjusted EBITDA and operating cash flow to positive EBITDA and FCF while revenue accelerates, showing a genuine operating inflection with measurable scale economics.",
+  "bear_case":"This is primarily a growth company reaching scale rather than a classic distressed turnaround. Cash flow is affected by large contract prepayments and working capital, capex remains high, and management continues to use equity issuance.",
+  "thesis":"T2 Inflecting, but not a clean Turnaround archetype. FY2026 adjusted EBITDA improved from negative to positive, operating cash flow swung strongly positive, and FY2027 H1 FCF is positive while revenue accelerates. Those are real operating improvements, but the bridge is driven more by growth, contract mix and scale than by a discrete self-help repair program, and normalized FCF/share remains sensitive to capex, working capital and dilution. The operating inflection is useful evidence for Moonshot survivability, not a reason to classify PL as Turnaround.",
+  "evidence":[
+    {"claim":"FY2026 adjusted EBITDA improved to $15.5M from -$10.6M in FY2025 while revenue grew 26%.","source_type":"ir","source":"Uploaded PL FY2026 Form 10-K / earnings materials","period":"FY2026","as_of_date":"2026-03-23","value":"Adj. EBITDA $15.5M vs -$10.6M; revenue +26%","fact_or_estimate":"fact"},
+    {"claim":"FY2026 operating cash flow rose to $134.4M from -$14.4M in FY2025, a major cash-flow inflection.","source_type":"filing","source":"Uploaded PL FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-03-23","value":"OCF $134.4M vs -$14.4M","fact_or_estimate":"fact"},
+    {"claim":"FY2027 H1 reported FCF was positive $21.3M while Q2 adjusted EBITDA was $13.9M.","source_type":"filing","source":"Uploaded PL 2026-09-03 Form 10-Q and 8-K Exhibit 99.1","period":"FY2027 H1/Q2","as_of_date":"2026-09-03","value":"H1 FCF $21.3M; Q2 adj. EBITDA $13.9M","fact_or_estimate":"fact"},
+    {"claim":"FY2027 Q2 revenue grew 58% YoY, showing that profitability improvement has not required a top-line contraction.","source_type":"filing","source":"Uploaded PL 2026-09-03 Form 10-Q","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"Revenue +58%","fact_or_estimate":"fact"},
+    {"claim":"FY2027 guidance still calls for $100M-$115M of capex and only $3M-$10M adjusted EBITDA, indicating that normalized FCF economics are not yet fully established.","source_type":"ir","source":"Uploaded PL 2026-09-03 8-K Exhibit 99.1","period":"FY2027 guidance","as_of_date":"2026-09-03","value":"Capex $100M-$115M; adj. EBITDA $3M-$10M","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "Planet is not emerging from a debt or demand crisis; much of the improvement reflects growth-company scaling rather than turnaround self-help.",
+    "Operating cash flow can be influenced by customer prepayments and working-capital timing, making the FY2026 swing less durable than headline OCF suggests.",
+    "The company still raised about $120M via ATM in Q2, so internally funded normalization is incomplete.",
+    "Full-year FY2027 adjusted EBITDA guidance is modest despite strong Q2, implying quarterly profitability remains volatile."
+  ],
+  "unknowns":[
+    "Normalized working-capital contribution to operating cash flow.",
+    "Steady-state fleet replacement capex after current Pelican/Tanager deployment.",
+    "How much cost discipline versus contract mix drove the EBITDA inflection.",
+    "Normalized FCF/share after SBC and dilution."
+  ],
+  "uncertainties":[
+    {"criterion_id":"operating_inflection","severity":"minor","rationale":"Multiple realized KPIs have improved across more than one reporting period."},
+    {"criterion_id":"self_help_quality","severity":"material","rationale":"The improvement is driven by scale and contract growth more than a discrete controllable restructuring program."},
+    {"criterion_id":"normalized_earnings_bridge","severity":"material","rationale":"Capex, working capital and dilution make normalized FCF/share less certain."},
+    {"criterion_id":"catalyst_accountability","severity":"material","rationale":"Guidance provides near-term checkpoints, but not a classic turnaround milestone framework."}
+  ],
+  "falsifiers":[
+    "Positive EBITDA/FCF reverses for multiple quarters despite continued revenue growth.",
+    "Capex and dilution prevent durable FCF/share improvement as the fleet scales.",
+    "Apparent cash-flow improvement is primarily prepayment timing rather than normalized economics."
+  ],
+  "hard_veto_flags":[],
+  "key_kpis":[
+    {"name":"Adjusted EBITDA","direction":"up","threshold":"Sustain profitability across quarters rather than isolated contract timing","cadence":"quarterly"},
+    {"name":"FCF/share","direction":"up","threshold":"Remain positive after fleet capex and diluted share growth","cadence":"quarterly/annual"},
+    {"name":"Capex intensity","direction":"down","threshold":"Revenue and gross profit grow faster than replacement/growth capex","cadence":"annual"}
+  ],
+  "next_checks":["FY2027 Q3 profitability versus guidance","Working-capital normalization","Capex and share-count trend"],
+  "verdict":"neutral",
+  "subscores":[
+    {"criterion_id":"operating_inflection","score_0_100":80,"rationale":"Revenue, EBITDA and cash-flow indicators show a real multi-period inflection."},
+    {"criterion_id":"self_help_quality","score_0_100":60,"rationale":"Improvement is meaningful but driven mainly by scale and contract growth rather than a discrete turnaround program."},
+    {"criterion_id":"normalized_earnings_bridge","score_0_100":65,"rationale":"Positive FCF is emerging, but fleet capex, working capital and dilution still complicate normalized per-share economics."},
+    {"criterion_id":"catalyst_accountability","score_0_100":65,"rationale":"Quarterly guidance and deployment milestones provide checkpoints, but turnaround-specific accountability is limited."}
+  ]
+}
