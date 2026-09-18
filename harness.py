@@ -47,10 +47,11 @@ def macro_cache_source(as_of:str):
         if oldest<=d<=target: dated.append((d,p))
     return max(dated)[1] if dated else None
 
+def is_scored(domain): return domain in SCORE_DOMAINS or domain in AXIS_DOMAINS
+
 def cmd_init(args):
     ticker=args.ticker.upper(); run=run_dir(ticker)
     (run/'reports').mkdir(parents=True,exist_ok=True)
-    (run/'cross_exam').mkdir(exist_ok=True)
     ctx=load_json(ROOT/'templates/company_context.json')
     ctx['ticker']=ticker; ctx['as_of_date']=args.as_of
     dump_json(run/'company_context.json',ctx)
@@ -63,6 +64,8 @@ def cmd_init(args):
             rpt=load_json(ROOT/'templates/agent_report.json')
             rpt.update(agent_id=a['agent_id'],ticker=ticker,as_of_date=args.as_of,domain=a['domain'],role=a['role'])
             if a['domain']!=SIGNAL_DOMAIN: rpt.pop('archetype_signals',None)
+            if not is_scored(a['domain']):
+                for k in ('bull_score','bear_score','bull_case','bear_case'): rpt.pop(k,None)
         dump_json(run/'reports'/f"{a['agent_id']}.json",rpt)
     shutil.copy(ROOT/'templates/one_page_investment_record.md',run/'one_page_investment_record.md')
     print(run)
@@ -93,7 +96,9 @@ def domain_aggregate(reports):
     if not usable: return None
     wm=weighted_median([(float(r['score_0_100']),max(float(r.get('confidence_0_1',0.5)),0.05)) for r in usable])
     scores=[float(r['score_0_100']) for r in usable]
-    spread=max(scores)-min(scores) if len(scores)>1 else 0
+    if len(usable)>1: spread=max(scores)-min(scores)  # legacy runs with several agents per domain
+    else:
+        r=usable[0]; spread=float(r['bull_score'])-float(r['bear_score']) if r.get('bull_score') is not None and r.get('bear_score') is not None else 0
     avg_conf=sum(float(r.get('confidence_0_1',0.5)) for r in usable)/len(usable)
     unknown_penalty=min(12, sum(len(r.get('unknowns',[])) for r in usable)*0.75)
     dispute_penalty=0
@@ -101,7 +106,8 @@ def domain_aggregate(reports):
     elif spread>=20: dispute_penalty=4
     confidence_penalty=max(0,(0.65-avg_conf)*20)
     score=max(0,min(100,wm-unknown_penalty-dispute_penalty-confidence_penalty))
-    return {'raw_weighted_median':round(wm,2),'score':round(score,2),'spread':round(spread,2),'avg_confidence':round(avg_conf,3),'unknown_penalty':round(unknown_penalty,2),'dispute_penalty':dispute_penalty,'domain_dispute':spread>=20}
+    extra={k:usable[0][k] for k in ('bull_score','bear_score') if len(usable)==1 and usable[0].get(k) is not None}
+    return {**extra,'raw_weighted_median':round(wm,2),'score':round(score,2),'spread':round(spread,2),'avg_confidence':round(avg_conf,3),'unknown_penalty':round(unknown_penalty,2),'dispute_penalty':dispute_penalty,'domain_dispute':spread>=20}
 
 def classification(score):
     for c in STRATEGY['classifications']:
@@ -211,40 +217,20 @@ def compute_aggregate(ticker, reports):
     return {'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved}
 
 def triage_complete(reports):
-    done={r['agent_id'] for r in reports if is_complete(r)}
-    return all(a['agent_id'] in done for d in EXEC['triage_domains'] for a in agents_in(d))
-
-def write_scorekeeper(ticker, result):
-    path=run_dir(ticker)/'reports'/'IC-01.json'
-    if path.exists():
-        cur=load_json(path)
-        if is_complete(cur) and cur.get('generated_by')!='harness.py aggregate': return
-    as_of=load_json(run_dir(ticker)/'company_context.json')['as_of_date']
-    state=result['mechanical_pre_ic_state']; a=result['archetype']
-    verdict='support' if state in BUY_STATES else 'neutral' if state in ('STARTER_OR_WATCH','INCOMPLETE') else 'oppose'
-    must=[d['domain'] for d in result['disputes'] if d['spread']>=30]
-    dump_json(path,{'agent_id':'IC-01','ticker':ticker.upper(),'as_of_date':as_of,'domain':IC_DOMAIN,'role':'aggregator',
-        'generated_by':'harness.py aggregate','analysis_status':'complete',
-        'score_0_100':result['score_100'] if result['score_100'] is not None else 0,'confidence_0_1':1.0,
-        'thesis':f"기계적 집계: 점수 {result['score_100']} ({result['classification']}), 유형 {a['label']} — {a['reason']}. Hard Veto {result['hard_veto_status']}, 상태 {state}, 비중 {result['position_range_pre_ic']}.",
-        'evidence':[{'claim':'harness 집계 결과','source_type':'harness_output','source':f'runs/{ticker.upper()}/aggregate.json','period':as_of,'as_of_date':as_of,
-            'value':{k:result[k] for k in ('score_100','score_100_ex_valuation','disruptive_innovation_score','hard_veto_status','mechanical_pre_ic_state')},'fact_or_estimate':'fact'}],
-        'counterevidence':[],'unknowns':[],'falsifiers':[],'hard_veto_flags':[],'key_kpis':[],
-        'next_checks':[f'{d} 재조사 (점수차 30 이상)' for d in must],'verdict':verdict})
+    status={}
+    for r in reports: status.setdefault(r.get('domain'),[]).append(is_complete(r))
+    return all(status.get(d) and all(status[d]) for d in EXEC['triage_domains'])
 
 def cmd_aggregate(args):
     reports=load_reports(args.ticker)
     result=compute_aggregate(args.ticker,reports)
     dump_json(run_dir(args.ticker)/'aggregate.json',result)
-    write_scorekeeper(args.ticker,result)
     print(json.dumps(result,ensure_ascii=False,indent=2))
 
 def pending_agents(reports):
-    done={r['agent_id'] for r in reports if is_complete(r)}
     out={}
-    for a in MANIFEST:
-        if a['agent_id'] not in done and a['agent_id'] not in EXEC['mechanical_agents']:
-            out.setdefault(a['domain'],[]).append(a['agent_id'])
+    for r in reports:
+        if not is_complete(r): out.setdefault(r.get('domain'),[]).append(r['agent_id'])
     return out
 
 def cmd_plan(args):
@@ -264,7 +250,8 @@ def cmd_plan(args):
         if todo:
             print(f'next stage: {name}')
             for d,ids in todo.items(): print(f'  {d}: {", ".join(ids)}  ->  python harness.py prompt {t} {d}')
-            if name in ('phase3','ic'): print(f'  (run python harness.py digest {t} first)')
+            if name=='phase3': print(f'  (run python harness.py digest {t} first)')
+            if name=='ic': print(f'  (run python harness.py aggregate {t} and digest {t} first)')
             return
     print(f'all agents complete -> python harness.py aggregate {t}')
 
@@ -282,19 +269,20 @@ def cmd_digest(args):
        f"score {res['score_100']} (ex-val {res['score_100_ex_valuation']}, {res['classification']}) · DI {res['disruptive_innovation_score']} · archetype {a['id']} — {a['reason']} · veto {res['hard_veto_status']} · state {res['mechanical_pre_ic_state']}",
        f"signals {a['signals']} · reachable(raw) {res['reachable_archetypes_raw']}",
        'veto codes: '+' / '.join(f'V{i+1} {v}' for i,v in enumerate(VETOES)),'']
-    domains=[]
-    for m in MANIFEST:
-        if m['domain'] not in domains: domains.append(m['domain'])
+    order=[m['domain'] for m in MANIFEST]
+    domains=sorted({r['domain'] for r in done.values()},key=lambda d:order.index(d) if d in order else len(order))
     for d in domains:
-        rows=[done[m['agent_id']] for m in agents_in(d) if m['agent_id'] in done]
-        if not rows: continue
+        rows=[r for r in done.values() if r['domain']==d]
         agg=res['domain_scores'].get(d)
         head=f"## {d}"+(f" — {agg['score']} (raw {agg['raw_weighted_median']}, spread {agg['spread']}{', DISPUTE' if agg['domain_dispute'] else ''})" if agg else '')
-        L+=[head,'| agent | role | score | conf | verdict | vetoes | thesis |','|---|---|---|---|---|---|---|']
+        L+=[head,'| agent | score (bear–bull) | conf | verdict | vetoes | thesis |','|---|---|---|---|---|---|']
         for r in rows:
             vs=', '.join(f"{veto_code(v['veto'])}={v['status']}" for v in r.get('hard_veto_flags',[]) if v.get('status')!='none') or '–'
             extra=f" mult={r['risk_budget_multiplier']}" if 'risk_budget_multiplier' in r else ''
-            L.append(f"| {r['agent_id']} | {r['role']} | {r['score_0_100']} | {r['confidence_0_1']} | {r['verdict']}{extra} | {vs} | {short(r.get('thesis',''),args.thesis_chars)} |")
+            rng=f" ({r['bear_score']}–{r['bull_score']})" if r.get('bull_score') is not None and r.get('bear_score') is not None else ''
+            L.append(f"| {r['agent_id']} | {r['score_0_100']}{rng} | {r['confidence_0_1']} | {r['verdict']}{extra} | {vs} | {short(r.get('thesis',''),args.thesis_chars)} |")
+            if r.get('bull_case') or r.get('bear_case'):
+                L.append(f"bull: {short(r.get('bull_case',''),args.thesis_chars)} / bear: {short(r.get('bear_case',''),args.thesis_chars)}")
         unknowns=[]
         for r in rows:
             for u in r.get('unknowns',[])[:args.unknowns]:
@@ -332,38 +320,38 @@ def skeleton(agent, lim):
        'counterevidence':[''],'unknowns':[''],'falsifiers':[''],
        'hard_veto_flags':[{'veto':'위 Hard Veto 목록의 정확한 문자열','status':'candidate|conditional|confirmed|cleared','rationale':''}],
        'key_kpis':[{'name':'','direction':'','threshold':'','cadence':''}],'next_checks':[''],'verdict':'support|neutral|oppose'}
+    if is_scored(agent['domain']):
+        s={**{k:v for k,v in s.items() if k in ('analysis_status','score_0_100','confidence_0_1')},
+           'bull_score':0,'bear_score':0,'bull_case':f"≤{lim['case_chars']}자",'bear_case':f"≤{lim['case_chars']}자",
+           **{k:v for k,v in s.items() if k not in ('analysis_status','score_0_100','confidence_0_1')}}
     if agent['domain']==SIGNAL_DOMAIN: s['archetype_signals']={'price_to_base_value':0,'valuation_percentile_5y':0,'revenue_cagr_next_3y':0}
     if agent['domain']==MACRO_DOMAIN: s['risk_budget_multiplier']=1.0
     return json.dumps(s,ensure_ascii=False)
 
 def cmd_prompt(args):
     t=args.ticker.upper(); run=run_dir(t)
-    group=agents_in(args.target) or [a for a in MANIFEST if a['agent_id']==args.target]
-    if not group: raise SystemExit(f'unknown domain or agent: {args.target}')
-    ctx=load_json(run/'company_context.json'); lim=EXEC['report_limits']; bud=EXEC['research_budget']
-    domain=group[0]['domain']; ids=[a['agent_id'] for a in group]
-    web=bud['per_role_web_calls'] if len(group)==1 else bud['per_domain_web_calls']
-    P=[f"# 과제: {t} / 기준일 {ctx['as_of_date']} / {domain} — {', '.join(ids)}",
-       f"저장소: {ROOT}. 작성할 파일: "+', '.join(f'runs/{t}/reports/{i}.json' for i in ids)+'. 그 외 파일은 수정하지 않는다.',
-       f"웹 검색·페치 예산: 최대 {web}회. 아래 기준 정보와 검증된 사실은 다시 검색하지 않는다.",
+    agent=next((a for a in MANIFEST if args.target in (a['agent_id'],a['domain'])),None)
+    if not agent: raise SystemExit(f'unknown domain or agent: {args.target}')
+    ctx=load_json(run/'company_context.json'); lim=EXEC['report_limits']
+    domain=agent['domain']; aid=agent['agent_id']
+    P=[f"# 과제: {t} / 기준일 {ctx['as_of_date']} / {domain} ({aid})",
+       f"저장소: {ROOT}. 작성할 파일: runs/{t}/reports/{aid}.json"+(f", runs/{t}/final_verdict.json, runs/{t}/one_page_investment_record.md" if domain==IC_DOMAIN else '')+'. 그 외 파일은 수정하지 않는다.',
+       f"웹 검색·페치 예산: 최대 {EXEC['research_budget']['per_agent_web_calls']}회. 아래 기준 정보와 검증된 사실은 다시 검색하지 않는다.",
        '','## 기업 기준 정보 (재검증 금지)',json.dumps(compact_context(ctx),ensure_ascii=False,separators=(',',':'))]
     facts=run/'sources'/'README.md'; index=run/'sources'/'INDEX.md'
     if facts.exists(): P+=['','## 검증된 1차 자료 사실',facts.read_text(encoding='utf-8').strip()]
     if index.exists(): P+=['',f'공시 원문: runs/{t}/sources/*.txt — runs/{t}/sources/INDEX.md의 섹션 줄번호로 grep·부분 읽기만 한다.']
     if domain in (*REVIEW_DOMAINS,IC_DOMAIN):
-        P+=['','## 입력',f"runs/{t}/digest.md (없으면 `python harness.py digest {t}` 실행)와 runs/{t}/cross_exam/*.md를 읽는다. 다른 에이전트의 원 보고서는 특정 주장을 검증할 때만 해당 파일 하나를 연다."]
+        P+=['','## 입력',f"runs/{t}/digest.md"+(f"와 runs/{t}/aggregate.json" if domain==IC_DOMAIN else '')+f" (없으면 `python harness.py aggregate {t}` 후 `digest {t}` 실행). 다른 에이전트의 원 보고서는 특정 주장을 검증할 때만 해당 파일 하나를 연다."]
     elif domain!=MACRO_DOMAIN:
-        P+=['','## 독립성',f"runs/{t}/reports/의 다른 에이전트 보고서와 다른 도메인의 cross_exam은 읽지 않는다."+(" 역할별 분석을 서로 맞추지 말고 독립적으로 작성한다." if len(group)>1 else '')]
-    for a in group:
-        P+=['',f"## 역할 {a['agent_id']} ({a['role']})",strip_common((ROOT/a['instructions']).read_text(encoding='utf-8'))]
+        P+=['','## 독립성',f"runs/{t}/reports/의 다른 에이전트 보고서는 읽지 않는다."]
+    P+=['',f"## 지침 {aid} ({agent['role']})",strip_common((ROOT/agent['instructions']).read_text(encoding='utf-8'))]
     common=[l for l in (ROOT/'agents/COMMON.md').read_text(encoding='utf-8').splitlines() if not l.startswith('# ')]
     P+=['','## 공통 규칙','\n'.join(common).strip(),
         '','## Hard Veto (정확한 문자열 사용)']+[f'- {v}' for v in VETOES]
-    P+=['','## 출력',f"각 파일의 agent_id/ticker/as_of_date/domain/role은 그대로 두고 아래 필드를 채운다. 분량 상한: thesis {lim['thesis_chars']}자, evidence {lim['evidence'][0]}~{lim['evidence'][1]}개, counterevidence {lim['counterevidence']}개, unknowns {lim['unknowns']}개(핵심 가설에 직결되는 것만), falsifiers·key_kpis·next_checks 각 {lim['falsifiers']}개. hard_veto_flags에는 상태가 none이 아닌 항목만 쓴다.",
-        skeleton(group[0],lim),f"작성 후 `python harness.py validate {t} {' '.join(ids)}`로 검증한다."]
-    if domain in SCORE_DOMAINS or domain in AXIS_DOMAINS:
-        P+=[f"마지막으로 runs/{t}/cross_exam/{domain}.md에 교차검증(사실·논리 충돌, 데이터 공백, 점수차 20/30 기준, Veto 불일치)을 한국어로 20줄 이내로 쓴다. 이후 보고서는 수정하지 않는다."]
-    P+=['','최종 답변은 150단어 이내: 에이전트별 점수·신뢰도·verdict·none이 아닌 Veto, 가장 중요한 미확인 사항 1개.']
+    P+=['','## 출력',f"agent_id/ticker/as_of_date/domain/role은 그대로 두고 아래 필드를 채운다. 분량 상한: thesis {lim['thesis_chars']}자, evidence {lim['evidence'][0]}~{lim['evidence'][1]}개, counterevidence {lim['counterevidence']}개, unknowns {lim['unknowns']}개(핵심 가설에 직결되는 것만), falsifiers·key_kpis·next_checks 각 {lim['falsifiers']}개. hard_veto_flags에는 상태가 none이 아닌 항목만 쓴다.",
+        skeleton(agent,lim),f"작성 후 `python harness.py validate {t} {aid}`로 검증한다."]
+    P+=['','최종 답변은 120단어 이내: 점수(bear–bull)·신뢰도·verdict·none이 아닌 Veto, 가장 중요한 미확인 사항 1개.']
     text='\n'.join(P)+'\n'
     if args.out: Path(args.out).write_text(text,encoding='utf-8'); print(f'{args.out}: {len(text)} chars')
     else: sys.stdout.write(text)
@@ -388,6 +376,13 @@ def validate_report(r):
     for v in r['hard_veto_flags']:
         if v.get('veto') not in VETOES: e.append(f"unknown veto string: {v.get('veto')}")
         if v.get('status') not in VETO_STATUSES: e.append(f"bad veto status: {v.get('status')}")
+    if is_scored(r['domain']):
+        bull,bear=r.get('bull_score'),r.get('bear_score')
+        if bull is None or bear is None: e.append('bull_score/bear_score required for scored domains')
+        elif not bear<=r['score_0_100']<=bull: e.append(f"score {r['score_0_100']} not within bear {bear} – bull {bull}")
+        for k in ('bull_case','bear_case'):
+            if not r.get(k): e.append(f'{k} missing')
+            elif len(r[k])>lim['case_chars']: e.append(f"{k} {len(r[k])} chars > {lim['case_chars']}")
     if r['domain']==SIGNAL_DOMAIN:
         sig=r.get('archetype_signals') or {}
         e+=[f'archetype_signals.{k} missing' for k in ('price_to_base_value','valuation_percentile_5y','revenue_cagr_next_3y') if k not in sig]
@@ -395,7 +390,7 @@ def validate_report(r):
 
 def cmd_validate(args):
     t=args.ticker.upper(); d=run_dir(t)/'reports'; bad=0
-    targets=args.agents or [p.stem for p in sorted(d.glob('*.json')) if p.stem not in EXEC['mechanical_agents'] and is_complete(load_json(p))]
+    targets=args.agents or [p.stem for p in sorted(d.glob('*.json')) if is_complete(load_json(p))]
     for aid in targets:
         try: errs=validate_report(load_json(d/f'{aid}.json'))
         except Exception as ex: errs=[f'unreadable: {ex}']

@@ -53,6 +53,26 @@
       "minimum": 0,
       "maximum": 1
     },
+    "bull_score": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 100,
+      "description": "점수 도메인 필수: Bull 논리가 맞을 때의 도메인 점수"
+    },
+    "bear_score": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 100,
+      "description": "점수 도메인 필수: Skeptic 논리가 맞을 때의 도메인 점수. bear_score ≤ score_0_100 ≤ bull_score"
+    },
+    "bull_case": {
+      "type": "string",
+      "maxLength": 300
+    },
+    "bear_case": {
+      "type": "string",
+      "maxLength": 300
+    },
     "thesis": {
       "type": "string",
       "maxLength": 600

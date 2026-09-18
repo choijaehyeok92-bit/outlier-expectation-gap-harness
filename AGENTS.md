@@ -25,31 +25,32 @@
 
 ## Independence protocol
 ### Phase 1 — Blind analysis
-각 전문 에이전트는 다른 에이전트의 결론을 보지 않고 독립 분석한다.
+항목당 에이전트 1개가 다른 항목의 결론을 보지 않고 독립 분석한다. triage(EV·AS·DI)를 먼저 실행한다.
 
-### Phase 2 — Domain cross-examination
-같은 도메인의 Bull / Skeptic / Verifier 역할이 서로의 증거와 논리를 공격한다. 단순 다수결 금지.
+### Phase 2 — In-report cross-examination
+각 도메인 에이전트는 Bull / Verifier / Skeptic 관점을 각각 끝까지 전개하고 `bull_case`·`bear_case`, `bull_score`·`bear_score`로 남긴다. 관점을 합의에 끼워 맞추지 않는다.
 
 ### Phase 3 — Cross-domain Red Team
-회계, 기술대체, 규제, 고객집중, 자금조달, 밸류에이션 과잉기대를 별도 Red Team이 검증한다.
+회계, 기술대체, 규제, 고객집중, 자금조달, 밸류에이션 과잉기대를 Red Team(RT)이 검증하고, Evidence Auditor(ED)가 출처·KPI·반증조건을 감리한다.
 
 ### Phase 4 — Hard Veto gate
 `hard_veto=true`가 하나라도 발생하면 IC는 자동매수할 수 없다. 반드시 `cleared`, `conditional`, `confirmed` 중 하나로 판정하고 근거를 기록한다.
 
 ### Phase 5 — Investment Committee
-Scorekeeper는 점수를 집계하고, Devil's Advocate는 가장 강한 반론을 구성하며, Chair가 최종 판정을 내린다.
+`harness.py aggregate`가 점수와 기계적 유형을 집계하고(Scorekeeper), IC 의장이 가장 강한 반론을 먼저 구성한 뒤 최종 판정을 내린다.
 
 ### Phase 6 — Position sizing
 종합점수가 아니라 **증거 수준, 하방 영구손실, 기대차, 포트폴리오 중복위험**을 함께 사용한다.
 
 ## Token discipline
-모든 에이전트는 [`agents/COMMON.md`](agents/COMMON.md)의 공통 규칙과 토큰 예산을 따른다. 실행은 `python harness.py prompt TICKER <domain|agent>`가 만든 프롬프트로 하며, triage 후 `plan`이 조기 종료를 판정하면 나머지 단계는 실행하지 않는다.
+모든 에이전트는 [`agents/COMMON.md`](agents/COMMON.md)의 공통 규칙과 토큰 예산을 따른다. 실행은 `python harness.py prompt TICKER <AGENT_ID>`가 만든 프롬프트로 하며, triage 후 `plan`이 조기 종료를 판정하면 나머지 단계는 실행하지 않는다.
 
 ## Required output contract
 각 에이전트는 반드시 JSON 보고서를 생성하며 `schemas/agent_report.schema.json`을 따른다. 핵심 필드:
 - `agent_id`, `ticker`, `as_of_date`
 - `domain`, `role`
 - `score_0_100`, `confidence_0_1`
+- 점수 도메인·파괴적 혁신 축: `bull_score`, `bear_score`, `bull_case`, `bear_case` (`bear_score ≤ score_0_100 ≤ bull_score`)
 - `thesis`, `evidence`, `counterevidence`, `unknowns`
 - `falsifiers`, `hard_veto_flags`
 - `key_kpis`, `next_checks`
@@ -58,13 +59,13 @@ Scorekeeper는 점수를 집계하고, Devil's Advocate는 가장 강한 반론�
 
 ## Scoring discipline
 - 에이전트의 `score_0_100`은 **자기 도메인 내부 품질 점수**다.
-- 도메인 최종점수는 하네스가 다중 에이전트의 신뢰도 가중 중앙값과 분쟁패널티로 계산한다.
+- 도메인 최종점수는 하네스가 에이전트 점수에 미확인·분쟁·신뢰도 패널티를 적용해 계산한다.
 - 최종 100점 스코어는 `config/strategy.json`의 가중치를 사용한다.
 - 신뢰도가 낮거나 핵심 데이터가 미확인인 경우 높은 점수를 주지 않는다.
 
 ## Conflict rules
 - 동일 사실이 충돌하면 결론을 평균내지 않는다. 충돌 원인을 데이터 정의/기간/회계기준/출처 신뢰도 순으로 해결한다.
-- 20점 이상 점수차가 나는 동일 도메인은 `domain_dispute=true`로 처리하고 IC에 강제 상신한다.
+- `bull_score − bear_score`가 20점 이상인 도메인은 `domain_dispute=true`로 처리하고 IC에 강제 상신한다.
 - 30점 이상 차이 또는 Hard Veto 관련 충돌은 재조사 없이는 통과할 수 없다.
 
 ## Final IC states

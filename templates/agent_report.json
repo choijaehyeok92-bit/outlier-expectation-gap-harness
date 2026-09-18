@@ -7,6 +7,10 @@
   "analysis_status": "pending",
   "score_0_100": 50,
   "confidence_0_1": 0.5,
+  "bull_score": null,
+  "bear_score": null,
+  "bull_case": "",
+  "bear_case": "",
   "thesis": "",
   "evidence": [],
   "counterevidence": [],
@@ -15,10 +19,10 @@
   "hard_veto_flags": [],
   "key_kpis": [],
   "next_checks": [],
+  "verdict": "neutral",
   "archetype_signals": {
     "price_to_base_value": null,
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null
-  },
-  "verdict": "neutral"
+  }
 }
