@@ -3,7 +3,7 @@ name: PL EV run 2026-09-17
 on:
   push:
     branches:
-      - run/pl-2026-09-17-sol-phase3
+      - run/pl-2026-09-17-sol-ic
   workflow_dispatch:
 
 jobs:
@@ -86,6 +86,44 @@ jobs:
           python harness.py validate PL ED
           cp .github/fixtures/PL/RT.json runs/PL/reports/RT.json
           python harness.py validate PL RT
+          python harness.py aggregate PL
+          python harness.py digest PL
+          cp .github/fixtures/PL/IC.json runs/PL/reports/IC.json
+          python harness.py validate PL IC
+          cp .github/fixtures/PL/one_page_investment_record.md runs/PL/one_page_investment_record.md
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          run=Path("runs/PL")
+          agg=json.loads((run/"aggregate.json").read_text())
+          mo=json.loads((run/"reports/MO.json").read_text())
+          ic=json.loads((run/"reports/IC.json").read_text())
+          fv={
+              "ticker":"PL",
+              "as_of_date":"2026-09-17",
+              "score_100":agg["score_100"],
+              "classification":agg["classification"],
+              "disruptive_innovation_score":agg["disruptive_innovation_score"],
+              "turnaround_quality_score":agg.get("turnaround_quality_score"),
+              "archetype":"moonshot",
+              "secondary_archetypes":agg["archetype"].get("secondary",[]),
+              "archetype_rationale":"IC retains the mechanical Moonshot classification because market cap, DI, SL, AS and FS meet the configured thresholds and the ex-valuation gate is above 65. The unresolved long-term dilution Hard Veto prevents buy approval despite archetype fit.",
+              "hard_veto_status":agg["hard_veto_status"],
+              "ic_state":"WATCH",
+              "position_range":"0% while dilution veto is unresolved; if cleared, 1-3% Moonshot starter cap with 0.80x macro pacing",
+              "domain_scores":agg["domain_scores"],
+              "disputes":agg["disputes"],
+              "falsifiers":ic["falsifiers"],
+              "macro_pacing_multiplier":mo["risk_budget_multiplier"]
+          }
+          required=["ticker","as_of_date","score_100","classification","disruptive_innovation_score","archetype","hard_veto_status","ic_state","position_range","domain_scores","disputes","falsifiers"]
+          assert not [k for k in required if k not in fv]
+          assert fv["archetype"]=="moonshot"
+          assert fv["hard_veto_status"]=="UNRESOLVED"
+          assert fv["ic_state"]=="WATCH"
+          (run/"final_verdict.json").write_text(json.dumps(fv,ensure_ascii=False,indent=2))
+          print(json.dumps(fv,ensure_ascii=False,indent=2))
+          PY
           python harness.py plan PL
           python harness.py digest PL
           python harness.py aggregate PL
@@ -93,7 +131,7 @@ jobs:
           cat runs/PL/aggregate.json
       - uses: actions/upload-artifact@v4
         with:
-          name: PL-harness-run-2026-09-17-sol-phase3
+          name: PL-harness-run-2026-09-17-sol-ic
           path: |
             runs/PL
             runs/_macro
