@@ -1,0 +1,36 @@
+{
+  "agent_id":"CP","ticker":"MSFT","as_of_date":"2026-09-18","domain":"customer_product","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":82.75,"confidence_0_1":0.86,"bull_score":90,"bear_score":65,
+  "bull_case":"Enterprise customers obtain productivity, security, developer and infrastructure ROI from an integrated Microsoft stack. Paid M365 seats continue growing, revenue per user rises with E5/Copilot, Azure consumption expands and RPO shows customers are committing more wallet share.",
+  "bear_case":"Customer-level NRR and Copilot payback are not disclosed. AI workloads may be expensive, multi-cloud can lower switching costs, and some RPO reflects long-dated capacity commitments whose realized margin may be lower than headline growth suggests.",
+  "thesis":"Customer evidence is strong but not perfect. M365 paid seats grew 6%, M365 cloud revenue grew faster than seats through E5/Copilot ARPU, Azure grew 41%, and commercial RPO reached $678B. This supports real willingness to pay and wallet-share expansion. Missing NRR/churn and AI workload unit economics keep the score below exceptional.",
+  "evidence":[
+    {"claim":"Microsoft 365 Commercial seats grew 6% in FY2026 while cloud revenue grew faster, indicating both paid-seat expansion and higher revenue per user.","source_type":"other","source":"Microsoft FY26 Q4 Investor Metrics","period":"FY2026","as_of_date":"2026-06-30","value":"M365 Commercial seat growth 6%; cloud revenue growth 17% FY26 reported","fact_or_estimate":"fact"},
+    {"claim":"Microsoft stated M365 cloud revenue growth was supported by E5 and Microsoft 365 Copilot revenue per user, evidence of paid upsell rather than pure seat acquisition.","source_type":"other","source":"Microsoft FY26 quarterly earnings materials","period":"FY2026","as_of_date":"2026-06-30","value":"ARPU growth supported by E5/Copilot","fact_or_estimate":"fact"},
+    {"claim":"Azure and other cloud services grew 41% in FY2026, consistent with expanding enterprise consumption.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-06-30","value":"Azure +41%","fact_or_estimate":"fact"},
+    {"claim":"Commercial RPO was $678B and RPO excluding OpenAI still increased materially, supporting broad customer commitment beyond one frontier-model customer.","source_type":"other","source":"Microsoft FY26 Q4 earnings call","period":"FY2026","as_of_date":"2026-06-30","value":"Commercial RPO $678B; excluding OpenAI RPO +25%","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":["Microsoft does not disclose consolidated enterprise NRR, GRR or churn.","Copilot/agent productivity ROI is uneven across customers and not fully quantified in filings.","Multi-cloud and interoperable AI models can reduce switching costs at the infrastructure/model layer.","Long-duration RPO can represent capacity commitments before high-margin usage is proven."],
+  "unknowns":["Consolidated NRR/GRR and churn","Paid Copilot renewal/expansion cohorts","Customer-level AI payback periods","Incremental gross margin by agent workload"],
+  "uncertainties":[
+    {"criterion_id":"retention_usage","severity":"material","rationale":"Strong seats, RPO and usage evidence exist, but consolidated NRR/churn are not disclosed."},
+    {"criterion_id":"unit_economics","severity":"material","rationale":"AI usage is expanding faster than fully mature gross-margin evidence."}
+  ],
+  "falsifiers":["Paid M365/Copilot adoption grows but renewal, usage or ARPU deteriorates materially.","Azure growth remains high only through pricing or capacity commitments while realized consumption weakens.","AI customer ROI fails to cover inference and implementation costs, causing broad seat/workload contraction."],
+  "hard_veto_flags":[
+    {"veto":"고객가치 없이 마케팅·보조금에 의존하는 성장","status":"cleared","rationale":"Growth is supported by paid seats, consumption, ARPU and contracted enterprise commitments rather than material customer subsidies."},
+    {"veto":"단일 제품·단일 고객·단일 규제에 대한 치명적 종속성","status":"cleared","rationale":"Microsoft has diversified cash engines across Azure, M365, GitHub, security, Dynamics, LinkedIn, Windows and gaming; even excluding OpenAI, commercial RPO grew materially."}
+  ],
+  "key_kpis":[
+    {"name":"M365 paid seats and ARPU","direction":"up","threshold":"Seat growth remains positive while Copilot/E5 expand revenue per user","cadence":"quarterly"},
+    {"name":"Azure consumption growth","direction":"up","threshold":"Consumption and gross profit grow with capacity additions","cadence":"quarterly"},
+    {"name":"Commercial RPO ex-frontier-model customers","direction":"up","threshold":"Broad enterprise commitments remain strong","cadence":"quarterly"}
+  ],
+  "next_checks":["Copilot paid renewal/usage cohorts","RPO conversion and customer concentration","Azure consumption versus capacity growth"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"customer_roi","score_0_100":90,"rationale":"Mission-critical productivity, identity, security, developer and cloud workloads create high economic switching and productivity value."},
+    {"criterion_id":"retention_usage","score_0_100":80,"rationale":"Paid seats, RPO and consumption expand, but consolidated NRR/churn are not disclosed."},
+    {"criterion_id":"unit_economics","score_0_100":75,"rationale":"Scale economics are strong historically, but current AI infrastructure and inference costs depress gross-margin visibility."}
+  ]
+}
