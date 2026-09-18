@@ -40,6 +40,7 @@
         "compounder",
         "emerging_outlier",
         "expectation_gap",
+        "turnaround",
         "non_fit"
       ]
     },
@@ -73,6 +74,15 @@
     },
     "macro_pacing_multiplier": {
       "type": "number"
+    },
+    "turnaround_quality_score": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 100,
+      "description": "턴어라운드 품질 독립 평가축 점수 (100점 핵심 점수 비합산)"
     }
   }
 }
