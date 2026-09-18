@@ -1,0 +1,29 @@
+{
+  "agent_id":"MT","ticker":"MELI","as_of_date":"2026-09-17","domain":"moat_trajectory","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":88.25,"confidence_0_1":0.89,"bull_score":95,"bear_score":70,
+  "bull_case":"Marketplace liquidity, logistics density, payment acceptance, credit data and ads reinforce one another. More users improve data and merchant economics, widening a multi-layer ecosystem moat.",
+  "bear_case":"Competitors can subsidize individual layers, financial regulation can weaken cross-sell, and credit losses can turn data advantages into balance-sheet risk.",
+  "thesis":"MELI's moat is widening through ecosystem density rather than a single product. Marketplace scale supports logistics and ads; payments generate engagement and data; credit increases merchant and consumer utility. Rapid GMV and TPV growth suggest the flywheel remains active. The biggest threat is that competitors or regulators unbundle profitable layers while MELI continues subsidizing logistics and credit.",
+  "evidence":[
+    {"claim":"MELI operates integrated marketplace, logistics, payments, credit and ads businesses across Latin America.","source_type":"filing","source":"Uploaded 10-K / Q2 10-Q","period":"2025-2026","as_of_date":"2026-08-06","value":"Multi-layer ecosystem","fact_or_estimate":"fact"},
+    {"claim":"GMV and TPV grew 43% and 53% in H1 at already-large scale.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"FY2026 H1","as_of_date":"2026-08-06","value":"GMV +43%; TPV +53%","fact_or_estimate":"fact"},
+    {"claim":"Fintech MAUs reached 78M in FY2025, adding a large engagement layer outside marketplace transactions.","source_type":"filing","source":"Uploaded FY2025 10-K","period":"FY2025","as_of_date":"2026-02-25","value":"78M fintech MAUs","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":["Amazon and Shopee can subsidize commerce/logistics.","Nubank and banks compete aggressively in fintech.","Credit and logistics require physical/balance-sheet capital that pure software moats avoid."],
+  "unknowns":["Merchant multi-homing rates.","Ads pricing power.","Cross-sell retention by cohort.","Competitor subsidy intensity."],
+  "uncertainties":[
+    {"criterion_id":"switching_pricing","severity":"material","rationale":"Ecosystem breadth raises switching costs, but direct pricing-power data are limited."},
+    {"criterion_id":"network_data_ecosystem","severity":"minor","rationale":"Multiple reinforcing usage and data loops are visible."},
+    {"criterion_id":"commoditization_resilience","severity":"minor","rationale":"Integrated ecosystem reduces dependence on any single commoditizing layer."}
+  ],
+  "falsifiers":["GMV and TPV share gains stop together.","Competitors unbundle payments/logistics without reducing their own economics.","Ads and credit fail to deepen monetization despite ecosystem growth."],
+  "hard_veto_flags":[{"veto":"해자의 지속적인 축소","status":"cleared","rationale":"Current evidence shows expanding ecosystem usage and category leadership, not persistent moat erosion."}],
+  "key_kpis":[{"name":"GMV/TPV share","direction":"up","threshold":"Sustain leadership","cadence":"quarterly"},{"name":"Fintech engagement","direction":"up","threshold":"MAUs and usage deepen","cadence":"quarterly"},{"name":"Cross-sell monetization","direction":"up","threshold":"Ads/credit grow without weakening FCF","cadence":"annual"}],
+  "next_checks":["Share trends","Ads monetization","Merchant multi-homing"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"switching_pricing","score_0_100":85,"rationale":"Integrated logistics/payments increase ecosystem switching costs."},
+    {"criterion_id":"network_data_ecosystem","score_0_100":90,"rationale":"Commerce, payments, data and credit create reinforcing flywheels."},
+    {"criterion_id":"commoditization_resilience","score_0_100":90,"rationale":"Multiple linked layers provide defenses against commoditization of any one service."}
+  ]
+}
