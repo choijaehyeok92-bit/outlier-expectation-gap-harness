@@ -1,7 +1,7 @@
 # APP frozen source bundle — as of 2026-09-17
 
 ## Uploaded primary filings
-- FY2025 Form 10-K filed 2026-02-19. SHA-256: 4124198e654635e0b58c066db9d7a21df31b4b9a7240764c5a195deff0d7046d
+- FY2025 Form 10-K filed 2026-02-19. SHA-256: eebaaf34cd00cc688b73d9d69ad914a043c0d86d8fdbffe88f0404b4224741c1
 - FY2026 Q1 Form 10-Q filed 2026-05-06. SHA-256: f4247bf66c81235ac36a7bf35581358c96b062bf3aa0f8916bf43f290a1d9a5a
 - FY2026 Q2 Form 10-Q filed 2026-08-05. SHA-256: 7d01daecc44b149bc8fcb119869e769910fe371043795e2472aa71a19bba8635
 - Form 8-K / Q2 earnings release filed 2026-08-05. SHA-256: 563a4a13af41a402eb5e2e5d74caaf615376a95e0d85ebc1705a7504bbd98c12
