@@ -51,9 +51,9 @@ Company Intake (intake_facts + sources/README.md — 모든 에이전트가 공�
 - 파괴적 혁신: 동일한 방식으로 도메인 점수를 내지만 100점에는 합산하지 않음
 
 ## Archetype classification
-1. `config/strategy.json`의 `archetypes.types` 순서대로 조건을 평가한다. 조건 필드는 `domain.<도메인 id>`(도메인 점수) 또는 `signal.<이름>`(EV 에이전트의 `archetype_signals`)이다.
+1. `config/strategy.json`의 `archetypes.types` 순서대로 조건을 평가한다. 조건 필드는 `domain.<도메인 id>`(도메인 점수) 또는 `signal.<이름>`이다. 밸류에이션 신호는 EV에서 오고, `signal.market_cap_usd`는 frozen `company_context.market_cap_usd` 또는 `current_price × shares_diluted`에서 결정론적으로 계산된다.
 2. 조건을 모두 충족하고 게이트 점수(기본 65)를 넘은 첫 유형이 주 유형이 된다. 나머지 충족 유형은 `secondary`에 기록한다.
-3. `valuation_tolerant` 유형(문샷형)은 `expectation_valuation`을 제외하고 재정규화한 점수를 게이트와 기계적 상태 산정에 사용하고, `position_cap`으로 초기 비중을 제한한다.
+3. `valuation_tolerant` 유형(문샷형)은 `expectation_valuation`을 제외하고 재정규화한 점수를 게이트와 기계적 상태 산정에 사용하고, `position_cap`으로 초기 비중을 제한한다. 문샷형은 추가로 시가총액이 **$20B 이하**여야 한다.
 4. Hard Veto 확정, 게이트 미달, 조건 미충족은 `non_fit`(관망·회피형)이 되며 매수 후보 상태는 `STARTER_OR_WATCH`로 낮춘다. 데이터가 없어 판정하지 못한 유형은 `reason`과 `evaluations[].missing`에 표시한다.
 
 ## Human-in-the-loop 권장 지점

@@ -5,6 +5,7 @@
   "currency": "USD",
   "current_price": null,
   "shares_diluted": null,
+  "market_cap_usd": null,
   "enterprise_value": null,
   "portfolio_context": {
     "existing_position_pct": 0,
