@@ -1,0 +1,103 @@
+{
+  "agent_id": "ED",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 91,
+  "confidence_0_1": 0.96,
+  "thesis": "APP's score-driving evidence is high quality. Revenue, margins, FCF, SBC, repurchases, debt, cash, customer concentration, platform risks, controlled-company governance and ICFR are directly supported by the FY2025 10-K and FY2026 10-Qs, with the Q2 8-K confirming guidance. The principal evidence gaps are economic attribution rather than source reliability: APP does not disclose NRR/GRR, direct advertiser ROI, Axon cohort economics or market share. The frozen price is secondary-source data and should remain labeled as such.",
+  "evidence": [
+    {
+      "claim": "FY2025 revenue, FCF, SBC, buybacks, debt terms, customer concentration and ICFR are directly supported by the filed 10-K.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 Form 10-K",
+      "period": "FY2025",
+      "as_of_date": "2026-02-19",
+      "value": "Primary-source annual evidence",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2/H1 revenue, margins, FCF, SBC, share count, cash/debt and cloud commitments are directly supported by the Aug. 5 10-Q.",
+      "source_type": "filing",
+      "source": "Uploaded FY2026 Q2 Form 10-Q",
+      "period": "FY2026 Q2/H1",
+      "as_of_date": "2026-08-05",
+      "value": "Primary-source interim evidence",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 earnings release supports Q3 revenue/EBITDA guidance and Q2 FCF.",
+      "source_type": "ir",
+      "source": "Uploaded 2026-08-05 8-K Exhibit 99.1",
+      "period": "Q2/Q3 2026",
+      "as_of_date": "2026-08-05",
+      "value": "Q3 revenue $2.055B-$2.085B; margin ~83%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "No individual customer represented 10% or more of FY2025 revenue.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K",
+      "period": "FY2025",
+      "as_of_date": "2026-02-19",
+      "value": "No >=10% customer",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Deloitte issued unqualified financial-statement and ICFR opinions, and management concluded ICFR was effective.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K",
+      "period": "FY2025",
+      "as_of_date": "2026-02-19",
+      "value": "Clean audit / effective ICFR",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "The frozen $321.49 close is sourced from a historical-price vendor rather than an issuer filing.",
+    "Adjusted EBITDA removes SBC and other costs, so GAAP and FCF evidence should remain primary for owner economics.",
+    "Direct Axon ROI, cohort retention, market share and CAC/payback are not disclosed.",
+    "FCF is high quality but cloud commitments and SBC are economic costs not visible in physical capex."
+  ],
+  "unknowns": [
+    "Direct advertiser ROI lift from Axon.",
+    "NRR/GRR and customer cohort retention.",
+    "Market share by vertical.",
+    "Incremental ROIC for e-commerce/CTV expansion.",
+    "Long-run margin under stronger competition."
+  ],
+  "falsifiers": [
+    "Primary filings contradict current growth, cash-flow or share-count claims after definitions are normalized.",
+    "FCF/share fails to track reported enterprise FCF because hidden economic costs rise materially.",
+    "KPI definitions or segment presentation change without adequate reconciliation."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "FCF/share",
+      "direction": "up",
+      "threshold": "Sustain double-digit multi-year compounding",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Revenue growth + margin",
+      "direction": "stable",
+      "threshold": "Share gains persist without structural margin collapse",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Net shares / SBC",
+      "direction": "down",
+      "threshold": "Repurchases continue to more than offset dilution",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Reconcile Q3 GAAP/FCF and buybacks.",
+    "Seek direct new-vertical ROI/retention disclosures.",
+    "Track platform-policy changes against conversion economics."
+  ],
+  "verdict": "support"
+}
