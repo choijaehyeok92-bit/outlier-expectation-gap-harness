@@ -1,15 +1,16 @@
 name: MSFT GPT-5.6 Sol harness run 2026-09-17
 
 on:
-  pull_request:
-    branches: [main]
+  push:
+    branches: [persist/msft-20260917-run]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   harness:
+    if: ${{ !contains(github.event.head_commit.message || '', 'persist: commit MSFT run outputs') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -131,6 +132,17 @@ jobs:
 
           echo "===== FINAL VERDICT ====="
           cat runs/MSFT/final_verdict.json
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main:refs/remotes/origin/main --depth=1
+          git checkout origin/main -- .github/workflows/msft-sol-run-20260917.yml
+          git add runs/MSFT/company_context.json runs/MSFT/run_manifest.json runs/MSFT/sources runs/MSFT/reports \
+                  runs/MSFT/*_prompt.md runs/MSFT/aggregate.json runs/MSFT/digest.md \
+                  runs/MSFT/final_verdict.json runs/MSFT/one_page_investment_record.md
+          git add .github/workflows/msft-sol-run-20260917.yml
+          git commit -m "persist: commit MSFT run outputs"
+          git push origin HEAD:persist/msft-20260917-run
 
       - uses: actions/upload-artifact@v4
         with:
