@@ -3,7 +3,7 @@ name: PL EV run 2026-09-17
 on:
   push:
     branches:
-      - run/pl-2026-09-17-sol-ev
+      - run/pl-2026-09-17-sol-triage
   workflow_dispatch:
 
 jobs:
@@ -60,13 +60,20 @@ jobs:
           python harness.py prompt PL EV --out runs/PL/prompts/EV.md
           cp .github/fixtures/PL/EV.json runs/PL/reports/EV.json
           python harness.py validate PL EV
+          cp .github/fixtures/PL/AS.json runs/PL/reports/AS.json
+          python harness.py validate PL AS
+          cp .github/fixtures/PL/DI.json runs/PL/reports/DI.json
+          python harness.py validate PL DI
+          cp .github/fixtures/PL/TQ.json runs/PL/reports/TQ.json
+          python harness.py validate PL TQ
+          python harness.py plan PL
           python harness.py digest PL
           python harness.py aggregate PL
           echo "===== FINAL AGGREGATE ====="
           cat runs/PL/aggregate.json
       - uses: actions/upload-artifact@v4
         with:
-          name: PL-harness-run-2026-09-17-sol-ev
+          name: PL-harness-run-2026-09-17-sol-triage
           path: |
             runs/PL
             runlogs/execution.log
