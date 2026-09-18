@@ -1,0 +1,49 @@
+{
+  "agent_id":"DI","ticker":"PL","as_of_date":"2026-09-17","domain":"disruptive_innovation","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":81.75,"confidence_0_1":0.86,"bull_score":90,"bear_score":60,
+  "bull_case":"Planet replaces episodic, bespoke Earth observation with a continuously refreshed global dataset and can move up the stack from imagery to AI-ready intelligence and sovereign satellite services. The archive, fleet cadence and workflow integration create new use cases that legacy tasking models could not economically serve.",
+  "bear_case":"Earth-observation supply is expanding, government buyers can multi-source, launch and sensor technology can commoditize, and AI may shift value capture toward downstream software vendors. Rapid revenue growth may reflect a few large contracts rather than broad S-curve adoption.",
+  "thesis":"Planet clears the Moonshot DI threshold because its innovation is architectural, not merely a better satellite: persistent global scanning creates a longitudinal data layer that supports monitoring, AI training/inference and sovereign intelligence workflows. Adoption is no longer only pilot-stage—98% recurring ACV, $753M RPO/$815M backlog and 58% Q2 growth show monetization—while Pelican, hyperspectral assets and agentic AI expand optionality. The main reservation is that full unit economics and broad customer diffusion are still earlier than the strongest 90+ disruptors.",
+  "evidence":[
+    {"claim":"Planet’s model is built around persistent, high-cadence global Earth observation rather than only customer-tasked imagery, creating a continuously refreshed geospatial dataset.","source_type":"filing","source":"Uploaded PL FY2026 Form 10-K","period":"FY2026 business model","as_of_date":"2026-03-23","value":"Persistent global monitoring / data subscription model","fact_or_estimate":"fact"},
+    {"claim":"Recurring ACV was 98% in FY2027 Q2, showing that the product is predominantly recurring rather than one-off imagery sales.","source_type":"ir","source":"Uploaded PL 2026-09-03 8-K Exhibit 99.1","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"Recurring ACV 98%","fact_or_estimate":"fact"},
+    {"claim":"Q2 revenue grew 58% YoY while RPO reached $753.1M and backlog $814.9M, evidence that adoption has moved beyond pilots into contracted production use.","source_type":"filing","source":"Uploaded PL 2026-09-03 Form 10-Q and 8-K Exhibit 99.1","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"Revenue +58%; RPO $753.1M; backlog $814.9M","fact_or_estimate":"fact"},
+    {"claim":"Planet had 10 Pelican high-resolution satellites on orbit after Pelican-11 and had shipped Tanager-2 plus 18 SuperDoves, expanding spatial/spectral capability and refresh capacity.","source_type":"ir","source":"Uploaded PL 2026-09-03 8-K Exhibit 99.1","period":"2026-07-31","as_of_date":"2026-09-03","value":"10 Pelican satellites; Tanager-2 and 18 SuperDoves shipped","fact_or_estimate":"fact"},
+    {"claim":"Planet’s agentic AI application entered open beta, providing an option to monetize the proprietary archive as an intelligence workflow rather than raw imagery alone.","source_type":"ir","source":"Uploaded PL 2026-09-03 8-K Exhibit 99.1","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"Agentic AI application open beta","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "Satellite manufacturing and launch costs remain physical bottlenecks, so Planet does not have pure-software marginal economics.",
+    "Government and defense procurement can be concentrated and cyclical, and customers can use multiple imagery providers.",
+    "Competing constellations, national systems and improving sensor availability can commoditize portions of raw imagery.",
+    "The AI application is still open beta, so downstream AI monetization is not yet proven at scale."
+  ],
+  "unknowns":[
+    "Incremental gross margin of sovereign satellite-services contracts at full deployment.",
+    "AI application conversion from beta usage to material recurring revenue.",
+    "Long-run price/performance advantage versus emerging commercial and sovereign constellations.",
+    "Degree to which Planet’s archive creates unique model performance versus substitutable third-party imagery."
+  ],
+  "uncertainties":[
+    {"criterion_id":"cost_performance_shift","severity":"material","rationale":"Persistent monitoring materially changes availability and workflow, but a precise 10x cost advantage is not publicly quantified."},
+    {"criterion_id":"adoption_curve","severity":"material","rationale":"Contracted demand is strong, but concentration means broad-market S-curve adoption is not yet fully demonstrated."},
+    {"criterion_id":"optionality_incumbent_response","severity":"material","rationale":"Archive and constellation scale create options, while well-funded sovereign/commercial rivals can still respond."}
+  ],
+  "falsifiers":[
+    "RPO/backlog growth is driven mainly by a few sovereign contracts while broader customer count, renewal and usage stagnate.",
+    "AI/data products fail to lift ARPU or margins beyond imagery economics.",
+    "Competitors achieve comparable global refresh and data quality at materially lower cost, eroding Planet’s differentiation."
+  ],
+  "hard_veto_flags":[],
+  "key_kpis":[
+    {"name":"Recurring ACV and RPO","direction":"up","threshold":"High recurring mix with broad contracted growth","cadence":"quarterly"},
+    {"name":"AI/data-product monetization","direction":"up","threshold":"Material paid adoption and ARPU expansion beyond raw imagery","cadence":"semiannual"},
+    {"name":"Fleet cost per useful observation","direction":"down","threshold":"Capability and refresh improve faster than fleet capex/depreciation","cadence":"annual"}
+  ],
+  "next_checks":["Agentic AI paid conversion","Pelican/Tanager commercial utilization","Customer concentration and non-government adoption"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"cost_performance_shift","score_0_100":85,"rationale":"Persistent global scanning changes the availability and workflow economics of Earth observation versus bespoke tasking."},
+    {"criterion_id":"adoption_curve","score_0_100":80,"rationale":"Recurring ACV, rapid growth and large contracted backlog show production adoption, though customer concentration limits a higher score."},
+    {"criterion_id":"optionality_incumbent_response","score_0_100":80,"rationale":"The longitudinal archive, higher-resolution/hyperspectral fleet and AI layer provide multiple expansion paths, but competitors can still invest aggressively."}
+  ]
+}
