@@ -652,6 +652,14 @@ def cmd_selftest(args):
     assert x['spread']==50 and x['dispute_penalty']==0 and x['score']==80
     tq=domain_aggregate([mk('turnaround_quality','TQ',[80,80,80,80])])
     assert tq['score']==80
+    ta=classify_archetype({
+        'turnaround_quality':{'score':80,'raw_weighted_median':80},
+        'financial_survival':{'score':70,'raw_weighted_median':70},
+        'management_allocation':{'score':65,'raw_weighted_median':65},
+        'expectation_valuation':{'score':70,'raw_weighted_median':70},
+        'asymmetry':{'score':70,'raw_weighted_median':70}},
+        {'price_to_base_value':1.3,'valuation_percentile_5y':0.5,'revenue_cagr_next_3y':0.0},60,60,[])
+    assert ta['id']=='turnaround' and ta['gate_score']==60
     ev=mk('expectation_valuation','EV',[75,75,75])
     ev['valuation_inputs']={'valuation_percentile_5y':0.5,'revenue_cagr_next_3y':0.12,
         'scenarios':{k:{'owner_fcf_per_share':[10.0]*10} for k in ('bear','base','bull')}}
