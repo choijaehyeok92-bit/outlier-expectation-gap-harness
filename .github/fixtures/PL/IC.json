@@ -1,0 +1,50 @@
+{
+  "agent_id":"IC",
+  "ticker":"PL",
+  "as_of_date":"2026-09-17",
+  "domain":"investment_committee",
+  "role":"investment_committee",
+  "analysis_status":"complete",
+  "score_0_100":72.34,
+  "confidence_0_1":0.91,
+  "thesis":"IC retains Planet as a Moonshot because market cap, DI, SL, AS and FS meet the configured conditions and the ex-valuation gate is 76.19. However, the unresolved long-term dilution Hard Veto blocks buy approval. The company has real recurring demand, a differentiated data archive and ample liquidity, but current per-share economics are not yet clean: working-capital effects, SBC, ATM issuance, warrants and fleet capex obscure normalized owner FCF/share. Final state: WATCH, 0% until dilution is cleared.",
+  "evidence":[
+    {"claim":"Mechanical Moonshot conditions are met: market cap about $6.18B, DI 81.75, SL 82.5, AS 75.0 and FS 77.75; ex-valuation gate score is 76.19.","source_type":"other","source":"runs/PL/aggregate.json","period":"frozen run","as_of_date":"2026-09-17","value":"Moonshot conditions met; gate 76.19","fact_or_estimate":"fact"},
+    {"claim":"Demand quality is supported by FY2026 NDR 116%, recurring ACV 98%, FY27 Q2 revenue growth of 58%, RPO $753.1M and backlog $814.9M.","source_type":"filing","source":"Uploaded FY2026 10-K and FY2027 Q2 10-Q/8-K","period":"FY2026-FY2027 Q2","as_of_date":"2026-09-03","value":"NDR 116%; recurring ACV 98%; Q2 revenue +58%","fact_or_estimate":"fact"},
+    {"claim":"Financial survival is strong: cash plus short-term investments were about $865.4M against $460M convertible principal, and H1 reported FCF was positive.","source_type":"filing","source":"Uploaded FY2027 Q2 Form 10-Q","period":"2026-07-31/FY2027 H1","as_of_date":"2026-09-03","value":"Liquid assets ~$865.4M; convertible principal $460M; H1 FCF $21.3M","fact_or_estimate":"fact"},
+    {"claim":"Per-share economics remain unresolved because H1 SBC was $33.5M and the company raised $122.4M gross through ATM issuance plus $107.8M from warrant exercises.","source_type":"filing","source":"Uploaded FY2027 Q2 Form 10-Q","period":"FY2027 H1/Q2","as_of_date":"2026-09-03","value":"SBC $33.5M; ATM $122.4M; warrants $107.8M","fact_or_estimate":"fact"},
+    {"claim":"The locked DCF is about $5.22 Bear, $15.94 Base and $39.36 Bull versus the frozen price of $16.99, so valuation is near Base and the modeled Bull is only about 2.3x current price.","source_type":"other","source":"Deterministic harness valuation","period":"10-year model","as_of_date":"2026-09-17","value":"Bear $5.22; Base $15.94; Bull $39.36; price $16.99","fact_or_estimate":"estimate"},
+    {"claim":"Macro Overlay is 0.80x because real yields and policy rates are restrictive for a small-cap duration asset even though system credit conditions are not stressed.","source_type":"other","source":"runs/PL/reports/MO.json","period":"macro overlay","as_of_date":"2026-09-17","value":"risk_budget_multiplier 0.80","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "The most plausible failure path is that Planet remains a capital-intensive satellite and government-contracting company rather than becoming a high-margin data/AI platform; revenue grows but normalized owner FCF/share does not.",
+    "AS only meets the Moonshot threshold at 75.0, and the locked Bull DCF is far below a 5x outcome, so true power-law upside requires economics beyond the current Bull path.",
+    "The strongest apparently bullish cash-flow evidence is partly affected by deferred-revenue and receivables movements, while SBC and new shares remain meaningful owner costs.",
+    "The harness may still understate upside if the proprietary archive plus AI layer creates high-margin monetization without proportional fleet capex, but that evidence is not yet mature."
+  ],
+  "unknowns":[
+    "Normalized owner FCF/share after working-capital normalization, SBC and full replacement capex.",
+    "Long-run annual net dilution after sustainable positive FCF is established.",
+    "Steady-state gross margin and ROIC of sovereign satellite-services contracts.",
+    "Paid adoption, ARPU and margin contribution of the agentic AI layer."
+  ],
+  "falsifiers":[
+    "After sustainable FCF breakeven, annual net dilution remains persistently mid-to-high single digit or higher instead of trending toward low single digits.",
+    "Owner FCF/share fails to compound over multiple years because fleet capex, SBC and working-capital normalization absorb revenue growth.",
+    "Recurring ACV/NDR and RPO conversion weaken together while customer concentration stays high, indicating the platform thesis is not broadening."
+  ],
+  "hard_veto_flags":[
+    {"veto":"장기간 지속되는 과도한 희석","status":"conditional","rationale":"RF and FS both leave this veto unresolved. Recent SBC, ATM and warrant dilution are material; buy approval requires evidence that net dilution falls toward low single digits as internally funded FCF matures."}
+  ],
+  "key_kpis":[
+    {"name":"Net dilution","direction":"down","threshold":"Low-single-digit annual share growth or less after sustainable FCF breakeven","cadence":"quarterly/annual"},
+    {"name":"Normalized owner FCF/share","direction":"up","threshold":"Positive and compounding faster than diluted-share growth after working-capital normalization","cadence":"quarterly/annual"},
+    {"name":"Recurring demand conversion","direction":"up","threshold":"NDR/recurring ACV remain strong while RPO converts into revenue and gross profit with lower customer concentration","cadence":"quarterly"}
+  ],
+  "next_checks":[
+    "FY2027 Q3 share-count, ATM usage, SBC and normalized owner-FCF bridge.",
+    "FY2027/FY2028 evidence that fleet capex intensity declines as revenue and gross profit scale.",
+    "Customer concentration plus AI/data-product paid monetization."
+  ],
+  "verdict":"neutral"
+}
