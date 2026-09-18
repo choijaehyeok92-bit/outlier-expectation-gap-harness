@@ -24,7 +24,7 @@ python harness.py prompt TICKER EV   # AS, DI, TQ도 동일
 출력된 프롬프트를 에이전트 1회 호출로 실행한다. 네 에이전트가 끝나면 `plan`을 다시 실행한다. 감점 전 점수와 밸류에이션 신호로도 도달 가능한 유형이 없으면 **EARLY EXIT**이다. 이 경우 `aggregate`만 실행하고 종료한다(상태 `EARLY_EXIT_NON_FIT`, 비중 0%).
 
 ## 3. Phase 1b·2 — 나머지 도메인
-`plan`이 알려주는 SL·CP·MT·RF·MA·FS를 병렬로 실행한다. **다른 항목의 보고서는 보여주지 않는다.** 각 에이전트는 Bull·Verifier·Skeptic 관점을 보고서 안에서 분리하고 `bull_score`/`bear_score`를 남긴다. 두 점수 차이가 20 이상이면 분쟁, 30 이상이면 재조사 대상이다.
+`plan`이 알려주는 SL·CP·MT·RF·MA·FS를 병렬로 실행한다. **다른 항목의 보고서는 보여주지 않는다.** 각 에이전트는 Bull·Verifier·Skeptic 관점을 보고서 안에서 분리하고 `bull_score`/`bear_score`를 남긴다. 두 점수 차이가 20 이상이면 분쟁, 30 이상이면 재조사 대상으로 **표시**된다. 표시일 뿐 점수는 깎이지 않는다.
 
 ## 4. Phase 3 — Evidence + Red Team
 ```bash
@@ -34,7 +34,7 @@ python harness.py prompt TICKER ED   # RT도 동일
 Phase 3는 원 보고서가 아니라 `digest.md`를 입력으로 쓴다. Red Team은 종목점수에 직접 더하지 않고 Hard Veto와 IC 반론의 증거로 사용한다.
 
 ## 5. Phase 4 — Hard Veto gate
-9개 veto를 `cleared / conditional / confirmed / unresolved`로 분류한다. `confirmed`는 기본 REJECT, `unresolved`는 최소 WATCH로 제한한다.
+9개 veto를 `cleared / conditional / confirmed / unresolved`로 분류한다. 점수가 아무리 높아도 미해소 veto가 있으면 매수를 승인하지 않는다 — 실제 구속 조건은 대개 점수 임계값이 아니라 이 게이트다. `confirmed`는 기본 REJECT, `unresolved`는 최소 WATCH로 제한한다.
 
 ## 6. Phase 5 — 집계와 IC
 ```bash
@@ -42,7 +42,7 @@ python harness.py aggregate TICKER    # Scorekeeper (결정론적)
 python harness.py digest TICKER
 python harness.py prompt TICKER IC    # 반대 논리 → 판정 → final_verdict.json, 한 장 투자기록
 ```
-도메인 점수에는 미확인·분쟁(bull − bear)·신뢰도 패널티가 적용된다. `aggregate.json`에는 다음이 함께 기록된다.
+도메인 점수는 `subscores`의 고정 가중평균이며 **감점을 적용하지 않는다**. 미확인·분쟁(bull − bear)·신뢰도는 점수를 바꾸지 않고 `review_required`·`domain_dispute`·`uncertainties` 플래그로만 기록된다(v2.1 provider calibration). `aggregate.json`에는 다음이 함께 기록된다.
 - `disruptive_innovation_score`: 파괴적 혁신 축 점수 (100점 비합산)
 - `turnaround_quality_score`: 턴어라운드 품질 축 점수 (100점 비합산)
 - `score_100_ex_valuation`: 밸류에이션 도메인을 제외한 점수 (문샷형 게이트용)

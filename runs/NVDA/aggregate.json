@@ -1,9 +1,9 @@
 {
   "ticker": "NVDA",
-  "score_100": 68.92,
-  "score_100_ex_valuation": 72.4,
+  "score_100": 70.36,
+  "score_100_ex_valuation": 73.43,
   "coverage_weight": 100,
-  "classification": "Starter / Watch",
+  "classification": "Emerging Outlier",
   "disruptive_innovation_score": 78.75,
   "turnaround_quality_score": 34.25,
   "archetype": {
@@ -26,12 +26,11 @@
         "id": "moonshot",
         "label": "문샷형",
         "conditions_met": false,
-        "gate_score": 72.4,
-        "gate_threshold": 65.0,
+        "gate_score": 73.43,
+        "gate_threshold": 60.0,
         "gate_passed": true,
         "failed": [
           "signal.market_cap_usd",
-          "domain.disruptive_innovation",
           "domain.asymmetry"
         ],
         "missing": []
@@ -40,26 +39,12 @@
         "id": "compounder",
         "label": "컴파운더",
         "conditions_met": false,
-        "gate_score": 68.92,
-        "gate_threshold": 65.0,
+        "gate_score": 70.36,
+        "gate_threshold": 60.0,
         "gate_passed": true,
         "failed": [
           "domain.moat_trajectory",
-          "domain.reinvestment_fcf",
-          "domain.management_allocation",
-          "domain.expectation_valuation"
-        ],
-        "missing": []
-      },
-      {
-        "id": "emerging_outlier",
-        "label": "이머징 아웃라이어",
-        "conditions_met": false,
-        "gate_score": 68.92,
-        "gate_threshold": 65.0,
-        "gate_passed": true,
-        "failed": [
-          "domain.asymmetry"
+          "domain.management_allocation"
         ],
         "missing": []
       },
@@ -67,7 +52,7 @@
         "id": "turnaround",
         "label": "턴어라운드형",
         "conditions_met": false,
-        "gate_score": 68.92,
+        "gate_score": 70.36,
         "gate_threshold": 55.0,
         "gate_passed": true,
         "failed": [
@@ -81,8 +66,8 @@
         "id": "expectation_gap",
         "label": "기대차형",
         "conditions_met": false,
-        "gate_score": 68.92,
-        "gate_threshold": 65.0,
+        "gate_score": 70.36,
+        "gate_threshold": 60.0,
         "gate_passed": true,
         "failed": [
           "signal.price_to_base_value",
@@ -210,8 +195,8 @@
     "expectation_valuation": {
       "bull_score": 85,
       "bear_score": 20,
-      "raw_weighted_median": 49.25,
-      "score": 49.25,
+      "raw_weighted_median": 53.0,
+      "score": 53.0,
       "spread": 65.0,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
@@ -226,11 +211,11 @@
       "score_source": "rubric_subscores"
     },
     "asymmetry": {
-      "bull_score": 78,
+      "bull_score": 82,
       "bear_score": 25,
-      "raw_weighted_median": 52.75,
-      "score": 52.75,
-      "spread": 53.0,
+      "raw_weighted_median": 61.5,
+      "score": 61.5,
+      "spread": 57.0,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -399,8 +384,8 @@
       "domain": "expectation_valuation",
       "bull_score": 85,
       "bear_score": 20,
-      "raw_weighted_median": 49.25,
-      "score": 49.25,
+      "raw_weighted_median": 53.0,
+      "score": 53.0,
       "spread": 65.0,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
@@ -416,11 +401,11 @@
     },
     {
       "domain": "asymmetry",
-      "bull_score": 78,
+      "bull_score": 82,
       "bear_score": 25,
-      "raw_weighted_median": 52.75,
-      "score": 52.75,
-      "spread": 53.0,
+      "raw_weighted_median": 61.5,
+      "score": 61.5,
+      "spread": 57.0,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -699,7 +684,8 @@
         "status": "CLEARED",
         "owners": [
           "EV",
-          "AS"
+          "AS",
+          "RT"
         ],
         "assessments": [
           {
@@ -713,6 +699,12 @@
             "owner": true,
             "status": "cleared",
             "rationale": "price/base = 1.03으로 현재가는 Base 시나리오 수준을 요구하며 Bull($431)을 넘어서는 기대를 내재하지 않는다. 다만 Base 자체가 NTM +60% 성장과 장기 40% owner FCF 마진을 전제하므로 clear는 조건부가 아닌 사실 판정일 뿐 여유가 크다는 뜻은 아니다."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "price_to_base_value 1.0304로 현재가는 Base 시나리오 수준을 요구하며 Bull $431.14를 넘어서는 기대를 내재하지 않는다. Red Team 관점의 단서는 붙인다 — 그 Base 경로의 출발점인 owner FCF에는 H1 운전자본 $41.3B 유출이 이미 반영돼 있고 분모인 trailing 이익에는 평가익 $23.7B이 섞여 있다. 가격이 요구하는 기대치는 과하지 않으나 그 기대치를 재는 자(尺) 자체가 흔들린다. EV·AS의 cleared 판정과 결론은 같다."
           }
         ],
         "missing_reports": [],
@@ -885,19 +877,19 @@
     "ticker": "NVDA",
     "as_of_date": "2026-09-17",
     "frozen": true,
-    "harness_commit": "ddd34e66c05f2fe80d02b7c07ea6490067ae230b",
+    "harness_commit": "d271b16a47f0cf13e26172cca73db890ae5c8785",
     "runner": {
       "provider": "Antropic",
       "model": "Claude-Opus-5",
       "reasoning_effort": "extra"
     },
-    "frozen_at_utc": "2026-09-18T16:16:54.578007+00:00",
+    "frozen_at_utc": "2026-09-18T17:10:07.133776+00:00",
     "config_files": {
-      "config/strategy.json": "2c70eec2bda3ed4490e6d207fe75f08e16b2b8a8448d6e8e2dcca59ec1609c82",
-      "config/workflow.json": "54fabf157c62e3ed73cc413d973f262cc8fe984349eb99a821b716eeb603cead",
+      "config/strategy.json": "ecdf105fecad86e77c7966e1f2f91ca797f4a2b1e0ee2b73836ed46e44a87a37",
+      "config/workflow.json": "1f5c6f1016768a2c6d8b53b3b7bcabdbbf417d657e2c8673047e84ac2aca8fcb",
       "config/agents_manifest.json": "323317d34e89a0df0bf8a38ce9a0dc9c13a898e2435ece28e49c91cc7cb1082c",
-      "config/calibration.json": "e5a3fd2a57c6d519e2710c7e7a1fd06f4366b79eb4a3274b4cbba7d8cd5b6d3a",
-      "harness.py": "c9e47f48ad10539e33998c33669e38af814bb28e3db1f47283f909750ff4d4fa"
+      "config/calibration.json": "ef370c40042703c774d1f1b703daf3ea8d9c058a9c27f43b0aaf63da312466fb",
+      "harness.py": "e38328669c9226f0c79d654fcb4eb4f888c40e7f6fb3c06031ee8b7ff0dd1dda"
     },
     "input_files": {
       "company_context.json": "2dc6dfc1976b87ede150747339d7046ff5ea672ae98192323a9427ddac282ab0",

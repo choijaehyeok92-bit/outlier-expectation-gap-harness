@@ -5,9 +5,9 @@
   "domain": "asymmetry",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 52.75,
+  "score_0_100": 61.5,
   "confidence_0_1": 0.55,
-  "bull_score": 78,
+  "bull_score": 82,
   "bear_score": 25,
   "bull_case": "AI 인프라가 10년 자본재 사이클이면 Bull 경로는 Y10 owner FCF/share $29.6, 주당 $431이다. 순현금·무차입에 가까운 구조와 투자자산 $93.9B가 하방을 받치고, 네트워킹·소프트웨어·로보틱스가 추가 상승축이 된다. Bull 확률을 30%로 올리면 확률가중 가치는 $244로 종가를 11% 상회한다.",
   "bear_case": "시총 $5.33T에서 5x는 $26.6T로, 25x 배수에서 순이익 $1.06T를 요구한다. 현실적 상방은 10년 3.4x(CAGR 약 13%)이며 power-law가 아니다. 반면 하방은 Bear $75(-66%)이고, 수요 일부를 NVIDIA 지분투자·보증이 떠받쳐 하락 시 상관관계가 높아진다.",
@@ -126,8 +126,8 @@
   "subscores": [
     {
       "criterion_id": "upside_path",
-      "score_0_100": 35,
-      "rationale": "$5.33T 시총에서 5x/10x는 글로벌 주식시장 규모 대비 비현실적이다. 가장 낙관적 경로도 10년 3.4x에 그쳐 power-law 상방이 아니다. 다만 경로 자체는 복수(데이터센터·네트워킹·소프트웨어)로 단일 가정은 아니다."
+      "score_0_100": 60,
+      "rationale": "규모 상대 앵커 적용. Bull 경로 10년 3.4배(CAGR 약 13%)는 요구수익률 9%를 뚜렷이 상회하고 경로도 데이터센터·네트워킹·소프트웨어로 복수다. 다만 확률가중 기대수익이 요구수익률과 같아 75가 아닌 60으로 둔다."
     },
     {
       "criterion_id": "permanent_loss",

@@ -27,18 +27,17 @@ JSON 스키마·워크플로·집계 CLI 포함.
 9. Evidence-based position sizing and monitoring
 
 ## 종목 유형 (Archetype)
-평가가 끝나면 모든 종목을 여섯 유형 중 하나로 분류합니다. 판정 조건은 `config/strategy.json`의 `archetypes`에서 조정합니다.
+평가가 끝나면 모든 종목을 다섯 유형 중 하나로 분류합니다. 판정 조건은 `config/strategy.json`의 `archetypes`에서 조정합니다.
 
 | 유형 | 정의 | 핵심 판정 조건 (기본값) |
 |---|---|---|
-| 문샷형 (Moonshot) | 테슬라·팔란티어·엔비디아·구글·아마존 초기형. 파괴적 혁신성. 고밸류에이션 용인 | 시가총액 ≤ $20B, 파괴적 혁신 ≥80, 구조적 리더십 ≥75, 비대칭성 ≥75, 재무생존 ≥60. 게이트는 밸류에이션 도메인을 제외한 점수 |
-| 컴파운더 (Compounder) | 장기 복리 창출 능력이 뛰어난 기업 | Moat Trajectory ≥80, 증분 ROIC·FCF ≥80, 경영진 ≥75, 재무생존 ≥75, 밸류에이션 ≥50 |
-| 이머징 아웃라이어 (Emerging Outlier) | Base 가치 전후 가격에서 아웃라이어 성격이 강한 기업 | 주가/Base 가치 0.8~1.2, 구조적 리더십 ≥75, 비대칭성 ≥75, Moat ≥70 |
-| 턴어라운드형 (Turnaround) | 실제 실적 inflection과 self-help로 정상화 FCF/share 회복 가능성이 높은 기업 | TQ ≥75, 재무생존 ≥65, 경영진 ≥60, 기대차 ≥65, 비대칭성 ≥65. 유형 전용 게이트 점수 ≥55; 초기 1~3% 상한 |
-| 기대차형 (Expectation Gap) | 적당한 성장에도 밸류에이션이 크게 낮아져 시장 오판 가능성이 있는 기업 | 주가/Base 가치 ≤0.8, 5년 밸류에이션 백분위 ≤30%, 3년 매출 CAGR 3~20%, 기대차 도메인 ≥75 |
-| 관망·회피형 (Non-fit) | Hard Veto 확정, 게이트 점수(65) 미달, 또는 어느 유형에도 해당하지 않음 | 기본값. 신규 매수는 최대 Starter/Watch |
+| 문샷형 (Moonshot) | 테슬라·팔란티어·엔비디아·구글·아마존 초기형. 파괴적 혁신성. 고밸류에이션 용인 | 시가총액 ≤ $50B, 파괴적 혁신 ≥78, 구조적 리더십 ≥72, 비대칭성 ≥72, 재무생존 ≥60. 게이트는 밸류에이션 도메인을 제외한 점수 |
+| 컴파운더 (Compounder) | 장기 복리 창출 능력이 뛰어난 기업 | 주가/Base 가치 ≤1.2, Moat Trajectory ≥76, 증분 ROIC·FCF ≥76, 경영진 ≥72, 재무생존 ≥72, 밸류에이션 ≥42 |
+| 턴어라운드형 (Turnaround) | 실제 실적 inflection과 self-help로 정상화 FCF/share 회복 가능성이 높은 기업 | TQ ≥72, 재무생존 ≥65, 경영진 ≥60, 기대차 ≥62, 비대칭성 ≥62. 유형 전용 게이트 점수 ≥55; 초기 1~3% 상한 |
+| 기대차형 (Expectation Gap) | 적당한 성장에도 밸류에이션이 크게 낮아져 시장 오판 가능성이 있는 기업 | 주가/Base 가치 ≤0.85, 5년 밸류에이션 백분위 ≤35%, 3년 매출 CAGR 3~25%, 기대차 도메인 ≥65 |
+| 관망·회피형 (Non-fit) | Hard Veto 확정, 게이트 점수(60) 미달, 또는 어느 유형에도 해당하지 않음 | 기본값. 신규 매수는 최대 Starter/Watch |
 
-여러 유형에 동시에 해당하면 위 표 순서(문샷 → 컴파운더 → 이머징 → 턴어라운드 → 기대차)가 주 유형이 되고, 나머지는 `secondary`에 기록됩니다. 밸류에이션 신호는 EV 에이전트가 `archetype_signals`에 기록합니다. 문샷 시가총액은 frozen `company_context.market_cap_usd`를 우선하며, 비어 있으면 `current_price × shares_diluted`로 결정론적으로 계산합니다.
+여러 유형에 동시에 해당하면 위 표 순서(문샷 → 컴파운더 → 턴어라운드 → 기대차)가 주 유형이 되고, 나머지는 `secondary`에 기록됩니다. 밸류에이션 신호는 EV 에이전트가 `archetype_signals`에 기록합니다. 문샷 시가총액은 frozen `company_context.market_cap_usd`를 우선하며, 비어 있으면 `current_price × shares_diluted`로 결정론적으로 계산합니다.
 
 ## 빠른 시작
 ```bash
@@ -60,7 +59,7 @@ python harness.py aggregate NVDA
 | Triage + 조기 종료 | EV·AS·DI·TQ를 먼저 실행하고, 감점 전 점수로도 도달 가능한 유형이 없으면 나머지 10개 에이전트를 생략 |
 | `digest` | Phase 3·IC가 원 보고서 대신 압축 요약을 읽음 (첫 NVDA 실행: 403K자 → 16K자) |
 | `prompt` | 공통 문서를 따로 읽는 대신 필요한 내용만 담은 프롬프트 1개(기본 약 4K자 + 종목 기준 정보·공시 사실) |
-| 공통 기준 정보 | `intake_facts`·`sources/README.md`의 사실은 재검색 금지. 웹 검색 예산 에이전트당 10회 |
+| 공통 기준 정보 | `intake_facts`·`sources/README.md`의 사실은 재검색 금지. 웹 검색 예산 에이전트당 15회(공백 능동 보완용) |
 | 보고서 분량 상한 | thesis 600자, bull/bear_case 300자, evidence 3~6개 등 (`report_limits`) |
 | LLM 호출 제거 | 점수 집계는 `aggregate`가 수행, 매크로 보고서는 7일간 종목 간 재사용 |
 

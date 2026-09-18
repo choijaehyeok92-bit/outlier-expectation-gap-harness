@@ -17,7 +17,8 @@ SCORE_DOMAINS={x['id']:x for x in STRATEGY['scorecard']}
 AXIS_DOMAINS={x['id']:x for x in STRATEGY['evaluation_axes']}
 ARCHETYPES=STRATEGY['archetypes']
 VETOES=STRATEGY['hard_vetoes']
-BUY_STATES=('EXCEPTIONAL_WINNER_CANDIDATE','CORE_WINNER_CANDIDATE','NORMAL_CANDIDATE')
+STATE_POLICY=STRATEGY['state_thresholds']
+BUY_STATES=tuple(STATE_POLICY['buy_states'])
 SIGNAL_DOMAIN='expectation_valuation'
 MACRO_DOMAIN='macro_overlay'
 REVIEW_DOMAINS=('evidence_quality','red_team')
@@ -383,14 +384,10 @@ def compute_aggregate(ticker, reports):
     elif covered < 100: state='INCOMPLETE'
     elif confirmed: state='REJECT'
     elif veto_status in ('UNRESOLVED','PENDING_REVIEW'): state='WATCH'
-    elif state_score>=90: state='EXCEPTIONAL_WINNER_CANDIDATE'
-    elif state_score>=85: state='CORE_WINNER_CANDIDATE'
-    elif state_score>=75: state='NORMAL_CANDIDATE'
-    elif state_score>=65: state='STARTER_OR_WATCH'
-    else: state='REJECT'
+    else: state=next(b['state'] for b in sorted(STATE_POLICY['bands'],key=lambda x:-x['min']) if state_score>=b['min'])
     if archetype['id']==ARCHETYPES['fallback'] and state in BUY_STATES: state=ARCHETYPES['buy_state_cap_for_fallback']
     if early_exit: archetype['reason']='조기 종료: 감점 전 원점수로도 도달 가능한 유형 없음'
-    pos={'EXCEPTIONAL_WINNER_CANDIDATE':'6-10% (IC cap)','CORE_WINNER_CANDIDATE':'4-8%','NORMAL_CANDIDATE':'2-4%','STARTER_OR_WATCH':'0-2%','WATCH':'0% until veto cleared','REJECT':'0%','INCOMPLETE':'N/A','EARLY_EXIT_NON_FIT':'0% (유형 도달 불가 — 조기 종료)'}[state]
+    pos={**{b['state']:b['position_range'] for b in STATE_POLICY['bands']},**STATE_POLICY['non_score_states']}[state]
     if archetype['position_cap'] and state in BUY_STATES: pos=archetype['position_cap']
     di=ds.get('disruptive_innovation'); tq=ds.get('turnaround_quality')
     return {'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'turnaround_quality_score':tq['score'] if tq else None,'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'run_manifest':load_manifest(ticker)}
@@ -525,6 +522,7 @@ def cmd_prompt(args):
     P=[f"# 과제: {t} / 기준일 {ctx['as_of_date']} / {domain} ({aid})",
        f"저장소: {ROOT}. 작성할 파일: runs/{t}/reports/{aid}.json"+(f", runs/{t}/final_verdict.json, runs/{t}/one_page_investment_record.md" if domain==IC_DOMAIN else '')+'. 그 외 파일은 수정하지 않는다.',
        f"웹 검색·페치 예산: 최대 {EXEC['research_budget']['per_agent_web_calls']}회. 아래 기준 정보와 검증된 사실은 다시 검색하지 않는다.",
+       EXEC['research_policy']['prompt_line'],
        '','## 기업 기준 정보 (재검증 금지)',json.dumps(compact_context(ctx),ensure_ascii=False,separators=(',',':'))]
     facts=run/'sources'/'README.md'; index=run/'sources'/'INDEX.md'
     if facts.exists(): P+=['','## 검증된 1차 자료 사실',facts.read_text(encoding='utf-8').strip()]
@@ -681,11 +679,13 @@ def cmd_selftest(args):
         'structural_leadership':{'score':80,'raw_weighted_median':80},
         'asymmetry':{'score':80,'raw_weighted_median':80},
         'financial_survival':{'score':70,'raw_weighted_median':70}}
-    ms=classify_archetype(moon_ds,{'market_cap_usd':20_000_000_000},70,80,[])
-    assert ms['id']=='moonshot', 'moonshot market-cap gate should include exactly $20B'
-    ms_over=classify_archetype(moon_ds,{'market_cap_usd':20_000_000_001},70,80,[])
-    assert ms_over['id']!='moonshot', 'moonshot market-cap gate should exclude >$20B'
-    assert 'moonshot' not in reachable_archetypes(moon_ds,{'market_cap_usd':20_000_000_001},[])
+    cap=next(c['value'] for c in next(t for t in ARCHETYPES['types'] if t['id']=='moonshot')['conditions']
+             if c['field']=='signal.market_cap_usd')
+    ms=classify_archetype(moon_ds,{'market_cap_usd':cap},70,80,[])
+    assert ms['id']=='moonshot', f'moonshot market-cap gate should include exactly {cap}'
+    ms_over=classify_archetype(moon_ds,{'market_cap_usd':cap+1},70,80,[])
+    assert ms_over['id']!='moonshot', f'moonshot market-cap gate should exclude >{cap}'
+    assert 'moonshot' not in reachable_archetypes(moon_ds,{'market_cap_usd':cap+1},[])
     assert company_market_cap_usd({'current_price':50,'shares_diluted':400_000_000})==20_000_000_000
     ev=mk('expectation_valuation','EV',[75,75,75])
     ev['valuation_inputs']={'valuation_percentile_5y':0.5,'revenue_cagr_next_3y':0.12,
@@ -693,6 +693,10 @@ def cmd_selftest(args):
     vo=deterministic_valuation(ev,{'current_price':100.0,'net_cash_per_share':5.0,
         'valuation_overrides':{'required_return':None,'terminal_multiples':{}}})
     assert vo['status']=='COMPLETE' and vo['scenarios']['base']['terminal_multiple']==VAL_POLICY['terminal_multiples']['base']
+    bands=sorted(STATE_POLICY['bands'],key=lambda x:-x['min'])
+    assert bands[-1]['min']==0, 'state_thresholds.bands must terminate at min 0'
+    assert all(bands[i]['min']>bands[i+1]['min'] for i in range(len(bands)-1)), 'state bands must be strictly descending'
+    assert set(STATE_POLICY['buy_states'])<=({b['state'] for b in bands}), 'buy_states must name declared bands'
     print('provider calibration selftest: OK')
 
 def main():

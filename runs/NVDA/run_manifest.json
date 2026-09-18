@@ -3,19 +3,19 @@
   "ticker": "NVDA",
   "as_of_date": "2026-09-17",
   "frozen": true,
-  "harness_commit": "ddd34e66c05f2fe80d02b7c07ea6490067ae230b",
+  "harness_commit": "d271b16a47f0cf13e26172cca73db890ae5c8785",
   "runner": {
     "provider": "Antropic",
     "model": "Claude-Opus-5",
     "reasoning_effort": "extra"
   },
-  "frozen_at_utc": "2026-09-18T16:16:54.578007+00:00",
+  "frozen_at_utc": "2026-09-18T17:10:07.133776+00:00",
   "config_files": {
-    "config/strategy.json": "2c70eec2bda3ed4490e6d207fe75f08e16b2b8a8448d6e8e2dcca59ec1609c82",
-    "config/workflow.json": "54fabf157c62e3ed73cc413d973f262cc8fe984349eb99a821b716eeb603cead",
+    "config/strategy.json": "ecdf105fecad86e77c7966e1f2f91ca797f4a2b1e0ee2b73836ed46e44a87a37",
+    "config/workflow.json": "1f5c6f1016768a2c6d8b53b3b7bcabdbbf417d657e2c8673047e84ac2aca8fcb",
     "config/agents_manifest.json": "323317d34e89a0df0bf8a38ce9a0dc9c13a898e2435ece28e49c91cc7cb1082c",
-    "config/calibration.json": "e5a3fd2a57c6d519e2710c7e7a1fd06f4366b79eb4a3274b4cbba7d8cd5b6d3a",
-    "harness.py": "c9e47f48ad10539e33998c33669e38af814bb28e3db1f47283f909750ff4d4fa"
+    "config/calibration.json": "ef370c40042703c774d1f1b703daf3ea8d9c058a9c27f43b0aaf63da312466fb",
+    "harness.py": "e38328669c9226f0c79d654fcb4eb4f888c40e7f6fb3c06031ee8b7ff0dd1dda"
   },
   "input_files": {
     "company_context.json": "2dc6dfc1976b87ede150747339d7046ff5ea672ae98192323a9427ddac282ab0",

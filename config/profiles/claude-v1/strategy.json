@@ -66,7 +66,7 @@
     }
   ],
   "archetypes": {
-    "min_gate_score": 63,
+    "min_gate_score": 60,
     "fallback": "non_fit",
     "buy_state_cap_for_fallback": "STARTER_OR_WATCH",
     "types": [
@@ -114,6 +114,11 @@
         "valuation_tolerant": false,
         "conditions": [
           {
+            "field": "signal.price_to_base_value",
+            "op": "<=",
+            "value": 1.2
+          },
+          {
             "field": "domain.moat_trajectory",
             "op": ">=",
             "value": 76
@@ -136,43 +141,10 @@
           {
             "field": "domain.expectation_valuation",
             "op": ">=",
-            "value": 50
+            "value": 42
           }
         ],
         "position_guidance": "장기 보유가 기본이다. 밸류에이션 과열 시 매도보다 추가매수 속도를 조절한다."
-      },
-      {
-        "id": "emerging_outlier",
-        "label": "이머징 아웃라이어",
-        "label_en": "Emerging Outlier",
-        "description": "현재가격이 Base 가치 전후에 있으면서 아웃라이어 성격(구조적 리더십·비대칭 상승여력)이 강한 기업.",
-        "valuation_tolerant": false,
-        "conditions": [
-          {
-            "field": "signal.price_to_base_value",
-            "op": "between",
-            "value": [
-              0.8,
-              1.2
-            ]
-          },
-          {
-            "field": "domain.structural_leadership",
-            "op": ">=",
-            "value": 72
-          },
-          {
-            "field": "domain.asymmetry",
-            "op": ">=",
-            "value": 72
-          },
-          {
-            "field": "domain.moat_trajectory",
-            "op": ">=",
-            "value": 70
-          }
-        ],
-        "position_guidance": "Base 가격대 진입이므로 기대수익은 Bull 경로 실현 증거에서 나온다. 핵심 KPI 확인 시 확대한다."
       },
       {
         "id": "turnaround",
@@ -239,7 +211,7 @@
           {
             "field": "domain.expectation_valuation",
             "op": ">=",
-            "value": 72
+            "value": 65
           },
           {
             "field": "domain.financial_survival",
@@ -261,28 +233,28 @@
   },
   "classifications": [
     {
-      "min": 90,
+      "min": 86,
       "max": 100,
       "label": "Exceptional Outlier"
     },
     {
-      "min": 85,
-      "max": 89.999,
+      "min": 80,
+      "max": 85.999,
       "label": "Core Outlier"
     },
     {
-      "min": 75,
-      "max": 84.999,
+      "min": 70,
+      "max": 79.999,
       "label": "Emerging Outlier"
     },
     {
-      "min": 65,
-      "max": 74.999,
+      "min": 60,
+      "max": 69.999,
       "label": "Starter / Watch"
     },
     {
       "min": 0,
-      "max": 64.999,
+      "max": 59.999,
       "label": "Reject"
     }
   ],
@@ -311,5 +283,46 @@
     "semiannual": "경쟁환경·Moat Trajectory·고객행동·산업구조",
     "annual": "투자가설과 밸류에이션을 처음부터 재작성",
     "3-5y": "성장 규모·지속기간·경쟁우위·자본수익률 사후검증"
+  },
+  "state_thresholds": {
+    "note": "mechanical_pre_ic_state와 position_range_pre_ic를 결정한다. harness.py가 이 값을 읽는다. bands는 내림차순이며 마지막 min은 0이어야 한다.",
+    "buy_states": [
+      "EXCEPTIONAL_WINNER_CANDIDATE",
+      "CORE_WINNER_CANDIDATE",
+      "NORMAL_CANDIDATE"
+    ],
+    "bands": [
+      {
+        "min": 86,
+        "state": "EXCEPTIONAL_WINNER_CANDIDATE",
+        "position_range": "6-10% (IC cap)"
+      },
+      {
+        "min": 80,
+        "state": "CORE_WINNER_CANDIDATE",
+        "position_range": "4-8%"
+      },
+      {
+        "min": 70,
+        "state": "NORMAL_CANDIDATE",
+        "position_range": "2-4%"
+      },
+      {
+        "min": 60,
+        "state": "STARTER_OR_WATCH",
+        "position_range": "0-2%"
+      },
+      {
+        "min": 0,
+        "state": "REJECT",
+        "position_range": "0%"
+      }
+    ],
+    "non_score_states": {
+      "WATCH": "0% until veto cleared",
+      "REJECT": "0%",
+      "INCOMPLETE": "N/A",
+      "EARLY_EXIT_NON_FIT": "0% (유형 도달 불가 — 조기 종료)"
+    }
   }
 }

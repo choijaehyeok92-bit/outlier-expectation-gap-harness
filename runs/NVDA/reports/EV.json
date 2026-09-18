@@ -5,7 +5,7 @@
   "domain": "expectation_valuation",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 49.25,
+  "score_0_100": 53.0,
   "confidence_0_1": 0.6,
   "bull_score": 85,
   "bear_score": 20,
@@ -127,18 +127,18 @@
   "subscores": [
     {
       "criterion_id": "reverse_dcf_burden",
-      "score_0_100": 55,
-      "rationale": "현재가는 Base 시나리오를 요구한다. Bull을 요구하지는 않지만 그 Base가 NTM 매출 +60%와 10년 40% owner FCF 마진 유지를 전제하므로 강한 실행이 필요하다."
+      "score_0_100": 60,
+      "rationale": "price_to_base_value 1.0304 → signal_map 0.9~1.1 구간 = 60. Base 시나리오의 야심 수준은 valuation_robustness와 uncertainties에 기록하며 여기서 재차 감점하지 않는다(scoring_rule)."
     },
     {
       "criterion_id": "base_return",
-      "score_0_100": 50,
-      "rationale": "Base 주당가치 $212.86 대비 종가 $219.34로 약 3% 고평가. 제외한 투자자산 $3.87/주를 더해도 사실상 공정가치 부근이며 기대차라고 부를 할인이 없다."
+      "score_0_100": 55,
+      "rationale": "price_to_base_value 1.0304 → signal_map 0.9~1.1 구간 = 55. Base 주당가치 $212.86 대비 종가 $219.34는 약 3% 고평가로 공정가치 부근이다."
     },
     {
       "criterion_id": "valuation_robustness",
       "score_0_100": 40,
-      "rationale": "Base 가치의 64%가 terminal multiple 의존이고 Bear는 -66%다. 동시에 trailing 이익은 주식평가익으로 과대, FCF는 운전자본으로 과소 계상되어 정상이익 기준선 자체가 흔들린다."
+      "rationale": "Base 가치의 64%가 terminal multiple 의존이고 Bear는 -66%다. trailing 이익은 주식평가익으로 과대, FCF는 운전자본으로 과소 계상되어 정상이익 기준선 자체가 흔들린다. 이 criterion만 모델 재량이다."
     }
   ],
   "uncertainties": [
