@@ -1,7 +1,7 @@
 # Digest — NVDA (as of 2026-09-17)
 score 73.94 (ex-val 77.35, Emerging Outlier) · DI 82.08 · TQ 39.25 · archetype compounder — 유형 조건 및 게이트 점수 충족 · veto UNRESOLVED · state WATCH
 signals {'price_to_base_value': 1.0304, 'valuation_percentile_5y': 0.05, 'revenue_cagr_next_3y': 0.29, 'market_cap_usd': 5326671900000.0} · reachable(raw) ['compounder']
-veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
+veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음 / V10 자사 자금으로 창출된 매출에 대한 구조적 의존
 
 ## structural_leadership — 78.83 (raw 78.83, spread 33.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
@@ -13,7 +13,7 @@ unknowns: 가속 컴퓨트 시장에서 NVIDIA의 물량·금액 점유율이 �
 ## customer_product — 80.25 (raw 80.25, spread 35.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| CP | 75.25 (50–85) | 0.55 | support | V4=conditional, V8=conditional | 고객가치는 입증된다. 매출 $96.2B 분기에 75.0% gross margin을 유지하면서 판관비가 1.4%에 불과하다는 조합은 프로모션이나 영업력으로 만들어지지 않는다. 고객 선수금이 H1에 $15.6B 유입되고 공급 약정이 $279B 쌓여 있다는 것도 지불의사의 직접 증거다. 그… |
+| CP | 75.25 (50–85) | 0.55 | support | V4=cleared, V8=cleared, V10=conditional | 고객가치는 입증된다. 매출 $96.2B 분기에 75.0% gross margin을 유지하면서 판관비가 1.4%에 불과하다는 조합은 프로모션이나 영업력으로 만들어지지 않는다. 고객 선수금이 H1에 $15.6B 유입되고 공급 약정이 $279B 쌓여 있다는 것도 지불의사의 직접 증거다. 그… |
 bull: 분기 매출 $96.2B에서 gross margin 75.0%를 받아내면서 판관비는 매출의 1.4%다. 할인·마케팅이 아니라 제품이 수요를 만든다는 가장 강한 증거다. H1에 고객 선수금 $15.6B이 유입됐고 공급 약정 $279B이 뒤를 받친다. AI 랩에게 이 제품은 미션크리티컬이다. / bear: 하드웨어라 NRR·churn 공시가 없어 유지율을 코호트로 검증할 수 없다. 더 큰 문제는 벤더 금융이다. H1에 지분증권 $42.4B을 매입했고 AI 클라우드 리스에 $3.5B을 보증했으며, 10-Q는 이 고객군이 투자등급 자금조달 능력이 없다고 기술한다. 자기조달 수요 비중을 계산…
 unknowns: NVIDIA가 지분투자·보증한 주체가 창출한 매출 비중이 공시되지 않는다. 벤더 금융 의존도를 정량화할 수 없다. · 고객의 AI 인프라 투자 회수 기간과 실제 가동률.
 
@@ -41,7 +41,7 @@ unknowns: 지분투자 대상 기업의 명세와 그들이 창출한 매출 규
 ## financial_survival — 81.08 (raw 81.08, spread 26.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| FS | 77.75 (62–88) | 0.7 | support | V2=cleared, V3=cleared, V9=cleared | 재무 생존력 자체는 최상위권이다. 순현금 $23.2B, 투자자산 $93.9B, TTM 영업현금흐름 $134.4B에 대해 총차입은 $33.4B(OCF의 0.25배)이고 1년 내 만기는 $1.0B뿐이며 만기는 2060년까지 분산돼 있다. $25B 기업어음 한도는 전액 미사용이다. cape… |
+| FS | 77.75 (62–88) | 0.7 | support | V2=cleared, V3=cleared, V9=cleared, V10=conditional | 재무 생존력 자체는 최상위권이다. 순현금 $23.2B, 투자자산 $93.9B, TTM 영업현금흐름 $134.4B에 대해 총차입은 $33.4B(OCF의 0.25배)이고 1년 내 만기는 $1.0B뿐이며 만기는 2060년까지 분산돼 있다. $25B 기업어음 한도는 전액 미사용이다. cape… |
 bull: 순현금 $23.2B에 투자자산 $93.9B이 더해지고 TTM 영업현금흐름은 $134.4B이다. 총차입 $33.4B은 TTM OCF의 0.25배이며 1년 내 만기는 $1.0B뿐, 만기는 2060년까지 사다리형이다. $25B 기업어음 한도는 미사용이고 covenant도 준수 중이다. ca… / bear: 위험은 대차대조표가 아니라 부외에 있다. 총약정 $366B은 TTM 매출의 1.2배이고 그중 구속력 있는 공급·capacity 약정이 $279B다. 수요가 꺾이면 이것이 재고·약정 손실로 전환된다는 것은 H20 $4.5B, H200 $0.4B으로 이미 입증됐다. AI 클라우드 리스 보…
 unknowns: 공급·capacity 약정 $279B 중 취소 가능 비중과 구속력 있는 비중. · land/power/shell 보증의 파트너별 신용도와 최대 총노출.
 
@@ -55,7 +55,7 @@ unknowns: AR 증가 $24,590M 중 투자등급 고객 비중과 NVIDIA가 지분�
 ## asymmetry — 68.42 (raw 68.42, spread 57.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| AS | 66.75 (25–82) | 0.55 | neutral | V9=conditional, V7=cleared | 비대칭성은 상방보다 하방이 크다. 시총 $5.33T에서 5x/10x는 각각 $26.6T/$53.3T로 글로벌 주식시장 규모 대비 비현실적이고, 가장 낙관적인 경로도 10년 3.4x(CAGR 약 13%)에 그친다. 하방은 Bear 주당 $75로 -66%다. 확률을 Bear 30/Base… |
+| AS | 66.75 (25–82) | 0.55 | neutral | V9=cleared, V7=cleared | 비대칭성은 상방보다 하방이 크다. 시총 $5.33T에서 5x/10x는 각각 $26.6T/$53.3T로 글로벌 주식시장 규모 대비 비현실적이고, 가장 낙관적인 경로도 10년 3.4x(CAGR 약 13%)에 그친다. 하방은 Bear 주당 $75로 -66%다. 확률을 Bear 30/Base… |
 bull: AI 인프라가 10년 자본재 사이클이면 Bull 경로는 Y10 owner FCF/share $29.6, 주당 $431이다. 순현금·무차입에 가까운 구조와 투자자산 $93.9B가 하방을 받치고, 네트워킹·소프트웨어·로보틱스가 추가 상승축이 된다. Bull 확률을 30%로 올리면 확률가중… / bear: 시총 $5.33T에서 5x는 $26.6T로, 25x 배수에서 순이익 $1.06T를 요구한다. 현실적 상방은 10년 3.4x(CAGR 약 13%)이며 power-law가 아니다. 반면 하방은 Bear $75(-66%)이고, 수요 일부를 NVIDIA 지분투자·보증이 떠받쳐 하락 시 상관관…
 unknowns: NVIDIA가 지분·보증으로 자금을 댄 고객이 창출한 매출 비중이 공시되지 않아 하락 국면의 상관관계를 정량화할 수 없다. · Bear 시나리오에서 AR $63,059M과 재고 $31,575M의 손상률 추정 근거가 없다.
 
@@ -82,7 +82,7 @@ unknowns: NVIDIA 지분투자·보증 대상 기업향 매출 비중 — 현재 
 ## red_team
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| RT | 38 | 0.6 | oppose | V1=cleared, V2=cleared, V4=conditional, V5=cleared, V6=cleared, V8=conditional, V7=cleared | 공매도 논리 한 줄: NVIDIA는 자기 자본의 일부를 매출로, 자기 평가의 일부를 이익으로 계상하고 있으며 둘 다 순환이 멈추면 동시에 역전된다. H1 순이익 $118.0B와 owner FCF $66.0B의 격차는 비현금 평가익 $23.7B과 운전자본 유출 $41.3B이 만든다. 같… |
+| RT | 38 | 0.6 | oppose | V1=cleared, V2=cleared, V4=cleared, V5=cleared, V6=cleared, V8=cleared, V7=cleared, V10=conditional | 공매도 논리 한 줄: NVIDIA는 자기 자본의 일부를 매출로, 자기 평가의 일부를 이익으로 계상하고 있으며 둘 다 순환이 멈추면 동시에 역전된다. H1 순이익 $118.0B와 owner FCF $66.0B의 격차는 비현금 평가익 $23.7B과 운전자본 유출 $41.3B이 만든다. 같… |
 unknowns: 지분투자·보증 대상 기업향 매출 비중 — 순환 구조의 크기를 정하는 단일 수치인데 공시되지 않는다. · 공급·capacity 약정 $279B 중 취소 가능 비중.
 
 ## macro_overlay
@@ -94,8 +94,6 @@ unknowns: 유가발 인플레이션의 지속 기간과 연준의 반응함수. 
 ## investment_committee
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| IC | 70.86 | 0.6 | neutral | – | 종합점수 70.86(밸류에이션 제외 74.01), 기계적 유형 non_fit, Hard Veto 3건 미해소로 신규 매수를 승인하지 않는다. 사업의 질은 높다. 8개 도메인 중 6개가 73~78점이고 재무생존 77.75, DI 78.75다. 문제는 가격과 미공시 항목 하나다. 종가 $… |
+| IC | 73.94 | 0.6 | neutral | – | 프로바이더 보정 적용 후 종합점수 73.94(보정 전 70.86), 기계적 유형이 non_fit에서 컴파운더로 바뀌었다. 그러나 Hard Veto 3건이 미해소이므로 신규 매수를 승인하지 않는다. 유형 변경은 사업 사실이 달라져서가 아니라 Claude 계열 편향 보정 +1.67~+5.… |
 unknowns: NVIDIA 지분투자·보증 대상 기업향 매출 비중 — Veto 3건이 여기에 걸려 있고 현행 공시로는 해소되지 않는다. · 공급·capacity 약정 $279B의 취소 가능 비중.
 
-## veto conflicts
-- V9: AS=conditional, FS=cleared

@@ -518,72 +518,31 @@
   "confirmed_vetoes": [],
   "unresolved_vetoes": [
     {
-      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "veto": "자사 자금으로 창출된 매출에 대한 구조적 의존",
       "status": "UNRESOLVED",
       "owners": [
         "CP",
-        "RT"
-      ],
-      "assessments": [
-        {
-          "agent_id": "CP",
-          "owner": true,
-          "status": "conditional",
-          "rationale": "고객가치 자체는 명확히 존재한다. 판관비 1.4%에 gross margin 75.0%는 보조금·마케팅으로 만들 수 없는 조합이다. 그러나 H1 지분증권 매입 $42.4B와 리스 보증 $3.5B이 수요를 직접 떠받치는 규모이고 그 매출 기여분이 공시되지 않는다. 조건: 지분투자·보증 대상 기업향 매출이 총매출의 10% 미만임이 확인되면 clear로 전환한다."
-        },
-        {
-          "agent_id": "RT",
-          "owner": true,
-          "status": "conditional",
-          "rationale": "고객가치는 gross margin 75.0%와 판관비 1.4%로 명백히 존재한다. 그러나 H1 지분증권 매입 $42.4B, 리스 보증 $3.5B, 잔여 지분투자 약정 $25B이 수요를 직접 떠받치는 규모이고 회사 스스로 이 고객군의 자금조달 능력 부족을 기술한다. 그 매출 기여분이 공시되지 않는 한 clear로 볼 수 없다. CP의 판정과 동일하다."
-        }
-      ],
-      "missing_reports": [],
-      "missing_assessments": []
-    },
-    {
-      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "UNRESOLVED",
-      "owners": [
-        "CP",
-        "RT"
-      ],
-      "assessments": [
-        {
-          "agent_id": "CP",
-          "owner": true,
-          "status": "conditional",
-          "rationale": "Data Center가 매출의 92.5%, 상위 3개 고객이 44%, 단일 규제(미국 수출규제)로 중국 시장 전체를 상실했다는 점에서 종속성은 실재한다. 다만 최악의 규제 시나리오가 이미 현실화됐음에도 매출이 전년 대비 +105.9%였다는 점에서 치명적(fatal)으로 확정하지 않는다. 조건: 단일 고객이 매출의 25%를 넘거나 제2의 관할에서 판매 제한이 발생하면 confirmed로 전환한다."
-        },
-        {
-          "agent_id": "RT",
-          "owner": true,
-          "status": "conditional",
-          "rationale": "Data Center 92.5%, 상위 3개 고객 44%, AR 상위 5개 70%, 단일 규제로 중국 시장 전체 상실, 중국 반독점 예비판단 미해결, 5개 관할 동시 조사. 종속성은 명백하다. 다만 최악의 규제가 실현된 분기에도 매출이 +105.9%였으므로 confirmed로 확정할 증거는 아니다. 단일 고객 25% 초과 또는 제2 관할의 판매 제한이 발생하면 confirmed로 전환한다."
-        }
-      ],
-      "missing_reports": [],
-      "missing_assessments": []
-    },
-    {
-      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "UNRESOLVED",
-      "owners": [
         "FS",
-        "AS"
+        "RT"
       ],
       "assessments": [
         {
-          "agent_id": "AS",
+          "agent_id": "CP",
           "owner": true,
           "status": "conditional",
-          "rationale": "파산 확률은 순현금 $23.2B·투자자산 $93.9B·단기차입금 $1.0B로 사실상 0이다. 그러나 확률가중 기대가치 $215.1이 종가 $219.34와 같아 초과수익이 없는 반면 Bear -66% 확률을 30%로 본다. 조건: 진입가가 Base 가치의 0.8배(약 $170) 이하로 내려가거나, AR·DSO 정상화로 수요의 자기조달 비중이 낮음을 입증하면 clear로 전환한다."
+          "rationale": "구성요건 판정: 첫 요건 충족 — H1 지분증권 매입 $42,404M은 영업현금흐름 $74,421M의 57.0%로 conditional_if 임계값 20%를 크게 넘고, AI 클라우드 리스 보증 $3,529M과 잔여 지분투자 약정 $25B이 더해진다. 10-Q는 이 고객군이 투자등급 자금조달 능력을 확보하지 못했다고 직접 기술한다. 두 번째 요건(매출 기여 비중)은 공시가 없어 측정 불가. 해소 조건: 해당 기업향 매출이 총매출의 10% 미만임이 확인되면 cleared, 25% 초과면 confirmed."
         },
         {
           "agent_id": "FS",
           "owner": true,
-          "status": "cleared",
-          "rationale": "재무생존 관점에서는 clear다. 순현금 $23.2B, TTM OCF $134.4B, 1년 내 만기 $1.0B, capex는 매출의 2.8%로 침체에서도 투자를 줄일 필요가 없다. 파산 확률은 사실상 0이다. 다만 이 veto의 후단(기대수익 대비 영구손실 확률)은 가격 대비 판단이므로 AS의 conditional 판정이 별도로 유효하며 본 에이전트는 이를 뒤집지 않는다."
+          "status": "conditional",
+          "rationale": "구성요건 판정: 재무 관점에서 첫 요건이 충족된다. H1에 지분증권 $42,404M 매입과 제3자 리스 보증 $3,529M(파트너 에스크로는 $712M뿐)을 집행했다. 두 번째 요건인 매출 기여 비중은 공시되지 않아 측정 불가. 이 노출은 재무생존을 위협하는 규모는 아니나(시총 대비 보증 0.07%), 하락 국면에서 매출·투자자산·AR이 동시에 훼손되는 상관관계를 만든다."
+        },
+        {
+          "agent_id": "RT",
+          "owner": true,
+          "status": "conditional",
+          "rationale": "구성요건 판정: Red Team의 핵심 공격선이 이 문구에 정확히 대응한다. H1 지분증권 매입 $42,404M(OCF의 57.0%), 보증 notional $3,529M, AR $38,466M→$63,059M에 DSO 45→60일. 매출 기여 비중이 공시되지 않아 confirmed로 확정할 증거는 없다. 결정적 자료 1개(대상 기업향 매출)가 미확보이므로 conditional."
         }
       ],
       "missing_reports": [],
@@ -667,7 +626,7 @@
       },
       {
         "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "UNRESOLVED",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -676,14 +635,14 @@
           {
             "agent_id": "CP",
             "owner": true,
-            "status": "conditional",
-            "rationale": "고객가치 자체는 명확히 존재한다. 판관비 1.4%에 gross margin 75.0%는 보조금·마케팅으로 만들 수 없는 조합이다. 그러나 H1 지분증권 매입 $42.4B와 리스 보증 $3.5B이 수요를 직접 떠받치는 규모이고 그 매출 기여분이 공시되지 않는다. 조건: 지분투자·보증 대상 기업향 매출이 총매출의 10% 미만임이 확인되면 clear로 전환한다."
+            "status": "cleared",
+            "rationale": "구성요건 판정: 첫 요건인 \"고객가치 부재\"가 증거로 반증된다. Q2 gross margin 75.0%와 판관비/매출 1.4%가 동시에 관측되고 H1 고객 선수금 $15.6B이 유입됐다. 프로모션 없이 고객이 프리미엄을 지불한다는 뜻이므로 문구가 성립하지 않는다. 벤더 금융 우려는 이 문구가 포괄하지 않으며 신설 veto로 이관했다."
           },
           {
             "agent_id": "RT",
             "owner": true,
-            "status": "conditional",
-            "rationale": "고객가치는 gross margin 75.0%와 판관비 1.4%로 명백히 존재한다. 그러나 H1 지분증권 매입 $42.4B, 리스 보증 $3.5B, 잔여 지분투자 약정 $25B이 수요를 직접 떠받치는 규모이고 회사 스스로 이 고객군의 자금조달 능력 부족을 기술한다. 그 매출 기여분이 공시되지 않는 한 clear로 볼 수 없다. CP의 판정과 동일하다."
+            "status": "cleared",
+            "rationale": "구성요건 판정: CP와 동일하다. 고객가치 부재라는 필수 요건이 gross margin 75.0%·판관비 1.4%·고객 선수금으로 반증된다. Red Team 관점의 우려(벤더 금융)는 문구가 포괄하지 않으므로 신설 veto로 옮겼다."
           }
         ],
         "missing_reports": [],
@@ -770,7 +729,7 @@
       },
       {
         "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "UNRESOLVED",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -779,14 +738,14 @@
           {
             "agent_id": "CP",
             "owner": true,
-            "status": "conditional",
-            "rationale": "Data Center가 매출의 92.5%, 상위 3개 고객이 44%, 단일 규제(미국 수출규제)로 중국 시장 전체를 상실했다는 점에서 종속성은 실재한다. 다만 최악의 규제 시나리오가 이미 현실화됐음에도 매출이 전년 대비 +105.9%였다는 점에서 치명적(fatal)으로 확정하지 않는다. 조건: 단일 고객이 매출의 25%를 넘거나 제2의 관할에서 판매 제한이 발생하면 confirmed로 전환한다."
+            "status": "cleared",
+            "rationale": "구성요건 판정: 두 번째 요건인 \"치명적\"이 반증된다. 미국 수출규제로 중국 데이터센터 시장에서 사실상 배제되고 H20 $4,500M·H200 $400M을 상각했음에도 Q2 매출은 전년 대비 +105.9%였다. 단일 규제 충격이 실제로 현실화됐는데 사업 경제성이 훼손되지 않았다. 집중도 자체는 SL durability_risks 55점이 반영한다. 감시 임계값: 단일 고객 매출 25% 초과(현재 16%) 또는 제2 관할의 판매 제한."
           },
           {
             "agent_id": "RT",
             "owner": true,
-            "status": "conditional",
-            "rationale": "Data Center 92.5%, 상위 3개 고객 44%, AR 상위 5개 70%, 단일 규제로 중국 시장 전체 상실, 중국 반독점 예비판단 미해결, 5개 관할 동시 조사. 종속성은 명백하다. 다만 최악의 규제가 실현된 분기에도 매출이 +105.9%였으므로 confirmed로 확정할 증거는 아니다. 단일 고객 25% 초과 또는 제2 관할의 판매 제한이 발생하면 confirmed로 전환한다."
+            "status": "cleared",
+            "rationale": "구성요건 판정: 치명성 요건이 실전 스트레스로 반증됐다. 중국 데이터센터 시장 전체를 잃고도 매출 +105.9%. 다만 고객 집중 축(상위 3개 44%)은 아직 스트레스 테스트되지 않았으므로 단일 고객 25% 초과를 감시 임계값으로 남긴다."
           }
         ],
         "missing_reports": [],
@@ -794,7 +753,7 @@
       },
       {
         "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-        "status": "UNRESOLVED",
+        "status": "CLEARED",
         "owners": [
           "FS",
           "AS"
@@ -803,14 +762,45 @@
           {
             "agent_id": "AS",
             "owner": true,
-            "status": "conditional",
-            "rationale": "파산 확률은 순현금 $23.2B·투자자산 $93.9B·단기차입금 $1.0B로 사실상 0이다. 그러나 확률가중 기대가치 $215.1이 종가 $219.34와 같아 초과수익이 없는 반면 Bear -66% 확률을 30%로 본다. 조건: 진입가가 Base 가치의 0.8배(약 $170) 이하로 내려가거나, AR·DSO 정상화로 수요의 자기조달 비중이 낮음을 입증하면 clear로 전환한다."
+            "status": "cleared",
+            "rationale": "구성요건 판정 변경. veto_criteria의 정의에 따라 여기서 영구손실은 사업가치의 영구적 소멸을 뜻하며 매수가 대비 가격 하락은 포함하지 않는다. 순현금 $23,220M, TTM OCF $134,360M이 총차입 $33,366M을 상회해 파산 확률은 사실상 0이고, Bear 시나리오에서도 owner FCF/share $4.2~$6.2를 창출한다. 종가 대비 Bear -66%는 가격 위험이며 EV 53.00과 AS permanent_loss 60점이 이미 온전히 반영하므로 여기서 다시 세우면 중복이다. 이전 conditional 판정은 가격 위험과 영구손실을 혼동한 것이었다."
           },
           {
             "agent_id": "FS",
             "owner": true,
             "status": "cleared",
             "rationale": "재무생존 관점에서는 clear다. 순현금 $23.2B, TTM OCF $134.4B, 1년 내 만기 $1.0B, capex는 매출의 2.8%로 침체에서도 투자를 줄일 필요가 없다. 파산 확률은 사실상 0이다. 다만 이 veto의 후단(기대수익 대비 영구손실 확률)은 가격 대비 판단이므로 AS의 conditional 판정이 별도로 유효하며 본 에이전트는 이를 뒤집지 않는다."
+          }
+        ],
+        "missing_reports": [],
+        "missing_assessments": []
+      },
+      {
+        "veto": "자사 자금으로 창출된 매출에 대한 구조적 의존",
+        "status": "UNRESOLVED",
+        "owners": [
+          "CP",
+          "FS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "CP",
+            "owner": true,
+            "status": "conditional",
+            "rationale": "구성요건 판정: 첫 요건 충족 — H1 지분증권 매입 $42,404M은 영업현금흐름 $74,421M의 57.0%로 conditional_if 임계값 20%를 크게 넘고, AI 클라우드 리스 보증 $3,529M과 잔여 지분투자 약정 $25B이 더해진다. 10-Q는 이 고객군이 투자등급 자금조달 능력을 확보하지 못했다고 직접 기술한다. 두 번째 요건(매출 기여 비중)은 공시가 없어 측정 불가. 해소 조건: 해당 기업향 매출이 총매출의 10% 미만임이 확인되면 cleared, 25% 초과면 confirmed."
+          },
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "conditional",
+            "rationale": "구성요건 판정: 재무 관점에서 첫 요건이 충족된다. H1에 지분증권 $42,404M 매입과 제3자 리스 보증 $3,529M(파트너 에스크로는 $712M뿐)을 집행했다. 두 번째 요건인 매출 기여 비중은 공시되지 않아 측정 불가. 이 노출은 재무생존을 위협하는 규모는 아니나(시총 대비 보증 0.07%), 하락 국면에서 매출·투자자산·AR이 동시에 훼손되는 상관관계를 만든다."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "conditional",
+            "rationale": "구성요건 판정: Red Team의 핵심 공격선이 이 문구에 정확히 대응한다. H1 지분증권 매입 $42,404M(OCF의 57.0%), 보증 notional $3,529M, AR $38,466M→$63,059M에 DSO 45→60일. 매출 기여 비중이 공시되지 않아 confirmed로 확정할 증거는 없다. 결정적 자료 1개(대상 기업향 매출)가 미확보이므로 conditional."
           }
         ],
         "missing_reports": [],
@@ -820,72 +810,31 @@
     "confirmed": [],
     "unresolved": [
       {
-        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+        "veto": "자사 자금으로 창출된 매출에 대한 구조적 의존",
         "status": "UNRESOLVED",
         "owners": [
           "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "고객가치 자체는 명확히 존재한다. 판관비 1.4%에 gross margin 75.0%는 보조금·마케팅으로 만들 수 없는 조합이다. 그러나 H1 지분증권 매입 $42.4B와 리스 보증 $3.5B이 수요를 직접 떠받치는 규모이고 그 매출 기여분이 공시되지 않는다. 조건: 지분투자·보증 대상 기업향 매출이 총매출의 10% 미만임이 확인되면 clear로 전환한다."
-          },
-          {
-            "agent_id": "RT",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "고객가치는 gross margin 75.0%와 판관비 1.4%로 명백히 존재한다. 그러나 H1 지분증권 매입 $42.4B, 리스 보증 $3.5B, 잔여 지분투자 약정 $25B이 수요를 직접 떠받치는 규모이고 회사 스스로 이 고객군의 자금조달 능력 부족을 기술한다. 그 매출 기여분이 공시되지 않는 한 clear로 볼 수 없다. CP의 판정과 동일하다."
-          }
-        ],
-        "missing_reports": [],
-        "missing_assessments": []
-      },
-      {
-        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "UNRESOLVED",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "Data Center가 매출의 92.5%, 상위 3개 고객이 44%, 단일 규제(미국 수출규제)로 중국 시장 전체를 상실했다는 점에서 종속성은 실재한다. 다만 최악의 규제 시나리오가 이미 현실화됐음에도 매출이 전년 대비 +105.9%였다는 점에서 치명적(fatal)으로 확정하지 않는다. 조건: 단일 고객이 매출의 25%를 넘거나 제2의 관할에서 판매 제한이 발생하면 confirmed로 전환한다."
-          },
-          {
-            "agent_id": "RT",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "Data Center 92.5%, 상위 3개 고객 44%, AR 상위 5개 70%, 단일 규제로 중국 시장 전체 상실, 중국 반독점 예비판단 미해결, 5개 관할 동시 조사. 종속성은 명백하다. 다만 최악의 규제가 실현된 분기에도 매출이 +105.9%였으므로 confirmed로 확정할 증거는 아니다. 단일 고객 25% 초과 또는 제2 관할의 판매 제한이 발생하면 confirmed로 전환한다."
-          }
-        ],
-        "missing_reports": [],
-        "missing_assessments": []
-      },
-      {
-        "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-        "status": "UNRESOLVED",
-        "owners": [
           "FS",
-          "AS"
+          "RT"
         ],
         "assessments": [
           {
-            "agent_id": "AS",
+            "agent_id": "CP",
             "owner": true,
             "status": "conditional",
-            "rationale": "파산 확률은 순현금 $23.2B·투자자산 $93.9B·단기차입금 $1.0B로 사실상 0이다. 그러나 확률가중 기대가치 $215.1이 종가 $219.34와 같아 초과수익이 없는 반면 Bear -66% 확률을 30%로 본다. 조건: 진입가가 Base 가치의 0.8배(약 $170) 이하로 내려가거나, AR·DSO 정상화로 수요의 자기조달 비중이 낮음을 입증하면 clear로 전환한다."
+            "rationale": "구성요건 판정: 첫 요건 충족 — H1 지분증권 매입 $42,404M은 영업현금흐름 $74,421M의 57.0%로 conditional_if 임계값 20%를 크게 넘고, AI 클라우드 리스 보증 $3,529M과 잔여 지분투자 약정 $25B이 더해진다. 10-Q는 이 고객군이 투자등급 자금조달 능력을 확보하지 못했다고 직접 기술한다. 두 번째 요건(매출 기여 비중)은 공시가 없어 측정 불가. 해소 조건: 해당 기업향 매출이 총매출의 10% 미만임이 확인되면 cleared, 25% 초과면 confirmed."
           },
           {
             "agent_id": "FS",
             "owner": true,
-            "status": "cleared",
-            "rationale": "재무생존 관점에서는 clear다. 순현금 $23.2B, TTM OCF $134.4B, 1년 내 만기 $1.0B, capex는 매출의 2.8%로 침체에서도 투자를 줄일 필요가 없다. 파산 확률은 사실상 0이다. 다만 이 veto의 후단(기대수익 대비 영구손실 확률)은 가격 대비 판단이므로 AS의 conditional 판정이 별도로 유효하며 본 에이전트는 이를 뒤집지 않는다."
+            "status": "conditional",
+            "rationale": "구성요건 판정: 재무 관점에서 첫 요건이 충족된다. H1에 지분증권 $42,404M 매입과 제3자 리스 보증 $3,529M(파트너 에스크로는 $712M뿐)을 집행했다. 두 번째 요건인 매출 기여 비중은 공시되지 않아 측정 불가. 이 노출은 재무생존을 위협하는 규모는 아니나(시총 대비 보증 0.07%), 하락 국면에서 매출·투자자산·AR이 동시에 훼손되는 상관관계를 만든다."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "conditional",
+            "rationale": "구성요건 판정: Red Team의 핵심 공격선이 이 문구에 정확히 대응한다. H1 지분증권 매입 $42,404M(OCF의 57.0%), 보증 notional $3,529M, AR $38,466M→$63,059M에 DSO 45→60일. 매출 기여 비중이 공시되지 않아 confirmed로 확정할 증거는 없다. 결정적 자료 1개(대상 기업향 매출)가 미확보이므로 conditional."
           }
         ],
         "missing_reports": [],
