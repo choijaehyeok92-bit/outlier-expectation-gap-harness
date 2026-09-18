@@ -1,0 +1,8 @@
+Source: user-uploaded Microsoft Corporation Form 8-K filed 2026-09-02, Exhibit 99.1.
+Beginning FY27 Microsoft transitions from three reporting segments to two: Agents and Infra; Devices and Consumer.
+FY2026 restated Agents and Infra: revenue 268.127 billion, operating income 136.365 billion.
+FY2026 restated Devices and Consumer: revenue 63.712 billion, operating income 18.872 billion.
+Azure definition becomes more purely consumption-based platform and infrastructure. GitHub cloud/other developer cloud services and Security Copilot move to Microsoft 365 commercial cloud. Healthcare/Life Sciences cloud moves to Industry solutions.
+FY27 Q1 adjusted total revenue outlook: 89.85-90.95 billion.
+FY27 Q1 Azure revenue growth outlook: approximately 45% constant currency.
+FY27 Q1 capex expected to be over 50 billion including component-pricing effects.
