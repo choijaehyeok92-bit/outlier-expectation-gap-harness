@@ -3,7 +3,7 @@ name: PL EV run 2026-09-17
 on:
   push:
     branches:
-      - run/pl-2026-09-17-sol-phase1
+      - run/pl-2026-09-17-sol-macro
   workflow_dispatch:
 
 jobs:
@@ -78,6 +78,9 @@ jobs:
           python harness.py validate PL MA
           cp .github/fixtures/PL/FS.json runs/PL/reports/FS.json
           python harness.py validate PL FS
+          cp .github/fixtures/PL/MO.json runs/PL/reports/MO.json
+          python harness.py validate PL MO
+          python harness.py cache-macro PL
           python harness.py plan PL
           python harness.py digest PL
           python harness.py aggregate PL
@@ -85,7 +88,8 @@ jobs:
           cat runs/PL/aggregate.json
       - uses: actions/upload-artifact@v4
         with:
-          name: PL-harness-run-2026-09-17-sol-phase1
+          name: PL-harness-run-2026-09-17-sol-macro
           path: |
             runs/PL
+            runs/_macro
             runlogs/execution.log
