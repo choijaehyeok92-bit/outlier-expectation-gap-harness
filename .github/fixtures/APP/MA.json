@@ -1,0 +1,137 @@
+{
+  "agent_id": "MA",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 83,
+  "confidence_0_1": 0.88,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Management divested the Apps business to concentrate on advertising, scaled Axon, and used abundant FCF for large repurchases that reduced share count. Execution has been unusually strong.",
+  "bear_case": "Founder control is substantial, the company is a Nasdaq controlled company, and aggressive buybacks at high valuation can create governance and capital-allocation risk if growth normalizes.",
+  "thesis": "Management execution and strategic allocation are strong, but governance prevents an exceptional score. The Apps divestiture concentrated resources on the higher-return advertising platform, while large buybacks more than offset SBC. FY2025 ICFR and audit opinions were clean. However, Class B carries 20 votes per share and the voting-agreement parties held about 67% of voting power at year-end, limiting minority influence and increasing key-person/governance risk.",
+  "evidence": [
+    {
+      "claim": "The Apps Business was divested in June 2025 to dedicate resources to the advertising business.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "2025 transaction",
+      "as_of_date": "2026-08-05",
+      "value": "Apps Business divestiture and strategic focus",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2025 repurchases totaled about $2.2B; H1 2026 common-stock repurchases were $1.533B.",
+      "source_type": "filing",
+      "source": "Uploaded 10-K/Q2 10-Q",
+      "period": "2025-FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "Large capital returns",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 ICFR was effective and Deloitte issued unqualified opinions on financial statements and ICFR.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K",
+      "period": "FY2025",
+      "as_of_date": "2026-02-19",
+      "value": "Clean audit and ICFR",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Class B has 20 votes per share and voting-agreement parties held about 67% of voting power at Dec. 31, 2025.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K",
+      "period": "2025-12-31",
+      "as_of_date": "2026-02-19",
+      "value": "Controlled-company governance",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Founder control reduces minority shareholder influence and board accountability.",
+    "Buybacks at elevated market prices can lower future returns if intrinsic value is overestimated.",
+    "Key-person dependence on Adam Foroughi is explicitly disclosed.",
+    "Rapid strategic expansion can create execution risk despite recent success."
+  ],
+  "unknowns": [
+    "Long-run buyback hurdle rate.",
+    "Executive compensation alignment with FCF/share.",
+    "Succession planning for key founders.",
+    "Capital-allocation policy if valuation rises above intrinsic value."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "minor",
+      "rationale": "Divestiture and repurchases are economically coherent, though buyback price discipline remains important."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "Reporting is clean but controlled-company voting concentration is a structural governance discount."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "minor",
+      "rationale": "Recent strategic focus and operating results demonstrate strong execution."
+    }
+  ],
+  "falsifiers": [
+    "Management repurchases heavily above intrinsic value while operating performance weakens.",
+    "Governance concentration leads to related-party or disclosure problems.",
+    "New verticals consume capital without measurable FCF/share returns."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "Clean Deloitte audit and effective ICFR support reporting integrity; governance concentration is a risk but not evidence of dishonesty."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "FCF/share after buybacks",
+      "direction": "up",
+      "threshold": "Per-share value compounds faster than enterprise FCF",
+      "cadence": "annual"
+    },
+    {
+      "name": "Capital allocation",
+      "direction": "up",
+      "threshold": "Repurchases/investments remain value-accretive",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Governance events",
+      "direction": "stable",
+      "threshold": "No control/disclosure deterioration",
+      "cadence": "event-driven"
+    }
+  ],
+  "next_checks": [
+    "Buyback execution.",
+    "Proxy compensation metrics.",
+    "Founder/board governance changes."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 90,
+      "rationale": "Strategic divestiture, internal reinvestment and repurchases have created strong per-share economics."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 70,
+      "rationale": "Financial reporting is strong, but controlled-company voting concentration materially weakens governance."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 90,
+      "rationale": "Management has adapted the portfolio and scaled the advertising platform exceptionally well."
+    }
+  ]
+}
