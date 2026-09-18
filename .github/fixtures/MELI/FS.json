@@ -1,0 +1,34 @@
+{
+  "agent_id":"FS","ticker":"MELI","as_of_date":"2026-09-17","domain":"financial_survival","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":81,"confidence_0_1":0.91,"bull_score":95,"bear_score":60,
+  "bull_case":"MELI has a large available liquidity pool, diversified operating cash sources and access to long-term debt markets. Stable share count limits financing-driven owner impairment.",
+  "bear_case":"Fintech funding, customer funds, leases and credit receivables make the balance sheet more complex than a pure marketplace. A severe credit or sovereign shock could tighten liquidity quickly.",
+  "thesis":"Financial survival is strong, though not simple. Company-defined net debt was $6.425B at June 30, but MELI also had $6.751B of available cash and investments, large operating cash generation and stable share count. The Sep. 14 $1B 2036 note issuance demonstrates market access and is approximately net-cash neutral at issuance. The principal stress risk is a simultaneous credit-loss, FX and funding shock rather than ordinary refinancing pressure.",
+  "evidence":[
+    {"claim":"Company-defined available cash and investments were $6.751B and net debt $6.425B at June 30.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"2026-06-30","as_of_date":"2026-08-06","value":"Available liquidity $6.751B; net debt $6.425B","fact_or_estimate":"fact"},
+    {"claim":"MELI issued $1.0B 5.850% notes due 2036 on Sep. 14.","source_type":"filing","source":"Uploaded 2026-09-14 8-K","period":"2026-09-14","as_of_date":"2026-09-14","value":"$1.0B due 2036","fact_or_estimate":"fact"},
+    {"claim":"FY2025 CFO was $12.116B, though company adjusted FCF was a much lower $1.481B after fintech and growth adjustments.","source_type":"filing","source":"Uploaded FY2025 10-K","period":"FY2025","as_of_date":"2026-02-25","value":"CFO $12.116B; adjusted FCF $1.481B","fact_or_estimate":"fact"},
+    {"claim":"Shares outstanding are essentially flat, showing no material equity financing dependence.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"2026 YTD","as_of_date":"2026-08-06","value":"~50.697M shares","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":["Current and non-current financial liabilities are large because fintech requires funding.","Credit losses can consume liquidity and collateral during stress.","Latin American sovereign and currency shocks can impair access to local funding."],
+  "unknowns":["Stress liquidity under simultaneous Brazil/Mexico credit deterioration.","Funding mix by fintech activity.","Use of Sep. 14 note proceeds.","Off-balance logistics commitments under severe downturn."],
+  "uncertainties":[
+    {"criterion_id":"liquidity_leverage","severity":"material","rationale":"Liquidity is large, but balance-sheet leverage is meaningful and complex."},
+    {"criterion_id":"stress_survival","severity":"minor","rationale":"Scale and market access provide multiple buffers."},
+    {"criterion_id":"dilution_offbalance","severity":"minor","rationale":"Equity dilution is negligible; leases and fintech obligations require monitoring."}
+  ],
+  "falsifiers":["Available liquidity falls sharply while adjusted FCF remains depressed.","Credit losses force emergency capital raising.","Long-term market access closes while short-term funding needs rise."],
+  "hard_veto_flags":[
+    {"veto":"구조적으로 과도한 외부자본 조달 의존","status":"cleared","rationale":"MELI has substantial liquidity, operating cash generation and long-term debt access; equity financing is not required for ordinary survival."},
+    {"veto":"장기간 지속되는 과도한 희석","status":"cleared","rationale":"Share count is effectively flat."},
+    {"veto":"파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음","status":"cleared","rationale":"Diversified cash generation and liquidity keep financing failure below veto level despite credit and macro risks."}
+  ],
+  "key_kpis":[{"name":"Available liquidity","direction":"stable/up","threshold":"Remain ample relative to corporate funding needs","cadence":"quarterly"},{"name":"Adjusted FCF","direction":"up","threshold":"Recover from H1 trough","cadence":"quarterly"},{"name":"Credit losses / funding","direction":"down","threshold":"No stress spiral","cadence":"quarterly"}],
+  "next_checks":["Q3 liquidity","Credit loss/funding trends","Debt maturity profile after 2036 issue"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"liquidity_leverage","score_0_100":75,"rationale":"Large liquidity offsets meaningful consolidated net debt."},
+    {"criterion_id":"stress_survival","score_0_100":85,"rationale":"Scale, operating cash generation and debt-market access provide strong buffers."},
+    {"criterion_id":"dilution_offbalance","score_0_100":85,"rationale":"Equity dilution is negligible, though leases and fintech liabilities require monitoring."}
+  ]
+}
