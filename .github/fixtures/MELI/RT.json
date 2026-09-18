@@ -1,0 +1,26 @@
+{
+  "agent_id":"RT","ticker":"MELI","as_of_date":"2026-09-17","domain":"red_team","role":"red_team","analysis_status":"complete",
+  "score_0_100":62,"confidence_0_1":0.93,
+  "thesis":"The coherent short thesis is that MELI is being valued as a self-reinforcing platform while the economics are shifting toward a capital-intensive retailer, logistics network and unsecured lender. H1 revenue, GMV and TPV surged, yet operating profit and net income fell and adjusted FCF collapsed to $158M. If shipping subsidies and credit losses are structural rather than temporary, high growth can coexist with weak owner returns and valuation compression. Current evidence does not prove a broken moat, accounting problem or financing crisis.",
+  "evidence":[
+    {"claim":"H1 revenue grew 49.4% but operating income fell to $1.294B from $1.588B and net income fell to $883M from $1.017B.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"FY2026 H1","as_of_date":"2026-08-06","value":"Growth with profit decline","fact_or_estimate":"fact"},
+    {"claim":"Provision for doubtful accounts rose 95% to $2.520B in H1 as the credit portfolio expanded.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"FY2026 H1","as_of_date":"2026-08-06","value":"Provision $2.520B","fact_or_estimate":"fact"},
+    {"claim":"Adjusted FCF fell to $158M from $512M despite CFO of $5.737B, showing the importance of fintech and lending adjustments.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"FY2026 H1","as_of_date":"2026-08-06","value":"Adjusted FCF $158M","fact_or_estimate":"fact"},
+    {"claim":"Operating margin fell to 6.8% from 12.5%, partly due to Brazil free shipping and credit expansion.","source_type":"filing","source":"Uploaded Q2 10-Q MD&A","period":"FY2026 H1","as_of_date":"2026-08-06","value":"Op margin 6.8% vs 12.5%","fact_or_estimate":"fact"},
+    {"claim":"Against the short thesis, GMV grew 43%, TPV 53% and MELI retained regional category leadership.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"FY2026 H1","as_of_date":"2026-08-06","value":"Strong ecosystem growth","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":["MELI has repeatedly converted aggressive logistics/fintech investment into durable category leadership.","Stable share count means current reinvestment is not funded by owner dilution.","Multiple ecosystem layers can monetize the same user and merchant base.","Long-term debt access and available liquidity reduce forced-financing risk."],
+  "unknowns":["Through-cycle credit loss-adjusted ROIC.","Free-shipping cohort payback.","Normalized adjusted FCF margin after current investment.","Competitive subsidy intensity in Brazil and Mexico."],
+  "falsifiers":["Adjusted FCF/share recovers while GMV/TPV share gains persist.","Credit provision intensity falls as the loan book seasons.","Operating margin recovers without reversing customer growth."],
+  "hard_veto_flags":[
+    {"veto":"경영진 정직성 또는 회계 신뢰성 훼손","status":"cleared","rationale":"The key concern is economic interpretation of fintech cash flows, not evidence of accounting unreliability."},
+    {"veto":"구조적으로 과도한 외부자본 조달 의존","status":"cleared","rationale":"Large liquidity and operating cash generation support survival despite regular fintech funding."},
+    {"veto":"고객가치 없이 마케팅·보조금에 의존하는 성장","status":"cleared","rationale":"GMV, TPV and fintech engagement at scale show real recurring utility beyond subsidies."},
+    {"veto":"증분 ROIC의 구조적 붕괴","status":"cleared","rationale":"Current FCF compression is serious but not yet evidence of structural ROIC collapse while ecosystem share and usage expand rapidly."},
+    {"veto":"해자의 지속적인 축소","status":"cleared","rationale":"Regional leadership and accelerating ecosystem volumes do not show persistent moat contraction."},
+    {"veto":"단일 제품·단일 고객·단일 규제에 대한 치명적 종속성","status":"cleared","rationale":"MELI is diversified across products, users and multiple Latin American countries."}
+  ],
+  "key_kpis":[{"name":"Adjusted FCF/share","direction":"up","threshold":"Recover materially","cadence":"quarterly"},{"name":"Credit provisions","direction":"down","threshold":"Grow slower than credit revenue/portfolio","cadence":"quarterly"},{"name":"Operating margin","direction":"up","threshold":"Recover without losing share","cadence":"quarterly"}],
+  "next_checks":["Q3 credit vintage performance","Brazil shipping economics","Adjusted-FCF recovery"],
+  "verdict":"neutral"
+}
