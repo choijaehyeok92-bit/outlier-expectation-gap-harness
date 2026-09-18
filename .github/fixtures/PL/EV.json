@@ -1,0 +1,78 @@
+{
+  "agent_id":"EV",
+  "ticker":"PL",
+  "as_of_date":"2026-09-17",
+  "domain":"expectation_valuation",
+  "role":"domain_analyst",
+  "analysis_status":"complete",
+  "score_0_100":50.5,
+  "confidence_0_1":0.86,
+  "bull_score":70,
+  "bear_score":30,
+  "bull_case":"Satellite services, sovereign demand and AI-ready geospatial data compound revenue well above 20% for years while gross margin and capital efficiency improve. Owner FCF/share reaches roughly $3 by year 10, supporting value materially above today even under the locked 25x Bull terminal multiple.",
+  "bear_case":"Recent growth is partly contract-timing and government concentration, capex remains heavy, dilution persists and competition compresses pricing. Owner FCF/share rises only slowly toward $0.45 by year 10, leaving value far below the current price.",
+  "thesis":"At $16.99, Planet is near but modestly above the locked Base DCF of about $15.94, not an expectation-gap valuation. The price does not require the Bull case, but it requires sustained >20% growth, meaningful per-share FCF scaling and controlled dilution. Q2 growth, RPO/backlog and positive YTD FCF support that path, while ATM issuance, customer concentration and terminal-value dependence make valuation robustness only mixed.",
+  "evidence":[
+    {"claim":"Frozen 2026-09-17 close is $16.99 and frozen market cap is about $6.18B, below the new $20B Moonshot cap.","source_type":"secondary","source":"StockAnalysis / Investing.com historical price; uploaded Q2 10-Q share count","period":"2026-09-17","as_of_date":"2026-09-17","value":"Price $16.99; market cap ~$6.18B","fact_or_estimate":"fact"},
+    {"claim":"FY2027 Q2 revenue was $116.1M, up 58% YoY; H1 revenue was $210.2M. Full-year FY2027 revenue guidance is $430M-$441M.","source_type":"filing","source":"Uploaded PL 2026-09-03 Form 10-Q and 8-K Exhibit 99.1","period":"FY2027 Q2/H1","as_of_date":"2026-09-03","value":"Q2 revenue $116.1M +58%; FY27 guide $430M-$441M","fact_or_estimate":"fact"},
+    {"claim":"RPO was $753.1M and backlog $814.9M at July 31, with approximately 46% of RPO expected within 12 months; recurring ACV was 98%.","source_type":"filing","source":"Uploaded PL 2026-09-03 Form 10-Q and 8-K Exhibit 99.1","period":"2026-07-31","as_of_date":"2026-09-03","value":"RPO $753.1M; backlog $814.9M; recurring ACV 98%","fact_or_estimate":"fact"},
+    {"claim":"H1 operating cash flow was $68.4M and reported free cash flow $21.3M, but FY2027 capex guidance remains $100M-$115M.","source_type":"filing","source":"Uploaded PL 2026-09-03 Form 10-Q and 8-K Exhibit 99.1","period":"FY2027 H1 / FY2027 guidance","as_of_date":"2026-09-03","value":"H1 OCF $68.4M; FCF $21.3M; FY27 capex $100M-$115M","fact_or_estimate":"fact"},
+    {"claim":"Planet raised approximately $120M through its ATM program in Q2 at an average net sale price of $31.95, showing that equity issuance remains part of capital funding.","source_type":"ir","source":"Uploaded PL 2026-09-03 8-K Exhibit 99.1","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"ATM proceeds ~$120M","fact_or_estimate":"fact"},
+    {"claim":"Locked owner-FCF/share DCF produces Bear/Base/Bull values of about $5.22/$15.94/$39.36, with current price about 1.066x Base; Base terminal value is roughly 77% of operating value.","source_type":"other","source":"Deterministic harness valuation using frozen price/net cash and fixed 9%/15x-20x-25x policy","period":"10-year model","as_of_date":"2026-09-17","value":"Bear $5.22; Base $15.94; Bull $39.36; price/Base 1.066x","fact_or_estimate":"estimate"}
+  ],
+  "counterevidence":[
+    "Three customers represented 17%, 11% and 10% of Q2 revenue, making reported growth sensitive to large contract timing and renewal decisions.",
+    "FY2027 Q3 guidance implies sequential revenue decline and adjusted EBITDA loss, so Q2's 58% growth and EBITDA margin should not be extrapolated mechanically.",
+    "The Base valuation depends heavily on terminal value and assumes FCF/share compounds far beyond the current early-positive level.",
+    "ATM issuance and stock-based compensation can dilute per-share economics even if enterprise revenue and cash flow grow."
+  ],
+  "unknowns":[
+    "Full-cycle gross margin and FCF margin of sovereign satellite-services contracts versus data subscriptions.",
+    "Maintenance/replacement capex required for Pelican, SuperDove and hyperspectral fleets at scale.",
+    "Long-run dilution from SBC, ATM issuance and potential convertible-note settlement.",
+    "Five-year self-valuation percentile on a consistent EV/revenue or EV/FCF metric."
+  ],
+  "uncertainties":[
+    {"criterion_id":"reverse_dcf_burden","severity":"material","rationale":"Current price can be justified without a Bull path, but only if strong growth converts into much larger per-share FCF."},
+    {"criterion_id":"base_return","severity":"material","rationale":"Locked Base value is slightly below the current price, leaving limited margin of safety."},
+    {"criterion_id":"valuation_robustness","severity":"critical","rationale":"Terminal value is a large share of Base/Bull value and long-run FCF margin is not yet proven."}
+  ],
+  "falsifiers":[
+    "Revenue growth remains high but owner FCF/share fails to improve because capex and dilution scale with revenue.",
+    "RPO/backlog conversion weakens materially or sovereign contract economics prove structurally lower margin than assumed.",
+    "A realistic Bull FCF/share path falls below the current price under the locked DCF policy."
+  ],
+  "hard_veto_flags":[
+    {"veto":"현재가격이 비현실적인 Bull Case 이상을 요구","status":"cleared","rationale":"The frozen $16.99 price is only modestly above the locked Base value (~$15.94) and materially below the Bull value (~$39.36). Valuation is demanding but does not require a Bull-plus outcome."}
+  ],
+  "key_kpis":[
+    {"name":"Owner FCF/share","direction":"up","threshold":"Sustain positive FCF and compound materially faster than share count","cadence":"quarterly/annual"},
+    {"name":"RPO/backlog conversion","direction":"up","threshold":"Contracted demand converts to revenue without a proportional deterioration in margin/capex","cadence":"quarterly"},
+    {"name":"Diluted share count","direction":"stable","threshold":"Revenue/FCF per share improves despite SBC, ATM and convertible exposure","cadence":"quarterly"}
+  ],
+  "next_checks":[
+    "FY2027 Q3 revenue, gross margin, adjusted EBITDA and capex versus guidance.",
+    "Satellite-services gross-margin/cash-conversion evidence as Swedish/German/NGA programs scale.",
+    "Share-count and ATM activity after Q2 issuance."
+  ],
+  "verdict":"neutral",
+  "archetype_signals":{
+    "price_to_base_value":null,
+    "valuation_percentile_5y":null,
+    "revenue_cagr_next_3y":0.29
+  },
+  "subscores":[
+    {"criterion_id":"reverse_dcf_burden","score_0_100":55,"rationale":"Current price requires strong execution and FCF scaling but remains below a plausible Bull case."},
+    {"criterion_id":"base_return","score_0_100":50,"rationale":"Price is close to but modestly above locked Base value, implying roughly fair-to-slightly-expensive valuation."},
+    {"criterion_id":"valuation_robustness","score_0_100":45,"rationale":"Long-duration value is highly sensitive to terminal FCF/share, capital intensity and dilution."}
+  ],
+  "valuation_inputs":{
+    "valuation_percentile_5y":null,
+    "revenue_cagr_next_3y":0.29,
+    "scenarios":{
+      "bear":{"owner_fcf_per_share":[0.0,0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45]},
+      "base":{"owner_fcf_per_share":[0.05,0.12,0.22,0.35,0.50,0.68,0.85,1.02,1.18,1.35]},
+      "bull":{"owner_fcf_per_share":[0.10,0.25,0.45,0.70,1.00,1.35,1.75,2.15,2.55,2.95]}
+    }
+  }
+}
