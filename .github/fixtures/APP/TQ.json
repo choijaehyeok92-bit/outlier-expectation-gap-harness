@@ -1,0 +1,130 @@
+{
+  "agent_id": "TQ",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "turnaround_quality",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 48.5,
+  "confidence_0_1": 0.92,
+  "bull_score": 65,
+  "bear_score": 35,
+  "bull_case": "The company has materially improved margins, cash flow and strategic focus after divesting the Apps business, which can resemble a self-help transformation.",
+  "bear_case": "APP is not a distressed or depressed earnings recovery. Its current thesis is structural growth and execution, not normalization from a cyclical or operational trough.",
+  "thesis": "APP is not a Turnaround archetype. Revenue, margins and FCF have improved dramatically, and the Apps divestiture sharpened focus, but the company is already producing exceptional profitability and cash flow rather than recovering from a damaged base. The relevant question is durability of a high-growth advertising compounder, not a 6–24 month normalization bridge. Turnaround scoring is therefore intentionally below threshold.",
+  "evidence": [
+    {
+      "claim": "FY2025 revenue grew 70%, net income more than doubled and adjusted EBITDA margin reached 82.3%.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K",
+      "period": "FY2025",
+      "as_of_date": "2026-02-19",
+      "value": "Revenue +70%; EBITDA margin 82.3%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 2026 revenue grew 56% and adjusted EBITDA margin reached 84.2%.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "Revenue +56%; margin 84.2%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 FCF was $3.952B and H1 2026 FCF $2.150B, showing the business is already highly cash generative.",
+      "source_type": "filing",
+      "source": "Uploaded 10-K and Q2 10-Q",
+      "period": "FY2025-FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "FCF $3.952B; H1 $2.150B",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "The divestiture of the Apps business and strong margin expansion are meaningful self-help actions.",
+    "Share repurchases and strategic focus improve per-share economics.",
+    "A future slowdown could create a turnaround setup, but that is not the current state."
+  ],
+  "unknowns": [
+    "How much of margin expansion is structural versus unusually favorable mix.",
+    "Long-run benefit from the Apps divestiture.",
+    "Future need for cost restructuring if growth slows."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "operating_inflection",
+      "severity": "material",
+      "rationale": "Metrics improved sharply, but from growth acceleration rather than a distressed trough."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "severity": "material",
+      "rationale": "Strategic focus helped, but self-help is not the central thesis."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "severity": "material",
+      "rationale": "Earnings are already far above normalized-recovery territory."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "severity": "material",
+      "rationale": "Quarterly growth checkpoints exist, but not turnaround-specific milestones."
+    }
+  ],
+  "falsifiers": [
+    "A future earnings collapse makes normalization rather than compounding the central thesis.",
+    "Management launches a measurable restructuring with a defined recovery bridge.",
+    "Cash flow and margins deteriorate to a true trough before recovering."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Revenue growth",
+      "direction": "stable",
+      "threshold": "Remain structural rather than recovery-dependent",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "FCF margin",
+      "direction": "stable",
+      "threshold": "Remain sustainably high",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Strategic focus",
+      "direction": "stable",
+      "threshold": "Advertising platform remains core allocation priority",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 execution.",
+    "Margin normalization.",
+    "Capital allocation after Apps divestiture."
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "operating_inflection",
+      "score_0_100": 50,
+      "rationale": "Strong improvement exists but is not a classic trough recovery."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "score_0_100": 45,
+      "rationale": "Strategic actions matter, but growth and product economics dominate."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "score_0_100": 50,
+      "rationale": "The company is already highly profitable rather than bridging from depressed earnings."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "score_0_100": 50,
+      "rationale": "Normal earnings checkpoints exist without a turnaround-specific plan."
+    }
+  ]
+}
