@@ -1,0 +1,37 @@
+{
+  "agent_id":"RF","ticker":"MSFT","as_of_date":"2026-09-18","domain":"reinvestment_fcf","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":81.5,"confidence_0_1":0.8,"bull_score":90,"bear_score":60,
+  "bull_case":"Microsoft is reinvesting into a multi-year AI/cloud demand wave with $678B commercial RPO and 41% Azure growth. If capacity utilization catches up, today’s heavy capex can convert into high incremental gross profit and FCF/share while the installed enterprise base supports years of reinvestment.",
+  "bear_case":"The business model has become materially more capital intensive. FY2026 OCF was $182.9B against $115.9B of PP&E additions, cloud gross margin fell, and the current buildout could earn lower incremental returns than historical software reinvestment.",
+  "thesis":"Reinvestment quality remains strong enough for Compounder status, but this is the most important contested domain. Microsoft has an exceptional runway and proven demand, yet FY2026 AI/datacenter capex obscures current incremental ROIC and depresses simple FCF/share to about $9. The score assumes no structural ROIC collapse and requires utilization, gross profit and FCF/share to catch up over FY2027-29.",
+  "evidence":[
+    {"claim":"FY2026 operating cash flow was $182.935B and additions to property/equipment were $115.948B, leaving about $66.987B of simple OCF-minus-capex cash flow.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-06-30","value":"OCF $182.935B; PP&E additions $115.948B; simple FCF ~$66.987B","fact_or_estimate":"fact"},
+    {"claim":"On FY2026 diluted weighted-average shares of about 7.429B, simple FCF was roughly $9.02/share, a depressed anchor relative to Microsoft’s historical software economics.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K / frozen source bundle","period":"FY2026","as_of_date":"2026-06-30","value":"Simple FCF/share ~$9.02","fact_or_estimate":"estimate"},
+    {"claim":"Azure grew 41% and commercial RPO reached $678B, providing strong evidence that the capex buildout has real demand behind it.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-06-30","value":"Azure +41%; commercial RPO $678B","fact_or_estimate":"fact"},
+    {"claim":"Q4 operating cash flow was $55.4B and free cash flow $19.6B; management stated additional Azure capacity was quickly monetized, providing early utilization evidence.","source_type":"other","source":"Microsoft FY26 Q4 earnings call","period":"Q4 FY2026","as_of_date":"2026-06-30","value":"Q4 OCF $55.4B; FCF $19.6B","fact_or_estimate":"fact"},
+    {"claim":"FY2026 stock-based compensation was $12.405B while current outstanding shares were about 7.426B, and cash returns to shareholders exceeded $43B for the fiscal year.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K / FY26 Q4 earnings","period":"FY2026","as_of_date":"2026-07-23","value":"SBC $12.405B; shares ~7.426B; cash returned >$43B","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":["AI/datacenter investment has moved Microsoft away from a lightly capital-intensive software model.","Microsoft Cloud gross margin fell to 66% for FY2026 as AI infrastructure and usage costs increased.","Commercial RPO proves demand but not the incremental ROIC of the capacity built to serve it.","SBC remains economically real even when repurchases offset reported dilution."],
+  "unknowns":["Maintenance versus growth portion of AI/datacenter capex","Incremental ROIC on FY2025-27 AI infrastructure","Normalized owner FCF/share after the buildout","Long-run depreciation and refresh cycle for accelerators"],
+  "uncertainties":[
+    {"criterion_id":"incremental_roic","severity":"critical","rationale":"Demand is proven but the realized return on the current AI infrastructure wave is not yet observable over a full asset cycle."},
+    {"criterion_id":"fcf_per_share_quality","severity":"material","rationale":"Current FCF/share is depressed by growth capex while SBC remains a real economic cost."}
+  ],
+  "falsifiers":["Azure/AI revenue grows but gross profit and owner FCF/share fail to catch up to capex for several years.","Cloud gross margin continues falling after utilization improves, implying structurally lower economics.","Share count begins rising persistently because SBC exceeds sustainable repurchase capacity."],
+  "hard_veto_flags":[
+    {"veto":"증분 ROIC의 구조적 붕괴","status":"cleared","rationale":"Current evidence shows high demand and rapid capacity monetization; returns are uncertain, but there is not yet evidence of a structural collapse in incremental ROIC."},
+    {"veto":"장기간 지속되는 과도한 희석","status":"cleared","rationale":"SBC is material but current shares outstanding remain roughly stable and Microsoft funds buybacks from very large internally generated cash flow."}
+  ],
+  "key_kpis":[
+    {"name":"Owner FCF/share","direction":"up","threshold":"Rise materially from the FY2026 capex-depressed ~$9 anchor","cadence":"quarterly/annual"},
+    {"name":"Incremental gross profit / capex","direction":"up","threshold":"Azure/AI gross profit growth increasingly outpaces incremental infrastructure investment","cadence":"annual"},
+    {"name":"Diluted share count","direction":"stable/down","threshold":"No persistent net dilution despite SBC","cadence":"quarterly"}
+  ],
+  "next_checks":["FY2027 OCF/capex and cloud margin","AI capacity utilization and depreciation","SBC versus repurchases and diluted share count"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"incremental_roic","score_0_100":80,"rationale":"Strong demand and rapid capacity monetization support high potential returns, though the current AI asset cycle is not yet fully seasoned."},
+    {"criterion_id":"reinvestment_runway","score_0_100":90,"rationale":"Azure, M365, GitHub, security and agents provide a large multi-year reinvestment opportunity backed by contracted demand."},
+    {"criterion_id":"fcf_per_share_quality","score_0_100":75,"rationale":"Per-share cash generation remains strong long term, but FY2026 is heavily depressed by capex and SBC is economically meaningful."}
+  ]
+}
