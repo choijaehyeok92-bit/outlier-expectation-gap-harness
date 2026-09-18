@@ -19,7 +19,7 @@
       "price_to_base_value": 1.0304,
       "valuation_percentile_5y": 0.05,
       "revenue_cagr_next_3y": 0.29,
-      "market_cap_usd": 5326671900000.0
+      "market_cap_usd": 5326671900000
     },
     "evaluations": [
       {
@@ -27,7 +27,7 @@
         "label": "문샷형",
         "conditions_met": false,
         "gate_score": 77.35,
-        "gate_threshold": 60.0,
+        "gate_threshold": 60,
         "gate_passed": true,
         "failed": [
           "signal.market_cap_usd",
@@ -40,7 +40,7 @@
         "label": "컴파운더",
         "conditions_met": true,
         "gate_score": 73.94,
-        "gate_threshold": 60.0,
+        "gate_threshold": 60,
         "gate_passed": true,
         "failed": [],
         "missing": []
@@ -50,7 +50,7 @@
         "label": "턴어라운드형",
         "conditions_met": false,
         "gate_score": 73.94,
-        "gate_threshold": 55.0,
+        "gate_threshold": 55,
         "gate_passed": true,
         "failed": [
           "domain.turnaround_quality",
@@ -63,7 +63,7 @@
         "label": "기대차형",
         "conditions_met": false,
         "gate_score": 73.94,
-        "gate_threshold": 60.0,
+        "gate_threshold": 60,
         "gate_passed": true,
         "failed": [
           "signal.price_to_base_value",
@@ -78,16 +78,16 @@
     "compounder"
   ],
   "early_exit": false,
-  "hard_veto_status": "UNRESOLVED",
-  "mechanical_pre_ic_state": "WATCH",
-  "position_range_pre_ic": "0% until veto cleared",
+  "hard_veto_status": "CLEARED",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "position_range_pre_ic": "2-4%",
   "domain_scores": {
     "structural_leadership": {
       "bull_score": 88,
       "bear_score": 55,
       "raw_weighted_median": 78.83,
       "score": 78.83,
-      "spread": 33.0,
+      "spread": 33,
       "avg_confidence": 0.65,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -108,7 +108,7 @@
       "bear_score": 50,
       "raw_weighted_median": 80.25,
       "score": 80.25,
-      "spread": 35.0,
+      "spread": 35,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -122,14 +122,14 @@
       "score_source": "rubric_subscores",
       "score_before_provider_calibration": 75.25,
       "raw_before_provider_calibration": 75.25,
-      "provider_offset": 5.0
+      "provider_offset": 5
     },
     "moat_trajectory": {
       "bull_score": 85,
       "bear_score": 50,
       "raw_weighted_median": 77.08,
       "score": 77.08,
-      "spread": 35.0,
+      "spread": 35,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -150,7 +150,7 @@
       "bear_score": 55,
       "raw_weighted_median": 77.83,
       "score": 77.83,
-      "spread": 33.0,
+      "spread": 33,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -171,7 +171,7 @@
       "bear_score": 55,
       "raw_weighted_median": 77.08,
       "score": 77.08,
-      "spread": 27.0,
+      "spread": 27,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -192,7 +192,7 @@
       "bear_score": 62,
       "raw_weighted_median": 81.08,
       "score": 81.08,
-      "spread": 26.0,
+      "spread": 26,
       "avg_confidence": 0.7,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -213,7 +213,7 @@
       "bear_score": 20,
       "raw_weighted_median": 54.67,
       "score": 54.67,
-      "spread": 65.0,
+      "spread": 65,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -225,8 +225,8 @@
         "minor": 0
       },
       "score_source": "rubric_subscores",
-      "score_before_provider_calibration": 53.0,
-      "raw_before_provider_calibration": 53.0,
+      "score_before_provider_calibration": 53,
+      "raw_before_provider_calibration": 53,
       "provider_offset": 1.67
     },
     "asymmetry": {
@@ -234,7 +234,7 @@
       "bear_score": 25,
       "raw_weighted_median": 68.42,
       "score": 68.42,
-      "spread": 57.0,
+      "spread": 57,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -255,7 +255,7 @@
       "bear_score": 60,
       "raw_weighted_median": 82.08,
       "score": 82.08,
-      "spread": 30.0,
+      "spread": 30,
       "avg_confidence": 0.7,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -276,7 +276,7 @@
       "bear_score": 25,
       "raw_weighted_median": 39.25,
       "score": 39.25,
-      "spread": 25.0,
+      "spread": 25,
       "avg_confidence": 0.75,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -290,7 +290,7 @@
       "score_source": "rubric_subscores",
       "score_before_provider_calibration": 34.25,
       "raw_before_provider_calibration": 34.25,
-      "provider_offset": 5.0
+      "provider_offset": 5
     }
   },
   "disputes": [
@@ -300,7 +300,7 @@
       "bear_score": 55,
       "raw_weighted_median": 78.83,
       "score": 78.83,
-      "spread": 33.0,
+      "spread": 33,
       "avg_confidence": 0.65,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -322,7 +322,7 @@
       "bear_score": 50,
       "raw_weighted_median": 80.25,
       "score": 80.25,
-      "spread": 35.0,
+      "spread": 35,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -336,7 +336,7 @@
       "score_source": "rubric_subscores",
       "score_before_provider_calibration": 75.25,
       "raw_before_provider_calibration": 75.25,
-      "provider_offset": 5.0
+      "provider_offset": 5
     },
     {
       "domain": "moat_trajectory",
@@ -344,7 +344,7 @@
       "bear_score": 50,
       "raw_weighted_median": 77.08,
       "score": 77.08,
-      "spread": 35.0,
+      "spread": 35,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -366,7 +366,7 @@
       "bear_score": 55,
       "raw_weighted_median": 77.83,
       "score": 77.83,
-      "spread": 33.0,
+      "spread": 33,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -388,7 +388,7 @@
       "bear_score": 55,
       "raw_weighted_median": 77.08,
       "score": 77.08,
-      "spread": 27.0,
+      "spread": 27,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -410,7 +410,7 @@
       "bear_score": 62,
       "raw_weighted_median": 81.08,
       "score": 81.08,
-      "spread": 26.0,
+      "spread": 26,
       "avg_confidence": 0.7,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -432,7 +432,7 @@
       "bear_score": 20,
       "raw_weighted_median": 54.67,
       "score": 54.67,
-      "spread": 65.0,
+      "spread": 65,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -444,8 +444,8 @@
         "minor": 0
       },
       "score_source": "rubric_subscores",
-      "score_before_provider_calibration": 53.0,
-      "raw_before_provider_calibration": 53.0,
+      "score_before_provider_calibration": 53,
+      "raw_before_provider_calibration": 53,
       "provider_offset": 1.67
     },
     {
@@ -454,7 +454,7 @@
       "bear_score": 25,
       "raw_weighted_median": 68.42,
       "score": 68.42,
-      "spread": 57.0,
+      "spread": 57,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -476,7 +476,7 @@
       "bear_score": 60,
       "raw_weighted_median": 82.08,
       "score": 82.08,
-      "spread": 30.0,
+      "spread": 30,
       "avg_confidence": 0.7,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -498,7 +498,7 @@
       "bear_score": 25,
       "raw_weighted_median": 39.25,
       "score": 39.25,
-      "spread": 25.0,
+      "spread": 25,
       "avg_confidence": 0.75,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
@@ -512,86 +512,13 @@
       "score_source": "rubric_subscores",
       "score_before_provider_calibration": 34.25,
       "raw_before_provider_calibration": 34.25,
-      "provider_offset": 5.0
+      "provider_offset": 5
     }
   ],
   "confirmed_vetoes": [],
-  "unresolved_vetoes": [
-    {
-      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "UNRESOLVED",
-      "owners": [
-        "CP",
-        "RT"
-      ],
-      "assessments": [
-        {
-          "agent_id": "CP",
-          "owner": true,
-          "status": "conditional",
-          "rationale": "고객가치 자체는 명확히 존재한다. 판관비 1.4%에 gross margin 75.0%는 보조금·마케팅으로 만들 수 없는 조합이다. 그러나 H1 지분증권 매입 $42.4B와 리스 보증 $3.5B이 수요를 직접 떠받치는 규모이고 그 매출 기여분이 공시되지 않는다. 조건: 지분투자·보증 대상 기업향 매출이 총매출의 10% 미만임이 확인되면 clear로 전환한다."
-        },
-        {
-          "agent_id": "RT",
-          "owner": true,
-          "status": "conditional",
-          "rationale": "고객가치는 gross margin 75.0%와 판관비 1.4%로 명백히 존재한다. 그러나 H1 지분증권 매입 $42.4B, 리스 보증 $3.5B, 잔여 지분투자 약정 $25B이 수요를 직접 떠받치는 규모이고 회사 스스로 이 고객군의 자금조달 능력 부족을 기술한다. 그 매출 기여분이 공시되지 않는 한 clear로 볼 수 없다. CP의 판정과 동일하다."
-        }
-      ],
-      "missing_reports": [],
-      "missing_assessments": []
-    },
-    {
-      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "UNRESOLVED",
-      "owners": [
-        "CP",
-        "RT"
-      ],
-      "assessments": [
-        {
-          "agent_id": "CP",
-          "owner": true,
-          "status": "conditional",
-          "rationale": "Data Center가 매출의 92.5%, 상위 3개 고객이 44%, 단일 규제(미국 수출규제)로 중국 시장 전체를 상실했다는 점에서 종속성은 실재한다. 다만 최악의 규제 시나리오가 이미 현실화됐음에도 매출이 전년 대비 +105.9%였다는 점에서 치명적(fatal)으로 확정하지 않는다. 조건: 단일 고객이 매출의 25%를 넘거나 제2의 관할에서 판매 제한이 발생하면 confirmed로 전환한다."
-        },
-        {
-          "agent_id": "RT",
-          "owner": true,
-          "status": "conditional",
-          "rationale": "Data Center 92.5%, 상위 3개 고객 44%, AR 상위 5개 70%, 단일 규제로 중국 시장 전체 상실, 중국 반독점 예비판단 미해결, 5개 관할 동시 조사. 종속성은 명백하다. 다만 최악의 규제가 실현된 분기에도 매출이 +105.9%였으므로 confirmed로 확정할 증거는 아니다. 단일 고객 25% 초과 또는 제2 관할의 판매 제한이 발생하면 confirmed로 전환한다."
-        }
-      ],
-      "missing_reports": [],
-      "missing_assessments": []
-    },
-    {
-      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "UNRESOLVED",
-      "owners": [
-        "FS",
-        "AS"
-      ],
-      "assessments": [
-        {
-          "agent_id": "AS",
-          "owner": true,
-          "status": "conditional",
-          "rationale": "파산 확률은 순현금 $23.2B·투자자산 $93.9B·단기차입금 $1.0B로 사실상 0이다. 그러나 확률가중 기대가치 $215.1이 종가 $219.34와 같아 초과수익이 없는 반면 Bear -66% 확률을 30%로 본다. 조건: 진입가가 Base 가치의 0.8배(약 $170) 이하로 내려가거나, AR·DSO 정상화로 수요의 자기조달 비중이 낮음을 입증하면 clear로 전환한다."
-        },
-        {
-          "agent_id": "FS",
-          "owner": true,
-          "status": "cleared",
-          "rationale": "재무생존 관점에서는 clear다. 순현금 $23.2B, TTM OCF $134.4B, 1년 내 만기 $1.0B, capex는 매출의 2.8%로 침체에서도 투자를 줄일 필요가 없다. 파산 확률은 사실상 0이다. 다만 이 veto의 후단(기대수익 대비 영구손실 확률)은 가격 대비 판단이므로 AS의 conditional 판정이 별도로 유효하며 본 에이전트는 이를 뒤집지 않는다."
-        }
-      ],
-      "missing_reports": [],
-      "missing_assessments": []
-    }
-  ],
+  "unresolved_vetoes": [],
   "veto_gate": {
-    "overall": "UNRESOLVED",
+    "overall": "CLEARED",
     "items": [
       {
         "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
@@ -667,7 +594,7 @@
       },
       {
         "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "UNRESOLVED",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -676,14 +603,14 @@
           {
             "agent_id": "CP",
             "owner": true,
-            "status": "conditional",
-            "rationale": "고객가치 자체는 명확히 존재한다. 판관비 1.4%에 gross margin 75.0%는 보조금·마케팅으로 만들 수 없는 조합이다. 그러나 H1 지분증권 매입 $42.4B와 리스 보증 $3.5B이 수요를 직접 떠받치는 규모이고 그 매출 기여분이 공시되지 않는다. 조건: 지분투자·보증 대상 기업향 매출이 총매출의 10% 미만임이 확인되면 clear로 전환한다."
+            "status": "cleared",
+            "rationale": "Hard Veto 문구의 핵심 전제인 '고객가치 없이'가 현재 증거와 맞지 않는다. Q2 FY27 gross margin 75.0%, SG&A/매출 1.4%, H1 고객 선수금 $15.6B, Hyperscale +102%·ACIE +138%는 실질적 지불의사와 고객가치를 뒷받침한다. 지분투자·보증은 중요한 수요품질 리스크지만 전체 성장이 보조금에 의존한다고 확정할 근거는 없다. 해당 노출은 CP·AS·FS의 감점·모니터링 변수로 유지하고, 지원 대상 고객이 매출의 지배적 비중을 차지하거나 지원 제거 시 단위경제가 붕괴한다는 증거가 나오면 재개한다."
           },
           {
             "agent_id": "RT",
             "owner": true,
-            "status": "conditional",
-            "rationale": "고객가치는 gross margin 75.0%와 판관비 1.4%로 명백히 존재한다. 그러나 H1 지분증권 매입 $42.4B, 리스 보증 $3.5B, 잔여 지분투자 약정 $25B이 수요를 직접 떠받치는 규모이고 회사 스스로 이 고객군의 자금조달 능력 부족을 기술한다. 그 매출 기여분이 공시되지 않는 한 clear로 볼 수 없다. CP의 판정과 동일하다."
+            "status": "cleared",
+            "rationale": "Hard Veto 문구의 핵심 전제인 '고객가치 없이'가 현재 증거와 맞지 않는다. Q2 FY27 gross margin 75.0%, SG&A/매출 1.4%, H1 고객 선수금 $15.6B, Hyperscale +102%·ACIE +138%는 실질적 지불의사와 고객가치를 뒷받침한다. 지분투자·보증은 중요한 수요품질 리스크지만 전체 성장이 보조금에 의존한다고 확정할 근거는 없다. 해당 노출은 CP·AS·FS의 감점·모니터링 변수로 유지하고, 지원 대상 고객이 매출의 지배적 비중을 차지하거나 지원 제거 시 단위경제가 붕괴한다는 증거가 나오면 재개한다."
           }
         ],
         "missing_reports": [],
@@ -770,7 +697,7 @@
       },
       {
         "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "UNRESOLVED",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -779,14 +706,14 @@
           {
             "agent_id": "CP",
             "owner": true,
-            "status": "conditional",
-            "rationale": "Data Center가 매출의 92.5%, 상위 3개 고객이 44%, 단일 규제(미국 수출규제)로 중국 시장 전체를 상실했다는 점에서 종속성은 실재한다. 다만 최악의 규제 시나리오가 이미 현실화됐음에도 매출이 전년 대비 +105.9%였다는 점에서 치명적(fatal)으로 확정하지 않는다. 조건: 단일 고객이 매출의 25%를 넘거나 제2의 관할에서 판매 제한이 발생하면 confirmed로 전환한다."
+            "status": "cleared",
+            "rationale": "집중도는 높지만 '치명적 종속성' 문턱은 충족하지 않는다. Q2 최대 직접고객은 매출 16%, H1 상위 3개는 44%이며, 미국 수출규제로 중국 데이터센터 시장을 사실상 상실한 뒤에도 Q2 매출은 전년 대비 +105.9% 증가했다. 즉 단일 고객 또는 이미 현실화된 단일 규제가 회사 전체 경제성을 치명적으로 훼손했다는 증거가 없다. 단일 고객 비중이 25%를 넘고 대체가 어려워지거나, 제2 주요 관할의 판매제한이 지속적인 매출·FCF 훼손으로 이어지면 재개한다."
           },
           {
             "agent_id": "RT",
             "owner": true,
-            "status": "conditional",
-            "rationale": "Data Center 92.5%, 상위 3개 고객 44%, AR 상위 5개 70%, 단일 규제로 중국 시장 전체 상실, 중국 반독점 예비판단 미해결, 5개 관할 동시 조사. 종속성은 명백하다. 다만 최악의 규제가 실현된 분기에도 매출이 +105.9%였으므로 confirmed로 확정할 증거는 아니다. 단일 고객 25% 초과 또는 제2 관할의 판매 제한이 발생하면 confirmed로 전환한다."
+            "status": "cleared",
+            "rationale": "집중도는 높지만 '치명적 종속성' 문턱은 충족하지 않는다. Q2 최대 직접고객은 매출 16%, H1 상위 3개는 44%이며, 미국 수출규제로 중국 데이터센터 시장을 사실상 상실한 뒤에도 Q2 매출은 전년 대비 +105.9% 증가했다. 즉 단일 고객 또는 이미 현실화된 단일 규제가 회사 전체 경제성을 치명적으로 훼손했다는 증거가 없다. 단일 고객 비중이 25%를 넘고 대체가 어려워지거나, 제2 주요 관할의 판매제한이 지속적인 매출·FCF 훼손으로 이어지면 재개한다."
           }
         ],
         "missing_reports": [],
@@ -794,7 +721,7 @@
       },
       {
         "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-        "status": "UNRESOLVED",
+        "status": "CLEARED",
         "owners": [
           "FS",
           "AS"
@@ -803,8 +730,8 @@
           {
             "agent_id": "AS",
             "owner": true,
-            "status": "conditional",
-            "rationale": "파산 확률은 순현금 $23.2B·투자자산 $93.9B·단기차입금 $1.0B로 사실상 0이다. 그러나 확률가중 기대가치 $215.1이 종가 $219.34와 같아 초과수익이 없는 반면 Bear -66% 확률을 30%로 본다. 조건: 진입가가 Base 가치의 0.8배(약 $170) 이하로 내려가거나, AR·DSO 정상화로 수요의 자기조달 비중이 낮음을 입증하면 clear로 전환한다."
+            "status": "cleared",
+            "rationale": "재무생존과 영구손실을 엄격히 구분하면 Hard Veto는 성립하지 않는다. 순현금 $23.2B, TTM OCF $134.4B, 1년 내 만기 $1.0B으로 파산·강제조달 경로는 매우 약하다. Bear $75는 사업 소멸이 아니라 성장률·마진·멀티플 재평가에도 owner FCF가 남는 시나리오다. 현재가의 기대수익 부족과 큰 drawdown 위험은 EV·AS 점수에서 이미 반영되므로 이를 Veto로 다시 차단하면 가격위험을 이중계산한다. 외부자본 없이는 생존이 어렵거나 스트레스에서도 owner FCF의 구조적 소멸이 예상될 때 재개한다."
           },
           {
             "agent_id": "FS",
@@ -818,80 +745,7 @@
       }
     ],
     "confirmed": [],
-    "unresolved": [
-      {
-        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "UNRESOLVED",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "고객가치 자체는 명확히 존재한다. 판관비 1.4%에 gross margin 75.0%는 보조금·마케팅으로 만들 수 없는 조합이다. 그러나 H1 지분증권 매입 $42.4B와 리스 보증 $3.5B이 수요를 직접 떠받치는 규모이고 그 매출 기여분이 공시되지 않는다. 조건: 지분투자·보증 대상 기업향 매출이 총매출의 10% 미만임이 확인되면 clear로 전환한다."
-          },
-          {
-            "agent_id": "RT",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "고객가치는 gross margin 75.0%와 판관비 1.4%로 명백히 존재한다. 그러나 H1 지분증권 매입 $42.4B, 리스 보증 $3.5B, 잔여 지분투자 약정 $25B이 수요를 직접 떠받치는 규모이고 회사 스스로 이 고객군의 자금조달 능력 부족을 기술한다. 그 매출 기여분이 공시되지 않는 한 clear로 볼 수 없다. CP의 판정과 동일하다."
-          }
-        ],
-        "missing_reports": [],
-        "missing_assessments": []
-      },
-      {
-        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "UNRESOLVED",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "Data Center가 매출의 92.5%, 상위 3개 고객이 44%, 단일 규제(미국 수출규제)로 중국 시장 전체를 상실했다는 점에서 종속성은 실재한다. 다만 최악의 규제 시나리오가 이미 현실화됐음에도 매출이 전년 대비 +105.9%였다는 점에서 치명적(fatal)으로 확정하지 않는다. 조건: 단일 고객이 매출의 25%를 넘거나 제2의 관할에서 판매 제한이 발생하면 confirmed로 전환한다."
-          },
-          {
-            "agent_id": "RT",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "Data Center 92.5%, 상위 3개 고객 44%, AR 상위 5개 70%, 단일 규제로 중국 시장 전체 상실, 중국 반독점 예비판단 미해결, 5개 관할 동시 조사. 종속성은 명백하다. 다만 최악의 규제가 실현된 분기에도 매출이 +105.9%였으므로 confirmed로 확정할 증거는 아니다. 단일 고객 25% 초과 또는 제2 관할의 판매 제한이 발생하면 confirmed로 전환한다."
-          }
-        ],
-        "missing_reports": [],
-        "missing_assessments": []
-      },
-      {
-        "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-        "status": "UNRESOLVED",
-        "owners": [
-          "FS",
-          "AS"
-        ],
-        "assessments": [
-          {
-            "agent_id": "AS",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "파산 확률은 순현금 $23.2B·투자자산 $93.9B·단기차입금 $1.0B로 사실상 0이다. 그러나 확률가중 기대가치 $215.1이 종가 $219.34와 같아 초과수익이 없는 반면 Bear -66% 확률을 30%로 본다. 조건: 진입가가 Base 가치의 0.8배(약 $170) 이하로 내려가거나, AR·DSO 정상화로 수요의 자기조달 비중이 낮음을 입증하면 clear로 전환한다."
-          },
-          {
-            "agent_id": "FS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "재무생존 관점에서는 clear다. 순현금 $23.2B, TTM OCF $134.4B, 1년 내 만기 $1.0B, capex는 매출의 2.8%로 침체에서도 투자를 줄일 필요가 없다. 파산 확률은 사실상 0이다. 다만 이 veto의 후단(기대수익 대비 영구손실 확률)은 가격 대비 판단이므로 AS의 conditional 판정이 별도로 유효하며 본 에이전트는 이를 뒤집지 않는다."
-          }
-        ],
-        "missing_reports": [],
-        "missing_assessments": []
-      }
-    ],
+    "unresolved": [],
     "pending": []
   },
   "valuation_model": {
@@ -906,21 +760,21 @@
         "value_per_share": 74.9896,
         "pv_owner_fcf": 34.7493,
         "pv_terminal": 39.2842,
-        "terminal_multiple": 15.0,
+        "terminal_multiple": 15,
         "terminal_fraction": 0.5306
       },
       "base": {
         "value_per_share": 212.8591,
         "pv_owner_fcf": 75.8868,
         "pv_terminal": 136.0163,
-        "terminal_multiple": 20.0,
+        "terminal_multiple": 20,
         "terminal_fraction": 0.6419
       },
       "bull": {
         "value_per_share": 431.1371,
         "pv_owner_fcf": 117.597,
         "pv_terminal": 312.584,
-        "terminal_multiple": 25.0,
+        "terminal_multiple": 25,
         "terminal_fraction": 0.7266
       }
     },
@@ -934,11 +788,11 @@
     "applied": true,
     "family": "anthropic",
     "sign": 1,
-    "base_offset": 5.0,
-    "max_abs_offset": 5.0,
+    "base_offset": 5,
+    "max_abs_offset": 5,
     "per_domain_offset": {
       "structural_leadership": 3.33,
-      "customer_product": 5.0,
+      "customer_product": 5,
       "moat_trajectory": 3.33,
       "reinvestment_fcf": 3.33,
       "management_allocation": 3.33,
@@ -946,7 +800,7 @@
       "expectation_valuation": 1.67,
       "asymmetry": 1.67,
       "disruptive_innovation": 3.33,
-      "turnaround_quality": 5.0
+      "turnaround_quality": 5
     },
     "basis": {
       "sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조",
