@@ -1,0 +1,111 @@
+{
+  "agent_id": "CP",
+  "ticker": "MSFT",
+  "as_of_date": "2026-09-17",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 79,
+  "confidence_0_1": 0.75,
+  "bull_score": 88,
+  "bear_score": 55,
+  "bull_case": "RPO·cloud 성장·M365 seat와 ARPU 확대는 enterprise 고객이 Microsoft wallet share를 늘리는 직접 신호다.",
+  "bear_case": "OpenAI 거래와 대형 AI commitments가 수요 품질을 왜곡할 수 있고 Cloud margin 하락은 AI 고객 ROI가 완전히 현금화되지 않았음을 보여준다.",
+  "thesis": "고객가치와 지불의사는 강하다. Microsoft Cloud $214.4B(+27%), commercial RPO $678B, M365 cloud +17%와 seats +6%가 가격·사용량·계약잔고의 동시 확대를 보여준다. OpenAI 관련 매출 $24.1B은 관계사 집중 리스크지만 총매출의 약 7.3%다. AI capex로 Cloud margin이 66%까지 내려가 단위경제는 제한된다.",
+  "evidence": [
+    {
+      "claim": "Microsoft Cloud $214.4B(+27%)와 Azure +41%다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": 214.4,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "M365 Commercial cloud +17%, seats +6%, commercial RPO $678B다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": 678,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "OpenAI 관련 FY2026 commercial-arrangement revenue는 $24.1B, 총매출의 약 7.3%다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": 24.1,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI 인프라 자본집약도와 OpenAI 관련 경제적 집중은 장기 현금수익률의 핵심 반대근거다."
+  ],
+  "unknowns": [
+    "FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률."
+  ],
+  "falsifiers": [
+    "owner FCF/share가 2개 회계연도 연속 회복하지 못하면 현재 복리 가설을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "고객가치 부재가 반증된다. 높은 cloud 성장·RPO·seat 확대가 프로모션 없이 지불의사를 보여준다."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "OpenAI 관련 매출은 약 7.3%이며 MSFT는 Azure·M365·Devices 등 복수 사업축을 보유해 단일 의존이 치명적이지 않다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "FY27 이후 회복",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "FY27 Q1 10-Q에서 Azure 성장, capex, OCF와 RPO 갱신 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 85,
+      "rationale": "대규모 cloud 성장과 높은 RPO가 강한 지불의사를 입증한다."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 80,
+      "rationale": "M365 seats +6%, cloud +17%, Azure +41%로 사용량과 wallet share 확대가 동시 확인된다."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 70,
+      "rationale": "운영레버리지는 강하지만 Cloud GM 66%로 AI 투자 부담이 뚜렷하다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    }
+  ]
+}
