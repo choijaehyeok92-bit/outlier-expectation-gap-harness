@@ -1,52 +1,151 @@
 {
-  "agent_id":"AS","ticker":"PL","as_of_date":"2026-09-17","domain":"asymmetry","role":"domain_analyst","analysis_status":"complete",
-  "score_0_100":75.0,"confidence_0_1":0.82,"bull_score":90,"bear_score":55,
-  "bull_case":"A credible 5x path exists if Planet converts its daily Earth-observation network, sovereign satellite services and AI-ready archive into a multi-billion-dollar recurring data platform with 20%+ owner-FCF margins. A 10x outcome is possible but requires both long growth duration and substantially better per-share cash economics than the current locked Bull DCF.",
-  "bear_case":"The stock already capitalizes substantial future execution. Large-contract timing, launch/capex requirements, customer concentration and dilution can leave shareholders with strong revenue growth but weak per-share value; the locked Bear value is only about $5.22.",
-  "thesis":"Asymmetry is positive but not extreme at $16.99. A 5x market-cap path to roughly $31B is plausible over 5–10 years if Planet sustains ~20–25%+ growth and matures into a high-margin geospatial data/AI platform; 10x to ~$62B is much more demanding. Net cash, 98% recurring ACV, large backlog and positive H1 FCF reduce financing-driven permanent-loss risk, but the Bear DCF shows substantial valuation downside. The Moonshot AS threshold is met exactly, so this domain requires continued verification rather than a wide margin of safety.",
-  "evidence":[
-    {"claim":"Frozen market cap is about $6.18B, so 5x and 10x outcomes correspond to roughly $30.9B and $61.8B market caps.","source_type":"other","source":"Frozen PL company_context","period":"2026-09-17","as_of_date":"2026-09-17","value":"Market cap ~$6.18B; 5x ~$30.9B; 10x ~$61.8B","fact_or_estimate":"estimate"},
-    {"claim":"FY2027 Q2 revenue grew 58% YoY and FY2027 full-year guidance is $430M-$441M, supporting a high-growth base from which a multi-year scale path can develop.","source_type":"filing","source":"Uploaded PL 2026-09-03 Form 10-Q and 8-K Exhibit 99.1","period":"FY2027 Q2/FY2027 guidance","as_of_date":"2026-09-03","value":"Q2 revenue +58%; FY27 guide $430M-$441M","fact_or_estimate":"fact"},
-    {"claim":"Recurring ACV was 98%, RPO $753.1M and backlog $814.9M at July 31, providing contracted and recurring demand visibility.","source_type":"filing","source":"Uploaded PL 2026-09-03 Form 10-Q and 8-K Exhibit 99.1","period":"2026-07-31","as_of_date":"2026-09-03","value":"Recurring ACV 98%; RPO $753.1M; backlog $814.9M","fact_or_estimate":"fact"},
-    {"claim":"H1 operating cash flow was $68.4M and reported FCF $21.3M while frozen net cash was about $417M, materially reducing near-term financing-failure risk.","source_type":"filing","source":"Uploaded PL 2026-09-03 Form 10-Q / frozen source bundle","period":"FY2027 H1","as_of_date":"2026-09-17","value":"H1 OCF $68.4M; FCF $21.3M; net cash ~$417M","fact_or_estimate":"fact"},
-    {"claim":"Locked Bear/Base/Bull values are about $5.22/$15.94/$39.36 against $16.99, showing severe downside in failure but more than 2x upside in the modeled Bull case.","source_type":"other","source":"Deterministic harness DCF","period":"10-year model","as_of_date":"2026-09-17","value":"Bear $5.22; Base $15.94; Bull $39.36","fact_or_estimate":"estimate"}
+  "agent_id": "AS",
+  "ticker": "PL",
+  "as_of_date": "2026-09-17",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 75,
+  "confidence_0_1": 0.82,
+  "bull_score": 90,
+  "bear_score": 55,
+  "bull_case": "A 5x path exists if Planet turns daily Earth observation, sovereign satellite services and its AI-ready archive into a multi-billion-dollar recurring data platform with strong owner-FCF margins. A 10x outcome is possible but needs economics beyond the current locked Bull DCF.",
+  "bear_case": "The stock already capitalizes substantial future execution. Large-contract timing, launch/capex requirements, customer concentration and dilution can leave shareholders with strong revenue growth but weak per-share value; the locked Bear value is only about $5.22.",
+  "thesis": "Asymmetry is positive but not extreme at $16.99. A 5x market-cap path to roughly $31B is plausible over 5–10 years if Planet sustains ~20–25%+ growth and matures into a high-margin geospatial data/AI platform; 10x to ~$62B is much more demanding. Net cash, 98% recurring ACV, large backlog and positive H1 FCF reduce financing-driven permanent-loss risk, but the Bear DCF shows substantial valuation downside. The Moonshot AS threshold is met exactly, so this domain requires continued verification rather than a wide margin of safety.",
+  "evidence": [
+    {
+      "claim": "Frozen market cap is about $6.18B, so 5x and 10x outcomes correspond to roughly $30.9B and $61.8B market caps.",
+      "source_type": "other",
+      "source": "Frozen PL company_context",
+      "period": "2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": "Market cap ~$6.18B; 5x ~$30.9B; 10x ~$61.8B",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "FY2027 Q2 revenue grew 58% YoY and FY2027 full-year guidance is $430M-$441M, supporting a high-growth base from which a multi-year scale path can develop.",
+      "source_type": "filing",
+      "source": "Uploaded PL 2026-09-03 Form 10-Q and 8-K Exhibit 99.1",
+      "period": "FY2027 Q2/FY2027 guidance",
+      "as_of_date": "2026-09-03",
+      "value": "Q2 revenue +58%; FY27 guide $430M-$441M",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Recurring ACV was 98%, RPO $753.1M and backlog $814.9M at July 31, providing contracted and recurring demand visibility.",
+      "source_type": "filing",
+      "source": "Uploaded PL 2026-09-03 Form 10-Q and 8-K Exhibit 99.1",
+      "period": "2026-07-31",
+      "as_of_date": "2026-09-03",
+      "value": "Recurring ACV 98%; RPO $753.1M; backlog $814.9M",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 operating cash flow was $68.4M and reported FCF $21.3M while frozen net cash was about $417M, materially reducing near-term financing-failure risk.",
+      "source_type": "filing",
+      "source": "Uploaded PL 2026-09-03 Form 10-Q / frozen source bundle",
+      "period": "FY2027 H1",
+      "as_of_date": "2026-09-17",
+      "value": "H1 OCF $68.4M; FCF $21.3M; net cash ~$417M",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Locked Bear/Base/Bull values are about $5.22/$15.94/$39.36 against $16.99, showing severe downside in failure but more than 2x upside in the modeled Bull case.",
+      "source_type": "other",
+      "source": "Deterministic harness DCF",
+      "period": "10-year model",
+      "as_of_date": "2026-09-17",
+      "value": "Bear $5.22; Base $15.94; Bull $39.36",
+      "fact_or_estimate": "estimate"
+    }
   ],
-  "counterevidence":[
+  "counterevidence": [
     "The locked Bull DCF is only about 2.3x the current price, so a true 5x/10x outcome requires economics beyond the current Bull FCF path.",
     "Three customers represented 17%, 11% and 10% of Q2 revenue, so contract concentration can make growth and cash conversion lumpy.",
     "Planet raised about $120M through ATM issuance in Q2, demonstrating that dilution remains a real path to permanent per-share impairment.",
     "A 5x valuation requires both long revenue duration and eventual high FCF margins; failure of either assumption sharply reduces upside."
   ],
-  "unknowns":[
+  "unknowns": [
     "Sustainable owner-FCF margin after full fleet replacement capex.",
     "Long-run sovereign satellite-services margins versus subscription-data margins.",
     "Net dilution over the next five years from SBC, ATM issuance and convertible settlement.",
     "How much AI applications can expand ARPU versus merely support existing imagery demand."
   ],
-  "uncertainties":[
-    {"criterion_id":"upside_path","severity":"material","rationale":"A 5x path is plausible, but it requires growth and cash-margin outcomes beyond the currently modeled Bull DCF."},
-    {"criterion_id":"permanent_loss","severity":"material","rationale":"Balance-sheet survival is strong, but valuation compression and dilution can still create large permanent per-share losses."},
-    {"criterion_id":"probability_calibration","severity":"material","rationale":"Public-market precedents for scaled commercial Earth-observation platforms are limited, making base-rate calibration imprecise."}
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "A 5x path is plausible, but it requires growth and cash-margin outcomes beyond the currently modeled Bull DCF."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Balance-sheet survival is strong, but valuation compression and dilution can still create large permanent per-share losses."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Public-market precedents for scaled commercial Earth-observation platforms are limited, making base-rate calibration imprecise."
+    }
   ],
-  "falsifiers":[
+  "falsifiers": [
     "Revenue and backlog grow but owner FCF/share remains flat or negative because capex and dilution scale with revenue.",
     "Recurring ACV or RPO conversion deteriorates for multiple quarters, weakening the long-duration platform thesis.",
     "A realistic 5x path requires implausible market share, margins or terminal multiples after updated evidence."
   ],
-  "hard_veto_flags":[
-    {"veto":"현재가격이 비현실적인 Bull Case 이상을 요구","status":"cleared","rationale":"Current price is below the locked Bull value and near Base; it does not require a Bull-plus scenario."},
-    {"veto":"파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음","status":"cleared","rationale":"Net cash, positive H1 FCF, recurring ACV and contracted backlog make financing-driven failure unlikely enough relative to the long-run upside, although valuation/dilution downside remains material."}
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is below the locked Bull value and near Base; it does not require a Bull-plus scenario."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Net cash, positive H1 FCF, recurring ACV and contracted backlog make financing-driven failure unlikely enough relative to the long-run upside, although valuation/dilution downside remains material."
+    }
   ],
-  "key_kpis":[
-    {"name":"Owner FCF/share","direction":"up","threshold":"Positive and compounding faster than diluted share count","cadence":"quarterly/annual"},
-    {"name":"Recurring ACV / RPO conversion","direction":"stable/up","threshold":"Recurring mix stays near current high levels and backlog converts without margin deterioration","cadence":"quarterly"},
-    {"name":"Net dilution","direction":"down","threshold":"SBC/ATM/convertible dilution falls as internally funded FCF increases","cadence":"quarterly"}
+  "key_kpis": [
+    {
+      "name": "Owner FCF/share",
+      "direction": "up",
+      "threshold": "Positive and compounding faster than diluted share count",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Recurring ACV / RPO conversion",
+      "direction": "stable/up",
+      "threshold": "Recurring mix stays near current high levels and backlog converts without margin deterioration",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Net dilution",
+      "direction": "down",
+      "threshold": "SBC/ATM/convertible dilution falls as internally funded FCF increases",
+      "cadence": "quarterly"
+    }
   ],
-  "next_checks":["FY2027 Q3 FCF/share and share-count trend","Large-customer renewal/backlog conversion","Evidence that AI applications expand monetization rather than only engagement"],
-  "verdict":"support",
-  "subscores":[
-    {"criterion_id":"upside_path","score_0_100":80,"rationale":"A credible 5x path exists through sustained geospatial data, sovereign services and AI platform scaling, though 10x is demanding."},
-    {"criterion_id":"permanent_loss","score_0_100":70,"rationale":"Net cash and recurring contracts improve survival, but Bear valuation and dilution imply meaningful permanent per-share downside."},
-    {"criterion_id":"probability_calibration","score_0_100":75,"rationale":"Scenario framing uses market-cap and FCF requirements explicitly, but comparable-company base rates remain limited."}
+  "next_checks": [
+    "FY2027 Q3 FCF/share and share-count trend",
+    "Large-customer renewal/backlog conversion",
+    "Evidence that AI applications expand monetization rather than only engagement"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 80,
+      "rationale": "A credible 5x path exists through sustained geospatial data, sovereign services and AI platform scaling, though 10x is demanding."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 70,
+      "rationale": "Net cash and recurring contracts improve survival, but Bear valuation and dilution imply meaningful permanent per-share downside."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 75,
+      "rationale": "Scenario framing uses market-cap and FCF requirements explicitly, but comparable-company base rates remain limited."
+    }
   ]
 }
