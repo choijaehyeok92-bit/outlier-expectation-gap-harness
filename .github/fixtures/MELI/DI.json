@@ -1,34 +1,131 @@
 {
-  "agent_id":"DI","ticker":"MELI","as_of_date":"2026-09-17","domain":"disruptive_innovation","role":"domain_analyst","analysis_status":"complete",
-  "score_0_100":85,"confidence_0_1":0.88,"bull_score":95,"bear_score":65,
-  "bull_case":"MELI integrates commerce, logistics, payments, credit and ads into one digital operating system for Latin America, lowering friction where banking, logistics and online retail remain underpenetrated.",
-  "bear_case":"The model is powerful but increasingly resembles scale execution rather than new disruption. Banks, Nubank, Amazon, Shopee and local retailers can attack individual layers.",
-  "thesis":"MELI is a proven disruptive platform even though it is ineligible for Moonshot because market cap exceeds $20B. It has replaced fragmented offline commerce and payment workflows with an integrated marketplace, logistics and fintech stack, and adoption is still accelerating. GMV, TPV and fintech usage show mainstream scale. The remaining question is whether ecosystem economics stay superior as credit and logistics become more capital intensive.",
-  "evidence":[
-    {"claim":"MELI is the regional e-commerce leader by GMV and Mercado Pago leads fintech MAUs in several core countries.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"2026","as_of_date":"2026-08-06","value":"Regional category leadership","fact_or_estimate":"fact"},
-    {"claim":"FY2025 GMV was $65.0B and TPV $277.8B, with fintech MAUs 78M.","source_type":"filing","source":"Uploaded FY2025 10-K","period":"FY2025","as_of_date":"2026-02-25","value":"GMV $65.0B; TPV $277.8B; MAUs 78M","fact_or_estimate":"fact"},
-    {"claim":"H1 2026 GMV grew 43% and TPV 53%.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"FY2026 H1","as_of_date":"2026-08-06","value":"GMV +43%; TPV +53%","fact_or_estimate":"fact"},
-    {"claim":"Frozen market cap is about $92.53B, above the Moonshot cap.","source_type":"other","source":"Frozen company_context","period":"2026-09-17","as_of_date":"2026-09-17","value":"Market cap ~$92.53B","fact_or_estimate":"fact"}
+  "agent_id": "DI",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-17",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 85.25,
+  "confidence_0_1": 0.88,
+  "bull_score": 95,
+  "bear_score": 65,
+  "bull_case": "MELI integrates commerce, logistics, payments, credit and ads into one digital operating system for Latin America, lowering friction where banking, logistics and online retail remain underpenetrated.",
+  "bear_case": "The model is powerful but increasingly resembles scale execution rather than new disruption. Banks, Nubank, Amazon, Shopee and local retailers can attack individual layers.",
+  "thesis": "MELI is a proven disruptive platform even though it is ineligible for Moonshot because market cap exceeds $20B. It has replaced fragmented offline commerce and payment workflows with an integrated marketplace, logistics and fintech stack, and adoption is still accelerating. GMV, TPV and fintech usage show mainstream scale. The remaining question is whether ecosystem economics stay superior as credit and logistics become more capital intensive.",
+  "evidence": [
+    {
+      "claim": "MELI is the regional e-commerce leader by GMV and Mercado Pago leads fintech MAUs in several core countries.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "2026",
+      "as_of_date": "2026-08-06",
+      "value": "Regional category leadership",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 GMV was $65.0B and TPV $277.8B, with fintech MAUs 78M.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K",
+      "period": "FY2025",
+      "as_of_date": "2026-02-25",
+      "value": "GMV $65.0B; TPV $277.8B; MAUs 78M",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 2026 GMV grew 43% and TPV 53%.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "FY2026 H1",
+      "as_of_date": "2026-08-06",
+      "value": "GMV +43%; TPV +53%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Frozen market cap is about $92.53B, above the Moonshot cap.",
+      "source_type": "other",
+      "source": "Frozen company_context",
+      "period": "2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": "Market cap ~$92.53B",
+      "fact_or_estimate": "fact"
+    }
   ],
-  "counterevidence":["Individual ecosystem layers face strong local and global competitors.","Credit adds capital intensity and underwriting risk.","Commerce/logistics scale can become operationally complex and margin-dilutive.","At current penetration, some disruption has already been captured."],
-  "unknowns":["Long-run contribution of ads and credit to ecosystem ROIC.","Competitive share trends versus Nubank, Amazon and Shopee.","Incremental economics in smaller Latin American markets.","Regulatory constraints on fintech expansion."],
-  "uncertainties":[
-    {"criterion_id":"cost_performance_shift","severity":"minor","rationale":"Integrated logistics and payments materially reduce regional friction."},
-    {"criterion_id":"adoption_curve","severity":"minor","rationale":"GMV, TPV and MAU scale show mainstream adoption."},
-    {"criterion_id":"optionality_incumbent_response","severity":"material","rationale":"Multiple options exist, but well-funded competitors can respond."}
+  "counterevidence": [
+    "Individual ecosystem layers face strong local and global competitors.",
+    "Credit adds capital intensity and underwriting risk.",
+    "Commerce/logistics scale can become operationally complex and margin-dilutive.",
+    "At current penetration, some disruption has already been captured."
   ],
-  "falsifiers":["Ecosystem cross-sell stops improving customer economics.","GMV/TPV growth converges to market while margins stay depressed.","Competitors disintermediate a major layer without offsetting gains elsewhere."],
-  "hard_veto_flags":[],
-  "key_kpis":[
-    {"name":"GMV / TPV growth","direction":"up","threshold":"Sustain structural outgrowth","cadence":"quarterly"},
-    {"name":"Fintech MAUs / engagement","direction":"up","threshold":"Usage expands across core markets","cadence":"quarterly"},
-    {"name":"Cross-ecosystem monetization","direction":"up","threshold":"Ads, credit and payments deepen without destroying FCF","cadence":"annual"}
+  "unknowns": [
+    "Long-run contribution of ads and credit to ecosystem ROIC.",
+    "Competitive share trends versus Nubank, Amazon and Shopee.",
+    "Incremental economics in smaller Latin American markets.",
+    "Regulatory constraints on fintech expansion."
   ],
-  "next_checks":["Fintech MAU trend","Ads and credit monetization","Competitive share in Brazil/Mexico"],
-  "verdict":"support",
-  "subscores":[
-    {"criterion_id":"cost_performance_shift","score_0_100":85,"rationale":"Integrated marketplace, logistics and payments materially lower regional transaction friction."},
-    {"criterion_id":"adoption_curve","score_0_100":90,"rationale":"The platform is at mainstream scale while key volumes still grow rapidly."},
-    {"criterion_id":"optionality_incumbent_response","score_0_100":80,"rationale":"Many adjacent monetization paths exist, though competitors can attack individual layers."}
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "minor",
+      "rationale": "Integrated logistics and payments materially reduce regional friction."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "minor",
+      "rationale": "GMV, TPV and MAU scale show mainstream adoption."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Multiple options exist, but well-funded competitors can respond."
+    }
+  ],
+  "falsifiers": [
+    "Ecosystem cross-sell stops improving customer economics.",
+    "GMV/TPV growth converges to market while margins stay depressed.",
+    "Competitors disintermediate a major layer without offsetting gains elsewhere."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "GMV / TPV growth",
+      "direction": "up",
+      "threshold": "Sustain structural outgrowth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Fintech MAUs / engagement",
+      "direction": "up",
+      "threshold": "Usage expands across core markets",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Cross-ecosystem monetization",
+      "direction": "up",
+      "threshold": "Ads, credit and payments deepen without destroying FCF",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Fintech MAU trend",
+    "Ads and credit monetization",
+    "Competitive share in Brazil/Mexico"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 85,
+      "rationale": "Integrated marketplace, logistics and payments materially lower regional transaction friction."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 90,
+      "rationale": "The platform is at mainstream scale while key volumes still grow rapidly."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 80,
+      "rationale": "Many adjacent monetization paths exist, though competitors can attack individual layers."
+    }
   ]
 }
