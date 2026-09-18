@@ -28,6 +28,7 @@ jobs:
           exec > >(tee runlogs/execution.log) 2>&1
 
           python harness.py selftest
+          rm -f runs/MELI/*_prompt.md runs/MELI/aggregate.json runs/MELI/digest.md runs/MELI/final_verdict.json runs/MELI/one_page_investment_record.md
           python harness.py init MELI --as-of 2026-09-17
 
           cp runs/MELI/manual_inputs/company_context.json runs/MELI/company_context.json
@@ -74,11 +75,15 @@ jobs:
             python harness.py digest MELI
             python harness.py plan MELI | tee runlogs/plan_pre_ic.txt
 
-            python harness.py prompt MELI IC --out runs/MELI/IC_prompt.md
-            cp runs/MELI/manual_reports/IC.json runs/MELI/reports/IC.json
-            python harness.py validate MELI IC
+            if grep -q "EARLY EXIT" runlogs/plan_pre_ic.txt; then
+              echo "MELI EARLY EXIT triggered at pre-IC plan; IC intentionally skipped."
+            else
+              python harness.py prompt MELI IC --out runs/MELI/IC_prompt.md
+              cp runs/MELI/manual_reports/IC.json runs/MELI/reports/IC.json
+              python harness.py validate MELI IC
+            fi
 
-            python harness.py validate MELI EV AS DI TQ SL CP MT RF MA FS MO ED RT IC
+            python harness.py validate MELI
             python harness.py plan MELI | tee runlogs/plan_final.txt
             python harness.py digest MELI
             python harness.py aggregate MELI | tee runlogs/aggregate_final.json
@@ -91,6 +96,8 @@ jobs:
           agg=json.loads((run/"aggregate.json").read_text(encoding="utf-8"))
           mo=json.loads((run/"reports/MO.json").read_text(encoding="utf-8")) if (run/"reports/MO.json").exists() else {}
           ic=json.loads((run/"reports/IC.json").read_text(encoding="utf-8")) if (run/"reports/IC.json").exists() else {}
+          plan_pre=(Path("runlogs/plan_pre_ic.txt").read_text(encoding="utf-8") if Path("runlogs/plan_pre_ic.txt").exists() else "")
+          plan_early=("EARLY EXIT" in plan_pre)
           v={
             "ticker":"MELI","as_of_date":"2026-09-17",
             "score_100":agg["score_100"],"score_100_ex_valuation":agg["score_100_ex_valuation"],
@@ -99,8 +106,9 @@ jobs:
             "ic_state":agg["mechanical_pre_ic_state"],
             "position_range":agg["position_range_pre_ic"],
             "macro_pacing_multiplier":mo.get("risk_budget_multiplier"),
-            "ic_verdict":ic.get("verdict"),
-            "early_exit":agg["early_exit"],
+            "ic_verdict":ic.get("verdict") if ic.get("analysis_status")=="complete" else None,
+            "early_exit":bool(agg["early_exit"] or plan_early),
+            "early_exit_stage":"pre_ic" if plan_early else ("triage" if agg["early_exit"] else None),
             "reachable_archetypes_raw":agg["reachable_archetypes_raw"],
             "valuation_model":agg["valuation_model"],
             "provider_calibration":agg["provider_calibration"],
@@ -117,7 +125,8 @@ jobs:
             f"- Bear/Base/Bull: {agg['valuation_model']['scenarios']['bear']['value_per_share']} / {agg['valuation_model']['scenarios']['base']['value_per_share']} / {agg['valuation_model']['scenarios']['bull']['value_per_share']}",
             "- 핵심 장점: LatAm commerce+fintech 구조 성장, 강한 GMV/TPV/MAU/Buyer 채택, 데이터·물류·결제 생태계.",
             "- 핵심 리스크: 2026 margin/Adjusted FCF 압박, NIMAL 하락, credit past-due 및 funding 확대.",
-            "- IC: 점수는 Emerging이나 RF가 Compounder threshold를 못 넘어 Non-fit/Starter-Watch로 제한."
+            "- 제어흐름: Phase 3 후 plan이 early exit를 반환해 IC는 실행하지 않음.",
+            "- 기계 판정: Emerging 점수이지만 RF가 Compounder threshold를 못 넘어 Non-fit/Starter-Watch로 제한."
           ]
           (run/"one_page_investment_record.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
           PY
