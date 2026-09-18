@@ -3,7 +3,7 @@ name: MSFT EV run 2026-09-18
 on:
   push:
     branches:
-      - run/msft-2026-09-18-sol-phase3
+      - run/msft-2026-09-18-sol-ic
 
 permissions:
   contents: read
@@ -58,6 +58,43 @@ jobs:
           python harness.py validate MSFT ED
           cp .github/fixtures/MSFT/RT.json runs/MSFT/reports/RT.json
           python harness.py validate MSFT RT
+          python harness.py aggregate MSFT
+          python harness.py digest MSFT
+          cp .github/fixtures/MSFT/IC.json runs/MSFT/reports/IC.json
+          python harness.py validate MSFT IC
+          cp .github/fixtures/MSFT/one_page_investment_record.md runs/MSFT/one_page_investment_record.md
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          run=Path("runs/MSFT")
+          agg=json.loads((run/"aggregate.json").read_text())
+          mo=json.loads((run/"reports/MO.json").read_text())
+          ic=json.loads((run/"reports/IC.json").read_text())
+          fv={
+              "ticker":"MSFT",
+              "as_of_date":"2026-09-18",
+              "score_100":agg["score_100"],
+              "classification":agg["classification"],
+              "disruptive_innovation_score":agg["disruptive_innovation_score"],
+              "turnaround_quality_score":agg.get("turnaround_quality_score"),
+              "archetype":"compounder",
+              "secondary_archetypes":agg["archetype"].get("secondary",[]),
+              "archetype_rationale":"IC retains the mechanical Compounder classification. Business quality and all Hard Veto reviews support ownership, while EV=50 and unresolved full-cycle AI incremental ROIC justify NORMAL_CANDIDATE sizing rather than a larger winner allocation.",
+              "hard_veto_status":agg["hard_veto_status"],
+              "ic_state":"NORMAL_CANDIDATE",
+              "position_range":"2-4% strategic range; initial 2-3% deployment with 0.85x macro pacing",
+              "domain_scores":agg["domain_scores"],
+              "disputes":agg["disputes"],
+              "falsifiers":ic["falsifiers"],
+              "macro_pacing_multiplier":mo["risk_budget_multiplier"]
+          }
+          required=["ticker","as_of_date","score_100","classification","disruptive_innovation_score","archetype","hard_veto_status","ic_state","position_range","domain_scores","disputes","falsifiers"]
+          missing=[k for k in required if k not in fv]
+          assert not missing, missing
+          assert fv["archetype"] in {"moonshot","compounder","emerging_outlier","expectation_gap","turnaround","non_fit"}
+          (run/"final_verdict.json").write_text(json.dumps(fv,ensure_ascii=False,indent=2))
+          print(json.dumps(fv,ensure_ascii=False,indent=2))
+          PY
           python harness.py plan MSFT
           python harness.py digest MSFT
           python harness.py aggregate MSFT
@@ -65,7 +102,7 @@ jobs:
           cat runs/MSFT/aggregate.json
       - uses: actions/upload-artifact@v4
         with:
-          name: MSFT-harness-run-2026-09-18-sol-phase3
+          name: MSFT-harness-run-2026-09-18-sol-ic
           path: |
             runs/MSFT
             runs/_macro
