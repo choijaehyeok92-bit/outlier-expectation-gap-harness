@@ -1,0 +1,76 @@
+{
+  "agent_id": "ED",
+  "ticker": "MSFT",
+  "as_of_date": "2026-09-17",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 82,
+  "confidence_0_1": 0.82,
+  "thesis": "핵심 수치의 대부분이 업로드된 FY2026 10-K·Q2/Q3 10-Q·9월 8-K에 직접 연결된다. 매출·Azure 성장·RPO·OCF·capex·부채·OpenAI 거래·FY27 세그먼트 개편은 1차 자료 기반이다. 주요 제한은 두 가지다. 2026-09-17 종가와 P/E는 외부 시장자료이고, EV의 10년 FCF 경로는 모델 추정이며 Base 가치의 terminal 의존도가 높다.",
+  "evidence": [
+    {
+      "claim": "FY2026 revenue $331.839B, OCF $182.935B, PP&E additions $115.948B 등 핵심 재무수치는 10-K에서 추출됐다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-17",
+      "value": "331.839/182.935/115.948",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Azure +41%, Microsoft Cloud $214.4B, commercial RPO $678B은 10-K의 운영 KPI다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-17",
+      "value": "41%/214.4/678",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "OpenAI 관련 revenue $24.1B, AR $6.0B, commitment $13.0B이 10-K에 명시돼 관련자 경제성을 추적할 수 있다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-17",
+      "value": "24.1/6.0/13.0",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY27 Q1 revenue/Azure/capex outlook과 두 개 세그먼트 재분류가 9월 8-K에 제시됐다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/8-K_2026-09-02_key_facts.txt",
+      "period": "FY27 Q1 guide",
+      "as_of_date": "2026-09-17",
+      "value": "89.85-90.95 / 45% / >50",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "원문 전체 텍스트 대신 이번 Action에는 업로드 문서에서 추출한 frozen key-fact 파일을 사용하므로 세부 문구 재검증 범위는 제한된다.",
+    "valuation_percentile_5y는 재현 가능한 분포를 고정하지 못해 null로 남겼다.",
+    "DCF 경로는 1차자료가 아니라 모델 추정이며 terminal value 의존도가 높다."
+  ],
+  "unknowns": [
+    "FY27 이후 datacenter 자산별 증분 ROIC.",
+    "OpenAI 관련 계약의 gross-margin 및 RPO 기여 세부내역.",
+    "2026-09-17 기준 재현 가능한 5년 valuation percentile."
+  ],
+  "falsifiers": [
+    "원문 대조에서 frozen key fact가 틀리면 해당 도메인 점수와 aggregate를 재실행한다.",
+    "FY27 실적이 EV의 owner-FCF 경로에서 크게 이탈하면 valuation 판단을 재작성한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "primary-source coverage",
+      "direction": "up",
+      "threshold": "결정변수 100% filing-backed",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "FY27 Q1 10-Q 원문을 추가해 capex·RPO·OpenAI·Azure 지표를 갱신한다."
+  ],
+  "verdict": "support"
+}

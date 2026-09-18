@@ -1,0 +1,100 @@
+{
+  "agent_id": "DI",
+  "ticker": "MSFT",
+  "as_of_date": "2026-09-17",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 81.5,
+  "confidence_0_1": 0.75,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Azure에서 M365·GitHub·Security·Industry agents까지 한 distribution graph로 AI를 확산시켜 업무 소프트웨어의 사용방식을 재편한다.",
+  "bear_case": "대형 incumbent라는 점과 모델 범용화, 막대한 capex가 파괴적 혁신의 경제적 과실을 일부 상쇄할 수 있다.",
+  "thesis": "AI와 cloud 전환은 실제 매출·RPO·사용량으로 검증된 산업 재편이다. FY2026 Cloud $214.4B(+27%), Azure +41%, M365 cloud +17%, RPO $678B는 파일럿 단계를 넘어섰다. FY27 Agents and Infra 구조도 가치사슬 통합을 강화한다. 다만 Microsoft는 기존 지배적 incumbent이며 모델 계층은 범용화 위험이 있다.",
+  "evidence": [
+    {
+      "claim": "Microsoft Cloud revenue $214.4B(+27%), Azure +41%, M365 Commercial cloud +17%다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": 214.4,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Commercial RPO $678B(+84%)로 대규모 장기 채택이 확인된다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": 678,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY27 보고구조가 Agents and Infra 중심으로 재편됐다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/8-K_2026-09-02_key_facts.txt",
+      "period": "FY27",
+      "as_of_date": "2026-06-30",
+      "value": "Agents and Infra",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI 인프라 자본집약도와 OpenAI 관련 경제적 집중은 장기 현금수익률의 핵심 반대근거다."
+  ],
+  "unknowns": [
+    "FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률."
+  ],
+  "falsifiers": [
+    "owner FCF/share가 2개 회계연도 연속 회복하지 못하면 현재 복리 가설을 하향한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "FY27 이후 회복",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "FY27 Q1 10-Q에서 Azure 성장, capex, OCF와 RPO 갱신 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 75,
+      "rationale": "AI/cloud가 구조 변화지만 10배 비용곡선의 독립 계측은 제한적이다."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 85,
+      "rationale": "Cloud $214.4B, Azure +41%, RPO $678B로 주류 확산이 확인된다."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 85,
+      "rationale": "Azure·M365·GitHub/Security 등 3개 이상 인접 가치풀과 플랫폼 표준을 보유한다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    }
+  ]
+}
