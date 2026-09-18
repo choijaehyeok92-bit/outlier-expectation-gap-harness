@@ -26,5 +26,20 @@
     "sources/INDEX.md": "3a4ecb5697b6a7d6ef37199ebfda4b4a99c9428eac14b18c8c585a272757dd29",
     "sources/README.md": "c826e2c10bb077ce4ef405332f7a41a4f185d3775c3638b2ba7f9b6a32076481"
   },
-  "input_snapshot_sha256": "7aa29b98d265b0e0d996704cb767e2f93b24ed085db34e0c82a2354a6c463280"
+  "input_snapshot_sha256": "7aa29b98d265b0e0d996704cb767e2f93b24ed085db34e0c82a2354a6c463280",
+  "post_run_reviews": [
+    {
+      "reviewed_at": "2026-09-19",
+      "provider": "openai",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "scope": "hard_veto_adjudication_only",
+      "changed_vetoes": [
+        "고객가치 없이 마케팅·보조금에 의존하는 성장",
+        "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+      ],
+      "note": "Base run remains Claude-Opus-5. Scores, DCF, frozen inputs and provider calibration were not rerun; only Hard Veto statuses and their derived gate/state outputs were updated."
+    }
+  ]
 }
