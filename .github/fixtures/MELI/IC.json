@@ -1,0 +1,39 @@
+{
+  "agent_id":"IC",
+  "ticker":"MELI",
+  "as_of_date":"2026-09-17",
+  "domain":"investment_committee",
+  "role":"investment_committee",
+  "analysis_status":"complete",
+  "score_0_100":80.03,
+  "confidence_0_1":0.91,
+  "thesis":"IC retains MELI as a Compounder, with Emerging Outlier as a secondary archetype. The company clears MT, RF, MA, FS and EV thresholds and all Hard Vetoes are cleared. The investment case is not based on cheap current FCF: H1 adjusted FCF and margins are depressed by deliberate logistics and credit investment. Approval therefore rests on evidence that ecosystem growth converts back into owner FCF/share. Final state is NORMAL_CANDIDATE with a 2-4% strategic range and slower 0.80x macro pacing.",
+  "evidence":[
+    {"claim":"Mechanical Compounder conditions are met: MT 88.25, RF 82, MA 85, FS 81 and EV 55.5.","source_type":"other","source":"runs/MELI/aggregate.json","period":"frozen run","as_of_date":"2026-09-17","value":"Compounder conditions met","fact_or_estimate":"fact"},
+    {"claim":"H1 revenue grew 49.4%, GMV 43% and TPV 53%, confirming exceptional ecosystem growth.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"FY2026 H1","as_of_date":"2026-08-06","value":"Revenue +49.4%; GMV +43%; TPV +53%","fact_or_estimate":"fact"},
+    {"claim":"H1 operating margin fell to 6.8% from 12.5% and adjusted FCF to $158M from $512M, making reinvestment payback the key proof point.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"FY2026 H1","as_of_date":"2026-08-06","value":"Op margin 6.8%; adjusted FCF $158M","fact_or_estimate":"fact"},
+    {"claim":"Q2 credit quality remained near historical lows on company-reported NPL metrics even as the portfolio expanded rapidly.","source_type":"ir","source":"Q2 2026 shareholder letter / filing exhibit","period":"Q2 2026","as_of_date":"2026-08-05","value":"15-90 day NPL 7.0% portfolio; 4.6% credit card","fact_or_estimate":"fact"},
+    {"claim":"Locked Bear/Base/Bull values are about $138/$1,979/$4,720 versus $1,825.21.","source_type":"other","source":"Deterministic harness DCF","period":"10-year model","as_of_date":"2026-09-17","value":"Price/Base ~0.922x","fact_or_estimate":"estimate"},
+    {"claim":"Macro Overlay is 0.80x because U.S. rates are restrictive and Brazil Selic remains 13.75% amid elevated household-credit stress.","source_type":"other","source":"runs/MELI/reports/MO.json","period":"macro overlay","as_of_date":"2026-09-17","value":"risk_budget_multiplier 0.80","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "The most plausible failure path is that MELI's ecosystem becomes progressively more capital intensive, so growth remains high while normalized owner FCF/share fails to compound.",
+    "Current valuation has only modest Base upside, and Base value is terminal-dependent.",
+    "Credit growth can appear attractive until vintage losses season, while logistics subsidies can be difficult to reverse without hurting engagement.",
+    "The harness may understate upside if current investments permanently increase engagement and ads/fintech monetization without equivalent future capital needs."
+  ],
+  "unknowns":["Normalized adjusted FCF/share after current investment wave.","Through-cycle Mercado Crédito loss-adjusted ROIC.","Long-run margin after Brazilian shipping investments.","Ads and MELI+ contribution to future economics."],
+  "falsifiers":[
+    "Adjusted FCF/share fails to recover over multiple quarters while GMV/TPV remain strong.",
+    "Credit provision intensity remains structurally elevated and risk-adjusted lending returns deteriorate.",
+    "Operating margin stays near current depressed levels without a compensating acceleration in long-run per-share cash flow."
+  ],
+  "hard_veto_flags":[],
+  "key_kpis":[
+    {"name":"Adjusted FCF/share","direction":"up","threshold":"Recover from 2026 trough and compound","cadence":"quarterly/annual"},
+    {"name":"Credit provision / NPL trend","direction":"down","threshold":"Asset quality remains controlled as portfolio seasons","cadence":"quarterly"},
+    {"name":"Operating margin / engagement","direction":"up","threshold":"Margin recovers without reversing GMV/TPV engagement gains","cadence":"quarterly"}
+  ],
+  "next_checks":["Q3 adjusted FCF and margin","Credit vintage/NPL metrics","Brazil free-shipping cohort economics"],
+  "verdict":"support"
+}
