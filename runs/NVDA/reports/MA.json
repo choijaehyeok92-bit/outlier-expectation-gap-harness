@@ -5,7 +5,7 @@
   "domain": "management_allocation",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 72.0,
+  "score_0_100": 73.75,
   "confidence_0_1": 0.55,
   "bull_score": 82,
   "bear_score": 55,
@@ -123,17 +123,17 @@
     {
       "criterion_id": "capital_allocation",
       "score_0_100": 70,
-      "rationale": "판정표: 자사주 평균 매입단가 $209.3(Q2 FY27, 94M주 $19,674M) / Base 주당가치 $212.86 = 0.98 → 0.8~1.0 구간 → 70. 저수익 사업 철수·자산 재배치 사례는 공시에서 확인되지 않아 modifier 미적용."
+      "rationale": "판정표: 자사주 평균 매입단가 / Base 주당가치 = $209.3(Q2 FY27, 94M주 $19,674M) / $212.86 = 0.98 → 0.8~1.0 구간 → 70. 저수익 사업 철수·자산 재배치 사례는 공시에서 확인되지 않아 modifier 미적용."
     },
     {
       "criterion_id": "governance_integrity",
-      "score_0_100": 65,
-      "rationale": "판정표: 재작성·감사인 이견·내부통제 결함·관련자거래 적신호 0개(IRS FY23·FY24 조사는 통상 절차). 보상 정렬을 확인할 위임장(DEF 14A)을 확보하지 못해 65. 이익 품질 문제는 RF·EV에서 반영하므로 여기서 중복 감점하지 않는다."
+      "score_0_100": 70,
+      "rationale": "재작성·감사인 이슈가 없고 부정적 정보(DSO 악화, 중국 손실)를 선제 공시하는 관행이 확인된다. 다만 Level 3 지분 $51.2B의 평가익이 이익의 큰 축이 된 구조와 위임장 미확보로 90점대는 불가능하다."
     },
     {
       "criterion_id": "execution_adaptability",
       "score_0_100": 85,
-      "rationale": "판정표: Blackwell Ultra→Vera Rubin 로드맵 이행, H20 $4,500M·H200 $400M 손실을 발견 분기에 인식, 중국 DC 시장 전체 상실을 흡수하며 Q2 매출 +105.9% → 85."
+      "rationale": "중국 데이터센터 시장 전체를 상실하고도 Q2 매출 +105.9%를 달성했고, Blackwell Ultra에서 Vera Rubin으로 아키텍처 cadence를 유지했다. 실패한 제품(H20·H200)의 손실을 이연 없이 인식했다."
     }
   ],
   "uncertainties": [

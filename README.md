@@ -95,8 +95,8 @@ python harness.py aggregate NVDA
 형용사이면 갈라진다. sol은 앵커(25/50/75/90)에 그대로 착지해 90을 9번 썼고(27개 중 15개가 앵커값),
 opus는 앵커 사이로 보간해 [35,90]을 썼다(27개 중 4개).
 
-**대응 1 — 관측 판정표(`observable_anchors`).** **31개 criterion 전부**의 앵커를 셀 수 있는
-판정표로 교체했다. EV의 `price_to_base_value → 점수 고정` 방식을 전 도메인으로 확장한 것이다.
+**대응 1 — 관측 판정표(`observable_anchors`).** 격차가 가장 컸던 8개 criterion의 앵커를 셀 수 있는
+판정표로 교체했다. EV의 `signal_map`(price_to_base_value → 점수 고정)에서 검증된 방식을 확장한 것이다.
 
 | criterion | 판정 기준 |
 |---|---|
@@ -108,28 +108,6 @@ opus는 앵커 사이로 보간해 [35,90]을 썼다(27개 중 4개).
 | DI `optionality_incumbent_response` | 진입한 인접 가치풀 개수 (대응자가 고객 본인이면 상한 70) |
 | AS `upside_path` | Bull 주당가치 / 현재가 + 독립 상승경로 개수 |
 | AS `permanent_loss` | Bear 주당가치 / 현재가 |
-| AS `probability_calibration` | 확률 수치·민감도·기준율 근거의 충족 개수 |
-| SL `secular_durability` | 3년 매출 방향 + 독립 구조 지표 개수 |
-| SL `category_leadership` | 표준 소유 주체와 배포 채널 폭 |
-| CP `customer_roi` | gross margin과 판관비/매출 비율 |
-| CP `retention_usage` | 유지율 지표 또는 선수금·약정 대리지표 추세 |
-| CP `unit_economics` | 영업이익률 방향 + FCF/순이익 |
-| MT `switching_pricing` | 2년 gross margin 방향과 점유율 추세 |
-| MT `commoditization_resilience` | 독립 방어층 개수 + 대체자의 자본 제약 |
-| RF `incremental_roic` | 증분 NOPAT/증분 투하자본 ÷ 자본비용 배수 |
-| RF `fcf_per_share_quality` | owner FCF/share 추세 + 희석주식수 증감 |
-| MA `governance_integrity` | 회계·거버넌스 적신호 개수 + 보상 정렬 확인 여부 |
-| MA `execution_adaptability` | 로드맵 이행과 실패 자산 손실 인식 시점 |
-| FS `liquidity_leverage` | 총차입 ÷ TTM 영업현금흐름 |
-| FS `stress_survival` | (현금성자산+TTM OCF) ÷ 연간 필수지출 |
-| EV `reverse_dcf_burden` · `base_return` | price_to_base_value |
-| EV `valuation_robustness` | Base terminal_fraction |
-| DI `cost_performance_shift` | 대체 방식 대비 성능·비용 배수 |
-| DI `adoption_curve` | 전년 대비 성장률 + 공급자·고객 단위경제 |
-| TQ `operating_inflection` | 저점 대비 2개 분기 개선 지표 개수 |
-| TQ `self_help_quality` | 경영진 통제 가능 조치 개수 |
-| TQ `normalized_earnings_bridge` | 정상화 bridge의 가정 개수 |
-| TQ `catalyst_accountability` | 공개 KPI·마감기한·보상 연동 충족 개수 |
 
 **대응 2 — `anchor_policy` 양쪽 게이트.** 85 이상은 1차 자료 근거 3개 이상과 최강 반대근거 반박을
 요구하고, 40 미만은 1차 자료 반증 근거를 요구한다. 근거 없는 낙관과 근거 없는 신중을 대칭으로 막는다.
@@ -142,16 +120,9 @@ opus는 앵커 사이로 보간해 [35,90]을 썼다(27개 중 4개).
 python harness.py calibrate runs/NVDA runs/_reference/NVDA-2026-09-18-sol --out cal.json
 ```
 
-**결과:** 31개 전부를 판정표로 옮기면 겹치는 27개 criterion의 격차가 **평균 +10.2 → 0.0
-(sd 6.9 → 0.0)**이 된다. 판정표가 같은 사실에서 같은 행을 고르므로 남는 격차가 없다.
-이 수렴은 sol 쪽을 시뮬레이션한 값이며 실제 sol 재실행으로 검증해야 한다.
+**결과:** 판정표를 양쪽에 적용하면 해당 8개 criterion의 격차는 **+13.2 → 0.0**, 전체 평균은
+**+10.2 → +4.4**(sd 6.9 → 4.2)가 된다. 잔여 +4.4는 판정표가 없는 19개 형용사 criterion에서 나온다.
+이 수렴은 sol 쪽을 시뮬레이션한 값이며, 실제 sol 재실행으로 검증해야 한다.
 
-**한계 두 가지.** 첫째, 하네스가 보장하는 것은 두 모델의 *일치*이지 *정확성*이 아니다. 판정표가
-맞춘 수준이 옳은지는 사후 결과로만 확인된다. 둘째, 전면 적용은 재현성을 얻는 대신 재량을 없앤다.
-점수는 결정론적 함수가 되고 모델의 역할은 공시에서 수치를 읽어 판정표 행을 고르는 데로 제한된다.
-판정표가 놓친 맥락은 `thesis`·`counterevidence`·`uncertainties`에 기록하되 점수는 바꾸지 않는다
-(`anchor_policy.tradeoff`).
-
-판정표가 Opus의 엄격함을 그대로 옮긴 것이 아니라는 근거: NVDA 실행에서 판정표는
-`probability_calibration`을 65→85, `valuation_robustness`를 40→60, `upside_path`를 35→75로
-**올렸다**. 반대로 `adoption_curve`는 80→70, `network_data_ecosystem`은 sol의 90→75로 내렸다.
+**한계:** 하네스가 보장하는 것은 두 모델의 *일치*이지 *정확성*이 아니다. 판정표가 맞춘 수준이
+옳은지는 사후 결과로만 확인된다.

@@ -5,7 +5,7 @@
   "domain": "moat_trajectory",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 70.25,
+  "score_0_100": 73.75,
   "confidence_0_1": 0.6,
   "bull_score": 85,
   "bear_score": 50,
@@ -121,18 +121,18 @@
   "subscores": [
     {
       "criterion_id": "switching_pricing",
-      "score_0_100": 70,
-      "rationale": "판정표: gross margin FY26 71.1% → Q2 FY27 75.0% 상승. 다만 공급 제약 국면이라 정상화 이후 지속성은 미확인 → 70."
+      "score_0_100": 80,
+      "rationale": "매출 2배 구간에서 gross margin이 71.1%→75.0%로 상승했다. 전환비용(CUDA 재작성)과 가격결정력이 동시에 강화되는 방향이다. 공급부족 기여분을 분리할 수 없어 90점은 아니다."
     },
     {
       "criterion_id": "network_data_ecosystem",
       "score_0_100": 75,
-      "rationale": "판정표: 1차 자료 규모 수치 3개(CUDA 개발자 750만명, 애플리케이션 6,000개, TOP500 78%, 모두 FY26 10-K). 같은 정의의 증가 추세는 전년 수치가 없어 미확인 → 75."
+      "rationale": "판정표: 1차 자료 규모 수치 3개(CUDA 개발자 750만명, 지원 애플리케이션 6,000개, TOP500 78% 구동, 모두 FY26 10-K). 같은 정의의 증가 추세는 전년 수치가 없어 미확인 → 75."
     },
     {
       "criterion_id": "commoditization_resilience",
       "score_0_100": 65,
-      "rationale": "판정표: 독립 방어층 3개 이상(실리콘 성능, CUDA 소프트웨어 스택, Mellanox 네트워킹, 연간 출시주기) → 65. 주요 대체 시도자가 자본 제약이 없는 하이퍼스케일러라 85 구간은 아니다."
+      "rationale": "네트워킹·소프트웨어·연간 cadence라는 복수 방어층이 있으나, 대체 시도의 주체가 자금 제약 없는 하이퍼스케일러 고객이고 회사 스스로 중국 배제가 경쟁 생태계를 키웠다고 인정한다. Groq 라이선스 $15.9B 지출도 완결성 부족의 신호다."
     }
   ],
   "uncertainties": [

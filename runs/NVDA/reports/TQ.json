@@ -5,7 +5,7 @@
   "domain": "turnaround_quality",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 35.75,
+  "score_0_100": 34.25,
   "confidence_0_1": 0.75,
   "bull_score": 50,
   "bear_score": 25,
@@ -105,22 +105,22 @@
     {
       "criterion_id": "operating_inflection",
       "score_0_100": 40,
-      "rationale": "판정표: 실적 저점이 존재하지 않는다. 매출 FY24 $60,922M → FY26 $215,938M, Q2 FY27 영업이익률 66.2%로 고점 갱신 중 → 이 축 해당 없음 구간 40."
+      "rationale": "핵심 지표가 개선 중이기는 하나 저점 대비 회복이 아니라 고점 갱신이다. 오히려 DSO 45→60일, 재고 $21.4B→$31.6B로 운전자본 지표는 악화됐다."
     },
     {
       "criterion_id": "self_help_quality",
       "score_0_100": 30,
-      "rationale": "판정표: 경영진 통제 가능 조치 0개. R&D는 전년 동기 $4,291M→$7,054M 증가, H1 순차입 $24,896M·지분투자 $42,404M 집행으로 축소가 아니라 확장 국면 → 30."
+      "rationale": "회복 동력이 경영진 통제 영역(비용절감·자산매각·부채축소)이 아니라 외부 AI 수요다. 오히려 R&D +64%, 순차입 $24.9B, 지분투자 $42.4B로 확장 국면이다."
     },
     {
       "criterion_id": "normalized_earnings_bridge",
       "score_0_100": 30,
-      "rationale": "판정표: 정상 이익률 기준선 자체가 존재하지 않는다. 저점에서 정상으로 가는 bridge가 아니라 현재 이익이 정상 위일 위험을 봐야 하는 구조 → 30."
+      "rationale": "저점에서 정상으로 가는 bridge가 아니라 현재 이익이 정상 위에 있을 위험을 봐야 하는 구조다. 정상 이익률 기준선 자체가 존재하지 않는다."
     },
     {
       "criterion_id": "catalyst_accountability",
-      "score_0_100": 45,
-      "rationale": "판정표: 턴어라운드 전용 KPI·마감기한·책임자가 없고 분기 가이던스와 공급약정 공시 등 일반 공시만 존재 → 45."
+      "score_0_100": 35,
+      "rationale": "턴어라운드 전용 KPI·마감기한·보상 정렬이 없다. 다만 분기 가이던스와 공급 약정 공시로 최소한의 이행 검증은 이루어진다."
     }
   ],
   "uncertainties": [
