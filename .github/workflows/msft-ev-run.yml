@@ -3,7 +3,7 @@ name: MSFT EV run 2026-09-18
 on:
   push:
     branches:
-      - run/msft-2026-09-18-sol-macro
+      - run/msft-2026-09-18-sol-phase3
 
 permissions:
   contents: read
@@ -53,6 +53,11 @@ jobs:
           cp .github/fixtures/MSFT/MO.json runs/MSFT/reports/MO.json
           python harness.py validate MSFT MO
           python harness.py cache-macro MSFT
+          python harness.py digest MSFT
+          cp .github/fixtures/MSFT/ED.json runs/MSFT/reports/ED.json
+          python harness.py validate MSFT ED
+          cp .github/fixtures/MSFT/RT.json runs/MSFT/reports/RT.json
+          python harness.py validate MSFT RT
           python harness.py plan MSFT
           python harness.py digest MSFT
           python harness.py aggregate MSFT
@@ -60,7 +65,7 @@ jobs:
           cat runs/MSFT/aggregate.json
       - uses: actions/upload-artifact@v4
         with:
-          name: MSFT-harness-run-2026-09-18-sol-macro
+          name: MSFT-harness-run-2026-09-18-sol-phase3
           path: |
             runs/MSFT
             runs/_macro
