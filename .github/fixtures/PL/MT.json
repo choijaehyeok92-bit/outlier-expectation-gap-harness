@@ -1,50 +1,137 @@
 {
-  "agent_id":"MT","ticker":"PL","as_of_date":"2026-09-17","domain":"moat_trajectory","role":"domain_analyst","analysis_status":"complete",
-  "score_0_100":78.25,"confidence_0_1":0.84,"bull_score":90,"bear_score":60,
-  "bull_case":"Every observation adds to a proprietary longitudinal archive, while the fleet, ground systems and software improve refresh and resolution. New AI tools can make that archive easier to query, increasing data utility and customer workflow integration.",
-  "bear_case":"Raw imagery is increasingly available from commercial and sovereign constellations. Customers can multi-home, launch costs are falling for rivals, and downstream AI vendors may capture more value than the data originator.",
-  "thesis":"Planet's moat is widening, but primarily through accumulated data, cadence and workflow integration rather than exclusive access to satellites. The archive becomes more useful as the time series lengthens; Pelican/Tanager add complementary resolution and spectral data, and AI can raise archive utility. NDR and recurring ACV support customer stickiness. Still, imagery is multi-sourceable and well-funded competitors can deploy new constellations, so commoditization resilience is only strong, not exceptional.",
-  "evidence":[
-    {"claim":"Planet's daily collection model creates a proprietary longitudinal archive whose utility increases for change detection and model training over time.","source_type":"filing","source":"Uploaded FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-03-23","value":"Daily collection and historical archive","fact_or_estimate":"fact"},
-    {"claim":"FY2026 NDR was 116% and recurring ACV 98%, evidence that customers expand usage despite alternative imagery sources.","source_type":"filing","source":"Uploaded FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-03-23","value":"NDR 116%; recurring ACV 98%","fact_or_estimate":"fact"},
-    {"claim":"Pelican, Tanager and SuperDove deployments broaden the same platform across high-resolution, hyperspectral and broad-area monitoring.","source_type":"ir","source":"Uploaded 2026-09-03 8-K Exhibit 99.1","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"10 Pelicans on orbit; Tanager-2 and 18 SuperDoves shipped","fact_or_estimate":"fact"},
-    {"claim":"Planet's agentic AI application entered open beta to make its global archive queryable through natural language.","source_type":"ir","source":"Uploaded 2026-09-03 8-K Exhibit 99.1","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"Agentic AI open beta","fact_or_estimate":"fact"}
+  "agent_id": "MT",
+  "ticker": "PL",
+  "as_of_date": "2026-09-17",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 78.75,
+  "confidence_0_1": 0.84,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Every observation adds to a proprietary longitudinal archive, while the fleet, ground systems and software improve refresh and resolution. New AI tools can make that archive easier to query, increasing data utility and customer workflow integration.",
+  "bear_case": "Raw imagery is increasingly available from commercial and sovereign constellations. Customers can multi-home, launch costs are falling for rivals, and downstream AI vendors may capture more value than the data originator.",
+  "thesis": "Planet's moat is widening, but primarily through accumulated data, cadence and workflow integration rather than exclusive access to satellites. The archive becomes more useful as the time series lengthens; Pelican/Tanager add complementary resolution and spectral data, and AI can raise archive utility. NDR and recurring ACV support customer stickiness. Still, imagery is multi-sourceable and well-funded competitors can deploy new constellations, so commoditization resilience is only strong, not exceptional.",
+  "evidence": [
+    {
+      "claim": "Planet's daily collection model creates a proprietary longitudinal archive whose utility increases for change detection and model training over time.",
+      "source_type": "filing",
+      "source": "Uploaded FY2026 Form 10-K",
+      "period": "FY2026",
+      "as_of_date": "2026-03-23",
+      "value": "Daily collection and historical archive",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2026 NDR was 116% and recurring ACV 98%, evidence that customers expand usage despite alternative imagery sources.",
+      "source_type": "filing",
+      "source": "Uploaded FY2026 Form 10-K",
+      "period": "FY2026",
+      "as_of_date": "2026-03-23",
+      "value": "NDR 116%; recurring ACV 98%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Pelican, Tanager and SuperDove deployments broaden the same platform across high-resolution, hyperspectral and broad-area monitoring.",
+      "source_type": "ir",
+      "source": "Uploaded 2026-09-03 8-K Exhibit 99.1",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-09-03",
+      "value": "10 Pelicans on orbit; Tanager-2 and 18 SuperDoves shipped",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Planet's agentic AI application entered open beta to make its global archive queryable through natural language.",
+      "source_type": "ir",
+      "source": "Uploaded 2026-09-03 8-K Exhibit 99.1",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-09-03",
+      "value": "Agentic AI open beta",
+      "fact_or_estimate": "fact"
+    }
   ],
-  "counterevidence":[
+  "counterevidence": [
     "Customers can combine Planet with other commercial and sovereign imagery sources.",
     "Falling launch and satellite-component costs lower barriers for new constellation competitors.",
     "Raw imagery pricing can commoditize even if analytic demand grows.",
     "AI models may make third-party data more substitutable or shift value capture downstream."
   ],
-  "unknowns":[
+  "unknowns": [
     "Pricing power by product and customer segment.",
     "Unique model lift attributable to Planet's archive versus other data sources.",
     "Customer switching costs after workflow integrations are established.",
     "Competitive cadence and cost per useful observation over five years."
   ],
-  "uncertainties":[
-    {"criterion_id":"switching_pricing","severity":"material","rationale":"Retention is strong, but direct pricing-power and switching-cost evidence is limited."},
-    {"criterion_id":"network_data_ecosystem","severity":"material","rationale":"The longitudinal archive has a credible compounding data advantage, though quantitative model lift is undisclosed."},
-    {"criterion_id":"commoditization_resilience","severity":"material","rationale":"Multi-sourcing and falling launch costs keep raw imagery vulnerable to commoditization."}
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Retention is strong, but direct pricing-power and switching-cost evidence is limited."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "The longitudinal archive has a credible compounding data advantage, though quantitative model lift is undisclosed."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Multi-sourcing and falling launch costs keep raw imagery vulnerable to commoditization."
+    }
   ],
-  "falsifiers":[
+  "falsifiers": [
     "NDR and recurring ACV weaken while rival constellation capacity rises.",
     "AI applications fail to improve pricing, usage or retention from the proprietary archive.",
     "Competitors match cadence and quality at lower cost without needing Planet's historical data."
   ],
-  "hard_veto_flags":[
-    {"veto":"해자의 지속적인 축소","status":"cleared","rationale":"Current evidence shows expanding recurring usage, a growing proprietary archive and broader sensor capabilities rather than persistent moat erosion."}
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Current evidence shows expanding recurring usage, a growing proprietary archive and broader sensor capabilities rather than persistent moat erosion."
+    }
   ],
-  "key_kpis":[
-    {"name":"NDR / recurring ACV","direction":"stable/up","threshold":"Retention and expansion remain strong as competition rises","cadence":"quarterly/annual"},
-    {"name":"Archive/AI monetization","direction":"up","threshold":"AI/data products lift ARPU, usage or margins","cadence":"semiannual"},
-    {"name":"Cost per useful observation","direction":"down","threshold":"Fleet economics improve relative to rival alternatives","cadence":"annual"}
+  "key_kpis": [
+    {
+      "name": "NDR / recurring ACV",
+      "direction": "stable/up",
+      "threshold": "Retention and expansion remain strong as competition rises",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Archive/AI monetization",
+      "direction": "up",
+      "threshold": "AI/data products lift ARPU, usage or margins",
+      "cadence": "semiannual"
+    },
+    {
+      "name": "Cost per useful observation",
+      "direction": "down",
+      "threshold": "Fleet economics improve relative to rival alternatives",
+      "cadence": "annual"
+    }
   ],
-  "next_checks":["AI application monetization","Pricing/retention after competitor capacity additions","Pelican/Tanager utilization and margins"],
-  "verdict":"support",
-  "subscores":[
-    {"criterion_id":"switching_pricing","score_0_100":80,"rationale":"High recurring ACV and NDR indicate strengthening customer relationships, though pricing power is not directly disclosed."},
-    {"criterion_id":"network_data_ecosystem","score_0_100":85,"rationale":"The daily longitudinal archive compounds in usefulness and supports higher-layer analytics and AI."},
-    {"criterion_id":"commoditization_resilience","score_0_100":70,"rationale":"Archive and cadence provide defenses, but raw imagery remains multi-sourceable and increasingly competitive."}
+  "next_checks": [
+    "AI application monetization",
+    "Pricing/retention after competitor capacity additions",
+    "Pelican/Tanager utilization and margins"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 80,
+      "rationale": "High recurring ACV and NDR indicate strengthening customer relationships, though pricing power is not directly disclosed."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 85,
+      "rationale": "The daily longitudinal archive compounds in usefulness and supports higher-layer analytics and AI."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 70,
+      "rationale": "Archive and cadence provide defenses, but raw imagery remains multi-sourceable and increasingly competitive."
+    }
   ]
 }
