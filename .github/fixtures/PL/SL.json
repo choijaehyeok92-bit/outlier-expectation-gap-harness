@@ -1,0 +1,48 @@
+{
+  "agent_id":"SL","ticker":"PL","as_of_date":"2026-09-17","domain":"structural_leadership","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":82.5,"confidence_0_1":0.88,"bull_score":90,"bear_score":65,
+  "bull_case":"Persistent Earth observation is shifting geospatial intelligence from episodic tasking to continuous monitoring. Planet's daily global coverage, expanding high-resolution/hyperspectral fleet and sovereign programs position it to help define this category.",
+  "bear_case":"Demand can remain lumpy and government-heavy, while national constellations and commercial rivals may narrow the scarcity value of imagery. Structural demand growth does not guarantee Planet captures the economics.",
+  "thesis":"Planet is a structural leader rather than a passive space-cycle beneficiary. Its core change is moving Earth observation from occasional image purchases toward persistent monitoring and machine-readable longitudinal data. FY27 Q2 growth, 98% recurring ACV, large RPO/backlog, Pelican/Tanager deployment and new sovereign programs support 5–10 year durability. Leadership is credible but not monopolistic: customer concentration, sovereign procurement and expanding competing constellations keep the score below exceptional.",
+  "evidence":[
+    {"claim":"Planet describes itself as operating the largest Earth-observation fleet and is built around imaging the world every day, enabling persistent rather than episodic monitoring.","source_type":"filing","source":"Uploaded FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-03-23","value":"Daily global monitoring model","fact_or_estimate":"fact"},
+    {"claim":"FY27 Q2 revenue grew 58% YoY, recurring ACV was 98%, RPO was $753.1M and backlog $814.9M.","source_type":"filing","source":"Uploaded 2026-09-03 Form 10-Q and 8-K","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"Revenue +58%; recurring ACV 98%; RPO $753.1M; backlog $814.9M","fact_or_estimate":"fact"},
+    {"claim":"Planet had 10 high-resolution Pelican satellites on orbit and shipped Tanager-2 plus 18 SuperDoves, broadening resolution, spectral and refresh capability.","source_type":"ir","source":"Uploaded 2026-09-03 8-K Exhibit 99.1","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"10 Pelicans; Tanager-2 and 18 SuperDoves shipped","fact_or_estimate":"fact"},
+    {"claim":"FY2026 NDR was 116% and NDR including winbacks 118%, indicating existing customers expanded spend during the structural adoption phase.","source_type":"filing","source":"Uploaded FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-03-23","value":"NDR 116%; NDR incl. winbacks 118%","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "Three customers represented 17%, 11% and 10% of Q2 revenue, so recent growth is not yet broadly distributed.",
+    "Governments and large enterprises can multi-source imagery from commercial and sovereign constellations.",
+    "Satellite replacement, launch availability and regulation create physical bottlenecks absent from pure software platforms.",
+    "Raw imagery can commoditize even while the overall geospatial-intelligence market expands."
+  ],
+  "unknowns":[
+    "Long-run market share in high-frequency commercial Earth observation.",
+    "Economics of sovereign satellite-service programs after full deployment.",
+    "Whether AI applications materially expand non-geospatial user adoption.",
+    "Competitive response from national and private constellations."
+  ],
+  "uncertainties":[
+    {"criterion_id":"secular_durability","severity":"minor","rationale":"Persistent monitoring demand is well evidenced across government and commercial use cases."},
+    {"criterion_id":"category_leadership","severity":"material","rationale":"Planet is a leader, but precise share and pricing-power data are limited."},
+    {"criterion_id":"durability_risks","severity":"material","rationale":"Multi-sourcing, sovereign competition and physical fleet economics remain meaningful."}
+  ],
+  "falsifiers":[
+    "Recurring ACV, NDR and RPO weaken together for several periods despite industry demand growth.",
+    "Competitors achieve comparable cadence and data quality at lower cost, eroding Planet's differentiation.",
+    "Sovereign demand proves episodic rather than creating durable recurring programs."
+  ],
+  "hard_veto_flags":[],
+  "key_kpis":[
+    {"name":"Recurring ACV / NDR","direction":"stable/up","threshold":"Recurring mix remains near 95%+ and NDR stays above 100%","cadence":"quarterly/annual"},
+    {"name":"RPO/backlog conversion","direction":"up","threshold":"Contracted demand converts without margin deterioration","cadence":"quarterly"},
+    {"name":"Fleet capability and utilization","direction":"up","threshold":"Pelican/Tanager deployment expands paid use cases faster than fleet cost","cadence":"semiannual"}
+  ],
+  "next_checks":["FY27 Q3 recurring metrics and RPO conversion","Pelican/Tanager commercial utilization","Breadth of non-government customer growth"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"secular_durability","score_0_100":85,"rationale":"Continuous monitoring and geospatial intelligence have multi-year structural demand across defense, climate, agriculture and infrastructure."},
+    {"criterion_id":"category_leadership","score_0_100":85,"rationale":"Planet's daily global fleet and archive materially shape the persistent-monitoring category."},
+    {"criterion_id":"durability_risks","score_0_100":75,"rationale":"Multiple end markets buffer demand, but competing constellations and government procurement constrain durability."}
+  ]
+}
