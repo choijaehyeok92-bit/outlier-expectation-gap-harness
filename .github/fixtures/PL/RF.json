@@ -1,0 +1,53 @@
+{
+  "agent_id":"RF","ticker":"PL","as_of_date":"2026-09-17","domain":"reinvestment_fcf","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":65.5,"confidence_0_1":0.82,"bull_score":85,"bear_score":45,
+  "bull_case":"Planet can reinvest in higher-resolution, hyperspectral and software capabilities while revenue scales faster than fleet cost. Positive H1 FCF and large backlog suggest the business can cross into self-funded compounding if capex intensity falls.",
+  "bear_case":"The model remains capital intensive: fleet replacement, launches, R&D and SBC can absorb much of enterprise growth. Recent positive cash flow benefited from deferred revenue and receivable movements, while ATM and warrant issuance diluted owners.",
+  "thesis":"Reinvestment runway is large but incremental ROIC and FCF/share quality are not yet proven. FY27 H1 OCF was $68.4M and reported FCF $21.3M, yet OCF benefited from a $47.1M increase in deferred revenue and a $23.9M receivables decline. H1 PP&E purchases were $44.7M, SBC $33.5M, and the company raised $122.4M gross via ATM plus $107.8M from warrant exercises. This is adequate for a Moonshot but far below a mature Compounder profile.",
+  "evidence":[
+    {"claim":"FY27 H1 operating cash flow was $68.4M; reported FCF was $21.3M and PP&E purchases were $44.7M.","source_type":"filing","source":"Uploaded 2026-09-03 Form 10-Q and 8-K","period":"FY2027 H1","as_of_date":"2026-09-03","value":"OCF $68.4M; FCF $21.3M; PP&E $44.7M","fact_or_estimate":"fact"},
+    {"claim":"H1 OCF benefited from a $47.1M increase in deferred revenue and $23.9M decrease in accounts receivable, so current cash generation includes working-capital timing.","source_type":"filing","source":"Uploaded 2026-09-03 Form 10-Q","period":"FY2027 H1","as_of_date":"2026-09-03","value":"Deferred revenue +$47.1M; A/R -$23.9M","fact_or_estimate":"fact"},
+    {"claim":"H1 stock-based compensation was $33.5M; unrecognized RSU compensation was $149.5M over about 2.2 years.","source_type":"filing","source":"Uploaded 2026-09-03 Form 10-Q","period":"FY2027 H1","as_of_date":"2026-09-03","value":"SBC $33.5M; unrecognized RSU comp $149.5M","fact_or_estimate":"fact"},
+    {"claim":"The company sold 3.78M shares through its ATM for $122.4M gross in Q2 and received $107.8M from public-warrant exercises in H1.","source_type":"filing","source":"Uploaded 2026-09-03 Form 10-Q","period":"FY2027 H1/Q2","as_of_date":"2026-09-03","value":"ATM $122.4M; warrant proceeds $107.8M","fact_or_estimate":"fact"},
+    {"claim":"FY27 revenue guidance of $430M-$441M and capex guidance of $100M-$115M imply capex remains roughly one quarter of revenue at the current scale.","source_type":"ir","source":"Uploaded 2026-09-03 8-K Exhibit 99.1","period":"FY2027 guidance","as_of_date":"2026-09-03","value":"Revenue $430M-$441M; capex $100M-$115M","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "Revenue growth and backlog are strong enough that fixed fleet and platform investments can gain operating leverage.",
+    "Positive H1 FCF marks a real improvement from prior negative cash generation.",
+    "ATM shares were sold at $31.95 average net price, materially above the frozen $16.99 price, making that specific issuance less value-destructive than low-price financing.",
+    "A large cash and investment balance gives management time to prove capital efficiency."
+  ],
+  "unknowns":[
+    "Maintenance versus growth share of fleet capex.",
+    "Normalized FCF after working-capital timing effects.",
+    "Long-run SBC and net dilution rate.",
+    "Incremental gross profit per dollar of Pelican/Tanager investment.",
+    "Satellite-service contract ROIC at maturity."
+  ],
+  "uncertainties":[
+    {"criterion_id":"incremental_roic","severity":"critical","rationale":"Strong demand is evident, but full-cycle fleet and software returns are not yet measurable."},
+    {"criterion_id":"reinvestment_runway","severity":"minor","rationale":"Multiple products, geographies and government/commercial use cases provide a long runway."},
+    {"criterion_id":"fcf_per_share_quality","severity":"critical","rationale":"Working-capital timing, SBC, ATM and warrant issuance materially complicate current per-share FCF."}
+  ],
+  "falsifiers":[
+    "Capex and SBC remain proportional to revenue such that normalized FCF/share fails to compound.",
+    "Incremental satellite deployments do not produce gross-profit growth above their full lifecycle cost.",
+    "Net share dilution remains persistently high after the company has achieved sustainable positive FCF."
+  ],
+  "hard_veto_flags":[
+    {"veto":"증분 ROIC의 구조적 붕괴","status":"cleared","rationale":"Incremental ROIC is unproven, but strong revenue/RPO growth and emerging positive FCF do not show a structural collapse."},
+    {"veto":"장기간 지속되는 과도한 희석","status":"conditional","rationale":"Recent ATM, warrant issuance and significant SBC make dilution material. It is not yet a proven long-term veto, but must decline as FCF matures; persistent mid-to-high single-digit annual net dilution would trigger the veto."}
+  ],
+  "key_kpis":[
+    {"name":"Normalized FCF/share","direction":"up","threshold":"Positive after normalizing working capital and compounding faster than diluted shares","cadence":"quarterly/annual"},
+    {"name":"Capex intensity","direction":"down","threshold":"Capex/revenue declines as fleet scales","cadence":"annual"},
+    {"name":"Net dilution","direction":"down","threshold":"Share-count growth trends toward low single digits or less","cadence":"quarterly"}
+  ],
+  "next_checks":["FY27 Q3 normalized FCF bridge","Maintenance versus growth capex disclosure","ATM/SBC/share-count trend"],
+  "verdict":"neutral",
+  "subscores":[
+    {"criterion_id":"incremental_roic","score_0_100":60,"rationale":"Demand and operating leverage are promising, but full-cycle satellite returns remain uncertain."},
+    {"criterion_id":"reinvestment_runway","score_0_100":85,"rationale":"Persistent monitoring, sovereign services, higher-resolution/hyperspectral data and AI provide multiple long-duration reinvestment paths."},
+    {"criterion_id":"fcf_per_share_quality","score_0_100":55,"rationale":"Positive FCF is emerging, but working capital, SBC and recent equity issuance materially weaken current per-share quality."}
+  ]
+}
