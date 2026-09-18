@@ -57,6 +57,12 @@
       "name": "파괴적 혁신",
       "in_core_score": false,
       "note": "100점 핵심 점수에는 합산하지 않는 독립 평가축. 종목 유형(archetype) 분류와 IC 판단에 사용한다. 컴파운더형 기업이 혁신 축 때문에 부당하게 감점되지 않도록 분리했다."
+    },
+    {
+      "id": "turnaround_quality",
+      "name": "턴어라운드 품질",
+      "in_core_score": false,
+      "note": "100점 핵심 점수에는 합산하지 않는 독립 평가축. 일시적 반등이 아니라 운영·재무·자본배분의 검증 가능한 회복인지 평가하고 Turnaround archetype 분류에 사용한다."
     }
   ],
   "archetypes": {
@@ -71,10 +77,26 @@
         "description": "테슬라·팔란티어·엔비디아·구글·아마존의 초기 형태처럼 산업을 재편하는 파괴적 혁신성을 가진 기업. 고밸류에이션을 용인한다.",
         "valuation_tolerant": true,
         "conditions": [
-          {"field": "domain.disruptive_innovation", "op": ">=", "value": 80},
-          {"field": "domain.structural_leadership", "op": ">=", "value": 75},
-          {"field": "domain.asymmetry", "op": ">=", "value": 75},
-          {"field": "domain.financial_survival", "op": ">=", "value": 60}
+          {
+            "field": "domain.disruptive_innovation",
+            "op": ">=",
+            "value": 80
+          },
+          {
+            "field": "domain.structural_leadership",
+            "op": ">=",
+            "value": 75
+          },
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 75
+          },
+          {
+            "field": "domain.financial_survival",
+            "op": ">=",
+            "value": 60
+          }
         ],
         "position_cap": "1-3% (문샷 초기 상한 — 채택·단위경제 증거 증가 시 IC 승인으로 단계 확대)",
         "position_guidance": "고밸류에이션은 용인하되 '현재가격이 비현실적인 Bull Case 이상을 요구' Hard Veto는 그대로 적용한다. 진입은 소액으로 하고 증거에 비례해 늘린다."
@@ -86,11 +108,31 @@
         "description": "넓어지는 해자, 높은 증분 ROIC와 재투자 여력으로 장기 복리를 창출하는 능력이 뛰어난 기업.",
         "valuation_tolerant": false,
         "conditions": [
-          {"field": "domain.moat_trajectory", "op": ">=", "value": 80},
-          {"field": "domain.reinvestment_fcf", "op": ">=", "value": 80},
-          {"field": "domain.management_allocation", "op": ">=", "value": 75},
-          {"field": "domain.financial_survival", "op": ">=", "value": 75},
-          {"field": "domain.expectation_valuation", "op": ">=", "value": 50}
+          {
+            "field": "domain.moat_trajectory",
+            "op": ">=",
+            "value": 80
+          },
+          {
+            "field": "domain.reinvestment_fcf",
+            "op": ">=",
+            "value": 80
+          },
+          {
+            "field": "domain.management_allocation",
+            "op": ">=",
+            "value": 75
+          },
+          {
+            "field": "domain.financial_survival",
+            "op": ">=",
+            "value": 75
+          },
+          {
+            "field": "domain.expectation_valuation",
+            "op": ">=",
+            "value": 50
+          }
         ],
         "position_guidance": "장기 보유가 기본이다. 밸류에이션 과열 시 매도보다 추가매수 속도를 조절한다."
       },
@@ -101,12 +143,68 @@
         "description": "현재가격이 Base 가치 전후에 있으면서 아웃라이어 성격(구조적 리더십·비대칭 상승여력)이 강한 기업.",
         "valuation_tolerant": false,
         "conditions": [
-          {"field": "signal.price_to_base_value", "op": "between", "value": [0.8, 1.2]},
-          {"field": "domain.structural_leadership", "op": ">=", "value": 75},
-          {"field": "domain.asymmetry", "op": ">=", "value": 75},
-          {"field": "domain.moat_trajectory", "op": ">=", "value": 70}
+          {
+            "field": "signal.price_to_base_value",
+            "op": "between",
+            "value": [
+              0.8,
+              1.2
+            ]
+          },
+          {
+            "field": "domain.structural_leadership",
+            "op": ">=",
+            "value": 75
+          },
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 75
+          },
+          {
+            "field": "domain.moat_trajectory",
+            "op": ">=",
+            "value": 70
+          }
         ],
         "position_guidance": "Base 가격대 진입이므로 기대수익은 Bull 경로 실현 증거에서 나온다. 핵심 KPI 확인 시 확대한다."
+      },
+      {
+        "id": "turnaround",
+        "label": "턴어라운드형",
+        "label_en": "Turnaround",
+        "description": "사업·마진·현금흐름이 저점에서 회복 중이며, 비용·포트폴리오·부채·가격·운영 개선 등 회사가 통제 가능한 self-help가 정상화 이익으로 연결될 가능성이 높은 기업.",
+        "valuation_tolerant": false,
+        "min_gate_score": 55,
+        "conditions": [
+          {
+            "field": "domain.turnaround_quality",
+            "op": ">=",
+            "value": 75
+          },
+          {
+            "field": "domain.financial_survival",
+            "op": ">=",
+            "value": 65
+          },
+          {
+            "field": "domain.management_allocation",
+            "op": ">=",
+            "value": 60
+          },
+          {
+            "field": "domain.expectation_valuation",
+            "op": ">=",
+            "value": 65
+          },
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 65
+          }
+        ],
+        "position_cap": "1-3% (턴어라운드 초기 상한 — 2개 이상 분기의 실적 회복·FCF 정상화·부채축소 증거 후 IC 승인으로 단계 확대)",
+        "position_guidance": "가이던스보다 실제 분기 실적의 inflection을 우선한다. 회복이 단순 경기반등·원자재 가격·일회성 비용절감에 의존하면 감점하며, 정상화 FCF/share와 순부채 감소가 확인될 때만 비중을 늘린다."
       },
       {
         "id": "expectation_gap",
@@ -115,11 +213,34 @@
         "description": "적당한 성장성에도 밸류에이션이 크게 낮아져 시장이 잘못 판단하고 있을 가능성이 있는 기업.",
         "valuation_tolerant": false,
         "conditions": [
-          {"field": "signal.price_to_base_value", "op": "<=", "value": 0.8},
-          {"field": "signal.valuation_percentile_5y", "op": "<=", "value": 0.3},
-          {"field": "signal.revenue_cagr_next_3y", "op": "between", "value": [0.03, 0.2]},
-          {"field": "domain.expectation_valuation", "op": ">=", "value": 75},
-          {"field": "domain.financial_survival", "op": ">=", "value": 65}
+          {
+            "field": "signal.price_to_base_value",
+            "op": "<=",
+            "value": 0.8
+          },
+          {
+            "field": "signal.valuation_percentile_5y",
+            "op": "<=",
+            "value": 0.3
+          },
+          {
+            "field": "signal.revenue_cagr_next_3y",
+            "op": "between",
+            "value": [
+              0.03,
+              0.2
+            ]
+          },
+          {
+            "field": "domain.expectation_valuation",
+            "op": ">=",
+            "value": 75
+          },
+          {
+            "field": "domain.financial_survival",
+            "op": ">=",
+            "value": 65
+          }
         ],
         "position_guidance": "시장 오판의 원인과 재평가 촉매를 명시한다. 밸류 트랩(구조적 쇠퇴) 반증조건을 우선 추적한다."
       },
