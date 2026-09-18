@@ -5,7 +5,7 @@
   "domain": "moat_trajectory",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 86,
+  "score_0_100": 85,
   "confidence_0_1": 0.84,
   "bull_score": 95,
   "bear_score": 65,
@@ -29,6 +29,15 @@
       "period": "H1 2026",
       "as_of_date": "2026-08-14",
       "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026 H1 filing shows revenue KRW 131.895T and operating cash flow KRW 91.743T, supporting scale and cash-generation checks.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": "131.895T/91.743T",
       "fact_or_estimate": "fact"
     }
   ],
@@ -63,18 +72,18 @@
   "subscores": [
     {
       "criterion_id": "switching_pricing",
-      "score_0_100": 86,
-      "rationale": "switching_pricing: 공시 수치와 산업 구조를 함께 반영한 86점 구간."
+      "score_0_100": 85,
+      "rationale": "switching_pricing: validator의 5점 앵커 규칙과 frozen evidence를 적용한 85점."
     },
     {
       "criterion_id": "network_data_ecosystem",
-      "score_0_100": 86,
-      "rationale": "network_data_ecosystem: 공시 수치와 산업 구조를 함께 반영한 86점 구간."
+      "score_0_100": 85,
+      "rationale": "network_data_ecosystem: validator의 5점 앵커 규칙과 frozen evidence를 적용한 85점."
     },
     {
       "criterion_id": "commoditization_resilience",
-      "score_0_100": 86,
-      "rationale": "commoditization_resilience: 공시 수치와 산업 구조를 함께 반영한 86점 구간."
+      "score_0_100": 85,
+      "rationale": "commoditization_resilience: validator의 5점 앵커 규칙과 frozen evidence를 적용한 85점."
     }
   ],
   "uncertainties": [
