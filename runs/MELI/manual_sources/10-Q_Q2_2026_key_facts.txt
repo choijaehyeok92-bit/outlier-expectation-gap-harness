@@ -1,0 +1,13 @@
+Source: user-uploaded MercadoLibre Q2 2026 Form 10-Q filed 2026-08-06.
+H1 revenue $19.014B vs $12.725B; Q2 revenue $10.169B vs $6.790B.
+H1 operating margin 6.8% vs 12.5%; Q2 operating margin 6.7% vs 12.2%. H1 net income $883M vs $1.017B.
+H1 CFO $5.737B; H1 Adjusted FCF $158M vs $512M.
+Fintech MAU 88M vs 68M; unique active buyers Q2 89M vs 71M.
+H1 GMV $40.877B vs $28.588B; Q2 GMV $21.926B vs $15.258B.
+H1 TPV $188.138B vs $122.905B; Q2 TPV $100.952B vs $64.602B.
+H1 NIMAL 19.4% vs 22.8%; Q2 NIMAL 20.7% vs 23.0%.
+Gross loans receivable $16.375B; allowance $4.379B; total past due $4.638B. Off-balance unused credit-card commitments $14.047B.
+No single customer >5% of revenue.
+Total debt $13.176B; liquid assets used in company net-debt calculation $6.751B; net debt $6.425B.
+Uncommenced warehouse leases $2.254B; remaining Gol logistics-service commitment $272M.
+Shares outstanding 50.696802M.
