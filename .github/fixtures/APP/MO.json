@@ -1,0 +1,103 @@
+{
+  "agent_id": "MO",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "macro_overlay",
+  "role": "overlay",
+  "analysis_status": "complete",
+  "score_0_100": 45,
+  "confidence_0_1": 0.94,
+  "thesis": "Macro is mixed but restrictive for a high-duration growth multiple. The Fed raised the target range to 3.75%-4.00% on Sep. 16 and the 10-year real Treasury yield was 2.61% on Sep. 17, increasing discount-rate pressure. Offsetting this, NFCI remains looser than average and IG/HY spreads are tight, so there is no systemic funding stress. APP's large FCF and modest net debt reduce financing sensitivity versus small-cap growth. Recommend 0.85x pacing rather than a thesis downgrade.",
+  "evidence": [
+    {
+      "claim": "The FOMC raised the federal-funds target range to 3.75%-4.00% on Sep. 16.",
+      "source_type": "other",
+      "source": "Federal Reserve FOMC statement 2026-09-16",
+      "period": "September 2026",
+      "as_of_date": "2026-09-16",
+      "value": "3.75%-4.00%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The 10-year real Treasury yield was 2.61% on Sep. 17.",
+      "source_type": "other",
+      "source": "U.S. Treasury daily real yield curve",
+      "period": "2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": "10Y real 2.61%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Chicago Fed NFCI was -0.560 for the week ending Sep. 11, indicating looser-than-average financial conditions.",
+      "source_type": "other",
+      "source": "Chicago Fed/FRED NFCI",
+      "period": "week ending 2026-09-11",
+      "as_of_date": "2026-09-16",
+      "value": "NFCI -0.560",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "IG OAS was 0.78% and HY OAS 2.70% on Sep. 16, indicating contained credit stress.",
+      "source_type": "other",
+      "source": "ICE BofA indices via FRED",
+      "period": "2026-09-16",
+      "as_of_date": "2026-09-17",
+      "value": "IG 0.78%; HY 2.70%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "APP had H1 FCF of $2.150B and only modest net debt, reducing dependence on external capital.",
+      "source_type": "filing",
+      "source": "Uploaded FY2026 Q2 10-Q",
+      "period": "FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "FCF $2.150B; net debt ~$462M",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Tight credit spreads and negative NFCI indicate no broad liquidity shock.",
+    "APP is internally financed and therefore less sensitive to capital-market closure.",
+    "Strong private demand can support ad budgets even with restrictive rates.",
+    "Lower bond yields after the FOMC meeting could ease duration pressure if sustained."
+  ],
+  "unknowns": [
+    "Whether the September hike is followed by more tightening.",
+    "Persistence of real yields above 2.5%.",
+    "Ad-budget sensitivity to slower nominal growth.",
+    "Whether risk appetite for high-multiple software/adtech deteriorates."
+  ],
+  "falsifiers": [
+    "Real yields fall materially while credit remains easy, supporting a higher multiplier.",
+    "NFCI turns positive and spreads widen sharply, requiring lower pacing.",
+    "APP FCF/share weakens enough that macro funding conditions become operationally relevant."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "10-year real yield",
+      "direction": "down",
+      "threshold": "Below ~2.25% supports faster pacing; sustained >2.75% warrants caution",
+      "cadence": "weekly"
+    },
+    {
+      "name": "NFCI / credit spreads",
+      "direction": "stable",
+      "threshold": "Negative NFCI and contained spreads support risk budget",
+      "cadence": "weekly"
+    },
+    {
+      "name": "Ad-demand macro sensitivity",
+      "direction": "stable",
+      "threshold": "No sharp slowdown in advertiser spend",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next FOMC path.",
+    "Real-yield trend.",
+    "Credit spreads and ad-spend indicators."
+  ],
+  "verdict": "neutral",
+  "risk_budget_multiplier": 0.85
+}
