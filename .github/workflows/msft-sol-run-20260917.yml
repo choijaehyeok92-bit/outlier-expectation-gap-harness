@@ -1,8 +1,8 @@
 name: MSFT GPT-5.6 Sol harness run 2026-09-17
 
 on:
-  push:
-    branches: [persist/msft-20260917-run]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -10,10 +10,12 @@ permissions:
 
 jobs:
   harness:
-    if: ${{ !contains(github.event.head_commit.message || '', 'persist: commit MSFT run outputs') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: persist/msft-20260917-run
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
