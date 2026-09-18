@@ -1,0 +1,97 @@
+{
+  "agent_id": "MT",
+  "ticker": "000660",
+  "as_of_date": "2026-09-17",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 86,
+  "confidence_0_1": 0.84,
+  "bull_score": 95,
+  "bear_score": 65,
+  "bull_case": "HBM 수율과 고객 qualification 학습곡선이 다음 세대에서도 반복 우위를 만든다.",
+  "bear_case": "메모리는 본질적으로 표준화된 부품이고 경쟁사 증설이 장기 rent를 압박할 수 있다.",
+  "thesis": "해자 방향은 강화다. HBM3E→HBM4→HBM4E로 기술 전환을 선도하고, 패키징/수율/고객 인증의 누적학습이 경쟁 진입장벽을 높인다. H1 DRAM 매출과 이익 폭증은 단순 발표가 아니라 경제적 rent로 전환된 증거다.",
+  "evidence": [
+    {
+      "claim": "2024 HBM3E 세계 최초 양산, 2025 HBM4 개발·양산체제, 2026 HBM4E 샘플 공급의 연속성이 있다.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 영업이익률은 약 74%로 전년 대비 급상승했다.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2026 H1 실적에는 메모리 업사이클과 비영업 금융손익이 크게 반영되어 정상화 수준을 과대평가할 위험이 있다."
+  ],
+  "unknowns": [
+    "HBM4/HBM4E 공급 확대 이후 ASP·수율·점유율과 전통 DRAM/NAND 정상화 마진."
+  ],
+  "falsifiers": [
+    "HBM ASP·수요가 예상보다 빠르게 정상화되고 owner FCF/share가 2년 연속 감소하면 구조 성장 가설을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "제품 리더십과 매출/이익 지표가 확대돼 해자의 지속 축소 증거가 없다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "cycle-normalized growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q3/Q4 2026 HBM mix, DRAM/NAND ASP, capex, OCF, net cash를 재확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 86,
+      "rationale": "switching_pricing: 공시 수치와 산업 구조를 함께 반영한 86점 구간."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 86,
+      "rationale": "network_data_ecosystem: 공시 수치와 산업 구조를 함께 반영한 86점 구간."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 86,
+      "rationale": "commoditization_resilience: 공시 수치와 산업 구조를 함께 반영한 86점 구간."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    }
+  ]
+}
