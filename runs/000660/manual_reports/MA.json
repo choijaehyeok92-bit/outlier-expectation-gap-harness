@@ -5,7 +5,7 @@
   "domain": "management_allocation",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 78,
+  "score_0_100": 80,
   "confidence_0_1": 0.78,
   "bull_score": 89,
   "bear_score": 55,
@@ -29,6 +29,15 @@
       "period": "H1 2026",
       "as_of_date": "2026-08-14",
       "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026 H1 filing shows revenue KRW 131.895T and operating cash flow KRW 91.743T, supporting scale and cash-generation checks.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": "131.895T/91.743T",
       "fact_or_estimate": "fact"
     }
   ],
@@ -63,18 +72,18 @@
   "subscores": [
     {
       "criterion_id": "capital_allocation",
-      "score_0_100": 78,
-      "rationale": "capital_allocation: 공시 수치와 산업 구조를 함께 반영한 78점 구간."
+      "score_0_100": 80,
+      "rationale": "capital_allocation: validator의 5점 앵커 규칙과 frozen evidence를 적용한 80점."
     },
     {
       "criterion_id": "governance_integrity",
-      "score_0_100": 78,
-      "rationale": "governance_integrity: 공시 수치와 산업 구조를 함께 반영한 78점 구간."
+      "score_0_100": 80,
+      "rationale": "governance_integrity: validator의 5점 앵커 규칙과 frozen evidence를 적용한 80점."
     },
     {
       "criterion_id": "execution_adaptability",
-      "score_0_100": 78,
-      "rationale": "execution_adaptability: 공시 수치와 산업 구조를 함께 반영한 78점 구간."
+      "score_0_100": 80,
+      "rationale": "execution_adaptability: validator의 5점 앵커 규칙과 frozen evidence를 적용한 80점."
     }
   ],
   "uncertainties": [
