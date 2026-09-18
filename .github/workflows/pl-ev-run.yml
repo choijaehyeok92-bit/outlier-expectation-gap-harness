@@ -1,0 +1,72 @@
+name: PL EV run 2026-09-17
+
+on:
+  push:
+    branches:
+      - run/pl-2026-09-17-sol-ev
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Execute PL EV harness
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/execution.log) 2>&1
+          python harness.py selftest
+          python harness.py init PL --as-of 2026-09-17
+          mkdir -p runs/PL/sources runs/PL/prompts
+          cp .github/fixtures/PL/source_README.md runs/PL/sources/README.md
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("runs/PL/company_context.json")
+          j=json.loads(p.read_text())
+          j.update({
+              "ticker":"PL",
+              "company_name":"Planet Labs PBC",
+              "as_of_date":"2026-09-17",
+              "currency":"USD",
+              "current_price":16.99,
+              "shares_diluted":359594052,
+              "market_cap_usd":6181777333.11,
+              "enterprise_value":5764614333.11,
+              "net_cash_per_share":1.1465310036384453,
+              "valuation_percentile_5y":None,
+              "valuation_metric":"deterministic owner-FCF/share DCF",
+              "known_sources":[
+                  "FY2026 Form 10-K filed 2026-03-23",
+                  "FY2027 Q1 Form 10-Q filed 2026-06-05",
+                  "FY2027 Q2 Form 10-Q filed 2026-09-03",
+                  "Form 8-K / Q2 earnings release furnished 2026-09-03",
+                  "PL 2026-09-17 historical NYSE close"
+              ],
+              "special_questions":[
+                  "Does PL qualify for Moonshot under the <=$20B market-cap gate?",
+                  "Can sovereign satellite services and AI-ready data convert growth into durable owner FCF/share without excessive dilution?"
+              ]
+          })
+          p.write_text(json.dumps(j,ensure_ascii=False,indent=2)+"\n")
+          PY
+          python harness.py freeze PL --provider openai --model gpt-5.6-sol --reasoning-effort high
+          python harness.py plan PL
+          python harness.py prompt PL EV --out runs/PL/prompts/EV.md
+          cp .github/fixtures/PL/EV.json runs/PL/reports/EV.json
+          python harness.py validate PL EV
+          python harness.py digest PL
+          python harness.py aggregate PL
+          echo "===== FINAL AGGREGATE ====="
+          cat runs/PL/aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PL-harness-run-2026-09-17-sol-ev
+          path: |
+            runs/PL
+            runlogs/execution.log
