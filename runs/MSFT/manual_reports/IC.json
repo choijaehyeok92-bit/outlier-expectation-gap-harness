@@ -5,17 +5,17 @@
   "domain": "investment_committee",
   "role": "chair",
   "analysis_status": "complete",
-  "score_0_100": 71.74,
+  "score_0_100": 71.84,
   "confidence_0_1": 0.75,
-  "thesis": "기계적 집계는 약 71.7점의 Emerging Outlier이며, OpenAI provider 하향보정 후에도 MT·RF·MA·FS·EV와 price/Base 조건을 간신히 충족해 Compounder로 분류된다. Hard Veto는 모두 cleared다. 다만 $497.75는 Base 약 $500과 거의 같아 기대차가 없고 FY2026 owner FCF/share는 AI capex로 감소했다. 따라서 2–4% 기계적 밴드는 유효하되 macro pacing 0.7과 FCF 회복 확인을 전제로 단계적으로 접근한다.",
+  "thesis": "기계적 집계는 약 71.84점의 Emerging Outlier이며, OpenAI provider 하향보정 후에도 MT·RF·MA·FS·EV와 price/Base 조건을 간신히 충족해 Compounder로 분류된다. Hard Veto는 모두 cleared다. 다만 $497.75는 Base 약 $500과 거의 같아 기대차가 없고 FY2026 owner FCF/share는 AI capex로 감소했다. 따라서 2–4% 기계적 밴드는 유효하되 macro pacing 0.7과 FCF 회복 확인을 전제로 단계적으로 접근한다.",
   "evidence": [
     {
-      "claim": "기계적 aggregate는 core score 약 71.7, ex-valuation 약 75.1, Compounder 조건 충족으로 계산된다.",
+      "claim": "기계적 aggregate는 core score 약 71.84, ex-valuation 약 75.1, Compounder 조건 충족으로 계산된다.",
       "source_type": "other",
       "source": "runs/MSFT/aggregate.json",
       "period": "run 2026-09-17",
       "as_of_date": "2026-09-17",
-      "value": 71.74,
+      "value": 71.84,
       "fact_or_estimate": "interpretation"
     },
     {
