@@ -1,0 +1,55 @@
+{
+  "agent_id":"RT",
+  "ticker":"MSFT",
+  "as_of_date":"2026-09-18",
+  "domain":"red_team",
+  "role":"red_team",
+  "analysis_status":"complete",
+  "score_0_100":68,
+  "confidence_0_1":0.91,
+  "thesis":"The coherent short thesis is that AI demand is real but the market overestimates the economics: Microsoft is shifting from software-like capital intensity toward an accelerator/datacenter cycle with lower gross margins, rapid hardware refresh and heavy upfront commitments. A large drawdown is plausible if owner FCF/share fails to recover while real yields remain high. However, current evidence does not establish accounting impairment, financing dependence, moat collapse, subsidy-driven demand, fatal concentration or structural incremental-ROIC destruction.",
+  "evidence":[
+    {"claim":"FY2026 OCF was $182.935B but PP&E additions were $115.948B, leaving simple OCF-minus-capex of roughly $66.987B and about $9.02/share.","source_type":"filing","source":"Microsoft FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-06-30","value":"OCF $182.935B; PP&E additions $115.948B; simple FCF ~$66.987B","fact_or_estimate":"fact"},
+    {"claim":"Microsoft Cloud gross margin was 66% for FY2026 and 65% in Q4, with AI infrastructure and usage explicitly cited as pressure points.","source_type":"ir","source":"Microsoft FY26 Q4 Investor Metrics and earnings call","period":"FY2026/Q4 FY2026","as_of_date":"2026-07-29","value":"Cloud GM 66% FY26; 65% Q4","fact_or_estimate":"fact"},
+    {"claim":"Q4 capex was about $41B and management said roughly two thirds was for short-lived assets, mainly CPUs and GPUs, underscoring refresh-cycle and depreciation risk.","source_type":"ir","source":"Microsoft FY26 Q4 earnings call","period":"Q4 FY2026","as_of_date":"2026-07-29","value":"Capex ~$41B; ~2/3 short-lived assets","fact_or_estimate":"fact"},
+    {"claim":"Commercial RPO reached $678B; all sequential RPO growth came from customers outside frontier model companies, and RPO excluding OpenAI grew 25%.","source_type":"ir","source":"Microsoft FY26 Q4 earnings call","period":"Q4 FY2026","as_of_date":"2026-07-29","value":"RPO $678B; ex-OpenAI +25%","fact_or_estimate":"fact"},
+    {"claim":"Management concluded ICFR was effective and the independent auditor issued unqualified opinions on both financial statements and internal controls.","source_type":"filing","source":"Microsoft FY2026 Form 10-K Item 9A","period":"FY2026","as_of_date":"2026-07-29","value":"Effective ICFR; unqualified audit opinions","fact_or_estimate":"fact"},
+    {"claim":"The frozen DCF values Bear/Base/Bull at roughly $134.9/$441.3/$712.5 against a $497.75 price, so current valuation requires strong FCF recovery but not a Bull-plus scenario.","source_type":"other","source":"Frozen harness deterministic DCF","period":"10-year model","as_of_date":"2026-09-18","value":"Price/Base 1.128x; price below Bull","fact_or_estimate":"estimate"}
+  ],
+  "counterevidence":[
+    "Azure grew rapidly and management said newly delivered capacity was quickly monetized, arguing against a current demand shortfall.",
+    "The balance sheet remains net cash and FY2026 OCF is enormous, limiting the probability that capex intensity becomes a financing crisis.",
+    "Microsoft’s moat spans identity, productivity, security, developers and cloud infrastructure rather than depending on one AI model.",
+    "RPO excluding OpenAI grew materially, weakening the thesis that current cloud growth is a single-customer artifact."
+  ],
+  "unknowns":[
+    "Full-cycle incremental ROIC after accelerator depreciation and replacement capex.",
+    "Steady-state gross margin and owner FCF/share for AI workloads.",
+    "Economic dependence on OpenAI/frontier-model partnerships after current contracts mature.",
+    "Regulatory impact on Microsoft’s ability to bundle and distribute AI across the enterprise stack."
+  ],
+  "falsifiers":[
+    "Owner FCF/share rises materially over FY2027-29 while Cloud gross margin stabilizes despite continued AI growth.",
+    "Azure/AI gross profit compounds faster than sustaining capex and depreciation over multiple years.",
+    "Copilot/agent adoption produces measurable retention, ARPU and workload expansion without rising net dilution."
+  ],
+  "hard_veto_flags":[
+    {"veto":"경영진 정직성 또는 회계 신뢰성 훼손","status":"cleared","rationale":"FY2026 ICFR was effective and the independent auditor issued unqualified opinions. Investment gains make GAAP net income noisier, but the effects are transparently reconciled rather than concealed."},
+    {"veto":"구조적으로 과도한 외부자본 조달 의존","status":"cleared","rationale":"Microsoft has net cash and $182.9B of FY2026 operating cash flow; the AI buildout is internally funded and does not require structural equity issuance."},
+    {"veto":"고객가치 없이 마케팅·보조금에 의존하는 성장","status":"cleared","rationale":"Paid M365 seats, Azure consumption, broad commercial bookings and ex-OpenAI RPO growth provide direct evidence of willingness to pay without material subsidy dependence."},
+    {"veto":"증분 ROIC의 구조적 붕괴","status":"cleared","rationale":"Capital intensity and full-cycle returns are unresolved, but rapid monetization of added capacity, strong Azure growth and broad RPO do not establish a structural ROIC collapse. This remains the principal monitoring risk, not a confirmed veto."},
+    {"veto":"해자의 지속적인 축소","status":"cleared","rationale":"Model commoditization is a real threat, but current evidence shows expanding usage and monetization across Azure, M365, GitHub and security rather than persistent ecosystem contraction."},
+    {"veto":"단일 제품·단일 고객·단일 규제에 대한 치명적 종속성","status":"cleared","rationale":"OpenAI concentration is material but not fatal: sequential RPO growth came from customers outside frontier model companies and ex-OpenAI RPO grew 25%; Microsoft also has multiple independent profit pools."}
+  ],
+  "key_kpis":[
+    {"name":"Incremental AI gross profit / sustaining capex","direction":"up","threshold":"Gross-profit growth should increasingly exceed depreciation and replacement-capex growth","cadence":"annual/quarterly"},
+    {"name":"Cloud gross margin and owner FCF/share","direction":"up","threshold":"Cloud GM stabilizes/rebounds and owner FCF/share rises from the FY2026 capex-depressed anchor","cadence":"quarterly"},
+    {"name":"RPO ex-OpenAI / customer concentration","direction":"up","threshold":"Broad-customer backlog and revenue grow faster than frontier-model concentration","cadence":"quarterly"}
+  ],
+  "next_checks":[
+    "FY2027 Q1 capex, depreciation, OCF and Agents and Infra margins.",
+    "OpenAI/frontier-model share of RPO and Azure growth.",
+    "Any regulatory remedy affecting M365/Azure/AI bundling or distribution."
+  ],
+  "verdict":"neutral"
+}
