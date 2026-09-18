@@ -1,0 +1,21 @@
+Source: user-uploaded Microsoft Corporation FY2026 Form 10-K filed 2026-07-29.
+Selected primary facts:
+Revenue 331,839 million; FY2025 281,724; FY2024 245,122.
+Operating income 155,237 million; FY2025 128,528; FY2024 109,433.
+Net income 133,749 million; diluted EPS 17.95; diluted shares 7,453 million.
+Microsoft Cloud revenue increased 27% to 214.4 billion.
+Commercial remaining performance obligation increased 84% to 678 billion; total RPO 684 billion; commercial RPO weighted-average duration about 2.3 years; about 30% expected within 12 months.
+Microsoft 365 Commercial cloud revenue +17%; seats +6%. Azure and other cloud services +41%.
+Microsoft Cloud gross margin percentage decreased to 66%, driven by AI infrastructure investment and growing AI product usage, partly offset by efficiency gains.
+Net cash from operations 182,935 million.
+Additions to property and equipment 115,948 million.
+Stock-based compensation expense 12,405 million.
+Research and development 35,562 million.
+Cash and equivalents 20,935 million; short-term investments 55,908 million; total 76,843 million.
+Current portion long-term debt 9,227 million; long-term debt 31,067 million; total debt 40,294 million.
+PP&E net 313,076 million versus 204,966 million prior year.
+Finance lease liabilities 66,594 million; operating lease liabilities 21,925 million.
+Construction commitments 34,566 million; purchase commitments 194,060 million; future operating and finance lease payments including imputed interest 443,506 million.
+Share repurchase program: 36 million shares for 16.7 billion in FY2026; average approximately $463.89; 40.6 billion authorization remaining.
+OpenAI: approximate 25% as-converted equity-method interest; FY2026 commercial-arrangement revenue inclusive of revenue sharing 24.1 billion; OpenAI accounts receivable 6.0 billion; 13.0 billion total funding commitments, 11.9 billion funded.
+FY2026 net gains from OpenAI investment increased net income by about 5.0 billion / diluted EPS by 0.67; management provides adjusted non-GAAP measures excluding these gains.

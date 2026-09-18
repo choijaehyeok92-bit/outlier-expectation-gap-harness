@@ -1,0 +1,111 @@
+{
+  "agent_id": "RF",
+  "ticker": "MSFT",
+  "as_of_date": "2026-09-17",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 79.5,
+  "confidence_0_1": 0.7,
+  "bull_score": 90,
+  "bear_score": 50,
+  "bull_case": "증분 ROIC 약 23%, 내부 재투자 흡수율 83%로 대규모 장기 복리 활주로가 확인된다.",
+  "bear_case": "AI capex가 유지 capex로 굳어지면 높은 회계이익이 주당 현금복리로 전환되지 않는다.",
+  "thesis": "재투자 규모와 수익률은 강하지만 현금복리는 아직 검증 중이다. FY25→FY26 증분 NOPAT 대비 단순 증분 투자자본 수익률은 약 23%로 자본비용을 상회하고, capex+R&D/OCF는 82.8%로 대규모 재투자다. 반면 owner FCF/share는 FY2024 $8.48→FY2026 $7.32로 감소해 현금복리 품질을 제한한다.",
+  "evidence": [
+    {
+      "claim": "FY2026 operating income $155.237B vs FY2025 $128.528B로 증분 NOPAT이 강하다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2025-FY2026",
+      "as_of_date": "2026-06-30",
+      "value": 26.709,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "(capex $115.948B + R&D $35.562B)/OCF $182.935B ≈82.8%다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": 0.828,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "owner FCF/share FY2024 약 $8.48→FY2025 $7.99→FY2026 $7.32다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/README.md",
+      "period": "FY2024-FY2026",
+      "as_of_date": "2026-06-30",
+      "value": "8.48→7.99→7.32",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI 인프라 자본집약도와 OpenAI 관련 경제적 집중은 장기 현금수익률의 핵심 반대근거다."
+  ],
+  "unknowns": [
+    "FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률."
+  ],
+  "falsifiers": [
+    "owner FCF/share가 2개 회계연도 연속 회복하지 못하면 현재 복리 가설을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "증분 ROIC가 자본비용을 크게 상회해 구조적 붕괴 요건이 반증된다."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "희석주식수는 대체로 안정/감소하고 자사주가 SBC 희석을 상쇄한다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "FY27 이후 회복",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "FY27 Q1 10-Q에서 Azure 성장, capex, OCF와 RPO 갱신 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 90,
+      "rationale": "추정 증분 ROIC 약 23%로 9% 요구수익의 2배 이상이다."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 90,
+      "rationale": "(capex+R&D)/OCF≈82.8%이고 증분 ROIC가 자본비용 2배 이상이다."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 55,
+      "rationale": "owner FCF/share가 FY24 $8.48→FY26 $7.32로 투자사이클 중 감소했다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    }
+  ]
+}
