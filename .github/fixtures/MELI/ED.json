@@ -1,0 +1,18 @@
+{
+  "agent_id":"ED","ticker":"MELI","as_of_date":"2026-09-17","domain":"evidence_quality","role":"evidence_auditor","analysis_status":"complete",
+  "score_0_100":90,"confidence_0_1":0.96,
+  "thesis":"Evidence quality is high because the central claims are supported by the FY2025 10-K, FY2026 Q1/Q2 10-Qs and Sep. 14 8-K. The main analytical caution is definition, not source reliability: GAAP CFO is heavily distorted by customer funds, loans receivable and fintech funding, so the company-defined adjusted FCF is the better liquidity proxy. The frozen net-cash input deliberately uses company-defined net debt, including leases, which is conservative but should be kept consistent in future runs.",
+  "evidence":[
+    {"claim":"Revenue, GMV, TPV, operating income, net income and credit provisions are directly supported by filed 10-K/10-Q statements.","source_type":"filing","source":"Uploaded MELI 10-K and Q2 10-Q","period":"FY2025-FY2026 H1","as_of_date":"2026-08-06","value":"Primary-source operating data","fact_or_estimate":"fact"},
+    {"claim":"Adjusted FCF is explicitly reconciled from CFO by customer funds, capex, loans receivable and fintech funding adjustments.","source_type":"filing","source":"Uploaded 10-K and Q2 10-Q","period":"FY2025-FY2026 H1","as_of_date":"2026-08-06","value":"2025 $1.481B; H1 2026 $158M","fact_or_estimate":"fact"},
+    {"claim":"Company-defined net debt at June 30 was $6.425B and available cash/investments $6.751B.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"2026-06-30","as_of_date":"2026-08-06","value":"Net debt $6.425B","fact_or_estimate":"fact"},
+    {"claim":"Sep. 14 financing is directly documented as $1.0B 5.850% notes due 2036.","source_type":"filing","source":"Uploaded 2026-09-14 8-K","period":"2026-09-14","as_of_date":"2026-09-14","value":"$1.0B notes","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":["The frozen price is from secondary historical-price sources rather than a filing.","Adjusted FCF is a company-defined non-GAAP measure and should not be treated as identical to economic owner earnings.","Net debt includes lease liabilities, so comparisons with runs using narrower debt definitions require caution.","Country FX-neutral measures can obscure USD shareholder outcomes if used without reported figures."],
+  "unknowns":["Owner FCF after normalized credit losses and required fintech capital.","Credit vintage disclosures sufficient to estimate through-cycle losses.","Segment ROIC by commerce versus fintech.","Long-run free-shipping cohort payback."],
+  "falsifiers":["Company KPI definitions change materially without comparable recasts.","Adjusted FCF reconciliation ceases to reflect major fintech funding/loan changes.","Primary filings reveal materially weaker credit or liquidity facts than the current digest."],
+  "hard_veto_flags":[],
+  "key_kpis":[{"name":"Adjusted FCF/share","direction":"up","threshold":"Recover on reported reconciled basis","cadence":"quarterly"},{"name":"Credit provision / loan balance","direction":"down","threshold":"Loss intensity stabilizes","cadence":"quarterly"},{"name":"Operating margin","direction":"up","threshold":"Growth investment shows payback","cadence":"quarterly"}],
+  "next_checks":["Maintain the same adjusted-FCF definition next quarter","Track company-defined net debt consistently","Separate reported and FX-neutral KPIs"],
+  "verdict":"support"
+}
