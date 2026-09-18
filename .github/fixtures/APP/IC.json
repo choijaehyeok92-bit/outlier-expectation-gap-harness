@@ -1,0 +1,111 @@
+{
+  "agent_id": "IC",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "investment_committee",
+  "role": "investment_committee",
+  "analysis_status": "complete",
+  "score_0_100": 83.41,
+  "confidence_0_1": 0.92,
+  "thesis": "IC retains the mechanical Compounder classification. APP combines exceptional FCF/share economics, high incremental returns, shrinking shares, a widening AI-adtech moat and strong financial survival. The frozen price is about 0.75x locked Base value and all Hard Vetoes are cleared. However, current 80%+ adjusted-EBITDA margins, Apple/Google platform dependence, controlled-company governance and powerful hyperscale competitors justify NORMAL_CANDIDATE rather than a larger Core allocation. Approve a 2-4% strategic range, initially 2-3%, with 0.85x macro pacing.",
+  "evidence": [
+    {
+      "claim": "Aggregate score is 83.41, ex-valuation 85.43; the mechanical archetype is Compounder and all nine Hard Vetoes are cleared.",
+      "source_type": "other",
+      "source": "runs/APP/aggregate.json",
+      "period": "frozen run",
+      "as_of_date": "2026-09-17",
+      "value": "83.41; ex-val 85.43; Compounder; CLEARED",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Compounder thresholds are comfortably met: MT 83.75, RF 90.0, MA 83.0, FS 91.75 and EV 72.0.",
+      "source_type": "other",
+      "source": "runs/APP/aggregate.json",
+      "period": "frozen run",
+      "as_of_date": "2026-09-17",
+      "value": "MT 83.75; RF 90; MA 83; FS 91.75; EV 72",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 FCF was $3.952B and H1 2026 FCF was $2.150B while shares outstanding declined from 338.313M at year-end to 334.651M by July 31.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K and FY2026 Q2 10-Q",
+      "period": "FY2025-FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "Large FCF with shrinking shares",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Locked DCF is approximately $166.86 Bear, $429.37 Base and $771.95 Bull versus frozen price $321.49, or price/Base 0.7488x.",
+      "source_type": "other",
+      "source": "Deterministic harness valuation",
+      "period": "10-year model",
+      "as_of_date": "2026-09-17",
+      "value": "Bear $166.86; Base $429.37; Bull $771.95",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "FY2025 revenue grew 70% and H1 2026 revenue 56%, while adjusted EBITDA margins exceeded 80%, evidencing unusually strong current competitive economics.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K and FY2026 Q2 10-Q",
+      "period": "FY2025-FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "Revenue +70% / +56%; H1 EBITDA margin 84.2%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Macro Overlay recommends 0.85x pacing because real yields remain restrictive while credit and liquidity conditions are not stressed.",
+      "source_type": "other",
+      "source": "runs/APP/reports/MO.json",
+      "period": "2026-09-17 macro overlay",
+      "as_of_date": "2026-09-17",
+      "value": "risk_budget_multiplier 0.85",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "The most plausible failure path is peak economics: Axon's advantage narrows while Apple/Google privacy or attribution changes and hyperscale competition compress both growth and the current 80%+ EBITDA margin.",
+    "The Base DCF depends on sustained FCF/share growth and a large terminal component; margin normalization can remove the apparent valuation discount even without a revenue collapse.",
+    "Class B carries 20 votes per share and voting-agreement parties held roughly 67% of voting power at 2025 year-end, creating a structural minority-governance discount.",
+    "DI is high at 81.75, but APP is not a Moonshot under the configured strategy because frozen market cap is about $107.6B, far above the $20B ceiling."
+  ],
+  "unknowns": [
+    "Normalized operating and FCF margin after full competitive response.",
+    "Direct Axon advertiser ROI and retention versus Meta, Google and Amazon.",
+    "Incremental economics and eventual mix of e-commerce and CTV.",
+    "Long-run buyback discipline if the stock trades materially above intrinsic value."
+  ],
+  "falsifiers": [
+    "FCF/share fails to compound at double-digit rates for multiple years while revenue growth and margins structurally decelerate.",
+    "Apple/Google privacy or platform changes materially reduce Axon conversion performance and APP fails to recover share economics.",
+    "Buybacks cease to offset SBC or are executed persistently above intrinsic value while competitive returns deteriorate."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "FCF/share",
+      "direction": "up",
+      "threshold": "Sustain double-digit multi-year growth",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Revenue growth + normalized margin",
+      "direction": "stable",
+      "threshold": "Maintain share gains without structural margin collapse",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Net share count",
+      "direction": "down",
+      "threshold": "Repurchases continue to offset SBC at value-accretive prices",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 revenue, adjusted EBITDA, GAAP cash conversion and FCF/share versus guidance.",
+    "Evidence that e-commerce and CTV add durable advertiser spend without materially higher acquisition cost.",
+    "Platform/privacy changes and buyback execution relative to intrinsic value."
+  ],
+  "verdict": "support"
+}
