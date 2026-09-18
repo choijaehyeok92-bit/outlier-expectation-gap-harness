@@ -1,0 +1,131 @@
+{
+  "agent_id": "DI",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 81.75,
+  "confidence_0_1": 0.84,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Axon AI turns ad buying into a higher-ROI automated allocation system that can move beyond gaming into e-commerce and CTV. Better prediction attracts advertiser spend and more conversion data, reinforcing the system.",
+  "bear_case": "Recommendation models are contestable by Meta, Google, Amazon and other adtech firms with larger data sets. Axon may be superior execution within existing ad markets rather than a durable industry disruption.",
+  "thesis": "APP clears the DI threshold on product economics, not market-cap eligibility. Axon appears to be changing advertiser allocation through materially better automated performance, and rapid growth with expanding margins is strong adoption evidence. Expansion into e-commerce and CTV adds optionality. The main limitation is incumbent response: the largest digital-ad platforms have deep data, distribution and AI resources, so APP is a strong self-disruptor rather than an uncontested new-value-chain owner.",
+  "evidence": [
+    {
+      "claim": "Management identifies Axon AI as the core advertising recommendation system and is investing in further enhancements.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K and FY2026 Q2 10-Q",
+      "period": "FY2025-FY2026",
+      "as_of_date": "2026-08-05",
+      "value": "Ongoing Axon AI investment",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 revenue grew 70% and H1 2026 revenue grew 56%, while adjusted EBITDA margin expanded above 80%.",
+      "source_type": "filing",
+      "source": "Uploaded 10-K and Q2 10-Q",
+      "period": "FY2025-FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "Revenue +70% FY25; +56% H1; EBITDA margin 84.2% H1",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Management explicitly targets expansion outside gaming into e-commerce and CTV.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K and Q2 10-Q",
+      "period": "2025-2026",
+      "as_of_date": "2026-08-05",
+      "value": "E-commerce and CTV expansion",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 guidance implies continued sequential growth at roughly 83% adjusted EBITDA margin.",
+      "source_type": "ir",
+      "source": "Uploaded 2026-08-05 8-K Exhibit 99.1",
+      "period": "Q3 2026 guidance",
+      "as_of_date": "2026-08-05",
+      "value": "Revenue $2.055B-$2.085B; margin ~83%",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Meta, Google and Amazon possess larger first-party data and distribution systems.",
+    "APP remains dependent on third-party mobile and web ecosystems for inventory and attribution.",
+    "Public disclosure does not quantify a clean 10x cost/performance advantage for Axon.",
+    "E-commerce and CTV are newer expansion areas with less mature economics than gaming."
+  ],
+  "unknowns": [
+    "Advertiser ROI uplift versus major alternatives.",
+    "E-commerce/CTV penetration and unit economics.",
+    "Data advantage after privacy restrictions.",
+    "Long-run competitive response from hyperscale ad platforms."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Financial outcomes imply major performance gains, but direct ROI comparisons are limited."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "minor",
+      "rationale": "Revenue and margin acceleration show production-scale adoption rather than pilots."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Cross-vertical optionality is large, but incumbents can respond aggressively."
+    }
+  ],
+  "falsifiers": [
+    "Growth slows without corresponding market saturation while competitors report stronger advertiser ROI.",
+    "E-commerce/CTV expansion fails to become material.",
+    "Privacy/platform changes erode Axon performance faster than product improvements offset them."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Revenue growth",
+      "direction": "up",
+      "threshold": "Sustain material share gains beyond gaming",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Adjusted EBITDA / FCF margin",
+      "direction": "stable",
+      "threshold": "High performance monetizes without rising acquisition cost",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "New-vertical contribution",
+      "direction": "up",
+      "threshold": "E-commerce/CTV become material paid businesses",
+      "cadence": "semiannual"
+    }
+  ],
+  "next_checks": [
+    "E-commerce/CTV disclosures.",
+    "Axon performance commentary.",
+    "Competitive share changes."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 85,
+      "rationale": "Growth and margin expansion imply a structural improvement in ad-allocation economics."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 80,
+      "rationale": "Adoption is clearly at scale, though detailed cohort metrics are not public."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 80,
+      "rationale": "Multiple expansion paths exist, offset by powerful incumbent responses."
+    }
+  ]
+}
