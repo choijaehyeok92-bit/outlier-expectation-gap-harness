@@ -5,7 +5,7 @@
   "domain": "financial_survival",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 88,
+  "score_0_100": 90,
   "confidence_0_1": 0.86,
   "bull_score": 97,
   "bear_score": 72,
@@ -29,6 +29,15 @@
       "period": "H1 2026",
       "as_of_date": "2026-08-14",
       "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026 H1 filing shows revenue KRW 131.895T and operating cash flow KRW 91.743T, supporting scale and cash-generation checks.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": "131.895T/91.743T",
       "fact_or_estimate": "fact"
     }
   ],
@@ -73,18 +82,18 @@
   "subscores": [
     {
       "criterion_id": "liquidity_leverage",
-      "score_0_100": 88,
-      "rationale": "liquidity_leverage: 공시 수치와 산업 구조를 함께 반영한 88점 구간."
+      "score_0_100": 90,
+      "rationale": "liquidity_leverage: validator의 5점 앵커 규칙과 frozen evidence를 적용한 90점."
     },
     {
       "criterion_id": "stress_survival",
-      "score_0_100": 88,
-      "rationale": "stress_survival: 공시 수치와 산업 구조를 함께 반영한 88점 구간."
+      "score_0_100": 90,
+      "rationale": "stress_survival: validator의 5점 앵커 규칙과 frozen evidence를 적용한 90점."
     },
     {
       "criterion_id": "dilution_offbalance",
-      "score_0_100": 88,
-      "rationale": "dilution_offbalance: 공시 수치와 산업 구조를 함께 반영한 88점 구간."
+      "score_0_100": 90,
+      "rationale": "dilution_offbalance: validator의 5점 앵커 규칙과 frozen evidence를 적용한 90점."
     }
   ],
   "uncertainties": [
