@@ -3,13 +3,13 @@
   "ticker": "PL",
   "as_of_date": "2026-09-18",
   "frozen": true,
-  "harness_commit": "24defd4f7c36c97f2af94905565474554dda2984",
+  "harness_commit": "d4e1187c3eebc0d501fd0fbe17947191346b869b",
   "runner": {
     "provider": "openai",
     "model": "gpt-5.6-sol",
     "reasoning_effort": "high"
   },
-  "frozen_at_utc": "2026-09-18T20:14:56.032731+00:00",
+  "frozen_at_utc": "2026-09-18T20:17:33.298255+00:00",
   "config_files": {
     "config/strategy.json": "64cdc118aeabede830d4185c511e4d88c8c6f29b022ecd564489460bf16f1c19",
     "config/workflow.json": "1f5c6f1016768a2c6d8b53b3b7bcabdbbf417d657e2c8673047e84ac2aca8fcb",
