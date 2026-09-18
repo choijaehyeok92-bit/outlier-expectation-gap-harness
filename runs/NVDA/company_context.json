@@ -1,0 +1,59 @@
+{
+  "ticker": "NVDA",
+  "company_name": "NVIDIA Corporation",
+  "as_of_date": "2026-09-17",
+  "currency": "USD",
+  "current_price": 219.34,
+  "shares_diluted": 24285000000,
+  "market_cap_usd": null,
+  "enterprise_value": 5303452000000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC Form 10-K FY26, filed 2026-02-25 (year ended 2026-01-25) — runs/NVDA/sources/10-K_FY26_filed_2026-02-25.txt",
+    "SEC Form 10-Q Q1 FY27, filed 2026-05-20 (quarter ended 2026-04-26) — runs/NVDA/sources/10-Q_FY27Q1_filed_2026-05-20.txt",
+    "SEC Form 10-Q Q2 FY27, filed 2026-08-26 (quarter ended 2026-07-26) — runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+    "SEC Form 8-K filed 2026-09-03 (Hugging Face acquisition) — runs/NVDA/sources/8-K_filed_2026-09-03.txt",
+    "SEC 8-K Exhibit 99.1 filed 2026-08-26 (Q3 FY27 guidance) — carried forward, not in the uploaded set",
+    "StockAnalysis / Investing.com 2026-09-17 close, observed 2026-09-18"
+  ],
+  "special_questions": [
+    "At $219.34, does the current price require a Bull-case outcome?",
+    "How much of trailing earnings and of the customer base is NVIDIA financing itself, and does that make the growth non-repeatable?",
+    "How sensitive is value to terminal assumptions and to AI-infrastructure demand normalisation?"
+  ],
+  "intake_facts": [
+    "FY26 (ended 2026-01-25): revenue $215,938M, operating income $130,387M, net income $120,067M, diluted EPS $4.90, OCF $102,718M, capex $6,042M, SBC $6,386M.",
+    "Q1 FY27: revenue $81,616M, operating income $53,536M, other income net $16,367M, net income $58,321M, diluted EPS $2.39.",
+    "Q2 FY27 (ended 2026-07-26): revenue $96,221M (+105.9% y/y), gross margin 75.0%, operating income $63,734M (66.2%), net income $59,688M, diluted EPS $2.46, diluted shares 24,285M.",
+    "Q2 FY27 Data Center revenue $89,023M (+117% y/y, +18% q/q): Hyperscale $48,710M, AI Clouds/Industrial/Enterprise $40,313M (+138% y/y); Edge Computing $7,198M.",
+    "H1 FY27: revenue $177,837M, net income $118,010M, OCF $74,421M, capex $4,434M, SBC $3,954M, D&A $2,124M.",
+    "H1 FY27 net income includes $23,707M of non-cash gains from equity securities (~17% of $141,410M pre-tax income).",
+    "H1 FY27 working capital drag: AR -$24,590M, inventories -$10,204M, prepaid/other -$6,480M. AR $63,059M and inventories $31,575M at quarter end.",
+    "H1 FY27 capital deployment: purchases of equity securities $42,404M, buybacks $39,044M, dividends $6,290M, net debt issued $24,896M, Groq Inc. licence payment $2,944M (after $13,000M in FY26).",
+    "Balance sheet 2026-07-26: cash+marketable debt securities $56,586M, total debt $33,366M, net cash $23,220M; marketable equity $42,783M and non-marketable securities $51,157M ($93,940M excluded from net cash).",
+    "Shares outstanding 24,147M at 2026-07-26; 94M shares repurchased for $19,674M in Q2 FY27.",
+    "Commitments at 2026-07-26 total $366B: supply/capacity $279B, cloud service agreements $29B, data-center leases not commenced $25B, equity investments $25B, capex $8B.",
+    "Land/power/shell guarantees for AI cloud partners: $3,529M notional credit derivatives, $712M partner escrow. Public-company warrants received: $4,800M notional, $824M fair value.",
+    "Concentration: Q2 FY27 one direct customer 16% of revenue; H1 three at 16%/15%/13%; five direct customers were 22/14/13/11/10% of AR.",
+    "China: effectively foreclosed from the data-center compute market; H200 shipments <1% of Data Center revenue; $400M H200 charge in H1 FY27; China antitrust preliminary finding (2025-09-15) on the Mellanox conditions outstanding.",
+    "2026-09-02: definitive agreement to acquire Hugging Face for ~$11.9B plus up to ~$1.0B retention equity, expected to close H1 2027.",
+    "Q3 FY27 guidance (carried forward from the 2026-08-26 release): revenue $108B +/-2%, gross margin 74.0% +/-50bp, assuming no China Data Center compute revenue.",
+    "TTM to 2026-07-26: revenue $302,970M, net income $192,880M, OCF $134,360M, capex $7,354M, FCF $127,006M, SBC $7,241M, owner FCF $119,765M = $4.92 per diluted share.",
+    "Price 2026-09-17 close $219.34; market cap $5,326.7B; EV ~$5,303.5B; trailing P/E 27.6x; P/FCF 41.9x."
+  ],
+  "net_cash_per_share": 0.9561,
+  "valuation_percentile_5y": 0.05,
+  "valuation_metric": "Trailing P/E (27.6x on 2026-09-17; near the low end of the last ~5 years of quarterly observations)",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  }
+}
