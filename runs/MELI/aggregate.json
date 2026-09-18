@@ -818,13 +818,13 @@
     "ticker": "MELI",
     "as_of_date": "2026-09-17",
     "frozen": true,
-    "harness_commit": "a0ebc1939dabf92e2551c96727257df9c394782f",
+    "harness_commit": "414ae06ac257193a6cc432fb8356bff0791d7d85",
     "runner": {
       "provider": "openai",
       "model": "gpt-5.6-sol",
       "reasoning_effort": "high"
     },
-    "frozen_at_utc": "2026-09-18T19:28:48.867413+00:00",
+    "frozen_at_utc": "2026-09-18T19:29:54.204841+00:00",
     "config_files": {
       "config/strategy.json": "64cdc118aeabede830d4185c511e4d88c8c6f29b022ecd564489460bf16f1c19",
       "config/workflow.json": "1f5c6f1016768a2c6d8b53b3b7bcabdbbf417d657e2c8673047e84ac2aca8fcb",

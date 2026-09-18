@@ -91,9 +91,3 @@ unknowns: 무료배송 cohort economics · credit-card vintage loss curve
 | MO | 45 | 0.55 | neutral mult=0.7 | – | 금융여건이 완화에서 긴축으로 방향을 틀었다. 연준은 2026-09-16 FOMC에서 25bp를 인상해 3.75~4.00%로 올렸다. 3년여 만의 첫 인상이며 유가 급등발 인플레이션이 이유다. 점도표는 2026년 말과 2027년 말 모두 4.00~4.25%를 가리킨다. 실질금리 상승은 … |
 unknowns: 유가발 인플레이션의 지속 기간과 연준의 반응함수. · 긴축 전환이 AI 인프라 투자 자금조달(특히 투자등급 미만 AI 클라우드)에 미치는 시차 효과.
 
-## investment_committee
-| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
-|---|---|---|---|---|---|
-| IC | 71.18 | 0.78 | neutral | – | 기계적 core score는 약 71.18로 Emerging Outlier지만 최종 archetype은 Non-fit이다. 이유는 단순하다. MT·MA·FS는 강하지만 RF가 OpenAI 보정 후 약 66으로 Compounder 임계값 76을 크게 못 넘고, price/Base≈1.0… |
-unknowns: 2027 Adjusted FCF/share · credit vintage loss curve
-

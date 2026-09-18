@@ -9,8 +9,9 @@
   "ic_state": "STARTER_OR_WATCH",
   "position_range": "0-2%",
   "macro_pacing_multiplier": 0.7,
-  "ic_verdict": "neutral",
-  "early_exit": false,
+  "ic_verdict": null,
+  "early_exit": true,
+  "early_exit_stage": "pre_ic",
   "reachable_archetypes_raw": [],
   "valuation_model": {
     "status": "COMPLETE",
