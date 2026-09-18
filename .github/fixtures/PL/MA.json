@@ -1,0 +1,50 @@
+{
+  "agent_id":"MA","ticker":"PL","as_of_date":"2026-09-17","domain":"management_allocation","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":76.0,"confidence_0_1":0.84,"bull_score":85,"bear_score":60,
+  "bull_case":"Management has adapted from pure imagery toward software, higher-resolution and hyperspectral products, sovereign satellite services and AI while moving EBITDA and cash flow toward positive territory. Capital was raised at favorable equity prices.",
+  "bear_case":"The company has a history of restructuring, acquisitions, large SBC and repeated equity-linked financing. The strategy is broad and capital intensive, so execution discipline must improve faster than dilution.",
+  "thesis":"Management execution is good but capital allocation remains under proof. Planet has expanded product capability while improving revenue growth, adjusted EBITDA and cash flow, and the Q2 ATM was executed at an average net $31.95 per share, well above the frozen price. FY2026 internal controls were effective and KPMG attested to them. Offsetting this, SBC is large, fleet capex is heavy and the company authorized a sizable ATM program, so per-share discipline is not yet exceptional.",
+  "evidence":[
+    {"claim":"Management reported FY2026 internal control over financial reporting effective, and KPMG issued an attestation report on ICFR.","source_type":"filing","source":"Uploaded FY2026 Form 10-K Item 9A","period":"FY2026","as_of_date":"2026-03-23","value":"ICFR effective; KPMG attestation","fact_or_estimate":"fact"},
+    {"claim":"Management has deployed capital across Pelican, Tanager, SuperDove, software and AI while FY27 Q2 revenue rose 58% and adjusted EBITDA reached $13.9M.","source_type":"filing","source":"Uploaded 2026-09-03 Form 10-Q and 8-K","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"Revenue +58%; adj. EBITDA $13.9M","fact_or_estimate":"fact"},
+    {"claim":"Q2 ATM issuance raised about $120M at an average net $31.95 per share, substantially above the frozen $16.99 price.","source_type":"ir","source":"Uploaded 2026-09-03 8-K Exhibit 99.1","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"ATM ~$120M at $31.95/share","fact_or_estimate":"fact"},
+    {"claim":"FY27 guidance maintains substantial $100M-$115M capex while targeting only $3M-$10M adjusted EBITDA, making capital-efficiency execution a key management test.","source_type":"ir","source":"Uploaded 2026-09-03 8-K Exhibit 99.1","period":"FY2027 guidance","as_of_date":"2026-09-03","value":"Capex $100M-$115M; adj. EBITDA $3M-$10M","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "SBC was $55.0M in FY2026 and $33.5M in FY27 H1, a large owner cost relative to current cash profitability.",
+    "The June 2026 equity-distribution agreement permits up to $1.5B of additional Class A issuance.",
+    "Past headcount reductions show the company has needed cost resets while pursuing growth.",
+    "Multiple acquisitions and product lines increase integration and execution complexity."
+  ],
+  "unknowns":[
+    "Long-run management target for net dilution.",
+    "Return on capital by major satellite generation and acquisition.",
+    "Executive compensation linkage to FCF/share rather than revenue or adjusted metrics.",
+    "Future use of the remaining ATM authorization."
+  ],
+  "uncertainties":[
+    {"criterion_id":"capital_allocation","severity":"material","rationale":"Growth investments are producing revenue, but full-cycle returns and dilution-adjusted value creation remain incomplete."},
+    {"criterion_id":"governance_integrity","severity":"minor","rationale":"Effective ICFR and independent audit support reporting reliability."},
+    {"criterion_id":"execution_adaptability","severity":"material","rationale":"Recent execution is strong, while the breadth of the strategy and capital intensity create ongoing complexity."}
+  ],
+  "falsifiers":[
+    "Management continues large equity issuance after sustainable positive FCF without clearly superior reinvestment returns.",
+    "New satellite and AI products fail to improve revenue quality or per-share cash economics.",
+    "Accounting-control or disclosure issues emerge that undermine current reporting confidence."
+  ],
+  "hard_veto_flags":[
+    {"veto":"경영진 정직성 또는 회계 신뢰성 훼손","status":"cleared","rationale":"FY2026 management assessment found ICFR effective and KPMG attested to internal controls; no current evidence indicates accounting-integrity impairment."}
+  ],
+  "key_kpis":[
+    {"name":"FCF/share versus share count","direction":"up","threshold":"Per-share cash generation improves despite equity compensation","cadence":"quarterly"},
+    {"name":"Capex return","direction":"up","threshold":"New fleet capacity drives gross-profit growth above lifecycle cost","cadence":"annual"},
+    {"name":"Equity issuance","direction":"down","threshold":"ATM dependence declines as internal cash generation strengthens","cadence":"quarterly"}
+  ],
+  "next_checks":["Use of remaining ATM authorization","FY27 capex versus revenue/FCF delivery","Executive compensation and dilution trend"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"capital_allocation","score_0_100":70,"rationale":"Investment is generating growth, but capital intensity and dilution keep full-cycle value creation unproven."},
+    {"criterion_id":"governance_integrity","score_0_100":80,"rationale":"Effective ICFR and independent attestation support reliable reporting."},
+    {"criterion_id":"execution_adaptability","score_0_100":80,"rationale":"Management has broadened the product stack and improved operational performance while adapting the business model."}
+  ]
+}
