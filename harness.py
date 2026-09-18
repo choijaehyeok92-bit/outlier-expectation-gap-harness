@@ -290,10 +290,12 @@ def classify_archetype(ds, signals, score, score_ex_valuation, confirmed):
         if t['id']==ARCHETYPES['fallback']: continue
         checks=[(c['field'],check_condition(c,ds,signals)) for c in t['conditions']]
         gate=score_ex_valuation if t.get('valuation_tolerant') else score
+        gate_threshold=float(t.get('min_gate_score',ARCHETYPES['min_gate_score']))
         evaluations.append({'id':t['id'],'label':t['label'],
             'conditions_met':all(r is True for _,r in checks),
             'gate_score':round(gate,2) if gate is not None else None,
-            'gate_passed':gate is not None and gate>=ARCHETYPES['min_gate_score'],
+            'gate_threshold':gate_threshold,
+            'gate_passed':gate is not None and gate>=gate_threshold,
             'failed':[f for f,r in checks if r is False],'missing':[f for f,r in checks if r is None]})
     matches=[e for e in evaluations if e['conditions_met'] and e['gate_passed']]
     if confirmed:
@@ -374,8 +376,8 @@ def compute_aggregate(ticker, reports):
     if early_exit: archetype['reason']='조기 종료: 감점 전 원점수로도 도달 가능한 유형 없음'
     pos={'EXCEPTIONAL_WINNER_CANDIDATE':'6-10% (IC cap)','CORE_WINNER_CANDIDATE':'4-8%','NORMAL_CANDIDATE':'2-4%','STARTER_OR_WATCH':'0-2%','WATCH':'0% until veto cleared','REJECT':'0%','INCOMPLETE':'N/A','EARLY_EXIT_NON_FIT':'0% (유형 도달 불가 — 조기 종료)'}[state]
     if archetype['position_cap'] and state in BUY_STATES: pos=archetype['position_cap']
-    di=ds.get('disruptive_innovation')
-    return {'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'run_manifest':load_manifest(ticker)}
+    di=ds.get('disruptive_innovation'); tq=ds.get('turnaround_quality')
+    return {'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'turnaround_quality_score':tq['score'] if tq else None,'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'run_manifest':load_manifest(ticker)}
 
 def triage_complete(reports):
     status={}
@@ -427,7 +429,7 @@ def cmd_digest(args):
     done={r['agent_id']:r for r in reports if is_complete(r)}
     res=compute_aggregate(t,reports); a=res['archetype']
     L=[f"# Digest — {t} (as of {load_json(run/'company_context.json')['as_of_date']})",
-       f"score {res['score_100']} (ex-val {res['score_100_ex_valuation']}, {res['classification']}) · DI {res['disruptive_innovation_score']} · archetype {a['id']} — {a['reason']} · veto {res['hard_veto_status']} · state {res['mechanical_pre_ic_state']}",
+       f"score {res['score_100']} (ex-val {res['score_100_ex_valuation']}, {res['classification']}) · DI {res['disruptive_innovation_score']} · TQ {res['turnaround_quality_score']} · archetype {a['id']} — {a['reason']} · veto {res['hard_veto_status']} · state {res['mechanical_pre_ic_state']}",
        f"signals {a['signals']} · reachable(raw) {res['reachable_archetypes_raw']}",
        'veto codes: '+' / '.join(f'V{i+1} {v}' for i,v in enumerate(VETOES)),'']
     order=[m['domain'] for m in MANIFEST]
@@ -648,6 +650,8 @@ def cmd_selftest(args):
     assert domain_aggregate([a])['score']==80 and domain_aggregate([b])['score']==80
     x=domain_aggregate([mk('asymmetry','AS',[80,80,80])])
     assert x['spread']==50 and x['dispute_penalty']==0 and x['score']==80
+    tq=domain_aggregate([mk('turnaround_quality','TQ',[80,80,80,80])])
+    assert tq['score']==80
     ev=mk('expectation_valuation','EV',[75,75,75])
     ev['valuation_inputs']={'valuation_percentile_5y':0.5,'revenue_cagr_next_3y':0.12,
         'scenarios':{k:{'owner_fcf_per_share':[10.0]*10} for k in ('bear','base','bull')}}
