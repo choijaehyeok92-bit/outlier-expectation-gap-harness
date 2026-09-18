@@ -1,0 +1,76 @@
+{
+  "agent_id": "ED",
+  "ticker": "000660",
+  "as_of_date": "2026-09-17",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 86,
+  "confidence_0_1": 0.88,
+  "thesis": "핵심 재무·자본·제품 사실은 FY2025 사업보고서와 H1 2026 반기보고서에 직접 연결된다. OCF, CAPEX, cash, borrowings, DRAM/NAND 매출, 주식수, 신용등급과 HBM4E 샘플 공급은 1차자료로 고정됐다. 주요 추정 영역은 정상화 owner FCF 경로와 HBM 장기 마진이다.",
+  "evidence": [
+    {
+      "claim": "H1 2026 revenue 131.895T, operating profit 98.153T, OCF 91.743T, PP&E purchases 18.329T are filing-backed.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Cash 26.836T, short-term financial instruments 22.398T, short-term investments 38.724T, borrowings 18.587T are filing-backed.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "DRAM revenue 97.641T and NAND revenue 33.534T are filing-backed.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 OCF 53.373T and PP&E purchases 27.519T are filing-backed.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/FY2025_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-03-17",
+      "value": "53.373/27.519",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2026-09-17 market price and USD/KRW are external market data, not filings.",
+    "Ten-year owner-FCF paths are model assumptions.",
+    "5-year valuation percentile remains null."
+  ],
+  "unknowns": [
+    "HBM4/HBM4E customer mix and ASP",
+    "normalized cycle FCF",
+    "reproducible 5y valuation percentile"
+  ],
+  "falsifiers": [
+    "If source re-check changes any frozen fact, rerun affected domains.",
+    "If Q3/Q4 cash flow contradicts normalized FCF, rerun EV/RF."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "primary-source coverage",
+      "direction": "up",
+      "threshold": "decision variables filing-backed",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 filing for HBM mix, capex and cash flow"
+  ],
+  "verdict": "support"
+}

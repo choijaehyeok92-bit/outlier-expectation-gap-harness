@@ -1,0 +1,110 @@
+{
+  "agent_id": "TQ",
+  "ticker": "000660",
+  "as_of_date": "2026-09-17",
+  "domain": "turnaround_quality",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 35,
+  "confidence_0_1": 0.84,
+  "bull_score": 55,
+  "bear_score": 20,
+  "bull_case": "과거 메모리 다운사이클에서의 회복을 넓은 의미의 정상화로 볼 수는 있다.",
+  "bear_case": "현재는 trough가 아니라 peak/expansion 여부를 검증해야 하는 단계다.",
+  "thesis": "000660은 현재 턴어라운드 기업이 아니다. H1 2026 매출·영업이익·현금흐름이 이미 기록적으로 확장된 업사이클/구조성장 국면이다. 턴어라운드 점수는 낮아야 정상이다.",
+  "evidence": [
+    {
+      "claim": "H1 2026 영업이익 98.153T vs H1 2025 16.653T이다.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "국내 AA+, Moody's A3 등 신용도도 개선됐다.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026 H1 filing shows revenue KRW 131.895T and operating cash flow KRW 91.743T, supporting scale and cash-generation checks.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": "131.895T/91.743T",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2026 H1 실적에는 메모리 업사이클과 비영업 금융손익이 크게 반영되어 정상화 수준을 과대평가할 위험이 있다."
+  ],
+  "unknowns": [
+    "HBM4/HBM4E 공급 확대 이후 ASP·수율·점유율과 전통 DRAM/NAND 정상화 마진."
+  ],
+  "falsifiers": [
+    "HBM ASP·수요가 예상보다 빠르게 정상화되고 owner FCF/share가 2년 연속 감소하면 구조 성장 가설을 하향한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "cycle-normalized growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q3/Q4 2026 HBM mix, DRAM/NAND ASP, capex, OCF, net cash를 재확인"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "operating_inflection",
+      "score_0_100": 35,
+      "rationale": "operating_inflection: validator의 5점 앵커 규칙과 frozen evidence를 적용한 35점."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "score_0_100": 35,
+      "rationale": "self_help_quality: validator의 5점 앵커 규칙과 frozen evidence를 적용한 35점."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "score_0_100": 35,
+      "rationale": "normalized_earnings_bridge: validator의 5점 앵커 규칙과 frozen evidence를 적용한 35점."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "score_0_100": 35,
+      "rationale": "catalyst_accountability: validator의 5점 앵커 규칙과 frozen evidence를 적용한 35점."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "operating_inflection",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    }
+  ]
+}

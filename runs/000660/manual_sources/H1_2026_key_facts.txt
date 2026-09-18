@@ -1,0 +1,12 @@
+Source: user-uploaded SK hynix H1 2026 half-year report filed 2026-08-14.
+Revenue KRW 131.895T; operating profit KRW 98.153T; net income KRW 134.269T.
+Q2 revenue KRW 79.319T; Q2 operating profit KRW 60.543T.
+H1 2025 revenue KRW 39.871T; operating profit KRW 16.653T.
+Operating cash flow KRW 91.743T; purchases of PP&E KRW 18.329T.
+Cash KRW 26.836T; short-term financial instruments KRW 22.398T; short-term investments KRW 38.724T.
+Current borrowings KRW 5.859T; long-term borrowings KRW 12.728T.
+DRAM revenue KRW 97.641T; NAND Flash KRW 33.534T; other KRW 0.720T.
+Circulating shares 711,075,500.
+Major credit ratings: domestic AA+, Moody's A3, S&P BBB+, Fitch BBB+.
+2026 product milestones include SOCAMM2 192GB mass production, iHBM technology disclosure, and HBM4E 12-high sample supply.
+The report states AI Agent commercialization is expected to promote data-center and server-memory demand.

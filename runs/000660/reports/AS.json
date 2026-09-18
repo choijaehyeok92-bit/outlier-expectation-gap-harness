@@ -1,0 +1,111 @@
+{
+  "agent_id": "AS",
+  "ticker": "000660",
+  "as_of_date": "2026-09-17",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 80,
+  "confidence_0_1": 0.76,
+  "bull_score": 94,
+  "bear_score": 45,
+  "bull_case": "HBM4 세대 전환과 AI 인프라 투자가 지속되면 높은 현금흐름이 장기간 유지될 수 있다.",
+  "bear_case": "AI 투자 둔화와 메모리 공급과잉이 겹치면 수익성·멀티플이 동시에 정상화될 수 있다.",
+  "thesis": "가격/Base 0.44 수준이라 비대칭성은 강하다. Bull/current는 약 4.24배, Bear/current는 약 0.78배다. 하방은 메모리 사이클·CAPEX의 동시 역풍이지만 69조원 수준의 liquid net cash가 영구손실 경로를 완충한다.",
+  "evidence": [
+    {
+      "claim": "Bear/Base/Bull 1.365M/3.982M/7.401M, current 1.745M이다.",
+      "source_type": "other",
+      "source": "runs/000660/sources/README.md",
+      "period": "10y",
+      "as_of_date": "2026-09-17",
+      "value": "0.78/2.28/4.24",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "연결 liquid net cash는 약 69.37T으로 계산된다.",
+      "source_type": "other",
+      "source": "runs/000660/sources/README.md",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-17",
+      "value": "69.37T",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "2026 H1 filing shows revenue KRW 131.895T and operating cash flow KRW 91.743T, supporting scale and cash-generation checks.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": "131.895T/91.743T",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2026 H1 실적에는 메모리 업사이클과 비영업 금융손익이 크게 반영되어 정상화 수준을 과대평가할 위험이 있다."
+  ],
+  "unknowns": [
+    "HBM4/HBM4E 공급 확대 이후 ASP·수율·점유율과 전통 DRAM/NAND 정상화 마진."
+  ],
+  "falsifiers": [
+    "HBM ASP·수요가 예상보다 빠르게 정상화되고 owner FCF/share가 2년 연속 감소하면 구조 성장 가설을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "대규모 순현금과 강한 OCF로 파산/사업가치 소멸 위험이 기대수익 대비 과도하지 않다."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "현재가는 Bull 이상을 요구하지 않는다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "cycle-normalized growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q3/Q4 2026 HBM mix, DRAM/NAND ASP, capex, OCF, net cash를 재확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 80,
+      "rationale": "upside_path: validator의 5점 앵커 규칙과 frozen evidence를 적용한 80점."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 80,
+      "rationale": "permanent_loss: validator의 5점 앵커 규칙과 frozen evidence를 적용한 80점."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 80,
+      "rationale": "probability_calibration: validator의 5점 앵커 규칙과 frozen evidence를 적용한 80점."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    }
+  ]
+}

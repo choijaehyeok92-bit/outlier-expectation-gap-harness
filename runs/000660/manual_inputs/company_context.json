@@ -1,0 +1,37 @@
+{
+  "ticker": "000660",
+  "company_name": "SK hynix Inc.",
+  "as_of_date": "2026-09-17",
+  "currency": "KRW",
+  "current_price": 1745000,
+  "shares_diluted": 711075500,
+  "market_cap_usd": 899019524344.3,
+  "enterprise_value": 1171455458500000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "User-uploaded SK hynix FY2025 annual report filed 2026-03-17",
+    "User-uploaded SK hynix H1 2026 half-year report filed 2026-08-14",
+    "2026-09-17 closing price KRW 1,745,000 verified from historical market data",
+    "2026-09-17 USD/KRW 1,380.2 used only to translate market cap for archetype cap"
+  ],
+  "special_questions": [
+    "How durable are HBM-led margins and cash flow once supply expands and the memory cycle normalizes?",
+    "Does AI/HBM structural demand offset traditional DRAM/NAND cyclicality enough to justify a Compounder classification?",
+    "How much of the 2026 H1 extraordinary earnings and financial income should be excluded from normalized owner FCF?"
+  ],
+  "net_cash_per_share": 97558.2607,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "No reproducible 5-year valuation percentile frozen; valuation is handled by the locked owner-FCF/share DCF.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  }
+}
