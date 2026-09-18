@@ -6,16 +6,13 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   harness:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: persist/msft-20260917-run
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -134,17 +131,6 @@ jobs:
 
           echo "===== FINAL VERDICT ====="
           cat runs/MSFT/final_verdict.json
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin main:refs/remotes/origin/main --depth=1
-          git checkout origin/main -- .github/workflows/msft-sol-run-20260917.yml
-          git add runs/MSFT/company_context.json runs/MSFT/run_manifest.json runs/MSFT/sources runs/MSFT/reports \
-                  runs/MSFT/*_prompt.md runs/MSFT/aggregate.json runs/MSFT/digest.md \
-                  runs/MSFT/final_verdict.json runs/MSFT/one_page_investment_record.md
-          git add .github/workflows/msft-sol-run-20260917.yml
-          git commit -m "persist: commit MSFT run outputs"
-          git push origin HEAD:persist/msft-20260917-run
 
       - uses: actions/upload-artifact@v4
         with:

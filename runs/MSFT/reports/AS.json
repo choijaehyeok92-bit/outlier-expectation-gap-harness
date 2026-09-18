@@ -1,0 +1,111 @@
+{
+  "agent_id": "AS",
+  "ticker": "MSFT",
+  "as_of_date": "2026-09-17",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 64.5,
+  "confidence_0_1": 0.65,
+  "bull_score": 78,
+  "bear_score": 40,
+  "bull_case": "Bull 약 $741(+49%)에 Azure AI·M365/GitHub Copilot·Industry solutions의 복수 경로가 기여한다.",
+  "bear_case": "Bear 약 $133(-73%)로 valuation/FCF reset 하방은 크며 AI datacenter 약정과 OpenAI 집중이 동시 악화될 수 있다.",
+  "thesis": "MSFT의 비대칭성은 사업 생존보다 가격·capex 회수에 달려 있다. deterministic Bull/current는 약 1.49배, Bear/current는 약 0.27배다. 순현금과 OCF>debt로 파산경로는 약하지만 현 가격의 위험조정 기대차는 크지 않다.",
+  "evidence": [
+    {
+      "claim": "DCF Bull/current≈1.49, Bear/current≈0.27이다.",
+      "source_type": "other",
+      "source": "harness deterministic valuation",
+      "period": "10y",
+      "as_of_date": "2026-06-30",
+      "value": "1.49/0.27",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Cash+short-term investments $76.843B가 debt $40.294B을 상회하고 OCF는 $182.935B이다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": "76.843/40.294/182.935",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Purchase+construction commitments 약 $228.6B과 lease liabilities가 AI 투자 하방민감도를 키운다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": 228.6,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI 인프라 자본집약도와 OpenAI 관련 경제적 집중은 장기 현금수익률의 핵심 반대근거다."
+  ],
+  "unknowns": [
+    "FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률."
+  ],
+  "falsifiers": [
+    "owner FCF/share가 2개 회계연도 연속 회복하지 못하면 현재 복리 가설을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "순현금·강한 OCF로 파산경로가 약하고 Bear에서도 유의미한 owner FCF가 남는다. 가격 하락 위험은 AS/EV 점수로 처리한다."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "현재가는 Bull 가치 이상을 요구하지 않는다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "FY27 이후 회복",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "FY27 Q1 10-Q에서 Azure 성장, capex, OCF와 RPO 갱신 확인"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 60,
+      "rationale": "Bull/current≈1.49, 독립 상승경로 2개 이상이므로 observable table 60."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 60,
+      "rationale": "Bear/current≈0.27은 50점 구간, 순현금이고 OCF>debt이므로 +10."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 75,
+      "rationale": "20/55/25 Bear/Base/Bull과 민감도를 명시적으로 적용."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    }
+  ]
+}
