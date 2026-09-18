@@ -63,6 +63,13 @@
     "instructions": "agents/13_disruptive_innovation/AGENTS.md"
   },
   {
+    "agent_id": "TQ",
+    "title": "Turnaround Quality Analyst",
+    "domain": "turnaround_quality",
+    "role": "domain_analyst",
+    "instructions": "agents/14_turnaround_quality/AGENTS.md"
+  },
+  {
     "agent_id": "ED",
     "title": "Evidence Auditor",
     "domain": "evidence_quality",
