@@ -1,0 +1,110 @@
+{
+  "agent_id": "TQ",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "turnaround_quality",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 60,
+  "confidence_0_1": 0.78,
+  "bull_score": 70,
+  "bear_score": 40,
+  "bull_case": "Sustained positive FCF can convert the historical loss profile into a self-funded growth model.",
+  "bear_case": "GAAP losses, SBC and dilution can keep the apparent turnaround from becoming per-share value creation.",
+  "thesis": "PL has an operating inflection but is not a classic distressed turnaround. The business has moved from cash burn toward positive adjusted EBITDA and FCF while accelerating growth, so turnaround characteristics are present but secondary to the Moonshot thesis.",
+  "evidence": [
+    {
+      "claim": "FY2026 adjusted EBITDA was +$15.495M after -$10.627M in FY2025.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-03-23",
+      "value": "15.495/-10.627",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 FY2027 adjusted EBITDA was +$13.928M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2027 adjusted EBITDA guidance is +$3M to +$10M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Satellite services can raise revenue growth while also increasing hardware, launch and execution intensity versus pure imagery subscriptions."
+  ],
+  "unknowns": [
+    "Normalized satellite-services gross margin, long-run owner FCF/share, and customer concentration after current sovereign contract ramp."
+  ],
+  "falsifiers": [
+    "If NDR falls below 100%, RPO/backlog contract materially, or owner FCF/share turns persistently negative despite revenue growth, the thesis is downgraded."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q: revenue mix, RPO/backlog, NDR, adjusted FCF, SBC, ATM issuance and capex"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "operating_inflection",
+      "score_0_100": 60,
+      "rationale": "Adjusted EBITDA and FCF have inflected positive, but GAAP operating loss remains."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "score_0_100": 60,
+      "rationale": "Operating leverage and contract mix improved without a classic restructuring-driven rescue."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "score_0_100": 60,
+      "rationale": "Bridge to sustained FCF is visible but satellite-services mix and SBC remain material."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "score_0_100": 60,
+      "rationale": "FY2027 guidance and quarterly RPO/FCF provide measurable milestones."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "operating_inflection",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "agent_id": "FS",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 80,
+  "confidence_0_1": 0.78,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Cash can fund constellation refresh and AI product development without near-term survival financing.",
+  "bear_case": "A return to heavy cash burn combined with large satellite commitments could reopen financing dependence.",
+  "thesis": "Financial survival is strong for a sub-$6B growth company. The net-cash position, positive recent operating cash flow and 0.50% convertible debt substantially reduce forced-financing risk, even though dilution has been used aggressively.",
+  "evidence": [
+    {
+      "claim": "Cash and short-term investments were $865.4M at Q2.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2030 convertible notes principal is $460M at a 0.50% coupon.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 OCF was +$68.388M and adjusted FCF +$28.8M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Satellite services can raise revenue growth while also increasing hardware, launch and execution intensity versus pure imagery subscriptions."
+  ],
+  "unknowns": [
+    "Normalized satellite-services gross margin, long-run owner FCF/share, and customer concentration after current sovereign contract ramp."
+  ],
+  "falsifiers": [
+    "If NDR falls below 100%, RPO/backlog contract materially, or owner FCF/share turns persistently negative despite revenue growth, the thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Large net cash and positive recent cash flow rebut structural dependence on recurring outside capital."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Dilution is a material risk but has not yet met the strict long-duration excessive-dilution predicate."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Net cash and positive cash flow make bankruptcy/permanent-loss probability low relative to upside."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q: revenue mix, RPO/backlog, NDR, adjusted FCF, SBC, ATM issuance and capex"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 80,
+      "rationale": "$865.4M cash/investments versus $460M convertible debt provides a strong net-cash buffer."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 80,
+      "rationale": "Positive recent OCF/FCF and high liquidity allow continued investment through a downturn."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 80,
+      "rationale": "Dilution is material but liquidity and low coupon debt reduce refinancing stress."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    }
+  ]
+}

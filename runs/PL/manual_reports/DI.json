@@ -1,0 +1,100 @@
+{
+  "agent_id": "DI",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 85,
+  "confidence_0_1": 0.84,
+  "bull_score": 95,
+  "bear_score": 65,
+  "bull_case": "Daily global data can become a default sensing layer for defense, agriculture, insurance, infrastructure and AI agents.",
+  "bear_case": "Free public imagery, higher-resolution competitors and lower-cost constellations can commoditize raw pixels faster than Planet monetizes analytics.",
+  "thesis": "Planet is changing Earth observation from scarce, task-driven imagery into high-cadence data infrastructure. The key innovation is not only satellite hardware but the accumulated daily archive, automated delivery and AI-query layer.",
+  "evidence": [
+    {
+      "claim": "Q2 revenue grew 58% y/y and recurring ACV was 98%.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NDR was 109%, up from 107%.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NGA, Germany, European defense and Rwanda contracts broaden adoption beyond one vertical.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Satellite services can raise revenue growth while also increasing hardware, launch and execution intensity versus pure imagery subscriptions."
+  ],
+  "unknowns": [
+    "Normalized satellite-services gross margin, long-run owner FCF/share, and customer concentration after current sovereign contract ramp."
+  ],
+  "falsifiers": [
+    "If NDR falls below 100%, RPO/backlog contract materially, or owner FCF/share turns persistently negative despite revenue growth, the thesis is downgraded."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q: revenue mix, RPO/backlog, NDR, adjusted FCF, SBC, ATM issuance and capex"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 85,
+      "rationale": "Daily global revisit plus cloud distribution turns geospatial monitoring from episodic tasking into continuous data infrastructure."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 85,
+      "rationale": "Revenue +58%, 98% recurring ACV, NDR 109%, and sovereign contracts show scaled adoption."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 85,
+      "rationale": "Imagery, AI analytics, dedicated capacity and sovereign satellite services create multiple adjacent value pools."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "agent_id": "EV",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 80.5,
+  "confidence_0_1": 0.78,
+  "bull_score": 90.5,
+  "bear_score": 60.5,
+  "bull_case": "If recurring data, AI analytics and sovereign satellite services scale together, Bull value above $50 is plausible.",
+  "bear_case": "If positive FCF proves working-capital driven and hardware/service intensity rises, Bear value is only about $4.55.",
+  "thesis": "Locked DCF at 9%/10y gives Bear/Base/Bull about $4.55/$26.35/$50.66. At $16.18, the market price is ~61% of Base, creating a meaningful expectation gap. The offset is that most Base value comes from later FCF scaling rather than currently mature earnings.",
+  "evidence": [
+    {
+      "claim": "FY2026 revenue was $307.727M and OCF was +$134.362M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-03-23",
+      "value": "307.727/134.362",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 FY2027 adjusted FCF was +$28.8M and revenue $210.202M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Locked Bear/Base/Bull are about $4.55/$26.35/$50.66.",
+      "source_type": "other",
+      "source": "runs/PL/sources/README.md",
+      "period": "10y DCF",
+      "as_of_date": "2026-09-18",
+      "value": "4.55/26.35/50.66",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Satellite services can raise revenue growth while also increasing hardware, launch and execution intensity versus pure imagery subscriptions."
+  ],
+  "unknowns": [
+    "Normalized satellite-services gross margin, long-run owner FCF/share, and customer concentration after current sovereign contract ramp."
+  ],
+  "falsifiers": [
+    "If NDR falls below 100%, RPO/backlog contract materially, or owner FCF/share turns persistently negative despite revenue growth, the thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is below Base and far below Bull, so it does not require an unrealistic Bull+ outcome."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q: revenue mix, RPO/backlog, NDR, adjusted FCF, SBC, ATM issuance and capex"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 90,
+      "rationale": "price/Base≈0.614, so harness signal_map <=0.7 = 90."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 85,
+      "rationale": "price/Base≈0.614, so harness signal_map <=0.7 = 85."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 60,
+      "rationale": "Base value is attractive but depends on FCF scaling from a still-early positive base and ~74% terminal value."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.26,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          -0.05,
+          0,
+          0.05,
+          0.1,
+          0.15,
+          0.2,
+          0.25,
+          0.3,
+          0.35,
+          0.4
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          0.15,
+          0.25,
+          0.4,
+          0.6,
+          0.85,
+          1.1,
+          1.4,
+          1.7,
+          2,
+          2.3
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          0.25,
+          0.45,
+          0.7,
+          1,
+          1.35,
+          1.75,
+          2.2,
+          2.7,
+          3.2,
+          3.8
+        ]
+      }
+    }
+  }
+}

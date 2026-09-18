@@ -1,0 +1,111 @@
+{
+  "agent_id": "RF",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 70,
+  "confidence_0_1": 0.78,
+  "bull_score": 80,
+  "bear_score": 50,
+  "bull_case": "Positive FCF can scale quickly if data economics dominate hardware investment over time.",
+  "bear_case": "Satellite capex and SBC/ATM issuance may consume much of enterprise growth before it reaches each share.",
+  "thesis": "Reinvestment runway is substantial, but per-share FCF quality is not yet Compounder-grade. FY2026 and H1 FY2027 cash flow improved sharply, while capex, SBC and equity issuance remain high relative to current revenue.",
+  "evidence": [
+    {
+      "claim": "FY2026 OCF was +$134.362M with PP&E purchases of $76.714M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-03-23",
+      "value": "134.362/76.714",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 FY2027 adjusted FCF was +$28.8M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 SBC was $33.521M and Q2 ATM issuance raised about $122.4M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Satellite services can raise revenue growth while also increasing hardware, launch and execution intensity versus pure imagery subscriptions."
+  ],
+  "unknowns": [
+    "Normalized satellite-services gross margin, long-run owner FCF/share, and customer concentration after current sovereign contract ramp."
+  ],
+  "falsifiers": [
+    "If NDR falls below 100%, RPO/backlog contract materially, or owner FCF/share turns persistently negative despite revenue growth, the thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Incremental returns are not proven exceptional, but structural collapse below cost of capital is not established."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Dilution is material and monitored, but the exact veto requires long-duration excessive dilution; the present evidence is serious but not yet enough for a hard veto."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q: revenue mix, RPO/backlog, NDR, adjusted FCF, SBC, ATM issuance and capex"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 70,
+      "rationale": "Revenue growth and recent positive FCF show improving returns, but cohort ROIC is not yet mature."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 70,
+      "rationale": "AI analytics, Pelican/Tanager and sovereign services offer a long runway, but require material capex."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 70,
+      "rationale": "FCF turned positive, yet SBC and equity issuance dilute per-share conversion."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    }
+  ]
+}

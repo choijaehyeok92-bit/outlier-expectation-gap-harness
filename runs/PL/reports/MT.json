@@ -1,0 +1,106 @@
+{
+  "agent_id": "MT",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 80,
+  "confidence_0_1": 0.78,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Archive continuity plus AI tools can make Planet's data increasingly difficult to replace even if raw imagery prices fall.",
+  "bear_case": "Competitors with better resolution or government-subsidized data can erode the value of the sensing layer.",
+  "thesis": "The moat is widening from constellation scale toward a data-and-workflow moat. Every new daily observation extends the archive while sovereign programs, AI analytics and APIs make historical continuity more valuable.",
+  "evidence": [
+    {
+      "claim": "RPO was $753.1M and backlog $814.9M at Q2.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NDR was 109%, indicating expanding spend among existing customers.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Planet renewed hyperscaler monitoring and added multiple government programs.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Satellite services can raise revenue growth while also increasing hardware, launch and execution intensity versus pure imagery subscriptions."
+  ],
+  "unknowns": [
+    "Normalized satellite-services gross margin, long-run owner FCF/share, and customer concentration after current sovereign contract ramp."
+  ],
+  "falsifiers": [
+    "If NDR falls below 100%, RPO/backlog contract materially, or owner FCF/share turns persistently negative despite revenue growth, the thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Revenue, NDR, backlog and product breadth do not show sustained moat shrinkage."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q: revenue mix, RPO/backlog, NDR, adjusted FCF, SBC, ATM issuance and capex"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 80,
+      "rationale": "Multi-year workflow integration, archive continuity and dedicated capacity increase switching friction."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 80,
+      "rationale": "Daily observations continuously enlarge a proprietary time-series archive that improves analytics utility."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 80,
+      "rationale": "Raw pixels face competition, but archive depth, cadence, APIs and analytics create defense layers."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    }
+  ]
+}
