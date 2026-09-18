@@ -1,0 +1,127 @@
+{
+  "agent_id": "RT",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-17",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 50,
+  "confidence_0_1": 0.82,
+  "thesis": "가장 강한 반대논리는 성장의 질이다. Q2 revenue·GMV·TPV는 약 50% 성장하지만 operating margin은 6.7%, H1 Adjusted FCF는 $158M으로 감소했고 NIMAL도 전년보다 낮다. Gross loans와 past-due, unused card commitments가 빠르게 늘어 funding·credit risk가 동행한다. 다만 고객분산, 대규모 플랫폼 사용량, 장기채 접근 때문에 현재 증거로 Hard Veto는 성립하지 않는다.",
+  "evidence": [
+    {
+      "claim": "Q2 operating margin 12.2%→6.7%, H1 Adjusted FCF $512M→$158M이다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-06",
+      "value": "12.2→6.7 / 512→158",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Gross loans $16.375B, past due $4.638B, unused card commitments $14.047B으로 credit exposure가 확대됐다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-06",
+      "value": "16.375/4.638/14.047",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "반대증거로 Q2 GMV +44%, TPV +56%, MAU +29%, buyers +25%다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-06",
+      "value": "44/56/29/25",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026-09-14 $1B 10년채 발행으로 장기 자본시장 접근성이 확인됐다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/8-K_2026-09-14_key_facts.txt",
+      "period": "2026-09-14",
+      "as_of_date": "2026-09-14",
+      "value": "$1B",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "No single customer >5%로 고객 집중은 낮다.",
+    "2025 Adjusted FCF가 $1.481B으로 양수였다.",
+    "Commerce와 Fintech가 동시에 성장한다."
+  ],
+  "unknowns": [
+    "무료배송 cohort economics",
+    "credit-card vintage loss curve",
+    "securitization investor concentration"
+  ],
+  "falsifiers": [
+    "Adjusted FCF와 NIMAL이 회복하면 short thesis 약화",
+    "past-due/allowance가 계속 가속되면 short thesis 강화",
+    "Brazil growth가 급격히 둔화하면 moat thesis 하향"
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "회계 신뢰성 훼손 사건이 확인되지 않는다."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "funding 의존은 fintech working-capital 구조지만 회사 전체 존속이 반복 외부자본 없이는 불가능하다는 수준은 아니다."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "강한 GMV/TPV/사용자 성장으로 고객가치 부재가 반증된다."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "현금수익률 저하는 있으나 구조적 ROIC 붕괴가 입증되지 않았다."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "핵심 생태계 지표가 성장 중이다."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "현재가는 Base 부근이며 Bull 이상을 요구하지 않는다."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "고객은 분산되고 commerce/fintech 및 국가축이 복수라 단일 종속이 치명적이지 않다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Adjusted FCF",
+      "direction": "up",
+      "threshold": "YoY 회복",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "NIMAL",
+      "direction": "up",
+      "threshold": ">20% 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "past-due/gross loans",
+      "direction": "down",
+      "threshold": "안정화",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 credit vintage",
+    "funding cost",
+    "Brazil shipping economics"
+  ],
+  "verdict": "oppose"
+}

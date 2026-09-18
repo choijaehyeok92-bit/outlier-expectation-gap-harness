@@ -1,0 +1,5 @@
+Source: user-uploaded MercadoLibre Q1 2026 Form 10-Q filed 2026-05-08.
+Revenue $8.845B vs $5.935B; operating income $611M vs $763M; net income $417M vs $494M.
+Adjusted FCF -$56M vs +$58M.
+Fintech MAU 83M vs 64M; unique buyers 84M vs 67M; GMV $18.951B vs $13.330B; TPV $87.186B vs $58.303B; NIMAL 17.8% vs 22.7%.
+Net debt $5.748B.

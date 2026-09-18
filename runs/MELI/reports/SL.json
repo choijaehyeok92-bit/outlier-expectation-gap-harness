@@ -1,0 +1,100 @@
+{
+  "agent_id": "SL",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-17",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 84.25,
+  "confidence_0_1": 0.82,
+  "bull_score": 92,
+  "bear_score": 65,
+  "bull_case": "Commerce와 Mercado Pago가 물류·결제·신용·광고를 연결해 지역의 디지털 상거래 표준을 정의한다.",
+  "bear_case": "브라질 집중과 신용규제/자금비용, 글로벌·로컬 플랫폼 경쟁이 장기 초과성장을 낮출 수 있다.",
+  "thesis": "라틴아메리카의 낮은 e-commerce·금융서비스 침투와 MELI의 commerce+fintech 통합은 5~10년 구조 성장축이다. 2025 GMV $65B·TPV $278B에서 2026 Q2에도 각각 +44%·+56% 성장하며 카테고리 리더십을 재확인했다. 다만 브라질 비중 52.6%, 신용·규제·FX가 내구성 리스크다.",
+  "evidence": [
+    {
+      "claim": "2025 GMV $65.037B, TPV $277.823B, MAU 78M, buyers 121M이다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-K_FY25_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-25",
+      "value": "65.037/277.823/78/121",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 2026 GMV +44%, TPV +56%, MAU +29%, buyers +25%로 성장세가 지속된다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-06",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2025 revenue는 Brazil 52.6%, Mexico 22.4%, Argentina 20.6%다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-K_FY25_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-25",
+      "value": "52.6/22.4/20.6",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2026년 성장 가속과 동시에 마진·NIMAL·Adjusted FCF가 악화되어 단일 지표만으로 품질을 판단하면 안 된다."
+  ],
+  "unknowns": [
+    "브라질 free-shipping 투자와 신용카드 확장의 코호트별 장기 ROIC 및 정상화 마진."
+  ],
+  "falsifiers": [
+    "2027년까지 Adjusted FCF/share와 NIMAL이 회복되지 않으면 장기 복리 가설을 하향한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Adjusted FCF/share",
+      "direction": "up",
+      "threshold": "지속 회복",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "다음 10-Q에서 GMV·TPV·NIMAL·past-due·Adjusted FCF·net debt를 동시 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 85,
+      "rationale": "commerce/fintech 침투 확대가 대규모 실적과 사용량 성장으로 장기간 확인된다."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 90,
+      "rationale": "회사가 지역 GMV 리더이자 주요 국가 fintech MAU 선두권이며 물류/결제 표준을 함께 정의한다."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 75,
+      "rationale": "Commerce와 Fintech 두 개의 독립적인 10%+ 수요축이 있어 observable table 75."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "agent_id": "DI",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-17",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 86.75,
+  "confidence_0_1": 0.82,
+  "bull_score": 95,
+  "bear_score": 65,
+  "bull_case": "비은행·저침투 시장에서 marketplace와 wallet, logistics, credit, ads를 함께 확장해 새 가치사슬의 표준을 만들 수 있다.",
+  "bear_case": "은행·카드·로컬 commerce 경쟁이 강하고 신용확장이 잘못 가격되면 혁신이 주주수익으로 연결되지 않을 수 있다.",
+  "thesis": "MELI는 라틴아메리카에서 commerce·payments·logistics·credit를 하나의 데이터/배포 루프로 묶어 전통 소매·은행 인프라를 재편한다. Q2 GMV +44%, TPV +56%, MAU +29%, buyers +25%는 이미 주류 확산 단계임을 보여준다. 다만 credit expansion의 손실비용과 무료배송 투자가 경제적 과실을 지연시킨다.",
+  "evidence": [
+    {
+      "claim": "Q2 GMV $21.926B(+44%), TPV $100.952B(+56%)다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-06",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Fintech MAU 88M vs 68M, unique buyers 89M vs 71M이다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-06",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2025 TPV $277.823B, GMV $65.037B, payment transactions 15.47B로 이미 대규모 플랫폼이다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-K_FY25_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-25",
+      "value": "277.823/65.037/15.47",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2026년 성장 가속과 동시에 마진·NIMAL·Adjusted FCF가 악화되어 단일 지표만으로 품질을 판단하면 안 된다."
+  ],
+  "unknowns": [
+    "브라질 free-shipping 투자와 신용카드 확장의 코호트별 장기 ROIC 및 정상화 마진."
+  ],
+  "falsifiers": [
+    "2027년까지 Adjusted FCF/share와 NIMAL이 회복되지 않으면 장기 복리 가설을 하향한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Adjusted FCF/share",
+      "direction": "up",
+      "threshold": "지속 회복",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "다음 10-Q에서 GMV·TPV·NIMAL·past-due·Adjusted FCF·net debt를 동시 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 85,
+      "rationale": "물류·결제·신용 통합이 접근성과 거래비용을 구조적으로 낮추지만 독립적인 10배 비용곡선 측정은 제한적이다."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 90,
+      "rationale": "GMV/TPV/MAU/buyers 모두 대규모 기반에서 25~56% 성장해 주류 확산이 확인된다."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 85,
+      "rationale": "commerce·payments·logistics·credit·ads 등 3개 이상 인접 가치풀에서 규모와 표준을 확보했다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    }
+  ]
+}

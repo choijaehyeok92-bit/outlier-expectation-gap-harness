@@ -1,0 +1,154 @@
+{
+  "agent_id": "EV",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-17",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 54.25,
+  "confidence_0_1": 0.68,
+  "bull_score": 75,
+  "bear_score": 30,
+  "bull_case": "Commerce·Pago·Credit·Ads의 복수 성장축과 투자 정상화가 겹치면 Bull 약 $3.35K가 가능하다.",
+  "bear_case": "무료배송·신용확장의 낮은 마진이 고착되고 신용손실이 커지면 Bear 약 $451까지 하락할 수 있다.",
+  "thesis": "고정 9%/10년/15x·20x·25x DCF에서 Bear/Base/Bull은 약 $451/$1,800/$3,354다. $1,825.21은 Base의 약 1.01배로 Bull을 요구하지 않지만 기대차도 없다. Base는 FY2025 Adjusted FCF/share 약 $29에서 2026 투자 저점을 거쳐 장기 $168/share까지 회복한다는 전제이며 terminal 의존도가 약 74%다.",
+  "evidence": [
+    {
+      "claim": "FY2025 company-defined Adjusted FCF는 $1.481B, 약 $29.2/share다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-K_FY25_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-25",
+      "value": 29.2,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 2026 Adjusted FCF는 $158M으로 H1 2025 $512M보다 낮다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-06",
+      "value": "158/512",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "고정 DCF 경로의 Bear/Base/Bull은 약 $451/$1,800/$3,354다.",
+      "source_type": "other",
+      "source": "harness deterministic valuation",
+      "period": "10y",
+      "as_of_date": "2026-09-17",
+      "value": "451/1800/3354",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "2026년 성장 가속과 동시에 마진·NIMAL·Adjusted FCF가 악화되어 단일 지표만으로 품질을 판단하면 안 된다."
+  ],
+  "unknowns": [
+    "브라질 free-shipping 투자와 신용카드 확장의 코호트별 장기 ROIC 및 정상화 마진."
+  ],
+  "falsifiers": [
+    "2027년까지 Adjusted FCF/share와 NIMAL이 회복되지 않으면 장기 복리 가설을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "현재가 $1,825는 Base 약 $1,800 부근이며 Bull 약 $3,354 이상을 요구하지 않는다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Adjusted FCF/share",
+      "direction": "up",
+      "threshold": "지속 회복",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "다음 10-Q에서 GMV·TPV·NIMAL·past-due·Adjusted FCF·net debt를 동시 확인"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "price/Base≈1.014로 signal_map 0.9~1.1 구간=60."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "price/Base≈1.014로 signal_map 0.9~1.1 구간=55."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 45,
+      "rationale": "Base 운영가치의 약 74%가 terminal에 의존하고 현금흐름 정상화 가정 민감도가 높다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.22,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          10,
+          12,
+          15,
+          19,
+          24,
+          30,
+          37,
+          45,
+          54,
+          64
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          25,
+          36,
+          49,
+          63,
+          78,
+          94,
+          111,
+          129,
+          148,
+          168
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          32,
+          48,
+          67,
+          88,
+          111,
+          136,
+          163,
+          192,
+          224,
+          260
+        ]
+      }
+    }
+  }
+}

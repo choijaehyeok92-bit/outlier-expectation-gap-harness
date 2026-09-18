@@ -1,0 +1,8 @@
+Source: user-uploaded MercadoLibre FY2025 Form 10-K filed 2026-02-25.
+Revenue $28.893B; gross profit $12.858B; operating income $3.201B; net income $1.997B.
+CFO $12.116B. Company-defined Adjusted FCF $1.481B vs $1.215B in 2024 and $1.439B in 2023.
+Available cash/investments/digital assets $6.710B; company-defined net debt $4.682B.
+Fintech MAU 78M; unique active buyers 121M; GMV $65.037B; TPV $277.823B; payment transactions 15.470B; NIMAL 22.4%.
+Capex $1.327B; product & technology development $2.269B.
+Revenue geographic mix: Brazil 52.6%, Mexico 22.4%, Argentina 20.6%, other 4.4%.
+Funding sources for Mercado Pago/lending include receivable sales, securitizations, credit lines, deposit certificates, financial bills, commercial notes, bank loans and an $800M revolver.
