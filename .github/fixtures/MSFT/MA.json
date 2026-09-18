@@ -1,0 +1,35 @@
+{
+  "agent_id":"MA","ticker":"MSFT","as_of_date":"2026-09-18","domain":"management_allocation","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":84.25,"confidence_0_1":0.84,"bull_score":90,"bear_score":65,
+  "bull_case":"Management has repeatedly reallocated Microsoft toward cloud, subscriptions, developer tools, security and now AI, while maintaining strong operating margins and large shareholder returns. The FY2027 reporting change increases accountability around integrated AI economics.",
+  "bear_case":"The AI buildout commits enormous capital before mature returns are visible. OpenAI-related commitments, datacenter expansion and large platform acquisitions raise empire-building and dependency risks, while SBC remains substantial.",
+  "thesis":"Management quality is high, with strong strategic adaptation and disciplined execution, but the current AI investment cycle deserves tighter capital-return scrutiny than the historical software era. FY2026 revenue and operating income growth, rapid Azure capacity monetization and the new Agents and Infra reporting structure support execution; capex intensity and external AI partnerships are the principal allocation risks.",
+  "evidence":[
+    {"claim":"FY2026 revenue rose 18% to $331.839B and operating income reached $155.237B, showing strong execution at scale.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-06-30","value":"Revenue $331.839B; operating income $155.237B","fact_or_estimate":"fact"},
+    {"claim":"Management stated additional Azure capacity delivered in Q4 was quickly monetized, evidence that infrastructure deployment was matched by demand.","source_type":"other","source":"Microsoft FY26 Q4 earnings call","period":"Q4 FY2026","as_of_date":"2026-06-30","value":"New Azure capacity quickly monetized","fact_or_estimate":"fact"},
+    {"claim":"Microsoft returned more than $43B to shareholders during FY2026 while continuing heavy R&D and infrastructure investment.","source_type":"other","source":"Microsoft FY26 Q4 earnings call","period":"FY2026","as_of_date":"2026-06-30","value":"Cash returned to shareholders >$43B","fact_or_estimate":"fact"},
+    {"claim":"The FY2027 Agents and Infra segment groups core AI/cloud assets and should improve accountability for AI monetization and infrastructure economics.","source_type":"filing","source":"Uploaded Microsoft 2026-09-02 Form 8-K","period":"FY2027 reporting structure","as_of_date":"2026-09-02","value":"Agents and Infra segment","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":["AI/datacenter commitments are extremely large and returns are not yet fully observable.","Strategic dependence on external frontier-model partnerships creates bargaining and concentration risk.","SBC of $12.405B remains a meaningful owner cost even when buybacks offset dilution.","Large platform acquisitions can create integration and capital-allocation risk."],
+  "unknowns":["Full-cycle return on FY2025-27 AI infrastructure","Economic return on frontier-model partnerships","Long-run capital discipline if AI capacity shortages ease","Compensation alignment under the new reporting structure"],
+  "uncertainties":[
+    {"criterion_id":"capital_allocation","severity":"material","rationale":"Historical allocation is strong, but the unprecedented AI infrastructure cycle has not completed a full return period."},
+    {"criterion_id":"governance_integrity","severity":"minor","rationale":"No source-bundle evidence indicates accounting-trust impairment, but governance must be monitored around large strategic commitments."}
+  ],
+  "falsifiers":["AI infrastructure investment persistently grows faster than monetized gross profit and owner FCF without management reducing commitments.","Major acquisitions/partnerships generate repeated impairment or restructuring without strategic return.","Accounting, disclosure or governance events materially reduce trust in reported economics."],
+  "hard_veto_flags":[
+    {"veto":"경영진 정직성 또는 회계 신뢰성 훼손","status":"cleared","rationale":"The source bundle shows no identified restatement, going-concern issue or accounting-trust event that would meet this veto; financial reporting remains detailed and current."}
+  ],
+  "key_kpis":[
+    {"name":"Return on AI infrastructure","direction":"up","threshold":"Gross profit and owner FCF growth catch up with capital deployed","cadence":"annual"},
+    {"name":"Shareholder return versus SBC","direction":"up","threshold":"Buybacks/dividends exceed dilution while preserving high-return reinvestment","cadence":"annual"},
+    {"name":"Agents and Infra operating economics","direction":"up","threshold":"Revenue and operating income validate integrated AI allocation","cadence":"quarterly"}
+  ],
+  "next_checks":["FY2027 Agents and Infra margin/capex","SBC and repurchase trend","OpenAI/AI partnership capital commitments"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"capital_allocation","score_0_100":80,"rationale":"Track record is strong, but current AI infrastructure commitments are unprecedented and not yet fully proven."},
+    {"criterion_id":"governance_integrity","score_0_100":85,"rationale":"No identified accounting-trust impairment in the source bundle and disclosure quality is strong."},
+    {"criterion_id":"execution_adaptability","score_0_100":90,"rationale":"Microsoft has repeatedly shifted its product and business model toward cloud, subscriptions, developer tools and AI while sustaining growth."}
+  ]
+}
