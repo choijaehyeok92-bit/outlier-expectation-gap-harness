@@ -8,7 +8,7 @@
 - 확인할 수 없는 데이터는 `unknown`으로 기록한다.
 - 결론보다 먼저 반증조건을 작성한다.
 
-## 관점 분리 (점수 도메인과 파괴적 혁신 축)
+## 관점 분리 (점수 도메인과 독립 평가축)
 에이전트는 항목당 하나지만, 지침의 Bull·Verifier·Skeptic 관점을 **각각 끝까지 밀어붙인 뒤** 결론을 낸다. 합의를 먼저 정하고 관점을 끼워 맞추지 않는다.
 - `bull_case` / `bear_case`: Bull 논리와 Skeptic 논리를 각각 300자 이내로 쓴다.
 - `bull_score` / `bear_score`: 각 논리가 맞을 때의 도메인 점수. `bear_score ≤ score_0_100 ≤ bull_score`.
