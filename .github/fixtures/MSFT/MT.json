@@ -1,0 +1,35 @@
+{
+  "agent_id":"MT","ticker":"MSFT","as_of_date":"2026-09-18","domain":"moat_trajectory","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":87.0,"confidence_0_1":0.88,"bull_score":95,"bear_score":70,
+  "bull_case":"Microsoft’s moat compounds across identity, productivity, developer tools, security, cloud infrastructure and data. Each additional workload increases integration, switching costs and distribution efficiency, while GitHub/Azure/M365 ecosystems reinforce one another.",
+  "bear_case":"AI models can commoditize and customers can multi-home across clouds. Open standards, regulators and strong competitors can weaken bundling advantages, while supplier economics in chips and power capture more of the AI value pool.",
+  "thesis":"Microsoft’s moat is widening on balance. The key advantage is not one model but the integrated enterprise graph of identity, data, workflows, developers, security and infrastructure. FY2026 Azure growth, M365 paid-seat/ARPU expansion and huge RPO indicate reinforcing ecosystem effects. Commoditization and multi-cloud reduce some layers of differentiation but do not yet imply persistent moat shrinkage.",
+  "evidence":[
+    {"claim":"Azure grew 41% in FY2026 while Microsoft 365 Commercial seats and ARPU also expanded, showing cross-platform wallet-share growth.","source_type":"other","source":"Microsoft FY26 investor metrics and uploaded 10-K","period":"FY2026","as_of_date":"2026-06-30","value":"Azure +41%; M365 seats +6%","fact_or_estimate":"fact"},
+    {"claim":"Commercial RPO reached $678B, consistent with rising long-duration integration into enterprise workloads.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-06-30","value":"Commercial RPO $678B","fact_or_estimate":"fact"},
+    {"claim":"The FY2027 Agents and Infra segment explicitly groups M365, GitHub, security, models/agents and Azure infrastructure, illustrating the economic linkage among ecosystem layers.","source_type":"filing","source":"Uploaded Microsoft 2026-09-02 Form 8-K","period":"FY2027 structure","as_of_date":"2026-09-02","value":"Agents and Infra","fact_or_estimate":"fact"},
+    {"claim":"GitHub Copilot consumption strengthened after pricing was aligned with usage/value, suggesting developer ecosystem monetization rather than a stand-alone point product.","source_type":"other","source":"Microsoft FY26 Q4 earnings call","period":"Q4 FY2026","as_of_date":"2026-06-30","value":"GitHub Copilot consumption stronger after usage-based pricing change","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":["Multi-cloud and model interoperability make some workloads portable and reduce infrastructure-layer lock-in.","Open-source and frontier-model competition can commoditize model intelligence.","Antitrust remedies can constrain bundling and default distribution advantages.","AI infrastructure may increase dependence on scarce third-party accelerators, power and datacenter supply."],
+  "unknowns":["Enterprise churn after broad agent adoption","Cross-product attach rates for Copilot/security/Azure","Long-run bargaining power versus accelerator/model suppliers","Regulatory impact on suite bundling"],
+  "uncertainties":[
+    {"criterion_id":"network_data_ecosystem","severity":"minor","rationale":"Ecosystem reinforcement is strong, though Microsoft does not disclose a single quantified network-effect metric."},
+    {"criterion_id":"commoditization_resilience","severity":"material","rationale":"Model and infrastructure layers are exposed to commoditization and supplier bargaining power."}
+  ],
+  "falsifiers":["Customers materially decouple identity/productivity/developer/security workloads from Azure without economic penalty.","Copilot/agent adoption fails to increase suite attach, ARPU or retention.","Regulatory action structurally removes enough bundling/distribution leverage to shrink switching costs."],
+  "hard_veto_flags":[
+    {"veto":"해자의 지속적인 축소","status":"cleared","rationale":"Current evidence shows expanding cloud, paid-seat/ARPU and contracted-demand indicators across multiple ecosystem layers rather than persistent moat contraction."}
+  ],
+  "key_kpis":[
+    {"name":"Cross-suite adoption","direction":"up","threshold":"Copilot/security/GitHub/Azure attach and ARPU continue increasing","cadence":"quarterly"},
+    {"name":"Azure growth and share","direction":"up","threshold":"Remain competitive while margins stabilize","cadence":"quarterly"},
+    {"name":"Enterprise renewal/retention","direction":"stable/up","threshold":"No material increase in churn as multi-cloud and AI alternatives expand","cadence":"annual/quarterly"}
+  ],
+  "next_checks":["Copilot attach/ARPU","Azure competitive share and margin","Regulatory changes affecting bundling"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"switching_pricing","score_0_100":90,"rationale":"Integrated identity, productivity, security, developer and cloud workflows create high switching costs and proven ARPU expansion."},
+    {"criterion_id":"network_data_ecosystem","score_0_100":90,"rationale":"GitHub, Azure, M365 and security reinforce distribution, developer participation and enterprise data/workflow integration."},
+    {"criterion_id":"commoditization_resilience","score_0_100":80,"rationale":"Multiple ecosystem layers protect value capture, though models, cloud and compute face meaningful commoditization pressure."}
+  ]
+}
