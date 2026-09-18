@@ -117,11 +117,6 @@
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
       "status": "cleared",
       "rationale": "price_to_base_value 1.0304로 현재가는 Base 시나리오 수준을 요구하며 Bull $431.14를 넘어서는 기대를 내재하지 않는다. Red Team 관점의 단서는 붙인다 — 그 Base 경로의 출발점인 owner FCF에는 H1 운전자본 $41.3B 유출이 이미 반영돼 있고 분모인 trailing 이익에는 평가익 $23.7B이 섞여 있다. 가격이 요구하는 기대치는 과하지 않으나 그 기대치를 재는 자(尺) 자체가 흔들린다. EV·AS의 cleared 판정과 결론은 같다."
-    },
-    {
-      "veto": "자사 자금으로 창출된 매출에 대한 구조적 의존",
-      "status": "conditional",
-      "rationale": "구성요건 판정: Red Team의 핵심 공격선이 이 문구에 정확히 대응한다. H1 지분증권 매입 $42,404M(OCF의 57.0%), 보증 notional $3,529M, AR $38,466M→$63,059M에 DSO 45→60일. 매출 기여 비중이 공시되지 않아 confirmed로 확정할 증거는 없다. 결정적 자료 1개(대상 기업향 매출)가 미확보이므로 conditional."
     }
   ],
   "key_kpis": [

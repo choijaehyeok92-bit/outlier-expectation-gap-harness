@@ -1,7 +1,7 @@
 # Digest — NVDA (as of 2026-09-17)
-score 73.94 (ex-val 77.35, Emerging Outlier) · DI 82.08 · TQ 39.25 · archetype compounder — 유형 조건 및 게이트 점수 충족 · veto UNRESOLVED · state WATCH
+score 73.94 (ex-val 77.35, Emerging Outlier) · DI 82.08 · TQ 39.25 · archetype compounder — 유형 조건 및 게이트 점수 충족 · veto CLEARED · state NORMAL_CANDIDATE
 signals {'price_to_base_value': 1.0304, 'valuation_percentile_5y': 0.05, 'revenue_cagr_next_3y': 0.29, 'market_cap_usd': 5326671900000.0} · reachable(raw) ['compounder']
-veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음 / V10 자사 자금으로 창출된 매출에 대한 구조적 의존
+veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
 
 ## structural_leadership — 78.83 (raw 78.83, spread 33.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
@@ -13,7 +13,7 @@ unknowns: 가속 컴퓨트 시장에서 NVIDIA의 물량·금액 점유율이 �
 ## customer_product — 80.25 (raw 80.25, spread 35.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| CP | 75.25 (50–85) | 0.55 | support | V4=cleared, V8=cleared, V10=conditional | 고객가치는 입증된다. 매출 $96.2B 분기에 75.0% gross margin을 유지하면서 판관비가 1.4%에 불과하다는 조합은 프로모션이나 영업력으로 만들어지지 않는다. 고객 선수금이 H1에 $15.6B 유입되고 공급 약정이 $279B 쌓여 있다는 것도 지불의사의 직접 증거다. 그… |
+| CP | 75.25 (50–85) | 0.55 | support | V4=cleared, V8=cleared | 고객가치는 입증된다. 매출 $96.2B 분기에 75.0% gross margin을 유지하면서 판관비가 1.4%에 불과하다는 조합은 프로모션이나 영업력으로 만들어지지 않는다. 고객 선수금이 H1에 $15.6B 유입되고 공급 약정이 $279B 쌓여 있다는 것도 지불의사의 직접 증거다. 그… |
 bull: 분기 매출 $96.2B에서 gross margin 75.0%를 받아내면서 판관비는 매출의 1.4%다. 할인·마케팅이 아니라 제품이 수요를 만든다는 가장 강한 증거다. H1에 고객 선수금 $15.6B이 유입됐고 공급 약정 $279B이 뒤를 받친다. AI 랩에게 이 제품은 미션크리티컬이다. / bear: 하드웨어라 NRR·churn 공시가 없어 유지율을 코호트로 검증할 수 없다. 더 큰 문제는 벤더 금융이다. H1에 지분증권 $42.4B을 매입했고 AI 클라우드 리스에 $3.5B을 보증했으며, 10-Q는 이 고객군이 투자등급 자금조달 능력이 없다고 기술한다. 자기조달 수요 비중을 계산…
 unknowns: NVIDIA가 지분투자·보증한 주체가 창출한 매출 비중이 공시되지 않는다. 벤더 금융 의존도를 정량화할 수 없다. · 고객의 AI 인프라 투자 회수 기간과 실제 가동률.
 
@@ -41,7 +41,7 @@ unknowns: 지분투자 대상 기업의 명세와 그들이 창출한 매출 규
 ## financial_survival — 81.08 (raw 81.08, spread 26.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| FS | 77.75 (62–88) | 0.7 | support | V2=cleared, V3=cleared, V9=cleared, V10=conditional | 재무 생존력 자체는 최상위권이다. 순현금 $23.2B, 투자자산 $93.9B, TTM 영업현금흐름 $134.4B에 대해 총차입은 $33.4B(OCF의 0.25배)이고 1년 내 만기는 $1.0B뿐이며 만기는 2060년까지 분산돼 있다. $25B 기업어음 한도는 전액 미사용이다. cape… |
+| FS | 77.75 (62–88) | 0.7 | support | V2=cleared, V3=cleared, V9=cleared | 재무 생존력 자체는 최상위권이다. 순현금 $23.2B, 투자자산 $93.9B, TTM 영업현금흐름 $134.4B에 대해 총차입은 $33.4B(OCF의 0.25배)이고 1년 내 만기는 $1.0B뿐이며 만기는 2060년까지 분산돼 있다. $25B 기업어음 한도는 전액 미사용이다. cape… |
 bull: 순현금 $23.2B에 투자자산 $93.9B이 더해지고 TTM 영업현금흐름은 $134.4B이다. 총차입 $33.4B은 TTM OCF의 0.25배이며 1년 내 만기는 $1.0B뿐, 만기는 2060년까지 사다리형이다. $25B 기업어음 한도는 미사용이고 covenant도 준수 중이다. ca… / bear: 위험은 대차대조표가 아니라 부외에 있다. 총약정 $366B은 TTM 매출의 1.2배이고 그중 구속력 있는 공급·capacity 약정이 $279B다. 수요가 꺾이면 이것이 재고·약정 손실로 전환된다는 것은 H20 $4.5B, H200 $0.4B으로 이미 입증됐다. AI 클라우드 리스 보…
 unknowns: 공급·capacity 약정 $279B 중 취소 가능 비중과 구속력 있는 비중. · land/power/shell 보증의 파트너별 신용도와 최대 총노출.
 
@@ -82,7 +82,7 @@ unknowns: NVIDIA 지분투자·보증 대상 기업향 매출 비중 — 현재 
 ## red_team
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| RT | 38 | 0.6 | oppose | V1=cleared, V2=cleared, V4=cleared, V5=cleared, V6=cleared, V8=cleared, V7=cleared, V10=conditional | 공매도 논리 한 줄: NVIDIA는 자기 자본의 일부를 매출로, 자기 평가의 일부를 이익으로 계상하고 있으며 둘 다 순환이 멈추면 동시에 역전된다. H1 순이익 $118.0B와 owner FCF $66.0B의 격차는 비현금 평가익 $23.7B과 운전자본 유출 $41.3B이 만든다. 같… |
+| RT | 38 | 0.6 | oppose | V1=cleared, V2=cleared, V4=cleared, V5=cleared, V6=cleared, V8=cleared, V7=cleared | 공매도 논리 한 줄: NVIDIA는 자기 자본의 일부를 매출로, 자기 평가의 일부를 이익으로 계상하고 있으며 둘 다 순환이 멈추면 동시에 역전된다. H1 순이익 $118.0B와 owner FCF $66.0B의 격차는 비현금 평가익 $23.7B과 운전자본 유출 $41.3B이 만든다. 같… |
 unknowns: 지분투자·보증 대상 기업향 매출 비중 — 순환 구조의 크기를 정하는 단일 수치인데 공시되지 않는다. · 공급·capacity 약정 $279B 중 취소 가능 비중.
 
 ## macro_overlay

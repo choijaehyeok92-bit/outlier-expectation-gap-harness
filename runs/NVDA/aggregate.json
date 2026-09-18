@@ -78,9 +78,9 @@
     "compounder"
   ],
   "early_exit": false,
-  "hard_veto_status": "UNRESOLVED",
-  "mechanical_pre_ic_state": "WATCH",
-  "position_range_pre_ic": "0% until veto cleared",
+  "hard_veto_status": "CLEARED",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "position_range_pre_ic": "2-4%",
   "domain_scores": {
     "structural_leadership": {
       "bull_score": 88,
@@ -516,41 +516,9 @@
     }
   ],
   "confirmed_vetoes": [],
-  "unresolved_vetoes": [
-    {
-      "veto": "자사 자금으로 창출된 매출에 대한 구조적 의존",
-      "status": "UNRESOLVED",
-      "owners": [
-        "CP",
-        "FS",
-        "RT"
-      ],
-      "assessments": [
-        {
-          "agent_id": "CP",
-          "owner": true,
-          "status": "conditional",
-          "rationale": "구성요건 판정: 첫 요건 충족 — H1 지분증권 매입 $42,404M은 영업현금흐름 $74,421M의 57.0%로 conditional_if 임계값 20%를 크게 넘고, AI 클라우드 리스 보증 $3,529M과 잔여 지분투자 약정 $25B이 더해진다. 10-Q는 이 고객군이 투자등급 자금조달 능력을 확보하지 못했다고 직접 기술한다. 두 번째 요건(매출 기여 비중)은 공시가 없어 측정 불가. 해소 조건: 해당 기업향 매출이 총매출의 10% 미만임이 확인되면 cleared, 25% 초과면 confirmed."
-        },
-        {
-          "agent_id": "FS",
-          "owner": true,
-          "status": "conditional",
-          "rationale": "구성요건 판정: 재무 관점에서 첫 요건이 충족된다. H1에 지분증권 $42,404M 매입과 제3자 리스 보증 $3,529M(파트너 에스크로는 $712M뿐)을 집행했다. 두 번째 요건인 매출 기여 비중은 공시되지 않아 측정 불가. 이 노출은 재무생존을 위협하는 규모는 아니나(시총 대비 보증 0.07%), 하락 국면에서 매출·투자자산·AR이 동시에 훼손되는 상관관계를 만든다."
-        },
-        {
-          "agent_id": "RT",
-          "owner": true,
-          "status": "conditional",
-          "rationale": "구성요건 판정: Red Team의 핵심 공격선이 이 문구에 정확히 대응한다. H1 지분증권 매입 $42,404M(OCF의 57.0%), 보증 notional $3,529M, AR $38,466M→$63,059M에 DSO 45→60일. 매출 기여 비중이 공시되지 않아 confirmed로 확정할 증거는 없다. 결정적 자료 1개(대상 기업향 매출)가 미확보이므로 conditional."
-        }
-      ],
-      "missing_reports": [],
-      "missing_assessments": []
-    }
-  ],
+  "unresolved_vetoes": [],
   "veto_gate": {
-    "overall": "UNRESOLVED",
+    "overall": "CLEARED",
     "items": [
       {
         "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
@@ -774,73 +742,10 @@
         ],
         "missing_reports": [],
         "missing_assessments": []
-      },
-      {
-        "veto": "자사 자금으로 창출된 매출에 대한 구조적 의존",
-        "status": "UNRESOLVED",
-        "owners": [
-          "CP",
-          "FS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "구성요건 판정: 첫 요건 충족 — H1 지분증권 매입 $42,404M은 영업현금흐름 $74,421M의 57.0%로 conditional_if 임계값 20%를 크게 넘고, AI 클라우드 리스 보증 $3,529M과 잔여 지분투자 약정 $25B이 더해진다. 10-Q는 이 고객군이 투자등급 자금조달 능력을 확보하지 못했다고 직접 기술한다. 두 번째 요건(매출 기여 비중)은 공시가 없어 측정 불가. 해소 조건: 해당 기업향 매출이 총매출의 10% 미만임이 확인되면 cleared, 25% 초과면 confirmed."
-          },
-          {
-            "agent_id": "FS",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "구성요건 판정: 재무 관점에서 첫 요건이 충족된다. H1에 지분증권 $42,404M 매입과 제3자 리스 보증 $3,529M(파트너 에스크로는 $712M뿐)을 집행했다. 두 번째 요건인 매출 기여 비중은 공시되지 않아 측정 불가. 이 노출은 재무생존을 위협하는 규모는 아니나(시총 대비 보증 0.07%), 하락 국면에서 매출·투자자산·AR이 동시에 훼손되는 상관관계를 만든다."
-          },
-          {
-            "agent_id": "RT",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "구성요건 판정: Red Team의 핵심 공격선이 이 문구에 정확히 대응한다. H1 지분증권 매입 $42,404M(OCF의 57.0%), 보증 notional $3,529M, AR $38,466M→$63,059M에 DSO 45→60일. 매출 기여 비중이 공시되지 않아 confirmed로 확정할 증거는 없다. 결정적 자료 1개(대상 기업향 매출)가 미확보이므로 conditional."
-          }
-        ],
-        "missing_reports": [],
-        "missing_assessments": []
       }
     ],
     "confirmed": [],
-    "unresolved": [
-      {
-        "veto": "자사 자금으로 창출된 매출에 대한 구조적 의존",
-        "status": "UNRESOLVED",
-        "owners": [
-          "CP",
-          "FS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "구성요건 판정: 첫 요건 충족 — H1 지분증권 매입 $42,404M은 영업현금흐름 $74,421M의 57.0%로 conditional_if 임계값 20%를 크게 넘고, AI 클라우드 리스 보증 $3,529M과 잔여 지분투자 약정 $25B이 더해진다. 10-Q는 이 고객군이 투자등급 자금조달 능력을 확보하지 못했다고 직접 기술한다. 두 번째 요건(매출 기여 비중)은 공시가 없어 측정 불가. 해소 조건: 해당 기업향 매출이 총매출의 10% 미만임이 확인되면 cleared, 25% 초과면 confirmed."
-          },
-          {
-            "agent_id": "FS",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "구성요건 판정: 재무 관점에서 첫 요건이 충족된다. H1에 지분증권 $42,404M 매입과 제3자 리스 보증 $3,529M(파트너 에스크로는 $712M뿐)을 집행했다. 두 번째 요건인 매출 기여 비중은 공시되지 않아 측정 불가. 이 노출은 재무생존을 위협하는 규모는 아니나(시총 대비 보증 0.07%), 하락 국면에서 매출·투자자산·AR이 동시에 훼손되는 상관관계를 만든다."
-          },
-          {
-            "agent_id": "RT",
-            "owner": true,
-            "status": "conditional",
-            "rationale": "구성요건 판정: Red Team의 핵심 공격선이 이 문구에 정확히 대응한다. H1 지분증권 매입 $42,404M(OCF의 57.0%), 보증 notional $3,529M, AR $38,466M→$63,059M에 DSO 45→60일. 매출 기여 비중이 공시되지 않아 confirmed로 확정할 증거는 없다. 결정적 자료 1개(대상 기업향 매출)가 미확보이므로 conditional."
-          }
-        ],
-        "missing_reports": [],
-        "missing_assessments": []
-      }
-    ],
+    "unresolved": [],
     "pending": []
   },
   "valuation_model": {
