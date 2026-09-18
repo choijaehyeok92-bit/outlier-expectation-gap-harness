@@ -3,7 +3,7 @@ name: MSFT EV run 2026-09-18
 on:
   push:
     branches:
-      - run/msft-2026-09-18-sol-triage
+      - run/msft-2026-09-18-sol-phase1
 
 permissions:
   contents: read
@@ -38,6 +38,18 @@ jobs:
           python harness.py validate MSFT DI
           cp .github/fixtures/MSFT/TQ.json runs/MSFT/reports/TQ.json
           python harness.py validate MSFT TQ
+          cp .github/fixtures/MSFT/SL.json runs/MSFT/reports/SL.json
+          python harness.py validate MSFT SL
+          cp .github/fixtures/MSFT/CP.json runs/MSFT/reports/CP.json
+          python harness.py validate MSFT CP
+          cp .github/fixtures/MSFT/MT.json runs/MSFT/reports/MT.json
+          python harness.py validate MSFT MT
+          cp .github/fixtures/MSFT/RF.json runs/MSFT/reports/RF.json
+          python harness.py validate MSFT RF
+          cp .github/fixtures/MSFT/MA.json runs/MSFT/reports/MA.json
+          python harness.py validate MSFT MA
+          cp .github/fixtures/MSFT/FS.json runs/MSFT/reports/FS.json
+          python harness.py validate MSFT FS
           python harness.py plan MSFT
           python harness.py digest MSFT
           python harness.py aggregate MSFT
@@ -45,7 +57,7 @@ jobs:
           cat runs/MSFT/aggregate.json
       - uses: actions/upload-artifact@v4
         with:
-          name: MSFT-harness-run-2026-09-18-sol-ev
+          name: MSFT-harness-run-2026-09-18-sol-phase1
           path: |
             runs/MSFT
             runlogs/execution.log
