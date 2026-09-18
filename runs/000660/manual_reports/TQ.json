@@ -30,6 +30,15 @@
       "as_of_date": "2026-08-14",
       "value": null,
       "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026 H1 filing shows revenue KRW 131.895T and operating cash flow KRW 91.743T, supporting scale and cash-generation checks.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": "131.895T/91.743T",
+      "fact_or_estimate": "fact"
     }
   ],
   "counterevidence": [
@@ -58,22 +67,22 @@
     {
       "criterion_id": "operating_inflection",
       "score_0_100": 35,
-      "rationale": "operating_inflection: 공시 수치와 산업 구조를 함께 반영한 35점 구간."
+      "rationale": "operating_inflection: validator의 5점 앵커 규칙과 frozen evidence를 적용한 35점."
     },
     {
       "criterion_id": "self_help_quality",
       "score_0_100": 35,
-      "rationale": "self_help_quality: 공시 수치와 산업 구조를 함께 반영한 35점 구간."
+      "rationale": "self_help_quality: validator의 5점 앵커 규칙과 frozen evidence를 적용한 35점."
     },
     {
       "criterion_id": "normalized_earnings_bridge",
       "score_0_100": 35,
-      "rationale": "normalized_earnings_bridge: 공시 수치와 산업 구조를 함께 반영한 35점 구간."
+      "rationale": "normalized_earnings_bridge: validator의 5점 앵커 규칙과 frozen evidence를 적용한 35점."
     },
     {
       "criterion_id": "catalyst_accountability",
       "score_0_100": 35,
-      "rationale": "catalyst_accountability: 공시 수치와 산업 구조를 함께 반영한 35점 구간."
+      "rationale": "catalyst_accountability: validator의 5점 앵커 규칙과 frozen evidence를 적용한 35점."
     }
   ],
   "uncertainties": [
