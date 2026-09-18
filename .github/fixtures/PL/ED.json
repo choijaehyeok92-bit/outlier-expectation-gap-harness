@@ -1,0 +1,48 @@
+{
+  "agent_id":"ED",
+  "ticker":"PL",
+  "as_of_date":"2026-09-17",
+  "domain":"evidence_quality",
+  "role":"evidence_auditor",
+  "analysis_status":"complete",
+  "score_0_100":87,
+  "confidence_0_1":0.95,
+  "thesis":"The PL case is grounded mainly in primary filings: revenue, RPO/backlog, customer concentration, liquidity, SBC, capex, ATM issuance and convertible debt are directly traceable to the FY2026 10-K and FY2027 10-Qs. Evidence quality is strong enough for IC, but three interpretation risks must remain explicit: reported FCF is not owner FCF after SBC/dilution, RPO/backlog are related demand measures rather than independent proofs, and the frozen net-cash/share input uses a slightly different share/debt convention from other per-share fields.",
+  "evidence":[
+    {"claim":"FY2026 revenue, NDR, recurring ACV, operating cash flow and internal-control disclosures are directly supported by the filed FY2026 Form 10-K.","source_type":"filing","source":"Uploaded PL FY2026 Form 10-K filed 2026-03-23","period":"FY2026","as_of_date":"2026-03-23","value":"Revenue $307.7M; NDR 116%; recurring ACV 98%; OCF $134.4M","fact_or_estimate":"fact"},
+    {"claim":"FY2027 Q2 revenue, RPO/backlog, customer concentration, cash/investments, convertible notes, H1 cash flow, SBC and ATM issuance are directly supported by the Sep. 3 Form 10-Q.","source_type":"filing","source":"Uploaded PL FY2027 Q2 Form 10-Q filed 2026-09-03","period":"FY2027 Q2/H1","as_of_date":"2026-09-03","value":"Revenue $116.1M; RPO $753.1M; backlog $814.9M; cash+ST investments $865.4M","fact_or_estimate":"fact"},
+    {"claim":"The Sep. 3 8-K earnings release supports FY2027 guidance, recurring ACV, Pelican/Tanager deployment and agentic-AI beta commentary.","source_type":"ir","source":"Uploaded PL 2026-09-03 Form 8-K Exhibit 99.1","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"FY27 revenue guide $430M-$441M; capex $100M-$115M; recurring ACV 98%","fact_or_estimate":"fact"},
+    {"claim":"The Moonshot market-cap gate is deterministic: frozen $16.99 price multiplied by latest outstanding shares yields about $6.18B, well below the $20B limit.","source_type":"other","source":"Frozen company_context and source bundle","period":"2026-09-17","as_of_date":"2026-09-17","value":"Market cap ~$6.18B","fact_or_estimate":"fact"},
+    {"claim":"The strongest negative evidence—H1 SBC $33.5M, Q2 ATM issuance, warrant proceeds and customer concentration—is also primary-source supported rather than inferred from price action.","source_type":"filing","source":"Uploaded PL FY2027 Q2 Form 10-Q","period":"FY2027 H1/Q2","as_of_date":"2026-09-03","value":"SBC $33.5M; ATM $122.4M gross; warrant proceeds $107.8M","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "The $16.99 frozen price is from secondary historical-price sources rather than an exchange or issuer filing.",
+    "Reported FCF and adjusted EBITDA are useful operating measures but do not deduct SBC as an owner cost and can be affected by working-capital timing.",
+    "RPO and backlog overlap economically, so they should not be counted as two independent confirmations of demand quality.",
+    "Frozen net cash/share subtracts convertible carrying amount and uses latest outstanding shares, while some other per-share analysis uses diluted weighted-average shares; the difference is small but definitions should be standardized."
+  ],
+  "unknowns":[
+    "Normalized owner FCF after working-capital reversal, SBC and full fleet replacement capex.",
+    "Maintenance versus growth capex by satellite generation.",
+    "Long-run net dilution after sustainable positive FCF is reached.",
+    "Gross retention, CAC/payback and segment-level unit economics.",
+    "Economic contribution of AI products versus core imagery and sovereign contracts."
+  ],
+  "falsifiers":[
+    "Primary filings show that recurring demand or cash conversion is materially weaker than represented in the current digest after KPI definitions are normalized.",
+    "Owner FCF/share fails to improve over multiple years once working-capital timing and dilution are normalized.",
+    "KPI definitions change in a way that breaks comparability without adequate reconciliations."
+  ],
+  "hard_veto_flags":[],
+  "key_kpis":[
+    {"name":"Normalized owner FCF/share","direction":"up","threshold":"Positive after normalizing working capital, SBC and dilution; should compound faster than share count","cadence":"quarterly/annual"},
+    {"name":"Net dilution","direction":"down","threshold":"Trend toward low-single-digit annual growth or less after FCF breakeven","cadence":"quarterly"},
+    {"name":"Recurring demand conversion","direction":"up","threshold":"NDR/recurring ACV remain strong while RPO converts to revenue and gross profit","cadence":"quarterly"}
+  ],
+  "next_checks":[
+    "Standardize share-count and convertible conventions in the next frozen snapshot.",
+    "Build an explicit reported-FCF to owner-FCF/share bridge each quarter.",
+    "Track RPO/backlog conversion without double-counting overlapping demand measures."
+  ],
+  "verdict":"support"
+}
