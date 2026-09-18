@@ -1,0 +1,57 @@
+{
+  "agent_id":"RT",
+  "ticker":"PL",
+  "as_of_date":"2026-09-17",
+  "domain":"red_team",
+  "role":"red_team",
+  "analysis_status":"complete",
+  "score_0_100":61,
+  "confidence_0_1":0.92,
+  "thesis":"The coherent short thesis is that Planet is valued as an emerging data/AI platform while its economics may remain those of a capital-intensive satellite and government-contracting business. Q2 growth and backlog are real, but owner FCF is obscured by working-capital inflows, SBC, fleet capex and equity issuance. If large sovereign contracts normalize, raw imagery commoditizes, or dilution persists, the stock can fall toward the locked Base/Bear values even without business failure. Current evidence does not prove accounting impairment, financing dependence, moat collapse, subsidy-driven demand or fatal single-customer dependence.",
+  "evidence":[
+    {"claim":"FY27 H1 reported FCF was $21.3M, but operating cash flow benefited from a $47.1M deferred-revenue increase and $23.9M receivables decline, making cash conversion look stronger than normalized owner economics may be.","source_type":"filing","source":"Uploaded PL FY2027 Q2 Form 10-Q","period":"FY2027 H1","as_of_date":"2026-09-03","value":"FCF $21.3M; deferred revenue +$47.1M; A/R -$23.9M","fact_or_estimate":"fact"},
+    {"claim":"H1 SBC was $33.5M and the company raised $122.4M gross through ATM issuance plus $107.8M from warrant exercises, creating meaningful per-share dilution risk.","source_type":"filing","source":"Uploaded PL FY2027 Q2 Form 10-Q","period":"FY2027 H1/Q2","as_of_date":"2026-09-03","value":"SBC $33.5M; ATM $122.4M; warrant proceeds $107.8M","fact_or_estimate":"fact"},
+    {"claim":"FY27 capex guidance is $100M-$115M against revenue guidance of $430M-$441M, so the business remains materially capital intensive at its current scale.","source_type":"ir","source":"Uploaded PL 2026-09-03 Form 8-K Exhibit 99.1","period":"FY2027 guidance","as_of_date":"2026-09-03","value":"Capex roughly one-quarter of guided revenue","fact_or_estimate":"fact"},
+    {"claim":"Three Q2 customers represented 17%, 11% and 10% of revenue, so contract timing and concentration can materially affect reported growth.","source_type":"filing","source":"Uploaded PL FY2027 Q2 Form 10-Q","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"Top three customers = 38% of revenue","fact_or_estimate":"fact"},
+    {"claim":"The locked DCF is about $5.22 Bear, $15.94 Base and $39.36 Bull versus $16.99, showing that execution disappointment can produce large downside without insolvency.","source_type":"other","source":"Frozen deterministic DCF","period":"10-year model","as_of_date":"2026-09-17","value":"Bear $5.22; Base $15.94; Bull $39.36","fact_or_estimate":"estimate"},
+    {"claim":"Against the short thesis, FY26 NDR was 116%, recurring ACV is 98%, RPO/backlog are large and liquid assets were about $865M, confirming real customer demand and substantial survival runway.","source_type":"filing","source":"Uploaded FY2026 10-K and FY2027 Q2 10-Q","period":"FY2026-FY2027 Q2","as_of_date":"2026-09-03","value":"NDR 116%; recurring ACV 98%; liquid assets ~$865M","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "The longitudinal archive and daily cadence can create a data advantage that raw-imagery competitors cannot reproduce quickly.",
+    "98% recurring ACV, NDR above 100% and contracted backlog argue that demand is not primarily promotional or speculative.",
+    "Net liquidity and positive H1 FCF make near-term forced financing unlikely even under weaker equity markets.",
+    "ATM shares were issued at prices materially above the frozen price, so recent issuance was not necessarily economically destructive if reinvestment returns are adequate."
+  ],
+  "unknowns":[
+    "Normalized owner FCF margin after full fleet replacement capex and working-capital normalization.",
+    "Long-run net dilution from SBC, ATM capacity, warrants and convertible settlement.",
+    "Gross-margin profile of sovereign satellite services versus data subscriptions.",
+    "Pricing power and switching cost as rival constellations expand.",
+    "Whether agentic AI becomes a paid high-margin layer or remains a feature supporting imagery demand."
+  ],
+  "falsifiers":[
+    "Owner FCF/share compounds strongly while capex intensity and net dilution both decline.",
+    "Customer concentration falls and RPO converts broadly with stable or improving gross margin.",
+    "AI/data products materially raise ARPU, retention and margins without requiring proportional satellite capex."
+  ],
+  "hard_veto_flags":[
+    {"veto":"경영진 정직성 또는 회계 신뢰성 훼손","status":"cleared","rationale":"FY2026 ICFR was effective and independently attested; the principal issue is economic interpretation of non-GAAP/cash-flow metrics, not evidence of accounting unreliability."},
+    {"veto":"구조적으로 과도한 외부자본 조달 의존","status":"cleared","rationale":"Planet has substantial liquid assets and positive H1 FCF; recent equity issuance is material but not currently required for near-term survival."},
+    {"veto":"고객가치 없이 마케팅·보조금에 의존하는 성장","status":"cleared","rationale":"High recurring ACV, NDR above 100%, renewals and contracted demand show real willingness to pay."},
+    {"veto":"증분 ROIC의 구조적 붕괴","status":"cleared","rationale":"Full-cycle incremental ROIC remains unproven, but current revenue growth, backlog and emerging FCF do not demonstrate structural collapse."},
+    {"veto":"해자의 지속적인 축소","status":"cleared","rationale":"Competition and multi-sourcing are real, but current retention, archive accumulation and expanded sensor capabilities do not show persistent moat contraction."},
+    {"veto":"단일 제품·단일 고객·단일 규제에 대한 치명적 종속성","status":"cleared","rationale":"Customer concentration is high but no single customer is fatal, and revenue spans multiple products, use cases, geographies and government/commercial buyers."},
+    {"veto":"장기간 지속되는 과도한 희석","status":"conditional","rationale":"Recent ATM, warrant and SBC dilution is economically material. The domain owners RF and FS must determine whether it clears; persistent mid-to-high single-digit net dilution after sustainable FCF would support confirmation."}
+  ],
+  "key_kpis":[
+    {"name":"Normalized owner FCF/share","direction":"up","threshold":"Growth after working-capital normalization must exceed diluted-share growth","cadence":"quarterly/annual"},
+    {"name":"Net dilution","direction":"down","threshold":"Move toward low-single-digit annual share growth or less after FCF breakeven","cadence":"quarterly"},
+    {"name":"Customer concentration / RPO conversion","direction":"down","threshold":"Concentration declines while contracted demand converts with stable margins","cadence":"quarterly"}
+  ],
+  "next_checks":[
+    "FY27 Q3 owner-FCF bridge and share-count change.",
+    "Use of remaining ATM authorization and convertible settlement policy.",
+    "Customer concentration, sovereign-contract margins and AI monetization."
+  ],
+  "verdict":"neutral"
+}
