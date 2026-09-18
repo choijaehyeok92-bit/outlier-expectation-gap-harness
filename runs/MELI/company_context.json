@@ -1,0 +1,38 @@
+{
+  "ticker": "MELI",
+  "company_name": "MercadoLibre, Inc.",
+  "as_of_date": "2026-09-17",
+  "currency": "USD",
+  "current_price": 1825.21,
+  "shares_diluted": 50696802,
+  "market_cap_usd": 92532309978.42,
+  "enterprise_value": 98957309978.42,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "User-uploaded MercadoLibre FY2025 Form 10-K filed 2026-02-25",
+    "User-uploaded MercadoLibre Q1 2026 Form 10-Q filed 2026-05-08",
+    "User-uploaded MercadoLibre Q2 2026 Form 10-Q filed 2026-08-06",
+    "User-uploaded MercadoLibre Form 8-K filed 2026-09-14",
+    "MELI 2026-09-17 closing price $1,825.21 verified from historical market data"
+  ],
+  "special_questions": [
+    "Can commerce, payments and credit growth re-accelerate owner FCF/share after the 2026 free-shipping and credit-investment margin reset?",
+    "Is Mercado Pago funding dependence normal financial working capital or a structural external-capital vulnerability?",
+    "Does credit growth remain attractive after NIMAL compression and higher past-due balances?"
+  ],
+  "net_cash_per_share": -126.7338,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "No reproducible 5-year valuation percentile frozen; current valuation is assessed through the deterministic owner-FCF/share DCF.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  }
+}

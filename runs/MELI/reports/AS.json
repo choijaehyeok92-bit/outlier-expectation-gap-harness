@@ -1,0 +1,111 @@
+{
+  "agent_id": "AS",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-17",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 64.75,
+  "confidence_0_1": 0.68,
+  "bull_score": 82,
+  "bear_score": 35,
+  "bull_case": "Bull 약 $3.35K(+84%)에 Commerce 침투, Pago 오프플랫폼, 신용/광고 수익화가 독립적으로 기여할 수 있다.",
+  "bear_case": "Bear 약 $451(-75%)이며 신용손실, 무료배송 보조, FX/규제와 자금조달 비용이 동시 악화될 수 있다.",
+  "thesis": "비대칭성은 사업의 성장성과 가격의 여유 사이에서 중립적이다. deterministic Bull/current는 약 1.84배로 Commerce·Fintech·Credit/Ads의 복수 경로가 있지만, Bear/current는 약 0.25배다. 파산보다는 신용·마진·밸류에이션의 동시 재평가가 핵심 하방이다.",
+  "evidence": [
+    {
+      "claim": "Bull/current≈1.84, Bear/current≈0.25다.",
+      "source_type": "other",
+      "source": "harness deterministic valuation",
+      "period": "10y",
+      "as_of_date": "2026-09-17",
+      "value": "1.84/0.25",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Q2 MAU 88M, buyers 89M, GMV $21.926B, TPV $100.952B로 복수 성장경로가 확인된다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-06",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Net debt $6.425B, gross loans $16.375B, off-balance card commitments $14.047B이 하방 상관을 높인다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-06",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2026년 성장 가속과 동시에 마진·NIMAL·Adjusted FCF가 악화되어 단일 지표만으로 품질을 판단하면 안 된다."
+  ],
+  "unknowns": [
+    "브라질 free-shipping 투자와 신용카드 확장의 코호트별 장기 ROIC 및 정상화 마진."
+  ],
+  "falsifiers": [
+    "2027년까지 Adjusted FCF/share와 NIMAL이 회복되지 않으면 장기 복리 가설을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "순부채가 있으나 강한 규모·현금창출·금융자산과 장기자금 접근성이 있어 파산 또는 사업가치 소멸 확률이 기대수익 대비 과도하다는 구성요건은 충족되지 않는다."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "현재가는 Bull 가치 이상을 요구하지 않는다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Adjusted FCF/share",
+      "direction": "up",
+      "threshold": "지속 회복",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "다음 10-Q에서 GMV·TPV·NIMAL·past-due·Adjusted FCF·net debt를 동시 확인"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "Bull/current≈1.84이고 독립 상승경로가 2개 이상이므로 observable table 75."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 50,
+      "rationale": "Bear/current≈0.25로 observable table 0.2~0.4 구간=50; 순현금 modifier는 적용 불가."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 70,
+      "rationale": "신용/FX/마진의 상관 하방을 반영한 Bear/Base/Bull 확률과 민감도를 사용."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    }
+  ]
+}

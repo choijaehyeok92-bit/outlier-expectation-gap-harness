@@ -1,0 +1,80 @@
+{
+  "ticker": "MELI",
+  "as_of_date": "2026-09-17",
+  "score_100": 71.18,
+  "score_100_ex_valuation": 74.46,
+  "classification": "Emerging Outlier",
+  "archetype": "non_fit",
+  "hard_veto_status": "CLEARED",
+  "ic_state": "STARTER_OR_WATCH",
+  "position_range": "0-2%",
+  "macro_pacing_multiplier": 0.7,
+  "ic_verdict": "neutral",
+  "early_exit": false,
+  "reachable_archetypes_raw": [],
+  "valuation_model": {
+    "status": "COMPLETE",
+    "method": "locked owner-FCF/share DCF",
+    "required_return": 0.09,
+    "horizon_years": 10,
+    "net_cash_per_share": -126.7338,
+    "current_price": 1825.21,
+    "scenarios": {
+      "bear": {
+        "value_per_share": 451.3059,
+        "pv_owner_fcf": 172.5253,
+        "pv_terminal": 405.5144,
+        "terminal_multiple": 15.0,
+        "terminal_fraction": 0.7015
+      },
+      "base": {
+        "value_per_share": 1799.5842,
+        "pv_owner_fcf": 507.0177,
+        "pv_terminal": 1419.3003,
+        "terminal_multiple": 20.0,
+        "terminal_fraction": 0.7368
+      },
+      "bull": {
+        "value_per_share": 3354.4949,
+        "pv_owner_fcf": 735.5584,
+        "pv_terminal": 2745.6702,
+        "terminal_multiple": 25.0,
+        "terminal_fraction": 0.7887
+      }
+    },
+    "signals": {
+      "price_to_base_value": 1.0142,
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": 0.22
+    }
+  },
+  "provider_calibration": {
+    "applied": true,
+    "family": "openai",
+    "sign": -1,
+    "base_offset": 5.0,
+    "max_abs_offset": 5.0,
+    "per_domain_offset": {
+      "structural_leadership": -3.33,
+      "customer_product": -5.0,
+      "moat_trajectory": -3.33,
+      "reinvestment_fcf": -3.33,
+      "management_allocation": -3.33,
+      "financial_survival": -3.33,
+      "expectation_valuation": -1.67,
+      "asymmetry": -1.67,
+      "disruptive_innovation": -3.33,
+      "turnaround_quality": -5.0
+    },
+    "basis": {
+      "sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조",
+      "n": 27,
+      "measured_mean_gap": 10.2,
+      "measured_sd": 6.9,
+      "direction": "27개 전부 gpt-5.6-sol >= Claude Opus 5. 노이즈가 아니라 계통 편향.",
+      "caveat": "표본은 종목 1개다. 다른 종목의 쌍 실행이 쌓이면 base_offset을 재추정해야 한다. harness.py calibrate로 측정한다."
+    },
+    "rationale": "같은 격차의 절반을 하향 보정한다. 앵커값(25/50/75/90)에 그대로 착지하며 27개 중 15개가 앵커값, 90을 9번 사용했고 50 미만을 한 번도 쓰지 않았다."
+  },
+  "note": "Agent reports were authored by GPT-5.6 Sol in this ChatGPT session and executed through the repository harness; no separate OpenAI API adapter call was made."
+}

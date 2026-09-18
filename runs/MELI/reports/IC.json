@@ -1,0 +1,91 @@
+{
+  "agent_id": "IC",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-17",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 71.18,
+  "confidence_0_1": 0.78,
+  "thesis": "기계적 core score는 약 71.18로 Emerging Outlier지만 최종 archetype은 Non-fit이다. 이유는 단순하다. MT·MA·FS는 강하지만 RF가 OpenAI 보정 후 약 66으로 Compounder 임계값 76을 크게 못 넘고, price/Base≈1.01이라 Expectation Gap도 아니다. Hard Veto는 cleared다. 따라서 기계적 상태는 STARTER_OR_WATCH, 0–2%이며 macro pacing 0.7을 적용한다.",
+  "evidence": [
+    {
+      "claim": "예상 aggregate core score 약 71.18, ex-val 약 74.46이며 RF가 compounder threshold를 못 넘는다.",
+      "source_type": "other",
+      "source": "runs/MELI/aggregate.json",
+      "period": "run",
+      "as_of_date": "2026-09-17",
+      "value": "71.18/74.46",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "DCF Bear/Base/Bull 약 $451/$1,800/$3,354, price/Base≈1.01이다.",
+      "source_type": "other",
+      "source": "runs/MELI/aggregate.json",
+      "period": "10y",
+      "as_of_date": "2026-09-17",
+      "value": "451/1800/3354",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Q2 GMV +44%, TPV +56%, MAU +29%는 구조적 성장의 질을 지지한다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-06",
+      "value": "44/56/29",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "반면 H1 Adjusted FCF $158M vs $512M, Q2 margin 6.7% vs 12.2%로 현금복리 검증은 약하다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-06",
+      "value": "158/512;6.7/12.2",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "RF는 투자 정상화 한두 분기만으로 크게 개선될 수 있어 Non-fit이 영구 판정은 아니다.",
+    "현재 가격은 Base와 거의 같아 valuation downside cushion이 약하다.",
+    "강한 volume growth가 향후 margin/FCF 회복으로 전환될 가능성은 충분하다."
+  ],
+  "unknowns": [
+    "2027 Adjusted FCF/share",
+    "credit vintage loss curve",
+    "free-shipping cohort ROI"
+  ],
+  "falsifiers": [
+    "RF가 76 이상으로 회복하면 Compounder 재분류 검토",
+    "price/Base<0.85와 EV>=65가 되면 Expectation Gap 검토",
+    "credit losses 급증과 funding stress 동시 발생 시 veto 재검토"
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "RF score",
+      "direction": "up",
+      "threshold": ">=76",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "price/Base",
+      "direction": "down",
+      "threshold": "<0.9 선호",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Adjusted FCF/share",
+      "direction": "up",
+      "threshold": "FY2025 수준 이상 회복",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 10-Q 이후 재실행",
+    "Brazil free-shipping economics",
+    "credit NIMAL/past-due 추세"
+  ],
+  "verdict": "neutral"
+}

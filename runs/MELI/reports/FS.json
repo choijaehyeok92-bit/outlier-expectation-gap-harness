@@ -1,0 +1,116 @@
+{
+  "agent_id": "FS",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-17",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 78.75,
+  "confidence_0_1": 0.74,
+  "bull_score": 90,
+  "bear_score": 50,
+  "bull_case": "다양한 securitization·credit line·local funding과 장기채 접근, 대규모 거래 현금흐름이 신용경색 완충장치를 제공한다.",
+  "bear_case": "past-due와 allowance가 빠르게 증가하고 투자자 기반이 좁아지면 securitization/funding 비용이 상승해 신용성장을 강제로 축소할 수 있다.",
+  "thesis": "MELI의 자금조달은 fintech 영업모델의 일부이므로 순현금 기업처럼 볼 수 없지만 생존력은 양호하다. Q2 net debt $6.425B, gross loans $16.375B, card/loan receivables와 규제현금이 대규모이며 9월 $1B 10년채 발행으로 장기시장 접근성도 확인됐다. 핵심 위험은 funding rollover와 credit losses이지 즉각적 유동성 부족이 아니다.",
+  "evidence": [
+    {
+      "claim": "Q2 total debt $13.176B, net debt $6.425B, liquid assets used in net-debt calc $6.751B이다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-06",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Gross loans $16.375B, allowance $4.379B, past due $4.638B으로 credit risk가 확대됐다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-06",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026-09-14 회사는 $1.0B 5.85% notes due 2036을 발행했다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/8-K_2026-09-14_key_facts.txt",
+      "period": "2026-09-14",
+      "as_of_date": "2026-09-14",
+      "value": "$1B 5.85%",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2026년 성장 가속과 동시에 마진·NIMAL·Adjusted FCF가 악화되어 단일 지표만으로 품질을 판단하면 안 된다."
+  ],
+  "unknowns": [
+    "브라질 free-shipping 투자와 신용카드 확장의 코호트별 장기 ROIC 및 정상화 마진."
+  ],
+  "falsifiers": [
+    "2027년까지 Adjusted FCF/share와 NIMAL이 회복되지 않으면 장기 복리 가설을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "외부 funding은 fintech working capital의 정상 구성요소이며, 회사 전체 영업이 외부자본 없이는 존속할 수 없는 과도한 구조라는 증거는 없다."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "장기간 과도한 주식 희석이 없다."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "순부채와 credit risk는 있으나 대규모 금융자산·다변화 funding·장기채 접근과 현금창출력 때문에 파산/사업가치 소멸 확률이 기대수익 대비 과도하다고 보기 어렵다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Adjusted FCF/share",
+      "direction": "up",
+      "threshold": "지속 회복",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "다음 10-Q에서 GMV·TPV·NIMAL·past-due·Adjusted FCF·net debt를 동시 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 75,
+      "rationale": "순부채지만 $6.751B liquid assets, 대규모 금융자산, 10년채 시장 접근으로 유동성이 강하다."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 75,
+      "rationale": "다양한 조달원과 positive annual Adjusted FCF가 있으나 신용경색 시 origination 축소 위험은 존재한다."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 90,
+      "rationale": "주식수 감소/보합이며 $14.047B unused card commitments는 annualized H1 revenue의 0.5배 미만으로 observable lower axis 90."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "material",
+      "rationale": "고성장과 투자회수 시차 때문에 장기 정상화 가정에 불확실성이 남는다."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "agent_id": "ED",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-17",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 84,
+  "confidence_0_1": 0.86,
+  "thesis": "핵심 재무·KPI·credit/funding 사실은 업로드된 FY2025 10-K와 Q1/Q2 2026 10-Q, 9월 8-K에 직접 연결된다. 특히 Adjusted FCF 정의, net debt, GMV/TPV/MAU, NIMAL, past-due, off-balance card commitments가 1차 자료로 고정돼 있다. 주요 추정 영역은 EV의 10년 owner-FCF 경로와 장기 credit/logistics cohort ROIC다.",
+  "evidence": [
+    {
+      "claim": "FY2025 revenue $28.893B, Adjusted FCF $1.481B, net debt $4.682B가 10-K에 직접 기재돼 있다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-K_FY25_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-25",
+      "value": "28.893/1.481/4.682",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2/H1 2026 GMV·TPV·MAU·buyers와 margin/Adjusted FCF가 10-Q에 직접 기재돼 있다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-06",
+      "value": "multi-KPI",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Gross loans $16.375B, allowance $4.379B, past due $4.638B, unused card commitments $14.047B가 Q2 10-Q에 있다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/10-Q_Q2_2026_key_facts.txt",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-06",
+      "value": "16.375/4.379/4.638/14.047",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "$1B 5.85% notes due 2036 발행은 2026-09-14 8-K로 확인된다.",
+      "source_type": "filing",
+      "source": "runs/MELI/sources/8-K_2026-09-14_key_facts.txt",
+      "period": "2026-09-14",
+      "as_of_date": "2026-09-14",
+      "value": "$1B 5.85%",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2026-09-17 가격은 시장자료이고 filings 자체의 값이 아니다.",
+    "EV의 10년 현금흐름 경로는 모델 추정이다.",
+    "valuation_percentile_5y는 재현 가능한 데이터가 없어 null이다."
+  ],
+  "unknowns": [
+    "credit/logistics cohort ROIC",
+    "2027 normalized Adjusted FCF margin",
+    "reproducible 5y valuation percentile"
+  ],
+  "falsifiers": [
+    "원문 재대조에서 frozen fact 오류가 확인되면 관련 도메인을 재실행한다.",
+    "다음 10-Q가 현재 현금흐름 가정을 반박하면 EV를 재작성한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "primary-source coverage",
+      "direction": "up",
+      "threshold": "결정변수 filing-backed",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 10-Q로 credit/funding/margin/FCF 갱신"
+  ],
+  "verdict": "support"
+}
