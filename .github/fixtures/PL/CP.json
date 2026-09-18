@@ -1,0 +1,51 @@
+{
+  "agent_id":"CP","ticker":"PL","as_of_date":"2026-09-17","domain":"customer_product","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":77.75,"confidence_0_1":0.87,"bull_score":90,"bear_score":60,
+  "bull_case":"Customers receive recurring operational value from monitoring agriculture, defense, infrastructure and supply chains without owning satellite fleets. FY26 NDR above 100%, 98% recurring ACV and large renewals show willingness to pay.",
+  "bear_case":"Customer ROI is uneven and concentrated in large government or enterprise contracts. Procurement cycles are long, direct CAC/payback is undisclosed, and multi-sourcing limits switching costs and pricing power.",
+  "thesis":"Product-market fit is strong enough to support Moonshot analysis. FY26 NDR of 116%, 98% recurring ACV, growing RPO/backlog and specific renewals show customers pay for recurring monitoring rather than subsidized adoption. The main weakness is unit economics: sales cycles are enterprise/government-heavy and customer concentration is material, while CAC/payback and cohort gross margins are not disclosed. This supports strong customer value but only adequate unit-economics confidence.",
+  "evidence":[
+    {"claim":"FY2026 NDR was 116% and NDR including winbacks 118%, while recurring ACV was 98%.","source_type":"filing","source":"Uploaded FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-03-23","value":"NDR 116%; NDR incl. winbacks 118%; recurring ACV 98%","fact_or_estimate":"fact"},
+    {"claim":"FY27 Q2 recurring ACV remained 98%, RPO was $753.1M and backlog $814.9M.","source_type":"filing","source":"Uploaded 2026-09-03 Form 10-Q and 8-K","period":"FY2027 Q2","as_of_date":"2026-09-03","value":"Recurring ACV 98%; RPO $753.1M; backlog $814.9M","fact_or_estimate":"fact"},
+    {"claim":"Planet reported a renewal with a hyperscaler AI developer using Pelican data to monitor data-center and semiconductor-fab construction.","source_type":"ir","source":"Uploaded 2026-09-03 8-K Exhibit 99.1","period":"August 2026","as_of_date":"2026-09-03","value":"Hyperscaler monitoring renewal","fact_or_estimate":"fact"},
+    {"claim":"Sales and marketing expense for FY27 H1 was $44.3M, up 31%, while H1 revenue increased roughly 51%, suggesting some operating leverage in customer acquisition.","source_type":"filing","source":"Uploaded 2026-09-03 Form 10-Q","period":"FY2027 H1","as_of_date":"2026-09-03","value":"S&M $44.3M +31%; H1 revenue $210.2M vs $139.7M","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "Three Q2 customers represented 17%, 11% and 10% of revenue; two were 25% and 11% of receivables.",
+    "CAC, sales-cycle payback, GRR and customer-count cohort economics are not disclosed.",
+    "Government customers can create long procurement cycles and contract-timing volatility.",
+    "Customers can multi-source imagery, reducing lock-in for use cases that do not require Planet's cadence or archive."
+  ],
+  "unknowns":[
+    "Gross retention and customer-count churn by segment.",
+    "CAC/payback for commercial versus government customers.",
+    "ARPU and renewal economics for the agentic AI application.",
+    "Gross margin by data subscription versus satellite-service contract."
+  ],
+  "uncertainties":[
+    {"criterion_id":"customer_roi","severity":"material","rationale":"Renewal and NDR data support ROI, but direct customer savings/payback are rarely quantified."},
+    {"criterion_id":"retention_usage","severity":"minor","rationale":"NDR and recurring ACV provide strong recurring-use evidence."},
+    {"criterion_id":"unit_economics","severity":"material","rationale":"CAC/payback and segment cohort margins remain undisclosed."}
+  ],
+  "falsifiers":[
+    "NDR drops below 100% while customer concentration remains high.",
+    "Sales and marketing grows faster than recurring revenue for several periods without improving retention.",
+    "Large government or enterprise renewals fail and cannot be replaced by broader customer growth."
+  ],
+  "hard_veto_flags":[
+    {"veto":"고객가치 없이 마케팅·보조금에 의존하는 성장","status":"cleared","rationale":"NDR above 100%, 98% recurring ACV, renewals and contracted backlog show recurring willingness to pay rather than subsidy-driven demand."},
+    {"veto":"단일 제품·단일 고객·단일 규제에 대한 치명적 종속성","status":"cleared","rationale":"Customer concentration is material but not fatal; revenue spans government and commercial use cases, multiple products and geographies, and no single Q2 customer exceeded 17% of revenue."}
+  ],
+  "key_kpis":[
+    {"name":"NDR / recurring ACV","direction":"stable/up","threshold":"NDR >100% and recurring ACV ~95%+","cadence":"quarterly/annual"},
+    {"name":"Top-customer concentration","direction":"down","threshold":"No sustained rise in top-3 customer share","cadence":"quarterly"},
+    {"name":"S&M efficiency","direction":"up","threshold":"Recurring revenue grows faster than S&M over multi-quarter periods","cadence":"quarterly"}
+  ],
+  "next_checks":["FY27 NDR and recurring ACV","Government versus commercial retention","AI-app paid conversion and ARPU"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"customer_roi","score_0_100":80,"rationale":"Renewals, backlog and operational monitoring use cases show strong customer value."},
+    {"criterion_id":"retention_usage","score_0_100":85,"rationale":"NDR above 100% and 98% recurring ACV indicate expanding recurring use."},
+    {"criterion_id":"unit_economics","score_0_100":65,"rationale":"Revenue is scaling faster than S&M, but CAC/payback and segment margins are not disclosed."}
+  ]
+}
