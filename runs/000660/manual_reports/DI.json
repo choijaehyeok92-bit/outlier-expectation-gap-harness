@@ -30,6 +30,15 @@
       "as_of_date": "2026-08-14",
       "value": null,
       "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026 H1 filing shows revenue KRW 131.895T and operating cash flow KRW 91.743T, supporting scale and cash-generation checks.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": "131.895T/91.743T",
+      "fact_or_estimate": "fact"
     }
   ],
   "counterevidence": [
@@ -58,17 +67,17 @@
     {
       "criterion_id": "cost_performance_shift",
       "score_0_100": 85,
-      "rationale": "cost_performance_shift: 공시 수치와 산업 구조를 함께 반영한 85점 구간."
+      "rationale": "cost_performance_shift: validator의 5점 앵커 규칙과 frozen evidence를 적용한 85점."
     },
     {
       "criterion_id": "adoption_curve",
       "score_0_100": 85,
-      "rationale": "adoption_curve: 공시 수치와 산업 구조를 함께 반영한 85점 구간."
+      "rationale": "adoption_curve: validator의 5점 앵커 규칙과 frozen evidence를 적용한 85점."
     },
     {
       "criterion_id": "optionality_incumbent_response",
       "score_0_100": 85,
-      "rationale": "optionality_incumbent_response: 공시 수치와 산업 구조를 함께 반영한 85점 구간."
+      "rationale": "optionality_incumbent_response: validator의 5점 앵커 규칙과 frozen evidence를 적용한 85점."
     }
   ],
   "uncertainties": [
