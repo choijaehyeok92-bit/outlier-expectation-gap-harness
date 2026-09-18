@@ -1,0 +1,36 @@
+{
+  "agent_id":"FS","ticker":"MSFT","as_of_date":"2026-09-18","domain":"financial_survival","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":87.5,"confidence_0_1":0.94,"bull_score":95,"bear_score":75,
+  "bull_case":"Microsoft combines net cash, enormous operating cash flow, recurring enterprise revenue and diversified franchises. Even a severe slowdown would leave substantial internal funding for R&D and essential infrastructure without forced equity issuance.",
+  "bear_case":"AI infrastructure commitments, long-duration leases and supplier obligations can be large, and capex has risen sharply. A deep cloud slowdown could reduce discretionary buybacks and force capital prioritization even though solvency remains strong.",
+  "thesis":"Financial survival is exceptionally strong. The frozen balance sheet shows roughly $36.5B net cash and FY2026 OCF of $182.9B, while the company funds large capex, R&D and shareholder returns internally. AI infrastructure commitments increase fixed capital requirements, but current evidence does not indicate external-capital dependence, problematic dilution or material insolvency risk.",
+  "evidence":[
+    {"claim":"Frozen methodology gives approximately $36.549B of net cash, or about $4.922/share.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K / frozen company_context","period":"FY2026","as_of_date":"2026-09-18","value":"Net cash ~$36.549B; ~$4.922/share","fact_or_estimate":"fact"},
+    {"claim":"FY2026 operating cash flow was $182.935B, providing very large internally generated liquidity.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-06-30","value":"OCF $182.935B","fact_or_estimate":"fact"},
+    {"claim":"Cash and short-term investments totaled $76.843B versus current and long-term debt of about $40.294B at June 30, 2026.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-06-30","value":"Cash+ST investments $76.843B; debt ~$40.294B","fact_or_estimate":"fact"},
+    {"claim":"Microsoft returned more than $43B to shareholders during FY2026 while simultaneously funding very large AI/datacenter capex.","source_type":"other","source":"Microsoft FY26 Q4 earnings call","period":"FY2026","as_of_date":"2026-06-30","value":"Cash returned >$43B","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":["AI/datacenter growth raises lease, purchase and infrastructure commitments that are not captured by simple net cash alone.","Accelerator refresh cycles can make sustaining capex higher than historical software-era norms.","SBC remains a recurring economic claim even though repurchases offset share-count dilution."],
+  "unknowns":["Full off-balance datacenter/energy commitment schedule","Long-run maintenance capex after the AI buildout","Stress-case cloud margin under severe price competition"],
+  "uncertainties":[
+    {"criterion_id":"dilution_offbalance","severity":"material","rationale":"SBC is visible and manageable, but AI infrastructure purchase/lease commitments need continued monitoring."}
+  ],
+  "falsifiers":["Net cash turns into sustained material net debt while owner FCF remains depressed.","Microsoft requires external equity issuance to fund ordinary AI/cloud growth.","Large off-balance infrastructure commitments become inflexible during a major demand slowdown."],
+  "hard_veto_flags":[
+    {"veto":"구조적으로 과도한 외부자본 조달 의존","status":"cleared","rationale":"Microsoft funds operations, R&D and major capital investment from very large operating cash flow and retains net cash."},
+    {"veto":"장기간 지속되는 과도한 희석","status":"cleared","rationale":"SBC is material but share count remains roughly stable and internal cash flow supports repurchases without external financing dependence."},
+    {"veto":"파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음","status":"cleared","rationale":"Net cash, diversified recurring cash flows and $182.9B of FY2026 OCF make financing-driven permanent loss remote relative to the operating opportunity."}
+  ],
+  "key_kpis":[
+    {"name":"Net cash / debt","direction":"stable","threshold":"Remain conservatively financed through the AI buildout","cadence":"quarterly"},
+    {"name":"Operating cash flow","direction":"up","threshold":"Stay well above mandatory investment and financing needs","cadence":"quarterly"},
+    {"name":"Off-balance infrastructure commitments","direction":"stable/down","threshold":"Remain manageable relative to OCF and contracted demand","cadence":"annual"}
+  ],
+  "next_checks":["Debt/lease maturity profile","AI infrastructure commitments versus OCF","SBC and diluted share trend"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"liquidity_leverage","score_0_100":90,"rationale":"Net cash and enormous internal cash generation provide strong liquidity with modest debt burden."},
+    {"criterion_id":"stress_survival","score_0_100":90,"rationale":"Diversified recurring franchises allow Microsoft to continue investing through a severe slowdown without forced financing."},
+    {"criterion_id":"dilution_offbalance","score_0_100":80,"rationale":"Dilution is contained, but AI infrastructure leases and purchase commitments warrant monitoring."}
+  ]
+}
