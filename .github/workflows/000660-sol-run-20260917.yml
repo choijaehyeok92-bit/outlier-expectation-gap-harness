@@ -1,0 +1,148 @@
+name: 000660 GPT-5.6 Sol harness run 2026-09-17
+
+on:
+  pull_request:
+    branches: [run/000660-2026-09-17-sol]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  harness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/000660-2026-09-17-sol
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute 000660 harness with early-exit gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/execution.log) 2>&1
+
+          python harness.py selftest
+          python harness.py init 000660 --as-of 2026-09-17
+
+          cp runs/000660/manual_inputs/company_context.json runs/000660/company_context.json
+          mkdir -p runs/000660/sources
+          cp runs/000660/manual_sources/* runs/000660/sources/
+
+          python harness.py freeze 000660 --provider openai --model gpt-5.6-sol --reasoning-effort high
+          python harness.py plan 000660 | tee runlogs/plan_initial.txt
+
+          for a in EV AS DI TQ; do
+            python harness.py prompt 000660 "$a" --out "runs/000660/${a}_prompt.md"
+            cp "runs/000660/manual_reports/${a}.json" "runs/000660/reports/${a}.json"
+            python harness.py validate 000660 "$a"
+          done
+
+          python harness.py aggregate 000660 > runlogs/aggregate_after_triage.json
+          python harness.py digest 000660
+          python harness.py plan 000660 | tee runlogs/plan_after_triage.txt
+
+          if grep -q "EARLY EXIT" runlogs/plan_after_triage.txt; then
+            echo "000660 EARLY EXIT triggered after EV/AS/DI/TQ."
+          else
+            echo "No triage early exit. Continuing full pipeline."
+
+            for a in SL CP MT RF MA FS; do
+              python harness.py prompt 000660 "$a" --out "runs/000660/${a}_prompt.md"
+              cp "runs/000660/manual_reports/${a}.json" "runs/000660/reports/${a}.json"
+              python harness.py validate 000660 "$a"
+            done
+
+            python harness.py validate 000660 MO
+            python harness.py aggregate 000660 > runlogs/aggregate_pre_phase3.json
+            python harness.py digest 000660
+
+            for a in ED RT; do
+              python harness.py prompt 000660 "$a" --out "runs/000660/${a}_prompt.md"
+              cp "runs/000660/manual_reports/${a}.json" "runs/000660/reports/${a}.json"
+              python harness.py validate 000660 "$a"
+            done
+
+            python harness.py aggregate 000660 > runlogs/aggregate_pre_ic.json
+            python harness.py digest 000660
+            python harness.py plan 000660 | tee runlogs/plan_pre_ic.txt
+
+            if grep -q "EARLY EXIT" runlogs/plan_pre_ic.txt; then
+              echo "000660 EARLY EXIT triggered at pre-IC plan; IC intentionally skipped."
+            else
+              echo "No pre-IC early exit. Running IC."
+              python harness.py prompt 000660 IC --out runs/000660/IC_prompt.md
+              cp runs/000660/manual_reports/IC.json runs/000660/reports/IC.json
+              python harness.py validate 000660 IC
+            fi
+          fi
+
+          python harness.py validate 000660
+          python harness.py plan 000660 | tee runlogs/plan_final.txt
+          python harness.py digest 000660
+          python harness.py aggregate 000660 | tee runlogs/aggregate_final.json
+
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          run=Path("runs/000660")
+          agg=json.loads((run/"aggregate.json").read_text(encoding="utf-8"))
+          mo=json.loads((run/"reports/MO.json").read_text(encoding="utf-8")) if (run/"reports/MO.json").exists() else {}
+          ic=json.loads((run/"reports/IC.json").read_text(encoding="utf-8")) if (run/"reports/IC.json").exists() else {}
+          tri=(Path("runlogs/plan_after_triage.txt").read_text(encoding="utf-8") if Path("runlogs/plan_after_triage.txt").exists() else "")
+          pre=(Path("runlogs/plan_pre_ic.txt").read_text(encoding="utf-8") if Path("runlogs/plan_pre_ic.txt").exists() else "")
+          stage="triage" if "EARLY EXIT" in tri else ("pre_ic" if "EARLY EXIT" in pre else None)
+          v={
+            "ticker":"000660","as_of_date":"2026-09-17",
+            "score_100":agg["score_100"],"score_100_ex_valuation":agg["score_100_ex_valuation"],
+            "classification":agg["classification"],"archetype":agg["archetype"]["id"],
+            "hard_veto_status":agg["hard_veto_status"],
+            "ic_state":agg["mechanical_pre_ic_state"],
+            "position_range":agg["position_range_pre_ic"],
+            "macro_pacing_multiplier":mo.get("risk_budget_multiplier"),
+            "ic_verdict":ic.get("verdict") if ic.get("analysis_status")=="complete" else None,
+            "early_exit":stage is not None,
+            "early_exit_stage":stage,
+            "reachable_archetypes_raw":agg["reachable_archetypes_raw"],
+            "valuation_model":agg["valuation_model"],
+            "provider_calibration":agg["provider_calibration"],
+            "note":"Agent reports were authored by GPT-5.6 Sol in this ChatGPT session and executed through the repository harness; no separate OpenAI API adapter call was made."
+          }
+          (run/"final_verdict.json").write_text(json.dumps(v,ensure_ascii=False,indent=2),encoding="utf-8")
+          a=agg["archetype"]
+          lines=[
+            "# One-page Investment Record — 000660 / SK hynix","",
+            f"기준일 2026-09-17 · score **{agg['score_100']}** · ex-val **{agg['score_100_ex_valuation']}** · classification **{agg['classification']}**",
+            f"archetype **{a['label']} ({a['id']})** · Hard Veto **{agg['hard_veto_status']}** · state **{agg['mechanical_pre_ic_state']}**",
+            f"mechanical position **{agg['position_range_pre_ic']}** · macro pacing **{mo.get('risk_budget_multiplier')}**","",
+            f"- price/Base: {a['signals'].get('price_to_base_value')}",
+            f"- Bear/Base/Bull: {agg['valuation_model']['scenarios']['bear']['value_per_share']} / {agg['valuation_model']['scenarios']['base']['value_per_share']} / {agg['valuation_model']['scenarios']['bull']['value_per_share']}",
+            "- 핵심 장점: HBM 세대 리더십, AI 서버 메모리 구조성장, 대규모 순현금과 현금창출.",
+            "- 핵심 리스크: 메모리 사이클 정상화, AI/HBM 고객 집중, 대규모 선행 CAPEX와 공급 증가.",
+            f"- 제어흐름: {'early exit at '+stage if stage else 'no early exit; IC complete'}."
+          ]
+          (run/"one_page_investment_record.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/000660
+          if ! git diff --cached --quiet; then
+            git commit -m "persist: 000660 harness outputs 2026-09-17"
+            git push origin HEAD:work/000660-2026-09-17-sol
+          fi
+
+          echo "===== FINAL VERDICT ====="
+          cat runs/000660/final_verdict.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 000660-gpt-5.6-sol-harness-2026-09-17
+          path: |
+            runs/000660
+            runlogs

@@ -1,0 +1,116 @@
+{
+  "agent_id": "FS",
+  "ticker": "000660",
+  "as_of_date": "2026-09-17",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 90,
+  "confidence_0_1": 0.86,
+  "bull_score": 97,
+  "bear_score": 72,
+  "bull_case": "순현금과 대규모 OCF가 CAPEX·다운사이클을 자체자금으로 흡수한다.",
+  "bear_case": "메모리 가격 급락과 대규모 선행 CAPEX가 겹치면 순현금 버퍼가 빠르게 줄 수 있다.",
+  "thesis": "H1 연결 cash+단기금융상품+단기투자자산은 약 88.0T, 차입금은 18.6T로 liquid net cash 약 69.4T다. 국내 AA+, Moody's A3, S&P/Fitch BBB+이고 차입약정도 준수한다. 메모리 다운사이클을 버틸 재무완충력이 매우 높다.",
+  "evidence": [
+    {
+      "claim": "현금 26.836T, 단기금융상품 22.398T, 단기투자자산 38.724T, 차입금 18.587T이다.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "국내 AA+, Moody's A3, S&P/Fitch BBB+다.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026 H1 filing shows revenue KRW 131.895T and operating cash flow KRW 91.743T, supporting scale and cash-generation checks.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": "131.895T/91.743T",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2026 H1 실적에는 메모리 업사이클과 비영업 금융손익이 크게 반영되어 정상화 수준을 과대평가할 위험이 있다."
+  ],
+  "unknowns": [
+    "HBM4/HBM4E 공급 확대 이후 ASP·수율·점유율과 전통 DRAM/NAND 정상화 마진."
+  ],
+  "falsifiers": [
+    "HBM ASP·수요가 예상보다 빠르게 정상화되고 owner FCF/share가 2년 연속 감소하면 구조 성장 가설을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "순현금 구조와 자체 OCF로 외부자본 조달에 구조적으로 의존하지 않는다."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "장기간 과도한 희석 증거가 없고 2026년 자사주 소각이 있다."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "대규모 순현금과 높은 신용도로 파산/영구손실 위험이 낮다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "cycle-normalized growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q3/Q4 2026 HBM mix, DRAM/NAND ASP, capex, OCF, net cash를 재확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 90,
+      "rationale": "liquidity_leverage: validator의 5점 앵커 규칙과 frozen evidence를 적용한 90점."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 90,
+      "rationale": "stress_survival: validator의 5점 앵커 규칙과 frozen evidence를 적용한 90점."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 90,
+      "rationale": "dilution_offbalance: validator의 5점 앵커 규칙과 frozen evidence를 적용한 90점."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    }
+  ]
+}

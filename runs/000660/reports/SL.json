@@ -1,0 +1,100 @@
+{
+  "agent_id": "SL",
+  "ticker": "000660",
+  "as_of_date": "2026-09-17",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 85,
+  "confidence_0_1": 0.84,
+  "bull_score": 94,
+  "bear_score": 65,
+  "bull_case": "HBM 세대교체 속에서도 수율·패키징·고객 인증 우위를 유지하면 AI 메모리 카테고리 리더십이 장기화된다.",
+  "bear_case": "AI CAPEX 둔화나 공급 증설로 메모리 가격이 정상화되면 구조 성장과 사이클을 구분하기 어려워질 수 있다.",
+  "thesis": "AI 서버의 메모리 대역폭 수요는 HBM·고용량 DDR·enterprise NAND를 구조 성장축으로 만든다. SK하이닉스는 HBM3E/HBM4/HBM4E의 연속 제품 리더십과 2026 H1 폭발적 실적을 보여줬다. 다만 메모리 산업의 높은 CAPEX와 사이클성은 장기 구조 성장에 대한 할인요인이다.",
+  "evidence": [
+    {
+      "claim": "H1 DRAM 매출 97.641T, NAND 33.534T이다.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "HBM4E 12단 샘플 공급을 2026년 6월 공시했다.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026 H1 filing shows revenue KRW 131.895T and operating cash flow KRW 91.743T, supporting scale and cash-generation checks.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": "131.895T/91.743T",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2026 H1 실적에는 메모리 업사이클과 비영업 금융손익이 크게 반영되어 정상화 수준을 과대평가할 위험이 있다."
+  ],
+  "unknowns": [
+    "HBM4/HBM4E 공급 확대 이후 ASP·수율·점유율과 전통 DRAM/NAND 정상화 마진."
+  ],
+  "falsifiers": [
+    "HBM ASP·수요가 예상보다 빠르게 정상화되고 owner FCF/share가 2년 연속 감소하면 구조 성장 가설을 하향한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "cycle-normalized growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q3/Q4 2026 HBM mix, DRAM/NAND ASP, capex, OCF, net cash를 재확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 85,
+      "rationale": "secular_durability: validator의 5점 앵커 규칙과 frozen evidence를 적용한 85점."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 85,
+      "rationale": "category_leadership: validator의 5점 앵커 규칙과 frozen evidence를 적용한 85점."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 85,
+      "rationale": "durability_risks: validator의 5점 앵커 규칙과 frozen evidence를 적용한 85점."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    }
+  ]
+}

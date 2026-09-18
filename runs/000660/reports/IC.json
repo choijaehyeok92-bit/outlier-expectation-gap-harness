@@ -1,0 +1,90 @@
+{
+  "agent_id": "IC",
+  "ticker": "000660",
+  "as_of_date": "2026-09-17",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 78.62,
+  "confidence_0_1": 0.8,
+  "thesis": "기계적 core score는 약 78.62로 Emerging Outlier이며 archetype은 Compounder다. OpenAI 보정 후 MT·RF·MA·FS·EV 조건이 모두 Compounder threshold를 통과하고 price/Base≈0.438이다. Hard Veto는 cleared. 기계적 상태는 NORMAL_CANDIDATE, 2–4%이며 macro pacing 0.7을 적용한다. 핵심 검증 포인트는 HBM 구조성장이 메모리 사이클 정상화 이후에도 높은 owner FCF/share로 남는지다.",
+  "evidence": [
+    {
+      "claim": "Expected aggregate score is about 78.62 with Compounder archetype.",
+      "source_type": "other",
+      "source": "runs/000660/aggregate.json",
+      "period": "run",
+      "as_of_date": "2026-09-17",
+      "value": "78.62",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Locked DCF Bear/Base/Bull ~1.365M/3.982M/7.401M KRW, price/Base ~0.438.",
+      "source_type": "other",
+      "source": "runs/000660/aggregate.json",
+      "period": "10y",
+      "as_of_date": "2026-09-17",
+      "value": "0.438",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "H1 2026 OCF 91.743T and PP&E purchases 18.329T support reinvestment capacity.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Liquid net cash ~69.37T supports survival and optionality.",
+      "source_type": "other",
+      "source": "runs/000660/sources/README.md",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-17",
+      "value": "69.37T",
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "The valuation is sensitive to normalized FCF because H1 2026 may be near a cycle peak.",
+    "DRAM/HBM concentration can create correlated downside.",
+    "The calibration remains provisional and based on one paired NVDA sample."
+  ],
+  "unknowns": [
+    "normalized 2027–2029 HBM margin",
+    "competitor supply response",
+    "AI customer concentration"
+  ],
+  "falsifiers": [
+    "If RF falls below 76 or price/Base rises above 1.2, Compounder status should be reconsidered.",
+    "If HBM economics normalize sharply, rerun EV and MT."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "RF score",
+      "direction": "up",
+      "threshold": ">=76",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "price/Base",
+      "direction": "down",
+      "threshold": "<1.0 preferred",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "HBM mix/ASP",
+      "direction": "up",
+      "threshold": "sustained premium",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 filing",
+    "2027 capex guidance",
+    "HBM4 customer qualification"
+  ],
+  "verdict": "support"
+}
