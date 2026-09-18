@@ -1,0 +1,102 @@
+{
+  "agent_id": "CP",
+  "ticker": "000660",
+  "as_of_date": "2026-09-17",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 82,
+  "confidence_0_1": 0.8,
+  "bull_score": 92,
+  "bear_score": 60,
+  "bull_case": "HBM의 시스템 성능 기여가 높아 세대 전환마다 높은 지불의사가 유지될 수 있다.",
+  "bear_case": "소수 AI 고객의 구매주기와 경쟁사 공급확대로 가격결정력이 약해질 수 있다.",
+  "thesis": "AI 가속기 고객에게 HBM은 성능 병목을 줄이는 직접적 고객가치를 제공한다. 2026 H1 DRAM 매출 급증과 Q2 영업이익 60.5T는 고객 수요와 가격결정력을 동시에 시사한다. 다만 고객 집중도와 ASP 정상화 정보는 공시가 제한적이다.",
+  "evidence": [
+    {
+      "claim": "Q2 매출 79.319T, 영업이익 60.543T이다.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 DRAM 매출 97.641T로 전체 매출의 약 74%다.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2026 H1 실적에는 메모리 업사이클과 비영업 금융손익이 크게 반영되어 정상화 수준을 과대평가할 위험이 있다."
+  ],
+  "unknowns": [
+    "HBM4/HBM4E 공급 확대 이후 ASP·수율·점유율과 전통 DRAM/NAND 정상화 마진."
+  ],
+  "falsifiers": [
+    "HBM ASP·수요가 예상보다 빠르게 정상화되고 owner FCF/share가 2년 연속 감소하면 구조 성장 가설을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "성장은 마케팅·보조금이 아니라 실제 반도체 제품 판매와 높은 영업이익으로 나타난다."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "제품은 DRAM/NAND로 분산되고 단일 고객 의존이 치명적이라는 공시 증거는 없다. 다만 AI 고객 집중은 모니터링 리스크다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "cycle-normalized growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q3/Q4 2026 HBM mix, DRAM/NAND ASP, capex, OCF, net cash를 재확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 82,
+      "rationale": "customer_roi: 공시 수치와 산업 구조를 함께 반영한 82점 구간."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 82,
+      "rationale": "retention_usage: 공시 수치와 산업 구조를 함께 반영한 82점 구간."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 82,
+      "rationale": "unit_economics: 공시 수치와 산업 구조를 함께 반영한 82점 구간."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "메모리 사이클 및 HBM 정상화 속도 불확실성."
+    }
+  ]
+}
