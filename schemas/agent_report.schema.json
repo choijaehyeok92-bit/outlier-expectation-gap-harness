@@ -54,10 +54,13 @@
       "maximum": 1
     },
     "thesis": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 600
     },
     "evidence": {
       "type": "array",
+      "minItems": 3,
+      "maxItems": 6,
       "items": {
         "type": "object",
         "required": [
@@ -96,18 +99,21 @@
     },
     "counterevidence": {
       "type": "array",
+      "maxItems": 4,
       "items": {
         "type": "string"
       }
     },
     "unknowns": {
       "type": "array",
+      "maxItems": 5,
       "items": {
         "type": "string"
       }
     },
     "falsifiers": {
       "type": "array",
+      "maxItems": 3,
       "items": {
         "type": "string"
       }
@@ -142,6 +148,7 @@
     },
     "key_kpis": {
       "type": "array",
+      "maxItems": 3,
       "items": {
         "type": "object",
         "properties": {
@@ -162,6 +169,7 @@
     },
     "next_checks": {
       "type": "array",
+      "maxItems": 3,
       "items": {
         "type": "string"
       }

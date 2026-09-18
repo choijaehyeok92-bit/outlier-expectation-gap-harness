@@ -42,6 +42,9 @@ Scorekeeper는 점수를 집계하고, Devil's Advocate는 가장 강한 반론�
 ### Phase 6 — Position sizing
 종합점수가 아니라 **증거 수준, 하방 영구손실, 기대차, 포트폴리오 중복위험**을 함께 사용한다.
 
+## Token discipline
+모든 에이전트는 [`agents/COMMON.md`](agents/COMMON.md)의 공통 규칙과 토큰 예산을 따른다. 실행은 `python harness.py prompt TICKER <domain|agent>`가 만든 프롬프트로 하며, triage 후 `plan`이 조기 종료를 판정하면 나머지 단계는 실행하지 않는다.
+
 ## Required output contract
 각 에이전트는 반드시 JSON 보고서를 생성하며 `schemas/agent_report.schema.json`을 따른다. 핵심 필드:
 - `agent_id`, `ticker`, `as_of_date`

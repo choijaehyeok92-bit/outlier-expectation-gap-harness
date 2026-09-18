@@ -39,9 +39,23 @@
 ## 빠른 시작
 ```bash
 python harness.py init NVDA --as-of 2026-09-15
-# 각 agent가 runs/NVDA/reports/<agent_id>.json 작성
+python harness.py plan NVDA                          # 다음에 실행할 도메인 또는 조기 종료 안내
+python harness.py prompt NVDA expectation_valuation  # 도메인 1개 = 에이전트 호출 1회용 프롬프트
+python harness.py validate NVDA EV-01 EV-02 EV-03
+python harness.py digest NVDA                        # Phase 3·IC 입력용 요약
 python harness.py aggregate NVDA
 ```
+자세한 단계는 [RUNBOOK.md](RUNBOOK.md)를 보세요.
+
+## 토큰 절약 설계
+| 장치 | 효과 |
+|---|---|
+| Triage + 조기 종료 | 밸류에이션·비대칭성·파괴적 혁신 3개 도메인을 먼저 실행하고, 감점 전 원점수로도 도달 가능한 유형이 없으면 나머지 29개 에이전트를 생략 |
+| `digest` | Phase 3·IC가 원 보고서 대신 압축 요약을 읽음 (NVDA: 403K자 → 16.5K자) |
+| `prompt` | 공통 문서 6~7개를 에이전트가 직접 읽는 대신 필요한 내용만 담은 약 10K자 프롬프트 1개 |
+| 공통 기준 정보 | `intake_facts`·`sources/README.md`의 사실은 재검색 금지. 웹 검색 예산: 역할당 6회, 도메인당 12회 |
+| 보고서 분량 상한 | thesis 600자, evidence 3~6개 등 (`report_limits`) |
+| LLM 호출 제거 | IC-01은 `aggregate`가 자동 생성, 매크로 보고서는 7일간 종목 간 재사용 |
 
 ## 디렉터리 철학
 각 에이전트 디렉터리마다 `AGENTS.md`를 둬 역할·질문·Hard Veto 초점을 격리했습니다. 루트 `AGENTS.md`는 공통 헌법 역할을 합니다.
