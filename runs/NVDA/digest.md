@@ -94,6 +94,6 @@ unknowns: 유가발 인플레이션의 지속 기간과 연준의 반응함수. 
 ## investment_committee
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| IC | 73.94 | 0.6 | neutral | – | 프로바이더 보정 적용 후 종합점수 73.94(보정 전 70.86), 기계적 유형이 non_fit에서 컴파운더로 바뀌었다. 그러나 Hard Veto 3건이 미해소이므로 신규 매수를 승인하지 않는다. 유형 변경은 사업 사실이 달라져서가 아니라 Claude 계열 편향 보정 +1.67~+5.… |
+| IC | 73.94 | 0.6 | neutral | – | Hard Veto를 구성요건 기준으로 재판정한 결과 기존 9개가 전부 cleared다. 미해소는 신설된 "자사 자금으로 창출된 매출에 대한 구조적 의존" 1건뿐이며 CP·FS·RT 세 담당이 독립적으로 conditional을 냈다. 종합점수 73.94, 유형 컴파운더(잠정), 상태 W… |
 unknowns: NVIDIA 지분투자·보증 대상 기업향 매출 비중 — Veto 3건이 여기에 걸려 있고 현행 공시로는 해소되지 않는다. · 공급·capacity 약정 $279B의 취소 가능 비중.
 
