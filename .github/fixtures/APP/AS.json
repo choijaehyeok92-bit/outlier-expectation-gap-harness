@@ -11,10 +11,10 @@
   "bear_score": 55,
   "bull_case": "A credible multi-bagger path exists if Axon compounds advertiser ROI and APP expands from gaming into e-commerce/CTV while repurchases amplify FCF/share. A true 5x requires a very large global ad-share outcome.",
   "bear_case": "A 40-50% permanent-loss path exists if current margins are peak, platform rules impair targeting, or competitors narrow Axon's advantage. Strong FCF and buybacks cushion but do not remove valuation risk.",
-  "thesis": "Asymmetry is favorable but not classic small-cap power-law. Frozen market cap is already about $107.6B, so 5x implies roughly $538B and 10x above $1T. The locked Base/Bull values provide meaningful upside, while high current FCF and falling share count reduce financing risk. Upside therefore comes from sustained FCF/share compounding rather than survival optionality; margin or platform-policy failure remains the main permanent-loss path.",
+  "thesis": "Asymmetry is favorable but not classic small-cap power-law. Frozen market cap is already about $107.62B, so 5x implies roughly $538B and 10x above $1T. The locked Base/Bull values provide meaningful upside, while high current FCF and falling share count reduce financing risk. Upside therefore comes from sustained FCF/share compounding rather than survival optionality; margin or platform-policy failure remains the main permanent-loss path.",
   "evidence": [
     {
-      "claim": "Frozen market cap is about $107.6B; 5x and 10x imply roughly $538B and $1.08T.",
+      "claim": "Frozen market cap is about $107.62B; 5x and 10x imply roughly $538B and $1.08T.",
       "source_type": "other",
       "source": "Frozen company_context",
       "period": "2026-09-17",
@@ -41,7 +41,7 @@
       "fact_or_estimate": "fact"
     },
     {
-      "claim": "Locked DCF is about $166.86 Bear, $429.37 Base and $771.95 Bull versus $321.49.",
+      "claim": "Locked DCF is about $166.86 Bear, $429.37 Base and $771.95 Bull versus $321.60.",
       "source_type": "other",
       "source": "Deterministic harness DCF",
       "period": "10-year model",
