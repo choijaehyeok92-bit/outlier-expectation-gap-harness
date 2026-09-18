@@ -1,0 +1,199 @@
+{
+  "agent_id": "EV",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 72,
+  "confidence_0_1": 0.88,
+  "bull_score": 90,
+  "bear_score": 50,
+  "bull_case": "Axon-driven share gains extend beyond gaming into e-commerce and CTV while FCF/share compounds rapidly. The locked Bull path reaches $55/share in year 10 and supports value far above the frozen price.",
+  "bear_case": "Growth decelerates sharply as ad platforms respond, privacy rules tighten and current margins prove near peak. FCF/share stagnates around the mid-teens, leaving material downside.",
+  "thesis": "At $321.49, APP trades below the locked Base DCF of about $429 and far below Bull of about $772. The discount is meaningful, but valuation still assumes durable high margins and double-digit FCF/share growth from an unusually profitable starting point. Current price does not require a Bull-plus outcome. Base value is moderately terminal-dependent, so competitive durability and margin normalization remain the central valuation risks.",
+  "evidence": [
+    {
+      "claim": "Frozen close is $321.49; latest outstanding shares are 334.651M, implying market cap about $107.59B.",
+      "source_type": "secondary",
+      "source": "ChartExchange historical close and uploaded Q2 10-Q share count",
+      "period": "2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": "Price $321.49; market cap ~$107.59B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 revenue was $5.481B, up 70%, and FCF was $3.952B.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 Form 10-K",
+      "period": "FY2025",
+      "as_of_date": "2026-02-19",
+      "value": "Revenue $5.481B; FCF $3.952B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2026 H1 revenue rose 56% to $3.766B and FCF was $2.150B.",
+      "source_type": "filing",
+      "source": "Uploaded FY2026 Q2 Form 10-Q",
+      "period": "FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "Revenue $3.766B +56%; FCF $2.150B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 guidance calls for $2.055B-$2.085B revenue and about 83% adjusted EBITDA margin.",
+      "source_type": "ir",
+      "source": "Uploaded 2026-08-05 8-K Exhibit 99.1",
+      "period": "Q3 2026 guidance",
+      "as_of_date": "2026-08-05",
+      "value": "Revenue $2.055B-$2.085B; adj EBITDA margin ~83%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Locked owner-FCF/share DCF yields Bear/Base/Bull values about $166.86/$429.37/$771.95, with price/Base about 0.749x.",
+      "source_type": "other",
+      "source": "Deterministic harness valuation",
+      "period": "10-year model",
+      "as_of_date": "2026-09-17",
+      "value": "Bear $166.86; Base $429.37; Bull $771.95; price/Base 0.749x",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Current operating and adjusted-EBITDA margins are already extraordinary, so a Base path can fail through margin normalization even if revenue grows.",
+    "Advertising technology is exposed to platform-policy, privacy and regulatory shifts controlled partly by Apple, Google and governments.",
+    "The Base DCF remains meaningfully dependent on terminal value, so long-run competitive durability matters more than near-term growth.",
+    "The 5-year valuation percentile is not frozen on a consistent metric, limiting relative-valuation evidence."
+  ],
+  "unknowns": [
+    "Long-run Axon-driven share gains outside gaming.",
+    "Steady-state operating margin after competitors respond.",
+    "Five-year valuation percentile on a consistent EV/FCF metric.",
+    "Long-run e-commerce and CTV monetization."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "minor",
+      "rationale": "Current price is below a reasonable Base path rather than requiring Bull-plus assumptions."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Base upside is meaningful but depends on sustained FCF/share growth from elevated margins."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "Terminal value and competitive durability remain important to long-duration value."
+    }
+  ],
+  "falsifiers": [
+    "FCF/share stalls while revenue grows because margins normalize faster than expected.",
+    "Axon share gains reverse across multiple customer verticals.",
+    "A revised realistic Bull FCF path falls below the frozen price."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Frozen price is below locked Base and well below Bull; Bull-plus assumptions are not required."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "FCF/share",
+      "direction": "up",
+      "threshold": "Sustain double-digit per-share compounding over multi-year periods",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Revenue growth / margin",
+      "direction": "stable",
+      "threshold": "Growth remains strong without severe margin compression",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Share count",
+      "direction": "down",
+      "threshold": "Repurchases continue to offset SBC and reduce diluted shares",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 revenue/EBITDA versus guidance.",
+    "FCF/share and buyback pace.",
+    "Evidence of e-commerce/CTV scale outside gaming."
+  ],
+  "verdict": "support",
+  "archetype_signals": {
+    "price_to_base_value": null,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.24
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 70,
+      "rationale": "Current price can be justified by a strong but not heroic FCF path."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 75,
+      "rationale": "Locked Base value is about one-third above the frozen price."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 70,
+      "rationale": "Valuation survives moderate assumptions but still depends on durable margins and terminal value."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.24,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          10,
+          10.5,
+          11,
+          11.5,
+          12,
+          12.5,
+          13,
+          13.5,
+          14,
+          14.5
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          13,
+          15,
+          17,
+          19.5,
+          22,
+          24.5,
+          27,
+          29.5,
+          32,
+          34.5
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          14,
+          17,
+          21,
+          25.5,
+          30,
+          35,
+          40,
+          45,
+          50,
+          55
+        ]
+      }
+    }
+  }
+}
