@@ -1,0 +1,49 @@
+{
+  "agent_id":"MO",
+  "ticker":"PL",
+  "as_of_date":"2026-09-17",
+  "domain":"macro_overlay",
+  "role":"overlay",
+  "analysis_status":"complete",
+  "score_0_100":40,
+  "confidence_0_1":0.93,
+  "thesis":"Macro conditions are mixed but restrictive for a small-cap long-duration growth company. The Fed raised the policy range to 3.75%-4.00%, the 10-year real Treasury yield was 2.61% on Sep. 17, and inflation remained above target, increasing discount-rate and equity-duration pressure. Against that, the NFCI stayed looser than average and corporate credit spreads remained tight, so there is no broad financing stress. Recommend risk_budget_multiplier 0.80: preserve Moonshot optionality but pace entries more slowly than a large-cap self-funded compounder.",
+  "evidence":[
+    {"claim":"The FOMC raised the federal funds target range by 25 bp to 3.75%-4.00% on Sep. 16 and said inflation remained elevated.","source_type":"other","source":"Federal Reserve FOMC statement, 2026-09-16","period":"September 2026","as_of_date":"2026-09-16","value":"Fed funds target 3.75%-4.00%","fact_or_estimate":"fact"},
+    {"claim":"The 10-year real Treasury yield was 2.61% on Sep. 17, a high real discount-rate backdrop for long-duration equities.","source_type":"other","source":"U.S. Treasury Daily Treasury Par Real Yield Curve Rates","period":"2026-09-17","as_of_date":"2026-09-17","value":"10Y real yield 2.61%","fact_or_estimate":"fact"},
+    {"claim":"The Chicago Fed NFCI was -0.560 for the week ending Sep. 11; negative values indicate looser-than-average financial conditions.","source_type":"other","source":"Federal Reserve Bank of Chicago / FRED NFCI","period":"week ending 2026-09-11","as_of_date":"2026-09-16","value":"NFCI -0.560","fact_or_estimate":"fact"},
+    {"claim":"Investment-grade corporate OAS was 0.78% and high-yield OAS 2.70% on Sep. 16, indicating no broad credit-market stress.","source_type":"other","source":"ICE BofA indices via FRED","period":"2026-09-16","as_of_date":"2026-09-17","value":"IG OAS 0.78%; HY OAS 2.70%","fact_or_estimate":"fact"},
+    {"claim":"August CPI rose 3.4% year over year and core CPI 2.4%, leaving headline inflation above the Fed's 2% target.","source_type":"other","source":"U.S. Bureau of Labor Statistics CPI, August 2026","period":"August 2026","as_of_date":"2026-09-11","value":"Headline CPI 3.4%; core CPI 2.4%","fact_or_estimate":"fact"},
+    {"claim":"Q2 real GDP grew 1.5% annualized while real final sales to private domestic purchasers rose 4.2%, showing resilient private demand despite softer headline growth.","source_type":"other","source":"U.S. Bureau of Economic Analysis GDP second estimate, Q2 2026","period":"Q2 2026","as_of_date":"2026-08-26","value":"GDP +1.5%; private domestic final sales +4.2%","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "Credit spreads are tight and the NFCI remains negative, so capital markets are not signaling systemic stress.",
+    "Private domestic demand remains resilient, reducing near-term recession risk.",
+    "PL has substantial liquidity and positive H1 FCF, making it less exposed to immediate refinancing stress than a typical pre-revenue small-cap.",
+    "Core CPI at 2.4% is closer to target than headline inflation, leaving scope for policy pressure to ease if disinflation resumes."
+  ],
+  "unknowns":[
+    "Whether the September hike is followed by additional tightening in 2026.",
+    "Whether real yields stay above 2.5% or mean-revert after policy repricing.",
+    "Whether equity issuance conditions for high-beta small caps remain as receptive if volatility rises.",
+    "Whether geopolitical and government-budget developments alter sovereign Earth-observation spending."
+  ],
+  "falsifiers":[
+    "10-year real yields fall materially while inflation cools and credit spreads stay tight, supporting a higher multiplier.",
+    "NFCI turns positive and IG/HY spreads widen sharply, requiring a lower risk budget.",
+    "Small-cap equity issuance conditions materially improve while PL becomes more self-funded, reducing macro sensitivity."
+  ],
+  "hard_veto_flags":[],
+  "key_kpis":[
+    {"name":"10-year real Treasury yield","direction":"down","threshold":"Below ~2.25% would reduce duration pressure; sustained >2.75% would justify more caution","cadence":"weekly"},
+    {"name":"NFCI / credit spreads","direction":"stable","threshold":"Negative NFCI and contained spreads support access to capital; sharp widening signals stress","cadence":"weekly"},
+    {"name":"Policy/inflation path","direction":"down","threshold":"Disinflation without further hikes supports a larger risk budget","cadence":"monthly/FOMC"}
+  ],
+  "next_checks":[
+    "Next FOMC communication and policy-rate path",
+    "September/October inflation releases and real-yield trend",
+    "NFCI, HY spreads and small-cap financing conditions"
+  ],
+  "verdict":"neutral",
+  "risk_budget_multiplier":0.80
+}
