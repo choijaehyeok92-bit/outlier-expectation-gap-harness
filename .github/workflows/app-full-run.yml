@@ -1,0 +1,78 @@
+name: APP full run 2026-09-17
+
+on:
+  push:
+    branches:
+      - run/app-2026-09-17-sol-full
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Execute APP triage harness
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/execution.log) 2>&1
+          python harness.py selftest
+          python harness.py init APP --as-of 2026-09-17
+          mkdir -p runs/APP/sources runs/APP/prompts
+          cp .github/fixtures/APP/source_README.md runs/APP/sources/README.md
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("runs/APP/company_context.json")
+          j=json.loads(p.read_text())
+          j.update({
+              "ticker":"APP",
+              "company_name":"AppLovin Corporation",
+              "as_of_date":"2026-09-17",
+              "currency":"USD",
+              "current_price":321.49,
+              "shares_diluted":337875000,
+              "market_cap_usd":107586949990.0,
+              "enterprise_value":108048715990.0,
+              "net_cash_per_share":-1.3798434787285858,
+              "valuation_percentile_5y":None,
+              "valuation_metric":"deterministic owner-FCF/share DCF",
+              "known_sources":[
+                  "FY2025 Form 10-K filed 2026-02-19",
+                  "FY2026 Q1 Form 10-Q filed 2026-05-06",
+                  "FY2026 Q2 Form 10-Q filed 2026-08-05",
+                  "Form 8-K / Q2 earnings release filed 2026-08-05",
+                  "APP 2026-09-17 Nasdaq historical close"
+              ],
+              "special_questions":[
+                  "Moonshot market-cap gate is expected to fail; which non-Moonshot archetype remains reachable?",
+                  "Can Axon AI sustain high FCF/share compounding as margins normalize and competition/platform regulation evolves?"
+              ]
+          })
+          p.write_text(json.dumps(j,ensure_ascii=False,indent=2)+"\n")
+          PY
+          python harness.py freeze APP --provider openai --model gpt-5.6-sol --reasoning-effort high
+          python harness.py plan APP
+          python harness.py prompt APP EV --out runs/APP/prompts/EV.md
+          cp .github/fixtures/APP/EV.json runs/APP/reports/EV.json
+          python harness.py validate APP EV
+          cp .github/fixtures/APP/AS.json runs/APP/reports/AS.json
+          python harness.py validate APP AS
+          cp .github/fixtures/APP/DI.json runs/APP/reports/DI.json
+          python harness.py validate APP DI
+          cp .github/fixtures/APP/TQ.json runs/APP/reports/TQ.json
+          python harness.py validate APP TQ
+          python harness.py plan APP
+          python harness.py digest APP
+          python harness.py aggregate APP
+          cat runs/APP/aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: APP-harness-triage-2026-09-17
+          path: |
+            runs/APP
+            runlogs/execution.log
