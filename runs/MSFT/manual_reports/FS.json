@@ -1,0 +1,116 @@
+{
+  "agent_id": "FS",
+  "ticker": "MSFT",
+  "as_of_date": "2026-09-17",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 82.75,
+  "confidence_0_1": 0.8,
+  "bull_score": 92,
+  "bear_score": 60,
+  "bull_case": "현금+단기투자 $76.8B, debt $40.3B, OCF $182.9B로 AI capex를 외부증자 없이 자체 현금흐름으로 감당할 수 있다.",
+  "bear_case": "purchase+construction commitments $228.6B와 lease obligations가 AI 수요 둔화 시 FCF를 압박할 수 있다.",
+  "thesis": "재무 생존력은 매우 강하다. 순현금 약 $36.5B, OCF $182.9B, debt $40.3B로 외부자본 없이 필수 투자와 부채를 감당할 수 있다. 다만 AI datacenter 투자 때문에 purchase $194.1B·construction $34.6B 약정과 finance lease liabilities $66.6B이 커졌다. 이는 생존위협보다는 자본효율·하방민감도 문제다.",
+  "evidence": [
+    {
+      "claim": "Cash+short-term investments $76.843B > debt $40.294B; OCF $182.935B이다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": "76.843/40.294/182.935",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Purchase commitments $194.060B + construction commitments $34.566B ≈ $228.6B, 매출의 약 0.69배다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": 0.69,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Finance lease liabilities $66.594B, operating lease liabilities $21.925B이다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": "66.594/21.925",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI 인프라 자본집약도와 OpenAI 관련 경제적 집중은 장기 현금수익률의 핵심 반대근거다."
+  ],
+  "unknowns": [
+    "FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률."
+  ],
+  "falsifiers": [
+    "owner FCF/share가 2개 회계연도 연속 회복하지 못하면 현재 복리 가설을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "영업현금흐름이 필수지출을 지원하며 반복 외부조달이 사업 존속 요건이 아니다."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "희석주식수가 장기간 과도하게 증가하는 구조가 아니다."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "순현금과 강한 OCF로 파산/사업가치 영구소멸 확률이 낮다. valuation drawdown은 AS/EV에서 반영한다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "FY27 이후 회복",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "FY27 Q1 10-Q에서 Azure 성장, capex, OCF와 RPO 갱신 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 90,
+      "rationale": "현금+단기투자가 debt를 상회하는 순현금 구조다."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 85,
+      "rationale": "OCF가 매우 커 신용경색에서도 필수투자 여력이 높다."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 70,
+      "rationale": "희석주식수 감소/안정과 purchase+construction commitments/매출≈0.69배 중 낮은 축 70."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    }
+  ]
+}
