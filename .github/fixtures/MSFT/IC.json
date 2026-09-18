@@ -1,0 +1,47 @@
+{
+  "agent_id":"IC",
+  "ticker":"MSFT",
+  "as_of_date":"2026-09-18",
+  "domain":"investment_committee",
+  "role":"investment_committee",
+  "analysis_status":"complete",
+  "score_0_100":78.2,
+  "confidence_0_1":0.9,
+  "thesis":"Final IC view: retain the mechanical Compounder classification and NORMAL_CANDIDATE state. Microsoft’s moat, reinvestment runway, management and balance sheet are strong enough to justify a long-term position, but current price is above deterministic Base value and the AI infrastructure cycle leaves full-cycle incremental ROIC unproven. Approve a 2–4% strategic range, but start at 2–3% and use the 0.85 macro pacing multiplier; increase only after owner FCF/share and cloud margin validate the capex thesis.",
+  "evidence":[
+    {"claim":"The aggregate score is 78.2/100, while score excluding valuation is 83.18, showing a strong business-quality profile dragged down primarily by valuation.","source_type":"other","source":"runs/MSFT/aggregate.json","period":"frozen run","as_of_date":"2026-09-18","value":"score 78.2; ex-valuation 83.18","fact_or_estimate":"fact"},
+    {"claim":"The mechanical archetype is Compounder because MT 87.0, RF 81.5, MA 84.25, FS 87.5 and EV 50.0 meet the configured Compounder thresholds.","source_type":"other","source":"runs/MSFT/aggregate.json","period":"frozen run","as_of_date":"2026-09-18","value":"Compounder threshold conditions satisfied","fact_or_estimate":"fact"},
+    {"claim":"All Hard Veto items are cleared after domain-owner and Red Team review, allowing the mechanical state to advance to NORMAL_CANDIDATE.","source_type":"other","source":"runs/MSFT/aggregate.json and digest.md","period":"Phase 3","as_of_date":"2026-09-18","value":"Hard Veto CLEARED; state NORMAL_CANDIDATE","fact_or_estimate":"fact"},
+    {"claim":"The locked DCF gives Bear/Base/Bull values of about $134.9/$441.3/$712.5 versus a frozen price of $497.75, so price is ~1.128x Base and still below Bull.","source_type":"other","source":"runs/MSFT/aggregate.json deterministic valuation","period":"10-year DCF","as_of_date":"2026-09-18","value":"Bear $134.9; Base $441.3; Bull $712.5; price $497.75","fact_or_estimate":"estimate"},
+    {"claim":"The Macro Overlay recommends a 0.85 risk-budget multiplier, indicating slower entry pacing without changing the company rating.","source_type":"other","source":"runs/MSFT/reports/MO.json","period":"macro overlay","as_of_date":"2026-09-18","value":"risk_budget_multiplier 0.85","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "The strongest failure path is that AI demand remains high but accelerator/datacenter economics disappoint: capex and depreciation stay elevated, cloud gross margin does not recover, and owner FCF/share fails to compound.",
+    "EV is only 50 and the current price is above deterministic Base value, so a large portion of quality is already capitalized and multiple compression can offset operating success.",
+    "RF 81.5 is only modestly above the Compounder threshold and contains the run’s most important unresolved economic uncertainty: full-cycle incremental ROIC on the AI buildout.",
+    "AS 68.5 indicates resilience is stronger than power-law upside; this is not a high-convexity entry at the frozen price."
+  ],
+  "unknowns":[
+    "Full-cycle incremental ROIC on the FY2025-27 AI infrastructure wave.",
+    "Steady-state maintenance capex and accelerator refresh burden.",
+    "Paid Copilot/agent renewal, expansion and workload-level gross margin.",
+    "Long-run terminal multiple if Microsoft’s growth rate normalizes at very large scale."
+  ],
+  "falsifiers":[
+    "By FY2028-29 owner FCF/share fails to rise materially from the FY2026 capex-depressed anchor while AI capex remains structurally elevated.",
+    "Microsoft Cloud gross margin fails to stabilize/recover and Azure/AI gross-profit growth does not increasingly outpace sustaining capex and depreciation.",
+    "Commercial RPO ex-OpenAI, Azure growth and cross-suite monetization weaken together, indicating that current backlog and ecosystem strength are not converting into durable economics."
+  ],
+  "hard_veto_flags":[],
+  "key_kpis":[
+    {"name":"Owner FCF/share","direction":"up","threshold":"Material sustained improvement from the FY2026 ~$9 simple-FCF/share anchor","cadence":"quarterly/annual"},
+    {"name":"Microsoft Cloud gross margin","direction":"stable/up","threshold":"Stabilize and then improve as AI capacity utilization scales","cadence":"quarterly"},
+    {"name":"AI/Azure gross profit versus sustaining capex","direction":"up","threshold":"Gross-profit growth increasingly exceeds depreciation and replacement-capex growth","cadence":"annual/quarterly"}
+  ],
+  "next_checks":[
+    "FY2027 Q1 Agents and Infra revenue, operating income, OCF, capex and cloud margin.",
+    "Copilot/agent paid adoption, retention and monetization evidence.",
+    "RPO ex-OpenAI conversion and customer concentration trend."
+  ],
+  "verdict":"support"
+}
