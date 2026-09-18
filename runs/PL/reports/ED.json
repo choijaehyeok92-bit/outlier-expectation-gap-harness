@@ -1,0 +1,64 @@
+{
+  "agent_id": "ED",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 85,
+  "confidence_0_1": 0.88,
+  "thesis": "Decision-critical revenue, margins, RPO/backlog, cash flow, liquidity, debt, dilution and customer concentration are directly supported by the FY2026 10-K and Q2 FY2027 10-Q/8-K. Main uncertainty lies in modeled long-run FCF, not the historical facts.",
+  "evidence": [
+    {
+      "claim": "Q2 revenue $116.052M, H1 revenue $210.202M, Q2 adjusted EBITDA +$13.928M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "RPO $753.117M, backlog $814.863M, NDR 109%, recurring ACV 98%.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Liquidity $865.4M, convertible debt $460M, H1 adjusted FCF +$28.8M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Valuation paths are model estimates, not filing facts.",
+    "Long-run satellite-services gross margin is not yet directly observable."
+  ],
+  "unknowns": [
+    "Long-run mix margin",
+    "customer concentration after sovereign-service ramp"
+  ],
+  "falsifiers": [
+    "Material source mismatch requires rerun."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "primary-source coverage",
+      "direction": "up",
+      "threshold": "decision variables filing-backed",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q"
+  ],
+  "verdict": "support"
+}

@@ -1,0 +1,111 @@
+{
+  "agent_id": "AS",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 75,
+  "confidence_0_1": 0.78,
+  "bull_score": 85,
+  "bear_score": 55,
+  "bull_case": "Multiple independent growth vectors can support multi-bagger upside from a sub-$6B market cap.",
+  "bear_case": "Execution shortfalls, renewed cash burn or lower-margin satellite services can compress both FCF and the multiple.",
+  "thesis": "Asymmetry is favorable but not low-risk. Net cash is meaningful, recurring ACV is 98%, and Bull/current is >3x; however Bear/current is below 0.3 and the company still depends on successful operating leverage.",
+  "evidence": [
+    {
+      "claim": "Recurring ACV was 98% at Q2 FY2027.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Cash plus short-term investments were $865.4M against $460M convertible notes.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 revenue grew 58% y/y to $116.052M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Satellite services can raise revenue growth while also increasing hardware, launch and execution intensity versus pure imagery subscriptions."
+  ],
+  "unknowns": [
+    "Normalized satellite-services gross margin, long-run owner FCF/share, and customer concentration after current sovereign contract ramp."
+  ],
+  "falsifiers": [
+    "If NDR falls below 100%, RPO/backlog contract materially, or owner FCF/share turns persistently negative despite revenue growth, the thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "The company has substantial net cash and positive recent OCF/FCF; bankruptcy or permanent-capital impairment is not disproportionate to upside."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is below Base DCF."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q: revenue mix, RPO/backlog, NDR, adjusted FCF, SBC, ATM issuance and capex"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "Bull/current is >3x with multiple paths: imagery/data, AI analytics and sovereign satellite services."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 75,
+      "rationale": "Large net cash partially offsets execution risk, though Bear/current remains severe."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 75,
+      "rationale": "Scenarios explicitly include dilution, hardware intensity and contract concentration."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    }
+  ]
+}
