@@ -1,0 +1,46 @@
+{
+  "agent_id": "DI",
+  "ticker": "MSFT",
+  "as_of_date": "2026-09-18",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 80.0,
+  "confidence_0_1": 0.85,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Microsoft can turn AI into an enterprise operating layer by combining Azure infrastructure, GitHub, Microsoft 365, security and agents. Distribution to its installed base can accelerate adoption while proprietary cloud infrastructure converts internal AI capability into external recurring revenue.",
+  "bear_case": "Much of the AI transition may be sustaining innovation inside existing franchises rather than classic disruption. Model intelligence can commoditize, customers can multi-cloud, and datacenter economics may shift value toward chip, power and model suppliers while Microsoft bears high capex.",
+  "thesis": "MSFT scores at the Moonshot threshold because AI is changing the cost/performance and workflow architecture across Azure, Microsoft 365, GitHub, security and agents, with strong commercial adoption signals. However, Microsoft is an incumbent self-disruptor rather than an early low-end entrant, and filings do not prove a 10x unit-economic advantage. The strongest evidence is adoption and distribution, not a fully demonstrated disruptive cost curve.",
+  "evidence": [
+    {"claim":"Azure and other cloud services revenue grew 41% in FY2026, indicating AI/cloud demand is already commercial at Microsoft scale rather than remaining a pilot narrative.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-06-30","value":"Azure and other cloud services +41%","fact_or_estimate":"fact"},
+    {"claim":"Commercial RPO reached $678B, up 84%, giving unusually strong contracted-demand visibility for cloud and AI workloads.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-06-30","value":"Commercial RPO $678B, +84%","fact_or_estimate":"fact"},
+    {"claim":"Beginning FY2027 Microsoft reorganized reporting into Agents and Infra plus Devices and Consumer; the Agents and Infra structure groups Microsoft 365, GitHub, security, models/agents and Azure infrastructure around integrated AI workloads.","source_type":"filing","source":"Uploaded Microsoft Form 8-K filed 2026-09-02","period":"FY2027 reporting structure","as_of_date":"2026-09-02","value":"Agents and Infra segment framework","fact_or_estimate":"fact"},
+    {"claim":"FY2026 Microsoft Cloud gross margin was 66% and was pressured by AI infrastructure investment and AI usage, showing that disruption is real but unit economics are still absorbing the buildout.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K","period":"FY2026","as_of_date":"2026-06-30","value":"Microsoft Cloud gross margin 66%","fact_or_estimate":"fact"}
+  ],
+  "counterevidence": [
+    "Microsoft is already a dominant incumbent; much of Copilot/agent adoption may be sustaining innovation and self-cannibalization rather than classic disruption from the low end.",
+    "The filings do not establish a standardized 10x cost/performance advantage versus competing AI/cloud stacks.",
+    "Model commoditization and multi-cloud purchasing can shift bargaining power away from Microsoft’s application and infrastructure layers.",
+    "The AI buildout materially raises capital intensity, so rapid adoption does not automatically imply superior incremental ROIC."
+  ],
+  "unknowns": ["Incremental gross margin and retention of paid Copilot/agent workloads","Cost per useful AI task versus competing cloud/model stacks","Long-run return on current datacenter and accelerator commitments","Degree to which agentic workflows expand TAM versus cannibalize existing seats"],
+  "uncertainties": [
+    {"criterion_id":"cost_performance_shift","severity":"material","rationale":"Filings show broad capability and demand, but not a clean 10x economic benchmark versus competing stacks."},
+    {"criterion_id":"optionality_incumbent_response","severity":"material","rationale":"Microsoft has exceptional distribution optionality, but competitors can access leading models and hardware and may erode differentiation."}
+  ],
+  "falsifiers": ["AI adoption grows without corresponding revenue, gross-profit or owner-FCF improvement.","Customers materially shift agent/model workloads to competing stacks because Microsoft’s cost/performance is not differentiated.","AI infrastructure capex remains structurally high while utilization and margins fail to improve."],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {"name":"Azure/AI revenue growth","direction":"up","threshold":"Sustain high growth with improving utilization economics","cadence":"quarterly"},
+    {"name":"Paid Copilot/agent adoption","direction":"up","threshold":"Broader paid deployment and workload expansion across enterprise customers","cadence":"quarterly"},
+    {"name":"AI infrastructure return","direction":"up","threshold":"Revenue/gross-profit growth increasingly outpaces sustaining capex and depreciation","cadence":"annual"}
+  ],
+  "next_checks": ["FY2027 Agents and Infra revenue/margin disclosure","Copilot/agent monetization and usage evidence","Datacenter utilization and capex efficiency"],
+  "verdict": "support",
+  "subscores": [
+    {"criterion_id":"cost_performance_shift","score_0_100":75,"rationale":"Microsoft is reshaping enterprise workflows and cloud architecture with AI, but a 10x economic advantage versus alternatives is not yet demonstrated."},
+    {"criterion_id":"adoption_curve","score_0_100":85,"rationale":"Azure growth and very large RPO show scaled commercial adoption beyond pilots, though monetization economics remain in transition."},
+    {"criterion_id":"optionality_incumbent_response","score_0_100":80,"rationale":"Azure, Microsoft 365, GitHub, security and agents create several AI monetization paths, offset by strong model/cloud competition and incumbent self-cannibalization."}
+  ]
+}
