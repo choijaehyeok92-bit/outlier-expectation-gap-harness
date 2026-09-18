@@ -13,7 +13,7 @@
 7. Macro는 종목선정 점수에 섞지 않는다. Macro는 Risk Budget / Position Pacing 전용이다.
 8. 추가매수는 `Position Increase ∝ Evidence Increase` 원칙을 따른다. 하락 자체는 추가매수 사유가 아니다.
 9. **파괴적 혁신**과 **턴어라운드 품질**은 100점 점수와 분리된 독립 평가축이다. 종목 유형 분류와 IC 판단에만 사용한다.
-10. 모든 종목은 평가 후 **컴파운더 / 이머징 아웃라이어 / 턴어라운드형 / 기대차형 / 문샷형 / 관망·회피형** 중 하나로 분류한다. 문샷형의 고밸류에이션 용인이나 턴어라운드의 저점 기대는 Hard Veto를 면제하지 않는다.
+10. 모든 종목은 평가 후 **컴파운더 / 턴어라운드형 / 기대차형 / 문샷형 / 관망·회피형** 중 하나로 분류한다. 문샷형의 고밸류에이션 용인이나 턴어라운드의 저점 기대는 Hard Veto를 면제하지 않는다.
 
 ## Evidence policy
 - 모든 사실은 `as_of_date`, `source_type`, `source`, `period`, `value`를 남긴다.
@@ -84,7 +84,6 @@
 ## Archetypes
 - `moonshot` — 문샷형
 - `compounder` — 컴파운더
-- `emerging_outlier` — 이머징 아웃라이어
 - `turnaround` — 턴어라운드형
 - `expectation_gap` — 기대차형
 - `non_fit` — 관망·회피형

@@ -1,0 +1,175 @@
+{
+  "agent_id": "AS",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-17",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 66.75,
+  "confidence_0_1": 0.55,
+  "bull_score": 82,
+  "bear_score": 25,
+  "bull_case": "AI 인프라가 10년 자본재 사이클이면 Bull 경로는 Y10 owner FCF/share $29.6, 주당 $431이다. 순현금·무차입에 가까운 구조와 투자자산 $93.9B가 하방을 받치고, 네트워킹·소프트웨어·로보틱스가 추가 상승축이 된다. Bull 확률을 30%로 올리면 확률가중 가치는 $244로 종가를 11% 상회한다.",
+  "bear_case": "시총 $5.33T에서 5x는 $26.6T로, 25x 배수에서 순이익 $1.06T를 요구한다. 현실적 상방은 10년 3.4x(CAGR 약 13%)이며 power-law가 아니다. 반면 하방은 Bear $75(-66%)이고, 수요 일부를 NVIDIA 지분투자·보증이 떠받쳐 하락 시 상관관계가 높아진다.",
+  "thesis": "비대칭성은 상방보다 하방이 크다. 시총 $5.33T에서 5x/10x는 각각 $26.6T/$53.3T로 글로벌 주식시장 규모 대비 비현실적이고, 가장 낙관적인 경로도 10년 3.4x(CAGR 약 13%)에 그친다. 하방은 Bear 주당 $75로 -66%다. 확률을 Bear 30/Base 50/Bull 20으로 두면 확률가중 현재가치는 $215로 종가 $219.34와 사실상 같아 초과수익 기대가 없다. 파산 위험은 순현금 $23.2B와 투자자산 $93.9B로 사실상 차단되지만, 영구손실 확률 대비 기대수익 비율은 이 가격에서 매력적이지 않다. 다만 Bull 확률을 30%로 올리면 결론이 뒤집히므로 확률 자체가 판단의 핵심이다.",
+  "evidence": [
+    {
+      "claim": "2026-09-17 종가 기준 시가총액 $5,326.7B. 5x는 $26.6T, 10x는 $53.3T이며 25x 배수 가정 시 각각 순이익 약 $1.06T·$2.13T가 필요하다.",
+      "source_type": "other",
+      "source": "runs/NVDA/company_context.json intake_facts + 산술",
+      "period": "10y outlook",
+      "as_of_date": "2026-09-17",
+      "value": 5326.7,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "대차대조표 회복력: 순현금 $23,220M, 자기자본 $228,984M, 시장성 지분 $42,783M + 비시장성 지분 $51,157M, 단기차입금은 $1,000M에 불과하다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Condensed Consolidated Balance Sheets",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 228984,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "고정 정책 DCF의 Bear/Base/Bull 주당가치 $74.99/$212.86/$431.14에 확률 30%/50%/20%를 적용하면 확률가중 현재가치는 $215.1로 종가 $219.34 대비 -1.9%다.",
+      "source_type": "other",
+      "source": "harness deterministic_valuation + AS 확률 배정",
+      "period": "10y from 2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": 215.1,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "수요 소멸이 실제로 재고·약정 손실로 전환된 전례가 있다. H20 관련 $4,500M 손실(FY26 Q1), H200 관련 $400M 손실(FY27 H1).",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2835-L2837",
+      "period": "FY26 Q1 ~ FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 4900,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "집중도: Q2 FY27 단일 직접고객이 매출의 16%, H1에는 3개 고객이 16%/15%/13%. AR은 5개 직접고객이 22/14/13/11/10%로 70%를 차지한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1350, L2076",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 70,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "수요의 일부는 NVIDIA가 직접 자금을 대고 있다. H1 FY27 지분증권 매입 $42,404M, AI 클라우드 파트너 리스채무에 대한 land/power/shell 보증 notional $3,529M(파트너 에스크로 $712M), 지분투자 약정 잔여 $25B.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Cash flow statement + Note 8 + Note 10",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 42404,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "순현금 구조와 $93,940M의 투자자산은 파산 경로를 사실상 차단한다. 이 항목의 영구손실은 사업 실패가 아니라 가격 재평가로만 발생한다.",
+    "Bear 경로에서도 owner FCF/share는 $4.2~$6.2를 유지한다. 사업의 구조적 소멸이 아니라 성장 프리미엄 소멸이 하방의 실체다.",
+    "power-law가 아니라는 것이 나쁜 투자라는 뜻은 아니다. Bull 경로의 10년 CAGR 약 13%는 요구수익률 9%를 상회한다.",
+    "확률 배정이 결론을 지배한다. Bear 25/Base 45/Bull 30으로 바꾸면 확률가중 가치는 $243.9로 종가를 11% 상회한다."
+  ],
+  "unknowns": [
+    "NVIDIA가 지분·보증으로 자금을 댄 고객이 창출한 매출 비중이 공시되지 않아 하락 국면의 상관관계를 정량화할 수 없다.",
+    "Bear 시나리오에서 AR $63,059M과 재고 $31,575M의 손상률 추정 근거가 없다.",
+    "AI 인프라 사이클에 직접 대응하는 역사적 base rate가 존재하지 않는다. 반도체 일반 사이클을 대용으로 쓸 수밖에 없다.",
+    "비시장성 지분 $51,157M의 공정가치 하락이 손익에 반영되는 속도와 폭."
+  ],
+  "falsifiers": [
+    "Bear 국면에서도 DSO가 50일 이하를 유지하고 owner FCF/share가 $6 이상을 지키면 영구손실 논리는 크게 약화된다.",
+    "10년 5x 경로가 성립하려면 FY29까지 매출 $700B 이상이 보여야 한다. FY29 매출이 $700B 미만이면 5x 가설은 기각된다.",
+    "상위 5개 고객의 AR 집중도가 50% 미만으로 하락하면 집중도 기반 영구손실 경로는 약화된다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "conditional",
+      "rationale": "파산 확률은 순현금 $23.2B·투자자산 $93.9B·단기차입금 $1.0B로 사실상 0이다. 그러나 확률가중 기대가치 $215.1이 종가 $219.34와 같아 초과수익이 없는 반면 Bear -66% 확률을 30%로 본다. 조건: 진입가가 Base 가치의 0.8배(약 $170) 이하로 내려가거나, AR·DSO 정상화로 수요의 자기조달 비중이 낮음을 입증하면 clear로 전환한다."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "price/base = 1.03. 현재가는 Base 시나리오 수준을 요구하며 Bull $431을 넘어서는 기대를 내재하지 않는다. AS 독립 판정도 EV와 동일하다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "단일 최대 직접고객 매출 비중",
+      "direction": "down",
+      "threshold": "15% 미만",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "지분증권 매입 + 보증 notional 합계",
+      "direction": "down",
+      "threshold": "분기 매출의 20% 미만",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "(순현금 + 투자자산) / 시가총액",
+      "direction": "up",
+      "threshold": "2% 이상 유지",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q에서 land/power/shell 보증 notional과 파트너 에스크로 잔액 변화 확인",
+    "지분투자 약정 $25B 중 FY27 잔여 $18B의 집행 대상과 고객 여부 확인",
+    "상위 고객 매출·AR 집중도 추세와 customer advances $2.8B의 성격 확인"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "판정표: Bull 주당가치 $431.14 / 현재가 $219.34 = 1.97 → 1.6~2.5 구간, 독립 상승경로 3개(데이터센터, 네트워킹, 소프트웨어·로보틱스) → 75."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 60,
+      "rationale": "판정표: Bear 주당가치 $74.99 / 현재가 $219.34 = 0.34 → 0.2~0.4 구간 → 50. modifier: 순현금 $23,220M이고 TTM OCF $134,360M이 총차입 $33,366M을 상회 → +10."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 65,
+      "rationale": "명시적 확률 배정과 민감도(Bull 확률 +10%p 시 결론 반전)를 제시했고 H20·H200 손실이라는 실제 기준 사례를 사용했다. 그러나 AI 인프라 사이클 자체의 역사적 base rate가 없다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "5x 상방 판단은 10년 뒤 글로벌 AI 인프라 지출 총량 가정에 전적으로 의존하며 외부 검증 수단이 없다."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Bear 잔존가치 $75는 terminal 15x 고정 가정에 의존한다. 배수가 10x로 내려가면 잔존가치는 주당 $60 아래로 떨어진다."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "30/50/20 확률은 판단값이다. Bull 확률을 10%p 올리면 결론이 뒤집힐 만큼 민감하다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

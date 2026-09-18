@@ -1,0 +1,155 @@
+{
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "agent_id": "FS",
+  "domain": "financial_survival",
+  "score_0_100": 81.5,
+  "confidence_0_1": 0.86,
+  "bull_score": 95,
+  "bear_score": 65,
+  "bull_case": "H1 FY27 OCF $74.4B, 현금·현금성/marketable debt $56.6B에 더해 $42.8B marketable equity가 있어 외부자본 없이 운영·R&D를 감당할 능력이 매우 강하다. CP $25B 한도도 미사용이다.",
+  "bear_case": "총 $366B 미래약정, $279B 공급약정, AI cloud 보증/lease 및 $33.4B 부채는 하방에서 자본구조를 과거보다 복잡하게 만든다. AI 수요 급락 시 운전자본과 약정손실이 동시에 발생할 수 있다.",
+  "thesis": "재무생존능력은 강하지만 단순한 순현금 기업으로 보면 안 된다. 운영현금흐름과 유동성은 부채를 크게 상회하는 수준의 완충력을 제공하지만, 약정과 고객/파트너 지원의 명목규모가 매우 크므로 stress case에서는 계약의 취소가능성·보증범위를 함께 봐야 한다.",
+  "evidence": [
+    {
+      "claim": "As of July 26, 2026, NVIDIA had $56.586B of cash, cash equivalents and marketable debt securities plus $42.783B of marketable equity securities.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "$56.586B cash/debt securities + $42.783B equity securities",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Total debt was $33.366B; only $1B was due within one year, and the $25B commercial-paper program had no amount outstanding.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "Debt $33.366B; $1B due <1y; CP $0",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 FY27 operating cash flow was $74.421B, and management stated existing liquidity was sufficient for operating requirements and future obligations for the foreseeable future.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "period": "H1 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "OCF $74.421B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Future commitments totaled $366B, including $279B of supply/capacity commitments, with additional customer/partner infrastructure support arrangements.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R17.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "$366B total; $279B supply/capacity",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 FY27 SBC expense was $3.954B while NVIDIA repurchased 203M shares for $39.8B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R20.htm",
+      "period": "H1 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "SBC $3.954B; repurchases $39.8B",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Commitment notional is several times current liquid fixed-income/cash balances.",
+    "Customer/partner guarantees can create contingent liabilities outside standard debt metrics.",
+    "Marketable equity holdings are volatile and should not be treated as cash-equivalent in a stress case.",
+    "A severe AI-capex downturn could combine revenue decline, inventory charges and supplier obligations."
+  ],
+  "unknowns": [
+    "Cancelable/reschedulable portion of the $279B supply commitments under a severe downturn",
+    "Maximum loss from customer/partner infrastructure guarantees",
+    "Liquidity of strategic equity holdings during a correlated AI downturn"
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "minor",
+      "rationale": "Liquidity and cash generation are exceptional despite new debt."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "Large commitments create stress-case complexity even though current FCF is strong."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "material",
+      "rationale": "SBC is manageable but guarantees and long-dated commitments are substantial."
+    }
+  ],
+  "falsifiers": [
+    "Operating cash flow collapses while supplier/customer commitments remain largely fixed.",
+    "Large guarantee or lease losses force external financing in a downturn.",
+    "Net share count begins rising materially despite strong cash generation."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "NVIDIA generates very large operating cash flow and has substantial liquidity; external capital is optional rather than required for survival today."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "SBC is material but large repurchases offset it; no current evidence of persistent excessive net dilution."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Debt maturity profile and current cash generation make near-term solvency risk low; commitments are a downside risk but not currently a bankruptcy-level condition."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Liquidity / debt",
+      "direction": "stable",
+      "threshold": "Cash-generation capacity remains comfortably above near-term maturities",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Commitment coverage",
+      "direction": "stable",
+      "threshold": "FCF and cancelability support outstanding commitments",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Net dilution",
+      "direction": "down",
+      "threshold": "Flat-to-lower diluted shares",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Updated commitments/guarantees in Q3",
+    "Debt issuance and cash use",
+    "Stress sensitivity of AI-cloud arrangements"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 90,
+      "rationale": "Very strong liquidity, OCF and manageable near-term maturities."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 80,
+      "rationale": "Internal cash generation provides a strong buffer, tempered by very large commitments."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 70,
+      "rationale": "Net dilution is controlled, but contingent commitments and guarantees are material."
+    }
+  ]
+}

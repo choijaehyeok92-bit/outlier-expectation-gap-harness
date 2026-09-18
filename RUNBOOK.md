@@ -24,7 +24,7 @@ python harness.py prompt TICKER EV   # AS, DI, TQ도 동일
 출력된 프롬프트를 에이전트 1회 호출로 실행한다. 네 에이전트가 끝나면 `plan`을 다시 실행한다. 감점 전 점수와 밸류에이션 신호로도 도달 가능한 유형이 없으면 **EARLY EXIT**이다. 이 경우 `aggregate`만 실행하고 종료한다(상태 `EARLY_EXIT_NON_FIT`, 비중 0%).
 
 ## 3. Phase 1b·2 — 나머지 도메인
-`plan`이 알려주는 SL·CP·MT·RF·MA·FS를 병렬로 실행한다. **다른 항목의 보고서는 보여주지 않는다.** 각 에이전트는 Bull·Verifier·Skeptic 관점을 보고서 안에서 분리하고 `bull_score`/`bear_score`를 남긴다. 두 점수 차이가 20 이상이면 분쟁, 30 이상이면 재조사 대상이다.
+`plan`이 알려주는 SL·CP·MT·RF·MA·FS를 병렬로 실행한다. **다른 항목의 보고서는 보여주지 않는다.** 각 에이전트는 Bull·Verifier·Skeptic 관점을 보고서 안에서 분리하고 `bull_score`/`bear_score`를 남긴다. 두 점수 차이가 20 이상이면 분쟁, 30 이상이면 재조사 대상으로 **표시**된다. 표시일 뿐 점수는 깎이지 않는다.
 
 ## 4. Phase 3 — Evidence + Red Team
 ```bash
@@ -34,7 +34,7 @@ python harness.py prompt TICKER ED   # RT도 동일
 Phase 3는 원 보고서가 아니라 `digest.md`를 입력으로 쓴다. Red Team은 종목점수에 직접 더하지 않고 Hard Veto와 IC 반론의 증거로 사용한다.
 
 ## 5. Phase 4 — Hard Veto gate
-9개 veto를 `cleared / conditional / confirmed / unresolved`로 분류한다. `confirmed`는 기본 REJECT, `unresolved`는 최소 WATCH로 제한한다.
+9개 veto를 `cleared / conditional / confirmed / unresolved`로 분류한다. 점수가 아무리 높아도 미해소 veto가 있으면 매수를 승인하지 않는다 — 실제 구속 조건은 대개 점수 임계값이 아니라 이 게이트다. `confirmed`는 기본 REJECT, `unresolved`는 최소 WATCH로 제한한다.
 
 ## 6. Phase 5 — 집계와 IC
 ```bash
@@ -42,7 +42,7 @@ python harness.py aggregate TICKER    # Scorekeeper (결정론적)
 python harness.py digest TICKER
 python harness.py prompt TICKER IC    # 반대 논리 → 판정 → final_verdict.json, 한 장 투자기록
 ```
-도메인 점수에는 미확인·분쟁(bull − bear)·신뢰도 패널티가 적용된다. `aggregate.json`에는 다음이 함께 기록된다.
+도메인 점수는 `subscores`의 고정 가중평균이며 **감점을 적용하지 않는다**. 미확인·분쟁(bull − bear)·신뢰도는 점수를 바꾸지 않고 `review_required`·`domain_dispute`·`uncertainties` 플래그로만 기록된다(v2.1 provider calibration). `aggregate.json`에는 다음이 함께 기록된다.
 - `disruptive_innovation_score`: 파괴적 혁신 축 점수 (100점 비합산)
 - `turnaround_quality_score`: 턴어라운드 품질 축 점수 (100점 비합산)
 - `score_100_ex_valuation`: 밸류에이션 도메인을 제외한 점수 (문샷형 게이트용)
@@ -86,3 +86,29 @@ python harness.py validate TICKER [AGENT_ID ...]
 
 ## 11. 모델 A/B 비교
 동일 commit, 동일 `company_context.json`, 동일 `sources/`로 각각 freeze한다. 두 `run_manifest.json`의 `input_snapshot_sha256`가 다르면 점수 차이를 모델 차이로 해석하지 않는다. 비교 순서는 `subscores → valuation_inputs → uncertainties → veto assessments → aggregate`다.
+
+```bash
+python harness.py calibrate runs/TICKER-A runs/TICKER-B --out calibration.json
+```
+
+criterion 단위 격차와 요약 통계(평균·중앙값·표준편차, 판정표 보유 여부별 격차, 앵커 정착률)를 출력한다.
+`observable_anchors`가 있는 criterion의 격차가 0에 가깝지 않으면 판정표를 잘못 적용한 것이고,
+형용사 앵커 criterion의 격차가 크면 그 criterion을 판정표로 옮길 후보다.
+
+기준선으로 `runs/_reference/NVDA-2026-09-18-sol/`(gpt-5.6-sol 실행본)이 저장돼 있다.
+
+### 프로바이더 보정
+`config/calibration.json`의 `provider_calibration`이 계열별 계통 편향을 도메인 점수에서 보정한다.
+`aggregate.json`의 `provider_calibration.per_domain_offset`과 각 도메인의
+`score_before_provider_calibration`으로 보정 전후를 항상 대조할 수 있다.
+
+보정으로 archetype이나 상태가 바뀌었다면 `final_verdict.archetype_rationale`에 그 사실과 보정 전 점수를
+반드시 남긴다. 현재 `base_offset` 5.0은 종목 1개 표본에서 나온 값이므로, 쌍 실행이 2~3종목 쌓이면
+`calibrate` 결과로 재추정한다. 보정을 끄려면 `enabled`를 false로 둔다.
+
+### 프로바이더 편향이 의심될 때
+1. `calibrate`로 격차를 측정한다. 부호가 한쪽으로 쏠리면(전 criterion에서 A ≥ B) 노이즈가 아니라 계통 편향이다.
+2. 격차가 큰 criterion이 형용사 앵커인지 확인한다. 그렇다면 `config/calibration.json`에
+   `observable_anchors` 판정표를 추가한다 — 셀 수 있는 지표 하나로 구간을 나누는 것이 핵심이다.
+3. `anchor_policy`의 상단·하단 게이트가 프롬프트에 실리는지 `prompt` 출력으로 확인한다.
+4. 같은 도메인을 두 프로바이더로 돌리면 `domain_aggregate`가 두 점수의 중앙값을 쓴다. 분쟁이 큰 도메인에만 선택적으로 쓸 수 있다.

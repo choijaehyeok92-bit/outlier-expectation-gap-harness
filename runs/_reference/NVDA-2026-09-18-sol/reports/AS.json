@@ -1,0 +1,150 @@
+{
+  "agent_id": "AS",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 68.5,
+  "confidence_0_1": 0.7,
+  "bull_score": 85,
+  "bear_score": 45,
+  "bull_case": "AI 컴퓨트가 전력 제약 아래에서도 NVIDIA의 시스템 단위 경제성을 유지하고 GPU·CPU·네트워킹·소프트웨어가 함께 확장되면 10년 내 5배 경로는 가능하다. 다만 현재 시총이 이미 약 $5.3T라 10배는 극단적 상단 시나리오다.",
+  "bear_case": "하이퍼스케일러 자체 ASIC, 수출규제, 고객 금융지원과 $366B 약정이 동시에 역풍이 되면 성장 정상화가 급격해질 수 있다. Bear DCF는 약 $99/share로 현재가 대비 약 -55% 영구손실 경로를 보여준다.",
+  "thesis": "비대칭은 양호하지만 초기 NVDA 수준의 power-law는 아니다. 현재 $219.34에서 10년 5배는 약 $1,097/share이며 25x FCF 기준 약 $44 FCF/share가 필요해 Bull 경로에 가깝다. 10배는 약 $88 FCF/share가 필요해 현재 증거로는 낮은 확률이다. 반면 강한 현금창출과 유동성은 파산 위험을 낮추지만, 약정·고객집중·규제가 영구손실의 주된 경로다.",
+  "evidence": [
+    {
+      "claim": "At the frozen price of $219.34, a 5x ten-year share price is about $1,097 and a 10x price is about $2,193. At a 25x terminal FCF multiple those prices require roughly $44 and $88 of FCF/share respectively.",
+      "source_type": "other",
+      "source": "harness scenario arithmetic",
+      "period": "10-year horizon",
+      "as_of_date": "2026-09-18",
+      "value": "5x needs ~$44 FCF/share at 25x; 10x needs ~$88",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "The deterministic EV model values Bear/Base/Bull at about $99/$251/$581 per share. Using illustrative 25%/55%/20% probabilities gives a probability-weighted present value around $279, about 27% above $219.34.",
+      "source_type": "other",
+      "source": "harness deterministic valuation + AS probability calibration",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "25/55/20 probabilities; weighted PV ~$279",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "NVIDIA reported $56.586B of cash/cash equivalents/marketable debt securities and $33.366B of debt, and stated liquidity was sufficient for foreseeable obligations.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "$56.586B liquid fixed-income/cash vs $33.366B debt",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Future commitments were $366B, including $279B of supply and capacity commitments, creating a material downside channel if AI infrastructure demand normalizes faster than expected.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R17.htm",
+      "period": "As of 2026-07-26",
+      "as_of_date": "2026-08-26",
+      "value": "$366B total commitments; $279B supply/capacity",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Five direct customers represented 22%, 14%, 13%, 11% and 10% of accounts receivable, so concentration can amplify a demand or credit shock even though no bankruptcy risk is evident today.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R14.htm",
+      "period": "As of 2026-07-26",
+      "as_of_date": "2026-08-26",
+      "value": "Top five AR concentrations 22/14/13/11/10%",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "현재 시가총액 약 $5.3T에서 5배는 약 $26T, 10배는 약 $53T 규모이므로 초기 성장주와 같은 배수 확장은 어렵다.",
+    "Bull DCF 자체도 현재가의 약 2.65배 현재가치이므로 5배 실현에는 높은 FCF 성장과 높은 terminal multiple이 동시에 필요하다.",
+    "$366B 약정과 고객 지원 구조는 수요가 꺾일 때 비선형 하방을 만들 수 있다.",
+    "중국 데이터센터 시장 제약과 추가 수출통제는 TAM과 경쟁지형을 훼손할 수 있다."
+  ],
+  "unknowns": [
+    "FY28 이후 AI 인프라 투자수익률과 하이퍼스케일러 capex 정상화 속도",
+    "10년 내 경쟁 ASIC/AMD/신규 아키텍처가 NVIDIA의 가격결정력에 미칠 영향",
+    "AI 소프트웨어·네트워킹·CPU 옵션이 GPU 성장 둔화를 얼마나 상쇄할지"
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "5배 경로는 가능하지만 현재 규모 때문에 높은 장기 FCF/share와 멀티플 유지가 동시에 필요하다."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "재무생존은 강하지만 규제·약정·고객집중의 꼬리위험이 존재한다."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "현재 규모의 AI 플랫폼과 직접 비교 가능한 역사적 base rate가 부족해 확률은 정밀 추정이 아니다."
+    }
+  ],
+  "falsifiers": [
+    "정상화 FCF/share가 장기간 $6 이하에 머물며 투자·약정만 확대되는 경우",
+    "주요 하이퍼스케일러의 자체 ASIC이 NVIDIA 플랫폼 지출을 여러 분기 연속 대체하는 경우",
+    "수출통제·규제 또는 고객 부실로 대규모 약정손실/보증손실이 현실화되는 경우"
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "고정 DCF Base 약 $251 > 현재가 $219.34이며 Bull 약 $581이므로 현재가는 Bull 이상을 요구하지 않는다."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "강한 OCF와 유동성으로 파산 위험은 낮다. 약정·규제·집중 위험은 크지만 현재 기대수익 대비 즉시 Hard Veto 수준으로 판단할 근거는 부족하다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Owner FCF/share",
+      "direction": "up",
+      "threshold": "Base path $6→$8→$10 이상 유지",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Customer concentration / DSO",
+      "direction": "stable",
+      "threshold": "상위 고객 집중과 DSO가 구조적으로 악화되지 않음",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Commitments vs FCF",
+      "direction": "stable",
+      "threshold": "약정 증가율이 장기간 FCF 성장률을 크게 초과하지 않음",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 실제 FCF 및 DSO/AR",
+    "Rubin 초기 고객 ROI와 반복 발주",
+    "FY28 hyperscaler capex와 custom ASIC 대체율"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 65,
+      "rationale": "5배는 10년 Bull 경로에서 가능하나 현재 시총 규모상 10배는 매우 높은 장벽이다."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 75,
+      "rationale": "현금창출·유동성이 강해 파산 위험은 낮지만 약정·규제·집중 꼬리위험이 있다."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 65,
+      "rationale": "25/55/20 확률은 보수적으로 두었으나 현재 규모 AI 플랫폼의 역사적 비교군이 부족하다."
+    }
+  ]
+}

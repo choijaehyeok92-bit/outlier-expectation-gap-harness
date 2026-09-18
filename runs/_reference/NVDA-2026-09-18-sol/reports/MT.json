@@ -1,0 +1,136 @@
+{
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "agent_id": "MT",
+  "domain": "moat_trajectory",
+  "score_0_100": 83.75,
+  "confidence_0_1": 0.82,
+  "bull_score": 95,
+  "bear_score": 65,
+  "bull_case": "CUDA 개발자 생태계와 GPU·CPU·NVLink·Ethernet·시스템의 공동설계가 신제품마다 기존 설치기반과 소프트웨어를 복리화한다. Rubin·Spectrum-X·Vera CPU 확장은 고객 wallet share와 전환비용을 높인다.",
+  "bear_case": "AI 가속기 하드웨어는 custom ASIC·AMD·개방형 소프트웨어로 범용화될 수 있고, 대형 고객은 자체 설계 능력을 보유한다. 소프트웨어 이식성이 높아지면 CUDA 락인이 약해질 수 있다.",
+  "thesis": "해자는 현재 넓고 방향도 대체로 확장이다. 10-K가 명시한 개발자·설치기반 효과와 unified architecture, 네트워킹·CPU 확장이 양의 피드백을 강화한다. 그러나 hyperscaler custom silicon과 소프트웨어 추상화가 멀티호밍 비용을 낮출 가능성은 실질적이다.",
+  "evidence": [
+    {
+      "claim": "NVIDIA's 2026 10-K states that the large and growing number of developers and installed base strengthens its ecosystem and increases platform value for customers.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-02-25",
+      "value": "Developer + installed-base feedback loop",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The same 10-K describes a unified programmable architecture spanning hardware, systems, software, algorithms, libraries, models and services.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-02-25",
+      "value": "Unified programmable platform",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Networking revenue grew 18% sequentially, Spectrum-X Ethernet grew 2.6x y/y, and Grace CPU trailing-12-month revenue exceeded $5B.",
+      "source_type": "other",
+      "source": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf",
+      "period": "Q2 FY2027 earnings call",
+      "as_of_date": "2026-08-26",
+      "value": "Networking +18% q/q; Spectrum-X 2.6x; Grace CPU >$5B TTM",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The 10-K explicitly warns that customers can develop their own solutions and competitors may be cheaper or offer better functionality.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "period": "FY2026 risk factors",
+      "as_of_date": "2026-02-25",
+      "value": "Custom-silicon and competitive-substitution risk",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Hyperscalers can internalize accelerator design and selectively bypass NVIDIA GPUs.",
+    "Software frameworks may abstract hardware differences and lower switching costs over time.",
+    "NVLink Fusion supports custom ASICs, which can preserve ecosystem relevance but also legitimizes alternatives.",
+    "Export controls can accelerate local competitive ecosystems outside NVIDIA."
+  ],
+  "unknowns": [
+    "CUDA workload portability cost in 3-5 years",
+    "Incremental margin contribution of networking/CPU/software versus GPU",
+    "Custom ASIC share of top customers' AI workloads by FY30"
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Pricing power is strong but the largest customers have credible internal alternatives."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "minor",
+      "rationale": "Developer/install-base feedback is well established though not quantified in current filings."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Software abstraction and custom silicon remain credible long-term threats."
+    }
+  ],
+  "falsifiers": [
+    "CUDA migration cost falls materially and major customers multihome without economic penalty.",
+    "Networking/CPU attach rates stall while custom silicon gains share.",
+    "NVIDIA gross margins and pricing power structurally erode despite growing AI demand."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Current evidence points to ecosystem expansion through Rubin, networking, CPU and software rather than persistent moat shrinkage; custom silicon is a material but not yet dominant erosion signal."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Platform attach",
+      "direction": "up",
+      "threshold": "Networking/CPU/software attach to GPU systems continues rising",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Gross margin",
+      "direction": "stable",
+      "threshold": "Maintain strong margins through architecture transitions",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Custom silicon displacement",
+      "direction": "down",
+      "threshold": "No structural loss of major workloads at top customers",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Rubin attach mix",
+    "CUDA portability/custom ASIC share",
+    "Spectrum-X and Vera CPU growth"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 85,
+      "rationale": "Full-stack integration and customer dependence imply high switching costs, though hyperscalers can build alternatives."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 90,
+      "rationale": "Developer/install-base effects and expanding platform components create reinforcing ecosystem value."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 75,
+      "rationale": "Multiple defense layers exist, but custom silicon and software abstraction are meaningful."
+    }
+  ]
+}

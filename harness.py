@@ -13,11 +13,13 @@ EXEC=WORKFLOW['execution']
 RUBRICS=CALIBRATION['rubrics']
 VAL_POLICY=CALIBRATION['valuation']
 VETO_REVIEWERS=CALIBRATION['veto_reviewers']
+PROVIDER_CAL=CALIBRATION.get('provider_calibration',{'enabled':False})
 SCORE_DOMAINS={x['id']:x for x in STRATEGY['scorecard']}
 AXIS_DOMAINS={x['id']:x for x in STRATEGY['evaluation_axes']}
 ARCHETYPES=STRATEGY['archetypes']
 VETOES=STRATEGY['hard_vetoes']
-BUY_STATES=('EXCEPTIONAL_WINNER_CANDIDATE','CORE_WINNER_CANDIDATE','NORMAL_CANDIDATE')
+STATE_POLICY=STRATEGY['state_thresholds']
+BUY_STATES=tuple(STATE_POLICY['buy_states'])
 SIGNAL_DOMAIN='expectation_valuation'
 MACRO_DOMAIN='macro_overlay'
 REVIEW_DOMAINS=('evidence_quality','red_team')
@@ -236,6 +238,46 @@ def domain_aggregate(reports):
         'domain_dispute':spread>=20,'review_required':spread>=20 or unc['critical']>0,
         'uncertainties':unc,'score_source':'rubric_subscores' if modern else 'legacy_declared_score'}
 
+def provider_family(manifest):
+    """Match the frozen runner metadata to a declared provider family."""
+    runner=(manifest or {}).get('runner') or {}
+    hay=' '.join(str(runner.get(k) or '') for k in ('provider','model')).lower()
+    for fam in PROVIDER_CAL.get('families',[]):
+        if any(tok in hay for tok in fam['match']): return fam
+    return None
+
+def uncovered_fraction(domain):
+    """Share of a domain's criteria that still rely on adjective anchors."""
+    rb=rubric_for(domain)
+    if not rb or not rb.get('criteria'): return 0.0
+    crit=rb['criteria']
+    bare=sum(1 for c in crit if 'observable_anchors' not in c and 'signal_map' not in c)
+    return bare/len(crit)
+
+def apply_provider_calibration(ds, manifest):
+    """Shift domain scores toward the pooled mean by a capped, declared offset.
+
+    Subscores are never touched; the pre-offset values are kept alongside so the
+    correction is always auditable and reversible."""
+    if not PROVIDER_CAL.get('enabled'): return {'applied':False,'reason':'disabled'}
+    fam=provider_family(manifest)
+    if not fam: return {'applied':False,'reason':'provider family not recognised',
+                        'runner':(manifest or {}).get('runner')}
+    base=float(PROVIDER_CAL['base_offset']); cap=float(PROVIDER_CAL['max_abs_offset'])
+    per={}
+    for d,meta in ds.items():
+        if not meta: continue
+        off=max(-cap,min(cap,base*fam['sign']*uncovered_fraction(d)))
+        meta['score_before_provider_calibration']=meta['score']
+        meta['raw_before_provider_calibration']=meta['raw_weighted_median']
+        meta['provider_offset']=round(off,2)
+        meta['score']=round(max(0,min(100,meta['score']+off)),2)
+        meta['raw_weighted_median']=round(max(0,min(100,meta['raw_weighted_median']+off)),2)
+        per[d]=round(off,2)
+    return {'applied':True,'family':fam['id'],'sign':fam['sign'],'base_offset':base,
+            'max_abs_offset':cap,'per_domain_offset':per,
+            'basis':PROVIDER_CAL.get('basis'),'rationale':fam.get('rationale')}
+
 def classification(score):
     for c in STRATEGY['classifications']:
         if c['min']<=score<=c['max']: return c['label']
@@ -363,6 +405,8 @@ def compute_aggregate(ticker, reports):
     ds={}
     for d in [*SCORE_DOMAINS, *AXIS_DOMAINS]:
         if d in by_domain: ds[d]=domain_aggregate(by_domain[d])
+    manifest=load_manifest(ticker)
+    provider_cal=apply_provider_calibration(ds,manifest)
     normalized,covered=core_score(ds)
     score_ex_valuation,_=core_score(ds,exclude=(SIGNAL_DOMAIN,))
     gate=veto_gate(reports); confirmed=gate['confirmed']; unresolved=gate['unresolved']; veto_status=gate['overall']
@@ -383,17 +427,13 @@ def compute_aggregate(ticker, reports):
     elif covered < 100: state='INCOMPLETE'
     elif confirmed: state='REJECT'
     elif veto_status in ('UNRESOLVED','PENDING_REVIEW'): state='WATCH'
-    elif state_score>=90: state='EXCEPTIONAL_WINNER_CANDIDATE'
-    elif state_score>=85: state='CORE_WINNER_CANDIDATE'
-    elif state_score>=75: state='NORMAL_CANDIDATE'
-    elif state_score>=65: state='STARTER_OR_WATCH'
-    else: state='REJECT'
+    else: state=next(b['state'] for b in sorted(STATE_POLICY['bands'],key=lambda x:-x['min']) if state_score>=b['min'])
     if archetype['id']==ARCHETYPES['fallback'] and state in BUY_STATES: state=ARCHETYPES['buy_state_cap_for_fallback']
     if early_exit: archetype['reason']='조기 종료: 감점 전 원점수로도 도달 가능한 유형 없음'
-    pos={'EXCEPTIONAL_WINNER_CANDIDATE':'6-10% (IC cap)','CORE_WINNER_CANDIDATE':'4-8%','NORMAL_CANDIDATE':'2-4%','STARTER_OR_WATCH':'0-2%','WATCH':'0% until veto cleared','REJECT':'0%','INCOMPLETE':'N/A','EARLY_EXIT_NON_FIT':'0% (유형 도달 불가 — 조기 종료)'}[state]
+    pos={**{b['state']:b['position_range'] for b in STATE_POLICY['bands']},**STATE_POLICY['non_score_states']}[state]
     if archetype['position_cap'] and state in BUY_STATES: pos=archetype['position_cap']
     di=ds.get('disruptive_innovation'); tq=ds.get('turnaround_quality')
-    return {'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'turnaround_quality_score':tq['score'] if tq else None,'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'run_manifest':load_manifest(ticker)}
+    return {'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'turnaround_quality_score':tq['score'] if tq else None,'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'provider_calibration':provider_cal,'run_manifest':manifest}
 
 def triage_complete(reports):
     status={}
@@ -525,6 +565,7 @@ def cmd_prompt(args):
     P=[f"# 과제: {t} / 기준일 {ctx['as_of_date']} / {domain} ({aid})",
        f"저장소: {ROOT}. 작성할 파일: runs/{t}/reports/{aid}.json"+(f", runs/{t}/final_verdict.json, runs/{t}/one_page_investment_record.md" if domain==IC_DOMAIN else '')+'. 그 외 파일은 수정하지 않는다.',
        f"웹 검색·페치 예산: 최대 {EXEC['research_budget']['per_agent_web_calls']}회. 아래 기준 정보와 검증된 사실은 다시 검색하지 않는다.",
+       EXEC['research_policy']['prompt_line'],
        '','## 기업 기준 정보 (재검증 금지)',json.dumps(compact_context(ctx),ensure_ascii=False,separators=(',',':'))]
     facts=run/'sources'/'README.md'; index=run/'sources'/'INDEX.md'
     if facts.exists(): P+=['','## 검증된 1차 자료 사실',facts.read_text(encoding='utf-8').strip()]
@@ -537,8 +578,10 @@ def cmd_prompt(args):
     rb=rubric_for(domain)
     if rb:
         P+=['','## 고정 채점 루브릭',
-            json.dumps({'global_bands':CALIBRATION['global_bands'],'domain':rb},ensure_ascii=False,indent=2),
-            'criterion은 5점 단위로 채점한다. score_0_100은 subscores 고정 가중평균과 같아야 한다. self-confidence와 bull/bear 폭은 자동 감점하지 않는다.']
+            json.dumps({'global_bands':CALIBRATION['global_bands'],'domain':rb,
+                        'anchor_policy':CALIBRATION.get('anchor_policy',{})},ensure_ascii=False,indent=2),
+            'criterion은 5점 단위로 채점한다. score_0_100은 subscores 고정 가중평균과 같아야 한다. self-confidence와 bull/bear 폭은 자동 감점하지 않는다.',
+            'anchor_policy를 반드시 지킨다. observable_anchors가 있는 criterion은 판정표가 앵커 형용사보다 우선한다. 85 이상과 40 미만에는 각각 상단·하단 게이트가 걸려 있다.']
     owned=[v for v,ids in VETO_REVIEWERS.items() if aid in ids]
     if owned:
         P+=['','## 필수 Hard Veto 판정',
@@ -655,6 +698,51 @@ def cmd_sources(args):
     (out/'INDEX.md').write_text('\n'.join(L),encoding='utf-8')
     print(f'{(out/"INDEX.md").relative_to(ROOT)} ({len(list(out.glob("*.txt")))} files)')
 
+def load_subscores(run_path:Path):
+    d=Path(run_path)/'reports'
+    if not d.exists(): raise SystemExit(f'no reports dir: {d}')
+    out={}
+    for f in sorted(d.glob('*.json')):
+        try: r=load_json(f)
+        except Exception: continue
+        if not is_complete(r) or not r.get('subscores'): continue
+        for x in r['subscores']:
+            if isinstance(x,dict) and isinstance(x.get('score_0_100'),(int,float)):
+                out[(r.get('agent_id'),x.get('criterion_id'))]=float(x['score_0_100'])
+    return out
+
+def cmd_calibrate(args):
+    """Compare two runs' subscores criterion by criterion to measure provider divergence."""
+    A=load_subscores(args.run_a); B=load_subscores(args.run_b)
+    keys=sorted(set(A)&set(B))
+    if not keys: raise SystemExit('no overlapping criteria between the two runs')
+    anchors={25,50,75,90}
+    countable={c['id'] for rb in CALIBRATION['rubrics'].values() for c in rb['criteria'] if 'observable_anchors' in c}
+    rows=sorted(((a,c,A[(a,c)],B[(a,c)],A[(a,c)]-B[(a,c)]) for a,c in keys),key=lambda r:-r[4])
+    na=Path(args.run_a).name; nb=Path(args.run_b).name
+    print(f"{'agent':6s} {'criterion':32s} {na[:10]:>10s} {nb[:10]:>10s} {'gap':>6s}  table")
+    for a,c,x,y,g in rows:
+        print(f"{a:6s} {c:32s} {x:10.0f} {y:10.0f} {g:+6.0f}  {'O' if c in countable else '-'}")
+    gaps=[r[4] for r in rows]; xs=[r[2] for r in rows]; ys=[r[3] for r in rows]
+    tab=[r[4] for r in rows if r[1] in countable]; jud=[r[4] for r in rows if r[1] not in countable]
+    print()
+    print(f"n={len(rows)}  mean gap {statistics.mean(gaps):+.1f}  median {statistics.median(gaps):+.1f}  sd {statistics.pstdev(gaps):.1f}")
+    if tab: print(f"  observable_anchors 보유 criterion (n={len(tab)}): 평균 격차 {statistics.mean(tab):+.1f}")
+    if jud: print(f"  형용사 앵커만 있는 criterion (n={len(jud)}): 평균 격차 {statistics.mean(jud):+.1f}")
+    for nm,v in ((na,xs),(nb,ys)):
+        print(f"  {nm}: mean {statistics.mean(v):.1f} median {statistics.median(v):.0f} range {min(v):.0f}-{max(v):.0f} "
+              f"| 앵커(25/50/75/90) 정착지 {sum(1 for t in v if t in anchors)}/{len(v)}")
+    out=args.out
+    if out:
+        Path(out).write_text(json.dumps({'run_a':na,'run_b':nb,'n':len(rows),
+            'mean_gap':round(statistics.mean(gaps),2),'median_gap':statistics.median(gaps),
+            'sd_gap':round(statistics.pstdev(gaps),2),
+            'mean_gap_observable':round(statistics.mean(tab),2) if tab else None,
+            'mean_gap_adjective':round(statistics.mean(jud),2) if jud else None,
+            'rows':[{'agent':a,'criterion':c,'a':x,'b':y,'gap':g,'observable':c in countable} for a,c,x,y,g in rows]},
+            ensure_ascii=False,indent=2),encoding='utf-8')
+        print(f'wrote {out}')
+
 def cmd_selftest(args):
     def mk(domain,aid,scores,bull=95,bear=45):
         rb=rubric_for(domain)
@@ -681,11 +769,13 @@ def cmd_selftest(args):
         'structural_leadership':{'score':80,'raw_weighted_median':80},
         'asymmetry':{'score':80,'raw_weighted_median':80},
         'financial_survival':{'score':70,'raw_weighted_median':70}}
-    ms=classify_archetype(moon_ds,{'market_cap_usd':20_000_000_000},70,80,[])
-    assert ms['id']=='moonshot', 'moonshot market-cap gate should include exactly $20B'
-    ms_over=classify_archetype(moon_ds,{'market_cap_usd':20_000_000_001},70,80,[])
-    assert ms_over['id']!='moonshot', 'moonshot market-cap gate should exclude >$20B'
-    assert 'moonshot' not in reachable_archetypes(moon_ds,{'market_cap_usd':20_000_000_001},[])
+    cap=next(c['value'] for c in next(t for t in ARCHETYPES['types'] if t['id']=='moonshot')['conditions']
+             if c['field']=='signal.market_cap_usd')
+    ms=classify_archetype(moon_ds,{'market_cap_usd':cap},70,80,[])
+    assert ms['id']=='moonshot', f'moonshot market-cap gate should include exactly {cap}'
+    ms_over=classify_archetype(moon_ds,{'market_cap_usd':cap+1},70,80,[])
+    assert ms_over['id']!='moonshot', f'moonshot market-cap gate should exclude >{cap}'
+    assert 'moonshot' not in reachable_archetypes(moon_ds,{'market_cap_usd':cap+1},[])
     assert company_market_cap_usd({'current_price':50,'shares_diluted':400_000_000})==20_000_000_000
     ev=mk('expectation_valuation','EV',[75,75,75])
     ev['valuation_inputs']={'valuation_percentile_5y':0.5,'revenue_cagr_next_3y':0.12,
@@ -693,6 +783,21 @@ def cmd_selftest(args):
     vo=deterministic_valuation(ev,{'current_price':100.0,'net_cash_per_share':5.0,
         'valuation_overrides':{'required_return':None,'terminal_multiples':{}}})
     assert vo['status']=='COMPLETE' and vo['scenarios']['base']['terminal_multiple']==VAL_POLICY['terminal_multiples']['base']
+    fam=provider_family({'runner':{'provider':'Antropic','model':'Claude-Opus-5'}})
+    assert fam and fam['id']=='anthropic', 'provider family match must tolerate provider typos'
+    assert provider_family({'runner':{'provider':'openai','model':'gpt-5.6-sol'}})['id']=='openai'
+    assert provider_family({'runner':{'runner':None}}) is None
+    pds={'asymmetry':{'score':60.0,'raw_weighted_median':60.0}}
+    info=apply_provider_calibration(pds,{'runner':{'provider':'openai','model':'gpt-5.6-sol'}})
+    assert info['applied'] and pds['asymmetry']['score']<60.0, 'openai runs must be adjusted downward'
+    assert pds['asymmetry']['score_before_provider_calibration']==60.0, 'pre-offset score must be preserved'
+    assert abs(pds['asymmetry']['provider_offset'])<=PROVIDER_CAL['max_abs_offset']+1e-9
+    assert apply_provider_calibration({'asymmetry':{'score':60.0,'raw_weighted_median':60.0}},
+                                      {'runner':{'provider':'someone-else'}})['applied'] is False
+    bands=sorted(STATE_POLICY['bands'],key=lambda x:-x['min'])
+    assert bands[-1]['min']==0, 'state_thresholds.bands must terminate at min 0'
+    assert all(bands[i]['min']>bands[i+1]['min'] for i in range(len(bands)-1)), 'state bands must be strictly descending'
+    assert set(STATE_POLICY['buy_states'])<=({b['state'] for b in bands}), 'buy_states must name declared bands'
     print('provider calibration selftest: OK')
 
 def main():
@@ -703,6 +808,8 @@ def main():
     p=sub.add_parser('freeze',help='freeze input/source hashes and runner metadata for reproducible model comparisons')
     p.add_argument('ticker'); p.add_argument('--provider'); p.add_argument('--model'); p.add_argument('--reasoning-effort'); p.set_defaults(func=cmd_freeze)
     p=sub.add_parser('selftest',help='run provider-calibration invariance checks'); p.set_defaults(func=cmd_selftest)
+    p=sub.add_parser('calibrate',help='compare two runs\' subscores to measure provider divergence')
+    p.add_argument('run_a'); p.add_argument('run_b'); p.add_argument('--out'); p.set_defaults(func=cmd_calibrate)
     p=sub.add_parser('plan',help='show the next stage to run, or early exit'); p.add_argument('ticker'); p.set_defaults(func=cmd_plan)
     p=sub.add_parser('prompt',help='print a compact self-contained prompt for a domain or agent'); p.add_argument('ticker'); p.add_argument('target'); p.add_argument('--out'); p.set_defaults(func=cmd_prompt)
     p=sub.add_parser('validate'); p.add_argument('ticker'); p.add_argument('agents',nargs='*'); p.set_defaults(func=cmd_validate)

@@ -1,0 +1,164 @@
+{
+  "agent_id": "DI",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-17",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 78.75,
+  "confidence_0_1": 0.7,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "가속 컴퓨팅은 범용 CPU 대비 10배급 비용·성능 재편이고, NVIDIA는 그 가치사슬 자체를 소유한다. Data Center +117% y/y, ACIE +138%로 주류 확산 구간이며 gross margin 75.0%가 가격결정력을 입증한다. Hugging Face 인수로 개방형 모델 개발자 유통층까지 확보한다.",
+  "bear_case": "S-curve 단위경제는 NVIDIA 쪽에서만 입증됐다. 고객의 AI 투자 회수율은 미검증이고 일부 수요는 NVIDIA 지분투자·보증이 떠받친다. 대응 주체가 제약된 기존사업자가 아니라 자금력이 무제한인 하이퍼스케일러 커스텀 실리콘이라는 점이 통상의 파괴 구도와 다르다.",
+  "thesis": "가속 컴퓨팅은 진성 파괴적 혁신이고 NVIDIA는 그 신(新)가치사슬의 지배자다. 분기 Data Center 매출 $89.0B(+117% y/y)와 75.0% gross margin은 파일럿이 아니라 주류 확산과 검증된 단위경제를 뜻한다. CUDA·NVLink·네트워킹에 Hugging Face($11.9B)가 더해지며 옵셔널리티도 복수다. 다만 두 가지가 점수를 제한한다. 첫째 고객 측 투자회수율이 아직 공개적으로 입증되지 않았고 수요 일부를 NVIDIA가 직접 자금 지원한다. 둘째 이 시장의 대응자는 제약된 기존사업자가 아니라 자금 제약이 없는 하이퍼스케일러 커스텀 실리콘이며, 10-Q는 중국 배제가 경쟁 생태계를 키웠다고 직접 기술한다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 Data Center 매출 $89,023M(+117% y/y, +18% q/q). Hyperscale $48,710M, AI Clouds/Industrial/Enterprise $40,313M(+138% y/y), Edge Computing $7,198M.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Revenue by Market Platform",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 89023,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "분기 매출 $96,221M 규모에서 gross margin 75.0%, operating margin 66.2%를 유지한다. 대체재가 존재한다면 성립하기 어려운 가격결정력이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Condensed Consolidated Statements of Income",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 75.0,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "R&D가 Q2 기준 $4,291M에서 $7,054M으로 64% 증가했고 재고는 Vera Rubin 대비로 $31,575M까지 늘었다. 연간 아키텍처 cadence를 자금으로 뒷받침하고 있다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Income statement + Balance sheet",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 7054,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026-09-02 Hugging Face 인수 계약(약 $11.9B + 최대 $1.0B 리텐션). 플랫폼 개방과 타 실리콘 벤더 지원을 유지하기로 약정해 개발자 유통층을 중립적 형태로 확보한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/8-K_filed_2026-09-03.txt Item 8.01",
+      "period": "2026-09-02",
+      "as_of_date": "2026-09-03",
+      "value": 11.9,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "10-Q는 중국 데이터센터 컴퓨트 시장에서 사실상 배제된 결과 \"경쟁사가 전 세계에서 우리에게 도전할 더 큰 개발자·고객 생태계를 구축하는 데 도움이 됐다\"고 직접 기술한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2838",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Groq, Inc. 비독점 라이선스에 FY26 $13,000M, H1 FY27 $2,944M을 지급했다. 추론 아키텍처에서 외부 IP를 유상 확보할 필요가 있었다는 신호다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-K_FY26_filed_2026-02-25.txt Cash flow + runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Note 7 각주(3)",
+      "period": "FY26 ~ FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 15944,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "채택 S-curve의 단위경제는 NVIDIA 손익에서만 입증됐다. 고객 측 AI 투자 회수율은 공개 데이터가 없고, 10-Q는 AI 클라우드·모델 기업이 투자등급 자금조달 능력이 부족하다고 기술한다.",
+    "대응자는 제약된 기존사업자가 아니라 자금 제약이 없는 하이퍼스케일러다. Hyperscale 성장(+102% y/y)이 ACIE(+138%)보다 느린 것은 자체 실리콘 전환의 초기 신호일 수 있다.",
+    "중국 배제가 경쟁 생태계를 키우고 있다고 회사가 직접 인정한다. 파괴자의 지위가 규제로 지역적으로 봉쇄될 수 있다.",
+    "Groq 라이선스 총 $15.9B 지출은 추론 영역의 아키텍처 우위가 완결적이지 않음을 시사한다."
+  ],
+  "unknowns": [
+    "고객의 AI 인프라 투자 회수율(ROI) 실측 데이터가 공개되지 않는다.",
+    "전체 가속 컴퓨트 물량 중 커스텀 ASIC이 차지한 비중.",
+    "Hugging Face의 개방 유지 약정이 CUDA 락인에 미치는 순효과(개발자 확보 대 경쟁 실리콘 지원).",
+    "Vera Rubin의 성능·전력당 비용 우위 폭과 출하 시점."
+  ],
+  "falsifiers": [
+    "Data Center 매출의 전분기 대비 증가율이 2개 분기 연속 0% 이하로 떨어지면 주류 확산 가설은 재검토 대상이다.",
+    "Hyperscale 매출 비중이 2개 분기 연속 하락하면 커스텀 실리콘 대체가 실제로 진행 중이라는 근거가 된다.",
+    "gross margin이 2개 분기 연속 70% 아래로 내려가면 가격결정력 기반 파괴적 우위는 약화된 것이다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Data Center 매출 전분기 대비 증가율",
+      "direction": "up",
+      "threshold": "+5% 이상",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Gross margin",
+      "direction": "up",
+      "threshold": "73% 이상 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Hyperscale 매출 증가율 - ACIE 매출 증가율",
+      "direction": "up",
+      "threshold": "격차 축소(커스텀 실리콘 대체 감시)",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q에서 Hyperscale과 ACIE의 성장률 격차 확인",
+    "Hugging Face 거래의 규제 심사 진행과 종결 조건 확인",
+    "Vera Rubin 초기 출하 시점과 gross margin 가이던스 영향 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 85,
+      "rationale": "가속 컴퓨팅은 범용 CPU 대비 10배급 재편이며, $96.2B 분기 매출에서 75.0% gross margin이 유지되는 것이 구조 변화의 직접 증거다."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 80,
+      "rationale": "Data Center +117% y/y, ACIE +138%로 파일럿을 훨씬 지나 주류 확산 구간이다. 다만 고객 측 회수율이 미검증이고 수요 일부가 NVIDIA 자금으로 떠받쳐져 90점(주류 확산 완결)은 주지 않는다."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 70,
+      "rationale": "판정표: 인접 가치풀 3개 이상(Grace CPU, Mellanox 네트워킹, NVIDIA AI Enterprise 소프트웨어, Hugging Face) + CUDA로 가치사슬 표준 정의 → 85. modifier: 주요 대응자가 자본 제약 없는 하이퍼스케일러 고객 본인 → 상한 70 적용."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "minor",
+      "rationale": "가속 컴퓨팅의 비용·성능 재편 자체는 매출·마진으로 충분히 입증된다."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "NVIDIA 측 단위경제는 검증됐으나 고객 측 회수율이 미검증이고, 수요 일부를 NVIDIA 지분투자·보증이 떠받친다."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "커스텀 ASIC의 실제 점유 진행 속도를 공시 데이터로 측정할 수 없다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

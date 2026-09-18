@@ -1,0 +1,141 @@
+{
+  "agent_id": "RT",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 58,
+  "confidence_0_1": 0.88,
+  "thesis": "가장 강한 공매도 논리는 'AI 수요가 사라진다'가 아니라 NVIDIA가 수요를 공급약정·연장결제·보증으로 더 많이 떠받치면서 과거의 fabless 초고 ROIC가 자본집약적으로 변한다는 것이다. Q2 DSO는 60일, 미래약정은 $366B, 최대 총보증노출은 $108.5B다. 여기에 Data Center 매출 집중·고객 집중·custom ASIC을 결합하면 성장 정상화 시 -50%대 하방은 현실적이다. 다만 현재 현금창출·75% gross margin·광범위한 Rubin 주문 때문에 Hard Veto는 아직 확정되지 않는다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 DSO rose to 60 days from 45 because of extended payment terms on large multi-quarter agreements, and the 10-Q states some investment-grade customers may receive payment terms from 90 days up to one year.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "DSO 60 vs 45; some terms 90 days to 1 year",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Future commitments totaled $366B, including $279B of supply/capacity commitments, up from $119B in the prior quarter.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R17.htm",
+      "period": "As of 2026-07-26",
+      "as_of_date": "2026-08-26",
+      "value": "$366B total; $279B supply/capacity vs $119B prior quarter",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "CFO commentary disclosed maximum gross guarantee exposure of $108.5B, including $105.0B related to SB Energy and $3.5B of land/power/shell guarantees for AI clouds.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+      "period": "August 2026",
+      "as_of_date": "2026-08-26",
+      "value": "Gross guarantees $108.5B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Five direct customers accounted for 22%, 14%, 13%, 11%, and 10% of accounts receivable; one direct customer was 16% of Q2 FY27 revenue.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R14.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "AR 22/14/13/11/10%; one direct customer 16% of revenue",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The counterweight is exceptional current economics: Q2 gross margin was 75.0%, H1 operating cash flow was $74.421B, and Data Center revenue was $89.0B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "GM 75.0%; H1 OCF $74.421B; Data Center $89.0B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NVIDIA's 2026 10-K explicitly identifies large cloud companies with internal accelerator teams as competitors and notes some customers can develop their own solutions to replace NVIDIA offerings.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-02-25",
+      "value": "Hyperscaler internal silicon is an explicit competitive risk",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Q2 revenue and operating income more than doubled year over year while gross margin held at 75%, so there is no current evidence of demand or ROIC collapse.",
+    "Rubin production shipments and purchase orders from every major hyperscaler, AI cloud and system OEM argue against an immediate product-demand break.",
+    "H1 operating cash flow of $74.4B and substantial liquidity make forced external financing unlikely under current conditions.",
+    "NVIDIA's CUDA/install-base ecosystem plus networking and CPU expansion gives it defenses that a single custom accelerator cannot fully replace."
+  ],
+  "unknowns": [
+    "Probability-weighted loss and recourse terms for the $108.5B gross guarantees",
+    "Cancelable/reschedulable portion of the $279B supply/capacity commitments in a severe demand downturn",
+    "Share of future hyperscaler workloads that migrate to internal/custom accelerators"
+  ],
+  "falsifiers": [
+    "Short thesis weakens materially if DSO normalizes, guarantee/commitment exposure stabilizes relative to FCF, and Rubin repeat orders remain broad through FY28.",
+    "Short thesis is largely falsified if independent customer data confirms durable TCO superiority while custom ASIC share stays limited and gross margin remains near current levels.",
+    "Short thesis strengthens sharply if FCF conversion falls for several quarters while AR, guarantees and commitments continue rising."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "Q2 10-Q states disclosure controls were effective and no material ICFR change occurred; no restatement or decisive accounting-integrity evidence was identified."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Despite large commitments and guarantees, H1 OCF was $74.4B and current liquidity is substantial; survival does not presently depend on repeated external capital raising."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Financing/support is material and must be monitored, but $89B Data Center revenue, 75% gross margin and broad platform orders show substantial underlying customer value rather than subsidy-only demand."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Commitments/guarantees reduce forward ROIC visibility, but current operating income and OCF growth do not show structural incremental-return collapse."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Custom silicon is a credible threat, but current evidence still shows expanding CUDA/platform adoption, Rubin demand and networking/CPU attachment rather than persistent moat shrinkage."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Data Center and large customers are concentrated, but no single customer is fatal; demand spans multiple hyperscalers/AI clouds/OEMs, and the platform extends across GPU, CPU, networking and software."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "DSO + guarantees + commitments",
+      "direction": "stable",
+      "threshold": "Do not rise persistently faster than revenue and FCF",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Data Center gross margin/FCF conversion",
+      "direction": "stable",
+      "threshold": "No multi-quarter deterioration consistent with subsidized or overbuilt demand",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Custom-silicon displacement",
+      "direction": "down",
+      "threshold": "Top customers do not shift a structurally rising share of incremental AI spend away from NVIDIA",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 financing/guarantee disclosure and DSO",
+    "Rubin repeat orders and independent customer ROI",
+    "Hyperscaler custom-ASIC deployment share"
+  ],
+  "verdict": "oppose"
+}

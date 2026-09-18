@@ -1,0 +1,34 @@
+{
+  "ticker": "NVDA",
+  "company_name": "NVIDIA Corporation",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 219.34,
+  "shares_diluted": 24285000000,
+  "enterprise_value": 5274000000000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC 10-Q filed 2026-08-26, period ended 2026-07-26",
+    "SEC 8-K / Exhibits 99.1 and 99.2 filed 2026-08-26",
+    "StockAnalysis / Investing.com price and valuation history, observed 2026-09-18"
+  ],
+  "special_questions": [
+    "At $219.34, does the current price require a Bull-case outcome?",
+    "How sensitive is value to terminal assumptions and AI-infrastructure demand normalization?"
+  ],
+  "net_cash_per_share": 0.9635,
+  "valuation_percentile_5y": 0.05,
+  "valuation_metric": "Trailing P/E (27.73x on 2026-09-17; near the low end of the last ~5 years of quarterly observations)",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  }
+}

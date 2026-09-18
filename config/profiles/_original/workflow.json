@@ -11,7 +11,7 @@
     "early_exit": true,
     "early_exit_rule": "triage 도메인(EV·AS·DI·TQ) 완료 후, 감점 전 점수(raw_weighted_median)와 밸류에이션 신호로도 도달 가능한 유형이 없으면 나머지 단계를 생략하고 EARLY_EXIT_NON_FIT으로 종료한다. 미실행 도메인은 달성 가능하다고 가정한다.",
     "research_budget": {
-      "per_agent_web_calls": 15
+      "per_agent_web_calls": 10
     },
     "report_limits": {
       "thesis_chars": 600,
@@ -30,17 +30,7 @@
       "digest.md",
       "aggregate.json"
     ],
-    "macro_cache_days": 7,
-    "research_policy": {
-      "mode": "active_gap_filling",
-      "prompt_line": "자료 공백은 수동적으로 남기지 않는다. 점수·Veto·밸류에이션에 직접 영향을 주는 항목이 기준 정보와 1차 자료에 없으면 예산 내에서 웹 검색·IR·2차 자료로 보완을 시도한 뒤, 그래도 확보하지 못한 것만 unknowns에 남기고 무엇을 어디서 찾으려 했는지 함께 적는다. 확보한 자료는 evidence에 source_type과 함께 기록하고 EVIDENCE_POLICY.md의 출처 위계를 지킨다.",
-      "rules": [
-        "점수·Veto·밸류에이션을 좌우하는 공백을 우선 보완한다.",
-        "보완 시도 후에도 없으면 unknowns에 남기되 시도한 경로를 적는다.",
-        "2차 자료로 채운 값은 fact_or_estimate를 estimate 또는 interpretation으로 표기한다.",
-        "기준 정보와 sources/README.md에 이미 있는 사실은 재검색하지 않는다."
-      ]
-    }
+    "macro_cache_days": 7
   },
   "phases": [
     {
@@ -101,6 +91,7 @@
       "archetypes": [
         "moonshot",
         "compounder",
+        "emerging_outlier",
         "expectation_gap",
         "turnaround",
         "non_fit"

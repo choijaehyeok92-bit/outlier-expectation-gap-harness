@@ -1,0 +1,171 @@
+{
+  "agent_id": "MA",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-17",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 73.75,
+  "confidence_0_1": 0.55,
+  "bull_score": 82,
+  "bear_score": 55,
+  "bull_case": "FY26에 282M주를 평균 약 $143에 매입했다. 현재가 $219.34 대비 53% 저가 매입으로 명백한 가치창출이다. 실행 트랙레코드도 강하다. 중국 시장 전체를 잃고도 매출을 배로 키웠고, H20 $4.5B·H200 $0.4B 손실을 끌지 않고 즉시 인식했다. CFO는 DSO 악화를 먼저 공개했다.",
+  "bear_case": "자본배분의 무게중심이 검증 가능한 영역에서 자기평가 영역으로 옮겨갔다. H1 지분증권 매입 $42.4B, 평가익 $23.7B이 순이익에 계상되고 비시장성 지분 $51.2B은 Level 3다. Groq 비독점 라이선스 $15.9B, Hugging Face $11.9B의 회수 근거도 아직 없다. Q2 자사주 평균 단가는 약 $209로 Base 가치 $213에 붙었다.",
+  "thesis": "과거 자본배분 성적은 좋고 현재 배분은 판단을 유보해야 한다. FY26 자사주 282M주를 평균 약 $143에 사들인 것은 현재가 대비 53% 할인 매입으로 명확한 가치창출이었다. 실행력도 입증됐다. 중국 데이터센터 시장 전체를 상실하고도 매출을 배로 키웠고 H20·H200 손실을 지연 없이 인식했다. 반면 최근 배분은 성격이 다르다. H1에 지분증권 $42.4B을 매입했고 그 평가익 $23.7B이 순이익에 잡혔으며 비시장성 지분 $51.2B은 시장가가 없는 Level 3다. Groq 라이선스 $15.9B과 Hugging Face $11.9B도 회수 근거가 아직 없다. Q2 자사주 평균 단가 약 $209는 Base 가치 $213과 사실상 같다.",
+  "evidence": [
+    {
+      "claim": "FY26 자사주 매입 282M주 $40,388M(평균 약 $143). 2026-09-17 종가 $219.34 대비 53% 저가 매입이었다. 같은 해 배당은 $974M($0.04/주)에 그쳤다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-K_FY26_filed_2026-02-25.txt Consolidated Statements of Shareholders’ Equity",
+      "period": "FY26 (2025-01-27~2026-01-25)",
+      "as_of_date": "2026-01-25",
+      "value": 143,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Q2 FY27 자사주 매입은 94M주 $19,674M으로 평균 약 $209다. EV 에이전트의 Base 주당가치 $212.86과 사실상 동일한 가격대다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Consolidated Statements of Shareholders’ Equity",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 209,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "자본배분의 무게중심 이동: H1 FY27 지분증권 매입 $42,404M, 비시장성 지분 잔액 $51,157M(FY26말 $22,251M), 시장성 지분 $42,783M(FY26말 $12,886M).",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Cash flow + Balance sheet",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 42404,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "그 투자의 평가익이 손익에 직접 들어온다. H1 FY27 주식평가익 $23,707M은 세전이익 $141,410M의 약 17%이고, Q2에 취득한 공개기업 워런트의 Level 3 공정가치는 $824M이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Cash flow + Note 8",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 23707,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "대형 비유기적 지출이 이어진다. Groq, Inc. 비독점 라이선스에 FY26 $13,000M + H1 FY27 $2,944M, Hugging Face 인수에 약 $11.9B + 리텐션 $1.0B(FY28 상반기 종결 예정).",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-K_FY26_filed_2026-02-25.txt Cash flow + runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Note 7 + runs/NVDA/sources/8-K_filed_2026-09-03.txt",
+      "period": "FY26~2026-09-02",
+      "as_of_date": "2026-09-03",
+      "value": 27844,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "공시 정직성의 긍정 증거: CFO 코멘터리가 DSO 45→60일 악화와 그 원인(대형 다분기 계약의 연장된 결제조건)을 선제적으로 설명했고, H20·H200 손실을 이연 없이 인식했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2726, L2835-L2837 + company_context intake_facts",
+      "period": "FY26 Q1~FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": null,
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "자사주 저가 매입은 결과론일 수 있다. FY26 평균 $143은 당시 내재가치 대비 할인이었는지 확인할 수 없고, 사후 주가 상승으로 정당화된 측면이 있다.",
+    "지분증권 투자는 고객·파트너 대상이 상당수로 추정된다. 투자수익과 매출이 같은 상대에게서 나온다면 두 숫자 모두 독립적 검증이 어렵다.",
+    "회계 부정이나 재작성 이력은 없다. IRS의 FY23·FY24 세무조사는 통상적 절차이며 감사인 이슈도 공시되지 않았다.",
+    "보상구조·내부자 매도 패턴은 위임장(DEF 14A)이 자료에 없어 평가하지 못했다. 이 도메인의 판단 범위가 그만큼 좁다."
+  ],
+  "unknowns": [
+    "지분투자 대상 기업의 명세와 그들이 창출한 매출 규모.",
+    "비시장성 지분 $51,157M의 공정가치 산정 방법과 관측 가능한 입력의 비중.",
+    "경영진 보상의 주당 성과 연동 구조(위임장 미확보).",
+    "내부자 매도 패턴과 Form 4 추이(미확보).",
+    "Groq 라이선스와 Hugging Face 인수의 기대 회수 시나리오."
+  ],
+  "falsifiers": [
+    "비시장성 지분의 공정가치 하락이 분기 이익의 5%를 초과해 인식되면 자본배분 성과 평가를 하향해야 한다.",
+    "자사주 평균 매입단가가 2개 분기 연속 Base 주당가치를 초과하면 자본배분 합리성 가설은 약화된다.",
+    "위임장 확인 결과 보상이 주당 지표가 아니라 총매출·시총에 연동돼 있으면 거버넌스 점수를 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "재작성·감사인 이슈·관련자거래 적신호가 공시에 없고, IRS FY23·FY24 조사는 통상 절차다. 오히려 DSO 악화를 CFO가 선제 공개하고 H20 $4.5B·H200 $0.4B 손실을 지연 없이 인식한 것은 신뢰 쪽 증거다. 다만 Level 3 비시장성 지분 $51.2B의 평가익이 순이익의 상당 부분을 이루는 구조는 회계 신뢰성의 감시 항목으로 남긴다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "자사주 평균 매입단가 / Base 주당가치",
+      "direction": "down",
+      "threshold": "0.9 이하",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "세전이익 중 주식평가익 비중",
+      "direction": "down",
+      "threshold": "10% 미만",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "비시장성 지분 잔액 증가율",
+      "direction": "down",
+      "threshold": "매출 증가율 이하",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "DEF 14A 확보 후 보상 지표(주당 기준 여부)와 내부자 매도 패턴 확인",
+    "비시장성 지분의 공정가치 레벨별 구성과 평가기법 공시 확인",
+    "Hugging Face 거래의 최종 대가 구조와 리텐션 주식 희석 효과 확인"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 70,
+      "rationale": "판정표: 자사주 평균 매입단가 / Base 주당가치 = $209.3(Q2 FY27, 94M주 $19,674M) / $212.86 = 0.98 → 0.8~1.0 구간 → 70. 저수익 사업 철수·자산 재배치 사례는 공시에서 확인되지 않아 modifier 미적용."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 70,
+      "rationale": "재작성·감사인 이슈가 없고 부정적 정보(DSO 악화, 중국 손실)를 선제 공시하는 관행이 확인된다. 다만 Level 3 지분 $51.2B의 평가익이 이익의 큰 축이 된 구조와 위임장 미확보로 90점대는 불가능하다."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 85,
+      "rationale": "중국 데이터센터 시장 전체를 상실하고도 Q2 매출 +105.9%를 달성했고, Blackwell Ultra에서 Vera Rubin으로 아키텍처 cadence를 유지했다. 실패한 제품(H20·H200)의 손실을 이연 없이 인식했다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "critical",
+      "rationale": "최근 배분의 최대 항목인 지분증권 $42.4B의 수익이 자기평가(Level 3)로 인식되어 자본배분 성과를 독립적으로 검증할 수 없다."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "위임장이 없어 보상 정렬과 내부자 거래를 평가하지 못했다. 회계·감사 측면의 적신호는 없다."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "minor",
+      "rationale": "중국 상실 대응과 손실 인식 시점으로 충분히 관측된다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

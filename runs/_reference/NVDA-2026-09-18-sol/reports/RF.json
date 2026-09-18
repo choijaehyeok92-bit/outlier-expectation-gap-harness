@@ -1,0 +1,141 @@
+{
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "agent_id": "RF",
+  "domain": "reinvestment_fcf",
+  "score_0_100": 85.5,
+  "confidence_0_1": 0.8,
+  "bull_score": 96,
+  "bear_score": 68,
+  "bull_case": "Fabless 구조에서 R&D와 생태계 투자가 막대한 매출·영업현금흐름으로 전환되고 있다. H1 FY27 OCF $74.4B/FCF $69.9B와 네트워킹·CPU·Rubin 확장은 높은 증분수익률과 장기 재투자 경로를 지지한다.",
+  "bear_case": "AI buildout이 더 자본집약적으로 변하면서 $279B 공급약정, 고객 인프라 지원, 데이터센터 lease·equity investments가 필요해지고 있다. 성장 유지 자본이 급증하면 과거의 초고 ROIC가 낮아질 수 있다.",
+  "thesis": "재투자 효율과 FCF/share 질은 매우 강하지만, 사업모델이 순수 fabless 칩 판매에서 생태계 금융·인프라 약정까지 확장되며 자본집약도가 올라가는 변곡점은 주의해야 한다. 현재 H1 FY27 FCF 규모와 자사주 매입은 희석을 상쇄하고 주당 가치 성장을 지지한다.",
+  "evidence": [
+    {
+      "claim": "H1 FY27 operating cash flow was $74.421B and NVIDIA-defined free cash flow was $69.895B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm",
+      "period": "H1 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "OCF $74.421B; FCF $69.895B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 FY27 segment operating income was $66.595B and H1 segment operating income was $122.871B, while H1 SBC expense was $3.954B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R20.htm",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "Segment OI $66.595B Q2 / $122.871B H1; SBC $3.954B H1",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NVIDIA repurchased 203M shares for $39.8B in H1 FY27 and had $99.3B remaining repurchase authorization as of July 26, 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "period": "H1 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "203M shares / $39.8B repurchased; $99.3B authorization",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Supply and capacity commitments rose from $119B in the prior quarter to $279B, showing the reinvestment model is becoming more capital-committed.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R17.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "Supply commitments $279B vs $119B prior quarter",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Commitments and customer support make incremental capital needs much larger than historical fabless optics suggest.",
+    "Working-capital needs increased as DSO rose and inventory reached $31.6B.",
+    "Some ecosystem investments may produce strategic value without transparent standalone ROIC.",
+    "Gross margin can be hit by architecture transitions and export-control inventory charges, as FY26 H20 showed."
+  ],
+  "unknowns": [
+    "True incremental ROIC on AI-cloud/infrastructure support commitments",
+    "Normalized FCF conversion after Rubin working-capital build",
+    "Long-run SBC dilution net of repurchases"
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "Current returns are exceptional but new infrastructure/partner commitments change the denominator."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "minor",
+      "rationale": "Multiple new products and markets support runway, though market saturation timing is uncertain."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "Working capital and SBC are manageable today but should be normalized through the cycle."
+    }
+  ],
+  "falsifiers": [
+    "FCF growth persistently lags revenue while commitments and AR compound faster.",
+    "Incremental gross profit from Rubin/AI-cloud expansion fails to earn attractive returns on committed capital.",
+    "Diluted share count rises >2% annually despite large repurchases."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Current operating-income and FCF growth remain far ahead of balance-sheet operating investment; new commitments warrant monitoring but do not yet show structural ROIC collapse."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "H1 SBC is material but NVIDIA repurchased 203M shares for $39.8B; there is no evidence of persistent excessive net dilution at present."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "FCF/share",
+      "direction": "up",
+      "threshold": "Grow through cycle after SBC and working-capital normalization",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Commitments / FCF",
+      "direction": "stable",
+      "threshold": "Do not structurally outgrow cash generation",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Diluted shares",
+      "direction": "down",
+      "threshold": "Flat to declining net share count",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FCF conversion",
+    "Rubin supply commitments and inventory",
+    "Net diluted share trend"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 90,
+      "rationale": "Current cash generation relative to operating asset base is exceptional."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 85,
+      "rationale": "Rubin, networking, CPU, enterprise and sovereign AI provide several large reinvestment paths."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 80,
+      "rationale": "FCF is enormous and buybacks support per-share value, but working capital and SBC require normalization."
+    }
+  ]
+}

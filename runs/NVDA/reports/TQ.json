@@ -1,0 +1,163 @@
+{
+  "agent_id": "TQ",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-17",
+  "domain": "turnaround_quality",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 34.25,
+  "confidence_0_1": 0.75,
+  "bull_score": 50,
+  "bear_score": 25,
+  "bull_case": "좁게 보면 회복 요소가 있다. 중국 규제로 상각한 H20 $4.5B·H200 $0.4B는 이미 손실 처리돼 재진입 시 순수 상방이고, Edge Computing(+27% y/y)은 상대적 부진 구간에서 회복 중이다. 규제 완화가 오면 self-help 없이도 이익 정상화 폭이 크다.",
+  "bear_case": "턴어라운드의 전제인 저점이 없다. 매출은 FY24 $60.9B에서 FY26 $215.9B로 3.5배, Q2 영업이익률은 66.2%로 사상 최고다. 개선이 아니라 악화 중인 지표는 운전자본이다. DSO 45→60일, 재고 $21.4B→$31.6B. 정상화 대상은 저점이 아니라 현재 이익일 수 있다.",
+  "thesis": "NVIDIA는 턴어라운드 후보가 아니다. 이 축의 전제인 실적 저점과 self-help 회복 구조가 존재하지 않는다. 매출은 FY24 $60.9B → FY26 $215.9B로 3.5배가 됐고 Q2 FY27 영업이익률 66.2%는 사상 최고 수준이다. 회복의 동력도 경영진이 통제하는 비용절감·자산매각·부채축소가 아니라 외부 수요이며, opex는 줄기는커녕 R&D가 전년 동기 대비 64% 늘었고 H1에 순차입 $24.9B와 지분투자 $42.4B가 집행됐다. 정상화 bridge 역시 방향이 반대다. 저점에서 정상으로 올라가는 경로가 아니라 현재 이익이 정상 위에 있을 위험을 봐야 한다. 유일한 회복 요소는 이미 상각한 중국 관련 손실의 잠재적 환입 성격 상방이다.",
+  "evidence": [
+    {
+      "claim": "매출 궤적에 저점이 없다. FY24 $60,922M → FY25 $130,497M → FY26 $215,938M → H1 FY27 $177,837M.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-K_FY26_filed_2026-02-25.txt Consolidated Statements of Income; runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY24~FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 215938,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 FY27 operating income $63,734M, 영업이익률 66.2%, gross margin 75.0%로 정상화 대상이 아니라 사상 최고 수준의 수익성이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Condensed Consolidated Statements of Income",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 66.2,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "운전자본은 개선이 아니라 악화 중이다. DSO는 전분기 45일에서 60일로 늘었고 재고는 $21,403M에서 $31,575M으로, AR은 $38,466M에서 $63,059M으로 증가했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Balance Sheet + CFO commentary 인용(company_context intake_facts)",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 60,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "self-help가 아니라 확장이 동력이다. R&D는 Q2 기준 $4,291M에서 $7,054M으로 64% 증가했고, H1에 순차입 $24,896M과 지분증권 매입 $42,404M이 집행됐다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Income statement + Cash flow statement",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 42404,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "회복 성격의 유일한 항목은 규제로 상각된 중국 관련 손실이다. H20 $4,500M(FY26 Q1), H200 $400M(FY27 H1)은 이미 비용 처리됐고 재진입 시 상방으로만 작용한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2835-L2837",
+      "period": "FY26 Q1 ~ FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 4900,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "중국 데이터센터 재진입이 허용되면 이미 상각된 재고·약정이 순수 상방으로 전환되어 부분적 턴어라운드 성격의 이익 점프가 가능하다.",
+    "Edge Computing은 +27% y/y로 데이터센터 대비 부진했던 구간에서 회복 중이며, 이 사업만 떼어 보면 회복 서사가 성립한다.",
+    "경영진은 분기 가이던스와 공급 약정 공시로 이행 상황을 반복적으로 검증받고 있어 catalyst_accountability를 최저점으로 볼 근거는 약하다."
+  ],
+  "unknowns": [
+    "중국 재진입 시점·규모와 그때 남아 있을 상각 재고 수량.",
+    "현재 이익률이 정상 이익률 대비 어느 정도 위인지 판단할 사이클 기준선이 없다.",
+    "운전자본 악화가 구조적(고객 자금조달)인지 일시적(대형 계약 결제조건)인지 구분할 공시가 없다."
+  ],
+  "falsifiers": [
+    "2개 분기 연속 매출이 전년 동기 대비 감소한 뒤 self-help(비용절감·자산매각) 주도로 마진이 회복되면 이 종목은 턴어라운드 축으로 재평가해야 한다.",
+    "중국 재진입으로 상각 재고가 환입되고 그 기여가 분기 이익의 10%를 넘으면 부분 턴어라운드 성격을 인정해야 한다.",
+    "DSO가 45일 이하로 복귀하고 재고회전이 개선되면 운전자본 악화 근거는 기각된다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "DSO",
+      "direction": "down",
+      "threshold": "50일 이하",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "재고 증가율 - 매출 증가율",
+      "direction": "down",
+      "threshold": "0 이하",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "중국 데이터센터 매출",
+      "direction": "up",
+      "threshold": "Data Center 매출의 1% 초과",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q에서 DSO·재고회전·AR 대손충당 확인",
+    "중국 H200 라이선스 집행 실적과 상각 재고 환입 여부 확인",
+    "Edge Computing 부문의 마진 공시 여부 확인"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "operating_inflection",
+      "score_0_100": 40,
+      "rationale": "핵심 지표가 개선 중이기는 하나 저점 대비 회복이 아니라 고점 갱신이다. 오히려 DSO 45→60일, 재고 $21.4B→$31.6B로 운전자본 지표는 악화됐다."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "score_0_100": 30,
+      "rationale": "회복 동력이 경영진 통제 영역(비용절감·자산매각·부채축소)이 아니라 외부 AI 수요다. 오히려 R&D +64%, 순차입 $24.9B, 지분투자 $42.4B로 확장 국면이다."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "score_0_100": 30,
+      "rationale": "저점에서 정상으로 가는 bridge가 아니라 현재 이익이 정상 위에 있을 위험을 봐야 하는 구조다. 정상 이익률 기준선 자체가 존재하지 않는다."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "score_0_100": 35,
+      "rationale": "턴어라운드 전용 KPI·마감기한·보상 정렬이 없다. 다만 분기 가이던스와 공급 약정 공시로 최소한의 이행 검증은 이루어진다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "operating_inflection",
+      "severity": "minor",
+      "rationale": "저점 부재는 재무제표로 명확히 확인된다. 판단 불확실성이 낮다."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "severity": "minor",
+      "rationale": "동력이 외부 수요임은 opex·투자 집행 방향으로 분명하다."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "severity": "material",
+      "rationale": "정상 이익률의 기준선 자체가 없어 현재 이익이 정상 위인지 아래인지 수치로 판정할 수 없다."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "severity": "minor",
+      "rationale": "턴어라운드 전용 KPI·마감기한이 존재하지 않는다는 사실 자체는 명확하다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

@@ -18,7 +18,7 @@ Company Intake (intake_facts + sources/README.md — 모든 에이전트가 공�
    │
    ├─ Phase 5: Score → Archetype → IC
    │      ├─ harness.py aggregate (Scorekeeper, 결정론적)
-   │      ├─ 문샷형 / 컴파운더 / 이머징 아웃라이어 / 기대차형 / 관망·회피형
+   │      ├─ 문샷형 / 컴파운더 / 턴어라운드형 / 기대차형 / 관망·회피형
    │      └─ IC 의장 (반대 논리를 먼저 구성한 뒤 판정)
    │
    ├─ Phase 6: MO 매크로  ──> pacing only (7일 캐시, 종목 간 재사용)

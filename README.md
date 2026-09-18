@@ -27,18 +27,17 @@ JSON 스키마·워크플로·집계 CLI 포함.
 9. Evidence-based position sizing and monitoring
 
 ## 종목 유형 (Archetype)
-평가가 끝나면 모든 종목을 여섯 유형 중 하나로 분류합니다. 판정 조건은 `config/strategy.json`의 `archetypes`에서 조정합니다.
+평가가 끝나면 모든 종목을 다섯 유형 중 하나로 분류합니다. 판정 조건은 `config/strategy.json`의 `archetypes`에서 조정합니다.
 
 | 유형 | 정의 | 핵심 판정 조건 (기본값) |
 |---|---|---|
-| 문샷형 (Moonshot) | 테슬라·팔란티어·엔비디아·구글·아마존 초기형. 파괴적 혁신성. 고밸류에이션 용인 | 시가총액 ≤ $20B, 파괴적 혁신 ≥80, 구조적 리더십 ≥75, 비대칭성 ≥75, 재무생존 ≥60. 게이트는 밸류에이션 도메인을 제외한 점수 |
-| 컴파운더 (Compounder) | 장기 복리 창출 능력이 뛰어난 기업 | Moat Trajectory ≥80, 증분 ROIC·FCF ≥80, 경영진 ≥75, 재무생존 ≥75, 밸류에이션 ≥50 |
-| 이머징 아웃라이어 (Emerging Outlier) | Base 가치 전후 가격에서 아웃라이어 성격이 강한 기업 | 주가/Base 가치 0.8~1.2, 구조적 리더십 ≥75, 비대칭성 ≥75, Moat ≥70 |
-| 턴어라운드형 (Turnaround) | 실제 실적 inflection과 self-help로 정상화 FCF/share 회복 가능성이 높은 기업 | TQ ≥75, 재무생존 ≥65, 경영진 ≥60, 기대차 ≥65, 비대칭성 ≥65. 유형 전용 게이트 점수 ≥55; 초기 1~3% 상한 |
-| 기대차형 (Expectation Gap) | 적당한 성장에도 밸류에이션이 크게 낮아져 시장 오판 가능성이 있는 기업 | 주가/Base 가치 ≤0.8, 5년 밸류에이션 백분위 ≤30%, 3년 매출 CAGR 3~20%, 기대차 도메인 ≥75 |
-| 관망·회피형 (Non-fit) | Hard Veto 확정, 게이트 점수(65) 미달, 또는 어느 유형에도 해당하지 않음 | 기본값. 신규 매수는 최대 Starter/Watch |
+| 문샷형 (Moonshot) | 테슬라·팔란티어·엔비디아·구글·아마존 초기형. 파괴적 혁신성. 고밸류에이션 용인 | 시가총액 ≤ $50B, 파괴적 혁신 ≥78, 구조적 리더십 ≥72, 비대칭성 ≥72, 재무생존 ≥60. 게이트는 밸류에이션 도메인을 제외한 점수 |
+| 컴파운더 (Compounder) | 장기 복리 창출 능력이 뛰어난 기업 | 주가/Base 가치 ≤1.2, Moat Trajectory ≥76, 증분 ROIC·FCF ≥76, 경영진 ≥72, 재무생존 ≥72, 밸류에이션 ≥42 |
+| 턴어라운드형 (Turnaround) | 실제 실적 inflection과 self-help로 정상화 FCF/share 회복 가능성이 높은 기업 | TQ ≥72, 재무생존 ≥65, 경영진 ≥60, 기대차 ≥62, 비대칭성 ≥62. 유형 전용 게이트 점수 ≥55; 초기 1~3% 상한 |
+| 기대차형 (Expectation Gap) | 적당한 성장에도 밸류에이션이 크게 낮아져 시장 오판 가능성이 있는 기업 | 주가/Base 가치 ≤0.85, 5년 밸류에이션 백분위 ≤35%, 3년 매출 CAGR 3~25%, 기대차 도메인 ≥65 |
+| 관망·회피형 (Non-fit) | Hard Veto 확정, 게이트 점수(60) 미달, 또는 어느 유형에도 해당하지 않음 | 기본값. 신규 매수는 최대 Starter/Watch |
 
-여러 유형에 동시에 해당하면 위 표 순서(문샷 → 컴파운더 → 이머징 → 턴어라운드 → 기대차)가 주 유형이 되고, 나머지는 `secondary`에 기록됩니다. 밸류에이션 신호는 EV 에이전트가 `archetype_signals`에 기록합니다. 문샷 시가총액은 frozen `company_context.market_cap_usd`를 우선하며, 비어 있으면 `current_price × shares_diluted`로 결정론적으로 계산합니다.
+여러 유형에 동시에 해당하면 위 표 순서(문샷 → 컴파운더 → 턴어라운드 → 기대차)가 주 유형이 되고, 나머지는 `secondary`에 기록됩니다. 밸류에이션 신호는 EV 에이전트가 `archetype_signals`에 기록합니다. 문샷 시가총액은 frozen `company_context.market_cap_usd`를 우선하며, 비어 있으면 `current_price × shares_diluted`로 결정론적으로 계산합니다.
 
 ## 빠른 시작
 ```bash
@@ -60,7 +59,7 @@ python harness.py aggregate NVDA
 | Triage + 조기 종료 | EV·AS·DI·TQ를 먼저 실행하고, 감점 전 점수로도 도달 가능한 유형이 없으면 나머지 10개 에이전트를 생략 |
 | `digest` | Phase 3·IC가 원 보고서 대신 압축 요약을 읽음 (첫 NVDA 실행: 403K자 → 16K자) |
 | `prompt` | 공통 문서를 따로 읽는 대신 필요한 내용만 담은 프롬프트 1개(기본 약 4K자 + 종목 기준 정보·공시 사실) |
-| 공통 기준 정보 | `intake_facts`·`sources/README.md`의 사실은 재검색 금지. 웹 검색 예산 에이전트당 10회 |
+| 공통 기준 정보 | `intake_facts`·`sources/README.md`의 사실은 재검색 금지. 웹 검색 예산 에이전트당 15회(공백 능동 보완용) |
 | 보고서 분량 상한 | thesis 600자, bull/bear_case 300자, evidence 3~6개 등 (`report_limits`) |
 | LLM 호출 제거 | 점수 집계는 `aggregate`가 수행, 매크로 보고서는 7일간 종목 간 재사용 |
 
@@ -80,3 +79,66 @@ python harness.py aggregate NVDA
 - **Frozen run manifest:** commit/config/input SHA-256과 provider/model/reasoning metadata를 기록한다.
 
 기존 39-agent 및 구버전 JSON은 `legacy_declared_score` 방식으로 계속 집계할 수 있다.
+
+## v2.2 — Cross-provider convergence
+같은 종목·같은 종가에서 프로바이더별로 점수가 갈리는 문제를 측정하고 줄인다.
+
+**측정 결과 (NVDA, 종가 $219.34, gpt-5.6-sol vs Claude Opus 5, criterion 27개)**
+
+| | 평균 격차 |
+|---|---|
+| 전체 | **+10.2** (sol이 높음, 27개 전부 sol ≥ opus) |
+| 관측 가능한 사실형 criterion | +3.1 |
+| 위험 가중 판단형 criterion | **+13.2** |
+
+앵커가 "순현금/매우 강함"처럼 셀 수 있는 사실이면 두 모델이 일치하고, "복수 완충장치" 대 "상쇄요인 혼재"처럼
+형용사이면 갈라진다. sol은 앵커(25/50/75/90)에 그대로 착지해 90을 9번 썼고(27개 중 15개가 앵커값),
+opus는 앵커 사이로 보간해 [35,90]을 썼다(27개 중 4개).
+
+**대응 1 — 관측 판정표(`observable_anchors`).** 격차가 가장 컸던 8개 criterion의 앵커를 셀 수 있는
+판정표로 교체했다. EV의 `signal_map`(price_to_base_value → 점수 고정)에서 검증된 방식을 확장한 것이다.
+
+| criterion | 판정 기준 |
+|---|---|
+| SL `durability_risks` | 수요 동인이 독립적인 최종시장(매출 10% 이상) 개수 |
+| MT `network_data_ecosystem` | 생태계 규모·추세·전환비용을 뒷받침하는 1차 자료 수치 개수 |
+| RF `reinvestment_runway` | (capex + R&D) / 영업현금흐름 |
+| MA `capital_allocation` | 자사주 평균 매입단가 / Base 주당가치 |
+| FS `dilution_offbalance` | 희석주식수 증감과 부외약정/TTM매출 중 낮은 쪽 |
+| DI `optionality_incumbent_response` | 진입한 인접 가치풀 개수 (대응자가 고객 본인이면 상한 70) |
+| AS `upside_path` | Bull 주당가치 / 현재가 + 독립 상승경로 개수 |
+| AS `permanent_loss` | Bear 주당가치 / 현재가 |
+
+**대응 2 — `anchor_policy` 양쪽 게이트.** 85 이상은 1차 자료 근거 3개 이상과 최강 반대근거 반박을
+요구하고, 40 미만은 1차 자료 반증 근거를 요구한다. 근거 없는 낙관과 근거 없는 신중을 대칭으로 막는다.
+어느 앵커 구간을 골랐고 인접 구간을 왜 배제했는지 `rationale`에 적어야 한다.
+
+**대응 3 — 프로바이더 보정(`provider_calibration`).** 판정표가 없는 criterion에 남는 격차를 도메인 점수
+단계에서 대칭으로 보정한다. Anthropic 계열은 상향, OpenAI 계열은 하향하며 각각 측정 격차 10.2점의 절반이다.
+
+- `offset = base_offset × (해당 도메인에서 판정표가 없는 criterion의 비율)` — **판정표를 늘릴수록 보정이
+  자동으로 줄고, 전 criterion을 덮으면 0이 된다.** 보정은 임시 장치이지 목표가 아니다.
+- subscore는 건드리지 않는다. 도메인의 `score`와 `raw_weighted_median`만 이동하고
+  `score_before_provider_calibration`으로 보정 전 값을 항상 남긴다.
+- `max_abs_offset` 5.0으로 상한이 걸려 있고, 계열이 인식되지 않으면 보정하지 않는다(`default_offset` 0).
+- `aggregate.json`의 `provider_calibration`에 계열·계수·근거·표본 크기가 기록된다.
+
+**경고 — 이 보정은 판정을 뒤집을 수 있다.** NVDA 실행에서 MT 73.75 → 77.08, RF 74.50 → 77.83이 되며
+컴파운더 임계값 76을 넘어 유형이 `non_fit`에서 `compounder`로 바뀌었다. 사업 사실이 달라진 것이 아니다.
+**근거는 종목 1개(criterion 27개) 표본이다.** 다른 종목의 쌍 실행으로 `base_offset`을 재추정하기 전까지
+보정에 의해 바뀐 분류는 잠정으로 다뤄야 하며, `final_verdict.archetype_rationale`에 그 사실을 남긴다.
+끄려면 `calibration.json`의 `provider_calibration.enabled`를 false로 두면 된다.
+
+**대응 4 — `harness.py calibrate`.** 두 실행의 subscore를 criterion 단위로 대조해 격차를 수치로 낸다.
+`runs/_reference/NVDA-2026-09-18-sol/`에 sol 실행본을 기준선으로 보존했다.
+
+```bash
+python harness.py calibrate runs/NVDA runs/_reference/NVDA-2026-09-18-sol --out cal.json
+```
+
+**결과:** 판정표를 양쪽에 적용하면 해당 8개 criterion의 격차는 **+13.2 → 0.0**, 전체 평균은
+**+10.2 → +4.4**(sd 6.9 → 4.2)가 된다. 잔여 +4.4는 판정표가 없는 19개 형용사 criterion에서 나온다.
+이 수렴은 sol 쪽을 시뮬레이션한 값이며, 실제 sol 재실행으로 검증해야 한다.
+
+**한계:** 하네스가 보장하는 것은 두 모델의 *일치*이지 *정확성*이 아니다. 판정표가 맞춘 수준이
+옳은지는 사후 결과로만 확인된다.

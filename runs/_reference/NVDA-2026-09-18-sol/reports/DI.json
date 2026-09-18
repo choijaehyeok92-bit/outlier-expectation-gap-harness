@@ -1,0 +1,139 @@
+{
+  "agent_id": "DI",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 90,
+  "confidence_0_1": 0.83,
+  "bull_score": 98,
+  "bear_score": 75,
+  "bull_case": "Vera Rubin이 전력당 처리량과 토큰 비용을 한 세대 만에 크게 재편하고 GPU·CPU·NVLink·Ethernet·소프트웨어를 하나의 AI factory로 묶어 고객의 시스템 경제성을 바꾸고 있다. 주요 hyperscaler와 OEM 주문은 채택이 파일럿을 넘었음을 보여준다.",
+  "bear_case": "30x/35x 수치는 특정 벤치마크와 비교기준에 의존하며 hyperscaler 자체 ASIC과 범용화가 경제적 가치를 다른 계층으로 이동시킬 수 있다. 대규모 공급 약정은 채택 둔화 시 혁신 프리미엄을 손실로 바꿀 수 있다.",
+  "thesis": "NVDA는 단순 칩 개선보다 AI 데이터센터의 비용곡선과 시스템 설계를 재편하는 파괴적 혁신 주체에 가깝다. Rubin은 전력당 처리량·토큰비용 개선을 내세우고 이미 생산 출하 및 주요 고객 주문 단계다. GPU 외에 CPU·네트워킹·NVLink·소프트웨어로 가치사슬 포착 범위를 넓히는 점이 강점이다. 다만 vendor benchmark 의존, 자체 ASIC, 수출통제와 공급 약정은 점수를 95+로 올리지 못하게 한다.",
+  "evidence": [
+    {
+      "claim": "NVIDIA's Q2 FY27 earnings-call transcript states Vera Rubin delivers about 30x higher throughput per megawatt and 35x lower token cost versus Grace Blackwell Ultra.",
+      "source_type": "other",
+      "source": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf",
+      "period": "Q2 FY2027 earnings call",
+      "as_of_date": "2026-08-26",
+      "value": "30x throughput/MW; 35x lower token cost",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The same transcript says production shipments of Vera Rubin had begun and purchase orders had been received from every major hyperscaler, AI cloud and system OEM.",
+      "source_type": "other",
+      "source": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf",
+      "period": "Q2 FY2027 earnings call",
+      "as_of_date": "2026-08-26",
+      "value": "production shipments begun; broad major-customer PO coverage",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 FY27 Data Center revenue reached $89.0B, up 117% y/y, indicating commercialization at massive scale rather than pilot-stage adoption.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "Data Center $89.0B, +117% y/y",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Networking revenue grew 18% sequentially and Spectrum-X Ethernet grew 2.6x y/y, while Grace CPU trailing-12-month revenue exceeded $5B, supporting platform optionality beyond GPUs.",
+      "source_type": "other",
+      "source": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf",
+      "period": "Q2 FY2027 earnings call",
+      "as_of_date": "2026-08-26",
+      "value": "Networking +18% q/q; Spectrum-X 2.6x y/y; Grace CPU >$5B TTM",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NVIDIA's August 2026 technical publication reports Vera Rubin NVL72 at up to 30x higher throughput per megawatt than GB300 NVL72 on an agentic coding workload, but the result is workload-specific and vendor-published.",
+      "source_type": "other",
+      "source": "https://developer.nvidia.com/blog/nvidia-vera-rubin-and-blackwell-set-a-new-standard-for-agentic-ai-performance-per-watt/",
+      "period": "2026-08-24",
+      "as_of_date": "2026-08-24",
+      "value": "up to 30x throughput/MW on AgentX workload",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "30x/35x 개선치는 특정 workload와 비교기준에 의존해 모든 추론경제성에 일반화할 수 없다.",
+    "대형 hyperscaler의 자체 ASIC은 일부 워크로드에서 GPU 수요와 가격결정력을 약화시킬 수 있다.",
+    "중국 수출통제는 혁신 확산 가능 시장을 직접 제한하고 현지 대체재 육성을 촉진할 수 있다.",
+    "$279B 공급·capacity 약정은 혁신 채택이 기대보다 느릴 때 큰 고정위험으로 전환될 수 있다."
+  ],
+  "unknowns": [
+    "Rubin의 실제 고객별 TCO 개선이 vendor benchmark와 얼마나 일치하는지",
+    "Rubin 세대의 정상 gross margin과 경쟁 대응 후 가격 프리미엄",
+    "CUDA/네트워킹/CPU 소프트웨어 옵션의 장기 독립 수익화 비중"
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "극적인 성능/비용 수치는 강하지만 vendor 및 workload-specific benchmark 성격이 있다."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "minor",
+      "rationale": "매출과 주요 고객 주문은 강하지만 Rubin 자체는 초기 램프 단계다."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "플랫폼 범위는 넓지만 hyperscaler custom silicon과 개방형 대안의 대응력이 장기 변수다."
+    }
+  ],
+  "falsifiers": [
+    "Rubin 고객 ROI가 Blackwell 대비 유의미하게 개선되지 않고 주문이 파일럿 수준으로 후퇴하는 경우",
+    "자체 ASIC/경쟁 가속기가 주요 고객의 NVIDIA 플랫폼 지출을 수년간 구조적으로 잠식하는 경우",
+    "CUDA·네트워킹·CPU 확장이 GPU 둔화를 상쇄하지 못하고 플랫폼 총수익성이 하락하는 경우"
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Rubin production adoption",
+      "direction": "up",
+      "threshold": "주요 hyperscaler/AI cloud/OEM의 반복 발주와 대규모 배치",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Performance per watt / token economics",
+      "direction": "up",
+      "threshold": "독립 또는 고객 데이터에서도 세대간 TCO 개선 확인",
+      "cadence": "product cycle"
+    },
+    {
+      "name": "Non-GPU platform revenue",
+      "direction": "up",
+      "threshold": "Networking/CPU/software가 GPU 외 성장축으로 지속 확대",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Rubin 실제 출하량·고객 배치·매출 믹스",
+    "독립 고객 benchmark와 전력/토큰 비용",
+    "Spectrum-X, Vera CPU, software 매출의 플랫폼 기여"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 90,
+      "rationale": "Rubin의 전력당 처리량·토큰 비용 개선은 시스템 비용곡선을 재편할 잠재력이 크다."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 90,
+      "rationale": "Data Center 대규모 매출과 주요 hyperscaler/AI cloud/OEM 주문으로 주류 채택 증거가 강하다."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 90,
+      "rationale": "GPU·CPU·네트워킹·NVLink·소프트웨어를 통합해 가치사슬 포착 범위를 확장한다."
+    }
+  ]
+}

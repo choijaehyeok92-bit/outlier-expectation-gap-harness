@@ -1,0 +1,209 @@
+{
+  "agent_id": "EV",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-17",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 53.0,
+  "confidence_0_1": 0.6,
+  "bull_score": 85,
+  "bear_score": 20,
+  "bull_case": "AI 인프라 투자가 10년 사이클이면 Y10 owner FCF/share $29.6, 25x terminal로 주당 $431(+97%)이다. CUDA·NVLink에 Hugging Face가 더해져 개발자 표준을 유지하고 네트워킹·소프트웨어 attach가 커지면 점유를 마진 훼손 없이 지킬 수 있다. 순현금 밖 투자자산 $93.9B는 가치에 반영하지 않은 옵션이다.",
+  "bear_case": "고객 상당수가 자체 조달 능력이 부족해 NVIDIA가 지분투자 H1 $42.4B와 land/power/shell 보증으로 수요를 직접 대고 있다. 이 고리가 끊기면 매출은 둔화가 아니라 역성장한다. 디지션 국면에서 GM 60%대와 재고·AR 손상이 겹치면 Y3 owner FCF/share $4.2, 15x로 주당 $75(-66%)다.",
+  "thesis": "고정 정책(9% 할인율, terminal 15/20/25x)으로 owner FCF/share(OCF-capex-SBC)를 10년 추정하면 Bear $75, Base $213, Bull $431이다. 종가 $219.34는 Base의 1.03배여서 기대차가 사실상 없다. Base 자체가 NTM 매출 $484B와 10년간 owner FCF 마진 약 40% 유지를 전제하므로 강한 실행을 요구하지만 Bull을 요구하지는 않는다. 취약점은 두 가지다. 첫째 Base 가치의 64%가 terminal multiple에서 나온다. 둘째 TTM 순이익 $192.9B에는 H1 주식평가익 $23.7B가 섞여 있고 FCF는 AR $24.6B·재고 $10.2B 증가로 눌려 있어 정상이익 정의 자체가 불안정하다. 순현금 밖 투자자산 $93.9B(주당 $3.87)는 가치에 넣지 않았다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 매출 $96,221M(+105.9% y/y), Data Center $89,023M(+117% y/y, +18% q/q), gross margin 75.0%, operating margin 66.2%.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L126-L161, L2091-L2100",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 96221,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 FY27 세전이익 $141,410M 중 주식평가익(Gains from equity securities, net)이 $23,707M으로 약 17%다. 현금흐름표에서 비현금 항목으로 차감된다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L736-L760",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 23707,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 FY27 OCF $74,421M, capex $4,434M, SBC $3,954M → owner FCF $66,033M. 같은 기간 AR -$24,590M, 재고 -$10,204M의 운전자본 유출이 있었고 기말 AR은 $63,059M이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L729-L780, L290-L300",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 66033,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "TTM(FY26 H2+FY27 H1) 매출 $302,970M, 순이익 $192,880M, FCF $127,006M, owner FCF $119,765M = 희석주당 $4.92. 종가 기준 trailing P/E 27.6x, P/FCF 41.9x.",
+      "source_type": "filing",
+      "source": "10-K FY26 + 10-Q FY27 Q1/Q2 합산 (runs/NVDA/sources/README.md 참조)",
+      "period": "TTM to 2026-07-26",
+      "as_of_date": "2026-09-17",
+      "value": 4.92,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "고정 정책 DCF 결과: Bear $74.99, Base $212.86, Bull $431.14. price/base = 1.0304. terminal 비중은 Bear 53%, Base 64%, Bull 73%.",
+      "source_type": "other",
+      "source": "harness deterministic_valuation (config/calibration.json)",
+      "period": "10y from 2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": 212.86,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "2026-07-26 기준 총 약정 $366B 중 supply/capacity $279B이며 FY27 잔여 $92B, FY28 $87B, FY29 $88B로 배분되어 FY28 이후 반기 환산 발주가 늘지 않는다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Note 10 Commitments",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 279,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "valuation_percentile_5y 0.05는 자기 5년 이력 최저권이지만, 분모 EPS가 H1에만 $23.7B의 주식평가익을 포함해 부풀려져 있어 저평가 신호가 과장됐을 수 있다.",
+    "순현금에서 제외한 시장성 지분 $42,783M과 비시장성 지분 $51,157M 합계 $93,940M(주당 $3.87)을 Base 가치에 넣지 않았다. 그만큼 Base는 보수적이다.",
+    "Q3 FY27 가이던스 $108B는 중국 데이터센터 컴퓨트 매출 0을 가정한다. 규제가 완화되면 Base 경로 자체가 상향된다.",
+    "Base는 10년간 owner FCF 마진 약 40% 유지를 가정한다. 커스텀 ASIC 비중이 커지면 과대 가정이고, 반대로 네트워킹·소프트웨어 attach가 커지면 과소 가정이다."
+  ],
+  "unknowns": [
+    "AR 증가 $24,590M 중 투자등급 고객 비중과 NVIDIA가 지분·보증으로 자금을 댄 AI 클라우드 비중이 공시되지 않는다. 매출의 자기조달 비율을 계산할 수 없다.",
+    "FY28 supply/capacity 약정 $87B가 실제 수요 정체 신호인지 발주 시계(booking horizon) 한계인지 구분할 수 없다.",
+    "주식평가익 $23,707M의 종목 구성과 실현 가능성, 비상장 지분 $51,157M의 공정가치 산정 근거.",
+    "Hugging Face 인수(약 $11.9B, FY28 상반기 종결 예정)의 매출·마진 기여와 상각 부담.",
+    "중국 데이터센터 시장 재진입 시점과 규모."
+  ],
+  "falsifiers": [
+    "DSO가 2개 분기 연속 50일 이하로 복귀하고 AR 증가율이 매출 증가율을 밑돌면 고객 자금조달 베어 논리는 크게 약화된다.",
+    "FY28 supply/capacity 약정이 다음 10-Q에서 $120B 이상으로 상향되면 FY28 수요 정체 가설은 기각된다.",
+    "Base 경로가 맞다면 FY29 owner FCF/share는 $10 이상이어야 한다. $7 미만이면 Base는 기각되고 Bear 쪽으로 이동한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "price/base = 1.03으로 현재가는 Base 시나리오 수준을 요구하며 Bull($431)을 넘어서는 기대를 내재하지 않는다. 다만 Base 자체가 NTM +60% 성장과 장기 40% owner FCF 마진을 전제하므로 clear는 조건부가 아닌 사실 판정일 뿐 여유가 크다는 뜻은 아니다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share (OCF-capex-SBC, 희석주식수)",
+      "direction": "up",
+      "threshold": "FY28 $7.4 이상, FY30 $10.4 이상",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "DSO",
+      "direction": "down",
+      "threshold": "50일 이하로 복귀",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "세전이익 중 주식평가익 비중",
+      "direction": "down",
+      "threshold": "10% 미만",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q에서 AR·DSO·재고와 customer advances 잔액 확인",
+    "다음 10-Q의 future commitments 표에서 FY28~FY29 supply/capacity 갱신치 확인",
+    "주식평가익의 실현·미실현 구분과 비시장성 지분 $51,157M의 공정가치 레벨 확인"
+  ],
+  "verdict": "neutral",
+  "archetype_signals": {
+    "price_to_base_value": 1.0304,
+    "valuation_percentile_5y": 0.05,
+    "revenue_cagr_next_3y": 0.29
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "price_to_base_value 1.0304 → signal_map 0.9~1.1 구간 = 60. Base 시나리오의 야심 수준은 valuation_robustness와 uncertainties에 기록하며 여기서 재차 감점하지 않는다(scoring_rule)."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "price_to_base_value 1.0304 → signal_map 0.9~1.1 구간 = 55. Base 주당가치 $212.86 대비 종가 $219.34는 약 3% 고평가로 공정가치 부근이다."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 40,
+      "rationale": "Base 가치의 64%가 terminal multiple 의존이고 Bear는 -66%다. trailing 이익은 주식평가익으로 과대, FCF는 운전자본으로 과소 계상되어 정상이익 기준선 자체가 흔들린다. 이 criterion만 모델 재량이다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "NTM 매출 $484B 가정은 Q3 가이던스 $108B 외에 외부 검증 수단이 없다. Q4 이후는 전적으로 추정이다."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "owner FCF 정의(SBC 차감 여부, 운전자본 정상화 속도)에 따라 Base 주당가치가 대략 ±25% 움직인다."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "critical",
+      "rationale": "Base 가치의 64%, Bull의 73%가 terminal multiple에서 나온다. 정책상 배수가 고정이라 이 의존도를 모델 내에서 줄일 수 없다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": 0.05,
+    "revenue_cagr_next_3y": 0.29,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          6.8,
+          5.5,
+          4.2,
+          4.4,
+          4.8,
+          5.2,
+          5.5,
+          5.8,
+          6.0,
+          6.2
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          7.45,
+          9.1,
+          10.4,
+          11.5,
+          12.5,
+          13.35,
+          14.15,
+          14.85,
+          15.5,
+          16.1
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          8.2,
+          11.2,
+          14.2,
+          17.0,
+          19.6,
+          22.0,
+          24.2,
+          26.2,
+          28.0,
+          29.6
+        ]
+      }
+    }
+  }
+}

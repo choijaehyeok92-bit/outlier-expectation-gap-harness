@@ -1,0 +1,164 @@
+{
+  "agent_id": "SL",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-17",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 75.5,
+  "confidence_0_1": 0.65,
+  "bull_score": 88,
+  "bear_score": 55,
+  "bull_case": "가속 컴퓨팅으로의 전환은 경기순환이 아니라 비용곡선 재편이다. CUDA 개발자 750만명, TOP500의 78%, 누적 R&D $76.7B가 카테고리 규칙을 NVIDIA가 정의한다는 증거다. 연간 아키텍처 cadence(Blackwell Ultra→Vera Rubin)로 경쟁 기준선 자체를 매년 끌어올린다.",
+  "bear_case": "매출의 92.5%가 Data Center 단일 시장이고 상위 3개 고객이 44%다. 미국 수출규제만으로 중국 데이터센터 시장이 통째로 사라졌고, EU·미국·영국·중국·한국 경쟁당국이 동시에 자료를 요구 중이다. 구조적 성장과 공급부족발 가격효과를 아직 분리할 수 없다.",
+  "thesis": "구조 변화는 실재하고 NVIDIA는 수혜자가 아니라 규칙 제정자다. 개발자 750만명, 지원 애플리케이션 6,000개, TOP500의 78% 점유, 누적 R&D $76.7B는 단일 사이클로 설명되지 않는다. 매출 $96.2B 분기에 판관비가 1.4%에 불과하다는 점도 수요가 영업력이 아니라 제품에서 나온다는 뜻이다. 다만 durability는 별개다. 매출의 92.5%가 Data Center 한 곳에서 나오고, 미국 수출규제 하나로 중국 시장 전체가 사라진 전례가 이미 있으며, 5개 관할의 경쟁당국 조사가 동시에 진행 중이다. 성장 지속성보다 단일 취약점 노출이 이 도메인의 감점 요인이다.",
+  "evidence": [
+    {
+      "claim": "CUDA 및 자사 소프트웨어를 사용하는 개발자가 전 세계 750만명을 넘고, 6,000개 애플리케이션을 지원하며, 네트워킹 포함 TOP500 슈퍼컴퓨터의 78%를 구동한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-K_FY26_filed_2026-02-25.txt L179, L222",
+      "period": "FY26 (2025-01-27~2026-01-25)",
+      "as_of_date": "2026-01-25",
+      "value": 7500000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "창사 이래 누적 R&D 투자 $76.7B. 엔지니어의 절반 이상이 소프트웨어를 담당한다. Blackwell Ultra는 Hopper 대비 토큰 처리량 증가와 토큰당 비용 감소를 제공한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-K_FY26_filed_2026-02-25.txt L172",
+      "period": "FY26 (2025-01-27~2026-01-25)",
+      "as_of_date": "2026-01-25",
+      "value": 76700,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 FY27 판관비(SG&A)는 $1,354M으로 매출 $96,221M의 1.4%다. 성장이 마케팅·영업 투입이 아니라 제품 수요에서 나온다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Condensed Consolidated Statements of Income",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 1.4,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "매출 집중도: Q2 FY27 Data Center $89,023M은 총매출의 92.5%이며, H1에 3개 직접고객이 매출의 16%/15%/13%(합계 44%)를 차지했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Revenue by Market Platform, L2076",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 92.5,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "단일 규제 취약점이 이미 현실화됐다. 미국 수출규제로 중국 데이터센터 컴퓨트 시장에서 사실상 배제됐고 H20 $4,500M·H200 $400M을 상각했다. 그럼에도 Q2 매출은 전년 대비 +105.9%였다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2835-L2838",
+      "period": "FY26 Q1~FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 4900,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "EU·미국·영국·한국·중국 경쟁당국이 GPU 판매, 공급 배분, 파운데이션 모델 기업에 대한 투자·파트너십에 대해 광범위한 자료를 요구하고 있으며 추가 요구가 예상된다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2817",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "최근 2년 매출 3.5배 성장에서 구조적 수요와 공급부족발 가격·믹스 효과를 분리할 공시 데이터가 없다. 정상화 시 매출·마진 수준을 검증할 수 없다.",
+    "중국 배제가 경쟁 생태계를 키웠다고 회사가 직접 기술한다. 리더십이 지역적으로 봉쇄될 수 있다는 자백에 가깝다.",
+    "ACIE(+138%)가 Hyperscale(+102%)보다 빠르게 성장한다는 것은 자금력이 약한 고객군으로 성장축이 이동한다는 뜻일 수 있다.",
+    "TOP500 78%는 HPC 지표이지 상업용 AI 추론 시장의 점유율이 아니다. 추론 영역 점유율은 공시되지 않는다."
+  ],
+  "unknowns": [
+    "가속 컴퓨트 시장에서 NVIDIA의 물량·금액 점유율이 공시되지 않는다.",
+    "최근 성장 중 가격 상승 기여분과 물량 기여분의 분리.",
+    "경쟁당국 조사의 구제조치 범위와 시기.",
+    "중국 데이터센터 시장 재진입 가능성과 시점."
+  ],
+  "falsifiers": [
+    "Data Center 매출 비중이 85% 아래로 내려가면 단일 시장 의존 논리는 약화된다.",
+    "경쟁당국 중 한 곳이라도 판매·공급배분 방식에 구조적 구제조치를 부과하면 카테고리 리더십의 자율성 전제가 기각된다.",
+    "2개 분기 연속 Data Center 매출이 전년 동기 대비 감소하면 구조적 성장 가설을 사이클 가설로 교체해야 한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Data Center 매출 비중",
+      "direction": "down",
+      "threshold": "90% 미만으로 분산",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "상위 3개 직접고객 매출 합계 비중",
+      "direction": "down",
+      "threshold": "40% 미만",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "CUDA 개발자 수",
+      "direction": "up",
+      "threshold": "연 750만명 대비 증가",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "경쟁당국 조사 진행 상황과 구제조치 언급 여부(다음 10-Q Item 1 Legal Proceedings)",
+    "Q3 FY27 Data Center 내 Hyperscale·ACIE·Edge 구성 변화",
+    "10-K FY27에서 개발자 수·TOP500 점유율 갱신치 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 80,
+      "rationale": "개발자 750만명·애플리케이션 6,000개·누적 R&D $76.7B는 사이클이 아니라 비용곡선과 표준의 재편을 뜻한다. 다만 현재 성장률 중 공급부족·가격 기여분을 분리할 수 없어 90점은 주지 않는다."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 85,
+      "rationale": "CUDA를 사실상 업계 표준으로 만들고 연간 아키텍처 cadence로 경쟁 기준선을 직접 정의한다. TOP500 78% 구동은 배포능력의 직접 증거다."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 55,
+      "rationale": "판정표: 수요 동인이 독립적인 최종시장 중 매출 10% 이상 = 0개(Data Center 92.5%가 단일 AI capex 동인, Edge 7.5%는 10% 미만) → 45. modifier: 미국 수출규제로 중국 DC 시장 전체를 상실하고도 Q2 매출 +105.9%로 흡수한 이력 1차 자료 확인 → +10."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "구조 변화 자체는 확실하나 현재 성장률 중 공급부족·가격효과 비중을 공시로 분리할 수 없다."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "minor",
+      "rationale": "개발자 수·TOP500 점유·아키텍처 cadence로 충분히 입증된다."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "critical",
+      "rationale": "매출 92.5%가 단일 시장이고 5개 관할에서 동시에 경쟁당국 조사를 받는다. 구제조치의 성격에 따라 사업구조가 달라질 수 있는데 범위를 추정할 근거가 없다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

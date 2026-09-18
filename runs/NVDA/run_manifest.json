@@ -1,0 +1,30 @@
+{
+  "schema_version": "2.1",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-17",
+  "frozen": true,
+  "harness_commit": "d271b16a47f0cf13e26172cca73db890ae5c8785",
+  "runner": {
+    "provider": "Antropic",
+    "model": "Claude-Opus-5",
+    "reasoning_effort": "extra"
+  },
+  "frozen_at_utc": "2026-09-18T17:10:07.133776+00:00",
+  "config_files": {
+    "config/strategy.json": "ecdf105fecad86e77c7966e1f2f91ca797f4a2b1e0ee2b73836ed46e44a87a37",
+    "config/workflow.json": "1f5c6f1016768a2c6d8b53b3b7bcabdbbf417d657e2c8673047e84ac2aca8fcb",
+    "config/agents_manifest.json": "323317d34e89a0df0bf8a38ce9a0dc9c13a898e2435ece28e49c91cc7cb1082c",
+    "config/calibration.json": "ef370c40042703c774d1f1b703daf3ea8d9c058a9c27f43b0aaf63da312466fb",
+    "harness.py": "e38328669c9226f0c79d654fcb4eb4f888c40e7f6fb3c06031ee8b7ff0dd1dda"
+  },
+  "input_files": {
+    "company_context.json": "2dc6dfc1976b87ede150747339d7046ff5ea672ae98192323a9427ddac282ab0",
+    "sources/10-K_FY26_filed_2026-02-25.txt": "ecdf737864760d1f5bc77960aa29e0a3a32fb281c24a16475e860aed6d1cb2dd",
+    "sources/10-Q_FY27Q1_filed_2026-05-20.txt": "4a52130b998169a87703a4a7d98a2f69110308219a4315b7d896966a31b5198d",
+    "sources/10-Q_FY27Q2_filed_2026-08-26.txt": "a856d6a7c093417dda82feb6a13a019d288db2b30cdfa83335de361afa2a565d",
+    "sources/8-K_filed_2026-09-03.txt": "aec5133361919ef31fe5a0064f17f24d18f392f3ef80c6be2b05fda8646d4873",
+    "sources/INDEX.md": "3a4ecb5697b6a7d6ef37199ebfda4b4a99c9428eac14b18c8c585a272757dd29",
+    "sources/README.md": "c826e2c10bb077ce4ef405332f7a41a4f185d3775c3638b2ba7f9b6a32076481"
+  },
+  "input_snapshot_sha256": "7aa29b98d265b0e0d996704cb767e2f93b24ed085db34e0c82a2354a6c463280"
+}
