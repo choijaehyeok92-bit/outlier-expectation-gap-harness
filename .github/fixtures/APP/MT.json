@@ -1,0 +1,137 @@
+{
+  "agent_id": "MT",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 83.5,
+  "confidence_0_1": 0.86,
+  "bull_score": 90,
+  "bear_score": 65,
+  "bull_case": "Axon improves with conversion data while MAX expands publisher auction access, creating a reinforcing demand-data-supply loop. Better ROI attracts spend, generating more data and stronger monetization across the platform.",
+  "bear_case": "The feedback loop can be weakened by privacy limits, platform data restrictions or better models from Meta/Google/Amazon. Advertisers can multi-home and shift budgets, so switching costs are economic rather than contractual.",
+  "thesis": "APP's moat is widening through data/model feedback, publisher monetization infrastructure and advertiser performance rather than hard lock-in. High growth with rising margins suggests the flywheel is strengthening. MAX, Adjust and Wurl add workflow and distribution depth around Axon. The moat is not invulnerable: advertisers multi-home, Apple/Google control key ecosystem rules, and hyperscale platforms have larger first-party data pools.",
+  "evidence": [
+    {
+      "claim": "FY2025 adjusted EBITDA margin rose to 82.3% from 74.8% while revenue grew 70%, consistent with strong scale economics.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K",
+      "period": "FY2025",
+      "as_of_date": "2026-02-19",
+      "value": "Revenue +70%; EBITDA margin 82.3%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 2026 adjusted EBITDA margin reached 84.2% while revenue grew 56%.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "Revenue +56%; EBITDA margin 84.2%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The product stack combines AppLovin Ads, MAX, Adjust and Wurl, integrating demand, publisher monetization, measurement and CTV distribution.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": "Integrated advertising product stack",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Management continues investing in Axon model enhancements and new verticals.",
+      "source_type": "filing",
+      "source": "Uploaded 10-K/Q2 10-Q",
+      "period": "2025-2026",
+      "as_of_date": "2026-08-05",
+      "value": "Ongoing Axon and vertical expansion",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Advertisers can multi-home across ad platforms with relatively low contractual switching cost.",
+    "Apple and Google can restrict identifiers and attribution data.",
+    "Meta/Google/Amazon possess enormous first-party datasets and distribution.",
+    "Independent adtech historically faces commoditization and take-rate pressure."
+  ],
+  "unknowns": [
+    "Relative conversion lift from Axon over peers.",
+    "Publisher share and retention for MAX.",
+    "Pricing/take-rate durability.",
+    "Impact of future privacy APIs on model performance."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Economic performance creates stickiness, but direct pricing power and switching costs are not disclosed."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "minor",
+      "rationale": "Growth and margin evidence strongly support a reinforcing data/scale loop."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Platform policy and hyperscale competitors can compress differentiation."
+    }
+  ],
+  "falsifiers": [
+    "Revenue growth decelerates while digital-ad market remains strong and competitors gain share.",
+    "Margins fall structurally as take rates compress or data costs rise.",
+    "Platform/privacy changes materially weaken Axon performance."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Current growth, margins and product expansion indicate a strengthening rather than persistently shrinking moat."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Revenue share gains",
+      "direction": "up",
+      "threshold": "Growth remains above market",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Margin / cash conversion",
+      "direction": "stable",
+      "threshold": "Scale benefits persist",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Platform-policy impact",
+      "direction": "stable",
+      "threshold": "No sustained degradation in targeting economics",
+      "cadence": "event-driven"
+    }
+  ],
+  "next_checks": [
+    "Competitor growth comparisons.",
+    "MAX/Axon adoption commentary.",
+    "Privacy-platform rule changes."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 85,
+      "rationale": "ROI-driven budget stickiness is strengthening despite easy multi-homing."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 90,
+      "rationale": "Demand, publisher inventory and conversion data reinforce Axon model performance."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 75,
+      "rationale": "Integrated stack defends differentiation, but platform and hyperscale competition remain serious."
+    }
+  ]
+}
