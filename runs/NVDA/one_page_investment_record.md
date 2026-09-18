@@ -1,8 +1,8 @@
 # One-page Investment Record — NVDA (NVIDIA Corporation)
 
-기준일 2026-09-17 · 종가 $219.34 · 종합점수 **70.86**(밸류에이션 제외 74.01, Emerging Outlier) · 유형 **관망·회피형(non_fit)**
+기준일 2026-09-17 · 종가 $219.34 · 종합점수 **73.94**(보정 전 70.86, 밸류에이션 제외 77.35, Emerging Outlier) · 유형 **컴파운더(잠정)**
 IC 판정 **WATCH** · 비중 **0%** (Hard Veto 3건 미해소) · 매크로 pacing 배수 0.7
-run: harness d271b16 / Antropic / Claude-Opus-5 / reasoning-effort extra · 캘리브레이션 claude-v1
+run: harness d271b16 / Antropic / Claude-Opus-5 / reasoning-effort extra · 캘리브레이션 claude-v1 + 프로바이더 보정(anthropic +1.67~+5.00)
 input_snapshot_sha256 7aa29b98d265b0e0d996704cb767e2f93b24ed085db34e0c82a2354a6c463280
 14개 에이전트 전량 실행 완료 (SL·CP·MT·RF·MA·FS·EV·AS·DI·TQ·MO·ED·RT·IC)
 

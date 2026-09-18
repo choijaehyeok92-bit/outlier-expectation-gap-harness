@@ -711,5 +711,50 @@
       "판정표 점수와 modifier 적용 결과는 반드시 5점 단위가 되도록 반올림한다."
     ],
     "observed_divergence": "NVDA 2026-09-17/18 동일 종가 기준 gpt-5.6-sol 대 Claude Opus 5 실행 비교: criterion 27개 평균 격차 +10.2점(sol이 높음), 27개 전부 sol >= opus. 관측 가능한 사실형 criterion은 +3.1, 위험 가중 판단형은 +13.2로 4배 차이였다. 앵커가 형용사인 criterion에서만 갈라진다는 뜻이다."
+  },
+  "provider_calibration": {
+    "enabled": true,
+    "note": "프로바이더 계열에 따른 계통 편향을 도메인 점수 단계에서 보정한다. subscore는 건드리지 않으며 보정 전 값을 항상 함께 기록한다.",
+    "basis": {
+      "sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조",
+      "n": 27,
+      "measured_mean_gap": 10.2,
+      "measured_sd": 6.9,
+      "direction": "27개 전부 gpt-5.6-sol >= Claude Opus 5. 노이즈가 아니라 계통 편향.",
+      "caveat": "표본은 종목 1개다. 다른 종목의 쌍 실행이 쌓이면 base_offset을 재추정해야 한다. harness.py calibrate로 측정한다."
+    },
+    "method": "domain 점수와 raw_weighted_median에 offset을 더한다. offset = base_offset x (해당 도메인에서 판정표가 없는 criterion의 비율). 판정표가 있는 criterion은 이미 프로바이더 간 격차가 0이므로 보정 대상이 아니다.",
+    "self_liquidating": "observable_anchors를 늘릴수록 보정 계수가 자동으로 줄고, 전 criterion에 판정표가 생기면 보정은 0이 된다. 보정은 임시 장치이지 목표가 아니다.",
+    "base_offset": 5.0,
+    "max_abs_offset": 5.0,
+    "families": [
+      {
+        "id": "anthropic",
+        "sign": 1,
+        "match": [
+          "claude",
+          "opus",
+          "sonnet",
+          "haiku",
+          "anthropic",
+          "antropic"
+        ],
+        "rationale": "측정된 평균 격차 10.2점의 절반을 상향 보정한다. 불확실한 위험을 가중할 때 비관 쪽으로 기우는 경향이 관측됐다. 대표 사례: upside_path 35(판정표 75), probability_calibration 65(판정표 85)."
+      },
+      {
+        "id": "openai",
+        "sign": -1,
+        "match": [
+          "gpt",
+          "openai",
+          "o1",
+          "o3",
+          "o4",
+          "sol"
+        ],
+        "rationale": "같은 격차의 절반을 하향 보정한다. 앵커값(25/50/75/90)에 그대로 착지하며 27개 중 15개가 앵커값, 90을 9번 사용했고 50 미만을 한 번도 쓰지 않았다."
+      }
+    ],
+    "default_offset": 0.0
   }
 }

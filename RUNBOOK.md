@@ -97,6 +97,15 @@ criterion 단위 격차와 요약 통계(평균·중앙값·표준편차, 판정
 
 기준선으로 `runs/_reference/NVDA-2026-09-18-sol/`(gpt-5.6-sol 실행본)이 저장돼 있다.
 
+### 프로바이더 보정
+`config/calibration.json`의 `provider_calibration`이 계열별 계통 편향을 도메인 점수에서 보정한다.
+`aggregate.json`의 `provider_calibration.per_domain_offset`과 각 도메인의
+`score_before_provider_calibration`으로 보정 전후를 항상 대조할 수 있다.
+
+보정으로 archetype이나 상태가 바뀌었다면 `final_verdict.archetype_rationale`에 그 사실과 보정 전 점수를
+반드시 남긴다. 현재 `base_offset` 5.0은 종목 1개 표본에서 나온 값이므로, 쌍 실행이 2~3종목 쌓이면
+`calibrate` 결과로 재추정한다. 보정을 끄려면 `enabled`를 false로 둔다.
+
 ### 프로바이더 편향이 의심될 때
 1. `calibrate`로 격차를 측정한다. 부호가 한쪽으로 쏠리면(전 criterion에서 A ≥ B) 노이즈가 아니라 계통 편향이다.
 2. 격차가 큰 criterion이 형용사 앵커인지 확인한다. 그렇다면 `config/calibration.json`에

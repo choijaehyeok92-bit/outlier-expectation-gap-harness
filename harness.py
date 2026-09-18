@@ -13,6 +13,7 @@ EXEC=WORKFLOW['execution']
 RUBRICS=CALIBRATION['rubrics']
 VAL_POLICY=CALIBRATION['valuation']
 VETO_REVIEWERS=CALIBRATION['veto_reviewers']
+PROVIDER_CAL=CALIBRATION.get('provider_calibration',{'enabled':False})
 SCORE_DOMAINS={x['id']:x for x in STRATEGY['scorecard']}
 AXIS_DOMAINS={x['id']:x for x in STRATEGY['evaluation_axes']}
 ARCHETYPES=STRATEGY['archetypes']
@@ -237,6 +238,46 @@ def domain_aggregate(reports):
         'domain_dispute':spread>=20,'review_required':spread>=20 or unc['critical']>0,
         'uncertainties':unc,'score_source':'rubric_subscores' if modern else 'legacy_declared_score'}
 
+def provider_family(manifest):
+    """Match the frozen runner metadata to a declared provider family."""
+    runner=(manifest or {}).get('runner') or {}
+    hay=' '.join(str(runner.get(k) or '') for k in ('provider','model')).lower()
+    for fam in PROVIDER_CAL.get('families',[]):
+        if any(tok in hay for tok in fam['match']): return fam
+    return None
+
+def uncovered_fraction(domain):
+    """Share of a domain's criteria that still rely on adjective anchors."""
+    rb=rubric_for(domain)
+    if not rb or not rb.get('criteria'): return 0.0
+    crit=rb['criteria']
+    bare=sum(1 for c in crit if 'observable_anchors' not in c and 'signal_map' not in c)
+    return bare/len(crit)
+
+def apply_provider_calibration(ds, manifest):
+    """Shift domain scores toward the pooled mean by a capped, declared offset.
+
+    Subscores are never touched; the pre-offset values are kept alongside so the
+    correction is always auditable and reversible."""
+    if not PROVIDER_CAL.get('enabled'): return {'applied':False,'reason':'disabled'}
+    fam=provider_family(manifest)
+    if not fam: return {'applied':False,'reason':'provider family not recognised',
+                        'runner':(manifest or {}).get('runner')}
+    base=float(PROVIDER_CAL['base_offset']); cap=float(PROVIDER_CAL['max_abs_offset'])
+    per={}
+    for d,meta in ds.items():
+        if not meta: continue
+        off=max(-cap,min(cap,base*fam['sign']*uncovered_fraction(d)))
+        meta['score_before_provider_calibration']=meta['score']
+        meta['raw_before_provider_calibration']=meta['raw_weighted_median']
+        meta['provider_offset']=round(off,2)
+        meta['score']=round(max(0,min(100,meta['score']+off)),2)
+        meta['raw_weighted_median']=round(max(0,min(100,meta['raw_weighted_median']+off)),2)
+        per[d]=round(off,2)
+    return {'applied':True,'family':fam['id'],'sign':fam['sign'],'base_offset':base,
+            'max_abs_offset':cap,'per_domain_offset':per,
+            'basis':PROVIDER_CAL.get('basis'),'rationale':fam.get('rationale')}
+
 def classification(score):
     for c in STRATEGY['classifications']:
         if c['min']<=score<=c['max']: return c['label']
@@ -364,6 +405,8 @@ def compute_aggregate(ticker, reports):
     ds={}
     for d in [*SCORE_DOMAINS, *AXIS_DOMAINS]:
         if d in by_domain: ds[d]=domain_aggregate(by_domain[d])
+    manifest=load_manifest(ticker)
+    provider_cal=apply_provider_calibration(ds,manifest)
     normalized,covered=core_score(ds)
     score_ex_valuation,_=core_score(ds,exclude=(SIGNAL_DOMAIN,))
     gate=veto_gate(reports); confirmed=gate['confirmed']; unresolved=gate['unresolved']; veto_status=gate['overall']
@@ -390,7 +433,7 @@ def compute_aggregate(ticker, reports):
     pos={**{b['state']:b['position_range'] for b in STATE_POLICY['bands']},**STATE_POLICY['non_score_states']}[state]
     if archetype['position_cap'] and state in BUY_STATES: pos=archetype['position_cap']
     di=ds.get('disruptive_innovation'); tq=ds.get('turnaround_quality')
-    return {'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'turnaround_quality_score':tq['score'] if tq else None,'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'run_manifest':load_manifest(ticker)}
+    return {'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'turnaround_quality_score':tq['score'] if tq else None,'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'provider_calibration':provider_cal,'run_manifest':manifest}
 
 def triage_complete(reports):
     status={}
@@ -740,6 +783,17 @@ def cmd_selftest(args):
     vo=deterministic_valuation(ev,{'current_price':100.0,'net_cash_per_share':5.0,
         'valuation_overrides':{'required_return':None,'terminal_multiples':{}}})
     assert vo['status']=='COMPLETE' and vo['scenarios']['base']['terminal_multiple']==VAL_POLICY['terminal_multiples']['base']
+    fam=provider_family({'runner':{'provider':'Antropic','model':'Claude-Opus-5'}})
+    assert fam and fam['id']=='anthropic', 'provider family match must tolerate provider typos'
+    assert provider_family({'runner':{'provider':'openai','model':'gpt-5.6-sol'}})['id']=='openai'
+    assert provider_family({'runner':{'runner':None}}) is None
+    pds={'asymmetry':{'score':60.0,'raw_weighted_median':60.0}}
+    info=apply_provider_calibration(pds,{'runner':{'provider':'openai','model':'gpt-5.6-sol'}})
+    assert info['applied'] and pds['asymmetry']['score']<60.0, 'openai runs must be adjusted downward'
+    assert pds['asymmetry']['score_before_provider_calibration']==60.0, 'pre-offset score must be preserved'
+    assert abs(pds['asymmetry']['provider_offset'])<=PROVIDER_CAL['max_abs_offset']+1e-9
+    assert apply_provider_calibration({'asymmetry':{'score':60.0,'raw_weighted_median':60.0}},
+                                      {'runner':{'provider':'someone-else'}})['applied'] is False
     bands=sorted(STATE_POLICY['bands'],key=lambda x:-x['min'])
     assert bands[-1]['min']==0, 'state_thresholds.bands must terminate at min 0'
     assert all(bands[i]['min']>bands[i+1]['min'] for i in range(len(bands)-1)), 'state bands must be strictly descending'

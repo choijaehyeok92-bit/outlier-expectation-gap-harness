@@ -1,19 +1,19 @@
 {
   "ticker": "NVDA",
-  "score_100": 70.86,
-  "score_100_ex_valuation": 74.01,
+  "score_100": 73.94,
+  "score_100_ex_valuation": 77.35,
   "coverage_weight": 100,
   "classification": "Emerging Outlier",
-  "disruptive_innovation_score": 78.75,
-  "turnaround_quality_score": 34.25,
+  "disruptive_innovation_score": 82.08,
+  "turnaround_quality_score": 39.25,
   "archetype": {
-    "id": "non_fit",
-    "label": "관망·회피형",
-    "label_en": "Non-fit / Avoid",
-    "reason": "어느 유형 조건도 충족하지 않거나 게이트 점수 미달",
-    "gate_score": null,
+    "id": "compounder",
+    "label": "컴파운더",
+    "label_en": "Compounder",
+    "reason": "유형 조건 및 게이트 점수 충족",
+    "gate_score": 73.94,
     "secondary": [],
-    "position_guidance": "유형 적합성이 확인되기 전까지 신규 비중 확대 금지.",
+    "position_guidance": "장기 보유가 기본이다. 밸류에이션 과열 시 매도보다 추가매수 속도를 조절한다.",
     "position_cap": null,
     "signals": {
       "price_to_base_value": 1.0304,
@@ -26,7 +26,7 @@
         "id": "moonshot",
         "label": "문샷형",
         "conditions_met": false,
-        "gate_score": 74.01,
+        "gate_score": 77.35,
         "gate_threshold": 60.0,
         "gate_passed": true,
         "failed": [
@@ -38,21 +38,18 @@
       {
         "id": "compounder",
         "label": "컴파운더",
-        "conditions_met": false,
-        "gate_score": 70.86,
+        "conditions_met": true,
+        "gate_score": 73.94,
         "gate_threshold": 60.0,
         "gate_passed": true,
-        "failed": [
-          "domain.moat_trajectory",
-          "domain.reinvestment_fcf"
-        ],
+        "failed": [],
         "missing": []
       },
       {
         "id": "turnaround",
         "label": "턴어라운드형",
         "conditions_met": false,
-        "gate_score": 70.86,
+        "gate_score": 73.94,
         "gate_threshold": 55.0,
         "gate_passed": true,
         "failed": [
@@ -65,7 +62,7 @@
         "id": "expectation_gap",
         "label": "기대차형",
         "conditions_met": false,
-        "gate_score": 70.86,
+        "gate_score": 73.94,
         "gate_threshold": 60.0,
         "gate_passed": true,
         "failed": [
@@ -77,7 +74,9 @@
       }
     ]
   },
-  "reachable_archetypes_raw": [],
+  "reachable_archetypes_raw": [
+    "compounder"
+  ],
   "early_exit": false,
   "hard_veto_status": "UNRESOLVED",
   "mechanical_pre_ic_state": "WATCH",
@@ -86,8 +85,8 @@
     "structural_leadership": {
       "bull_score": 88,
       "bear_score": 55,
-      "raw_weighted_median": 75.5,
-      "score": 75.5,
+      "raw_weighted_median": 78.83,
+      "score": 78.83,
       "spread": 33.0,
       "avg_confidence": 0.65,
       "unknown_penalty": 0,
@@ -99,13 +98,16 @@
         "material": 1,
         "minor": 1
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 75.5,
+      "raw_before_provider_calibration": 75.5,
+      "provider_offset": 3.33
     },
     "customer_product": {
       "bull_score": 85,
       "bear_score": 50,
-      "raw_weighted_median": 75.25,
-      "score": 75.25,
+      "raw_weighted_median": 80.25,
+      "score": 80.25,
       "spread": 35.0,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
@@ -117,13 +119,16 @@
         "material": 2,
         "minor": 0
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 75.25,
+      "raw_before_provider_calibration": 75.25,
+      "provider_offset": 5.0
     },
     "moat_trajectory": {
       "bull_score": 85,
       "bear_score": 50,
-      "raw_weighted_median": 73.75,
-      "score": 73.75,
+      "raw_weighted_median": 77.08,
+      "score": 77.08,
       "spread": 35.0,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
@@ -135,13 +140,16 @@
         "material": 2,
         "minor": 0
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 73.75,
+      "raw_before_provider_calibration": 73.75,
+      "provider_offset": 3.33
     },
     "reinvestment_fcf": {
       "bull_score": 88,
       "bear_score": 55,
-      "raw_weighted_median": 74.5,
-      "score": 74.5,
+      "raw_weighted_median": 77.83,
+      "score": 77.83,
       "spread": 33.0,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
@@ -153,13 +161,16 @@
         "material": 2,
         "minor": 0
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 74.5,
+      "raw_before_provider_calibration": 74.5,
+      "provider_offset": 3.33
     },
     "management_allocation": {
       "bull_score": 82,
       "bear_score": 55,
-      "raw_weighted_median": 73.75,
-      "score": 73.75,
+      "raw_weighted_median": 77.08,
+      "score": 77.08,
       "spread": 27.0,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
@@ -171,13 +182,16 @@
         "material": 1,
         "minor": 1
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 73.75,
+      "raw_before_provider_calibration": 73.75,
+      "provider_offset": 3.33
     },
     "financial_survival": {
       "bull_score": 88,
       "bear_score": 62,
-      "raw_weighted_median": 77.75,
-      "score": 77.75,
+      "raw_weighted_median": 81.08,
+      "score": 81.08,
       "spread": 26.0,
       "avg_confidence": 0.7,
       "unknown_penalty": 0,
@@ -189,13 +203,16 @@
         "material": 1,
         "minor": 1
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 77.75,
+      "raw_before_provider_calibration": 77.75,
+      "provider_offset": 3.33
     },
     "expectation_valuation": {
       "bull_score": 85,
       "bear_score": 20,
-      "raw_weighted_median": 53.0,
-      "score": 53.0,
+      "raw_weighted_median": 54.67,
+      "score": 54.67,
       "spread": 65.0,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
@@ -207,13 +224,16 @@
         "material": 2,
         "minor": 0
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 53.0,
+      "raw_before_provider_calibration": 53.0,
+      "provider_offset": 1.67
     },
     "asymmetry": {
       "bull_score": 82,
       "bear_score": 25,
-      "raw_weighted_median": 66.75,
-      "score": 66.75,
+      "raw_weighted_median": 68.42,
+      "score": 68.42,
       "spread": 57.0,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
@@ -225,13 +245,16 @@
         "material": 3,
         "minor": 0
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 66.75,
+      "raw_before_provider_calibration": 66.75,
+      "provider_offset": 1.67
     },
     "disruptive_innovation": {
       "bull_score": 90,
       "bear_score": 60,
-      "raw_weighted_median": 78.75,
-      "score": 78.75,
+      "raw_weighted_median": 82.08,
+      "score": 82.08,
       "spread": 30.0,
       "avg_confidence": 0.7,
       "unknown_penalty": 0,
@@ -243,13 +266,16 @@
         "material": 2,
         "minor": 1
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 78.75,
+      "raw_before_provider_calibration": 78.75,
+      "provider_offset": 3.33
     },
     "turnaround_quality": {
       "bull_score": 50,
       "bear_score": 25,
-      "raw_weighted_median": 34.25,
-      "score": 34.25,
+      "raw_weighted_median": 39.25,
+      "score": 39.25,
       "spread": 25.0,
       "avg_confidence": 0.75,
       "unknown_penalty": 0,
@@ -261,7 +287,10 @@
         "material": 1,
         "minor": 3
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 34.25,
+      "raw_before_provider_calibration": 34.25,
+      "provider_offset": 5.0
     }
   },
   "disputes": [
@@ -269,8 +298,8 @@
       "domain": "structural_leadership",
       "bull_score": 88,
       "bear_score": 55,
-      "raw_weighted_median": 75.5,
-      "score": 75.5,
+      "raw_weighted_median": 78.83,
+      "score": 78.83,
       "spread": 33.0,
       "avg_confidence": 0.65,
       "unknown_penalty": 0,
@@ -282,14 +311,17 @@
         "material": 1,
         "minor": 1
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 75.5,
+      "raw_before_provider_calibration": 75.5,
+      "provider_offset": 3.33
     },
     {
       "domain": "customer_product",
       "bull_score": 85,
       "bear_score": 50,
-      "raw_weighted_median": 75.25,
-      "score": 75.25,
+      "raw_weighted_median": 80.25,
+      "score": 80.25,
       "spread": 35.0,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
@@ -301,14 +333,17 @@
         "material": 2,
         "minor": 0
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 75.25,
+      "raw_before_provider_calibration": 75.25,
+      "provider_offset": 5.0
     },
     {
       "domain": "moat_trajectory",
       "bull_score": 85,
       "bear_score": 50,
-      "raw_weighted_median": 73.75,
-      "score": 73.75,
+      "raw_weighted_median": 77.08,
+      "score": 77.08,
       "spread": 35.0,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
@@ -320,14 +355,17 @@
         "material": 2,
         "minor": 0
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 73.75,
+      "raw_before_provider_calibration": 73.75,
+      "provider_offset": 3.33
     },
     {
       "domain": "reinvestment_fcf",
       "bull_score": 88,
       "bear_score": 55,
-      "raw_weighted_median": 74.5,
-      "score": 74.5,
+      "raw_weighted_median": 77.83,
+      "score": 77.83,
       "spread": 33.0,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
@@ -339,14 +377,17 @@
         "material": 2,
         "minor": 0
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 74.5,
+      "raw_before_provider_calibration": 74.5,
+      "provider_offset": 3.33
     },
     {
       "domain": "management_allocation",
       "bull_score": 82,
       "bear_score": 55,
-      "raw_weighted_median": 73.75,
-      "score": 73.75,
+      "raw_weighted_median": 77.08,
+      "score": 77.08,
       "spread": 27.0,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
@@ -358,14 +399,17 @@
         "material": 1,
         "minor": 1
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 73.75,
+      "raw_before_provider_calibration": 73.75,
+      "provider_offset": 3.33
     },
     {
       "domain": "financial_survival",
       "bull_score": 88,
       "bear_score": 62,
-      "raw_weighted_median": 77.75,
-      "score": 77.75,
+      "raw_weighted_median": 81.08,
+      "score": 81.08,
       "spread": 26.0,
       "avg_confidence": 0.7,
       "unknown_penalty": 0,
@@ -377,14 +421,17 @@
         "material": 1,
         "minor": 1
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 77.75,
+      "raw_before_provider_calibration": 77.75,
+      "provider_offset": 3.33
     },
     {
       "domain": "expectation_valuation",
       "bull_score": 85,
       "bear_score": 20,
-      "raw_weighted_median": 53.0,
-      "score": 53.0,
+      "raw_weighted_median": 54.67,
+      "score": 54.67,
       "spread": 65.0,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
@@ -396,14 +443,17 @@
         "material": 2,
         "minor": 0
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 53.0,
+      "raw_before_provider_calibration": 53.0,
+      "provider_offset": 1.67
     },
     {
       "domain": "asymmetry",
       "bull_score": 82,
       "bear_score": 25,
-      "raw_weighted_median": 66.75,
-      "score": 66.75,
+      "raw_weighted_median": 68.42,
+      "score": 68.42,
       "spread": 57.0,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
@@ -415,14 +465,17 @@
         "material": 3,
         "minor": 0
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 66.75,
+      "raw_before_provider_calibration": 66.75,
+      "provider_offset": 1.67
     },
     {
       "domain": "disruptive_innovation",
       "bull_score": 90,
       "bear_score": 60,
-      "raw_weighted_median": 78.75,
-      "score": 78.75,
+      "raw_weighted_median": 82.08,
+      "score": 82.08,
       "spread": 30.0,
       "avg_confidence": 0.7,
       "unknown_penalty": 0,
@@ -434,14 +487,17 @@
         "material": 2,
         "minor": 1
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 78.75,
+      "raw_before_provider_calibration": 78.75,
+      "provider_offset": 3.33
     },
     {
       "domain": "turnaround_quality",
       "bull_score": 50,
       "bear_score": 25,
-      "raw_weighted_median": 34.25,
-      "score": 34.25,
+      "raw_weighted_median": 39.25,
+      "score": 39.25,
       "spread": 25.0,
       "avg_confidence": 0.75,
       "unknown_penalty": 0,
@@ -453,7 +509,10 @@
         "material": 1,
         "minor": 3
       },
-      "score_source": "rubric_subscores"
+      "score_source": "rubric_subscores",
+      "score_before_provider_calibration": 34.25,
+      "raw_before_provider_calibration": 34.25,
+      "provider_offset": 5.0
     }
   ],
   "confirmed_vetoes": [],
@@ -870,6 +929,34 @@
       "valuation_percentile_5y": 0.05,
       "revenue_cagr_next_3y": 0.29
     }
+  },
+  "provider_calibration": {
+    "applied": true,
+    "family": "anthropic",
+    "sign": 1,
+    "base_offset": 5.0,
+    "max_abs_offset": 5.0,
+    "per_domain_offset": {
+      "structural_leadership": 3.33,
+      "customer_product": 5.0,
+      "moat_trajectory": 3.33,
+      "reinvestment_fcf": 3.33,
+      "management_allocation": 3.33,
+      "financial_survival": 3.33,
+      "expectation_valuation": 1.67,
+      "asymmetry": 1.67,
+      "disruptive_innovation": 3.33,
+      "turnaround_quality": 5.0
+    },
+    "basis": {
+      "sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조",
+      "n": 27,
+      "measured_mean_gap": 10.2,
+      "measured_sd": 6.9,
+      "direction": "27개 전부 gpt-5.6-sol >= Claude Opus 5. 노이즈가 아니라 계통 편향.",
+      "caveat": "표본은 종목 1개다. 다른 종목의 쌍 실행이 쌓이면 base_offset을 재추정해야 한다. harness.py calibrate로 측정한다."
+    },
+    "rationale": "측정된 평균 격차 10.2점의 절반을 상향 보정한다. 불확실한 위험을 가중할 때 비관 쪽으로 기우는 경향이 관측됐다. 대표 사례: upside_path 35(판정표 75), probability_calibration 65(판정표 85)."
   },
   "run_manifest": {
     "schema_version": "2.1",

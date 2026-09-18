@@ -1,27 +1,27 @@
 {
   "ticker": "NVDA",
   "as_of_date": "2026-09-17",
-  "score_100": 70.86,
+  "score_100": 73.94,
   "classification": "Emerging Outlier",
   "disruptive_innovation_score": 78.75,
   "turnaround_quality_score": 34.25,
-  "archetype": "non_fit",
+  "archetype": "compounder",
   "secondary_archetypes": [],
-  "archetype_rationale": "기계적 판정(non_fit)을 확정한다. 관측 판정표 적용 후 컴파운더는 MT 73.75(<76)와 RF 74.50(<76) 2개 조건에서 탈락했다. price/Base <=1.2(1.0304), MA 73.75(>=72), FS 77.75(>=72), EV 53.00(>=42)은 충족한다.",
+  "archetype_rationale": "기계적 판정이 컴파운더로 바뀌었고 IC는 이를 조건부로 수용한다. 보정 후 price/Base 1.0304(<=1.2), MT 77.08·RF 77.83(>=76), MA 77.08·FS 81.08(>=72), EV 54.67(>=42)을 모두 충족한다. 단, 보정 전 MT 73.75·RF 74.50은 미달이었고 보정치는 종목 1개 표본 기반이므로 이 분류는 잠정이다. 다른 종목의 쌍 실행으로 base_offset을 재추정한 뒤 재확인한다. 컴파운더 분류가 매수 승인을 뜻하지는 않는다 — Veto 3건 미해소로 상태는 WATCH, 비중 0%다.",
   "hard_veto_status": "UNRESOLVED",
   "ic_state": "WATCH",
-  "position_range": "0% (Hard Veto 3건 미해소. 해소되더라도 관망·회피형 상한인 Starter 1~2%에서 시작)",
+  "position_range": "0% (Hard Veto 3건 미해소. 해소 후에도 price/Base 1.03에서는 기대차가 없어 Starter 이상은 부적절)",
   "domain_scores": {
-    "structural_leadership": 75.5,
-    "customer_product": 75.25,
-    "moat_trajectory": 73.75,
-    "reinvestment_fcf": 74.5,
-    "management_allocation": 73.75,
-    "financial_survival": 77.75,
-    "expectation_valuation": 53.0,
-    "asymmetry": 66.75,
-    "disruptive_innovation": 78.75,
-    "turnaround_quality": 34.25
+    "structural_leadership": 78.83,
+    "customer_product": 80.25,
+    "moat_trajectory": 77.08,
+    "reinvestment_fcf": 77.83,
+    "management_allocation": 77.08,
+    "financial_survival": 81.08,
+    "expectation_valuation": 54.67,
+    "asymmetry": 68.42,
+    "disruptive_innovation": 82.08,
+    "turnaround_quality": 39.25
   },
   "disputes": [
     {
@@ -80,5 +80,34 @@
     "진입가가 Base 가치의 0.8배(약 $170) 이하로 내려가면 AS의 영구손실 Veto가 clear로 전환되고 비대칭성 판단이 뒤집힌다.",
     "MT 또는 RF가 다음 분기 데이터로 컴파운더 임계값 76을 넘으면 유형을 컴파운더로 재판정한다. 현재 미달 폭은 각각 2.25점과 1.50점이다."
   ],
-  "macro_pacing_multiplier": 0.7
+  "macro_pacing_multiplier": 0.7,
+  "domain_scores_before_provider_calibration": {
+    "structural_leadership": 75.5,
+    "customer_product": 75.25,
+    "moat_trajectory": 73.75,
+    "reinvestment_fcf": 74.5,
+    "management_allocation": 73.75,
+    "financial_survival": 77.75,
+    "expectation_valuation": 53.0,
+    "asymmetry": 66.75,
+    "disruptive_innovation": 78.75,
+    "turnaround_quality": 34.25
+  },
+  "provider_calibration": {
+    "family": "anthropic",
+    "base_offset": 5.0,
+    "per_domain_offset": {
+      "structural_leadership": 3.33,
+      "customer_product": 5.0,
+      "moat_trajectory": 3.33,
+      "reinvestment_fcf": 3.33,
+      "management_allocation": 3.33,
+      "financial_survival": 3.33,
+      "expectation_valuation": 1.67,
+      "asymmetry": 1.67,
+      "disruptive_innovation": 3.33,
+      "turnaround_quality": 5.0
+    },
+    "basis_sample_n": 27
+  }
 }

@@ -113,7 +113,23 @@ opus는 앵커 사이로 보간해 [35,90]을 썼다(27개 중 4개).
 요구하고, 40 미만은 1차 자료 반증 근거를 요구한다. 근거 없는 낙관과 근거 없는 신중을 대칭으로 막는다.
 어느 앵커 구간을 골랐고 인접 구간을 왜 배제했는지 `rationale`에 적어야 한다.
 
-**대응 3 — `harness.py calibrate`.** 두 실행의 subscore를 criterion 단위로 대조해 격차를 수치로 낸다.
+**대응 3 — 프로바이더 보정(`provider_calibration`).** 판정표가 없는 criterion에 남는 격차를 도메인 점수
+단계에서 대칭으로 보정한다. Anthropic 계열은 상향, OpenAI 계열은 하향하며 각각 측정 격차 10.2점의 절반이다.
+
+- `offset = base_offset × (해당 도메인에서 판정표가 없는 criterion의 비율)` — **판정표를 늘릴수록 보정이
+  자동으로 줄고, 전 criterion을 덮으면 0이 된다.** 보정은 임시 장치이지 목표가 아니다.
+- subscore는 건드리지 않는다. 도메인의 `score`와 `raw_weighted_median`만 이동하고
+  `score_before_provider_calibration`으로 보정 전 값을 항상 남긴다.
+- `max_abs_offset` 5.0으로 상한이 걸려 있고, 계열이 인식되지 않으면 보정하지 않는다(`default_offset` 0).
+- `aggregate.json`의 `provider_calibration`에 계열·계수·근거·표본 크기가 기록된다.
+
+**경고 — 이 보정은 판정을 뒤집을 수 있다.** NVDA 실행에서 MT 73.75 → 77.08, RF 74.50 → 77.83이 되며
+컴파운더 임계값 76을 넘어 유형이 `non_fit`에서 `compounder`로 바뀌었다. 사업 사실이 달라진 것이 아니다.
+**근거는 종목 1개(criterion 27개) 표본이다.** 다른 종목의 쌍 실행으로 `base_offset`을 재추정하기 전까지
+보정에 의해 바뀐 분류는 잠정으로 다뤄야 하며, `final_verdict.archetype_rationale`에 그 사실을 남긴다.
+끄려면 `calibration.json`의 `provider_calibration.enabled`를 false로 두면 된다.
+
+**대응 4 — `harness.py calibrate`.** 두 실행의 subscore를 criterion 단위로 대조해 격차를 수치로 낸다.
 `runs/_reference/NVDA-2026-09-18-sol/`에 sol 실행본을 기준선으로 보존했다.
 
 ```bash
