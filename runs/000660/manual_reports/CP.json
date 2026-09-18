@@ -5,7 +5,7 @@
   "domain": "customer_product",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 82,
+  "score_0_100": 80,
   "confidence_0_1": 0.8,
   "bull_score": 92,
   "bear_score": 60,
@@ -29,6 +29,15 @@
       "period": "H1 2026",
       "as_of_date": "2026-08-14",
       "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026 H1 filing shows revenue KRW 131.895T and operating cash flow KRW 91.743T, supporting scale and cash-generation checks.",
+      "source_type": "filing",
+      "source": "runs/000660/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-14",
+      "value": "131.895T/91.743T",
       "fact_or_estimate": "fact"
     }
   ],
@@ -68,18 +77,18 @@
   "subscores": [
     {
       "criterion_id": "customer_roi",
-      "score_0_100": 82,
-      "rationale": "customer_roi: 공시 수치와 산업 구조를 함께 반영한 82점 구간."
+      "score_0_100": 80,
+      "rationale": "customer_roi: validator의 5점 앵커 규칙과 frozen evidence를 적용한 80점."
     },
     {
       "criterion_id": "retention_usage",
-      "score_0_100": 82,
-      "rationale": "retention_usage: 공시 수치와 산업 구조를 함께 반영한 82점 구간."
+      "score_0_100": 80,
+      "rationale": "retention_usage: validator의 5점 앵커 규칙과 frozen evidence를 적용한 80점."
     },
     {
       "criterion_id": "unit_economics",
-      "score_0_100": 82,
-      "rationale": "unit_economics: 공시 수치와 산업 구조를 함께 반영한 82점 구간."
+      "score_0_100": 80,
+      "rationale": "unit_economics: validator의 5점 앵커 규칙과 frozen evidence를 적용한 80점."
     }
   ],
   "uncertainties": [
