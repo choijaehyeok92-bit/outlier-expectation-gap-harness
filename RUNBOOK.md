@@ -1,6 +1,6 @@
 # RUNBOOK
 
-실행 단위는 **항목 1개 = 에이전트 1개 = 호출 1회**다(총 13개). 매 단계마다 `plan`이 다음에 돌릴 에이전트와 조기 종료 여부를 알려준다.
+실행 단위는 **항목 1개 = 에이전트 1개 = 호출 1회**다(총 14개). 매 단계마다 `plan`이 다음에 돌릴 에이전트와 조기 종료 여부를 알려준다.
 
 ```bash
 python harness.py plan TICKER
@@ -19,9 +19,9 @@ python harness.py freeze TICKER --provider <provider> --model <model> --reasonin
 
 ## 2. Phase 1a — Triage
 ```bash
-python harness.py prompt TICKER EV   # AS, DI도 동일
+python harness.py prompt TICKER EV   # AS, DI, TQ도 동일
 ```
-출력된 프롬프트를 에이전트 1회 호출로 실행한다. 세 에이전트가 끝나면 `plan`을 다시 실행한다. 감점 전 점수와 밸류에이션 신호로도 도달 가능한 유형이 없으면 **EARLY EXIT**이다. 이 경우 `aggregate`만 실행하고 종료한다(상태 `EARLY_EXIT_NON_FIT`, 비중 0%).
+출력된 프롬프트를 에이전트 1회 호출로 실행한다. 네 에이전트가 끝나면 `plan`을 다시 실행한다. 감점 전 점수와 밸류에이션 신호로도 도달 가능한 유형이 없으면 **EARLY EXIT**이다. 이 경우 `aggregate`만 실행하고 종료한다(상태 `EARLY_EXIT_NON_FIT`, 비중 0%).
 
 ## 3. Phase 1b·2 — 나머지 도메인
 `plan`이 알려주는 SL·CP·MT·RF·MA·FS를 병렬로 실행한다. **다른 항목의 보고서는 보여주지 않는다.** 각 에이전트는 Bull·Verifier·Skeptic 관점을 보고서 안에서 분리하고 `bull_score`/`bear_score`를 남긴다. 두 점수 차이가 20 이상이면 분쟁, 30 이상이면 재조사 대상이다.
@@ -44,6 +44,7 @@ python harness.py prompt TICKER IC    # 반대 논리 → 판정 → final_verdi
 ```
 도메인 점수에는 미확인·분쟁(bull − bear)·신뢰도 패널티가 적용된다. `aggregate.json`에는 다음이 함께 기록된다.
 - `disruptive_innovation_score`: 파괴적 혁신 축 점수 (100점 비합산)
+- `turnaround_quality_score`: 턴어라운드 품질 축 점수 (100점 비합산)
 - `score_100_ex_valuation`: 밸류에이션 도메인을 제외한 점수 (문샷형 게이트용)
 - `archetype`: 기계적 종목 유형, 판정 근거, 유형별 조건 충족·미충족·데이터 부족 내역
 - `reachable_archetypes_raw`, `early_exit`: 감점 전 원점수 기준 도달 가능 유형과 조기 종료 여부
@@ -74,6 +75,7 @@ python harness.py validate TICKER [AGENT_ID ...]
 
 유형별 추가 규칙:
 - 문샷형: 초기 1~3%. 채택·단위경제 증거가 늘어날 때 IC 승인으로 단계 확대
+- 턴어라운드형: 초기 1~3% 상한. 최소 2개 분기의 실적 회복·FCF 정상화·부채축소 증거가 늘 때 단계 확대
 - 관망·회피형: 신규 매수 최대 Starter/Watch
 
 ## 10. 모니터링
