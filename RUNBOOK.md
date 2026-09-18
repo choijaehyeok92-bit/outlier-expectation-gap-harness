@@ -34,7 +34,12 @@ python harness.py prompt TICKER ED   # RT도 동일
 Phase 3는 원 보고서가 아니라 `digest.md`를 입력으로 쓴다. Red Team은 종목점수에 직접 더하지 않고 Hard Veto와 IC 반론의 증거로 사용한다.
 
 ## 5. Phase 4 — Hard Veto gate
-9개 veto를 `cleared / conditional / confirmed / unresolved`로 분류한다. 점수가 아무리 높아도 미해소 veto가 있으면 매수를 승인하지 않는다 — 실제 구속 조건은 대개 점수 임계값이 아니라 이 게이트다. `confirmed`는 기본 REJECT, `unresolved`는 최소 WATCH로 제한한다.
+10개 veto를 `cleared / conditional / confirmed / unresolved`로 분류한다. 점수가 아무리 높아도 미해소 veto가 있으면 매수를 승인하지 않는다 — 실제 구속 조건은 대개 점수 임계값이 아니라 이 게이트다. `confirmed`는 기본 REJECT, `unresolved`는 최소 WATCH로 제한한다.
+
+판정은 "중대한 리스크인가"가 아니라 **"이 문장이 실제로 성립하는가"**다. `config/calibration.json`의
+`veto_criteria`가 문구마다 구성요건·해소조건·관할 밖을 정의하며, 구성요건 중 하나라도 증거로 반증되면
+`cleared`다. 우려는 도메인 점수·`uncertainties`·`key_kpis`로 보내고 veto로 올리지 않는다.
+도메인 점수에 이미 온전히 반영된 사실만으로는 veto를 세우지 않는다(중복 금지).
 
 ## 6. Phase 5 — 집계와 IC
 ```bash

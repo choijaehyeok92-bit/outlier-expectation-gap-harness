@@ -595,6 +595,11 @@ def cmd_prompt(args):
     common=[l for l in (ROOT/'agents/COMMON.md').read_text(encoding='utf-8').splitlines() if not l.startswith('# ')]
     P+=['','## 공통 규칙','\n'.join(common).strip(),
         '','## Hard Veto (정확한 문자열 사용)']+[f'- {v}' for v in VETOES]
+    vc=CALIBRATION.get('veto_criteria')
+    if vc:
+        mine={v:vc['definitions'][v] for v in (owned or []) if v in vc.get('definitions',{})}
+        P+=['','## Hard Veto 판정 기준',vc['note'],vc['anti_double_counting'],
+            json.dumps({'status_rule':vc['status_rule'],'definitions':mine or vc['definitions']},ensure_ascii=False,indent=2)]
     P+=['','## 출력',f"agent_id/ticker/as_of_date/domain/role은 그대로 두고 아래 필드를 채운다. 분량 상한: thesis {lim['thesis_chars']}자, evidence {lim['evidence'][0]}~{lim['evidence'][1]}개, counterevidence {lim['counterevidence']}개, unknowns {lim['unknowns']}개(핵심 가설에 직결되는 것만), falsifiers·key_kpis·next_checks 각 {lim['falsifiers']}개. hard_veto_flags에는 상태가 none이 아닌 항목만 쓴다.",
         skeleton(agent,lim),f"작성 후 `python harness.py validate {t} {aid}`로 검증한다."]
     P+=['','최종 답변은 120단어 이내: 점수(bear–bull)·신뢰도·verdict·none이 아닌 Veto, 가장 중요한 미확인 사항 1개.']
@@ -783,6 +788,9 @@ def cmd_selftest(args):
     vo=deterministic_valuation(ev,{'current_price':100.0,'net_cash_per_share':5.0,
         'valuation_overrides':{'required_return':None,'terminal_multiples':{}}})
     assert vo['status']=='COMPLETE' and vo['scenarios']['base']['terminal_multiple']==VAL_POLICY['terminal_multiples']['base']
+    vc=CALIBRATION.get('veto_criteria',{})
+    assert set(vc.get('definitions',{}))==set(VETOES), 'veto_criteria must define every hard veto exactly once'
+    assert all(VETO_REVIEWERS.get(v) for v in VETOES), 'every hard veto needs at least one owning reviewer'
     fam=provider_family({'runner':{'provider':'Antropic','model':'Claude-Opus-5'}})
     assert fam and fam['id']=='anthropic', 'provider family match must tolerate provider typos'
     assert provider_family({'runner':{'provider':'openai','model':'gpt-5.6-sol'}})['id']=='openai'

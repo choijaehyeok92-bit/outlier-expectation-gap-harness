@@ -7,24 +7,24 @@
   "analysis_status": "complete",
   "score_0_100": 73.94,
   "confidence_0_1": 0.6,
-  "thesis": "프로바이더 보정 적용 후 종합점수 73.94(보정 전 70.86), 기계적 유형이 non_fit에서 컴파운더로 바뀌었다. 그러나 Hard Veto 3건이 미해소이므로 신규 매수를 승인하지 않는다. 유형 변경은 사업 사실이 달라져서가 아니라 Claude 계열 편향 보정 +1.67~+5.00점이 MT·RF를 임계값 76 위로 올렸기 때문이며, 그 보정은 종목 1개 표본에 근거한다. 가격 판단은 그대로다. 종가 $219.34는 Base 가치 $212.86의 1.03배로 기대차가 없고 확률가중 가치 $215.1은 요구수익률을 초과하지 않는다. 컴파운더로 분류되더라도 진입 조건은 Veto 해소와 가격이다.",
+  "thesis": "Hard Veto를 구성요건 기준으로 재판정한 결과 기존 9개가 전부 cleared다. 미해소는 신설된 \"자사 자금으로 창출된 매출에 대한 구조적 의존\" 1건뿐이며 CP·FS·RT 세 담당이 독립적으로 conditional을 냈다. 종합점수 73.94, 유형 컴파운더(잠정), 상태 WATCH, 비중 0%. 이 신설 veto를 제외하면 게이트는 CLEARED가 되고 NORMAL_CANDIDATE 2~4%가 되므로, 현재 판정 전체가 단 하나의 미공시 수치에 걸려 있다. 다만 veto가 해소되더라도 price/Base 1.03에서 기대차가 없고 확률가중 가치가 요구수익률을 넘지 않으므로 IC는 기계적 밴드 하단인 Starter를 상한으로 본다.",
   "evidence": [
     {
-      "claim": "반대 논리 1 — 하네스가 과소평가했을 가능성. 고정 DCF는 순현금 밖 투자자산 $93,940M(주당 $3.87)을 가치에 넣지 않았고, valuation_percentile_5y 0.05는 자기 5년 이력 대비 가장 싼 배수 구간임을 뜻한다. Base를 현 성장률의 완만한 감속으로 두면 Base 가치는 종가를 상회한다.",
+      "claim": "Hard Veto 재판정: 기존 9개 전부 cleared. V4는 \"고객가치 부재\"라는 필수 요건이 gross margin 75.0%·판관비 1.4%·고객 선수금 $15.6B으로 반증되고, V8은 \"치명적\" 요건이 중국 시장 상실 후에도 매출 +105.9%라는 실전 스트레스로 반증되며, V9는 영구손실을 사업가치 소멸로 정의하면 순현금·Bear FCF 창출로 반증된다.",
       "source_type": "other",
-      "source": "runs/NVDA/aggregate.json valuation_model + reports/EV.json counterevidence",
+      "source": "config/calibration.json veto_criteria + runs/NVDA/aggregate.json veto_gate",
       "period": "run 2026-09-17",
       "as_of_date": "2026-09-17",
-      "value": 3.87,
-      "fact_or_estimate": "interpretation"
+      "value": 9,
+      "fact_or_estimate": "fact"
     },
     {
-      "claim": "유형 변경은 프로바이더 보정의 산물이다. 보정 전 MT 73.75·RF 74.50은 컴파운더 임계값 76에 미달했으나, 보정 후 77.08·77.83으로 충족한다. 보정 계수는 도메인별 판정표 미적용 비율에 비례하며 MT·RF는 +3.33점이었다.",
-      "source_type": "other",
-      "source": "runs/NVDA/aggregate.json provider_calibration",
-      "period": "run 2026-09-17",
-      "as_of_date": "2026-09-17",
-      "value": 3.33,
+      "claim": "미해소 1건은 신설 veto다. H1 지분증권 매입 $42,404M은 영업현금흐름 $74,421M의 57.0%로 conditional 임계값 20%를 크게 넘고, 보증 notional $3,529M과 잔여 약정 $25B이 더해진다. 대상 기업향 매출 비중이 공시되지 않아 confirmed로 확정할 수도, cleared로 풀 수도 없다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Cash flow + Note 8 + Note 10",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 42404,
       "fact_or_estimate": "fact"
     },
     {
@@ -65,8 +65,8 @@
     }
   ],
   "counterevidence": [
-    "가장 그럴듯한 실패 경로: AI 인프라 디지션이 오면 NVIDIA가 지분·보증으로 떠받친 수요가 먼저 사라지고 공급약정 $279B이 재고·약정 손실로, 비시장성 지분 $51.2B의 평가익이 평가손으로 동시에 전환된다. 세 채널이 상관관계를 가져 하락이 겹친다.",
-    "기대차가 가장 빨리 사라지는 경로는 반대 방향이다. Q3~Q4 실적이 가이던스를 크게 상회하면 Base 경로가 상향되며 지금의 공정가치가 사후적으로 할인이었다고 판명된다. 이 경우 관망 결정 자체가 기회비용이다.",
+    "이 신설 veto를 제외하면 게이트는 CLEARED, 상태는 NORMAL_CANDIDATE, 비중 2~4%가 된다. 즉 판정 전체가 veto 1건에 걸려 있고, 그 veto는 아직 어떤 종목에서도 검증되지 않은 신설 조항이다. 남용되면 모든 대형 플랫폼 기업이 걸릴 수 있으므로 confirmed 임계값(매출 25% 초과)을 엄격히 지켜야 한다.",
+    "veto가 해소되더라도 매수 근거가 생기는 것은 아니다. price/Base 1.03에서 기대차가 없고 확률가중 현재가치 $215.1은 요구수익률 9%를 초과하지 않는다. 게이트 해소는 차단 해제이지 매수 신호가 아니다.",
     "과대평가 의심 도메인은 MA(71.75)다. 위임장을 확보하지 못해 보상 정렬과 내부자 매도를 평가하지 못한 채 점수를 매겼다. DI(78.75)도 고객 측 ROI 미검증 상태에서 채택곡선 80점을 부여했다.",
     "유형 오분류 가능성이 이번에 실제로 발생했다. 컴파운더 판정이 종목 1개(NVDA, criterion 27개) 표본에서 추정한 ±5점 보정에 의존한다. 다른 종목의 쌍 실행으로 base_offset을 재추정하기 전까지 이 컴파운더 분류는 잠정으로 다뤄야 한다."
   ],
@@ -78,7 +78,7 @@
     "중국 반독점 예비판단의 최종 제재 범위."
   ],
   "falsifiers": [
-    "Q3 FY27 10-Q에서 DSO가 50일 이하로 복귀하고 AR 증가율이 매출 증가율을 밑돌면 Veto 3건의 근거가 약해지고 WATCH에서 Starter로 상향을 검토한다.",
+    "지분투자·보증 대상 기업향 매출이 총매출의 10% 미만임이 공시되면 신설 veto는 cleared가 되고 게이트 전체가 풀린다. 25%를 초과하면 confirmed로 REJECT다.",
     "진입가가 Base 가치의 0.8배(약 $170) 이하로 내려가면 AS의 영구손실 Veto가 clear로 전환되고 비대칭성 판단이 뒤집힌다.",
     "MT 또는 RF가 다음 분기 데이터로 컴파운더 임계값 76을 넘으면 유형을 컴파운더로 재판정한다. 현재 미달 폭은 각각 2.25점과 1.50점이다."
   ],
