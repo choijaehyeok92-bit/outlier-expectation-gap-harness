@@ -5,7 +5,7 @@
   "domain": "financial_survival",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 77.75,
+  "score_0_100": 76.0,
   "confidence_0_1": 0.7,
   "bull_score": 88,
   "bear_score": 62,
@@ -132,17 +132,17 @@
     {
       "criterion_id": "liquidity_leverage",
       "score_0_100": 90,
-      "rationale": "순현금 $23.2B에 투자자산 $93.9B, TTM OCF $134.4B. 총차입 $33.4B은 OCF의 0.25배이고 1년 내 만기는 $1.0B뿐이며 만기가 2060년까지 사다리형이다. 이자비용은 영업이익의 0.2%다."
+      "rationale": "판정표: 총차입 $33,366M / TTM OCF $134,360M = 0.248배로 0.5배 미만이고 순현금 $23,220M → 90. 1년 내 만기 $1,000M은 현금성자산 $56,586M에 크게 못 미친다."
     },
     {
       "criterion_id": "stress_survival",
-      "score_0_100": 80,
-      "rationale": "capex가 매출의 2.8%에 불과해 침체에서도 R&D·투자를 유지할 수 있고 기업어음 $25B 한도가 미사용으로 남아 있다. 다만 공급 약정 $279B이 수요 급감 시 손실로 전환된 전례(H20 $4.5B)가 있어 90점은 아니다."
+      "score_0_100": 75,
+      "rationale": "판정표: (현금성자산 $56,586M + TTM OCF $134,360M) / 연간 필수지출(capex+R&D 연환산 $35,618M) = 5.36배 → 4배 초과 → 85. modifier: 구매·capacity 약정 $279B가 TTM 매출 $302,970M의 92%인데 취소 가능 비중 미공시 → -10."
     },
     {
       "criterion_id": "dilution_offbalance",
       "score_0_100": 55,
-      "rationale": "판정표 두 축 중 낮은 쪽. (가) 희석주식수 24,532M→24,285M, 전년 대비 -1.0% 감소 → 70~90 구간. (나) 부외약정 $366B / TTM 매출 $302,970M = 1.21배 → 1~2배 구간 → 55. 낮은 쪽 채택."
+      "rationale": "판정표 두 축 중 낮은 쪽. (가) 희석주식수 24,532M→24,285M, 전년 대비 -1.0% 감소 → 상위 구간. (나) 부외약정 $366B / TTM 매출 $302,970M = 1.21배 → 1~2배 구간 55. 낮은 쪽 채택."
     }
   ],
   "uncertainties": [

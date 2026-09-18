@@ -5,7 +5,7 @@
   "domain": "customer_product",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 75.25,
+  "score_0_100": 70.0,
   "confidence_0_1": 0.55,
   "bull_score": 85,
   "bear_score": 50,
@@ -127,18 +127,18 @@
   "subscores": [
     {
       "criterion_id": "customer_roi",
-      "score_0_100": 80,
-      "rationale": "매출 $96.2B 분기에 gross margin 75.0%, 판관비 1.4%, 고객 선수금 $15.6B 유입은 미션크리티컬에 가까운 지불의사를 뜻한다. 고객 측 회수율이 미검증이라 90점은 아니다."
+      "score_0_100": 70,
+      "rationale": "판정표: gross margin 75.0% ≥ 60%, 판관비/매출 $1,354M/$96,221M = 1.4% ≤ 5% → 70. 고객 측 ROI·회수기간을 입증하는 1차 자료가 없어 85 구간은 아니다."
     },
     {
       "criterion_id": "retention_usage",
       "score_0_100": 70,
-      "rationale": "Hyperscale +102%, ACIE +138%로 기존·신규 고객군이 동시 확대되고 선수금·약정이 쌓인다. 그러나 NRR·churn·코호트 데이터가 없어 코호트 개선을 직접 확인할 수 없다."
+      "rationale": "판정표: NRR 등 유지율 지표 미공시. 대리지표 2개 이상이 증가 — H1 고객 선수금 $15.6B 유입(전년 $7.5B), 미지급비용 내 선수금 $160M→$2.8B, 총약정 $366B → 70."
     },
     {
       "criterion_id": "unit_economics",
-      "score_0_100": 75,
-      "rationale": "gross margin 71.1%→75.0%, 영업이익률 60.4%→66.2%로 규모경제가 확인된다. 다만 현금 기준으로는 AR·재고가 이익을 흡수해 방향이 반대라 강한 운영레버리지로 보기 어렵다."
+      "score_0_100": 70,
+      "rationale": "판정표: 영업이익률 FY26 60.4% → Q2 FY27 66.2% 개선, 현금전환율 TTM FCF $127,006M / 순이익 $192,880M = 0.66 ≥ 0.6 → 70. 0.9에 미달해 85은 아니다."
     }
   ],
   "uncertainties": [

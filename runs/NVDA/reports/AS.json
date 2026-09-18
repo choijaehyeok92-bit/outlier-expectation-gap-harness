@@ -5,7 +5,7 @@
   "domain": "asymmetry",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 66.75,
+  "score_0_100": 72.75,
   "confidence_0_1": 0.55,
   "bull_score": 82,
   "bear_score": 25,
@@ -136,8 +136,8 @@
     },
     {
       "criterion_id": "probability_calibration",
-      "score_0_100": 65,
-      "rationale": "명시적 확률 배정과 민감도(Bull 확률 +10%p 시 결론 반전)를 제시했고 H20·H200 손실이라는 실제 기준 사례를 사용했다. 그러나 AI 인프라 사이클 자체의 역사적 base rate가 없다."
+      "score_0_100": 85,
+      "rationale": "판정표: 시나리오 확률을 수치로 제시(Bear 30/Base 50/Bull 20), 민감도 제시(Bull 확률 +10%p 시 확률가중 가치 $215.1→$243.9로 결론 반전), 기준율을 실제 사례로 제시(H20 $4,500M·H200 $400M 상각) → 세 요건 모두 충족 → 85."
     }
   ],
   "uncertainties": [

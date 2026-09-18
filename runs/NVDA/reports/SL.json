@@ -5,7 +5,7 @@
   "domain": "structural_leadership",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 75.5,
+  "score_0_100": 77.5,
   "confidence_0_1": 0.65,
   "bull_score": 88,
   "bear_score": 55,
@@ -115,18 +115,18 @@
   "subscores": [
     {
       "criterion_id": "secular_durability",
-      "score_0_100": 80,
-      "rationale": "개발자 750만명·애플리케이션 6,000개·누적 R&D $76.7B는 사이클이 아니라 비용곡선과 표준의 재편을 뜻한다. 다만 현재 성장률 중 공급부족·가격 기여분을 분리할 수 없어 90점은 주지 않는다."
+      "score_0_100": 85,
+      "rationale": "판정표: FY24 $60,922M → FY25 $130,497M → FY26 $215,938M으로 3년 연속 성장. 독립 구조 지표 3개 이상(CUDA 개발자 750만명, 지원 애플리케이션 6,000개, TOP500 78% 구동)이 같은 방향 → 85. 가격·재고 기여분이 절반 이상이라는 1차 근거는 없어 modifier 미적용."
     },
     {
       "criterion_id": "category_leadership",
       "score_0_100": 85,
-      "rationale": "CUDA를 사실상 업계 표준으로 만들고 연간 아키텍처 cadence로 경쟁 기준선을 직접 정의한다. TOP500 78% 구동은 배포능력의 직접 증거다."
+      "rationale": "판정표: CUDA가 사실상 업계 표준이고 주요 서버 제조사·CSP 전반에 공급되며, 연간 아키텍처 cadence(Blackwell Ultra→Vera Rubin)로 경쟁 기준선을 직접 정의함이 10-K로 확인 → 85."
     },
     {
       "criterion_id": "durability_risks",
       "score_0_100": 55,
-      "rationale": "판정표: 수요 동인이 독립적인 최종시장 중 매출 10% 이상 = 0개(Data Center 92.5%가 단일 AI capex 동인, Edge 7.5%는 10% 미만) → 45. modifier: 미국 수출규제로 중국 DC 시장 전체를 상실하고도 Q2 매출 +105.9%로 흡수한 이력 1차 자료 확인 → +10."
+      "rationale": "판정표: 수요 동인이 독립적인 최종시장 중 매출 10% 이상 = 0개(Data Center 92.5%가 단일 AI capex 동인, Edge 7.5%는 10% 미만) → 45. modifier: 미국 수출규제로 중국 DC 시장 전체를 상실하고도 Q2 매출 +105.9%로 흡수 → +10."
     }
   ],
   "uncertainties": [

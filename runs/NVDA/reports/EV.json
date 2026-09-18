@@ -5,7 +5,7 @@
   "domain": "expectation_valuation",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 53.0,
+  "score_0_100": 58.0,
   "confidence_0_1": 0.6,
   "bull_score": 85,
   "bear_score": 20,
@@ -128,17 +128,17 @@
     {
       "criterion_id": "reverse_dcf_burden",
       "score_0_100": 60,
-      "rationale": "price_to_base_value 1.0304 → signal_map 0.9~1.1 구간 = 60. Base 시나리오의 야심 수준은 valuation_robustness와 uncertainties에 기록하며 여기서 재차 감점하지 않는다(scoring_rule)."
+      "rationale": "판정표: price_to_base_value 1.0304 → 0.9~1.1 구간 → 60."
     },
     {
       "criterion_id": "base_return",
       "score_0_100": 55,
-      "rationale": "price_to_base_value 1.0304 → signal_map 0.9~1.1 구간 = 55. Base 주당가치 $212.86 대비 종가 $219.34는 약 3% 고평가로 공정가치 부근이다."
+      "rationale": "판정표: price_to_base_value 1.0304 → 0.9~1.1 구간 → 55."
     },
     {
       "criterion_id": "valuation_robustness",
-      "score_0_100": 40,
-      "rationale": "Base 가치의 64%가 terminal multiple 의존이고 Bear는 -66%다. trailing 이익은 주식평가익으로 과대, FCF는 운전자본으로 과소 계상되어 정상이익 기준선 자체가 흔들린다. 이 criterion만 모델 재량이다."
+      "score_0_100": 60,
+      "rationale": "판정표: Base terminal_fraction 0.6419 → 0.50~0.65 구간 → 70. modifier: 비영업 주식평가익 $23,707M이 세전이익 $141,410M의 17%로 10%를 초과 → -10."
     }
   ],
   "uncertainties": [

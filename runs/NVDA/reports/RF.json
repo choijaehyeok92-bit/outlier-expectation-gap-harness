@@ -127,7 +127,7 @@
     {
       "criterion_id": "incremental_roic",
       "score_0_100": 85,
-      "rationale": "영업자본 기준 증분 ROIC 약 101%는 대규모 기반에서도 매우 높다. 다만 투하자본의 무게중심이 영업자산에서 지분증권($93.9B)으로 이동 중이고 그 수익이 Level 3 평가익으로 인식되므로 90점은 주지 않는다."
+      "rationale": "판정표: FY25→FY26 증분 NOPAT $40,079M / 증분 영업투하자본 $39,761M = 약 101%. 자본비용 9% 대비 11.2배로 4배 초과 → 85."
     },
     {
       "criterion_id": "reinvestment_runway",
@@ -137,7 +137,7 @@
     {
       "criterion_id": "fcf_per_share_quality",
       "score_0_100": 70,
-      "rationale": "owner FCF/share가 2년 만에 $2.26→$4.92로 성장했고 주식수는 감소했다. 그러나 운전자본 $41.3B 유출과 평가익 $23.7B이 FCF와 이익을 반대로 왜곡해 정상화 수준 확정이 어렵다."
+      "rationale": "판정표: owner FCF/share $2.26(FY25) → $3.68(FY26) → $4.92(TTM), 희석주식수 24,940M→24,285M 감소 → 70. 운전자본 유출 $41,274M이 매출 증가분 $87,032M의 47.4%로 20% 상한을 넘어 85은 아니다."
     }
   ],
   "uncertainties": [
