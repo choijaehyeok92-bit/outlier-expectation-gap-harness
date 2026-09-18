@@ -1,0 +1,131 @@
+{
+  "agent_id": "SL",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 87.5,
+  "confidence_0_1": 0.9,
+  "bull_score": 95,
+  "bear_score": 70,
+  "bull_case": "Performance advertising is shifting toward AI-driven automated bidding and attribution. Axon, MAX, Adjust and Wurl position APP across demand, monetization and measurement while e-commerce/CTV expand the addressable market.",
+  "bear_case": "Digital advertising remains intensely competitive and exposed to Apple/Google platform rules. Current growth could normalize as hyperscale platforms copy model improvements or restrict data access.",
+  "thesis": "APP is a structural leader in AI-driven performance advertising. Revenue growth accelerated while margins expanded, indicating share gain rather than merely industry beta. Axon is paired with distribution/monetization products and expansion beyond gaming, giving multiple growth axes. The main durability constraint is platform dependence: Apple, Google and privacy regulators can reshape targeting economics, while Meta/Google/Amazon can respond with their own AI systems.",
+  "evidence": [
+    {
+      "claim": "FY2025 revenue grew 70% to $5.481B and H1 2026 revenue grew 56% to $3.766B.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K and FY2026 Q2 10-Q",
+      "period": "FY2025-FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "Revenue +70% FY25; +56% H1",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Management identifies Axon AI as the core advertising recommendation system and continues to invest in model improvements.",
+      "source_type": "filing",
+      "source": "Uploaded 10-K/Q2 10-Q",
+      "period": "2025-2026",
+      "as_of_date": "2026-08-05",
+      "value": "Ongoing Axon AI investment",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "APP is expanding advertising solutions outside gaming into e-commerce and CTV.",
+      "source_type": "filing",
+      "source": "Uploaded 10-K/Q2 10-Q",
+      "period": "2025-2026",
+      "as_of_date": "2026-08-05",
+      "value": "E-commerce and CTV expansion",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 guidance implies continued sequential growth at roughly 83% adjusted EBITDA margin.",
+      "source_type": "ir",
+      "source": "Uploaded 2026-08-05 8-K",
+      "period": "Q3 2026 guidance",
+      "as_of_date": "2026-08-05",
+      "value": "Revenue $2.055B-$2.085B; margin ~83%",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Apple and Google have substantial control over mobile distribution, identifiers and privacy rules.",
+    "Meta, Google and Amazon have larger first-party data ecosystems and AI budgets.",
+    "Current margins may embed unusually favorable mix and rapid Axon share gains.",
+    "Growth outside gaming is less mature than the core mobile-ad business."
+  ],
+  "unknowns": [
+    "Long-run share of global performance ad spend.",
+    "Sustainable growth outside gaming.",
+    "Normalized margin after competitor response.",
+    "Regulatory impact on AI targeting and attribution."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "minor",
+      "rationale": "AI-driven performance allocation and digital commerce advertising are durable structural trends."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "minor",
+      "rationale": "Growth and margin outcomes strongly support leadership, though precise market share is not disclosed."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "Platform and privacy-policy dependence remain meaningful external constraints."
+    }
+  ],
+  "falsifiers": [
+    "Revenue growth falls to industry-like rates while major rivals gain share.",
+    "Platform/privacy changes cause sustained deterioration in advertiser performance.",
+    "E-commerce/CTV fail to become material growth contributors."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Revenue growth",
+      "direction": "stable/up",
+      "threshold": "Remain materially above digital-ad market growth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "FCF / EBITDA margin",
+      "direction": "stable",
+      "threshold": "High cash conversion persists as scale rises",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "New vertical mix",
+      "direction": "up",
+      "threshold": "E-commerce/CTV become material contributors",
+      "cadence": "semiannual"
+    }
+  ],
+  "next_checks": [
+    "Q3 growth versus guidance.",
+    "E-commerce/CTV disclosures.",
+    "Apple/Google privacy changes."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 90,
+      "rationale": "AI automation and performance advertising are long-duration structural shifts."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 90,
+      "rationale": "APP is setting a high performance and profitability benchmark in independent adtech."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 80,
+      "rationale": "Multiple verticals buffer demand, but platform and regulatory dependence remain real."
+    }
+  ]
+}
