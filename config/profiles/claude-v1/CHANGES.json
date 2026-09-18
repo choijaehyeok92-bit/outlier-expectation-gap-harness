@@ -1,0 +1,221 @@
+[
+  {
+    "file": "calibration.json",
+    "path": "rubrics.asymmetry.upside_path.question",
+    "before": "5~10년 큰 상승 경로",
+    "after": "시가총액 규모를 감안한 5~10년 위험조정 상승 배수와 경로의 복수성",
+    "direction": "완화",
+    "rationale": "기존 질문은 5x/10x라는 절대 배수를 물어 시총 수조 달러 기업이 구조적으로 40점 이상을 받을 수 없었다. emerging_outlier의 AS>=75 조건이 메가캡에 대해 사실상 도달 불가였던 근본 원인이다."
+  },
+  {
+    "file": "calibration.json",
+    "path": "rubrics.asymmetry.upside_path.anchors",
+    "before": {
+      "25": "비현실",
+      "50": "단일 낙관가정",
+      "75": "복수 경로",
+      "90": "강한 power-law"
+    },
+    "after": {
+      "25": "상승 경로가 비현실적이거나 단일 낙관가정에 의존",
+      "50": "요구수익률을 겨우 넘는 경로 하나",
+      "75": "요구수익률을 뚜렷이 상회하는 복수 경로",
+      "90": "규모 대비 예외적 상승 배수(소형주 10x급, 대형주 3x급)와 복수 경로"
+    },
+    "direction": "완화",
+    "rationale": "절대 배수가 아니라 요구수익률 대비 초과 여부와 경로 복수성으로 앵커를 재정의한다."
+  },
+  {
+    "file": "calibration.json",
+    "path": "rubrics.expectation_valuation.reverse_dcf_burden.signal_map",
+    "before": "(없음)",
+    "after": {
+      "price_to_base_value<=0.7": 90,
+      "0.7~0.9": 75,
+      "0.9~1.1": 60,
+      "1.1~1.3": 45,
+      ">1.3": 25
+    },
+    "direction": "완화",
+    "rationale": "앵커가 이미 price/Base 위치로 정의돼 있는데 모델이 그 위에 \"Base 자체가 야심적\"이라는 판단을 한 번 더 깎아 이중 감점이 발생했다. 하네스가 계산한 price_to_base_value에 점수를 직접 고정해 재량을 제거한다."
+  },
+  {
+    "file": "calibration.json",
+    "path": "rubrics.expectation_valuation.base_return.signal_map",
+    "before": "(없음)",
+    "after": {
+      "price_to_base_value<=0.7": 85,
+      "0.7~0.9": 70,
+      "0.9~1.1": 55,
+      "1.1~1.3": 40,
+      ">1.3": 25
+    },
+    "direction": "완화",
+    "rationale": "동일 사유."
+  },
+  {
+    "file": "calibration.json",
+    "path": "veto_reviewers[\"현재가격이 비현실적인 Bull Case 이상을 요구\"]",
+    "before": [
+      "EV",
+      "AS"
+    ],
+    "after": [
+      "EV",
+      "AS",
+      "RT"
+    ],
+    "direction": "강화",
+    "rationale": "가격 내재 기대는 Red Team의 핵심 렌즈인데 담당에서 빠져 있었다. 이 항목만 RT 검증 없이 clear될 수 있었다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.compounder.domain.moat_trajectory",
+    "before": 80,
+    "after": 76,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.compounder.domain.reinvestment_fcf",
+    "before": 80,
+    "after": 76,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.compounder.domain.management_allocation",
+    "before": 75,
+    "after": 72,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.compounder.domain.financial_survival",
+    "before": 75,
+    "after": 72,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.moonshot.signal.market_cap_usd",
+    "before": 20000000000,
+    "after": 50000000000,
+    "direction": "완화",
+    "rationale": "$20B는 테슬라(2013년 약 $20~30B)·팔란티어(상장 시 약 $20B) 같은 준거 사례조차 경계에 걸린다. $50B로 올려 초기 국면을 실제로 포착할 수 있게 한다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.moonshot.domain.disruptive_innovation",
+    "before": 80,
+    "after": 78,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.moonshot.domain.structural_leadership",
+    "before": 75,
+    "after": 72,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.moonshot.domain.asymmetry",
+    "before": 75,
+    "after": 72,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.emerging_outlier.domain.asymmetry",
+    "before": 75,
+    "after": 72,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.emerging_outlier.domain.structural_leadership",
+    "before": 75,
+    "after": 72,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.turnaround.domain.turnaround_quality",
+    "before": 75,
+    "after": 72,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.turnaround.domain.expectation_valuation",
+    "before": 65,
+    "after": 62,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.turnaround.domain.asymmetry",
+    "before": 65,
+    "after": 62,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.expectation_gap.signal.price_to_base_value",
+    "before": 0.8,
+    "after": 0.85,
+    "direction": "완화",
+    "rationale": "0.80은 경계가 지나치게 날카롭다. 0.85까지 완화한다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.expectation_gap.signal.valuation_percentile_5y",
+    "before": 0.3,
+    "after": 0.35,
+    "direction": "완화",
+    "rationale": "백분위 추정 오차를 감안한다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.expectation_gap.signal.revenue_cagr_next_3y",
+    "before": [
+      0.03,
+      0.2
+    ],
+    "after": [
+      0.03,
+      0.25
+    ],
+    "direction": "완화",
+    "rationale": "상한 20%는 성장이 조금만 빨라도 기대차형에서 배제한다. 25%로 넓힌다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.expectation_gap.domain.expectation_valuation",
+    "before": 75,
+    "after": 72,
+    "direction": "완화",
+    "rationale": "도메인 점수에 +-3점 수준의 판단 노이즈가 있는데 5개 조건의 엄격한 AND라 정상적인 후보도 탈락한다. 노이즈 허용폭만큼 낮춘다."
+  },
+  {
+    "file": "strategy.json",
+    "path": "archetypes.min_gate_score",
+    "before": 65,
+    "after": 63,
+    "direction": "완화",
+    "rationale": "임계값 인하와 정합을 맞춘다."
+  }
+]

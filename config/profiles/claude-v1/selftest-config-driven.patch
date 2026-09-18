@@ -1,0 +1,21 @@
+--- harness.py	2026-09-18 16:08:05.082940078 +0000
++++ /tmp/h.py	2026-09-18 16:56:17.051048135 +0000
+@@ -681,11 +681,13 @@
+         'structural_leadership':{'score':80,'raw_weighted_median':80},
+         'asymmetry':{'score':80,'raw_weighted_median':80},
+         'financial_survival':{'score':70,'raw_weighted_median':70}}
+-    ms=classify_archetype(moon_ds,{'market_cap_usd':20_000_000_000},70,80,[])
+-    assert ms['id']=='moonshot', 'moonshot market-cap gate should include exactly $20B'
+-    ms_over=classify_archetype(moon_ds,{'market_cap_usd':20_000_000_001},70,80,[])
+-    assert ms_over['id']!='moonshot', 'moonshot market-cap gate should exclude >$20B'
+-    assert 'moonshot' not in reachable_archetypes(moon_ds,{'market_cap_usd':20_000_000_001},[])
++    cap=next(c['value'] for c in next(t for t in ARCHETYPES['types'] if t['id']=='moonshot')['conditions']
++             if c['field']=='signal.market_cap_usd')
++    ms=classify_archetype(moon_ds,{'market_cap_usd':cap},70,80,[])
++    assert ms['id']=='moonshot', f'moonshot market-cap gate should include exactly {cap}'
++    ms_over=classify_archetype(moon_ds,{'market_cap_usd':cap+1},70,80,[])
++    assert ms_over['id']!='moonshot', f'moonshot market-cap gate should exclude >{cap}'
++    assert 'moonshot' not in reachable_archetypes(moon_ds,{'market_cap_usd':cap+1},[])
+     assert company_market_cap_usd({'current_price':50,'shares_diluted':400_000_000})==20_000_000_000
+     ev=mk('expectation_valuation','EV',[75,75,75])
+     ev['valuation_inputs']={'valuation_percentile_5y':0.5,'revenue_cagr_next_3y':0.12,

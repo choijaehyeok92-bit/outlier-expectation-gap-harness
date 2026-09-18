@@ -1,0 +1,126 @@
+{
+  "execution": {
+    "unit": "agent",
+    "unit_note": "항목(도메인)당 에이전트 1개, 에이전트당 호출 1회. 점수 도메인 에이전트는 Bull·Verifier·Skeptic 관점을 보고서 안에서 분리해 bull_score/bear_score로 남긴다.",
+    "triage_domains": [
+      "expectation_valuation",
+      "asymmetry",
+      "disruptive_innovation",
+      "turnaround_quality"
+    ],
+    "early_exit": true,
+    "early_exit_rule": "triage 도메인(EV·AS·DI·TQ) 완료 후, 감점 전 점수(raw_weighted_median)와 밸류에이션 신호로도 도달 가능한 유형이 없으면 나머지 단계를 생략하고 EARLY_EXIT_NON_FIT으로 종료한다. 미실행 도메인은 달성 가능하다고 가정한다.",
+    "research_budget": {
+      "per_agent_web_calls": 10
+    },
+    "report_limits": {
+      "thesis_chars": 600,
+      "case_chars": 300,
+      "evidence": [
+        3,
+        6
+      ],
+      "counterevidence": 4,
+      "unknowns": 5,
+      "falsifiers": 3,
+      "key_kpis": 3,
+      "next_checks": 3
+    },
+    "phase3_and_ic_inputs": [
+      "digest.md",
+      "aggregate.json"
+    ],
+    "macro_cache_days": 7
+  },
+  "phases": [
+    {
+      "phase": 0,
+      "name": "intake",
+      "outputs": [
+        "company_context.json",
+        "sources/README.md",
+        "sources/INDEX.md"
+      ]
+    },
+    {
+      "phase": "1a",
+      "name": "triage",
+      "agents": [
+        "EV",
+        "AS",
+        "DI",
+        "TQ"
+      ],
+      "gate": "harness.py plan — 도달 가능한 유형이 없으면 조기 종료"
+    },
+    {
+      "phase": "1b",
+      "name": "domain_analysis",
+      "agents": [
+        "SL",
+        "CP",
+        "MT",
+        "RF",
+        "MA",
+        "FS"
+      ],
+      "note": "도메인 간 blind: 다른 도메인의 보고서를 읽지 않는다. DI와 TQ는 100점 점수에 합산하지 않는 독립 축이다."
+    },
+    {
+      "phase": 2,
+      "name": "in_report_cross_examination",
+      "rule": "각 도메인 에이전트가 bull_case/bear_case와 bull_score/bear_score로 관점 충돌을 기록한다. 점수차 20 이상은 분쟁, 30 이상은 재조사."
+    },
+    {
+      "phase": 3,
+      "name": "evidence_audit_and_red_team",
+      "agents": [
+        "ED",
+        "RT"
+      ],
+      "inputs": "digest.md (원 보고서 전체 재독 금지)"
+    },
+    {
+      "phase": 4,
+      "name": "hard_veto_gate",
+      "rule": "confirmed or unresolved candidate => no automatic buy approval"
+    },
+    {
+      "phase": 5,
+      "name": "score_archetype_and_ic",
+      "archetypes": [
+        "moonshot",
+        "compounder",
+        "emerging_outlier",
+        "expectation_gap",
+        "turnaround",
+        "non_fit"
+      ],
+      "rule": "harness.py aggregate가 점수·유형을 기계적으로 산출하고(Scorekeeper), IC가 반대 논리를 먼저 구성한 뒤 확정 또는 근거와 함께 변경한다.",
+      "agents": [
+        "IC"
+      ]
+    },
+    {
+      "phase": 6,
+      "name": "macro_overlay",
+      "agents": [
+        "MO"
+      ],
+      "score_effect": 0,
+      "pacing_only": true,
+      "cache": "종목과 무관하므로 harness.py cache-macro로 저장하고 macro_cache_days 이내의 init에서 재사용한다."
+    },
+    {
+      "phase": 7,
+      "name": "position_and_monitoring",
+      "outputs": [
+        "position_range",
+        "increase_evidence",
+        "sell_evidence",
+        "quarterly_kpis",
+        "annual_rewrite_date"
+      ]
+    }
+  ]
+}
