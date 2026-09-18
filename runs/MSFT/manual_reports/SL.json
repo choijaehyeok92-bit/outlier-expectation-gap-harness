@@ -1,0 +1,100 @@
+{
+  "agent_id": "SL",
+  "ticker": "MSFT",
+  "as_of_date": "2026-09-17",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 82.5,
+  "confidence_0_1": 0.8,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Enterprise AI·cloud·developer tooling이 하나의 platform stack으로 수렴하며 Microsoft가 배포표준을 함께 정의한다.",
+  "bear_case": "AI 인프라 투자경쟁이 commoditize되고 모델 파트너 의존이 커지면 초과수익 일부가 외부로 이동할 수 있다.",
+  "thesis": "구조적 변화와 리더십은 강하다. FY2026 Cloud $214.4B(+27%), Azure +41%, RPO $678B는 cloud/AI 전환이 장기 수요임을 보여주고 FY27 Agents and Infra 구조는 앱·agent·developer·infra를 하나의 경쟁단위로 묶는다. AI 인프라 자본집약도와 모델 범용화가 장기 수익성의 반론이다.",
+  "evidence": [
+    {
+      "claim": "Microsoft Cloud $214.4B(+27%), Azure +41%, M365 cloud +17%다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": 214.4,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Commercial RPO $678B(+84%), 평균기간 약 2.3년이다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": 678,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2026 restated Agents and Infra revenue는 $268.127B이다.",
+      "source_type": "filing",
+      "source": "runs/MSFT/sources/8-K_2026-09-02_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-06-30",
+      "value": 268.127,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI 인프라 자본집약도와 OpenAI 관련 경제적 집중은 장기 현금수익률의 핵심 반대근거다."
+  ],
+  "unknowns": [
+    "FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률."
+  ],
+  "falsifiers": [
+    "owner FCF/share가 2개 회계연도 연속 회복하지 못하면 현재 복리 가설을 하향한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "FY27 이후 회복",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "FY27 Q1 10-Q에서 Azure 성장, capex, OCF와 RPO 갱신 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 85,
+      "rationale": "cloud/AI 구조 변화가 다년간 매출과 계약잔고로 검증된다."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 85,
+      "rationale": "Azure·M365·GitHub·Security를 묶는 배포/표준 리더십이 강하다."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 75,
+      "rationale": "서로 다른 10%+ 규모 수요축이 최소 2개로 복수 완충장치가 있다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
+    }
+  ]
+}
