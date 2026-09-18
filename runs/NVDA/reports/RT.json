@@ -4,49 +4,142 @@
   "as_of_date": "2026-09-17",
   "domain": "red_team",
   "role": "red_team",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 38,
+  "confidence_0_1": 0.6,
+  "thesis": "공매도 논리 한 줄: NVIDIA는 자기 자본의 일부를 매출로, 자기 평가의 일부를 이익으로 계상하고 있으며 둘 다 순환이 멈추면 동시에 역전된다. H1 순이익 $118.0B와 owner FCF $66.0B의 격차는 비현금 평가익 $23.7B과 운전자본 유출 $41.3B이 만든다. 같은 반기에 지분증권 $42.4B을 매입했고 AI 클라우드 리스에 $3.5B을 보증했으며, 10-Q는 이 고객군이 투자등급 자금조달 능력이 없다고 스스로 기술한다. 디지션이 오면 매출 둔화가 아니라 역성장에 공급약정 $279B의 손실 전환과 평가익 역전이 겹친다. 주가 -66% 경로는 서사가 아니라 산술이다.",
+  "evidence": [
+    {
+      "claim": "포렌식 1 — 이익과 현금의 괴리. H1 FY27 순이익 $118,010M 대비 owner FCF(OCF-capex-SBC)는 $66,033M이다. 차이는 비현금 주식평가익 $23,707M과 운전자본 유출 $41,274M(AR 24,590 + 재고 10,204 + 선급 6,480)이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Condensed Consolidated Statements of Cash Flows",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 51977,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "포렌식 2 — 자기평가 이익. 세전이익 $141,410M의 약 17%가 주식평가익이고, 그 원천인 비시장성 지분은 $22,251M에서 $51,157M으로 반기 만에 2.3배가 됐다. 같은 기간 지분증권 매입은 $42,404M이다. Q2에 취득한 공개기업 워런트의 Level 3 공정가치는 $824M이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Balance sheet + Cash flow + Note 8",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 51157,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "순환 구조. 10-Q는 AI 클라우드·모델 기업이 장기 인프라 계약과 투자등급 자금조달 능력을 확보하지 못하고 있어 NVIDIA가 \"고객이 우리 제품을 배치하는 데 필요한 토지·전력·건물·capacity의 확보와 보증을 제공\"한다고 기술한다. 보증 notional은 $3,529M, 파트너 에스크로는 $712M뿐이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2193 + Note 8",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 3529,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "-66% 시나리오의 산술. 약정이 손실로 전환된 전례가 이미 둘 있다(H20 $4,500M, H200 $400M). 공급·capacity 약정 $279B은 TTM 매출 $302,970M의 92%다. 디지션 국면에서 Y3 owner FCF/share $4.2에 terminal 15x를 적용하면 주당 $75, 종가 $219.34 대비 -66%다.",
+      "source_type": "other",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Note 10, L2835-L2837 + runs/NVDA/reports/EV.json bear 경로",
+      "period": "10y from 2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": 74.99,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "기술 대체. 대체 주체가 자금 제약 없는 고객이다. Q2 Hyperscale +102%가 ACIE +138%에 뒤졌고, NVIDIA는 Groq 비독점 라이선스에 FY26 $13,000M + H1 $2,944M을 지출했으며, Hugging Face 인수 조건에 타 실리콘 벤더 지원 유지를 약정했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Revenue by Market Platform + Note 7 각주(3) + runs/NVDA/sources/8-K_filed_2026-09-03.txt",
+      "period": "FY26~2026-09-02",
+      "as_of_date": "2026-09-03",
+      "value": 15944,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "규제·집중. Data Center가 매출의 92.5%, H1 상위 3개 고객이 44%, AR 상위 5개가 70%. 미국 수출규제로 중국 데이터센터 시장 전체를 상실했고, 2025-09-15 중국 반독점 당국이 Mellanox 승인조건 위반 예비판단을 공표해 네트워킹 사업에 대한 제재 가능성이 남아 있다. EU·미국·영국·중국·한국이 동시에 자료를 요구 중이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1350, L2076, L2817, L2828, L2838",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 92.5,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "공매도 논리를 반증하는 최강 증거: 매출 $96.2B 분기에 gross margin 75.0%를 받으면서 판관비가 매출의 1.4%다. 자기 돈으로 매출을 사는 회사는 이 조합을 만들 수 없다.",
+    "고객이 오히려 선불한다. H1에 고객 선수금 $15.6B이 이연매출로 유입됐고 미지급비용 내 선수금 잔액은 $160M에서 $2.8B으로 늘었다. 벤더 금융과 반대 방향의 현금흐름이다.",
+    "최악의 규제 시나리오가 이미 실현됐는데 매출은 전년 대비 +105.9%였다. 중국 데이터센터 시장 전체 상실을 흡수하고도 배로 성장했다.",
+    "재무구조상 강제 청산 경로가 없다. 순현금 $23,220M, 1년 내 만기 $1,000M, 기업어음 $25B 한도 미사용. 공매도 논리가 맞더라도 파산이 아니라 재평가로만 실현된다."
+  ],
+  "unknowns": [
+    "지분투자·보증 대상 기업향 매출 비중 — 순환 구조의 크기를 정하는 단일 수치인데 공시되지 않는다.",
+    "공급·capacity 약정 $279B 중 취소 가능 비중.",
+    "비시장성 지분 $51,157M의 평가기법과 관측 가능 입력 비중.",
+    "AR $63,059M의 대손충당 수준과 고객별 신용도.",
+    "중국 반독점 예비판단의 최종 제재 범위."
+  ],
+  "falsifiers": [
+    "DSO가 2개 분기 연속 50일 이하로 복귀하고 AR 증가율이 매출 증가율을 밑돌면 순환 매출 논리는 붕괴한다.",
+    "주식평가익을 제외한 세전이익이 전분기 대비 증가를 유지하면 자기평가 이익 논리는 기각된다.",
+    "공급 약정 $279B 중 취소 가능 비중이 공시되어 50%를 넘으면 약정 손실 전환 시나리오의 크기가 절반 이하로 줄어든다."
+  ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "재작성·감사인 이슈·내부통제 결함 공시가 없고 H20·H200 손실과 DSO 악화를 선제적으로 인식·공개했다. Level 3 비시장성 지분 $51,157M의 평가익이 세전이익의 17%를 이룬다는 점은 중대한 감시 항목이지만, 현재 증거로 정직성·신뢰성의 훼손을 주장할 수는 없다. 평가익의 하향 재평가나 감사인 이견이 나오면 즉시 재판정한다."
     },
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "TTM 영업현금흐름 $134,360M이 capex $7,354M을 압도한다. 2026년 6월 $25B 발행은 자사주 $39.0B·지분증권 $42.4B이라는 재량적 지출 뒤에 온 자본구조 선택이지 영업 자금 부족이 아니다."
     },
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "conditional",
+      "rationale": "고객가치는 gross margin 75.0%와 판관비 1.4%로 명백히 존재한다. 그러나 H1 지분증권 매입 $42.4B, 리스 보증 $3.5B, 잔여 지분투자 약정 $25B이 수요를 직접 떠받치는 규모이고 회사 스스로 이 고객군의 자금조달 능력 부족을 기술한다. 그 매출 기여분이 공시되지 않는 한 clear로 볼 수 없다. CP의 판정과 동일하다."
     },
     {
       "veto": "증분 ROIC의 구조적 붕괴",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "FY25→FY26 증분 NOPAT $40.1B / 증분 영업투하자본 $39.8B = 약 101%. 붕괴가 아니라 대규모화에 따른 체감(FY25 171%→FY26 137%)이다."
     },
     {
       "veto": "해자의 지속적인 축소",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "가장 직접적인 해자 지표인 gross margin이 매출 배증 구간에서 71.1%→75.0%로 상승했다. 중국 배제로 경쟁 생태계가 커졌다는 회사 자체 기술, Groq 라이선스 $15.9B 지출, Hugging Face의 벤더 중립 약정은 실재하는 축소 압력이지만 현재 데이터는 확대 방향을 가리킨다. Hyperscale-ACIE 성장률 격차를 분기 추적한다."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "conditional",
+      "rationale": "Data Center 92.5%, 상위 3개 고객 44%, AR 상위 5개 70%, 단일 규제로 중국 시장 전체 상실, 중국 반독점 예비판단 미해결, 5개 관할 동시 조사. 종속성은 명백하다. 다만 최악의 규제가 실현된 분기에도 매출이 +105.9%였으므로 confirmed로 확정할 증거는 아니다. 단일 고객 25% 초과 또는 제2 관할의 판매 제한이 발생하면 confirmed로 전환한다."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "주식평가익 제외 세전이익",
+      "direction": "up",
+      "threshold": "전분기 대비 증가 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "DSO",
+      "direction": "down",
+      "threshold": "50일 이하",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "공급·capacity 약정 관련 손실",
+      "direction": "down",
+      "threshold": "분기 매출의 2% 미만",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q에서 AR 대손충당·DSO·평가익 규모 확인",
+    "중국 반독점 절차의 최종 판단과 네트워킹 사업 제재 여부 확인",
+    "공급 약정의 취소 가능 조건에 대한 신규 공시 유무 확인"
+  ],
+  "verdict": "oppose",
   "subscores": [],
   "uncertainties": [],
   "valuation_inputs": {

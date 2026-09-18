@@ -4,51 +4,160 @@
   "as_of_date": "2026-09-17",
   "domain": "customer_product",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 75.25,
+  "confidence_0_1": 0.55,
+  "bull_score": 85,
+  "bear_score": 50,
+  "bull_case": "분기 매출 $96.2B에서 gross margin 75.0%를 받아내면서 판관비는 매출의 1.4%다. 할인·마케팅이 아니라 제품이 수요를 만든다는 가장 강한 증거다. H1에 고객 선수금 $15.6B이 유입됐고 공급 약정 $279B이 뒤를 받친다. AI 랩에게 이 제품은 미션크리티컬이다.",
+  "bear_case": "하드웨어라 NRR·churn 공시가 없어 유지율을 코호트로 검증할 수 없다. 더 큰 문제는 벤더 금융이다. H1에 지분증권 $42.4B을 매입했고 AI 클라우드 리스에 $3.5B을 보증했으며, 10-Q는 이 고객군이 투자등급 자금조달 능력이 없다고 기술한다. 자기조달 수요 비중을 계산할 수 없다.",
+  "thesis": "고객가치는 입증된다. 매출 $96.2B 분기에 75.0% gross margin을 유지하면서 판관비가 1.4%에 불과하다는 조합은 프로모션이나 영업력으로 만들어지지 않는다. 고객 선수금이 H1에 $15.6B 유입되고 공급 약정이 $279B 쌓여 있다는 것도 지불의사의 직접 증거다. 그러나 두 가지가 점수를 제한한다. 첫째 하드웨어 사업이라 NRR·churn·코호트 데이터가 없어 유지율을 대용지표로만 본다. 둘째 수요의 일부를 NVIDIA가 직접 자금 지원한다. H1 지분증권 매입 $42.4B, AI 클라우드 리스 보증 $3.5B이며 회사는 이 고객군의 자금조달 능력 부족을 명시한다. 그 비중이 공시되지 않아 단위경제의 순수성을 확정할 수 없다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 gross margin 75.0%(매출 $96,221M, 매출원가 $24,079M)를 유지하면서 판관비는 $1,354M(매출의 1.4%)에 그쳤다. 프로모션·영업 투입에 의존하지 않는 수요다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Condensed Consolidated Statements of Income",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 75.0,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 FY27 이연매출 증가분에 고객 선수금 $15.6B이 포함됐고(전년 $7.5B), 미지급비용 내 고객 선수금 잔액은 $2.8B으로 FY26 말 $160M에서 급증했다. 고객이 선불로 확보하려는 제품이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Note 7 각주(1), Deferred Revenue 표 각주(1)",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 15600,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Hyperscale 매출은 전년 대비 +102%($24,168M→$48,710M), ACIE는 +138%($16,928M→$40,313M)로 기존 고객군과 신규 고객군이 동시에 확대됐다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Revenue by Market Platform",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 48710,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "수요의 일부는 NVIDIA가 자금을 댄다. H1 지분증권 매입 $42,404M, AI 클라우드 파트너 리스채무 보증 notional $3,529M, 잔여 지분투자 약정 $25B. 10-Q는 AI 클라우드·모델 기업이 장기 인프라 계약과 투자등급 자금조달 능력을 확보하지 못하고 있다고 기술한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Cash flow, Note 8, Note 10, L2193",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 42404,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "집중도: Q2 FY27 단일 직접고객이 매출의 16%, H1 3개 고객이 44%. AR은 5개 고객이 70%. 간접적으로는 한 AI 연구·배포 기업이 클라우드 고객을 통해 유의미한 매출에 기여했다고 공시한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1350, L2076, L2551",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 44,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "운영 레버리지: 영업이익률이 FY26 60.4%에서 Q2 FY27 66.2%로, gross margin이 71.1%에서 75.0%로 개선됐다. 규모가 커지며 단위경제가 악화되지 않았다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-K_FY26_filed_2026-02-25.txt + runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY26~FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 66.2,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "하드웨어 사업이라 NRR·GRR·churn·usage 코호트 공시가 없다. 유지율 판단은 선수금·약정 잔액이라는 대용지표에 의존한다.",
+    "고객 측 AI 투자 회수율(ROI)을 입증하는 공개 데이터가 없다. 지불의사는 확인되지만 그 지불이 고객 손익에서 정당화되는지는 미검증이다.",
+    "단위경제를 현금 기준으로 보면 악화 중이다. H1에 AR $24.6B·재고 $10.2B가 이익을 흡수해 회계 마진 개선과 현금 전환이 반대 방향이다.",
+    "ACIE가 Hyperscale보다 빠르게 성장한다는 것은 자금력이 약하고 NVIDIA 자금 의존도가 높은 고객군으로 무게중심이 이동한다는 해석도 가능하다."
+  ],
+  "unknowns": [
+    "NVIDIA가 지분투자·보증한 주체가 창출한 매출 비중이 공시되지 않는다. 벤더 금융 의존도를 정량화할 수 없다.",
+    "고객의 AI 인프라 투자 회수 기간과 실제 가동률.",
+    "AR $63,059M의 고객별 구성과 대손충당 수준.",
+    "공급 약정 $279B 중 구속력 있는 고객 주문으로 뒷받침되는 비중.",
+    "간접 매출에 기여한 AI 연구·배포 기업의 실제 기여 규모."
+  ],
+  "falsifiers": [
+    "DSO가 2개 분기 연속 50일 이하로 복귀하고 AR 증가율이 매출 증가율을 밑돌면 벤더 금융 의존 논리는 기각된다.",
+    "지분투자·보증 대상 기업향 매출이 별도 공시되어 총매출의 10% 미만으로 확인되면 자기조달 수요 우려는 해소된다.",
+    "고객 선수금 잔액이 2개 분기 연속 감소하면 지불의사 강도 가설은 약화된다."
+  ],
   "hard_veto_flags": [
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "conditional",
+      "rationale": "고객가치 자체는 명확히 존재한다. 판관비 1.4%에 gross margin 75.0%는 보조금·마케팅으로 만들 수 없는 조합이다. 그러나 H1 지분증권 매입 $42.4B와 리스 보증 $3.5B이 수요를 직접 떠받치는 규모이고 그 매출 기여분이 공시되지 않는다. 조건: 지분투자·보증 대상 기업향 매출이 총매출의 10% 미만임이 확인되면 clear로 전환한다."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "conditional",
+      "rationale": "Data Center가 매출의 92.5%, 상위 3개 고객이 44%, 단일 규제(미국 수출규제)로 중국 시장 전체를 상실했다는 점에서 종속성은 실재한다. 다만 최악의 규제 시나리오가 이미 현실화됐음에도 매출이 전년 대비 +105.9%였다는 점에서 치명적(fatal)으로 확정하지 않는다. 조건: 단일 고객이 매출의 25%를 넘거나 제2의 관할에서 판매 제한이 발생하면 confirmed로 전환한다."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "DSO",
+      "direction": "down",
+      "threshold": "50일 이하",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "고객 선수금 잔액",
+      "direction": "up",
+      "threshold": "$2.8B 이상 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "단일 최대 직접고객 매출 비중",
+      "direction": "down",
+      "threshold": "20% 미만",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q에서 AR·DSO·대손충당과 고객 선수금 잔액 확인",
+    "지분투자 대상과 매출 인식의 관계에 대한 관련자거래·집중도 공시 확인",
+    "공급 약정 $279B의 고객 주문 연동 여부에 대한 추가 공시 확인"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "customer_roi",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "매출 $96.2B 분기에 gross margin 75.0%, 판관비 1.4%, 고객 선수금 $15.6B 유입은 미션크리티컬에 가까운 지불의사를 뜻한다. 고객 측 회수율이 미검증이라 90점은 아니다."
     },
     {
       "criterion_id": "retention_usage",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "Hyperscale +102%, ACIE +138%로 기존·신규 고객군이 동시 확대되고 선수금·약정이 쌓인다. 그러나 NRR·churn·코호트 데이터가 없어 코호트 개선을 직접 확인할 수 없다."
     },
     {
       "criterion_id": "unit_economics",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "gross margin 71.1%→75.0%, 영업이익률 60.4%→66.2%로 규모경제가 확인된다. 다만 현금 기준으로는 AR·재고가 이익을 흡수해 방향이 반대라 강한 운영레버리지로 보기 어렵다."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "지불의사는 마진으로 입증되나 고객 측 투자회수율이 미검증이라 지속가능성을 확정할 수 없다."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "NRR·churn 공시가 없어 선수금·약정이라는 대용지표에 의존한다."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "critical",
+      "rationale": "회계 단위경제는 개선, 현금 단위경제는 악화로 방향이 반대다. 벤더 금융 비중이 공시되지 않아 어느 쪽이 진실인지 판정할 수 없다."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

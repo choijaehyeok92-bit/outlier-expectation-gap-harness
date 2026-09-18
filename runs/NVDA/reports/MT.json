@@ -4,46 +4,154 @@
   "as_of_date": "2026-09-17",
   "domain": "moat_trajectory",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 73.75,
+  "confidence_0_1": 0.6,
+  "bull_score": 85,
+  "bear_score": 50,
+  "bull_case": "매출이 2배가 되는 동안 gross margin이 71.1%에서 75.0%로 올랐다. 해자가 유지가 아니라 확대되고 있다는 가장 직접적인 증거다. 개발자 750만명·애플리케이션 6,000개의 CUDA 자산은 재작성 비용이라는 실질 전환장벽이고, Hugging Face가 개방형 모델 유통층을 더한다.",
+  "bear_case": "해자를 위협하는 쪽이 자금 제약 없는 고객 본인이다. Hyperscale(+102%)이 ACIE(+138%)보다 느린 것은 자체 실리콘 전환의 초기 신호일 수 있다. Groq 비독점 라이선스에 $15.9B을 쓴 것은 추론 아키텍처 우위가 완결적이지 않다는 뜻이고, Hugging Face는 타 벤더 지원을 약정해 락인을 스스로 낮춘다.",
+  "thesis": "해자는 현재 넓어지는 방향이다. 매출이 배가되는 국면에서 gross margin이 71.1%→75.0%로 상승한 것은 공급부족만으로 설명되지 않는 가격결정력이다. CUDA 개발자 750만명, 지원 애플리케이션 6,000개는 측정 가능한 생태계 피드백이고 재작성 비용이 전환장벽으로 작동한다. 그러나 5년 뒤 방향에는 세 가지 역풍이 있다. 첫째 대체 시도의 주체가 제약된 경쟁자가 아니라 자금 무제한인 하이퍼스케일러 고객이다. 둘째 회사 스스로 중국 배제가 경쟁 생태계를 키웠다고 기술한다. 셋째 Hugging Face 인수 조건에 타 실리콘 벤더 지원 유지가 포함돼 락인을 의도적으로 낮춘다. 확대 방향이되 확대 폭은 좁아진다.",
+  "evidence": [
+    {
+      "claim": "매출이 전년 동기 대비 2배가 되는 동안 gross margin은 FY26 71.1%에서 Q2 FY27 75.0%로 상승했다. 가격결정력이 강화되는 방향이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-K_FY26_filed_2026-02-25.txt Consolidated Statements of Income + runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY26~FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 75.0,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "CUDA 및 자사 소프트웨어 개발자 750만명 이상, 지원 애플리케이션 6,000개, 네트워킹 포함 TOP500의 78% 구동. 생태계 피드백이 서술이 아니라 수치로 측정된다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-K_FY26_filed_2026-02-25.txt L179, L222",
+      "period": "FY26 (2025-01-27~2026-01-25)",
+      "as_of_date": "2026-01-25",
+      "value": 7500000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "풀스택 구조가 해자의 층을 늘린다. GPU·Grace CPU·NVLink·Mellanox 기반 네트워킹·CUDA-X·NVIDIA AI Enterprise까지 단일 아키텍처로 묶이며, 엔지니어의 절반 이상이 소프트웨어를 담당한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-K_FY26_filed_2026-02-25.txt L168, L172, L199",
+      "period": "FY26 (2025-01-27~2026-01-25)",
+      "as_of_date": "2026-01-25",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "대체 압력의 주체가 고객이다. Q2 FY27 Hyperscale은 +102%로 ACIE(+138%)보다 느리게 성장했다. 자체 실리콘 전환이 진행 중이라면 이 격차로 먼저 나타난다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Revenue by Market Platform",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 102,
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "10-Q는 중국 데이터센터 시장에서의 사실상 배제가 \"경쟁사가 전 세계에서 우리에게 도전할 더 큰 개발자·고객 생태계를 구축하는 데 도움이 됐다\"고 직접 기술한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2838",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Hugging Face 인수(약 $11.9B)에서 플랫폼 개방과 타 실리콘 벤더 지원 유지를 약정했다. 개발자 유통층을 확보하는 대신 배타적 락인은 스스로 포기한 구조다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/8-K_filed_2026-09-03.txt Item 8.01",
+      "period": "2026-09-02",
+      "as_of_date": "2026-09-03",
+      "value": 11.9,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Groq 비독점 라이선스에 FY26 $13.0B, H1 FY27 $2.9B을 지출했다. 추론 아키텍처에서 외부 IP를 유상 확보해야 했다는 것은 해자가 전 영역에서 완결적이지 않다는 뜻이다.",
+    "멀티호밍 비용이 낮아지는 방향이다. PyTorch·Triton 등 상위 추상화 계층이 표준화될수록 CUDA 재작성 비용이라는 전환장벽은 약해진다.",
+    "gross margin 상승은 해자가 아니라 공급부족의 결과일 수 있다. 공급이 풀리는 시점에 같은 마진이 유지되는지는 아직 관측되지 않았다.",
+    "경쟁당국 5곳이 공급 배분과 파운데이션 모델 기업 투자·파트너십을 조사 중이다. 생태계 장악 방식 자체가 규제 대상이 될 수 있다."
+  ],
+  "unknowns": [
+    "커스텀 ASIC이 전체 가속 컴퓨트 물량에서 차지하는 비중.",
+    "공급 정상화 이후 유지 가능한 gross margin 수준.",
+    "CUDA 재작성 전환비용의 실제 크기(고객 사례 공시 없음).",
+    "Hugging Face의 벤더 중립 약정이 락인에 미치는 순효과."
+  ],
+  "falsifiers": [
+    "공급 제약이 완화된 분기에도 gross margin이 73% 이상을 유지하면 마진이 공급부족 효과라는 반론은 기각된다.",
+    "Hyperscale 매출 증가율이 2개 분기 연속 ACIE를 밑돌면 자체 실리콘 전환 가설이 강화되어 해자 축소 방향으로 재평가해야 한다.",
+    "CUDA 개발자 수 증가율이 정체하거나 감소하면 생태계 피드백 루프 가설은 기각된다."
+  ],
   "hard_veto_flags": [
     {
       "veto": "해자의 지속적인 축소",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "축소가 아니라 확대 방향이다. 매출이 배가되는 동안 gross margin이 71.1%→75.0%로 상승했고 개발자 기반은 750만명 이상이다. 다만 하이퍼스케일러 자체 실리콘, 중국 배제로 인한 경쟁 생태계 성장, Hugging Face의 벤더 중립 약정은 확대 폭을 좁히는 요인이므로 Hyperscale/ACIE 성장률 격차를 분기마다 추적한다."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "Gross margin",
+      "direction": "up",
+      "threshold": "공급 완화 국면에도 73% 이상",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Hyperscale 증가율 - ACIE 증가율",
+      "direction": "up",
+      "threshold": "격차 축소 또는 역전",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "CUDA 개발자 수",
+      "direction": "up",
+      "threshold": "전년 대비 증가 유지",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q의 Hyperscale·ACIE 성장률 격차와 gross margin 가이던스 대비 실적",
+    "Hugging Face 거래 종결 조건 중 벤더 중립 약정의 구체적 범위",
+    "경쟁당국 조사에서 공급 배분·투자 파트너십 관련 구제조치 언급 여부"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "switching_pricing",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "매출 2배 구간에서 gross margin이 71.1%→75.0%로 상승했다. 전환비용(CUDA 재작성)과 가격결정력이 동시에 강화되는 방향이다. 공급부족 기여분을 분리할 수 없어 90점은 아니다."
     },
     {
       "criterion_id": "network_data_ecosystem",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "개발자 750만명·애플리케이션 6,000개·TOP500 78%로 피드백 루프가 측정 가능하다. 다만 상위 추상화 계층 표준화로 멀티호밍이 쉬워지는 방향이고 Hugging Face는 타 벤더 지원을 약정해 복리형 방어벽 수준은 아니다."
     },
     {
       "criterion_id": "commoditization_resilience",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 65,
+      "rationale": "네트워킹·소프트웨어·연간 cadence라는 복수 방어층이 있으나, 대체 시도의 주체가 자금 제약 없는 하이퍼스케일러 고객이고 회사 스스로 중국 배제가 경쟁 생태계를 키웠다고 인정한다. Groq 라이선스 $15.9B 지출도 완결성 부족의 신호다."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "마진 상승이 해자 강화인지 공급부족의 일시 효과인지 구분할 데이터가 없다."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "개발자 수는 측정되나 멀티호밍 난이도 변화는 공시로 추적할 수 없다."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "critical",
+      "rationale": "대체 주체가 자금 제약 없는 고객이고 그 전환 진행률을 측정할 공시 지표가 존재하지 않는다."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

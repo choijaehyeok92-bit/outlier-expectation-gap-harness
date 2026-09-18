@@ -4,56 +4,164 @@
   "as_of_date": "2026-09-17",
   "domain": "financial_survival",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 77.75,
+  "confidence_0_1": 0.7,
+  "bull_score": 88,
+  "bear_score": 62,
+  "bull_case": "순현금 $23.2B에 투자자산 $93.9B이 더해지고 TTM 영업현금흐름은 $134.4B이다. 총차입 $33.4B은 TTM OCF의 0.25배이며 1년 내 만기는 $1.0B뿐, 만기는 2060년까지 사다리형이다. $25B 기업어음 한도는 미사용이고 covenant도 준수 중이다. capex가 매출의 2.8%라 불황에도 투자를 줄일 필요가 없다.",
+  "bear_case": "위험은 대차대조표가 아니라 부외에 있다. 총약정 $366B은 TTM 매출의 1.2배이고 그중 구속력 있는 공급·capacity 약정이 $279B다. 수요가 꺾이면 이것이 재고·약정 손실로 전환된다는 것은 H20 $4.5B, H200 $0.4B으로 이미 입증됐다. AI 클라우드 리스 보증 $3.5B은 파트너 부도 시 직접 노출이다.",
+  "thesis": "재무 생존력 자체는 최상위권이다. 순현금 $23.2B, 투자자산 $93.9B, TTM 영업현금흐름 $134.4B에 대해 총차입은 $33.4B(OCF의 0.25배)이고 1년 내 만기는 $1.0B뿐이며 만기는 2060년까지 분산돼 있다. $25B 기업어음 한도는 전액 미사용이다. capex가 매출의 2.8%라 침체에서도 R&D·투자를 줄일 필요가 없다. 희석도 역방향이다. 판단을 제한하는 것은 부외 항목이다. 총약정 $366B은 TTM 매출의 1.2배이고 그중 $279B이 공급·capacity 약정이며, 수요 급감 시 이것이 손실로 전환된다는 사실은 H20 $4.5B·H200 $0.4B으로 이미 증명됐다. AI 클라우드 리스 보증 $3.5B도 파트너 신용에 직접 노출된다.",
+  "evidence": [
+    {
+      "claim": "2026-07-26 기준 현금+시장성 채무증권 $56,586M, 총차입 $33,366M, 순현금 $23,220M. 여기에 시장성 지분 $42,783M과 비시장성 지분 $51,157M이 더해진다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Condensed Consolidated Balance Sheets",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 23220,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "만기벽이 없다. 1년 내 만기는 3.20% Notes $1,000M뿐이고 나머지는 2028~2060년에 걸쳐 분산돼 있다. 2026년 6월 $25.0B을 7개 트랜치로 발행했으며 $25.0B 기업어음 한도는 미사용, covenant는 준수 중이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Note 9 - Debt",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 1000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "TTM 영업현금흐름 $134,360M 대비 총차입 $33,366M은 0.25배다. FY26 이자비용은 $259M으로 영업이익 $130,387M의 0.2%에 불과했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-K_FY26_filed_2026-02-25.txt Consolidated Statements of Income + runs/NVDA/sources/README.md TTM 표",
+      "period": "TTM to 2026-07-26",
+      "as_of_date": "2026-07-26",
+      "value": 0.25,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "부외 의무가 대차대조표보다 크다. 2026-07-26 기준 총약정 $366B(공급·capacity $279B, 클라우드 서비스 $29B, 미개시 데이터센터 리스 $25B, 지분투자 $25B, capex $8B)은 TTM 매출 $302,970M의 1.2배다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Note 10 - Commitments and Contingencies",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 366,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "약정이 손실로 전환된 전례가 있다. 수출규제로 수요가 사라지자 H20 관련 $4,500M(FY26 Q1), H200 관련 $400M(FY27 H1)을 초과재고·구매의무 손실로 인식했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2835-L2837",
+      "period": "FY26 Q1~FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 4900,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "제3자 신용에 대한 직접 노출: AI 클라우드 파트너의 데이터센터 리스채무에 대한 land/power/shell 보증 notional $3,529M(신용파생 분류), 파트너 에스크로는 $712M에 그친다.",
+      "source_type": "filing",
+      "source": "runs/NVDA/sources/10-Q_FY27Q2_filed_2026-08-26.txt Note 8 - Derivative Financial Instruments",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 3529,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "$25B 차입은 필요가 아니라 선택이었다. H1 FCF $70.0B에 대해 자사주 $39.0B·지분증권 순매입 $35.2B·배당 $6.3B 등 재량적 지출이 앞섰고 그 차액을 채권으로 메웠다. 구조적 외부자본 의존이 아니라 자본구조 최적화다.",
+    "공급 약정 $279B은 상당 부분 고객 수요에 연동된 것으로 보이나 그 연동 비율이 공시되지 않아 최악의 손실 규모를 계산할 수 없다.",
+    "보증 $3,529M은 시가총액 대비 0.07%에 불과해 절대 규모로는 생존 위협이 아니다.",
+    "투자자산 $93.9B 중 비시장성 $51.2B은 스트레스 국면에서 유동성으로 신속히 전환되지 않는다. 유동성 완충으로 온전히 계산하면 안 된다."
+  ],
+  "unknowns": [
+    "공급·capacity 약정 $279B 중 취소 가능 비중과 구속력 있는 비중.",
+    "land/power/shell 보증의 파트너별 신용도와 최대 총노출.",
+    "비시장성 지분 $51,157M의 스트레스 국면 회수 가능 금액.",
+    "$25B 조달이 향후에도 반복될 계획인지 여부."
+  ],
+  "falsifiers": [
+    "수요 둔화 분기에 공급 약정 관련 손실이 분기 매출의 2% 미만에 그치면 부외 약정 위험 논리는 크게 약화된다.",
+    "차입을 하지 않고도 자사주·지분투자를 집행하는 분기가 2회 연속 나오면 외부자본 의존 우려는 완전히 해소된다.",
+    "land/power/shell 보증 notional이 파트너 상환으로 감소 추세를 보이면 제3자 신용노출 논리는 기각된다."
+  ],
   "hard_veto_flags": [
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "TTM 영업현금흐름 $134.4B이 capex $7.4B을 압도적으로 상회한다. 2026년 6월 $25B 발행은 자사주 $39.0B·지분증권 $42.4B이라는 재량적 지출을 앞세운 결과이지 영업 자금 부족 때문이 아니다. 1년 내 만기 $1.0B, 기업어음 $25B 한도 미사용, covenant 준수."
     },
     {
       "veto": "장기간 지속되는 과도한 희석",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "희석이 아니라 역희석이다. 희석주식수 FY24 24,940M → FY26 24,514M → Q2 FY27 24,285M. FY26 SBC $6,386M에 대해 자사주 매입 $40,388M으로 6.3배였다."
     },
     {
       "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "재무생존 관점에서는 clear다. 순현금 $23.2B, TTM OCF $134.4B, 1년 내 만기 $1.0B, capex는 매출의 2.8%로 침체에서도 투자를 줄일 필요가 없다. 파산 확률은 사실상 0이다. 다만 이 veto의 후단(기대수익 대비 영구손실 확률)은 가격 대비 판단이므로 AS의 conditional 판정이 별도로 유효하며 본 에이전트는 이를 뒤집지 않는다."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "공급·capacity 약정 잔액 / 향후 4개 분기 매출 전망",
+      "direction": "down",
+      "threshold": "1.0배 이하",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "land/power/shell 보증 notional",
+      "direction": "down",
+      "threshold": "$3.5B 이하 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "총차입 / TTM 영업현금흐름",
+      "direction": "down",
+      "threshold": "0.5배 이하",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q Note 10에서 약정 총액·연도별 배분 변화 확인",
+    "Note 8에서 보증 notional과 파트너 에스크로 잔액 변화 확인",
+    "추가 채권 발행 또는 기업어음 인출 여부 확인"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "liquidity_leverage",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "순현금 $23.2B에 투자자산 $93.9B, TTM OCF $134.4B. 총차입 $33.4B은 OCF의 0.25배이고 1년 내 만기는 $1.0B뿐이며 만기가 2060년까지 사다리형이다. 이자비용은 영업이익의 0.2%다."
     },
     {
       "criterion_id": "stress_survival",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "capex가 매출의 2.8%에 불과해 침체에서도 R&D·투자를 유지할 수 있고 기업어음 $25B 한도가 미사용으로 남아 있다. 다만 공급 약정 $279B이 수요 급감 시 손실로 전환된 전례(H20 $4.5B)가 있어 90점은 아니다."
     },
     {
       "criterion_id": "dilution_offbalance",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 55,
+      "rationale": "희석은 사실상 없으나 부외 의무가 크다. 총약정 $366B은 TTM 매출의 1.2배이고 제3자 리스 보증 $3,529M에 대해 파트너 에스크로는 $712M뿐이다. 구속력과 취소 조건이 공시되지 않아 제한적이라고 볼 수 없다."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "minor",
+      "rationale": "순현금·만기구조·이자부담이 모두 공시로 명확히 확인된다."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "공급 약정의 취소 가능 비중이 공시되지 않아 수요 급감 시 손실 규모를 계산할 수 없다."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "critical",
+      "rationale": "부외 의무 $366B이 TTM 매출의 1.2배인데 그 구속력과 조건이 공시되지 않는다. 이 도메인의 최대 미확인 항목이다."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
