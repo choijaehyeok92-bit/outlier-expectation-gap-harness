@@ -7,10 +7,10 @@
   "turnaround_quality_score": 34.25,
   "archetype": "compounder",
   "secondary_archetypes": [],
-  "archetype_rationale": "기계적 판정이 컴파운더로 바뀌었고 IC는 이를 조건부로 수용한다. 보정 후 price/Base 1.0304(<=1.2), MT 77.08·RF 77.83(>=76), MA 77.08·FS 81.08(>=72), EV 54.67(>=42)을 모두 충족한다. 단, 보정 전 MT 73.75·RF 74.50은 미달이었고 보정치는 종목 1개 표본 기반이므로 이 분류는 잠정이다. 다른 종목의 쌍 실행으로 base_offset을 재추정한 뒤 재확인한다. 컴파운더 분류가 매수 승인을 뜻하지는 않는다 — Veto 3건 미해소로 상태는 WATCH, 비중 0%다.",
-  "hard_veto_status": "UNRESOLVED",
-  "ic_state": "WATCH",
-  "position_range": "0% (Hard Veto 3건 미해소. 해소 후에도 price/Base 1.03에서는 기대차가 없어 Starter 이상은 부적절)",
+  "archetype_rationale": "기계적 판정은 컴파운더다. 보정 후 price/Base 1.0304(<=1.2), MT 77.08·RF 77.83(>=76), MA 77.08·FS 81.08(>=72), EV 54.67(>=42)을 모두 충족한다. 단, 보정 전 MT 73.75·RF 74.50은 미달이었고 provider calibration은 종목 1개 표본 기반이므로 분류는 잠정이다. 2026-09-19 GPT-5.6 Sol 사후 Hard Veto 재심에서 기존 conditional 3건은 엄격한 Veto 문구와 anti-double-counting 원칙에 따라 모두 cleared로 전환됐다.",
+  "hard_veto_status": "CLEARED",
+  "ic_state": "NORMAL_CANDIDATE",
+  "position_range": "2-4% mechanical band; macro pacing 0.7, price/Base 1.03과 낮은 기대차를 감안해 단계적 집행",
   "domain_scores": {
     "structural_leadership": 78.83,
     "customer_product": 80.25,
@@ -26,59 +26,59 @@
   "disputes": [
     {
       "domain": "structural_leadership",
-      "spread": 33.0,
+      "spread": 33,
       "review_required": true
     },
     {
       "domain": "customer_product",
-      "spread": 35.0,
+      "spread": 35,
       "review_required": true
     },
     {
       "domain": "moat_trajectory",
-      "spread": 35.0,
+      "spread": 35,
       "review_required": true
     },
     {
       "domain": "reinvestment_fcf",
-      "spread": 33.0,
+      "spread": 33,
       "review_required": true
     },
     {
       "domain": "management_allocation",
-      "spread": 27.0,
+      "spread": 27,
       "review_required": true
     },
     {
       "domain": "financial_survival",
-      "spread": 26.0,
+      "spread": 26,
       "review_required": true
     },
     {
       "domain": "expectation_valuation",
-      "spread": 65.0,
+      "spread": 65,
       "review_required": true
     },
     {
       "domain": "asymmetry",
-      "spread": 57.0,
+      "spread": 57,
       "review_required": true
     },
     {
       "domain": "disruptive_innovation",
-      "spread": 30.0,
+      "spread": 30,
       "review_required": true
     },
     {
       "domain": "turnaround_quality",
-      "spread": 25.0,
+      "spread": 25,
       "review_required": true
     }
   ],
   "falsifiers": [
-    "Q3 FY27 10-Q에서 DSO가 50일 이하로 복귀하고 AR 증가율이 매출 증가율을 밑돌면 Veto 3건의 근거가 약해지고 WATCH에서 Starter로 상향을 검토한다.",
-    "진입가가 Base 가치의 0.8배(약 $170) 이하로 내려가면 AS의 영구손실 Veto가 clear로 전환되고 비대칭성 판단이 뒤집힌다.",
-    "MT 또는 RF가 다음 분기 데이터로 컴파운더 임계값 76을 넘으면 유형을 컴파운더로 재판정한다. 현재 미달 폭은 각각 2.25점과 1.50점이다."
+    "지원 대상 고객이 매출의 지배적 비중을 차지하고 지원 제거 시 수요·단위경제가 붕괴하면 고객가치/보조금 Veto를 재개한다.",
+    "단일 고객 25% 초과 또는 제2 주요 관할 판매제한이 지속적인 매출·FCF 훼손으로 이어지면 집중도 Veto를 재개한다.",
+    "외부자본 없이는 생존이 어렵거나 스트레스에서도 owner FCF가 구조적으로 소멸하면 영구손실 Veto를 재개한다."
   ],
   "macro_pacing_multiplier": 0.7,
   "domain_scores_before_provider_calibration": {
@@ -88,17 +88,17 @@
     "reinvestment_fcf": 74.5,
     "management_allocation": 73.75,
     "financial_survival": 77.75,
-    "expectation_valuation": 53.0,
+    "expectation_valuation": 53,
     "asymmetry": 66.75,
     "disruptive_innovation": 78.75,
     "turnaround_quality": 34.25
   },
   "provider_calibration": {
     "family": "anthropic",
-    "base_offset": 5.0,
+    "base_offset": 5,
     "per_domain_offset": {
       "structural_leadership": 3.33,
-      "customer_product": 5.0,
+      "customer_product": 5,
       "moat_trajectory": 3.33,
       "reinvestment_fcf": 3.33,
       "management_allocation": 3.33,
@@ -106,8 +106,20 @@
       "expectation_valuation": 1.67,
       "asymmetry": 1.67,
       "disruptive_innovation": 3.33,
-      "turnaround_quality": 5.0
+      "turnaround_quality": 5
     },
     "basis_sample_n": 27
+  },
+  "post_run_veto_review": {
+    "date": "2026-09-19",
+    "provider": "openai",
+    "model": "gpt-5.6-sol",
+    "scope": "hard_veto_adjudication_only",
+    "changed": [
+      "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+    ],
+    "note": "Base Claude run의 점수·DCF·provider calibration은 유지하고 Hard Veto 상태만 재심했다."
   }
 }
