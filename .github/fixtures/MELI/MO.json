@@ -1,0 +1,18 @@
+{
+  "agent_id":"MO","ticker":"MELI","as_of_date":"2026-09-17","domain":"macro_overlay","role":"overlay","analysis_status":"complete",
+  "score_0_100":40,"confidence_0_1":0.92,
+  "thesis":"Macro conditions justify slower entry pacing. The Fed raised its target to 3.75%-4.00%, U.S. real yields remain high, and Brazil's Selic is still 13.75% despite an easing cycle. For MELI, high local rates and rising household indebtedness increase credit-loss and consumption sensitivity even though digital penetration remains structural. Use a 0.80 risk-budget multiplier: do not change the company grade, but require stronger margin and credit evidence before full deployment.",
+  "evidence":[
+    {"claim":"The Fed raised the target range to 3.75%-4.00% on Sep. 16.","source_type":"other","source":"Federal Reserve FOMC statement","period":"2026-09-16","as_of_date":"2026-09-17","value":"3.75%-4.00%","fact_or_estimate":"fact"},
+    {"claim":"Brazil cut Selic 25 bp to 13.75% on Sep. 16, but real rates remain high.","source_type":"other","source":"Brazil central bank decision reported Sep. 16","period":"2026-09-16","as_of_date":"2026-09-17","value":"Selic 13.75%","fact_or_estimate":"fact"},
+    {"claim":"Brazil household indebtedness is elevated and digital-lending defaults have risen, increasing credit-cycle risk.","source_type":"other","source":"Reuters Brazil fintech/household debt report","period":"September 2026","as_of_date":"2026-09-17","value":"Elevated household debt and fintech defaults","fact_or_estimate":"fact"},
+    {"claim":"MELI's H1 provision for doubtful accounts rose to $2.520B from $1.293B.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"FY2026 H1","as_of_date":"2026-08-06","value":"Provision +95%","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":["Brazil is in an easing cycle, which can improve future consumer and credit conditions.","MELI's structural digital penetration runway can offset cyclical weakness.","The ecosystem spans multiple countries and businesses, reducing single-macro exposure."],
+  "unknowns":["Brazil inflation/rate path after the election.","Mexico rate and currency path.","Sensitivity of Mercado Crédito losses to unemployment and household leverage.","FX translation at current real/peso levels."],
+  "falsifiers":["Brazil rates fall materially without renewed inflation and credit losses stabilize, supporting a higher multiplier.","A broad LatAm funding or FX shock emerges, requiring a lower multiplier.","MELI's credit provisions normalize despite high rates, reducing macro sensitivity."],
+  "hard_veto_flags":[],
+  "key_kpis":[{"name":"Brazil Selic","direction":"down","threshold":"Sustained easing with stable inflation supports more pacing","cadence":"meeting"},{"name":"Credit provision intensity","direction":"down","threshold":"Provision growth slows materially","cadence":"quarterly"},{"name":"FX / consumer activity","direction":"stable","threshold":"No simultaneous regional stress","cadence":"monthly"}],
+  "next_checks":["Brazil election/fiscal developments","Fed path and real yields","MELI Q3 credit provisions"],
+  "verdict":"neutral","risk_budget_multiplier":0.80
+}
