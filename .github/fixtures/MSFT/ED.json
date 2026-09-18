@@ -1,0 +1,47 @@
+{
+  "agent_id":"ED",
+  "ticker":"MSFT",
+  "as_of_date":"2026-09-18",
+  "domain":"evidence_quality",
+  "role":"evidence_auditor",
+  "analysis_status":"complete",
+  "score_0_100":88,
+  "confidence_0_1":0.95,
+  "thesis":"The investment case is supported by a strong primary-source core: FY2026 10-K/10-Qs directly support revenue, operating cash flow, capex, RPO, balance-sheet and SBC claims, while the Sep. 2 8-K supports the FY2027 segment reset. Official IR supports seat growth, cloud metrics and capacity-utilization commentary. The largest evidence gap is not source reliability but economic attribution: Microsoft does not yet disclose enough to measure full-cycle incremental ROIC or Copilot/agent cohort economics.",
+  "evidence":[
+    {"claim":"FY2026 revenue, OCF, PP&E additions, balance-sheet liquidity, SBC and commercial RPO are directly supported by Microsoft’s filed FY2026 Form 10-K.","source_type":"filing","source":"Microsoft FY2026 Form 10-K filed 2026-07-29","period":"FY2026","as_of_date":"2026-07-29","value":"Revenue $331.839B; OCF $182.935B; PP&E additions $115.948B; RPO $678B","fact_or_estimate":"fact"},
+    {"claim":"The FY2027 Agents and Infra / Devices and Consumer reporting change and restated FY2026 segment data are directly supported by the Sep. 2, 2026 Form 8-K.","source_type":"filing","source":"Microsoft Form 8-K filed 2026-09-02","period":"FY2027 reporting structure","as_of_date":"2026-09-02","value":"Two-segment reporting structure with restated FY2026 data","fact_or_estimate":"fact"},
+    {"claim":"Microsoft’s official FY26 investor metrics define commercial RPO, Microsoft Cloud revenue and M365 Commercial seats and report FY26 Microsoft Cloud revenue of $214.4B, RPO of $678B and M365 Commercial seat growth of 6%.","source_type":"ir","source":"Microsoft FY26 Q4 Investor Metrics","period":"FY2026","as_of_date":"2026-07-29","value":"Cloud $214.4B; RPO $678B; M365 Commercial seats +6%","fact_or_estimate":"fact"},
+    {"claim":"The FY26 Q4 earnings call states all sequential commercial RPO growth came from customers outside frontier model companies, RPO excluding OpenAI grew 25%, and added Azure capacity was quickly monetized.","source_type":"ir","source":"Microsoft FY26 Q4 earnings call","period":"Q4 FY2026","as_of_date":"2026-07-29","value":"RPO ex-OpenAI +25%; incremental Azure capacity quickly monetized","fact_or_estimate":"fact"},
+    {"claim":"Microsoft reported effective internal control over financial reporting as of June 30, 2026, and the independent auditor issued unqualified opinions on the financial statements and internal controls.","source_type":"filing","source":"Microsoft FY2026 Form 10-K Item 9A","period":"FY2026","as_of_date":"2026-07-29","value":"ICFR effective; unqualified audit opinions","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":[
+    "The frozen $497.75 market price is sourced from a secondary historical-price provider rather than an exchange/issuer primary source.",
+    "Several product-economics claims rely on management commentary because consolidated NRR, churn, Copilot renewal cohorts and agent-level gross margins are not disclosed.",
+    "Commercial RPO is contract visibility, not a direct measure of incremental ROIC or future free-cash-flow margin.",
+    "Simple OCF-minus-PP&E is a conservative cash-flow anchor but does not separate maintenance capex from growth capex or capitalize SBC as an owner cost."
+  ],
+  "unknowns":[
+    "Full-cycle incremental ROIC on the FY2025-27 AI infrastructure wave.",
+    "Paid Copilot/agent renewal, expansion and cohort-level unit economics.",
+    "Maintenance versus growth share of datacenter and accelerator capex.",
+    "Consolidated enterprise NRR/GRR and churn."
+  ],
+  "falsifiers":[
+    "A primary filing contradicts a score-driving numerical claim or reveals a definition change that makes period comparisons invalid.",
+    "Future disclosures show RPO growth without corresponding revenue, gross-profit or owner-FCF conversion over multiple periods.",
+    "Microsoft changes KPI definitions or segment mappings in a way that breaks comparability without adequate reconciliations."
+  ],
+  "hard_veto_flags":[],
+  "key_kpis":[
+    {"name":"Owner FCF/share versus capex","direction":"up","threshold":"FCF/share should rise while capex growth decelerates relative to Azure/AI gross profit","cadence":"quarterly/annual"},
+    {"name":"Microsoft Cloud gross margin","direction":"stable/up","threshold":"Stabilization and recovery after current AI infrastructure buildout","cadence":"quarterly"},
+    {"name":"Commercial RPO conversion / ex-OpenAI growth","direction":"up","threshold":"Backlog converts broadly without increasing customer concentration","cadence":"quarterly"}
+  ],
+  "next_checks":[
+    "FY2027 Q1 Agents and Infra revenue, margin, capex and OCF.",
+    "Any new disclosure on Copilot/agent paid usage, retention or unit economics.",
+    "Reconcile FY2027 segment-definition changes against FY2026 restated history."
+  ],
+  "verdict":"support"
+}
