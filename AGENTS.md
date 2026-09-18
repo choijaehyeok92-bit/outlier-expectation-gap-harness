@@ -12,8 +12,8 @@
 6. `Hard Veto`는 100점 스코어보다 우선한다.
 7. Macro는 종목선정 점수에 섞지 않는다. Macro는 Risk Budget / Position Pacing 전용이다.
 8. 추가매수는 `Position Increase ∝ Evidence Increase` 원칙을 따른다. 하락 자체는 추가매수 사유가 아니다.
-9. **파괴적 혁신**은 100점 점수와 분리된 독립 평가축이다. 종목 유형 분류와 IC 판단에만 사용한다.
-10. 모든 종목은 평가 후 **컴파운더 / 이머징 아웃라이어 / 기대차형 / 문샷형 / 관망·회피형** 중 하나로 분류한다. 문샷형의 고밸류에이션 용인은 Hard Veto를 면제하지 않는다.
+9. **파괴적 혁신**과 **턴어라운드 품질**은 100점 점수와 분리된 독립 평가축이다. 종목 유형 분류와 IC 판단에만 사용한다.
+10. 모든 종목은 평가 후 **컴파운더 / 이머징 아웃라이어 / 턴어라운드형 / 기대차형 / 문샷형 / 관망·회피형** 중 하나로 분류한다. 문샷형의 고밸류에이션 용인이나 턴어라운드의 저점 기대는 Hard Veto를 면제하지 않는다.
 
 ## Evidence policy
 - 모든 사실은 `as_of_date`, `source_type`, `source`, `period`, `value`를 남긴다.
@@ -25,7 +25,7 @@
 
 ## Independence protocol
 ### Phase 1 — Blind analysis
-항목당 에이전트 1개가 다른 항목의 결론을 보지 않고 독립 분석한다. triage(EV·AS·DI)를 먼저 실행한다.
+항목당 에이전트 1개가 다른 항목의 결론을 보지 않고 독립 분석한다. triage(EV·AS·DI·TQ)를 먼저 실행한다.
 
 ### Phase 2 — In-report cross-examination
 각 도메인 에이전트는 Bull / Verifier / Skeptic 관점을 각각 끝까지 전개하고 `bull_case`·`bear_case`, `bull_score`·`bear_score`로 남긴다. 관점을 합의에 끼워 맞추지 않는다.
@@ -50,7 +50,7 @@
 - `agent_id`, `ticker`, `as_of_date`
 - `domain`, `role`
 - `score_0_100`, `confidence_0_1`
-- 점수 도메인·파괴적 혁신 축: `bull_score`, `bear_score`, `bull_case`, `bear_case` (`bear_score ≤ score_0_100 ≤ bull_score`)
+- 점수 도메인·독립 평가축(DI·TQ): `bull_score`, `bear_score`, `bull_case`, `bear_case` (`bear_score ≤ score_0_100 ≤ bull_score`)
 - `thesis`, `evidence`, `counterevidence`, `unknowns`
 - `falsifiers`, `hard_veto_flags`
 - `key_kpis`, `next_checks`
@@ -85,6 +85,7 @@
 - `moonshot` — 문샷형
 - `compounder` — 컴파운더
 - `emerging_outlier` — 이머징 아웃라이어
+- `turnaround` — 턴어라운드형
 - `expectation_gap` — 기대차형
 - `non_fit` — 관망·회피형
 
@@ -97,6 +98,7 @@
 - Macro 전망으로 기업가설 점수를 수정 금지.
 - TAM만으로 구조적 성장 점수 부여 금지.
 - "제2의 테슬라/엔비디아" 같은 비유만으로 파괴적 혁신 점수 부여 또는 문샷형 분류 금지.
+- 주가 급락·구조조정 발표·경영진의 회복 가이던스만으로 턴어라운드 점수 부여 금지.
 - 경영진 발언을 검증 없이 증거로 취급 금지.
 
 ## Reproducibility contract
