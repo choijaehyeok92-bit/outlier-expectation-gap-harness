@@ -119,12 +119,27 @@ def macro_cache_source(as_of:str):
 
 def is_scored(domain): return domain in SCORE_DOMAINS or domain in AXIS_DOMAINS
 
+def company_market_cap_usd(ctx):
+    m=ctx.get('market_cap_usd')
+    if isinstance(m,(int,float)) and not isinstance(m,bool): return float(m)
+    p=ctx.get('current_price'); s=ctx.get('shares_diluted')
+    if isinstance(p,(int,float)) and not isinstance(p,bool) and isinstance(s,(int,float)) and not isinstance(s,bool):
+        return float(p)*float(s)
+    return None
+
+def enrich_archetype_signals(signals,ctx):
+    out=dict(signals or {})
+    m=company_market_cap_usd(ctx)
+    if m is not None: out['market_cap_usd']=round(m,2)
+    return out
+
 def cmd_init(args):
     ticker=args.ticker.upper(); run=run_dir(ticker)
     (run/'reports').mkdir(parents=True,exist_ok=True)
     ctx=load_json(ROOT/'templates/company_context.json')
     ctx['ticker']=ticker; ctx['as_of_date']=args.as_of
     ctx.setdefault('net_cash_per_share',None)
+    ctx.setdefault('market_cap_usd',None)
     ctx.setdefault('valuation_percentile_5y',None)
     ctx.setdefault('valuation_metric','')
     ctx.setdefault('valuation_overrides',{'required_return':None,'terminal_multiples':{'bear':None,'base':None,'bull':None}})
@@ -357,6 +372,7 @@ def compute_aggregate(ticker, reports):
     ev=next((r for r in reports if r.get('domain')==SIGNAL_DOMAIN and is_complete(r)),None)
     valuation=deterministic_valuation(ev,ctx)
     signals=valuation.get('signals') if valuation.get('status')=='COMPLETE' else archetype_signals(reports)
+    signals=enrich_archetype_signals(signals,ctx)
     archetype=classify_archetype(ds,signals,normalized,score_ex_valuation,confirmed)
     reachable=reachable_archetypes(ds,signals,confirmed)
     early_exit=covered<100 and EXEC['early_exit'] and not reachable and triage_complete(reports)
@@ -660,6 +676,17 @@ def cmd_selftest(args):
         'asymmetry':{'score':70,'raw_weighted_median':70}},
         {'price_to_base_value':1.3,'valuation_percentile_5y':0.5,'revenue_cagr_next_3y':0.0},60,60,[])
     assert ta['id']=='turnaround' and ta['gate_score']==60
+    moon_ds={
+        'disruptive_innovation':{'score':85,'raw_weighted_median':85},
+        'structural_leadership':{'score':80,'raw_weighted_median':80},
+        'asymmetry':{'score':80,'raw_weighted_median':80},
+        'financial_survival':{'score':70,'raw_weighted_median':70}}
+    ms=classify_archetype(moon_ds,{'market_cap_usd':20_000_000_000},70,80,[])
+    assert ms['id']=='moonshot', 'moonshot market-cap gate should include exactly $20B'
+    ms_over=classify_archetype(moon_ds,{'market_cap_usd':20_000_000_001},70,80,[])
+    assert ms_over['id']!='moonshot', 'moonshot market-cap gate should exclude >$20B'
+    assert 'moonshot' not in reachable_archetypes(moon_ds,{'market_cap_usd':20_000_000_001},[])
+    assert company_market_cap_usd({'current_price':50,'shares_diluted':400_000_000})==20_000_000_000
     ev=mk('expectation_valuation','EV',[75,75,75])
     ev['valuation_inputs']={'valuation_percentile_5y':0.5,'revenue_cagr_next_3y':0.12,
         'scenarios':{k:{'owner_fcf_per_share':[10.0]*10} for k in ('bear','base','bull')}}
