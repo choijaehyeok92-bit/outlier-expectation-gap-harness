@@ -53,11 +53,34 @@
       "minimum": 0,
       "maximum": 1
     },
+    "bull_score": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 100,
+      "description": "점수 도메인 필수: Bull 논리가 맞을 때의 도메인 점수"
+    },
+    "bear_score": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 100,
+      "description": "점수 도메인 필수: Skeptic 논리가 맞을 때의 도메인 점수. bear_score ≤ score_0_100 ≤ bull_score"
+    },
+    "bull_case": {
+      "type": "string",
+      "maxLength": 300
+    },
+    "bear_case": {
+      "type": "string",
+      "maxLength": 300
+    },
     "thesis": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 600
     },
     "evidence": {
       "type": "array",
+      "minItems": 3,
+      "maxItems": 6,
       "items": {
         "type": "object",
         "required": [
@@ -96,18 +119,21 @@
     },
     "counterevidence": {
       "type": "array",
+      "maxItems": 4,
       "items": {
         "type": "string"
       }
     },
     "unknowns": {
       "type": "array",
+      "maxItems": 5,
       "items": {
         "type": "string"
       }
     },
     "falsifiers": {
       "type": "array",
+      "maxItems": 3,
       "items": {
         "type": "string"
       }
@@ -142,6 +168,7 @@
     },
     "key_kpis": {
       "type": "array",
+      "maxItems": 3,
       "items": {
         "type": "object",
         "properties": {
@@ -162,6 +189,7 @@
     },
     "next_checks": {
       "type": "array",
+      "maxItems": 3,
       "items": {
         "type": "string"
       }
