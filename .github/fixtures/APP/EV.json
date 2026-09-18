@@ -11,15 +11,15 @@
   "bear_score": 50,
   "bull_case": "Axon-driven share gains extend beyond gaming into e-commerce and CTV while FCF/share compounds rapidly. The locked Bull path reaches $55/share in year 10 and supports value far above the frozen price.",
   "bear_case": "Growth decelerates sharply as ad platforms respond, privacy rules tighten and current margins prove near peak. FCF/share stagnates around the mid-teens, leaving material downside.",
-  "thesis": "At $321.49, APP trades below the locked Base DCF of about $429 and far below Bull of about $772. The discount is meaningful, but valuation still assumes durable high margins and double-digit FCF/share growth from an unusually profitable starting point. Current price does not require a Bull-plus outcome. Base value is moderately terminal-dependent, so competitive durability and margin normalization remain the central valuation risks.",
+  "thesis": "At $321.60, APP trades below the locked Base DCF of about $429 and far below Bull of about $772. The discount is meaningful, but valuation still assumes durable high margins and double-digit FCF/share growth from an unusually profitable starting point. Current price does not require a Bull-plus outcome. Base value is moderately terminal-dependent, so competitive durability and margin normalization remain the central valuation risks.",
   "evidence": [
     {
-      "claim": "Frozen close is $321.49; latest outstanding shares are 334.651M, implying market cap about $107.59B.",
+      "claim": "Frozen close is $321.60; latest outstanding shares are 334.651M, implying market cap about $107.62B.",
       "source_type": "secondary",
       "source": "ChartExchange historical close and uploaded Q2 10-Q share count",
       "period": "2026-09-17",
       "as_of_date": "2026-09-17",
-      "value": "Price $321.49; market cap ~$107.59B",
+      "value": "Price $321.60; market cap ~$107.62B",
       "fact_or_estimate": "fact"
     },
     {
