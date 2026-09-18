@@ -8,11 +8,11 @@
 6. **증분 ROIC / 재투자**: **RF 90/100**. FY2025 FCF $3.952B, FY2026 H1 FCF $2.150B, 매우 낮은 physical capex와 감소하는 주식수가 강점이다.
 7. **FCF/share**: FY2025 단순 FCF/share는 연말 주식수 기준 약 **$11.68**, FY2026 H1은 H1 diluted shares 기준 약 **$6.36**. Locked Base 경로는 year 1 $13 → year 10 $34.5.
 8. **경영진 / 자본배분**: **MA 83/100**. Apps 사업 매각으로 광고 플랫폼에 집중했고 대규모 자사주매입이 SBC를 상쇄했다. 다만 controlled-company 구조와 창업자 의존은 할인요인이다.
-9. **파괴적 혁신**: **DI 81.75/100**이나, frozen 시총 약 **$107.6B**로 Moonshot의 **$20B 이하** 조건을 명백히 위반한다.
+9. **파괴적 혁신**: **DI 81.75/100**이나, frozen 시총 약 **$107.62B**로 Moonshot의 **$20B 이하** 조건을 명백히 위반한다.
 10. **최종 유형**: **Compounder**. MT 83.75 / RF 90 / MA 83 / FS 91.75 / EV 72로 모든 Compounder 기계적 조건을 충족한다.
 11. **점수 분류**: Core score **83.41 → Emerging Outlier band**. 이는 점수 band이며 archetype은 Compounder다.
 12. **Bear / Base / Bull**: 약 **$166.86 / $429.37 / $771.95**.
-13. **Frozen price**: **$321.49**, Price/Base **0.7488x**.
+13. **Frozen price**: **$321.60**, Price/Base **0.7488x**.
 14. **Expectation Gap 여부**: 가격/Base만 보면 할인구간이지만, Base 3년 매출 CAGR 24% > 20%, EV 72 < 75라 Expectation Gap archetype은 아니다.
 15. **상승 경로**: Axon 광고 효율 우위가 유지되고 e-commerce·CTV가 추가 TAM을 만들며 FCF/share와 buyback 효과가 복리화되는 경로.
 16. **주요 영구손실 경로**: Axon 성능우위 약화 + Apple/Google 플랫폼·privacy 변화 + 경쟁 심화가 성장과 80%대 margin을 동시에 정상화시키는 경우.
