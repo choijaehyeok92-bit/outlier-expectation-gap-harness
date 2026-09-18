@@ -1,0 +1,33 @@
+{
+  "agent_id":"SL","ticker":"MSFT","as_of_date":"2026-09-18","domain":"structural_leadership","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":87.5,"confidence_0_1":0.9,"bull_score":95,"bear_score":70,
+  "bull_case":"AI and cloud are multi-year structural shifts, and Microsoft shapes enterprise standards through Azure, Microsoft 365, GitHub, security and agents. Its installed distribution and infrastructure capacity let it define workflows rather than merely participate in them.",
+  "bear_case":"Microsoft is already enormous; saturation, model commoditization, regulation and capital intensity can reduce growth duration. AI may expand the market while redistributing economics toward chips, power or model providers rather than Microsoft.",
+  "thesis":"Microsoft is a structural leader, not a passive beneficiary. FY2026 Azure growth, Microsoft Cloud scale, commercial RPO and the FY2027 Agents and Infra structure show that cloud/AI is altering enterprise architecture around Microsoft’s platform. The main durability risks are scale, AI capital intensity, regulation and commoditization, but several independent growth engines provide resilience.",
+  "evidence":[
+    {"claim":"Azure and other cloud services revenue grew 41% in FY2026.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K / Microsoft FY26 Q4 metrics","period":"FY2026","as_of_date":"2026-06-30","value":"Azure +41%","fact_or_estimate":"fact"},
+    {"claim":"Microsoft Cloud revenue reached $214.4B in FY2026, demonstrating category leadership at very large scale.","source_type":"other","source":"Microsoft FY26 Q4 Investor Metrics","period":"FY2026","as_of_date":"2026-06-30","value":"Microsoft Cloud revenue $214.4B","fact_or_estimate":"fact"},
+    {"claim":"Commercial RPO reached $678B, up 84%, providing unusually strong multi-year enterprise demand visibility.","source_type":"filing","source":"Uploaded Microsoft FY2026 Form 10-K / FY26 Q4 earnings","period":"FY2026","as_of_date":"2026-06-30","value":"Commercial RPO $678B, +84%","fact_or_estimate":"fact"},
+    {"claim":"Beginning FY2027, Microsoft groups Microsoft 365, GitHub, security, models/agents and Azure infrastructure in Agents and Infra, reflecting an integrated AI workload architecture.","source_type":"filing","source":"Uploaded Microsoft Form 8-K filed 2026-09-02","period":"FY2027 reporting structure","as_of_date":"2026-09-02","value":"Agents and Infra segment","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":["Microsoft’s current scale lowers the probability that recent growth rates persist for a full decade.","AI infrastructure spending is structurally more capital intensive than the historical software model.","Cloud/model competition and multi-cloud purchasing can constrain pricing and share gains.","Antitrust and platform regulation can limit bundling and distribution advantages."],
+  "unknowns":["Steady-state AI infrastructure intensity","Long-run Azure share versus AWS/GCP and emerging alternatives","Regulatory constraints on bundling/distribution","Long-run economics of agentic workloads"],
+  "uncertainties":[
+    {"criterion_id":"secular_durability","severity":"minor","rationale":"Cloud and AI demand are clearly structural, but the exact duration and capital intensity remain uncertain."},
+    {"criterion_id":"durability_risks","severity":"material","rationale":"Scale, regulation and model commoditization can reduce growth even if the category continues expanding."}
+  ],
+  "falsifiers":["Azure/AI growth decelerates structurally while Microsoft Cloud share and gross profit fail to outgrow the market.","Enterprise customers materially reduce Microsoft wallet share through multi-cloud or agent-layer substitution.","Regulatory remedies remove enough distribution leverage to impair cross-suite economics."],
+  "hard_veto_flags":[],
+  "key_kpis":[
+    {"name":"Azure and other cloud services growth","direction":"up","threshold":"Remain structurally above broad enterprise IT growth","cadence":"quarterly"},
+    {"name":"Commercial RPO conversion","direction":"up","threshold":"Translate backlog into revenue and gross profit without equivalent capital-intensity growth","cadence":"quarterly"},
+    {"name":"Microsoft Cloud gross profit","direction":"up","threshold":"Compound despite AI infrastructure depreciation and usage costs","cadence":"quarterly"}
+  ],
+  "next_checks":["FY2027 Agents and Infra growth/margin","Azure share and capacity utilization","Regulatory changes affecting bundling/distribution"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"secular_durability","score_0_100":90,"rationale":"Cloud and AI are multi-year enterprise architecture shifts with large contracted demand and broad adoption."},
+    {"criterion_id":"category_leadership","score_0_100":90,"rationale":"Microsoft shapes enterprise workflows and standards through Azure, M365, GitHub, security and integrated agents."},
+    {"criterion_id":"durability_risks","score_0_100":80,"rationale":"Multiple franchises buffer saturation, though scale, regulation and capital intensity are meaningful risks."}
+  ]
+}
