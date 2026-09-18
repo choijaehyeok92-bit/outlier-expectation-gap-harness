@@ -1,0 +1,142 @@
+{
+  "agent_id": "AS",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 76.75,
+  "confidence_0_1": 0.84,
+  "bull_score": 90,
+  "bear_score": 55,
+  "bull_case": "A credible multi-bagger path exists if Axon compounds advertiser ROI and APP expands from gaming into e-commerce/CTV while repurchases amplify FCF/share. A true 5x requires a very large global ad-share outcome.",
+  "bear_case": "A 40-50% permanent-loss path exists if current margins are peak, platform rules impair targeting, or competitors narrow Axon's advantage. Strong FCF and buybacks cushion but do not remove valuation risk.",
+  "thesis": "Asymmetry is favorable but not classic small-cap power-law. Frozen market cap is already about $107.6B, so 5x implies roughly $538B and 10x above $1T. The locked Base/Bull values provide meaningful upside, while high current FCF and falling share count reduce financing risk. Upside therefore comes from sustained FCF/share compounding rather than survival optionality; margin or platform-policy failure remains the main permanent-loss path.",
+  "evidence": [
+    {
+      "claim": "Frozen market cap is about $107.6B; 5x and 10x imply roughly $538B and $1.08T.",
+      "source_type": "other",
+      "source": "Frozen company_context",
+      "period": "2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": "5x ~$538B; 10x ~$1.08T",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "FY2025 FCF was $3.952B and H1 2026 FCF was $2.150B.",
+      "source_type": "filing",
+      "source": "Uploaded 10-K and Q2 10-Q",
+      "period": "FY2025-FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "FCF $3.952B; H1 $2.150B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Shares outstanding declined from 338.313M at 2025 year-end to 334.651M by July 31, 2026.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K and FY2026 Q2 10-Q",
+      "period": "2025-12-31 to 2026-07-31",
+      "as_of_date": "2026-08-05",
+      "value": "Share count down ~1.1%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Locked DCF is about $166.86 Bear, $429.37 Base and $771.95 Bull versus $321.49.",
+      "source_type": "other",
+      "source": "Deterministic harness DCF",
+      "period": "10-year model",
+      "as_of_date": "2026-09-17",
+      "value": "Bear $166.86; Base $429.37; Bull $771.95",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "At a $100B+ starting market cap, a 5x outcome requires exceptional global advertising share and sustained margins.",
+    "Advertising competition from major platforms can compress take rates or ROI advantages.",
+    "Privacy and platform-policy changes can impair targeting economics quickly.",
+    "The Bear DCF still implies substantial downside despite strong current cash generation."
+  ],
+  "unknowns": [
+    "Long-run share outside mobile gaming.",
+    "Normalized margin in a more competitive market.",
+    "Probability and impact of material privacy/regulatory constraints.",
+    "Magnitude of e-commerce and CTV FCF contribution."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Multi-bagger upside is credible, but 5x/10x requires very large market-cap outcomes."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Strong FCF reduces solvency risk, but valuation and platform risks can still cause permanent loss."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Adtech winners can scale rapidly, but the category has high platform and policy variance."
+    }
+  ],
+  "falsifiers": [
+    "FCF/share growth drops to low single digits for multiple years.",
+    "Axon advertiser ROI or market-share gains reverse across verticals.",
+    "Privacy/platform changes materially reduce conversion performance and margins."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Price is below Base and well below Bull."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Large FCF and modest net debt make financing failure remote relative to upside, though valuation risk remains."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "FCF/share",
+      "direction": "up",
+      "threshold": "Double-digit multi-year growth",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Diluted shares",
+      "direction": "down",
+      "threshold": "Repurchases offset SBC and shrink count",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Revenue growth / margin",
+      "direction": "stable",
+      "threshold": "Sustain strong growth with high cash conversion",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 growth and margin.",
+    "Buybacks versus SBC.",
+    "New-vertical contribution."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 80,
+      "rationale": "Base/Bull and cross-vertical expansion support multi-bagger potential, though 5x is demanding."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 75,
+      "rationale": "Strong FCF and modest leverage provide resilience, offset by ad-platform and valuation risk."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 75,
+      "rationale": "Scenarios reflect high-growth adtech base rates without treating a 5x outcome as the default."
+    }
+  ]
+}
