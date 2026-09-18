@@ -7,9 +7,9 @@
 - Form 8-K / Q2 earnings release filed 2026-08-05. SHA-256: 563a4a13af41a402eb5e2e5d74caaf615376a95e0d85ebc1705a7504bbd98c12
 
 ## Locked market input
-- APP Nasdaq close on 2026-09-17: $321.49 (ChartExchange historical close; other vendors differ by a few cents).
+- APP Nasdaq close on 2026-09-17: $321.60. StockAnalysis, Investing.com and ADVFN agree at $321.60; ChartExchange shows $321.49.
 - Shares outstanding as of 2026-07-31: Class A 304.443M + Class B 30.208M = 334.651M.
-- Frozen market cap: $107.58695B = $321.49 × 334.651M.
+- Frozen market cap: $107.623762B = $321.60 × 334.651M.
 - Moonshot $20B market-cap gate: FAIL.
 - Q2 diluted weighted-average shares: 337.031M; H1 diluted weighted-average shares: 337.875M.
 
