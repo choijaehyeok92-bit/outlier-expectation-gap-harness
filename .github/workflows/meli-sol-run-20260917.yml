@@ -1,0 +1,141 @@
+name: MELI GPT-5.6 Sol harness run 2026-09-17
+
+on:
+  pull_request:
+    branches: [run/meli-2026-09-17-sol]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  harness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/meli-2026-09-17-sol
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute MELI harness with early-exit gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/execution.log) 2>&1
+
+          python harness.py selftest
+          python harness.py init MELI --as-of 2026-09-17
+
+          cp runs/MELI/manual_inputs/company_context.json runs/MELI/company_context.json
+          mkdir -p runs/MELI/sources
+          cp runs/MELI/manual_sources/* runs/MELI/sources/
+
+          python harness.py freeze MELI --provider openai --model gpt-5.6-sol --reasoning-effort high
+          python harness.py plan MELI | tee runlogs/plan_initial.txt
+
+          for a in EV AS DI TQ; do
+            python harness.py prompt MELI "$a" --out "runs/MELI/${a}_prompt.md"
+            cp "runs/MELI/manual_reports/${a}.json" "runs/MELI/reports/${a}.json"
+            python harness.py validate MELI "$a"
+          done
+
+          python harness.py aggregate MELI > runlogs/aggregate_after_triage.json
+          python harness.py digest MELI
+          python harness.py plan MELI | tee runlogs/plan_after_triage.txt
+
+          if grep -q "EARLY EXIT" runlogs/plan_after_triage.txt; then
+            echo "MELI EARLY EXIT triggered after EV/AS/DI/TQ."
+            python harness.py aggregate MELI
+            python harness.py digest MELI
+          else
+            echo "No early exit. Continuing full pipeline."
+
+            for a in SL CP MT RF MA FS; do
+              python harness.py prompt MELI "$a" --out "runs/MELI/${a}_prompt.md"
+              cp "runs/MELI/manual_reports/${a}.json" "runs/MELI/reports/${a}.json"
+              python harness.py validate MELI "$a"
+            done
+
+            python harness.py validate MELI MO
+            python harness.py aggregate MELI > runlogs/aggregate_pre_phase3.json
+            python harness.py digest MELI
+
+            for a in ED RT; do
+              python harness.py prompt MELI "$a" --out "runs/MELI/${a}_prompt.md"
+              cp "runs/MELI/manual_reports/${a}.json" "runs/MELI/reports/${a}.json"
+              python harness.py validate MELI "$a"
+            done
+
+            python harness.py aggregate MELI > runlogs/aggregate_pre_ic.json
+            python harness.py digest MELI
+            python harness.py plan MELI | tee runlogs/plan_pre_ic.txt
+
+            python harness.py prompt MELI IC --out runs/MELI/IC_prompt.md
+            cp runs/MELI/manual_reports/IC.json runs/MELI/reports/IC.json
+            python harness.py validate MELI IC
+
+            python harness.py validate MELI EV AS DI TQ SL CP MT RF MA FS MO ED RT IC
+            python harness.py plan MELI | tee runlogs/plan_final.txt
+            python harness.py digest MELI
+            python harness.py aggregate MELI | tee runlogs/aggregate_final.json
+          fi
+
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          run=Path("runs/MELI")
+          agg=json.loads((run/"aggregate.json").read_text(encoding="utf-8"))
+          mo=json.loads((run/"reports/MO.json").read_text(encoding="utf-8")) if (run/"reports/MO.json").exists() else {}
+          ic=json.loads((run/"reports/IC.json").read_text(encoding="utf-8")) if (run/"reports/IC.json").exists() else {}
+          v={
+            "ticker":"MELI","as_of_date":"2026-09-17",
+            "score_100":agg["score_100"],"score_100_ex_valuation":agg["score_100_ex_valuation"],
+            "classification":agg["classification"],"archetype":agg["archetype"]["id"],
+            "hard_veto_status":agg["hard_veto_status"],
+            "ic_state":agg["mechanical_pre_ic_state"],
+            "position_range":agg["position_range_pre_ic"],
+            "macro_pacing_multiplier":mo.get("risk_budget_multiplier"),
+            "ic_verdict":ic.get("verdict"),
+            "early_exit":agg["early_exit"],
+            "reachable_archetypes_raw":agg["reachable_archetypes_raw"],
+            "valuation_model":agg["valuation_model"],
+            "provider_calibration":agg["provider_calibration"],
+            "note":"Agent reports were authored by GPT-5.6 Sol in this ChatGPT session and executed through the repository harness; no separate OpenAI API adapter call was made."
+          }
+          (run/"final_verdict.json").write_text(json.dumps(v,ensure_ascii=False,indent=2),encoding="utf-8")
+          a=agg["archetype"]
+          lines=[
+            "# One-page Investment Record — MELI","",
+            f"기준일 2026-09-17 · score **{agg['score_100']}** · ex-val **{agg['score_100_ex_valuation']}** · classification **{agg['classification']}**",
+            f"archetype **{a['label']} ({a['id']})** · Hard Veto **{agg['hard_veto_status']}** · state **{agg['mechanical_pre_ic_state']}**",
+            f"mechanical position **{agg['position_range_pre_ic']}** · macro pacing **{mo.get('risk_budget_multiplier')}**","",
+            f"- price/Base: {a['signals'].get('price_to_base_value')}",
+            f"- Bear/Base/Bull: {agg['valuation_model']['scenarios']['bear']['value_per_share']} / {agg['valuation_model']['scenarios']['base']['value_per_share']} / {agg['valuation_model']['scenarios']['bull']['value_per_share']}",
+            "- 핵심 장점: LatAm commerce+fintech 구조 성장, 강한 GMV/TPV/MAU/Buyer 채택, 데이터·물류·결제 생태계.",
+            "- 핵심 리스크: 2026 margin/Adjusted FCF 압박, NIMAL 하락, credit past-due 및 funding 확대.",
+            "- IC: 점수는 Emerging이나 RF가 Compounder threshold를 못 넘어 Non-fit/Starter-Watch로 제한."
+          ]
+          (run/"one_page_investment_record.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/MELI
+          if ! git diff --cached --quiet; then
+            git commit -m "persist: MELI harness outputs 2026-09-17"
+            git push origin HEAD:work/meli-2026-09-17-sol
+          fi
+
+          echo "===== FINAL VERDICT ====="
+          cat runs/MELI/final_verdict.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MELI-gpt-5.6-sol-harness-2026-09-17
+          path: |
+            runs/MELI
+            runlogs
