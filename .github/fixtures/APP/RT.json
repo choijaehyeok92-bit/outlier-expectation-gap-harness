@@ -1,0 +1,143 @@
+{
+  "agent_id": "RT",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 70,
+  "confidence_0_1": 0.93,
+  "thesis": "The strongest short thesis is not fraud or leverage; it is peak economics. APP is valued as if Axon's extraordinary performance advantage and 80%+ EBITDA margins persist while it expands beyond gaming. Apple/Google policy changes, privacy regulation or better models from Meta/Google/Amazon could compress targeting advantage and margins simultaneously. A large drawdown can occur even with positive FCF. Current primary evidence, however, does not establish accounting impairment, financing dependence, subsidy-driven demand, moat shrinkage or fatal customer concentration.",
+  "evidence": [
+    {
+      "claim": "FY2025 revenue grew 70% and adjusted EBITDA margin reached 82.3%; H1 2026 margin reached 84.2%, setting an unusually high profitability baseline that can normalize.",
+      "source_type": "filing",
+      "source": "Uploaded 10-K/Q2 10-Q",
+      "period": "FY2025-FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "Very high growth and margins",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Apple and Google possess significant discretion over distribution, identifiers and data access in the mobile ecosystem.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K / Q2 10-Q risk factors",
+      "period": "2025-2026",
+      "as_of_date": "2026-08-05",
+      "value": "Material platform-policy dependency",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Controlled-company governance concentrates about 67% of voting power with voting-agreement parties as of 2025 year-end.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K",
+      "period": "2025-12-31",
+      "as_of_date": "2026-02-19",
+      "value": "~67% voting power",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Against the short thesis, FY2025 FCF was $3.952B, H1 2026 FCF $2.150B and net shares declined.",
+      "source_type": "filing",
+      "source": "Uploaded 10-K/Q2 10-Q",
+      "period": "FY2025-FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "Large FCF; shrinking shares",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "No individual customer represented 10% or more of FY2025 revenue.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K",
+      "period": "FY2025",
+      "as_of_date": "2026-02-19",
+      "value": "No customer >=10%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Locked DCF is $166.86 Bear / $429.37 Base / $771.95 Bull versus $321.49.",
+      "source_type": "other",
+      "source": "Deterministic harness DCF",
+      "period": "10-year model",
+      "as_of_date": "2026-09-17",
+      "value": "Material Bear downside despite Base discount",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Rapid FCF growth and low physical capex suggest genuine economic advantage rather than accounting optics.",
+    "No customer >=10% and multiple products reduce single-client fragility.",
+    "Repurchases more than offset SBC, strengthening per-share economics.",
+    "Clean Deloitte audit and effective ICFR argue against accounting-quality concerns."
+  ],
+  "unknowns": [
+    "How much Axon advantage survives if privacy APIs change materially.",
+    "Normalized margin under full competitive response.",
+    "Market share outside gaming.",
+    "Founder succession and governance under stress.",
+    "True advertiser switching elasticity."
+  ],
+  "falsifiers": [
+    "FCF/share continues double-digit growth while margins remain high despite stronger competition.",
+    "E-commerce/CTV become material without meaningfully higher sales costs.",
+    "Platform/privacy changes occur but Axon performance and share gains remain intact."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "Deloitte issued unqualified opinions and ICFR was effective; no current evidence indicates accounting impairment."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Multi-billion-dollar FCF, ample cash and an undrawn revolver make external capital nonessential."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Revenue has grown far faster than sales spending while margins and FCF expanded."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Observed FCF growth on low incremental physical capital shows no structural ROIC collapse."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Growth, margins and cross-vertical expansion currently indicate a widening rather than shrinking moat."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Platform-policy risk is significant, but no single customer exceeds 10%, the product suite is diversified, and no single regulation is presently fatal."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "FCF/share",
+      "direction": "up",
+      "threshold": "Remain double-digit over multi-year periods",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Margin / take-rate durability",
+      "direction": "stable",
+      "threshold": "No structural collapse after competitor/platform changes",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Platform-policy sensitivity",
+      "direction": "stable",
+      "threshold": "No sustained conversion deterioration from privacy changes",
+      "cadence": "event-driven"
+    }
+  ],
+  "next_checks": [
+    "Q3 margin and FCF/share.",
+    "Apple/Google privacy or attribution changes.",
+    "E-commerce/CTV growth economics."
+  ],
+  "verdict": "neutral"
+}
