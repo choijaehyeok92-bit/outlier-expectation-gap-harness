@@ -79,3 +79,50 @@ python harness.py aggregate NVDA
 - **Frozen run manifest:** commit/config/input SHA-256과 provider/model/reasoning metadata를 기록한다.
 
 기존 39-agent 및 구버전 JSON은 `legacy_declared_score` 방식으로 계속 집계할 수 있다.
+
+## v2.2 — Cross-provider convergence
+같은 종목·같은 종가에서 프로바이더별로 점수가 갈리는 문제를 측정하고 줄인다.
+
+**측정 결과 (NVDA, 종가 $219.34, gpt-5.6-sol vs Claude Opus 5, criterion 27개)**
+
+| | 평균 격차 |
+|---|---|
+| 전체 | **+10.2** (sol이 높음, 27개 전부 sol ≥ opus) |
+| 관측 가능한 사실형 criterion | +3.1 |
+| 위험 가중 판단형 criterion | **+13.2** |
+
+앵커가 "순현금/매우 강함"처럼 셀 수 있는 사실이면 두 모델이 일치하고, "복수 완충장치" 대 "상쇄요인 혼재"처럼
+형용사이면 갈라진다. sol은 앵커(25/50/75/90)에 그대로 착지해 90을 9번 썼고(27개 중 15개가 앵커값),
+opus는 앵커 사이로 보간해 [35,90]을 썼다(27개 중 4개).
+
+**대응 1 — 관측 판정표(`observable_anchors`).** 격차가 가장 컸던 8개 criterion의 앵커를 셀 수 있는
+판정표로 교체했다. EV의 `signal_map`(price_to_base_value → 점수 고정)에서 검증된 방식을 확장한 것이다.
+
+| criterion | 판정 기준 |
+|---|---|
+| SL `durability_risks` | 수요 동인이 독립적인 최종시장(매출 10% 이상) 개수 |
+| MT `network_data_ecosystem` | 생태계 규모·추세·전환비용을 뒷받침하는 1차 자료 수치 개수 |
+| RF `reinvestment_runway` | (capex + R&D) / 영업현금흐름 |
+| MA `capital_allocation` | 자사주 평균 매입단가 / Base 주당가치 |
+| FS `dilution_offbalance` | 희석주식수 증감과 부외약정/TTM매출 중 낮은 쪽 |
+| DI `optionality_incumbent_response` | 진입한 인접 가치풀 개수 (대응자가 고객 본인이면 상한 70) |
+| AS `upside_path` | Bull 주당가치 / 현재가 + 독립 상승경로 개수 |
+| AS `permanent_loss` | Bear 주당가치 / 현재가 |
+
+**대응 2 — `anchor_policy` 양쪽 게이트.** 85 이상은 1차 자료 근거 3개 이상과 최강 반대근거 반박을
+요구하고, 40 미만은 1차 자료 반증 근거를 요구한다. 근거 없는 낙관과 근거 없는 신중을 대칭으로 막는다.
+어느 앵커 구간을 골랐고 인접 구간을 왜 배제했는지 `rationale`에 적어야 한다.
+
+**대응 3 — `harness.py calibrate`.** 두 실행의 subscore를 criterion 단위로 대조해 격차를 수치로 낸다.
+`runs/_reference/NVDA-2026-09-18-sol/`에 sol 실행본을 기준선으로 보존했다.
+
+```bash
+python harness.py calibrate runs/NVDA runs/_reference/NVDA-2026-09-18-sol --out cal.json
+```
+
+**결과:** 판정표를 양쪽에 적용하면 해당 8개 criterion의 격차는 **+13.2 → 0.0**, 전체 평균은
+**+10.2 → +4.4**(sd 6.9 → 4.2)가 된다. 잔여 +4.4는 판정표가 없는 19개 형용사 criterion에서 나온다.
+이 수렴은 sol 쪽을 시뮬레이션한 값이며, 실제 sol 재실행으로 검증해야 한다.
+
+**한계:** 하네스가 보장하는 것은 두 모델의 *일치*이지 *정확성*이 아니다. 판정표가 맞춘 수준이
+옳은지는 사후 결과로만 확인된다.

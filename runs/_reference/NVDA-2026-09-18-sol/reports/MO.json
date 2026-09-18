@@ -1,0 +1,94 @@
+{
+  "agent_id": "MO",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "domain": "macro_overlay",
+  "role": "overlay",
+  "analysis_status": "complete",
+  "score_0_100": 50,
+  "confidence_0_1": 0.86,
+  "thesis": "금융여건은 '금리 긴축·신용 안정'의 혼합 상태다. 9월 FOMC가 정책금리를 3.75~4.00%로 25bp 인상했고 10년 실질금리는 9월 16일 2.68%까지 올라 성장주 duration에 역풍이다. 반면 미국 회사채 OAS는 0.78%, BBB OAS는 0.96%로 신용 스트레스 징후가 약하다. 신규 매수 속도는 약간 보수적으로 조정하되 현금창출력이 강한 NVDA의 기업가설 자체를 거시로 변경하지 않는다.",
+  "evidence": [
+    {
+      "claim": "The FOMC raised the federal funds target range by 25bp to 3.75%-4.00% on September 16, 2026 and said inflation remained elevated.",
+      "source_type": "other",
+      "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "period": "2026-09-16 FOMC",
+      "as_of_date": "2026-09-16",
+      "value": "Fed funds 3.75%-4.00%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The September SEP median projected 2026 PCE inflation at 3.7% and the year-end federal funds rate at 4.1%, versus a 3.8% rate projection in June, indicating a higher-for-longer policy path.",
+      "source_type": "other",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm",
+      "period": "September 2026 SEP",
+      "as_of_date": "2026-09-16",
+      "value": "2026 PCE 3.7%; 2026 fed funds 4.1%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The 10-year Treasury inflation-indexed real yield was 2.68% on September 16, up from 2.44% at the end of August.",
+      "source_type": "other",
+      "source": "https://fred.stlouisfed.org/data/DFII10",
+      "period": "2026-08-31 to 2026-09-16",
+      "as_of_date": "2026-09-17",
+      "value": "2.44% -> 2.68%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "ICE BofA US Corporate OAS was 0.78% and BBB OAS was 0.96% on September 16, 2026, indicating no broad corporate-credit stress.",
+      "source_type": "other",
+      "source": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
+      "period": "2026-09-16",
+      "as_of_date": "2026-09-17",
+      "value": "US Corp OAS 0.78%; BBB 0.96%",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Tight credit spreads can reverse abruptly and may understate tail risk after a long risk-on period.",
+    "Real yields are high enough that long-duration equity multiples remain vulnerable even without recession.",
+    "Strong capital investment and productivity can support earnings and offset some duration pressure.",
+    "Macro variables should not be used to override company-level moat, FCF or valuation evidence."
+  ],
+  "unknowns": [
+    "How long the September 2026 inflation shock keeps the Fed above neutral",
+    "Whether elevated real yields persist once inflation normalizes",
+    "Whether AI-related equity issuance/capital formation creates a meaningful supply overhang"
+  ],
+  "uncertainties": [],
+  "falsifiers": [
+    "Investment-grade and BBB credit spreads widen sharply for several weeks",
+    "10-year real yields rise materially above current levels while earnings expectations stop rising",
+    "System liquidity or funding-market stress emerges despite currently tight spreads"
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "10Y real yield",
+      "direction": "down",
+      "threshold": "Sustained move below ~2.3% would ease duration pressure",
+      "cadence": "weekly"
+    },
+    {
+      "name": "US corporate OAS",
+      "direction": "stable",
+      "threshold": "Remain near benign levels; sharp widening would reduce risk budget",
+      "cadence": "weekly"
+    },
+    {
+      "name": "Fed policy path",
+      "direction": "down",
+      "threshold": "Evidence that inflation permits a lower policy path",
+      "cadence": "FOMC"
+    }
+  ],
+  "next_checks": [
+    "October inflation data and Fed communication",
+    "10-year TIPS real-yield trend",
+    "Investment-grade/BBB spread widening"
+  ],
+  "verdict": "neutral",
+  "risk_budget_multiplier": 0.9
+}

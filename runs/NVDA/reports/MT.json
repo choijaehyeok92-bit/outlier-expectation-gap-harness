@@ -127,7 +127,7 @@
     {
       "criterion_id": "network_data_ecosystem",
       "score_0_100": 75,
-      "rationale": "개발자 750만명·애플리케이션 6,000개·TOP500 78%로 피드백 루프가 측정 가능하다. 다만 상위 추상화 계층 표준화로 멀티호밍이 쉬워지는 방향이고 Hugging Face는 타 벤더 지원을 약정해 복리형 방어벽 수준은 아니다."
+      "rationale": "판정표: 1차 자료 규모 수치 3개(CUDA 개발자 750만명, 지원 애플리케이션 6,000개, TOP500 78% 구동, 모두 FY26 10-K). 같은 정의의 증가 추세는 전년 수치가 없어 미확인 → 75."
     },
     {
       "criterion_id": "commoditization_resilience",

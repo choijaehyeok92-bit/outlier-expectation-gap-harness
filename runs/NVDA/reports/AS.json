@@ -5,7 +5,7 @@
   "domain": "asymmetry",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 61.5,
+  "score_0_100": 66.75,
   "confidence_0_1": 0.55,
   "bull_score": 82,
   "bear_score": 25,
@@ -126,13 +126,13 @@
   "subscores": [
     {
       "criterion_id": "upside_path",
-      "score_0_100": 60,
-      "rationale": "규모 상대 앵커 적용. Bull 경로 10년 3.4배(CAGR 약 13%)는 요구수익률 9%를 뚜렷이 상회하고 경로도 데이터센터·네트워킹·소프트웨어로 복수다. 다만 확률가중 기대수익이 요구수익률과 같아 75가 아닌 60으로 둔다."
+      "score_0_100": 75,
+      "rationale": "판정표: Bull 주당가치 $431.14 / 현재가 $219.34 = 1.97 → 1.6~2.5 구간, 독립 상승경로 3개(데이터센터, 네트워킹, 소프트웨어·로보틱스) → 75."
     },
     {
       "criterion_id": "permanent_loss",
       "score_0_100": 60,
-      "rationale": "파산 확률은 사실상 0이고 Bear에서도 owner FCF/share $4~6의 잔존가치가 남는다. 그러나 현재가 대비 Bear는 -66%이며 고객 집중과 자기조달 수요가 하락 상관관계를 높인다."
+      "rationale": "판정표: Bear 주당가치 $74.99 / 현재가 $219.34 = 0.34 → 0.2~0.4 구간 → 50. modifier: 순현금 $23,220M이고 TTM OCF $134,360M이 총차입 $33,366M을 상회 → +10."
     },
     {
       "criterion_id": "probability_calibration",

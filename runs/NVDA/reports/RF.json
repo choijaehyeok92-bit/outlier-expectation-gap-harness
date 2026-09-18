@@ -5,7 +5,7 @@
   "domain": "reinvestment_fcf",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 76.0,
+  "score_0_100": 74.5,
   "confidence_0_1": 0.6,
   "bull_score": 88,
   "bear_score": 55,
@@ -131,8 +131,8 @@
     },
     {
       "criterion_id": "reinvestment_runway",
-      "score_0_100": 70,
-      "rationale": "capex가 매출의 2.8%에 불과해 내부 고수익 재투자로 흡수 가능한 자본이 창출 속도에 못 미친다. H1에 자사주 $39.0B, 지분증권 $42.4B이 외부로 나간 것이 그 증거다. 복수 경로는 있으나 대규모 장기 복리 재투자처는 아니다."
+      "score_0_100": 65,
+      "rationale": "판정표: 내부 재투자 흡수율 = (capex $4,434M + R&D $13,375M) / OCF $74,421M = 23.9% → 15~35% 구간 → 65."
     },
     {
       "criterion_id": "fcf_per_share_quality",

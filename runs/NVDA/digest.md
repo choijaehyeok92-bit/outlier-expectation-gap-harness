@@ -1,5 +1,5 @@
 # Digest — NVDA (as of 2026-09-17)
-score 70.36 (ex-val 73.43, Emerging Outlier) · DI 78.75 · TQ 34.25 · archetype non_fit — 어느 유형 조건도 충족하지 않거나 게이트 점수 미달 · veto UNRESOLVED · state WATCH
+score 70.86 (ex-val 74.01, Emerging Outlier) · DI 78.75 · TQ 34.25 · archetype non_fit — 어느 유형 조건도 충족하지 않거나 게이트 점수 미달 · veto UNRESOLVED · state WATCH
 signals {'price_to_base_value': 1.0304, 'valuation_percentile_5y': 0.05, 'revenue_cagr_next_3y': 0.29, 'market_cap_usd': 5326671900000.0} · reachable(raw) []
 veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
 
@@ -24,17 +24,17 @@ unknowns: NVIDIA가 지분투자·보증한 주체가 창출한 매출 비중이
 bull: 매출이 2배가 되는 동안 gross margin이 71.1%에서 75.0%로 올랐다. 해자가 유지가 아니라 확대되고 있다는 가장 직접적인 증거다. 개발자 750만명·애플리케이션 6,000개의 CUDA 자산은 재작성 비용이라는 실질 전환장벽이고, Hugging Face가 개방형 모델 유… / bear: 해자를 위협하는 쪽이 자금 제약 없는 고객 본인이다. Hyperscale(+102%)이 ACIE(+138%)보다 느린 것은 자체 실리콘 전환의 초기 신호일 수 있다. Groq 비독점 라이선스에 $15.9B을 쓴 것은 추론 아키텍처 우위가 완결적이지 않다는 뜻이고, Hugging Fac…
 unknowns: 커스텀 ASIC이 전체 가속 컴퓨트 물량에서 차지하는 비중. · 공급 정상화 이후 유지 가능한 gross margin 수준.
 
-## reinvestment_fcf — 76.0 (raw 76.0, spread 33.0, DISPUTE)
+## reinvestment_fcf — 74.5 (raw 74.5, spread 33.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| RF | 76.0 (55–88) | 0.6 | support | V5=cleared, V3=cleared | 영업자본 기준 증분 수익률은 예외적으로 높다. FY25→FY26 증분 NOPAT $40.1B / 증분 영업투하자본 $39.8B로 증분 ROIC 약 101%이고, capex는 FY26 기준 매출의 2.8%에 불과하다. owner FCF/share(OCF-capex-SBC)도 FY25 $… |
+| RF | 74.5 (55–88) | 0.6 | support | V5=cleared, V3=cleared | 영업자본 기준 증분 수익률은 예외적으로 높다. FY25→FY26 증분 NOPAT $40.1B / 증분 영업투하자본 $39.8B로 증분 ROIC 약 101%이고, capex는 FY26 기준 매출의 2.8%에 불과하다. owner FCF/share(OCF-capex-SBC)도 FY25 $… |
 bull: FY25→FY26 증분 NOPAT $40.1B을 증분 영업투하자본 $39.8B으로 얻었다. 증분 ROIC 약 101%다. capex는 매출의 2.8%에 불과해 성장이 자본집약적이지 않다. owner FCF/share는 FY25 $2.26에서 TTM $4.92로 2년 만에 2.2배가 됐… / bear: 재투자 활주로가 자본창출 속도를 못 따라간다. 그래서 H1에 자사주 $39.0B, 지분증권 $42.4B이 밖으로 나갔다. 지분증권까지 투하자본에 넣으면 증분 ROIC는 급락한다. 보고 FCF도 왜곡돼 있다. H1 운전자본이 $41.3B을 흡수했고 순이익에는 비현금 평가익 $23.7B이…
 unknowns: 지분증권 $93.9B의 실현 수익률과 그 자금을 자사주에 썼을 때의 기회비용 비교. · 운전자본 증가가 영구적 수준 이동인지 일시적 계약 조건 효과인지.
 
-## management_allocation — 71.75 (raw 71.75, spread 27.0, DISPUTE)
+## management_allocation — 73.75 (raw 73.75, spread 27.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| MA | 71.75 (55–82) | 0.55 | neutral | V1=cleared | 과거 자본배분 성적은 좋고 현재 배분은 판단을 유보해야 한다. FY26 자사주 282M주를 평균 약 $143에 사들인 것은 현재가 대비 53% 할인 매입으로 명확한 가치창출이었다. 실행력도 입증됐다. 중국 데이터센터 시장 전체를 상실하고도 매출을 배로 키웠고 H20·H200 손실을 지… |
+| MA | 73.75 (55–82) | 0.55 | neutral | V1=cleared | 과거 자본배분 성적은 좋고 현재 배분은 판단을 유보해야 한다. FY26 자사주 282M주를 평균 약 $143에 사들인 것은 현재가 대비 53% 할인 매입으로 명확한 가치창출이었다. 실행력도 입증됐다. 중국 데이터센터 시장 전체를 상실하고도 매출을 배로 키웠고 H20·H200 손실을 지… |
 bull: FY26에 282M주를 평균 약 $143에 매입했다. 현재가 $219.34 대비 53% 저가 매입으로 명백한 가치창출이다. 실행 트랙레코드도 강하다. 중국 시장 전체를 잃고도 매출을 배로 키웠고, H20 $4.5B·H200 $0.4B 손실을 끌지 않고 즉시 인식했다. CFO는 DSO … / bear: 자본배분의 무게중심이 검증 가능한 영역에서 자기평가 영역으로 옮겨갔다. H1 지분증권 매입 $42.4B, 평가익 $23.7B이 순이익에 계상되고 비시장성 지분 $51.2B은 Level 3다. Groq 비독점 라이선스 $15.9B, Hugging Face $11.9B의 회수 근거도 아직…
 unknowns: 지분투자 대상 기업의 명세와 그들이 창출한 매출 규모. · 비시장성 지분 $51,157M의 공정가치 산정 방법과 관측 가능한 입력의 비중.
 
@@ -52,10 +52,10 @@ unknowns: 공급·capacity 약정 $279B 중 취소 가능 비중과 구속력 �
 bull: AI 인프라 투자가 10년 사이클이면 Y10 owner FCF/share $29.6, 25x terminal로 주당 $431(+97%)이다. CUDA·NVLink에 Hugging Face가 더해져 개발자 표준을 유지하고 네트워킹·소프트웨어 attach가 커지면 점유를 마진 훼손 없이 … / bear: 고객 상당수가 자체 조달 능력이 부족해 NVIDIA가 지분투자 H1 $42.4B와 land/power/shell 보증으로 수요를 직접 대고 있다. 이 고리가 끊기면 매출은 둔화가 아니라 역성장한다. 디지션 국면에서 GM 60%대와 재고·AR 손상이 겹치면 Y3 owner FCF/sha…
 unknowns: AR 증가 $24,590M 중 투자등급 고객 비중과 NVIDIA가 지분·보증으로 자금을 댄 AI 클라우드 비중이 공시되지 않는다. 매출의 자기조달 비율을 계산할… · FY28 supply/capacity 약정 $87B가 실제 수요 정체 신호인지 발주 시계(booking horizon) 한계인지 구분할 수 없다.
 
-## asymmetry — 61.5 (raw 61.5, spread 57.0, DISPUTE)
+## asymmetry — 66.75 (raw 66.75, spread 57.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| AS | 61.5 (25–82) | 0.55 | neutral | V9=conditional, V7=cleared | 비대칭성은 상방보다 하방이 크다. 시총 $5.33T에서 5x/10x는 각각 $26.6T/$53.3T로 글로벌 주식시장 규모 대비 비현실적이고, 가장 낙관적인 경로도 10년 3.4x(CAGR 약 13%)에 그친다. 하방은 Bear 주당 $75로 -66%다. 확률을 Bear 30/Base… |
+| AS | 66.75 (25–82) | 0.55 | neutral | V9=conditional, V7=cleared | 비대칭성은 상방보다 하방이 크다. 시총 $5.33T에서 5x/10x는 각각 $26.6T/$53.3T로 글로벌 주식시장 규모 대비 비현실적이고, 가장 낙관적인 경로도 10년 3.4x(CAGR 약 13%)에 그친다. 하방은 Bear 주당 $75로 -66%다. 확률을 Bear 30/Base… |
 bull: AI 인프라가 10년 자본재 사이클이면 Bull 경로는 Y10 owner FCF/share $29.6, 주당 $431이다. 순현금·무차입에 가까운 구조와 투자자산 $93.9B가 하방을 받치고, 네트워킹·소프트웨어·로보틱스가 추가 상승축이 된다. Bull 확률을 30%로 올리면 확률가중… / bear: 시총 $5.33T에서 5x는 $26.6T로, 25x 배수에서 순이익 $1.06T를 요구한다. 현실적 상방은 10년 3.4x(CAGR 약 13%)이며 power-law가 아니다. 반면 하방은 Bear $75(-66%)이고, 수요 일부를 NVIDIA 지분투자·보증이 떠받쳐 하락 시 상관관…
 unknowns: NVIDIA가 지분·보증으로 자금을 댄 고객이 창출한 매출 비중이 공시되지 않아 하락 국면의 상관관계를 정량화할 수 없다. · Bear 시나리오에서 AR $63,059M과 재고 $31,575M의 손상률 추정 근거가 없다.
 

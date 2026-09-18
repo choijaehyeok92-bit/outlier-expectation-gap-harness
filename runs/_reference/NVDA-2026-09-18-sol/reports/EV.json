@@ -1,0 +1,207 @@
+{
+  "agent_id": "EV",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 63,
+  "confidence_0_1": 0.72,
+  "bull_score": 80,
+  "bear_score": 40,
+  "bull_case": "Vera Rubin 전환과 AI 추론 수요가 공급 제약을 지속적으로 흡수하고, FCF/share가 빠르게 증가하면 현재가는 장기 현금창출력 대비 낮다. 고정 DCF에서 Bull 가치는 약 $581/share다.",
+  "bear_case": "AI 인프라 지출이 정상화되고 고객·파트너 금융지원 및 대규모 공급 약정의 위험이 현실화되며 마진이 구조적으로 낮아지면 FCF/share 성장률이 급락할 수 있다. Bear 가치는 약 $99/share다.",
+  "thesis": "2026-09-17 종가 $219.34는 고정 9% 할인율·15/20/25x terminal multiple DCF에서 Bear $99, Base $251, Bull $581 사이에 있다. Base 대비 약 13% 할인으로 현재가가 Bull 이상을 요구하지는 않지만, Base 가치의 약 67%가 terminal value에서 발생해 안전마진은 두껍지 않다. Q2 FY27의 폭발적 성장과 Q3 $108B 가이던스는 강한 반면, $366B의 장기 약정·중국 데이터센터 시장 제약·고객 금융지원이 장기 정상화 가정의 핵심 반론이다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 revenue was $96.221B, up 106% y/y; Data Center revenue was $89.0B, and Q3 FY27 revenue guidance was $108B ±2% with no China data-center compute revenue assumed.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm",
+      "period": "Q2 FY2027 / Q3 FY2027 outlook",
+      "as_of_date": "2026-08-26",
+      "value": "Revenue $96.221B; DC $89.0B; Q3 guide $108B ±2%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "For the first half of FY27, operating cash flow was $74.421B and NVIDIA-defined free cash flow was $69.895B; Q2 FCF was $21.341B after a very strong Q1, showing material working-capital/tax variability.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm",
+      "period": "Six months ended 2026-07-26",
+      "as_of_date": "2026-08-26",
+      "value": "H1 OCF $74.421B; H1 FCF $69.895B; Q2 FCF $21.341B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "At 2026-07-26 NVIDIA had $56.586B of cash, cash equivalents and marketable debt securities versus $33.366B of total debt; weighted-average diluted shares for Q2 were 24.285B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "Net operating cash less debt ≈ $23.220B; net cash/share ≈ $0.96",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NVIDIA disclosed $366B of future commitments as of 2026-07-26, including $279B of supply/capacity commitments; customer payment terms and large partner commitments increase downside sensitivity if AI demand normalizes.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R17.htm",
+      "period": "As of 2026-07-26",
+      "as_of_date": "2026-08-26",
+      "value": "Total commitments $366B; supply/capacity $279B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NVDA closed at $219.34 on 2026-09-17. Trailing P/E was about 27.7x, near the low end of quarterly P/E observations over the prior five years, but P/FCF remained around 41.7x.",
+      "source_type": "secondary",
+      "source": "https://stockanalysis.com/stocks/nvda/financials/ratios/",
+      "period": "2026-09-17",
+      "as_of_date": "2026-09-18",
+      "value": "Price $219.34; trailing P/E ~27.7x; P/FCF ~41.7x",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Using the harness's locked 9% required return and 15x/20x/25x terminal multiples, the submitted owner-FCF/share paths produce Bear/Base/Bull values of roughly $99/$251/$581 per share; Base terminal value is about 67% of operating value.",
+      "source_type": "other",
+      "source": "harness deterministic valuation using frozen inputs",
+      "period": "10-year model from 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "Bear ~$99; Base ~$251; Bull ~$581; Base terminal fraction ~67%",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "현재 trailing P/E는 5년 범위의 저단에 가깝지만, P/FCF는 약 41.7x여서 현금흐름 기준 절대 밸류에이션이 낮다고 단정하기 어렵다.",
+    "2026-07-26 기준 총 미래 약정 $366B와 공급·용량 약정 $279B는 수요가 예상보다 둔화할 경우 운전자본·계약손실·자본배분 위험을 키운다.",
+    "중국 데이터센터 컴퓨트 시장에서 사실상 경쟁이 제한되어 있으며, 수출통제 확대는 TAM과 경쟁구도를 악화시킬 수 있다.",
+    "Base DCF의 terminal value 의존도가 약 67%로 높아 장기 성장·마진·terminal multiple 오차에 민감하다."
+  ],
+  "unknowns": [
+    "FY28 이후 하이퍼스케일러·AI 네이티브의 실제 투자수익률과 GPU 교체주기 정상화 속도",
+    "대규모 공급 약정과 고객/파트너 금융지원이 향후 FCF 전환율에 미칠 순효과",
+    "FY29~FY31 경쟁 ASIC·AMD·내부 가속기의 점유율 변화와 가격 압력"
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "현재 실적 성장률이 비정상적으로 높아 장기 정상화 속도에 따라 내재 기대 해석이 크게 달라진다."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Base owner-FCF/share 경로는 FY28 이후 수요·마진 정상화에 대한 추정에 의존한다."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "Base 가치의 약 67%가 terminal value에서 발생한다."
+    }
+  ],
+  "falsifiers": [
+    "FY28~FY29에 Data Center 성장률이 15% 이하로 급락하는데도 재고·약정·매출채권이 계속 확대되는 경우",
+    "정상화 FCF/share가 2개 회계연도 연속 $6 이하에 머무르거나 감소하는 경우",
+    "현재가가 동일 고정 가정의 Base 가치 1.2배를 넘는데 장기 FCF 추정치 상향 근거가 없는 경우"
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "고정 DCF Base 가치 약 $251 대비 현재가 $219.34로 price/base ≈0.873. 현재가격은 Bull 가치 약 $581을 요구하지 않는다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Normalized owner FCF/share",
+      "direction": "up",
+      "threshold": "FY27~FY29 base path roughly $6 → $8 → $10 or better",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Data Center revenue growth",
+      "direction": "up",
+      "threshold": "Remain >20% y/y through the near-term normalization window",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "FCF conversion / commitments",
+      "direction": "stable",
+      "threshold": "FCF growth keeps pace with revenue while inventories/AR/commitments do not compound faster for multiple quarters",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 actual revenue, gross margin and FCF versus $108B / 74% guide",
+    "Vera Rubin mix and memory-cost pass-through in Q4 FY27–FY28",
+    "Updated supply commitments, DSO, inventory and customer/partner guarantee exposure"
+  ],
+  "verdict": "neutral",
+  "archetype_signals": {
+    "price_to_base_value": 0.8726,
+    "valuation_percentile_5y": 0.05,
+    "revenue_cagr_next_3y": 0.24
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 70,
+      "rationale": "현재가격은 고정 Base 가치보다 낮고 Bull 이상을 요구하지 않지만, 장기 AI 수요의 높은 성장 지속을 여전히 전제한다."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 65,
+      "rationale": "Base 가치 약 $251로 현재가 대비 약 14.6% 가치여유가 있으나 큰 안전마진은 아니다."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 50,
+      "rationale": "Base 가치의 약 67%가 terminal value이며 약정·규제·경쟁 변수에 민감하다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": 0.05,
+    "revenue_cagr_next_3y": 0.24,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          4.5,
+          5,
+          5.5,
+          6,
+          6.5,
+          7,
+          7.5,
+          8,
+          8.5,
+          9
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          6,
+          8,
+          10,
+          12,
+          13.5,
+          15,
+          16.5,
+          18,
+          19,
+          20
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          7,
+          10,
+          14,
+          18,
+          22,
+          26,
+          30,
+          34,
+          38,
+          42
+        ]
+      }
+    }
+  }
+}

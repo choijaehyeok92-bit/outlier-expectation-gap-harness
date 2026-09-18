@@ -5,7 +5,7 @@
   "domain": "management_allocation",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 71.75,
+  "score_0_100": 73.75,
   "confidence_0_1": 0.55,
   "bull_score": 82,
   "bear_score": 55,
@@ -122,8 +122,8 @@
   "subscores": [
     {
       "criterion_id": "capital_allocation",
-      "score_0_100": 65,
-      "rationale": "FY26 평균 $143 자사주 매입은 명백한 가치창출이었다. 그러나 Q2 매입 단가 약 $209는 Base 가치 $213에 붙었고, 최근 최대 지출인 지분증권 $42.4B·Groq $15.9B·Hugging Face $11.9B은 회수 근거가 자기평가이거나 아직 없다. 합리적이었던 과거와 검증 불가한 현재가 혼재한다."
+      "score_0_100": 70,
+      "rationale": "판정표: 자사주 평균 매입단가 / Base 주당가치 = $209.3(Q2 FY27, 94M주 $19,674M) / $212.86 = 0.98 → 0.8~1.0 구간 → 70. 저수익 사업 철수·자산 재배치 사례는 공시에서 확인되지 않아 modifier 미적용."
     },
     {
       "criterion_id": "governance_integrity",

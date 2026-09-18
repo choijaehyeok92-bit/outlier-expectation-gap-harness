@@ -86,3 +86,20 @@ python harness.py validate TICKER [AGENT_ID ...]
 
 ## 11. 모델 A/B 비교
 동일 commit, 동일 `company_context.json`, 동일 `sources/`로 각각 freeze한다. 두 `run_manifest.json`의 `input_snapshot_sha256`가 다르면 점수 차이를 모델 차이로 해석하지 않는다. 비교 순서는 `subscores → valuation_inputs → uncertainties → veto assessments → aggregate`다.
+
+```bash
+python harness.py calibrate runs/TICKER-A runs/TICKER-B --out calibration.json
+```
+
+criterion 단위 격차와 요약 통계(평균·중앙값·표준편차, 판정표 보유 여부별 격차, 앵커 정착률)를 출력한다.
+`observable_anchors`가 있는 criterion의 격차가 0에 가깝지 않으면 판정표를 잘못 적용한 것이고,
+형용사 앵커 criterion의 격차가 크면 그 criterion을 판정표로 옮길 후보다.
+
+기준선으로 `runs/_reference/NVDA-2026-09-18-sol/`(gpt-5.6-sol 실행본)이 저장돼 있다.
+
+### 프로바이더 편향이 의심될 때
+1. `calibrate`로 격차를 측정한다. 부호가 한쪽으로 쏠리면(전 criterion에서 A ≥ B) 노이즈가 아니라 계통 편향이다.
+2. 격차가 큰 criterion이 형용사 앵커인지 확인한다. 그렇다면 `config/calibration.json`에
+   `observable_anchors` 판정표를 추가한다 — 셀 수 있는 지표 하나로 구간을 나누는 것이 핵심이다.
+3. `anchor_policy`의 상단·하단 게이트가 프롬프트에 실리는지 `prompt` 출력으로 확인한다.
+4. 같은 도메인을 두 프로바이더로 돌리면 `domain_aggregate`가 두 점수의 중앙값을 쓴다. 분쟁이 큰 도메인에만 선택적으로 쓸 수 있다.

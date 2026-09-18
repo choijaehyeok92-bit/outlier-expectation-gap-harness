@@ -1,0 +1,101 @@
+{
+  "agent_id": "ED",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 82,
+  "confidence_0_1": 0.91,
+  "thesis": "핵심 사업·재무 수치는 대부분 SEC 10-Q/8-K로 직접 검증돼 증거 기반은 강하다. 다만 밸류에이션 5년 백분위 0.05와 AS 확률은 모델/2차자료 추정이고, Rubin 30x/35x는 회사 제공 workload-specific benchmark다. 추가 감리에서 고객·파트너 보증의 최대 총노출이 $108.5B로 확인돼 기존 digest의 '보증 최대손실 미확인'은 보완됐다. DCF는 재현 가능하지만 owner-FCF 경로가 핵심 추정치다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 revenue $96.221B, Data Center revenue $89.0B and the $108B Q3 guide are directly supported by NVIDIA's SEC-furnished 8-K exhibits and 10-Q.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm",
+      "period": "Q2 FY2027 / Q3 outlook",
+      "as_of_date": "2026-08-26",
+      "value": "Revenue $96.221B; Data Center $89.0B; Q3 guide $108B ±2%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The $366B future-commitment total and $279B supply/capacity commitment are explicitly disclosed in the Q2 FY27 10-Q, including a statement that some supply arrangements may be cancelable, reschedulable or adjustable before firm orders.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R17.htm",
+      "period": "As of 2026-07-26",
+      "as_of_date": "2026-08-26",
+      "value": "Total $366B; supply/capacity $279B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "CFO commentary discloses maximum gross guarantee exposure of $108.5B, including $3.5B land/power/shell guarantees for AI clouds and $105.0B of SB Energy guarantees; this materially improves previously incomplete guarantee-risk evidence.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+      "period": "Q2 FY2027 / August 2026 guarantees",
+      "as_of_date": "2026-08-26",
+      "value": "Maximum gross guarantee exposure $108.5B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Accounts receivable concentration and customer financing risk are primary-source facts: five direct customers were 22%, 14%, 13%, 11%, and 10% of AR, while DSO rose to 60 days from 45 due to extended payment terms.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R14.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "AR concentration 22/14/13/11/10%; DSO 60 days",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Rubin's 30x throughput-per-MW and 35x lower token-cost claims are attributable to NVIDIA's own earnings-call/technical materials rather than independent customer benchmarking, so they should not be treated as independently validated TCO facts.",
+      "source_type": "other",
+      "source": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf",
+      "period": "Q2 FY2027 earnings call",
+      "as_of_date": "2026-08-26",
+      "value": "30x throughput/MW; 35x lower token cost, company-provided",
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "The most decision-relevant revenue, balance-sheet, commitment and customer-concentration figures are all primary-source disclosures, limiting basic data-quality risk.",
+    "The harness DCF mechanically locks discount rate and terminal multiples, reducing provider-specific arithmetic drift even though FCF paths remain estimates.",
+    "NVIDIA reports effective disclosure controls and no material Q2 change in internal control over financial reporting.",
+    "The $108.5B guarantee figure is gross maximum exposure, not an expected loss, so it should not be treated as debt-equivalent without probability and recovery assumptions."
+  ],
+  "unknowns": [
+    "Expected-loss distribution and collateral/recourse terms behind the $108.5B gross guarantee exposure",
+    "Independent customer-level Rubin TCO/ROI versus vendor benchmark claims",
+    "A statistically defined five-year valuation percentile using one consistent valuation metric"
+  ],
+  "falsifiers": [
+    "If independent customer economics fail to confirm a material Rubin TCO advantage by FY28, reduce structural/product confidence.",
+    "If DSO/AR concentration and gross guarantee exposure rise for several quarters while FCF conversion weakens, reject the 'high-quality self-funded demand' assumption.",
+    "If normalized owner-FCF/share misses the Base path for two fiscal years without a corresponding valuation reset, rewrite the valuation thesis."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Financing-supported demand quality",
+      "direction": "stable",
+      "threshold": "DSO/AR concentration and guarantee exposure do not compound materially faster than revenue/FCF",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Normalized owner FCF/share",
+      "direction": "up",
+      "threshold": "Track at or above the Base path after working-capital normalization",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Independent Rubin TCO/ROI",
+      "direction": "up",
+      "threshold": "Customer/third-party evidence confirms material system-level savings versus alternatives",
+      "cadence": "product cycle"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 DSO, AR concentration and guarantee disclosure",
+    "Independent Rubin deployment economics",
+    "Recompute valuation percentile with a reproducible metric/time series"
+  ],
+  "verdict": "support"
+}

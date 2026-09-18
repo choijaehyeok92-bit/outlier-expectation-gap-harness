@@ -1,0 +1,136 @@
+{
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "agent_id": "MA",
+  "domain": "management_allocation",
+  "score_0_100": 80.75,
+  "confidence_0_1": 0.79,
+  "bull_score": 92,
+  "bear_score": 65,
+  "bull_case": "경영진은 CUDA→AI 데이터센터→full-stack AI factory로 장기간 기술 전환을 선도했고 Rubin·NVLink·네트워킹·CPU로 자원을 재배치했다. H1 FY27 $39.8B 자사주와 대규모 R&D/생태계 투자는 강한 현금창출을 성장과 주주환원에 병행 배분한다.",
+  "bear_case": "$99B equity investments, $366B 미래약정, AI cloud 지원과 장기 lease는 제국건설·고객수요 지원 위험을 키운다. 창업자 의존도와 성과보상의 상승도 감독이 필요하다.",
+  "thesis": "실행력과 장기 기술 자본배분은 강하다. 현재 10-Q에서 disclosure controls가 effective로 평가됐고 2026 proxy는 CEO 목표보상의 96%가 성과 의존이라고 명시한다. 다만 최근 생태계 투자·보증·인프라 약정의 규모가 커져 향후 자본배분 규율을 더 엄격히 검증해야 한다.",
+  "evidence": [
+    {
+      "claim": "Management concluded disclosure controls and procedures were effective as of July 26, 2026, with no material change in internal control over financial reporting during Q2 FY27.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "Controls effective; no material ICFR change",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The 2026 proxy states 96% of the CEO's FY2026 target pay and 48% of other NEO target pay depended on corporate performance, with performance-based PSUs and TSR components.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000036/nvda-20260512.htm",
+      "period": "FY2026 compensation",
+      "as_of_date": "2026-05-12",
+      "value": "CEO target pay 96% performance-dependent",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NVIDIA repurchased 203M shares for $39.8B in H1 FY27 and authorized an additional $80B repurchase program.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "period": "H1 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "$39.8B H1 repurchases; +$80B authorization",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NVIDIA disclosed $99B of equity investments plus $25B of equity investment commitments and large infrastructure/customer-support commitments.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "$99B equity investments; $25B commitments",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Large ecosystem investments and guarantees can become empire-building if returns are not disclosed.",
+    "Founder/CEO strategic centrality creates key-person concentration.",
+    "Buybacks at high valuations can destroy value if intrinsic-value discipline is weak.",
+    "Performance compensation tied to operating income/TSR can still encourage scale and market-value targets rather than pure owner earnings."
+  ],
+  "unknowns": [
+    "Standalone returns on ecosystem equity investments and AI-cloud support",
+    "Board challenge process for very large strategic commitments",
+    "Long-run succession readiness beyond founder-led strategy"
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "Historical execution is excellent but recent commitments are unprecedented in size."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "minor",
+      "rationale": "Current controls are effective; no material accounting integrity issue identified."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "minor",
+      "rationale": "Roadmap execution has been strong, with residual founder/key-person risk."
+    }
+  ],
+  "falsifiers": [
+    "Material restatement or control weakness emerges.",
+    "Large ecosystem investments produce persistent losses without strategic or cash-flow returns.",
+    "Roadmap misses or supply commitments repeatedly force material write-offs."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "Current filings state disclosure controls are effective, and no restatement/material accounting-control issue was identified in the reviewed NVIDIA filings."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Strategic investment returns",
+      "direction": "up",
+      "threshold": "Cash-flow/strategic benefits become observable relative to capital committed",
+      "cadence": "annual"
+    },
+    {
+      "name": "Roadmap execution",
+      "direction": "stable",
+      "threshold": "Major architecture ramps broadly on schedule",
+      "cadence": "product cycle"
+    },
+    {
+      "name": "Controls",
+      "direction": "stable",
+      "threshold": "No material weakness or restatement",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Returns on AI-cloud/equity commitments",
+    "Rubin execution versus stated ramp",
+    "2027 proxy succession/governance disclosures"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 80,
+      "rationale": "Growth investment and capital return track record are strong, but recent ecosystem commitments are large and less transparent."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 75,
+      "rationale": "Controls are effective and pay is performance-linked; founder/key-person concentration remains."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 90,
+      "rationale": "Multiple architecture transitions and expansion into networking/CPU show exceptional adaptation."
+    }
+  ]
+}

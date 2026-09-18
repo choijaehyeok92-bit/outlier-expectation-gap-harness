@@ -1,7 +1,7 @@
 {
   "ticker": "NVDA",
-  "score_100": 70.36,
-  "score_100_ex_valuation": 73.43,
+  "score_100": 70.86,
+  "score_100_ex_valuation": 74.01,
   "coverage_weight": 100,
   "classification": "Emerging Outlier",
   "disruptive_innovation_score": 78.75,
@@ -26,7 +26,7 @@
         "id": "moonshot",
         "label": "문샷형",
         "conditions_met": false,
-        "gate_score": 73.43,
+        "gate_score": 74.01,
         "gate_threshold": 60.0,
         "gate_passed": true,
         "failed": [
@@ -39,12 +39,12 @@
         "id": "compounder",
         "label": "컴파운더",
         "conditions_met": false,
-        "gate_score": 70.36,
+        "gate_score": 70.86,
         "gate_threshold": 60.0,
         "gate_passed": true,
         "failed": [
           "domain.moat_trajectory",
-          "domain.management_allocation"
+          "domain.reinvestment_fcf"
         ],
         "missing": []
       },
@@ -52,13 +52,12 @@
         "id": "turnaround",
         "label": "턴어라운드형",
         "conditions_met": false,
-        "gate_score": 70.36,
+        "gate_score": 70.86,
         "gate_threshold": 55.0,
         "gate_passed": true,
         "failed": [
           "domain.turnaround_quality",
-          "domain.expectation_valuation",
-          "domain.asymmetry"
+          "domain.expectation_valuation"
         ],
         "missing": []
       },
@@ -66,7 +65,7 @@
         "id": "expectation_gap",
         "label": "기대차형",
         "conditions_met": false,
-        "gate_score": 70.36,
+        "gate_score": 70.86,
         "gate_threshold": 60.0,
         "gate_passed": true,
         "failed": [
@@ -141,8 +140,8 @@
     "reinvestment_fcf": {
       "bull_score": 88,
       "bear_score": 55,
-      "raw_weighted_median": 76.0,
-      "score": 76.0,
+      "raw_weighted_median": 74.5,
+      "score": 74.5,
       "spread": 33.0,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
@@ -159,8 +158,8 @@
     "management_allocation": {
       "bull_score": 82,
       "bear_score": 55,
-      "raw_weighted_median": 71.75,
-      "score": 71.75,
+      "raw_weighted_median": 73.75,
+      "score": 73.75,
       "spread": 27.0,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
@@ -213,8 +212,8 @@
     "asymmetry": {
       "bull_score": 82,
       "bear_score": 25,
-      "raw_weighted_median": 61.5,
-      "score": 61.5,
+      "raw_weighted_median": 66.75,
+      "score": 66.75,
       "spread": 57.0,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
@@ -327,8 +326,8 @@
       "domain": "reinvestment_fcf",
       "bull_score": 88,
       "bear_score": 55,
-      "raw_weighted_median": 76.0,
-      "score": 76.0,
+      "raw_weighted_median": 74.5,
+      "score": 74.5,
       "spread": 33.0,
       "avg_confidence": 0.6,
       "unknown_penalty": 0,
@@ -346,8 +345,8 @@
       "domain": "management_allocation",
       "bull_score": 82,
       "bear_score": 55,
-      "raw_weighted_median": 71.75,
-      "score": 71.75,
+      "raw_weighted_median": 73.75,
+      "score": 73.75,
       "spread": 27.0,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,
@@ -403,8 +402,8 @@
       "domain": "asymmetry",
       "bull_score": 82,
       "bear_score": 25,
-      "raw_weighted_median": 61.5,
-      "score": 61.5,
+      "raw_weighted_median": 66.75,
+      "score": 66.75,
       "spread": 57.0,
       "avg_confidence": 0.55,
       "unknown_penalty": 0,

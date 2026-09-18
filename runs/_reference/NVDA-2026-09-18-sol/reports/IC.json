@@ -1,0 +1,104 @@
+{
+  "agent_id": "IC",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 79,
+  "confidence_0_1": 0.84,
+  "thesis": "기계적 판정을 유지해 NVDA를 컴파운더형 NORMAL_CANDIDATE로 확정한다. Core 79.0, ex-val 81.82, DI 90, Hard Veto 전부 cleared다. 장기 해자·재투자·재무생존은 강하지만 EV 63과 AS 68.5가 보여주듯 현재가의 안전마진과 power-law 비대칭은 중간 수준이다. 목표 비중은 2~4%로 두되 최초 진입은 약 2%, macro 0.9x pacing으로 분할한다.",
+  "evidence": [
+    {
+      "claim": "Mechanical aggregation is complete at score 79.0, ex-valuation 81.82, 100% coverage, with the primary archetype classified as compounder and all Hard Vetoes cleared after Red Team review.",
+      "source_type": "other",
+      "source": "runs/NVDA/aggregate.json",
+      "period": "2026-09-18 harness run",
+      "as_of_date": "2026-09-18",
+      "value": "79.0 core; 81.82 ex-val; compounder; veto CLEARED",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The deterministic valuation model gives Bear/Base/Bull values of about $99/$251/$581 versus the frozen $219.34 price, so the current price does not require a Bull outcome but the Base margin of safety is only moderate.",
+      "source_type": "other",
+      "source": "runs/NVDA/aggregate.json",
+      "period": "10-year locked DCF",
+      "as_of_date": "2026-09-18",
+      "value": "Bear ~$99; Base ~$251; Bull ~$581; price/base ~0.873",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "The strongest positive domains are structural leadership 86.25, reinvestment/FCF 85.5, moat trajectory 83.75 and financial survival 81.5; expectation/valuation is 63.0 and asymmetry 68.5.",
+      "source_type": "other",
+      "source": "runs/NVDA/digest.md",
+      "period": "2026-09-18 harness run",
+      "as_of_date": "2026-09-18",
+      "value": "SL 86.25; RF 85.5; MT 83.75; FS 81.5; EV 63; AS 68.5",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Evidence Audit and Red Team both identified financing-supported demand, $366B commitments, gross guarantees of $108.5B, DSO 60 days and custom-silicon displacement as the main variables that can invalidate the thesis, while neither found a confirmed Hard Veto.",
+      "source_type": "other",
+      "source": "runs/NVDA/digest.md",
+      "period": "Phase 3",
+      "as_of_date": "2026-09-18",
+      "value": "ED support; RT oppose; veto gate CLEARED",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Macro overlay is 0.9 because real yields are restrictive while credit spreads remain benign; per strategy this changes purchase pacing, not the company score or archetype.",
+      "source_type": "other",
+      "source": "runs/NVDA/digest.md",
+      "period": "Macro overlay 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "risk_budget_multiplier 0.9",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "The Base DCF has only a moderate valuation cushion and about two-thirds of Base operating value comes from terminal value, so long-horizon assumption error remains important.",
+    "A plausible failure path is that DSO, guarantees and supply commitments grow faster than FCF while hyperscaler custom silicon takes incremental workloads, converting an asset-light platform into a more capital-intensive demand-support model.",
+    "Current market capitalization makes a 5x/10x power-law outcome substantially harder than in NVIDIA's earlier lifecycle; AS therefore remains below the emerging-outlier/moonshot threshold.",
+    "Rubin's 30x/35x economics are still primarily company-supplied workload-specific benchmarks rather than independently verified customer economics."
+  ],
+  "unknowns": [
+    "Independent customer-level Rubin TCO/ROI after power, financing and deployment costs",
+    "Expected-loss distribution and recourse terms for the $108.5B gross guarantee exposure",
+    "Long-run share of top hyperscaler AI workloads captured by internal/custom accelerators"
+  ],
+  "falsifiers": [
+    "FCF conversion weakens for several quarters while DSO, AR concentration, guarantees and supply commitments continue rising faster than revenue.",
+    "Major hyperscalers structurally move a large share of incremental AI workloads to internal/custom silicon and NVIDIA's gross margin/moat metrics weaken.",
+    "Normalized owner-FCF/share misses the Base path for two fiscal years without a commensurate valuation reset or offsetting platform evidence."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Normalized owner FCF/share",
+      "direction": "up",
+      "threshold": "Track at or above the Base path after working-capital normalization",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Demand-quality balance sheet",
+      "direction": "stable",
+      "threshold": "DSO, AR concentration and guarantee/commitment exposure do not outgrow revenue/FCF for multiple quarters",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Rubin/custom-silicon economics",
+      "direction": "up",
+      "threshold": "Independent customer TCO remains favorable and custom-silicon displacement stays limited",
+      "cadence": "product cycle/annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 actual revenue, gross margin, FCF, DSO and guarantee/commitment updates",
+    "Independent Rubin customer economics and repeat-order evidence",
+    "FY28 hyperscaler custom-ASIC deployment share and NVIDIA platform attach"
+  ],
+  "verdict": "support",
+  "archetype_decision": "compounder",
+  "position_range": "2-4% target; initial ~2%, staged at 0.9x macro pacing",
+  "archetype_rationale": "Mechanical compounder classification is retained. Moat, reinvestment, management and survival clear compounder thresholds; AS 68.5 prevents emerging-outlier/moonshot classification despite DI 90."
+}

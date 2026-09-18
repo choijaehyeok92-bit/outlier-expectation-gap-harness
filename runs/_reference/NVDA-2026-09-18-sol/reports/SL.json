@@ -1,0 +1,130 @@
+{
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "agent_id": "SL",
+  "domain": "structural_leadership",
+  "score_0_100": 86.25,
+  "confidence_0_1": 0.84,
+  "bull_score": 96,
+  "bear_score": 70,
+  "bull_case": "AI 연산이 데이터센터의 핵심 생산수단으로 이동하고 NVIDIA가 GPU뿐 아니라 CPU·네트워킹·시스템·소프트웨어로 AI factory 표준을 정의하고 있다. Rubin의 생산 출하와 광범위한 주문은 구조적 수요가 단순 GPU 사이클보다 넓음을 시사한다.",
+  "bear_case": "현재 성장률은 희소한 AI 인프라 공급과 대규모 hyperscaler capex의 영향을 크게 받는다. 자체 ASIC, 전력·메모리 병목, 수출규제와 투자수익률 둔화가 5~10년 성장률을 정상화시킬 수 있다.",
+  "thesis": "구조적 변화와 리더십은 매우 강하다. Q2 FY27 Data Center 매출 $89B(+117% y/y), Rubin의 생산 출하, AI factory 범위가 GPU에서 CPU·네트워킹·소프트웨어로 확대되는 점은 NVIDIA가 단순 수혜자가 아니라 경쟁기준을 바꾸는 쪽임을 지지한다. 다만 현재 수요는 hyperscaler 지출 집중과 전력/공급 제약에 민감하고 자체 ASIC·수출규제는 장기 상한이다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 Data Center revenue was $89.0B, up 117% y/y, while total revenue was $96.2B, up 106% y/y.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "DC $89.0B +117% y/y; total $96.2B +106%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NVIDIA's 2026 10-K describes a unified programmable platform spanning hardware, systems, software, algorithms, libraries, models and services, with a growing developer and installed-base ecosystem.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-02-25",
+      "value": "Unified platform across multiple multi-billion-dollar end markets",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NVIDIA stated that Vera Rubin production shipments had begun and purchase orders had been received from every major hyperscaler, AI cloud and system OEM.",
+      "source_type": "other",
+      "source": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf",
+      "period": "Q2 FY2027 earnings call",
+      "as_of_date": "2026-08-26",
+      "value": "Production shipments + broad major-customer orders",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The 10-K explicitly notes customers can develop in-house alternatives, while export controls can reduce demand and aid competitors.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "period": "FY2026 risk factors",
+      "as_of_date": "2026-02-25",
+      "value": "Custom silicon and export-control competitive risks",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Hyperscaler capex concentration means a spending pause can make structural growth look cyclical.",
+    "Customers possess in-house silicon capability and may shift selected workloads to custom accelerators.",
+    "Power, memory, packaging and data-center construction constraints can cap realized demand.",
+    "Export controls have already reduced addressable China data-center compute demand."
+  ],
+  "unknowns": [
+    "AI inference/training spend as a share of global IT capex in FY30-FY35",
+    "Long-run mix between merchant accelerators and hyperscaler custom silicon",
+    "AI application economics after the current infrastructure buildout"
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "AI utility is real but the durability of hyperscaler capex growth beyond FY28 is not observable."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "minor",
+      "rationale": "Leadership evidence is broad and monetized, though standards can evolve."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "Custom silicon, regulation and infrastructure bottlenecks remain meaningful."
+    }
+  ],
+  "falsifiers": [
+    "Data Center growth falls below 15% for several quarters while customer AI utilization weakens.",
+    "Major hyperscalers structurally move a majority of incremental accelerator spend to internal silicon.",
+    "NVIDIA platform economics cease improving while competitors match system-level TCO."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Data Center growth",
+      "direction": "up",
+      "threshold": "Remain structurally above mature-semiconductor growth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Rubin/next-gen adoption",
+      "direction": "up",
+      "threshold": "Broad repeat deployments across hyperscalers and enterprises",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Non-GPU platform mix",
+      "direction": "up",
+      "threshold": "Networking/CPU/software remain material growth contributors",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 hyperscale vs ACIE growth",
+    "Rubin deployment scale and customer ROI",
+    "FY28 custom-silicon share at top cloud customers"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 90,
+      "rationale": "AI compute demand is tied to a broad computing-platform transition, not only a short product cycle."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 90,
+      "rationale": "NVIDIA defines system architecture and software standards across the AI factory stack."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 75,
+      "rationale": "Multiple growth axes exist, but custom silicon, export controls and infrastructure constraints are material."
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "agent_id": "CP",
+  "domain": "customer_product",
+  "score_0_100": 81.5,
+  "confidence_0_1": 0.78,
+  "bull_score": 94,
+  "bear_score": 65,
+  "bull_case": "Rubin의 전력당 처리량·토큰비용 개선과 주요 hyperscaler·AI cloud·OEM의 주문은 제품이 고객의 AI factory TCO와 수익성을 직접 개선한다는 강한 신호다. 네트워킹·CPU까지 wallet share가 확대되고 있다.",
+  "bear_case": "직접 고객의 AR 집중이 높고 DSO가 60일로 늘었으며 NVIDIA가 일부 AI cloud의 토지·전력·용량 확보를 지원한다. 고객 ROI가 약해질 경우 금융지원이 수요 품질을 가릴 수 있다.",
+  "thesis": "고객가치는 강하지만 유지율/NRR 같은 전통적 SaaS 지표는 공개되지 않는다. Rubin의 TCO 개선 주장, 광범위한 주문, Data Center $89B 매출은 지불의사를 지지한다. 반면 AR 집중과 연장 결제조건, AI cloud 지원 약정은 고객 수요의 질을 계속 검증해야 하는 이유다.",
+  "evidence": [
+    {
+      "claim": "NVIDIA says Vera Rubin delivers 30x higher throughput per megawatt and 35x lower token cost versus Grace Blackwell Ultra, directly targeting customer TCO.",
+      "source_type": "other",
+      "source": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf",
+      "period": "Q2 FY2027 earnings call",
+      "as_of_date": "2026-08-26",
+      "value": "30x throughput/MW; 35x lower token cost",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Production shipments of Vera Rubin had begun and NVIDIA reported purchase orders from every major hyperscaler, AI cloud and system OEM.",
+      "source_type": "other",
+      "source": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf",
+      "period": "Q2 FY2027 earnings call",
+      "as_of_date": "2026-08-26",
+      "value": "Broad major-customer orders",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Five direct customers represented 22%, 14%, 13%, 11% and 10% of accounts receivable as of July 26, 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R14.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "AR concentration 22/14/13/11/10%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "CFO commentary reported DSO of 60 days versus 45 sequentially because of extended payment terms on large multi-quarter agreements.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "DSO 60 vs 45 days",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "NVIDIA disclosed arrangements that assist select customers with land, power and data-center capacity and a revenue-share model with certain AI clouds.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/R17.htm",
+      "period": "Q2 FY2027",
+      "as_of_date": "2026-08-26",
+      "value": "Customer/partner infrastructure support arrangements",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "No public NRR/GRR/churn series exists for core data-center customers.",
+    "Extended payment terms and infrastructure support can blur pure end-customer demand quality.",
+    "AR is concentrated among a small number of large direct customers.",
+    "Vendor-published TCO benchmarks may not generalize to every production workload."
+  ],
+  "unknowns": [
+    "Customer-level realized ROI after power and financing costs",
+    "Repeat-order cadence for Rubin after initial deployment",
+    "Share of revenue tied to extended payment terms or supported AI-cloud arrangements"
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "TCO evidence is strong but largely vendor-reported."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "Public retention/churn metrics are unavailable; repeat orders are inferred from platform adoption."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "Customer financing/support makes some demand quality harder to isolate."
+    }
+  ],
+  "falsifiers": [
+    "Rubin repeat orders weaken materially after initial deployments.",
+    "DSO and customer support commitments rise faster than revenue for multiple quarters.",
+    "Independent workloads fail to show meaningful TCO advantage versus custom silicon/competitors."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Current revenue scale, repeat platform adoption and system-level TCO evidence show genuine customer value; support arrangements are a risk but do not currently appear to be the primary growth engine."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Data Center dominates revenue and AR is concentrated, but demand spans multiple hyperscalers/AI clouds/OEMs and the platform includes GPU, CPU, networking and software; China restrictions are material but not currently fatal."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "DSO",
+      "direction": "down",
+      "threshold": "Avoid persistent expansion beyond current 60-day level",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Rubin repeat orders",
+      "direction": "up",
+      "threshold": "Broad repeat orders beyond launch cohort",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Customer concentration",
+      "direction": "stable",
+      "threshold": "No single customer becomes dominant in receivables/revenue",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 DSO and AR concentration",
+    "Rubin customer ROI disclosures",
+    "AI-cloud support/guarantee exposure"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 85,
+      "rationale": "System-level TCO improvement and broad orders indicate strong willingness to pay."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 75,
+      "rationale": "Adoption is broad but direct retention/usage cohort data are not disclosed."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 85,
+      "rationale": "Massive scale and platform expansion indicate favorable economics, with financing-support caveats."
+    }
+  ]
+}

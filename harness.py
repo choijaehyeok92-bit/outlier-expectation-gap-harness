@@ -535,8 +535,10 @@ def cmd_prompt(args):
     rb=rubric_for(domain)
     if rb:
         P+=['','## 고정 채점 루브릭',
-            json.dumps({'global_bands':CALIBRATION['global_bands'],'domain':rb},ensure_ascii=False,indent=2),
-            'criterion은 5점 단위로 채점한다. score_0_100은 subscores 고정 가중평균과 같아야 한다. self-confidence와 bull/bear 폭은 자동 감점하지 않는다.']
+            json.dumps({'global_bands':CALIBRATION['global_bands'],'domain':rb,
+                        'anchor_policy':CALIBRATION.get('anchor_policy',{})},ensure_ascii=False,indent=2),
+            'criterion은 5점 단위로 채점한다. score_0_100은 subscores 고정 가중평균과 같아야 한다. self-confidence와 bull/bear 폭은 자동 감점하지 않는다.',
+            'anchor_policy를 반드시 지킨다. observable_anchors가 있는 criterion은 판정표가 앵커 형용사보다 우선한다. 85 이상과 40 미만에는 각각 상단·하단 게이트가 걸려 있다.']
     owned=[v for v,ids in VETO_REVIEWERS.items() if aid in ids]
     if owned:
         P+=['','## 필수 Hard Veto 판정',
@@ -653,6 +655,51 @@ def cmd_sources(args):
     (out/'INDEX.md').write_text('\n'.join(L),encoding='utf-8')
     print(f'{(out/"INDEX.md").relative_to(ROOT)} ({len(list(out.glob("*.txt")))} files)')
 
+def load_subscores(run_path:Path):
+    d=Path(run_path)/'reports'
+    if not d.exists(): raise SystemExit(f'no reports dir: {d}')
+    out={}
+    for f in sorted(d.glob('*.json')):
+        try: r=load_json(f)
+        except Exception: continue
+        if not is_complete(r) or not r.get('subscores'): continue
+        for x in r['subscores']:
+            if isinstance(x,dict) and isinstance(x.get('score_0_100'),(int,float)):
+                out[(r.get('agent_id'),x.get('criterion_id'))]=float(x['score_0_100'])
+    return out
+
+def cmd_calibrate(args):
+    """Compare two runs' subscores criterion by criterion to measure provider divergence."""
+    A=load_subscores(args.run_a); B=load_subscores(args.run_b)
+    keys=sorted(set(A)&set(B))
+    if not keys: raise SystemExit('no overlapping criteria between the two runs')
+    anchors={25,50,75,90}
+    countable={c['id'] for rb in CALIBRATION['rubrics'].values() for c in rb['criteria'] if 'observable_anchors' in c}
+    rows=sorted(((a,c,A[(a,c)],B[(a,c)],A[(a,c)]-B[(a,c)]) for a,c in keys),key=lambda r:-r[4])
+    na=Path(args.run_a).name; nb=Path(args.run_b).name
+    print(f"{'agent':6s} {'criterion':32s} {na[:10]:>10s} {nb[:10]:>10s} {'gap':>6s}  table")
+    for a,c,x,y,g in rows:
+        print(f"{a:6s} {c:32s} {x:10.0f} {y:10.0f} {g:+6.0f}  {'O' if c in countable else '-'}")
+    gaps=[r[4] for r in rows]; xs=[r[2] for r in rows]; ys=[r[3] for r in rows]
+    tab=[r[4] for r in rows if r[1] in countable]; jud=[r[4] for r in rows if r[1] not in countable]
+    print()
+    print(f"n={len(rows)}  mean gap {statistics.mean(gaps):+.1f}  median {statistics.median(gaps):+.1f}  sd {statistics.pstdev(gaps):.1f}")
+    if tab: print(f"  observable_anchors 보유 criterion (n={len(tab)}): 평균 격차 {statistics.mean(tab):+.1f}")
+    if jud: print(f"  형용사 앵커만 있는 criterion (n={len(jud)}): 평균 격차 {statistics.mean(jud):+.1f}")
+    for nm,v in ((na,xs),(nb,ys)):
+        print(f"  {nm}: mean {statistics.mean(v):.1f} median {statistics.median(v):.0f} range {min(v):.0f}-{max(v):.0f} "
+              f"| 앵커(25/50/75/90) 정착지 {sum(1 for t in v if t in anchors)}/{len(v)}")
+    out=args.out
+    if out:
+        Path(out).write_text(json.dumps({'run_a':na,'run_b':nb,'n':len(rows),
+            'mean_gap':round(statistics.mean(gaps),2),'median_gap':statistics.median(gaps),
+            'sd_gap':round(statistics.pstdev(gaps),2),
+            'mean_gap_observable':round(statistics.mean(tab),2) if tab else None,
+            'mean_gap_adjective':round(statistics.mean(jud),2) if jud else None,
+            'rows':[{'agent':a,'criterion':c,'a':x,'b':y,'gap':g,'observable':c in countable} for a,c,x,y,g in rows]},
+            ensure_ascii=False,indent=2),encoding='utf-8')
+        print(f'wrote {out}')
+
 def cmd_selftest(args):
     def mk(domain,aid,scores,bull=95,bear=45):
         rb=rubric_for(domain)
@@ -707,6 +754,8 @@ def main():
     p=sub.add_parser('freeze',help='freeze input/source hashes and runner metadata for reproducible model comparisons')
     p.add_argument('ticker'); p.add_argument('--provider'); p.add_argument('--model'); p.add_argument('--reasoning-effort'); p.set_defaults(func=cmd_freeze)
     p=sub.add_parser('selftest',help='run provider-calibration invariance checks'); p.set_defaults(func=cmd_selftest)
+    p=sub.add_parser('calibrate',help='compare two runs\' subscores to measure provider divergence')
+    p.add_argument('run_a'); p.add_argument('run_b'); p.add_argument('--out'); p.set_defaults(func=cmd_calibrate)
     p=sub.add_parser('plan',help='show the next stage to run, or early exit'); p.add_argument('ticker'); p.set_defaults(func=cmd_plan)
     p=sub.add_parser('prompt',help='print a compact self-contained prompt for a domain or agent'); p.add_argument('ticker'); p.add_argument('target'); p.add_argument('--out'); p.set_defaults(func=cmd_prompt)
     p=sub.add_parser('validate'); p.add_argument('ticker'); p.add_argument('agents',nargs='*'); p.set_defaults(func=cmd_validate)

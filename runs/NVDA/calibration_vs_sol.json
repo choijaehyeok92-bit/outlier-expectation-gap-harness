@@ -1,0 +1,228 @@
+{
+  "run_a": "NVDA-2026-09-18-sol",
+  "run_b": "NVDA",
+  "n": 27,
+  "mean_gap": 8.33,
+  "median_gap": 10.0,
+  "sd_gap": 6.67,
+  "mean_gap_observable": 13.12,
+  "mean_gap_adjective": 6.32,
+  "rows": [
+    {
+      "agent": "DI",
+      "criterion": "optionality_incumbent_response",
+      "a": 90.0,
+      "b": 70.0,
+      "gap": 20.0,
+      "observable": true
+    },
+    {
+      "agent": "RF",
+      "criterion": "reinvestment_runway",
+      "a": 85.0,
+      "b": 65.0,
+      "gap": 20.0,
+      "observable": true
+    },
+    {
+      "agent": "SL",
+      "criterion": "durability_risks",
+      "a": 75.0,
+      "b": 55.0,
+      "gap": 20.0,
+      "observable": true
+    },
+    {
+      "agent": "AS",
+      "criterion": "permanent_loss",
+      "a": 75.0,
+      "b": 60.0,
+      "gap": 15.0,
+      "observable": true
+    },
+    {
+      "agent": "FS",
+      "criterion": "dilution_offbalance",
+      "a": 70.0,
+      "b": 55.0,
+      "gap": 15.0,
+      "observable": true
+    },
+    {
+      "agent": "MT",
+      "criterion": "network_data_ecosystem",
+      "a": 90.0,
+      "b": 75.0,
+      "gap": 15.0,
+      "observable": true
+    },
+    {
+      "agent": "CP",
+      "criterion": "unit_economics",
+      "a": 85.0,
+      "b": 75.0,
+      "gap": 10.0,
+      "observable": false
+    },
+    {
+      "agent": "DI",
+      "criterion": "adoption_curve",
+      "a": 90.0,
+      "b": 80.0,
+      "gap": 10.0,
+      "observable": false
+    },
+    {
+      "agent": "EV",
+      "criterion": "base_return",
+      "a": 65.0,
+      "b": 55.0,
+      "gap": 10.0,
+      "observable": false
+    },
+    {
+      "agent": "EV",
+      "criterion": "reverse_dcf_burden",
+      "a": 70.0,
+      "b": 60.0,
+      "gap": 10.0,
+      "observable": false
+    },
+    {
+      "agent": "EV",
+      "criterion": "valuation_robustness",
+      "a": 50.0,
+      "b": 40.0,
+      "gap": 10.0,
+      "observable": false
+    },
+    {
+      "agent": "MA",
+      "criterion": "capital_allocation",
+      "a": 80.0,
+      "b": 70.0,
+      "gap": 10.0,
+      "observable": true
+    },
+    {
+      "agent": "MT",
+      "criterion": "commoditization_resilience",
+      "a": 75.0,
+      "b": 65.0,
+      "gap": 10.0,
+      "observable": false
+    },
+    {
+      "agent": "RF",
+      "criterion": "fcf_per_share_quality",
+      "a": 80.0,
+      "b": 70.0,
+      "gap": 10.0,
+      "observable": false
+    },
+    {
+      "agent": "SL",
+      "criterion": "secular_durability",
+      "a": 90.0,
+      "b": 80.0,
+      "gap": 10.0,
+      "observable": false
+    },
+    {
+      "agent": "CP",
+      "criterion": "customer_roi",
+      "a": 85.0,
+      "b": 80.0,
+      "gap": 5.0,
+      "observable": false
+    },
+    {
+      "agent": "CP",
+      "criterion": "retention_usage",
+      "a": 75.0,
+      "b": 70.0,
+      "gap": 5.0,
+      "observable": false
+    },
+    {
+      "agent": "DI",
+      "criterion": "cost_performance_shift",
+      "a": 90.0,
+      "b": 85.0,
+      "gap": 5.0,
+      "observable": false
+    },
+    {
+      "agent": "MA",
+      "criterion": "execution_adaptability",
+      "a": 90.0,
+      "b": 85.0,
+      "gap": 5.0,
+      "observable": false
+    },
+    {
+      "agent": "MA",
+      "criterion": "governance_integrity",
+      "a": 75.0,
+      "b": 70.0,
+      "gap": 5.0,
+      "observable": false
+    },
+    {
+      "agent": "MT",
+      "criterion": "switching_pricing",
+      "a": 85.0,
+      "b": 80.0,
+      "gap": 5.0,
+      "observable": false
+    },
+    {
+      "agent": "RF",
+      "criterion": "incremental_roic",
+      "a": 90.0,
+      "b": 85.0,
+      "gap": 5.0,
+      "observable": false
+    },
+    {
+      "agent": "SL",
+      "criterion": "category_leadership",
+      "a": 90.0,
+      "b": 85.0,
+      "gap": 5.0,
+      "observable": false
+    },
+    {
+      "agent": "AS",
+      "criterion": "probability_calibration",
+      "a": 65.0,
+      "b": 65.0,
+      "gap": 0.0,
+      "observable": false
+    },
+    {
+      "agent": "FS",
+      "criterion": "liquidity_leverage",
+      "a": 90.0,
+      "b": 90.0,
+      "gap": 0.0,
+      "observable": false
+    },
+    {
+      "agent": "FS",
+      "criterion": "stress_survival",
+      "a": 80.0,
+      "b": 80.0,
+      "gap": 0.0,
+      "observable": false
+    },
+    {
+      "agent": "AS",
+      "criterion": "upside_path",
+      "a": 65.0,
+      "b": 75.0,
+      "gap": -10.0,
+      "observable": true
+    }
+  ]
+}

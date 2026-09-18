@@ -126,7 +126,7 @@
     {
       "criterion_id": "optionality_incumbent_response",
       "score_0_100": 70,
-      "rationale": "CUDA·NVLink·네트워킹·Hugging Face로 복수 옵션을 보유하고 신 가치사슬을 지배한다. 그러나 대응자가 자금 제약 없는 하이퍼스케일러이고 중국 배제로 경쟁 생태계가 커지고 있어 90점 수준의 지배력은 아니다."
+      "rationale": "판정표: 인접 가치풀 3개 이상(Grace CPU, Mellanox 네트워킹, NVIDIA AI Enterprise 소프트웨어, Hugging Face) + CUDA로 가치사슬 표준 정의 → 85. modifier: 주요 대응자가 자본 제약 없는 하이퍼스케일러 고객 본인 → 상한 70 적용."
     }
   ],
   "uncertainties": [
