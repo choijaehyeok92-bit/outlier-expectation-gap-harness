@@ -1,0 +1,156 @@
+{
+  "agent_id": "FS",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 91.75,
+  "confidence_0_1": 0.95,
+  "bull_score": 95,
+  "bear_score": 80,
+  "bull_case": "APP generates multi-billion-dollar annual FCF, holds over $3B cash and has only modest net debt, with fixed-rate senior notes staggered through 2054 and an undrawn $1B revolver.",
+  "bear_case": "The company has $3.6B gross debt, cloud commitments and high buyback outlays. A sharp ad downturn plus platform shock could reduce cash generation, though current liquidity provides a large buffer.",
+  "thesis": "Financial survival is exceptionally strong. At June 30 APP had $3.053B cash against $3.515B debt carrying value, H1 FCF of $2.150B and no revolver borrowings. Senior notes are fixed-rate and mature from 2029 to 2054, limiting refinancing concentration. The main balance-sheet choice is discretionary buyback intensity, not survival financing. SBC is meaningful but net shares are falling, so dilution is currently well controlled.",
+  "evidence": [
+    {
+      "claim": "June 30 cash was $3.053B and long-term debt carrying amount $3.515B.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-05",
+      "value": "Net debt about $462M",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 2026 FCF was $2.150B.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "FCF $2.150B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "APP had $1.0B available under an unsecured revolver with no borrowings at June 30.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-05",
+      "value": "$1.0B undrawn revolver",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Senior unsecured notes mature between 2029 and 2054 at fixed rates; FY2025 filing disclosed 5.125%-5.950%.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K/Q2 10-Q",
+      "period": "2025-2026",
+      "as_of_date": "2026-08-05",
+      "value": "Long-dated fixed-rate debt",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Shares outstanding fell to 334.651M by July 31 from 338.313M at year-end despite H1 SBC of $169.0M.",
+      "source_type": "filing",
+      "source": "Uploaded 10-K/Q2 10-Q",
+      "period": "2025-12-31 to 2026-07-31",
+      "as_of_date": "2026-08-05",
+      "value": "Net dilution negative",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Gross debt is still material and requires ongoing interest service.",
+    "Cloud minimum commitments create fixed operating obligations.",
+    "Large discretionary buybacks can reduce liquidity quickly if maintained through a downturn.",
+    "Advertising revenue can be cyclical and sensitive to platform shocks."
+  ],
+  "unknowns": [
+    "Future buyback pace under recession stress.",
+    "Exact refinancing terms when 2029 maturities approach.",
+    "Long-run cloud commitment renewal terms.",
+    "Cash tax normalization."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "minor",
+      "rationale": "Net debt is small relative to FCF and liquidity is ample."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "minor",
+      "rationale": "Large FCF and flexible buybacks provide strong downside capacity."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "minor",
+      "rationale": "SBC and cloud commitments are real, but repurchases reduce net shares and obligations are manageable."
+    }
+  ],
+  "falsifiers": [
+    "FCF collapses while management maintains aggressive repurchases and leverage rises materially.",
+    "Refinancing risk concentrates near maturities without adequate cash generation.",
+    "Net share count begins sustained growth despite large SBC."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Operations generate ample FCF and the company has substantial cash plus undrawn revolver capacity."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Net share count is declining because buybacks exceed SBC issuance."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Modest net debt, long maturities and large FCF make financing-driven permanent loss remote."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Net debt/FCF",
+      "direction": "stable/down",
+      "threshold": "Remain comfortably below 1x normalized annual FCF",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Interest coverage",
+      "direction": "stable",
+      "threshold": "Maintain wide coverage",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Net share count",
+      "direction": "down",
+      "threshold": "Repurchases continue to offset SBC",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "2029 maturity planning.",
+    "Q3 cash/FCF after buybacks.",
+    "Cloud commitments."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 90,
+      "rationale": "Cash nearly offsets debt and FCF generation is extremely strong."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 95,
+      "rationale": "Large internal cash generation and discretionary buybacks create exceptional stress capacity."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 90,
+      "rationale": "Net shares are shrinking and off-balance commitments are manageable relative to FCF."
+    }
+  ]
+}
