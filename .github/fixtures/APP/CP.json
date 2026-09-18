@@ -1,0 +1,142 @@
+{
+  "agent_id": "CP",
+  "ticker": "APP",
+  "as_of_date": "2026-09-17",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 82.75,
+  "confidence_0_1": 0.87,
+  "bull_score": 90,
+  "bear_score": 65,
+  "bull_case": "Advertisers keep reallocating spend when Axon improves conversion economics, while publishers benefit from MAX auction monetization. Rapid revenue growth with low sales intensity implies strong customer ROI and product pull.",
+  "bear_case": "APP does not disclose NRR, GRR or CAC/payback, so retention and unit economics are inferred from financial outcomes. Large advertisers can shift budgets quickly if rival platforms deliver better ROI.",
+  "thesis": "Customer value is strong but not perfectly measured. Revenue grew much faster than sales and marketing expense while margins expanded, implying advertiser ROI and strong product pull. MAX, Adjust and Axon embed APP across buying, monetization and measurement. No individual customer represented 10% of FY2025 revenue, reducing single-client risk. The missing evidence is cohort-level retention and direct ROI/payback versus Meta/Google/Amazon.",
+  "evidence": [
+    {
+      "claim": "FY2025 revenue grew 70% while sales and marketing expense declined from $252.9M to $203.7M.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K",
+      "period": "FY2025",
+      "as_of_date": "2026-02-19",
+      "value": "Revenue +70%; S&M -19%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 2026 revenue grew 56% while sales and marketing expense was $124.1M versus $106.3M, showing strong operating leverage.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "FY2026 H1",
+      "as_of_date": "2026-08-05",
+      "value": "Revenue +56%; S&M +17%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "No individual customer represented 10% or more of FY2025 revenue.",
+      "source_type": "filing",
+      "source": "Uploaded FY2025 10-K",
+      "period": "FY2025",
+      "as_of_date": "2026-02-19",
+      "value": "No customer >=10% revenue",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The platform spans AppLovin Ads, MAX, Adjust and Wurl, covering advertiser acquisition, publisher monetization and measurement/distribution.",
+      "source_type": "filing",
+      "source": "Uploaded Q2 10-Q",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": "Single segment with multiple advertising products",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Direct advertiser ROI and cohort retention metrics are not disclosed.",
+    "Advertising budgets are inherently reallocatable and can shift rapidly.",
+    "Platform changes can alter attribution quality independent of product execution.",
+    "Large ad ecosystems can bundle competing tools."
+  ],
+  "unknowns": [
+    "NRR/GRR by advertiser cohort.",
+    "CAC/payback by vertical.",
+    "E-commerce advertiser retention.",
+    "Relative ROI versus Meta/Google/Amazon."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "minor",
+      "rationale": "Growth with low S&M intensity strongly implies customer ROI, even without direct disclosure."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "No direct NRR/GRR disclosure."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "Financial leverage is excellent, but direct CAC/payback is unavailable."
+    }
+  ],
+  "falsifiers": [
+    "Sales and marketing grows faster than revenue for several periods without new-vertical payoff.",
+    "Advertiser spend shifts away despite stable market growth.",
+    "A single customer or partner becomes economically dominant."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Revenue growth materially outpaced sales spending while margins and FCF expanded, inconsistent with subsidy-driven demand."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "No customer exceeded 10% of FY2025 revenue and the product suite/vertical mix is broadening; platform-policy risk is material but not a single fatal dependency."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Revenue/S&M efficiency",
+      "direction": "up",
+      "threshold": "Revenue growth remains well above S&M growth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Client concentration",
+      "direction": "stable",
+      "threshold": "No sustained >=10% single-client dependence",
+      "cadence": "annual"
+    },
+    {
+      "name": "New-vertical repeat spend",
+      "direction": "up",
+      "threshold": "E-commerce/CTV spending broadens",
+      "cadence": "semiannual"
+    }
+  ],
+  "next_checks": [
+    "Retention proxies from management commentary.",
+    "E-commerce repeat spend.",
+    "Client concentration."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 90,
+      "rationale": "High growth and extreme operating leverage strongly indicate compelling advertiser ROI."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 80,
+      "rationale": "Continued growth suggests expanding spend, but direct cohort retention is undisclosed."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 75,
+      "rationale": "Sales efficiency and cash conversion are excellent though CAC/payback is not directly reported."
+    }
+  ]
+}
