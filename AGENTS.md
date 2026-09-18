@@ -58,14 +58,15 @@
 - `archetype_signals` (expectation_valuation 도메인만): `price_to_base_value`, `valuation_percentile_5y`, `revenue_cagr_next_3y`
 
 ## Scoring discipline
-- 에이전트의 `score_0_100`은 **자기 도메인 내부 품질 점수**다.
-- 도메인 최종점수는 하네스가 에이전트 점수에 미확인·분쟁·신뢰도 패널티를 적용해 계산한다.
+- 점수의 원천은 `config/calibration.json`의 criterion별 `subscores`다. 5점 단위로 채점하고 `score_0_100`은 고정 가중평균과 일치해야 한다.
+- self-reported confidence, prose unknown 개수, 단일 모델의 Bull-Bear 폭은 새 실행의 숫자 점수를 직접 움직이지 않는다.
 - 최종 100점 스코어는 `config/strategy.json`의 가중치를 사용한다.
 - 신뢰도가 낮거나 핵심 데이터가 미확인인 경우 높은 점수를 주지 않는다.
 
 ## Conflict rules
 - 동일 사실이 충돌하면 결론을 평균내지 않는다. 충돌 원인을 데이터 정의/기간/회계기준/출처 신뢰도 순으로 해결한다.
-- `bull_score − bear_score`가 20점 이상인 도메인은 `domain_dispute=true`로 처리하고 IC에 강제 상신한다.
+- `bull_score − bear_score`가 20점 이상인 도메인은 `domain_dispute=true`로 처리하고 IC에 강제 상신한다. 현재 1-agent 구조에서는 그 폭 자체를 자동 감점에 쓰지 않는다.
+- Hard Veto는 지정 reviewer의 명시적 판정이 필요하며 미기재를 clear로 간주하지 않는다.
 - 30점 이상 차이 또는 Hard Veto 관련 충돌은 재조사 없이는 통과할 수 없다.
 
 ## Final IC states
@@ -97,3 +98,6 @@
 - TAM만으로 구조적 성장 점수 부여 금지.
 - "제2의 테슬라/엔비디아" 같은 비유만으로 파괴적 혁신 점수 부여 또는 문샷형 분류 금지.
 - 경영진 발언을 검증 없이 증거로 취급 금지.
+
+## Reproducibility contract
+분석 프롬프트 전에 `freeze`로 input snapshot과 runner metadata를 고정한다. 직접적인 provider/model 비교는 동일 harness commit과 동일 input snapshot에서만 유효하다. EV 할인 계산은 LLM이 아니라 하네스가 수행한다.

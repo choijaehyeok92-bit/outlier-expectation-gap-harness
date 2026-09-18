@@ -42,9 +42,10 @@ Company Intake (intake_facts + sources/README.md — 모든 에이전트가 공�
 트레이드오프: 한 컨텍스트 안의 관점 분리는 독립 에이전트보다 편향 상쇄 효과가 약하다. 그래서 관점 간 점수차가 크면 분쟁 감점과 IC 상신으로 드러나게 했고, 교차 도메인 검증은 별도 RT·ED 에이전트가 맡는다.
 
 ## Aggregation
-- 도메인 점수: 에이전트 `score_0_100` (과거 다중 에이전트 실행은 confidence-weighted median)
-- unknown penalty: 핵심 미확인 데이터에 패널티
-- dispute penalty: `bull_score − bear_score` 20점 이상부터 적용 (과거 실행은 에이전트 간 점수차)
+- 새 실행의 도메인 점수: anchored `subscores`의 고정 가중합. self-reported confidence는 점수에 반영하지 않는다.
+- prose `unknowns` 개수는 새 실행에서 감점하지 않고 structured uncertainty로 추적한다.
+- 단일 agent의 Bull-Bear 폭은 review flag만 만들며 자동 감점하지 않는다.
+- 레거시 다중-agent 실행은 기존 confidence-weighted median과 inter-agent dispute penalty를 유지한다.
 - 최종 100점: 전략 원문의 15/10/15/15/10/10/15/10 가중치
 - Hard Veto: 점수와 독립된 상위 게이트
 - 파괴적 혁신: 동일한 방식으로 도메인 점수를 내지만 100점에는 합산하지 않음
@@ -62,3 +63,6 @@ Company Intake (intake_facts + sources/README.md — 모든 에이전트가 공�
 4. 최종 포지션 6% 초과
 5. 기존 Core Winner의 매도/축소
 6. 문샷형 분류 확정 및 Chair가 기계적 유형을 변경할 때
+
+## Provider calibration boundary
+하네스가 통제하는 것은 입력 snapshot, 채점척도, 산술, Veto coverage, DCF policy다. 하네스가 통제하지 않는 것은 미래 매출/FCF 경로에 대한 실제 추론 차이다. 동일 snapshot에서도 남는 차이가 모델 간 비교의 핵심 대상이다.

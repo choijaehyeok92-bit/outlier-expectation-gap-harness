@@ -1,0 +1,438 @@
+{
+  "schema_version": "2.1",
+  "require_frozen_inputs": true,
+  "score_step": 5,
+  "global_bands": [
+    {
+      "min": 0,
+      "max": 19,
+      "label": "failed",
+      "rule": "핵심 가설이 반증되거나 경제적 가치가 구조적으로 훼손"
+    },
+    {
+      "min": 20,
+      "max": 39,
+      "label": "weak",
+      "rule": "반대근거가 우세하고 장기 투자근거가 취약"
+    },
+    {
+      "min": 40,
+      "max": 59,
+      "label": "mixed",
+      "rule": "긍정·부정 근거가 혼재하며 우위가 입증되지 않음"
+    },
+    {
+      "min": 60,
+      "max": 74,
+      "label": "adequate",
+      "rule": "가설은 성립하지만 중요한 검증 공백이 존재"
+    },
+    {
+      "min": 75,
+      "max": 84,
+      "label": "strong",
+      "rule": "다수의 1차 자료가 장기 가설을 지지"
+    },
+    {
+      "min": 85,
+      "max": 94,
+      "label": "exceptional",
+      "rule": "여러 기간·지표에서 일관된 강한 증거"
+    },
+    {
+      "min": 95,
+      "max": 100,
+      "label": "rare",
+      "rule": "압도적이고 반증 위험이 매우 낮음; 극히 드물게 사용"
+    }
+  ],
+  "rubrics": {
+    "structural_leadership": {
+      "criteria": [
+        {
+          "id": "secular_durability",
+          "weight": 0.4,
+          "question": "구조 변화의 5~10년 지속성",
+          "anchors": {
+            "25": "사이클 중심",
+            "50": "구조·사이클 혼재",
+            "75": "장기 수요/지불의사 확인",
+            "90": "비용곡선·표준·수요 재편"
+          }
+        },
+        {
+          "id": "category_leadership",
+          "weight": 0.35,
+          "question": "경쟁기준·표준·배포 리더십",
+          "anchors": {
+            "25": "추종자",
+            "50": "유의미 참여자",
+            "75": "리더십 입증",
+            "90": "카테고리 규칙 정의"
+          }
+        },
+        {
+          "id": "durability_risks",
+          "weight": 0.25,
+          "question": "포화·대체·규제 이후 회복력",
+          "anchors": {
+            "25": "단일 취약점 지배",
+            "50": "상쇄요인 혼재",
+            "75": "복수 완충장치",
+            "90": "여러 독립 성장축"
+          }
+        }
+      ]
+    },
+    "customer_product": {
+      "criteria": [
+        {
+          "id": "customer_roi",
+          "weight": 0.4,
+          "question": "고객 ROI·지불의사",
+          "anchors": {
+            "25": "보조금/프로모션 의존",
+            "50": "정량 근거 부족",
+            "75": "ROI·가격결정력 확인",
+            "90": "미션크리티컬"
+          }
+        },
+        {
+          "id": "retention_usage",
+          "weight": 0.35,
+          "question": "유지율·사용량·wallet share",
+          "anchors": {
+            "25": "이탈/사용감소",
+            "50": "안정적",
+            "75": "코호트 개선",
+            "90": "지속 확장"
+          }
+        },
+        {
+          "id": "unit_economics",
+          "weight": 0.25,
+          "question": "CAC/payback/단위경제",
+          "anchors": {
+            "25": "성장할수록 악화",
+            "50": "혼재",
+            "75": "규모경제 확인",
+            "90": "강한 운영레버리지"
+          }
+        }
+      ]
+    },
+    "moat_trajectory": {
+      "criteria": [
+        {
+          "id": "switching_pricing",
+          "weight": 0.35,
+          "question": "전환비용·가격결정력·점유율 추세",
+          "anchors": {
+            "25": "약화",
+            "50": "정체",
+            "75": "강화",
+            "90": "구조적 강화"
+          }
+        },
+        {
+          "id": "network_data_ecosystem",
+          "weight": 0.35,
+          "question": "네트워크·데이터·생태계 피드백",
+          "anchors": {
+            "25": "내러티브뿐",
+            "50": "일부 효과",
+            "75": "측정 가능",
+            "90": "복리형 방어벽"
+          }
+        },
+        {
+          "id": "commoditization_resilience",
+          "weight": 0.3,
+          "question": "범용화·대체 위험 방어",
+          "anchors": {
+            "25": "쉽게 대체",
+            "50": "혼재",
+            "75": "복수 방어층",
+            "90": "대체가 해자를 강화"
+          }
+        }
+      ]
+    },
+    "reinvestment_fcf": {
+      "criteria": [
+        {
+          "id": "incremental_roic",
+          "weight": 0.4,
+          "question": "증분 투자자본 수익률",
+          "anchors": {
+            "25": "자본비용 미달",
+            "50": "측정 불확실",
+            "75": "우수",
+            "90": "대규모에서도 매우 높음"
+          }
+        },
+        {
+          "id": "reinvestment_runway",
+          "weight": 0.3,
+          "question": "고수익 재투자 활주로",
+          "anchors": {
+            "25": "짧음",
+            "50": "수년",
+            "75": "장기 복수경로",
+            "90": "대규모 장기 복리"
+          }
+        },
+        {
+          "id": "fcf_per_share_quality",
+          "weight": 0.3,
+          "question": "SBC·Capex 후 FCF/share",
+          "anchors": {
+            "25": "감소",
+            "50": "왜곡 큼",
+            "75": "정상화 성장",
+            "90": "강한 복리"
+          }
+        }
+      ]
+    },
+    "management_allocation": {
+      "criteria": [
+        {
+          "id": "capital_allocation",
+          "weight": 0.4,
+          "question": "R&D·M&A·자사주·철수의 가치창출",
+          "anchors": {
+            "25": "가치파괴",
+            "50": "혼재",
+            "75": "합리적",
+            "90": "탁월한 재배분"
+          }
+        },
+        {
+          "id": "governance_integrity",
+          "weight": 0.35,
+          "question": "회계·거버넌스·보상 정렬",
+          "anchors": {
+            "25": "중대한 신뢰문제",
+            "50": "통상 위험",
+            "75": "양호",
+            "90": "매우 높은 신뢰"
+          }
+        },
+        {
+          "id": "execution_adaptability",
+          "weight": 0.25,
+          "question": "실행과 실패 인정·전환",
+          "anchors": {
+            "25": "반복실패",
+            "50": "평균",
+            "75": "일관 실행",
+            "90": "탁월한 적응"
+          }
+        }
+      ]
+    },
+    "financial_survival": {
+      "criteria": [
+        {
+          "id": "liquidity_leverage",
+          "weight": 0.4,
+          "question": "현금·부채·만기·이자부담",
+          "anchors": {
+            "25": "조달위험 큼",
+            "50": "관리 가능",
+            "75": "강한 유동성",
+            "90": "순현금/매우 강함"
+          }
+        },
+        {
+          "id": "stress_survival",
+          "weight": 0.35,
+          "question": "불황·신용경색 생존",
+          "anchors": {
+            "25": "외부자본 필수",
+            "50": "축소 필요",
+            "75": "내부현금 방어",
+            "90": "스트레스에서도 투자"
+          }
+        },
+        {
+          "id": "dilution_offbalance",
+          "weight": 0.25,
+          "question": "희석·전환·부외약정",
+          "anchors": {
+            "25": "중대 위험",
+            "50": "관리 필요",
+            "75": "제한적",
+            "90": "사실상 미미"
+          }
+        }
+      ]
+    },
+    "expectation_valuation": {
+      "criteria": [
+        {
+          "id": "reverse_dcf_burden",
+          "weight": 0.35,
+          "question": "현재가격 내재 기대 현실성",
+          "anchors": {
+            "25": "Bull 이상 필요",
+            "50": "강한 실행 필요",
+            "75": "Base로 충분",
+            "90": "보수 실행에도 충분"
+          }
+        },
+        {
+          "id": "base_return",
+          "weight": 0.4,
+          "question": "고정 DCF 정책의 Base 기대수익",
+          "anchors": {
+            "25": "큰 과대평가",
+            "50": "공정가치 부근",
+            "75": "의미 있는 할인",
+            "90": "큰 기대차"
+          }
+        },
+        {
+          "id": "valuation_robustness",
+          "weight": 0.25,
+          "question": "terminal/피크이익 의존도",
+          "anchors": {
+            "25": "매우 취약",
+            "50": "민감도 큼",
+            "75": "여러 가정에서 유지",
+            "90": "보수 민감도에서도 유지"
+          }
+        }
+      ]
+    },
+    "asymmetry": {
+      "criteria": [
+        {
+          "id": "upside_path",
+          "weight": 0.35,
+          "question": "5~10년 큰 상승 경로",
+          "anchors": {
+            "25": "비현실",
+            "50": "단일 낙관가정",
+            "75": "복수 경로",
+            "90": "강한 power-law"
+          }
+        },
+        {
+          "id": "permanent_loss",
+          "weight": 0.35,
+          "question": "영구손실 대비 잔존가치",
+          "anchors": {
+            "25": "손실 가능성 큼",
+            "50": "의미 있는 하방",
+            "75": "회복력 강함",
+            "90": "구조 손실 매우 낮음"
+          }
+        },
+        {
+          "id": "probability_calibration",
+          "weight": 0.3,
+          "question": "확률·기준율 보정",
+          "anchors": {
+            "25": "서사적",
+            "50": "근거 제한",
+            "75": "기준율/민감도 사용",
+            "90": "잘 보정"
+          }
+        }
+      ]
+    },
+    "disruptive_innovation": {
+      "criteria": [
+        {
+          "id": "cost_performance_shift",
+          "weight": 0.35,
+          "question": "비용·성능·편의 재편",
+          "anchors": {
+            "25": "점진 개선",
+            "50": "유의미하나 존속적",
+            "75": "구조 변화",
+            "90": "10배급 재편"
+          }
+        },
+        {
+          "id": "adoption_curve",
+          "weight": 0.35,
+          "question": "채택 S-curve·단위경제",
+          "anchors": {
+            "25": "파일럿",
+            "50": "초기 채택",
+            "75": "가속·경제성 확인",
+            "90": "주류 확산"
+          }
+        },
+        {
+          "id": "optionality_incumbent_response",
+          "weight": 0.3,
+          "question": "옵셔널리티·기존사업자 대응 제약",
+          "anchors": {
+            "25": "쉽게 복제",
+            "50": "일부 옵션",
+            "75": "복수 옵션",
+            "90": "새 가치사슬 지배"
+          }
+        }
+      ]
+    }
+  },
+  "valuation": {
+    "method": "owner_fcf_per_share_dcf",
+    "horizon_years": 10,
+    "required_return": 0.09,
+    "terminal_multiples": {
+      "bear": 15,
+      "base": 20,
+      "bull": 25
+    },
+    "rules": [
+      "할인율·terminal multiple은 모델이 선택하지 않는다.",
+      "회사별 override는 company_context.json에 freeze 전에 기록한다.",
+      "현재가격·순현금은 frozen company_context 값만 사용한다.",
+      "LLM은 Bear/Base/Bull의 연도별 owner FCF/share 경로만 추정한다."
+    ]
+  },
+  "veto_reviewers": {
+    "경영진 정직성 또는 회계 신뢰성 훼손": [
+      "MA",
+      "RT"
+    ],
+    "구조적으로 과도한 외부자본 조달 의존": [
+      "FS",
+      "RT"
+    ],
+    "장기간 지속되는 과도한 희석": [
+      "RF",
+      "FS"
+    ],
+    "고객가치 없이 마케팅·보조금에 의존하는 성장": [
+      "CP",
+      "RT"
+    ],
+    "증분 ROIC의 구조적 붕괴": [
+      "RF",
+      "RT"
+    ],
+    "해자의 지속적인 축소": [
+      "MT",
+      "RT"
+    ],
+    "현재가격이 비현실적인 Bull Case 이상을 요구": [
+      "EV",
+      "AS"
+    ],
+    "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성": [
+      "CP",
+      "RT"
+    ],
+    "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음": [
+      "FS",
+      "AS"
+    ]
+  }
+}

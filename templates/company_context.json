@@ -12,5 +12,16 @@
     "overlap_notes": ""
   },
   "known_sources": [],
-  "special_questions": []
+  "special_questions": [],
+  "net_cash_per_share": null,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  }
 }

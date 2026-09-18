@@ -10,6 +10,8 @@ python harness.py plan TICKER
 ```bash
 python harness.py init TICKER --as-of YYYY-MM-DD
 python harness.py sources TICKER --pdf-dir "<공시 PDF 폴더>"   # 선택: 공시 텍스트 추출 + 섹션 색인
+# company_context.json에 current_price / net_cash_per_share를 입력한 뒤
+python harness.py freeze TICKER --provider <provider> --model <model> --reasoning-effort <effort>
 ```
 - `runs/TICKER/company_context.json`의 `intake_facts`에 주가·주식수·최근 실적 등 공통 사실을 **한 번만** 기록한다. 모든 에이전트가 재검증 없이 사용한다.
 - 공시에서 확인한 핵심 사실은 `runs/TICKER/sources/README.md`에 적는다. 프롬프트에 자동 포함된다.
@@ -79,3 +81,6 @@ python harness.py validate TICKER [AGENT_ID ...]
 - 반기: 경쟁환경, Moat Trajectory, 고객행동, 산업구조
 - 연간: 투자가설과 밸류에이션 전면 재작성
 - 3~5년: 초기 가정의 사후검증
+
+## 11. 모델 A/B 비교
+동일 commit, 동일 `company_context.json`, 동일 `sources/`로 각각 freeze한다. 두 `run_manifest.json`의 `input_snapshot_sha256`가 다르면 점수 차이를 모델 차이로 해석하지 않는다. 비교 순서는 `subscores → valuation_inputs → uncertainties → veto assessments → aggregate`다.

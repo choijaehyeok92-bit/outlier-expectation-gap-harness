@@ -42,6 +42,8 @@ JSON 스키마·워크플로·집계 CLI 포함.
 ## 빠른 시작
 ```bash
 python harness.py init NVDA --as-of 2026-09-15
+# company_context.json의 current_price / net_cash_per_share를 채운 뒤
+python harness.py freeze NVDA --provider openai --model gpt-5.6-sol --reasoning-effort high
 python harness.py plan NVDA           # 다음에 실행할 에이전트 또는 조기 종료 안내
 python harness.py prompt NVDA EV      # 에이전트 1회 호출용 프롬프트
 python harness.py validate NVDA EV
@@ -66,3 +68,14 @@ python harness.py aggregate NVDA
 
 ## 주의
 `harness.py`는 **오케스트레이션의 결정론적 집계 계층**입니다. 실제 LLM 호출은 사용 환경(Codex, Claude Code, OpenAI API, 자체 agent framework)에 맞춰 어댑터를 연결하십시오. 모델이 바뀌어도 점수·veto·보고서 형식은 유지되도록 설계했습니다.
+
+## v2.1 — Provider calibration
+- **Anchored rubric:** 8개 핵심 도메인과 DI를 criterion별 5점 단위 subscore로 평가하고 Python이 고정 가중합한다.
+- **Confidence 비가중:** self-reported confidence는 새 실행의 숫자 점수를 바꾸지 않는다.
+- **Single-agent spread 비감점:** 한 모델의 Bull/Bear 폭은 review flag만 만들고 자동 -4/-8점은 적용하지 않는다.
+- **Structured uncertainty:** prose `unknowns` 개수로 새 실행을 감점하지 않는다.
+- **Explicit Veto coverage:** 지정 reviewer가 Veto를 생략하면 clear가 아니라 미검증이다.
+- **Deterministic valuation:** 할인율·terminal multiple·현재가격·순현금을 고정하고, LLM은 owner-FCF/share 경로만 제안한다.
+- **Frozen run manifest:** commit/config/input SHA-256과 provider/model/reasoning metadata를 기록한다.
+
+기존 39-agent 및 구버전 JSON은 `legacy_declared_score` 방식으로 계속 집계할 수 있다.
