@@ -1,0 +1,111 @@
+{
+  "agent_id": "CP",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 75,
+  "confidence_0_1": 0.78,
+  "bull_score": 85,
+  "bear_score": 55,
+  "bull_case": "AI-enabled search and higher-resolution Pelican can expand wallet share inside existing customers.",
+  "bear_case": "Large contracts and services work can create concentration and lower-margin implementation requirements.",
+  "thesis": "Customer value is increasingly measurable: NDR above 100%, near-total recurring ACV, and defense/government expansion show that imagery is embedded in workflows rather than purchased as one-off content.",
+  "evidence": [
+    {
+      "claim": "NDR was 109% in H1 FY2027.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Recurring ACV was 98% at Q2.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 GAAP gross margin was 57% and adjusted EBITDA +$13.9M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Satellite services can raise revenue growth while also increasing hardware, launch and execution intensity versus pure imagery subscriptions."
+  ],
+  "unknowns": [
+    "Normalized satellite-services gross margin, long-run owner FCF/share, and customer concentration after current sovereign contract ramp."
+  ],
+  "falsifiers": [
+    "If NDR falls below 100%, RPO/backlog contract materially, or owner FCF/share turns persistently negative despite revenue growth, the thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Growth is supported by renewal, NDR and contracted government demand rather than marketing/subsidy dependence."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Top-customer concentration is material but no single customer or regulation is fatal; revenue is spread across multiple customers and geographies."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q: revenue mix, RPO/backlog, NDR, adjusted FCF, SBC, ATM issuance and capex"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 75,
+      "rationale": "Repeat sovereign and commercial renewals indicate operational value in monitoring and change detection."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 75,
+      "rationale": "NDR 109% and recurring ACV 98% indicate expanding customer usage."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 75,
+      "rationale": "Gross margin remains high-50s and adjusted EBITDA positive, though satellite services may be more hardware-intensive."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    }
+  ]
+}

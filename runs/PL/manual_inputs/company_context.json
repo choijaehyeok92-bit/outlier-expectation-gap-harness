@@ -1,0 +1,37 @@
+{
+  "ticker": "PL",
+  "company_name": "Planet Labs PBC",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 16.18,
+  "shares_diluted": 363847989,
+  "market_cap_usd": 5887060462.02,
+  "enterprise_value": 5481660462.02,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "User-uploaded Planet Labs FY2026 Form 10-K filed 2026-03-23",
+    "User-uploaded Planet Labs Q1 FY2027 Form 10-Q filed 2026-06-05",
+    "User-uploaded Planet Labs Q2 FY2027 Form 10-Q and Form 8-K filed 2026-09-03",
+    "2026-09-18 closing price $16.18 from historical market data"
+  ],
+  "special_questions": [
+    "Does daily global imagery plus AI analytics create a durable data moat or merely a capital-intensive imagery product?",
+    "Can satellite services scale without structurally compressing gross margin or requiring repeated equity issuance?",
+    "Do RPO/backlog and sovereign-defense wins justify Moonshot status despite SBC and ATM dilution?"
+  ],
+  "net_cash_per_share": 1.1142015684,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "No reproducible full 5-year valuation percentile frozen; valuation is assessed through locked owner-FCF/share DCF.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  }
+}

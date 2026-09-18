@@ -1,0 +1,106 @@
+{
+  "agent_id": "MA",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 65,
+  "confidence_0_1": 0.78,
+  "bull_score": 75,
+  "bear_score": 45,
+  "bull_case": "If capital raised at strong prices funds high-ROIC sovereign capacity, dilution can be value-accretive.",
+  "bear_case": "Repeated equity issuance and SBC can cause enterprise value to grow faster than value per share.",
+  "thesis": "Execution improved materially, but capital allocation is the weak point. The company raised $460M of converts in 2025 and another ~$120M through ATM shares in Q2 despite a large cash balance. The ATM price was high relative to today's price, which softens but does not erase dilution.",
+  "evidence": [
+    {
+      "claim": "Q2 ATM sold 3.782M Class A shares for $122.4M gross at average net $31.95/share.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2030 notes have $460M principal and 0.50% coupon.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-03-23",
+      "value": "460",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 SBC was $33.521M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Satellite services can raise revenue growth while also increasing hardware, launch and execution intensity versus pure imagery subscriptions."
+  ],
+  "unknowns": [
+    "Normalized satellite-services gross margin, long-run owner FCF/share, and customer concentration after current sovereign contract ramp."
+  ],
+  "falsifiers": [
+    "If NDR falls below 100%, RPO/backlog contract materially, or owner FCF/share turns persistently negative despite revenue growth, the thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "No restatement, auditor disagreement or accounting-integrity impairment is established in the frozen filings."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q: revenue mix, RPO/backlog, NDR, adjusted FCF, SBC, ATM issuance and capex"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 65,
+      "rationale": "Liquidity was strengthened and growth investments funded, but ATM issuance at scale is costly to per-share owners."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 65,
+      "rationale": "No accounting-integrity failure is evident, but founder control and high SBC deserve monitoring."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 65,
+      "rationale": "Management has accelerated growth and reached adjusted profitability while shifting toward sovereign satellite services."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    }
+  ]
+}

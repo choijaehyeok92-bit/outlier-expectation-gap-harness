@@ -1,0 +1,64 @@
+{
+  "agent_id": "IC",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 72.99,
+  "confidence_0_1": 0.79,
+  "thesis": "Expected calibrated core score is about 73 with Moonshot as the surviving archetype. PL passes Moonshot on sub-$50B market cap, disruptive innovation, structural leadership, asymmetry and financial survival, while it fails Compounder on reinvestment/FCF quality and management allocation because per-share economics are still diluted by SBC and ATM issuance. Hard Veto is cleared. Mechanical state should be NORMAL_CANDIDATE, 2–4%, subject to macro pacing 0.7.",
+  "evidence": [
+    {
+      "claim": "Market cap is about $5.89B and price/Base about 0.614.",
+      "source_type": "other",
+      "source": "runs/PL/sources/README.md",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "5.89B / 0.614",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Q2 revenue +58%, recurring ACV 98%, NDR 109%.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 adjusted FCF +$28.8M but SBC $33.521M and ATM issuance $122.4M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Moonshot classification does not imply mature per-share compounding.",
+    "Bear DCF is materially below current price."
+  ],
+  "unknowns": [
+    "Long-run services margin",
+    "future dilution cadence"
+  ],
+  "falsifiers": [
+    "If DI/SL/AS/FS thresholds fail or dilution becomes persistent, Moonshot should be reclassified."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "outgrow dilution",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q"
+  ],
+  "verdict": "support"
+}

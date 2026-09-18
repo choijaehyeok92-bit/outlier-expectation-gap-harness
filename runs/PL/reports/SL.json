@@ -1,0 +1,100 @@
+{
+  "agent_id": "SL",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 80,
+  "confidence_0_1": 0.78,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "High-cadence data becomes an infrastructure layer for governments and AI systems rather than a niche imagery purchase.",
+  "bear_case": "Government procurement cycles, launch constraints and public/free imagery can cap pricing power.",
+  "thesis": "Planet has structural leadership in high-cadence Earth observation: the long-lived data archive, daily scanning cadence and platform distribution create a distinct category position. Defense and sovereign demand is becoming an additional long-duration driver.",
+  "evidence": [
+    {
+      "claim": "Defense & Intelligence revenue was $180.232M in FY2026, the largest customer type.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-03-23",
+      "value": "180.232",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 recurring ACV was 98%.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "August 2026 included NGA and German sovereign satellite-services awards.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Satellite services can raise revenue growth while also increasing hardware, launch and execution intensity versus pure imagery subscriptions."
+  ],
+  "unknowns": [
+    "Normalized satellite-services gross margin, long-run owner FCF/share, and customer concentration after current sovereign contract ramp."
+  ],
+  "falsifiers": [
+    "If NDR falls below 100%, RPO/backlog contract materially, or owner FCF/share turns persistently negative despite revenue growth, the thesis is downgraded."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q: revenue mix, RPO/backlog, NDR, adjusted FCF, SBC, ATM issuance and capex"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 80,
+      "rationale": "Defense intelligence, climate, supply-chain and infrastructure monitoring support multi-year demand."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 80,
+      "rationale": "Planet owns one of the largest daily global Earth-observation datasets and a high-revisit constellation."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 80,
+      "rationale": "Multiple end markets and sovereign programs diversify demand, though launch/regulatory exposure persists."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "Rapid business-model mix shift and early profitability make long-run normalization uncertain."
+    }
+  ]
+}

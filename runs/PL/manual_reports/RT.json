@@ -1,0 +1,111 @@
+{
+  "agent_id": "RT",
+  "ticker": "PL",
+  "as_of_date": "2026-09-18",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 55,
+  "confidence_0_1": 0.84,
+  "thesis": "The strongest short thesis is that Planet is being valued as a software/data compounder while its growth mix is moving toward capital-intensive satellite services. GAAP operating loss persists, SBC and ATM dilution are substantial, and top customers are concentrated. These are serious risks, but current liquidity, recurring ACV and positive recent FCF prevent a hard-veto conclusion.",
+  "evidence": [
+    {
+      "claim": "Q2 GAAP operating loss was $13.509M despite +58% revenue growth.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 SBC was $33.521M and Q2 ATM issuance raised $122.4M.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Three Q2 customers represented 17%, 11% and 10% of revenue.",
+      "source_type": "filing",
+      "source": "runs/PL/sources/Q2_FY2027_key_facts.txt",
+      "period": "Q2/H1 FY2027",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Recurring ACV 98%, NDR 109%, and RPO/backlog remain strong.",
+    "Net cash is about $405M.",
+    "Adjusted EBITDA and FCF are positive."
+  ],
+  "unknowns": [
+    "Satellite-services normalized margin",
+    "ATM cadence"
+  ],
+  "falsifiers": [
+    "Sustained per-share FCF weakens the short thesis; renewed cash burn strengthens it."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "No accounting-integrity failure is established."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Net cash and positive recent cash flow rebut structural financing dependence."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Dilution is material but the strict long-duration predicate is not yet established."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "NDR, recurring ACV and contract demand show customer value."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Not established."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Growth and contract metrics do not show persistent shrinkage."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Price is below Base DCF."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Concentration is material but not fatal and revenue sources are diversified."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Liquidity and recent FCF substantially reduce this risk."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "SBC+share issuance / revenue",
+      "direction": "down",
+      "threshold": "declining",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q"
+  ],
+  "verdict": "oppose"
+}
