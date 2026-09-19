@@ -1,7 +1,7 @@
 {
   "ticker": "ADBE",
   "input_snapshot_sha256": "9cac1f09edc72301ed0a280cafed69e03b86d573161b46d34eb85b5121bebd99",
-  "harness_commit": "c2df2c40b3058b30f2439f7f6af43ad3ad6b7385",
+  "harness_commit": "19eb1e3cd04aa52d2fc3776edf86f80fd0a67e6a",
   "runner": {
     "provider": "openai",
     "model": "gpt-5.6-sol",
@@ -380,3 +380,5 @@ agent_id/ticker/as_of_date/domain/role은 그대로 두고 아래 필드를 채�
 작성 후 `python harness.py validate ADBE EV`로 검증한다.
 
 최종 답변은 120단어 이내: 점수(bear–bull)·신뢰도·verdict·none이 아닌 Veto, 가장 중요한 미확인 사항 1개.
+===== EV VALIDATE (schema/current report only; not a domain rerun) =====
+EV: OK
