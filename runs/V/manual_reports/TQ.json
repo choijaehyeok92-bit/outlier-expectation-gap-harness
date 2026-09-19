@@ -30,6 +30,15 @@
       "as_of_date": "2025-11-06",
       "value": "11%",
       "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 value-added services revenue grew 33% year over year.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-07-29",
+      "value": "33%",
+      "fact_or_estimate": "fact"
     }
   ],
   "counterevidence": [
