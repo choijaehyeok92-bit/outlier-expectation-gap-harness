@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: work/adbe-2026-09-18-sol
+          ref: work/adbe-valuation-percentile-2026-09-18
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
@@ -119,7 +119,7 @@ jobs:
           git add runs/ADBE
           if ! git diff --cached --quiet; then
             git commit -m "persist: ADBE harness outputs 2026-09-18"
-            git push origin HEAD:work/adbe-2026-09-18-sol
+            git push origin HEAD:work/adbe-valuation-percentile-2026-09-18
           fi
 
           cat runs/ADBE/final_verdict.json
