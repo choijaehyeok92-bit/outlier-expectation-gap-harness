@@ -48,7 +48,7 @@
     },
     "signals": {
       "price_to_base_value": 0.5023,
-      "valuation_percentile_5y": null,
+      "valuation_percentile_5y": 0.06,
       "revenue_cagr_next_3y": 0.11
     }
   },

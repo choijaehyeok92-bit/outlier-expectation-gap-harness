@@ -4,7 +4,7 @@
 자료 공백은 수동적으로 남기지 않는다. 점수·Veto·밸류에이션에 직접 영향을 주는 항목이 기준 정보와 1차 자료에 없으면 예산 내에서 웹 검색·IR·2차 자료로 보완을 시도한 뒤, 그래도 확보하지 못한 것만 unknowns에 남기고 무엇을 어디서 찾으려 했는지 함께 적는다. 확보한 자료는 evidence에 source_type과 함께 기록하고 EVIDENCE_POLICY.md의 출처 위계를 지킨다.
 
 ## 기업 기준 정보 (재검증 금지)
-{"ticker":"ADBE","company_name":"Adobe Inc.","as_of_date":"2026-09-18","currency":"USD","current_price":248.92,"shares_diluted":397500000,"market_cap_usd":98945900000,"enterprise_value":99964900000,"portfolio_context":{"existing_position_pct":0,"sector_exposure_pct":0},"known_sources":["User-uploaded Adobe FY2024 Form 10-K filed 2025-01-13","User-uploaded Adobe Q2 FY2026 Form 10-Q filed 2026-06-15","Adobe Q3 FY2026 earnings release filed 2026-09-10","2026-09-18 closing price $248.92"],"special_questions":["Is generative AI structurally eroding Adobe's creative moat or expanding its addressable market and pricing power?","Can AI-first ARR and 1B MAU translate into durable per-share FCF growth?","Does aggressive repurchasing offset SBC and acquisition dilution at current valuation?"],"net_cash_per_share":-2.5635,"valuation_metric":"No reproducible full 5-year valuation percentile frozen; valuation uses locked owner-FCF/share DCF.","valuation_overrides":{"terminal_multiples":{}}}
+{"ticker":"ADBE","company_name":"Adobe Inc.","as_of_date":"2026-09-18","currency":"USD","current_price":248.92,"shares_diluted":397500000,"market_cap_usd":98945900000,"enterprise_value":99964900000,"portfolio_context":{"existing_position_pct":0,"sector_exposure_pct":0},"known_sources":["User-uploaded Adobe FY2024 Form 10-K filed 2025-01-13","User-uploaded Adobe Q2 FY2026 Form 10-Q filed 2026-06-15","Adobe Q3 FY2026 earnings release filed 2026-09-10","2026-09-18 closing price $248.92","StockResearch ADBE valuation: TTM P/E 6th percentile of 5Y weekly observations, updated 2026-09-18","TGMCharts ADBE valuation cross-check: P/OCF 5th percentile, EV/EBITDA 6th percentile, P/S 5th percentile, data as of 2026-09-09"],"special_questions":["Is generative AI structurally eroding Adobe's creative moat or expanding its addressable market and pricing power?","Can AI-first ARR and 1B MAU translate into durable per-share FCF growth?","Does aggressive repurchasing offset SBC and acquisition dilution at current valuation?"],"net_cash_per_share":-2.5635,"valuation_percentile_5y":0.06,"valuation_metric":"TTM P/E percentile over weekly 5-year observations, 2021-09-18 through 2026-09-18; 6th percentile. StockResearch updated 2026-09-18. Corroborated by 5-year P/OCF 5th percentile, EV/EBITDA 6th percentile, and P/S 5th percentile from TGMCharts.","valuation_overrides":{"terminal_multiples":{}}}
 
 ## 검증된 1차 자료 사실
 # ADBE frozen source bundle — as of 2026-09-18
@@ -22,6 +22,9 @@
   - Base: 20,22,24,26,28,30,32,34,36,38
   - Bull: 22,25,28,32,36,40,44,48,52,56
 - Locked DCF: Bear **$233.72**, Base **$495.57**, Bull **$817.33**; price/Base **~0.5023**.
+- 5Y valuation percentile: **0.06 (6th percentile)** using TTM P/E weekly observations over the trailing five years, updated 2026-09-18. Current TTM P/E ~14.5x vs 5Y median ~37.7x; 5Y range ~11.2x-56.9x.
+- Cross-check: P/OCF **5th percentile**, EV/EBITDA **6th percentile**, P/S **5th percentile** over their own 5Y histories.
+- External valuation sources: StockResearch ADBE valuation (updated 2026-09-18); TGMCharts Adobe valuation research (data as of 2026-09-09).
 
 ## Q2 FY2026 10-Q
 - Q2 revenue **$6.618B** vs $5.873B.
@@ -237,7 +240,7 @@ anchor_policy를 반드시 지킨다. observable_anchors가 있는 criterion은 
   "locked_context": {
     "current_price": 248.92,
     "net_cash_per_share": -2.5635,
-    "valuation_percentile_5y": null,
+    "valuation_percentile_5y": 0.06,
     "valuation_overrides": {
       "required_return": null,
       "terminal_multiples": {
