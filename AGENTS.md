@@ -1,7 +1,7 @@
 # AGENTS.md — Long Outlier Expectation Gap Investment Harness
 
 ## Mission
-이 저장소의 모든 에이전트는 `장기 아웃라이어 기대차 투자 전략 v2.0`을 훼손하지 않고 종목을 검증한다. 목표는 높은 승률이 아니라 **영구손실을 제한하면서 소수의 장기 Outlier Winner를 식별하고 충분히 오래 보유할 수 있는 증거체계**를 만드는 것이다.
+이 저장소의 모든 에이전트는 `장기 아웃라이어 기대차 투자 전략 v3.0`을 훼손하지 않고 종목을 검증한다. 목표는 높은 승률이 아니라 **영구손실을 제한하면서 소수의 장기 Outlier Winner를 식별하고 충분히 오래 보유할 수 있는 증거체계**를 만드는 것이다.
 
 ## Non-negotiable investment logic
 1. 매출 성장률 자체가 아니라 **주당 FCF와 주당 경제가치의 성장**을 본다.
@@ -12,8 +12,8 @@
 6. `Hard Veto`는 100점 스코어보다 우선한다.
 7. Macro는 종목선정 점수에 섞지 않는다. Macro는 Risk Budget / Position Pacing 전용이다.
 8. 추가매수는 `Position Increase ∝ Evidence Increase` 원칙을 따른다. 하락 자체는 추가매수 사유가 아니다.
-9. **파괴적 혁신**과 **턴어라운드 품질**은 100점 점수와 분리된 독립 평가축이다. 종목 유형 분류와 IC 판단에만 사용한다.
-10. 모든 종목은 평가 후 **컴파운더 / 턴어라운드형 / 기대차형 / 문샷형 / 관망·회피형** 중 하나로 분류한다. 문샷형의 고밸류에이션 용인이나 턴어라운드의 저점 기대는 Hard Veto를 면제하지 않는다.
+9. **파괴적 혁신(DI)**은 독립 평가축이다. **턴어라운드 품질(TQ)**은 diagnostics.turnaround_candidate=true일 때만 실행하는 선택 진단이다. 둘 다 100점에 합산하지 않는다.
+10. 모든 종목은 평가 후 **컴파운더 / 버핏 스타일 가치주 / 문샷형 / 관망·회피형** 중 하나로 분류한다. 문샷형의 고밸류에이션 용인이나 가치주의 할인은 Hard Veto를 면제하지 않는다. 기대차는 모든 유형의 분석 개념이며 별도 유형이 아니다.
 
 ## Evidence policy
 - 모든 사실은 `as_of_date`, `source_type`, `source`, `period`, `value`를 남긴다.
@@ -25,7 +25,7 @@
 
 ## Independence protocol
 ### Phase 1 — Blind analysis
-항목당 에이전트 1개가 다른 항목의 결론을 보지 않고 독립 분석한다. triage(EV·AS·DI·TQ)를 먼저 실행한다.
+항목당 에이전트 1개가 다른 항목의 결론을 보지 않고 독립 분석한다. triage(EV·AS·DI·FS)를 먼저 실행한다.
 
 ### Phase 2 — In-report cross-examination
 각 도메인 에이전트는 Bull / Verifier / Skeptic 관점을 각각 끝까지 전개하고 `bull_case`·`bear_case`, `bull_score`·`bear_score`로 남긴다. 관점을 합의에 끼워 맞추지 않는다.
@@ -50,7 +50,7 @@
 - `agent_id`, `ticker`, `as_of_date`
 - `domain`, `role`
 - `score_0_100`, `confidence_0_1`
-- 점수 도메인·독립 평가축(DI·TQ): `bull_score`, `bear_score`, `bull_case`, `bear_case` (`bear_score ≤ score_0_100 ≤ bull_score`)
+- 점수 도메인·독립 평가축(DI)·활성 선택 진단(TQ): `bull_score`, `bear_score`, `bull_case`, `bear_case` (`bear_score ≤ score_0_100 ≤ bull_score`)
 - `thesis`, `evidence`, `counterevidence`, `unknowns`
 - `falsifiers`, `hard_veto_flags`
 - `key_kpis`, `next_checks`
@@ -84,8 +84,7 @@
 ## Archetypes
 - `moonshot` — 문샷형
 - `compounder` — 컴파운더
-- `turnaround` — 턴어라운드형
-- `expectation_gap` — 기대차형
+- `buffett_value` — 버핏 스타일 가치주 (정상화 owner earnings + 자본배분 + 안전마진)
 - `non_fit` — 관망·회피형
 
 ## Forbidden shortcuts

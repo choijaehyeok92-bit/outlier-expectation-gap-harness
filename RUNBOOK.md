@@ -1,122 +1,78 @@
-# RUNBOOK
+# RUNBOOK — v3
 
-실행 단위는 **항목 1개 = 에이전트 1개 = 호출 1회**다(총 14개). 매 단계마다 `plan`이 다음에 돌릴 에이전트와 조기 종료 여부를 알려준다.
+항목당 한 에이전트가 분석한다. 매 단계의 `plan`이 실행할 항목과 조기 종료 여부를 결정한다. 투자 정책 숫자는 [config 생성 표](docs/POLICY.md)를 따른다.
 
-```bash
-python harness.py plan TICKER
-```
-
-## 1. 새 종목 초기화 (Phase 0)
-```bash
-python harness.py init TICKER --as-of YYYY-MM-DD
-python harness.py sources TICKER --pdf-dir "<공시 PDF 폴더>"   # 선택: 공시 텍스트 추출 + 섹션 색인
-# company_context.json에 current_price / net_cash_per_share를 입력한 뒤
-python harness.py freeze TICKER --provider <provider> --model <model> --reasoning-effort <effort>
-```
-- `runs/TICKER/company_context.json`의 `intake_facts`에 주가·주식수·최근 실적 등 공통 사실을 **한 번만** 기록한다. 모든 에이전트가 재검증 없이 사용한다.
-- 공시에서 확인한 핵심 사실은 `runs/TICKER/sources/README.md`에 적는다. 프롬프트에 자동 포함된다.
-- 최근 `macro_cache_days`(7일) 이내 다른 종목에서 저장한 매크로 보고서가 있으면 `init`이 재사용한다.
-
-## 2. Phase 1a — Triage
-```bash
-python harness.py prompt TICKER EV   # AS, DI, TQ도 동일
-```
-출력된 프롬프트를 에이전트 1회 호출로 실행한다. 네 에이전트가 끝나면 `plan`을 다시 실행한다. 감점 전 점수와 밸류에이션 신호로도 도달 가능한 유형이 없으면 **EARLY EXIT**이다. 이 경우 `aggregate`만 실행하고 종료한다(상태 `EARLY_EXIT_NON_FIT`, 비중 0%).
-
-## 3. Phase 1b·2 — 나머지 도메인
-`plan`이 알려주는 SL·CP·MT·RF·MA·FS를 병렬로 실행한다. **다른 항목의 보고서는 보여주지 않는다.** 각 에이전트는 Bull·Verifier·Skeptic 관점을 보고서 안에서 분리하고 `bull_score`/`bear_score`를 남긴다. 두 점수 차이가 20 이상이면 분쟁, 30 이상이면 재조사 대상으로 **표시**된다. 표시일 뿐 점수는 깎이지 않는다.
-
-## 4. Phase 3 — Evidence + Red Team
-```bash
-python harness.py digest TICKER
-python harness.py prompt TICKER ED   # RT도 동일
-```
-Phase 3는 원 보고서가 아니라 `digest.md`를 입력으로 쓴다. Red Team은 종목점수에 직접 더하지 않고 Hard Veto와 IC 반론의 증거로 사용한다.
-
-## 5. Phase 4 — Hard Veto gate
-9개 veto를 `cleared / conditional / confirmed / unresolved`로 분류한다. 점수가 아무리 높아도 미해소 veto가 있으면 매수를 승인하지 않는다 — 실제 구속 조건은 대개 점수 임계값이 아니라 이 게이트다. `confirmed`는 기본 REJECT, `unresolved`는 최소 WATCH로 제한한다.
-
-판정은 "중대한 리스크인가"가 아니라 **"이 문장이 실제로 성립하는가"**다. `config/calibration.json`의
-`veto_criteria`가 문구마다 구성요건·해소조건·관할 밖을 정의하며, 구성요건 중 하나라도 증거로 반증되면
-`cleared`다. 우려는 도메인 점수·`uncertainties`·`key_kpis`로 보내고 veto로 올리지 않는다.
-도메인 점수에 이미 온전히 반영된 사실만으로는 veto를 세우지 않는다(중복 금지).
-
-어느 veto 문구에도 구성요건이 없는 우려는 veto로 올리지 말고 `veto_criteria.out_of_scope_concerns`에
-결정·라우팅·승격 조건을 기록한 뒤 점수와 KPI로 처리한다.
-
-## 6. Phase 5 — 집계와 IC
-```bash
-python harness.py aggregate TICKER    # Scorekeeper (결정론적)
-python harness.py digest TICKER
-python harness.py prompt TICKER IC    # 반대 논리 → 판정 → final_verdict.json, 한 장 투자기록
-```
-도메인 점수는 `subscores`의 고정 가중평균이며 **감점을 적용하지 않는다**. 미확인·분쟁(bull − bear)·신뢰도는 점수를 바꾸지 않고 `review_required`·`domain_dispute`·`uncertainties` 플래그로만 기록된다(v2.1 provider calibration). `aggregate.json`에는 다음이 함께 기록된다.
-- `disruptive_innovation_score`: 파괴적 혁신 축 점수 (100점 비합산)
-- `turnaround_quality_score`: 턴어라운드 품질 축 점수 (100점 비합산)
-- `score_100_ex_valuation`: 밸류에이션 도메인을 제외한 점수 (문샷형 게이트용)
-- `archetype`: 기계적 종목 유형, 판정 근거, 유형별 조건 충족·미충족·데이터 부족 내역
-- `reachable_archetypes_raw`, `early_exit`: 감점 전 원점수 기준 도달 가능 유형과 조기 종료 여부
-
-최종 Chair는 점수보다 Hard Veto를 우선하고, 종목 유형을 확정한다.
-
-## 7. Macro overlay
-MO는 `risk_budget_multiplier`만 제안한다. 종목 100점 점수는 변경하지 않는다. 종목과 무관하므로 한 번 실행한 뒤 저장해 재사용한다.
-```bash
-python harness.py prompt TICKER MO
-python harness.py cache-macro TICKER
-```
-
-## 8. 보고서 검증
-```bash
-python harness.py validate TICKER [AGENT_ID ...]
-```
-필수 필드, Veto 문자열, 분량 상한(`config/workflow.json`의 `report_limits`)을 검사한다.
-
-## 9. 포지션 가이드
-- Starter: 1~2%
-- Normal: 2~4%
-- High Conviction: 4~6%
-- Core Winner: 6~8%
-- Exceptional Winner: 최대 약 10%
-
-실제 비중은 기대차·영구손실·증거수준·포트폴리오 중복리스크를 반영해 Chair가 낮출 수 있다.
-
-유형별 추가 규칙:
-- 문샷형: 초기 1~3%. 채택·단위경제 증거가 늘어날 때 IC 승인으로 단계 확대
-- 턴어라운드형: 초기 1~3% 상한. 최소 2개 분기의 실적 회복·FCF 정상화·부채축소 증거가 늘 때 단계 확대
-- 관망·회피형: 신규 매수 최대 Starter/Watch
-
-## 10. 모니터링
-- 분기: 핵심 KPI만
-- 반기: 경쟁환경, Moat Trajectory, 고객행동, 산업구조
-- 연간: 투자가설과 밸류에이션 전면 재작성
-- 3~5년: 초기 가정의 사후검증
-
-## 11. 모델 A/B 비교
-동일 commit, 동일 `company_context.json`, 동일 `sources/`로 각각 freeze한다. 두 `run_manifest.json`의 `input_snapshot_sha256`가 다르면 점수 차이를 모델 차이로 해석하지 않는다. 비교 순서는 `subscores → valuation_inputs → uncertainties → veto assessments → aggregate`다.
+## 1. Intake와 고정
 
 ```bash
-python harness.py calibrate runs/TICKER-A runs/TICKER-B --out calibration.json
+python harness.py init NEW_TICKER --as-of YYYY-MM-DD
+python harness.py sources NEW_TICKER --pdf-dir "<공시 PDF 폴더>"
+python harness.py freeze NEW_TICKER --provider openai --model gpt-6-astra --reasoning-effort high
 ```
 
-criterion 단위 격차와 요약 통계(평균·중앙값·표준편차, 판정표 보유 여부별 격차, 앵커 정착률)를 출력한다.
-`observable_anchors`가 있는 criterion의 격차가 0에 가깝지 않으면 판정표를 잘못 적용한 것이고,
-형용사 앵커 criterion의 격차가 크면 그 criterion을 판정표로 옮길 후보다.
+초기화 후 freeze 전에 `company_context.json`에 current_price, net_cash_per_share, 시가총액 또는 주식수, 공통 사실과 출처를 입력한다. `sources/README.md`에 검증한 사실을 한 번 기록한다. 선택 `geo_exposure`의 지역 매출·생산 값은 0~1 비율이며, 공급자 지역·수출통제 의존성·제재 노출·해운 경로·정부 고객 노출은 문자열 목록이다. MO의 region/route/dependency 토큰과 일관된 이름을 사용한다.
 
-기준선으로 `runs/_reference/NVDA-2026-09-18-sol/`(gpt-5.6-sol 실행본)이 저장돼 있다.
+정상화 진단이 필요하면 `diagnostics.turnaround_candidate=true`로 둔다. 기본값 false에서는 TQ를 실행하지 않고 누락을 coverage 결손으로 취급하지 않는다. true이면 TQ는 분석 뒤 digest와 IC에 들어가지만 유형 분류·100점에는 사용하지 않는다.
 
-### 프로바이더 보정
-`config/calibration.json`의 `provider_calibration`이 계열별 계통 편향을 도메인 점수에서 보정한다.
-`aggregate.json`의 `provider_calibration.per_domain_offset`과 각 도메인의
-`score_before_provider_calibration`으로 보정 전후를 항상 대조할 수 있다.
+freeze는 입력·출처·정책·코드·지침·스키마 hash, Git commit, provider/model과 strategy/schema/decision_policy 버전을 기록한다. 이후 변경되면 prompt가 재고정을 요구한다. 과거 run을 재초기화하지 말고 별도 ticker/run 이름을 사용한다.
 
-보정으로 archetype이나 상태가 바뀌었다면 `final_verdict.archetype_rationale`에 그 사실과 보정 전 점수를
-반드시 남긴다. 현재 `base_offset` 5.0은 종목 1개 표본에서 나온 값이므로, 쌍 실행이 2~3종목 쌓이면
-`calibrate` 결과로 재추정한다. 보정을 끄려면 `enabled`를 false로 둔다.
+## 2. Triage와 핵심 분석
 
-### 프로바이더 편향이 의심될 때
-1. `calibrate`로 격차를 측정한다. 부호가 한쪽으로 쏠리면(전 criterion에서 A ≥ B) 노이즈가 아니라 계통 편향이다.
-2. 격차가 큰 criterion이 형용사 앵커인지 확인한다. 그렇다면 `config/calibration.json`에
-   `observable_anchors` 판정표를 추가한다 — 셀 수 있는 지표 하나로 구간을 나누는 것이 핵심이다.
-3. `anchor_policy`의 상단·하단 게이트가 프롬프트에 실리는지 `prompt` 출력으로 확인한다.
-4. 같은 도메인을 두 프로바이더로 돌리면 `domain_aggregate`가 두 점수의 중앙값을 쓴다. 분쟁이 큰 도메인에만 선택적으로 쓸 수 있다.
+```bash
+python harness.py plan NEW_TICKER
+python harness.py prompt NEW_TICKER EV  # AS, DI, FS도 실행
+python harness.py validate NEW_TICKER
+python harness.py plan NEW_TICKER
+```
+
+미완료 영역은 달성 가능하다고 가정한다. 이미 관측된 decision score·criterion·신호와 남은 핵심 점수의 낙관적 상한으로도 모든 유형이 불가능하면 종료한다. 가능한 경우 `plan`이 유형 조건, 모든 핵심 점수 coverage와 veto reviewer에 필요한 나머지 SL·CP·MT·RF·MA 및 활성화한 TQ를 요청한다. 다른 도메인 결론을 blind 분석에 제공하지 않는다.
+
+점수는 검증된 subscore 고정 가중평균이다. 관측 기준표와 증거 상단/하단 게이트는 calibration config를 따른다. 분쟁·불확실성은 보고한다. Expectation Gap은 EV·AS에 계속 남아 있다.
+
+## 3. Macro / geopolitical overlay
+
+```bash
+python harness.py prompt NEW_TICKER MO
+python harness.py validate NEW_TICKER MO
+python harness.py cache-macro NEW_TICKER
+```
+
+MO 프롬프트에는 회사 기준 정보·회사 출처를 넣지 않는다. `global_components`에 financial_conditions, credit_liquidity, geopolitical_events, structural_trade를 작성한다. 각 component는 `scope=global`, `as_of_utc`, 근거 evidence가 필요하다. 금융 component는 risk_budget_multiplier, 지정학 component는 각 dimension의 level·regions·routes·dependencies·structural_events를 갖는다. 정확한 차원, TTL, 배수와 라우팅은 workflow config에 있다.
+
+관측 timestamp를 cache 복사 시각으로 바꾸지 않는다. 최신 component에 `invalidated=true`가 있으면 이전 값으로 되돌아가지 않는다. 일부만 신선하면 그 부분만 재사용하고 MO를 다시 요청한다. date-only 기준일은 UTC 자정으로 평가하므로 당일 자정 이후 자료는 다음 기준시각 전까지 사용하지 않는다. 누락/만료 component는 보수적 pacing fallback으로 표시한다.
+
+전이는 회사 context를 읽어 매번 다시 계산한다. 빈 노출은 안전하다는 뜻이 아니라 unknown이다. 영구 수출금지·시장 접근권 상실·제재·국유화·핵심 공급자 상실은 대상 토큰이 일치할 때 관련 도메인 재분석을 요청한다. `plan`의 fundamental_reanalysis 요청에 따라 새 회사 근거를 검토한 뒤 해당 보고서 `geo_events_reviewed`에 event_id를 기록한다. 단순 확인 체크로 대체하지 않는다. 미완료 재분석은 매수를 막으며 macro 자체는 점수를 바꾸지 않는다.
+
+## 4. ED·RT, Hard Veto와 IC
+
+```bash
+python harness.py aggregate NEW_TICKER
+python harness.py digest NEW_TICKER
+python harness.py prompt NEW_TICKER ED  # RT도 실행
+python harness.py validate NEW_TICKER
+python harness.py plan NEW_TICKER
+python harness.py aggregate NEW_TICKER
+python harness.py digest NEW_TICKER
+python harness.py prompt NEW_TICKER IC
+python harness.py aggregate NEW_TICKER
+```
+
+ED·RT는 충분한 선행 입력 후 digest를 사용한다. `evidence_concentration_flags`로 동일 경제 요인의 중복 사용을 검토한다. Hard Veto의 구성요건·cleared_if·관할 밖 라우팅과 지정 reviewer는 calibration config를 유지한다. 후보·조건부·누락은 clear가 아니며 IC가 매수로 덮어쓸 수 없다.
+
+IC는 적격 유형의 반대 논리를 먼저 검증하고 `reports/IC.json`에 선택 `ic_state`와 근거를 기록하며 한 장 투자기록을 작성한다. primary와 secondary는 결정론적 fit 결과다. IC는 config의 state cap 안에서 신규 매수를 축소하거나 관망/거절할 수 있다. 요청이 게이트를 넘으면 final의 `ic_review_flags`에 거부 이유를 남긴다. `aggregate`가 `final_verdict.json`을 생성한다. IC가 이 파일을 손으로 덮어쓰지 않는다.
+
+## 5. 조기 종료와 모니터링
+
+IC 전 어느 단계에서든 유형이 모두 도달 불가능하면 `aggregate`와 `digest`로 종료한다. 전 핵심 점수가 있어도 IC를 생략할 수 있다. final의 `early_exit_record`에 단계, 마지막 도달 가능 유형의 결정론적 재구성, 실패 조건, 확인/미해소/누락 veto, 재진입 조건과 IC 의도적 미실행을 기록한다. LLM 호출이 필요 없다.
+
+향후 재진입은 새 증거와 모든 gate 충족을 요구한다. 분기 KPI, 반기 경쟁환경·고객·해자, 연간 가설/가치평가 전면 재검토를 유지한다. 포지션 확대는 증거 증가에 비례하며 가격 하락만으로 확대하지 않는다. 포지션 범위와 macro pacing은 별도 필드다.
+
+## 6. Calibration과 검증
+
+```bash
+python harness.py calibrate runs/RUN_A runs/RUN_B --out calibration.json
+python harness.py selftest
+python -m unittest discover -s tests -v
+```
+
+동일 commit·동일 input snapshot에서 provider를 비교한다. 기본 shadow에서는 보정 연구값과 decision score를 구분한다. active를 실험하려면 `provider_calibration.mode`를 명시적으로 바꾸고 별도 run을 freeze한다. 기존 manifest의 명시적인 provider_calibration_mode가 우선한다. 과거 정확한 의사결정 재현에는 해당 run의 원본 commit/config를 사용한다.

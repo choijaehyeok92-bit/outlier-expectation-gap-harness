@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Final IC Verdict",
+  "title": "V3 deterministic final verdict and IC synthesis",
   "type": "object",
   "required": [
     "ticker",
@@ -14,7 +14,15 @@
     "position_range",
     "domain_scores",
     "disputes",
-    "falsifiers"
+    "falsifiers",
+    "strategy_version",
+    "schema_version",
+    "decision_policy_version",
+    "archetype_fit",
+    "early_exit_record",
+    "ic_verdict",
+    "macro_geo_overlay",
+    "evidence_concentration_flags"
   ],
   "properties": {
     "ticker": {
@@ -24,29 +32,38 @@
       "type": "string"
     },
     "score_100": {
-      "type": "number"
+      "type": [
+        "number",
+        "null"
+      ]
     },
     "classification": {
       "type": "string"
     },
     "disruptive_innovation_score": {
-      "type": "number",
+      "type": [
+        "number",
+        "null"
+      ],
       "minimum": 0,
       "maximum": 100
     },
     "archetype": {
       "enum": [
-        "moonshot",
         "compounder",
-        "expectation_gap",
-        "turnaround",
+        "buffett_value",
+        "moonshot",
         "non_fit"
       ]
     },
     "secondary_archetypes": {
       "type": "array",
       "items": {
-        "type": "string"
+        "enum": [
+          "compounder",
+          "buffett_value",
+          "moonshot"
+        ]
       }
     },
     "archetype_rationale": {
@@ -81,7 +98,188 @@
       ],
       "minimum": 0,
       "maximum": 100,
-      "description": "턴어라운드 품질 독립 평가축 점수 (100점 핵심 점수 비합산)"
+      "description": "Optional normalization diagnostic, never an investable archetype or core score."
+    },
+    "strategy_version": {
+      "const": "3.0"
+    },
+    "schema_version": {
+      "const": "3.0"
+    },
+    "decision_policy_version": {
+      "const": "3.0"
+    },
+    "archetype_fit": {
+      "type": "object",
+      "required": [
+        "compounder",
+        "buffett_value",
+        "moonshot"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "compounder": {
+          "type": "object",
+          "required": [
+            "eligible",
+            "fit_score",
+            "failed_conditions",
+            "missing_conditions",
+            "blocking_vetoes"
+          ],
+          "properties": {
+            "eligible": {
+              "type": "boolean"
+            },
+            "fit_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "failed_conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "missing_conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "blocking_vetoes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "buffett_value": {
+          "type": "object",
+          "required": [
+            "eligible",
+            "fit_score",
+            "failed_conditions",
+            "missing_conditions",
+            "blocking_vetoes"
+          ],
+          "properties": {
+            "eligible": {
+              "type": "boolean"
+            },
+            "fit_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "failed_conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "missing_conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "blocking_vetoes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "moonshot": {
+          "type": "object",
+          "required": [
+            "eligible",
+            "fit_score",
+            "failed_conditions",
+            "missing_conditions",
+            "blocking_vetoes"
+          ],
+          "properties": {
+            "eligible": {
+              "type": "boolean"
+            },
+            "fit_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "failed_conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "missing_conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "blocking_vetoes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "early_exit_record": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "stage",
+        "last_reachable_archetypes",
+        "eliminated_archetypes",
+        "future_reentry",
+        "ic_intentionally_not_run"
+      ],
+      "properties": {
+        "ic_intentionally_not_run": {
+          "const": true
+        }
+      }
+    },
+    "ic_verdict": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "evidence_concentration_flags": {
+      "type": "array"
+    },
+    "macro_geo_overlay": {
+      "type": "object",
+      "required": [
+        "financial_regime",
+        "geopolitical_regime",
+        "company_transmission",
+        "purchase_pacing_multiplier",
+        "fundamental_score_effect"
+      ],
+      "properties": {
+        "fundamental_score_effect": {
+          "const": 0
+        },
+        "purchase_pacing_multiplier": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 2
+        }
+      }
     }
   }
 }

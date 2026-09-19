@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "V3 company context (additive legacy compatibility)",
+  "type": "object",
+  "properties": {
+    "diagnostics": {
+      "type": "object",
+      "properties": {
+        "turnaround_candidate": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "geo_exposure": {
+      "type": "object",
+      "properties": {
+        "revenue_by_region": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "production_by_region": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "critical_supplier_regions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "export_control_dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sanctions_exposure": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "critical_shipping_routes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "government_customer_exposure": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
