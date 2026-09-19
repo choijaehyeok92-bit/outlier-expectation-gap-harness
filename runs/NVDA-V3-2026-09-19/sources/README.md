@@ -12,8 +12,12 @@ user-supplied SEC documents). `$M` unless stated. Fiscal year ends late January;
 Use `runs/NVDA-V3-2026-09-19/sources/INDEX.md` line numbers; do not read a filing whole.
 
 The user-supplied normalized extraction is preserved in `sources/financials/normalized_financials.json`
-(112 facts from 17 documents, source cutoff 2026-09-18). Possible economic adjustments remain
-unadjudicated in `adjustment_candidates.json`; `qa_report.json` preserves five extraction warnings.
+(198 facts from 18 documents, source cutoff 2026-09-18). The 18th document is the Q2 FY27 investor
+presentation (NVDA-F2Q27-Quarterly-Presentation-final-1.pdf, 2026-08-26), merged 2026-09-19: it adds
+standalone Q2 FY27/Q2 FY26 quarterly cash flow, the full non-GAAP-to-GAAP reconciliation, prior-year
+Hyperscale/ACIE amounts and Q3 FY27 guidance. Its Q2 FY26 non-GAAP figures are restated (from Q1 FY27
+NVIDIA no longer excludes stock-based compensation from non-GAAP and updated history accordingly; see ADJ-014). Possible economic adjustments remain
+unadjudicated in `adjustment_candidates.json`; `qa_report.json` preserves twelve extraction warnings.
 The supplied pack contained no `derived_metrics` object, so `derived_metrics.json` records that absence
 instead of inventing calculations.
 

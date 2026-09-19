@@ -6,13 +6,13 @@
   "ticker": "NVDA-V3-2026-09-19",
   "as_of_date": "2026-09-19",
   "frozen": true,
-  "harness_commit": "b2934517d6ad54e17dcb8965ddc73d9b521dfcc7",
+  "harness_commit": "ef34b79b05f8439ba5a5999f9307271aac444dfa",
   "runner": {
     "provider": "openai",
     "model": "gpt-5.6-sol",
     "reasoning_effort": null
   },
-  "frozen_at_utc": "2026-09-19T20:51:49.715572+00:00",
+  "frozen_at_utc": "2026-09-19T21:03:32.224076+00:00",
   "config_files": {
     "config/strategy.json": "b9971b3be9ff7f310b4e2f6541fdd5b177f2d40d529d359c1da7d8d6fc190b54",
     "config/workflow.json": "c7882660c714e6101f735607e8116e3965446c692edf2d969ef5a219e3947295",
@@ -62,7 +62,7 @@
     "sources/10-Q_FY27Q2_filed_2026-08-26.txt": "a856d6a7c093417dda82feb6a13a019d288db2b30cdfa83335de361afa2a565d",
     "sources/8-K_filed_2026-09-03.txt": "aec5133361919ef31fe5a0064f17f24d18f392f3ef80c6be2b05fda8646d4873",
     "sources/INDEX.md": "3a4ecb5697b6a7d6ef37199ebfda4b4a99c9428eac14b18c8c585a272757dd29",
-    "sources/README.md": "a4b58c1711498c8bfd8d1b149403c072f7eebf16c1fc80823af02393b063220f",
+    "sources/README.md": "527a70d436ccbd1f781b476acd57b1fa83480bc6485681c79b8ecac7839db68b",
     "sources/financials/adjustment_candidates.json": "ab557dcfd717660061cf3b59dd05c29401d7132941d607a992180733ceefd680",
     "sources/financials/derived_metrics.json": "55034103244c59cd26352210c6cc44e69b36940a2f655e0f8af6647f7bcfa1ee",
     "sources/financials/normalized_financials.json": "812a550b0078896d9542fe07a2792ad27b8c99a3c15e6fa72363b9b62415b1e0",
@@ -70,5 +70,5 @@
     "sources/research_orchestrator.json": "9bff5c892154c030e5506c286752a7b92f8341f00ddf54e6aa30e26ed07489fd",
     "sources/research_orchestrator_pass2_2026-09-19.json": "5b278065b8c80ee0dabd9066f1d9e17d1dc693c67dc96b6ed1902041311744d4"
   },
-  "input_snapshot_sha256": "f3169e71edde7bc741b057daaad69c8491a441a941cdfd16a0c1fb82f49877e3"
+  "input_snapshot_sha256": "ad6c4a81b242a08f3e56c714f90b90b045effb6f9b5e8844080182e737c5ec1c"
 }
