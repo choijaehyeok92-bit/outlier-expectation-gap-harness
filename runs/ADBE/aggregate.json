@@ -12,12 +12,14 @@
     "label_en": "Compounder",
     "reason": "유형 조건 및 게이트 점수 충족",
     "gate_score": 78.99,
-    "secondary": [],
+    "secondary": [
+      "expectation_gap"
+    ],
     "position_guidance": "장기 보유가 기본이다. 밸류에이션 과열 시 매도보다 추가매수 속도를 조절한다.",
     "position_cap": null,
     "signals": {
       "price_to_base_value": 0.5023,
-      "valuation_percentile_5y": null,
+      "valuation_percentile_5y": 0.06,
       "revenue_cagr_next_3y": 0.11,
       "market_cap_usd": 98945900000.0
     },
@@ -60,14 +62,12 @@
       {
         "id": "expectation_gap",
         "label": "기대차형",
-        "conditions_met": false,
+        "conditions_met": true,
         "gate_score": 78.99,
         "gate_threshold": 60.0,
         "gate_passed": true,
         "failed": [],
-        "missing": [
-          "signal.valuation_percentile_5y"
-        ]
+        "missing": []
       }
     ]
   },
@@ -790,7 +790,7 @@
     },
     "signals": {
       "price_to_base_value": 0.5023,
-      "valuation_percentile_5y": null,
+      "valuation_percentile_5y": 0.06,
       "revenue_cagr_next_3y": 0.11
     }
   },
@@ -827,13 +827,13 @@
     "ticker": "ADBE",
     "as_of_date": "2026-09-18",
     "frozen": true,
-    "harness_commit": "6df7f20a1821f7ce941119d2b28cc439131e30e0",
+    "harness_commit": "c1708f127dab87a6b0a617b22cced48c890ad472",
     "runner": {
       "provider": "openai",
       "model": "gpt-5.6-sol",
       "reasoning_effort": "high"
     },
-    "frozen_at_utc": "2026-09-19T04:44:29.234440+00:00",
+    "frozen_at_utc": "2026-09-19T05:30:07.633493+00:00",
     "config_files": {
       "config/strategy.json": "64cdc118aeabede830d4185c511e4d88c8c6f29b022ecd564489460bf16f1c19",
       "config/workflow.json": "1f5c6f1016768a2c6d8b53b3b7bcabdbbf417d657e2c8673047e84ac2aca8fcb",
@@ -842,12 +842,12 @@
       "harness.py": "886cca77da7711f9895a6d4544e3eb7ef2d351550055a79809155744a06dd7d6"
     },
     "input_files": {
-      "company_context.json": "8b9b9966cb4f52debc0b1fc1f27918014991cabc79a543e6ed012c50a9d38470",
+      "company_context.json": "e8960b22185c47da04e25153a739843b32015d0e450ac1b7997606081c3d6cce",
       "sources/INDEX.md": "af2b57b267c017d5dc7c07049989713706ae91eb610090f8b7d6797035d3a519",
       "sources/Q2_FY2026_key_facts.txt": "1c7b49fbe6b03896b747ce249118ed5f76d5f7905115ee8348c50804773f651a",
       "sources/Q3_FY2026_key_facts.txt": "a4e042028bf48fd4b9f25c936c5e07854e64ee0b2bd9bb7846effa829fc6d189",
-      "sources/README.md": "77e1a7effa204c987cd0c80fe9461c0737bd8a61edd42c5e63b87aa6db7f938b"
+      "sources/README.md": "c89857d1ac607af896026732ce34de54b9228645561d355101dd95309e322e84"
     },
-    "input_snapshot_sha256": "9ab4438907e974c823225debf062e2bd0d0b4963c88a15e0fa2fa9434111ea46"
+    "input_snapshot_sha256": "b992b554f1f8ab0963f0fdd7adef45615dc6c1c808a75a34f8160bbd1ef3b797"
   }
 }

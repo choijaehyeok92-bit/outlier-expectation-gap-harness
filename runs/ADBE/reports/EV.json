@@ -39,6 +39,15 @@
       "as_of_date": "2026-09-18",
       "value": "233.72/495.57/817.33",
       "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "ADBE TTM P/E is at the 6th percentile of trailing 5-year weekly observations as of 2026-09-18; cash-flow and EV-based multiples independently sit near the 5th-6th percentile.",
+      "source_type": "other",
+      "source": "runs/ADBE/sources/README.md",
+      "period": "5Y through 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "0.06",
+      "fact_or_estimate": "fact"
     }
   ],
   "counterevidence": [
@@ -104,7 +113,7 @@
     }
   ],
   "valuation_inputs": {
-    "valuation_percentile_5y": null,
+    "valuation_percentile_5y": 0.06,
     "revenue_cagr_next_3y": 0.11,
     "scenarios": {
       "bear": {

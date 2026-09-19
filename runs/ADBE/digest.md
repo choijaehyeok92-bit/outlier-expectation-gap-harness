@@ -1,6 +1,6 @@
 # Digest — ADBE (as of 2026-09-18)
 score 78.99 (ex-val 78.58, Emerging Outlier) · DI 66.67 · TQ 25.0 · archetype compounder — 유형 조건 및 게이트 점수 충족 · veto CLEARED · state NORMAL_CANDIDATE
-signals {'price_to_base_value': 0.5023, 'valuation_percentile_5y': None, 'revenue_cagr_next_3y': 0.11, 'market_cap_usd': 98945900000.0} · reachable(raw) ['compounder', 'expectation_gap']
+signals {'price_to_base_value': 0.5023, 'valuation_percentile_5y': 0.06, 'revenue_cagr_next_3y': 0.11, 'market_cap_usd': 98945900000.0} · reachable(raw) ['compounder', 'expectation_gap']
 veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
 
 ## structural_leadership — 79.17 (raw 79.17, spread 30.0, DISPUTE)
