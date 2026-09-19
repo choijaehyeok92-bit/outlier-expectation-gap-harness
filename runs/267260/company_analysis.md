@@ -10,7 +10,7 @@ HD Hyundai Electric is a high-quality power-equipment beneficiary of a multi-yea
 
 The harness does not automatically classify it as a Compounder at ₩725k. The locked Base value is about **₩696k/share**, so there is no large expectation gap. Moat quality is industrial—qualification, reliability, engineering, delivery and localization—rather than a network/data ecosystem, which mechanically caps MT under the current rubric. In addition, the 170kV GIS bid-collusion-related KFTC/KEPCO proceedings remain unresolved; the integrity Hard Veto is therefore **conditional**, forcing **WATCH** under the gate.
 
-Expected deterministic post-calibration result: **~71.18/100 (Emerging Outlier)**, DI **~64.92**, TQ **69.00**, archetype **non_fit**, Hard Veto **UNRESOLVED**, mechanical state **WATCH**.
+Expected deterministic post-calibration result: **~70.93/100 (Emerging Outlier)**, DI **~64.92**, TQ **69.00**, archetype **non_fit**, Hard Veto **UNRESOLVED**, mechanical state **WATCH**.
 
 ## Business and moat
 
@@ -58,18 +58,18 @@ The strongest non-economic risk is the governance gate above. Solvency is not th
 
 | Domain | Score |
 |---|---:|
-| Structural Leadership | 76.67 |
-| Customer & Product | 72.00 |
+| Structural Leadership | 75.67 |
+| Customer & Product | 71.50 |
 | Moat Trajectory | 69.67 |
 | Reinvestment & FCF | 78.67 |
 | Management & Allocation | 67.42 |
-| Financial Survival | 80.42 |
+| Financial Survival | 79.92 |
 | Expectation & Valuation | 57.58 |
 | Asymmetry | 68.08 |
 | Disruptive Innovation | 64.92 |
 | Turnaround Quality | 69.00 |
 
-Expected core score: **71.18**; ex-valuation score: **73.58**.
+Expected core score: **70.93**; ex-valuation score: **73.28**.
 
 ### Why non_fit rather than Compounder?
 Compounder requires price/Base≤1.2, MT≥76, RF≥76, MA≥72, FS≥72 and EV≥42. Price/Base, RF, FS and EV pass; **MT and MA do not**. MA is constrained by unresolved governance, while MT is partly constrained by a network/data criterion that is structurally less applicable to engineered industrial equipment.

@@ -5,9 +5,9 @@
   "domain": "investment_committee",
   "role": "chair",
   "analysis_status": "complete",
-  "score_0_100": 71.18,
+  "score_0_100": 70.93,
   "confidence_0_1": 0.84,
-  "thesis": "Deterministic score is expected near 71 (Emerging Outlier), but mechanical result should remain WATCH/non-fit: MT and MA miss Compounder thresholds after provider calibration, valuation is not an expectation gap, and the GIS integrity veto is unresolved.",
+  "thesis": "Deterministic score is expected 70.93 (Emerging Outlier), but mechanical result should remain WATCH/non-fit: MT and MA miss Compounder thresholds after provider calibration, valuation is not an expectation gap, and the GIS integrity veto is unresolved.",
   "evidence": [
     {
       "claim": "H1 backlog ₩12.31tn, operating profit ₩545.3bn and net cash proxy ~₩895.5bn.",
