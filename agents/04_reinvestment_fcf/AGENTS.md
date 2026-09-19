@@ -23,4 +23,7 @@
 - 증분 ROIC의 구조적 붕괴
 - 장기간 지속되는 과도한 희석
 
+## v3 분석 계약
+v3는 incremental_roic, reinvestment_runway, fcf_per_share_quality의 검증된 subscores를 직접 읽는다. 버핏 스타일 가치주는 큰 재투자 활주로를 요구하지 않지만 유지보수 capex·운전자본·SBC·일회성을 차감한 지속 가능한 정상화 owner earnings를 요구한다.
+
 공통 규칙: [`agents/COMMON.md`](../COMMON.md)

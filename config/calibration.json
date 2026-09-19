@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.1",
+  "schema_version": "3.0",
   "require_frozen_inputs": true,
   "score_step": 5,
   "global_bands": [
@@ -756,7 +756,9 @@
         "rationale": "같은 격차의 절반을 하향 보정한다. 앵커값(25/50/75/90)에 그대로 착지하며 27개 중 15개가 앵커값, 90을 9번 사용했고 50 미만을 한 번도 쓰지 않았다."
       }
     ],
-    "default_offset": 0.0
+    "default_offset": 0.0,
+    "mode": "shadow",
+    "decision_policy": "Raw observable-anchored score determines decisions in shadow mode. Offsets remain research diagnostics; active mode is explicit."
   },
   "veto_criteria": {
     "note": "Hard Veto는 \"중대한 리스크\"가 아니라 \"이 문장이 실제로 성립하는가\"로 판정한다. 문구의 모든 구성요건이 충족될 때만 성립하며, 하나라도 반증되면 cleared다. 우려는 스코어·uncertainties·모니터링으로 보내고 veto로 올리지 않는다.",

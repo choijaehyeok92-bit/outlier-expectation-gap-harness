@@ -66,8 +66,9 @@
     "agent_id": "TQ",
     "title": "Turnaround Quality Analyst",
     "domain": "turnaround_quality",
-    "role": "domain_analyst",
-    "instructions": "agents/14_turnaround_quality/AGENTS.md"
+    "role": "optional_diagnostic",
+    "instructions": "agents/14_turnaround_quality/AGENTS.md",
+    "activation": "diagnostics.turnaround_candidate"
   },
   {
     "agent_id": "ED",

@@ -29,4 +29,7 @@
 ## Hard Veto 중점
 - 현재가격이 비현실적인 Bull Case 이상을 요구
 
+## v3 분석 계약
+Expectation Gap은 모든 유형에 걸친 핵심 가치평가 개념이며 독립 archetype이 아니다. 버핏 스타일 가치주는 보수적 정상화 owner earnings 대비 안전마진이다. 피크 이익·낙관적 terminal multiple·영구 쇠퇴를 저평가로 오인하지 않는다. 실행 문턱값은 config/strategy.json을 따른다.
+
 공통 규칙: [`agents/COMMON.md`](../COMMON.md)

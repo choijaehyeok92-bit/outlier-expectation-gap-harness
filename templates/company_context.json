@@ -24,5 +24,17 @@
       "base": null,
       "bull": null
     }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {},
+    "production_by_region": {},
+    "critical_supplier_regions": [],
+    "export_control_dependencies": [],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": []
   }
 }

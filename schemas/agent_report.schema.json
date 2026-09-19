@@ -119,6 +119,12 @@
               "estimate",
               "interpretation"
             ]
+          },
+          "evidence_id": {
+            "type": "string"
+          },
+          "economic_driver": {
+            "type": "string"
           }
         }
       }
@@ -348,6 +354,40 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "geo_events_reviewed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "global_components": {
+      "type": "object",
+      "description": "Only global-scoped timestamped components. Runtime validates dimensions and TTLs.",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "scope",
+          "as_of_utc"
+        ],
+        "properties": {
+          "scope": {
+            "const": "global"
+          },
+          "as_of_utc": {
+            "type": "string"
+          },
+          "risk_budget_multiplier": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 2
+          },
+          "dimensions": {
+            "type": "object"
           }
         }
       }
