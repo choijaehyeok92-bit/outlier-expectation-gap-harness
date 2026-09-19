@@ -28,8 +28,11 @@
     "new_secondary_evidence": 5,
     "verified_fact_conflicts": 0,
     "definition_scope_discrepancies": 1,
-    "requires_refreeze": true,
-    "resolved_without_web_search_step_a": 3
+    "requires_refreeze": false,
+    "resolved_without_web_search_step_a": 3,
+    "requires_refreeze_resolved": [
+      "REFREEZE-001"
+    ]
   },
   "resolved_questions": [
     "RQ-RF-FCFQ-001",
@@ -547,7 +550,20 @@
       "current_state": "is_restated=false",
       "disclosed_state": "회사는 Q1 FY27부터 non-GAAP에서 SBC를 제외하지 않으며 과거 non-GAAP 수치를 소급 갱신했다고 명시 (SUP-MA-NONGAAP-002)",
       "requires_refreeze": true,
-      "recommended_action": "is_restated=true로 정정하고 해당 공시 문구를 extraction_warning으로 추가한 뒤 재freeze. §3·§15에 따라 RO가 자동 수정하지 않았다."
+      "recommended_action": "is_restated=true로 정정하고 해당 공시 문구를 extraction_warning으로 추가한 뒤 재freeze. §3·§15에 따라 RO가 자동 수정하지 않았다.",
+      "resolution": {
+        "status": "applied",
+        "applied_on": "2026-09-19",
+        "authorized_by": "user instruction (REFREEZE-001 갱신하고 재Freeze)",
+        "changes": [
+          "is_restated=true and requires_review=true set on 18 Q2 FY2026 non-GAAP facts: FACT-0124, FACT-0125, FACT-0132, FACT-0138, FACT-0144, FACT-0152, FACT-0167, FACT-0168, FACT-0169, FACT-0170, FACT-0171, FACT-0172, FACT-0173, FACT-0174, FACT-0175, FACT-0176, FACT-0177, FACT-0178",
+          "restated-base caveat recorded on 5 Q2 FY2027 non-GAAP year-over-year facts: FACT-0129, FACT-0135, FACT-0141, FACT-0147, FACT-0155",
+          "adjustment candidate ADJ-014 (type=sbc) added for the definitional change",
+          "high-severity extraction_warning added carrying the disclosure verbatim",
+          "run re-frozen after the update"
+        ],
+        "values_changed": "none — only metadata flags, review reasons, one adjustment candidate and one warning were added; no reported value was altered"
+      }
     }
   ],
   "excluded_post_cutoff": [],

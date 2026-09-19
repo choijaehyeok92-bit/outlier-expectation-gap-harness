@@ -281,5 +281,19 @@
     "source_page": 14,
     "source_section": "Reconciliation of Non-GAAP to GAAP Financial Measures",
     "source_quote": "Consists primarily of legal settlements."
+  },
+  {
+    "adjustment_id": "ADJ-014",
+    "type": "sbc",
+    "amount_fact_id": null,
+    "period_end": null,
+    "description": "Definitional change in the company's non-GAAP measures: from Q1 FY27 stock-based compensation expense is no longer excluded from non-GAAP figures, and historical non-GAAP figures presented have been restated to include it. No restatement delta is disclosed in the source document and none was computed here. The separately disclosed Q2 FY2026 stock-based compensation expense of $1,624M is recorded in this pack as FACT-0057 (source: Q2 FY27 10-Q); whether that amount equals the effect of the restatement on non-GAAP net income is not stated by the company. Whether SBC should be treated as an economic expense in normalized owner earnings is left to the reasoning agents.",
+    "recurrence_history": [],
+    "judgment_status": "requires_economic_review",
+    "source_document": "NVDA-F2Q27-Quarterly-Presentation-final-1.pdf",
+    "source_page": 14,
+    "source_section": "Reconciliation of Non-GAAP to GAAP Financial Measures (note beneath the Q2 FY2026 table)",
+    "source_quote": "Beginning in Q1 FY27, NVIDIA's non-GAAP financial measures no longer exclude stock-based compensation expense. The historical non-GAAP financial information presented has been updated to include stock-based compensation expense.",
+    "confidence": 0.99
   }
 ]

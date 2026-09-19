@@ -4,7 +4,7 @@
   "source_as_of_date": "2026-09-18",
   "documents_count": 18,
   "facts_count": 198,
-  "adjustment_candidates_count": 13,
+  "adjustment_candidates_count": 14,
   "extraction_warnings": [
     {
       "severity": "high",
@@ -67,6 +67,35 @@
       "severity": "low",
       "message": "This presentation does not disclose a balance sheet, R&D/S&M/G&A expense breakdown, share repurchase/dividend dollar amounts individually, debt, commitments, or segment data for Gaming, Professional Visualization, Automotive, or OEM & Other; it is a Data-Center-focused investor deck. No values were invented for these; they remain absent from this extraction.",
       "related_fact_ids": []
+    },
+    {
+      "severity": "high",
+      "message": "Non-GAAP definitional change and retroactive restatement disclosed in NVDA-F2Q27-Quarterly-Presentation-final-1.pdf (p.14): \"Beginning in Q1 FY27, NVIDIA's non-GAAP financial measures no longer exclude stock-based compensation expense. The historical non-GAAP financial information presented has been updated to include stock-based compensation expense.\" This disclosure was absent from the initial extraction of that document. As a result, the Q2 FY2026 non-GAAP facts sourced from it are restated presentations rather than as-originally-reported figures; they are now marked is_restated=true (18 facts). The Q2 FY27 non-GAAP year-over-year change figures (5 facts) are computed by the company against that restated base and are flagged accordingly. GAAP figures for the same periods are unaffected. NVIDIA's originally reported (pre-restatement) Q2 FY2026 non-GAAP figures are not present in this corpus, so the restatement delta could not be verified against a primary source. See also adjustment candidate ADJ-014.",
+      "related_fact_ids": [
+        "FACT-0124",
+        "FACT-0125",
+        "FACT-0132",
+        "FACT-0138",
+        "FACT-0144",
+        "FACT-0152",
+        "FACT-0167",
+        "FACT-0168",
+        "FACT-0169",
+        "FACT-0170",
+        "FACT-0171",
+        "FACT-0172",
+        "FACT-0173",
+        "FACT-0174",
+        "FACT-0175",
+        "FACT-0176",
+        "FACT-0177",
+        "FACT-0178",
+        "FACT-0129",
+        "FACT-0135",
+        "FACT-0141",
+        "FACT-0147",
+        "FACT-0155"
+      ]
     }
   ]
 }

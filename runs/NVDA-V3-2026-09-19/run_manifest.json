@@ -6,13 +6,13 @@
   "ticker": "NVDA-V3-2026-09-19",
   "as_of_date": "2026-09-19",
   "frozen": true,
-  "harness_commit": "c6bab1ea69d98e0532b5291f047010df1608f7a4",
+  "harness_commit": "b2934517d6ad54e17dcb8965ddc73d9b521dfcc7",
   "runner": {
     "provider": "openai",
     "model": "gpt-5.6-sol",
     "reasoning_effort": null
   },
-  "frozen_at_utc": "2026-09-19T20:47:08.825112+00:00",
+  "frozen_at_utc": "2026-09-19T20:51:49.715572+00:00",
   "config_files": {
     "config/strategy.json": "b9971b3be9ff7f310b4e2f6541fdd5b177f2d40d529d359c1da7d8d6fc190b54",
     "config/workflow.json": "c7882660c714e6101f735607e8116e3965446c692edf2d969ef5a219e3947295",
@@ -63,12 +63,12 @@
     "sources/8-K_filed_2026-09-03.txt": "aec5133361919ef31fe5a0064f17f24d18f392f3ef80c6be2b05fda8646d4873",
     "sources/INDEX.md": "3a4ecb5697b6a7d6ef37199ebfda4b4a99c9428eac14b18c8c585a272757dd29",
     "sources/README.md": "a4b58c1711498c8bfd8d1b149403c072f7eebf16c1fc80823af02393b063220f",
-    "sources/financials/adjustment_candidates.json": "af45f419eb2b9ba44f76b5db5176fa7ced7bf5f17f343ecd5793cc8f9f0304a7",
+    "sources/financials/adjustment_candidates.json": "ab557dcfd717660061cf3b59dd05c29401d7132941d607a992180733ceefd680",
     "sources/financials/derived_metrics.json": "55034103244c59cd26352210c6cc44e69b36940a2f655e0f8af6647f7bcfa1ee",
-    "sources/financials/normalized_financials.json": "505e5bae83e669508007d85055245a381cdff8a9efb7673715200d47d92120fa",
-    "sources/financials/qa_report.json": "91b1b1570e1505f6e5a975a8eac9478e152620ebf96347ffe1d0e63c87001261",
+    "sources/financials/normalized_financials.json": "812a550b0078896d9542fe07a2792ad27b8c99a3c15e6fa72363b9b62415b1e0",
+    "sources/financials/qa_report.json": "7dd4ba7a4da8227b030593bd152539d6f567e5344b134d6e69a36887b8bde478",
     "sources/research_orchestrator.json": "9bff5c892154c030e5506c286752a7b92f8341f00ddf54e6aa30e26ed07489fd",
-    "sources/research_orchestrator_pass2_2026-09-19.json": "83efb6da2fb6625ad0c97f8df17f34ea9af5b35e3261e89108fe5baa5cadc2ea"
+    "sources/research_orchestrator_pass2_2026-09-19.json": "5b278065b8c80ee0dabd9066f1d9e17d1dc693c67dc96b6ed1902041311744d4"
   },
-  "input_snapshot_sha256": "4fb5ae9d2f083148b41e235adbaa911094c5a65fdfaab7df3edbe30ca7a3d22d"
+  "input_snapshot_sha256": "f3169e71edde7bc741b057daaad69c8491a441a941cdfd16a0c1fb82f49877e3"
 }
