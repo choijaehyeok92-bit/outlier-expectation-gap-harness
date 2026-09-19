@@ -5,13 +5,13 @@
   "domain": "expectation_valuation",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 53.0,
+  "score_0_100": 53,
   "confidence_0_1": 0.6,
   "bull_score": 85,
   "bear_score": 20,
   "bull_case": "AI 인프라 투자가 장기 사이클이면 Y10 owner FCF/share $29.6과 25x terminal로 주당 $431이다. CUDA·NVLink 생태계와 네트워킹·소프트웨어 결합이 강화되고 공급 확대가 수요로 전환되면 높은 점유율과 마진을 함께 유지할 수 있다. DCF에서 제외한 지분투자자산 $93.9B는 추가 옵션이다.",
-  "bear_case": "고객 일부가 장기 인프라 계약과 투자등급 자금조달 능력이 부족한 상황에서 NVIDIA의 지분투자와 보증이 수요를 보강한다. 이 연결고리가 약해지고 공급약정이 과잉으로 바뀌면 매출·마진·현금전환이 함께 악화될 수 있다. Y3 owner FCF/share $4.2, 15x terminal이면 주당 $75다.",
-  "thesis": "기준일 2026-09-19. 고정 정책(9% 할인율, terminal 15/20/25x)으로 owner FCF/share(OCF-capex-SBC)를 10년 추정하면 Bear $75, Base $213, Bull $431이다. 9월 18일 종가 $222.27는 Base의 1.044배로 기대차가 거의 없고, Base도 향후 3년 매출 CAGR 29%와 장기 owner FCF 마진 약 40%를 전제한다. Base 가치의 64%가 terminal multiple에서 나오며, TTM 이익에는 H1 주식평가익 $23.7B가 포함되고 현금흐름에는 AR·재고 증가가 반영돼 정상이익 기준선이 불안정하다. 지분투자자산 $93.9B는 가치에서 제외했다.",
+  "bear_case": "Base도 높은 성장과 현금마진을 요구한다. 지원 대상 매출·AR 비중이 미공시인 가운데 $36B AI-cloud agreements와 $108.5B maximum gross guarantees가 존재해 수요 정상화 시 매출과 현금지원이 동시에 악화될 수 있다. 확률가중 보증손실은 산출할 근거가 없다.",
+  "thesis": "고정 정책 DCF의 Bear/Base/Bull은 약 $75/$213/$431, 현재가 $222.27는 Base의 1.044배다. 새로 전파된 $36B AI-cloud agreements와 $108.5B maximum gross guarantees는 수요의 자생성과 장기 현금전환을 더 불확실하게 만들지만, $105B 보증은 FY2029 이후 조건부 maximum cap이고 확률가중 손실이 공시되지 않아 현 시점 owner-FCF 경로에 임의 차감하지 않았다. 따라서 signal-map 점수와 DCF는 유지하고 valuation_robustness 40에 이 위험을 포함한다.",
   "evidence": [
     {
       "claim": "Q2 FY27 매출 $96,221M(+105.9% y/y), Data Center $89,023M(+117% y/y, +18% q/q), gross margin 75.0%, operating margin 66.2%.",
@@ -69,15 +69,15 @@
       "economic_driver": "expectation_gap"
     },
     {
-      "claim": "2026-07-26 기준 총 약정 $366B 중 supply/capacity $279B이며 FY27 잔여 $92B, FY28 $87B, FY29 $88B로 배분되어 FY28 이후 반기 환산 발주가 늘지 않는다.",
+      "claim": "Q2 FY27 filing은 일반 commitments $366B 외에 Additional Commitments $56B와 maximum gross guarantees $108.5B를 공시한다. $105B SB Energy/OpenAI 보증은 FY2029 이후 phase별로 활성화되는 조건부 최대 총액이며, 지원 대상 매출·AR 귀속액과 확률가중 손실은 미공시다.",
       "source_type": "filing",
-      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt Note 10, L1682-L1744",
-      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
-      "as_of_date": "2026-07-26",
-      "value": 279,
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1700-L1818, L2193-L2197; sources/financials/normalized_financials.json FACT-0102",
+      "period": "FY27 Q2 / August 2026 post-quarter event",
+      "as_of_date": "2026-08-26",
+      "value": 108500,
       "fact_or_estimate": "fact",
       "evidence_id": "SUP-EV-COMMITMENTS-010",
-      "economic_driver": "capacity_commitment_risk"
+      "economic_driver": "demand_quality_and_contingent_support"
     }
   ],
   "counterevidence": [
@@ -87,11 +87,11 @@
     "Base는 10년간 owner FCF 마진 약 40% 유지를 가정한다. 커스텀 ASIC 비중 확대는 하방, 네트워킹·소프트웨어 결합 확대는 상방 변수다."
   ],
   "unknowns": [
-    "AR 증가 $24,590M 중 투자등급 고객 비중과 NVIDIA의 지분투자·보증으로 자금을 지원받은 AI 클라우드 비중은 공시되지 않아 매출 자기조달 비율을 계산할 수 없다.",
-    "FY28 supply/capacity 약정 $87B가 수요 정체 신호인지 발주 시계의 한계인지 구분할 수 없다.",
-    "주식평가익 $23,707M의 종목별 구성·실현 가능성과 비상장 지분 $51,157M의 공정가치 산정 근거가 충분하지 않다.",
-    "Hugging Face 인수의 매출·마진 기여와 상각 부담이 공시되지 않았다.",
-    "중국 데이터센터 시장 재진입 시점과 규모는 확인할 수 없다."
+    "지분투자·$36B AI-cloud agreements·$108.5B 보증 대상 고객의 매출·AR 비중.",
+    "$108.5B maximum gross guarantees의 확률가중 손실과 phase별 활성 노출.",
+    "FY28 supply/capacity 약정 $87B가 수요 정체 신호인지 발주 시계 한계인지.",
+    "비시장성 지분 $51.2B의 실현 가능 가치와 Hugging Face의 장기 현금기여.",
+    "중국 데이터센터 시장 재진입 시점과 규모."
   ],
   "falsifiers": [
     "DSO가 2개 분기 연속 50일 이하로 복귀하고 AR 증가율이 매출 증가율을 밑돌면 고객 자금조달 베어 논리는 크게 약화된다.",
@@ -126,9 +126,9 @@
     }
   ],
   "next_checks": [
-    "Q3 FY27 10-Q에서 AR·DSO·재고와 customer advances 잔액 확인",
-    "다음 10-Q의 future commitments 표에서 FY28~FY29 supply/capacity 갱신치 확인",
-    "주식평가익의 실현·미실현 구분과 비시장성 지분 $51,157M의 공정가치 레벨 확인"
+    "Q3 FY27에서 AR·DSO·customer advances 및 지원 대상 고객 매출 비중 확인",
+    "$36B AI-cloud agreements와 $108.5B 보증의 실제 사용·손실·revenue share 확인",
+    "future commitments 갱신과 owner FCF 정상화 후 Bear/Base/Bull 재산출"
   ],
   "verdict": "neutral",
   "archetype_signals": {
@@ -150,7 +150,7 @@
     {
       "criterion_id": "valuation_robustness",
       "score_0_100": 40,
-      "rationale": "Base 가치의 64%가 terminal multiple에 의존하고 Bear는 현재가 대비 약 66% 낮다. trailing 이익은 주식평가익으로 높아지고 FCF는 운전자본 유출로 낮아져 정상이익 기준선이 불안정하다."
+      "rationale": "Base 가치의 64%가 terminal multiple에 의존하고 Bear는 현재가 대비 크게 낮다. 추가로 $36B AI-cloud agreements와 $108.5B maximum gross guarantees가 수요·현금전환의 상관 하방을 키우지만 확률가중 손실을 산출할 1차 자료가 없다. 50 '민감도 큼'보다 보수적인 40을 유지한다."
     }
   ],
   "uncertainties": [
@@ -184,7 +184,7 @@
           5.2,
           5.5,
           5.8,
-          6.0,
+          6,
           6.2
         ]
       },
@@ -207,15 +207,16 @@
           8.2,
           11.2,
           14.2,
-          17.0,
+          17,
           19.6,
-          22.0,
+          22,
           24.2,
           26.2,
-          28.0,
+          28,
           29.6
         ]
       }
     }
-  }
+  },
+  "rerun_note": "Research Orchestrator pass 4 반영. maximum gross guarantee를 현재부채로 오인하지 않고, 확률가중 손실 자료가 없으므로 DCF path를 임의 변경하지 않았다. demand-quality 불확실성은 valuation_robustness와 unknowns에 반영했다."
 }
