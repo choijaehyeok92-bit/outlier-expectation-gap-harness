@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "ticker": "NVDA",
+  "source_as_of_date": "2026-09-18",
+  "documents_count": 17,
+  "facts_count": 112,
+  "adjustment_candidates_count": 8,
+  "extraction_warnings": [
+    {
+      "severity": "high",
+      "message": "The 2025-08-27 10-Q DOCX contains only the message \"This format is in the process of being created from the filing. Please check back shortly.\" No facts were extracted from that file. Comparable Q2 FY2026 quarter data were instead taken from later provided filings where directly disclosed.",
+      "related_fact_ids": []
+    },
+    {
+      "severity": "medium",
+      "message": "Standalone Q4 FY2025 and Q4 FY2026 quarter values are not directly disclosed in the provided documents used here and were not derived by subtracting year-to-date amounts from full-year amounts because calculations are prohibited.",
+      "related_fact_ids": []
+    },
+    {
+      "severity": "medium",
+      "message": "For April 26, 2026 and July 26, 2026, current marketable investments are presented separately as marketable debt securities and marketable equity securities. No combined short_term_investments amount was calculated; the two reported components are preserved as separate other metrics.",
+      "related_fact_ids": [
+        "FACT-0091",
+        "FACT-0092"
+      ]
+    },
+    {
+      "severity": "medium",
+      "message": "The cash-flow line used as capex is reported as \"Purchases related to property and equipment and intangible assets\"; it is mapped to capex with requires_review=true because the source line includes intangible assets.",
+      "related_fact_ids": [
+        "FACT-0070",
+        "FACT-0072",
+        "FACT-0074"
+      ]
+    },
+    {
+      "severity": "low",
+      "message": "The supplied Form 4 beneficial-ownership filings do not map to the requested financial canonical metrics, so they are listed in documents but do not generate financial facts.",
+      "related_fact_ids": []
+    }
+  ]
+}

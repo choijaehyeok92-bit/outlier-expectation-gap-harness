@@ -1,0 +1,28 @@
+{
+  "agent_id":"MT","ticker":"NVDA-V3-2026-09-19","as_of_date":"2026-09-19","domain":"moat_trajectory","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":73.75,"confidence_0_1":0.75,"bull_score":85,"bear_score":50,
+  "bull_case":"매출이 배가되는 동안 gross margin은 71.1%에서 75.0%로 올랐다. CUDA 개발자 750만명, 지원 앱 6,000개, TOP500 78%는 측정 가능한 생태계다. 컴퓨트 +59%와 네트워킹 +142%의 동시 성장은 칩·네트워크·소프트웨어 해자가 함께 확장됨을 보여준다.",
+  "bear_case":"대체 압력의 주체가 자금력이 큰 하이퍼스케일러 고객이다. 중국 배제는 현지 경쟁사의 개발자 생태계를 키웠고, Groq 비독점 라이선스에 약 $15.9B을 썼다. Hugging Face의 타 실리콘 지원 약정은 생태계 확대와 동시에 배타적 락인을 낮춘다.",
+  "thesis":"해자는 현재 확대 방향이다. 매출이 배가되는 구간에서 gross margin이 71.1%→75.0%로 올랐고, FY26 Data Center 컴퓨트 +59%와 네트워킹 +142%가 풀스택 결합을 입증한다. CUDA 개발자 750만명, 지원 앱 6,000개, TOP500 78%는 규모가 확인된 생태계다. 다만 동일 정의의 시계열이 없어 생태계 항목은 75점에 묶인다. 하이퍼스케일러 자체 실리콘, 중국 배제가 키운 경쟁 생태계, Groq 라이선스와 Hugging Face의 벤더 중립성은 상품화 방어력을 제한한다.",
+  "evidence":[
+    {"claim":"FY26에서 Q2 FY27까지 gross margin은 71.1%에서 75.0%로 상승했고 Q2 매출은 +105.9% y/y였다.","source_type":"filing","source":"runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt and 10-Q_FY27Q2_filed_2026-08-26.txt L126-L161","period":"FY26 to FY27 Q2","as_of_date":"2026-07-26","value":75.0,"fact_or_estimate":"fact","evidence_id":"SUP-MT-PRICING-001","economic_driver":"pricing_power"},
+    {"claim":"CUDA 및 자사 소프트웨어 개발자는 750만명 이상, 지원 애플리케이션은 6,000개, 네트워킹 포함 TOP500 구동 비중은 78%다.","source_type":"filing","source":"runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt L179, L222","period":"FY26","as_of_date":"2026-01-25","value":7500000,"fact_or_estimate":"fact","evidence_id":"SUP-MT-ECOSYSTEM-002","economic_driver":"developer_network_effect"},
+    {"claim":"FY26 Data Center 컴퓨트 매출은 +59%, 네트워킹은 +142% 성장했다. GPU뿐 아니라 NVLink·InfiniBand·Spectrum-X를 포함한 시스템 계층이 함께 확장됐다.","source_type":"filing","source":"runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt L965","period":"FY26","as_of_date":"2026-01-25","value":142,"fact_or_estimate":"fact","evidence_id":"SUP-MT-FULL-STACK-003","economic_driver":"full_stack_switching_cost"},
+    {"claim":"NVIDIA는 중국 데이터센터 시장 배제가 경쟁사의 개발자·고객 생태계 확대를 도왔다고 공시했다.","source_type":"filing","source":"runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt L270 and 10-Q_FY27Q2_filed_2026-08-26.txt L2838-L2857","period":"FY26 to FY27 Q2","as_of_date":"2026-07-26","value":null,"fact_or_estimate":"fact","evidence_id":"SUP-MT-CHINA-004","economic_driver":"regional_moat_erosion"},
+    {"claim":"Groq 비독점 라이선스 지급은 약 $15.9B이고, Hugging Face 인수 계약은 플랫폼 개방과 타 실리콘 벤더 지원 유지를 명시한다.","source_type":"filing","source":"runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt; 10-Q_FY27Q2_filed_2026-08-26.txt; 8-K_filed_2026-09-03.txt","period":"FY26 through 2026-09-03","as_of_date":"2026-09-03","value":15944,"fact_or_estimate":"fact","evidence_id":"SUP-MT-OPENNESS-005","economic_driver":"commoditization_risk"}
+  ],
+  "counterevidence":["gross margin 상승은 해자보다 공급부족과 고가 제품 믹스의 결과일 수 있다.","상위 추상화 계층과 멀티호밍 도구가 표준화될수록 CUDA 재작성 비용은 낮아질 수 있다.","Hyperscale +102%가 ACIE +138%보다 낮은 것은 자체 실리콘 전환의 초기 신호일 수 있다.","경쟁당국의 공급 배분·투자 파트너십 조사가 생태계 운영 방식에 제약을 줄 수 있다."],
+  "unknowns":["커스텀 ASIC의 가속 컴퓨트 물량·금액 점유율.","공급 정상화 후 지속 가능한 gross margin.","CUDA에서 대체 플랫폼으로 전환하는 실제 비용.","Hugging Face 벤더 중립 약정의 순효과."],
+  "falsifiers":["공급 제약 완화 후 gross margin이 70% 아래로 하락하면 가격결정력 가설을 하향한다.","Hyperscale 성장률이 2개 분기 연속 ACIE보다 30%p 이상 낮으면 자체 실리콘 침투 가설을 강화한다.","CUDA 개발자 수가 정체하거나 감소하면 생태계 피드백 가설을 기각한다."],
+  "hard_veto_flags":[{"veto":"해자의 지속적인 축소","status":"cleared","rationale":"매출이 배가되는 동안 gross margin이 71.1%→75.0%로 상승했고 컴퓨트·네트워킹이 함께 성장했다. 개발자 750만명과 앱 6,000개의 생태계도 유지된다. 하이퍼스케일러·중국 경쟁·벤더 중립성은 확대 폭을 줄이는 위험으로 감시한다."}],
+  "key_kpis":[{"name":"Gross margin","direction":"up","threshold":"73% 이상","cadence":"quarterly"},{"name":"Hyperscale-ACIE 성장률 격차","direction":"up","threshold":"-20%p 이상","cadence":"quarterly"},{"name":"CUDA 개발자 수","direction":"up","threshold":"전년 대비 증가","cadence":"annual"}],
+  "next_checks":["Q3 FY27 gross margin과 Hyperscale·ACIE 성장률","CUDA 개발자·앱 수의 동일 정의 시계열","경쟁당국 조사와 Hugging Face 벤더 중립 범위"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"switching_pricing","score_0_100":80,"rationale":"매출 급증에도 gross margin이 71.1%→75.0%로 상승했고 CUDA·네트워크의 전환비용이 작동한다. 공급부족 기여를 분리할 수 없어 90점은 배제한다."},
+    {"criterion_id":"network_data_ecosystem","score_0_100":75,"rationale":"1차 자료의 규모 수치가 3개 이상이다: 개발자 750만명, 앱 6,000개, TOP500 78%. 동일 정의의 증가 추세가 없어 관측표상 75점이다."},
+    {"criterion_id":"commoditization_resilience","score_0_100":65,"rationale":"칩·네트워크·소프트웨어의 복수 방어층이 있으나 하이퍼스케일러 자체 실리콘, 중국 경쟁 생태계, Groq 라이선스와 벤더 중립성이 방어력을 제한한다."}
+  ],
+  "uncertainties":[{"criterion_id":"switching_pricing","severity":"material","rationale":"마진 상승에서 공급부족·믹스 효과를 분리할 수 없다."},{"criterion_id":"network_data_ecosystem","severity":"material","rationale":"규모는 측정되지만 같은 정의의 전년 추세와 멀티호밍 난이도가 없다."},{"criterion_id":"commoditization_resilience","severity":"critical","rationale":"하이퍼스케일러 자체 실리콘 침투율이 공시되지 않는다."}],
+  "valuation_inputs":{"valuation_percentile_5y":null,"revenue_cagr_next_3y":null,"scenarios":{"bear":{"owner_fcf_per_share":[]},"base":{"owner_fcf_per_share":[]},"bull":{"owner_fcf_per_share":[]}}}
+}

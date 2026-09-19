@@ -1,0 +1,190 @@
+[
+  {
+    "adjustment_id": "ADJ-001",
+    "type": "sbc",
+    "amount_fact_id": "FACT-0049",
+    "period_end": "2026-07-26",
+    "description": "Stock-based compensation expense reported for the latest quarter; prior disclosed periods are listed without recurring/non-recurring judgment.",
+    "recurrence_history": [
+      {
+        "period": "Q1 FY2026 (USD millions)",
+        "amount": 1474
+      },
+      {
+        "period": "Q2 FY2026 (USD millions)",
+        "amount": 1624
+      },
+      {
+        "period": "Q3 FY2026 (USD millions)",
+        "amount": 1655
+      },
+      {
+        "period": "FY2026 (USD millions)",
+        "amount": 6386
+      },
+      {
+        "period": "Q1 FY2027 (USD millions)",
+        "amount": 1928
+      },
+      {
+        "period": "Q2 FY2027 (USD millions)",
+        "amount": 2027
+      }
+    ],
+    "judgment_status": "requires_economic_review",
+    "source_document": "NVDA (NVIDIA Corporation) General form for quarterly reports under Section 13 or 15(d) (10-Q) 2026-08-26(2).docx",
+    "source_page": null,
+    "source_section": "Segment Reconciliation",
+    "source_quote": "Stock-based compensation expense | (2,027) | (1,624) | (3,954) | (3,099)",
+    "confidence": 0.99
+  },
+  {
+    "adjustment_id": "ADJ-002",
+    "type": "acquisition_cost",
+    "amount_fact_id": "FACT-0050",
+    "period_end": "2026-07-26",
+    "description": "Reported line is \"Acquisition-related and other costs\" and therefore combines acquisition-related costs with other costs.",
+    "recurrence_history": [
+      {
+        "period": "Q1 FY2026 (USD millions)",
+        "amount": -160
+      },
+      {
+        "period": "Q2 FY2026 (USD millions)",
+        "amount": -101
+      },
+      {
+        "period": "Q3 FY2026 (USD millions)",
+        "amount": -87
+      },
+      {
+        "period": "FY2026 (USD millions)",
+        "amount": -527
+      },
+      {
+        "period": "Q1 FY2027 (USD millions)",
+        "amount": -247
+      },
+      {
+        "period": "Q2 FY2027 (USD millions)",
+        "amount": -222
+      }
+    ],
+    "judgment_status": "requires_economic_review",
+    "source_document": "NVDA (NVIDIA Corporation) General form for quarterly reports under Section 13 or 15(d) (10-Q) 2026-08-26(2).docx",
+    "source_page": null,
+    "source_section": "Segment Reconciliation",
+    "source_quote": "Acquisition-related and other costs | (222) | (101) | (469) | (263)",
+    "confidence": 0.95
+  },
+  {
+    "adjustment_id": "ADJ-003",
+    "type": "acquisition_amortization",
+    "amount_fact_id": "FACT-0109",
+    "period_end": "2026-07-26",
+    "description": "Amortization expense associated with intangible assets disclosed in the acquisition-related intangible assets note.",
+    "recurrence_history": [
+      {
+        "period": "FY2024 (USD millions)",
+        "amount": 614
+      },
+      {
+        "period": "FY2025 (USD millions)",
+        "amount": 593
+      },
+      {
+        "period": "FY2026 (USD millions)",
+        "amount": 488
+      },
+      {
+        "period": "Q2 FY2027 (USD millions)",
+        "amount": 237
+      }
+    ],
+    "judgment_status": "requires_economic_review",
+    "source_document": "NVDA (NVIDIA Corporation) General form for quarterly reports under Section 13 or 15(d) (10-Q) 2026-08-26(2).docx",
+    "source_page": null,
+    "source_section": "Intangible Assets Note",
+    "source_quote": "Amortization expense associated with intangible assets was $237 million and $84 million for the second quarter",
+    "confidence": 0.95
+  },
+  {
+    "adjustment_id": "ADJ-004",
+    "type": "other",
+    "amount_fact_id": "FACT-0104",
+    "period_end": "2025-04-27",
+    "description": "Charge associated with H20 excess inventory and purchase obligations following new export licensing requirements.",
+    "recurrence_history": [],
+    "judgment_status": "requires_economic_review",
+    "source_document": "NVDA (NVIDIA Corporation) General form for quarterly reports under Section 13 or 15(d) (10-Q) 2025-05-28.docx",
+    "source_page": null,
+    "source_section": "Export Controls / H20 Disclosure",
+    "source_quote": "we incurred a $4.5 billion charge associated with H20 excess inventory and purchase obligations",
+    "confidence": 0.99
+  },
+  {
+    "adjustment_id": "ADJ-005",
+    "type": "other",
+    "amount_fact_id": "FACT-0107",
+    "period_end": "2026-07-26",
+    "description": "Charge associated with H200 excess inventory and purchase obligations during the first half of fiscal year 2027.",
+    "recurrence_history": [],
+    "judgment_status": "requires_economic_review",
+    "source_document": "NVDA (NVIDIA Corporation) General form for quarterly reports under Section 13 or 15(d) (10-Q) 2026-08-26(2).docx",
+    "source_page": null,
+    "source_section": "Export Controls / H200 Disclosure",
+    "source_quote": "we incurred a $0.4 billion charge associated with H200 excess inventory and purchase obligations",
+    "confidence": 0.99
+  },
+  {
+    "adjustment_id": "ADJ-006",
+    "type": "other",
+    "amount_fact_id": "FACT-0105",
+    "period_end": "2026-07-26",
+    "description": "Inventory and excess inventory purchase obligation provisions disclosed for the quarter.",
+    "recurrence_history": [
+      {
+        "period": "FY2026 (USD billions)",
+        "amount": 7.2
+      },
+      {
+        "period": "Q2 FY2027 (USD millions)",
+        "amount": 985
+      }
+    ],
+    "judgment_status": "requires_economic_review",
+    "source_document": "NVDA (NVIDIA Corporation) General form for quarterly reports under Section 13 or 15(d) (10-Q) 2026-08-26(2).docx",
+    "source_page": null,
+    "source_section": "MD&A / Gross Margin",
+    "source_quote": "Provisions for inventory and excess inventory purchase obligations totaled $985 million and $2.1 billion for the second quarter and first half of fiscal year 2027",
+    "confidence": 0.98
+  },
+  {
+    "adjustment_id": "ADJ-007",
+    "type": "impairment",
+    "amount_fact_id": "FACT-0110",
+    "period_end": "2026-07-26",
+    "description": "Reported line combines impairments and unrealized losses on non-marketable equity securities.",
+    "recurrence_history": [],
+    "judgment_status": "requires_economic_review",
+    "source_document": "NVDA (NVIDIA Corporation) General form for quarterly reports under Section 13 or 15(d) (10-Q) 2026-08-26(2).docx",
+    "source_page": null,
+    "source_section": "Non-marketable Equity Securities Note",
+    "source_quote": "Impairments and unrealized losses (1) | (121) | (2) | (150) | (18)",
+    "confidence": 0.95
+  },
+  {
+    "adjustment_id": "ADJ-008",
+    "type": "litigation",
+    "amount_fact_id": null,
+    "period_end": null,
+    "description": "Putative securities class action litigation is disclosed; no loss amount is assigned in this extraction.",
+    "recurrence_history": [],
+    "judgment_status": "requires_economic_review",
+    "source_document": "NVDA (NVIDIA Corporation) General form for quarterly reports under Section 13 or 15(d) (10-Q) 2026-08-26(2).docx",
+    "source_page": null,
+    "source_section": "Legal Proceedings / Litigation",
+    "source_quote": "The plaintiffs in the putative securities class action lawsuit, captioned 4:18-cv-07669-HSG",
+    "confidence": 0.9
+  }
+]

@@ -1,0 +1,161 @@
+{
+  "agent_id": "DI",
+  "ticker": "NVDA-V3-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 78.75,
+  "confidence_0_1": 0.75,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Rubin은 Blackwell 대비 최대 10배 낮은 토큰 비용을 목표로 하고, 9월 MLPerf에서 2.5~3.7배 처리량 향상을 보였다. Blackwell이 이미 출하 대부분과 $89B 분기 데이터센터 매출을 차지해 기술 개선이 파일럿을 넘어 수익으로 전환됐다. 네트워킹·소프트웨어 확장은 새 가치풀을 연다.",
+  "bear_case": "10배 수치는 회사 측 특정 워크로드 주장이고 실제 고객 TCO는 전력·활용률·네트워크·모델 변화에 좌우된다. 하이퍼스케일러는 자체 실리콘으로 대응할 자본과 수요를 보유하며, 고객 금융·보증과 $366B 약정은 채택의 자생성을 흐린다. 규제와 전력 병목도 S-curve를 제한할 수 있다.",
+  "thesis": "기준일 2026-09-19. NVIDIA는 단일 GPU가 아니라 GPU·CPU·NVLink·네트워킹·소프트웨어를 공동설계해 AI 학습과 추론의 비용곡선을 재편한다. Rubin은 Blackwell 대비 최대 10배 낮은 토큰 비용을 제시했고, 9월 16일 MLPerf preview는 특정 모델에서 2.5~3.7배 처리량 향상을 보였다. Q2 Data Center 매출 $89.0B(+117%)와 Blackwell의 출하 과반은 채택이 주류 수익으로 전환됐음을 보여준다. 다만 독립 고객 TCO와 소프트웨어 매출 분리가 부족하고, 자체 실리콘을 만드는 하이퍼스케일러 때문에 가치사슬 확장 점수는 70으로 제한한다.",
+  "evidence": [
+    {
+      "evidence_id": "SUP-DI-COST-001",
+      "economic_driver": "ai_compute_cost_curve",
+      "claim": "NVIDIA's January 5, 2026 Rubin announcement targets up to a 10x reduction in inference token cost and 4x fewer GPUs to train mixture-of-experts models versus Blackwell.",
+      "source_type": "ir",
+      "source": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+      "period": "Rubin platform specification",
+      "as_of_date": "2026-01-05",
+      "value": 10,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "SUP-DI-MLPERF-002",
+      "economic_driver": "ai_compute_cost_curve",
+      "claim": "In MLPerf Inference v6.1 preview results published September 16, Rubin NVL72 delivered up to 3.7x GB300 NVL72 throughput on Qwen3-VL and up to 2.5x on DeepSeek-R1.",
+      "source_type": "industry",
+      "source": "https://blogs.nvidia.com/blog/vera-rubin-nvl72-mlperf-inference/; MLCommons entries 6.1-0106, 6.1-0074",
+      "period": "MLPerf Inference v6.1",
+      "as_of_date": "2026-09-16",
+      "value": 3.7,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-DI-ADOPTION-003",
+      "economic_driver": "ai_infrastructure_adoption",
+      "claim": "Q2 FY27 Data Center revenue was $89,023M, up 117% year over year and 18% sequentially; Blackwell accounted for the majority of system shipments.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2188-L2189, L2338-L2340",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-26",
+      "value": 89023,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-DI-ECONOMICS-004",
+      "economic_driver": "platform_unit_economics",
+      "claim": "Q2 FY27 gross margin was 75.0%, up from 72.4% a year earlier, with the increase attributed to improved Blackwell Ultra mix.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2338-L2340, L2557",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-26",
+      "value": 0.75,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-DI-ADJACENCY-005",
+      "economic_driver": "adjacent_value_pools",
+      "claim": "The platform spans accelerated compute, NVLink and Ethernet networking, AI software and open models; Spectrum-X Ethernet revenue grew 2.6x year over year in the Q2 FY27 earnings call.",
+      "source_type": "ir",
+      "source": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf; 10-Q L1745-L1746, L2278",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-26",
+      "value": 2.6,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-DI-BOTTLENECK-006",
+      "economic_driver": "adoption_financing_constraint",
+      "claim": "NVIDIA disclosed $366B of future commitments and said some AI-cloud and model-maker customers lack long-term infrastructure contracts and investment-grade financing capacity.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1670-L1760, L2192-L2193",
+      "period": "2026-07-26",
+      "as_of_date": "2026-08-26",
+      "value": 366,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Rubin's 10x token-cost claim is vendor-provided and workload-specific; the September MLPerf preview shows 2.5x to 3.7x throughput on the cited models rather than a universal 10x outcome.",
+    "Major customers such as hyperscalers can fund custom accelerators and are not constrained incumbent vendors, limiting NVIDIA's ability to monopolize the value chain.",
+    "Customer land, power and financing constraints have led NVIDIA to provide guarantees and investments, so reported adoption may partly reflect vendor-supported capacity creation.",
+    "China data-center market foreclosure and broader AI regulation can prevent technical advantage from converting into addressable revenue."
+  ],
+  "unknowns": [
+    "Independent production TCO per token for Rubin versus Blackwell and leading custom ASICs is not available across comparable workloads.",
+    "NVIDIA does not separately disclose recurring AI software revenue or gross margin, preventing a clean test of software monetization.",
+    "The share of Data Center demand enabled by NVIDIA guarantees, equity investments or financed AI-cloud counterparties is not disclosed.",
+    "The long-run share shift from merchant GPUs to hyperscaler custom silicon remains unknown."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "The platform-level improvement is benchmarked, but the largest 10x claims remain vendor-specific and workload-dependent."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "Revenue and shipment adoption are strong, while customer financing support makes the durability of marginal demand uncertain."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "critical",
+      "rationale": "Networking and software are real adjacent pools, but hyperscalers can deploy internally funded custom silicon and cap platform control."
+    }
+  ],
+  "falsifiers": [
+    "If independent production benchmarks show Rubin cost per token within 20% of leading custom ASICs at comparable latency and utilization, the cost-performance disruption thesis weakens materially.",
+    "If Data Center revenue declines year over year for two consecutive quarters while customer guarantees and investment commitments rise, adoption is no longer self-sustaining.",
+    "If networking and software fail to produce separately observable revenue growth or standards adoption within two years, the multiple-adjacency thesis is falsified."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "independent inference cost per token",
+      "direction": "down",
+      "threshold": "at least 2x advantage versus comparable custom ASICs",
+      "cadence": "semiannual"
+    },
+    {
+      "name": "Data Center revenue growth",
+      "direction": "up",
+      "threshold": "above 25% year over year without rising guarantee losses",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "networking and software value-pool growth",
+      "direction": "up",
+      "threshold": "separately disclosed growth above core compute",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "MLCommons final Rubin submissions and third-party production TCO benchmarks against custom ASICs",
+    "next 10-Q disclosure on Spectrum-X, software revenue and Rubin shipment mix",
+    "customer guarantees, AI-cloud agreements and equity commitments relative to incremental Data Center revenue"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 80,
+      "rationale": "10x token-cost targets and 2.5~3.7x MLPerf throughput show a structural rather than incremental shift, placing the result above the 75 anchor. Vendor-specific workloads and incomplete independent TCO evidence exclude 90."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 85,
+      "rationale": "Data Center revenue of $89.0B, 117% growth, Blackwell majority shipments and Rubin production shipments establish mainstream acceleration and profitable unit economics. Customer-financing dependence and infrastructure constraints rebut a fully mature 90."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 70,
+      "rationale": "Networking and AI software/open-model infrastructure provide two adjacent value pools, matching the observable 70 row. Hyperscalers are capital-unconstrained customers building custom silicon, so the rubric modifier caps this criterion at 70."
+    }
+  ]
+}
