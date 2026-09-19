@@ -1,0 +1,113 @@
+{
+  "agent_id": "RF",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 84.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 92.5,
+  "bear_score": 66.5,
+  "bull_case": "AI/HPC demand lets TSMC deploy record capex at high utilization and strong margins, compounding FCF/share.",
+  "bear_case": "If overseas fabs structurally dilute margins or AI capacity is overbuilt, high capex can depress FCF/share for years.",
+  "thesis": "TSMC can absorb enormous internally generated capital at attractive returns. FY2025 OCF-capex was about US$32B and H1 2026 owner-style FCF before dividends was about US$20B. The main risk is that global-fab duplication raises capital intensity faster than incremental cash returns.",
+  "evidence": [
+    {
+      "claim": "FY2025 OCF was US$72.52B, capex about US$40.56B and R&D US$7.86B.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "1H26 OCF was NT$1.482T and capex NT$846.76B.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/Q2_2026_key_facts.txt",
+      "period": "1H26",
+      "as_of_date": "2026-07-16",
+      "value": "1.482T/846.76B",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "2026 capex guidance is US$52B-$56B.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Overseas fabs carry structurally higher costs; customer concentration and Taiwan/export-control tail risks remain material."
+  ],
+  "unknowns": [
+    "Long-run overseas-fab margin dilution",
+    "AI/HPC demand duration beyond the current capacity-constrained cycle",
+    "Customer mix after N2/A16 scale-up"
+  ],
+  "falsifiers": [
+    "A sustained loss of leading-edge share, repeated yield delays, or owner FCF/share stagnation despite rising capex would weaken the thesis."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Current revenue, margin and cash-flow acceleration do not establish structural incremental-ROIC collapse."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "TSMC has no evidence of long-running excessive equity dilution; share count is broadly stable and SBC is immaterial relative to cash generation."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth through the capex cycle",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "3Q26 results, N2 ramp, CoWoS/advanced packaging capacity, overseas-fab margin, top-customer concentration"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 85,
+      "rationale": "Revenue, margin and cash generation have risen sharply alongside large leading-edge and packaging investments."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 90,
+      "rationale": "Capex+R&D absorbs well over 60% of OCF and AI/HPC/N2/packaging/global capacity provide a long runway."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 75,
+      "rationale": "FCF/share is growing but remains capex-cycle sensitive; H1 2026 FCF per ADR annualizes above 2025."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    }
+  ]
+}
