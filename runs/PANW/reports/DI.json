@@ -1,0 +1,103 @@
+{
+  "agent_id": "DI",
+  "ticker": "PANW",
+  "as_of_date": "2026-09-18",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 81.75,
+  "confidence_0_1": 0.83,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Platformization plus AI-driven SOC automation and identity convergence can reshape enterprise security architecture around fewer strategic platforms.",
+  "bear_case": "Large cloud vendors and best-of-breed specialists can replicate features, while acquisition-led breadth may create integration complexity rather than true disruption.",
+  "thesis": "PANW has real disruptive characteristics in cybersecurity platform consolidation and AI-driven security operations. NGS ARR +63%, Cortex expansion and CyberArk identity integration show adoption beyond a single product. It is nevertheless a $290B+ incumbent, not an early-stage Moonshot.",
+  "evidence": [
+    {
+      "claim": "NGS ARR reached $9.10B, +63% y/y.",
+      "source_type": "filing",
+      "source": "runs/PANW/sources/FY2026_Q4_8K_key_facts.txt",
+      "period": "FY2026 Q4",
+      "as_of_date": "2026-09-01",
+      "value": "9.10B / +63%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Management targets $20B FY2030 NGS ARR and cited AI as a durable cybersecurity tailwind.",
+      "source_type": "filing",
+      "source": "runs/PANW/sources/FY2026_Q4_8K_key_facts.txt",
+      "period": "FY2030 target",
+      "as_of_date": "2026-09-01",
+      "value": "20B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "CyberArk expands PANW into next-generation identity security; Console adds agentic enterprise workflows.",
+      "source_type": "filing",
+      "source": "runs/PANW/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-10",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Cloud hyperscalers and pure-play competitors remain well-capitalized.",
+    "Some growth is acquisition-driven rather than purely organic disruption."
+  ],
+  "unknowns": [
+    "Organic NGS ARR growth excluding acquired CyberArk",
+    "Cortex AI unit economics and cross-sell durability"
+  ],
+  "falsifiers": [
+    "If NGS ARR growth converges rapidly to revenue growth with weak cross-sell, disruption score falls."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "NGS ARR growth",
+      "direction": "up",
+      "threshold": ">20%",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Organic NGS ARR growth post-CyberArk",
+    "Cortex/identity cross-sell"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 80,
+      "rationale": "Platform consolidation and AI automation materially change security operations economics."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 85,
+      "rationale": "NGS ARR +63% and RPO +34% indicate scaled adoption and strong demand."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 80,
+      "rationale": "Network, SASE, cloud, SOC and identity create several adjacent value pools, though competitors are well-capitalized."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Acquisition bundling can mimic disruption without true unit-cost advantage."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "Reported NGS ARR growth includes acquisition effects."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Hyperscalers and CrowdStrike-like peers can respond aggressively."
+    }
+  ]
+}

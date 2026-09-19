@@ -1,0 +1,101 @@
+name: PANW GPT-5.6 Sol harness run 2026-09-18
+
+on:
+  pull_request:
+    branches: [run/panw-2026-09-18-sol]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  harness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/panw-2026-09-18-sol
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute PANW harness with early-exit gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/execution.log) 2>&1
+
+          python harness.py selftest
+          python harness.py init PANW --as-of 2026-09-18
+
+          cp runs/PANW/manual_inputs/company_context.json runs/PANW/company_context.json
+          mkdir -p runs/PANW/sources
+          cp runs/PANW/manual_sources/* runs/PANW/sources/
+
+          python harness.py freeze PANW --provider openai --model gpt-5.6-sol --reasoning-effort high
+          python harness.py plan PANW | tee runlogs/plan_initial.txt
+
+          for a in EV AS DI TQ; do
+            python harness.py prompt PANW "$a" --out "runs/PANW/${a}_prompt.md"
+            cp "runs/PANW/manual_reports/${a}.json" "runs/PANW/reports/${a}.json"
+            python harness.py validate PANW "$a"
+          done
+
+          python harness.py aggregate PANW > runlogs/aggregate_after_triage.json
+          python harness.py digest PANW
+          python harness.py plan PANW | tee runlogs/plan_after_triage.txt
+
+          if grep -q "EARLY EXIT" runlogs/plan_after_triage.txt; then
+            echo "PANW EARLY EXIT triggered after EV/AS/DI/TQ."
+          else
+            echo "No triage early exit."
+            echo "ERROR: full-pipeline continuation reports were not expected for this run."
+            exit 22
+          fi
+
+          python harness.py validate PANW EV AS DI TQ
+          python harness.py digest PANW
+          python harness.py aggregate PANW | tee runlogs/aggregate_final.json
+
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          run=Path("runs/PANW")
+          agg=json.loads((run/"aggregate.json").read_text())
+          v={
+            "ticker":"PANW","as_of_date":"2026-09-18",
+            "score_100":agg["score_100"],"score_100_ex_valuation":agg["score_100_ex_valuation"],
+            "classification":agg["classification"],"archetype":agg["archetype"]["id"],
+            "hard_veto_status":agg["hard_veto_status"],
+            "ic_state":agg["mechanical_pre_ic_state"],
+            "position_range":agg["position_range_pre_ic"],
+            "macro_pacing_multiplier":None,
+            "ic_verdict":None,
+            "early_exit":agg["early_exit"],
+            "early_exit_stage":"triage" if agg["early_exit"] else None,
+            "reachable_archetypes_raw":agg["reachable_archetypes_raw"],
+            "valuation_model":agg["valuation_model"],
+            "provider_calibration":agg["provider_calibration"],
+            "note":"Triage early-exit run. GPT-5.6 Sol triage reports were authored in-session and validated/aggregated by the deterministic harness; no separate live OpenAI API adapter call was used."
+          }
+          (run/"final_verdict.json").write_text(json.dumps(v,ensure_ascii=False,indent=2))
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/PANW
+          if ! git diff --cached --quiet; then
+            git commit -m "persist: PANW triage early-exit outputs 2026-09-18"
+            git push origin HEAD:work/panw-2026-09-18-sol
+          fi
+
+          cat runs/PANW/final_verdict.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PANW-gpt-5.6-sol-harness-2026-09-18
+          path: |
+            runs/PANW
+            runlogs

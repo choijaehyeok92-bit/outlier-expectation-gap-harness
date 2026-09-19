@@ -1,0 +1,120 @@
+{
+  "agent_id": "AS",
+  "ticker": "PANW",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 61,
+  "confidence_0_1": 0.8,
+  "bull_score": 75,
+  "bear_score": 35,
+  "bull_case": "A broad cybersecurity platform spanning network, SASE, cloud, SOC and identity can support multiple growth vectors and a Bull value near $460.",
+  "bear_case": "At the current price, Bear value is only ~22% of market price and Base is well below market, so downside asymmetry is unfavorable if growth normalizes.",
+  "thesis": "Business quality is high but investment asymmetry is not. Bull/current is only about 1.27x while Bear/current is about 0.22x. Strong net cash and recurring revenue reduce existential risk, yet the current valuation makes ordinary execution disappointment economically costly.",
+  "evidence": [
+    {
+      "claim": "Bull/current is ~1.265 and Bear/current ~0.222 using the locked DCF.",
+      "source_type": "other",
+      "source": "runs/PANW/sources/README.md",
+      "period": "10y DCF",
+      "as_of_date": "2026-09-18",
+      "value": "1.265/0.222",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "FY2026 NGS ARR reached $9.10B and RPO $21.2B.",
+      "source_type": "filing",
+      "source": "runs/PANW/sources/FY2026_Q4_8K_key_facts.txt",
+      "period": "FY2026 Q4",
+      "as_of_date": "2026-09-01",
+      "value": "9.10/21.2",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Cash+investments were $7.906B against $1.774B convertible notes.",
+      "source_type": "filing",
+      "source": "runs/PANW/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-10",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Cybersecurity consolidation and AI security demand could support a higher-than-normal long-term multiple.",
+    "FY2027 revenue growth guidance remains 23%-24%."
+  ],
+  "unknowns": [
+    "Probability that FY30 NGS ARR target is met without margin dilution",
+    "Acquisition synergy realization"
+  ],
+  "falsifiers": [
+    "A materially lower share price without deterioration would improve asymmetry.",
+    "Owner FCF/share consistently above Bull path would raise upside-path score."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "conditional",
+      "rationale": "Valuation is decision-critical and requires later RT review if the pipeline proceeds."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "PANW has substantial liquid net cash and strong operating cash flow; bankruptcy/permanent-capital impairment is not the dominant downside."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Bull/current",
+      "direction": "up",
+      "threshold": ">=1.6 preferred",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Bear/current",
+      "direction": "up",
+      "threshold": ">=0.4 preferred",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Reassess after price or FCF path changes"
+  ],
+  "verdict": "oppose",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 60,
+      "rationale": "Bull/current ~1.27x with multiple business growth vectors; observable anchor supports 60."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 50,
+      "rationale": "Bear/current ~0.22x; observable anchor supports 50."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 75,
+      "rationale": "Scenario analysis explicitly separates strong business quality from valuation downside."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Acquisition synergies could widen upside but are not yet proven."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Bear valuation implies severe mark-to-market downside without insolvency."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Cybersecurity secular growth can support unusually long growth duration."
+    }
+  ]
+}
