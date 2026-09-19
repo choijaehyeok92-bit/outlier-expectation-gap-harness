@@ -13,6 +13,9 @@
   - Base: 20,22,24,26,28,30,32,34,36,38
   - Bull: 22,25,28,32,36,40,44,48,52,56
 - Locked DCF: Bear **$233.72**, Base **$495.57**, Bull **$817.33**; price/Base **~0.5023**.
+- 5Y valuation percentile: **0.06 (6th percentile)** using TTM P/E weekly observations over the trailing five years, updated 2026-09-18. Current TTM P/E ~14.5x vs 5Y median ~37.7x; 5Y range ~11.2x-56.9x.
+- Cross-check: P/OCF **5th percentile**, EV/EBITDA **6th percentile**, P/S **5th percentile** over their own 5Y histories.
+- External valuation sources: StockResearch ADBE valuation (updated 2026-09-18); TGMCharts Adobe valuation research (data as of 2026-09-09).
 
 ## Q2 FY2026 10-Q
 - Q2 revenue **$6.618B** vs $5.873B.
