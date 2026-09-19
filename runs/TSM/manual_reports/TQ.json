@@ -30,6 +30,15 @@
       "as_of_date": "2026-07-16",
       "value": "67.7/60.3",
       "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "January-August 2026 revenue grew 39.3% year over year, confirming the business is in expansion rather than a turnaround trough.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/2026_monthly_revenue.txt",
+      "period": "Jan-Aug 2026",
+      "as_of_date": "2026-09-10",
+      "value": "39.3%",
+      "fact_or_estimate": "estimate"
     }
   ],
   "counterevidence": [
