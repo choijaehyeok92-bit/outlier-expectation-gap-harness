@@ -1,0 +1,102 @@
+{
+  "agent_id": "SL",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 80,
+  "confidence_0_1": 0.86,
+  "bull_score": 88,
+  "bear_score": 70,
+  "bull_case": "AI/data-center load, grid replacement, renewables and electrification sustain multi-year transmission investment.",
+  "bear_case": "Global capacity additions can eventually create oversupply and weaker pricing.",
+  "thesis": "Demand is structurally attractive and HDHE has leadership evidence through backlog, repeat utilities, utilization and UHV/localization investments.",
+  "evidence": [
+    {
+      "claim": "Backlog rose from ₩9.42tn at FY2025 to ₩12.31tn at H1 2026.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "FY2025-H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "9.42tn→12.31tn",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 exports were 78%; NextEra 15.9% and Saudi Electricity 5.0%.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "78% / 15.9% / 5.0%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Main plant utilization was 95.1%; U.S. transformer subsidiary 88.8%.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "95.1% / 88.8%",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Competitor transformer capacity is expanding.",
+    "Demand is still utility/infrastructure capex sensitive."
+  ],
+  "unknowns": [
+    "Global market share by voltage class.",
+    "2028+ industry supply-demand balance."
+  ],
+  "falsifiers": [
+    "Sustained backlog contraction, falling utilization and margin compression despite grid demand invalidate leadership durability."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "order backlog + utilization",
+      "direction": "up",
+      "threshold": "multi-year backlog and >80% key-plant utilization",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Update global capacity additions and order pricing."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 85,
+      "rationale": "Three primary indicators—backlog expansion, export/repeat utility demand, and near-full utilization—support durability; industry capacity response is the strongest counter."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 75,
+      "rationale": "Repeat Tier-1 utilities and UHV/local production support leadership, but HDHE does not demonstrably set global standards."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 75,
+      "rationale": "At least two material demand pools exist: utility T&D/UHV and industrial/rotating/distribution/ESS."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "Industry supply can normalize pricing."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "material",
+      "rationale": "Global share/win-rate incomplete."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "Power equipment is 68% of H1 revenue."
+    }
+  ]
+}

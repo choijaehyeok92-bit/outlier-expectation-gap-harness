@@ -1,0 +1,65 @@
+{
+  "agent_id": "ED",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 88,
+  "confidence_0_1": 0.92,
+  "thesis": "Decision-critical operating, cash, leverage, capex, backlog, utilization and legal facts are filing-backed. Main uncertainty lies in normalized cycle margins/FCF and the approximate valuation percentile.",
+  "evidence": [
+    {
+      "claim": "FY2025 filing supports multi-year financials, OCF, capex, R&D and year-end backlog.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/FY2025_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-09-18",
+      "value": "multi-KPI",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 filing supports revenue, profit, backlog, customer concentration, utilization, cash/debt and legal disclosures.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "multi-KPI",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Current price/valuation inputs are cross-checked against public market sources.",
+      "source_type": "other",
+      "source": "runs/267260/sources/VALUATION_2026_key_facts.txt",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "725000 / P-E 30.67x",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "5Y valuation percentile is a proxy, not a full daily calculation.",
+    "DCF paths and normalized margins are estimates."
+  ],
+  "unknowns": [
+    "True 5Y daily valuation percentile.",
+    "Project-level incremental ROIC.",
+    "Final GIS litigation outcomes."
+  ],
+  "falsifiers": [
+    "Any later filing materially restating frozen facts requires a rerun."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "primary-source coverage",
+      "direction": "up",
+      "threshold": "decision variables filing-backed",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Replace percentile proxy and update legal/capacity evidence at FY2026."
+  ],
+  "verdict": "support"
+}

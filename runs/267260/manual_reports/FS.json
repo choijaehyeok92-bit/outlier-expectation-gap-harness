@@ -1,0 +1,118 @@
+{
+  "agent_id": "FS",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 83.75,
+  "confidence_0_1": 0.9,
+  "bull_score": 90,
+  "bear_score": 75,
+  "bull_case": "Net cash near ₩0.9tn, strong OCF and low borrowings fund expansion and absorb order volatility.",
+  "bear_case": "Project guarantees, working-capital swings and capex can consume liquidity in a sharp downturn.",
+  "thesis": "Financial survival is a clear strength. Deposits far exceed borrowings and H1 OCF is several times debt; project/guarantee exposure is the residual issue.",
+  "evidence": [
+    {
+      "claim": "H1 deposits ₩1.010tn and borrowings ₩114.5bn; net-cash proxy ≈₩895.5bn.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-18",
+      "value": "895.5bn",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 OCF ₩480.3bn versus borrowings ₩114.5bn.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "480.3bn / 114.5bn",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Outstanding/diluted base ~35.993m shares with no dilutive potential common shares disclosed.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "35.993m",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Guarantees/contractual commitments require monitoring.",
+    "Growth capex/dividends can reduce cash in a downturn."
+  ],
+  "unknowns": [
+    "Off-balance guarantees / TTM revenue.",
+    "Peak working-capital need."
+  ],
+  "falsifiers": [
+    "If net cash becomes material net debt while OCF falls below required capex/interest, survival scoring should fall."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "OCF funds core operations/capex; external financing is not structurally required."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Share count is stable and no excessive dilution is observed."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Net cash and OCF far above borrowings make bankruptcy/forced financing remote."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "net cash and OCF",
+      "direction": "up",
+      "threshold": "net cash positive; OCF > debt",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Normalize guarantees/commitments against TTM revenue at FY2026."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 90,
+      "rationale": "Deposits ₩1.010tn vs borrowings ₩114.5bn and H1 OCF ₩480.3bn imply very strong liquidity."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 85,
+      "rationale": "Net cash, backlog and OCF allow investment through stress; cycle/customer concentration prevents 90."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 70,
+      "rationale": "Shares are flat, but the observable rule uses the lower axis and off-balance project/guarantee exposure is not fully normalized."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "minor",
+      "rationale": "Directly filing-backed."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "Severe cycle stress not observed in current structure."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "critical",
+      "rationale": "Guarantee/commitment ratio not fully normalized."
+    }
+  ]
+}
