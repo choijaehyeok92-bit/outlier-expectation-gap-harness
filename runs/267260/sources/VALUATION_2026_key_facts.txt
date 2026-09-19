@@ -1,0 +1,15 @@
+267260 market + valuation inputs — frozen 2026-09-18
+Close KRW 725,000. Market cap ~KRW 26.095tn.
+USD/KRW 1,386.19 => market cap ~USD 18.825bn.
+P/E ~30.67x; forward P/E ~22.93x; P/FCF ~38.92x.
+Historical P/E snapshots: FY2025 38.03x; FY2024 27.41x; FY2023 11.42x; FY2022 9.41x.
+Exact daily 5Y percentile unavailable; transparent proxy 0.75 is frozen.
+
+Owner-FCF/share paths (KRW/share)
+Bear: 18000,17500,17500,18000,18500,19000,19500,20000,20500,21000
+Base: 22000,25000,28500,32000,35500,39000,42500,46000,49500,53000
+Bull: 24000,28500,33500,39000,45000,51500,58500,66000,74000,82500
+
+At 9% and 15x/20x/25x terminal multiples plus KRW 24,879.63 net cash/share:
+Bear ~KRW 277,814; Base ~KRW 696,378; Bull ~KRW 1,189,605.
+Price/Base ~1.0411; Bear/current ~0.3832; Bull/current ~1.6408.

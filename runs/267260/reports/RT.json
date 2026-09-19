@@ -1,0 +1,112 @@
+{
+  "agent_id": "RT",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 50,
+  "confidence_0_1": 0.88,
+  "thesis": "Strongest bear case is peak-cycle normalization plus unresolved GIS governance: global capacity can compress scarcity pricing while HDHE capex rises. Most other veto predicates are rebutted by net cash, backlog and diversification.",
+  "evidence": [
+    {
+      "claim": "H1 margin ~25% and utilization 88.8–95.1% are consistent with tight industry supply.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "25% / 88.8–95.1%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Bear DCF ~₩278k versus ₩725k price shows normalization downside.",
+      "source_type": "other",
+      "source": "runs/267260/sources/VALUATION_2026_key_facts.txt",
+      "period": "10y DCF",
+      "as_of_date": "2026-09-18",
+      "value": "0.38x",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "GIS penalty/procurement litigation remains unresolved.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/LEGAL_2026_key_facts.txt",
+      "period": "2025-2026",
+      "as_of_date": "2026-09-18",
+      "value": "unresolved",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Backlog is ₩12.31tn.",
+    "Net cash ~₩895.5bn limits financing risk.",
+    "Largest disclosed H1 customer is 15.9%, below 25% watch trigger."
+  ],
+  "unknowns": [
+    "Global competitor capacity through 2029.",
+    "Final GIS legal outcome.",
+    "Normalized transformer margin."
+  ],
+  "falsifiers": [
+    "If pricing/backlog and post-ramp utilization remain strong through 2028 and governance resolves favorably, red-team thesis weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "conditional",
+      "rationale": "Adverse regulatory/procurement action exists in a collusion matter, but final judicial findings are unresolved."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Net cash and OCF rebut structural outside-capital dependence."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Share count is stable."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Mission-critical repeat demand and margins demonstrate customer value."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Current returns do not establish structural ROIC collapse."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Backlog/utilization/margins do not establish moat shrinkage."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Price is below locked Bull."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "No disclosed customer exceeds 25%; products/geographies are diversified."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Net cash and positive Bear FCF make bankruptcy/value extinction remote."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "order pricing + legal status",
+      "direction": "mixed",
+      "threshold": "stable pricing; no final adverse integrity finding",
+      "cadence": "quarterly/event-driven"
+    }
+  ],
+  "next_checks": [
+    "Stress-test 2028 supply and update court outcomes."
+  ],
+  "verdict": "oppose"
+}

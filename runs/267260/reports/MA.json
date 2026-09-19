@@ -1,0 +1,108 @@
+{
+  "agent_id": "MA",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 70.75,
+  "confidence_0_1": 0.8,
+  "bull_score": 78,
+  "bear_score": 60,
+  "bull_case": "Management converted demand into backlog, margin expansion, net cash and targeted capacity/R&D.",
+  "bear_case": "170kV GIS collusion-related KFTC/KEPCO actions create an unresolved governance/integrity question.",
+  "thesis": "Execution/capital deployment are good, but governance is not fully clear. The GIS matter keeps the integrity veto conditional.",
+  "evidence": [
+    {
+      "claim": "Backlog ₩12.31tn, ~25% H1 operating margin and strong net cash.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "12.31tn / 25%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 R&D ₩49.3bn and PPE capex ₩139.9bn.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "49.3bn / 139.9bn",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The H1 filing discloses GIS collusion-related penalty, procurement-status and damages litigation.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/LEGAL_2026_key_facts.txt",
+      "period": "2025-2026",
+      "as_of_date": "2026-09-18",
+      "value": "ongoing",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Administrative/procurement findings are real governance signals.",
+    "Returns on current capacity capex are not fully seasoned."
+  ],
+  "unknowns": [
+    "Final GIS judicial outcomes.",
+    "Control/remediation evidence beyond litigation defense."
+  ],
+  "falsifiers": [
+    "A final adverse collusion/control finding or repeated governance incidents would materially lower governance and can confirm the veto."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "conditional",
+      "rationale": "Adverse regulatory/procurement action occurred, but the company contests it and final judicial outcomes are unresolved. Clear only with exonerating final outcomes/remediation; confirm if final findings establish integrity/control failure."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "governance litigation status",
+      "direction": "down",
+      "threshold": "no final adverse integrity finding",
+      "cadence": "event-driven"
+    }
+  ],
+  "next_checks": [
+    "Check the 2026-09-18 hearing and subsequent KFTC/KEPCO decisions."
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 70,
+      "rationale": "Using R&D/M&A/capacity outcomes because no major buyback exists; operating returns are positive but current capex is not fully seasoned."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 65,
+      "rationale": "Active GIS collusion-related administrative/court disputes prevent a 75+ score."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 80,
+      "rationale": "Backlog conversion, margin expansion, net-cash repair and capacity expansion show strong execution."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "Expansion returns not fully observable."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "critical",
+      "rationale": "Final legal findings unresolved."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "minor",
+      "rationale": "Execution evidence strong."
+    }
+  ]
+}
