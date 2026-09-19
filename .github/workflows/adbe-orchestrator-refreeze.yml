@@ -1,0 +1,57 @@
+name: ADBE orchestrator refreeze and prompt
+
+on:
+  push:
+    branches:
+      - research/adbe-orchestrator-20260918
+    paths:
+      - ".github/workflows/adbe-orchestrator-refreeze.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  refreeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/adbe-orchestrator-20260918
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refreeze, plan, and regenerate EV prompt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/adbe-orchestrator-refreeze.log) 2>&1
+
+          python harness.py freeze ADBE \
+            --provider openai --model gpt-5.6-sol
+
+          echo "===== PLAN ====="
+          python harness.py plan ADBE | tee runlogs/adbe-orchestrator-plan.json
+
+          echo "===== EV PROMPT ====="
+          python harness.py prompt ADBE EV
+
+      - name: Commit generated freeze and prompt artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            runs/ADBE/run_manifest.json \
+            runs/ADBE/EV_prompt.md \
+            runlogs/adbe-orchestrator-refreeze.log \
+            runlogs/adbe-orchestrator-plan.json
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit."
+          else
+            git commit -m "chore(adbe): refreeze orchestrator evidence and regenerate EV prompt"
+            git push origin HEAD:research/adbe-orchestrator-20260918
+          fi
