@@ -1,0 +1,108 @@
+{
+  "agent_id": "MT",
+  "ticker": "PYPL",
+  "as_of_date": "2026-09-18",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 70.25,
+  "confidence_0_1": 0.84,
+  "bull_score": 80.25,
+  "bear_score": 50.25,
+  "bull_case": "If branded checkout stabilization turns into renewed share gains and Venmo/merchant services deepen switching costs, moat trajectory can improve.",
+  "bear_case": "If checkout becomes a commodity embedded in devices and merchant platforms, PayPal's network advantage may monetize less effectively.",
+  "thesis": "PayPal's moat remains large but is not clearly widening. Scale and network data are durable, while the branded checkout layer faces structural competition and active-account growth is flat. This is the main reason PayPal does not qualify as a Compounder despite cheap valuation.",
+  "evidence": [
+    {
+      "claim": "FY2025 active accounts were 439M and TPV $1.79T.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-03",
+      "value": "439M/1.79T",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 active accounts remained 439M and essentially flat sequentially.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Management described branded checkout as further stabilized rather than reaccelerating.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Branded checkout competition remains intense and active-account growth is essentially flat, limiting evidence of a widening moat."
+  ],
+  "unknowns": [
+    "Long-run branded checkout share",
+    "Venmo monetization slope",
+    "Braintree take-rate versus transaction-margin tradeoff"
+  ],
+  "falsifiers": [
+    "If transaction-margin dollars contract persistently, branded checkout resumes material share loss, or buybacks stop creating FCF/share growth, the thesis weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Competitive pressure is material, but Q2 TPV/transaction growth and checkout stabilization do not establish a persistent continuing moat collapse."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth despite modest revenue growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Branded checkout growth, Venmo revenue, transaction-margin dollars, active accounts, TPV, repurchases, diluted shares"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 60,
+      "rationale": "PayPal has meaningful merchant integration and consumer habit, but switching costs and pricing power face pressure from wallet/platform competition."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 85,
+      "rationale": "439M active accounts, $1.79T TPV and broad merchant acceptance provide a large measurable ecosystem, though account growth is mature."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 65,
+      "rationale": "Brand, risk data, Venmo and Braintree provide defenses, but checkout functionality is increasingly commoditized."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    }
+  ]
+}
