@@ -1,0 +1,32 @@
+{
+  "agent_id":"RF","ticker":"NVDA-V3-2026-09-19","as_of_date":"2026-09-19","domain":"reinvestment_fcf","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":74.5,"confidence_0_1":0.75,"bull_score":88,"bear_score":55,
+  "bull_case":"FY25→FY26 증분 NOPAT 약 $40.1B을 증분 영업투하자본 약 $39.8B으로 얻어 증분 ROIC가 약 101%다. owner FCF/share는 FY25 $2.26에서 TTM $4.92로 늘었고 희석주식수는 감소했다. 자본집약도가 낮은 성장과 주당 복리가 동시에 확인된다.",
+  "bear_case":"고수익 내부 재투자 흡수율은 23.9%에 그쳐 자본창출 속도를 못 따라간다. H1 자사주 $39.0B와 지분증권 $42.4B이 외부로 나갔다. 운전자본 $41.3B 유출과 비현금 지분평가익 $23.7B 때문에 정상화 현금수익률도 불확실하다.",
+  "thesis":"영업자본 기준 증분 수익률은 매우 높다. FY25→FY26 증분 NOPAT 약 $40.1B/증분 영업투하자본 약 $39.8B로 증분 ROIC는 약 101%다. owner FCF/share는 FY25 $2.26→FY26 $3.68→TTM $4.92로 늘었고 희석주식수는 24,804M→24,285M으로 감소했다. 다만 H1 내부 재투자 흡수율은 (capex $4.434B+R&D $13.375B)/OCF $74.421B=23.9%로 65점 구간이다. 자본창출을 내부에 모두 재투자하지 못해 자사주·지분투자로 이동했고, 운전자본 유출과 평가익이 정상화 FCF 판단을 흐린다.",
+  "evidence":[
+    {"claim":"FY25→FY26 증분 NOPAT은 약 $40,079M, 증분 영업투하자본은 약 $39,761M으로 추정되어 증분 ROIC는 약 101%다.","source_type":"filing","source":"runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt Consolidated Statements of Income and Balance Sheets","period":"FY25 to FY26","as_of_date":"2026-01-25","value":101,"fact_or_estimate":"estimate","evidence_id":"SUP-RF-IROIC-001","economic_driver":"incremental_return_on_capital"},
+    {"claim":"H1 FY27 R&D는 $13,375M, capex는 $4,434M, OCF는 $74,421M으로 내부 재투자 흡수율은 23.9%다.","source_type":"filing","source":"runs/NVDA-V3-2026-09-19/sources/financials/normalized_financials.json FACT-0037, FACT-0044, FACT-0071, FACT-0072","period":"FY27 H1","as_of_date":"2026-07-26","value":23.9,"fact_or_estimate":"estimate","evidence_id":"SUP-RF-ABSORPTION-002","economic_driver":"reinvestment_absorption"},
+    {"claim":"owner FCF/share는 FY25 $2.26, FY26 $3.68, TTM $4.92로 증가했고 희석주식수는 FY25 24,804M에서 Q2 FY27 24,285M으로 감소했다.","source_type":"filing","source":"runs/NVDA-V3-2026-09-19/sources/README.md; 10-K_FY26_filed_2026-02-25.txt; 10-Q_FY27Q2_filed_2026-08-26.txt","period":"FY25 through TTM 2026-07-26","as_of_date":"2026-07-26","value":4.92,"fact_or_estimate":"estimate","evidence_id":"SUP-RF-FCF-PER-SHARE-003","economic_driver":"per_share_cash_compounding"},
+    {"claim":"H1 FY27 자본배분은 자사주 $39,044M, 지분증권 매입 $42,404M, 배당 $6,290M이었고 capex는 $4,434M이었다.","source_type":"filing","source":"runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L729-L830","period":"FY27 H1","as_of_date":"2026-07-26","value":42404,"fact_or_estimate":"fact","evidence_id":"SUP-RF-OUTSIDE-ALLOCATION-004","economic_driver":"runway_limit"},
+    {"claim":"H1 운전자본은 AR $24,590M, 재고 $10,204M, 선급·기타자산 $6,480M을 흡수했고 순이익에는 비현금 지분평가익 $23,707M이 포함됐다.","source_type":"filing","source":"runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L729-L780","period":"FY27 H1","as_of_date":"2026-07-26","value":41274,"fact_or_estimate":"fact","evidence_id":"SUP-RF-CASH-QUALITY-005","economic_driver":"cash_conversion_quality"},
+    {"claim":"Q2 희석주식수는 전년 동기 24,532M에서 24,285M으로 약 1.0% 감소했고 FY26 자사주 매입 $40,388M은 SBC $6,386M의 6.3배였다.","source_type":"filing","source":"runs/NVDA-V3-2026-09-19/sources/financials/normalized_financials.json FACT-0048, FACT-0056; 10-K_FY26_filed_2026-02-25.txt","period":"FY26 through FY27 Q2","as_of_date":"2026-07-26","value":-1.01,"fact_or_estimate":"estimate","evidence_id":"SUP-RF-DILUTION-006","economic_driver":"dilution_control"}
+  ],
+  "counterevidence":["증분 ROIC 101%는 전략적 지분증권을 영업투하자본에서 제외한다. 이를 포함하면 수익률은 크게 낮아진다.","비시장성 지분의 수익은 시장가격이 없는 평가에 의존하고 H1 평가익 $23.7B은 현금이 아니다.","FY26 goodwill이 $5.2B에서 $20.8B으로 늘어 라이선스·인수 지출이 영업투하자본 계산을 왜곡할 수 있다.","ROIC 수준은 FY25 약 171%에서 FY26 약 137%로 낮아져 규모 확장에 따른 체감이 진행된다."],
+  "unknowns":["지분증권 $93.9B의 실현 수익률과 관련 매출.","운전자본 증가가 일시적 계약효과인지 영구 수준 이동인지.","Groq 라이선스 약 $15.9B이 창출한 증분 이익.","공급 약정 $279B 중 capex로 전환될 금액."],
+  "falsifiers":["증분 ROIC가 2년 연속 30% 미만이면 고수익 재투자 가설을 기각한다.","운전자본 증가/매출 증가가 2개 분기 연속 20% 이하로 내려가면 현금전환 우려가 약화된다.","평가익 제외 owner FCF/share가 FY28에 $7 미만이면 주당 복리 가설을 하향한다."],
+  "hard_veto_flags":[
+    {"veto":"장기간 지속되는 과도한 희석","status":"cleared","rationale":"희석주식수는 FY25 24,804M에서 Q2 FY27 24,285M으로 감소했다. FY26 자사주 매입은 SBC의 6.3배였고 현재는 순희석이 아니라 역희석이다."},
+    {"veto":"증분 ROIC의 구조적 붕괴","status":"cleared","rationale":"FY25→FY26 영업자본 기준 증분 ROIC 약 101%로 자본비용을 크게 상회한다. ROIC 수준 하락과 지분증권 포함 정의는 감시하지만 구조적 붕괴의 구성요건은 없다."}
+  ],
+  "key_kpis":[{"name":"증분 ROIC(지분증권 포함)","direction":"up","threshold":"30% 이상","cadence":"annual"},{"name":"운전자본 증가/매출 증가","direction":"down","threshold":"20% 이하","cadence":"quarterly"},{"name":"owner FCF/share","direction":"up","threshold":"FY28 $7 이상","cadence":"quarterly"}],
+  "next_checks":["Q3 FY27 운전자본과 지분증권 매입 규모","비시장성 지분의 평가기법과 실현 수익률","FY27 goodwill·무형자산과 Groq 라이선스 수익 기여"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"incremental_roic","score_0_100":85,"rationale":"영업자본 기준 증분 ROIC 약 101%는 매우 높다. 지분증권 $93.9B을 포함하면 결과가 달라져 90점은 배제한다."},
+    {"criterion_id":"reinvestment_runway","score_0_100":65,"rationale":"관측식: (capex $4,434M+R&D $13,375M)/OCF $74,421M=23.9%. 15~35% 구간이므로 65점이다."},
+    {"criterion_id":"fcf_per_share_quality","score_0_100":70,"rationale":"owner FCF/share가 $2.26→$4.92로 증가하고 주식수는 감소했다. 운전자본 유출 $41.3B과 비현금 평가익 $23.7B으로 정상화 수준이 불확실하다."}
+  ],
+  "uncertainties":[{"criterion_id":"incremental_roic","severity":"material","rationale":"전략적 지분증권을 투하자본에 포함하는지에 따라 증분 ROIC가 크게 달라진다."},{"criterion_id":"reinvestment_runway","severity":"material","rationale":"낮은 내부 흡수율이 자본효율인지 재투자 기회 부족인지 구분하기 어렵다."},{"criterion_id":"fcf_per_share_quality","severity":"critical","rationale":"운전자본 유출과 지분평가익이 현금흐름과 이익을 반대 방향으로 왜곡한다."}],
+  "valuation_inputs":{"valuation_percentile_5y":null,"revenue_cagr_next_3y":null,"scenarios":{"bear":{"owner_fcf_per_share":[]},"base":{"owner_fcf_per_share":[]},"bull":{"owner_fcf_per_share":[]}}}
+}

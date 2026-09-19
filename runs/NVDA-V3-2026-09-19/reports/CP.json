@@ -1,0 +1,134 @@
+{
+  "agent_id": "CP",
+  "ticker": "NVDA-V3-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 75.25,
+  "confidence_0_1": 0.7,
+  "bull_score": 85,
+  "bear_score": 50,
+  "bull_case": "매출 $96.2B 분기에 gross margin 75.0%, 판관비 1.4%를 기록했고 H1 고객 선수금 유입은 $15.6B이다. 고객은 제품 확보를 위해 선불을 지급하며 Hyperscale과 ACIE 매출이 모두 100% 이상 성장했다. 가격·사용량·규모경제가 동시에 강화되는 모습이다.",
+  "bear_case": "NRR·churn·고객 ROI가 공시되지 않는다. H1 지분증권 매입 $42.4B, AI-cloud 보증 $3.5B 등 고객 자금지원이 있어 자생 수요 비중도 알 수 없다. AR·재고가 H1 OCF에서 $34.8B를 흡수해 회계상 단위경제와 현금 전환이 엇갈린다.",
+  "thesis": "고객가치는 강하게 입증된다. Q2 FY27 매출 $96.2B에서 gross margin 75.0%와 영업이익률 66.2%를 냈고, H1 고객 선수금 유입 $15.6B과 기말 잔액 $2.8B은 지불의사를 보여준다. Hyperscale +102%, ACIE +138%로 수요 기반도 확장됐다. 다만 하드웨어 사업이라 NRR·churn·고객 ROI가 없고, H1 지분증권 매입 $42.4B과 AI-cloud 보증 $3.5B 때문에 자생 수요 비중을 분리할 수 없다. AR·재고의 현금 흡수도 단위경제 판단을 제한한다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 매출 $96,221M에서 gross margin 75.0%, operating margin 66.2%, 판관비/매출 1.4%를 기록했다. 낮은 판매비로 높은 가격과 수요를 유지했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L126-L161, L2091-L2100",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 75.0,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-CUSTOMER-VALUE-001",
+      "economic_driver": "pricing_power_and_customer_value"
+    },
+    {
+      "claim": "H1 FY27 이연매출 증가분에 고객 선수금 $15,600M이 포함됐고, 미지급비용 내 고객 선수금 잔액은 FY26 말 $160M에서 $2,800M으로 늘었다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt Note 7 and deferred-revenue footnotes",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 15600,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-ADVANCES-002",
+      "economic_driver": "customer_commitment"
+    },
+    {
+      "claim": "Q2 FY27 Hyperscale 매출은 $48,710M으로 +102% y/y, AI Clouds/Industrial/Enterprise는 $40,313M으로 +138% y/y 성장했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt Revenue by Market Platform",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 138,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-USAGE-003",
+      "economic_driver": "usage_expansion"
+    },
+    {
+      "claim": "수요의 일부에는 NVIDIA 자금이 연결된다. H1 지분증권 매입 $42,404M, AI-cloud 파트너 리스 보증 $3,529M, 잔여 지분투자 약정 $25B가 공시됐다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L729-L830, Note 8, Note 10 L1670-L1760",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 42404,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-FINANCING-004",
+      "economic_driver": "vendor_financing_risk"
+    },
+    {
+      "claim": "Q2 최대 직접고객은 매출의 16%, H1 상위 3개는 44%였다. 중국 데이터센터 시장에서 사실상 배제됐음에도 Q2 매출은 +105.9% y/y였다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2076-L2077, L2548-L2549, L2838-L2857",
+      "period": "FY27 Q2 and H1",
+      "as_of_date": "2026-07-26",
+      "value": 16,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-CONCENTRATION-005",
+      "economic_driver": "dependency_resilience"
+    },
+    {
+      "claim": "FY26에서 Q2 FY27까지 gross margin은 71.1%에서 75.0%, operating margin은 60.4%에서 66.2%로 개선됐다. 규모 증가와 함께 단위경제가 강화됐다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt and 10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY26 to FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 66.2,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-UNIT-ECONOMICS-006",
+      "economic_driver": "operating_leverage"
+    }
+  ],
+  "counterevidence": [
+    "하드웨어 사업이라 NRR·GRR·churn·사용량 코호트가 공시되지 않아 유지율을 직접 검증할 수 없다.",
+    "고객의 AI 인프라 투자 회수율은 공개되지 않아 지불의사가 고객 손익에서도 지속 가능한지 미검증이다.",
+    "H1 AR $24.6B와 재고 $10.2B가 현금을 흡수해 회계 마진 개선과 현금 전환이 반대 방향이다.",
+    "ACIE의 빠른 성장은 자금력이 약하고 NVIDIA 금융지원에 의존하는 고객군으로 성장축이 이동한다는 해석도 가능하다."
+  ],
+  "unknowns": [
+    "지분투자·보증 대상 기업에서 발생한 매출 비중.",
+    "고객의 AI 인프라 가동률과 투자 회수 기간.",
+    "AR $63,059M의 고객별 구성과 대손 위험.",
+    "공급 약정 $279B 중 확정 고객 주문으로 뒷받침되는 비중."
+  ],
+  "falsifiers": [
+    "DSO가 2개 분기 연속 50일 이하로 내려가고 AR 증가율이 매출 증가율을 밑돌면 벤더 금융 우려가 약화된다.",
+    "지분투자·보증 대상 기업향 매출이 총매출의 10% 미만으로 확인되면 자생 수요 우려는 해소된다.",
+    "고객 선수금 잔액이 2개 분기 연속 감소하면 지불의사 강화 가설은 약화된다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "고객가치 부재가 반증된다. Q2 gross margin 75.0%, 판관비/매출 1.4%, H1 고객 선수금 유입 $15.6B은 고객이 프리미엄과 선불을 지급한다는 직접 증거다. 금융지원은 별도 감시 항목이지만 가치 없는 성장이라는 구성요건은 충족하지 않는다."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "미국 수출규제로 중국 데이터센터 시장에서 사실상 배제됐지만 Q2 매출은 +105.9%였다. 규제 충격이 현실화돼도 전체 경제성이 훼손되지 않았고 최대 직접고객 비중도 16%다. 다만 Data Center 집중도는 SL에서 별도로 감점한다."
+    }
+  ],
+  "key_kpis": [
+    {"name": "DSO", "direction": "down", "threshold": "50일 이하", "cadence": "quarterly"},
+    {"name": "고객 선수금 잔액", "direction": "up", "threshold": "$2.8B 이상", "cadence": "quarterly"},
+    {"name": "최대 직접고객 매출 비중", "direction": "down", "threshold": "20% 미만", "cadence": "quarterly"}
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q에서 AR·DSO·대손충당과 고객 선수금 확인",
+    "지분투자 대상과 매출 인식의 관계에 대한 공시 확인",
+    "공급 약정 $279B의 고객 주문 연동 여부 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {"criterion_id": "customer_roi", "score_0_100": 80, "rationale": "75.0% gross margin, 1.4% 판관비율, $15.6B 고객 선수금은 강한 지불의사를 입증한다. 고객 측 회수율이 없어 90점은 배제한다."},
+    {"criterion_id": "retention_usage", "score_0_100": 70, "rationale": "Hyperscale +102%, ACIE +138%와 선수금 증가는 사용 확대를 지지한다. NRR·churn·코호트가 없어 직접적인 유지율 75점 기준에는 못 미친다."},
+    {"criterion_id": "unit_economics", "score_0_100": 75, "rationale": "gross margin 71.1%→75.0%, operating margin 60.4%→66.2%로 규모경제가 확인된다. AR·재고 현금 흡수로 90점 수준의 확신은 없다."}
+  ],
+  "uncertainties": [
+    {"criterion_id": "customer_roi", "severity": "material", "rationale": "지불의사는 입증되나 고객 측 투자회수율이 미공개다."},
+    {"criterion_id": "retention_usage", "severity": "material", "rationale": "NRR·churn 부재로 선수금과 고객군 성장률을 대용한다."},
+    {"criterion_id": "unit_economics", "severity": "critical", "rationale": "회계 마진은 개선되지만 AR·재고의 현금 흡수와 고객 금융지원 비중을 분리할 수 없다."}
+  ],
+  "valuation_inputs": {"valuation_percentile_5y": null, "revenue_cagr_next_3y": null, "scenarios": {"bear": {"owner_fcf_per_share": []}, "base": {"owner_fcf_per_share": []}, "bull": {"owner_fcf_per_share": []}}}
+}

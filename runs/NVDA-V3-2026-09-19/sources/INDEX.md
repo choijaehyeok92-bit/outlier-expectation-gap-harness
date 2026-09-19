@@ -1,0 +1,102 @@
+# Source index
+Grep or read by line range; never read a whole filing.
+
+## 10-K_FY26_filed_2026-02-25.txt — 10-K, 0 pages, 4130 lines
+- L66 p.0: Part I
+- L67 p.0: Item 1.
+- L70 p.0: Item 1A.
+- L73 p.0: Item 1B.
+- L79 p.0: Item 2.
+- L82 p.0: Item 3.
+- L85 p.0: Item 4.
+- L88 p.0: Part II
+- L89 p.0: Item 5.
+- L92 p.0: Item 6.
+- L95 p.0: Item 7.
+- L98 p.0: Item 7A.
+- L101 p.0: Item 8.
+- L104 p.0: Item 9.
+- L107 p.0: Item 9A.
+- L110 p.0: Item 9B.
+- L113 p.0: Item 9C.
+- L116 p.0: Part III
+- L117 p.0: Item 10.
+- L120 p.0: Item 11.
+- L123 p.0: Item 12.
+- L126 p.0: Item 13.
+- L129 p.0: Item 14.
+- L132 p.0: Part IV
+- L133 p.0: Item 15.
+- L136 p.0: Item 16.
+- L165 p.0: Item 1. Business
+- L319 p.0: Item 1A. Risk Factors
+- L615 p.0: Item 1B. Unresolved Staff Comments
+- L617 p.0: Item 1C. Cybersecurity
+
+## 10-Q_FY27Q1_filed_2026-05-20.txt — 10-Q, 0 pages, 2424 lines
+- L47 p.0: Part I : Financial Information
+- L49 p.0: Item 1.
+- L63 p.0: Item 2.
+- L66 p.0: Item 3.
+- L69 p.0: Item 4.
+- L72 p.0: Part II : Other Information
+- L76 p.0: Item 1A.
+- L82 p.0: Item 5.
+- L85 p.0: Item 6.
+- L103 p.0: Part I. Financial Information
+- L104 p.0: Item 1. Financial Statements (Unaudited)
+- L620 p.0: Note 1 - Summary of Significant Accounting Policies
+- L635 p.0: Note 2 - Stock-Based Compensation
+- L691 p.0: Note 3 - Net Income Per Share
+- L735 p.0: Note 4 - Amortizable Intangible Assets and Goodwill
+- L813 p.0: Note 5 - Cash Equivalents and Marketable Securities
+- L1137 p.0: Note 6 - Non-marketable Securities
+- L1179 p.0: Note 7 - Balance Sheet Components
+- L1305 p.0: Note 8 - Derivative Financial Instruments
+- L1332 p.0: Note 9 - Debt
+- L1398 p.0: Note 10 - Commitments and Contingencies
+- L1446 p.0: Note 11 - Income Taxes
+- L1452 p.0: Note 12 - Shareholders’ Equity
+- L1463 p.0: Note 13 - Segment Information
+- L1612 p.0: Note 14 - Leases
+- L1669 p.0: Item 2. Management's Discussion and Analysis of Financial Condition and Results…
+- L2115 p.0: Item 3. Quantitative and Qualitative Disclosures About Market Risk
+- L2125 p.0: Item 4. Controls and Procedures
+- L2133 p.0: Part II. Other Information
+- L2134 p.0: Item 1. Legal Proceedings
+
+## 10-Q_FY27Q2_filed_2026-08-26.txt — 10-Q, 0 pages, 3276 lines
+- L58 p.0: Part I. Financial Information
+- L59 p.0: Item 1.
+- L73 p.0: Item 2.
+- L76 p.0: Item 3.
+- L79 p.0: Item 4.
+- L82 p.0: Part II. Other Information
+- L86 p.0: Item 1A.
+- L92 p.0: Item 5.
+- L95 p.0: Item 6.
+- L115 p.0: Item 1. Financial Statements (Unaudited)
+- L849 p.0: Note 1 - Summary of Significant Accounting Policies
+- L864 p.0: Note 2 - Stock-Based Compensation
+- L934 p.0: Note 3 - Net Income Per Share
+- L1001 p.0: Note 4 - Intangible Assets and Goodwill
+- L1349 p.0: Note 7 - Supplemental Financial Statement Information
+- L1517 p.0: Note 8 - Derivative Financial Instruments
+- L1564 p.0: Note 9 - Debt
+- L1665 p.0: Note 10 - Commitments and Contingencies
+- L1876 p.0: Note 11 - Income Taxes
+- L1882 p.0: Note 12 - Shareholders’ Equity
+- L1888 p.0: Note 13 - Segment Information
+- L2125 p.0: Note 14 - Leases
+- L2175 p.0: Item 2. Management’s Discussion and Analysis of Financial Condition and Results…
+- L2779 p.0: Item 3. Quantitative and Qualitative Disclosures About Market Risk
+- L2788 p.0: Item 4. Controls and Procedures
+- L2799 p.0: Item 1. Legal Proceedings
+- L2801 p.0: Item 1A. Risk Factors
+- L2862 p.0: Item 2. Unregistered Sales of Equity Securities and Use of Proceeds
+- L2911 p.0: Item 5. Other Information
+- L2943 p.0: Item 6. Exhibits
+
+## 8-K_filed_2026-09-03.txt — 8-K, 0 pages, 77 lines
+- L43 p.0: Item 8.01. Other Events.
+- L61 p.0: Item 9.01. Financial Statements and Exhibits.
