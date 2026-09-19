@@ -830,13 +830,13 @@
     "ticker": "V",
     "as_of_date": "2026-09-18",
     "frozen": true,
-    "harness_commit": "11c39bde6abea704a7607ff465affb4e5fa116c9",
+    "harness_commit": "39499dedca6e4235b522a05266ad17bc3d5c913b",
     "runner": {
       "provider": "openai",
       "model": "gpt-5.6-sol",
       "reasoning_effort": "high"
     },
-    "frozen_at_utc": "2026-09-19T10:00:56.936156+00:00",
+    "frozen_at_utc": "2026-09-19T10:03:02.408708+00:00",
     "config_files": {
       "config/strategy.json": "64cdc118aeabede830d4185c511e4d88c8c6f29b022ecd564489460bf16f1c19",
       "config/workflow.json": "1f5c6f1016768a2c6d8b53b3b7bcabdbbf417d657e2c8673047e84ac2aca8fcb",
