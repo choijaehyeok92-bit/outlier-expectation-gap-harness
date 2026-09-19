@@ -1,0 +1,133 @@
+name: PYPL GPT-5.6 Sol harness run 2026-09-18
+
+on:
+  pull_request:
+    branches: [run/pypl-2026-09-18-sol]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  harness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/pypl-2026-09-18-sol
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute PYPL harness with early-exit gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/execution.log) 2>&1
+
+          python harness.py selftest
+          python harness.py init PYPL --as-of 2026-09-18
+
+          cp runs/PYPL/manual_inputs/company_context.json runs/PYPL/company_context.json
+          mkdir -p runs/PYPL/sources
+          cp runs/PYPL/manual_sources/* runs/PYPL/sources/
+
+          python harness.py freeze PYPL --provider openai --model gpt-5.6-sol --reasoning-effort high
+          python harness.py plan PYPL | tee runlogs/plan_initial.txt
+
+          for a in EV AS DI TQ; do
+            python harness.py prompt PYPL "$a" --out "runs/PYPL/${a}_prompt.md"
+            cp "runs/PYPL/manual_reports/${a}.json" "runs/PYPL/reports/${a}.json"
+            python harness.py validate PYPL "$a"
+          done
+
+          python harness.py aggregate PYPL > runlogs/aggregate_after_triage.json
+          python harness.py digest PYPL
+          python harness.py plan PYPL | tee runlogs/plan_after_triage.txt
+
+          if grep -q "EARLY EXIT" runlogs/plan_after_triage.txt; then
+            echo "PYPL EARLY EXIT triggered after triage."
+          else
+            echo "No triage early exit. Continuing full pipeline."
+
+            for a in SL CP MT RF MA FS; do
+              python harness.py prompt PYPL "$a" --out "runs/PYPL/${a}_prompt.md"
+              cp "runs/PYPL/manual_reports/${a}.json" "runs/PYPL/reports/${a}.json"
+              python harness.py validate PYPL "$a"
+            done
+
+            python harness.py validate PYPL MO
+            python harness.py aggregate PYPL > runlogs/aggregate_pre_phase3.json
+            python harness.py digest PYPL
+
+            for a in ED RT; do
+              python harness.py prompt PYPL "$a" --out "runs/PYPL/${a}_prompt.md"
+              cp "runs/PYPL/manual_reports/${a}.json" "runs/PYPL/reports/${a}.json"
+              python harness.py validate PYPL "$a"
+            done
+
+            python harness.py aggregate PYPL > runlogs/aggregate_pre_ic.json
+            python harness.py digest PYPL
+            python harness.py plan PYPL | tee runlogs/plan_pre_ic.txt
+
+            if grep -q "EARLY EXIT" runlogs/plan_pre_ic.txt; then
+              echo "PYPL EARLY EXIT triggered pre-IC."
+            else
+              echo "No pre-IC early exit. Running IC."
+              python harness.py prompt PYPL IC --out runs/PYPL/IC_prompt.md
+              cp runs/PYPL/manual_reports/IC.json runs/PYPL/reports/IC.json
+              python harness.py validate PYPL IC
+            fi
+          fi
+
+          python harness.py validate PYPL
+          python harness.py plan PYPL | tee runlogs/plan_final.txt
+          python harness.py digest PYPL
+          python harness.py aggregate PYPL | tee runlogs/aggregate_final.json
+
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          run=Path("runs/PYPL")
+          agg=json.loads((run/"aggregate.json").read_text())
+          mo=json.loads((run/"reports/MO.json").read_text()) if (run/"reports/MO.json").exists() else {}
+          ic=json.loads((run/"reports/IC.json").read_text()) if (run/"reports/IC.json").exists() else {}
+          tri=Path("runlogs/plan_after_triage.txt").read_text() if Path("runlogs/plan_after_triage.txt").exists() else ""
+          pre=Path("runlogs/plan_pre_ic.txt").read_text() if Path("runlogs/plan_pre_ic.txt").exists() else ""
+          stage="triage" if "EARLY EXIT" in tri else ("pre_ic" if "EARLY EXIT" in pre else None)
+          out={
+            "ticker":"PYPL","as_of_date":"2026-09-18",
+            "score_100":agg["score_100"],"score_100_ex_valuation":agg["score_100_ex_valuation"],
+            "classification":agg["classification"],"archetype":agg["archetype"]["id"],
+            "secondary_archetypes":agg["archetype"].get("secondary",[]),
+            "hard_veto_status":agg["hard_veto_status"],
+            "ic_state":agg["mechanical_pre_ic_state"],
+            "position_range":agg["position_range_pre_ic"],
+            "macro_pacing_multiplier":mo.get("risk_budget_multiplier"),
+            "ic_verdict":ic.get("verdict") if ic.get("analysis_status")=="complete" else None,
+            "early_exit":stage is not None,"early_exit_stage":stage,
+            "reachable_archetypes_raw":agg["reachable_archetypes_raw"],
+            "valuation_model":agg["valuation_model"],"provider_calibration":agg["provider_calibration"],
+            "note":"Agent reports were authored by GPT-5.6 Sol in this ChatGPT session and executed through the deterministic repository harness; no separate OpenAI API adapter call was made."
+          }
+          (run/"final_verdict.json").write_text(json.dumps(out,ensure_ascii=False,indent=2))
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/PYPL
+          if ! git diff --cached --quiet; then
+            git commit -m "persist: PYPL harness outputs 2026-09-18"
+            git push origin HEAD:work/pypl-2026-09-18-sol
+          fi
+
+          cat runs/PYPL/final_verdict.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PYPL-gpt-5.6-sol-harness-2026-09-18
+          path: |
+            runs/PYPL
+            runlogs
