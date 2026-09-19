@@ -1,0 +1,108 @@
+{
+  "agent_id": "MA",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 87.25,
+  "confidence_0_1": 0.84,
+  "bull_score": 95.25,
+  "bear_score": 69.25,
+  "bull_case": "Disciplined N2/A16/packaging investment converts AI demand into sustained high-return capacity.",
+  "bear_case": "Political diversification could force structurally lower-return capex and dilute the historical Taiwan cluster economics.",
+  "thesis": "Capital allocation is dominated by organic reinvestment rather than M&A or buybacks. This is appropriate for a foundry where technology leadership and capacity timing determine moat durability. The key question is returns on overseas duplication, not financial engineering.",
+  "evidence": [
+    {
+      "claim": "FY2025 capex was NT$1.272T and R&D NT$246.4B.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2Q26 margins rose to 67.7% gross and 60.3% operating despite aggressive expansion.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/Q2_2026_key_facts.txt",
+      "period": "2Q26",
+      "as_of_date": "2026-07-16",
+      "value": "67.7/60.3",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "The 20-F reports no correction/restatement flag.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Overseas fabs carry structurally higher costs; customer concentration and Taiwan/export-control tail risks remain material."
+  ],
+  "unknowns": [
+    "Long-run overseas-fab margin dilution",
+    "AI/HPC demand duration beyond the current capacity-constrained cycle",
+    "Customer mix after N2/A16 scale-up"
+  ],
+  "falsifiers": [
+    "A sustained loss of leading-edge share, repeated yield delays, or owner FCF/share stagnation despite rising capex would weaken the thesis."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "No restatement, auditor disagreement or management-integrity impairment is established in the frozen 20-F."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth through the capex cycle",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "3Q26 results, N2 ramp, CoWoS/advanced packaging capacity, overseas-fab margin, top-customer concentration"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 85,
+      "rationale": "Management consistently funds R&D, leading-edge capacity and packaging ahead of demand while preserving dividends and net cash."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 90,
+      "rationale": "20-F shows effective controls, no restatement flag, long operating record and conservative balance-sheet management."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 90,
+      "rationale": "TSMC has repeatedly delivered node ramps, yield improvement and global capacity expansion while adjusting mix toward HPC/AI."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    }
+  ]
+}
