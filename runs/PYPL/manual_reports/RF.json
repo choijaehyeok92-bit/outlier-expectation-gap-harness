@@ -1,0 +1,113 @@
+{
+  "agent_id": "RF",
+  "ticker": "PYPL",
+  "as_of_date": "2026-09-18",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 74,
+  "confidence_0_1": 0.84,
+  "bull_score": 84,
+  "bear_score": 54,
+  "bull_case": "Cheap repurchases plus steady FCF can compound per-share value even with only mid-single-digit revenue growth.",
+  "bear_case": "If checkout economics deteriorate, buybacks alone cannot offset a shrinking earnings base.",
+  "thesis": "PayPal has excellent FCF/share quality but a less compelling organic reinvestment runway. Its value creation currently comes more from harvesting a mature network and repurchasing discounted stock than from deploying large amounts of capital into high-return new growth.",
+  "evidence": [
+    {
+      "claim": "FY2025 owner-style FCF proxy was about $4.562B.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-03",
+      "value": "4.562B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 2026 owner-style FCF proxy was about $2.093B.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Shares outstanding fell from about 920.7M in late Jan 2026 to 855.5M by July 22.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Branded checkout competition remains intense and active-account growth is essentially flat, limiting evidence of a widening moat."
+  ],
+  "unknowns": [
+    "Long-run branded checkout share",
+    "Venmo monetization slope",
+    "Braintree take-rate versus transaction-margin tradeoff"
+  ],
+  "falsifiers": [
+    "If transaction-margin dollars contract persistently, branded checkout resumes material share loss, or buybacks stop creating FCF/share growth, the thesis weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Strong FCF and improving per-share economics do not support a structural collapse in incremental returns."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "The company is materially reducing shares outstanding, not persistently diluting owners."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth despite modest revenue growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Branded checkout growth, Venmo revenue, transaction-margin dollars, active accounts, TPV, repurchases, diluted shares"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 80,
+      "rationale": "PayPal converts modest revenue growth into substantial FCF and rising per-share economics through cost discipline and buybacks."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 50,
+      "rationale": "Internal high-return reinvestment absorption is modest; a large portion of excess capital is returned via repurchases rather than deployed into new high-ROIC growth."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 90,
+      "rationale": "Owner-style FCF is strong and the share count is shrinking rapidly, directly increasing FCF/share."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    }
+  ]
+}
