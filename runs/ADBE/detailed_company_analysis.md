@@ -1,12 +1,12 @@
 # Adobe Inc. (ADBE) 상세 기업분석 보고서
 
-**기준일: 2026-09-18 | Harness: GPT-5.6 Sol / high | 최종 분류: Emerging Outlier · Compounder**
+**기준일: 2026-09-18 | Harness: GPT-5.6 Sol / high | 최종 분류: Emerging Outlier · Primary Compounder / Secondary Expectation Gap**
 
 ## 0. Executive Summary
 
 Adobe는 생성형 AI가 기존 Creative Cloud의 진입장벽과 가격결정력을 약화시킬 수 있다는 우려 때문에 크게 디레이팅됐지만, 2026년 3분기까지의 실제 사업 지표는 아직 구조적 훼손보다 **기존 플랫폼 안으로 AI를 흡수하면서 성장률을 유지하는 쪽**에 가깝다. Q3 FY2026 매출은 $6.76B로 13% 성장했고, Total Adobe ARR은 $27.50B, AI-first ARR은 전년 대비 150% 이상 증가했다. Adobe는 creativity/productivity 전반에서 10억 MAU를 넘어섰고, Q3 OCF는 $2.52B였다.
 
-Harness 최종 점수는 **78.99**, ex-valuation **78.58**, 분류는 **Emerging Outlier**, archetype은 **Compounder**다. Hard Veto는 모두 CLEARED이며 기계적 포지션 가이드는 **2–4%**, macro pacing은 **0.7**이다.
+Harness 최종 점수는 **78.99**, ex-valuation **78.58**, 분류는 **Emerging Outlier**다. 5년 valuation percentile을 보강한 재실행에서 **Primary archetype은 Compounder, Secondary archetype은 Expectation Gap**으로 확정됐다. Hard Veto는 모두 CLEARED이며 기계적 포지션 가이드는 **2–4%**, macro pacing은 **0.7**이다.
 
 현재가 $248.92 대비 locked owner-FCF/share DCF는 Bear $233.72 / Base $495.57 / Bull $817.33이다. Current/Base는 **0.5023**으로, 시장은 상당한 AI 구조위험을 이미 반영하고 있다. 단, Base는 owner FCF/share가 약 $20에서 10년 뒤 $38로 성장한다는 가정이며 terminal value 비중이 64% 수준이므로 “가격이 절반이니 확정적으로 싸다”는 식으로 해석하면 안 된다.
 
@@ -38,7 +38,9 @@ Harness 최종 점수는 **78.99**, ex-valuation **78.58**, 분류는 **Emerging
 | Core Score | **78.99** |
 | Ex-Valuation | **78.58** |
 | Classification | **Emerging Outlier** |
-| Archetype | **Compounder** |
+| Primary Archetype | **Compounder** |
+| Secondary Archetype | **Expectation Gap** |
+| 5Y Valuation Percentile | **6th percentile (0.06)** |
 | Hard Veto | **CLEARED** |
 | Mechanical State | **NORMAL_CANDIDATE** |
 | Position | **2–4%** |
@@ -238,9 +240,17 @@ $20 → $22 → $24 → $26 → $28 → $30 → $32 → $34 → $36 → $38
 
 ### Expectation Gap
 
-Price/Base와 revenue growth 조건만 보면 Expectation Gap archetype도 유력하다. 그러나 frozen set에는 재현 가능한 5년 valuation percentile이 없기 때문에 harness는 이를 공식 archetype으로 확정하지 않았다.
+5년 valuation percentile을 추가한 재실행에서 ADBE는 **Expectation Gap 조건을 공식적으로 모두 충족**했다.
 
-즉 최종 분류는 **Compounder**, 하지만 가격 구조는 **Expectation Gap 성격도 강한 Compounder**로 해석할 수 있다.
+- price/Base = **0.5023** ≤ 0.85
+- 5Y valuation percentile = **0.06** ≤ 0.35
+- revenue CAGR next 3y = **11%** → 허용 구간 3%–25%
+- Expectation Valuation = **81.33** ≥ 65
+- Financial Survival = **76.67** ≥ 65
+
+5년 percentile은 2026-09-18 기준 **TTM P/E 주간 5년 관측치의 6th percentile**로 고정했다. 해당 자료는 current TTM P/E 약 14.5x, 5년 median 약 37.7x, 5년 범위 약 11.2x–56.9x를 제시한다. 보조 검증에서도 P/OCF 5th percentile, EV/EBITDA 6th percentile, P/S 5th percentile로 역사적 저평가 구간이 일관되게 확인됐다.
+
+Harness는 archetype 우선순위를 Moonshot → Compounder → Turnaround → Expectation Gap 순으로 적용하므로, **Primary는 Compounder로 유지되고 Expectation Gap은 Secondary로 확정**된다.
 
 ---
 
@@ -371,9 +381,9 @@ Adobe의 현재 투자논리는 단순히 “과거보다 싸다”가 아니다
 
 반면 AI가 단지 기존 고객을 지키기 위한 defensive feature가 되고, app-level workflow 자체가 우회되기 시작한다면 Base DCF의 FCF 경로는 빠르게 무너질 수 있다.
 
-따라서 현재 Adobe는 **“저평가된 성숙 Compounder + AI disruption 검증구간”**으로 보는 것이 가장 정확하다.
+따라서 현재 Adobe는 **“저평가된 성숙 Compounder + 공식 Expectation Gap 동시충족 + AI disruption 검증구간”**으로 보는 것이 가장 정확하다.
 
-**Harness verdict: Emerging Outlier / Compounder / Hard Veto CLEARED / 2–4% mechanical position / macro pacing 0.7.**
+**Harness verdict: Emerging Outlier / Primary Compounder / Secondary Expectation Gap / Hard Veto CLEARED / 2–4% mechanical position / macro pacing 0.7.**
 
 ## Source Notes
 
@@ -381,5 +391,7 @@ Frozen repository evidence:
 - runs/ADBE/sources/Q2_FY2026_key_facts.txt
 - runs/ADBE/sources/Q3_FY2026_key_facts.txt
 - runs/ADBE/sources/README.md
+- StockResearch ADBE valuation — 5Y weekly TTM P/E percentile, updated 2026-09-18
+- TGMCharts ADBE valuation cross-check — P/OCF, EV/EBITDA and P/S 5Y percentiles
 
 The report separates filing/company-reported historical facts from modeled DCF assumptions. GPT-5.6 Sol reports were authored in-session and validated/aggregated by the deterministic harness; no separate live OpenAI API adapter call was used.
