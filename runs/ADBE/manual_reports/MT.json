@@ -1,0 +1,106 @@
+{
+  "agent_id": "MT",
+  "ticker": "ADBE",
+  "as_of_date": "2026-09-18",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 80,
+  "confidence_0_1": 0.8,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "AI gets commoditized at the model layer, which favors Adobe's distribution and workflow ownership.",
+  "bear_case": "If agentic tools bypass Adobe file/workflow standards, switching costs can erode quickly.",
+  "thesis": "The moat is under pressure at the model layer but remains resilient at the workflow/ecosystem layer. Adobe's best defense is not having the best standalone model; it is making AI a feature across a deeply embedded creative/document/marketing stack.",
+  "evidence": [
+    {
+      "claim": "Total ARR was $27.50B in Q3.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "27.50",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "RPO remained $22.16B in Q3.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "22.16",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "AI-first ARR grew >150% y/y, indicating AI is being absorbed into the ecosystem.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": ">150%",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+  ],
+  "unknowns": [
+    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+  ],
+  "falsifiers": [
+    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "ARR, subscription revenue, usage and AI monetization do not show persistent moat shrinkage."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained high-single-digit+ growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 80,
+      "rationale": "Workflow depth, file formats, skills and enterprise integrations still create meaningful switching costs."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 80,
+      "rationale": "Installed base, assets, templates, enterprise data and app integrations reinforce ecosystem value."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 80,
+      "rationale": "Adobe can bundle third-party models and Firefly inside workflows, reducing dependence on model-level differentiation."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    }
+  ]
+}
