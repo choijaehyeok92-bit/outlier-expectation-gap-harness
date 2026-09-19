@@ -1,0 +1,156 @@
+{
+  "agent_id": "EV",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 48,
+  "confidence_0_1": 0.84,
+  "bull_score": 56,
+  "bear_score": 30,
+  "bull_case": "AI/HPC, N2/A16 and advanced packaging can drive owner FCF/share toward the Bull path despite higher capex.",
+  "bear_case": "If overseas-cost dilution and capex absorb AI-era revenue growth, value can fall materially below current price.",
+  "thesis": "TSM is no longer cheap on the locked owner-FCF DCF, but it does not require a Bull+ outcome. Current price is ~1.15x Base and ~0.72x Bull. The investment case therefore needs better-than-Base FCF compounding, not implausible execution.",
+  "evidence": [
+    {
+      "claim": "FY2025 OCF was US$72.52B and capex about US$40.56B.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2Q26 revenue was US$40.20B with 67.7% gross margin and 60.3% operating margin.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/Q2_2026_key_facts.txt",
+      "period": "2Q26",
+      "as_of_date": "2026-07-16",
+      "value": "40.20/67.7/60.3",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Locked Bear/Base/Bull values are $120.10/$377.78/$600.72.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/README.md",
+      "period": "10y DCF",
+      "as_of_date": "2026-09-18",
+      "value": "120.10/377.78/600.72",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Overseas fabs carry structurally higher costs; customer concentration and Taiwan/export-control tail risks remain material."
+  ],
+  "unknowns": [
+    "Long-run overseas-fab margin dilution",
+    "AI/HPC demand duration beyond the current capacity-constrained cycle",
+    "Customer mix after N2/A16 scale-up"
+  ],
+  "falsifiers": [
+    "A sustained loss of leading-edge share, repeated yield delays, or owner FCF/share stagnation despite rising capex would weaken the thesis."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is above Base but remains well below Bull; the exact predicate of requiring an unrealistic Bull+ case is not established."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth through the capex cycle",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "3Q26 results, N2 ramp, CoWoS/advanced packaging capacity, overseas-fab margin, top-customer concentration"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 45,
+      "rationale": "price/Base≈1.151 falls in the harness 1.1-1.3 band."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 40,
+      "rationale": "price/Base≈1.151 falls in the harness 1.1-1.3 band."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 65,
+      "rationale": "Base starts near current H1-annualized FCF and allows durable growth, but ~70% of value is terminal and overseas capex is rising."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.16,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          5.5,
+          5.5,
+          6,
+          6.5,
+          7,
+          7.5,
+          8,
+          8.5,
+          9,
+          9.5
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          8.8,
+          10.5,
+          12.5,
+          14.8,
+          17,
+          19.5,
+          22,
+          24.5,
+          27,
+          30
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          9.5,
+          12,
+          15,
+          18.5,
+          22,
+          26,
+          30,
+          34,
+          38,
+          42
+        ]
+      }
+    }
+  }
+}

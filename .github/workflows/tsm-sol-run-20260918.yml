@@ -1,0 +1,133 @@
+name: TSM GPT-5.6 Sol harness run 2026-09-18
+
+on:
+  pull_request:
+    branches: [run/tsm-2026-09-18-sol]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  harness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/tsm-2026-09-18-sol
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute TSM harness with early-exit gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/execution.log) 2>&1
+
+          python harness.py selftest
+          python harness.py init TSM --as-of 2026-09-18
+
+          cp runs/TSM/manual_inputs/company_context.json runs/TSM/company_context.json
+          mkdir -p runs/TSM/sources
+          cp runs/TSM/manual_sources/* runs/TSM/sources/
+
+          python harness.py freeze TSM --provider openai --model gpt-5.6-sol --reasoning-effort high
+          python harness.py plan TSM | tee runlogs/plan_initial.txt
+
+          for a in EV AS DI TQ; do
+            python harness.py prompt TSM "$a" --out "runs/TSM/${a}_prompt.md"
+            cp "runs/TSM/manual_reports/${a}.json" "runs/TSM/reports/${a}.json"
+            python harness.py validate TSM "$a"
+          done
+
+          python harness.py aggregate TSM > runlogs/aggregate_after_triage.json
+          python harness.py digest TSM
+          python harness.py plan TSM | tee runlogs/plan_after_triage.txt
+
+          if grep -q "EARLY EXIT" runlogs/plan_after_triage.txt; then
+            echo "TSM EARLY EXIT triggered after EV/AS/DI/TQ."
+          else
+            echo "No triage early exit. Continuing full pipeline."
+
+            for a in SL CP MT RF MA FS; do
+              python harness.py prompt TSM "$a" --out "runs/TSM/${a}_prompt.md"
+              cp "runs/TSM/manual_reports/${a}.json" "runs/TSM/reports/${a}.json"
+              python harness.py validate TSM "$a"
+            done
+
+            python harness.py validate TSM MO
+            python harness.py aggregate TSM > runlogs/aggregate_pre_phase3.json
+            python harness.py digest TSM
+
+            for a in ED RT; do
+              python harness.py prompt TSM "$a" --out "runs/TSM/${a}_prompt.md"
+              cp "runs/TSM/manual_reports/${a}.json" "runs/TSM/reports/${a}.json"
+              python harness.py validate TSM "$a"
+            done
+
+            python harness.py aggregate TSM > runlogs/aggregate_pre_ic.json
+            python harness.py digest TSM
+            python harness.py plan TSM | tee runlogs/plan_pre_ic.txt
+
+            if grep -q "EARLY EXIT" runlogs/plan_pre_ic.txt; then
+              echo "TSM EARLY EXIT triggered at pre-IC plan; IC intentionally skipped."
+            else
+              echo "No pre-IC early exit. Running IC."
+              python harness.py prompt TSM IC --out runs/TSM/IC_prompt.md
+              cp runs/TSM/manual_reports/IC.json runs/TSM/reports/IC.json
+              python harness.py validate TSM IC
+            fi
+          fi
+
+          python harness.py validate TSM
+          python harness.py plan TSM | tee runlogs/plan_final.txt
+          python harness.py digest TSM
+          python harness.py aggregate TSM | tee runlogs/aggregate_final.json
+
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          run=Path("runs/TSM")
+          agg=json.loads((run/"aggregate.json").read_text())
+          mo=json.loads((run/"reports/MO.json").read_text()) if (run/"reports/MO.json").exists() else {}
+          ic=json.loads((run/"reports/IC.json").read_text()) if (run/"reports/IC.json").exists() else {}
+          tri=(Path("runlogs/plan_after_triage.txt").read_text() if Path("runlogs/plan_after_triage.txt").exists() else "")
+          pre=(Path("runlogs/plan_pre_ic.txt").read_text() if Path("runlogs/plan_pre_ic.txt").exists() else "")
+          stage="triage" if "EARLY EXIT" in tri else ("pre_ic" if "EARLY EXIT" in pre else None)
+          v={
+            "ticker":"TSM","as_of_date":"2026-09-18",
+            "score_100":agg["score_100"],"score_100_ex_valuation":agg["score_100_ex_valuation"],
+            "classification":agg["classification"],"archetype":agg["archetype"]["id"],
+            "secondary_archetypes":agg["archetype"].get("secondary",[]),
+            "hard_veto_status":agg["hard_veto_status"],
+            "ic_state":agg["mechanical_pre_ic_state"],
+            "position_range":agg["position_range_pre_ic"],
+            "macro_pacing_multiplier":mo.get("risk_budget_multiplier"),
+            "ic_verdict":ic.get("verdict") if ic.get("analysis_status")=="complete" else None,
+            "early_exit":stage is not None,"early_exit_stage":stage,
+            "reachable_archetypes_raw":agg["reachable_archetypes_raw"],
+            "valuation_model":agg["valuation_model"],"provider_calibration":agg["provider_calibration"],
+            "note":"Agent reports were authored by GPT-5.6 Sol in this ChatGPT session and executed through the deterministic repository harness; no separate OpenAI API adapter call was made."
+          }
+          (run/"final_verdict.json").write_text(json.dumps(v,ensure_ascii=False,indent=2))
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/TSM
+          if ! git diff --cached --quiet; then
+            git commit -m "persist: TSM harness outputs 2026-09-18"
+            git push origin HEAD:work/tsm-2026-09-18-sol
+          fi
+
+          cat runs/TSM/final_verdict.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TSM-gpt-5.6-sol-harness-2026-09-18
+          path: |
+            runs/TSM
+            runlogs

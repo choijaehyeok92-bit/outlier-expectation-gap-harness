@@ -1,0 +1,102 @@
+{
+  "agent_id": "SL",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 90.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 98.5,
+  "bear_score": 72.5,
+  "bull_case": "N2/A16 and advanced packaging deepen TSMC's role as the performance/capacity bottleneck for AI compute.",
+  "bear_case": "Geopolitical concentration, customer concentration and global-fab cost dilution are the main structural offsets.",
+  "thesis": "TSMC is the structural leader in dedicated foundry and a core bottleneck supplier for leading-edge compute. Its edge combines process technology, yield learning, customer trust, capacity scale, packaging and ecosystem depth.",
+  "evidence": [
+    {
+      "claim": "2025 7nm-and-below accounted for 74% of wafer revenue.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2Q26 advanced nodes were 77% of wafer revenue.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/Q2_2026_key_facts.txt",
+      "period": "2Q26",
+      "as_of_date": "2026-07-16",
+      "value": "77%",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Jan-Aug 2026 revenue grew 39.3% y/y.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/2026_monthly_revenue.txt",
+      "period": "Jan-Aug 2026",
+      "as_of_date": "2026-09-10",
+      "value": "39.3%",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Overseas fabs carry structurally higher costs; customer concentration and Taiwan/export-control tail risks remain material."
+  ],
+  "unknowns": [
+    "Long-run overseas-fab margin dilution",
+    "AI/HPC demand duration beyond the current capacity-constrained cycle",
+    "Customer mix after N2/A16 scale-up"
+  ],
+  "falsifiers": [
+    "A sustained loss of leading-edge share, repeated yield delays, or owner FCF/share stagnation despite rising capex would weaken the thesis."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth through the capex cycle",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "3Q26 results, N2 ramp, CoWoS/advanced packaging capacity, overseas-fab margin, top-customer concentration"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 90,
+      "rationale": "AI/HPC and advanced compute require increasingly complex leading-edge manufacturing and packaging."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 95,
+      "rationale": "TSMC defines the commercial leading-edge foundry benchmark across process, yield, capacity and ecosystem."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 85,
+      "rationale": "HPC, smartphone, IoT/auto and specialty/packaging provide several demand axes, though customer concentration is high."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    }
+  ]
+}

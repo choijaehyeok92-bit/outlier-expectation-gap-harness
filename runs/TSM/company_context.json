@@ -1,0 +1,37 @@
+{
+  "ticker": "TSM",
+  "company_name": "Taiwan Semiconductor Manufacturing Company Limited",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 434.67,
+  "shares_diluted": 5186504904.2,
+  "market_cap_usd": 2254418086708.6,
+  "enterprise_value": 2175720000000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "User-uploaded TSMC FY2025 Form 20-F",
+    "TSMC 2Q26 earnings release and management report dated 2026-07-16",
+    "TSMC 2026 monthly revenue through August 2026",
+    "FinanceCharts 2026-09-18 TSM close $434.67"
+  ],
+  "special_questions": [
+    "Can TSMC sustain leading-edge process and advanced-packaging leadership while global fab expansion raises capital intensity and overseas cost dilution?",
+    "Does AI/HPC demand create enough owner-FCF/share growth to justify the 2026-09-18 valuation?",
+    "How should customer concentration and Taiwan/geopolitical tail risk be treated without double-counting them as ordinary valuation downside?"
+  ],
+  "net_cash_per_share": 15.1704,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "No reproducible 5Y owner-FCF valuation percentile frozen; archetype decision does not require it because price/Base > 0.85.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  }
+}

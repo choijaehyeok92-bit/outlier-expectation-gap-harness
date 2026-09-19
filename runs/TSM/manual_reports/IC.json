@@ -1,0 +1,65 @@
+{
+  "agent_id": "IC",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 76.32,
+  "confidence_0_1": 0.85,
+  "thesis": "TSM is expected to classify as a Compounder with exceptional structural leadership, moat, reinvestment economics and financial survival, offset by a current price about 15% above locked Base value and moderate asymmetry. The correct posture is not aggressive value buying but a normal candidate position paced by valuation and macro/geopolitical uncertainty.",
+  "evidence": [
+    {
+      "claim": "2Q26 gross margin 67.7%, operating margin 60.3% and advanced-node mix 77%.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/Q2_2026_key_facts.txt",
+      "period": "2Q26",
+      "as_of_date": "2026-07-16",
+      "value": "67.7/60.3/77",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Jan-Aug 2026 revenue grew 39.3%.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/2026_monthly_revenue.txt",
+      "period": "Jan-Aug 2026",
+      "as_of_date": "2026-09-10",
+      "value": "39.3%",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Current/Base≈1.151; Base/Bull $377.78/$600.72.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/README.md",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "1.151/377.78/600.72",
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "Current valuation already discounts substantial AI/HPC durability.",
+    "Overseas fab economics and customer/geopolitical concentration cap position size."
+  ],
+  "unknowns": [
+    "Long-run overseas margin dilution",
+    "N2/A16 pricing and packaging returns",
+    "Customer concentration trajectory"
+  ],
+  "falsifiers": [
+    "If calibrated MT/RF/MA/FS fail Compounder thresholds or a Hard Veto becomes unresolved/confirmed, sizing should fall to watch/0%."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "consistent with Base path",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "3Q26 results and 2027 capex outlook"
+  ],
+  "verdict": "support"
+}
