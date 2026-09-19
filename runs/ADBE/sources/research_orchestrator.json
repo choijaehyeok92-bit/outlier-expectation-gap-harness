@@ -1,0 +1,427 @@
+{
+  "schema_version": "1.0",
+  "ticker": "ADBE",
+  "company_name": "Adobe Inc.",
+  "as_of_date": "2026-09-18",
+  "role": "research_orchestrator",
+  "pass": 1,
+  "input_assessment": {
+    "existing_run": "runs/ADBE already existed and was frozen before this pass; init was not rerun to avoid overwriting verified inputs.",
+    "user_uploaded_normalized_extract": {
+      "internal_as_of_date": "2026-09-10",
+      "status": "supplementary_partial_extract",
+      "note": "The uploaded extract indexes 13 Adobe documents but contains only a small selected fact set; its own QA warnings state that core income statement, balance-sheet and cash-flow priority metrics are not sufficiently present to estimate. It is therefore not promoted as a replacement canonical normalized_financials.json."
+    },
+    "frozen_facts_protected": true
+  },
+  "research_summary": {
+    "questions_requested": 5,
+    "questions_resolved": 2,
+    "questions_partial": 2,
+    "questions_unresolved": 1,
+    "new_primary_evidence": 10,
+    "new_secondary_evidence": 0,
+    "verified_fact_conflicts": 0,
+    "requires_refreeze": true
+  },
+  "questions": [
+    {
+      "research_question_id": "RQ-AI-ARR-001",
+      "question": "Adobe의 AI-first ending ARR 절대 규모와 제품별 구성·증분성을 cutoff 이전 1차 자료로 분리할 수 있는가?",
+      "trigger": [
+        "CP/MT/RF/EV/AS/DI unknown: long-run AI monetization and AI-first ARR incrementality",
+        "ED unknown: AI-first ARR composition",
+        "RT unknown: true incremental AI ARR"
+      ],
+      "status": "partial",
+      "evidence": [
+        {
+          "evidence_id": "SUP-AI-ARR-Q2-001",
+          "claim": "Q2 FY2026 종료 시점 Adobe AI-first ARR exceeded $500M and more than tripled year over year.",
+          "value": 500000000,
+          "value_qualifier": ">",
+          "unit": "USD ARR",
+          "source_tier": 2,
+          "source_type": "company_earnings_release",
+          "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/11606202/a5543arefgt.pdf",
+          "source_section": "Adobe Reports Record Q2 Results",
+          "period": "Q2 FY2026 ended 2026-05-29",
+          "publication_date": "2026-06-11",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "ai_monetization",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": true,
+          "confidence": 0.99
+        },
+        {
+          "evidence_id": "SUP-AI-ARR-Q3-002",
+          "claim": "Q3 FY2026 종료 시점 Adobe AI-first ending ARR exceeded $650M and grew more than 150% year over year.",
+          "value": 650000000,
+          "value_qualifier": ">",
+          "unit": "USD ARR",
+          "source_tier": 2,
+          "source_type": "company_earnings_script",
+          "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/01906202/c6yetrerew.pdf",
+          "source_section": "Q3 FY2026 Earnings Script and Slides",
+          "period": "Q3 FY2026 ended 2026-08-28",
+          "publication_date": "2026-09-10",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "ai_monetization",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": true,
+          "confidence": 0.99
+        },
+        {
+          "evidence_id": "SUP-AI-FIREFLY-Q2-003",
+          "claim": "Q2 FY2026 종료 시점 Firefly ending ARR across Firefly App, Firefly credit packs and Firefly Enterprise was approaching $300M.",
+          "value": 300000000,
+          "value_qualifier": "approaching",
+          "unit": "USD ARR",
+          "source_tier": 2,
+          "source_type": "company_earnings_script",
+          "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/11606202/c5y6yteraf.pdf",
+          "source_section": "Creative & Marketing Professionals",
+          "period": "Q2 FY2026 ended 2026-05-29",
+          "publication_date": "2026-06-11",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "ai_monetization",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": true,
+          "confidence": 0.98
+        },
+        {
+          "evidence_id": "SUP-AI-FIREFLY-Q3-004",
+          "claim": "Q3 FY2026 Firefly ending ARR across Firefly Apps and Firefly credit packs grew 40% quarter over quarter; creative freemium MAU crossed 100M and grew over 70% year over year.",
+          "value": null,
+          "unit": null,
+          "source_tier": 2,
+          "source_type": "company_earnings_script",
+          "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/01906202/c6yetrerew.pdf",
+          "source_section": "Creative & Marketing Professionals",
+          "period": "Q3 FY2026 ended 2026-08-28",
+          "publication_date": "2026-09-10",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "ai_adoption",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": true,
+          "confidence": 0.99,
+          "definition_note": "Q3 wording covers Firefly Apps + credit packs, while Q2 wording explicitly also included Firefly Enterprise. No Q3 absolute Firefly ARR is derived from the Q2 amount."
+        }
+      ],
+      "remaining_unknowns": [
+        "Exact product/customer composition of the >$650M AI-first ARR.",
+        "How much AI-first ARR is incremental new spend versus bundled, migrated or reclassified existing ARR.",
+        "Overlap between AI-first ARR and Firefly, Acrobat AI Assistant, GenStudio/AEP/AEM product ARR.",
+        "Same-definition Firefly ARR time series across Q2 and Q3."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-RF-FIREFLY-002",
+      "question": "Adobe가 Firefly의 inference cost, gross margin 또는 contribution margin을 cutoff 이전에 직접 공시했는가?",
+      "trigger": [
+        "RF/EV unknown: Firefly inference economics",
+        "ED unknown: normalized Firefly inference margin"
+      ],
+      "status": "unresolved",
+      "evidence": [],
+      "search_record": [
+        "Reviewed Adobe Q1-Q3 FY2026 earnings releases/scripts and Q2 FY2026 Form 10-Q.",
+        "Found Firefly ARR, usage, MAU and customer-adoption disclosures but no Firefly-specific inference cost, gross margin, contribution margin or normalized unit-economics disclosure."
+      ],
+      "remaining_unknowns": [
+        "Firefly inference cost per generation/credit.",
+        "Firefly-specific gross margin or contribution margin.",
+        "Third-party model inference economics versus Adobe-owned Firefly model economics."
+      ],
+      "searched_but_not_found": true,
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-FS-DEBT-003",
+      "question": "2027~2035년 Adobe의 senior-note maturity wall과 cutoff 이전 가용 유동성은 무엇인가?",
+      "trigger": [
+        "FS criterion: liquidity/leverage and stress survival",
+        "User-uploaded normalized extract warns debt principal amounts were not extractable from its excerpts"
+      ],
+      "status": "resolved",
+      "evidence": [
+        {
+          "evidence_id": "SUP-FS-DEBT-NOTES-005",
+          "claim": "As of 2026-05-29 Adobe had $6.15B senior notes at par: $850M due Feb-2027, $500M Apr-2027, $800M Jan-2028, $750M Apr-2029, $700M Jan-2030, $1.30B Feb-2030, $750M Apr-2034, and $500M Jan-2035. Current senior-note principal was $1.35B.",
+          "value": 6150000000,
+          "unit": "USD principal",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000112/adbe-20260529.htm",
+          "source_section": "Note 14 - Debt / Senior Notes",
+          "period": "2026-05-29",
+          "publication_date": "2026-06-15",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "refinancing_risk",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": true,
+          "confidence": 0.99
+        },
+        {
+          "evidence_id": "SUP-FS-LIQUIDITY-006",
+          "claim": "As of 2026-05-29 Adobe had $500M commercial paper outstanding (carrying value $494M, weighted-average interest rate 3.76%) and no borrowings on its $1.5B revolving credit facility.",
+          "value": 1500000000,
+          "unit": "USD revolving facility",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000112/adbe-20260529.htm",
+          "source_section": "Liquidity and Capital Resources; Commercial Paper Program",
+          "period": "2026-05-29",
+          "publication_date": "2026-06-15",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "liquidity_buffer",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": true,
+          "confidence": 0.99
+        }
+      ],
+      "verified_fact_reconciliation": {
+        "verified_value": "Q2 FY2026 total debt $6.645B in sources/README.md",
+        "new_primary_components": "Senior-note carrying value about $6.15B plus commercial paper carrying value $494M",
+        "conflict_with_verified_fact": false,
+        "possible_reason": "component disclosure reconciles to the frozen aggregate within rounding/derivative and issuance-cost presentation"
+      },
+      "remaining_unknowns": [
+        "Exact Q3 FY2026 balance-sheet debt after 2026-05-29; the Q3 earnings release did not include the full debt footnote.",
+        "Refinancing terms ultimately obtained for the $1.35B 2027 current senior notes."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-MA-REPURCHASE-004",
+      "question": "Adobe의 최근 자사주 매입 집행가격을 1차 자료에서 검증할 수 있는가?",
+      "trigger": [
+        "MA capital-allocation observable",
+        "Special question: whether aggressive repurchasing offsets dilution at current valuation"
+      ],
+      "status": "partial",
+      "evidence": [
+        {
+          "evidence_id": "SUP-MA-BUYBACK-Q2-007",
+          "claim": "Q2 FY2026 monthly repurchases were 2.9M shares at $260.24, 2.5M at $241.27, and 3.1M at $245.90; total 8.5M shares.",
+          "value": 8500000,
+          "unit": "shares",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000112/adbe-20260529.htm",
+          "source_section": "Issuer Purchases of Equity Securities",
+          "period": "Q2 FY2026 ended 2026-05-29",
+          "publication_date": "2026-06-15",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "capital_allocation",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": true,
+          "confidence": 0.99
+        },
+        {
+          "evidence_id": "SUP-MA-BUYBACK-Q2-008",
+          "claim": "Share-weighting Adobe's three disclosed Q2 FY2026 monthly repurchase prices gives an estimated quarterly average repurchase price of about $249.43/share.",
+          "value": 249.4307,
+          "unit": "USD/share",
+          "source_tier": 1,
+          "source_type": "calculation_from_10-Q",
+          "source": "Derived only from SUP-MA-BUYBACK-Q2-007",
+          "source_section": "Issuer Purchases of Equity Securities",
+          "period": "Q2 FY2026 ended 2026-05-29",
+          "publication_date": "2026-06-15",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "estimate",
+          "economic_driver": "capital_allocation",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": true,
+          "confidence": 0.99
+        },
+        {
+          "evidence_id": "SUP-MA-ASR-2025-009",
+          "claim": "The user-provided normalized extract records settlement of Adobe's March 2025 ASR at 9.1M total shares and $383.14 average price per share.",
+          "value": 383.14,
+          "unit": "USD/share",
+          "source_tier": 1,
+          "source_type": "10-Q extracted in user-provided normalized pack",
+          "source": "ADBE uploaded normalized-facts extract; source document Adobe 10-Q filed 2025-06-25",
+          "source_section": "ASR disclosure",
+          "period": "2025 ASR",
+          "publication_date": "2025-06-25",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "capital_allocation",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.9
+        }
+      ],
+      "remaining_unknowns": [
+        "Exact average repurchase price for the 9.5M shares repurchased in Q3 FY2026; the 2026-09-10 earnings release discloses share count but not average price.",
+        "A single verified four-quarter weighted-average repurchase price using identical definitions for every quarter."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-MA-SEMRUSH-005",
+      "question": "Semrush 인수의 cutoff 이전 투자액과 초기 기여는 무엇이며 실현 투자수익률까지 검증 가능한가?",
+      "trigger": [
+        "IC unknown: future acquisition returns",
+        "MA capital-allocation review",
+        "Q2 Total ARR includes acquired Semrush ARR"
+      ],
+      "status": "partial",
+      "evidence": [
+        {
+          "evidence_id": "SUP-MA-SEMRUSH-010",
+          "claim": "Adobe completed the Semrush acquisition on 2026-04-28 for $1.87B, primarily cash consideration.",
+          "value": 1870000000,
+          "unit": "USD purchase consideration",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000112/adbe-20260529.htm",
+          "source_section": "Note 3 - Acquisitions",
+          "period": "2026-04-28",
+          "publication_date": "2026-06-15",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "acquisition_return",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": true,
+          "confidence": 0.99
+        },
+        {
+          "evidence_id": "SUP-MA-SEMRUSH-011",
+          "claim": "Q2 FY2026 Total Adobe ARR of $27.10B included approximately $480M from Semrush; customer-group subscription revenue included approximately $40M from Semrush.",
+          "value": 480000000,
+          "unit": "USD ARR",
+          "source_tier": 2,
+          "source_type": "company_earnings_release",
+          "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/11606202/a5543arefgt.pdf",
+          "source_section": "Second Quarter FY2026 Financial Highlights",
+          "period": "Q2 FY2026 ended 2026-05-29",
+          "publication_date": "2026-06-11",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "acquisition_return",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99
+        },
+        {
+          "evidence_id": "SUP-MA-SEMRUSH-012",
+          "claim": "Purchase consideration divided by Q2 disclosed Semrush ARR is approximately 3.9x; this is an acquisition-price/ARR estimate, not a realized return metric.",
+          "value": 3.8958,
+          "unit": "x purchase_price/ARR",
+          "source_tier": 1,
+          "source_type": "calculation_from_primary_sources",
+          "source": "Derived from SUP-MA-SEMRUSH-010 and SUP-MA-SEMRUSH-011",
+          "source_section": "Acquisition consideration and Q2 ARR disclosure",
+          "period": "2026-04-28 to 2026-05-29",
+          "publication_date": "2026-06-15",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "estimate",
+          "economic_driver": "acquisition_return",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.95
+        }
+      ],
+      "remaining_unknowns": [
+        "Standalone Semrush gross margin, FCF, retention and post-close organic growth.",
+        "Synergy realization and incremental Adobe customer acquisition attributable to Semrush.",
+        "Realized ROIC/IRR on the Semrush acquisition."
+      ],
+      "excluded_post_cutoff": []
+    }
+  ],
+  "economic_normalization_candidates": [
+    {
+      "item": "acquisition_amortization",
+      "source": "user-provided normalized extract",
+      "possible_adjustment": true,
+      "normalized_out": false,
+      "note": "The extract contains amortization schedules with review flags; no economic normalization conclusion is made."
+    },
+    {
+      "item": "litigation_and_derivative_actions",
+      "source": "user-provided adjustment candidates",
+      "possible_adjustment": true,
+      "normalized_out": false,
+      "note": "Potential exposures were identified in the extract, but damages were unspecified; no adjustment value is invented."
+    }
+  ],
+  "candidate_new_evidence": [
+    "SUP-AI-ARR-Q2-001",
+    "SUP-AI-ARR-Q3-002",
+    "SUP-AI-FIREFLY-Q2-003",
+    "SUP-AI-FIREFLY-Q3-004",
+    "SUP-FS-DEBT-NOTES-005",
+    "SUP-FS-LIQUIDITY-006",
+    "SUP-MA-BUYBACK-Q2-007",
+    "SUP-MA-BUYBACK-Q2-008",
+    "SUP-MA-ASR-2025-009",
+    "SUP-MA-SEMRUSH-010",
+    "SUP-MA-SEMRUSH-011",
+    "SUP-MA-SEMRUSH-012"
+  ],
+  "conflicts": [],
+  "excluded_post_cutoff": [],
+  "requires_refreeze_items": [
+    {
+      "item_id": "REFREEZE-ADBE-001",
+      "subject": "Add cutoff-valid AI ARR, debt maturity, repurchase-price and Semrush evidence to the ADBE frozen source bundle",
+      "requires_refreeze": true,
+      "value_impact": "undetermined by Research Orchestrator"
+    }
+  ],
+  "recommended_harness_reruns": [
+    "CP",
+    "MT",
+    "RF",
+    "MA",
+    "FS",
+    "EV",
+    "AS",
+    "DI",
+    "ED"
+  ],
+  "rerun_rationale": {
+    "CP": "AI-first ARR absolute scale and Firefly adoption directly address the customer-value/monetization unknown.",
+    "MT": "AI monetization/adoption evidence may affect whether generative AI is widening or eroding workflow moat.",
+    "RF": "AI unit economics remain unresolved while new monetization scale is verified; both affect reinvestment/FCF interpretation.",
+    "MA": "Q2 repurchase prices and Semrush acquisition evidence directly affect capital-allocation review.",
+    "FS": "Exact debt maturity wall, commercial paper and undrawn revolver refine stress-survival inputs.",
+    "EV": "AI-first ARR scale is a valuation driver, while Firefly economics remain unresolved; domain agent must decide whether frozen scenario paths need revision.",
+    "AS": "AI monetization scale versus unresolved unit economics affects upside/downside path quality.",
+    "DI": "Absolute AI-first ARR and usage/adoption metrics are direct commercialization evidence.",
+    "ED": "New cutoff-valid primary evidence and the partial user-provided normalized extract require evidence-quality refresh."
+  },
+  "not_recommended_for_rerun": {
+    "SL": "No new category-leadership observable or independent market-share fact was obtained beyond monetization/adoption evidence already routed to CP/MT/DI.",
+    "TQ": "No turnaround-specific operating inflection evidence was added.",
+    "RT": "No new Hard Veto candidate is established by this pass. Revisit after affected domain/ED reruns if planner requests it.",
+    "MO": "No macro component changed in this pass.",
+    "IC": "Do not rerun directly from Research Orchestrator output; wait for deterministic planner after affected domains are refreshed."
+  },
+  "orchestrator_boundary": "No domain score, valuation conclusion, Hard Veto status, archetype, position sizing or IC state was modified by Research Orchestrator."
+}
