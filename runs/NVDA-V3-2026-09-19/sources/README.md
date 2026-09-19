@@ -84,6 +84,18 @@ instead of inventing calculations.
   capital expenditures 8. **Total $366B.**
 - Land, power and shell guarantees for AI cloud partners' data center leases on their default:
   notional 3,529, classified as credit derivatives; partners escrowed 712.
+- **Separate additional commitments:** AI-cloud agreements totaled **$36B** as of 2026-07-26. Under these
+  arrangements AI clouds procure NVIDIA data-center infrastructure while NVIDIA commits cloud services;
+  the AI clouds may redirect that capacity to third parties, and NVIDIA may participate in qualifying
+  third-party revenue share. This $36B category is distinct from the $29B cloud-service-agreement line
+  in the $366B general commitments table.
+- **Post-quarter SB Energy guarantee:** in August 2026 NVIDIA entered guarantees capped at **$105B**
+  for approximately 4.25 GW at SB Energy's PORTS Technology Campus on behalf of an OpenAI affiliate.
+  The guarantees phase in as nine data-center phases commence (first expected FY2029), are triggered
+  by specified tenant defaults, decline as OpenAI performs under the leases, and are limited to defined
+  lease/power payments. NVIDIA also holds an option to support approximately 3.8 additional GW.
+  Including the $3.5B AI-cloud guarantees, the 10-Q reports **$108.5B maximum gross guarantee exposure**.
+  These guarantees are contingent exposures and are not added to the $366B July-26 commitments table.
 - Public company warrants received in Q2 FY27: notional 4,800, Level 3 fair value 824. Equity forward 1,000.
 - The 10-Q states NVIDIA is "securing and providing guarantees of land, power, shell, and capacity of select
   data center infrastructure that customers require to deploy our products," and that AI clouds and AI model
