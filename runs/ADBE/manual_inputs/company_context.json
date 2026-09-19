@@ -16,7 +16,9 @@
     "User-uploaded Adobe FY2024 Form 10-K filed 2025-01-13",
     "User-uploaded Adobe Q2 FY2026 Form 10-Q filed 2026-06-15",
     "Adobe Q3 FY2026 earnings release filed 2026-09-10",
-    "2026-09-18 closing price $248.92"
+    "2026-09-18 closing price $248.92",
+    "StockResearch ADBE valuation: TTM P/E 6th percentile of 5Y weekly observations, updated 2026-09-18",
+    "TGMCharts ADBE valuation cross-check: P/OCF 5th percentile, EV/EBITDA 6th percentile, P/S 5th percentile, data as of 2026-09-09"
   ],
   "special_questions": [
     "Is generative AI structurally eroding Adobe's creative moat or expanding its addressable market and pricing power?",
@@ -24,8 +26,8 @@
     "Does aggressive repurchasing offset SBC and acquisition dilution at current valuation?"
   ],
   "net_cash_per_share": -2.5635,
-  "valuation_percentile_5y": null,
-  "valuation_metric": "No reproducible full 5-year valuation percentile frozen; valuation uses locked owner-FCF/share DCF.",
+  "valuation_percentile_5y": 0.06,
+  "valuation_metric": "TTM P/E percentile over weekly 5-year observations, 2021-09-18 through 2026-09-18; 6th percentile. StockResearch updated 2026-09-18. Corroborated by 5-year P/OCF 5th percentile, EV/EBITDA 6th percentile, and P/S 5th percentile from TGMCharts.",
   "valuation_overrides": {
     "required_return": null,
     "terminal_multiples": {
