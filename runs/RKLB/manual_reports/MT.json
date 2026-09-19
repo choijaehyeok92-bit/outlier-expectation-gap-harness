@@ -1,0 +1,108 @@
+{
+  "agent_id": "MT",
+  "ticker": "RKLB",
+  "as_of_date": "2026-09-18",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 76.75,
+  "confidence_0_1": 0.82,
+  "bull_score": 86.75,
+  "bear_score": 56.75,
+  "bull_case": "Flight heritage plus owned applications can deepen switching costs and cross-sell.",
+  "bear_case": "SpaceX scale and defense-prime incumbency can cap pricing power, while acquisition breadth may add complexity rather than moat.",
+  "thesis": "The moat is broadening from Electron launch heritage into vertically integrated mission capability. It is strengthening, but not yet a fully proven compounding ecosystem because Neutron and post-Iridium integration remain forward-looking.",
+  "evidence": [
+    {
+      "claim": "Rocket Lab launched 21 Electron missions in 2025.",
+      "source_type": "filing",
+      "source": "runs/RKLB/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-10",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 launch backlog exceeded 90 missions.",
+      "source_type": "filing",
+      "source": "runs/RKLB/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-10",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Space Systems represented roughly two-thirds of FY2025 revenue.",
+      "source_type": "filing",
+      "source": "runs/RKLB/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-26",
+      "value": "402.8/601.8",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Rocket Lab remains cash-flow negative on a standalone basis and the Iridium transaction materially increases integration, financing and dilution complexity."
+  ],
+  "unknowns": [
+    "Neutron commercial readiness and launch economics",
+    "Post-close Iridium integration synergies",
+    "Long-run dilution cadence and owner FCF/share conversion"
+  ],
+  "falsifiers": [
+    "A major Neutron delay, persistent launch failures, failure to close/integrate Iridium, or continued double-digit share dilution without per-share FCF progress would weaken the thesis."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Revenue, backlog, launch cadence and product breadth do not show persistent moat shrinkage."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive inflection",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Neutron schedule, backlog conversion, post-close Iridium FCF, diluted share count, ATM usage"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 80,
+      "rationale": "Flight heritage, launch integration, qualification and spacecraft program continuity create switching friction."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 75,
+      "rationale": "Vertical integration and growing installed flight heritage reinforce customer trust, but a classic network effect is still limited."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 75,
+      "rationale": "Electron, HASTE, Neutron, spacecraft/components and Iridium create multiple defenses against any one launch market becoming commoditized."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Rocket Lab remains in a high-investment, acquisition-heavy transition with large execution variance."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "Rocket Lab remains in a high-investment, acquisition-heavy transition with large execution variance."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Rocket Lab remains in a high-investment, acquisition-heavy transition with large execution variance."
+    }
+  ]
+}

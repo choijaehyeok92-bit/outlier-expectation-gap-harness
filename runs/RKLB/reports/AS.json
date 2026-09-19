@@ -1,0 +1,113 @@
+{
+  "agent_id": "AS",
+  "ticker": "RKLB",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 74.5,
+  "confidence_0_1": 0.82,
+  "bull_score": 84.5,
+  "bear_score": 54.5,
+  "bull_case": "A combined Rocket Lab/Iridium platform can become a vertically integrated space infrastructure company with several high-value growth vectors.",
+  "bear_case": "If Neutron slips and the acquisition raises complexity faster than cash flow, permanent capital loss can be substantial.",
+  "thesis": "RKLB has Moonshot-like upside optionality: launch, space systems, and recurring satellite applications can each create large value pools. The offset is severe downside if capital-intensive execution fails.",
+  "evidence": [
+    {
+      "claim": "Q2 backlog was $2.36B, +137%.",
+      "source_type": "filing",
+      "source": "runs/RKLB/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-10",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Iridium adds 2025 revenue $871.7M and OEBITDA $495.3M.",
+      "source_type": "other",
+      "source": "runs/RKLB/sources/IRIDIUM_2026_key_facts.txt",
+      "period": "FY2025 Iridium",
+      "as_of_date": "2026-09-15",
+      "value": "871.7/495.3",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Bull/current≈3.48x and Bear/current≈0.27x.",
+      "source_type": "other",
+      "source": "runs/RKLB/sources/README.md",
+      "period": "10y DCF",
+      "as_of_date": "2026-09-18",
+      "value": "3.48/0.27",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Rocket Lab remains cash-flow negative on a standalone basis and the Iridium transaction materially increases integration, financing and dilution complexity."
+  ],
+  "unknowns": [
+    "Neutron commercial readiness and launch economics",
+    "Post-close Iridium integration synergies",
+    "Long-run dilution cadence and owner FCF/share conversion"
+  ],
+  "falsifiers": [
+    "A major Neutron delay, persistent launch failures, failure to close/integrate Iridium, or continued double-digit share dilution without per-share FCF progress would weaken the thesis."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is below Base."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Downside is execution-driven, but the funded acquisition, large liquidity base and Iridium cash generation do not establish disproportionate bankruptcy/forced-financing risk."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive inflection",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Neutron schedule, backlog conversion, post-close Iridium FCF, diluted share count, ATM usage"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 90,
+      "rationale": "Bull/current≈3.48x with at least three independent paths: Neutron, space systems, and Iridium recurring applications."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 50,
+      "rationale": "Bear/current≈0.27x; transaction-adjusted balance sheet is not net cash after the pending acquisition."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 85,
+      "rationale": "Scenarios explicitly separate transaction funding, dilution, Neutron execution, and recurring Iridium cash flow."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Rocket Lab remains in a high-investment, acquisition-heavy transition with large execution variance."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Rocket Lab remains in a high-investment, acquisition-heavy transition with large execution variance."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Rocket Lab remains in a high-investment, acquisition-heavy transition with large execution variance."
+    }
+  ]
+}
