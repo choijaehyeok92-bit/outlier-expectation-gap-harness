@@ -22,4 +22,24 @@ def render(strategy, workflow, calibration):
     lines += ['', '## State bands','', '| Minimum | Mechanical state | Position cap |','|---:|---|---|']
     for b in strategy['state_thresholds']['bands']:
         lines += [f"| {b['min']} | {b['state']} | {b['position_range']} |"]
+    disp = strategy['state_thresholds'].get('dispersion_policy')
+    if disp:
+        lines += ['', '## Bull/bear dispersion', '', disp['note'], '', f"Metric: {disp['metric']}", '',
+            '| Mean skew at least | Label | Position bands removed |', '|---:|---|---:|']
+        for b in disp['bands']:
+            lines += [f"| {'(any)' if b['min_skew'] is None else b['min_skew']} | {b['label']} | {b['reduce_bands']} |"]
+        lines += ['', 'The spread never changes a score, an archetype or a veto, and never widens a position.', '']
+    lines += ['## Observable anchor interpolation', '',
+        'Continuous single-metric tables interpolate between rows; counts and gated tables stay stepped.', '',
+        '| Criterion | Mode | Reachable scores (5-point grid) |', '|---|---|---|']
+    from . import anchors
+    for domain, rubric in sorted(calibration['rubrics'].items()):
+        for criterion in rubric['criteria']:
+            table = (criterion.get('observable_anchors') or {}).get('table')
+            if not table:
+                continue
+            mode = criterion['observable_anchors'].get('interpolation', {}).get('mode', 'none')
+            reachable = anchors.reachable_scores(table, calibration.get('score_step', 5))
+            shown = ', '.join(f'{v:g}' for v in reachable)
+            lines += [f"| `{domain}.{criterion['id']}` | {mode} | {shown} |"]
     return '\n'.join(lines)+'\n'

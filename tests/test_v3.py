@@ -415,3 +415,135 @@ class V3Tests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+
+class AnchorInterpolationTests(unittest.TestCase):
+    """Continuous anchors gain resolution without moving a band centre."""
+
+    def tables(self):
+        for domain, rubric in h.CALIBRATION['rubrics'].items():
+            for criterion in rubric['criteria']:
+                anchors_spec = criterion.get('observable_anchors')
+                if anchors_spec:
+                    yield f"{domain}.{criterion['id']}", criterion, anchors_spec
+
+    def test_band_centre_is_unchanged_by_interpolation(self):
+        from harness_core import anchors
+        step = h.CALIBRATION.get('score_step', 5)
+        checked = 0
+        for name, _criterion, spec in self.tables():
+            if spec.get('interpolation', {}).get('mode') != 'band_centre':
+                continue
+            for row in spec['table']:
+                lo, hi = row.get('lo'), row.get('hi')
+                if lo is None or hi is None:
+                    continue
+                centre = (lo + hi) / 2
+                self.assertEqual(anchors.interpolate(spec['table'], centre, step), row['score'],
+                                 f'{name} moved at the centre of {row["test"]}')
+                checked += 1
+        self.assertGreater(checked, 0)
+
+    def test_interpolation_is_continuous_across_band_edges(self):
+        from harness_core import anchors
+        for name, _criterion, spec in self.tables():
+            if spec.get('interpolation', {}).get('mode') != 'band_centre':
+                continue
+            edges = sorted({r['hi'] for r in spec['table'] if r.get('hi') is not None}
+                           & {r['lo'] for r in spec['table'] if r.get('lo') is not None})
+            for edge in edges:
+                width = max(abs(edge), 1.0)
+                below = anchors.interpolate(spec['table'], edge - width * 1e-9, None)
+                above = anchors.interpolate(spec['table'], edge, None)
+                self.assertAlmostEqual(below, above, places=4, msg=f'{name} jumps at {edge}')
+
+    def test_discrete_and_adjective_anchors_are_never_interpolated(self):
+        from harness_core import anchors
+        for name, _criterion, spec in self.tables():
+            if spec.get('interpolation', {}).get('mode') == 'band_centre':
+                continue
+            self.assertEqual(spec.get('interpolation', {}).get('mode'), 'none', f'{name} must declare a mode')
+            self.assertTrue(spec['interpolation'].get('reason'), f'{name} must say why it stays stepped')
+            self.assertFalse(anchors.interpolable(_criterion), f'{name} must not carry numeric bounds')
+        for rubric in h.CALIBRATION['rubrics'].values():
+            for criterion in rubric['criteria']:
+                if 'observable_anchors' not in criterion:
+                    self.assertNotIn('interpolation', criterion,
+                                     'adjective-anchored criteria stay on the published anchors')
+
+    def test_every_policy_threshold_is_reachable(self):
+        """A criterion threshold the anchor grid cannot produce is a silent, stricter gate."""
+        from harness_core import anchors
+        step = h.CALIBRATION.get('score_step', 5)
+        grids = {name: anchors.reachable_scores(spec['table'], step) for name, _c, spec in self.tables()}
+        checked = 0
+        for archetype in h.ARCHETYPES['types']:
+            for condition in archetype['conditions']:
+                field = condition['field']
+                if not field.startswith('criterion.'):
+                    continue
+                grid = grids.get(field.split('.', 1)[1])
+                if grid is None:
+                    continue
+                self.assertIn(condition['value'], grid,
+                              f"{archetype['id']}: {field} {condition['op']} {condition['value']} "
+                              f"is unreachable on the anchor grid {grid}")
+                checked += 1
+        self.assertGreater(checked, 0)
+
+
+class DispersionTests(unittest.TestCase):
+    """Bull/bear width reaches deployment, never the score."""
+
+    def policy(self):
+        return h.STATE_POLICY['dispersion_policy']
+
+    def test_downside_skew_narrows_and_upside_never_widens(self):
+        from harness_core.state import dispersion_review, narrowed_position
+        wide_down = {'d': {'decision_score': 70, 'bull_score': 75, 'bear_score': 40}}
+        wide_up = {'d': {'decision_score': 70, 'bull_score': 100, 'bear_score': 65}}
+        self.assertGreater(dispersion_review(wide_down, self.policy())['reduce_bands'], 0)
+        self.assertEqual(dispersion_review(wide_up, self.policy())['reduce_bands'], 0)
+        bands = sorted(h.STATE_POLICY['bands'], key=lambda b: -b['min'])
+        floor_state = self.policy()['never_below_state']
+        floor = next(i for i, b in enumerate(bands) if b['state'] == floor_state)
+        for index, band in enumerate(bands):
+            narrowed = narrowed_position(band['state'], 1, h.STATE_POLICY)
+            if narrowed is not None:
+                self.assertEqual(narrowed, bands[min(index + 1, max(floor, index))]['position_range'])
+
+    def test_dispersion_never_rejects_on_its_own(self):
+        """Rejection belongs to scores and vetoes; dispersion only narrows deployment."""
+        from harness_core.state import narrowed_position
+        reject = next(b['position_range'] for b in h.STATE_POLICY['bands'] if b['state'] == 'REJECT')
+        for band in h.STATE_POLICY['bands']:
+            for steps in range(1, len(h.STATE_POLICY['bands']) + 2):
+                narrowed = narrowed_position(band['state'], steps, h.STATE_POLICY)
+                if narrowed is not None and band['state'] != 'REJECT':
+                    self.assertNotEqual(narrowed, reject,
+                                        f"dispersion pushed {band['state']} into REJECT")
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root_patch = patch.object(h, 'ROOT', Path(self.tmp.name))
+        self.root_patch.start()
+        self.addCleanup(self.root_patch.stop)
+        self.addCleanup(self.tmp.cleanup)
+        context = h.load_json(REPO/'templates/company_context.json')
+        context.update(ticker='SYNTH', as_of_date='2026-09-19', current_price=100,
+                       net_cash_per_share=5, market_cap_usd=100e9)
+        h.dump_json(h.run_dir('SYNTH')/'company_context.json', context)
+
+    def test_dispersion_changes_no_score_archetype_or_veto(self):
+        agents = [a for a in h.MANIFEST if a['agent_id'] not in ('TQ', 'IC')]
+        reports = [report(a) for a in agents]
+        baseline = h.compute_aggregate('SYNTH', copy.deepcopy(reports))
+        for r in reports:
+            if r.get('bear_score') is not None:
+                r['bear_score'] = 0
+                r['bull_score'] = min(100, r['score_0_100'] + 1)
+        skewed = h.compute_aggregate('SYNTH', reports)
+        self.assertEqual(baseline['score_100'], skewed['score_100'])
+        self.assertEqual(baseline['archetype'], skewed['archetype'])
+        self.assertEqual(baseline['veto_gate']['overall'], skewed['veto_gate']['overall'])
+        self.assertGreater(skewed['dispersion_review']['mean_skew'], baseline['dispersion_review']['mean_skew'])

@@ -6,6 +6,7 @@ import argparse, hashlib, json, os, re, statistics, shutil, subprocess, sys
 from . import rubric, calibration, archetypes, macro_geo, planner
 from .conditions import check_condition, number
 from .evidence import concentration_flags
+from .state import dispersion_review, narrowed_position
 
 ROOT=Path(__file__).resolve().parents[1]
 STRATEGY=json.loads((ROOT/'config/strategy.json').read_text(encoding='utf-8'))
@@ -336,8 +337,14 @@ def compute_aggregate(ticker, reports):
     if early_exit: archetype['reason']='조기 종료: 현재 decision score와 조건으로 도달 가능한 유형 없음'
     pos={**{b['state']:b['position_range'] for b in STATE_POLICY['bands']},**STATE_POLICY['non_score_states']}[state]
     if archetype['position_cap'] and state in BUY_STATES: pos=archetype['position_cap']
+    # Bull/bear width never moves a score; downside-skewed dispersion narrows deployment only.
+    dispersion=dispersion_review(ds,STATE_POLICY.get('dispersion_policy'))
+    if dispersion and dispersion['reduce_bands'] and state in BUY_STATES and not archetype['position_cap']:
+        narrowed=narrowed_position(state,dispersion['reduce_bands'],STATE_POLICY)
+        if narrowed:
+            dispersion['position_before']=pos; pos=narrowed
     di=ds.get('disruptive_innovation'); tq=ds.get('turnaround_quality')
-    result={**VERSIONS,'as_of_date':ctx['as_of_date'],'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'turnaround_quality_score':tq['score'] if tq else None,'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'provider_calibration':provider_cal,'run_manifest':manifest}
+    result={**VERSIONS,'as_of_date':ctx['as_of_date'],'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'turnaround_quality_score':tq['score'] if tq else None,'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'provider_calibration':provider_cal,'dispersion_review':dispersion,'run_manifest':manifest}
     result.update(archetype_fit=archetype['archetype_fit'],
         evidence_concentration_flags=concentration_flags(reports),macro_geo_overlay=overlay,
         diagnostics={'turnaround_candidate':planner.diagnostic_enabled(ctx)},ic_verdict=ic,early_exit_record=None)
@@ -528,7 +535,9 @@ def cmd_prompt(args):
             json.dumps({'global_bands':CALIBRATION['global_bands'],'domain':rb,
                         'anchor_policy':CALIBRATION.get('anchor_policy',{})},ensure_ascii=False,indent=2),
             'criterion은 5점 단위로 채점한다. score_0_100은 subscores 고정 가중평균과 같아야 한다. self-confidence와 bull/bear 폭은 자동 감점하지 않는다.',
-            'anchor_policy를 반드시 지킨다. observable_anchors가 있는 criterion은 판정표가 앵커 형용사보다 우선한다. 85 이상과 40 미만에는 각각 상단·하단 게이트가 걸려 있다.']
+            'anchor_policy를 반드시 지킨다. observable_anchors가 있는 criterion은 판정표가 앵커 형용사보다 우선한다. 85 이상과 40 미만에는 각각 상단·하단 게이트가 걸려 있다.',
+            'interpolation.mode=band_centre인 관측표는 행 사이를 보간한다. 밴드 안 위치 p=(x-lo)/(hi-lo)에 대해 p<0.5면 S-(0.5-p)(S-S_prev), p>=0.5면 S+(p-0.5)(S_next-S)이고 결과를 5점 단위로 반올림한다. 밴드 중앙은 표 값과 같다. rationale에 사용한 지표값 x와 보간 결과를 함께 적는다.',
+            'interpolation.mode=none인 표와 형용사 앵커 criterion은 보간하지 않고 표 값을 그대로 쓴다.']
     owned=[v for v,ids in VETO_REVIEWERS.items() if aid in ids]
     if owned:
         P+=['','## 필수 Hard Veto 판정',

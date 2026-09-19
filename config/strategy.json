@@ -117,7 +117,8 @@
             "field": "criterion.reinvestment_fcf.reinvestment_runway",
             "op": ">=",
             "value": 70,
-            "fit_weight": 1.0
+            "fit_weight": 1.0,
+            "note": "관측표가 band_centre 보간을 쓰므로 70은 도달 가능한 값이다(흡수율 약 31.67% 이상). 보간 도입 전에는 표 격자가 [50,65,80,90]뿐이라 70이 존재하지 않았고 실질 기준이 80(흡수율 35%)이었다."
           }
         ],
         "position_guidance": "장기 보유가 기본이다. 밸류에이션 과열 시 매도보다 추가매수 속도를 조절한다.",
@@ -383,6 +384,30 @@
         "4": "6-8%",
         "5": "up to ~10%"
       }
+    },
+    "dispersion_policy": {
+      "note": "도메인별 bull/bear 폭의 하방 치우침을 포지션에만 반영한다. 점수·유형판정·Hard Veto에는 영향이 없다. 상방 치우침은 포지션을 넓히지 않는다 — 원칙 8(포지션 확대는 증거 증가에 비례)에 따라 축소 방향으로만 작동한다. 축소는 never_below_state에서 멈춘다 — 거부는 점수·Hard Veto의 몫이고 분산이 대신 내릴 판정이 아니다.",
+      "metric": "scored 도메인 전체에 대한 skew = (score - bear_score) - (bull_score - score) 의 평균. 양수면 하방 폭이 더 넓다는 뜻이다.",
+      "applies_to": "position_range_pre_ic, 매수 상태에서만",
+      "never_widens": true,
+      "bands": [
+        {
+          "min_skew": 12.0,
+          "label": "severe_downside_skew",
+          "reduce_bands": 2
+        },
+        {
+          "min_skew": 6.0,
+          "label": "downside_skew",
+          "reduce_bands": 1
+        },
+        {
+          "min_skew": null,
+          "label": "balanced_or_upside_skew",
+          "reduce_bands": 0
+        }
+      ],
+      "never_below_state": "STARTER_OR_WATCH"
     }
   },
   "strategy_version": "3.0",

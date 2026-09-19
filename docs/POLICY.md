@@ -71,3 +71,32 @@ Provider calibration mode: **shadow**.
 | 70 | NORMAL_CANDIDATE | 2-4% |
 | 60 | STARTER_OR_WATCH | 0-2% |
 | 0 | REJECT | 0% |
+
+## Bull/bear dispersion
+
+도메인별 bull/bear 폭의 하방 치우침을 포지션에만 반영한다. 점수·유형판정·Hard Veto에는 영향이 없다. 상방 치우침은 포지션을 넓히지 않는다 — 원칙 8(포지션 확대는 증거 증가에 비례)에 따라 축소 방향으로만 작동한다. 축소는 never_below_state에서 멈춘다 — 거부는 점수·Hard Veto의 몫이고 분산이 대신 내릴 판정이 아니다.
+
+Metric: scored 도메인 전체에 대한 skew = (score - bear_score) - (bull_score - score) 의 평균. 양수면 하방 폭이 더 넓다는 뜻이다.
+
+| Mean skew at least | Label | Position bands removed |
+|---:|---|---:|
+| 12.0 | severe_downside_skew | 2 |
+| 6.0 | downside_skew | 1 |
+| (any) | balanced_or_upside_skew | 0 |
+
+The spread never changes a score, an archetype or a veto, and never widens a position.
+
+## Observable anchor interpolation
+
+Continuous single-metric tables interpolate between rows; counts and gated tables stay stepped.
+
+| Criterion | Mode | Reachable scores (5-point grid) |
+|---|---|---|
+| `asymmetry.upside_path` | none | 30, 50, 60, 75, 90 |
+| `asymmetry.permanent_loss` | band_centre | 25, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90 |
+| `disruptive_innovation.optionality_incumbent_response` | none | 30, 50, 70, 85 |
+| `financial_survival.dilution_offbalance` | none | 30, 55, 70, 90 |
+| `management_allocation.capital_allocation` | band_centre | 30, 40, 45, 50, 55, 60, 65, 70, 75, 80 |
+| `moat_trajectory.network_data_ecosystem` | none | 25, 55, 75, 85, 90 |
+| `reinvestment_fcf.reinvestment_runway` | band_centre | 50, 60, 65, 70, 75, 80, 85, 90 |
+| `structural_leadership.durability_risks` | none | 45, 60, 75, 85 |

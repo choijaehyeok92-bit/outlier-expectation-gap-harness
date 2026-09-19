@@ -986,6 +986,79 @@
     },
     "reason": null
   },
+  "dispersion_review": {
+    "metric": "scored 도메인 전체에 대한 skew = (score - bear_score) - (bull_score - score) 의 평균. 양수면 하방 폭이 더 넓다는 뜻이다.",
+    "mean_skew": 8.72,
+    "label": "downside_skew",
+    "reduce_bands": 1,
+    "widest_domain": "expectation_valuation",
+    "most_downside_skewed": "customer_product",
+    "by_domain": [
+      {
+        "domain": "asymmetry",
+        "spread": 50.0,
+        "upside_width": 18.25,
+        "downside_width": 31.75,
+        "skew": 13.5
+      },
+      {
+        "domain": "customer_product",
+        "spread": 35.0,
+        "upside_width": 9.75,
+        "downside_width": 25.25,
+        "skew": 15.5
+      },
+      {
+        "domain": "disruptive_innovation",
+        "spread": 30.0,
+        "upside_width": 11.25,
+        "downside_width": 18.75,
+        "skew": 7.5
+      },
+      {
+        "domain": "expectation_valuation",
+        "spread": 65.0,
+        "upside_width": 32.0,
+        "downside_width": 33.0,
+        "skew": 1.0
+      },
+      {
+        "domain": "financial_survival",
+        "spread": 35.0,
+        "upside_width": 14.0,
+        "downside_width": 21.0,
+        "skew": 7.0
+      },
+      {
+        "domain": "management_allocation",
+        "spread": 30.0,
+        "upside_width": 11.25,
+        "downside_width": 18.75,
+        "skew": 7.5
+      },
+      {
+        "domain": "moat_trajectory",
+        "spread": 35.0,
+        "upside_width": 11.25,
+        "downside_width": 23.75,
+        "skew": 12.5
+      },
+      {
+        "domain": "reinvestment_fcf",
+        "spread": 33.0,
+        "upside_width": 13.5,
+        "downside_width": 19.5,
+        "skew": 6.0
+      },
+      {
+        "domain": "structural_leadership",
+        "spread": 33.0,
+        "upside_width": 12.5,
+        "downside_width": 20.5,
+        "skew": 8.0
+      }
+    ]
+  },
   "run_manifest": {
     "strategy_version": "3.0",
     "schema_version": "3.0",
@@ -1140,7 +1213,8 @@
             "field": "criterion.reinvestment_fcf.reinvestment_runway",
             "op": ">=",
             "value": 70,
-            "fit_weight": 1.0
+            "fit_weight": 1.0,
+            "note": "관측표가 band_centre 보간을 쓰므로 70은 도달 가능한 값이다(흡수율 약 31.67% 이상). 보간 도입 전에는 표 격자가 [50,65,80,90]뿐이라 70이 존재하지 않았고 실질 기준이 80(흡수율 35%)이었다."
           }
         ],
         "missing_conditions": [],
@@ -1357,7 +1431,8 @@
               "field": "criterion.reinvestment_fcf.reinvestment_runway",
               "op": ">=",
               "value": 70,
-              "fit_weight": 1.0
+              "fit_weight": 1.0,
+              "note": "관측표가 band_centre 보간을 쓰므로 70은 도달 가능한 값이다(흡수율 약 31.67% 이상). 보간 도입 전에는 표 격자가 [50,65,80,90]뿐이라 70이 존재하지 않았고 실질 기준이 80(흡수율 35%)이었다."
             }
           ],
           "missing_conditions": [],
