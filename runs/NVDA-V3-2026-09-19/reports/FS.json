@@ -5,13 +5,13 @@
   "domain": "financial_survival",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 76.0,
+  "score_0_100": 76,
   "confidence_0_1": 0.8,
   "bull_score": 90,
   "bear_score": 55,
   "bull_case": "순현금 $23.2B, TTM OCF $134.4B와 owner FCF $119.8B가 총차입 $33.4B를 크게 웃돈다. H1에 차입 $24.9B를 늘렸지만 동시에 자사주 $39.0B와 지분투자 $42.4B를 집행해 생존용 조달이 아니다. 매출 급감에도 필수 투자와 부채 상환을 내부현금으로 방어할 여력이 높다.",
-  "bear_case": "$366B 약정은 TTM 매출의 1.21배이며 $279B 공급약정, 장기 데이터센터 리스와 고객보증이 수요 오판 시 현금·재고·신용손실로 전환될 수 있다. AR과 재고가 H1에 각각 $24.6B와 $10.2B 늘어 현금전환이 악화됐고, 일부 지분자산은 변동성과 유동성 제한이 있다.",
-  "thesis": "기준일 2026-09-19. NVIDIA의 재무 생존력은 강하다. 현금·시장성 채권 $56.6B가 총차입 $33.4B를 넘어 순현금이고, TTM OCF $134.4B는 총차입의 약 4배다. H1 owner FCF도 $66.0B로 양수다. 희석주식수는 전년 동기 대비 약 1.0% 감소해 SBC가 장기 과도희석으로 이어지지 않았다. 핵심 위험은 파산이 아니라 TTM 매출의 1.21배인 $366B 약정과 고객 인프라 보증이다. 이 부외축 때문에 dilution_offbalance는 55점에 머물지만 외부자본 의존·과도희석·사업가치 소멸 Veto는 모두 반증된다.",
+  "bear_case": "수요 급락과 고객 신용사건이 겹치면 $279B 공급약정, $56B 추가 약정, $108.5B 최대 총보증이 동시에 현금흐름을 압박할 수 있다. 특히 SB Energy/OpenAI 보증의 확률가중 손실·회수권은 공시되지 않아 tail stress를 정량화할 수 없다.",
+  "thesis": "재무 생존력은 여전히 강하지만 부외 노출의 총규모가 기존 보고보다 크다. 순현금 $23.2B, TTM OCF $134.4B로 영업 생존은 외부자본에 의존하지 않는다. 한편 일반 commitments $366B 외에 additional commitments $56B와 maximum gross guarantees $108.5B가 공시돼 단순 합산 gross exposure는 약 $530.5B, TTM 매출의 1.75배다. $105B SB Energy 보증은 FY2029 이후 단계적·조건부라 현재 현금부채로 볼 수 없다. observable anchor는 여전히 1~2배 구간 55다.",
   "evidence": [
     {
       "evidence_id": "SUP-FS-LIQUIDITY-001",
@@ -48,13 +48,13 @@
     },
     {
       "evidence_id": "SUP-FS-COMMITMENTS-004",
-      "economic_driver": "off_balance_sheet_commitments",
-      "claim": "Future commitments were $366B, equal to approximately 1.21x estimated TTM revenue; they included $279B supply/capacity, $29B cloud services, $25B uncommenced leases, $25B equity investments and $8B capex.",
+      "economic_driver": "off_balance_commitments_and_guarantees",
+      "claim": "Q2 FY27 filing은 일반 future commitments $366B, 별도 Additional Commitments $56B, maximum gross guarantees $108.5B를 공시한다. 단순 합산 $530.5B는 TTM 매출 $303.0B의 약 1.75배다. $105B SB Energy 보증은 FY2029 이후 단계적으로 활성화되는 조건부 최대 총액이며 즉시 부채가 아니다.",
       "source_type": "filing",
-      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1670-L1760; sources/README.md",
-      "period": "2026-07-26",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1700-L1818, L2193-L2197; sources/financials/normalized_financials.json FACT-0102",
+      "period": "2026-07-26 / August 2026 post-quarter event",
       "as_of_date": "2026-08-26",
-      "value": 1.208,
+      "value": 530500,
       "fact_or_estimate": "estimate"
     },
     {
@@ -87,10 +87,10 @@
     "China export controls already caused inventory and purchase-obligation charges, demonstrating that regulatory shocks can crystallize commitment losses."
   ],
   "unknowns": [
-    "The proportion of the $279B supply/capacity commitment that is legally noncancelable after stress-case demand reductions is not fully disclosed.",
-    "Counterparty credit quality and recovery rates for AI-cloud guarantees, warrants and equity-linked customer support are not disclosed.",
-    "The June 2026 debt issuance maturity-by-tranche and fixed/floating rate exposure require the note exhibits for a full maturity-wall stress test.",
-    "The amount of marketable equity securities immediately saleable without lock-up or market impact is uncertain."
+    "$279B supply/capacity commitments의 stress-case 취소·재조정 가능 비중.",
+    "$108.5B maximum gross guarantees의 phase별 활성 금액, counterparty PD, recovery/recourse.",
+    "$36B AI-cloud agreements와 $20B third-party leases의 제3자 사용으로 감소하는 실제 약정액.",
+    "June 2026 신규채권의 만기별 원금·쿠폰과 fixed/floating 노출."
   ],
   "uncertainties": [
     {
@@ -152,9 +152,9 @@
     }
   ],
   "next_checks": [
-    "다음 10-Q에서 $279B 공급약정의 취소가능액·지급시기·재고충당금 확인",
-    "AI-cloud 보증과 equity-linked support의 counterparty별 손실·escrow·회수 현황 확인",
-    "2026년 신규채권의 만기별 원금·쿠폰과 향후 5년 부채상환표 갱신"
+    "다음 10-Q에서 $279B 공급약정과 $56B 추가약정의 취소가능액·지급시기 갱신",
+    "$108.5B 보증의 phase별 활성 노출·손실·escrow·회수 현황 확인",
+    "신규채권 만기벽과 향후 5년 상환표 갱신"
   ],
   "verdict": "support",
   "subscores": [
@@ -166,12 +166,13 @@
     {
       "criterion_id": "stress_survival",
       "score_0_100": 75,
-      "rationale": "내부현금으로 부채와 핵심 투자를 방어할 수 있어 75의 내부현금 방어 앵커를 선택한다. 약정·고객보증의 동시 손실이 정량화되지 않아 스트레스에서도 공격적 투자가 가능한 90은 배제한다."
+      "rationale": "순현금과 TTM OCF가 강해 75 '내부현금 방어' 앵커를 유지한다. 다만 $108.5B 최대 총보증의 확률가중 손실·회수율과 $56B 추가 약정의 스트레스 취소가능성이 미공시여서 90 '스트레스에서도 투자'는 배제한다."
     },
     {
       "criterion_id": "dilution_offbalance",
       "score_0_100": 55,
-      "rationale": "희석주식수는 약 1.0% 감소해 희석축은 90이지만, $366B 약정/TTM 매출 1.21배는 부외축의 1~2배 구간 55다. 두 축 중 낮은 점수를 택하라는 observable anchor를 적용했다."
+      "rationale": "희석주식수는 약 1.0% 감소해 희석축은 90이다. 부외축은 일반 commitments $366B + additional commitments $56B + maximum gross guarantees $108.5B를 단순 합산한 $530.5B / TTM 매출 $303.0B ≈1.75배로 관측표 1~2배 구간 55다. 보증은 조건부 최대 총액이므로 현재부채로 보지 않지만 observable anchor의 gross exposure에는 포함한다."
     }
-  ]
+  ],
+  "rerun_note": "Research Orchestrator pass 4 반영. FACT-0102의 $108.5B maximum gross guarantees와 $56B additional commitments를 기존 $366B 일반 commitments와 구분했다. dilution_offbalance observable은 단순 gross exposure/TTM revenue 1.75배로 여전히 55 구간이라 총점은 유지한다."
 }
