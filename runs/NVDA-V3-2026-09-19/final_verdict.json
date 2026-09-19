@@ -4,8 +4,8 @@
   "decision_policy_version": "3.0",
   "as_of_date": "2026-09-19",
   "ticker": "NVDA-V3-2026-09-19",
-  "score_100": 70.69,
-  "score_100_ex_valuation": 73.81,
+  "score_100": 70.06,
+  "score_100_ex_valuation": 73.07,
   "coverage_weight": 100,
   "classification": "Emerging Outlier",
   "disruptive_innovation_score": 78.75,
@@ -52,10 +52,10 @@
       "criteria": {
         "customer_roi": 80.0,
         "retention_usage": 70.0,
-        "unit_economics": 75.0
+        "unit_economics": 50.0
       },
-      "raw_weighted_median": 75.25,
-      "score": 75.25,
+      "raw_weighted_median": 69.0,
+      "score": 69.0,
       "spread": 35.0,
       "avg_confidence": 0.7,
       "unknown_penalty": 0,
@@ -68,13 +68,13 @@
         "minor": 0
       },
       "score_source": "rubric_subscores",
-      "raw_score": 75.25,
-      "calibrated_score": 70.25,
-      "calibrated_shadow_score": 70.25,
-      "decision_score": 75.25,
+      "raw_score": 69.0,
+      "calibrated_score": 64.0,
+      "calibrated_shadow_score": 64.0,
+      "decision_score": 69.0,
       "provider_offset": -5.0,
-      "score_before_provider_calibration": 75.25,
-      "raw_before_provider_calibration": 75.25
+      "score_before_provider_calibration": 69.0,
+      "raw_before_provider_calibration": 69.0
     },
     "moat_trajectory": {
       "bull_score": 85,
@@ -327,10 +327,10 @@
       "criteria": {
         "customer_roi": 80.0,
         "retention_usage": 70.0,
-        "unit_economics": 75.0
+        "unit_economics": 50.0
       },
-      "raw_weighted_median": 75.25,
-      "score": 75.25,
+      "raw_weighted_median": 69.0,
+      "score": 69.0,
       "spread": 35.0,
       "avg_confidence": 0.7,
       "unknown_penalty": 0,
@@ -343,13 +343,13 @@
         "minor": 0
       },
       "score_source": "rubric_subscores",
-      "raw_score": 75.25,
-      "calibrated_score": 70.25,
-      "calibrated_shadow_score": 70.25,
-      "decision_score": 75.25,
+      "raw_score": 69.0,
+      "calibrated_score": 64.0,
+      "calibrated_shadow_score": 64.0,
+      "decision_score": 69.0,
       "provider_offset": -5.0,
-      "score_before_provider_calibration": 75.25,
-      "raw_before_provider_calibration": 75.25
+      "score_before_provider_calibration": 69.0,
+      "raw_before_provider_calibration": 69.0
     },
     {
       "domain": "moat_trajectory",
@@ -988,11 +988,11 @@
   },
   "dispersion_review": {
     "metric": "scored 도메인 전체에 대한 skew = (score - bear_score) - (bull_score - score) 의 평균. 양수면 하방 폭이 더 넓다는 뜻이다.",
-    "mean_skew": 8.72,
+    "mean_skew": 7.33,
     "label": "downside_skew",
     "reduce_bands": 1,
     "widest_domain": "expectation_valuation",
-    "most_downside_skewed": "customer_product",
+    "most_downside_skewed": "asymmetry",
     "by_domain": [
       {
         "domain": "asymmetry",
@@ -1004,9 +1004,9 @@
       {
         "domain": "customer_product",
         "spread": 35.0,
-        "upside_width": 9.75,
-        "downside_width": 25.25,
-        "skew": 15.5
+        "upside_width": 16.0,
+        "downside_width": 19.0,
+        "skew": 3.0
       },
       {
         "domain": "disruptive_innovation",
@@ -1067,18 +1067,18 @@
     "ticker": "NVDA-V3-2026-09-19",
     "as_of_date": "2026-09-19",
     "frozen": true,
-    "harness_commit": "f39094cd4f5e3b18e84632996f16f8d109bb1015",
+    "harness_commit": "9bc623f58496fbefdae69f84545e80366b8b2ef3",
     "runner": {
       "provider": "openai",
       "model": "gpt-5.6-sol",
       "reasoning_effort": null
     },
-    "frozen_at_utc": "2026-09-19T21:34:50.114136+00:00",
+    "frozen_at_utc": "2026-09-19T21:55:17.597534+00:00",
     "config_files": {
       "config/strategy.json": "863f5e14e80c5a707c58d3b242ec78a0ea9129942c8f1429c8ca982635ee4664",
       "config/workflow.json": "c7882660c714e6101f735607e8116e3965446c692edf2d969ef5a219e3947295",
       "config/agents_manifest.json": "9cbc4db6365dab247827a8c0a913d9062fa3e25c8726a7c32ce5d1547f95feed",
-      "config/calibration.json": "1ef07e5126df6950c39911f575e28ad962608567087e9f91540c7ea9f0153825",
+      "config/calibration.json": "d7bcb1a67a79a6c24aa021a4bd32dafe8057ca1f868dd44865cab6e85068e792",
       "harness.py": "46e9ff70a910bce61d61151457e1c2dba06e2a89d81f5ed7f353a2fca3a4af3d",
       "harness_core/__init__.py": "c26a3aeec387e7849ba5e02816341417f132e2b679c7df63070f643a08147f7a",
       "harness_core/anchors.py": "3f38df3c346eb9a3e0c6f9d728d39db4bac6600965dbeadf87c52c4a64798799",
@@ -1118,22 +1118,23 @@
       "AGENTS.md": "415dc7f5cc8fd0cb7fa814d8cd4f5bd5d7b59042e89086e2d45dad58abb77541"
     },
     "input_files": {
-      "company_context.json": "da075dfb7d18ce542c6577252d9104fb9dfaeb455c799912c349ab62f1d332e3",
+      "company_context.json": "a6f83cce5cadac36ed141d46edf6db2f278584c7ab473c5ce537c3709b43f886",
       "sources/10-K_FY26_filed_2026-02-25.txt": "ecdf737864760d1f5bc77960aa29e0a3a32fb281c24a16475e860aed6d1cb2dd",
       "sources/10-Q_FY27Q1_filed_2026-05-20.txt": "4a52130b998169a87703a4a7d98a2f69110308219a4315b7d896966a31b5198d",
       "sources/10-Q_FY27Q2_filed_2026-08-26.txt": "a856d6a7c093417dda82feb6a13a019d288db2b30cdfa83335de361afa2a565d",
       "sources/8-K_filed_2026-09-03.txt": "aec5133361919ef31fe5a0064f17f24d18f392f3ef80c6be2b05fda8646d4873",
       "sources/INDEX.md": "3a4ecb5697b6a7d6ef37199ebfda4b4a99c9428eac14b18c8c585a272757dd29",
-      "sources/README.md": "527a70d436ccbd1f781b476acd57b1fa83480bc6485681c79b8ecac7839db68b",
+      "sources/README.md": "37c435b095a8690c325936008163ce0e7604b9ba5c0337125726c2c5dd1ecad8",
       "sources/financials/adjustment_candidates.json": "ab557dcfd717660061cf3b59dd05c29401d7132941d607a992180733ceefd680",
       "sources/financials/derived_metrics.json": "55034103244c59cd26352210c6cc44e69b36940a2f655e0f8af6647f7bcfa1ee",
-      "sources/financials/normalized_financials.json": "812a550b0078896d9542fe07a2792ad27b8c99a3c15e6fa72363b9b62415b1e0",
-      "sources/financials/qa_report.json": "7dd4ba7a4da8227b030593bd152539d6f567e5344b134d6e69a36887b8bde478",
+      "sources/financials/normalized_financials.json": "6af02c7d5c7080944dac40452e686a22e3e2e710b2a4ce4a7e88be803de13ec3",
+      "sources/financials/qa_report.json": "9e301c8798cad8af5775f60f08cedd804c4cd7875bf9f9ff22ca394a483f7a12",
       "sources/research_orchestrator.json": "9bff5c892154c030e5506c286752a7b92f8341f00ddf54e6aa30e26ed07489fd",
       "sources/research_orchestrator_pass2_2026-09-19.json": "5b278065b8c80ee0dabd9066f1d9e17d1dc693c67dc96b6ed1902041311744d4",
-      "sources/research_orchestrator_pass3_2026-09-19.json": "25d3b09ae3279789fb3d26157a9a541beb141145c41e6516ded6bbd813534e19"
+      "sources/research_orchestrator_pass3_2026-09-19.json": "25d3b09ae3279789fb3d26157a9a541beb141145c41e6516ded6bbd813534e19",
+      "sources/research_orchestrator_pass4_2026-09-19.json": "1de34991d41404dd41de6efb48fd2b04ea6764ec0cf48bc951aff7120a8c0124"
     },
-    "input_snapshot_sha256": "fa682b2488b17a9310090d2c447680d1ee31d4b26c227a6f92c8ebd63ddf44fd"
+    "input_snapshot_sha256": "27e131bf19f63c3e6eea689cd8c8c4893a262b4e0749d702200f4b9bb6259e6b"
   },
   "archetype_fit": {
     "buffett_value": {

@@ -10,8 +10,8 @@
   "bull_score": 85,
   "bear_score": 35,
   "bull_case": "AI 인프라 수요가 장기화되고 데이터센터 컴퓨트 외 네트워킹·소프트웨어 가치풀이 확대되면 Bull 가치 $431로 현재가의 1.94배다. 순현금과 높은 현금창출력은 재투자를 지원한다. 다만 시가총액이 이미 $5.4T여서 5x·10x보다 약 2x 경로가 현실적이다.",
-  "bear_case": "고객 자금조달 제약, $366B 약정, 중국 시장 상실과 커스텀 실리콘 확산이 겹치면 Bear 가치 $75로 현재가의 0.34배다. 파산 가능성은 낮지만, 피크 수익성과 terminal multiple이 동시에 정상화되면 가격 기준 영구손실 위험은 크다.",
-  "thesis": "기준일 2026-09-19. Bull/현재가 1.94배와 컴퓨트·네트워킹/소프트웨어의 두 상승경로는 대형주 기준 의미 있는 상방을 주지만 5x·10x Power Law 경로는 입증되지 않았다. Bear/현재가 0.34배는 큰 가격 하방을 뜻하나, 순현금 $23.2B와 TTM OCF $134.4B가 총차입 $33.4B를 크게 웃돌아 사업가치 소멸 위험은 낮다. Bear/Base/Bull 확률을 25%/55%/20%로 두면 확률가중 내재가치는 $222.05로 현재가 $222.27와 거의 같다. 현재 기대수익의 비대칭 우위는 중립이다.",
+  "bear_case": "AI-cloud 지원 대상의 매출·AR 비중과 보증의 확률가중 손실이 미공시다. 수요 둔화가 고객 신용악화와 겹치면 매출 감소와 $108.5B maximum gross guarantee exposure의 일부 활성화가 동시 발생할 수 있어 downside correlation이 커진다.",
+  "thesis": "Bull/현재가 1.94배의 두 상승경로는 의미 있지만 Power Law는 아니다. Bear/현재가 0.34배로 가격 하방은 크다. 새로 전파된 $36B AI-cloud agreements와 $108.5B maximum gross guarantees는 수요 둔화와 고객 신용사건이 동시에 발생할 때 하방 상관을 키운다. 다만 $105B 보증은 FY2029 이후 단계적·조건부 maximum cap이고 현재 순현금 $23.2B, TTM OCF $134.4B가 총차입을 크게 웃돈다. 확률가중 손실 자료가 없어 Bear/Base/Bull 확률과 observable subscores는 유지한다.",
   "evidence": [
     {
       "evidence_id": "SUP-AS-UPSIDE-001",
@@ -81,16 +81,16 @@
     }
   ],
   "counterevidence": [
-    "Bull value is only 1.94x current price; at a $5.4T market capitalization, a 5x outcome would require roughly $26.8T of equity value and is not supported by the current scenario set.",
-    "The $366B commitment stack and customer infrastructure guarantees can turn demand overestimation into inventory, capacity and credit losses.",
-    "China data-center compute foreclosure shows that regulation can remove a large market even while consolidated revenue grows.",
-    "The probability set lacks a robust public-company base-rate sample, so the weighted value is a sensitivity framework rather than a statistically estimated forecast."
+    "순현금 $23.2B와 TTM OCF $134.4B는 총차입 $33.4B를 크게 상회해 현재 파산경로를 제한한다.",
+    "$105B SB Energy 보증은 즉시 전액 활성화되는 부채가 아니라 FY2029 이후 9개 phase에 걸친 maximum gross cap이다.",
+    "반대로 지원 대상 매출·AR 비중이 미공시라 수요 둔화와 신용손실의 상관관계를 정량화할 수 없다.",
+    "Bull 경로의 네트워킹·소프트웨어 독립 수익화도 아직 별도 공시가 부족하다."
   ],
   "unknowns": [
-    "Comparable-company base rates for sustaining more than $100B of annual owner FCF and doubling from a $5T-plus market value were not available in the frozen source set.",
-    "The portion of AI-cloud demand enabled by NVIDIA equity investments, guarantees or partner financing is not disclosed.",
-    "The normalized owner-FCF margin after working-capital stabilization and equity-gain removal remains uncertain.",
-    "The share of future value attributable to separately monetized software and networking is not disclosed."
+    "$108.5B maximum gross guarantees의 확률가중 기대손실·회수권·phase별 실제 노출.",
+    "지분투자·AI-cloud agreements·보증 대상 고객의 매출·AR 비중.",
+    "정상화 owner-FCF margin과 네트워킹·소프트웨어의 독립 가치기여.",
+    "$5T+ 시가총액에서 장기적으로 $100B+ owner FCF를 유지한 비교기업 기준율."
   ],
   "uncertainties": [
     {
@@ -147,9 +147,9 @@
     }
   ],
   "next_checks": [
-    "다음 10-Q에서 고객보증·지분투자·AI cloud agreements의 증감과 손실 여부 확인",
-    "Data Center 외 네트워킹·소프트웨어 매출의 독립 성장률과 총이익 기여 확인",
-    "owner FCF 정상화 후 Bear/Base/Bull 확률과 확률가중 가치 재산출"
+    "보증·AI-cloud agreements의 실제 활성 노출과 손실·revenue share 확인",
+    "지원 대상 고객의 매출·AR 및 DSO 추적",
+    "owner FCF 정상화 후 Bear/Base/Bull 확률과 가중가치 재산출"
   ],
   "verdict": "neutral",
   "subscores": [
@@ -161,12 +161,13 @@
     {
       "criterion_id": "permanent_loss",
       "score_0_100": 60,
-      "rationale": "Bear/현재가 0.3374는 표의 0.2~0.4 구간 50점이다. 순현금이고 TTM OCF가 총차입을 상회해 지정 modifier +10을 적용했다."
+      "rationale": "Bear/현재가 0.3374는 큰 가격 하방을 보인다. 정책상 vendor financing은 이 criterion의 uncertainty로 반영한다: $108.5B는 maximum gross exposure이고 $105B는 FY2029 이후 단계적·조건부여서 현재 사업가치 소멸을 직접 뜻하지 않는다. 순현금이고 TTM OCF가 총차입을 상회하는 +10 modifier를 유지해 60점으로 둔다."
     },
     {
       "criterion_id": "probability_calibration",
       "score_0_100": 65,
       "rationale": "25%/55%/20% 확률과 가중가치 민감도를 명시해 50점의 근거 제한 단계는 넘지만, 비교 가능한 mega-cap 기준율이 없어 75점의 기준율 사용 앵커에는 미달한다."
     }
-  ]
+  ],
+  "rerun_note": "Research Orchestrator pass 4 반영. Vendor-financing risk를 permanent_loss의 downside-correlation uncertainty로 명시했지만 maximum gross cap을 현재부채로 처리하지 않았고, 정량 expected-loss 자료가 없어 observable subscore와 확률을 임의 변경하지 않았다."
 }

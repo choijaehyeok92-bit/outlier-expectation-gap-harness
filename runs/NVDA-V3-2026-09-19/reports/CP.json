@@ -5,13 +5,13 @@
   "domain": "customer_product",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 75.25,
+  "score_0_100": 69,
   "confidence_0_1": 0.7,
   "bull_score": 85,
   "bear_score": 50,
   "bull_case": "매출 $96.2B 분기에 gross margin 75.0%, 판관비 1.4%를 기록했고 H1 고객 선수금 유입은 $15.6B이다. 고객은 제품 확보를 위해 선불을 지급하며 Hyperscale과 ACIE 매출이 모두 100% 이상 성장했다. 가격·사용량·규모경제가 동시에 강화되는 모습이다.",
-  "bear_case": "NRR·churn·고객 ROI가 공시되지 않는다. H1 지분증권 매입 $42.4B, AI-cloud 보증 $3.5B 등 고객 자금지원이 있어 자생 수요 비중도 알 수 없다. AR·재고가 H1 OCF에서 $34.8B를 흡수해 회계상 단위경제와 현금 전환이 엇갈린다.",
-  "thesis": "고객가치는 강하게 입증된다. Q2 FY27 매출 $96.2B에서 gross margin 75.0%와 영업이익률 66.2%를 냈고, H1 고객 선수금 유입 $15.6B과 기말 잔액 $2.8B은 지불의사를 보여준다. Hyperscale +102%, ACIE +138%로 수요 기반도 확장됐다. 다만 하드웨어 사업이라 NRR·churn·고객 ROI가 없고, H1 지분증권 매입 $42.4B과 AI-cloud 보증 $3.5B 때문에 자생 수요 비중을 분리할 수 없다. AR·재고의 현금 흡수도 단위경제 판단을 제한한다.",
+  "bear_case": "회계 마진은 강하지만 고객·파트너 지원의 경제적 규모가 기존 보고보다 크다. $36B AI-cloud agreements와 $108.5B maximum gross guarantees가 존재하고 지원 대상 매출·AR 비중은 공시되지 않아 자생 수요와 현금 기준 단위경제를 분리할 수 없다.",
+  "thesis": "고객가치 자체는 강하지만 자생 수요와 경제적 단위경제의 분리는 더 어려워졌다. Q2 매출 $96.2B, gross margin 75.0%, H1 고객 선수금 $15.6B은 지불의사를 입증한다. 반면 frozen 10-Q는 별도 AI-cloud agreements $36B와 SB Energy/OpenAI 관련 $105B 보증을 포함해 총 maximum gross guarantee exposure $108.5B를 공시한다. 지원 대상 매출·AR 귀속액은 미공시다. 따라서 고객가치 Veto는 cleared지만 unit_economics는 '규모경제 확인'보다 '혼재'에 가깝다.",
   "evidence": [
     {
       "claim": "Q2 FY27 매출 $96,221M에서 gross margin 75.0%, operating margin 66.2%, 판관비/매출 1.4%를 기록했다. 낮은 판매비로 높은 가격과 수요를 유지했다.",
@@ -19,7 +19,7 @@
       "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L126-L161, L2091-L2100",
       "period": "FY27 Q2",
       "as_of_date": "2026-07-26",
-      "value": 75.0,
+      "value": 75,
       "fact_or_estimate": "fact",
       "evidence_id": "SUP-CP-CUSTOMER-VALUE-001",
       "economic_driver": "pricing_power_and_customer_value"
@@ -47,12 +47,12 @@
       "economic_driver": "usage_expansion"
     },
     {
-      "claim": "수요의 일부에는 NVIDIA 자금이 연결된다. H1 지분증권 매입 $42,404M, AI-cloud 파트너 리스 보증 $3,529M, 잔여 지분투자 약정 $25B가 공시됐다.",
+      "claim": "수요 지원 구조는 H1 지분증권 매입 $42,404M 외에 별도 AI-cloud agreements $36B와 maximum gross guarantees $108.5B를 포함한다. $108.5B 중 $105B는 SB Energy/OpenAI 관련 조건부 보증으로 FY2029부터 9개 phase에 걸쳐 활성화될 수 있으며 즉시 현금부채는 아니다.",
       "source_type": "filing",
-      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L729-L830, Note 8, Note 10 L1670-L1760",
-      "period": "FY27 H1",
-      "as_of_date": "2026-07-26",
-      "value": 42404,
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1761-L1818, L2193-L2197; sources/financials/normalized_financials.json FACT-0102",
+      "period": "FY27 H1 / August 2026 post-quarter event",
+      "as_of_date": "2026-08-26",
+      "value": 108500,
       "fact_or_estimate": "fact",
       "evidence_id": "SUP-CP-FINANCING-004",
       "economic_driver": "vendor_financing_risk"
@@ -81,15 +81,15 @@
     }
   ],
   "counterevidence": [
-    "하드웨어 사업이라 NRR·GRR·churn·사용량 코호트가 공시되지 않아 유지율을 직접 검증할 수 없다.",
-    "고객의 AI 인프라 투자 회수율은 공개되지 않아 지불의사가 고객 손익에서도 지속 가능한지 미검증이다.",
-    "H1 AR $24.6B와 재고 $10.2B가 현금을 흡수해 회계 마진 개선과 현금 전환이 반대 방향이다.",
-    "ACIE의 빠른 성장은 자금력이 약하고 NVIDIA 금융지원에 의존하는 고객군으로 성장축이 이동한다는 해석도 가능하다."
+    "75.0% gross margin, 66.2% operating margin, 낮은 판관비는 제품 자체의 높은 지불의사와 규모경제를 직접 지지한다.",
+    "H1 고객 선수금 $15.6B과 기말 $2.8B은 일부 고객이 NVIDIA에 선불로 자금을 제공한다는 반대 방향의 증거다.",
+    "$105B SB Energy 보증은 즉시 현금지출이 아니라 FY2029 이후 단계적으로 활성화되는 최대 총액이며 OpenAI의 이행에 따라 감소한다.",
+    "지원 대상 고객의 매출·AR 귀속액이 미공시라 지원 구조가 총수요에서 차지하는 비중은 확정할 수 없다."
   ],
   "unknowns": [
-    "지분투자·보증 대상 기업에서 발생한 매출 비중.",
+    "지분투자·$36B AI-cloud agreements·$108.5B 보증 대상 기업에서 발생한 매출 비중.",
+    "동일 대상에 귀속되는 AR 금액·결제조건·신용도.",
     "고객의 AI 인프라 가동률과 투자 회수 기간.",
-    "AR $63,059M의 고객별 구성과 대손 위험.",
     "공급 약정 $279B 중 확정 고객 주문으로 뒷받침되는 비중."
   ],
   "falsifiers": [
@@ -110,25 +110,79 @@
     }
   ],
   "key_kpis": [
-    {"name": "DSO", "direction": "down", "threshold": "50일 이하", "cadence": "quarterly"},
-    {"name": "고객 선수금 잔액", "direction": "up", "threshold": "$2.8B 이상", "cadence": "quarterly"},
-    {"name": "최대 직접고객 매출 비중", "direction": "down", "threshold": "20% 미만", "cadence": "quarterly"}
+    {
+      "name": "DSO",
+      "direction": "down",
+      "threshold": "50일 이하",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "고객 선수금 잔액",
+      "direction": "up",
+      "threshold": "$2.8B 이상",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "최대 직접고객 매출 비중",
+      "direction": "down",
+      "threshold": "20% 미만",
+      "cadence": "quarterly"
+    }
   ],
   "next_checks": [
-    "Q3 FY27 10-Q에서 AR·DSO·대손충당과 고객 선수금 확인",
-    "지분투자 대상과 매출 인식의 관계에 대한 공시 확인",
-    "공급 약정 $279B의 고객 주문 연동 여부 확인"
+    "Q3 FY27 10-Q에서 지원 대상 고객 매출·AR·DSO·대손충당과 customer advances 확인",
+    "$36B AI-cloud agreements의 제3자 사용·revenue share와 $108.5B 보증의 phase별 활성 노출 확인",
+    "공급 약정 $279B의 고객 주문 연동·취소가능 비중 확인"
   ],
   "verdict": "support",
   "subscores": [
-    {"criterion_id": "customer_roi", "score_0_100": 80, "rationale": "75.0% gross margin, 1.4% 판관비율, $15.6B 고객 선수금은 강한 지불의사를 입증한다. 고객 측 회수율이 없어 90점은 배제한다."},
-    {"criterion_id": "retention_usage", "score_0_100": 70, "rationale": "Hyperscale +102%, ACIE +138%와 선수금 증가는 사용 확대를 지지한다. NRR·churn·코호트가 없어 직접적인 유지율 75점 기준에는 못 미친다."},
-    {"criterion_id": "unit_economics", "score_0_100": 75, "rationale": "gross margin 71.1%→75.0%, operating margin 60.4%→66.2%로 규모경제가 확인된다. AR·재고 현금 흡수로 90점 수준의 확신은 없다."}
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 80,
+      "rationale": "75.0% gross margin, 1.4% 판관비율, $15.6B 고객 선수금은 강한 지불의사를 입증한다. 고객 측 회수율이 없어 90점은 배제한다."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 70,
+      "rationale": "Hyperscale +102%, ACIE +138%와 선수금 증가는 사용 확대를 지지한다. NRR·churn·코호트가 없어 직접적인 유지율 75점 기준에는 못 미친다."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 50,
+      "rationale": "gross margin·operating margin은 규모경제를 지지하지만, 정책이 벤더 금융을 이 criterion에 반영하도록 지정한다. frozen 10-Q의 $36B AI-cloud agreements와 $108.5B maximum gross guarantees에 대해 지원 대상 매출·AR 비중이 미공시라 현금 기준 고객획득/수요경제성을 분리할 수 없다. 따라서 75 '규모경제 확인'보다 50 '혼재' 앵커를 적용한다."
+    }
   ],
   "uncertainties": [
-    {"criterion_id": "customer_roi", "severity": "material", "rationale": "지불의사는 입증되나 고객 측 투자회수율이 미공개다."},
-    {"criterion_id": "retention_usage", "severity": "material", "rationale": "NRR·churn 부재로 선수금과 고객군 성장률을 대용한다."},
-    {"criterion_id": "unit_economics", "severity": "critical", "rationale": "회계 마진은 개선되지만 AR·재고의 현금 흡수와 고객 금융지원 비중을 분리할 수 없다."}
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "지불의사는 입증되나 고객 측 투자회수율이 미공개다."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "NRR·churn 부재로 선수금과 고객군 성장률을 대용한다."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "critical",
+      "rationale": "회계 마진은 개선되지만 AR·재고의 현금 흡수와 고객 금융지원 비중을 분리할 수 없다."
+    }
   ],
-  "valuation_inputs": {"valuation_percentile_5y": null, "revenue_cagr_next_3y": null, "scenarios": {"bear": {"owner_fcf_per_share": []}, "base": {"owner_fcf_per_share": []}, "bull": {"owner_fcf_per_share": []}}}
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  },
+  "rerun_note": "Research Orchestrator pass 4 반영. 이미 frozen primary fact였던 FACT-0102($108.5B total maximum gross guarantee exposure)와 별도 $36B AI-cloud agreements를 전파했다. Hard Veto 정의상 고객가치 부재는 반증돼 cleared를 유지하되, vendor financing은 정책대로 CP unit_economics에 반영하여 75→50으로 하향했다."
 }
