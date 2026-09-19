@@ -58,6 +58,11 @@
       "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
       "status": "cleared",
       "rationale": "Strong recurring cash generation and network economics make bankruptcy/forced financing risk remote; downside is valuation/regulatory, not survival."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is above locked Base but remains below Bull; the market price does not require an unrealistic Bull+ outcome."
     }
   ],
   "key_kpis": [
