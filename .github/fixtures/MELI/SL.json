@@ -1,0 +1,29 @@
+{
+  "agent_id":"SL","ticker":"MELI","as_of_date":"2026-09-17","domain":"structural_leadership","role":"domain_analyst","analysis_status":"complete",
+  "score_0_100":88.75,"confidence_0_1":0.91,"bull_score":95,"bear_score":70,
+  "bull_case":"Latin American commerce, payments and financial services remain structurally underpenetrated, and MELI leads the regional digital ecosystem across marketplace, logistics and fintech.",
+  "bear_case":"Penetration can rise while competition captures incremental economics. Country macro, regulation and credit cycles can interrupt the structural trend.",
+  "thesis":"MELI is a structural leader. It leads regional e-commerce by GMV and has leading fintech engagement in major markets, while GMV and TPV are still growing above 40% at large scale. The platform is defining customer expectations around integrated fulfillment, payments and financial services. Durability risk comes from country macro, regulation and aggressive competitors rather than category maturity.",
+  "evidence":[
+    {"claim":"MELI is the Latin American e-commerce leader by GMV and Mercado Pago leads fintech MAUs in several core countries.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"2026","as_of_date":"2026-08-06","value":"Regional leadership","fact_or_estimate":"fact"},
+    {"claim":"FY2025 revenue grew 39.1% to $28.893B; GMV reached $65.037B and TPV $277.823B.","source_type":"filing","source":"Uploaded FY2025 10-K","period":"FY2025","as_of_date":"2026-02-25","value":"Revenue +39.1%; GMV $65.0B; TPV $277.8B","fact_or_estimate":"fact"},
+    {"claim":"H1 2026 GMV grew 43% and TPV 53%.","source_type":"filing","source":"Uploaded Q2 10-Q","period":"FY2026 H1","as_of_date":"2026-08-06","value":"GMV +43%; TPV +53%","fact_or_estimate":"fact"}
+  ],
+  "counterevidence":["Amazon, Shopee, Nubank and banks can attack individual ecosystem layers.","Latin American FX, inflation and regulation create country-specific durability risks.","Credit growth introduces cyclical exposure not present in a pure marketplace."],
+  "unknowns":["Long-run market share by core country.","Incremental economics in smaller markets.","Regulatory constraints on fintech and credit."],
+  "uncertainties":[
+    {"criterion_id":"secular_durability","severity":"minor","rationale":"Digital commerce and finance penetration remain long-duration trends."},
+    {"criterion_id":"category_leadership","severity":"minor","rationale":"Leadership is directly evidenced by GMV and MAU positioning."},
+    {"criterion_id":"durability_risks","severity":"material","rationale":"Macro, credit and regulation remain meaningful."}
+  ],
+  "falsifiers":["MELI loses share simultaneously in Brazil and Mexico.","GMV/TPV growth converges to market without offsetting margin gains.","Regulation structurally blocks major ecosystem cross-sell."],
+  "hard_veto_flags":[],
+  "key_kpis":[{"name":"GMV / TPV share","direction":"up","threshold":"Sustain category leadership","cadence":"quarterly"},{"name":"Fintech MAUs","direction":"up","threshold":"Maintain leading engagement","cadence":"quarterly"},{"name":"Revenue growth","direction":"up","threshold":"Outgrow regional categories","cadence":"quarterly"}],
+  "next_checks":["Brazil/Mexico share","Fintech MAU growth","Country regulatory developments"],
+  "verdict":"support",
+  "subscores":[
+    {"criterion_id":"secular_durability","score_0_100":90,"rationale":"Regional digital penetration supports a long runway."},
+    {"criterion_id":"category_leadership","score_0_100":90,"rationale":"MELI sets the regional integrated-commerce standard."},
+    {"criterion_id":"durability_risks","score_0_100":85,"rationale":"Multiple growth engines buffer risk, though macro and regulation remain material."}
+  ]
+}
