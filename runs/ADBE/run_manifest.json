@@ -3,13 +3,13 @@
   "ticker": "ADBE",
   "as_of_date": "2026-09-18",
   "frozen": true,
-  "harness_commit": "4d01f7ecaeccb72d71ab7f9b1bf0b86c14be1eee",
+  "harness_commit": "c1708f127dab87a6b0a617b22cced48c890ad472",
   "runner": {
     "provider": "openai",
     "model": "gpt-5.6-sol",
     "reasoning_effort": "high"
   },
-  "frozen_at_utc": "2026-09-19T05:29:12.714413+00:00",
+  "frozen_at_utc": "2026-09-19T05:30:07.633493+00:00",
   "config_files": {
     "config/strategy.json": "64cdc118aeabede830d4185c511e4d88c8c6f29b022ecd564489460bf16f1c19",
     "config/workflow.json": "1f5c6f1016768a2c6d8b53b3b7bcabdbbf417d657e2c8673047e84ac2aca8fcb",
