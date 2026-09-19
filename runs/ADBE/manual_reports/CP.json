@@ -1,0 +1,111 @@
+{
+  "agent_id": "CP",
+  "ticker": "ADBE",
+  "as_of_date": "2026-09-18",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 85,
+  "confidence_0_1": 0.8,
+  "bull_score": 95,
+  "bear_score": 65,
+  "bull_case": "AI assistants and freemium acquisition can expand both seats and monetization per user.",
+  "bear_case": "If AI generation is good enough outside Adobe, professional willingness to pay for parts of Creative Cloud may fall.",
+  "thesis": "Customer value remains strong. Creative professionals, business users and enterprises continue to expand recurring spend despite AI alternatives, while Acrobat and AI-assisted workflows broaden the user base.",
+  "evidence": [
+    {
+      "claim": "Q2 subscription revenue was $6.416B out of $6.618B total revenue.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 customer-group subscription revenue grew 14% y/y.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "14%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Adobe reported >1B MAU in Q3.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": ">1B",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+  ],
+  "unknowns": [
+    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+  ],
+  "falsifiers": [
+    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Growth is supported by recurring subscription spend and usage, not subsidy/marketing dependence."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Adobe is diversified across Creative, Acrobat and enterprise Experience; no single customer/product/regulation is fatal."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained high-single-digit+ growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 85,
+      "rationale": "Adobe products are mission-critical professional and enterprise workflows with strong pricing power."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 85,
+      "rationale": "ARR and subscription growth remain double-digit; >1B MAU supports breadth of engagement."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 85,
+      "rationale": "Gross margins and operating margins remain software-like while subscription revenue dominates."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    }
+  ]
+}
