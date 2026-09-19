@@ -1,0 +1,65 @@
+{
+  "agent_id": "ED",
+  "ticker": "V",
+  "as_of_date": "2026-09-18",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 91,
+  "confidence_0_1": 0.93,
+  "thesis": "Decision-critical operating facts are strongly supported by Visa's FY2025 10-K and Q3 FY2026 10-Q/8-K. Revenue, volume, processed transactions, VAS, OCF, capex, SBC, debt and repurchases are directly observable. The main model uncertainty is the long-run FCF/share growth path and terminal multiple.",
+  "evidence": [
+    {
+      "claim": "FY2025 revenue, OCF, capex, SBC and repurchases are filing-backed.",
+      "source_type": "filing",
+      "source": "runs/V/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2025-11-06",
+      "value": "multi-KPI",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3/9M revenue, volume, VAS, OCF and repurchases are filing-backed.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3/9M FY2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "5Y valuation percentile is externally sourced and cross-checked with current P/E versus 5Y average.",
+      "source_type": "other",
+      "source": "runs/V/sources/VALUATION_2026_key_facts.txt",
+      "period": "5Y through 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "0.69",
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "The 10-year owner-FCF paths are model estimates.",
+    "The 5Y percentile source is third-party, not a Visa filing."
+  ],
+  "unknowns": [
+    "Long-run regulatory take-rate pressure",
+    "Visa Direct economics",
+    "Client incentive intensity"
+  ],
+  "falsifiers": [
+    "Any later filing that materially revises frozen facts requires rerun."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "primary-source coverage",
+      "direction": "up",
+      "threshold": "decision variables filing-backed",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "FY2026 10-K and regulatory/litigation updates"
+  ],
+  "verdict": "support"
+}
