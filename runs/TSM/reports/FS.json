@@ -1,0 +1,118 @@
+{
+  "agent_id": "FS",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 87.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 95.5,
+  "bear_score": 69.5,
+  "bull_case": "Net cash and cash generation let TSMC keep investing through a semiconductor downturn.",
+  "bear_case": "A severe geopolitical or operational disruption could impair physical capacity, but current financial leverage itself is not a vulnerability.",
+  "thesis": "Financial survival is exceptionally strong. TSMC combines massive operating cash flow with net cash, investment-grade access and globally strategic assets. The key downside is operating/geopolitical impairment, not leverage or refinancing.",
+  "evidence": [
+    {
+      "claim": "2Q26 cash+marketable securities were NT$3.518T versus interest-bearing debt NT$1.032T.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/Q2_2026_key_facts.txt",
+      "period": "2Q26",
+      "as_of_date": "2026-07-16",
+      "value": "3.518T/1.032T",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "FY2025 OCF was US$72.52B.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The company states operating cash plus liquidity can fund working capital, capex, debt and dividends.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Overseas fabs carry structurally higher costs; customer concentration and Taiwan/export-control tail risks remain material."
+  ],
+  "unknowns": [
+    "Long-run overseas-fab margin dilution",
+    "AI/HPC demand duration beyond the current capacity-constrained cycle",
+    "Customer mix after N2/A16 scale-up"
+  ],
+  "falsifiers": [
+    "A sustained loss of leading-edge share, repeated yield delays, or owner FCF/share stagnation despite rising capex would weaken the thesis."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "TSMC is not structurally dependent on recurring external capital; OCF and net cash fund expansion."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "No long-duration excessive dilution is established."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Financially, bankruptcy/forced financing risk is remote. Taiwan/geopolitical tail risk is real but no evidence supports the exact conclusion that permanent-loss probability is excessive versus expected return."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth through the capex cycle",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "3Q26 results, N2 ramp, CoWoS/advanced packaging capacity, overseas-fab margin, top-customer concentration"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 90,
+      "rationale": "2Q26 net cash reserves were NT$2.486T and OCF is far above interest-bearing debt."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 90,
+      "rationale": "TSMC can fund record capex, R&D and dividends internally through a cyclical slowdown."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 80,
+      "rationale": "Equity dilution is minimal; the larger risks are long-dated fab commitments and overseas cost rather than near-term solvency."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    }
+  ]
+}

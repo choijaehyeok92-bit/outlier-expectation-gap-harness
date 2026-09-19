@@ -1,0 +1,65 @@
+{
+  "agent_id": "ED",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 88,
+  "confidence_0_1": 0.9,
+  "thesis": "Decision-critical historical facts are supported by the uploaded FY2025 20-F and TSMC primary-source 2Q26/monthly revenue releases. Revenue, margins, cash flow, capex, node mix, net cash and customer concentration are directly observable. The principal uncertainty lies in the modeled long-run owner-FCF path and geopolitical probabilities, not the underlying historical data.",
+  "evidence": [
+    {
+      "claim": "FY2025 revenue, OCF, capex, R&D, advanced-node mix and customer concentration are filing-backed.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2Q26 revenue, margins, node mix, net cash and H1 cash-flow data are TSMC primary-source figures.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/Q2_2026_key_facts.txt",
+      "period": "2Q26/1H26",
+      "as_of_date": "2026-07-16",
+      "value": "primary-source",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Jan-Aug 2026 revenue growth is sourced from TSMC monthly revenue releases.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/2026_monthly_revenue.txt",
+      "period": "Jan-Aug 2026",
+      "as_of_date": "2026-09-10",
+      "value": "39.3%",
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "The 10-year DCF paths are model assumptions rather than reported guidance.",
+    "No reproducible five-year owner-FCF valuation percentile was frozen."
+  ],
+  "unknowns": [
+    "Long-run overseas-fab margins",
+    "AI demand duration",
+    "Geopolitical tail-risk probabilities"
+  ],
+  "falsifiers": [
+    "Any later filing that materially revises frozen facts requires a rerun."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "primary-source coverage",
+      "direction": "up",
+      "threshold": "decision variables filing-backed",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "3Q26 earnings and updated capex/overseas-fab economics"
+  ],
+  "verdict": "support"
+}

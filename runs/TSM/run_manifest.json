@@ -1,0 +1,29 @@
+{
+  "schema_version": "2.1",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "frozen": true,
+  "harness_commit": "396af14286d71adf87a9d4270ea4e94ef16e207f",
+  "runner": {
+    "provider": "openai",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "high"
+  },
+  "frozen_at_utc": "2026-09-19T08:05:13.964633+00:00",
+  "config_files": {
+    "config/strategy.json": "64cdc118aeabede830d4185c511e4d88c8c6f29b022ecd564489460bf16f1c19",
+    "config/workflow.json": "1f5c6f1016768a2c6d8b53b3b7bcabdbbf417d657e2c8673047e84ac2aca8fcb",
+    "config/agents_manifest.json": "323317d34e89a0df0bf8a38ce9a0dc9c13a898e2435ece28e49c91cc7cb1082c",
+    "config/calibration.json": "6d7d280f0c8abee2a495244384a52f833983d3c82615501c4069ab77785f4021",
+    "harness.py": "886cca77da7711f9895a6d4544e3eb7ef2d351550055a79809155744a06dd7d6"
+  },
+  "input_files": {
+    "company_context.json": "c911f359a5b121a153840f512ab02cec64b564f59f941f99a487e4dc523310cc",
+    "sources/2026_monthly_revenue.txt": "d220aa884d216bcb447e903871400dd950656ea9c3f9203c9b7f816c872a100b",
+    "sources/FY2025_20F_key_facts.txt": "5c78d765727e168ec7a429f3d3744e5af78c19a125e427afdf860774931257e0",
+    "sources/INDEX.md": "c1c60fb74caeb9a3e7d7cf664a443d59722702d3c164f6c7013bc338376c07e7",
+    "sources/Q2_2026_key_facts.txt": "e260c225d4c285596da0325971cbf7ed491434dec77e1ee300e2362ccbfac2d2",
+    "sources/README.md": "dd9a55ad66c6fbfc27e93c0e9687be79ffde498f371689a5cce72da580fa2d65"
+  },
+  "input_snapshot_sha256": "fdad55073109ea75fb07cee0b9868deada4e5e50d36f3acdf510cb83cb6c6d2d"
+}

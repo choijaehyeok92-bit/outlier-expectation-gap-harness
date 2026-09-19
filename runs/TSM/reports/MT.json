@@ -1,0 +1,108 @@
+{
+  "agent_id": "MT",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 88.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 96.5,
+  "bear_score": 70.5,
+  "bull_case": "N2/A16 plus CoWoS/3DFabric reinforce a multi-layer moat beyond transistor scaling alone.",
+  "bear_case": "Competitors can narrow process gaps with subsidies and customers can diversify for resilience, raising cost and reducing share at the margin.",
+  "thesis": "TSMC's moat is widening as leading-edge complexity, packaging and capital requirements rise. Every successful node/packaging ramp compounds process learning, supplier coordination and customer trust.",
+  "evidence": [
+    {
+      "claim": "3nm/5nm/7nm were 24%/36%/14% of 2025 wafer revenue.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2nm already contributed 3% of 2Q26 wafer revenue during ramp.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/Q2_2026_key_facts.txt",
+      "period": "2Q26",
+      "as_of_date": "2026-07-16",
+      "value": "3%",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "2025 capex was about US$40.56B and 2026 guidance US$52B-$56B.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Overseas fabs carry structurally higher costs; customer concentration and Taiwan/export-control tail risks remain material."
+  ],
+  "unknowns": [
+    "Long-run overseas-fab margin dilution",
+    "AI/HPC demand duration beyond the current capacity-constrained cycle",
+    "Customer mix after N2/A16 scale-up"
+  ],
+  "falsifiers": [
+    "A sustained loss of leading-edge share, repeated yield delays, or owner FCF/share stagnation despite rising capex would weaken the thesis."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Advanced-node mix, margins and 2026 revenue trends do not show persistent moat shrinkage."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth through the capex cycle",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "3Q26 results, N2 ramp, CoWoS/advanced packaging capacity, overseas-fab margin, top-customer concentration"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 90,
+      "rationale": "Node migration, design enablement, yield learning and packaging create high switching costs and support premium economics."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 90,
+      "rationale": "OIP/design enablement, supplier learning, installed capacity and customer tape-out feedback form a compounding manufacturing ecosystem."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 85,
+      "rationale": "Process leadership, yield, packaging and scale provide multiple defenses even as individual node features diffuse."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    }
+  ]
+}

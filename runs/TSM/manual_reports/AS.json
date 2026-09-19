@@ -1,0 +1,113 @@
+{
+  "agent_id": "AS",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 64.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 72.5,
+  "bear_score": 46.5,
+  "bull_case": "AI/HPC demand, N2 and packaging can extend a multi-year high-return capacity cycle.",
+  "bear_case": "A demand/cycle reset combined with overseas cost dilution can create large valuation drawdown even without balance-sheet stress.",
+  "thesis": "TSM has strong business resilience but only moderate price asymmetry at $434.67. Bull upside is meaningful but not exceptional for a $2T+ company, while a cyclical/capex bear case is severe.",
+  "evidence": [
+    {
+      "claim": "2Q26 net cash reserves were NT$2.486T.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/Q2_2026_key_facts.txt",
+      "period": "2Q26",
+      "as_of_date": "2026-07-16",
+      "value": "2.486T",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Jan-Aug 2026 revenue grew 39.3% y/y.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/2026_monthly_revenue.txt",
+      "period": "Jan-Aug 2026",
+      "as_of_date": "2026-09-10",
+      "value": "39.3%",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Bull/current≈1.38 and Bear/current≈0.28.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/README.md",
+      "period": "10y DCF",
+      "as_of_date": "2026-09-18",
+      "value": "1.38/0.28",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Overseas fabs carry structurally higher costs; customer concentration and Taiwan/export-control tail risks remain material."
+  ],
+  "unknowns": [
+    "Long-run overseas-fab margin dilution",
+    "AI/HPC demand duration beyond the current capacity-constrained cycle",
+    "Customer mix after N2/A16 scale-up"
+  ],
+  "falsifiers": [
+    "A sustained loss of leading-edge share, repeated yield delays, or owner FCF/share stagnation despite rising capex would weaken the thesis."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price does not require Bull+."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Strong net cash and OCF make forced financing/bankruptcy unlikely; geopolitical tail risk is monitored but the exact V9 predicate is not established."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth through the capex cycle",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "3Q26 results, N2 ramp, CoWoS/advanced packaging capacity, overseas-fab margin, top-customer concentration"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 60,
+      "rationale": "Bull/current≈1.38x with multiple paths: leading-edge nodes, advanced packaging and pricing/mix."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 60,
+      "rationale": "Bear/current≈0.28x maps to 50, then +10 for strong net cash and OCF well above debt."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 75,
+      "rationale": "Scenarios explicitly include capex, overseas dilution, customer concentration and cycle risk."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    }
+  ]
+}

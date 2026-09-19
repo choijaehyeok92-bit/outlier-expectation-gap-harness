@@ -1,0 +1,113 @@
+{
+  "agent_id": "CP",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 88.25,
+  "confidence_0_1": 0.84,
+  "bull_score": 96.25,
+  "bear_score": 70.25,
+  "bull_case": "AI/HPC customers continue migrating to N2/A16 and advanced packaging, supporting price/mix and wallet share.",
+  "bear_case": "Large customers may dual-source, insource selected silicon strategies, or pressure pricing as concentration rises.",
+  "thesis": "Customer willingness to pay is strong because yield, density, power efficiency, packaging and delivery directly determine customers' product economics. Concentration increases bargaining and dependency risk but also reflects deep design-cycle integration.",
+  "evidence": [
+    {
+      "claim": "Largest and second-largest 2025 customers were 19% and 17% of revenue.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2Q26 gross margin was 67.7%.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/Q2_2026_key_facts.txt",
+      "period": "2Q26",
+      "as_of_date": "2026-07-16",
+      "value": "67.7%",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "2025 advanced-node mix reached 74%.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Overseas fabs carry structurally higher costs; customer concentration and Taiwan/export-control tail risks remain material."
+  ],
+  "unknowns": [
+    "Long-run overseas-fab margin dilution",
+    "AI/HPC demand duration beyond the current capacity-constrained cycle",
+    "Customer mix after N2/A16 scale-up"
+  ],
+  "falsifiers": [
+    "A sustained loss of leading-edge share, repeated yield delays, or owner FCF/share stagnation despite rising capex would weaken the thesis."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Demand is supported by mission-critical manufacturing performance, not subsidy/marketing dependence."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Customer concentration is material but no single customer, product or regulation is shown to be a fatal dependency; largest customer was 19%, second 17%, with hundreds of customers and multiple end markets."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth through the capex cycle",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "3Q26 results, N2 ramp, CoWoS/advanced packaging capacity, overseas-fab margin, top-customer concentration"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 90,
+      "rationale": "For leading-edge customers, access to TSMC process/yield/packaging is mission-critical to performance and time-to-market."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 85,
+      "rationale": "Top customers repeatedly migrate to advanced nodes; advanced-node mix rose from 69% in 2024 to 74% in 2025 and 77% in 2Q26."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 90,
+      "rationale": "High utilization and mix produced 67.7% Q2 gross margin and 60.3% operating margin despite record capex."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    }
+  ]
+}

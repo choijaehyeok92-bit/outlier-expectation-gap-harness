@@ -1,0 +1,112 @@
+{
+  "agent_id": "TQ",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "turnaround_quality",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 25,
+  "confidence_0_1": 0.84,
+  "bull_score": 33,
+  "bear_score": 7,
+  "bull_case": "Further margin expansion is possible, but that is compounder execution rather than turnaround recovery.",
+  "bear_case": "A semiconductor downcycle would create cyclicality, but the current starting point is not a trough.",
+  "thesis": "TSM is not a turnaround. The relevant questions are durability, capital efficiency and valuation, not recovery from distress.",
+  "evidence": [
+    {
+      "claim": "FY2025 revenue grew 31.6% and gross margin reached 59.9%.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2Q26 gross margin was 67.7% and operating margin 60.3%.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/Q2_2026_key_facts.txt",
+      "period": "2Q26",
+      "as_of_date": "2026-07-16",
+      "value": "67.7/60.3",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "January-August 2026 revenue grew 39.3% year over year, confirming the business is in expansion rather than a turnaround trough.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/2026_monthly_revenue.txt",
+      "period": "Jan-Aug 2026",
+      "as_of_date": "2026-09-10",
+      "value": "39.3%",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Overseas fabs carry structurally higher costs; customer concentration and Taiwan/export-control tail risks remain material."
+  ],
+  "unknowns": [
+    "Long-run overseas-fab margin dilution",
+    "AI/HPC demand duration beyond the current capacity-constrained cycle",
+    "Customer mix after N2/A16 scale-up"
+  ],
+  "falsifiers": [
+    "A sustained loss of leading-edge share, repeated yield delays, or owner FCF/share stagnation despite rising capex would weaken the thesis."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth through the capex cycle",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "3Q26 results, N2 ramp, CoWoS/advanced packaging capacity, overseas-fab margin, top-customer concentration"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "operating_inflection",
+      "score_0_100": 25,
+      "rationale": "TSM is already at record/high margins and growth; this is not a trough recovery."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "score_0_100": 25,
+      "rationale": "No distressed restructuring or balance-sheet repair is central to the thesis."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "score_0_100": 25,
+      "rationale": "Earnings are above-cycle/expanding rather than depressed."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "score_0_100": 25,
+      "rationale": "N2/A16 and capacity milestones are growth catalysts, not turnaround milestones."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "operating_inflection",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    }
+  ]
+}
