@@ -1,0 +1,110 @@
+{
+  "agent_id": "TQ",
+  "ticker": "ZS",
+  "as_of_date": "2026-09-18",
+  "domain": "turnaround_quality",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 25,
+  "confidence_0_1": 0.9,
+  "bull_score": 40,
+  "bear_score": 20,
+  "bull_case": "The 3% workforce reduction and operating-margin expansion can improve efficiency, but this is optimization of a healthy growth company rather than a distressed turnaround.",
+  "bear_case": "If restructuring signals growth deceleration rather than self-help, margins could improve while the growth multiple contracts.",
+  "thesis": "ZS is not a turnaround. Revenue and ARR are still growing at roughly 20% organically, FCF is positive and the company has net cash. The restructuring is a resource-reallocation measure, not a rescue from an operating trough.",
+  "evidence": [
+    {
+      "claim": "FY2026 revenue grew 25%; ex-Red Canary revenue grew 20%.",
+      "source_type": "filing",
+      "source": "runs/ZS/sources/FY2026_Q4_8K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-03",
+      "value": "25% / 20%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2026 OCF was $1.130B and FCF $779.1M.",
+      "source_type": "filing",
+      "source": "runs/ZS/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The 2026-09-01 restructuring targets roughly 3% of headcount and $30M-$33M of charges.",
+      "source_type": "other",
+      "source": "runs/ZS/sources/README.md",
+      "period": "2026 restructuring",
+      "as_of_date": "2026-09-03",
+      "value": "3% / 30-33M",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "GAAP operating losses persist and a restructuring was announced, but neither reflects classic distressed operations."
+  ],
+  "unknowns": [
+    "Whether FY2027 restructuring produces sustained GAAP profitability"
+  ],
+  "falsifiers": [
+    "A future material revenue/ARR contraction followed by measurable recovery would make Turnaround more relevant."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "GAAP operating margin",
+      "direction": "up",
+      "threshold": "sustained positive",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Post-restructuring expense growth and GAAP margin"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "operating_inflection",
+      "score_0_100": 25,
+      "rationale": "No trough recovery setup; the company is already growing strongly."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "score_0_100": 25,
+      "rationale": "The 3% workforce action is efficiency tuning, not the core investment thesis."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "score_0_100": 25,
+      "rationale": "The thesis is not based on depressed normalized earnings recovering from a trough."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "score_0_100": 25,
+      "rationale": "FY2027 guidance is growth guidance, not a turnaround milestone framework."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "operating_inflection",
+      "severity": "minor",
+      "rationale": "GAAP losses and restructuring can superficially resemble a turnaround but operating trends do not."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "severity": "minor",
+      "rationale": "Not the core setup."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "severity": "minor",
+      "rationale": "Not applicable to primary archetype screening."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "severity": "minor",
+      "rationale": "Not a turnaround catalyst structure."
+    }
+  ]
+}

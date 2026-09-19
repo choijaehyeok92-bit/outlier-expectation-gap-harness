@@ -1,0 +1,28 @@
+{
+  "schema_version": "2.1",
+  "ticker": "ZS",
+  "as_of_date": "2026-09-18",
+  "frozen": true,
+  "harness_commit": "767b949d560aa6f13041d3e8c829c407370fd73a",
+  "runner": {
+    "provider": "openai",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "high"
+  },
+  "frozen_at_utc": "2026-09-19T06:34:40.237836+00:00",
+  "config_files": {
+    "config/strategy.json": "64cdc118aeabede830d4185c511e4d88c8c6f29b022ecd564489460bf16f1c19",
+    "config/workflow.json": "1f5c6f1016768a2c6d8b53b3b7bcabdbbf417d657e2c8673047e84ac2aca8fcb",
+    "config/agents_manifest.json": "323317d34e89a0df0bf8a38ce9a0dc9c13a898e2435ece28e49c91cc7cb1082c",
+    "config/calibration.json": "6d7d280f0c8abee2a495244384a52f833983d3c82615501c4069ab77785f4021",
+    "harness.py": "886cca77da7711f9895a6d4544e3eb7ef2d351550055a79809155744a06dd7d6"
+  },
+  "input_files": {
+    "company_context.json": "d435994dfa2f2d696dab6fa27bf8a40f53890842ed990f50e7d888720fe2b5f2",
+    "sources/FY2026_10K_key_facts.txt": "c6530d9109b48ff12dd0a731a9de774bdcd93ebecbc624ea3c14765ed77fc6c5",
+    "sources/FY2026_Q4_8K_key_facts.txt": "445e2b91092edd1640f956d9cab03919401eb869e4450fe2e7f2192a1febf0bc",
+    "sources/INDEX.md": "e21a7bf926b4a30da227433b0d7cfde3b9c9a711a048c77b8587049db325c7f1",
+    "sources/README.md": "567a09da4d7e2f9e1e6c7c8b5c4af96f269ea94c3c3eba558401f1d416e38557"
+  },
+  "input_snapshot_sha256": "1e30c45a9805ac2bfb2a7719fe390ae5acc2935ae9de9c9a9aa323bf6d3e2c33"
+}

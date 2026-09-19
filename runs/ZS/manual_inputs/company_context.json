@@ -1,0 +1,38 @@
+{
+  "ticker": "ZS",
+  "company_name": "Zscaler, Inc.",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 197.31,
+  "shares_diluted": 163054698,
+  "market_cap_usd": 32172322462.38,
+  "enterprise_value": 30394526462.38,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "User-uploaded Zscaler FY2026 Form 10-K filed 2026-09-03",
+    "User-uploaded Zscaler FY2026 results Form 8-K filed 2026-09-03",
+    "User-uploaded Zscaler Q2 FY2026 Form 10-Q filed 2026-02-26",
+    "User-uploaded Zscaler Q3 FY2026 Form 10-Q filed 2026-05-26",
+    "Zscaler investor-relations historical price lookup: 2026-09-18 close $197.31"
+  ],
+  "special_questions": [
+    "Can Zscaler's Zero Trust Exchange remain structurally differentiated as Palo Alto Networks, Netskope, Cloudflare and hyperscalers converge on platform security?",
+    "How much of reported FCF converts to owner FCF after stock-based compensation?",
+    "Does Red Canary materially improve platform economics enough to offset acquisition integration and dilution?"
+  ],
+  "net_cash_per_share": 10.9031,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "5-year valuation percentile left null because the decisive triage signal is price/Base and no reproducible owner-FCF multiple history was frozen.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  }
+}

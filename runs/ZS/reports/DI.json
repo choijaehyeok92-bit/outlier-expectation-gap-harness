@@ -1,0 +1,109 @@
+{
+  "agent_id": "DI",
+  "ticker": "ZS",
+  "as_of_date": "2026-09-18",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 85,
+  "confidence_0_1": 0.85,
+  "bull_score": 92,
+  "bear_score": 65,
+  "bull_case": "Zero Trust Exchange can become the control plane for users, workloads, branches and AI agents, displacing perimeter appliances and consolidating multiple security categories.",
+  "bear_case": "Platform convergence from PANW, Cloudflare, Netskope and hyperscalers can commoditize parts of Zero Trust and force heavier selling and R&D spend.",
+  "thesis": "ZS retains strong disruptive characteristics. Its cloud-native Zero Trust architecture directly replaces legacy hub-and-spoke firewalls/VPNs and is expanding into data security, AI security and SecOps. Adoption is already mainstream enough to produce multi-billion-dollar ARR.",
+  "evidence": [
+    {
+      "claim": "FY2026 ARR reached $3.771B, up 25%, while ex-acquisition ARR grew 20%.",
+      "source_type": "filing",
+      "source": "runs/ZS/sources/FY2026_Q4_8K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-03",
+      "value": "3.771B / 20%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2027 ARR guide is $4.396B-$4.426B.",
+      "source_type": "filing",
+      "source": "runs/ZS/sources/FY2026_Q4_8K_key_facts.txt",
+      "period": "FY2027 guide",
+      "as_of_date": "2026-09-03",
+      "value": "4.396-4.426B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Red Canary expands ZS into managed detection and response / Agentic SecOps.",
+      "source_type": "filing",
+      "source": "runs/ZS/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Large competitors can bundle adjacent security products and subsidize platform adoption.",
+    "Organic ARR growth has moderated from earlier hypergrowth levels."
+  ],
+  "unknowns": [
+    "Competitive win rates against PANW/Netskope/Cloudflare",
+    "Attach rates for newer AI-security and SecOps modules"
+  ],
+  "falsifiers": [
+    "If organic ARR growth falls to low teens while platform attach stagnates, disruption score should fall."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "organic ARR growth",
+      "direction": "up",
+      "threshold": ">15%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "large-deal / platform attach",
+      "direction": "up",
+      "threshold": "continued expansion",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Organic ARR growth excluding Red Canary",
+    "Non-seat-based product contribution"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 85,
+      "rationale": "Cloud-native Zero Trust replaces perimeter architecture and materially changes security delivery economics."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 85,
+      "rationale": "Multi-billion-dollar ARR and 20% organic ARR growth demonstrate mainstream adoption."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 85,
+      "rationale": "Users, workloads, branches, data security, AI security and SecOps create multiple adjacent value pools."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Platform competitors increasingly offer comparable architecture."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "Organic growth is moderating."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Well-capitalized competitors can respond aggressively."
+    }
+  ]
+}
