@@ -830,13 +830,13 @@
     "ticker": "RKLB",
     "as_of_date": "2026-09-18",
     "frozen": true,
-    "harness_commit": "d7baac57dfe860c6670f28393fedbe767c807bb7",
+    "harness_commit": "916492c698138936066d6eb9d2020468425c23bb",
     "runner": {
       "provider": "openai",
       "model": "gpt-5.6-sol",
       "reasoning_effort": "high"
     },
-    "frozen_at_utc": "2026-09-19T08:56:16.374187+00:00",
+    "frozen_at_utc": "2026-09-19T08:57:51.140683+00:00",
     "config_files": {
       "config/strategy.json": "64cdc118aeabede830d4185c511e4d88c8c6f29b022ecd564489460bf16f1c19",
       "config/workflow.json": "1f5c6f1016768a2c6d8b53b3b7bcabdbbf417d657e2c8673047e84ac2aca8fcb",
