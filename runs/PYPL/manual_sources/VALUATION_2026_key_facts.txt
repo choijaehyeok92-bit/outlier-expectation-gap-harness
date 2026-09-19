@@ -1,0 +1,1 @@
+2026-09-18 close $52.41. StockResearch latest reproducible trailing-5Y weekly TTM P/E percentile was 12th percentile (updated 2026-08-22), with 5Y median 18.3x. FinanceCharts on 2026-09-18 showed TTM P/E 9.89x vs 5Y average 18.31x.
