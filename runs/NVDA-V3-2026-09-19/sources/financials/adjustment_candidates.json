@@ -186,5 +186,100 @@
     "source_section": "Legal Proceedings / Litigation",
     "source_quote": "The plaintiffs in the putative securities class action lawsuit, captioned 4:18-cv-07669-HSG",
     "confidence": 0.9
+  },
+  {
+    "adjustment_id": "ADJ-009",
+    "judgment_status": "requires_economic_review",
+    "confidence": 0.9,
+    "type": "acquisition_cost",
+    "amount_fact_id": "FACT-0158",
+    "period_end": null,
+    "description": "Acquisition-related and other costs affecting the Q2 FY2027 non-GAAP-to-GAAP reconciliation of gross margin, operating expense, operating income, net income, and diluted EPS.",
+    "recurrence_history": [
+      {
+        "period": "Q2 FY2026",
+        "amount": -86000000
+      }
+    ],
+    "source_document": "NVDA-F2Q27-Quarterly-Presentation-final-1.pdf",
+    "source_page": 13,
+    "source_section": "Reconciliation of Non-GAAP to GAAP Financial Measures",
+    "source_quote": "Consists of amortization of intangible assets, transaction costs, and certain compensation charges."
+  },
+  {
+    "adjustment_id": "ADJ-010",
+    "judgment_status": "requires_economic_review",
+    "confidence": 0.9,
+    "type": "acquisition_cost",
+    "amount_fact_id": "FACT-0171",
+    "period_end": null,
+    "description": "Acquisition-related and other costs affecting the Q2 FY2026 non-GAAP-to-GAAP reconciliation of gross margin, operating expense, operating income, net income, and diluted EPS.",
+    "recurrence_history": [
+      {
+        "period": "Q2 FY2027",
+        "amount": -222000000
+      }
+    ],
+    "source_document": "NVDA-F2Q27-Quarterly-Presentation-final-1.pdf",
+    "source_page": 14,
+    "source_section": "Reconciliation of Non-GAAP to GAAP Financial Measures",
+    "source_quote": "Consists of amortization of intangible assets, transaction costs, and certain compensation charges."
+  },
+  {
+    "adjustment_id": "ADJ-011",
+    "judgment_status": "requires_economic_review",
+    "confidence": 0.9,
+    "type": "other",
+    "amount_fact_id": "FACT-0160",
+    "period_end": null,
+    "description": "Non-cash gain on equity securities excluded from Q2 FY2027 non-GAAP net income and non-GAAP diluted EPS.",
+    "recurrence_history": [
+      {
+        "period": "Q2 FY2026",
+        "amount": 2247000000
+      }
+    ],
+    "source_document": "NVDA-F2Q27-Quarterly-Presentation-final-1.pdf",
+    "source_page": 13,
+    "source_section": "Reconciliation of Non-GAAP to GAAP Financial Measures",
+    "source_quote": "Gain/(loss) on Equity Securities (column, no additional footnote beyond the header itself)"
+  },
+  {
+    "adjustment_id": "ADJ-012",
+    "judgment_status": "requires_economic_review",
+    "confidence": 0.9,
+    "type": "other",
+    "amount_fact_id": "FACT-0161",
+    "period_end": null,
+    "description": "Other adjustments excluded from Q2 FY2027 non-GAAP net income and diluted EPS.",
+    "recurrence_history": [
+      {
+        "period": "Q2 FY2026",
+        "amount": -16000000
+      }
+    ],
+    "source_document": "NVDA-F2Q27-Quarterly-Presentation-final-1.pdf",
+    "source_page": 13,
+    "source_section": "Reconciliation of Non-GAAP to GAAP Financial Measures",
+    "source_quote": "Consists of net gains/(losses) on equity derivatives, interest expense related to acquisition consideration discount to be paid in the future, share of net earnings/(losses) related to equity method investments, and dividend income on equity securities"
+  },
+  {
+    "adjustment_id": "ADJ-013",
+    "judgment_status": "requires_economic_review",
+    "confidence": 0.9,
+    "type": "litigation",
+    "amount_fact_id": "FACT-0175",
+    "period_end": null,
+    "description": "Other adjustments excluded from Q2 FY2026 non-GAAP net income, primarily legal settlements per company footnote. This is a different composition than the Q2 FY2027 'Other' adjustment (equity derivatives, acquisition-consideration-discount interest expense, equity-method investment earnings, and dividend income; see the linked Q2 FY2027 candidate).",
+    "recurrence_history": [
+      {
+        "period": "Q2 FY2027",
+        "amount": -298000000
+      }
+    ],
+    "source_document": "NVDA-F2Q27-Quarterly-Presentation-final-1.pdf",
+    "source_page": 14,
+    "source_section": "Reconciliation of Non-GAAP to GAAP Financial Measures",
+    "source_quote": "Consists primarily of legal settlements."
   }
 ]

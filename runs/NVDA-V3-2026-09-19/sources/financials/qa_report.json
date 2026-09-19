@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "ticker": "NVDA",
   "source_as_of_date": "2026-09-18",
-  "documents_count": 17,
-  "facts_count": 112,
-  "adjustment_candidates_count": 8,
+  "documents_count": 18,
+  "facts_count": 198,
+  "adjustment_candidates_count": 13,
   "extraction_warnings": [
     {
       "severity": "high",
@@ -36,6 +36,36 @@
     {
       "severity": "low",
       "message": "The supplied Form 4 beneficial-ownership filings do not map to the requested financial canonical metrics, so they are listed in documents but do not generate financial facts.",
+      "related_fact_ids": []
+    },
+    {
+      "severity": "high",
+      "message": "The earnings-release webpage https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027 could not be fetched: outbound access to nvidianews.nvidia.com is blocked by this environment's network egress policy (CONNECT tunnel rejected, HTTP 403 from the proxy gateway; not a transient network error). Only the user-uploaded investor-presentation PDF was processed; the formal earnings press-release text was not extracted.",
+      "related_fact_ids": []
+    },
+    {
+      "severity": "medium",
+      "message": "This presentation states only fiscal labels (\"Q2 FY26\"/\"Q2 FY27\"/\"Q3 FY27\") and a cover-page month (\"August 2026\"); it does not print exact period_start/period_end calendar dates anywhere in the document. All facts from this document therefore carry period_end=null even though the Q2 FY27 calendar quarter-end (2026-07-26) is already established elsewhere in this run's corpus (the 10-Q). Join by fiscal_year/fiscal_quarter if an exact date is needed downstream.",
+      "related_fact_ids": []
+    },
+    {
+      "severity": "low",
+      "message": "Document-level filing_date (2026-08-26) is taken from the PDF's embedded CreationDate metadata (Microsoft PowerPoint export), not from printed text in the document body. It is corroborated by the cover slide's \"August 2026\" label and matches this run's existing Q2 FY27 10-Q filing date, but is technically inferred from file metadata rather than a printed filing date.",
+      "related_fact_ids": []
+    },
+    {
+      "severity": "medium",
+      "message": "Capital-return totals (Q2 FY27 $26.0B, Q2 FY26 $10.0B) could not be split into dividends vs. share repurchases: the source is a stacked-bar chart rendered as vector graphics, and pdftotext's text layer does not expose the individual segment values. The precise split is already available from the 10-Q in sources/financials/normalized_financials.json.",
+      "related_fact_ids": []
+    },
+    {
+      "severity": "low",
+      "message": "Nine facts in this document are Q3 FY27 forward-looking guidance figures (revenue, gross margin %, operating expenses, and non-GAAP tax rate range), not actual reported results for a completed period. Each is marked requires_review=true for this reason.",
+      "related_fact_ids": []
+    },
+    {
+      "severity": "low",
+      "message": "This presentation does not disclose a balance sheet, R&D/S&M/G&A expense breakdown, share repurchase/dividend dollar amounts individually, debt, commitments, or segment data for Gaming, Professional Visualization, Automotive, or OEM & Other; it is a Data-Center-focused investor deck. No values were invented for these; they remain absent from this extraction.",
       "related_fact_ids": []
     }
   ]
