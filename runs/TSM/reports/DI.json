@@ -1,0 +1,102 @@
+{
+  "agent_id": "DI",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 86.75,
+  "confidence_0_1": 0.84,
+  "bull_score": 94.75,
+  "bear_score": 68.75,
+  "bull_case": "AI accelerators, custom silicon, smartphones and advanced packaging all expand the value captured by leading-edge foundry capacity.",
+  "bear_case": "Foundry rivals, customer insourcing, export controls or a slower AI capex cycle can reduce the duration of excess demand.",
+  "thesis": "TSMC is not a disruptive entrant, but it is a foundational enabler of the AI compute transition. N2/A16, CoWoS/3DFabric and leading-edge yield/capacity economics shape the performance frontier for many semiconductor customers.",
+  "evidence": [
+    {
+      "claim": "2025 advanced technologies were 74% of wafer revenue.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2Q26 advanced nodes were 77% of wafer revenue, including 2nm at 3%.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/Q2_2026_key_facts.txt",
+      "period": "2Q26",
+      "as_of_date": "2026-07-16",
+      "value": "77%",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "August 2026 revenue grew 53.3% y/y.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/2026_monthly_revenue.txt",
+      "period": "Aug 2026",
+      "as_of_date": "2026-09-10",
+      "value": "53.3%",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Overseas fabs carry structurally higher costs; customer concentration and Taiwan/export-control tail risks remain material."
+  ],
+  "unknowns": [
+    "Long-run overseas-fab margin dilution",
+    "AI/HPC demand duration beyond the current capacity-constrained cycle",
+    "Customer mix after N2/A16 scale-up"
+  ],
+  "falsifiers": [
+    "A sustained loss of leading-edge share, repeated yield delays, or owner FCF/share stagnation despite rising capex would weaken the thesis."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth through the capex cycle",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "3Q26 results, N2 ramp, CoWoS/advanced packaging capacity, overseas-fab margin, top-customer concentration"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 85,
+      "rationale": "TSMC's leading-edge scaling and advanced packaging enable step-function compute density and energy efficiency."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 90,
+      "rationale": "2Q26 advanced nodes were 77% of wafer revenue and 2nm already contributed 3% during initial ramp."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 85,
+      "rationale": "Logic scaling, advanced packaging, specialty nodes and global manufacturing create multiple adjacent value pools and industry standards."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "AI-cycle duration, overseas economics and geopolitical/customer concentration remain material uncertainties."
+    }
+  ]
+}

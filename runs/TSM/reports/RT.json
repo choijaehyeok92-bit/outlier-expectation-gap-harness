@@ -1,0 +1,112 @@
+{
+  "agent_id": "RT",
+  "ticker": "TSM",
+  "as_of_date": "2026-09-18",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 58,
+  "confidence_0_1": 0.88,
+  "thesis": "The strongest short case is not balance-sheet weakness but concentration of physical capacity in Taiwan, customer concentration, a potentially cyclical AI capex boom, and structurally lower returns on overseas fabs. Current price is above Base DCF, so the stock needs durable owner-FCF growth. Yet leading-edge share, margins, net cash and demand data are strong enough that none of the exact Hard Veto predicates is established.",
+  "evidence": [
+    {
+      "claim": "2025 top ten customers were 78% of revenue; largest customer 19%, second largest 17%.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026 capex guidance is US$52B-$56B versus FY2025 capex about US$40.56B.",
+      "source_type": "filing",
+      "source": "runs/TSM/sources/FY2025_20F_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-04-17",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Current price is ~1.15x locked Base value.",
+      "source_type": "other",
+      "source": "runs/TSM/sources/README.md",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "1.151",
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "2Q26 gross/operating margins were 67.7%/60.3%.",
+    "Jan-Aug 2026 revenue grew 39.3%.",
+    "2Q26 net cash reserves were NT$2.486T."
+  ],
+  "unknowns": [
+    "Probability and economic impact of severe Taiwan disruption",
+    "Long-run overseas-fab utilization and margin",
+    "Customer concentration trajectory"
+  ],
+  "falsifiers": [
+    "A material loss of advanced-node share, persistent margin compression, or customer insourcing at scale would strengthen the short thesis."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "No restatement, auditor dispute or integrity impairment is established."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Internal cash generation and net cash fund the capex program."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "No persistent excessive dilution is established."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Demand is driven by mission-critical foundry performance rather than subsidy/marketing dependence."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Current margin/cash-flow acceleration does not show structural incremental-ROIC collapse."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Advanced-node mix, margins and revenue growth do not show sustained moat shrinkage."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is above Base but below Bull; Bull+ is not required."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Customer concentration is material, but largest customer was 19% and no single customer/product/regulation has a documented fatal failure pathway."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Net cash and enormous OCF make financing failure remote; geopolitical tail risk is monitored but not quantifiable enough to establish the exact excessive-permanent-loss predicate."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "overseas-fab return on capital",
+      "direction": "up",
+      "threshold": "does not structurally dilute group ROIC",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "3Q26 margins, N2 yield/ramp, overseas utilization, top-customer concentration"
+  ],
+  "verdict": "neutral"
+}
