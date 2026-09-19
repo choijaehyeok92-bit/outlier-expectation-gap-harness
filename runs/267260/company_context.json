@@ -1,0 +1,38 @@
+{
+  "ticker": "267260",
+  "company_name": "HD Hyundai Electric Co., Ltd.",
+  "as_of_date": "2026-09-18",
+  "currency": "KRW",
+  "current_price": 725000,
+  "shares_diluted": 35992704,
+  "market_cap_usd": 18824771496,
+  "enterprise_value": 25199000000000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "User-uploaded FY2025 business report filed 2026-03-16",
+    "User-uploaded Q1 2026 quarterly report filed 2026-05-15",
+    "User-uploaded H1 2026 semiannual report filed 2026-08-14",
+    "HD Hyundai Electric/KRX market data: 2026-09-18 close KRW 725,000",
+    "StockAnalysis valuation snapshot: P/E 30.67x, forward P/E 22.93x"
+  ],
+  "special_questions": [
+    "Can grid/AI demand sustain transformer margins after global capacity additions?",
+    "Will new capacity compound FCF/share at high incremental ROIC?",
+    "Does the 170kV GIS litigation create lasting governance impairment?"
+  ],
+  "net_cash_per_share": 24879.625604122437,
+  "valuation_percentile_5y": 0.75,
+  "valuation_metric": "Approximate 5Y own-history P/E percentile proxy, not exact daily percentile. Current P/E 30.67x; FY2025 38.03x, FY2024 27.41x, FY2023 11.42x, FY2022 9.41x. Proxy fixed at 0.75 for reproducibility.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  }
+}

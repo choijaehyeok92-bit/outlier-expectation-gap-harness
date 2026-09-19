@@ -1,0 +1,113 @@
+{
+  "agent_id": "CP",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 76.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 84,
+  "bear_score": 68,
+  "bull_case": "Mission-critical reliability, qualification and repeat utility orders support willingness to pay.",
+  "bear_case": "Dual-sourcing and new supplier capacity may reduce scarcity-driven pricing.",
+  "thesis": "Products solve high-cost grid bottlenecks where reliability and delivery matter. Repeat customers/backlog support value, but direct retention metrics are absent.",
+  "evidence": [
+    {
+      "claim": "NextEra was 15.9% and Saudi Electricity 5.0% of H1 revenue.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "15.9% / 5.0%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Backlog was ₩12.31tn after H1 revenue of ₩2.178tn.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "12.31tn / 2.178tn",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 operating margin was ~25.0% with key utilization 88.8–95.1%.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "25.0% / 88.8–95.1%",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "No retention/NPS/wallet-share metric is disclosed.",
+    "Scarcity can inflate pricing power."
+  ],
+  "unknowns": [
+    "Customer renewal/win rates.",
+    "Warranty metrics by voltage class."
+  ],
+  "falsifiers": [
+    "Loss of major utility qualifications or repeated quality failures with shrinking backlog undermine the product thesis."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Growth is backed by mission-critical repeat orders, utilization and margins, not marketing/subsidy without value."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Largest disclosed H1 customer is 15.9%, below the 25% watch trigger, with multiple products/geographies."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "major-customer concentration",
+      "direction": "down",
+      "threshold": "no customer >25%",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Track concentration, warranty provisions and win rates."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 80,
+      "rationale": "Mission-critical reliability and repeat utility orders support strong avoided-outage/delay value."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 70,
+      "rationale": "Repeat customers/backlog imply retention, but no direct cohort/wallet-share statistic exists."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 80,
+      "rationale": "~25% margin, high utilization and net cash show strong economics; growth capex prevents 90."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "minor",
+      "rationale": "ROI inferred from mission criticality/repeat orders."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "No direct retention metric."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "Scarcity may inflate current economics."
+    }
+  ]
+}

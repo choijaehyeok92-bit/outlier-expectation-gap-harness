@@ -1,0 +1,108 @@
+{
+  "agent_id": "MT",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 73,
+  "confidence_0_1": 0.8,
+  "bull_score": 80,
+  "bear_score": 62,
+  "bull_case": "Qualification, reliability, localization and UHV capability deepen switching costs.",
+  "bear_case": "Little software-like network/data feedback exists; industry capacity expansion can erode scarcity rents.",
+  "thesis": "The moat is industrial—qualification, reliability, engineering, delivery and localization—not a classic data/network ecosystem.",
+  "evidence": [
+    {
+      "claim": "Backlog ₩12.31tn and utilization 88.8–95.1%.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "12.31tn / 88.8–95.1%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "U.S./Korean capacity is expanding alongside UHV orders.",
+      "source_type": "other",
+      "source": "runs/267260/sources/VALUATION_2026_key_facts.txt",
+      "period": "2026",
+      "as_of_date": "2026-09-18",
+      "value": "capacity + 765kV",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 R&D was ₩49.3bn across power equipment, ICT and systems.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "49.3bn",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "No compounding software/data network effect is demonstrated.",
+    "Peers can add local transformer capacity."
+  ],
+  "unknowns": [
+    "Qualification duration/cost by utility.",
+    "Aftermarket/service gross profit share."
+  ],
+  "falsifiers": [
+    "If competitor capacity cuts price/margin while customers switch without qualification friction, the moat is weakening."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Backlog, repeat utility demand, utilization and margin do not show persistent moat contraction."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "gross margin + qualification wins",
+      "direction": "up",
+      "threshold": "stable margins and repeat UHV awards",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Collect qualification/win-rate and service-revenue data."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 85,
+      "rationale": "Repeat utility revenue, multi-year backlog and ~25% margin support switching/pricing; capacity expansion is the strongest counter."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 55,
+      "rationale": "Strict observable table: some scale/qualification evidence exists, but not 3+ same-definition ecosystem metrics with network/data trend and switching cost."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 80,
+      "rationale": "UHV engineering, certification, delivery and localization are multiple defense layers; industry supply remains a risk."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Scarcity and switching costs are hard to separate."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "critical",
+      "rationale": "This criterion fits industrial equipment poorly and numeric ecosystem evidence is limited."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Competitor capacity is expanding."
+    }
+  ]
+}

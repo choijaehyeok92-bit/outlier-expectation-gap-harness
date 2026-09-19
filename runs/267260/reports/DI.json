@@ -1,0 +1,102 @@
+{
+  "agent_id": "DI",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 68.25,
+  "confidence_0_1": 0.78,
+  "bull_score": 77,
+  "bear_score": 60,
+  "bull_case": "765kV, ESS and power-conversion adjacencies can reshape grid architecture as load complexity rises.",
+  "bear_case": "Core transformer/switchgear growth is mostly sustaining infrastructure, not 10x disruption.",
+  "thesis": "HDHE is an innovation beneficiary and capable systems supplier, but its core business is not a classic disruptive-innovation model.",
+  "evidence": [
+    {
+      "claim": "The company has >1.6GWh cumulative ESS experience and 200MWh Texas / 600MWh Anjwa projects.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": ">1.6GWh / 200MWh / 600MWh",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 R&D was ₩49.3bn, 2.3% of revenue.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "49.3bn / 2.3%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026 includes 765kV UHV transformer orders and U.S. capacity expansion.",
+      "source_type": "other",
+      "source": "runs/267260/sources/VALUATION_2026_key_facts.txt",
+      "period": "2026",
+      "as_of_date": "2026-09-18",
+      "value": "765kV / capacity",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Large transformers remain engineered capital goods.",
+    "No company-specific 10x cost/performance break is demonstrated."
+  ],
+  "unknowns": [
+    "Standalone ESS margins.",
+    "Revenue share from genuinely new products."
+  ],
+  "falsifiers": [
+    "If adjacencies stay immaterial to profit and core products commoditize, DI should fall."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "new-business gross profit",
+      "direction": "up",
+      "threshold": "material and rising",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Track ESS/power-conversion revenue and margins."
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 60,
+      "rationale": "Evidence supports structural improvement, not a 10x disruption."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 75,
+      "rationale": "Backlog, ESS deployments and UHV orders are real commercial adoption."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 70,
+      "rationale": "At least two adjacent value pools are commercial; no evidence HDHE defines an industry-wide standard."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Company-specific edge is not quantified."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "minor",
+      "rationale": "Adoption is visible."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Adjacency economics are incomplete."
+    }
+  ]
+}

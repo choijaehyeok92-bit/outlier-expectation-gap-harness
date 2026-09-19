@@ -1,0 +1,113 @@
+{
+  "agent_id": "RF",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 82,
+  "confidence_0_1": 0.86,
+  "bull_score": 88,
+  "bear_score": 74,
+  "bull_case": "High margins, net cash and ~39.4% H1 reinvestment absorption can compound FCF/share into a large backlog.",
+  "bear_case": "Capex is accelerating and returns can fall if the supply shortage normalizes before new assets are utilized.",
+  "thesis": "Cash generation/reinvestment are strong. The core test is whether 2026–2027 capacity earns high incremental returns after scarcity pricing normalizes.",
+  "evidence": [
+    {
+      "claim": "H1 OCF ₩480.3bn; PPE capex ₩139.9bn; R&D ₩49.3bn => reinvestment absorption ~39.4%.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "39.4%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 OCF ₩959.6bn and PPE capex ₩233.5bn.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/FY2025_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-09-18",
+      "value": "959.6bn / 233.5bn",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Operating profit was ₩995.3bn in 2025 and ₩545.3bn in H1 2026.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "2025-H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "995.3bn / 545.3bn",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "H1 annualized FCF/share proxy is below FY2025 due to growth capex.",
+    "Incremental ROIC can compress after new capacity opens."
+  ],
+  "unknowns": [
+    "Maintenance capex split.",
+    "Project-level incremental profit and invested capital."
+  ],
+  "falsifiers": [
+    "If post-ramp incremental operating profit does not cover new capital at well above 9%, reinvestment quality fails."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Share count is effectively flat; no persistent dilutive issuance pattern."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Profit/cash generation and backlog do not show structural incremental ROIC below cost of capital."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "incremental operating profit / growth capex",
+      "direction": "up",
+      "threshold": ">2x required return",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Re-estimate project-level ROIC after Alabama/Ulsan/Cheongju ramps."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 85,
+      "rationale": "Revenue/profit/OCF expanded strongly while balance sheet moved to net cash; capex-ramp risk retained."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 80,
+      "rationale": "Observable formula: (₩139.9bn PPE capex + ₩49.3bn R&D) / ₩480.3bn OCF ≈39.4%, in the 35–60% band."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 80,
+      "rationale": "FY2025 FCF proxy ≈₩20.2k/share; H1 annualized ≈₩18.9k/share is growth-capex pressured but cash conversion remains strong."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "Project-level return data incomplete."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "minor",
+      "rationale": "Directly measurable."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "Growth capex makes near-term FCF/share lumpy."
+    }
+  ]
+}

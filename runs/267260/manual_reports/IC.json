@@ -1,0 +1,66 @@
+{
+  "agent_id": "IC",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 70.93,
+  "confidence_0_1": 0.84,
+  "thesis": "Deterministic score is expected 70.93 (Emerging Outlier), but mechanical result should remain WATCH/non-fit: MT and MA miss Compounder thresholds after provider calibration, valuation is not an expectation gap, and the GIS integrity veto is unresolved.",
+  "evidence": [
+    {
+      "claim": "H1 backlog ₩12.31tn, operating profit ₩545.3bn and net cash proxy ~₩895.5bn.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "12.31tn / 545.3bn / 895.5bn",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Locked Base/Bull values ~₩696k/~₩1.190m versus ₩725k price.",
+      "source_type": "other",
+      "source": "runs/267260/sources/VALUATION_2026_key_facts.txt",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "696k / 1.190m / 725k",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Active GIS collusion-related proceedings prevent a clean integrity conclusion.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/LEGAL_2026_key_facts.txt",
+      "period": "2025-2026",
+      "as_of_date": "2026-09-18",
+      "value": "conditional veto",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Structural grid demand and new capacity can compound FCF/share.",
+    "Network/data rubric poorly fits industrial equipment and suppresses MT.",
+    "Balance-sheet strength limits business-value extinction risk."
+  ],
+  "unknowns": [
+    "Final GIS outcome.",
+    "Through-cycle post-expansion margin.",
+    "True 5Y valuation percentile."
+  ],
+  "falsifiers": [
+    "Favorable governance resolution plus MT/MA evidence above Compounder thresholds justifies reclassification; adverse final integrity findings move the case toward rejection."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Compounder gates: MT / MA / governance",
+      "direction": "up",
+      "threshold": "MT≥76, MA≥72, veto cleared",
+      "cadence": "semiannual/event-driven"
+    }
+  ],
+  "next_checks": [
+    "Re-run after legal resolution or FY2026/FY2027 capacity-ramp evidence."
+  ],
+  "verdict": "neutral"
+}

@@ -1,0 +1,112 @@
+{
+  "agent_id": "TQ",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "turnaround_quality",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 74,
+  "confidence_0_1": 0.8,
+  "bull_score": 82,
+  "bear_score": 66,
+  "bull_case": "2023–H1 2026 profit, margin, cash flow and backlog show a broad operating inflection.",
+  "bear_case": "Much improvement reflects a favorable transformer cycle, not only self-help.",
+  "thesis": "Operating inflection is real, but HDHE is no longer a classic distressed turnaround; the question is sustaining normalized returns.",
+  "evidence": [
+    {
+      "claim": "Operating profit rose from ₩315.2bn in 2023 to ₩669.0bn in 2024 and ₩995.3bn in 2025.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/FY2025_key_facts.txt",
+      "period": "2023-2025",
+      "as_of_date": "2026-09-18",
+      "value": "315.2/669.0/995.3bn",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 2026 operating profit was ₩545.3bn on ₩2.178tn revenue (~25.0% margin).",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "545.3bn / 25.0%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Backlog expanded to ₩12.31tn.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "12.31tn",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Cycle is a major external driver.",
+    "Valuation already recognizes much of the recovery."
+  ],
+  "unknowns": [
+    "Through-cycle operating margin.",
+    "Price/mix versus productivity contribution."
+  ],
+  "falsifiers": [
+    "If new capacity causes utilization and margin to fall without FCF/share growth, the normalization bridge breaks."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "operating margin + FCF/share",
+      "direction": "up",
+      "threshold": "remain strong through capacity ramp",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Track 2027 capacity-ramp utilization."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "operating_inflection",
+      "score_0_100": 85,
+      "rationale": "Multiple years show broad realized profit/margin/OCF/backlog improvement."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "score_0_100": 65,
+      "rationale": "Capacity, mix and execution are controllable, but global cycle is a major contributor."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "score_0_100": 75,
+      "rationale": "Backlog and capacity additions provide a numeric bridge, with peak-margin risk retained."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "score_0_100": 65,
+      "rationale": "Factory expansions have dated milestones, but this is not a formal distressed-turnaround KPI program."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "operating_inflection",
+      "severity": "minor",
+      "rationale": "Well evidenced."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "severity": "material",
+      "rationale": "Cycle/self-help attribution is unclear."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "severity": "material",
+      "rationale": "Normalized margin uncertain."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "severity": "minor",
+      "rationale": "Capacity milestones are visible."
+    }
+  ]
+}

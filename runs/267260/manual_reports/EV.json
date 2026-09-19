@@ -1,0 +1,156 @@
+{
+  "agent_id": "EV",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 59.25,
+  "confidence_0_1": 0.84,
+  "bull_score": 68,
+  "bear_score": 50,
+  "bull_case": "Backlog conversion, new U.S./Korean capacity and sustained margins can lift owner FCF/share toward Bull.",
+  "bear_case": "Cycle normalization or margin mean reversion can leave current price above normalized value.",
+  "thesis": "At ₩725,000, locked Bear/Base/Bull values are about ₩278k/₩696k/₩1.190m. Price/Base=1.041: near Base, not a large expectation gap.",
+  "evidence": [
+    {
+      "claim": "Locked DCF values are Bear ₩277,814, Base ₩696,378, Bull ₩1,189,605.",
+      "source_type": "other",
+      "source": "runs/267260/sources/VALUATION_2026_key_facts.txt",
+      "period": "10y DCF",
+      "as_of_date": "2026-09-18",
+      "value": "277814/696378/1189605",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "FY2025 OCF was ₩959.6bn and PPE capex ₩233.5bn.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/FY2025_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-09-18",
+      "value": "959.6bn / 233.5bn",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "2026-09-18 close was ₩725,000; P/E about 30.67x and forward P/E about 22.93x.",
+      "source_type": "other",
+      "source": "runs/267260/sources/VALUATION_2026_key_facts.txt",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "725000 / 30.67x / 22.93x",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Base value is slightly below market price.",
+    "Base/Bull remain materially terminal-value dependent."
+  ],
+  "unknowns": [
+    "Exact daily 5Y valuation percentile; a transparent 0.75 proxy is frozen.",
+    "Normalized transformer margin after capacity additions."
+  ],
+  "falsifiers": [
+    "If owner FCF/share fails to grow after the 2027 capacity ramp, or price exceeds Bull without higher cash-flow evidence, the valuation thesis fails."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price ₩725k is below locked Bull value ≈₩1.190m; Bull+ is not required."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustain growth after 2027 capacity ramp",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Rebuild DCF after FY2026 and replace the valuation-percentile proxy with a complete series."
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "price/Base=1.041 falls in the 0.9–1.1 signal-map band."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "price/Base=1.041 falls in the 0.9–1.1 signal-map band."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 65,
+      "rationale": "Base terminal fraction is ~66.7%; scenario dispersion is useful but terminal dependence remains material."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "Price is near Base, not at a clear discount."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Return depends on sustained FCF/share growth."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "Terminal value remains a large share of value."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": 0.75,
+    "revenue_cagr_next_3y": 0.12,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          18000,
+          17500,
+          17500,
+          18000,
+          18500,
+          19000,
+          19500,
+          20000,
+          20500,
+          21000
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          22000,
+          25000,
+          28500,
+          32000,
+          35500,
+          39000,
+          42500,
+          46000,
+          49500,
+          53000
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          24000,
+          28500,
+          33500,
+          39000,
+          45000,
+          51500,
+          58500,
+          66000,
+          74000,
+          82500
+        ]
+      }
+    }
+  }
+}

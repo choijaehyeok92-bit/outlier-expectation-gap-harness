@@ -1,0 +1,113 @@
+{
+  "agent_id": "AS",
+  "ticker": "267260",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 69.75,
+  "confidence_0_1": 0.82,
+  "bull_score": 78,
+  "bear_score": 60,
+  "bull_case": "Bull/current≈1.64x with grid/capacity and ESS/distribution as separate upside paths.",
+  "bear_case": "Bear/current≈0.38x implies severe valuation drawdown risk despite low solvency risk.",
+  "thesis": "Survival is strong, but price asymmetry is moderate: multiple upside paths coexist with a low Bear value.",
+  "evidence": [
+    {
+      "claim": "Bull/current≈1.64x and Bear/current≈0.38x.",
+      "source_type": "other",
+      "source": "runs/267260/sources/VALUATION_2026_key_facts.txt",
+      "period": "10y DCF",
+      "as_of_date": "2026-09-18",
+      "value": "1.64x / 0.38x",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Net-cash proxy is ≈₩895.5bn.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-18",
+      "value": "895.5bn",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Backlog ₩12.31tn and main-plant utilization 95.1%.",
+      "source_type": "filing",
+      "source": "runs/267260/sources/H1_2026_key_facts.txt",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": "12.31tn / 95.1%",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Bear/current shows large mark-to-market downside.",
+    "Power equipment remains capex-cycle exposed."
+  ],
+  "unknowns": [
+    "Depth of margin normalization.",
+    "Profit contribution of ESS adjacencies."
+  ],
+  "falsifiers": [
+    "If backlog/pricing weaken while new capacity earns below cost of capital, the upside paths collapse."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Price is below locked Bull."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Net cash and strong OCF make bankruptcy/forced financing remote; Bear still has positive owner FCF."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "backlog and owner FCF/share",
+      "direction": "up",
+      "threshold": "multi-year backlog with positive FCF/share growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Track backlog, order pricing, cancellations and FCF/share."
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "Bull/current≈1.64x and at least two independent upside paths exist."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 60,
+      "rationale": "Bear/current≈0.38 maps to 50; +10 because net cash and OCF exceed debt."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 75,
+      "rationale": "Scenarios explicitly include cycle/margin normalization and capacity upside."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Capacity must convert into high-return orders."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Price downside can be large despite low bankruptcy risk."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Transformer-cycle base rates are imperfect."
+    }
+  ]
+}
