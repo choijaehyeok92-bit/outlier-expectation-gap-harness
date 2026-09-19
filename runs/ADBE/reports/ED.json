@@ -1,0 +1,65 @@
+{
+  "agent_id": "ED",
+  "ticker": "ADBE",
+  "as_of_date": "2026-09-18",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 85,
+  "confidence_0_1": 0.88,
+  "thesis": "Decision-critical historical facts are well supported by the uploaded Q2 FY2026 10-Q and the Q3 FY2026 earnings release. Revenue, ARR, RPO, OCF, debt, cash, SBC, buybacks and share counts are directly observable. Main uncertainty is the modeled long-run AI monetization and FCF path, not the historical evidence.",
+  "evidence": [
+    {
+      "claim": "Q2/H1 revenue, operating income and net income are directly reported in the Q2 10-Q.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 cash+ST investments $5.626B, debt $6.645B and H1 OCF $5.123B are filing-backed.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 revenue $6.76B, ARR $27.50B, AI-first ARR >150% y/y and Q3 OCF $2.52B are company-reported.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "multi-KPI",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "The 10-year owner-FCF paths are estimates.",
+    "AI-first ARR is company-defined and its incremental economics are not fully disclosed."
+  ],
+  "unknowns": [
+    "AI-first ARR composition",
+    "normalized Firefly inference margin",
+    "long-run Experience Cloud growth"
+  ],
+  "falsifiers": [
+    "Source mismatch or later filings that contradict the frozen facts require rerun."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "primary-source coverage",
+      "direction": "up",
+      "threshold": "decision variables filing-backed",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "FY2026 10-K and Q4 results"
+  ],
+  "verdict": "support"
+}

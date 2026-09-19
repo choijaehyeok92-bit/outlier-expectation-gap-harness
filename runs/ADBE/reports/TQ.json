@@ -1,0 +1,110 @@
+{
+  "agent_id": "TQ",
+  "ticker": "ADBE",
+  "as_of_date": "2026-09-18",
+  "domain": "turnaround_quality",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 30,
+  "confidence_0_1": 0.8,
+  "bull_score": 40,
+  "bear_score": 10,
+  "bull_case": "A rerating can occur if AI monetization proves durable, but that is a growth/expectation-gap thesis.",
+  "bear_case": "If AI disruption worsens, the business could de-rate further, but that still does not make the current state a classic turnaround.",
+  "thesis": "Adobe is not a turnaround. The stock-price drawdown reflects competitive/AI expectations, not broken operations or a distressed financial base.",
+  "evidence": [
+    {
+      "claim": "Q3 revenue grew 13% y/y.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "13%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 GAAP operating income was $2.354B.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "2.354",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 net income was $3.601B.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+  ],
+  "unknowns": [
+    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+  ],
+  "falsifiers": [
+    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained high-single-digit+ growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "operating_inflection",
+      "score_0_100": 30,
+      "rationale": "Adobe is already highly profitable; this is not a trough-to-recovery setup."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "score_0_100": 30,
+      "rationale": "There is no distressed restructuring or balance-sheet repair thesis."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "score_0_100": 30,
+      "rationale": "Normalized earnings are already mature rather than depressed."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "score_0_100": 30,
+      "rationale": "AI product milestones matter, but they are growth catalysts rather than turnaround milestones."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "operating_inflection",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    }
+  ]
+}

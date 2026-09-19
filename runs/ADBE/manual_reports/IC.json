@@ -1,0 +1,65 @@
+{
+  "agent_id": "IC",
+  "ticker": "ADBE",
+  "as_of_date": "2026-09-18",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 78.88,
+  "confidence_0_1": 0.82,
+  "thesis": "Expected calibrated score is ~78.9 with Compounder as the primary archetype. Adobe combines category leadership, high recurring cash flow, attractive repurchases and a current price near half the locked Base DCF. The central uncertainty is whether AI is a moat-expanding feature layer or a structural substitute. Hard Veto is expected to clear; mechanical sizing is expected in the normal-candidate band, subject to macro pacing 0.7.",
+  "evidence": [
+    {
+      "claim": "Current price $248.92 vs locked Base ~$495.57.",
+      "source_type": "other",
+      "source": "runs/ADBE/sources/README.md",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "0.502",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Q3 ARR $27.50B and AI-first ARR >150% y/y.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "27.50/>150%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 OCF $5.123B with $4.589B repurchases supports per-share compounding.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI can erode workflow lock-in.",
+    "Base DCF assumes owner FCF/share nearly doubles over ten years.",
+    "Calibration is provisional."
+  ],
+  "unknowns": [
+    "AI monetization durability",
+    "future acquisition returns"
+  ],
+  "falsifiers": [
+    "If MT or RF fall below Compounder thresholds, reclassify; if price/Base rises >1.2, valuation thesis weakens."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "high-single-digit+ CAGR",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "FY2026 10-K and Q4 results"
+  ],
+  "verdict": "support"
+}

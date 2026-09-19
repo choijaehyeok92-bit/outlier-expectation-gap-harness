@@ -1,0 +1,111 @@
+{
+  "agent_id": "RF",
+  "ticker": "ADBE",
+  "as_of_date": "2026-09-18",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 85,
+  "confidence_0_1": 0.8,
+  "bull_score": 95,
+  "bear_score": 65,
+  "bull_case": "AI expands TAM while buybacks amplify per-share cash flow growth.",
+  "bear_case": "If AI spend becomes defensive and growth slows, high reinvestment may earn lower incremental returns.",
+  "thesis": "Adobe combines high cash conversion with low capital intensity and large buybacks. H1 owner-style FCF after PP&E and SBC is roughly $4.0B, while Q3 added $2.52B OCF. The remaining question is whether AI-related R&D keeps producing ARR growth rather than merely defending the installed base.",
+  "evidence": [
+    {
+      "claim": "H1 OCF was $5.123B and PP&E purchases only $95M.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 SBC was $1.043B.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 repurchases were $4.589B; Q3 added ~9.5M shares repurchased.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "9.5M",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+  ],
+  "unknowns": [
+    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+  ],
+  "falsifiers": [
+    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Strong cash generation and low capital intensity rebut structural incremental-ROIC collapse."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Share count is shrinking, not persistently diluting."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained high-single-digit+ growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 85,
+      "rationale": "High software margins and low physical capex support strong incremental cash returns."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 80,
+      "rationale": "R&D, AI products, document productivity and Experience Cloud provide multiple reinvestment paths."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 90,
+      "rationale": "OCF is strong, capex low and aggressive repurchases reduce shares outstanding materially."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    }
+  ]
+}

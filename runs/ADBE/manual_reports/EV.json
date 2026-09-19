@@ -1,0 +1,154 @@
+{
+  "agent_id": "EV",
+  "ticker": "ADBE",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 83,
+  "confidence_0_1": 0.8,
+  "bull_score": 92.25,
+  "bear_score": 62.25,
+  "bull_case": "AI monetization plus continued share-count shrinkage can support Bull value above $800.",
+  "bear_case": "If AI commoditizes creative workflows and growth fades, Bear value around $234 leaves little downside cushion from current price.",
+  "thesis": "At $248.92, Adobe trades at about half the locked Base DCF of ~$495.57. The valuation no longer requires heroic execution; the market is pricing substantial AI disruption or structurally lower growth. Base still assumes owner FCF/share grows from about $20 to $38 over ten years, which is demanding but consistent with high margins, buybacks and low-teens subscription growth.",
+  "evidence": [
+    {
+      "claim": "H1 OCF was $5.123B, PP&E purchases $95M, and SBC $1.043B.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 revenue was $6.76B, ARR $27.50B and OCF $2.52B.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "6.76/27.50/2.52",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Locked Bear/Base/Bull are about $233.72/$495.57/$817.33.",
+      "source_type": "other",
+      "source": "runs/ADBE/sources/README.md",
+      "period": "10y DCF",
+      "as_of_date": "2026-09-18",
+      "value": "233.72/495.57/817.33",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+  ],
+  "unknowns": [
+    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+  ],
+  "falsifiers": [
+    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is below Base and far below Bull, so it does not require an unrealistic Bull+ case."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained high-single-digit+ growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 90,
+      "rationale": "price/Base≈0.502, so locked signal_map <=0.7 = 90."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 85,
+      "rationale": "price/Base≈0.502, so locked signal_map <=0.7 = 85."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 70,
+      "rationale": "Base remains below Bull and starts near current normalized owner FCF, but terminal value remains material."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.11,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          14,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          20,
+          22,
+          24,
+          26,
+          28,
+          30,
+          32,
+          34,
+          36,
+          38
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          22,
+          25,
+          28,
+          32,
+          36,
+          40,
+          44,
+          48,
+          52,
+          56
+        ]
+      }
+    }
+  }
+}

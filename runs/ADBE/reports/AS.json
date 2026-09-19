@@ -1,0 +1,111 @@
+{
+  "agent_id": "AS",
+  "ticker": "ADBE",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 75,
+  "confidence_0_1": 0.8,
+  "bull_score": 85,
+  "bear_score": 55,
+  "bull_case": "AI-first ARR can turn the current disruption narrative into a new monetization cycle while buybacks shrink the share base.",
+  "bear_case": "A permanent shift to model-native creation tools could compress ARR growth and terminal multiples.",
+  "thesis": "Asymmetry is favorable because the downside case is close to current price while Base/Bull provide substantial upside. The key is that Adobe is not financially fragile; the debate is around moat duration and growth, not survival.",
+  "evidence": [
+    {
+      "claim": "Q3 AI-first ARR grew more than 150% y/y.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": ">150%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Adobe had more than 1B MAU across creativity and productivity.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": ">1B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2/H1 subscription revenue and ARR remained double-digit growth.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+  ],
+  "unknowns": [
+    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+  ],
+  "falsifiers": [
+    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Recurring revenue, strong OCF and investment-grade scale make bankruptcy/permanent impairment unlikely relative to upside."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is below Base."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained high-single-digit+ growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "Bull/current >3x with multiple paths: AI monetization, enterprise CX, document productivity and buybacks."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 75,
+      "rationale": "Bear/current is ~0.94 and Adobe has large recurring revenue and strong cash generation."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 75,
+      "rationale": "Scenarios include AI commoditization, slower growth and buyback support."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    }
+  ]
+}
