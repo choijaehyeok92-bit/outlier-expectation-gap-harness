@@ -1,0 +1,66 @@
+{
+  "agent_id": "IC",
+  "ticker": "PYPL",
+  "as_of_date": "2026-09-18",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 75.93,
+  "confidence_0_1": 0.84,
+  "thesis": "PYPL is expected to classify as an Expectation Gap: valuation and asymmetry are extremely strong, financial survival and capital allocation are strong, while moat trajectory and reinvestment runway are insufficient for Compounder and calibrated turnaround evidence is not yet strong enough for Turnaround. Hard Veto should clear. Mechanical sizing should remain in the normal-candidate band with 0.7 macro pacing.",
+  "evidence": [
+    {
+      "claim": "Current price $52.41 versus locked Base $131.42 and Bear $64.74.",
+      "source_type": "other",
+      "source": "runs/PYPL/sources/README.md",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "52.41/131.42/64.74",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Q2 TPV +10%, revenue +5%, but active accounts roughly flat.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Trailing-12-month repurchases were about $6.0B / 111M shares.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Branded checkout moat is not clearly widening.",
+    "Internal reinvestment runway is weaker than FCF/share quality.",
+    "Turnaround evidence is still mixed because Q2 operating margin/EPS declined."
+  ],
+  "unknowns": [
+    "Checkout share",
+    "Venmo monetization",
+    "Braintree margin"
+  ],
+  "falsifiers": [
+    "If FS falls below 65 or valuation gap closes without better moat evidence, expectation-gap classification weakens."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth with stable TM$",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 results"
+  ],
+  "verdict": "support"
+}

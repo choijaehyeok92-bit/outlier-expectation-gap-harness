@@ -1,0 +1,39 @@
+{
+  "ticker": "PYPL",
+  "company_name": "PayPal Holdings, Inc.",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 52.41,
+  "shares_diluted": 855460874,
+  "market_cap_usd": 44835000000,
+  "enterprise_value": 42970000000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "User-uploaded PayPal FY2025 Form 10-K filed 2026-02-03",
+    "User-uploaded PayPal Q1 FY2026 Form 10-Q filed 2026-05-05",
+    "User-uploaded PayPal Q2 FY2026 Form 10-Q and 8-K filed 2026-07-28",
+    "2026-09-18 close $52.41 from historical market data",
+    "StockResearch PYPL valuation: 5Y weekly TTM P/E 12th percentile, updated 2026-08-22",
+    "FinanceCharts PYPL PE: 9.89x on 2026-09-18 vs 5Y average 18.31x"
+  ],
+  "special_questions": [
+    "Is branded checkout stabilization enough to stop structural wallet-share erosion versus Apple Pay, Shop Pay, Stripe and card-network tokenized checkout?",
+    "Can Venmo, Braintree and financial-services monetization restore transaction-margin-dollar growth without sacrificing margin?",
+    "Do aggressive buybacks at depressed valuation create durable per-share compounding despite modest top-line growth?"
+  ],
+  "net_cash_per_share": 2.18,
+  "valuation_percentile_5y": 0.12,
+  "valuation_metric": "TTM P/E percentile over trailing 5-year weekly observations; latest reproducible pre-as-of reading 12th percentile. Cross-check: 2026-09-18 PE 9.89x vs 5Y average 18.31x.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  }
+}

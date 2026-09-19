@@ -1,0 +1,102 @@
+{
+  "agent_id": "SL",
+  "ticker": "PYPL",
+  "as_of_date": "2026-09-18",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 76.75,
+  "confidence_0_1": 0.84,
+  "bull_score": 86.75,
+  "bear_score": 56.75,
+  "bull_case": "Better monetization of the installed consumer/merchant network can restore durable growth without requiring major share gains.",
+  "bear_case": "Platform wallets and merchant-native checkout can continue eroding branded relevance at the margin.",
+  "thesis": "PayPal remains structurally relevant because digital payments keep expanding and its two-sided network is extremely large. Leadership is durable but no longer category-defining in every checkout surface.",
+  "evidence": [
+    {
+      "claim": "FY2025 active accounts were 439M and TPV $1.79T.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-03",
+      "value": "439M/1.79T",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 TPV grew 10%.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "PayPal operates branded checkout, Venmo, Braintree, BNPL and merchant services across roughly 200 markets.",
+      "source_type": "other",
+      "source": "runs/PYPL/sources/README.md",
+      "period": "business mix",
+      "as_of_date": "2026-09-18",
+      "value": "multi-axis",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Branded checkout competition remains intense and active-account growth is essentially flat, limiting evidence of a widening moat."
+  ],
+  "unknowns": [
+    "Long-run branded checkout share",
+    "Venmo monetization slope",
+    "Braintree take-rate versus transaction-margin tradeoff"
+  ],
+  "falsifiers": [
+    "If transaction-margin dollars contract persistently, branded checkout resumes material share loss, or buybacks stop creating FCF/share growth, the thesis weakens."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth despite modest revenue growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Branded checkout growth, Venmo revenue, transaction-margin dollars, active accounts, TPV, repurchases, diluted shares"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 75,
+      "rationale": "Digital payments and commerce continue secular growth, though wallet competition is mature."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 80,
+      "rationale": "PayPal/Venmo remain globally recognized consumer-payment brands with very large merchant distribution."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 75,
+      "rationale": "Branded checkout, Venmo, Braintree and financial services create multiple demand axes, offset by intense platform competition."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    }
+  ]
+}

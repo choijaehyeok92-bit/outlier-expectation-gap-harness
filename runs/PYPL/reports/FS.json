@@ -1,0 +1,118 @@
+{
+  "agent_id": "FS",
+  "ticker": "PYPL",
+  "as_of_date": "2026-09-18",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 86,
+  "confidence_0_1": 0.84,
+  "bull_score": 96,
+  "bear_score": 66,
+  "bull_case": "Strong liquidity and FCF let PayPal keep investing and repurchasing stock through a downturn.",
+  "bear_case": "A severe consumer-credit shock can pressure losses and funding needs, but current liquidity provides substantial cushion.",
+  "thesis": "Financial survival is very strong. The company has modest net cash, substantial annual OCF and a rapidly shrinking share count. Credit losses and BNPL working-capital timing require monitoring but do not threaten solvency.",
+  "evidence": [
+    {
+      "claim": "Q2 cash+investments were $15.3B and debt $13.4B.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 OCF was $6.416B.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-03",
+      "value": "6.416B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Shares outstanding fell to 855.5M by July 22.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Branded checkout competition remains intense and active-account growth is essentially flat, limiting evidence of a widening moat."
+  ],
+  "unknowns": [
+    "Long-run branded checkout share",
+    "Venmo monetization slope",
+    "Braintree take-rate versus transaction-margin tradeoff"
+  ],
+  "falsifiers": [
+    "If transaction-margin dollars contract persistently, branded checkout resumes material share loss, or buybacks stop creating FCF/share growth, the thesis weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Strong OCF and liquidity mean PayPal is not structurally dependent on external capital."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Share count is declining materially."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Balance-sheet and cash-flow strength make bankruptcy/forced-financing risk low relative to expected return."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth despite modest revenue growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Branded checkout growth, Venmo revenue, transaction-margin dollars, active accounts, TPV, repurchases, diluted shares"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 80,
+      "rationale": "Cash and investments of $15.3B exceed debt by about $1.9B, while operating cash generation is strong."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 90,
+      "rationale": "PayPal generates multi-billion-dollar annual OCF and can fund operations, credit products, dividends and buybacks internally through stress."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 90,
+      "rationale": "Shares outstanding are declining sharply; no off-balance financing burden dominates the capital structure."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    }
+  ]
+}
