@@ -1,0 +1,72 @@
+name: NVDA V3 pass4 refreeze and finalize
+
+on:
+  push:
+    branches:
+      - fix/nvda-v3-orchestrator-evidence-20260919
+    paths:
+      - ".github/workflows/nvda-v3-pass4-finalize.yml"
+      - "runs/NVDA-V3-2026-09-19/reports/CP.json"
+      - "runs/NVDA-V3-2026-09-19/reports/FS.json"
+      - "runs/NVDA-V3-2026-09-19/reports/MA.json"
+      - "runs/NVDA-V3-2026-09-19/reports/EV.json"
+      - "runs/NVDA-V3-2026-09-19/reports/AS.json"
+      - "runs/NVDA-V3-2026-09-19/reports/DI.json"
+      - "runs/NVDA-V3-2026-09-19/reports/MT.json"
+      - "runs/NVDA-V3-2026-09-19/reports/RF.json"
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/nvda-v3-orchestrator-evidence-20260919
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refreeze and validate affected domains
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/nvda-v3-pass4-finalize.log) 2>&1
+
+          python harness.py freeze NVDA-V3-2026-09-19 \
+            --provider openai --model gpt-5.6-sol
+
+          python harness.py validate NVDA-V3-2026-09-19 CP FS MA EV AS DI MT RF
+
+          echo "===== PLAN ====="
+          python harness.py plan NVDA-V3-2026-09-19 | tee runlogs/nvda-v3-pass4-plan.json
+
+          echo "===== AGGREGATE ====="
+          python harness.py aggregate NVDA-V3-2026-09-19
+
+          echo "===== DIGEST ====="
+          python harness.py digest NVDA-V3-2026-09-19
+
+      - name: Commit generated harness artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            runs/NVDA-V3-2026-09-19/run_manifest.json \
+            runs/NVDA-V3-2026-09-19/aggregate.json \
+            runs/NVDA-V3-2026-09-19/final_verdict.json \
+            runs/NVDA-V3-2026-09-19/digest.md \
+            runlogs/nvda-v3-pass4-finalize.log \
+            runlogs/nvda-v3-pass4-plan.json
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit."
+          else
+            git commit -m "chore(nvda): refreeze validate aggregate digest [harness-finalize]"
+            git push origin HEAD:fix/nvda-v3-orchestrator-evidence-20260919
+          fi
