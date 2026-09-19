@@ -1,0 +1,114 @@
+{
+  "agent_id": "CP",
+  "ticker": "V",
+  "as_of_date": "2026-09-18",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 90,
+  "confidence_0_1": 0.86,
+  "bull_score": 98,
+  "bear_score": 70,
+  "bull_case": "Growth in credentials, transactions and VAS deepens client wallet share and value delivered.",
+  "bear_case": "Large clients have bargaining power and Visa pays substantial client incentives to secure routing/issuance relationships.",
+  "thesis": "Customer value is exceptionally strong because Visa sits inside mission-critical payment flows and monetizes high recurring usage without funding consumer credit itself.",
+  "evidence": [
+    {
+      "claim": "Q3 payments volume +10%, processed transactions +10%, cross-border ex-Europe +12%.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3/9M FY2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 OCF was $23.059B on $40.0B revenue.",
+      "source_type": "filing",
+      "source": "runs/V/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2025-11-06",
+      "value": "23.059B/40.0B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 VAS grew 33%.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3/9M FY2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Regulatory and interchange litigation can pressure network economics and pricing over time.",
+    "The current valuation already embeds a high-quality compounder profile."
+  ],
+  "unknowns": [
+    "Long-run regulation of interchange and routing",
+    "Sustainable growth rate of Visa Direct and value-added services",
+    "Long-run client incentive intensity"
+  ],
+  "falsifiers": [
+    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Growth is supported by mission-critical network usage, not marketing/subsidy without customer value."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Visa has multiple client types, geographies and revenue pools; regulation is important but no single customer/product/regulation is a fatal dependency."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "high-single to low-double-digit long-run growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Payments volume, cross-border volume, processed transactions, value-added services, client incentives, owner FCF/share, buyback price"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 90,
+      "rationale": "Authorization, settlement, fraud/risk, tokenization and global acceptance are mission-critical infrastructure for issuers, acquirers and merchants."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 90,
+      "rationale": "Payments volume, cross-border volume and processed transactions all continue expanding at high-single/low-double-digit rates."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 90,
+      "rationale": "Visa's asset-light network produces very high operating cash flow with limited capex relative to revenue."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    }
+  ]
+}
