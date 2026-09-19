@@ -1,0 +1,108 @@
+{
+  "agent_id": "MA",
+  "ticker": "PYPL",
+  "as_of_date": "2026-09-18",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 78.75,
+  "confidence_0_1": 0.84,
+  "bull_score": 88.75,
+  "bear_score": 58.75,
+  "bull_case": "Continued repurchases at deep discounts can materially increase intrinsic value per share.",
+  "bear_case": "If structural checkout erosion persists, even cheap buybacks may merely shrink a declining base.",
+  "thesis": "Capital allocation is a major strength at current valuation. Repurchasing roughly $6B of stock over the trailing year near the current price is highly accretive if FCF is durable. The remaining question is whether management can also stabilize the underlying moat.",
+  "evidence": [
+    {
+      "claim": "Trailing-12-month repurchases were about $6.0B / 111M shares.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 repurchases were $6.053B.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-03",
+      "value": "6.053B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "No correction/restatement flag was reported in the FY2025 10-K.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Branded checkout competition remains intense and active-account growth is essentially flat, limiting evidence of a widening moat."
+  ],
+  "unknowns": [
+    "Long-run branded checkout share",
+    "Venmo monetization slope",
+    "Braintree take-rate versus transaction-margin tradeoff"
+  ],
+  "falsifiers": [
+    "If transaction-margin dollars contract persistently, branded checkout resumes material share loss, or buybacks stop creating FCF/share growth, the thesis weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "No restatement, auditor dispute or accounting-integrity impairment is established."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth despite modest revenue growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Branded checkout growth, Venmo revenue, transaction-margin dollars, active accounts, TPV, repurchases, diluted shares"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 80,
+      "rationale": "Trailing-12-month buyback average price was roughly $54/share, less than half the locked Base value."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 80,
+      "rationale": "No restatement/correction flag is present and capital returns are transparent."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 75,
+      "rationale": "Management is reallocating toward branded checkout, Venmo, Braintree and financial services while maintaining strong buybacks."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    }
+  ]
+}

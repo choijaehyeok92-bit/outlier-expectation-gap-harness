@@ -1,0 +1,112 @@
+{
+  "agent_id": "TQ",
+  "ticker": "PYPL",
+  "as_of_date": "2026-09-18",
+  "domain": "turnaround_quality",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 72.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 82.5,
+  "bear_score": 52.5,
+  "bull_case": "If transaction-margin dollars and branded checkout improve for multiple quarters, PayPal could become a formal turnaround candidate.",
+  "bear_case": "If stabilization proves temporary and margins continue to contract, the turnaround narrative fails.",
+  "thesis": "PayPal has genuine turnaround characteristics, but the evidence is not yet broad enough for the harness' calibrated Turnaround threshold. Revenue and TPV are improving and checkout is stabilizing, while Q2 margin/EPS still declined. This is an early-to-mid transformation rather than a fully confirmed turnaround.",
+  "evidence": [
+    {
+      "claim": "Q2 revenue grew 5% and TPV 10%.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 GAAP operating margin fell to 16.4% and EPS declined 3%.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Management said branded checkout had further stabilized and raised FY2026 non-GAAP EPS guidance.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Branded checkout competition remains intense and active-account growth is essentially flat, limiting evidence of a widening moat."
+  ],
+  "unknowns": [
+    "Long-run branded checkout share",
+    "Venmo monetization slope",
+    "Braintree take-rate versus transaction-margin tradeoff"
+  ],
+  "falsifiers": [
+    "If transaction-margin dollars contract persistently, branded checkout resumes material share loss, or buybacks stop creating FCF/share growth, the thesis weakens."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth despite modest revenue growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Branded checkout growth, Venmo revenue, transaction-margin dollars, active accounts, TPV, repurchases, diluted shares"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "operating_inflection",
+      "score_0_100": 65,
+      "rationale": "Branded checkout has stabilized and TPV growth accelerated, but Q2 operating income/margin and EPS still declined."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "score_0_100": 75,
+      "rationale": "Product simplification, checkout improvement, Venmo/Braintree monetization and cost discipline are management-controlled."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "score_0_100": 80,
+      "rationale": "Current FCF and low valuation allow a conservative bridge to higher per-share value without peak margins."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "score_0_100": 75,
+      "rationale": "Management raised FY2026 non-GAAP EPS guidance and is explicitly tracking branded checkout, Venmo and Braintree execution."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "operating_inflection",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    }
+  ]
+}

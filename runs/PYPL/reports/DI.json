@@ -1,0 +1,102 @@
+{
+  "agent_id": "DI",
+  "ticker": "PYPL",
+  "as_of_date": "2026-09-18",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 66.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 76.5,
+  "bear_score": 46.5,
+  "bull_case": "Agentic commerce, Venmo and merchant financial services could create new value pools across the existing network.",
+  "bear_case": "Apple, Stripe, Shopify and card networks can replicate or bundle many payment experiences, limiting disruptive advantage.",
+  "thesis": "PayPal remains a major digital-payments platform but is now an incumbent adapting to industry change rather than a disruptive entrant. Its optionality comes from monetizing a huge installed base more effectively, not from redefining the payments cost curve.",
+  "evidence": [
+    {
+      "claim": "FY2025 TPV was $1.79T and active accounts 439M.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-03",
+      "value": "1.79T/439M",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 TPV grew 10%.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Management highlighted Venmo, Braintree and financial services as growth priorities.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Branded checkout competition remains intense and active-account growth is essentially flat, limiting evidence of a widening moat."
+  ],
+  "unknowns": [
+    "Long-run branded checkout share",
+    "Venmo monetization slope",
+    "Braintree take-rate versus transaction-margin tradeoff"
+  ],
+  "falsifiers": [
+    "If transaction-margin dollars contract persistently, branded checkout resumes material share loss, or buybacks stop creating FCF/share growth, the thesis weakens."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth despite modest revenue growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Branded checkout growth, Venmo revenue, transaction-margin dollars, active accounts, TPV, repurchases, diluted shares"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 55,
+      "rationale": "PayPal improves checkout, wallet and merchant services but is no longer creating a 10x cost/performance shift."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 75,
+      "rationale": "439M active accounts and $1.79T FY2025 TPV show mainstream scale, though user growth is mature."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 70,
+      "rationale": "Venmo, Braintree, BNPL and financial services provide adjacent value pools, but competitors are equally well-capitalized."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    }
+  ]
+}
