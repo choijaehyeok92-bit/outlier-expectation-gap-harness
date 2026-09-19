@@ -1,0 +1,165 @@
+{
+  "agent_id": "EV",
+  "ticker": "PANW",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 31.25,
+  "confidence_0_1": 0.84,
+  "bull_score": 45,
+  "bear_score": 20,
+  "bull_case": "If platformization, CyberArk identity security, Cortex AI and SASE all compound together while owner FCF/share scales materially faster than revenue, the Bull DCF can approach $460/share.",
+  "bear_case": "If acquisitions mainly add scale while SBC, amortization and dilution continue to absorb per-share economics, intrinsic value can be far below the current quote.",
+  "thesis": "At $363.58, PANW trades at roughly 1.52x the locked Base DCF of $239.05. The current quote therefore requires outcomes much closer to the Bull path than the Base path. Revenue and NGS ARR growth are strong, but valuation leaves limited room for execution slippage, especially after the large CyberArk equity issuance and elevated SBC.",
+  "evidence": [
+    {
+      "claim": "FY2026 operating cash flow was $4.553B, capex/other asset purchases $440M, and total SBC $1.815B.",
+      "source_type": "filing",
+      "source": "runs/PANW/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-10",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2027 revenue guidance is $14.10B-$14.20B and NGS ARR guidance $11.075B-$11.175B.",
+      "source_type": "filing",
+      "source": "runs/PANW/sources/FY2026_Q4_8K_key_facts.txt",
+      "period": "FY2027 guide",
+      "as_of_date": "2026-09-01",
+      "value": "14.10-14.20 / 11.075-11.175",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Locked Bear/Base/Bull values are about $80.71/$239.05/$460.00; current/Base is ~1.521.",
+      "source_type": "other",
+      "source": "runs/PANW/sources/README.md",
+      "period": "10y DCF",
+      "as_of_date": "2026-09-18",
+      "value": "1.521",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Company-defined adjusted FCF margin was 38.4% in FY2026 and FY2028 target is 40%.",
+    "NGS ARR and RPO are compounding materially faster than legacy revenue."
+  ],
+  "unknowns": [
+    "Normalized owner FCF after SBC and acquisition-related dilution",
+    "Long-run CyberArk cross-sell economics",
+    "SBC normalization after integration"
+  ],
+  "falsifiers": [
+    "If owner FCF/share compounds above the Bull path while share count stabilizes, valuation risk falls materially.",
+    "If FY2027 NGS ARR growth slows below guidance while SBC remains elevated, valuation risk rises."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "conditional",
+      "rationale": "Current price is above Base and close enough to Bull that V7 is decision-critical; the exact veto requires a full RT/AS review, so it remains conditional rather than confirmed at triage."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "price/Base",
+      "direction": "down",
+      "threshold": "<=1.2 for Compounder",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "outgrow dilution and SBC",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Normalize post-CyberArk owner FCF/share",
+    "Track diluted shares/SBC and FY27 NGS ARR"
+  ],
+  "verdict": "oppose",
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 25,
+      "rationale": "price/Base >1.3; harness signal map assigns 25."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 25,
+      "rationale": "price/Base >1.3; harness signal map assigns 25."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 50,
+      "rationale": "Value depends on rapid per-share FCF scaling and terminal economics, but current operating scale provides some support."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "Acquisition accounting and large dilution complicate normalized per-share FCF."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Current price materially exceeds Base."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "Bull value is terminal-heavy and sensitive to long-run FCF margin."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.2,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          3,
+          3.2,
+          3.5,
+          4,
+          4.5,
+          5,
+          5.5,
+          6,
+          6.5,
+          7
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          4,
+          5,
+          6.3,
+          7.8,
+          9.5,
+          11.3,
+          13.2,
+          15.3,
+          17.5,
+          20
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          4.5,
+          6,
+          8,
+          10.5,
+          13.5,
+          17,
+          21,
+          25,
+          29,
+          34
+        ]
+      }
+    }
+  }
+}

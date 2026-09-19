@@ -1,0 +1,110 @@
+{
+  "agent_id": "TQ",
+  "ticker": "PANW",
+  "as_of_date": "2026-09-18",
+  "domain": "turnaround_quality",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 25,
+  "confidence_0_1": 0.9,
+  "bull_score": 40,
+  "bear_score": 20,
+  "bull_case": "Acquisition integration can improve margins and per-share economics, but this would be optimization of a healthy growth platform rather than a classic turnaround.",
+  "bear_case": "If integration costs persist, GAAP profitability may remain noisy, yet the company is still not starting from operational distress.",
+  "thesis": "PANW is not a turnaround. Revenue, NGS ARR, RPO and cash flow are already expanding strongly; the issue is valuation and acquisition integration, not a trough recovery.",
+  "evidence": [
+    {
+      "claim": "FY2026 revenue rose to $11.480B from $9.221B.",
+      "source_type": "filing",
+      "source": "runs/PANW/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-10",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q4 revenue grew 34% and NGS ARR 63%.",
+      "source_type": "filing",
+      "source": "runs/PANW/sources/FY2026_Q4_8K_key_facts.txt",
+      "period": "FY2026 Q4",
+      "as_of_date": "2026-09-01",
+      "value": "34%/63%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2026 OCF was $4.553B.",
+      "source_type": "filing",
+      "source": "runs/PANW/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-10",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "GAAP operating income and net income were pressured by acquisition-related costs, which can later normalize."
+  ],
+  "unknowns": [
+    "Post-integration GAAP margin normalization"
+  ],
+  "falsifiers": [
+    "A future severe operational trough could make Turnaround relevant, but current evidence does not."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "GAAP margin normalization",
+      "direction": "up",
+      "threshold": "post-integration recovery",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Integration cost normalization"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "operating_inflection",
+      "score_0_100": 25,
+      "rationale": "No trough recovery setup; core operating metrics are already strong."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "score_0_100": 25,
+      "rationale": "Current thesis is not based on restructuring or distressed self-help."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "score_0_100": 25,
+      "rationale": "Earnings are acquisition-noisy, not cyclically depressed from a turnaround base."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "score_0_100": 25,
+      "rationale": "FY27/FY28 targets are growth/integration milestones, not turnaround milestones."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "operating_inflection",
+      "severity": "minor",
+      "rationale": "Acquisition accounting distorts GAAP earnings but not the archetype."
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "severity": "minor",
+      "rationale": "Not applicable to the primary setup."
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "severity": "minor",
+      "rationale": "Not a turnaround bridge."
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "severity": "minor",
+      "rationale": "Growth KPIs exist but do not create a turnaround archetype."
+    }
+  ]
+}
