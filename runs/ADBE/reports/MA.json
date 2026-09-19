@@ -1,0 +1,106 @@
+{
+  "agent_id": "MA",
+  "ticker": "ADBE",
+  "as_of_date": "2026-09-18",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 85,
+  "confidence_0_1": 0.8,
+  "bull_score": 95,
+  "bear_score": 65,
+  "bull_case": "Repurchases below intrinsic value and disciplined AI M&A can lift per-share value materially.",
+  "bear_case": "Overpaying for AI-related M&A or buying back shares before a structural moat break would destroy value.",
+  "thesis": "Capital allocation is a major strength at the current valuation. H1 repurchases of $4.589B and Q3's ~9.5M shares retire equity at prices materially below the locked Base value. Semrush acquisition adds SEO/GEO capabilities, though integration discipline still matters.",
+  "evidence": [
+    {
+      "claim": "H1 repurchases were $4.589B.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 repurchased approximately 9.5M shares.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "9.5M",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Semrush purchase price was about $1.874B in April 2026.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+  ],
+  "unknowns": [
+    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+  ],
+  "falsifiers": [
+    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "No restatement, auditor disagreement or integrity impairment is established in the frozen filings."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained high-single-digit+ growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 85,
+      "rationale": "Large repurchases at prices below locked Base value are economically attractive; Semrush adds search/GEO capability."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 85,
+      "rationale": "No accounting-integrity issue is evident and controls/auditor reporting are standard."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 85,
+      "rationale": "Management has shifted product strategy toward Firefly, agents and freemium while preserving double-digit growth."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "material",
+      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+    }
+  ]
+}

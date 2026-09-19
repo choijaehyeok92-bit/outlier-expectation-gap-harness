@@ -1,0 +1,111 @@
+{
+  "agent_id": "RT",
+  "ticker": "ADBE",
+  "as_of_date": "2026-09-18",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 50,
+  "confidence_0_1": 0.85,
+  "thesis": "The strongest short thesis is structural AI commoditization. Generative models can collapse the value of standalone creative tools, reduce switching costs, and shift monetization toward model providers or new agentic interfaces. Adobe's 13% revenue growth and >150% AI-first ARR are encouraging, but could still represent defensive bundling rather than incremental economic rent. The balance sheet and cash flow, however, make this a moat-duration risk rather than a survival risk.",
+  "evidence": [
+    {
+      "claim": "Q3 revenue grew 13% y/y while AI-first ARR grew >150% y/y.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "13%/>150%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Current market price is far below the locked Base DCF, implying the market is pricing significant structural risk.",
+      "source_type": "other",
+      "source": "runs/ADBE/sources/README.md",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "price/Base~0.502",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Adobe still spends heavily on R&D and AI while defending multiple product categories.",
+      "source_type": "filing",
+      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "ARR remains double-digit growth.",
+    ">1B MAU and large RPO indicate continued workflow relevance.",
+    "Aggressive buybacks convert cash generation into per-share value."
+  ],
+  "unknowns": [
+    "True incremental AI ARR",
+    "competitive share among prompt-native tools"
+  ],
+  "falsifiers": [
+    "Sustained AI-driven ARR acceleration weakens the short thesis; declining ARR despite rising AI usage strengthens it."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "No accounting-integrity failure is established."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Large recurring OCF funds operations and capital allocation."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Share count is shrinking through repurchases."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Subscription ARR and usage support real customer value."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Cash returns remain high."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Risk exists, but current ARR/usage does not establish persistent shrinkage."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is below Base."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Revenue is diversified across creative, documents and enterprise experience."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Recurring cash flow and moderate leverage make this unlikely."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "ARR growth vs AI usage",
+      "direction": "up",
+      "threshold": "AI usage translates to ARR",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q4 ARR, AI-first ARR and owner FCF/share"
+  ],
+  "verdict": "oppose"
+}
