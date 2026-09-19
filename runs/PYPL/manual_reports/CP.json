@@ -1,0 +1,113 @@
+{
+  "agent_id": "CP",
+  "ticker": "PYPL",
+  "as_of_date": "2026-09-18",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 75.75,
+  "confidence_0_1": 0.84,
+  "bull_score": 85.75,
+  "bear_score": 55.75,
+  "bull_case": "Checkout improvements and Venmo/Braintree cross-sell can lift engagement and merchant ROI.",
+  "bear_case": "Flat active accounts and low-cost alternatives can cap pricing and transaction-margin growth.",
+  "thesis": "Customer value remains real: payment volume keeps growing and merchants/consumers continue using PayPal at enormous scale. The weakness is that usage growth does not clearly prove increasing wallet share or pricing power.",
+  "evidence": [
+    {
+      "claim": "Q2 TPV grew 10% to $486.4B and payment transactions grew 8%.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Active accounts were 439M, up only 0.3% y/y.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 transaction-margin dollars were $3.9B, +1%; ex-interest +3%.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Branded checkout competition remains intense and active-account growth is essentially flat, limiting evidence of a widening moat."
+  ],
+  "unknowns": [
+    "Long-run branded checkout share",
+    "Venmo monetization slope",
+    "Braintree take-rate versus transaction-margin tradeoff"
+  ],
+  "falsifiers": [
+    "If transaction-margin dollars contract persistently, branded checkout resumes material share loss, or buybacks stop creating FCF/share growth, the thesis weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Growth is supported by massive transaction volume and merchant/consumer utility, not subsidy or marketing dependence."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Revenue is diversified across branded checkout, processing, Venmo, credit and value-added services; no single customer/product/regulation is fatal."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth despite modest revenue growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Branded checkout growth, Venmo revenue, transaction-margin dollars, active accounts, TPV, repurchases, diluted shares"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 80,
+      "rationale": "Merchants pay for conversion, authorization, fraud/risk, processing and wallet access; consumer utility remains high."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 70,
+      "rationale": "TPV and transactions are growing but active accounts are essentially flat and branded-checkout share is still a concern."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 75,
+      "rationale": "Scale supports strong FCF, though Braintree mix and transaction expense constrain margin expansion."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    }
+  ]
+}
