@@ -1,96 +1,252 @@
-# HD Hyundai Electric (267260) — detailed harness analysis
+# HD현대일렉트릭(267260) — 2026-09-18 하네스 최종 분석
 
-**As of:** 2026-09-18  
-**Frozen price:** ₩725,000  
-**Framework:** Long Outlier Expectation Gap Strategy v2.2 / GPT-5.6 Sol / deterministic aggregation
+> **실행 상태:** Phase 1 Triage 통과 → 핵심 도메인 전부 실행 → Evidence Auditor / Red Team 실행 → **Pre-IC 조기 종료**  
+> **IC:** 조기 종료 규칙에 따라 실행하지 않음  
+> **모델/설정:** GPT-5.6 Sol · reasoning effort=high · frozen input snapshot  
+> **기준주가:** ₩725,000
 
-## Summary
+## 1. 최종 판정 한눈에 보기
 
-HD Hyundai Electric is a high-quality power-equipment beneficiary of a multi-year grid-investment cycle. H1 2026 backlog reached **₩12.31tn**, revenue **₩2.178tn**, operating profit **₩545.3bn**, and main-plant utilization **95.1%**. Deposits of about **₩1.010tn** versus borrowings of **₩114.5bn** imply a roughly **₩895.5bn net-cash proxy**.
-
-The harness does not automatically classify it as a Compounder at ₩725k. The locked Base value is about **₩696k/share**, so there is no large expectation gap. Moat quality is industrial—qualification, reliability, engineering, delivery and localization—rather than a network/data ecosystem, which mechanically caps MT under the current rubric. In addition, the 170kV GIS bid-collusion-related KFTC/KEPCO proceedings remain unresolved; the integrity Hard Veto is therefore **conditional**, forcing **WATCH** under the gate.
-
-Expected deterministic post-calibration result: **~70.93/100 (Emerging Outlier)**, DI **~64.92**, TQ **69.00**, archetype **non_fit**, Hard Veto **UNRESOLVED**, mechanical state **WATCH**.
-
-## Business and moat
-
-H1 mix was 68% power equipment, 16% rotating equipment and 16% distribution/other; exports were 78%. The order book rose from ₩9.42tn at FY2025 year-end to ₩12.31tn by June 2026. These are strong demand and execution signals, but they also reflect a tight transformer supply environment.
-
-The moat is not software-like. Utility qualification, custom engineering, reliability records, long delivery lead times, local production and UHV capability create switching friction. This can support pricing power even without a data flywheel. The main long-term risk is capacity response: if competitors add enough transformer capacity, scarcity rents can normalize.
-
-## Growth and reinvestment
-
-Grid replacement, renewable interconnection, AI/data-center load and electrification support demand. ESS/power-conversion optionality is commercial rather than conceptual: >1.6GWh cumulative ESS experience, a 200MWh Texas project and 600MWh Anjwa project are disclosed.
-
-H1 reinvestment absorption—(PPE capex ₩139.9bn + R&D ₩49.3bn) / OCF ₩480.3bn—was about **39.4%**, placing it in the harness's strong 35–60% band. The decisive future test is whether new U.S./Korean capacity raises **FCF/share** at high incremental ROIC after the shortage cycle eases.
-
-## Financial quality
-
-FY2025 revenue was ₩4.079tn, operating profit ₩995.3bn and net income ₩731.8bn. H1 2026 revenue was ₩2.178tn, operating profit ₩545.3bn and net income ₩413.8bn. Operating margin was ~24.4% in 2025 and ~25.0% in H1 2026.
-
-FY2025 OCF was ₩959.6bn against ₩233.5bn PPE capex. H1 OCF was ₩480.3bn against ₩139.9bn PPE capex. The balance sheet is already strongly net cash, so the expansion thesis does not require recurring external capital.
-
-## Valuation
-
-Repository default DCF: 10 years, 9% required return, terminal multiples 15x/20x/25x.
-
-| Scenario | Value/share | Value/current |
-|---|---:|---:|
-| Bear | ~₩277.8k | 0.38x |
-| Base | ~₩696.4k | 0.96x |
-| Bull | ~₩1.190m | 1.64x |
-
-Price/Base is **1.041x**. The stock is not priced above Bull, but neither is it a classic expectation-gap bargain. The Base case requires continued FCF/share compounding; the Bear case shows that normalization can still produce a large valuation drawdown even with low solvency risk.
-
-## Governance / Hard Veto
-
-The H1 filing describes continuing 170kV GIS collusion-related proceedings: a KFTC penalty/corrective action, a KEPCO procurement restriction/qualified-supplier-status dispute, and a damages claim. HDHE contests the allegations. The final outcome was unresolved as of the frozen date.
-
-The harness therefore does not infer guilt, but it also cannot mark the integrity predicate as cleared. MA and RT use **conditional**. Under the repository's veto gate, any conditional owned veto makes overall status **UNRESOLVED**, which mechanically forces **WATCH** until resolution.
-
-## Red-team case
-
-The strongest economic bear case is synchronized supply normalization: global transformer capacity expands, delivery lead times fall, pricing/mix weaken, and HDHE's own new factories enter service into softer demand. Then utilization and margins can fall after capital has already been committed.
-
-The strongest non-economic risk is the governance gate above. Solvency is not the central concern: net cash and OCF are ample.
-
-## Expected domain results after OpenAI provider calibration
-
-| Domain | Score |
+| 항목 | 최종 결과 |
 |---|---:|
-| Structural Leadership | 75.67 |
-| Customer & Product | 71.50 |
-| Moat Trajectory | 69.67 |
-| Reinvestment & FCF | 78.67 |
-| Management & Allocation | 67.42 |
-| Financial Survival | 79.92 |
-| Expectation & Valuation | 57.58 |
-| Asymmetry | 68.08 |
-| Disruptive Innovation | 64.92 |
-| Turnaround Quality | 69.00 |
+| 100점 종합점수 | **70.93 / 100** |
+| 밸류에이션 제외 점수 | **73.29 / 100** |
+| 등급 | **Emerging Outlier** |
+| Archetype | **non_fit (관망·회피형)** |
+| Hard Veto | **UNRESOLVED** |
+| 기계적 상태 | **WATCH** |
+| 신규 비중 가이드 | **0% until veto cleared** |
+| DI | 64.92 |
+| TQ | 69.00 |
+| Macro pacing multiplier | 0.7 |
+| IC verdict | 없음 — **Pre-IC 조기 종료** |
 
-Expected core score: **70.93**; ex-valuation score: **73.28**.
+핵심은 **기업의 사업·재무 품질은 높지만, 현재 하네스 규칙상 “지금 매수할 수 있는 유형”에는 들어가지 못했다**는 점이다. 특히 컴파운더 조건에서 **Moat Trajectory와 Management & Allocation**이 기준에 미달했고, 170kV GIS 관련 정직성/지배구조 Hard Veto가 아직 해소되지 않았다.
 
-### Why non_fit rather than Compounder?
-Compounder requires price/Base≤1.2, MT≥76, RF≥76, MA≥72, FS≥72 and EV≥42. Price/Base, RF, FS and EV pass; **MT and MA do not**. MA is constrained by unresolved governance, while MT is partly constrained by a network/data criterion that is structurally less applicable to engineered industrial equipment.
+Triage 단계에서는 **compounder가 아직 도달 가능**하여 조기 종료되지 않았고, SL/CP/MT/RF/MA/FS와 ED/RT까지 모두 실행됐다. 그 결과 모든 archetype의 도달 가능성이 사라져 **IC 직전 조기 종료**가 발생했다.
 
-### Why not Expectation Gap?
-Price/Base must be ≤0.85 and 5Y valuation percentile ≤35%. Frozen values are ~1.041 and proxy 0.75.
+---
 
-### Why not Moonshot?
-Market cap is below the $50bn cap, but DI and AS do not clear the required thresholds.
+## 2. 사업의 질 — 전력망 증설의 직접 수혜 기업
 
-## What would change the classification?
+2026년 상반기 매출은 **₩2.178조**, 영업이익은 **₩5,453억원**, 영업이익률은 약 **25.0%**였다. 제품 구성은 전력기기 68%, 회전기기 16%, 배전기기 등 16%였고, 수출 비중은 78%였다.
 
-A direct path to Compounder is evidence-driven: resolve the integrity veto favorably; lift MT above 76 with stronger observable qualification/share/service evidence; lift MA above 72 as governance and project-level returns improve; keep RF/FS above threshold; and keep price/Base≤1.2.
+수주잔고는 2025년 말 **₩9.42조**에서 2026년 6월 말 **₩12.31조**로 증가했다. 상반기 주요 매출처는 NextEra Energy 15.9%, 사우디전력청 5.0%였다. 주력 공장 가동률은 국내 95.1%, 미국 변압기 법인 88.8%로 높은 수준이다.
 
-The thesis weakens materially if backlog contracts persistently, post-ramp utilization collapses, incremental returns fall below cost of capital, or final legal findings establish an integrity/control failure.
+이 숫자들이 의미하는 바는 단순한 “AI 전력 테마”가 아니다. HD현대일렉트릭은 실제로 **다년 수주잔고, 높은 가동률, 반복적인 글로벌 전력회사 주문**을 이미 보유하고 있다. 전력망 노후화, 재생에너지 연계, 데이터센터 전력수요, 초고압 송전망 투자가 모두 중장기 수요 동인이다.
 
-## Monitoring
+다만 하네스는 이를 영구적인 독점으로 보지 않는다. 변압기 산업의 병목이 장기간 지속되면 경쟁사들도 생산능력을 증설한다. 현재 높은 가격·마진 중 어느 정도가 **구조적 해자**이고 어느 정도가 **공급부족에 따른 scarcity rent**인지가 장기 투자에서 가장 중요한 질문이다.
 
-Quarterly: backlog, order pricing, customer concentration, operating margin, OCF, capex, FCF/share, utilization.  
-Semiannual: global transformer capacity, UHV qualification wins, ESS profitability, project-level incremental ROIC.  
-Event-driven: KFTC/KEPCO litigation and procurement status.  
-Annual: rebuild DCF and replace the approximate 5Y valuation percentile with a complete time-series calculation.
+---
 
-This is a record of the harness outcome and evidence structure, not a substitute for the user's own portfolio-level decision.
+## 3. 해자 — 강하지만 “네트워크 효과형”은 아니다
+
+HD현대일렉트릭의 실질적인 해자는 다음과 같다.
+
+- 초고압 변압기·차단기의 설계·제조 역량
+- 전력회사별 qualification과 장기간의 납품 이력
+- 신뢰성·품질·납기 능력
+- 현지 생산기지와 고객 대응력
+- UHV/765kV 등 고난도 제품군
+- 장기간 확보된 주문잔고와 설비 가동 경험
+
+그러나 현재 하네스의 MT 항목에는 **network/data/ecosystem** criterion이 포함되어 있다. 이는 Visa·NVIDIA·플랫폼 기업에는 잘 맞지만, 주문형 중전기기 기업에는 구조적으로 덜 적합하다. 이 항목을 55점으로 보수적으로 처리하면서 MT는 보정 후 **69.67점**에 머물렀다.
+
+따라서 MT 미달은 “해자가 약하다”는 뜻보다는, **현 산업형 해자가 현재 rubric의 네트워크/데이터 기준으로 충분히 포착되지 않는다**는 의미도 포함한다. 향후 글로벌 초고압 시장점유율, utility qualification 유지율, 반복수주율, 서비스/aftermarket 비중 같은 측정 가능한 산업형 해자 지표를 추가하면 더 정교한 판정이 가능하다.
+
+---
+
+## 4. 재투자와 현금창출 — 가장 강한 부분
+
+2025년 영업현금흐름은 약 **₩9,596억원**, 유형자산 취득은 **₩2,335억원**이었다. 2026년 상반기 OCF는 약 **₩4,803억원**, PPE capex는 **₩1,399억원**, R&D는 **₩493억원**이었다.
+
+상반기 기준:
+
+[
+(Capex + R&D) / OCF approx 39.4%
+]
+
+하네스의 observable anchor에서 이는 강한 재투자 구간이다. RF 원점수는 82점, provider calibration 후 **78.67점**으로 Compounder 기준 76을 통과했다.
+
+핵심 투자 질문은 이제 “증설할 수 있는가?”가 아니라 **“증설된 자본이 기존 수준의 높은 수익률을 유지하는가?”**다. Alabama·울산·청주 등 신규 생산능력이 2027년 이후 본격적으로 매출에 기여할 때, 증분 영업이익과 증분 FCF가 투입자본 대비 충분히 높은지를 확인해야 한다.
+
+---
+
+## 5. 재무 생존력 — 매우 강함
+
+2026년 상반기 자본관리 표 기준 예치금은 약 **₩1.010조**, 차입금은 약 **₩1,145억원**이다. 단순 순현금 proxy는 약 **₩8,955억원**, 주당 약 **₩24,880**이다.
+
+상반기 OCF 약 ₩4,803억원은 차입금 규모보다 훨씬 크다. 장기간 과도한 희석도 관찰되지 않았고, 희석성 잠재주식도 공시상 없었다.
+
+따라서 하네스는 다음 Veto를 명확히 cleared 처리했다.
+
+- 구조적으로 과도한 외부자본 조달 의존
+- 장기간 지속되는 과도한 희석
+- 파산 또는 영구손실 확률이 기대수익 대비 지나치게 높음
+
+FS는 보정 후 **79.92점**이다. HD현대일렉트릭 투자에서 핵심 위험은 재무파탄이 아니라 **향후 산업 공급증가와 밸류에이션 정상화**다.
+
+---
+
+## 6. 밸류에이션 — 좋은 기업이지만 큰 기대차는 아님
+
+고정 DCF 조건은 다음과 같다.
+
+- 할인율 9%
+- 10년 owner-FCF/share
+- Terminal multiple: Bear 15x / Base 20x / Bull 25x
+- 순현금: 약 ₩24,880/share
+- 현재가: ₩725,000
+
+| 시나리오 | 주당가치 | 현재가 대비 |
+|---|---:|---:|
+| Bear | **₩277,814** | 0.38x |
+| Base | **₩696,378** | 0.96x |
+| Bull | **₩1,189,605** | 1.64x |
+
+**Price / Base value = 1.0411배**다.
+
+이는 현재가가 비현실적인 Bull Case를 요구하는 수준은 아니지만, 동시에 **Base 가치 대비 충분한 할인**도 아니다. 따라서 EV는 보정 후 **57.58점**으로 낮다.
+
+Expectation Gap 유형은 price/Base ≤0.85, 5년 밸류에이션 percentile ≤35%가 필요하다. 이번 frozen input은 각각 **1.0411**, **0.75 proxy**이므로 조건을 충족하지 못한다.
+
+중요한 한계가 하나 있다. **5년 밸류에이션 percentile 0.75는 완전한 일별 시계열을 계산한 실제 percentile이 아니라 보수적으로 고정한 proxy**다. 향후 전체 valuation history를 넣어 반드시 다시 계산해야 한다.
+
+---
+
+## 7. Red Team — 가장 중요한 실패 시나리오
+
+### A. 변압기 공급부족 사이클의 정상화
+
+현재 전력기기 업황은 강하다. 하지만 공급부족이 충분히 오래 지속되면 전 세계 제조사들이 CAPEX를 늘린다. 그 결과 2028~2030년 전후에 다음이 동시에 발생할 수 있다.
+
+1. 공급능력 증가
+2. lead time 축소
+3. 가격 프리미엄 감소
+4. HD현대일렉트릭 신규공장 가동
+5. 가동률 하락과 마진 정상화
+
+이 경우 사업 자체는 건전해도 현재 주가에서 큰 멀티플/이익 조정이 가능하다. Bear 가치가 현재가의 약 38%에 불과한 이유다.
+
+### B. 고객집중
+
+NextEra 15.9%는 의미 있는 집중도지만, 하네스의 25% watch trigger보다 낮다. 또한 사우디·미국·한국과 다양한 제품군이 있어 **치명적 단일고객 의존**으로는 보지 않았다.
+
+### C. ESS·신사업
+
+ESS 누적 설치·운영 1.6GWh 이상, Texas 200MWh, 안좌 600MWh 등의 실적은 optionality를 보여준다. 다만 **ESS가 연결 이익을 얼마나 높은 ROIC로 증가시키는지**는 아직 전력변압기만큼 명확하지 않다.
+
+---
+
+## 8. Governance Hard Veto — 최종 WATCH의 핵심
+
+상반기 공시에는 한전 170kV GIS 부당공동행위 관련:
+
+- 공정위 시정명령 및 **66.99억원 과징금**
+- 한전의 **입찰참가자격 제한 및 유자격자 등록 취소 처분**
+- 관련 손해배상 청구
+
+등이 기재되어 있다. 회사는 담합 가담 사실이 없다는 입장이며 행정·민사 절차가 진행 중이다.
+
+이 하네스에서 중요한 것은 유죄를 추정하는 것이 아니다. 하지만 **실제 규제기관/발주기관의 불리한 처분이 존재한 이상 “완전히 cleared”라고도 할 수 없다.**
+
+따라서 MA와 RT가 모두:
+
+**경영진 정직성 또는 회계 신뢰성 훼손 → conditional**
+
+로 판정했다.
+
+Hard Veto gate 규칙상 conditional은 **UNRESOLVED**다. 이것만으로 종합점수와 무관하게 기계적 상태가 **WATCH**가 된다.
+
+이 Veto가 풀리려면 최소한 법적 판단의 진전 또는 충분한 내부통제·재발방지 증거가 필요하다. 반대로 최종 판단에서 실제 담합·통제 실패가 확정될 경우 confirmed 방향으로 악화될 수 있다.
+
+---
+
+## 9. Archetype 판정
+
+### Compounder — 실패
+
+통과:
+- Price/Base ≤1.2
+- RF ≥76
+- FS ≥72
+- EV ≥42
+
+실패:
+- **MT 69.67 < 76**
+- **MA 67.42 < 72**
+
+따라서 Compounder가 아니다.
+
+### Moonshot — 실패
+
+시가총액 USD 약 188억 달러로 cap 조건은 통과하지만:
+
+- DI 64.92 <78
+- AS 68.08 <72
+
+로 실패한다.
+
+### Turnaround — 실패
+
+TQ 69 <72, EV 57.58 <62로 실패한다.
+
+### Expectation Gap — 실패
+
+- Price/Base 1.0411 >0.85
+- valuation percentile proxy 0.75 >0.35
+- EV 57.58 <65
+
+로 실패한다.
+
+결론적으로 **non_fit**이다.
+
+---
+
+## 10. Provider calibration 영향
+
+OpenAI calibration 적용 전 단순 핵심점수는 약 **74.01점**, 적용 후 최종은 **70.93점**이다.
+
+다만 이번 사례는 calibration 때문에 유형이 뒤집힌 것은 아니다. 보정 전에도 MT 73 <76, MA 70.75 <72로 Compounder 요건을 충족하지 못한다. 따라서 **non_fit 판정은 calibration 하나에만 의존하지 않는다.**
+
+그럼에도 현재 provider calibration이 NVDA 한 종목 표본에서 추정되었다는 저장소 자체의 한계는 그대로 존재하므로, 절대점수 70.93을 과도하게 정밀한 숫자로 해석해서는 안 된다.
+
+---
+
+## 11. 무엇이 바뀌면 재분류되는가
+
+가장 현실적인 경로는 **Compounder 재진입**이다.
+
+1. GIS 관련 integrity Veto가 favorable resolution / 충분한 remediation evidence로 해소
+2. MT가 산업형 객관지표로 76 이상 상승
+3. MA가 72 이상 상승
+4. RF와 FS는 현재 수준 유지
+5. Price/Base ≤1.2 유지
+
+반대로 다음은 thesis 악화 신호다.
+
+- 수주잔고가 여러 분기 연속 감소
+- 신규공장 가동 후 utilization 급락
+- 영업마진이 구조적으로 크게 하락
+- 증분 ROIC가 9% 요구수익률에 근접하거나 하회
+- 대형 고객 qualification 상실
+- 최종 법적 판단에서 integrity/control failure가 확인
+
+---
+
+## 12. 모니터링 대시보드
+
+**분기:** 수주잔고, 신규수주 가격, 매출·OPM, OCF, CAPEX, owner FCF/share, 가동률, 고객집중도  
+**반기:** 글로벌 변압기 증설규모, 초고압 qualification/win-rate, 서비스·aftermarket, ESS 수익성  
+**이벤트:** 공정위·한전 관련 소송/입찰자격/유자격자 지위  
+**연간:** DCF 전면 재작성, 전체 5Y valuation percentile 재계산, 신규공장 증분 ROIC 측정
+
+## 최종 해석
+
+이 결과는 “나쁜 기업” 판정이 아니다. 오히려 **사업·현금창출·재무생존력은 강하다.** 그러나 현재 가격에서의 기대차가 크지 않고, 현재 rubric에서 산업형 해자가 Compounder 임계치를 넘지 못하며, governance Veto가 해소되지 않았다.
+
+따라서 이번 실행의 최종 기계적 결론은:
+
+**Emerging Outlier 70.93점 / non_fit / UNRESOLVED / WATCH / Pre-IC early exit**
+
+이다.
