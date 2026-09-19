@@ -1,0 +1,156 @@
+{
+  "agent_id": "EV",
+  "ticker": "PYPL",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 86.75,
+  "confidence_0_1": 0.84,
+  "bull_score": 96.75,
+  "bear_score": 66.75,
+  "bull_case": "Branded checkout stabilization, Venmo monetization, Braintree economics and financial services can lift FCF/share while buybacks shrink the denominator.",
+  "bear_case": "If checkout relevance structurally deteriorates and transaction-margin dollars fall, low multiples can remain a value trap.",
+  "thesis": "At $52.41, PayPal trades at roughly 40% of locked Base value. The market price implies little credit for modest FCF/share growth and aggressive share-count reduction. Unlike many low-multiple stocks, even the locked Bear DCF remains above current price.",
+  "evidence": [
+    {
+      "claim": "FY2025 owner-style FCF proxy was about $4.562B.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-03",
+      "value": "4.562B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "H1 2026 owner-style FCF proxy was about $2.093B.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Locked Bear/Base/Bull values are $64.74/$131.42/$204.22.",
+      "source_type": "other",
+      "source": "runs/PYPL/sources/README.md",
+      "period": "10y DCF",
+      "as_of_date": "2026-09-18",
+      "value": "64.74/131.42/204.22",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Branded checkout competition remains intense and active-account growth is essentially flat, limiting evidence of a widening moat."
+  ],
+  "unknowns": [
+    "Long-run branded checkout share",
+    "Venmo monetization slope",
+    "Braintree take-rate versus transaction-margin tradeoff"
+  ],
+  "falsifiers": [
+    "If transaction-margin dollars contract persistently, branded checkout resumes material share loss, or buybacks stop creating FCF/share growth, the thesis weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is below even the locked Bear value and far below Base/Bull; no Bull+ outcome is required."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained growth despite modest revenue growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Branded checkout growth, Venmo revenue, transaction-margin dollars, active accounts, TPV, repurchases, diluted shares"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 90,
+      "rationale": "price/Base≈0.399 is <=0.7; harness signal map assigns 90."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 85,
+      "rationale": "price/Base≈0.399 is <=0.7; harness signal map assigns 85."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 85,
+      "rationale": "Bear value remains above current price and Base starts near observed owner-FCF/share, with moderate terminal dependence."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "Payments competition and transformation execution remain the primary uncertainty."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": 0.12,
+    "revenue_cagr_next_3y": 0.05,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          4,
+          3.8,
+          4,
+          4.2,
+          4.4,
+          4.6,
+          4.8,
+          5,
+          5.2,
+          5.4
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          5,
+          5.4,
+          5.9,
+          6.4,
+          7,
+          7.6,
+          8.2,
+          8.8,
+          9.4,
+          10
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          5.5,
+          6.2,
+          7,
+          7.8,
+          8.8,
+          9.8,
+          10.8,
+          11.8,
+          12.8,
+          13.8
+        ]
+      }
+    }
+  }
+}

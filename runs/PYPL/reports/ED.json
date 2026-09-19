@@ -1,0 +1,65 @@
+{
+  "agent_id": "ED",
+  "ticker": "PYPL",
+  "as_of_date": "2026-09-18",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 88,
+  "confidence_0_1": 0.9,
+  "thesis": "Decision-critical historical facts are supported by PayPal's FY2025 10-K and Q2 2026 10-Q/8-K. Revenue, TPV, active accounts, OCF, capex, SBC, buybacks, debt and liquidity are directly observable. The main uncertainty is whether branded-checkout stabilization turns into durable moat stabilization.",
+  "evidence": [
+    {
+      "claim": "FY2025 revenue $33.172B, OCF $6.416B, capex $852M and SBC $1.002B are filing-backed.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2026-02-03",
+      "value": "multi-KPI",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2/H1 revenue, TPV, OCF, SBC and repurchases are filing/company-reported.",
+      "source_type": "filing",
+      "source": "runs/PYPL/sources/Q2_2026_key_facts.txt",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-28",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "5Y valuation percentile is externally sourced and cross-checked with current P/E versus 5Y average.",
+      "source_type": "other",
+      "source": "runs/PYPL/sources/VALUATION_2026_key_facts.txt",
+      "period": "5Y through 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "0.12",
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "The 10-year owner-FCF paths are model estimates.",
+    "The valuation percentile source is updated 2026-08-22 rather than exactly 2026-09-18."
+  ],
+  "unknowns": [
+    "Branded checkout share trajectory",
+    "Venmo monetization by cohort",
+    "Braintree margin normalization"
+  ],
+  "falsifiers": [
+    "Any later filing that materially revises frozen facts requires rerun."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "primary-source coverage",
+      "direction": "up",
+      "threshold": "decision variables filing-backed",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 earnings and branded-checkout metrics"
+  ],
+  "verdict": "support"
+}

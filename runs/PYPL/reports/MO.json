@@ -1,0 +1,101 @@
+{
+  "agent_id": "MO",
+  "ticker": "PYPL",
+  "as_of_date": "2026-09-17",
+  "domain": "macro_overlay",
+  "role": "overlay",
+  "analysis_status": "complete",
+  "score_0_100": 45,
+  "confidence_0_1": 0.55,
+  "thesis": "금융여건이 완화에서 긴축으로 방향을 틀었다. 연준은 2026-09-16 FOMC에서 25bp를 인상해 3.75~4.00%로 올렸다. 3년여 만의 첫 인상이며 유가 급등발 인플레이션이 이유다. 점도표는 2026년 말과 2027년 말 모두 4.00~4.25%를 가리킨다. 실질금리 상승은 듀레이션이 긴 성장주 밸류에이션에 직접적인 역풍이다. 동시에 미 하이일드 OAS는 약 271bp로 장기 중앙값 450bp 대비 역사적 최저 십분위에 있어 신용시장이 완벽을 가정한 가격이다. 시스템 유동성 스트레스나 발행시장 경색의 증거는 없다. 긴축 전환과 무쿠션 신용 프리미엄의 조합은 신규 매수 속도를 늦출 근거이며 위험예산 배수 0.7을 제안한다. 종목 점수에는 반영하지 않는다.",
+  "evidence": [
+    {
+      "claim": "연준이 2026-09-16 FOMC에서 정책금리를 25bp 인상해 3.75~4.00%로 올렸다. 3년여 만의 첫 인상이며 표결은 12-0이었다. 성명은 \"인플레이션이 여전히 높다\"고 기술했고 유가 급등이 배경으로 지목됐다.",
+      "source_type": "other",
+      "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "period": "2026-09 FOMC",
+      "as_of_date": "2026-09-16",
+      "value": 4.0,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "9월 점도표는 2026년 말과 2027년 말 정책금리를 모두 4.00~4.25%로 제시해 추가 인상 가능성을 남겼다.",
+      "source_type": "other",
+      "source": "https://www.bondsavvy.com/fixed-income-investments-blog/fed-dot-plot",
+      "period": "2026-09 SEP",
+      "as_of_date": "2026-09-16",
+      "value": 4.25,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "미 하이일드 OAS는 2026년 9월 약 271bp로 장기 중앙값 약 450bp 대비 역사적 최저 십분위에 있다. 신용 위험 프리미엄에 완충이 거의 없다.",
+      "source_type": "secondary",
+      "source": "https://tradingeconomics.com/united-states/bofa-merrill-lynch-us-high-yield-option-adjusted-spread-fed-data.html",
+      "period": "2026-09",
+      "as_of_date": "2026-09-10",
+      "value": 271,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "신용 스프레드가 최저 십분위라는 것은 자금조달 여건 자체는 여전히 우호적이라는 뜻이다. 발행시장 경색이나 시스템 유동성 스트레스의 증거는 없다.",
+    "25bp 한 번의 인상은 절대 수준으로 보면 여전히 중립 근처다. 긴축 사이클의 시작이라고 단정할 근거는 아직 부족하다.",
+    "인플레이션 원인이 유가라는 공급측 요인이면 정책 지속성이 낮을 수 있다."
+  ],
+  "unknowns": [
+    "유가발 인플레이션의 지속 기간과 연준의 반응함수.",
+    "긴축 전환이 AI 인프라 투자 자금조달(특히 투자등급 미만 AI 클라우드)에 미치는 시차 효과.",
+    "하이일드 스프레드 정상화가 시작될 경우의 속도."
+  ],
+  "falsifiers": [
+    "다음 두 차례 FOMC에서 동결 또는 인하로 전환되면 긴축 전환 판단은 기각되고 배수를 1.0으로 되돌린다.",
+    "하이일드 OAS가 400bp를 넘어서면 위험예산 배수를 0.5 이하로 추가 하향한다.",
+    "투자등급 발행시장이 2주 이상 사실상 중단되면 시스템 유동성 스트레스로 재분류한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "연방기금금리 목표범위",
+      "direction": "down",
+      "threshold": "4.25% 초과 시 추가 감속",
+      "cadence": "FOMC마다"
+    },
+    {
+      "name": "미 하이일드 OAS",
+      "direction": "down",
+      "threshold": "400bp 초과 시 배수 0.5",
+      "cadence": "weekly"
+    },
+    {
+      "name": "10년 실질금리",
+      "direction": "down",
+      "threshold": "상승 지속 시 듀레이션 리스크 확대",
+      "cadence": "monthly"
+    }
+  ],
+  "next_checks": [
+    "다음 FOMC 성명과 점도표 변화 확인",
+    "하이일드·투자등급 OAS 추세와 발행 규모 확인",
+    "10년 TIPS 실질금리 추세 확인"
+  ],
+  "verdict": "neutral",
+  "subscores": [],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  },
+  "risk_budget_multiplier": 0.7,
+  "cached_from": "runs/_macro/2026-09-17/MO.json"
+}
