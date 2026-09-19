@@ -10,8 +10,8 @@
   "bull_score": 90,
   "bear_score": 60,
   "bull_case": "Rubin은 Blackwell 대비 최대 10배 낮은 토큰 비용을 목표로 하고, 9월 MLPerf에서 2.5~3.7배 처리량 향상을 보였다. Blackwell이 이미 출하 대부분과 $89B 분기 데이터센터 매출을 차지해 기술 개선이 파일럿을 넘어 수익으로 전환됐다. 네트워킹·소프트웨어 확장은 새 가치풀을 연다.",
-  "bear_case": "10배 수치는 회사 측 특정 워크로드 주장이고 실제 고객 TCO는 전력·활용률·네트워크·모델 변화에 좌우된다. 하이퍼스케일러는 자체 실리콘으로 대응할 자본과 수요를 보유하며, 고객 금융·보증과 $366B 약정은 채택의 자생성을 흐린다. 규제와 전력 병목도 S-curve를 제한할 수 있다.",
-  "thesis": "기준일 2026-09-19. NVIDIA는 단일 GPU가 아니라 GPU·CPU·NVLink·네트워킹·소프트웨어를 공동설계해 AI 학습과 추론의 비용곡선을 재편한다. Rubin은 Blackwell 대비 최대 10배 낮은 토큰 비용을 제시했고, 9월 16일 MLPerf preview는 특정 모델에서 2.5~3.7배 처리량 향상을 보였다. Q2 Data Center 매출 $89.0B(+117%)와 Blackwell의 출하 과반은 채택이 주류 수익으로 전환됐음을 보여준다. 다만 독립 고객 TCO와 소프트웨어 매출 분리가 부족하고, 자체 실리콘을 만드는 하이퍼스케일러 때문에 가치사슬 확장 점수는 70으로 제한한다.",
+  "bear_case": "Rubin의 비용곡선 우위가 독립 생산 TCO로 검증되지 않았고, financed AI-cloud deployment가 채택 속도를 부풀릴 수 있다. $36B AI-cloud agreements와 $108.5B maximum gross guarantees의 지원 대상 매출 비중이 높다면 관측된 S-curve 일부는 자생 수요가 아닐 수 있다.",
+  "thesis": "GPU·CPU·NVLink·네트워킹·소프트웨어 공동설계는 AI 비용곡선을 재편하고, Q2 Data Center $89.0B(+117%)와 Blackwell 과반 출하는 채택이 주류 수익으로 전환됐음을 보여준다. 그러나 채택의 자생성에는 더 큰 공백이 확인됐다. Q2 filing은 $36B AI-cloud agreements와 $108.5B maximum gross guarantees를 공시한다. 이는 기술적 채택을 부정하지 않지만 financed deployment 비중을 분리하지 못하게 한다. 독립 TCO·소프트웨어 매출·지원 대상 매출 비중이 없어 90점대 확신은 배제하고 기존 78.75를 유지한다.",
   "evidence": [
     {
       "evidence_id": "SUP-DI-COST-001",
@@ -87,10 +87,10 @@
     "China data-center market foreclosure and broader AI regulation can prevent technical advantage from converting into addressable revenue."
   ],
   "unknowns": [
-    "Independent production TCO per token for Rubin versus Blackwell and leading custom ASICs is not available across comparable workloads.",
-    "NVIDIA does not separately disclose recurring AI software revenue or gross margin, preventing a clean test of software monetization.",
-    "The share of Data Center demand enabled by NVIDIA guarantees, equity investments or financed AI-cloud counterparties is not disclosed.",
-    "The long-run share shift from merchant GPUs to hyperscaler custom silicon remains unknown."
+    "Rubin과 leading custom ASIC의 comparable production TCO per token.",
+    "NVIDIA recurring AI software revenue·gross margin의 독립 공시.",
+    "$36B AI-cloud agreements·$108.5B 보증 대상 고객의 Data Center 매출 비중.",
+    "장기 hyperscaler custom-silicon 점유율 변화."
   ],
   "uncertainties": [
     {
@@ -136,9 +136,9 @@
     }
   ],
   "next_checks": [
-    "MLCommons final Rubin submissions and third-party production TCO benchmarks against custom ASICs",
-    "next 10-Q disclosure on Spectrum-X, software revenue and Rubin shipment mix",
-    "customer guarantees, AI-cloud agreements and equity commitments relative to incremental Data Center revenue"
+    "독립 Rubin/custom ASIC production TCO와 MLCommons 최종 결과",
+    "Spectrum-X·software revenue·Rubin shipment mix의 다음 공시",
+    "AI-cloud agreements·guarantees의 실제 사용액과 관련 Data Center revenue 비중"
   ],
   "verdict": "support",
   "subscores": [
@@ -150,12 +150,13 @@
     {
       "criterion_id": "adoption_curve",
       "score_0_100": 85,
-      "rationale": "Data Center revenue of $89.0B, 117% growth, Blackwell majority shipments and Rubin production shipments establish mainstream acceleration and profitable unit economics. Customer-financing dependence and infrastructure constraints rebut a fully mature 90."
+      "rationale": "Data Center $89.0B, +117%, Blackwell 과반 출하와 Rubin production shipments는 주류 확산을 지지한다. 반면 $36B AI-cloud agreements와 $108.5B maximum gross guarantees 때문에 채택 중 financed deployment 비중을 분리할 수 없어 90을 배제한다. 관측된 매출·마진이 이미 대규모여서 기존 85를 유지한다."
     },
     {
       "criterion_id": "optionality_incumbent_response",
       "score_0_100": 70,
       "rationale": "Networking and AI software/open-model infrastructure provide two adjacent value pools, matching the observable 70 row. Hyperscalers are capital-unconstrained customers building custom silicon, so the rubric modifier caps this criterion at 70."
     }
-  ]
+  ],
+  "rerun_note": "Research Orchestrator pass 4 반영. financed adoption의 규모를 명시했으나 지원 대상 매출 귀속이 미공시이고 실제 대규모 매출·마진 채택은 유지돼 subscores는 변경하지 않았다."
 }
