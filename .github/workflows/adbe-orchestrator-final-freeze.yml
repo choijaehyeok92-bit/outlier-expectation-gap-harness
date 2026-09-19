@@ -1,0 +1,34 @@
+name: ADBE orchestrator final freeze
+
+on:
+  push:
+    branches:
+      - research/adbe-orchestrator-20260918
+    paths:
+      - ".github/workflows/adbe-orchestrator-final-freeze.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/adbe-orchestrator-20260918
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Final refreeze
+        run: python harness.py freeze ADBE --provider openai --model gpt-5.6-sol
+      - name: Commit manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/ADBE/run_manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(adbe): final refreeze orchestrator snapshot"
+            git push origin HEAD:research/adbe-orchestrator-20260918
+          fi
