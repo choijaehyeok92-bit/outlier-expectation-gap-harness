@@ -1,0 +1,120 @@
+{
+  "agent_id": "AS",
+  "ticker": "ZS",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 66.25,
+  "confidence_0_1": 0.8,
+  "bull_score": 80,
+  "bear_score": 45,
+  "bull_case": "Bull value of roughly $353 offers about 1.8x upside through several independent paths: SASE/Zero Trust expansion, AI security, data security and SecOps cross-sell.",
+  "bear_case": "Bear value near $45 implies severe downside if owner FCF conversion disappoints, because today's enterprise value capitalizes years of margin and SBC normalization.",
+  "thesis": "ZS has attractive secular upside, but the current price does not produce Moonshot-grade asymmetry under the locked DCF. Bull/current is ~1.79x while Bear/current is ~0.23x. Net cash and recurring revenue reduce insolvency risk, but they do not eliminate valuation-driven permanent-loss risk.",
+  "evidence": [
+    {
+      "claim": "Bull/current is ~1.787 and Bear/current ~0.230 using the locked DCF.",
+      "source_type": "other",
+      "source": "runs/ZS/sources/README.md",
+      "period": "10y DCF",
+      "as_of_date": "2026-09-18",
+      "value": "1.787/0.230",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "FY2026 ARR was $3.771B, up 25%; ex-Red Canary ARR grew 20%.",
+      "source_type": "filing",
+      "source": "runs/ZS/sources/FY2026_Q4_8K_key_facts.txt",
+      "period": "FY2026 Q4",
+      "as_of_date": "2026-09-03",
+      "value": "3.771B / 20%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Liquid net cash is about $1.778B.",
+      "source_type": "filing",
+      "source": "runs/ZS/sources/FY2026_10K_key_facts.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-09-03",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI and Zero Trust adoption create several growth paths that could extend growth duration.",
+    "RPO of $7.365B provides visibility well beyond one year."
+  ],
+  "unknowns": [
+    "How quickly Red Canary improves cross-sell and retention",
+    "Whether SBC normalization can occur without slowing product velocity"
+  ],
+  "falsifiers": [
+    "A materially lower share price without business deterioration would improve asymmetry.",
+    "Sustained owner FCF/share above the Bull path would improve asymmetry."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price does not require Bull+; modeled Bull remains materially above current price."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Large net cash, positive OCF and recurring revenue make bankruptcy/forced financing an unlikely dominant risk."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Bull/current",
+      "direction": "up",
+      "threshold": ">=2.5 for exceptional asymmetry",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Bear/current",
+      "direction": "up",
+      "threshold": ">=0.4 preferred",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Reprice asymmetry after next ARR/FCF update"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "Bull/current ~1.79x with multiple independent growth paths."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 50,
+      "rationale": "Bear/current ~0.23x; no +10 modifier because OCF does not exceed total convertible debt."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 75,
+      "rationale": "Scenario analysis separates secular business quality from valuation and SBC-normalization risk."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Bull path requires owner FCF/share scaling far above today's SBC-adjusted level."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "High recurring revenue reduces business failure risk but not valuation drawdown."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "AI-security demand could extend high growth longer than modeled."
+    }
+  ]
+}
