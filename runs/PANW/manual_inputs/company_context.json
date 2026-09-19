@@ -1,0 +1,38 @@
+{
+  "ticker": "PANW",
+  "company_name": "Palo Alto Networks, Inc.",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 363.58,
+  "shares_diluted": 818000000,
+  "market_cap_usd": 297408440000,
+  "enterprise_value": 291276440000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "User-uploaded Palo Alto Networks FY2026 Form 10-K filed 2026-09-10",
+    "User-uploaded Palo Alto Networks FY2026 results Form 8-K filed 2026-09-01",
+    "User-uploaded Palo Alto Networks Q3 FY2026 Form 10-Q filed 2026-06-03",
+    "User-uploaded Palo Alto Networks Q2 FY2026 Form 10-Q filed 2026-02-18",
+    "2026-09-18 closing price $363.58 from historical market data"
+  ],
+  "special_questions": [
+    "Does platformization plus CyberArk identity expansion materially widen PANW's moat enough to justify the current valuation?",
+    "How much of reported FCF converts to owner FCF after stock-based compensation and acquisition dilution?",
+    "Does the CyberArk/Chronosphere acquisition program improve long-run per-share economics or merely accelerate enterprise scale?"
+  ],
+  "net_cash_per_share": 7.4963,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "5-year valuation percentile intentionally left null because trailing P/E is heavily distorted by acquisition accounting and no consistent owner-FCF percentile series was frozen.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  }
+}
