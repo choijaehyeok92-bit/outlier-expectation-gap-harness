@@ -239,7 +239,7 @@
             "90": "대규모 장기 복리"
           },
           "observable_anchors": {
-            "metric": "내부 재투자 흡수율 = (capex + R&D) / 영업현금흐름",
+            "metric": "내부 재투자 흡수율 = (capex + R&D) / 영업현금흐름. 측정 기간은 최근 12개월(TTM)이다.",
             "table": [
               {
                 "test": "15% 미만 — 창출 자본이 내부에 흡수되지 않고 자사주·외부투자로 나간다",
@@ -268,6 +268,15 @@
               "mode": "band_centre",
               "metric_direction": "increasing",
               "note": "흡수율은 연속 비율이므로 행간 보간한다. 밴드 중앙에서는 표 값과 동일하다."
+            },
+            "period": {
+              "basis": "TTM",
+              "rationale": "분기 단독치는 운전자본 타이밍에 따라 크게 흔들리고(NVDA Q1 FY27 OCF $50,344M vs Q2 $24,077M), 누적 YTD는 회계연도 중 실행 시점에 따라 기간 길이가 달라져 run 간 비교가 불가능하다. TTM은 두 문제를 모두 피하고 이 하네스가 valuation에서 이미 쓰는 기준과 일치한다.",
+              "fallback": [
+                "latest_full_fiscal_year",
+                "latest_reported_ytd"
+              ],
+              "fallback_rule": "TTM 산출이 불가능하면 위 순서로 대체하고 rationale에 실제 사용한 기간을 명시한다."
             }
           }
         },
@@ -766,7 +775,8 @@
       "판정표 점수와 modifier 적용 결과는 반드시 5점 단위가 되도록 반올림한다.",
       "veto는 도메인 점수에 이미 반영된 사실만으로 세우지 않는다. veto_criteria의 구성요건이 독립적으로 충족될 때만 성립한다.",
       "observable_anchors에 interpolation.mode=band_centre가 있으면 행 사이를 보간한다. 밴드 중앙은 표 값과 같고 경계에서는 이웃 밴드와의 중간값이 되며, 결과는 5점 단위로 반올림한다. rationale에 사용한 지표값과 보간 결과를 함께 적는다.",
-      "interpolation.mode=none인 관측표와 형용사 앵커만 있는 criterion은 보간하지 않는다. 계수형 지표를 보간하면 확보하지 못한 관측치를 있는 것처럼 만들고, 형용사 앵커는 observed_divergence가 기록한 프로바이더 분산의 진원지이므로 표 값에 고정한다."
+      "interpolation.mode=none인 관측표와 형용사 앵커만 있는 criterion은 보간하지 않는다. 계수형 지표를 보간하면 확보하지 못한 관측치를 있는 것처럼 만들고, 형용사 앵커는 observed_divergence가 기록한 프로바이더 분산의 진원지이므로 표 값에 고정한다.",
+      "observable_anchors에 period가 있으면 그 기간으로만 지표를 산출한다. 다른 기간을 쓰면 rationale에 이유와 사용 기간을 적는다."
     ],
     "observed_divergence": "NVDA 2026-09-17/18 동일 종가 기준 gpt-5.6-sol 대 Claude Opus 5 실행 비교: criterion 27개 평균 격차 +10.2점(sol이 높음), 27개 전부 sol >= opus. 관측 가능한 사실형 criterion은 +3.1, 위험 가중 판단형은 +13.2로 4배 차이였다. 앵커가 형용사인 criterion에서만 갈라진다는 뜻이다."
   },

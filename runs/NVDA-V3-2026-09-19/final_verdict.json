@@ -1067,30 +1067,31 @@
     "ticker": "NVDA-V3-2026-09-19",
     "as_of_date": "2026-09-19",
     "frozen": true,
-    "harness_commit": "ef34b79b05f8439ba5a5999f9307271aac444dfa",
+    "harness_commit": "f39094cd4f5e3b18e84632996f16f8d109bb1015",
     "runner": {
       "provider": "openai",
       "model": "gpt-5.6-sol",
       "reasoning_effort": null
     },
-    "frozen_at_utc": "2026-09-19T21:03:32.224076+00:00",
+    "frozen_at_utc": "2026-09-19T21:34:50.114136+00:00",
     "config_files": {
-      "config/strategy.json": "b9971b3be9ff7f310b4e2f6541fdd5b177f2d40d529d359c1da7d8d6fc190b54",
+      "config/strategy.json": "863f5e14e80c5a707c58d3b242ec78a0ea9129942c8f1429c8ca982635ee4664",
       "config/workflow.json": "c7882660c714e6101f735607e8116e3965446c692edf2d969ef5a219e3947295",
       "config/agents_manifest.json": "9cbc4db6365dab247827a8c0a913d9062fa3e25c8726a7c32ce5d1547f95feed",
-      "config/calibration.json": "a0d21ea22d4b0e55dd206ea6264f88fade80313b53fa33112b08a10e0c18e62a",
+      "config/calibration.json": "1ef07e5126df6950c39911f575e28ad962608567087e9f91540c7ea9f0153825",
       "harness.py": "46e9ff70a910bce61d61151457e1c2dba06e2a89d81f5ed7f353a2fca3a4af3d",
       "harness_core/__init__.py": "c26a3aeec387e7849ba5e02816341417f132e2b679c7df63070f643a08147f7a",
+      "harness_core/anchors.py": "3f38df3c346eb9a3e0c6f9d728d39db4bac6600965dbeadf87c52c4a64798799",
       "harness_core/archetypes.py": "f5a6ed31fbe7ae3646bdbf2e5bbff2b4313bd9111e46efb474a1489054dbddba",
       "harness_core/calibration.py": "8e0620171fdf8fbebee2afff12ee8630e71e78584e663ba1d6dbe64f24a685bd",
       "harness_core/conditions.py": "2eb31a46e589fce62ae5270cc1d62a606b1805b2d8ab1849bf290d8f09396a6a",
       "harness_core/evidence.py": "055a1cba252e8962091fe869269eb57e4327bf582876b024104708aa124cb4fb",
       "harness_core/macro_geo.py": "aff07ec9ede98eb89e344d5d5d793dbd49d99a42f5e356ce79c7d1dcf0c4d844",
       "harness_core/planner.py": "cd519994090a9675e8fe31ec3a22d9db54c60395566e36672559be9882b8db97",
-      "harness_core/policy.py": "c30edd1d21fb204c86bd612bdc9785a3b5e655288716c0cf0a25255dff3cac9b",
+      "harness_core/policy.py": "40d4c013b86547b1b22c7a2467b746cd2ac47f20edc1768a8d593b5186b52e8e",
       "harness_core/rubric.py": "6e0f4d1d3b6bc051e08e3c42fff3766ebc3ebf3362c01a2b2503f67ec922edbf",
-      "harness_core/runtime.py": "4689b4d9ee3b4de7ff19700eb30f297fc644e5aac7eb18584fdfec0fbc7e1985",
-      "harness_core/state.py": "b69c2245f0b433c6a852fb049a97dab24b6f6f591628470642b7c2bc465f7781",
+      "harness_core/runtime.py": "cedf988165856dd5440fa7a5c45e5c4ac94018be09d9e0b8944a0b54c6e10f9f",
+      "harness_core/state.py": "4ecad07c9195d78138ae232e3c336151e9470f9c1935609bf956eff4bd412e01",
       "harness_core/valuation.py": "6b13b0b500ed56bd02b75e6e259870cba542ac2d6714f42cedf43699be31fb23",
       "harness_core/veto.py": "e26b2fac987742e96452e3dcef396eb22a99ed7f861d01c39d498770e927f8fe",
       "schemas/agent_report.schema.json": "14dfe22f99d15133d57188e91bf698d2a9255fa9f0075f1360a4a822e67686ad",
@@ -1129,9 +1130,10 @@
       "sources/financials/normalized_financials.json": "812a550b0078896d9542fe07a2792ad27b8c99a3c15e6fa72363b9b62415b1e0",
       "sources/financials/qa_report.json": "7dd4ba7a4da8227b030593bd152539d6f567e5344b134d6e69a36887b8bde478",
       "sources/research_orchestrator.json": "9bff5c892154c030e5506c286752a7b92f8341f00ddf54e6aa30e26ed07489fd",
-      "sources/research_orchestrator_pass2_2026-09-19.json": "5b278065b8c80ee0dabd9066f1d9e17d1dc693c67dc96b6ed1902041311744d4"
+      "sources/research_orchestrator_pass2_2026-09-19.json": "5b278065b8c80ee0dabd9066f1d9e17d1dc693c67dc96b6ed1902041311744d4",
+      "sources/research_orchestrator_pass3_2026-09-19.json": "25d3b09ae3279789fb3d26157a9a541beb141145c41e6516ded6bbd813534e19"
     },
-    "input_snapshot_sha256": "ad6c4a81b242a08f3e56c714f90b90b045effb6f9b5e8844080182e737c5ec1c"
+    "input_snapshot_sha256": "fa682b2488b17a9310090d2c447680d1ee31d4b26c227a6f92c8ebd63ddf44fd"
   },
   "archetype_fit": {
     "buffett_value": {

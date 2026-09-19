@@ -148,6 +148,14 @@
       "filing_date": "2026-08-26",
       "period_end": null,
       "is_amendment": false
+    },
+    {
+      "document_id": "DOC-019",
+      "source_document": "NVIDIA Q2 FY27 CFO Commentary (SEC Form 8-K exhibit) — https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+      "document_type": "other",
+      "filing_date": "2026-08-26",
+      "period_end": null,
+      "is_amendment": false
     }
   ],
   "facts": [
@@ -5886,6 +5894,64 @@
       "source_page": 11,
       "source_section": "Q3 FY27 Outlook - Non-GAAP",
       "source_quote": "expect non-GAAP tax rates to be between 16.0% and 18.0%, excluding any discrete items and material changes to our tax environment"
+    },
+    {
+      "fact_id": "FACT-0199",
+      "metric": "tax_expense",
+      "metric_detail": "fy27_gaap_tax_rate_guidance_low_pct",
+      "reported_label": "FY27 GAAP Tax Rate Guidance - Low",
+      "statement": "income",
+      "gaap_status": "gaap",
+      "value_reported": 0.16,
+      "unit_kind": "percent",
+      "currency": "USD",
+      "scale_multiplier": 1,
+      "period_start": null,
+      "period_end": null,
+      "period_kind": "fy",
+      "fiscal_year": 2027,
+      "fiscal_quarter": null,
+      "segment": "consolidated",
+      "filing_date": "2026-08-26",
+      "source_document": "NVIDIA Q2 FY27 CFO Commentary (SEC Form 8-K exhibit)",
+      "source_page": null,
+      "source_section": "Q2 FY27 CFO Commentary — outlook",
+      "source_locator": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+      "source_quote": "For the full year fiscal 2027, NVIDIA expects GAAP and non-GAAP tax rates to be between 16.0% and 18.0%, excluding any discrete items and material changes to their tax environment",
+      "is_amended": false,
+      "is_restated": false,
+      "confidence": 0.8,
+      "requires_review": true,
+      "review_reason": "전향적 가이던스이며 실적치가 아니다. www.sec.gov가 이 환경의 egress 정책상 차단되어 문서 본문을 직접 열람하지 못했다. 서로 다른 검색 질의 2회가 동일 문구를 반환했으나 원문 대조는 아니다. Tier 1 문서이되 취득 경로는 검색 요약이다."
+    },
+    {
+      "fact_id": "FACT-0200",
+      "metric": "tax_expense",
+      "metric_detail": "fy27_gaap_tax_rate_guidance_high_pct",
+      "reported_label": "FY27 GAAP Tax Rate Guidance - High",
+      "statement": "income",
+      "gaap_status": "gaap",
+      "value_reported": 0.18,
+      "unit_kind": "percent",
+      "currency": "USD",
+      "scale_multiplier": 1,
+      "period_start": null,
+      "period_end": null,
+      "period_kind": "fy",
+      "fiscal_year": 2027,
+      "fiscal_quarter": null,
+      "segment": "consolidated",
+      "filing_date": "2026-08-26",
+      "source_document": "NVIDIA Q2 FY27 CFO Commentary (SEC Form 8-K exhibit)",
+      "source_page": null,
+      "source_section": "Q2 FY27 CFO Commentary — outlook",
+      "source_locator": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+      "source_quote": "For the full year fiscal 2027, NVIDIA expects GAAP and non-GAAP tax rates to be between 16.0% and 18.0%, excluding any discrete items and material changes to their tax environment",
+      "is_amended": false,
+      "is_restated": false,
+      "confidence": 0.8,
+      "requires_review": true,
+      "review_reason": "전향적 가이던스이며 실적치가 아니다. www.sec.gov가 이 환경의 egress 정책상 차단되어 문서 본문을 직접 열람하지 못했다. 서로 다른 검색 질의 2회가 동일 문구를 반환했으나 원문 대조는 아니다. Tier 1 문서이되 취득 경로는 검색 요약이다."
     }
   ],
   "adjustment_candidates": [
@@ -6277,6 +6343,14 @@
         "FACT-0141",
         "FACT-0147",
         "FACT-0155"
+      ]
+    },
+    {
+      "severity": "medium",
+      "message": "FY27 세율 가이던스의 적용 범위 차이: 투자자 프레젠테이션은 non-GAAP만 명시하고 SEC CFO Commentary는 GAAP·non-GAAP 모두에 적용한다고 기술한다. 수치(16.0~18.0%)는 동일하므로 값 충돌이 아니라 범위 차이이며, GAAP 범위를 DOC-019 출처로 FACT-0199, FACT-0200에 별도 기록했다. www.sec.gov가 이 환경의 egress 정책상 차단되어 문서 본문을 직접 열람하지 못했다. 서로 다른 검색 질의 2회가 동일 문구를 반환했으나 원문 대조는 아니다. Tier 1 문서이되 취득 경로는 검색 요약이다.",
+      "related_fact_ids": [
+        "FACT-0199",
+        "FACT-0200"
       ]
     }
   ]

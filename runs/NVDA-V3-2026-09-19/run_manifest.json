@@ -6,18 +6,18 @@
   "ticker": "NVDA-V3-2026-09-19",
   "as_of_date": "2026-09-19",
   "frozen": true,
-  "harness_commit": "f39094cd4f5e3b18e84632996f16f8d109bb1015",
+  "harness_commit": "fa12e555b449402c77151f5a6a8d769cf3fa4210",
   "runner": {
     "provider": "openai",
     "model": "gpt-5.6-sol",
     "reasoning_effort": null
   },
-  "frozen_at_utc": "2026-09-19T21:34:50.114136+00:00",
+  "frozen_at_utc": "2026-09-19T21:38:35.632727+00:00",
   "config_files": {
     "config/strategy.json": "863f5e14e80c5a707c58d3b242ec78a0ea9129942c8f1429c8ca982635ee4664",
     "config/workflow.json": "c7882660c714e6101f735607e8116e3965446c692edf2d969ef5a219e3947295",
     "config/agents_manifest.json": "9cbc4db6365dab247827a8c0a913d9062fa3e25c8726a7c32ce5d1547f95feed",
-    "config/calibration.json": "1ef07e5126df6950c39911f575e28ad962608567087e9f91540c7ea9f0153825",
+    "config/calibration.json": "d7bcb1a67a79a6c24aa021a4bd32dafe8057ca1f868dd44865cab6e85068e792",
     "harness.py": "46e9ff70a910bce61d61151457e1c2dba06e2a89d81f5ed7f353a2fca3a4af3d",
     "harness_core/__init__.py": "c26a3aeec387e7849ba5e02816341417f132e2b679c7df63070f643a08147f7a",
     "harness_core/anchors.py": "3f38df3c346eb9a3e0c6f9d728d39db4bac6600965dbeadf87c52c4a64798799",
@@ -66,11 +66,11 @@
     "sources/README.md": "527a70d436ccbd1f781b476acd57b1fa83480bc6485681c79b8ecac7839db68b",
     "sources/financials/adjustment_candidates.json": "ab557dcfd717660061cf3b59dd05c29401d7132941d607a992180733ceefd680",
     "sources/financials/derived_metrics.json": "55034103244c59cd26352210c6cc44e69b36940a2f655e0f8af6647f7bcfa1ee",
-    "sources/financials/normalized_financials.json": "812a550b0078896d9542fe07a2792ad27b8c99a3c15e6fa72363b9b62415b1e0",
-    "sources/financials/qa_report.json": "7dd4ba7a4da8227b030593bd152539d6f567e5344b134d6e69a36887b8bde478",
+    "sources/financials/normalized_financials.json": "6af02c7d5c7080944dac40452e686a22e3e2e710b2a4ce4a7e88be803de13ec3",
+    "sources/financials/qa_report.json": "9e301c8798cad8af5775f60f08cedd804c4cd7875bf9f9ff22ca394a483f7a12",
     "sources/research_orchestrator.json": "9bff5c892154c030e5506c286752a7b92f8341f00ddf54e6aa30e26ed07489fd",
     "sources/research_orchestrator_pass2_2026-09-19.json": "5b278065b8c80ee0dabd9066f1d9e17d1dc693c67dc96b6ed1902041311744d4",
     "sources/research_orchestrator_pass3_2026-09-19.json": "25d3b09ae3279789fb3d26157a9a541beb141145c41e6516ded6bbd813534e19"
   },
-  "input_snapshot_sha256": "fa682b2488b17a9310090d2c447680d1ee31d4b26c227a6f92c8ebd63ddf44fd"
+  "input_snapshot_sha256": "1071814993cfae15092990f31f77986c4d7ca210e681cf1ce445ac46c5637b9a"
 }

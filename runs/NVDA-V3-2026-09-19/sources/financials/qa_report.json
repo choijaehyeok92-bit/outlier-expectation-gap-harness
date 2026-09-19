@@ -2,8 +2,8 @@
   "schema_version": "1.0",
   "ticker": "NVDA",
   "source_as_of_date": "2026-09-18",
-  "documents_count": 18,
-  "facts_count": 198,
+  "documents_count": 19,
+  "facts_count": 200,
   "adjustment_candidates_count": 14,
   "extraction_warnings": [
     {
@@ -95,6 +95,14 @@
         "FACT-0141",
         "FACT-0147",
         "FACT-0155"
+      ]
+    },
+    {
+      "severity": "medium",
+      "message": "FY27 세율 가이던스의 적용 범위 차이: 투자자 프레젠테이션은 non-GAAP만 명시하고 SEC CFO Commentary는 GAAP·non-GAAP 모두에 적용한다고 기술한다. 수치(16.0~18.0%)는 동일하므로 값 충돌이 아니라 범위 차이이며, GAAP 범위를 DOC-019 출처로 FACT-0199, FACT-0200에 별도 기록했다. www.sec.gov가 이 환경의 egress 정책상 차단되어 문서 본문을 직접 열람하지 못했다. 서로 다른 검색 질의 2회가 동일 문구를 반환했으나 원문 대조는 아니다. Tier 1 문서이되 취득 경로는 검색 요약이다.",
+      "related_fact_ids": [
+        "FACT-0199",
+        "FACT-0200"
       ]
     }
   ]
