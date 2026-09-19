@@ -38,6 +38,9 @@ jobs:
           echo "===== EV PROMPT ====="
           python harness.py prompt ADBE EV
 
+          echo "===== EV VALIDATE (schema/current report only; not a domain rerun) ====="
+          python harness.py validate ADBE EV
+
       - name: Commit generated freeze and prompt artifacts
         shell: bash
         run: |
