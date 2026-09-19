@@ -3,13 +3,13 @@
   "ticker": "ADBE",
   "as_of_date": "2026-09-18",
   "frozen": true,
-  "harness_commit": "19eb1e3cd04aa52d2fc3776edf86f80fd0a67e6a",
+  "harness_commit": "86eb55e571bc4e7f523b75d6659f74194db60bf8",
   "runner": {
     "provider": "openai",
     "model": "gpt-5.6-sol",
     "reasoning_effort": null
   },
-  "frozen_at_utc": "2026-09-19T22:16:27.712246+00:00",
+  "frozen_at_utc": "2026-09-19T22:17:40.527736+00:00",
   "config_files": {
     "config/strategy.json": "863f5e14e80c5a707c58d3b242ec78a0ea9129942c8f1429c8ca982635ee4664",
     "config/workflow.json": "c7882660c714e6101f735607e8116e3965446c692edf2d969ef5a219e3947295",
@@ -59,9 +59,9 @@
     "sources/Q2_FY2026_key_facts.txt": "1c7b49fbe6b03896b747ce249118ed5f76d5f7905115ee8348c50804773f651a",
     "sources/Q3_FY2026_key_facts.txt": "a4e042028bf48fd4b9f25c936c5e07854e64ee0b2bd9bb7846effa829fc6d189",
     "sources/README.md": "2333f2258e487a70466b05c9313e35a899b03a771a4e9bcd2e947b3354a7691a",
-    "sources/research_orchestrator.json": "7c704f1509f36769c89e0989355048b7f9e1851d8beb20256fd587cf45946914"
+    "sources/research_orchestrator.json": "d28f9e077c74b096632de27a9d17061210677716e1b0424a8a71460c8644e0fe"
   },
-  "input_snapshot_sha256": "9cac1f09edc72301ed0a280cafed69e03b86d573161b46d34eb85b5121bebd99",
+  "input_snapshot_sha256": "3fabac46721b17d55623c983b2e7dbeb55a9db115a9364f717bd0f06e646c023",
   "strategy_version": "3.0",
   "decision_policy_version": "3.0",
   "provider_calibration_mode": "shadow"
