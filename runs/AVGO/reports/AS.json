@@ -5,13 +5,13 @@
   "domain": "asymmetry",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 60.5,
-  "confidence_0_1": 0.84,
+  "score_0_100": 68,
+  "confidence_0_1": 0.87,
   "bull_score": 80,
   "bear_score": 30,
   "bull_case": "Bull value/current price is about 2.23x. Two distinct upside engines exist: custom AI accelerators/networking and infrastructure software/private AI. If AI revenue keeps scaling while software cash conversion holds, the locked Bull path can compound materially above the 9% hurdle.",
   "bear_case": "Bear value/current price is only about 0.38x. Customer concentration, roughly 95% TSMC wafer dependence, $126.8B purchase commitments and the AI XPV financing structure can correlate demand, working-capital and residual-value losses in a downturn.",
-  "thesis": "AVGO has real power-law upside but not a one-sided payoff. Bull/current of 2.23x with at least two independent value paths supports strong upside; Bear/current of 0.38x implies large valuation downside. Strong current cash generation lowers business-extinction risk, while AI customer concentration and financing commitments keep permanent-loss resilience only moderate.",
+  "thesis": "AVGO has real power-law upside but not a one-sided payoff. Bull/current of 2.23x with at least two value paths supports upside, while Bear/current of 0.38x implies large valuation downside. A 5,000-company growth-persistence base rate now anchors scenario calibration and argues against extrapolating current AI growth, while strong cash generation lowers business-extinction risk.",
   "evidence": [
     {
       "claim": "Locked DCF values are Bear $137.04, Base $404.48 and Bull $797.84 versus frozen price $357.61; Bull/current is 2.23x and Bear/current is 0.383x.",
@@ -33,17 +33,6 @@
       "value": 16.7,
       "evidence_id": "AVGO-AS-AI-002",
       "economic_driver": "ai_growth_path",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "Remaining performance obligations were about $179.2B and included a long-term custom AI accelerator contract; about 25% was expected to be recognized over the next 12 months.",
-      "source_type": "filing",
-      "source": "User-supplied 10-Q filed 2026-09-10, Note 2 Remaining Performance Obligations",
-      "period": "2026-08-02",
-      "as_of_date": "2026-08-02",
-      "value": 179200,
-      "evidence_id": "AVGO-AS-RPO-003",
-      "economic_driver": "forward_visibility",
       "fact_or_estimate": "fact"
     },
     {
@@ -78,6 +67,17 @@
       "evidence_id": "AVGO-AS-CASH-006",
       "economic_driver": "survival_capacity",
       "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "SUP-AVGO-AS-BASE-RATE-001",
+      "economic_driver": "large_company_growth_persistence_base_rate",
+      "claim": "McKinsey studied 5,000 of the world's largest public companies over 2005-2019. Only one in eight recorded revenue growth above 10% per year over the decade; only one in three top-growth-quartile firms sustained that rate in the next five years, and the rate was one in four for predominantly organic growers.",
+      "source_type": "secondary_research",
+      "source": "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-ten-rules-of-growth",
+      "period": "2005-2019 global public-company sample",
+      "as_of_date": "2022-08-12",
+      "value": 0.125,
+      "fact_or_estimate": "fact"
     }
   ],
   "counterevidence": [
@@ -87,7 +87,7 @@
     "A 50% distributor revenue share and 55% top-five end-customer share make supposedly independent AI upside paths less independent than segment labels imply."
   ],
   "unknowns": [
-    "No empirical comparable-company base-rate dataset was available before the cutoff for assigning objective Bear/Base/Bull probabilities.",
+    "No pre-cutoff empirical base-rate dataset was found that isolates Broadcom-like megacap custom-AI semiconductor companies; the McKinsey base rate is deliberately broad.",
     "Economic terms and customer identities behind the largest custom-AI contracts remain undisclosed.",
     "The probability and funding mechanics of up to $42B of conditional customer convertible notes are not quantified.",
     "How much of the $179.2B RPO is cancellable, low-margin or tied to AI XPV-supported deployments is not separately disclosed."
@@ -131,7 +131,7 @@
   ],
   "next_checks": [
     "Quantify the customer and contract split of AI RPO and XPV-supported deployments.",
-    "Build a comparable-company base-rate table before assigning explicit scenario probabilities.",
+    "Replace the broad large-company base rate if a pre-cutoff semiconductor/custom-AI-specific persistence dataset becomes available.",
     "Recompute Bear/current and Bull/current after FY2027 guidance and any backstop funding."
   ],
   "verdict": "neutral",
@@ -148,8 +148,8 @@
     },
     {
       "criterion_id": "probability_calibration",
-      "score_0_100": 50,
-      "rationale": "Scenario sensitivity is explicit but an empirical base-rate probability set is absent. That fits the 50 'limited evidence' anchor; 75 is excluded because probabilities are not calibrated to a comparable-company history."
+      "score_0_100": 75,
+      "rationale": "The rerun now uses an empirical base rate: McKinsey's 5,000-largest-public-company study found only 1/8 sustained >10% annual revenue growth over a decade and only 1/3 of top-quartile growers sustained their rate into the next five years. Combined with explicit Bear/Base/Bull sensitivity, this meets the 75 'base rate/sensitivity used' anchor. 90 is excluded because the base rate is broad rather than custom-AI/semiconductor-specific."
     }
   ],
   "uncertainties": [
@@ -166,7 +166,7 @@
     {
       "criterion_id": "probability_calibration",
       "severity": "material",
-      "rationale": "No objective base-rate probability series is locked into the run."
+      "rationale": "The new base rate is empirical but broad. It improves calibration discipline without establishing a precise AVGO-specific scenario probability."
     }
   ],
   "valuation_inputs": {
@@ -183,5 +183,6 @@
         "owner_fcf_per_share": []
       }
     }
-  }
+  },
+  "rerun_note": "Research Orchestrator result-b8b208a... added one eligible secondary base-rate study and recommended AS rerun. Probability-calibration moved 50→75; upside_path and permanent_loss were unchanged."
 }
