@@ -1,0 +1,17 @@
+CP: OK
+MT: OK
+RF: OK
+MA: OK
+FS: OK
+EV: OK
+AS: OK
+DI: OK
+ED: OK
+===== PLAN =====
+{
+  "stage": "macro",
+  "agents": {
+    "macro_overlay": "MO"
+  }
+}
+python harness.py prompt ADBE MO

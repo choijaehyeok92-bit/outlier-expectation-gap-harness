@@ -1,0 +1,7 @@
+{
+  "stage": "macro",
+  "agents": {
+    "macro_overlay": "MO"
+  }
+}
+python harness.py prompt ADBE MO
