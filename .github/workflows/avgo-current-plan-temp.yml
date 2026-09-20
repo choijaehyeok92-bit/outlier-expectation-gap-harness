@@ -1,0 +1,30 @@
+name: AVGO current planner
+
+on:
+  push:
+    branches:
+      - analysis/avgo-2026-09-18-stage0-ev
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Current plan
+        run: python harness.py plan AVGO > runs/AVGO/plan_current.txt
+      - name: Commit plan
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/AVGO/plan_current.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "analysis(avgo): refresh current planner state"
+            git push
+          fi
