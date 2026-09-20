@@ -10,6 +10,85 @@
   "classification": "Core Outlier",
   "disruptive_innovation_score": 70.0,
   "turnaround_quality_score": 30.0,
+  "archetype": {
+    "id": "buffett_value",
+    "label": "버핏 스타일 가치주",
+    "label_en": "Buffett-style Value",
+    "reason": "Highest eligible deterministic fit; ties use configured priority",
+    "gate_score": 80.97,
+    "secondary": [
+      "compounder"
+    ],
+    "position_guidance": "정상화 FCF, 유지보수 투자, 회계 신뢰성, 숨은 레버리지, 자본배분과 영구 쇠퇴를 검증한다. 큰 재투자 활주로는 요구하지 않는다.",
+    "position_cap": null,
+    "signals": {
+      "price_to_base_value": 0.5023,
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": 0.11,
+      "market_cap_usd": 98945900000.0
+    },
+    "evaluations": [
+      {
+        "id": "buffett_value",
+        "label": "버핏 스타일 가치주",
+        "conditions_met": true,
+        "gate_score": 80.97,
+        "gate_threshold": 60.0,
+        "gate_passed": true,
+        "failed": [],
+        "missing": []
+      },
+      {
+        "id": "compounder",
+        "label": "컴파운더",
+        "conditions_met": true,
+        "gate_score": 80.97,
+        "gate_threshold": 60.0,
+        "gate_passed": true,
+        "failed": [],
+        "missing": []
+      },
+      {
+        "id": "moonshot",
+        "label": "문샷형",
+        "conditions_met": false,
+        "gate_score": 80.62,
+        "gate_threshold": 60.0,
+        "gate_passed": true,
+        "failed": [
+          "signal.market_cap_usd",
+          "domain.disruptive_innovation"
+        ],
+        "missing": []
+      }
+    ],
+    "archetype_fit": {
+      "buffett_value": {
+        "eligible": true,
+        "fit_score": 80.53382353,
+        "failed_conditions": [],
+        "missing_conditions": [],
+        "blocking_vetoes": []
+      },
+      "compounder": {
+        "eligible": true,
+        "fit_score": 79.41510417,
+        "failed_conditions": [],
+        "missing_conditions": [],
+        "blocking_vetoes": []
+      },
+      "moonshot": {
+        "eligible": false,
+        "fit_score": 63.91082,
+        "failed_conditions": [
+          "signal.market_cap_usd",
+          "domain.disruptive_innovation"
+        ],
+        "missing_conditions": [],
+        "blocking_vetoes": []
+      }
+    }
+  },
   "reachable_archetypes_raw": [
     "buffett_value",
     "compounder"
@@ -1387,50 +1466,5 @@
     ],
     "verdict": "support"
   },
-  "early_exit_record": null,
-  "archetype": "buffett_value",
-  "secondary_archetypes": [
-    "compounder"
-  ],
-  "archetype_rationale": "Highest eligible deterministic fit; ties use configured priority",
-  "ic_state": "CORE_WINNER_CANDIDATE",
-  "position_range": "2-4%",
-  "ic_review_flags": [],
-  "falsifiers": [
-    "Bear/current falls below 0.6x after a properly refrozen fundamental downgrade.",
-    "AI-driven workflow substitution causes sustained ARR and owner-FCF/share contraction.",
-    "The independent upside paths collapse into one shared assumption about generative-AI success.",
-    "Total Adobe ARR or customer-group subscription growth turns negative on a same-definition basis while MAU continues rising.",
-    "AI-first ARR growth stalls without evidence of higher monetization per user.",
-    "Subscription gross margin materially compresses as AI usage scales.",
-    "AI-first ARR growth decelerates toward or below total ARR growth before achieving material scale.",
-    "AI MAU grows without corresponding paid ARR/cash conversion.",
-    "Core workflows shift to external model-native platforms that bypass Adobe.",
-    "A cutoff-valid filing contradicts a frozen source fact or reveals a definition mismatch material to a score.",
-    "A future filing restates the primary data used in TTM or repurchase calculations.",
-    "Owner-style FCF/share falls materially below the Bear path for multiple periods.",
-    "AI monetization fails to offset erosion in core creative/document subscription economics.",
-    "A lower terminal multiple or weaker normalized FCF removes most of the Base discount.",
-    "OCF falls below debt service and committed obligations for multiple periods.",
-    "The 2027 notes cannot be refinanced or repaid on reasonable terms.",
-    "Purchase obligations rise above 1x TTM revenue while demand weakens.",
-    "If MT or RF fall below Compounder thresholds, reclassify; if price/Base rises >1.2, valuation thesis weakens.",
-    "Repurchases continue above intrinsic value while per-share FCF deteriorates.",
-    "Semrush fails to sustain ARR/FCF contribution commensurate with purchase price.",
-    "AI commercialization stalls through the CEO transition.",
-    "A sustained reversal in oil plus clear disinflation and a Fed pivot would justify restoring the pacing multiplier toward 1.0.",
-    "HY OAS above 400bp or a material issuance-market freeze would justify lowering the multiplier below 0.7.",
-    "A material fall in 10-year real yields without weakening growth would reduce duration pressure.",
-    "Same-definition ARR contracts for multiple quarters while industry AI usage continues expanding.",
-    "Creative/Acrobat MAU grows but paid subscription revenue stagnates or declines.",
-    "Material enterprise workflows migrate away from Adobe file/integration standards.",
-    "TTM owner-style FCF/share declines for multiple periods after adjusting for SBC.",
-    "R&D absorption rises while OCF and ARR growth structurally weaken.",
-    "Diluted shares stop shrinking despite continued large repurchase cash outlays.",
-    "Sustained AI-driven ARR acceleration weakens the short thesis; declining ARR despite rising AI usage strengthens it.",
-    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded.",
-    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
-  ],
-  "macro_pacing_multiplier": 0.5,
-  "decision_authority": "Deterministic eligibility and veto gates; IC may reduce deployment within configured caps."
+  "early_exit_record": null
 }
