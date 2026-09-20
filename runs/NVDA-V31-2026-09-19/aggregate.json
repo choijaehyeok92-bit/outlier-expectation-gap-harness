@@ -122,9 +122,9 @@
     "growth"
   ],
   "early_exit": false,
-  "hard_veto_status": "PENDING_REVIEW",
-  "mechanical_pre_ic_state": "WATCH",
-  "position_range_pre_ic": "0% until veto cleared",
+  "hard_veto_status": "CLEARED",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "position_range_pre_ic": "1-3% (성장주 초기 상한)",
   "domain_scores": {
     "structural_leadership": {
       "bull_score": 88,
@@ -682,11 +682,11 @@
   "confirmed_vetoes": [],
   "unresolved_vetoes": [],
   "veto_gate": {
-    "overall": "PENDING_REVIEW",
+    "overall": "CLEARED",
     "items": [
       {
         "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "MA",
           "RT"
@@ -697,16 +697,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "FY26 내부통제는 경영진과 PwC가 유효하다고 결론냈고 재작성·감사인 이슈가 확인되지 않는다. 중국 관련 손실과 DSO 악화도 공시에 반영됐다. 다만 비시장성 지분 평가와 관련 고객 매출은 지속 감시한다."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "재작성·감사인 이견/교체·내부통제 중대결함이 확인되지 않았고 FY26 내부통제는 경영진과 PwC가 유효하다고 결론냈다. 비시장성 지분평가는 감시사항이지 신뢰성 훼손의 증거가 아니다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "FS",
           "RT"
@@ -717,11 +721,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "H1 OCF $74.4B가 capex $4.4B와 SBC $4.0B를 충분히 상회한다. 같은 기간 차입 $24.9B보다 자사주·지분투자·배당 등 재량적 유출이 훨씬 커, 외부조달이 영업 생존에 구조적으로 필요한 요건은 반증된다."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "TTM OCF 약 $134.4B와 owner FCF 약 $119.8B가 총차입 $33.4B를 크게 상회한다. 최근 차입은 자사주·지분투자 등 재량적 유출과 병행됐고 영업 생존 자체가 외부조달에 의존한다는 요건은 반증된다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
@@ -750,7 +758,7 @@
       },
       {
         "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -761,16 +769,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "75.0% gross margin, 1.4% 판관비율, $15.6B 고객 선수금과 Hyperscale·ACIE의 100%+ 성장은 고객가치가 부재한 보조금형 성장과 양립하기 어렵다. 새 자료는 AI-cloud 약정의 제3자 전환·revenue share와 보증 회수장치도 확인한다. 다만 지원 대상 매출 비중은 별도 모니터링한다."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Q2 75% gross margin, 낮은 판관비, $15.6B 고객 선수금과 100%+ 고객군 성장은 고객가치 부재라는 필수 요건을 반증한다. 벤더 금융은 별도 tail risk로 남긴다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "RF",
           "RT"
@@ -781,16 +793,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "FY25→FY26 영업자본 기준 증분 ROIC 약 101%로 자본비용을 크게 상회한다. ROIC 수준 하락과 지분증권 포함 정의는 감시하지만 구조적 붕괴의 구성요건은 없다."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "RF가 산출한 FY25→FY26 영업자본 기준 증분 ROIC 약 101%는 자본비용을 크게 상회한다. 향후 체감 위험은 있으나 현재 구조적 붕괴 구성요건은 없다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "MT",
           "RT"
@@ -801,16 +817,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "매출이 배가되는 동안 gross margin이 71.1%→75.0%로 상승했고 컴퓨트·네트워킹이 함께 성장했다. 개발자 750만명과 앱 6,000개의 생태계도 유지된다. 하이퍼스케일러·중국 경쟁·벤더 중립성은 확대 폭을 줄이는 위험으로 감시한다."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "매출 급증과 함께 gross margin이 FY26 71.1%에서 Q2 FY27 75.0%로 상승했고 CUDA·네트워킹 생태계 지표도 유지된다. 미래 ASIC 경쟁은 위험이나 현재 지속 축소의 직접 증거는 아니다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "EV",
           "AS",
@@ -828,16 +848,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "현재가 $222.27는 Base $212.86의 1.044배이고 Bull $431.14보다 48% 낮다. 따라서 현재가가 Bull 시나리오 가치를 초과한다는 구성요건은 반증된다. Base 가정의 야심성은 점수와 uncertainty에 반영한다."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "현재가 $222.27는 Bull 가치 $431.14보다 약 48% 낮다. Base보다 높다는 사실은 EV/AS 가격위험이지만 이 Veto의 'Bull 이상 요구' 요건은 충족하지 않는다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -848,11 +872,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "최대 직접고객 비중은 16%이고 중국 데이터센터 시장에서 사실상 배제된 상태에서도 Q2 전체 매출은 +105.9% y/y였다. Data Center 집중과 규제 위험은 크지만 현재 자료만으로 단일 고객·규제가 치명적 종속성이라는 구성요건은 충족하지 않는다."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "최대 직접고객 비중은 16%이며 중국 데이터센터 접근 상실이 이미 현실화된 상태에서도 Q2 전체 매출은 +105.9% y/y였다. 집중 위험은 크지만 치명적·회복불가 요건은 반증된다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
@@ -882,155 +910,7 @@
     ],
     "confirmed": [],
     "unresolved": [],
-    "pending": [
-      {
-        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MA",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "MA",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "FY26 내부통제는 경영진과 PwC가 유효하다고 결론냈고 재작성·감사인 이슈가 확인되지 않는다. 중국 관련 손실과 DSO 악화도 공시에 반영됐다. 다만 비시장성 지분 평가와 관련 고객 매출은 지속 감시한다."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "FS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "FS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "H1 OCF $74.4B가 capex $4.4B와 SBC $4.0B를 충분히 상회한다. 같은 기간 차입 $24.9B보다 자사주·지분투자·배당 등 재량적 유출이 훨씬 커, 외부조달이 영업 생존에 구조적으로 필요한 요건은 반증된다."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "75.0% gross margin, 1.4% 판관비율, $15.6B 고객 선수금과 Hyperscale·ACIE의 100%+ 성장은 고객가치가 부재한 보조금형 성장과 양립하기 어렵다. 새 자료는 AI-cloud 약정의 제3자 전환·revenue share와 보증 회수장치도 확인한다. 다만 지원 대상 매출 비중은 별도 모니터링한다."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "RF",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "RF",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "FY25→FY26 영업자본 기준 증분 ROIC 약 101%로 자본비용을 크게 상회한다. ROIC 수준 하락과 지분증권 포함 정의는 감시하지만 구조적 붕괴의 구성요건은 없다."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MT",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "MT",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "매출이 배가되는 동안 gross margin이 71.1%→75.0%로 상승했고 컴퓨트·네트워킹이 함께 성장했다. 개발자 750만명과 앱 6,000개의 생태계도 유지된다. 하이퍼스케일러·중국 경쟁·벤더 중립성은 확대 폭을 줄이는 위험으로 감시한다."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "EV",
-          "AS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "AS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "현재가 $222.27는 Bull 가치 $431.14의 51.6%로, 현재가가 Bull 시나리오 가치를 초과한다는 구성요건이 반증된다."
-          },
-          {
-            "agent_id": "EV",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "현재가 $222.27는 Base $212.86의 1.044배이고 Bull $431.14보다 48% 낮다. 따라서 현재가가 Bull 시나리오 가치를 초과한다는 구성요건은 반증된다. Base 가정의 야심성은 점수와 uncertainty에 반영한다."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "최대 직접고객 비중은 16%이고 중국 데이터센터 시장에서 사실상 배제된 상태에서도 Q2 전체 매출은 +105.9% y/y였다. Data Center 집중과 규제 위험은 크지만 현재 자료만으로 단일 고객·규제가 치명적 종속성이라는 구성요건은 충족하지 않는다."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      }
-    ]
+    "pending": []
   },
   "valuation_model": {
     "status": "COMPLETE",
@@ -1314,7 +1194,18 @@
     }
   },
   "review_only": false,
-  "evidence_concentration_flags": [],
+  "evidence_concentration_flags": [
+    {
+      "kind": "economic_driver",
+      "value": "vendor_financing_risk",
+      "domains": [
+        "customer_product",
+        "evidence_quality"
+      ],
+      "score_effect": 0,
+      "review": "Check whether these positive domains rely on one economic fact."
+    }
+  ],
   "macro_geo_overlay": {
     "financial_regime": {
       "financial_conditions": {
