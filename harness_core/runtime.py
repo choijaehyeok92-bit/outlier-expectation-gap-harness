@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from datetime import date, datetime, timedelta, timezone
 import argparse, hashlib, json, os, re, statistics, shutil, subprocess, sys
-from . import rubric, calibration, archetypes, macro_geo, planner, intake, research, plain_report
+from . import rubric, calibration, archetypes, macro_geo, planner, intake, fetch, research, plain_report
 from .conditions import check_condition, number
 from .evidence import concentration_flags
 from .state import dispersion_review, narrowed_position
@@ -723,6 +723,47 @@ def financial_preprocessor_prompt(ticker):
     return '\n'.join(P)
 
 
+def cmd_fetch(args):
+    """Stage 0 acquisition: pull the filings the checklist asks for from EDGAR."""
+    t=args.ticker.upper(); run=run_dir(t)
+    if not (run/'company_context.json').exists(): raise SystemExit(f'{t}: run not found; use init first')
+    as_of=load_json(run/'company_context.json')['as_of_date']
+    ua=args.user_agent or os.environ.get('SEC_USER_AGENT')
+    if not ua:
+        raise SystemExit('SEC fair-access requires a contact in the User-Agent. '
+                         'Pass --user-agent "Name email@example.com" or set SEC_USER_AGENT. '
+                         'The harness does not send a contact you have not supplied.')
+    try:
+        if args.cik: cik,name=int(args.cik),None
+        else: cik,name=fetch.resolve_cik(t,ua)
+        rows,filer=fetch.recent_filings(cik,ua)
+    except fetch.FetchError as e:
+        raise SystemExit(f'{t}: EDGAR unreachable — {e}\n'
+                         f'If this environment blocks sec.gov, download the filings listed by '
+                         f'`harness.py intake {t}` and place them in runs/{t}/sources/ by hand.')
+    plan_rows=fetch.plan(rows,INTAKE_POLICY,as_of)
+    print(f"{t}: CIK {cik} ({filer or name or 'unknown filer'}) | as-of {as_of} | "
+          f"eligible {plan_rows['eligible_filings']} | after cutoff, skipped {plan_rows['excluded_post_cutoff']}")
+    for row in plan_rows['download']:
+        print(f"  + {row['form']:<10} {row['filingDate']}  {row['requirement']}")
+    for row in plan_rows['shortfalls']:
+        print(f"  ! {row['form']:<10} short by {row['shortfall']} for {row['requirement']} ({row['importance']})")
+    if args.dry_run:
+        print('\ndry run; nothing downloaded'); return
+    try:
+        saved=fetch.download(cik,plan_rows['download'],run/'sources',ua)
+    except fetch.FetchError as e:
+        raise SystemExit(f'{t}: download failed — {e}')
+    dump_json(run/'sources/fetch_manifest.json',
+        {'schema_version':'1.0','ticker':t,'cik':cik,'filer':filer or name,'as_of_date':as_of,
+         'source':'SEC EDGAR','fetched_at_utc':datetime.now(timezone.utc).isoformat(),
+         'excluded_post_cutoff':plan_rows['excluded_post_cutoff'],
+         'shortfalls':[{k:r[k] for k in ('requirement','importance','form','shortfall')} for r in plan_rows['shortfalls']],
+         'documents':saved})
+    print(f"\nsaved {len(saved)} document(s) -> runs/{t}/sources/ (manifest: sources/fetch_manifest.json)")
+    print(f"next: python harness.py prompt {t} FP")
+
+
 def cmd_intake(args):
     t=args.ticker.upper(); st=intake_status(t)
     if not st['pack_present']:
@@ -745,6 +786,8 @@ def cmd_intake(args):
     if blocking:
         print('\n차단 공백 (required):')
         for g in blocking: print(f"  - {g['id']}: {g['found']}/{g['needed']} — {g['us']} / {g['kr']}")
+        print(f'\n자동 수집: python harness.py fetch {t} --user-agent "Name email@example.com"')
+        print(f'수동 수집: 위 문서를 runs/{t}/sources/ 에 넣는다')
     advisory=cov['advisory_gaps']
     if advisory:
         print('\n권고 공백:')
@@ -964,6 +1007,9 @@ def main():
     p=sub.add_parser('selftest',help='run deterministic v3 regression and compatibility checks'); p.set_defaults(func=cmd_selftest)
     p=sub.add_parser('calibrate',help='compare two runs\' subscores to measure provider divergence')
     p.add_argument('run_a'); p.add_argument('run_b'); p.add_argument('--out'); p.set_defaults(func=cmd_calibrate)
+    p=sub.add_parser('fetch',help='stage 0: download the required filings from SEC EDGAR')
+    p.add_argument('ticker'); p.add_argument('--cik'); p.add_argument('--user-agent')
+    p.add_argument('--dry-run',action='store_true'); p.set_defaults(func=cmd_fetch)
     p=sub.add_parser('intake',help='stage 0: required raw documents vs what the financial pack holds')
     p.add_argument('ticker'); p.set_defaults(func=cmd_intake)
     p=sub.add_parser('validate-pack',help='stage 0: validate the financial pack against schema and invariants')

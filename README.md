@@ -28,6 +28,7 @@
 
 ```bash
 python harness.py init NEW_TICKER --as-of YYYY-MM-DD
+python harness.py fetch NEW_TICKER --user-agent "Name email@example.com"   # Stage 0: EDGAR에서 자동 수집
 python harness.py intake NEW_TICKER                 # Stage 0: 필요한 원자료가 무엇이고 무엇이 비었는지
 python harness.py prompt NEW_TICKER FP              # Stage 0: 재무 원자료 전처리 프롬프트
 python harness.py validate-pack NEW_TICKER          # Stage 0: pack 스키마·불변식 검사

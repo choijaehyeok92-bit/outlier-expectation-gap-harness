@@ -18,6 +18,10 @@
 ## 입력
 Stage 0의 문서 체크리스트는 [`config/intake.json`](../../config/intake.json)에 있다. `python harness.py intake <TICKER>`가 필요 문서와 현재 확보 상태를 대조해 공백을 출력한다. `required` 항목이 비어 있으면 전처리를 시작하지 않는다.
 
+문서 확보는 `python harness.py fetch <TICKER>`가 SEC EDGAR에서 자동으로 하거나 사람이 직접 `sources/`에 넣는다. **fetch는 규제기관 색인에서의 결정론적 내려받기이지 조사가 아니다.** 티커를 CIK로 바꾸고, 제출 색인을 읽고, 체크리스트가 요구하는 폼을 as_of_date 이전 것만 받아 `sources/fetch_manifest.json`에 출처 URL·접수번호·제출일을 남긴다. IR 자료처럼 EDGAR에 정형 폼이 없는 항목은 자동 수집 대상이 아니다.
+
+FP 자신은 어떤 경우에도 웹에 접근하지 않는다. 디스크에 있는 파일만 읽는다. 이 경계가 아래 절대 규칙을 유지시킨다.
+
 ## 절대 규칙
 - 제공된 문서에 없는 값은 추정하지 않는다.
 - 계산하지 않는다. TTM·CAGR·FCF·ROIC·비율은 후단 Python과 reasoning agent가 담당한다.
