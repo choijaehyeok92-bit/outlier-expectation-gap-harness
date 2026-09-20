@@ -1,0 +1,42 @@
+name: ADBE next plan validate
+
+on:
+  push:
+    branches:
+      - research/adbe-orchestrator-20260918
+    paths:
+      - ".github/workflows/adbe-next-plan.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  validate-plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/adbe-orchestrator-20260918
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate affected reports and plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/adbe-next-plan.log) 2>&1
+          python harness.py validate ADBE CP MT RF MA FS EV AS DI ED
+          echo "===== PLAN ====="
+          python harness.py plan ADBE | tee runlogs/adbe-next-plan.json
+      - name: Commit logs
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runlogs/adbe-next-plan.log runlogs/adbe-next-plan.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(adbe): validate rerun reports and capture plan"
+            git push origin HEAD:research/adbe-orchestrator-20260918
+          fi
