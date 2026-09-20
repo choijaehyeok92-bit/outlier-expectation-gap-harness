@@ -18,9 +18,9 @@
     "outlier_growth"
   ],
   "early_exit": false,
-  "hard_veto_status": "PENDING_REVIEW",
-  "mechanical_pre_ic_state": "WATCH",
-  "position_range_pre_ic": "0% until veto cleared",
+  "hard_veto_status": "CLEARED",
+  "mechanical_pre_ic_state": "STARTER_OR_WATCH",
+  "position_range_pre_ic": "0-2%",
   "domain_scores": {
     "structural_leadership": {
       "bull_score": 84,
@@ -641,11 +641,11 @@
   "confirmed_vetoes": [],
   "unresolved_vetoes": [],
   "veto_gate": {
-    "overall": "PENDING_REVIEW",
+    "overall": "CLEARED",
     "items": [
       {
         "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "MA",
           "RT"
@@ -656,16 +656,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "No restatement, auditor dispute or material internal-control failure was identified through the cutoff; KPMG has audited the company since 2018. Governance concentration and SBC are risks, not evidence of integrity failure."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "cutoff까지 재작성, 감사인 분쟁, 중대한 내부통제 실패가 확인되지 않았다. IPO-era SBC와 company-defined FCF의 차이는 공시된 경제적 조정 문제이지 회계 신뢰 훼손 사건 자체는 아니다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "FS",
           "RT"
@@ -676,11 +680,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Rubrik has positive OCF/FCF and about $1.75B liquidity, while the 0% convertible does not mature until 2030. Operations do not currently require repeated external financing to survive."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "H1 OCF가 양수이고 현금+단기투자가 convert 원금을 상회하며 만기는 2030년이다. 현재 운영이 반복 외부자본 없이는 존속 불가능하다는 두 구성요건이 성립하지 않는다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
@@ -709,7 +717,7 @@
       },
       {
         "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -720,16 +728,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "NRR >119%, 33% ARR growth, 23% large-customer growth and improving contribution margin show repeat customer expansion and economic value. High S&M is a risk but does not establish growth without customer value."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "NRR >119%, ARR +33%, large-customer +23%, 78.4% gross margin과 contribution-margin 개선은 반복 고객가치를 입증한다. 높은 S&M은 효율 리스크지만 고객가치 부재의 증거는 아니다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "RF",
           "RT"
@@ -740,16 +752,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Incremental ROIC is not reliably measurable yet, but ARR growth and contribution-margin improvement do not show a structural collapse. Uncertainty is scored at 50 rather than converted into a veto."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "RF에서 증분 ROIC를 신뢰성 있게 측정하지 못해 50을 부여했지만 ARR와 contribution margin이 개선 중이다. '불확실'을 '자본비용 아래 구조적 붕괴'로 승격할 증거는 없다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "MT",
           "RT"
@@ -760,16 +776,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Observed ARR, cloud ARR, enterprise-customer count and NRR are all expanding, while third-party category recognition remains strong. Commoditization risk exists but sustained moat contraction is not observed."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "NRR, ARR, cloud ARR, 대형 고객 수가 증가하고 MT는 77로 강화 방향을 보인다. 경쟁·번들링 위험은 있으나 지속적 해자 축소가 관측되지는 않았다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "EV",
           "AS",
@@ -787,16 +807,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Frozen price $106.71 is far below the locked Bull value of about $563.05. The defined veto requires current price to exceed the Bull value, which is not satisfied."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Frozen $106.71은 locked Bull $563.05보다 크게 낮다. Base의 terminal 의존과 Bear 하방은 valuation/asymmetry 위험이지만 정의상 current price > Bull은 아니다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -807,11 +831,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Channel concentration is high, but no ultimate end customer >25% is disclosed and the platform spans data, identity, cloud/SaaS and emerging agent security. Fatal single-factor dependence is not demonstrated."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "채널 파트너 집중은 높지만 ultimate end-customer >25%는 확인되지 않았고 data, identity, cloud/SaaS, agent security로 제품 범위가 확장 중이다. 단일 요인 상실 시 회복 불가능한 사업경제 훼손은 입증되지 않았다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
@@ -841,155 +869,7 @@
     ],
     "confirmed": [],
     "unresolved": [],
-    "pending": [
-      {
-        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MA",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "MA",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "No restatement, auditor dispute or material internal-control failure was identified through the cutoff; KPMG has audited the company since 2018. Governance concentration and SBC are risks, not evidence of integrity failure."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "FS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "FS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Rubrik has positive OCF/FCF and about $1.75B liquidity, while the 0% convertible does not mature until 2030. Operations do not currently require repeated external financing to survive."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "NRR >119%, 33% ARR growth, 23% large-customer growth and improving contribution margin show repeat customer expansion and economic value. High S&M is a risk but does not establish growth without customer value."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "RF",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "RF",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Incremental ROIC is not reliably measurable yet, but ARR growth and contribution-margin improvement do not show a structural collapse. Uncertainty is scored at 50 rather than converted into a veto."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MT",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "MT",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Observed ARR, cloud ARR, enterprise-customer count and NRR are all expanding, while third-party category recognition remains strong. Commoditization risk exists but sustained moat contraction is not observed."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "EV",
-          "AS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "AS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Frozen price $106.71 is far below locked Bull value $563.05; the defined Bull+ price condition is not met."
-          },
-          {
-            "agent_id": "EV",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Frozen price $106.71 is far below the locked Bull value of about $563.05. The defined veto requires current price to exceed the Bull value, which is not satisfied."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Channel concentration is high, but no ultimate end customer >25% is disclosed and the platform spans data, identity, cloud/SaaS and emerging agent security. Fatal single-factor dependence is not demonstrated."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      }
-    ]
+    "pending": []
   },
   "valuation_model": {
     "status": "COMPLETE",
@@ -1515,8 +1395,8 @@
   "archetype": "outlier_growth",
   "secondary_archetypes": [],
   "archetype_rationale": "Highest eligible deterministic fit; ties use configured priority",
-  "ic_state": "WATCH",
-  "position_range": "0% until veto cleared",
+  "ic_state": "STARTER_OR_WATCH",
+  "position_range": "0-2%",
   "ic_review_flags": [],
   "falsifiers": [
     "Reduce upside_path if ARR growth drops below 20% before SBC-adjusted owner FCF/share turns positive.",
@@ -1528,6 +1408,9 @@
     "Cut adoption_curve if ARR growth falls below 20% and NRR below 110% for two quarters.",
     "Cut optionality if Agent Cloud remains commercially immaterial through FY2028.",
     "Cut cost_performance_shift if independent benchmarks show no material recovery/TCO advantage versus bundled alternatives.",
+    "ARR 성장 <20%, NRR <110%, 대형고객 성장 <10%가 동시에 나타나면 장기 성장·고객가치 근거를 재평가한다.",
+    "연간 희석이 5% 이상 지속되고 SBC-adjusted owner FCF/share가 개선되지 않으면 FS/RF/AS를 재실행한다.",
+    "refrozen valuation에서 Base가 현재가 이하로 내려가거나 terminal fraction이 더 높아지면 expectation-gap 근거를 약화한다.",
     "Cut Base materially if Subscription ARR growth falls below 20% before owner FCF/share turns sustainably positive after SBC.",
     "Cut Base if diluted economic share count grows above 5% annually for two consecutive years without commensurate per-share cash growth.",
     "Raise the durability case only if owner FCF/share turns positive while ARR growth remains above 25% and retention stays above 115%.",
@@ -1549,6 +1432,9 @@
     "Raise incremental_roic only when owner FCF/share turns positive while ARR stays above 20%.",
     "Cut reinvestment_runway if ARR growth falls below 15% despite reinvestment above OCF.",
     "Confirm dilution veto if >5% annual share growth persists for multiple years without per-share cash growth.",
+    "NRR >115%와 ARR 성장 >25%가 지속되면서 희석 <3%, SBC-adjusted owner FCF/share 양전환이면 핵심 숏 논리는 크게 약화된다.",
+    "Agent Cloud가 독립적으로 유의미한 ARR와 retention을 공개하면 '인접가치풀은 서사뿐'이라는 숏 논리는 약화된다.",
+    "반대로 ARR 성장 <20%와 >5% 희석이 동시에 지속되면 영구손실·외부자본·해자 관련 veto를 재검토한다.",
     "Cut secular_durability if normalized ARR growth falls below 15% for multiple quarters.",
     "Cut category_leadership if third-party position weakens and large-customer growth stalls.",
     "Raise durability_risks only after a second independent end market exceeds 10% of revenue."

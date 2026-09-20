@@ -1,5 +1,5 @@
 # Digest — RBRK (as of 2026-09-18)
-score 69.04 (ex-val 68.56, Starter / Watch) · DI 70.0 · TQ None · archetype outlier_growth — Highest eligible deterministic fit; ties use configured priority · veto PENDING_REVIEW · state WATCH
+score 69.04 (ex-val 68.56, Starter / Watch) · DI 70.0 · TQ None · archetype outlier_growth — Highest eligible deterministic fit; ties use configured priority · veto CLEARED · state STARTER_OR_WATCH
 signals {'price_to_base_value': 0.6304, 'valuation_percentile_5y': None, 'revenue_cagr_next_3y': 0.26, 'market_cap_usd': 22121456045.43} · reachable(raw) ['outlier_growth']
 veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
 
@@ -72,6 +72,18 @@ unknowns: Standalone Agent Cloud ARR, customer count and gross margin. · Indepe
 | LG | 73.5 (48–88) | 0.8 | support | – | RBRK fits the Long-Term Outlier Growth concept better than ordinary Growth. A roughly 2.4x five-year scale path and 5-10 year runway are credible, the company … |
 bull: Core cyber resilience can keep compounding while identity and Agent Cloud add new value pools. A roughly 2.4x five-year revenue path is plausible without heroi… / bear: The apparent runway may be mostly one category with adjacent features rather than independent businesses. If ARR growth mean-reverts quickly and Agent Cloud st…
 unknowns: Agent Cloud five-year revenue contribution. · Current category penetration and exact market share.
+
+## evidence_quality
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| ED | 85 | 0.92 | support | – | 핵심 성장·유동성·희석 수치는 cutoff-valid 10-K/10-Q와 회사 공식 실적자료에 직접 연결된다. ARR, NRR, 고객 수, 현금·부채, SBC, RPO는 정의와 기간이 비교적 명확하다. 반면 5년 2.4x 기회 규모, 7년 내재 성장기간, SBC 차감 owner-FCF… |
+unknowns: Agent Cloud/Identity standalone ARR, 고객 수, gross margin과 retention. · 정규화된 장기 SBC와 fully diluted economic share count.
+
+## red_team
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| RT | 50 | 0.93 | oppose | V1=cleared, V2=cleared, V4=cleared, V5=cleared, V6=cleared, V7=cleared, V8=cleared | 가장 강한 숏 논리는 '사이버보안 수요가 없다'가 아니라 주주경제의 질과 장기 가정이다. 회사 FCF는 빠르게 개선되지만 TTM SBC가 회사식 FCF보다 크고 주식수는 약 5% 증가했다. Base 가치의 81%가 terminal에 의존하며 Agent Cloud 독립 경제성은 미공시다… |
+unknowns: Agent Cloud와 Agent Identity의 standalone ARR·마진·retention. · 정규화된 annual SBC와 fully diluted share count.
 
 ## macro_overlay
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
