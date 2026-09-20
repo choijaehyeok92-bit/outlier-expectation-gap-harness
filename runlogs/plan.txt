@@ -18,9 +18,9 @@
     ]
   },
   "research": {
-    "questions": 13,
-    "pending": 13,
-    "decision_blocking": 13,
+    "questions": 12,
+    "pending": 12,
+    "decision_blocking": 12,
     "deferred": 0,
     "command": "python harness.py research-plan V"
   }

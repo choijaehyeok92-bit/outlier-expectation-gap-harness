@@ -6,32 +6,23 @@ If this environment blocks sec.gov, download the filings listed by `harness.py i
 fetch_exit=1
 SEC fetch unavailable; applying RUNBOOK manual-source fallback from existing V snapshot.
 === 3 intake (pre-FP) ===
-V: financial pack 없음 (sources/financials/normalized_financials.json). 강제 여부: enforced
+V: stage_0=ready | 문서 8 · fact 0 · 조정후보 0 · 경고 1 · 검토요망 fact 0 · 재작성 fact 0
 
-[GAP] latest_annual           required                0/1   연간 3개년 재무제표, segment, 고객집중, 부채, SBC, 약정, 회계정책
-[GAP] latest_interim          required                0/1   현재 TTM, 분기 추세, 운전자본, 현금흐름, 희석
-[GAP] trailing_quarters       required                0/6   TTM·YoY·FCF/share·증분 ROIC 추세
-[GAP] historical_annuals      strongly_recommended    0/3   정상화 이익, 반복 구조조정, 자본집약도, 장기 추세
+[OK ] latest_annual           required                1/1   연간 3개년 재무제표, segment, 고객집중, 부채, SBC, 약정, 회계정책
+[OK ] latest_interim          required                6/1   현재 TTM, 분기 추세, 운전자본, 현금흐름, 희석
+[OK ] trailing_quarters       required                6/6   TTM·YoY·FCF/share·증분 ROIC 추세
+[GAP] historical_annuals      strongly_recommended    1/3   정상화 이익, 반복 구조조정, 자본집약도, 장기 추세
 [GAP] proxy_compensation      near_required           0/1   경영진 보상, 주식보상, ownership, governance
-[GAP] earnings_release        recommended             0/1   GAAP/non-GAAP reconciliation, 최신 KPI
+[OK ] earnings_release        recommended             1/1   GAAP/non-GAAP reconciliation, 최신 KPI
 [N/A] debt_and_financing      conditional_required    0/1   회사채, 전환사채, 증자, M&A, 대규모 자금조달
 [N/A] foreign_issuer_filings  conditional             0/1   미국 상장 외국기업의 10-K/10-Q 대체
 [GAP] insider_ownership       recommended             0/1   내부자 매매 · ownership 변화
 [GAP] investor_materials      recommended             0/1   TAM, capex plan, 장기 margin, 신규 사업
 [N/A] registration_statement  conditional             0/1   IPO · 상장 초기 기업의 장기 데이터 보강
 
-차단 공백 (required):
-  - latest_annual: 0/1 — 최근 10-K / 최근 사업보고서
-  - latest_interim: 0/1 — 최신 10-Q / 최신 분기/반기보고서
-  - trailing_quarters: 0/6 — 과거 6~8개 분기의 10-Q / 과거 6~8개 분기보고서
-
-자동 수집: python harness.py fetch V --user-agent "Name email@example.com"
-수동 수집: 위 문서를 runs/V/sources/ 에 넣는다
-
 권고 공백:
-  - historical_annuals (strongly_recommended): 0/3 — 과거 3~5개년 10-K / 과거 3~5개년 사업보고서
+  - historical_annuals (strongly_recommended): 1/3 — 과거 3~5개년 10-K / 과거 3~5개년 사업보고서
   - proxy_compensation (near_required): 0/1 — DEF 14A Proxy / 주주총회소집공고 · 사업보고서 임원보수 항목
-  - earnings_release (recommended): 0/1 — 실적 관련 8-K + earnings release / 잠정실적 · 영업실적 공시
   - insider_ownership (recommended): 0/1 — Form 4 / 임원 · 주요주주 지분공시
   - investor_materials (recommended): 0/1 — Investor Day / 공식 IR 자료 / IR · 기업설명회 자료
 
@@ -39,7 +30,7 @@ V: financial pack 없음 (sources/financials/normalized_financials.json). 강제
   - debt_and_financing: 회사채·전환사채·증자·대규모 M&A 등 자금조달 이벤트가 기준일 이전에 있었던 경우
   - foreign_issuer_filings: 미국 상장 외국기업이라 10-K/10-Q 대신 20-F/6-K를 제출하는 경우
   - registration_statement: IPO 또는 상장 초기라 장기 시계열이 부족한 경우
-intake_pre_fp_exit=1
+intake_pre_fp_exit=0
 === 4 prompt FP ===
 runs/V/FP_prompt.md
 prompt_fp_exit=0
@@ -48,18 +39,18 @@ prompt_fp_exit=0
 웹 검색을 하지 않는다. 사용자가 직접 제공한 공시·감사재무제표·IR 문서만 사용한다.
 
 ## Stage 0 문서 확보 현황
-문서 0건, 요건 충족 0/11.
-- [GAP] latest_annual · required · 0/1 — 최근 10-K / 최근 사업보고서
+문서 8건, 요건 충족 4/11.
+- [OK ] latest_annual · required · 1/1 — 최근 10-K / 최근 사업보고서
         용도: 연간 3개년 재무제표, segment, 고객집중, 부채, SBC, 약정, 회계정책
-- [GAP] latest_interim · required · 0/1 — 최신 10-Q / 최신 분기/반기보고서
+- [OK ] latest_interim · required · 6/1 — 최신 10-Q / 최신 분기/반기보고서
         용도: 현재 TTM, 분기 추세, 운전자본, 현금흐름, 희석
-- [GAP] trailing_quarters · required · 0/6 — 과거 6~8개 분기의 10-Q / 과거 6~8개 분기보고서
+- [OK ] trailing_quarters · required · 6/6 — 과거 6~8개 분기의 10-Q / 과거 6~8개 분기보고서
         용도: TTM·YoY·FCF/share·증분 ROIC 추세
-- [GAP] historical_annuals · strongly_recommended · 0/3 — 과거 3~5개년 10-K / 과거 3~5개년 사업보고서
+- [GAP] historical_annuals · strongly_recommended · 1/3 — 과거 3~5개년 10-K / 과거 3~5개년 사업보고서
         용도: 정상화 이익, 반복 구조조정, 자본집약도, 장기 추세
 - [GAP] proxy_compensation · near_required · 0/1 — DEF 14A Proxy / 주주총회소집공고 · 사업보고서 임원보수 항목
         용도: 경영진 보상, 주식보상, ownership, governance
-- [GAP] earnings_release · recommended · 0/1 — 실적 관련 8-K + earnings release / 잠정실적 · 영업실적 공시
+- [OK ] earnings_release · recommended · 1/1 — 실적 관련 8-K + earnings release / 잠정실적 · 영업실적 공시
         용도: GAAP/non-GAAP reconciliation, 최신 KPI
 - [GAP] debt_and_financing · conditional_required · 0/1 — Debt note / 8-K / 424B / prospectus / 주요사항보고서 · 증권신고서 (조건: 회사채·전환사채·증자·대규모 M&A 등 자금조달 이벤트가 기준일 이전에 있었던 경우)
         용도: 회사채, 전환사채, 증자, M&A, 대규모 자금조달
@@ -219,23 +210,34 @@ intake_post_fp_exit=0
 === populate company_context ===
 {
   "ticker": "V",
-  "company_name": "",
+  "company_name": "Visa Inc.",
   "as_of_date": "2026-09-18",
   "currency": "USD",
-  "current_price": null,
-  "shares_diluted": null,
-  "market_cap_usd": null,
-  "enterprise_value": null,
+  "current_price": 368.29,
+  "shares_diluted": 1898000000,
+  "market_cap_usd": 690000000000,
+  "enterprise_value": 699916000000,
   "portfolio_context": {
     "existing_position_pct": 0,
     "sector_exposure_pct": 0,
     "overlap_notes": ""
   },
-  "known_sources": [],
-  "special_questions": [],
-  "net_cash_per_share": null,
-  "valuation_percentile_5y": null,
-  "valuation_metric": "",
+  "known_sources": [
+    "User-uploaded Visa FY2025 Form 10-K filed 2025-11-06",
+    "User-uploaded Visa FY2026 Q1/Q2/Q3 Forms 10-Q",
+    "User-uploaded Visa Q3 FY2026 earnings 8-K dated 2026-07-28",
+    "StockAnalysis historical close: 2026-09-18 $368.29",
+    "WallStSmart Visa own-history P/E: 69th percentile of trailing 5 years as of 2026-09-17",
+    "FinanceCharts Visa P/E: 31.61x on 2026-09-18 vs 5Y average 32.90x"
+  ],
+  "special_questions": [
+    "Can Visa sustain double-digit revenue and per-share FCF compounding as payment penetration matures?",
+    "Do Visa Direct, commercial/money movement and value-added services widen the moat beyond consumer card payments?",
+    "Does regulation/interchange litigation materially impair pricing power or network economics at the current valuation?"
+  ],
+  "net_cash_per_share": -5.22,
+  "valuation_percentile_5y": 0.69,
+  "valuation_metric": "TTM P/E own-history percentile over trailing 5 years; 69th percentile from latest 2026-09-17 source. Cross-check: 2026-09-18 P/E 31.61x vs 5Y average 32.90x.",
   "valuation_overrides": {
     "required_return": null,
     "terminal_multiples": {
@@ -258,8 +260,17 @@ intake_post_fp_exit=0
   }
 }
 === 6 freeze ===
-freeze requires locked company_context fields: current_price, net_cash_per_share
-freeze_exit=1
+{
+  "ticker": "V",
+  "input_snapshot_sha256": "d908fe130ec65f54edbf644944bbdb6b6e49a93a228a44666f4ec5aca2a6d85d",
+  "harness_commit": "42c8d8c2223c98e410ddf9ff062c6e5a2b218906",
+  "runner": {
+    "provider": "openai",
+    "model": "gpt-6-astra",
+    "reasoning_effort": null
+  }
+}
+freeze_exit=0
 === 7 plan ===
 {
   "stage": "triage",
@@ -281,9 +292,9 @@ freeze_exit=1
     ]
   },
   "research": {
-    "questions": 13,
-    "pending": 13,
-    "decision_blocking": 13,
+    "questions": 12,
+    "pending": 12,
+    "decision_blocking": 12,
     "deferred": 0,
     "command": "python harness.py research-plan V"
   }
@@ -294,16 +305,1598 @@ python harness.py prompt V DI
 python harness.py prompt V FS
 plan_exit=0
 === 8 prompt EV ===
-V: inputs are not frozen; fill current_price/net_cash_per_share then run freeze
-prompt_ev_exit=1
+runs/V/EV_prompt.md: 14715 chars
+prompt_ev_exit=0
+# 과제: V / 기준일 2026-09-18 / expectation_valuation (EV)
+저장소: /home/runner/work/outlier-expectation-gap-harness/outlier-expectation-gap-harness. 작성할 파일: runs/V/reports/EV.json. 그 외 파일은 수정하지 않는다.
+웹 검색·페치 예산: 최대 15회. 아래 기준 정보와 검증된 사실은 다시 검색하지 않는다.
+자료 공백은 수동적으로 남기지 않는다. 점수·Veto·밸류에이션에 직접 영향을 주는 항목이 기준 정보와 1차 자료에 없으면 예산 내에서 웹 검색·IR·2차 자료로 보완을 시도한 뒤, 그래도 확보하지 못한 것만 unknowns에 남기고 무엇을 어디서 찾으려 했는지 함께 적는다. 확보한 자료는 evidence에 source_type과 함께 기록하고 EVIDENCE_POLICY.md의 출처 위계를 지킨다.
+
+## 기업 기준 정보 (재검증 금지)
+{"ticker":"V","company_name":"Visa Inc.","as_of_date":"2026-09-18","currency":"USD","current_price":368.29,"shares_diluted":1898000000,"market_cap_usd":690000000000,"enterprise_value":699916000000,"portfolio_context":{"existing_position_pct":0,"sector_exposure_pct":0},"known_sources":["User-uploaded Visa FY2025 Form 10-K filed 2025-11-06","User-uploaded Visa FY2026 Q1/Q2/Q3 Forms 10-Q","User-uploaded Visa Q3 FY2026 earnings 8-K dated 2026-07-28","StockAnalysis historical close: 2026-09-18 $368.29","WallStSmart Visa own-history P/E: 69th percentile of trailing 5 years as of 2026-09-17","FinanceCharts Visa P/E: 31.61x on 2026-09-18 vs 5Y average 32.90x"],"special_questions":["Can Visa sustain double-digit revenue and per-share FCF compounding as payment penetration matures?","Do Visa Direct, commercial/money movement and value-added services widen the moat beyond consumer card payments?","Does regulation/interchange litigation materially impair pricing power or network economics at the current valuation?"],"net_cash_per_share":-5.22,"valuation_percentile_5y":0.69,"valuation_metric":"TTM P/E own-history percentile over trailing 5 years; 69th percentile from latest 2026-09-17 source. Cross-check: 2026-09-18 P/E 31.61x vs 5Y average 32.90x.","valuation_overrides":{"terminal_multiples":{}},"diagnostics":{"turnaround_candidate":false},"geo_exposure":{}}
+
+## 독립성
+runs/V/reports/의 다른 에이전트 보고서는 읽지 않는다.
+
+## 지침 EV (domain_analyst)
+# Expectation & Valuation Analyst
+
+- `agent_id`: `EV`
+- `domain`: `expectation_valuation`
+
+## 임무
+현재가격이 요구하는 장기 기대를 역산하고(Reverse DCF), Bear/Base/Bull을 작성해 기대수익 범위와 기대차를 계산한다. 낙관적 가정·터미널가치 의존·피크 이익을 스스로 공격한다.
+
+## 관점별 질문
+**Verifier — Reverse DCF**
+1. 현재 EV/시총이 정당화되려면 매출 CAGR·마진·ROIC가 얼마여야 하는가? 그 기대는 역사·경쟁·산업구조 대비 어느 수준인가?
+2. WACC·영구성장률 변화에 얼마나 민감한가? 현재가격이 Bull Case 이상을 요구하는가?
+
+**Bull — 시나리오**
+1. Bear/Base/Bull 각각의 성장·마진·멀티플 가정과 5~10년 연환산 수익률은?
+2. Base에서 완벽한 실행 없이도 기대수익이 충분한가? Bull은 신규 성장축을 어떻게 반영하는가?
+
+**Skeptic — 기대차 공격**
+1. Base가 사실상 Bull인가? 점유율·마진·멀티플을 동시에 낙관적으로 두었는가?
+2. 기대수익의 대부분이 terminal multiple에 의존하는가? 피크 사이클 이익이나 투자손익을 정상 이익으로 쓰지 않았는가?
+
+## 종목 유형 신호 (`archetype_signals`)
+- `price_to_base_value` = 현재가 / Base 주당가치
+- `valuation_percentile_5y` = 핵심 멀티플의 자기 5년 이력 대비 백분위(0=최저). 어떤 멀티플을 썼는지 `evidence`에 남긴다.
+- `revenue_cagr_next_3y` = Base 3년 매출 CAGR (0.12 = 12%)
+
+추정할 수 없으면 `null`로 둔다. `bull_score`/`bear_score`와 함께 Base·Bull·Bear 주당가치를 `evidence`에 기록한다. 저밸류에이션이 구조적 쇠퇴(밸류 트랩)에서 온 것은 아닌지 `counterevidence`에 적는다.
+
+## Hard Veto 중점
+- 현재가격이 비현실적인 Bull Case 이상을 요구
+
+## v3 분석 계약
+Expectation Gap은 모든 유형에 걸친 핵심 가치평가 개념이며 독립 archetype이 아니다. 버핏 스타일 가치주는 보수적 정상화 owner earnings 대비 안전마진이다. 피크 이익·낙관적 terminal multiple·영구 쇠퇴를 저평가로 오인하지 않는다. 실행 문턱값은 config/strategy.json을 따른다.
+
+## 장기 아웃라이어 성장(outlier_growth) 평가 시 추가 요구
+이 유형은 밸류에이션 관용적이지만 **맹목적이지 않다**. 결정론적 가치평가 완료, EV 근거, Bear/Base/Bull 분석, Bull 초과 가격 Hard Veto가 모두 그대로 유지된다. 다음을 명시적으로 논한다.
+
+- **현재 가격에 내재된 성장 지속기간은 몇 년인가.** reverse DCF나 그에 준하는 방법으로 추정하고 방법을 밝힌다.
+- 시장이 분석가의 Base보다 **더 짧은 활주로**를 반영하고 있는가, 아니면 이미 더 긴 활주로를 반영하고 있는가.
+- 그 기대차를 만드는 **핵심 가정 두세 개**를 특정한다. 매출 지속기간, 마진 궤적, 재투자율, terminal multiple 중 무엇인가.
+- **Base가 사실상 Bull인가.** Base 시나리오가 상위 시나리오급 가정을 요구한다면 기대차가 아니라 이미 반영된 낙관이다. 이 경우 그렇게 적는다.
+- **Terminal value 의존도.** 가치의 몇 %가 terminal에서 오는지 제시하고, 의존도가 높으면 그 사실 자체를 위험으로 기록한다.
+
+"비싸지만 지속기간이 과소평가됨"과 "Bull+가 이미 반영돼 비쌈"을 구분해 결론에 적는다.
+
+## Structural geopolitical re-analysis
+When reviewing a routed structural event, add its event_id to geo_events_reviewed only after citing new company-level evidence.
+
+## 고정 채점 루브릭
+{
+  "global_bands": [
+    {
+      "min": 0,
+      "max": 19,
+      "label": "failed",
+      "rule": "핵심 가설이 반증되거나 경제적 가치가 구조적으로 훼손"
+    },
+    {
+      "min": 20,
+      "max": 39,
+      "label": "weak",
+      "rule": "반대근거가 우세하고 장기 투자근거가 취약"
+    },
+    {
+      "min": 40,
+      "max": 59,
+      "label": "mixed",
+      "rule": "긍정·부정 근거가 혼재하며 우위가 입증되지 않음"
+    },
+    {
+      "min": 60,
+      "max": 74,
+      "label": "adequate",
+      "rule": "가설은 성립하지만 중요한 검증 공백이 존재"
+    },
+    {
+      "min": 75,
+      "max": 84,
+      "label": "strong",
+      "rule": "다수의 1차 자료가 장기 가설을 지지"
+    },
+    {
+      "min": 85,
+      "max": 94,
+      "label": "exceptional",
+      "rule": "여러 기간·지표에서 일관된 강한 증거"
+    },
+    {
+      "min": 95,
+      "max": 100,
+      "label": "rare",
+      "rule": "압도적이고 반증 위험이 매우 낮음; 극히 드물게 사용"
+    }
+  ],
+  "domain": {
+    "criteria": [
+      {
+        "id": "reverse_dcf_burden",
+        "weight": 0.35,
+        "question": "현재가격 내재 기대 현실성",
+        "anchors": {
+          "25": "Bull 이상 필요",
+          "50": "강한 실행 필요",
+          "75": "Base로 충분",
+          "90": "보수 실행에도 충분"
+        },
+        "signal_map": {
+          "field": "signal.price_to_base_value",
+          "bands": {
+            "<=0.7": 90,
+            "0.7~0.9": 75,
+            "0.9~1.1": 60,
+            "1.1~1.3": 45,
+            ">1.3": 25
+          }
+        }
+      },
+      {
+        "id": "base_return",
+        "weight": 0.4,
+        "question": "고정 DCF 정책의 Base 기대수익",
+        "anchors": {
+          "25": "큰 과대평가",
+          "50": "공정가치 부근",
+          "75": "의미 있는 할인",
+          "90": "큰 기대차"
+        },
+        "signal_map": {
+          "field": "signal.price_to_base_value",
+          "bands": {
+            "<=0.7": 85,
+            "0.7~0.9": 70,
+            "0.9~1.1": 55,
+            "1.1~1.3": 40,
+            ">1.3": 25
+          }
+        }
+      },
+      {
+        "id": "valuation_robustness",
+        "weight": 0.25,
+        "question": "terminal/피크이익 의존도",
+        "anchors": {
+          "25": "매우 취약",
+          "50": "민감도 큼",
+          "75": "여러 가정에서 유지",
+          "90": "보수 민감도에서도 유지"
+        }
+      }
+    ],
+    "scoring_rule": "reverse_dcf_burden과 base_return은 하네스가 산출한 price_to_base_value의 signal_map 값을 그대로 사용한다. 모델 재량은 valuation_robustness에만 적용한다. Base 시나리오의 야심 수준은 valuation_robustness와 uncertainties에 기록하되 위 두 criterion에서 다시 감점하지 않는다."
+  },
+  "anchor_policy": {
+    "note": "프로바이더 간 점수 차이를 줄이기 위한 채점 규율. 모든 도메인 에이전트에 적용한다.",
+    "rules": [
+      "observable_anchors가 있는 criterion은 그 판정표를 우선 적용한다. 표와 다른 점수를 주려면 rationale에 표의 어느 행과 왜 다른지 적는다.",
+      "anchors만 있는 criterion은 어느 앵커 구간을 선택했는지와 인접 구간을 배제한 이유를 rationale에 각각 한 문장으로 적는다.",
+      "상단 게이트: 85 이상은 (가) 해당 criterion을 직접 뒷받침하는 1차 자료 근거가 3개 이상이고 (나) 가장 강한 반대근거를 명시적으로 반박했을 때만 부여한다.",
+      "하단 게이트: 40 미만은 1차 자료로 확인된 반증 근거를 제시했을 때만 부여한다. 근거 없이 신중해서 낮추는 것은 금지하며 그 경우 40~55 구간에 둔다.",
+      "같은 사실을 두 criterion에서 중복 감점하지 않는다. 한 곳에서만 반영하고 다른 곳에는 uncertainties로 남긴다.",
+      "점수는 5점 단위를 유지한다.",
+      "판정표 점수와 modifier 적용 결과는 반드시 5점 단위가 되도록 반올림한다.",
+      "veto는 도메인 점수에 이미 반영된 사실만으로 세우지 않는다. veto_criteria의 구성요건이 독립적으로 충족될 때만 성립한다.",
+      "observable_anchors에 interpolation.mode=band_centre가 있으면 행 사이를 보간한다. 밴드 중앙은 표 값과 같고 경계에서는 이웃 밴드와의 중간값이 되며, 결과는 5점 단위로 반올림한다. rationale에 사용한 지표값과 보간 결과를 함께 적는다.",
+      "interpolation.mode=none인 관측표와 형용사 앵커만 있는 criterion은 보간하지 않는다. 계수형 지표를 보간하면 확보하지 못한 관측치를 있는 것처럼 만들고, 형용사 앵커는 observed_divergence가 기록한 프로바이더 분산의 진원지이므로 표 값에 고정한다.",
+      "observable_anchors에 period가 있으면 그 기간으로만 지표를 산출한다. 다른 기간을 쓰면 rationale에 이유와 사용 기간을 적는다."
+    ],
+    "observed_divergence": "NVDA 2026-09-17/18 동일 종가 기준 gpt-5.6-sol 대 Claude Opus 5 실행 비교: criterion 27개 평균 격차 +10.2점(sol이 높음), 27개 전부 sol >= opus. 관측 가능한 사실형 criterion은 +3.1, 위험 가중 판단형은 +13.2로 4배 차이였다. 앵커가 형용사인 criterion에서만 갈라진다는 뜻이다."
+  }
+}
+criterion은 5점 단위로 채점한다. score_0_100은 subscores 고정 가중평균과 같아야 한다. self-confidence와 bull/bear 폭은 자동 감점하지 않는다.
+anchor_policy를 반드시 지킨다. observable_anchors가 있는 criterion은 판정표가 앵커 형용사보다 우선한다. 85 이상과 40 미만에는 각각 상단·하단 게이트가 걸려 있다.
+interpolation.mode=band_centre인 관측표는 행 사이를 보간한다. 밴드 안 위치 p=(x-lo)/(hi-lo)에 대해 p<0.5면 S-(0.5-p)(S-S_prev), p>=0.5면 S+(p-0.5)(S_next-S)이고 결과를 5점 단위로 반올림한다. 밴드 중앙은 표 값과 같다. rationale에 사용한 지표값 x와 보간 결과를 함께 적는다.
+interpolation.mode=none인 표와 형용사 앵커 criterion은 보간하지 않고 표 값을 그대로 쓴다.
+
+## 필수 Hard Veto 판정
+아래 항목은 생략하면 clear가 아니다. cleared|conditional|confirmed 중 하나를 기록한다. 근거 부족이면 candidate로 남겨 WATCH를 유발한다.
+- 현재가격이 비현실적인 Bull Case 이상을 요구
+
+## 결정론적 밸류에이션
+{
+  "policy": {
+    "method": "owner_fcf_per_share_dcf",
+    "horizon_years": 10,
+    "required_return": 0.09,
+    "terminal_multiples": {
+      "bear": 15,
+      "base": 20,
+      "bull": 25
+    },
+    "rules": [
+      "할인율·terminal multiple은 모델이 선택하지 않는다.",
+      "회사별 override는 company_context.json에 freeze 전에 기록한다.",
+      "현재가격·순현금은 frozen company_context 값만 사용한다.",
+      "LLM은 Bear/Base/Bull의 연도별 owner FCF/share 경로만 추정한다."
+    ],
+    "sanity_policy": {
+      "yearly_scenario_crossing": "review",
+      "terminal_fraction_review": 0.8,
+      "terminal_fraction_high": 0.9,
+      "price_above_bull_review": true,
+      "note": "연도별 Bear/Base/Bull 경로 교차는 재투자 가정 차이로 정당할 수 있어 REVIEW다. 최종 내재가치 순서 위반만 blocking이다. terminal 집중도와 price > Bull은 review 신호이며 기존 Hard Veto를 자동으로 confirmed 처리하지 않는다. 판정은 지정 owner가 한다."
+    }
+  },
+  "locked_context": {
+    "current_price": 368.29,
+    "net_cash_per_share": -5.22,
+    "valuation_percentile_5y": 0.69,
+    "valuation_overrides": {
+      "required_return": null,
+      "terminal_multiples": {
+        "bear": null,
+        "base": null,
+        "bull": null
+      }
+    }
+  }
+}
+Bear/Base/Bull owner_fcf_per_share를 각각 정확히 10개 연도로 작성한다. 할인 계산과 price_to_base_value는 하네스가 수행한다.
+
+## 공통 규칙
+## 분석
+- 기준일을 먼저 선언한다. 기준일 이후 정보는 사용하지 않는다.
+- 최소 3개의 독립 근거를 확보하고, 가능한 한 1차 자료를 우선한다.
+- 근거와 반대근거를 모두 제시한다.
+- `사실 / 추정 / 해석`을 구분한다.
+- 자료 공백은 수동적으로 남기지 않는다. 점수·Veto·밸류에이션에 직접 영향을 주는 항목이 기준 정보와 1차 자료에 없으면, 예산 내에서 웹 검색·IR 자료·신뢰 가능한 2차 자료로 **먼저 보완을 시도한다**.
+- 보완 시도 후에도 확보하지 못한 것만 `unknowns`에 남기고, 무엇을 어디서 찾으려 했는지 함께 적는다.
+- 2차 자료로 채운 값은 `fact_or_estimate`를 `estimate` 또는 `interpretation`으로 표기하고 `EVIDENCE_POLICY.md`의 출처 위계를 지킨다.
+- 결론보다 먼저 반증조건을 작성한다.
+
+## 관점 분리 (점수 도메인과 독립 평가축)
+에이전트는 항목당 하나지만, 지침의 Bull·Verifier·Skeptic 관점을 **각각 끝까지 밀어붙인 뒤** 결론을 낸다. 합의를 먼저 정하고 관점을 끼워 맞추지 않는다.
+- `bull_case` / `bear_case`: Bull 논리와 Skeptic 논리를 각각 300자 이내로 쓴다.
+- `bull_score` / `bear_score`: 각 논리가 맞을 때의 도메인 점수. `bear_score ≤ score_0_100 ≤ bull_score`.
+- `subscores`: `config/calibration.json`의 criterion을 정확히 한 번씩 5점 단위로 채점한다. 이 값이 점수의 원천이다.
+- `score_0_100`: subscores의 고정 가중평균과 같아야 하며 하네스가 검증한다.
+- `bull_score` / `bear_score`: 시나리오 범위와 논쟁 폭을 보여주는 메타데이터다. 단일 모델의 자체 범위가 넓다는 이유만으로 자동 감점하지 않는다.
+- `bull_score - bear_score`가 20 이상이면 재검토 표시를 남기되 수치 점수와 분리한다.
+
+## 토큰 예산
+- `company_context.json`의 기준 정보와 `sources/README.md`의 검증된 사실은 다시 검색하지 않는다. 오류를 발견했을 때만 근거와 함께 지적한다.
+- 웹 검색·페치는 `config/workflow.json`의 `research_budget` 이내로 쓴다(기본 에이전트당 15회). 예산은 위 공백 보완에 우선 배정한다.
+- 공시 원문(.txt)은 통째로 읽지 않는다. `sources/INDEX.md`의 줄번호로 grep하거나 부분만 읽는다.
+- Phase 3·IC 에이전트는 다른 에이전트의 원 보고서 대신 `digest.md`를 읽는다. 원 보고서는 특정 주장을 검증할 때만 그 파일 하나를 연다.
+- 보고서 분량은 `report_limits`를 지킨다(thesis 600자, evidence 3~6개, counterevidence 4개, unknowns 5개, falsifiers·key_kpis·next_checks 각 3개). `unknowns`에는 핵심 가설에 직결되는 것만 쓴다.
+- `config/calibration.json`에서 자신에게 배정된 Hard Veto는 반드시 `cleared / conditional / confirmed` 중 하나로 명시한다. 미기재는 clear가 아니다.
+- 작성 후 `python harness.py validate <TICKER> <AGENT_ID>`로 검증한다. 스키마 파일을 직접 읽지 않아도 된다.
+
+## 재현성
+- agent 실행 전 `python harness.py freeze TICKER --provider ... --model ...`로 company_context와 sources를 해시 고정한다.
+- freeze 이후 입력이 바뀌면 prompt 생성을 중단한다. 모델 비교는 동일 `input_snapshot_sha256`에서만 유효하다.
+- EV는 고정된 할인율·terminal multiple·현재가격·순현금을 사용하며 LLM은 연도별 owner FCF/share 경로만 제안한다.
+
+## v3 분석 계약
+새 evidence에는 가능하면 안정적인 evidence_id와 공유 economic_driver를 기록한다. 동일 사실을 여러 긍정 도메인에 재사용한 evidence_concentration_flags는 ED/RT/IC 검토용이며 자동 감점하지 않는다. Macro/지정학은 점수를 바꾸지 않고 pacing·위험예산·모니터링 또는 회사 근거를 통한 재분석 요청만 만든다.
+
+## Hard Veto (정확한 문자열 사용)
+- 경영진 정직성 또는 회계 신뢰성 훼손
+- 구조적으로 과도한 외부자본 조달 의존
+- 장기간 지속되는 과도한 희석
+- 고객가치 없이 마케팅·보조금에 의존하는 성장
+- 증분 ROIC의 구조적 붕괴
+- 해자의 지속적인 축소
+- 현재가격이 비현실적인 Bull Case 이상을 요구
+- 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성
+- 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
+
+## Hard Veto 판정 기준
+Hard Veto는 "중대한 리스크"가 아니라 "이 문장이 실제로 성립하는가"로 판정한다. 문구의 모든 구성요건이 충족될 때만 성립하며, 하나라도 반증되면 cleared다. 우려는 스코어·uncertainties·모니터링으로 보내고 veto로 올리지 않는다.
+도메인 점수에 이미 온전히 반영된 사실만으로는 veto를 세우지 않는다. veto는 그 자체의 구성요건이 독립적으로 충족될 때만 성립한다(anchor_policy의 중복 감점 금지를 veto 층에 확장).
+{
+  "status_rule": {
+    "confirmed": "구성요건 전부가 1차 자료로 확인됨",
+    "conditional": "구성요건 전부가 충족될 가능성이 높으나 결정적 자료 1개가 미확보. 해소 조건을 반드시 명시한다",
+    "candidate": "평가하지 않았거나 판단 근거가 전혀 없음",
+    "cleared": "구성요건 중 최소 하나가 증거로 반증됨"
+  },
+  "definitions": {
+    "현재가격이 비현실적인 Bull Case 이상을 요구": {
+      "elements": [
+        "현재가가 Bull 시나리오 가치를 초과할 것"
+      ],
+      "cleared_if": [
+        "price_to_base_value가 Bull/현재가 배수 안에 있음"
+      ],
+      "not_covered": "Base가 야심적이라는 판단은 EV 점수가 반영한다."
+    }
+  }
+}
+
+## 출력
+agent_id/ticker/as_of_date/domain/role은 그대로 두고 아래 필드를 채운다. 분량 상한: thesis 600자, evidence 3~6개, counterevidence 4개, unknowns 5개(핵심 가설에 직결되는 것만), falsifiers·key_kpis·next_checks 각 3개. hard_veto_flags에는 상태가 none이 아닌 항목만 쓴다.
+{"analysis_status": "complete", "score_0_100": 0, "confidence_0_1": 0, "bull_score": 0, "bear_score": 0, "bull_case": "≤300자", "bear_case": "≤300자", "thesis": "≤600자", "evidence": [{"evidence_id": "stable fact identifier", "economic_driver": "optional shared economic driver", "claim": "", "source_type": "filing|ir|industry|secondary|other", "source": "URL 또는 파일 p.N", "period": "", "as_of_date": "", "value": null, "fact_or_estimate": "fact|estimate|interpretation"}], "counterevidence": [""], "unknowns": [""], "uncertainties": [], "falsifiers": [""], "hard_veto_flags": [{"veto": "현재가격이 비현실적인 Bull Case 이상을 요구", "status": "candidate", "rationale": "미평가 — cleared/conditional/confirmed 중 하나로 변경"}], "key_kpis": [{"name": "", "direction": "", "threshold": "", "cadence": ""}], "next_checks": [""], "verdict": "support|neutral|oppose", "subscores": [{"criterion_id": "reverse_dcf_burden", "score_0_100": 50, "rationale": ""}, {"criterion_id": "base_return", "score_0_100": 50, "rationale": ""}, {"criterion_id": "valuation_robustness", "score_0_100": 50, "rationale": ""}], "valuation_inputs": {"valuation_percentile_5y": null, "revenue_cagr_next_3y": null, "scenarios": {"bear": {"owner_fcf_per_share": []}, "base": {"owner_fcf_per_share": []}, "bull": {"owner_fcf_per_share": []}}}, "archetype_signals": {"price_to_base_value": null, "valuation_percentile_5y": null, "revenue_cagr_next_3y": null}}
+작성 후 `python harness.py validate V EV`로 검증한다.
+
+최종 답변은 120단어 이내: 점수(bear–bull)·신뢰도·verdict·none이 아닌 Veto, 가장 중요한 미확인 사항 1개.
 === EV response handoff ===
-reused prior completed V EV report as the response payload for this harness execution
+staged completed V EV report as the response payload for this harness execution
 === 9 validate EV ===
-EV: analysis_status is not complete; evidence count 0 not in 3-6; bull_score/bear_score required for scored domains; bull_case missing; bear_case missing; valuation_inputs.bear.owner_fcf_per_share must have 10 values; valuation_inputs.base.owner_fcf_per_share must have 10 values; valuation_inputs.bull.owner_fcf_per_share must have 10 values
-validate_ev_exit=1
+EV: OK
+validate_ev_exit=0
 === 10 aggregate ===
-V: inputs are not frozen; fill current_price/net_cash_per_share then run freeze
-aggregate_exit=1
+{
+  "strategy_version": "3.3",
+  "schema_version": "3.3",
+  "decision_policy_version": "3.3",
+  "as_of_date": "2026-09-18",
+  "ticker": "V",
+  "score_100": 50.5,
+  "score_100_ex_valuation": null,
+  "coverage_weight": 15,
+  "classification": "Reject",
+  "disruptive_innovation_score": null,
+  "turnaround_quality_score": null,
+  "axis_scores": {
+    "disruptive_innovation": null,
+    "long_term_growth": null
+  },
+  "archetype": {
+    "id": "non_fit",
+    "label": "관망·회피형",
+    "label_en": "Non-fit / Avoid",
+    "reason": "No eligible archetype: see failed/missing conditions and vetoes",
+    "gate_score": null,
+    "secondary": [],
+    "position_guidance": "유형 적합성이 확인되기 전까지 신규 비중 확대 금지.",
+    "position_cap": null,
+    "signals": {
+      "price_to_base_value": 1.1208,
+      "valuation_percentile_5y": 0.69,
+      "revenue_cagr_next_3y": 0.1,
+      "market_cap_usd": 690000000000.0
+    },
+    "evaluations": [
+      {
+        "id": "buffett_value",
+        "label": "버핏 스타일 가치주",
+        "conditions_met": false,
+        "gate_score": 50.5,
+        "gate_threshold": 60.0,
+        "gate_passed": false,
+        "failed": [
+          "signal.price_to_base_value",
+          "gate_score"
+        ],
+        "missing": [
+          "criterion.reinvestment_fcf.fcf_per_share_quality",
+          "domain.financial_survival",
+          "domain.management_allocation",
+          "domain.moat_trajectory",
+          "domain.asymmetry"
+        ]
+      },
+      {
+        "id": "compounder",
+        "label": "컴파운더",
+        "conditions_met": false,
+        "gate_score": 50.5,
+        "gate_threshold": 60.0,
+        "gate_passed": false,
+        "failed": [
+          "gate_score"
+        ],
+        "missing": [
+          "domain.moat_trajectory",
+          "domain.reinvestment_fcf",
+          "domain.management_allocation",
+          "domain.financial_survival",
+          "criterion.reinvestment_fcf.incremental_roic",
+          "criterion.reinvestment_fcf.reinvestment_runway"
+        ]
+      },
+      {
+        "id": "growth",
+        "label": "성장주",
+        "conditions_met": false,
+        "gate_score": 50.5,
+        "gate_threshold": 65.0,
+        "gate_passed": false,
+        "failed": [
+          "signal.revenue_cagr_next_3y",
+          "signal.price_to_base_value",
+          "gate_score"
+        ],
+        "missing": [
+          "domain.structural_leadership",
+          "domain.customer_product",
+          "domain.moat_trajectory",
+          "domain.reinvestment_fcf",
+          "domain.management_allocation",
+          "domain.financial_survival",
+          "domain.asymmetry",
+          "criterion.reinvestment_fcf.fcf_per_share_quality"
+        ]
+      },
+      {
+        "id": "moonshot",
+        "label": "문샷형",
+        "conditions_met": false,
+        "gate_score": null,
+        "gate_threshold": 60.0,
+        "gate_passed": false,
+        "failed": [
+          "signal.market_cap_usd"
+        ],
+        "missing": [
+          "domain.disruptive_innovation",
+          "domain.structural_leadership",
+          "domain.asymmetry",
+          "domain.financial_survival",
+          "gate_score"
+        ]
+      },
+      {
+        "id": "outlier_growth",
+        "label": "장기 아웃라이어 성장주",
+        "conditions_met": false,
+        "gate_score": null,
+        "gate_threshold": 65.0,
+        "gate_passed": false,
+        "failed": [],
+        "missing": [
+          "domain.long_term_growth",
+          "criterion.long_term_growth.opportunity_scale_5y",
+          "criterion.long_term_growth.growth_duration_10y",
+          "criterion.long_term_growth.culture_adaptability",
+          "criterion.long_term_growth.market_misperception",
+          "domain.customer_product",
+          "domain.moat_trajectory",
+          "domain.management_allocation",
+          "domain.financial_survival",
+          "domain.asymmetry",
+          "criterion.asymmetry.upside_path",
+          "criterion.asymmetry.permanent_loss",
+          "gate_score"
+        ]
+      }
+    ],
+    "archetype_fit": {
+      "buffett_value": {
+        "eligible": false,
+        "fit_score": 0.0,
+        "fit_axes": [
+          {
+            "field": "criterion.reinvestment_fcf.fcf_per_share_quality",
+            "weight": 0.3,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.financial_survival",
+            "weight": 0.25,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.management_allocation",
+            "weight": 0.2,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.moat_trajectory",
+            "weight": 0.15,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.asymmetry",
+            "weight": 0.1,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          }
+        ],
+        "failed_conditions": [
+          "signal.price_to_base_value",
+          "gate_score"
+        ],
+        "missing_conditions": [
+          "criterion.reinvestment_fcf.fcf_per_share_quality",
+          "domain.financial_survival",
+          "domain.management_allocation",
+          "domain.moat_trajectory",
+          "domain.asymmetry"
+        ],
+        "blocking_vetoes": []
+      },
+      "compounder": {
+        "eligible": false,
+        "fit_score": 0.0,
+        "fit_axes": [
+          {
+            "field": "domain.moat_trajectory",
+            "weight": 0.3,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "criterion.reinvestment_fcf.incremental_roic",
+            "weight": 0.3,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "criterion.reinvestment_fcf.reinvestment_runway",
+            "weight": 0.25,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.management_allocation",
+            "weight": 0.15,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          }
+        ],
+        "failed_conditions": [
+          "gate_score"
+        ],
+        "missing_conditions": [
+          "domain.moat_trajectory",
+          "domain.reinvestment_fcf",
+          "domain.management_allocation",
+          "domain.financial_survival",
+          "criterion.reinvestment_fcf.incremental_roic",
+          "criterion.reinvestment_fcf.reinvestment_runway"
+        ],
+        "blocking_vetoes": []
+      },
+      "growth": {
+        "eligible": false,
+        "fit_score": 0.0,
+        "fit_axes": [
+          {
+            "field": "signal.revenue_cagr_next_3y",
+            "weight": 0.2,
+            "value": 0.1,
+            "normalized": 0.0,
+            "missing": false
+          },
+          {
+            "field": "domain.customer_product",
+            "weight": 0.25,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.structural_leadership",
+            "weight": 0.2,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.reinvestment_fcf",
+            "weight": 0.2,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.moat_trajectory",
+            "weight": 0.15,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          }
+        ],
+        "failed_conditions": [
+          "signal.revenue_cagr_next_3y",
+          "signal.price_to_base_value",
+          "gate_score"
+        ],
+        "missing_conditions": [
+          "domain.structural_leadership",
+          "domain.customer_product",
+          "domain.moat_trajectory",
+          "domain.reinvestment_fcf",
+          "domain.management_allocation",
+          "domain.financial_survival",
+          "domain.asymmetry",
+          "criterion.reinvestment_fcf.fcf_per_share_quality"
+        ],
+        "blocking_vetoes": []
+      },
+      "moonshot": {
+        "eligible": false,
+        "fit_score": 0.0,
+        "fit_axes": [
+          {
+            "field": "domain.disruptive_innovation",
+            "weight": 0.4,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.asymmetry",
+            "weight": 0.25,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.structural_leadership",
+            "weight": 0.2,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.financial_survival",
+            "weight": 0.15,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          }
+        ],
+        "failed_conditions": [
+          "signal.market_cap_usd"
+        ],
+        "missing_conditions": [
+          "domain.disruptive_innovation",
+          "domain.structural_leadership",
+          "domain.asymmetry",
+          "domain.financial_survival",
+          "gate_score"
+        ],
+        "blocking_vetoes": []
+      },
+      "outlier_growth": {
+        "eligible": false,
+        "fit_score": 0.0,
+        "fit_axes": [
+          {
+            "field": "domain.long_term_growth",
+            "weight": 0.35,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.moat_trajectory",
+            "weight": 0.2,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.customer_product",
+            "weight": 0.15,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "criterion.asymmetry.upside_path",
+            "weight": 0.2,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.management_allocation",
+            "weight": 0.1,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          }
+        ],
+        "failed_conditions": [],
+        "missing_conditions": [
+          "domain.long_term_growth",
+          "criterion.long_term_growth.opportunity_scale_5y",
+          "criterion.long_term_growth.growth_duration_10y",
+          "criterion.long_term_growth.culture_adaptability",
+          "criterion.long_term_growth.market_misperception",
+          "domain.customer_product",
+          "domain.moat_trajectory",
+          "domain.management_allocation",
+          "domain.financial_survival",
+          "domain.asymmetry",
+          "criterion.asymmetry.upside_path",
+          "criterion.asymmetry.permanent_loss",
+          "gate_score"
+        ],
+        "blocking_vetoes": []
+      }
+    }
+  },
+  "reachable_archetypes_raw": [
+    "compounder",
+    "outlier_growth"
+  ],
+  "early_exit": false,
+  "hard_veto_status": "PENDING_REVIEW",
+  "mechanical_pre_ic_state": "INCOMPLETE",
+  "position_range_pre_ic": "N/A",
+  "domain_scores": {
+    "structural_leadership": null,
+    "customer_product": null,
+    "moat_trajectory": null,
+    "reinvestment_fcf": null,
+    "management_allocation": null,
+    "financial_survival": null,
+    "expectation_valuation": {
+      "bull_score": 58.5,
+      "bear_score": 30.5,
+      "criteria": {
+        "base_return": 40.0,
+        "reverse_dcf_burden": 45.0,
+        "valuation_robustness": 75.0
+      },
+      "raw_weighted_median": 50.5,
+      "score": 50.5,
+      "spread": 28.0,
+      "avg_confidence": 0.86,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 50.5,
+      "calibrated_score": 48.83,
+      "calibrated_shadow_score": 48.83,
+      "decision_score": 50.5,
+      "provider_offset": -1.67,
+      "score_before_provider_calibration": 50.5,
+      "raw_before_provider_calibration": 50.5
+    },
+    "asymmetry": null,
+    "disruptive_innovation": null,
+    "long_term_growth": null,
+    "turnaround_quality": null
+  },
+  "disputes": [
+    {
+      "domain": "expectation_valuation",
+      "bull_score": 58.5,
+      "bear_score": 30.5,
+      "criteria": {
+        "base_return": 40.0,
+        "reverse_dcf_burden": 45.0,
+        "valuation_robustness": 75.0
+      },
+      "raw_weighted_median": 50.5,
+      "score": 50.5,
+      "spread": 28.0,
+      "avg_confidence": 0.86,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 50.5,
+      "calibrated_score": 48.83,
+      "calibrated_shadow_score": 48.83,
+      "decision_score": 50.5,
+      "provider_offset": -1.67,
+      "score_before_provider_calibration": 50.5,
+      "raw_before_provider_calibration": 50.5
+    }
+  ],
+  "confirmed_vetoes": [],
+  "unresolved_vetoes": [],
+  "veto_gate": {
+    "overall": "PENDING_REVIEW",
+    "items": [
+      {
+        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MA",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "MA",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "구조적으로 과도한 외부자본 조달 의존",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "FS",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "FS",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "장기간 지속되는 과도한 희석",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "RF",
+          "FS"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "RF",
+          "FS"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "CP",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "증분 ROIC의 구조적 붕괴",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "RF",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "RF",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "해자의 지속적인 축소",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MT",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "MT",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "EV",
+          "AS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "EV",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Current price is above Base but well below Bull; it does not require an unrealistic Bull+ case."
+          }
+        ],
+        "missing_reports": [
+          "AS",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "CP",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "FS",
+          "AS"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "FS",
+          "AS"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      }
+    ],
+    "confirmed": [],
+    "unresolved": [],
+    "pending": [
+      {
+        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MA",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "MA",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "구조적으로 과도한 외부자본 조달 의존",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "FS",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "FS",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "장기간 지속되는 과도한 희석",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "RF",
+          "FS"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "RF",
+          "FS"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "CP",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "증분 ROIC의 구조적 붕괴",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "RF",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "RF",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "해자의 지속적인 축소",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MT",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "MT",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "EV",
+          "AS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "EV",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Current price is above Base but well below Bull; it does not require an unrealistic Bull+ case."
+          }
+        ],
+        "missing_reports": [
+          "AS",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "CP",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "FS",
+          "AS"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "FS",
+          "AS"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      }
+    ],
+    "non_owner_escalations": []
+  },
+  "valuation_model": {
+    "status": "COMPLETE",
+    "method": "locked owner-FCF/share DCF",
+    "required_return": 0.09,
+    "horizon_years": 10,
+    "net_cash_per_share": -5.22,
+    "current_price": 368.29,
+    "scenarios": {
+      "bear": {
+        "value_per_share": 133.3431,
+        "pv_owner_fcf": 65.0636,
+        "pv_terminal": 73.4995,
+        "terminal_multiple": 15.0,
+        "terminal_fraction": 0.5304
+      },
+      "base": {
+        "value_per_share": 328.5895,
+        "pv_owner_fcf": 108.2421,
+        "pv_terminal": 225.5674,
+        "terminal_multiple": 20.0,
+        "terminal_fraction": 0.6757
+      },
+      "bull": {
+        "value_per_share": 467.1986,
+        "pv_owner_fcf": 126.0417,
+        "pv_terminal": 346.3769,
+        "terminal_multiple": 25.0,
+        "terminal_fraction": 0.7332
+      }
+    },
+    "signals": {
+      "price_to_base_value": 1.1208,
+      "valuation_percentile_5y": 0.69,
+      "revenue_cagr_next_3y": 0.1
+    },
+    "sanity": {
+      "status": "PASS",
+      "blocking": false,
+      "checks": [
+        {
+          "id": "yearly_scenario_order",
+          "status": "PASS",
+          "severity": "info",
+          "blocking": false,
+          "detail": "bear <= base <= bull for every forecast year"
+        },
+        {
+          "id": "scenario_value_order",
+          "status": "PASS",
+          "severity": "info",
+          "blocking": false,
+          "detail": "Bear <= Base <= Bull intrinsic values"
+        },
+        {
+          "id": "terminal_value_concentration",
+          "status": "PASS",
+          "severity": "info",
+          "blocking": false,
+          "detail": "Base terminal fraction 67.6%"
+        },
+        {
+          "id": "price_above_bull_value",
+          "status": "PASS",
+          "severity": "info",
+          "blocking": false,
+          "detail": "current price does not exceed Bull value"
+        }
+      ]
+    }
+  },
+  "provider_calibration": {
+    "mode": "shadow",
+    "applied": true,
+    "decision_effect": false,
+    "family": "openai",
+    "base_offset": 5.0,
+    "max_abs_offset": 5.0,
+    "per_domain_offset": {
+      "expectation_valuation": -1.67
+    },
+    "basis": {
+      "sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조",
+      "n": 27,
+      "measured_mean_gap": 10.2,
+      "measured_sd": 6.9,
+      "direction": "27개 전부 gpt-5.6-sol >= Claude Opus 5. 노이즈가 아니라 계통 편향.",
+      "caveat": "표본은 종목 1개다. 다른 종목의 쌍 실행이 쌓이면 base_offset을 재추정해야 한다. harness.py calibrate로 측정한다."
+    },
+    "reason": null
+  },
+  "dispersion_review": {
+    "metric": "scored 도메인 전체에 대한 skew = (score - bear_score) - (bull_score - score) 의 평균. 양수면 하방 폭이 더 넓다는 뜻이다.",
+    "mean_skew": 12.0,
+    "label": "severe_downside_skew",
+    "reduce_bands": 2,
+    "widest_domain": "expectation_valuation",
+    "most_downside_skewed": "expectation_valuation",
+    "by_domain": [
+      {
+        "domain": "expectation_valuation",
+        "spread": 28.0,
+        "upside_width": 8.0,
+        "downside_width": 20.0,
+        "skew": 12.0
+      }
+    ]
+  },
+  "run_manifest": {
+    "strategy_version": "3.3",
+    "schema_version": "3.3",
+    "decision_policy_version": "3.3",
+    "provider_calibration_mode": "shadow",
+    "ticker": "V",
+    "as_of_date": "2026-09-18",
+    "frozen": true,
+    "financial_pack_required": true,
+    "harness_commit": "42c8d8c2223c98e410ddf9ff062c6e5a2b218906",
+    "runner": {
+      "provider": "openai",
+      "model": "gpt-6-astra",
+      "reasoning_effort": null
+    },
+    "frozen_at_utc": "2026-09-20T17:29:44.249823+00:00",
+    "config_files": {
+      "config/strategy.json": "040763050372dfc76d44615ec648cc6ab1b3f3fa061bf7f3f46da79a6beb7e96",
+      "config/workflow.json": "48f16264ca67cd75e6b5b76800c437eb456e2a069e698c9cd2080997f086b301",
+      "config/agents_manifest.json": "2d9ef24f1b069c015e3a9e6894180757c0ab91874887da0ca404fe19efcd01fc",
+      "config/calibration.json": "9cf950028ceeee2b14280be547af57bf7f0eee94e86857a59bac5a2ef7c22902",
+      "config/intake.json": "56858f97387a6a4c1424c40b2f396a531f1d73f4bcdf9b81ee7e128bfd8b3bc0",
+      "harness.py": "46e9ff70a910bce61d61151457e1c2dba06e2a89d81f5ed7f353a2fca3a4af3d",
+      "harness_core/__init__.py": "c26a3aeec387e7849ba5e02816341417f132e2b679c7df63070f643a08147f7a",
+      "harness_core/anchors.py": "3f38df3c346eb9a3e0c6f9d728d39db4bac6600965dbeadf87c52c4a64798799",
+      "harness_core/archetypes.py": "6f4db993a6bf585bb64d9038c7fd669f99c0483a8a18b6f5c98d59cc7715dd62",
+      "harness_core/calibration.py": "8e0620171fdf8fbebee2afff12ee8630e71e78584e663ba1d6dbe64f24a685bd",
+      "harness_core/conditions.py": "2eb31a46e589fce62ae5270cc1d62a606b1805b2d8ab1849bf290d8f09396a6a",
+      "harness_core/context.py": "1650b0648f7684fa2c07e679dada2ba6bab063c640d5d164220c8d1cd2e47404",
+      "harness_core/evidence.py": "055a1cba252e8962091fe869269eb57e4327bf582876b024104708aa124cb4fb",
+      "harness_core/fetch.py": "e66ef5105d4857ec4d43cb5f16239d1f7750bfa5da88ca312d1e6b433b66a1e7",
+      "harness_core/intake.py": "e9100f7935ea64891e47c168ca2dd2a3408be1e4c6dec23aca82bdbec0a71ae3",
+      "harness_core/macro_geo.py": "aff07ec9ede98eb89e344d5d5d793dbd49d99a42f5e356ce79c7d1dcf0c4d844",
+      "harness_core/plain_report.py": "4007d857df0e09b2c6d4fb4bd677dc902560383d80700324576144fb6def8d2e",
+      "harness_core/planner.py": "cf748c3179fd86590b174c7206281cbd2b3cb913e4b7e83b6f1eab3477077006",
+      "harness_core/policy.py": "e7483cc5546d13052d3dbacc4e990fab9168e654f3c057dbdec3e8aeb6246041",
+      "harness_core/research.py": "31fa52dd33fd32762a2453bd3c54ea6cef08cd408614290db034c95f3c58f570",
+      "harness_core/rubric.py": "6e0f4d1d3b6bc051e08e3c42fff3766ebc3ebf3362c01a2b2503f67ec922edbf",
+      "harness_core/runtime.py": "0fd9a1261779744a570ae0b16a5c0bcea0cb8d24facf5cc229fa75763fed9a9f",
+      "harness_core/state.py": "e0378df2e023d98ffaddc6af1b4100db5ee5de279a80b0c361d722449d57a0bc",
+      "harness_core/valuation.py": "4191abac7daa24ffaf7fa2340583220b7512aeb5fa5ab0df627870523d4604fc",
+      "harness_core/veto.py": "731f7bd144295e48798001e17d41976c898044143fadc099eeb8d46b442e4514",
+      "schemas/agent_report.schema.json": "494cb28a51896763186ea6a47d0c867c0b1a8864b224c8e2b9f4cdd4ce86203a",
+      "schemas/company_context.schema.json": "a06f0770fc33f35a14ab0b784bd3ccb9c6885fdceaad70b747aafc17208b0a84",
+      "schemas/final_verdict.schema.json": "2113ebfce21d9b0438cad148f2bd97897acca1e3c9b93fde8de0f916dbd83a1e",
+      "schemas/financial_pack.schema.json": "ff3f6b84bf69fa586792e2dfa61315118735a0917b86586aaf79d91f84153ee0",
+      "schemas/research_packet.schema.json": "42b39a32a1fc226e3795ef75fc8fef78b750b778ffb0ec3e02e1cc14e830631e",
+      "templates/agent_report.json": "8199df20add5058a83d586601c819a9e347f4155cb584a53e3f6beb499d7358d",
+      "templates/company_context.json": "06cb8a08a62548acebed026c780091f03ce7d7376309a3665851c1bad178442a",
+      "templates/one_page_investment_record.md": "566025c0e490526c7f409ac497f074e49404bcf0e855a95b15105f52cc13029b",
+      "agents/00_financial_preprocessor/AGENTS.md": "c94c14cc0e9842b045da1a8d10440cf73d46480b3547df5efeb0e268ecf8a4f7",
+      "agents/01_structural_leadership/AGENTS.md": "65ea1c401f8020e0301c483bcc11ff39accb02813fc67b7bdfa7c07ede543e64",
+      "agents/02_customer_product/AGENTS.md": "1833f094c4d828c42587f63d5238bc84e1c6e0a2d67a4ee9834293a948b875cc",
+      "agents/03_moat_trajectory/AGENTS.md": "89be9a463551db281dcfd3e24eee06959dcaab812152a8fdb1bd8244a99eac15",
+      "agents/04_reinvestment_fcf/AGENTS.md": "b7f734a4842e40b469b970db4b894767e20dbb5c55693aa425b284a1c9d9541d",
+      "agents/05_management_allocation/AGENTS.md": "9412a3da0ae9c1f386437fb8c73f9a24d6a46f5fb237f717b8c9cde470c2f867",
+      "agents/06_financial_survival/AGENTS.md": "d6adb72d46e7c5cae73f86f510dd53fb6b8439ae472dffa1abc0d1ccf9405876",
+      "agents/07_expectation_valuation/AGENTS.md": "824187cc65b7741dcafcf1689086e1cdc0dac0bd33239c111013947fb0762438",
+      "agents/08_asymmetry/AGENTS.md": "6e8f29d0ee0752091757a9b01276a8bd69f9b8a845ac3d43773afe0cfb445d54",
+      "agents/09_evidence/AGENTS.md": "a9fe938eb2a7507003be30c4bec63b5f1f3a8fcf30a81c5e125d4be6f24666d4",
+      "agents/10_red_team/AGENTS.md": "bcb85fab79b0d64ae8c83325606eea16121e9497c0d11ed78fe3deede98aaa3e",
+      "agents/11_macro_overlay/AGENTS.md": "e730b5bf54fa16c88f2164e3f7fda666c27004d4673fa3b340cf14de2ab4377f",
+      "agents/12_investment_committee/AGENTS.md": "9573d164433325ec5e093acb0cba1831c3dcab758488ad50c812e8e0686a825e",
+      "agents/13_disruptive_innovation/AGENTS.md": "25e530fb4257bf2d4399389727c0a0075501a64ed9e03bf4503ba1800b633e37",
+      "agents/14_turnaround_quality/AGENTS.md": "ecb7978a1540dd8c49ffb1b2d20397887179d164c81aa3958141a920006c5aec",
+      "agents/15_long_term_growth/AGENTS.md": "bd23806ba20cd8d325bf4856b17bacd77f6c46db247fd2b9fd758247909e1ae8",
+      "agents/COMMON.md": "8c680a9043b0ee2bb54d51a5fc403a2d31ca31ae0d17e56d6e54c3bb58b63365",
+      "AGENTS.md": "cac7bb00b52535a8f01843027efda0155557aed6888317191205c97560753be6"
+    },
+    "input_files": {
+      "company_context.json": "006da4c29e860623986d3ec4e5d6a67d7b41c79578c206328b058e70e2fa10ef",
+      "sources/financials/normalized_financials.json": "4ba613b9800c4f976f477491eff4235b83ea4112b130e6018b1e4283c04c0770"
+    },
+    "input_snapshot_sha256": "d908fe130ec65f54edbf644944bbdb6b6e49a93a228a44666f4ec5aca2a6d85d",
+    "stage_0": {
+      "stage_0": "ready",
+      "enforced": true,
+      "pack_present": true
+    },
+    "review_only": false,
+    "hash_format": "sha256-lf-text-v1"
+  },
+  "archetype_fit": {
+    "buffett_value": {
+      "eligible": false,
+      "fit_score": 0.0,
+      "fit_axes": [
+        {
+          "field": "criterion.reinvestment_fcf.fcf_per_share_quality",
+          "weight": 0.3,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.financial_survival",
+          "weight": 0.25,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.management_allocation",
+          "weight": 0.2,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.moat_trajectory",
+          "weight": 0.15,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.asymmetry",
+          "weight": 0.1,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        }
+      ],
+      "failed_conditions": [
+        "signal.price_to_base_value",
+        "gate_score"
+      ],
+      "missing_conditions": [
+        "criterion.reinvestment_fcf.fcf_per_share_quality",
+        "domain.financial_survival",
+        "domain.management_allocation",
+        "domain.moat_trajectory",
+        "domain.asymmetry"
+      ],
+      "blocking_vetoes": []
+    },
+    "compounder": {
+      "eligible": false,
+      "fit_score": 0.0,
+      "fit_axes": [
+        {
+          "field": "domain.moat_trajectory",
+          "weight": 0.3,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "criterion.reinvestment_fcf.incremental_roic",
+          "weight": 0.3,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "criterion.reinvestment_fcf.reinvestment_runway",
+          "weight": 0.25,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.management_allocation",
+          "weight": 0.15,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        }
+      ],
+      "failed_conditions": [
+        "gate_score"
+      ],
+      "missing_conditions": [
+        "domain.moat_trajectory",
+        "domain.reinvestment_fcf",
+        "domain.management_allocation",
+        "domain.financial_survival",
+        "criterion.reinvestment_fcf.incremental_roic",
+        "criterion.reinvestment_fcf.reinvestment_runway"
+      ],
+      "blocking_vetoes": []
+    },
+    "growth": {
+      "eligible": false,
+      "fit_score": 0.0,
+      "fit_axes": [
+        {
+          "field": "signal.revenue_cagr_next_3y",
+          "weight": 0.2,
+          "value": 0.1,
+          "normalized": 0.0,
+          "missing": false
+        },
+        {
+          "field": "domain.customer_product",
+          "weight": 0.25,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.structural_leadership",
+          "weight": 0.2,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.reinvestment_fcf",
+          "weight": 0.2,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.moat_trajectory",
+          "weight": 0.15,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        }
+      ],
+      "failed_conditions": [
+        "signal.revenue_cagr_next_3y",
+        "signal.price_to_base_value",
+        "gate_score"
+      ],
+      "missing_conditions": [
+        "domain.structural_leadership",
+        "domain.customer_product",
+        "domain.moat_trajectory",
+        "domain.reinvestment_fcf",
+        "domain.management_allocation",
+        "domain.financial_survival",
+        "domain.asymmetry",
+        "criterion.reinvestment_fcf.fcf_per_share_quality"
+      ],
+      "blocking_vetoes": []
+    },
+    "moonshot": {
+      "eligible": false,
+      "fit_score": 0.0,
+      "fit_axes": [
+        {
+          "field": "domain.disruptive_innovation",
+          "weight": 0.4,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.asymmetry",
+          "weight": 0.25,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.structural_leadership",
+          "weight": 0.2,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.financial_survival",
+          "weight": 0.15,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        }
+      ],
+      "failed_conditions": [
+        "signal.market_cap_usd"
+      ],
+      "missing_conditions": [
+        "domain.disruptive_innovation",
+        "domain.structural_leadership",
+        "domain.asymmetry",
+        "domain.financial_survival",
+        "gate_score"
+      ],
+      "blocking_vetoes": []
+    },
+    "outlier_growth": {
+      "eligible": false,
+      "fit_score": 0.0,
+      "fit_axes": [
+        {
+          "field": "domain.long_term_growth",
+          "weight": 0.35,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.moat_trajectory",
+          "weight": 0.2,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.customer_product",
+          "weight": 0.15,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "criterion.asymmetry.upside_path",
+          "weight": 0.2,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        },
+        {
+          "field": "domain.management_allocation",
+          "weight": 0.1,
+          "value": null,
+          "normalized": 0.0,
+          "missing": true
+        }
+      ],
+      "failed_conditions": [],
+      "missing_conditions": [
+        "domain.long_term_growth",
+        "criterion.long_term_growth.opportunity_scale_5y",
+        "criterion.long_term_growth.growth_duration_10y",
+        "criterion.long_term_growth.culture_adaptability",
+        "criterion.long_term_growth.market_misperception",
+        "domain.customer_product",
+        "domain.moat_trajectory",
+        "domain.management_allocation",
+        "domain.financial_survival",
+        "domain.asymmetry",
+        "criterion.asymmetry.upside_path",
+        "criterion.asymmetry.permanent_loss",
+        "gate_score"
+      ],
+      "blocking_vetoes": []
+    }
+  },
+  "review_only": false,
+  "evidence_concentration_flags": [],
+  "macro_geo_overlay": {
+    "financial_regime": {},
+    "geopolitical_regime": {},
+    "company_transmission": {},
+    "missing_or_stale_components": [
+      "credit_liquidity",
+      "financial_conditions",
+      "geopolitical_events",
+      "structural_trade"
+    ],
+    "reanalysis_requests": [],
+    "pending_reanalysis_domains": [],
+    "risk_budget_multiplier": 0.5,
+    "purchase_pacing_multiplier": 0.5,
+    "monitoring_urgency": "high",
+    "fundamental_score_effect": 0
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "ic_verdict": null,
+  "early_exit_record": null
+}
+aggregate_exit=0
 === 11 digest ===
-V: inputs are not frozen; fill current_price/net_cash_per_share then run freeze
-digest_exit=1
+runs/V/digest.md: 7318 bytes (reports 3801 chars -> digest 6911 chars)
+digest_exit=0
+# Digest — V (as of 2026-09-18)
+score 50.5 (ex-val None, Reject) · DI None · TQ None · archetype non_fit — No eligible archetype: see failed/missing conditions and vetoes · veto PENDING_REVIEW · state INCOMPLETE
+signals {'price_to_base_value': 1.1208, 'valuation_percentile_5y': 0.69, 'revenue_cagr_next_3y': 0.1, 'market_cap_usd': 690000000000.0} · reachable(raw) ['compounder', 'outlier_growth']
+veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
+
+## expectation_valuation — 50.5 (raw 50.5, spread 28.0, DISPUTE)
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| EV | 50.5 (30.5–58.5) | 0.86 | neutral | V7=cleared | Visa is a high-quality business at a full but not prohibitive valuation. The current price is about 12% above locked Base value, so upside depends on executing… |
+bull: Sustained double-digit revenue/VAS growth and buybacks can push realized FCF/share toward the Bull path. / bear: A regulatory shock or slower cross-border/volume growth can compress both earnings and the multiple.
+unknowns: Long-run regulation of interchange and routing · Sustainable growth rate of Visa Direct and value-added services
+
+## Archetype fit
+{"buffett_value": {"eligible": false, "fit_score": 0.0, "fit_axes": [{"field": "criterion.reinvestment_fcf.fcf_per_share_quality", "weight": 0.3, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.financial_survival", "weight": 0.25, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.management_allocation", "weight": 0.2, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.moat_trajectory", "weight": 0.15, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.asymmetry", "weight": 0.1, "value": null, "normalized": 0.0, "missing": true}], "failed_conditions": ["signal.price_to_base_value", "gate_score"], "missing_conditions": ["criterion.reinvestment_fcf.fcf_per_share_quality", "domain.financial_survival", "domain.management_allocation", "domain.moat_trajectory", "domain.asymmetry"], "blocking_vetoes": []}, "compounder": {"eligible": false, "fit_score": 0.0, "fit_axes": [{"field": "domain.moat_trajectory", "weight": 0.3, "value": null, "normalized": 0.0, "missing": true}, {"field": "criterion.reinvestment_fcf.incremental_roic", "weight": 0.3, "value": null, "normalized": 0.0, "missing": true}, {"field": "criterion.reinvestment_fcf.reinvestment_runway", "weight": 0.25, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.management_allocation", "weight": 0.15, "value": null, "normalized": 0.0, "missing": true}], "failed_conditions": ["gate_score"], "missing_conditions": ["domain.moat_trajectory", "domain.reinvestment_fcf", "domain.management_allocation", "domain.financial_survival", "criterion.reinvestment_fcf.incremental_roic", "criterion.reinvestment_fcf.reinvestment_runway"], "blocking_vetoes": []}, "growth": {"eligible": false, "fit_score": 0.0, "fit_axes": [{"field": "signal.revenue_cagr_next_3y", "weight": 0.2, "value": 0.1, "normalized": 0.0, "missing": false}, {"field": "domain.customer_product", "weight": 0.25, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.structural_leadership", "weight": 0.2, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.reinvestment_fcf", "weight": 0.2, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.moat_trajectory", "weight": 0.15, "value": null, "normalized": 0.0, "missing": true}], "failed_conditions": ["signal.revenue_cagr_next_3y", "signal.price_to_base_value", "gate_score"], "missing_conditions": ["domain.structural_leadership", "domain.customer_product", "domain.moat_trajectory", "domain.reinvestment_fcf", "domain.management_allocation", "domain.financial_survival", "domain.asymmetry", "criterion.reinvestment_fcf.fcf_per_share_quality"], "blocking_vetoes": []}, "moonshot": {"eligible": false, "fit_score": 0.0, "fit_axes": [{"field": "domain.disruptive_innovation", "weight": 0.4, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.asymmetry", "weight": 0.25, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.structural_leadership", "weight": 0.2, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.financial_survival", "weight": 0.15, "value": null, "normalized": 0.0, "missing": true}], "failed_conditions": ["signal.market_cap_usd"], "missing_conditions": ["domain.disruptive_innovation", "domain.structural_leadership", "domain.asymmetry", "domain.financial_survival", "gate_score"], "blocking_vetoes": []}, "outlier_growth": {"eligible": false, "fit_score": 0.0, "fit_axes": [{"field": "domain.long_term_growth", "weight": 0.35, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.moat_trajectory", "weight": 0.2, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.customer_product", "weight": 0.15, "value": null, "normalized": 0.0, "missing": true}, {"field": "criterion.asymmetry.upside_path", "weight": 0.2, "value": null, "normalized": 0.0, "missing": true}, {"field": "domain.management_allocation", "weight": 0.1, "value": null, "normalized": 0.0, "missing": true}], "failed_conditions": [], "missing_conditions": ["domain.long_term_growth", "criterion.long_term_growth.opportunity_scale_5y", "criterion.long_term_growth.growth_duration_10y", "criterion.long_term_growth.culture_adaptability", "criterion.long_term_growth.market_misperception", "domain.customer_product", "domain.moat_trajectory", "domain.management_allocation", "domain.financial_survival", "domain.asymmetry", "criterion.asymmetry.upside_path", "criterion.asymmetry.permanent_loss", "gate_score"], "blocking_vetoes": []}}
+## Provider calibration
+{"mode": "shadow", "applied": true, "decision_effect": false, "family": "openai", "base_offset": 5.0, "max_abs_offset": 5.0, "per_domain_offset": {"expectation_valuation": -1.67}, "basis": {"sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조", "n": 27, "measured_mean_gap": 10.2, "measured_sd": 6.9, "direction": "27개 전부 gpt-5.6-sol >= Claude Opus 5. 노이즈가 아니라 계통 편향.", "caveat": "표본은 종목 1개다. 다른 종목의 쌍 실행이 쌓이면 base_offset을 재추정해야 한다. harness.py calibrate로 측정한다."}, "reason": null}
+## Evidence concentration (review only)
+[]
+## Macro / geopolitical transmission
+{"financial_regime": {}, "geopolitical_regime": {}, "company_transmission": {}, "missing_or_stale_components": ["credit_liquidity", "financial_conditions", "geopolitical_events", "structural_trade"], "reanalysis_requests": [], "pending_reanalysis_domains": [], "risk_budget_multiplier": 0.5, "purchase_pacing_multiplier": 0.5, "monitoring_urgency": "high", "fundamental_score_effect": 0}

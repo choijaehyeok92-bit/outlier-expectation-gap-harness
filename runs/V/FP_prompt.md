@@ -3,18 +3,18 @@
 웹 검색을 하지 않는다. 사용자가 직접 제공한 공시·감사재무제표·IR 문서만 사용한다.
 
 ## Stage 0 문서 확보 현황
-문서 0건, 요건 충족 0/11.
-- [GAP] latest_annual · required · 0/1 — 최근 10-K / 최근 사업보고서
+문서 8건, 요건 충족 4/11.
+- [OK ] latest_annual · required · 1/1 — 최근 10-K / 최근 사업보고서
         용도: 연간 3개년 재무제표, segment, 고객집중, 부채, SBC, 약정, 회계정책
-- [GAP] latest_interim · required · 0/1 — 최신 10-Q / 최신 분기/반기보고서
+- [OK ] latest_interim · required · 6/1 — 최신 10-Q / 최신 분기/반기보고서
         용도: 현재 TTM, 분기 추세, 운전자본, 현금흐름, 희석
-- [GAP] trailing_quarters · required · 0/6 — 과거 6~8개 분기의 10-Q / 과거 6~8개 분기보고서
+- [OK ] trailing_quarters · required · 6/6 — 과거 6~8개 분기의 10-Q / 과거 6~8개 분기보고서
         용도: TTM·YoY·FCF/share·증분 ROIC 추세
-- [GAP] historical_annuals · strongly_recommended · 0/3 — 과거 3~5개년 10-K / 과거 3~5개년 사업보고서
+- [GAP] historical_annuals · strongly_recommended · 1/3 — 과거 3~5개년 10-K / 과거 3~5개년 사업보고서
         용도: 정상화 이익, 반복 구조조정, 자본집약도, 장기 추세
 - [GAP] proxy_compensation · near_required · 0/1 — DEF 14A Proxy / 주주총회소집공고 · 사업보고서 임원보수 항목
         용도: 경영진 보상, 주식보상, ownership, governance
-- [GAP] earnings_release · recommended · 0/1 — 실적 관련 8-K + earnings release / 잠정실적 · 영업실적 공시
+- [OK ] earnings_release · recommended · 1/1 — 실적 관련 8-K + earnings release / 잠정실적 · 영업실적 공시
         용도: GAAP/non-GAAP reconciliation, 최신 KPI
 - [GAP] debt_and_financing · conditional_required · 0/1 — Debt note / 8-K / 424B / prospectus / 주요사항보고서 · 증권신고서 (조건: 회사채·전환사채·증자·대규모 M&A 등 자금조달 이벤트가 기준일 이전에 있었던 경우)
         용도: 회사채, 전환사채, 증자, M&A, 대규모 자금조달
