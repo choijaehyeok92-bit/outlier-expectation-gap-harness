@@ -1,0 +1,162 @@
+{
+  "agent_id": "LG",
+  "ticker": "NVDA-2026-09-18",
+  "as_of_date": "2026-09-18",
+  "domain": "long_term_growth",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 77.5,
+  "confidence_0_1": 0.72,
+  "bull_score": 90,
+  "bear_score": 50,
+  "bull_case": "AI compute 수요가 추론·에이전트·로보틱스로 확장되고 CUDA·NVLink·네트워킹·소프트웨어가 함께 성장하면 5년 3배 규모와 10년 활주로가 가능하다. 게임 GPU에서 데이터센터 플랫폼으로 전환한 조직의 재창조 실적도 강하다.",
+  "bear_case": "현재 가격은 이미 Base 가치를 소폭 웃돌고 AI 리더십이 널리 알려져 있다. 고객 집중, custom ASIC, 중국 접근 제한, 대규모 고객지원·보증이 장기 성장의 질과 시장 기대오류를 약화시킨다.",
+  "thesis": "5년 기회 규모와 조직 적응력은 최상위권이고 5~10년 성장 지속도 타당하다. 그러나 가격/Base 1.044와 이미 높은 시장 기대, 지원 대상 매출·AR 비중의 미공개 때문에 구체적이고 반증 가능한 시장 과소평가를 입증하지 못한다. LTG 총점은 77.5지만 market_misperception 50으로 Outlier Growth 게이트를 통과하지 못한다.",
+  "evidence": [
+    {
+      "evidence_id": "LG-NVDA-001",
+      "economic_driver": "five_year_scale",
+      "claim": "Q2 FY27 Data Center revenue was $89,023M, up 117% year over year, while total revenue was $96,221M and gross margin was 75.0%.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-26",
+      "value": 89023,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LG-NVDA-002",
+      "economic_driver": "growth_duration",
+      "claim": "CUDA and NVIDIA software developers exceed 7.5 million, supported applications exceed 6,000, and NVIDIA systems account for 78% of TOP500 systems including networking.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-K_FY26_filed_2026-02-25.txt",
+      "period": "FY2026",
+      "as_of_date": "2026-02-25",
+      "value": 7500000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LG-NVDA-003",
+      "economic_driver": "culture_adaptability",
+      "claim": "NVIDIA moved from graphics into accelerated computing and data-center platforms while maintaining an annual architecture cadence through Blackwell Ultra and Rubin.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-K_FY26_filed_2026-02-25.txt; runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY2026-FY2027 Q2",
+      "as_of_date": "2026-08-26",
+      "value": null,
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "evidence_id": "LG-NVDA-004",
+      "economic_driver": "market_expectations",
+      "claim": "At the 2026-09-18 close of $222.27, the locked-policy DCF was Bear $74.99, Base $212.86 and Bull $431.14, so price/Base was 1.0442.",
+      "source_type": "other",
+      "source": "harness deterministic valuation using frozen context and EV inputs",
+      "period": "10-year DCF",
+      "as_of_date": "2026-09-18",
+      "value": 1.0442,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LG-NVDA-005",
+      "economic_driver": "demand_quality",
+      "claim": "The Q2 FY27 filing disclosed $36B of additional AI-cloud agreements and maximum gross guarantees of about $108.5B, while supported-customer revenue and receivables were not separately disclosed.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-26",
+      "value": 108500,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Data Center revenue is already 92.5% of Q2 revenue, increasing single-cycle concentration.",
+    "Hyperscalers can fund custom ASICs and reduce NVIDIA pricing power.",
+    "The frozen price is above Base value, so a long-duration AI thesis is already materially reflected.",
+    "AI-cloud agreements and guarantees make marginal demand quality harder to separate from supported deployment."
+  ],
+  "unknowns": [
+    "Supported customers share of revenue and accounts receivable.",
+    "Independent Rubin cost per token versus leading custom ASICs.",
+    "The firm versus adjustable share of supply and capacity commitments.",
+    "Probability-weighted loss and recovery economics for the guarantees.",
+    "Standalone software revenue and margin growth."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "opportunity_scale_5y",
+      "severity": "material",
+      "rationale": "Multiple AI value pools support scale, but the share of financed deployment is unknown."
+    },
+    {
+      "criterion_id": "growth_duration_10y",
+      "severity": "material",
+      "rationale": "A 5-10 year runway is credible; custom ASICs and market-access loss limit confidence beyond ten years."
+    },
+    {
+      "criterion_id": "culture_adaptability",
+      "severity": "minor",
+      "rationale": "Repeated platform transitions are observed, though key-person dependence remains material."
+    },
+    {
+      "criterion_id": "market_misperception",
+      "severity": "critical",
+      "rationale": "The market already recognizes AI leadership and current price is above Base; a specific underpriced long-term fact is not established."
+    }
+  ],
+  "falsifiers": [
+    "Data Center revenue declines year over year for two consecutive quarters while gross margin falls below 70%.",
+    "Supported-customer revenue or receivables exceed 25% while guarantees and credit support continue to expand.",
+    "A refrozen Base value remains below market after owner FCF/share falls short of the locked path for multiple periods."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Data Center revenue growth",
+      "direction": "up",
+      "threshold": "positive y/y and above the locked Base path",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "supported-customer revenue and receivables",
+      "direction": "down",
+      "threshold": "below 25% of the relevant total",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "owner FCF per share",
+      "direction": "up",
+      "threshold": "at or above the locked Base path",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q customer support, AR, DSO, guarantees and commitments.",
+    "Independent Rubin production TCO versus custom ASICs.",
+    "Separately disclosed networking and software revenue and margins."
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "opportunity_scale_5y",
+      "score_0_100": 90,
+      "rationale": "A 3x five-year scale path is credible from accelerated compute, networking and software, supported by Data Center +117% and 75% gross margin. Financing support uncertainty prevents stronger confidence."
+    },
+    {
+      "criterion_id": "growth_duration_10y",
+      "score_0_100": 75,
+      "rationale": "A 5-10 year runway is credible from low AI penetration and multiple platform layers; customer concentration, custom ASICs and export controls exclude the 10+ year 90 anchor."
+    },
+    {
+      "criterion_id": "culture_adaptability",
+      "score_0_100": 90,
+      "rationale": "NVIDIA repeatedly reinvented from graphics to accelerated computing and data-center platforms, with a sustained architecture cadence and software ecosystem."
+    },
+    {
+      "criterion_id": "market_misperception",
+      "score_0_100": 50,
+      "rationale": "The frozen price is 1.044x Base and the market broadly recognizes AI leadership. A plausible disagreement exists, but reverse-DCF evidence does not show a concrete underpriced long-term fact."
+    }
+  ],
+  "rerun_note": "New v3.2 LTG assessment written from the frozen 2026-09-18 evidence set; no post-cutoff facts used."
+}

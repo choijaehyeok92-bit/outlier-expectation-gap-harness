@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "ticker": "NVDA-2026-09-18",
+  "cik": 1045810,
+  "filer": "NVIDIA CORP",
+  "as_of_date": "2026-09-18",
+  "source": "SEC EDGAR",
+  "fetched_at_utc": "2026-09-20T09:52:19.756806+00:00",
+  "excluded_post_cutoff": 0,
+  "shortfalls": [
+    {
+      "requirement": "foreign_issuer_filings",
+      "importance": "conditional",
+      "form": "20-F/6-K",
+      "shortfall": 1
+    },
+    {
+      "requirement": "registration_statement",
+      "importance": "conditional",
+      "form": "S-1/F-1",
+      "shortfall": 1
+    }
+  ],
+  "documents": [
+    {
+      "file": "10-K_2026-02-25_0001045810-26-000021.htm",
+      "form": "10-K",
+      "filing_date": "2026-02-25",
+      "report_date": "2026-01-25",
+      "accession": "0001045810-26-000021",
+      "requirement": "latest_annual",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+      "bytes": 1967925
+    },
+    {
+      "file": "10-Q_2026-08-26_0001045810-26-000075.htm",
+      "form": "10-Q",
+      "filing_date": "2026-08-26",
+      "report_date": "2026-07-26",
+      "accession": "0001045810-26-000075",
+      "requirement": "latest_interim",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "bytes": 1517156
+    },
+    {
+      "file": "10-Q_2026-05-20_0001045810-26-000052.htm",
+      "form": "10-Q",
+      "filing_date": "2026-05-20",
+      "report_date": "2026-04-26",
+      "accession": "0001045810-26-000052",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm",
+      "bytes": 1167162
+    },
+    {
+      "file": "10-Q_2025-11-19_0001045810-25-000230.htm",
+      "form": "10-Q",
+      "filing_date": "2025-11-19",
+      "report_date": "2025-10-26",
+      "accession": "0001045810-25-000230",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm",
+      "bytes": 1381439
+    },
+    {
+      "file": "10-Q_2025-08-27_0001045810-25-000209.htm",
+      "form": "10-Q",
+      "filing_date": "2025-08-27",
+      "report_date": "2025-07-27",
+      "accession": "0001045810-25-000209",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm",
+      "bytes": 1349532
+    },
+    {
+      "file": "10-Q_2025-05-28_0001045810-25-000116.htm",
+      "form": "10-Q",
+      "filing_date": "2025-05-28",
+      "report_date": "2025-04-27",
+      "accession": "0001045810-25-000116",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm",
+      "bytes": 1132298
+    },
+    {
+      "file": "10-Q_2024-11-20_0001045810-24-000316.htm",
+      "form": "10-Q",
+      "filing_date": "2024-11-20",
+      "report_date": "2024-10-27",
+      "accession": "0001045810-24-000316",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm",
+      "bytes": 1440341
+    },
+    {
+      "file": "10-K_2025-02-26_0001045810-25-000023.htm",
+      "form": "10-K",
+      "filing_date": "2025-02-26",
+      "report_date": "2025-01-26",
+      "accession": "0001045810-25-000023",
+      "requirement": "historical_annuals",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm",
+      "bytes": 2067629
+    },
+    {
+      "file": "10-K_2024-02-21_0001045810-24-000029.htm",
+      "form": "10-K",
+      "filing_date": "2024-02-21",
+      "report_date": "2024-01-28",
+      "accession": "0001045810-24-000029",
+      "requirement": "historical_annuals",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+      "bytes": 2085675
+    },
+    {
+      "file": "DEFA14A_2026-05-12_0001045810-26-000037.htm",
+      "form": "DEFA14A",
+      "filing_date": "2026-05-12",
+      "report_date": "",
+      "accession": "0001045810-26-000037",
+      "requirement": "proxy_compensation",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000037/noticeof2026annualmeeting.htm",
+      "bytes": 11514
+    },
+    {
+      "file": "8-K_2026-09-03_0001045810-26-000078.htm",
+      "form": "8-K",
+      "filing_date": "2026-09-03",
+      "report_date": "2026-09-02",
+      "accession": "0001045810-26-000078",
+      "requirement": "earnings_release",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000078/nvda-20260902.htm",
+      "bytes": 29290
+    },
+    {
+      "file": "424B5_2026-06-17_0001193125-26-273139.htm",
+      "form": "424B5",
+      "filing_date": "2026-06-17",
+      "report_date": "",
+      "accession": "0001193125-26-273139",
+      "requirement": "debt_and_financing",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000119312526273139/d118718d424b5.htm",
+      "bytes": 382865
+    },
+    {
+      "file": "4_2026-09-18_0001243821-26-000007.htm",
+      "form": "4",
+      "filing_date": "2026-09-18",
+      "report_date": "2026-09-16",
+      "accession": "0001243821-26-000007",
+      "requirement": "insider_ownership",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000124382126000007/xslF345X06/wk-form4_1789766132.xml",
+      "bytes": 16069
+    }
+  ]
+}

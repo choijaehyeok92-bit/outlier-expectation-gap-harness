@@ -1,6 +1,7 @@
 """Decision invariants. All writes are isolated in temporary directories."""
 import contextlib
 import copy
+import gzip
 import io
 import json
 from pathlib import Path
@@ -803,6 +804,18 @@ class Stage0FetchTests(unittest.TestCase):
             raise OSError('CONNECT tunnel failed, response 403')
         with self.assertRaises(fetch.FetchError):
             fetch.resolve_cik('AVGO', 'ua', lambda u, a, timeout=30: blocked(u, a))
+
+    def test_default_opener_decodes_gzip_responses(self):
+        payload = json.dumps(self.TICKERS).encode()
+
+        class Response:
+            headers = {'Content-Encoding': 'gzip'}
+            def __enter__(self): return self
+            def __exit__(self, *_args): return False
+            def read(self): return gzip.compress(payload)
+
+        with patch('urllib.request.urlopen', return_value=Response()):
+            self.assertEqual(json.loads(fetch._open('https://www.sec.gov/test', 'ua')), self.TICKERS)
 
     def test_every_checklist_row_declares_its_edgar_forms(self):
         for requirement in h.INTAKE_POLICY['requirements']:

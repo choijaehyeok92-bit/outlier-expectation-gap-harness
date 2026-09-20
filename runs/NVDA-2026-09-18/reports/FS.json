@@ -1,0 +1,178 @@
+{
+  "agent_id": "FS",
+  "ticker": "NVDA-2026-09-18",
+  "as_of_date": "2026-09-18",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 76,
+  "confidence_0_1": 0.8,
+  "bull_score": 90,
+  "bear_score": 55,
+  "bull_case": "순현금 $23.2B, TTM OCF $134.4B와 owner FCF $119.8B가 총차입 $33.4B를 크게 웃돈다. H1에 차입 $24.9B를 늘렸지만 동시에 자사주 $39.0B와 지분투자 $42.4B를 집행해 생존용 조달이 아니다. 매출 급감에도 필수 투자와 부채 상환을 내부현금으로 방어할 여력이 높다.",
+  "bear_case": "수요 급락과 고객 신용사건이 겹치면 $279B 공급약정, $56B 추가 약정, $108.5B 최대 총보증이 동시에 현금흐름을 압박할 수 있다. 특히 SB Energy/OpenAI 보증의 확률가중 손실·회수권은 공시되지 않아 tail stress를 정량화할 수 없다.",
+  "thesis": "재무 생존력은 여전히 강하지만 부외 노출의 총규모가 기존 보고보다 크다. 순현금 $23.2B, TTM OCF $134.4B로 영업 생존은 외부자본에 의존하지 않는다. 한편 일반 commitments $366B 외에 additional commitments $56B와 maximum gross guarantees $108.5B가 공시돼 단순 합산 gross exposure는 약 $530.5B, TTM 매출의 1.75배다. $105B SB Energy 보증은 FY2029 이후 단계적·조건부라 현재 현금부채로 볼 수 없다. observable anchor는 여전히 1~2배 구간 55다.",
+  "evidence": [
+    {
+      "evidence_id": "SUP-FS-LIQUIDITY-001",
+      "economic_driver": "liquidity_buffer",
+      "claim": "At 2026-07-26, cash plus marketable debt securities was $56,586M, total debt was $33,366M and verified net cash was $23,220M.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt L280-L345, L2693-L2730",
+      "period": "2026-07-26",
+      "as_of_date": "2026-08-26",
+      "value": 23220,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-FS-CASHFLOW-002",
+      "economic_driver": "self_funded_operations",
+      "claim": "H1 FY27 operating cash flow was $74,421M, capex was $4,434M and SBC was $3,954M, producing $66,033M of owner FCF under the frozen convention; estimated TTM OCF was $134,360M.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt L729-L800; sources/README.md",
+      "period": "FY2027 H1 and TTM",
+      "as_of_date": "2026-08-26",
+      "value": 66033,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "SUP-FS-CAPITAL-ALLOCATION-003",
+      "economic_driver": "external_capital_dependency",
+      "claim": "H1 FY27 issued $24,896M of debt while spending $39,044M on repurchases, $42,404M on equity securities and $6,290M on dividends, indicating that borrowing was accompanied by discretionary capital allocation rather than operating cash burn.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt L729-L830",
+      "period": "FY2027 H1",
+      "as_of_date": "2026-08-26",
+      "value": 24896,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-FS-COMMITMENTS-004",
+      "economic_driver": "off_balance_commitments_and_guarantees",
+      "claim": "Q2 FY27 filing은 일반 future commitments $366B, 별도 Additional Commitments $56B, maximum gross guarantees $108.5B를 공시한다. 단순 합산 $530.5B는 TTM 매출 $303.0B의 약 1.75배다. $105B SB Energy 보증은 FY2029 이후 단계적으로 활성화되는 조건부 최대 총액이며 즉시 부채가 아니다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1700-L1818, L2193-L2197; sources/financials/normalized_financials.json FACT-0102",
+      "period": "2026-07-26 / August 2026 post-quarter event",
+      "as_of_date": "2026-08-26",
+      "value": 530500,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "SUP-FS-GUARANTEES-005",
+      "economic_driver": "customer_credit_exposure",
+      "claim": "Land, power and shell guarantees for AI-cloud partners had $3,529M notional exposure, mitigated by $712M of partner escrow; performance depends on customers and partners.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt Note 10 L1744-L1760, L2193",
+      "period": "2026-07-26",
+      "as_of_date": "2026-08-26",
+      "value": 3529,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-FS-DILUTION-006",
+      "economic_driver": "per_share_dilution",
+      "claim": "Q2 diluted weighted-average shares declined from 24,532M in FY26 Q2 to 24,285M in FY27 Q2, a decrease of approximately 1.0%; H1 repurchases totaled $39,044M.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/financials/normalized_financials.json FACT-0048, FACT-0056; 10-Q L729-L830",
+      "period": "FY2027 Q2 versus FY2026 Q2",
+      "as_of_date": "2026-08-26",
+      "value": -0.0101,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "The $366B commitment stack is 1.21x TTM revenue and includes long-dated leases and customer-linked obligations that cannot all be treated like ordinary cancellable purchase orders.",
+    "H1 accounts-receivable and inventory cash uses were $24.6B and $10.2B, respectively, showing that rapid growth is consuming working capital despite high reported earnings.",
+    "Marketable and non-marketable equity securities total $93.9B, but lock-ups, price volatility and customer concentration make them less reliable than cash in a stress case.",
+    "China export controls already caused inventory and purchase-obligation charges, demonstrating that regulatory shocks can crystallize commitment losses."
+  ],
+  "unknowns": [
+    "$279B supply/capacity commitments의 stress-case 취소·재조정 가능 비중.",
+    "$108.5B maximum gross guarantees의 phase별 활성 금액, counterparty PD, recovery/recourse.",
+    "$36B AI-cloud agreements와 $20B third-party leases의 제3자 사용으로 감소하는 실제 약정액.",
+    "June 2026 신규채권의 만기별 원금·쿠폰과 fixed/floating 노출."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "minor",
+      "rationale": "Net cash and cash generation are directly verified; uncertainty is concentrated in the liquidity of equity holdings excluded from net cash."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "Operating cash flow covers debt and core investment, but a simultaneous demand and commitment-loss shock has not been quantified by the company."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "critical",
+      "rationale": "Share count is falling, yet commitments and customer guarantees are large and their cancellability and counterparty recovery are only partly disclosed."
+    }
+  ],
+  "falsifiers": [
+    "If TTM operating cash flow falls below total debt for two consecutive quarters while net cash turns negative, the strong-liquidity thesis is falsified.",
+    "If commitments plus guarantees produce cash losses above 25% of annual owner FCF in a year, the internal-cash stress-survival conclusion must be downgraded.",
+    "If diluted shares rise more than 3% year over year for four consecutive quarters without offsetting per-share FCF growth, the dilution veto must be reopened."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "H1 OCF $74.4B가 capex $4.4B와 SBC $4.0B를 충분히 상회한다. 같은 기간 차입 $24.9B보다 자사주·지분투자·배당 등 재량적 유출이 훨씬 커, 외부조달이 영업 생존에 구조적으로 필요한 요건은 반증된다."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Q2 희석주식수는 전년 동기 대비 약 1.0% 감소했고 H1 자사주 매입 $39.0B가 SBC $4.0B를 크게 상회한다. 장기간 과도희석의 두 구성요건이 충족되지 않는다."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "순현금 $23.2B이고 TTM OCF $134.4B가 총차입 $33.4B를 약 4배 상회한다. 약정 손실 위험은 중요하지만 파산 또는 사업가치 소멸 확률이 유의미하다는 구성요건은 반증된다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "TTM operating cash flow / total debt",
+      "direction": "up",
+      "threshold": "2.0x 이상",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "commitments and guarantees / TTM revenue",
+      "direction": "down",
+      "threshold": "1.0x 미만",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "diluted share count year-over-year",
+      "direction": "down",
+      "threshold": "0% 이하",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "다음 10-Q에서 $279B 공급약정과 $56B 추가약정의 취소가능액·지급시기 갱신",
+    "$108.5B 보증의 phase별 활성 노출·손실·escrow·회수 현황 확인",
+    "신규채권 만기벽과 향후 5년 상환표 갱신"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 90,
+      "rationale": "순현금 $23.2B, TTM OCF/총차입 약 4.0배, H1 owner FCF $66.0B의 세 가지 1차 근거가 90의 순현금·매우 강함 앵커를 지지한다. $366B 약정은 유동성 자체보다 offbalance criterion에 반영해 중복 감점을 피한다."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 75,
+      "rationale": "순현금과 TTM OCF가 강해 75 '내부현금 방어' 앵커를 유지한다. 다만 $108.5B 최대 총보증의 확률가중 손실·회수율과 $56B 추가 약정의 스트레스 취소가능성이 미공시여서 90 '스트레스에서도 투자'는 배제한다."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 55,
+      "rationale": "희석주식수는 약 1.0% 감소해 희석축은 90이다. 부외축은 일반 commitments $366B + additional commitments $56B + maximum gross guarantees $108.5B를 단순 합산한 $530.5B / TTM 매출 $303.0B ≈1.75배로 관측표 1~2배 구간 55다. 보증은 조건부 최대 총액이므로 현재부채로 보지 않지만 observable anchor의 gross exposure에는 포함한다."
+    }
+  ],
+  "rerun_note": "Research Orchestrator pass 4 반영. FACT-0102의 $108.5B maximum gross guarantees와 $56B additional commitments를 기존 $366B 일반 commitments와 구분했다. dilution_offbalance observable은 단순 gross exposure/TTM revenue 1.75배로 여전히 55 구간이라 총점은 유지한다. Carried into the 2026-09-18 policy-migration run because the underlying filing and market-data cutoff is 2026-09-18; ticker/date metadata and local source paths were retargeted."
+}
