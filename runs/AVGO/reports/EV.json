@@ -9,7 +9,7 @@
   "confidence_0_1": 0.78,
   "bull_score": 85,
   "bear_score": 25,
-  "bull_case": "AI custom accelerators, networking and VMware cash flows scale together. Bull path assumes owner FCF/share rises from $9.5 to $57 over ten years; locked 25x terminal multiple gives about $797.84/share. This requires multiple large AI customers, durable custom-silicon share and continued high software cash conversion.",
+  "bull_case": "AI custom accelerators, networking and VMware cash flows scale together. Bull owner FCF/share rises from $9.5 to $57 over ten years; locked 25x terminal gives about $797.84/share. This requires multiple large AI customers, durable custom-silicon share and strong software cash conversion.",
   "bear_case": "AI accelerator demand normalizes after the current buildout, large customers internalize more silicon, and customer/TSMC concentration reduces bargaining power. Bear path grows owner FCF/share only from $7.5 to $12.5 over ten years; locked 15x terminal multiple gives about $137.04/share.",
   "thesis": "At the frozen $357.61 close, the locked-policy DCF produces Bear/Base/Bull values of about $137/$404/$798. Price/Base is 0.884, so current price does not require the Bull case, but Base still assumes exceptional AI-led expansion and 68% of Base operating value is terminal value. The valuation gap is therefore positive but not robust enough to treat consensus-scale AI growth as certain.",
   "evidence": [
@@ -34,17 +34,6 @@
       "fact_or_estimate": "estimate",
       "evidence_id": "AVGO-EV-OWNERFCF-002",
       "economic_driver": "cash_conversion"
-    },
-    {
-      "claim": "Q3 segment revenue was $20.839B Semiconductor Solutions and $8.752B Infrastructure Software; 9M values were $48.363B and $22.726B.",
-      "source_type": "filing",
-      "source": "User-supplied Q3 FY2026 10-Q",
-      "period": "FY2026 Q3 / 9M",
-      "as_of_date": "2026-08-02",
-      "value": 20839,
-      "fact_or_estimate": "fact",
-      "evidence_id": "AVGO-EV-SEGMENTS-003",
-      "economic_driver": "revenue_mix"
     },
     {
       "claim": "Top five end customers represented approximately 55% of Q3 FY2026 revenue and approximately 50% of 9M revenue; approximately 95% of contract-manufactured wafers were produced by TSMC.",
@@ -80,17 +69,6 @@
       "economic_driver": "near_term_growth"
     },
     {
-      "claim": "Secondary consensus observed after the cutoff projects FY2026/27/28 revenue of $105.964B/$173.450B/$272.799B. It is used only as an expectations cross-check; the Base case uses a materially lower FY2028 revenue path near $190B, equivalent to about 43.8% CAGR from FY2025.",
-      "source_type": "secondary",
-      "source": "MarketScreener analyst consensus snapshot observed 2026-09-20",
-      "period": "FY2026-FY2028",
-      "as_of_date": "2026-09-20",
-      "value": 272.799,
-      "fact_or_estimate": "estimate",
-      "evidence_id": "AVGO-EV-CONSENSUS-007",
-      "economic_driver": "market_expectations"
-    },
-    {
       "claim": "Locked-policy DCF at 9% required return and 15x/20x/25x terminal multiples yields Bear $137.04, Base $404.48 and Bull $797.84 with frozen net cash/share -$7.2527.",
       "source_type": "other",
       "source": "Harness deterministic_valuation policy (config/calibration.json)",
@@ -106,7 +84,6 @@
     "The Base case is deliberately below the current external consensus revenue trajectory, but it still requires roughly 44% FY2025-to-FY2028 revenue CAGR and a large increase in per-share cash generation.",
     "Base terminal value is about 68% of Base operating value; Bull terminal value is about 75%, so long-duration assumptions remain a major valuation driver.",
     "Customer concentration has risen materially: the top five end customers account for roughly half of revenue, while the largest custom-AI customers are also capable of internal silicon development.",
-    "Net debt of about $35.4B reduces per-share DCF value and makes acquisition/capital-allocation discipline relevant even with very strong current OCF.",
     "The latest filing indicates AI/custom XPU and AI rack mix can improve operating margin while compressing gross margin, so current operating leverage should not be extrapolated mechanically."
   ],
   "unknowns": [
