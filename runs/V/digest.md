@@ -1,5 +1,5 @@
 # Digest — V (as of 2026-09-18)
-score 78.39 (ex-val 83.31, Emerging Outlier) · DI 83.25 · TQ None · archetype compounder — Highest eligible deterministic fit; ties use configured priority · veto PENDING_REVIEW · state WATCH
+score 78.39 (ex-val 83.31, Emerging Outlier) · DI 83.25 · TQ None · archetype compounder — Highest eligible deterministic fit; ties use configured priority · veto CLEARED · state NORMAL_CANDIDATE
 signals {'price_to_base_value': 1.1208, 'valuation_percentile_5y': 0.69, 'revenue_cagr_next_3y': 0.1, 'market_cap_usd': 690000000000.0} · reachable(raw) ['compounder']
 veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
 
@@ -65,6 +65,18 @@ unknowns: Long-run regulation of interchange and routing · Sustainable growth r
 | DI | 83.25 (63.25–91.25) | 0.86 | support | – | Visa is an incumbent that remains a major enabler of the shift from cash to digital money movement. Innovation is not startup-style disruption, but network sta… |
 bull: Agentic commerce, tokenized credentials and real-time money movement can extend Visa's network into new flows. / bear: Account-to-account rails and regulatory routing mandates can reduce Visa's role in some payment flows.
 unknowns: Long-run regulation of interchange and routing · Sustainable growth rate of Visa Direct and value-added services
+
+## evidence_quality
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| ED | 91 | 0.93 | support | – | Decision-critical operating facts are strongly supported by Visa's FY2025 10-K and Q3 FY2026 10-Q/8-K. Revenue, volume, processed transactions, VAS, OCF, capex… |
+unknowns: Long-run regulatory take-rate pressure · Visa Direct economics
+
+## red_team
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| RT | 55 | 0.9 | oppose | V1=cleared, V2=cleared, V3=cleared, V4=cleared, V5=cleared, V6=cleared, V7=cleared, V8=cleared, V9=cleared | The strongest short thesis is not business fragility but valuation and regulation. Visa trades above locked Base value and at the upper half of its five-year P… |
+unknowns: Future interchange/routing rules · Alternative rail share
 
 ## macro_overlay
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
