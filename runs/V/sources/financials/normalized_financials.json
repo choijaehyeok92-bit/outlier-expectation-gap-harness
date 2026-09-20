@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "ticker": "V",
+  "company_name": "Visa Inc.",
+  "as_of_date": "2026-09-18",
+  "reporting_currency": "USD",
+  "documents": [
+    {
+      "document_id": "DOC-001",
+      "source_document": "https://www.sec.gov/Archives/edgar/data/1403161/000140316125000089/0001403161-25-000089-index.html",
+      "document_type": "10-K",
+      "filing_date": "2025-11-06",
+      "period_end": "2025-09-30",
+      "is_amendment": false
+    },
+    {
+      "document_id": "DOC-002",
+      "source_document": "https://www.sec.gov/Archives/edgar/data/1403161/000140316126000104/0001403161-26-000104-index.htm",
+      "document_type": "10-Q",
+      "filing_date": "2026-07-29",
+      "period_end": "2026-06-30",
+      "is_amendment": false
+    },
+    {
+      "document_id": "DOC-003",
+      "source_document": "https://www.sec.gov/Archives/edgar/data/1403161/000140316126000079/0001403161-26-000079-index.htm",
+      "document_type": "10-Q",
+      "filing_date": "2026-04-29",
+      "period_end": "2026-03-31",
+      "is_amendment": false
+    },
+    {
+      "document_id": "DOC-004",
+      "source_document": "https://www.sec.gov/Archives/edgar/data/1403161/000140316126000045/0001403161-26-000045-index.htm",
+      "document_type": "10-Q",
+      "filing_date": "2026-01-30",
+      "period_end": "2025-12-31",
+      "is_amendment": false
+    },
+    {
+      "document_id": "DOC-005",
+      "source_document": "https://www.sec.gov/Archives/edgar/data/1403161/000140316125000052/0001403161-25-000052-index.html",
+      "document_type": "10-Q",
+      "filing_date": "2025-07-30",
+      "period_end": "2025-06-30",
+      "is_amendment": false
+    },
+    {
+      "document_id": "DOC-006",
+      "source_document": "https://www.sec.gov/Archives/edgar/data/1403161/0001403161-25-000037-index.htm",
+      "document_type": "10-Q",
+      "filing_date": "2025-04-30",
+      "period_end": "2025-03-31",
+      "is_amendment": false
+    },
+    {
+      "document_id": "DOC-007",
+      "source_document": "https://www.sec.gov/Archives/edgar/data/1403161/0001403161-25-000017-index.htm",
+      "document_type": "10-Q",
+      "filing_date": "2025-01-31",
+      "period_end": "2024-12-31",
+      "is_amendment": false
+    },
+    {
+      "document_id": "DOC-008",
+      "source_document": "https://www.sec.gov/Archives/edgar/data/1403161/000140316126000103/q32026earningsrelease.htm",
+      "document_type": "earnings_release",
+      "filing_date": "2026-07-28",
+      "period_end": "2026-06-30",
+      "is_amendment": false
+    }
+  ],
+  "facts": [],
+  "adjustment_candidates": [],
+  "extraction_warnings": [
+    {
+      "severity": "high",
+      "message": "GitHub runner SEC fetch returned HTTP 403. Verified SEC filing metadata and existing V source snapshot were used; atomic financial facts were not re-extracted in this execution.",
+      "related_fact_ids": []
+    }
+  ]
+}

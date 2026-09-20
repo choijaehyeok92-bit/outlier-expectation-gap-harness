@@ -1,0 +1,31 @@
+{
+  "stage": "triage",
+  "agents": {
+    "expectation_valuation": "EV",
+    "asymmetry": "AS",
+    "disruptive_innovation": "DI",
+    "financial_survival": "FS"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "proxy_compensation",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "research": {
+    "questions": 13,
+    "pending": 13,
+    "decision_blocking": 13,
+    "deferred": 0,
+    "command": "python harness.py research-plan V"
+  }
+}
+python harness.py prompt V EV
+python harness.py prompt V AS
+python harness.py prompt V DI
+python harness.py prompt V FS

@@ -7,7 +7,7 @@
   "as_of_date": "2026-09-18",
   "frozen": false,
   "financial_pack_required": true,
-  "harness_commit": "bc65d19af7346b7cbc35f581f944c35dac63c2dc",
+  "harness_commit": "d42b8234a0db4168b6a7b753778836ca7710577a",
   "runner": {
     "provider": null,
     "model": null,
