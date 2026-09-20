@@ -82,8 +82,8 @@ unknowns: AI-first ARR composition/incrementality. · Firefly-specific inference
 ## red_team
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| RT | 50 | 0.85 | oppose | V1=cleared, V2=cleared, V3=cleared, V4=cleared, V5=cleared, V6=cleared, V7=cleared, V8=cleared, V9=cleared | The strongest short thesis is structural AI commoditization. Generative models can collapse the value of standalone creative tools, reduce switching costs, and… |
-unknowns: True incremental AI ARR · competitive share among prompt-native tools
+| RT | 50 | 0.92 | oppose | V1=cleared, V2=cleared, V3=cleared, V4=cleared, V5=cleared, V6=cleared, V7=cleared, V8=cleared, V9=cleared | The refreshed short thesis is still structural AI commoditization, not solvency or accounting. Adobe is proving AI adoption—AI-first ending ARR >$650M, creativ… |
+unknowns: How much AI-first ARR is truly incremental rather than bundled, migrated or reclassified … · Firefly-specific inference cost, gross margin and contribution margin.
 
 ## macro_overlay
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |

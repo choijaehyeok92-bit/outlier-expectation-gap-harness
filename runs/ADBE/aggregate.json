@@ -736,7 +736,7 @@
             "agent_id": "RT",
             "owner": true,
             "status": "cleared",
-            "rationale": "No accounting-integrity failure is established."
+            "rationale": "No cutoff-valid restatement, auditor disagreement or accounting-integrity failure is established."
           }
         ],
         "missing_reports": [],
@@ -760,7 +760,7 @@
             "agent_id": "RT",
             "owner": true,
             "status": "cleared",
-            "rationale": "Large recurring OCF funds operations and capital allocation."
+            "rationale": "Estimated TTM OCF of ~$10.8B exceeds total debt; operations and capital allocation are internally funded."
           }
         ],
         "missing_reports": [],
@@ -790,7 +790,7 @@
             "agent_id": "RT",
             "owner": false,
             "status": "cleared",
-            "rationale": "Share count is shrinking through repurchases."
+            "rationale": "Q3 diluted shares used for EPS declined from 424M to 395M y/y."
           }
         ],
         "missing_reports": [],
@@ -814,7 +814,7 @@
             "agent_id": "RT",
             "owner": true,
             "status": "cleared",
-            "rationale": "Subscription ARR and usage support real customer value."
+            "rationale": "Recurring subscription spend, ARR and MAU growth demonstrate paid usage; subsidy dependence is not established."
           }
         ],
         "missing_reports": [],
@@ -838,7 +838,7 @@
             "agent_id": "RT",
             "owner": true,
             "status": "cleared",
-            "rationale": "Cash returns remain high."
+            "rationale": "AI-specific incremental ROIC is unknown, but current consolidated cash returns do not establish a structural collapse."
           }
         ],
         "missing_reports": [],
@@ -862,7 +862,7 @@
             "agent_id": "RT",
             "owner": true,
             "status": "cleared",
-            "rationale": "Risk exists, but current ARR/usage does not establish persistent shrinkage."
+            "rationale": "Total ARR, customer-group subscription revenue, RPO and MAU remain expanding; persistent moat shrinkage is not presently established."
           }
         ],
         "missing_reports": [],
@@ -893,7 +893,7 @@
             "agent_id": "RT",
             "owner": true,
             "status": "cleared",
-            "rationale": "Current price is below Base."
+            "rationale": "Frozen price is below Base and far below Bull; Bull/current is ~3.28x."
           }
         ],
         "missing_reports": [],
@@ -917,7 +917,7 @@
             "agent_id": "RT",
             "owner": true,
             "status": "cleared",
-            "rationale": "Revenue is diversified across creative, documents and enterprise experience."
+            "rationale": "Adobe has multiple major creative, document and enterprise workflows; no fatal single dependency is established."
           }
         ],
         "missing_reports": [],
@@ -947,7 +947,7 @@
             "agent_id": "RT",
             "owner": false,
             "status": "cleared",
-            "rationale": "Recurring cash flow and moderate leverage make this unlikely."
+            "rationale": "Modest net debt and large recurring OCF rebut financing-driven permanent-loss risk; technology impairment remains a scenario risk rather than a bankruptcy veto."
           }
         ],
         "missing_reports": [],
