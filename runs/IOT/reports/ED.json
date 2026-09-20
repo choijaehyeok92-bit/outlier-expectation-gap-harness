@@ -1,0 +1,103 @@
+{
+  "agent_id": "ED",
+  "ticker": "IOT",
+  "as_of_date": "2026-09-18",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 72,
+  "confidence_0_1": 0.86,
+  "thesis": "핵심 재무·고객 지표는 최신 10-Q/10-K와 505개 atomic fact로 직접 검증돼 신뢰도가 높다. 다만 긍정 도메인 대부분이 ARR·$100k+ 고객·RPO라는 동일 성장 묶음에 의존하고, NRR·산업별 매출·신제품 ARR·full proxy가 비어 있다. 따라서 70.55점의 방향은 지지하지만, 해자·지속기간·문화의 독립 증거 수는 점수 분산이 암시하는 것보다 적다.",
+  "evidence": [
+    {
+      "claim": "Stage 0 pack은 SEC 접수번호에 연결된 12개 문서, 505개 fact, 5개 조정후보를 포함하며 스키마 계약과 불변식을 통과했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "through 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "fact",
+      "value": 505
+    },
+    {
+      "claim": "Q2 10-Q가 매출 $508.4M, ARR $2.125B, $100k+ 고객 3,605개, RPO $4.285B를 같은 기준일에 직접 공시한다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 2124742000
+    },
+    {
+      "claim": "현금·시장성증권 $1.326B, TTM OCF $288.4M, capex $32.9M, SBC $330.6M과 희석 +3.28%는 재무제표 fact에서 재현된다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM/Q2 to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 1325710000
+    },
+    {
+      "claim": "FY26 10-K는 단일 고객 ARR 2% 이하, 다수 산업 배포, 미국 외 매출 14%, 중국·대만 공급망과 10:1 의결권 위험을 함께 공시한다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-K_2026-03-16_0001628280-26-018167.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-01-31",
+      "fact_or_estimate": "fact",
+      "value": 0.14
+    },
+    {
+      "claim": "evidence concentration audit에서 customer_expansion이 9개 긍정 도메인, platform_breadth가 6개, ecosystem_scale가 5개 도메인에 재사용됐다.",
+      "source_type": "other",
+      "source": "runs/IOT/digest.md",
+      "period": "analysis snapshot",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "interpretation",
+      "value": 9
+    }
+  ],
+  "counterevidence": [
+    "동일 filing fact의 도메인 재사용은 사실 오류가 아니라 경제동인의 공통성일 수 있다.",
+    "ARR·RPO·large-customer growth가 서로 다른 계약·고객 관측치라 완전히 하나의 지표는 아니다.",
+    "재무 pack이 비교기간과 현금흐름·주식수를 포함해 단순 내러티브 의존은 낮다."
+  ],
+  "unknowns": [
+    "동일 정의 NRR·gross retention.",
+    "산업·제품별 ARR와 매출 비중.",
+    "full 2026 DEF 14A의 보상조건.",
+    "경쟁사 대비 시장점유율·win rate."
+  ],
+  "falsifiers": [
+    "다음 2개 분기에서 ARR·RPO·대형고객이 서로 다른 방향으로 움직이면 단일 성장동인 해석을 수정한다.",
+    "NRR과 제품별 ARR가 공개돼 독립 확장근거가 확인되면 evidence concentration 우려를 낮춘다.",
+    "재작성·중대 내부통제 약점이 발생하면 현재 신뢰도 결론을 기각한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "independent primary evidence drivers",
+      "direction": "up",
+      "threshold": ">=3 per high-scoring thesis",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "NRR/product ARR disclosure",
+      "direction": "up",
+      "threshold": "quantified",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "pack validation errors",
+      "direction": "down",
+      "threshold": "0",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "full DEF 14A와 Investor Day 자료 확보",
+    "NRR·제품/산업별 ARR 신규 공시 확인",
+    "동일 성장 fact 의존 도메인의 점수 재검토"
+  ],
+  "verdict": "support",
+  "subscores": [],
+  "uncertainties": []
+}

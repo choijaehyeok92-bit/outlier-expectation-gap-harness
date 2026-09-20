@@ -1,0 +1,163 @@
+{
+  "agent_id": "AS",
+  "ticker": "IOT",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 66.75,
+  "confidence_0_1": 0.7,
+  "bull_score": 85,
+  "bear_score": 35,
+  "bull_case": "physical AI 플랫폼 확장과 마진 전환이 함께 실현되면 2배 이상 가치상승이 가능하고 순현금이 생존 하방을 제한한다.",
+  "bear_case": "고성장 멀티플이 압축되고 SBC가 지속되면 사업은 생존해도 주가는 Bear 가치까지 크게 하락할 수 있다.",
+  "thesis": "상방은 약 2.1배로 크지만 예외적 5배 경로는 아니다. 제품·고객·지역 확장과 owner-FCF 마진 정상화가 독립 상방축이며 순현금이 파산위험을 낮춘다. 반면 Bear 가치가 현재가의 약 40%라 valuation drawdown은 크고, 확률은 높은 SBC와 terminal 의존 때문에 Base에 과도하게 두지 않는다.",
+  "evidence": [
+    {
+      "claim": "ARR은 $2.125B로 전년 $1.640B 대비 29.5% 증가했고, $100k+ ARR 고객은 3,605개로 30.1% 증가했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01 versus 2025-08-02",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 2124742000,
+      "economic_driver": "customer_expansion"
+    },
+    {
+      "claim": "회사는 fleet에서 시작해 equipment, sites, frontline workers로 앱을 확장했고 운송·건설·제조·유틸리티·정부·교육 등 다양한 physical-operations 산업에 배포했다. FY26 단일 고객 ARR 비중은 2% 이하였다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-K_2026-03-16_0001628280-26-018167.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-01-31",
+      "fact_or_estimate": "fact",
+      "economic_driver": "platform_breadth"
+    },
+    {
+      "claim": "FY26 매출의 약 14%가 미국 외에서 발생했다. 제조사·공급사와 하위 공급사의 중국·대만 노출은 공급 차질 위험으로 공시됐다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-K_2026-03-16_0001628280-26-018167.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-01-31",
+      "fact_or_estimate": "fact",
+      "value": 0.14,
+      "economic_driver": "international_and_supply_chain"
+    },
+    {
+      "claim": "현금 $291.4M, 단기 시장성증권 $537.5M, 장기 시장성증권 $496.8M로 합계 $1.326B이며 유의미한 funded debt가 없다; 운용리스 부채는 $69.5M이다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 1325710000,
+      "economic_driver": "liquidity"
+    },
+    {
+      "claim": "TTM SBC $330.6M은 매출의 17.9%이고 Q2 희석주식수 590.5M은 전년 571.7M보다 3.28% 증가했다. OCF-capex-SBC owner-FCF proxy는 -$75.1M이다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM/Q2 to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "estimate",
+      "value": -75147000,
+      "economic_driver": "dilution_and_owner_fcf"
+    },
+    {
+      "claim": "locked DCF Bear/Base/Bull은 $15.72/$45.13/$83.16으로 Bear/current 0.397, Bull/current 2.10이다.",
+      "source_type": "other",
+      "source": "harness deterministic valuation policy",
+      "period": "10 years from 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "estimate",
+      "value": 2.1026,
+      "economic_driver": "asymmetry"
+    }
+  ],
+  "counterevidence": [
+    "Bull의 82%가 terminal value라 2.1배 상방은 장기 배수에 민감하다.",
+    "Bear 가치는 현재가의 약 40%로 가격 하방이 크다.",
+    "SBC 차감 owner FCF가 음수라 상방의 핵심이 아직 실현되지 않았다."
+  ],
+  "unknowns": [
+    "장기 growth-SaaS base rate.",
+    "국제·신제품별 독립 매출 기여.",
+    "SBC 정상화 확률과 속도."
+  ],
+  "falsifiers": [
+    "Bull/current가 1.6배 아래로 내려가면 outlier upside 요건을 잃는다.",
+    "현금·증권이 $800M 아래이고 OCF가 음수면 permanent-loss 점수를 낮춘다.",
+    "ARR 성장 20% 미만이면 Base 확률을 낮춘다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "현재가는 Bull 가치 $83.16보다 52.4% 낮아 정의상 Veto가 아니다."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "순현금·시장성증권 $1.326B와 양의 OCF가 차입을 크게 상회한다. Bear에서 가격손실은 크지만 사업가치 소멸·파산 요건은 낮다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Bull/current",
+      "direction": "up",
+      "threshold": ">=1.6x",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Bear/current",
+      "direction": "up",
+      "threshold": ">=0.4x",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "positive by FY28",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "EV 경로 분기별 재산출",
+    "국제·신제품 매출 분리 확인",
+    "희석과 순현금 추세 점검"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "Bull/current는 $83.16/$39.55=2.10배이고 제품·지역 확장과 마진/SBC 정상화라는 독립 경로가 2개 이상이므로 관측표 75다."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 60,
+      "rationale": "Bear/current는 0.397로 0.2~0.4 표의 50점이며 순현금·OCF>차입 modifier +10을 적용해 60이다."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 65,
+      "rationale": "Bear/Base/Bull과 terminal 민감도를 분리했지만 장기 SaaS 기준율과 NRR 자료가 부족해 75 기준율/민감도 앵커에는 못 미친다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    }
+  ]
+}

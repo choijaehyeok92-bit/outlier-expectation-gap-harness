@@ -1,0 +1,163 @@
+{
+  "agent_id": "LG",
+  "ticker": "IOT",
+  "as_of_date": "2026-09-18",
+  "domain": "long_term_growth",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 73.0,
+  "confidence_0_1": 0.72,
+  "bull_score": 90,
+  "bear_score": 45,
+  "bull_case": "다수 물리산업의 낮은 디지털 침투와 AI workflow 확장이 10년 이상 20%대 성장을 갱신할 수 있다.",
+  "bear_case": "현재 배수는 이미 장기 낙관을 반영하고, SBC 정상화가 지연되면 높은 매출성장이 주당 경제가치 성장으로 이어지지 않는다.",
+  "thesis": "5년 2배 이상 성장과 5~10년 활주로는 현실적이며 조직도 제품·수익성 양쪽에서 적응을 보였다. 그러나 현재 가격이 이미 고성장을 상당히 반영하고 Base 가치의 terminal 의존이 높아, 기대차는 “고성장 미반영”보다 “성장 지속기간·SBC 정상화가 약간 짧게 반영”된 정도다. 장기 아웃라이어 적격은 유지하되 확신은 중상 수준이다.",
+  "evidence": [
+    {
+      "claim": "ARR은 $2.125B로 전년 $1.640B 대비 29.5% 증가했고, $100k+ ARR 고객은 3,605개로 30.1% 증가했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01 versus 2025-08-02",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 2124742000,
+      "economic_driver": "customer_expansion"
+    },
+    {
+      "claim": "회사는 fleet에서 시작해 equipment, sites, frontline workers로 앱을 확장했고 운송·건설·제조·유틸리티·정부·교육 등 다양한 physical-operations 산업에 배포했다. FY26 단일 고객 ARR 비중은 2% 이하였다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-K_2026-03-16_0001628280-26-018167.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-01-31",
+      "fact_or_estimate": "fact",
+      "economic_driver": "platform_breadth"
+    },
+    {
+      "claim": "FY26 매출의 약 14%가 미국 외에서 발생했다. 제조사·공급사와 하위 공급사의 중국·대만 노출은 공급 차질 위험으로 공시됐다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-K_2026-03-16_0001628280-26-018167.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-01-31",
+      "fact_or_estimate": "fact",
+      "value": 0.14,
+      "economic_driver": "international_and_supply_chain"
+    },
+    {
+      "claim": "Q2 FY27 매출 $508.4M(+29.9% y/y), H1 매출 $987.3M(+30.2%); H1 GAAP 영업이익 $12.1M로 전년 -$59.9M에서 흑자 전환했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "FY2027 Q2/H1",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 508437000,
+      "economic_driver": "growth_and_operating_leverage"
+    },
+    {
+      "claim": "공식 사이트는 20,000+ operations, 350+ integrations, 380,000+ prevented accidents, 누적 R&D $1B+를 제시한다.",
+      "source_type": "company_ir",
+      "source": "https://www.samsara.com/",
+      "period": "available by 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "fact",
+      "value": 20000,
+      "economic_driver": "ecosystem_scale"
+    },
+    {
+      "claim": "Base revenue CAGR next 3y 22%와 5년 약 2.3배 확장을 가정했다.",
+      "source_type": "other",
+      "source": "analyst scenario based on frozen filings",
+      "period": "3y/5y forward from 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "estimate",
+      "value": 2.3,
+      "economic_driver": "opportunity_scale"
+    }
+  ],
+  "counterevidence": [
+    "EV/TTM revenue 11.9x는 시장이 성장 지속을 이미 상당 부분 반영한다.",
+    "국제 매출은 14%로 아직 확장 증거보다 기회가 더 크다.",
+    "SBC 차감 owner FCF가 음수여서 경제가치 2배 경로는 매출 2배보다 더 어려울 수 있다.",
+    "Fleet 외 제품의 별도 ARR가 미공시다."
+  ],
+  "unknowns": [
+    "physical-operations 대상 자산 침투율.",
+    "신제품·국제 ARR의 개별 성장률.",
+    "장기 SBC/매출 정상화 수준."
+  ],
+  "falsifiers": [
+    "3년 revenue CAGR 전망이 15% 아래면 opportunity-scale 조건을 잃는다.",
+    "ARR 성장률이 FY29 전에 15% 미만이면 5~10년 활주로를 3~5년으로 낮춘다.",
+    "새 use case·국제 매출이 3년 내 성장 기여를 못 하면 적응성과 duration을 낮춘다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "ARR growth",
+      "direction": "up",
+      "threshold": ">=20% through FY30",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "international revenue share",
+      "direction": "up",
+      "threshold": ">20%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "positive FY28, >$0.8 FY30",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Investor Day의 5년 TAM·product bridge 확인",
+    "신제품·국제 ARR 분리 추적",
+    "reverse DCF 성장지속기간 업데이트"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "opportunity_scale_5y",
+      "score_0_100": 75,
+      "rationale": "Base 5년 매출은 약 2.2~2.5배가 타당해 관측표 2~3배 구간 75다. 3배 이상은 25%+ 성장 장기지속을 요구해 90을 배제했다."
+    },
+    {
+      "criterion_id": "growth_duration_10y",
+      "score_0_100": 75,
+      "rationale": "낮은 physical-operations 디지털 침투, 제품·지역·고객 확장축으로 5~10년 활주로가 타당해 표 75다. 10년 초과를 입증할 침투율 자료는 없다."
+    },
+    {
+      "criterion_id": "culture_adaptability",
+      "score_0_100": 75,
+      "rationale": "fleet에서 equipment·sites·workforce·AI agents로 자원을 재배치하고 GAAP 흑자 전환을 달성해 75 적응 증거다. 여러 세대 전환 실적이 없어 90은 배제했다."
+    },
+    {
+      "criterion_id": "market_misperception",
+      "score_0_100": 65,
+      "rationale": "현재 EV/TTM revenue 11.9x와 price/Base 0.876은 상당한 성장을 반영한다. 시장이 장기 제품확장과 margin/SBC 정상화를 일부 과소평가할 수 있지만 75의 명백한 reverse-DCF 불일치는 아니다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "opportunity_scale_5y",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "growth_duration_10y",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "culture_adaptability",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "market_misperception",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    }
+  ]
+}

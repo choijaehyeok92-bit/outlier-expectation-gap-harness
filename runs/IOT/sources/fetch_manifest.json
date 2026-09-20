@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.0",
+  "ticker": "IOT",
+  "cik": 1642896,
+  "filer": "Samsara Inc.",
+  "as_of_date": "2026-09-18",
+  "source": "SEC EDGAR",
+  "fetched_at_utc": "2026-09-20T10:09:41.871059+00:00",
+  "excluded_post_cutoff": 0,
+  "shortfalls": [
+    {
+      "requirement": "debt_and_financing",
+      "importance": "conditional_required",
+      "form": "424B2/424B3/424B5/S-3/S-3ASR",
+      "shortfall": 1
+    },
+    {
+      "requirement": "foreign_issuer_filings",
+      "importance": "conditional",
+      "form": "20-F/6-K",
+      "shortfall": 1
+    },
+    {
+      "requirement": "registration_statement",
+      "importance": "conditional",
+      "form": "S-1/F-1",
+      "shortfall": 1
+    }
+  ],
+  "documents": [
+    {
+      "file": "10-K_2026-03-16_0001628280-26-018167.htm",
+      "form": "10-K",
+      "filing_date": "2026-03-16",
+      "report_date": "2026-01-31",
+      "accession": "0001628280-26-018167",
+      "requirement": "latest_annual",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1642896/000162828026018167/iot-20260131.htm",
+      "bytes": 2060683
+    },
+    {
+      "file": "10-Q_2026-09-08_0001628280-26-060909.htm",
+      "form": "10-Q",
+      "filing_date": "2026-09-08",
+      "report_date": "2026-08-01",
+      "accession": "0001628280-26-060909",
+      "requirement": "latest_interim",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1642896/000162828026060909/iot-20260801.htm",
+      "bytes": 1305938
+    },
+    {
+      "file": "10-Q_2026-06-09_0001628280-26-041893.htm",
+      "form": "10-Q",
+      "filing_date": "2026-06-09",
+      "report_date": "2026-05-02",
+      "accession": "0001628280-26-041893",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1642896/000162828026041893/iot-20260502.htm",
+      "bytes": 1007213
+    },
+    {
+      "file": "10-Q_2025-12-09_0001628280-25-056069.htm",
+      "form": "10-Q",
+      "filing_date": "2025-12-09",
+      "report_date": "2025-11-01",
+      "accession": "0001628280-25-056069",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1642896/000162828025056069/iot-20251101.htm",
+      "bytes": 1363864
+    },
+    {
+      "file": "10-Q_2025-09-09_0001642896-25-000074.htm",
+      "form": "10-Q",
+      "filing_date": "2025-09-09",
+      "report_date": "2025-08-02",
+      "accession": "0001642896-25-000074",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1642896/000164289625000074/iot-20250802.htm",
+      "bytes": 1307711
+    },
+    {
+      "file": "10-Q_2025-06-10_0001642896-25-000058.htm",
+      "form": "10-Q",
+      "filing_date": "2025-06-10",
+      "report_date": "2025-05-03",
+      "accession": "0001642896-25-000058",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1642896/000164289625000058/iot-20250503.htm",
+      "bytes": 1095767
+    },
+    {
+      "file": "10-Q_2024-12-10_0001642896-24-000076.htm",
+      "form": "10-Q",
+      "filing_date": "2024-12-10",
+      "report_date": "2024-11-02",
+      "accession": "0001642896-24-000076",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1642896/000164289624000076/iot-20241102.htm",
+      "bytes": 1315919
+    },
+    {
+      "file": "10-K_2025-03-25_0001642896-25-000022.htm",
+      "form": "10-K",
+      "filing_date": "2025-03-25",
+      "report_date": "2025-02-01",
+      "accession": "0001642896-25-000022",
+      "requirement": "historical_annuals",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1642896/000164289625000022/iot-20250201.htm",
+      "bytes": 2211548
+    },
+    {
+      "file": "10-K_2024-03-26_0001642896-24-000016.htm",
+      "form": "10-K",
+      "filing_date": "2024-03-26",
+      "report_date": "2024-02-03",
+      "accession": "0001642896-24-000016",
+      "requirement": "historical_annuals",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1642896/000164289624000016/iot-20240203.htm",
+      "bytes": 2195251
+    },
+    {
+      "file": "DEFA14A_2026-06-01_0001628280-26-039500.htm",
+      "form": "DEFA14A",
+      "filing_date": "2026-06-01",
+      "report_date": "",
+      "accession": "0001628280-26-039500",
+      "requirement": "proxy_compensation",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1642896/000162828026039500/samsara2027proxy-defa14a.htm",
+      "bytes": 10912
+    },
+    {
+      "file": "8-K_2026-09-03_0001628280-26-060438.htm",
+      "form": "8-K",
+      "filing_date": "2026-09-03",
+      "report_date": "2026-09-03",
+      "accession": "0001628280-26-060438",
+      "requirement": "earnings_release",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1642896/000162828026060438/iot-20260903.htm",
+      "bytes": 27164
+    },
+    {
+      "file": "4_2026-09-17_0001895148-26-000017.htm",
+      "form": "4",
+      "filing_date": "2026-09-17",
+      "report_date": "2026-09-15",
+      "accession": "0001895148-26-000017",
+      "requirement": "insider_ownership",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1642896/000189514826000017/xslF345X06/form4-09172026_110934.xml",
+      "bytes": 17170
+    }
+  ]
+}

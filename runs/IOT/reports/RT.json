@@ -1,0 +1,141 @@
+{
+  "agent_id": "RT",
+  "ticker": "IOT",
+  "as_of_date": "2026-09-18",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 55,
+  "confidence_0_1": 0.82,
+  "thesis": "가장 일관된 공매도 논리는 “30% 성장 SaaS”가 아니라 “높은 SBC와 판매비를 감춘 하드웨어 결합 플랫폼”이라는 것이다. TTM 일반 FCF $255M과 달리 SBC 차감 owner FCF는 -$75M, 희석은 3.28%다. EV/TTM 매출 11.9x에서 Base 가치 79%가 terminal에 의존하므로 성장·마진·SBC 정상화 중 하나만 실패해도 Bear $15.72(-60%)가 가능하다. 그러나 순현금·실제 고객 ROI·고객분산·ARR/RPO 성장 때문에 현재 Hard Veto는 성립하지 않는다.",
+  "evidence": [
+    {
+      "claim": "TTM OCF $288.4M-capex $32.9M-SBC $330.6M = owner FCF -$75.1M이며 희석주식수는 y/y 3.28% 증가했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM/Q2 to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "estimate",
+      "value": -75147000
+    },
+    {
+      "claim": "TTM S&M $765.7M은 매출의 41.4%, R&D $375.9M은 20.3%로 아직 높은 운영투자에 의존한다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "estimate",
+      "value": 0.414
+    },
+    {
+      "claim": "locked DCF Base $45.13은 영업가치의 78.8%가 terminal이며 Bear $15.72는 현재가보다 약 60% 낮다.",
+      "source_type": "filing",
+      "source": "runs/IOT/reports/EV.json",
+      "period": "10y forward",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "estimate",
+      "value": 0.788
+    },
+    {
+      "claim": "Class B의 10:1 의결권으로 Class B 보유자가 합산 의결권 과반을 통제한다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-K_2026-03-16_0001628280-26-018167.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-01-31",
+      "fact_or_estimate": "fact",
+      "value": 10
+    },
+    {
+      "claim": "반증 증거: ARR $2.125B(+29.5%), $100k+ 고객 3,605(+30.1%), RPO $4.285B이고 분기·반기 매출 10% 고객이 없다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 4285200000
+    }
+  ],
+  "counterevidence": [
+    "현금·시장성증권 $1.326B와 funded debt 부재로 공매도 논리가 파산 논리로 확장되지는 않는다.",
+    "TTM GAAP 영업이익이 흑자로 전환해 비용구조가 실제로 개선 중이다.",
+    "공식 고객 ROI와 대형고객·RPO 증가는 마케팅만으로 만든 성장이 아님을 보여준다.",
+    "단일 고객·규제 의존이 낮고 여러 산업·제품으로 확장돼 단일 실패점이 제한된다."
+  ],
+  "unknowns": [
+    "NRR·gross retention과 cohort별 CAC payback.",
+    "SBC/매출의 장기 정상화 수준.",
+    "Fleet 외 제품의 ARR와 margin.",
+    "경쟁사 대비 win rate·pricing.",
+    "부품 구매·클라우드 약정 총액."
+  ],
+  "falsifiers": [
+    "TTM owner FCF가 FY28에 양수이고 SBC/매출이 15% 아래면 핵심 공매도 논리가 약화된다.",
+    "ARR·대형고객 성장률이 25% 이상 유지되고 GAAP 영업마진이 5%를 넘으면 Bear 확률을 낮춘다.",
+    "NRR·module attach가 정량 공시되어 코호트 확장이 확인되면 해자 공격을 철회한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "재작성·감사인 이견/교체·중대 내부통제 결함이 확인되지 않았다. 높은 SBC와 듀얼클래스는 거버넌스 위험이지 신뢰 훼손 사건은 아니다."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "양의 TTM OCF와 $1.326B 현금·증권, 사실상 무차입이 영업활동의 반복 외부조달 필요를 반증한다."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "8x ROI·$2M+ 편익, 76% gross margin, ARR와 RPO 성장으로 고객가치 부재라는 필수 요건이 반증된다."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "H1 GAAP 영업손익이 -$59.9M에서 +$12.1M으로 개선되고 OCF가 증가해 구조적 붕괴 증거가 없다. 낮은 owner FCF 품질은 RF 점수로 반영됐다."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "ARR·large customers·RPO와 gross margin이 유지·증가해 실제·지속 축소의 구성요건이 반증된다."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "현재가 $39.55는 Bull DCF $83.16보다 낮다. Base의 야심성은 EV 점수에 반영됐지만 Veto 문구는 성립하지 않는다."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "단일 고객 ARR 2% 이하, 매출 10% 고객 부재, fleet 외 여러 앱과 산업 확장이 치명적 단일 종속을 반증한다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF",
+      "direction": "up",
+      "threshold": "positive by FY28",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "SBC/revenue",
+      "direction": "down",
+      "threshold": "<15%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "ARR growth",
+      "direction": "up",
+      "threshold": ">=25%",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "SBC와 희석을 차감한 owner FCF 추적",
+    "NRR·CAC payback·제품별 ARR 확인",
+    "terminal 비중과 EV/revenue 재평가"
+  ],
+  "verdict": "neutral",
+  "subscores": [],
+  "uncertainties": []
+}

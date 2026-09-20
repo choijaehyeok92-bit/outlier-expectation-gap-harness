@@ -1,0 +1,148 @@
+{
+  "agent_id": "IC",
+  "ticker": "IOT",
+  "as_of_date": "2026-09-18",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 70.55,
+  "confidence_0_1": 0.84,
+  "thesis": "반증 기준은 FY28에도 owner FCF가 음수이거나 ARR 성장률이 2개 분기 연속 18% 아래로 내려가고, 희석·SBC가 개선되지 않는 경우다. 현재 Outlier Growth만 적격이고 9개 Hard Veto는 모두 cleared다. ARR·대형고객·RPO의 약 30% 성장과 플랫폼 확장은 5~10년 지속 가능성을 지지하지만, SBC 차감 owner FCF -$75M, 3.28% 희석, Base 가치의 78.8% terminal 의존은 확신을 제한한다. 결론은 ‘Bull+가 이미 반영돼 비쌈’보다 ‘비싸지만 지속기간이 과소평가됨’에 가깝다. STARTER 1–2%만 승인하고 macro pacing 0.5로 분할 집행한다.",
+  "evidence": [
+    {
+      "evidence_id": "IOT-IC-AGG-20260918",
+      "economic_driver": "archetype_fit",
+      "claim": "Aggregate score is 70.55 (71.88 excluding valuation), Outlier Growth is the only eligible archetype, and all nine Hard Vetoes are cleared.",
+      "source_type": "other",
+      "source": "runs/IOT/aggregate.json",
+      "period": "2026-09-18 run",
+      "as_of_date": "2026-09-18",
+      "value": "70.55 / Outlier Growth / CLEARED",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "evidence_id": "IOT-GROWTH-Q2FY27",
+      "economic_driver": "customer_expansion",
+      "claim": "Q2 revenue was $508.4M (+29.9% y/y), ARR was $2.125B (+29.5%), $100k+ ARR customers reached 3,605 (+30.1%), and RPO was $4.285B.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-01",
+      "value": "$508.4M / $2.125B / 3,605 / $4.285B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "IOT-PLATFORM-FY26",
+      "economic_driver": "platform_breadth",
+      "claim": "The platform has expanded from fleet into equipment, sites and frontline-workforce applications across multiple physical-operations industries; no single customer represented more than 2% of FY2026 ARR.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-K_2026-03-16_0001628280-26-018167.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-01-31",
+      "value": "largest customer <=2% of ARR",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "IOT-OWNER-FCF-TTM-20260801",
+      "economic_driver": "dilution_and_owner_fcf",
+      "claim": "TTM regular FCF was about $255.5M, but subtracting $330.6M of SBC produced an owner-FCF proxy of -$75.1M; diluted shares rose 3.28% y/y.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM/Q2 to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "value": "$255.5M / -$75.1M / +3.28%",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "IOT-DCF-20260918",
+      "economic_driver": "expectation_gap",
+      "claim": "Locked owner-FCF/share DCF values are Bear $15.72, Base $45.13 and Bull $83.16 versus $39.55, with price/Base 0.8763 and 78.8% of Base operating value from terminal value.",
+      "source_type": "other",
+      "source": "runs/IOT/aggregate.json",
+      "period": "10-year locked DCF",
+      "as_of_date": "2026-09-18",
+      "value": "$15.72 / $45.13 / $83.16; 0.8763x",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "IOT-IC-RISK-20260918",
+      "economic_driver": "decision_risk",
+      "claim": "Dispersion is downside-skewed by 11.25 and requires a one-band position reduction; the macro overlay leaves fundamentals unchanged but sets purchase pacing to 0.5.",
+      "source_type": "other",
+      "source": "runs/IOT/aggregate.json",
+      "period": "2026-09-18 run",
+      "as_of_date": "2026-09-18",
+      "value": "11.25 / reduce 1 band / pacing 0.5",
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "Outlier Growth is the only eligible archetype: Growth and Compounder both fail reinvestment/FCF-quality gates, while Moonshot misses the disruptive-innovation and asymmetry thresholds.",
+    "The positive case is concentrated: customer expansion is reused across nine scored domains and platform breadth across six, so the domain count overstates the number of independent economic drivers.",
+    "Bear value of $15.72 is about 60% below the frozen price, while Base value is only about 14% above it and depends heavily on terminal value.",
+    "Dual-class voting control and incomplete long-run compensation disclosure weaken shareholder alignment even though no accounting-integrity veto is present."
+  ],
+  "unknowns": [
+    "Same-definition net revenue retention, gross retention and cohort-level CAC payback; the filings and available investor materials reviewed for this run did not disclose them.",
+    "Fleet versus equipment, sites and workforce ARR/revenue and margin; the reviewed 10-K, 10-Q and company materials did not provide a product bridge.",
+    "The long-run normalized SBC/revenue and dilution rate needed to convert regular FCF into owner FCF.",
+    "Full 2026 proxy compensation KPIs, performance-stock conditions and insider ownership detail; only the available DEFA14A and Form 4 were in the cutoff pack.",
+    "Quantified component-purchase and long-term cloud/communications commitments; the reviewed filings did not provide a complete comparable total."
+  ],
+  "uncertainties": [],
+  "falsifiers": [
+    "TTM owner FCF remains negative in FY2028 or materially trails the locked Base path of $0.18 per share.",
+    "ARR growth falls below 18% for two consecutive quarters without an offsetting acceleration in owner FCF/share.",
+    "Diluted-share growth exceeds 4% for two consecutive quarters or SBC remains at or above 15% of revenue through FY2030."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Owner FCF/share",
+      "direction": "up",
+      "threshold": "positive by FY2028 and >=$0.80 by FY2030",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "ARR growth",
+      "direction": "up",
+      "threshold": ">=20%, with 18% as the two-quarter falsification floor",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "SBC/revenue and diluted-share growth",
+      "direction": "down",
+      "threshold": "SBC/revenue <15% and diluted-share growth <3% y/y",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next 10-Q: ARR, large-customer growth, SBC, diluted shares and owner FCF versus the locked path.",
+    "Any investor-day or filing disclosure that separates product, international, retention and cohort economics.",
+    "Refreeze the valuation after FY2028 guidance and rerun terminal-value and 15x-multiple sensitivity."
+  ],
+  "verdict": "support",
+  "ic_state": "STARTER",
+  "plain_language": {
+    "business": "Samsara는 차량, 장비, 작업 현장과 현장 근로자의 데이터를 연결해 안전과 운영 효율을 높이는 구독형 소프트웨어·기기 플랫폼을 판매한다. 차량 관리에서 시작해 여러 물리 산업의 운영 시스템으로 넓히고 있다.",
+    "opportunity": "연간 반복 매출, 매출과 대형 고객 수가 모두 약 30% 늘어 실제 채택은 강하다. 여러 제품을 한 플랫폼으로 묶고 해외와 인접 업무로 확장하면 5~10년 성장 기간이 시장 예상보다 길 수 있다.",
+    "risk": "주식보상비용을 실제 주주 비용으로 빼면 최근 12개월 owner FCF는 아직 음수이고 주식 수도 3% 넘게 늘었다. Base 가치의 대부분이 먼 미래 현금흐름에 달려 있어 성장·마진·희석 중 하나만 빗나가도 큰 주가 하락이 가능하다.",
+    "decision_reason": "장기 아웃라이어 성장주 기준과 모든 중대 탈락 조건은 통과했지만 안전마진은 크지 않고 현금창출의 질은 아직 검증 중이다. 따라서 최초 비중은 1~2% Starter로 제한하며, 거시환경을 반영해 평소의 절반 속도로 나눠 매수하는 결론이다."
+  },
+  "subscores": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

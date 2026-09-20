@@ -1,0 +1,148 @@
+{
+  "agent_id": "MT",
+  "ticker": "IOT",
+  "as_of_date": "2026-09-18",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 77.0,
+  "confidence_0_1": 0.78,
+  "bull_score": 90,
+  "bear_score": 50,
+  "bull_case": "누적 데이터와 확장되는 앱·integration이 더 좋은 AI와 더 낮은 고객 운영비를 만들면 전환비용과 브랜드가 함께 강화된다.",
+  "bear_case": "AI 기능이 범용화되고 고객이 OEM·점솔루션 조합으로 쉽게 이동하면 데이터 규모가 가격결정력으로 이어지지 않는다.",
+  "thesis": "해자는 단일 하드웨어가 아니라 장기간 누적되는 physical-operations 데이터, 통합 앱, API·integration, 사용자 워크플로의 결합에서 강화된다. ARR·고객·RPO 증가는 현재 축소가 아니라 확대를 지지한다. 다만 데이터 우위가 가격결정력으로 전환되는 정도와 NRR이 공개되지 않아 완전한 복리형 방어벽으로 단정하지 않는다.",
+  "evidence": [
+    {
+      "claim": "ARR은 $2.125B로 전년 $1.640B 대비 29.5% 증가했고, $100k+ ARR 고객은 3,605개로 30.1% 증가했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01 versus 2025-08-02",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 2124742000,
+      "economic_driver": "customer_expansion"
+    },
+    {
+      "claim": "RPO는 $4.285B이며 이 중 약 $1.839B를 다음 12개월에 인식할 예정이고, 어떤 고객도 분기·반기 매출의 10%를 넘지 않았다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 4285200000,
+      "economic_driver": "visibility_and_concentration"
+    },
+    {
+      "claim": "회사는 fleet에서 시작해 equipment, sites, frontline workers로 앱을 확장했고 운송·건설·제조·유틸리티·정부·교육 등 다양한 physical-operations 산업에 배포했다. FY26 단일 고객 ARR 비중은 2% 이하였다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-K_2026-03-16_0001628280-26-018167.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-01-31",
+      "fact_or_estimate": "fact",
+      "economic_driver": "platform_breadth"
+    },
+    {
+      "claim": "공식 사이트는 20,000+ operations, 350+ integrations, 380,000+ prevented accidents, 누적 R&D $1B+를 제시한다.",
+      "source_type": "company_ir",
+      "source": "https://www.samsara.com/",
+      "period": "available by 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "fact",
+      "value": 20000,
+      "economic_driver": "ecosystem_scale"
+    },
+    {
+      "claim": "TTM 매출 $1.848B, gross margin 76.4%, GAAP 영업이익 $19.4M(1.0%), OCF $288.4M, capex $32.9M, SBC $330.6M이다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "estimate",
+      "value": 1847552000,
+      "economic_driver": "operating_scale"
+    }
+  ],
+  "counterevidence": [
+    "Verizon Connect·Geotab·Motive와 기존 point-solution 업체가 가격과 기능에서 대응할 수 있다.",
+    "350+ integrations는 상호운용성을 높이는 동시에 고객의 데이터 이동을 쉽게 만들 수 있다.",
+    "하드웨어 조달·통신망 의존은 순수 SaaS보다 복잡성과 margin risk를 높인다."
+  ],
+  "unknowns": [
+    "동일정의 NRR와 module attach rate.",
+    "경쟁사 대비 win rate와 churn 이유.",
+    "고객 데이터 이전비용과 평균 구축기간."
+  ],
+  "falsifiers": [
+    "ARR 성장과 large-customer growth가 2개 분기 연속 20% 미만이면 강화 가설을 낮춘다.",
+    "gross margin이 70% 아래로 떨어지면 하드웨어 범용화 위험을 높인다.",
+    "integration 수·application attach가 정체되면 생태계 점수를 낮춘다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "ARR·$100k+ 고객·RPO가 약 30% 이상 증가하고 gross margin 76%가 유지돼 해자 지표의 실제·지속 축소라는 두 요건이 관측되지 않는다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "ARR and RPO growth",
+      "direction": "up",
+      "threshold": ">=20%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "large customers",
+      "direction": "up",
+      "threshold": ">=20%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "gross margin",
+      "direction": "up",
+      "threshold": ">=74%",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "NRR·module attach 공시",
+    "경쟁 제품 win/loss 사례",
+    "API·integration 사용량 추세"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 75,
+      "rationale": "ARR·대형고객·RPO의 동시 30%대 성장은 전환비용과 wallet-share 강화에 부합한다. 직접 가격 인상·NRR 자료가 없어 90을 배제했다."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 85,
+      "rationale": "ARR, 대형고객, RPO, operations, integrations 등 3개 이상 규모 수치와 전년 증가 추세가 확인돼 관측표 85다. 구체 전환비용 원가 자료가 없어 90은 배제했다."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 70,
+      "rationale": "통합 데이터 플랫폼·350+ integrations·다수 앱은 복수 방어층이나 카메라·텔레매틱스 하드웨어와 AI 기능은 경쟁사가 복제할 수 있어 75보다 한 단계 보수적으로 70이다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    }
+  ]
+}
