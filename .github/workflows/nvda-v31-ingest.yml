@@ -1,0 +1,39 @@
+name: NVDA v3.1 ingest CP evidence
+
+on:
+  push:
+    branches:
+      - analysis/nvda-v31-2026-09-19
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: analysis/nvda-v31-2026-09-19
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Ingest CP evidence and render prompt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python harness.py research-ingest NVDA-V31-2026-09-19 runs/NVDA-V31-2026-09-19/research/packet_cp_gate.json
+          python harness.py research-plan NVDA-V31-2026-09-19
+          python harness.py research-prompt NVDA-V31-2026-09-19 --out runs/NVDA-V31-2026-09-19/research_prompt_v31.md
+          python harness.py prompt NVDA-V31-2026-09-19 CP --out runs/NVDA-V31-2026-09-19/CP_prompt_v31.md
+      - name: Commit research artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/NVDA-V31-2026-09-19
+          git commit -m "research(nvda): ingest CP gate evidence" || exit 0
+          git push
