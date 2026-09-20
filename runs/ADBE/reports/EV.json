@@ -6,101 +6,129 @@
   "role": "domain_analyst",
   "analysis_status": "complete",
   "score_0_100": 83,
-  "confidence_0_1": 0.8,
-  "bull_score": 92.25,
-  "bear_score": 62.25,
-  "bull_case": "AI monetization plus continued share-count shrinkage can support Bull value above $800.",
-  "bear_case": "If AI commoditizes creative workflows and growth fades, Bear value around $234 leaves little downside cushion from current price.",
-  "thesis": "At $248.92, Adobe trades at about half the locked Base DCF of ~$495.57. The valuation no longer requires heroic execution; the market is pricing substantial AI disruption or structurally lower growth. Base still assumes owner FCF/share grows from about $20 to $38 over ten years, which is demanding but consistent with high margins, buybacks and low-teens subscription growth.",
+  "confidence_0_1": 0.88,
+  "bull_score": 93,
+  "bear_score": 60,
+  "bull_case": "Current price is roughly half the locked Base value; AI-first ARR is now >$650M and TTM owner-style FCF/share is near the Base path starting point.",
+  "bear_case": "Bear value is only modestly below current price and terminal value remains material; if AI commoditizes workflows, the locked long-run FCF path could prove too optimistic.",
+  "thesis": "The deterministic valuation signal is unchanged: $248.92 / locked Base $495.57 = ~0.502x, mapping to 90 for reverse-DCF burden and 85 for Base return. New evidence supports, but does not rewrite, the frozen owner-FCF paths: TTM owner-style FCF after capex and SBC is estimated at ~$21.44/share and AI-first ending ARR exceeds $650M. Valuation robustness remains 70 because terminal value is material and Firefly-specific economics/incrementality remain unknown.",
   "evidence": [
     {
-      "claim": "H1 OCF was $5.123B, PP&E purchases $95M, and SBC $1.043B.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
-      "period": "Q2/H1 FY2026",
-      "as_of_date": "2026-06-15",
-      "value": null,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "Q3 revenue was $6.76B, ARR $27.50B and OCF $2.52B.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
-      "period": "Q3 FY2026",
-      "as_of_date": "2026-09-10",
-      "value": "6.76/27.50/2.52",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "Locked Bear/Base/Bull are about $233.72/$495.57/$817.33.",
+      "claim": "Locked Bear/Base/Bull values are ~$233.72/$495.57/$817.33 at the frozen $248.92 price; price/Base is ~0.502x.",
       "source_type": "other",
       "source": "runs/ADBE/sources/README.md",
-      "period": "10y DCF",
+      "period": "10-year locked DCF",
       "as_of_date": "2026-09-18",
-      "value": "233.72/495.57/817.33",
+      "value": "$233.72/$495.57/$817.33; 0.502x",
       "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "TTM owner-style FCF after capex and SBC is estimated at ~$8.521B, or ~$21.44/share using frozen 397.5M shares.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm; https://www.sec.gov/Archives/edgar/data/796343/000079634326000112/adbe-20260529.htm; https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbeex991q326.htm",
+      "period": "TTM through Q3 FY2026",
+      "as_of_date": "2026-09-18",
+      "value": "~$21.44/share",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Q3 AI-first ending ARR exceeded $650M and grew >150% y/y.",
+      "source_type": "ir",
+      "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/01906202/c6yetrerew.pdf",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": ">$650M / >150%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 revenue was $6.760B (+13% y/y) and OCF was $2.523B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbeex991q326.htm",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "$6.760B / $2.523B",
+      "fact_or_estimate": "fact"
     }
   ],
   "counterevidence": [
-    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+    "Bear value (~$233.72) is only modestly below the frozen current price, so a structural moat break can remove the apparent margin of safety.",
+    "Base and Bull still rely materially on terminal value.",
+    "Firefly-specific inference economics and AI-first ARR incrementality remain undisclosed."
   ],
   "unknowns": [
-    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+    "Firefly contribution margin and AI-first ARR incrementality.",
+    "Whether the locked Base owner-FCF/share growth path survives a full AI competition cycle."
   ],
   "falsifiers": [
-    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+    "Owner-style FCF/share falls materially below the Bear path for multiple periods.",
+    "AI monetization fails to offset erosion in core creative/document subscription economics.",
+    "A lower terminal multiple or weaker normalized FCF removes most of the Base discount."
   ],
   "hard_veto_flags": [
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
       "status": "cleared",
-      "rationale": "Current price is below Base and far below Bull, so it does not require an unrealistic Bull+ case."
+      "rationale": "Frozen current price is below Base and far below Bull; Bull/current is ~3.28x."
     }
   ],
   "key_kpis": [
     {
-      "name": "owner FCF/share",
+      "name": "owner-style FCF/share",
       "direction": "up",
-      "threshold": "sustained high-single-digit+ growth",
+      "threshold": "track at or above conservative Base path",
       "cadence": "quarterly/annual"
+    },
+    {
+      "name": "price/Base value",
+      "direction": "down",
+      "threshold": "remain <0.85x for Buffett-style margin of safety",
+      "cadence": "market"
+    },
+    {
+      "name": "AI-first ARR",
+      "direction": "up",
+      "threshold": "translate into durable cash-flow growth",
+      "cadence": "quarterly"
     }
   ],
   "next_checks": [
-    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+    "FY2026 10-K owner FCF inputs.",
+    "Same-definition AI-first ARR composition and margin.",
+    "Revisit frozen DCF paths only through a new refreeze if fundamentals materially change."
   ],
   "verdict": "support",
   "subscores": [
     {
       "criterion_id": "reverse_dcf_burden",
       "score_0_100": 90,
-      "rationale": "price/Base≈0.502, so locked signal_map <=0.7 = 90."
+      "rationale": "Locked price/Base = 248.92 / 495.57 ≈ 0.502, so signal_map <=0.7 requires 90."
     },
     {
       "criterion_id": "base_return",
       "score_0_100": 85,
-      "rationale": "price/Base≈0.502, so locked signal_map <=0.7 = 85."
+      "rationale": "Locked price/Base ≈0.502, so signal_map <=0.7 requires 85."
     },
     {
       "criterion_id": "valuation_robustness",
       "score_0_100": 70,
-      "rationale": "Base remains below Bull and starts near current normalized owner FCF, but terminal value remains material."
+      "rationale": "Between 50 and 75: TTM owner-style FCF/share supports the Base starting point, but terminal value remains material and AI economics are not fully verified, so 75 multi-assumption robustness is not yet earned."
     }
   ],
   "uncertainties": [
     {
       "criterion_id": "reverse_dcf_burden",
-      "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "severity": "minor",
+      "rationale": "Mechanical price/Base signal is highly favorable under the frozen DCF."
     },
     {
       "criterion_id": "base_return",
-      "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "severity": "minor",
+      "rationale": "Mechanical price/Base signal is highly favorable; path accuracy remains separate."
     },
     {
       "criterion_id": "valuation_robustness",
       "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "rationale": "Terminal dependence and AI economics remain the core robustness risks."
     }
   ],
   "valuation_inputs": {
