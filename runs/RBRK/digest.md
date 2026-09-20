@@ -91,6 +91,12 @@ unknowns: Agent Cloud와 Agent Identity의 standalone ARR·마진·retention. ·
 | MO | 45 | 0.91 | neutral mult=0.5 | – | 글로벌 금융여건과 지정학을 분리하면, 신용시장은 정상 작동하지만 할인율과 지정학 충격이 매수 속도를 제약한다. 연준은 9월 16일 정책금리를 3.75~4.00%로 인상했고 HY OAS는 270bp로 경색 신호는 약하다. 반면 중동 전쟁과 Hormuz/Bab el-Mandeb 차질, 제… |
 unknowns: How long Middle East energy/shipping disruption persists. · Whether high real rates materially slow enterprise cybersecurity budgets.
 
+## investment_committee
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| IC | 69.04 | 0.91 | support | – | RBRK는 v3.2에서 Long-Term Outlier Growth 조건을 모두 통과하고 Hard Veto 9개도 cleared다. 고객확장·해자궤적·5~10년 기회는 강하지만 owner-level 현금창출은 아직 미성숙하다. RF 59, FS 65.75, AS 66.25와 약 5% … |
+unknowns: Normalized long-run SBC and fully diluted share count. · Agent Cloud/Identity standalone ARR, retention and margins.
+
 ## Archetype fit
 {"buffett_value": {"eligible": false, "fit_score": 64.86127451, "failed_conditions": ["criterion.reinvestment_fcf.fcf_per_share_quality", "domain.financial_survival", "domain.management_allocation"], "missing_conditions": [], "blocking_vetoes": []}, "compounder": {"eligible": false, "fit_score": 68.06041667, "failed_conditions": ["domain.reinvestment_fcf", "domain.management_allocation", "domain.financial_survival", "criterion.reinvestment_fcf.incremental_roic"], "missing_conditions": [], "blocking_vetoes": []}, "growth": {"eligible": false, "fit_score": 69.06928375, "failed_conditions": ["domain.structural_leadership", "domain.reinvestment_fcf", "domain.financial_survival", "criterion.reinvestment_fcf.fcf_per_share_quality"], "missing_conditions": [], "blocking_vetoes": []}, "moonshot": {"eligible": false, "fit_score": 69.87570879, "failed_conditions": ["domain.disruptive_innovation", "domain.structural_leadership", "domain.asymmetry"], "missing_conditions": [], "blocking_vetoes": []}, "outlier_growth": {"eligible": true, "fit_score": 70.51923077, "failed_conditions": [], "missing_conditions": [], "blocking_vetoes": []}}
 ## Provider calibration
