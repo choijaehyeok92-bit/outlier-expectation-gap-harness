@@ -1,82 +1,100 @@
 {
   "agent_id": "MO",
   "ticker": "V",
-  "as_of_date": "2026-09-17",
+  "as_of_date": "2026-09-18",
   "domain": "macro_overlay",
   "role": "overlay",
   "analysis_status": "complete",
   "score_0_100": 45,
-  "confidence_0_1": 0.55,
-  "thesis": "금융여건이 완화에서 긴축으로 방향을 틀었다. 연준은 2026-09-16 FOMC에서 25bp를 인상해 3.75~4.00%로 올렸다. 3년여 만의 첫 인상이며 유가 급등발 인플레이션이 이유다. 점도표는 2026년 말과 2027년 말 모두 4.00~4.25%를 가리킨다. 실질금리 상승은 듀레이션이 긴 성장주 밸류에이션에 직접적인 역풍이다. 동시에 미 하이일드 OAS는 약 271bp로 장기 중앙값 450bp 대비 역사적 최저 십분위에 있어 신용시장이 완벽을 가정한 가격이다. 시스템 유동성 스트레스나 발행시장 경색의 증거는 없다. 긴축 전환과 무쿠션 신용 프리미엄의 조합은 신규 매수 속도를 늦출 근거이며 위험예산 배수 0.7을 제안한다. 종목 점수에는 반영하지 않는다.",
+  "confidence_0_1": 0.8,
+  "thesis": "As of 2026-09-18, U.S. financial conditions remained loose on the latest Chicago Fed NFCI reading, but the Fed had just raised its policy range to 3.75%-4.00% and global bond yields moved sharply higher. Credit spreads remained tight, while Middle East energy/shipping disruption and persistent U.S.-China critical-mineral/export-control friction warranted slower purchase pacing without changing fundamental scores.",
   "evidence": [
     {
-      "claim": "연준이 2026-09-16 FOMC에서 정책금리를 25bp 인상해 3.75~4.00%로 올렸다. 3년여 만의 첫 인상이며 표결은 12-0이었다. 성명은 \"인플레이션이 여전히 높다\"고 기술했고 유가 급등이 배경으로 지목됐다.",
+      "claim": "The FOMC raised the federal funds target range by 25 bp to 3.75%-4.00% on 2026-09-16.",
       "source_type": "other",
       "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
       "period": "2026-09 FOMC",
       "as_of_date": "2026-09-16",
-      "value": 4.0,
+      "value": 4,
       "fact_or_estimate": "fact"
     },
     {
-      "claim": "9월 점도표는 2026년 말과 2027년 말 정책금리를 모두 4.00~4.25%로 제시해 추가 인상 가능성을 남겼다.",
+      "claim": "Chicago Fed NFCI was -0.560 for the week ending 2026-09-11, indicating looser-than-average financial conditions.",
       "source_type": "other",
-      "source": "https://www.bondsavvy.com/fixed-income-investments-blog/fed-dot-plot",
-      "period": "2026-09 SEP",
-      "as_of_date": "2026-09-16",
-      "value": 4.25,
+      "source": "https://fred.stlouisfed.org/graph/?graph_id=1308263",
+      "period": "week ending 2026-09-11",
+      "as_of_date": "2026-09-11",
+      "value": -0.56,
       "fact_or_estimate": "fact"
     },
     {
-      "claim": "미 하이일드 OAS는 2026년 9월 약 271bp로 장기 중앙값 약 450bp 대비 역사적 최저 십분위에 있다. 신용 위험 프리미엄에 완충이 거의 없다.",
+      "claim": "ICE BofA US High Yield OAS was 2.70% on 2026-09-17, indicating no broad credit-market stress.",
+      "source_type": "other",
+      "source": "https://fred.stlouisfed.org/data/BAMLH0A0HYM2",
+      "period": "2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": 2.7,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Middle East conflict was keeping oil above $100 and the Strait of Hormuz was largely cut off, with only four commodities vessels reported passing on the prior Thursday.",
       "source_type": "secondary",
-      "source": "https://tradingeconomics.com/united-states/bofa-merrill-lynch-us-high-yield-option-adjusted-spread-fed-data.html",
-      "period": "2026-09",
-      "as_of_date": "2026-09-10",
-      "value": 271,
+      "source": "https://www.reuters.com/business/energy/oil-prices-fall-1-hopes-limited-supply-disruptions-2026-09-18/",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Chinese export curbs on gallium and germanium continued to constrain Western supply, with China still dominant in primary production.",
+      "source_type": "secondary",
+      "source": "https://www.reuters.com/world/china/niche-metals-test-wests-resilience-chinese-export-curbs-2026-09-18/",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": null,
       "fact_or_estimate": "fact"
     }
   ],
   "counterevidence": [
-    "신용 스프레드가 최저 십분위라는 것은 자금조달 여건 자체는 여전히 우호적이라는 뜻이다. 발행시장 경색이나 시스템 유동성 스트레스의 증거는 없다.",
-    "25bp 한 번의 인상은 절대 수준으로 보면 여전히 중립 근처다. 긴축 사이클의 시작이라고 단정할 근거는 아직 부족하다.",
-    "인플레이션 원인이 유가라는 공급측 요인이면 정책 지속성이 낮을 수 있다."
+    "The NFCI remained materially below zero, so broad financial conditions were still easier than average despite the policy-rate hike.",
+    "High-yield spreads remained tight rather than signaling a funding freeze.",
+    "The macro overlay changes pacing only and does not alter Visa's fundamental score."
   ],
   "unknowns": [
-    "유가발 인플레이션의 지속 기간과 연준의 반응함수.",
-    "긴축 전환이 AI 인프라 투자 자금조달(특히 투자등급 미만 AI 클라우드)에 미치는 시차 효과.",
-    "하이일드 스프레드 정상화가 시작될 경우의 속도."
+    "Duration and severity of Middle East energy and shipping disruptions.",
+    "Whether the September Fed hike develops into a sustained tightening cycle.",
+    "How quickly alternative non-China critical-mineral supply can scale."
   ],
   "falsifiers": [
-    "다음 두 차례 FOMC에서 동결 또는 인하로 전환되면 긴축 전환 판단은 기각되고 배수를 1.0으로 되돌린다.",
-    "하이일드 OAS가 400bp를 넘어서면 위험예산 배수를 0.5 이하로 추가 하향한다.",
-    "투자등급 발행시장이 2주 이상 사실상 중단되면 시스템 유동성 스트레스로 재분류한다."
+    "A durable reopening of Hormuz and normalization of oil/fuel logistics would lower geopolitical pacing risk.",
+    "A reversal of Fed tightening with stable inflation would reduce financial-conditions caution.",
+    "A material widening of high-yield OAS above 4% would invalidate the current no-credit-stress assessment."
   ],
   "hard_veto_flags": [],
   "key_kpis": [
     {
-      "name": "연방기금금리 목표범위",
-      "direction": "down",
-      "threshold": "4.25% 초과 시 추가 감속",
-      "cadence": "FOMC마다"
-    },
-    {
-      "name": "미 하이일드 OAS",
-      "direction": "down",
-      "threshold": "400bp 초과 시 배수 0.5",
+      "name": "Chicago Fed NFCI",
+      "direction": "up",
+      "threshold": "above 0 = tighter-than-average",
       "cadence": "weekly"
     },
     {
-      "name": "10년 실질금리",
+      "name": "ICE BofA US HY OAS",
+      "direction": "up",
+      "threshold": "above 4% = materially higher credit stress",
+      "cadence": "daily/weekly"
+    },
+    {
+      "name": "Brent crude / Hormuz shipping",
       "direction": "down",
-      "threshold": "상승 지속 시 듀레이션 리스크 확대",
-      "cadence": "monthly"
+      "threshold": "normalization of energy and vessel flows",
+      "cadence": "daily"
     }
   ],
   "next_checks": [
-    "다음 FOMC 성명과 점도표 변화 확인",
-    "하이일드·투자등급 OAS 추세와 발행 규모 확인",
-    "10년 TIPS 실질금리 추세 확인"
+    "Next FOMC communication and Treasury-yield response",
+    "HY OAS and broad funding-market stress indicators",
+    "Hormuz/Red Sea shipping and U.S.-China export-control changes"
   ],
   "verdict": "neutral",
   "subscores": [],
@@ -96,6 +114,178 @@
       }
     }
   },
-  "risk_budget_multiplier": 0.7,
-  "cached_from": "runs/_macro/2026-09-17/MO.json"
+  "risk_budget_multiplier": 0.5,
+  "cached_from": "runs/_macro/2026-09-17/MO.json",
+  "cache_scope": "global_components_only",
+  "global_components": {
+    "financial_conditions": {
+      "scope": "global",
+      "as_of_utc": "2026-09-18T16:00:00+00:00",
+      "summary": "Financial conditions were still loose on the latest NFCI reading, but the Fed had just raised rates and global long yields moved higher; use moderate pacing caution.",
+      "evidence": [
+        {
+          "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+          "as_of_date": "2026-09-16"
+        },
+        {
+          "source": "https://fred.stlouisfed.org/graph/?graph_id=1308263",
+          "as_of_date": "2026-09-11"
+        }
+      ],
+      "risk_budget_multiplier": 0.8
+    },
+    "credit_liquidity": {
+      "scope": "global",
+      "as_of_utc": "2026-09-18T15:00:00+00:00",
+      "summary": "High-yield spreads remained tight, indicating functioning credit markets and no broad liquidity stress.",
+      "evidence": [
+        {
+          "source": "https://fred.stlouisfed.org/data/BAMLH0A0HYM2",
+          "as_of_date": "2026-09-17"
+        }
+      ],
+      "risk_budget_multiplier": 1
+    },
+    "geopolitical_events": {
+      "scope": "global",
+      "as_of_utc": "2026-09-18T23:00:00+00:00",
+      "summary": "Middle East conflict was materially disrupting energy and shipping routes, while other global conflicts remained active.",
+      "evidence": [
+        {
+          "source": "https://www.reuters.com/business/energy/oil-prices-fall-1-hopes-limited-supply-disruptions-2026-09-18/",
+          "as_of_date": "2026-09-18"
+        },
+        {
+          "source": "https://www.reuters.com/world/china/global-markets-wrapup-1-2026-09-18/",
+          "as_of_date": "2026-09-18"
+        }
+      ],
+      "dimensions": {
+        "military_conflict": {
+          "level": "high",
+          "regions": [
+            "Middle East",
+            "Iran",
+            "Saudi Arabia",
+            "Yemen",
+            "Ukraine"
+          ],
+          "routes": [],
+          "dependencies": [
+            "crude oil",
+            "diesel"
+          ],
+          "structural_events": []
+        },
+        "energy_disruption": {
+          "level": "high",
+          "regions": [
+            "Middle East",
+            "Saudi Arabia",
+            "Iran"
+          ],
+          "routes": [
+            "Strait of Hormuz",
+            "Red Sea"
+          ],
+          "dependencies": [
+            "crude oil",
+            "diesel",
+            "LNG"
+          ],
+          "structural_events": []
+        },
+        "shipping_disruption": {
+          "level": "high",
+          "regions": [
+            "Middle East",
+            "Yemen",
+            "Saudi Arabia"
+          ],
+          "routes": [
+            "Strait of Hormuz",
+            "Red Sea"
+          ],
+          "dependencies": [
+            "energy shipping",
+            "commodity shipping"
+          ],
+          "structural_events": []
+        },
+        "sovereign_policy_instability": {
+          "level": "moderate",
+          "regions": [
+            "United States",
+            "Middle East"
+          ],
+          "routes": [],
+          "dependencies": [
+            "monetary policy",
+            "energy policy"
+          ],
+          "structural_events": []
+        }
+      }
+    },
+    "structural_trade": {
+      "scope": "global",
+      "as_of_utc": "2026-09-18T23:00:00+00:00",
+      "summary": "Trade fragmentation, export controls and sanctions remained persistent, especially across U.S.-China technology/critical-mineral links and Iran-related finance.",
+      "evidence": [
+        {
+          "source": "https://www.reuters.com/world/china/niche-metals-test-wests-resilience-chinese-export-curbs-2026-09-18/",
+          "as_of_date": "2026-09-18"
+        },
+        {
+          "source": "https://home.treasury.gov/news/press-releases/sb0632",
+          "as_of_date": "2026-09-17"
+        }
+      ],
+      "dimensions": {
+        "trade_fragmentation": {
+          "level": "moderate",
+          "regions": [
+            "United States",
+            "China"
+          ],
+          "routes": [],
+          "dependencies": [
+            "critical minerals",
+            "LNG",
+            "tariffs"
+          ],
+          "structural_events": []
+        },
+        "export_controls": {
+          "level": "high",
+          "regions": [
+            "China",
+            "United States"
+          ],
+          "routes": [],
+          "dependencies": [
+            "gallium",
+            "germanium",
+            "advanced semiconductors",
+            "AI chips"
+          ],
+          "structural_events": []
+        },
+        "sanctions": {
+          "level": "moderate",
+          "regions": [
+            "Iran",
+            "Russia",
+            "United States"
+          ],
+          "routes": [],
+          "dependencies": [
+            "financial system",
+            "digital assets"
+          ],
+          "structural_events": []
+        }
+      }
+    }
+  }
 }
