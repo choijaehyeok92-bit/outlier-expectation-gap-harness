@@ -57,6 +57,12 @@
       "name": "파괴적 혁신",
       "in_core_score": false,
       "note": "100점 핵심 점수에는 합산하지 않는 독립 평가축. 종목 유형(archetype) 분류와 IC 판단에 사용한다. 컴파운더형 기업이 혁신 축 때문에 부당하게 감점되지 않도록 분리했다."
+    },
+    {
+      "id": "long_term_growth",
+      "name": "장기 아웃라이어 성장",
+      "in_core_score": false,
+      "note": "100점 핵심 점수에는 합산하지 않는 독립 평가축. outlier_growth 적격 판정과 IC 해석에만 사용한다. 기존 도메인이 이미 측정하는 것을 중복하지 않고, 5년 기회 규모·10년 지속기간·조직 적응력·시장 기대오류 네 가지만 본다."
     }
   ],
   "archetypes": {
@@ -132,6 +138,107 @@
           "현재가격이 비현실적인 Bull Case 이상을 요구",
           "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
           "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+        ]
+      },
+      {
+        "id": "outlier_growth",
+        "label": "장기 아웃라이어 성장주",
+        "label_en": "Long-Term Outlier Growth",
+        "description": "5~10년 이상의 장기 성장 규모와 지속기간, 강화되는 경쟁우위, 적응력 있는 조직문화, 현실적인 5배 가치 경로와 구체적인 시장 기대오류를 중심으로 평가하는 장기 아웃라이어 성장형 기업. 단기 성장률이 높다는 이유만으로는 적격이 아니며, 밸류에이션 관용적이되 맹목적이지 않다 — 결정론적 가치평가 완료, EV 최소 품질, Bear/Base/Bull 분석과 Bull 초과 가격 Hard Veto가 모두 유지된다.",
+        "valuation_tolerant": true,
+        "min_gate_score": 65,
+        "position_cap": null,
+        "position_guidance": "영구 소액 상한을 두지 않는다. 신규 진입은 보통 STARTER 또는 NORMAL에서 시작하고, 확대는 증거 증가에 비례한다 — 검증된 기회 규모, 해자 강화, 고객가치 증거, 수익률 궤적, 경영진 실행이 그 증거다. 주가 상승 자체는 증거가 아니다. 전역 IC state 밴드와 최대 ~10% 상한은 그대로 구속한다.",
+        "blocked_vetoes": [
+          "경영진 정직성 또는 회계 신뢰성 훼손",
+          "구조적으로 과도한 외부자본 조달 의존",
+          "장기간 지속되는 과도한 희석",
+          "고객가치 없이 마케팅·보조금에 의존하는 성장",
+          "증분 ROIC의 구조적 붕괴",
+          "해자의 지속적인 축소",
+          "현재가격이 비현실적인 Bull Case 이상을 요구",
+          "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+          "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+        ],
+        "conditions": [
+          {
+            "field": "domain.long_term_growth",
+            "op": ">=",
+            "value": 70,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "criterion.long_term_growth.opportunity_scale_5y",
+            "op": ">=",
+            "value": 75,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "criterion.long_term_growth.growth_duration_10y",
+            "op": ">=",
+            "value": 65,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "criterion.long_term_growth.culture_adaptability",
+            "op": ">=",
+            "value": 65,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "criterion.long_term_growth.market_misperception",
+            "op": ">=",
+            "value": 65,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "domain.customer_product",
+            "op": ">=",
+            "value": 65,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "domain.moat_trajectory",
+            "op": ">=",
+            "value": 65,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "domain.management_allocation",
+            "op": ">=",
+            "value": 65,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "domain.financial_survival",
+            "op": ">=",
+            "value": 60,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 65,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "criterion.asymmetry.upside_path",
+            "op": ">=",
+            "value": 75,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "criterion.asymmetry.permanent_loss",
+            "op": ">=",
+            "value": 50,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "domain.expectation_valuation",
+            "op": ">=",
+            "value": 40,
+            "fit_weight": 1.0
+          }
         ]
       },
       {
@@ -347,6 +454,7 @@
       "tie_tolerance": 1e-06,
       "tie_breaker": [
         "compounder",
+        "outlier_growth",
         "growth",
         "buffett_value",
         "moonshot"
@@ -501,9 +609,9 @@
       "never_below_state": "STARTER_OR_WATCH"
     }
   },
-  "strategy_version": "3.1",
-  "schema_version": "3.1",
-  "decision_policy_version": "3.1",
+  "strategy_version": "3.2",
+  "schema_version": "3.2",
+  "decision_policy_version": "3.2",
   "diagnostics": [
     {
       "id": "turnaround_quality",

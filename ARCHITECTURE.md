@@ -87,3 +87,6 @@ required to validate against the new schema. Research intake uses jsonschema fro
 research.py creates prioritized questions and validates append-only evidence intake; plain_report.py renders a fresh final decision in Korean. See docs/RESEARCH_ORCHESTRATOR.md for provenance, cutoff and conflict handling. Review-only runs explicitly frozen with --review-only may reach IC despite non-fit. They always prevent new-buy approval; completed MO may record unavailable components without forcing a fabricated fresh observation. Ordinary runs retain the original staging and macro freshness requirements.
 
 New manifests record hash_format=sha256-lf-text-v1: JSON/Markdown/Python/text/YAML hashes normalize CRLF to LF for portable Git checkouts. Other byte changes still invalidate a snapshot. Legacy fork verification accepts matching raw or LF-normalized bytes without editing the historical files.
+
+## v3.2 — 장기 아웃라이어 성장 유형
+다섯 번째 투자 가능 유형 `outlier_growth`와 독립 평가축 `long_term_growth`(LG)를 추가했다. LG는 DI와 같이 100점 핵심 점수에 합산하지 않으며 유형 적격 판정과 IC 해석에만 쓰인다. archetype 집합과 tie-breaker는 config 주도이고 런타임은 개수를 고정하지 않는다 — 중복 없는 비어 있지 않은 집합인지, fallback이 투자 유형에 섞이지 않았는지, tie-breaker가 각 유형을 정확히 한 번 호명하는지만 검사한다. `final_verdict.schema.json`은 버전 조건부다: v3.1 산출물은 네 유형 fit만으로도 유효하고, schema_version이 3.2일 때만 다섯 유형 fit을 요구한다. 과거 run은 마이그레이션하지 않는다.

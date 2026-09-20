@@ -51,6 +51,7 @@
     "archetype": {
       "enum": [
         "compounder",
+        "outlier_growth",
         "growth",
         "buffett_value",
         "moonshot",
@@ -62,6 +63,7 @@
       "items": {
         "enum": [
           "compounder",
+          "outlier_growth",
           "growth",
           "buffett_value",
           "moonshot"
@@ -103,13 +105,25 @@
       "description": "Optional normalization diagnostic, never an investable archetype or core score."
     },
     "strategy_version": {
-      "const": "3.1"
+      "enum": [
+        "3.1",
+        "3.2"
+      ],
+      "description": "지원 버전. v3.1 산출물은 마이그레이션 없이 그대로 읽힌다."
     },
     "schema_version": {
-      "const": "3.1"
+      "enum": [
+        "3.1",
+        "3.2"
+      ],
+      "description": "지원 버전. v3.1 산출물은 마이그레이션 없이 그대로 읽힌다."
     },
     "decision_policy_version": {
-      "const": "3.1"
+      "enum": [
+        "3.1",
+        "3.2"
+      ],
+      "description": "지원 버전. v3.1 산출물은 마이그레이션 없이 그대로 읽힌다."
     },
     "archetype_fit": {
       "type": "object",
@@ -272,6 +286,44 @@
               }
             }
           }
+        },
+        "outlier_growth": {
+          "type": "object",
+          "required": [
+            "eligible",
+            "fit_score",
+            "failed_conditions",
+            "missing_conditions",
+            "blocking_vetoes"
+          ],
+          "properties": {
+            "eligible": {
+              "type": "boolean"
+            },
+            "fit_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "failed_conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "missing_conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "blocking_vetoes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     },
@@ -321,6 +373,44 @@
           "maximum": 2
         }
       }
+    },
+    "axis_scores": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "description": "독립 평가축 점수. 100점 핵심 점수에는 합산하지 않는다."
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "3.2"
+          }
+        },
+        "required": [
+          "schema_version"
+        ]
+      },
+      "then": {
+        "properties": {
+          "archetype_fit": {
+            "required": [
+              "compounder",
+              "outlier_growth",
+              "growth",
+              "buffett_value",
+              "moonshot"
+            ]
+          }
+        }
+      },
+      "description": "v3.2 이상 verdict는 다섯 유형 전부의 fit을 담아야 한다. v3.1 이하 산출물은 네 개만 있어도 유효하며 다시 쓰지 않는다."
+    }
+  ]
 }

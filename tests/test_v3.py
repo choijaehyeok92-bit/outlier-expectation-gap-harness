@@ -12,7 +12,7 @@ import unittest
 from types import SimpleNamespace
 from unittest.mock import patch
 
-from harness_core import runtime as h, archetypes, macro_geo, calibration, fetch
+from harness_core import runtime as h, archetypes, macro_geo, calibration, fetch, planner
 from harness_core.conditions import resolve, check_condition
 
 REPO = h.ROOT
@@ -46,6 +46,8 @@ def set_scores(r,values):
 
 
 class V3Tests(unittest.TestCase):
+    outlier_price=192          # ~1.25x Base: above Growth's 1.10 gate, inside outlier_growth
+
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory()
         self.root=Path(self.tmp.name)
@@ -63,6 +65,9 @@ class V3Tests(unittest.TestCase):
         reports=[report(a) for a in agents]
         by={r['agent_id']:r for r in reports}
         set_scores(by['DI'],{x['criterion_id']:50 for x in by['DI']['subscores']})
+        # LG is an independent axis like DI: default it low so the existing archetypes
+        # classify exactly as they did before outlier_growth existed.
+        set_scores(by['LG'],{x['criterion_id']:40 for x in by['LG']['subscores']})
         if kind=='buffett_value':
             set_scores(by['RF'],{'incremental_roic':60,'reinvestment_runway':20,'fcf_per_share_quality':90})
             set_scores(by['MT'],{x['criterion_id']:65 for x in by['MT']['subscores']})
@@ -74,6 +79,20 @@ class V3Tests(unittest.TestCase):
             self.context['market_cap_usd']=50e9; self.save_context()
             for aid,value in [('DI',85),('MT',50),('RF',50),('FS',65)]:
                 set_scores(by[aid],{x['criterion_id']:value for x in by[aid]['subscores']})
+        elif kind=='outlier_growth':
+            # Deliberately priced above ordinary Growth's <=1.10 gate while the
+            # long-duration evidence carries the archetype instead.
+            self.context['current_price']=self.outlier_price; self.save_context()
+            set_scores(by['LG'],{'opportunity_scale_5y':80,'growth_duration_10y':75,
+                                 'culture_adaptability':70,'market_misperception':70})
+            # FCF quality stays under Growth's 65 gate: outlier_growth must not require it.
+            set_scores(by['RF'],{'incremental_roic':75,'reinvestment_runway':60,'fcf_per_share_quality':60})
+            for aid in ('MT','CP','MA'):
+                set_scores(by[aid],{x['criterion_id']:70 for x in by[aid]['subscores']})
+            set_scores(by['FS'],{x['criterion_id']:65 for x in by['FS']['subscores']})
+            set_scores(by['AS'],{'upside_path':75,'permanent_loss':55,
+                                 **{x['criterion_id']:70 for x in by['AS']['subscores']
+                                    if x['criterion_id'] not in ('upside_path','permanent_loss')}})
         elif kind=='non_fit':
             for r in reports:
                 if r['subscores']: set_scores(r,{x['criterion_id']:20 for x in r['subscores']})
@@ -96,15 +115,21 @@ class V3Tests(unittest.TestCase):
         return {'schema_version':'1.0','ticker':ticker,'as_of_date':'2026-09-19','documents':docs,
                 'facts':[fact],'adjustment_candidates':[],'extraction_warnings':[]}
 
-    def test_exactly_four_and_synthetic_classifications(self):
-        self.assertEqual({t['id'] for t in h.ARCHETYPES['types']},{'compounder','growth','buffett_value','moonshot'})
-        for kind in ('compounder','growth','buffett_value','moonshot','non_fit'):
+    def test_exactly_five_and_synthetic_classifications(self):
+        self.assertEqual(set(h.ARCHETYPE_IDS),
+                         {'compounder','outlier_growth','growth','buffett_value','moonshot'})
+        self.assertNotIn('long_term_growth',{x['id'] for x in h.STRATEGY['scorecard']})
+        self.assertIn('long_term_growth',{x['id'] for x in h.STRATEGY['evaluation_axes']})
+        for kind in (*h.ARCHETYPE_IDS,'non_fit'):
 
             with self.subTest(kind=kind):
-                self.context['market_cap_usd']=100e9; self.save_context()
+                # Reset every context field a fixture may move, so one kind cannot
+                # leak its price or size into the next.
+                self.context['market_cap_usd']=100e9; self.context['current_price']=100
+                self.save_context()
                 result=self.aggregate(self.fixture(kind))
                 self.assertEqual(result['archetype']['id'],kind)
-                self.assertEqual(len(result['archetype_fit']),4)
+                self.assertEqual(len(result['archetype_fit']),len(h.ARCHETYPE_IDS))
                 if kind!='non_fit': self.assertIn(result['mechanical_pre_ic_state'],h.BUY_STATES)
 
     def test_value_trap_and_integrity_block_cheap_value(self):
@@ -164,7 +189,7 @@ class V3Tests(unittest.TestCase):
         for t in policy['types']: t['conditions']=copy.deepcopy(conditions)
         tie=archetypes.classify(policy,ds,signals,85,85,[])
         self.assertEqual(tie['id'],policy['fit_policy']['tie_breaker'][0])
-        self.assertEqual(len(tie['secondary']),3)
+        self.assertEqual(len(tie['secondary']),len(h.ARCHETYPE_IDS)-1)
 
     def test_shadow_offsets_cannot_flip_decision_and_active_is_explicit(self):
         reports=self.fixture();h.dump_json(h.run_dir('SYNTH')/'run_manifest.json',{'runner':{'provider':'openai'}})
@@ -217,7 +242,7 @@ class V3Tests(unittest.TestCase):
             self.assertIsNone(result['ic_verdict'])
             self.assertTrue(result['early_exit_record']['ic_intentionally_not_run'])
             self.assertEqual(h.plan('SYNTH',subset,result)['stage'],'early_exit')
-            self.assertEqual(len(result['early_exit_record']['eliminated_archetypes']),4)
+            self.assertEqual(len(result['early_exit_record']['eliminated_archetypes']),len(h.ARCHETYPE_IDS))
         self.assertEqual(result['early_exit_record']['stage'],'pre_ic')
 
     def test_global_cache_never_copies_company_conclusions(self):
@@ -405,7 +430,7 @@ class V3Tests(unittest.TestCase):
         cli('validate-pack','ROUNDTRIP')
         cli('freeze','ROUNDTRIP','--provider','openai','--model','gpt-6-astra')
         manifest=h.load_json(run/'run_manifest.json')
-        self.assertEqual(manifest['decision_policy_version'],'3.1')
+        self.assertEqual(manifest['decision_policy_version'],h.VERSIONS['decision_policy_version'])
         self.assertIn('harness_core/archetypes.py',manifest['config_files'])
         cli('prompt','ROUNDTRIP','EV')
         cli('prompt','ROUNDTRIP','TQ',ok=False)
@@ -782,3 +807,150 @@ class Stage0FetchTests(unittest.TestCase):
     def test_every_checklist_row_declares_its_edgar_forms(self):
         for requirement in h.INTAKE_POLICY['requirements']:
             self.assertIn('edgar_forms', requirement, requirement['id'])
+
+
+class OutlierGrowthTests(unittest.TestCase):
+    """The fifth archetype earns eligibility on duration and scale, not on cheapness."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root_patch = patch.object(h, 'ROOT', Path(self.tmp.name))
+        self.root_patch.start()
+        self.addCleanup(self.root_patch.stop)
+        self.addCleanup(self.tmp.cleanup)
+        self.context = h.load_json(REPO/'templates/company_context.json')
+        self.context.update(ticker='SYNTH', as_of_date='2026-09-19', current_price=V3Tests.outlier_price,
+                            net_cash_per_share=5, market_cap_usd=100e9)
+        self.save_context()
+
+    def save_context(self):
+        h.dump_json(h.run_dir('SYNTH')/'company_context.json', self.context)
+
+    # V3Tests owns the fixture builders; reuse them rather than duplicating.
+    fixture = V3Tests.fixture
+    outlier_price = V3Tests.outlier_price
+
+    def aggregate(self, reports):
+        return h.compute_aggregate('SYNTH', reports)
+
+    def eligible(self, reports):
+        return self.aggregate(reports)['archetype_fit']['outlier_growth']['eligible']
+
+    def tweak(self, **subscores_by_agent):
+        reports = self.fixture('outlier_growth')
+        by = {r['agent_id']: r for r in reports}
+        for agent, values in subscores_by_agent.items():
+            known = {row['criterion_id'] for row in by[agent]['subscores']}
+            unknown = set(values) - known
+            self.assertFalse(unknown, f'{agent} has no criterion {sorted(unknown)}')
+            set_scores(by[agent], values)
+        return reports
+
+    def verdict(self, reports):
+        """The shape stored in final_verdict.json, built the way cmd_aggregate builds it."""
+        return h.final_verdict(self.aggregate(reports), reports)
+
+    def test_baseline_fixture_is_eligible_and_ordinary_growth_is_not(self):
+        result = self.aggregate(self.fixture('outlier_growth'))
+        self.assertTrue(result['archetype_fit']['outlier_growth']['eligible'])
+        self.assertFalse(result['archetype_fit']['growth']['eligible'])
+        self.assertIn('signal.price_to_base_value', result['archetype_fit']['growth']['failed_conditions'])
+        self.assertEqual(result['archetype']['id'], 'outlier_growth')
+        self.assertIn(result['mechanical_pre_ic_state'], h.BUY_STATES)
+
+    def test_cheapness_and_current_fcf_quality_are_not_required(self):
+        conditions = {c['field'] for t in h.ARCHETYPES['types'] if t['id'] == 'outlier_growth'
+                      for c in t['conditions']}
+        self.assertNotIn('signal.price_to_base_value', conditions)
+        self.assertNotIn('criterion.reinvestment_fcf.fcf_per_share_quality', conditions)
+        self.assertNotIn('signal.revenue_cagr_next_3y', conditions)
+        for required in ('domain.customer_product', 'domain.financial_survival',
+                         'criterion.asymmetry.upside_path', 'criterion.long_term_growth.market_misperception'):
+            self.assertIn(required, conditions)
+
+    def test_A_short_term_growth_without_five_year_scale_fails(self):
+        self.assertFalse(self.eligible(self.tweak(LG={'opportunity_scale_5y': 70})))
+
+    def test_B_scale_without_duration_fails(self):
+        self.assertFalse(self.eligible(self.tweak(LG={'growth_duration_10y': 60})))
+
+    def test_C_without_a_specific_expectation_gap_fails(self):
+        self.assertFalse(self.eligible(self.tweak(LG={'market_misperception': 60})))
+
+    def test_D_without_a_five_times_path_fails(self):
+        self.assertFalse(self.eligible(self.tweak(AS={'upside_path': 70})))
+
+    def test_E_weak_financial_survival_fails(self):
+        self.assertFalse(self.eligible(self.tweak(FS={c: 55 for c in
+                                                      ('liquidity_leverage', 'stress_survival', 'dilution_offbalance')})))
+
+    def test_F_price_above_bull_blocks_any_buy_state(self):
+        veto = '현재가격이 비현실적인 Bull Case 이상을 요구'
+        reports = self.fixture('outlier_growth')
+        owner = h.VETO_REVIEWERS[veto][0]
+        flags = next(r for r in reports if r['agent_id'] == owner)['hard_veto_flags']
+        next(v for v in flags if v['veto'] == veto)['status'] = 'confirmed'
+        result = self.aggregate(reports)
+        self.assertFalse(result['archetype_fit']['outlier_growth']['eligible'])
+        self.assertNotIn(result['mechanical_pre_ic_state'], h.BUY_STATES)
+
+    def test_G_missing_LG_leaves_it_reachable_but_not_eligible_and_planner_asks(self):
+        reports = [r for r in self.fixture('outlier_growth') if r['agent_id'] != 'LG']
+        result = self.aggregate(reports)
+        fit = result['archetype_fit']['outlier_growth']
+        self.assertFalse(fit['eligible'])
+        self.assertTrue(any(f.startswith('criterion.long_term_growth') or f == 'domain.long_term_growth'
+                            for f in fit['missing_conditions']))
+        self.assertEqual(fit['failed_conditions'], [])
+        self.assertIn('outlier_growth', result['reachable_archetypes_raw'])
+        step = planner.next_stage(reports, result, self.context, h.MANIFEST, h.SCORE_DOMAINS,
+                                  h.EXEC['triage_domains'], h.ARCHETYPES, h.VETO_REVIEWERS)
+        self.assertEqual(step['agents'].get('long_term_growth'), 'LG')
+
+    def test_G2_planner_does_not_ask_for_LG_once_outlier_growth_is_unreachable(self):
+        reports = [r for r in self.tweak(CP={c: 30 for c in ('customer_roi', 'retention_usage', 'unit_economics')})
+                   if r['agent_id'] != 'LG']
+        result = self.aggregate(reports)
+        self.assertNotIn('outlier_growth', result['reachable_archetypes_raw'])
+        step = planner.next_stage(reports, result, self.context, h.MANIFEST, h.SCORE_DOMAINS,
+                                  h.EXEC['triage_domains'], h.ARCHETYPES, h.VETO_REVIEWERS)
+        self.assertNotIn('long_term_growth', step['agents'])
+
+    def test_H_outlier_growth_can_be_secondary_to_compounder(self):
+        reports = self.fixture('outlier_growth')
+        by = {r['agent_id']: r for r in reports}
+        self.context['current_price'] = 100; self.save_context()      # back inside compounder's 1.2 gate
+        for agent in ('MT', 'MA', 'FS'):
+            set_scores(by[agent], {x['criterion_id']: 80 for x in by[agent]['subscores']})
+        set_scores(by['RF'], {'incremental_roic': 80, 'reinvestment_runway': 75, 'fcf_per_share_quality': 75})
+        result = self.aggregate(reports)
+        self.assertEqual(result['archetype']['id'], 'compounder')
+        self.assertIn('outlier_growth', result['archetype']['secondary'])
+
+    def test_I_tie_break_order_is_deterministic_and_config_driven(self):
+        order = h.ARCHETYPES['fit_policy']['tie_breaker']
+        self.assertEqual(order, ['compounder', 'outlier_growth', 'growth', 'buffett_value', 'moonshot'])
+        self.assertEqual(sorted(order), sorted(h.ARCHETYPE_IDS))
+        self.assertLess(order.index('outlier_growth'), order.index('growth'))
+
+    def test_L_final_verdict_schema_accepts_the_fifth_archetype(self):
+        import jsonschema
+        verdict = self.verdict(self.fixture('outlier_growth'))
+        self.assertEqual(verdict['archetype'], 'outlier_growth')
+        self.assertIn('outlier_growth', verdict['archetype_fit'])
+        jsonschema.Draft7Validator(h.load_json(REPO/'schemas/final_verdict.schema.json')).validate(verdict)
+
+    def test_L2_v31_verdicts_with_four_archetypes_still_validate(self):
+        """A stored v3.1 verdict has four fits and must keep validating unmigrated."""
+        import jsonschema
+        verdict = self.verdict(self.fixture('outlier_growth'))
+        legacy = {**verdict, 'schema_version': '3.1', 'archetype': 'growth',
+                  'archetype_fit': {k: v for k, v in verdict['archetype_fit'].items() if k != 'outlier_growth'}}
+        jsonschema.Draft7Validator(h.load_json(REPO/'schemas/final_verdict.schema.json')).validate(legacy)
+
+    def test_long_term_growth_stays_out_of_the_core_score(self):
+        with_axis = self.aggregate(self.fixture('outlier_growth'))
+        stripped = self.aggregate([r for r in self.fixture('outlier_growth') if r['agent_id'] != 'LG'])
+        self.assertEqual(with_axis['score_100'], stripped['score_100'])
+        self.assertEqual(with_axis['coverage_weight'], stripped['coverage_weight'])
+        self.assertIn('long_term_growth', with_axis['axis_scores'])

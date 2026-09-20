@@ -33,11 +33,17 @@ IC_DOMAIN='investment_committee'
 VETO_STATUSES=('none','candidate','conditional','confirmed','cleared')
 VERSIONS={k:STRATEGY[k] for k in ('strategy_version','schema_version','decision_policy_version')}
 OVERLAY_POLICY=EXEC['overlay_policy']
-if len(ARCHETYPES['types'])!=4 or set(t['id'] for t in ARCHETYPES['types']) != {'compounder','growth','buffett_value','moonshot'}:
-    raise ValueError('v3.1 requires exactly four investable archetypes; legacy config profiles need their original harness checkout')
+ARCHETYPE_IDS=[t['id'] for t in ARCHETYPES['types']]
+# The archetype set is config-driven; what the runtime insists on is that it is
+# internally consistent. Legacy profiles predating the current set still need
+# their own harness checkout, which the identifier check below surfaces.
+if len(ARCHETYPE_IDS)!=len(set(ARCHETYPE_IDS)) or not ARCHETYPE_IDS:
+    raise ValueError('Investable archetypes must be a non-empty set of unique identifiers')
+if ARCHETYPES['fallback'] in ARCHETYPE_IDS:
+    raise ValueError('The fallback state cannot also be an investable archetype')
 if ARCHETYPES['fit_policy']['method']!='weighted_normalized_conditions':
     raise ValueError('Unsupported archetype fit method')
-if len(ARCHETYPES['fit_policy']['tie_breaker'])!=4 or set(ARCHETYPES['fit_policy']['tie_breaker'])!={t['id'] for t in ARCHETYPES['types']}:
+if sorted(ARCHETYPES['fit_policy']['tie_breaker'])!=sorted(ARCHETYPE_IDS):
     raise ValueError('Tie-breaker must name each investable archetype exactly once')
 
 
@@ -387,7 +393,7 @@ def compute_aggregate(ticker, reports):
         if narrowed:
             dispersion['position_before']=pos; pos=narrowed
     di=ds.get('disruptive_innovation'); tq=ds.get('turnaround_quality')
-    result={**VERSIONS,'as_of_date':ctx['as_of_date'],'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'turnaround_quality_score':tq['score'] if tq else None,'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'provider_calibration':provider_cal,'dispersion_review':dispersion,'run_manifest':manifest}
+    result={**VERSIONS,'as_of_date':ctx['as_of_date'],'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'turnaround_quality_score':tq['score'] if tq else None,'axis_scores':{a:(ds[a]['score'] if isinstance(ds.get(a),dict) else None) for a in AXIS_DOMAINS},'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'provider_calibration':provider_cal,'dispersion_review':dispersion,'run_manifest':manifest}
     result.update(archetype_fit=archetype['archetype_fit'], review_only=review_only,
         evidence_concentration_flags=concentration_flags(reports),macro_geo_overlay=overlay,
         diagnostics={'turnaround_candidate':planner.diagnostic_enabled(ctx)},ic_verdict=ic,early_exit_record=None)
