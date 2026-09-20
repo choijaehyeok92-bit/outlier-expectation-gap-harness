@@ -5,102 +5,130 @@
   "domain": "management_allocation",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 85,
-  "confidence_0_1": 0.8,
-  "bull_score": 95,
-  "bear_score": 65,
-  "bull_case": "Repurchases below intrinsic value and disciplined AI M&A can lift per-share value materially.",
-  "bear_case": "Overpaying for AI-related M&A or buying back shares before a structural moat break would destroy value.",
-  "thesis": "Capital allocation is a major strength at the current valuation. H1 repurchases of $4.589B and Q3's ~9.5M shares retire equity at prices materially below the locked Base value. Semrush acquisition adds SEO/GEO capabilities, though integration discipline still matters.",
+  "score_0_100": 78.25,
+  "confidence_0_1": 0.87,
+  "bull_score": 90,
+  "bear_score": 55,
+  "bull_case": "Adobe is retiring stock well below locked Base value while funding AI adaptation and a modest Semrush acquisition from internal cash generation.",
+  "bear_case": "Buybacks can destroy value if the moat is structurally breaking, and Semrush has too little post-close history to demonstrate realized ROIC.",
+  "thesis": "Capital allocation is favorable but not yet exceptional. Using the disclosed monthly Q4 FY2025, Q1–Q2 FY2026 repurchase prices plus Q3 repurchase cash/shares, the latest four-quarter average repurchase price is estimated at ~$279.24, only 0.563x the locked Base value $495.57; the observable rubric maps this to 80. Semrush cost $1.87B and contributed ~$480M ARR at Q2, but standalone FCF/ROIC are not disclosed.",
   "evidence": [
     {
-      "claim": "H1 repurchases were $4.589B.",
+      "claim": "Estimated latest-four-quarter average repurchase price is ~$279.24/share across ~33.3M shares, using disclosed Q4 FY2025 and Q1–Q2 FY2026 monthly prices plus Q3 repurchase cash/shares.",
       "source_type": "filing",
-      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
-      "period": "Q2/H1 FY2026",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm; https://www.sec.gov/Archives/edgar/data/796343/000079634326000056/adbe-20260227.htm; https://www.sec.gov/Archives/edgar/data/796343/000079634326000112/adbe-20260529.htm; https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbeex991q326.htm",
+      "period": "Q4 FY2025–Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "~$279.24",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Estimated four-quarter repurchase price / locked Base value is ~0.563x ($279.24 / $495.57).",
+      "source_type": "other",
+      "source": "runs/ADBE/sources/README.md and SEC repurchase disclosures",
+      "period": "Q4 FY2025–Q3 FY2026",
+      "as_of_date": "2026-09-18",
+      "value": "~0.563x",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Semrush acquisition closed for $1.87B primarily cash; Q2 Total Adobe ARR included about $480M from Semrush.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000112/adbe-20260529.htm",
+      "period": "Q2 FY2026",
       "as_of_date": "2026-06-15",
-      "value": null,
+      "value": "$1.87B / ~$480M ARR",
       "fact_or_estimate": "fact"
     },
     {
-      "claim": "Q3 repurchased approximately 9.5M shares.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "claim": "Q3 AI-first ending ARR exceeded $650M and Adobe raised FY2026 revenue/EPS targets while transitioning CEO duties to Anil Chakravarthy effective Dec. 1, 2026.",
+      "source_type": "ir",
+      "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/01906202/c6yetrerew.pdf",
       "period": "Q3 FY2026",
       "as_of_date": "2026-09-10",
-      "value": "9.5M",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "Semrush purchase price was about $1.874B in April 2026.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
-      "period": "Q2/H1 FY2026",
-      "as_of_date": "2026-06-15",
-      "value": null,
+      "value": ">$650M AI-first ARR",
       "fact_or_estimate": "fact"
     }
   ],
   "counterevidence": [
-    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+    "Semrush standalone FCF, retention, synergy realization and realized ROIC are not disclosed.",
+    "Q3 average repurchase price is estimated from repurchase cash flow divided by reported shares and may differ from exact execution price.",
+    "CEO transition adds execution uncertainty during a period of structural AI competition."
   ],
   "unknowns": [
-    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+    "Realized ROIC/IRR and standalone economics of Semrush.",
+    "Exact Q3 repurchase execution price and future acquisition discipline under the incoming CEO."
   ],
   "falsifiers": [
-    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+    "Repurchases continue above intrinsic value while per-share FCF deteriorates.",
+    "Semrush fails to sustain ARR/FCF contribution commensurate with purchase price.",
+    "AI commercialization stalls through the CEO transition."
   ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
       "status": "cleared",
-      "rationale": "No restatement, auditor disagreement or integrity impairment is established in the frozen filings."
+      "rationale": "No cutoff-valid restatement, auditor disagreement or accounting-integrity impairment is established."
     }
   ],
   "key_kpis": [
     {
+      "name": "repurchase price / Base value",
+      "direction": "down",
+      "threshold": "remain <0.8x for aggressive buybacks",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Semrush ARR/FCF contribution",
+      "direction": "up",
+      "threshold": "show durable organic contribution",
+      "cadence": "quarterly/annual"
+    },
+    {
       "name": "owner FCF/share",
       "direction": "up",
-      "threshold": "sustained high-single-digit+ growth",
+      "threshold": "high-single-digit+ growth",
       "cadence": "quarterly/annual"
     }
   ],
   "next_checks": [
-    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+    "FY2026 10-K repurchase shares/cost and exact Q3/Q4 execution prices.",
+    "Semrush standalone revenue/ARR/margin disclosures.",
+    "Capital-allocation policy after CEO transition."
   ],
   "verdict": "support",
   "subscores": [
     {
       "criterion_id": "capital_allocation",
-      "score_0_100": 85,
-      "rationale": "Large repurchases at prices below locked Base value are economically attractive; Semrush adds search/GEO capability."
+      "score_0_100": 80,
+      "rationale": "Observable metric: estimated latest-four-quarter average repurchase price ~$279.24 / locked Base $495.57 = ~0.563x, inside the <0.8 band, so score 80. No +10 exit/reallocation modifier is applied."
     },
     {
       "criterion_id": "governance_integrity",
-      "score_0_100": 85,
-      "rationale": "No accounting-integrity issue is evident and controls/auditor reporting are standard."
+      "score_0_100": 75,
+      "rationale": "75 good-governance anchor: no restatement, auditor disagreement or integrity impairment is established; evidence does not justify 90 very-high-trust treatment."
     },
     {
       "criterion_id": "execution_adaptability",
-      "score_0_100": 85,
-      "rationale": "Management has shifted product strategy toward Firefly, agents and freemium while preserving double-digit growth."
+      "score_0_100": 80,
+      "rationale": "Above 75 because AI-first ARR, MAU and revenue targets show concrete adaptation; below 90 because the structural AI response and CEO transition have not been proven across a full cycle."
     }
   ],
   "uncertainties": [
     {
       "criterion_id": "capital_allocation",
-      "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "severity": "minor",
+      "rationale": "Repurchase valuation is strongly favorable mechanically; Semrush realized return remains unverified."
     },
     {
       "criterion_id": "governance_integrity",
-      "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "severity": "minor",
+      "rationale": "No cutoff-valid integrity impairment is established; ordinary governance risk remains."
     },
     {
       "criterion_id": "execution_adaptability",
       "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "rationale": "AI commercialization is progressing, but leadership transition and competitive durability remain unproven."
     }
   ]
 }

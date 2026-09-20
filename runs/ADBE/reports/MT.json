@@ -5,102 +5,130 @@
   "domain": "moat_trajectory",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 80,
-  "confidence_0_1": 0.8,
+  "score_0_100": 78.5,
+  "confidence_0_1": 0.84,
   "bull_score": 90,
-  "bear_score": 60,
-  "bull_case": "AI gets commoditized at the model layer, which favors Adobe's distribution and workflow ownership.",
-  "bear_case": "If agentic tools bypass Adobe file/workflow standards, switching costs can erode quickly.",
-  "thesis": "The moat is under pressure at the model layer but remains resilient at the workflow/ecosystem layer. Adobe's best defense is not having the best standalone model; it is making AI a feature across a deeply embedded creative/document/marketing stack.",
+  "bear_score": 55,
+  "bull_case": "Adobe absorbs model commoditization into distribution, file/workflow standards and enterprise integrations; AI ARR and MAU growth expand the ecosystem rather than bypass it.",
+  "bear_case": "If agentic creation shifts outside Adobe workflows, application-layer switching costs can decay even while near-term ARR remains healthy.",
+  "thesis": "The moat remains resilient at the workflow/ecosystem layer. Total ARR, RPO, MAU and AI-first ARR provide multiple scale observations, and Total Adobe ARR rises on a same-definition fiscal-year basis. That supports an 85 ecosystem score. However, direct switching-cost cases and market-share evidence remain incomplete, and AI model commoditization can still bypass application workflows; switching/pricing and commoditization resilience therefore remain at 75.",
   "evidence": [
     {
-      "claim": "Total ARR was $27.50B in Q3.",
+      "claim": "Total Adobe ARR rose from the FY2026 beginning book of $25.66B to $27.50B at Q3.",
       "source_type": "filing",
-      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
-      "period": "Q3 FY2026",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbeex991q326.htm",
+      "period": "FY2026 beginning to Q3",
       "as_of_date": "2026-09-10",
-      "value": "27.50",
+      "value": "$25.66B -> $27.50B",
       "fact_or_estimate": "fact"
     },
     {
-      "claim": "RPO remained $22.16B in Q3.",
+      "claim": "Q3 RPO was $22.16B and Adobe reported >1B MAU across creativity and productivity.",
       "source_type": "filing",
-      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbeex991q326.htm",
       "period": "Q3 FY2026",
       "as_of_date": "2026-09-10",
-      "value": "22.16",
+      "value": "$22.16B / >1B MAU",
       "fact_or_estimate": "fact"
     },
     {
-      "claim": "AI-first ARR grew >150% y/y, indicating AI is being absorbed into the ecosystem.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "claim": "Q3 AI-first ending ARR exceeded $650M and grew >150% y/y.",
+      "source_type": "ir",
+      "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/01906202/c6yetrerew.pdf",
       "period": "Q3 FY2026",
       "as_of_date": "2026-09-10",
-      "value": ">150%",
+      "value": ">$650M / >150%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Creative freemium MAU crossed 100M and grew >70% y/y.",
+      "source_type": "ir",
+      "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/01906202/c6yetrerew.pdf",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": ">100M / >70%",
       "fact_or_estimate": "fact"
     }
   ],
   "counterevidence": [
-    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+    "No same-definition market-share series or retention cohort proves that switching costs are strengthening.",
+    "Prompt-native and agentic tools can bypass Adobe applications and reduce application-layer lock-in.",
+    "Firefly-specific economics are not disclosed, so monetized AI usage does not by itself prove stronger moat economics."
   ],
   "unknowns": [
-    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+    "Same-definition creative workflow market share and retention over multiple years.",
+    "Whether agentic workflows reduce or deepen dependence on Adobe file/workflow standards."
   ],
   "falsifiers": [
-    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+    "Same-definition ARR contracts for multiple quarters while industry AI usage continues expanding.",
+    "Creative/Acrobat MAU grows but paid subscription revenue stagnates or declines.",
+    "Material enterprise workflows migrate away from Adobe file/integration standards."
   ],
   "hard_veto_flags": [
     {
       "veto": "해자의 지속적인 축소",
       "status": "cleared",
-      "rationale": "ARR, subscription revenue, usage and AI monetization do not show persistent moat shrinkage."
+      "rationale": "Same-definition ARR growth, large RPO, expanding MAU and monetized AI adoption contradict persistent moat shrinkage as of the cutoff."
     }
   ],
   "key_kpis": [
     {
-      "name": "owner FCF/share",
+      "name": "Total Adobe ARR",
       "direction": "up",
-      "threshold": "sustained high-single-digit+ growth",
-      "cadence": "quarterly/annual"
+      "threshold": "sustain positive same-definition growth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Creative & Marketing Professionals subscription revenue",
+      "direction": "up",
+      "threshold": "remain positive despite AI substitution",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "AI-first ARR / MAU conversion",
+      "direction": "up",
+      "threshold": "monetization keeps pace with adoption",
+      "cadence": "quarterly"
     }
   ],
   "next_checks": [
-    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+    "Q4 same-definition ARR/MAU conversion.",
+    "Any disclosed retention or market-share trend for Creative/Acrobat.",
+    "Evidence that agentic workflows remain inside Adobe standards/integrations."
   ],
   "verdict": "support",
   "subscores": [
     {
       "criterion_id": "switching_pricing",
-      "score_0_100": 80,
-      "rationale": "Workflow depth, file formats, skills and enterprise integrations still create meaningful switching costs."
+      "score_0_100": 75,
+      "rationale": "75 strengthening anchor: recurring ARR and customer-group subscription growth remain strong; 90 structural strengthening is not supported by direct share/switching-cost evidence."
     },
     {
       "criterion_id": "network_data_ecosystem",
-      "score_0_100": 80,
-      "rationale": "Installed base, assets, templates, enterprise data and app integrations reinforce ecosystem value."
+      "score_0_100": 85,
+      "rationale": "Observable anchor: 3+ verified ecosystem-scale figures (ARR, RPO, MAU, AI ARR) plus same-definition Total Adobe ARR growth are present; no concrete switching-cost case supports 90."
     },
     {
       "criterion_id": "commoditization_resilience",
-      "score_0_100": 80,
-      "rationale": "Adobe can bundle third-party models and Firefly inside workflows, reducing dependence on model-level differentiation."
+      "score_0_100": 75,
+      "rationale": "75 anchor: Adobe has multiple defense layers in distribution, workflows, files and model choice; evidence does not show that commoditization itself strengthens the moat, excluding 90."
     }
   ],
   "uncertainties": [
     {
       "criterion_id": "switching_pricing",
       "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "rationale": "ARR growth supports pricing/value, but direct switching-cost or share trend evidence is incomplete."
     },
     {
       "criterion_id": "network_data_ecosystem",
-      "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "severity": "minor",
+      "rationale": "Multiple scale metrics and a same-definition ARR increase are observed; concrete switching-cost case is missing."
     },
     {
       "criterion_id": "commoditization_resilience",
       "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "rationale": "Adobe can integrate own and third-party models, but model-native workflows remain a credible bypass risk."
     }
   ]
 }

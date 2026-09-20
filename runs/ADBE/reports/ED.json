@@ -6,60 +6,86 @@
   "role": "evidence_auditor",
   "analysis_status": "complete",
   "score_0_100": 85,
-  "confidence_0_1": 0.88,
-  "thesis": "Decision-critical historical facts are well supported by the uploaded Q2 FY2026 10-Q and the Q3 FY2026 earnings release. Revenue, ARR, RPO, OCF, debt, cash, SBC, buybacks and share counts are directly observable. Main uncertainty is the modeled long-run AI monetization and FCF path, not the historical evidence.",
+  "confidence_0_1": 0.93,
+  "thesis": "Evidence quality is strong after the Orchestrator pass. Decision-critical historical inputs now have cutoff-valid primary support for AI-first ARR scale, debt maturities/liquidity, repurchase execution and Semrush consideration. The uploaded normalized extract remains a partial supplementary pack rather than a replacement financial dataset. The key unresolved evidence gap is economic, not accounting: Firefly-specific inference margin and AI-first ARR incrementality are still undisclosed.",
   "evidence": [
     {
-      "claim": "Q2/H1 revenue, operating income and net income are directly reported in the Q2 10-Q.",
+      "claim": "Q3 8-K/earnings materials directly report revenue, ARR, OCF, repurchases, AI-first ARR growth and Q3 balance-sheet figures.",
       "source_type": "filing",
-      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
-      "period": "Q2/H1 FY2026",
-      "as_of_date": "2026-06-15",
-      "value": null,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "Q2 cash+ST investments $5.626B, debt $6.645B and H1 OCF $5.123B are filing-backed.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
-      "period": "Q2/H1 FY2026",
-      "as_of_date": "2026-06-15",
-      "value": null,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "Q3 revenue $6.76B, ARR $27.50B, AI-first ARR >150% y/y and Q3 OCF $2.52B are company-reported.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbeex991q326.htm",
       "period": "Q3 FY2026",
       "as_of_date": "2026-09-10",
       "value": "multi-KPI",
       "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2 10-Q directly reports debt maturities, $1.5B undrawn revolver, commercial paper, H1 OCF/R&D/capex/SBC and Semrush acquisition details.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000112/adbe-20260529.htm",
+      "period": "Q2/H1 FY2026",
+      "as_of_date": "2026-06-15",
+      "value": "multi-KPI",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 10-K supplies annual OCF/R&D/capex, purchase obligations and Q4 repurchase execution needed for TTM/four-quarter estimates.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-01-15",
+      "value": "multi-KPI",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q2/Q3 Adobe earnings scripts directly disclose >$500M then >$650M AI-first ARR and Firefly/MAU adoption metrics.",
+      "source_type": "ir",
+      "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/01906202/c6yetrerew.pdf",
+      "period": "Q2-Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": ">$500M -> >$650M AI-first ARR",
+      "fact_or_estimate": "fact"
     }
   ],
   "counterevidence": [
-    "The 10-year owner-FCF paths are estimates.",
-    "AI-first ARR is company-defined and its incremental economics are not fully disclosed."
+    "AI-first ARR is company-defined; exact product composition and incrementality are not disclosed.",
+    "Firefly-specific inference cost, gross margin and contribution margin were not found.",
+    "Several domain observables (TTM absorption, owner-style FCF/share, four-quarter repurchase price) are calculations from primary facts rather than directly reported metrics.",
+    "The user-provided normalized extract is partial and explicitly insufficient for several core financial statements."
   ],
   "unknowns": [
-    "AI-first ARR composition",
-    "normalized Firefly inference margin",
-    "long-run Experience Cloud growth"
+    "AI-first ARR composition/incrementality.",
+    "Firefly-specific inference gross margin or contribution margin.",
+    "Same-definition long-run retention/market-share data for core creative workflows."
   ],
   "falsifiers": [
-    "Source mismatch or later filings that contradict the frozen facts require rerun."
+    "A cutoff-valid filing contradicts a frozen source fact or reveals a definition mismatch material to a score.",
+    "A future filing restates the primary data used in TTM or repurchase calculations."
   ],
   "hard_veto_flags": [],
   "key_kpis": [
     {
       "name": "primary-source coverage",
       "direction": "up",
-      "threshold": "decision variables filing-backed",
+      "threshold": "all score/veto observables trace to filing or company IR",
       "cadence": "quarterly"
+    },
+    {
+      "name": "definition continuity",
+      "direction": "stable",
+      "threshold": "AI ARR/Firefly definitions reconciled before trend inference",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "calculated-observable traceability",
+      "direction": "stable",
+      "threshold": "inputs and periods explicit",
+      "cadence": "each rerun"
     }
   ],
   "next_checks": [
-    "FY2026 10-K and Q4 results"
+    "FY2026 10-K for full-year OCF/R&D/capex/SBC and commitments.",
+    "Q4 same-definition AI-first ARR/Firefly disclosures.",
+    "Any restatement or definition change requiring refreeze."
   ],
   "verdict": "support"
 }

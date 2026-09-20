@@ -1,72 +1,72 @@
 # Digest — ADBE (as of 2026-09-18)
-score 78.99 (ex-val 78.58, Emerging Outlier) · DI 66.67 · TQ 25.0 · archetype compounder — 유형 조건 및 게이트 점수 충족 · veto CLEARED · state NORMAL_CANDIDATE
-signals {'price_to_base_value': 0.5023, 'valuation_percentile_5y': None, 'revenue_cagr_next_3y': 0.11, 'market_cap_usd': 98945900000.0} · reachable(raw) ['compounder', 'expectation_gap']
+score 80.97 (ex-val 80.62, Core Outlier) · DI 70.0 · TQ 30.0 · archetype buffett_value — Highest eligible deterministic fit; ties use configured priority · veto CLEARED · state CORE_WINNER_CANDIDATE
+signals {'price_to_base_value': 0.5023, 'valuation_percentile_5y': None, 'revenue_cagr_next_3y': 0.11, 'market_cap_usd': 98945900000.0} · reachable(raw) ['buffett_value', 'compounder']
 veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
 
-## structural_leadership — 79.17 (raw 79.17, spread 30.0, DISPUTE)
+## structural_leadership — 82.5 (raw 82.5, spread 30.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
 | SL | 82.5 (62.5–92.5) | 0.8 | support | – | Adobe still occupies category-defining positions in creative tooling, documents and enterprise digital experience. AI expands content volume and productivity d… |
 bull: AI increases content volume and Adobe monetizes the resulting workflow complexity across creation, documents and marketing. / bear: Model-native competitors can weaken application lock-in and pricing power faster than Adobe's AI products offset it.
 unknowns: Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR…
 
-## customer_product — 80.0 (raw 80.0, spread 30.0, DISPUTE)
+## customer_product — 78.0 (raw 78.0, spread 30.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| CP | 85 (65–95) | 0.8 | support | V4=cleared, V8=cleared | Customer value remains strong. Creative professionals, business users and enterprises continue to expand recurring spend despite AI alternatives, while Acrobat… |
-bull: AI assistants and freemium acquisition can expand both seats and monetization per user. / bear: If AI generation is good enough outside Adobe, professional willingness to pay for parts of Creative Cloud may fall.
-unknowns: Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR…
+| CP | 78 (60–90) | 0.86 | support | V4=cleared, V8=cleared | Customer value remains strong but the refreshed evidence supports a strong, not exceptional, score. Q3 customer-group subscription revenue grew 14%, AI-first e… |
+bull: AI-first ARR, freemium MAU and subscription spend keep scaling while Adobe preserves software-like margins, turning AI adoption into higher wallet share. / bear: Prompt-native alternatives can reduce willingness to pay for parts of Creative Cloud; Adobe does not disclose retention cohorts or Firefly-specific inference e…
+unknowns: AI-first ARR incrementality versus bundled/reclassified existing ARR. · Firefly-specific inference gross margin and retention/cohort economics.
 
-## moat_trajectory — 76.67 (raw 76.67, spread 30.0, DISPUTE)
+## moat_trajectory — 78.5 (raw 78.5, spread 35.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| MT | 80 (60–90) | 0.8 | support | V6=cleared | The moat is under pressure at the model layer but remains resilient at the workflow/ecosystem layer. Adobe's best defense is not having the best standalone mod… |
-bull: AI gets commoditized at the model layer, which favors Adobe's distribution and workflow ownership. / bear: If agentic tools bypass Adobe file/workflow standards, switching costs can erode quickly.
-unknowns: Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR…
+| MT | 78.5 (55–90) | 0.84 | support | V6=cleared | The moat remains resilient at the workflow/ecosystem layer. Total ARR, RPO, MAU and AI-first ARR provide multiple scale observations, and Total Adobe ARR rises… |
+bull: Adobe absorbs model commoditization into distribution, file/workflow standards and enterprise integrations; AI ARR and MAU growth expand the ecosystem rather t… / bear: If agentic creation shifts outside Adobe workflows, application-layer switching costs can decay even while near-term ARR remains healthy.
+unknowns: Same-definition creative workflow market share and retention over multiple years. · Whether agentic workflows reduce or deepen dependence on Adobe file/workflow standards.
 
-## reinvestment_fcf — 81.67 (raw 81.67, spread 30.0, DISPUTE)
+## reinvestment_fcf — 81.0 (raw 81.0, spread 32.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| RF | 85 (65–95) | 0.8 | support | V5=cleared, V3=cleared | Adobe combines high cash conversion with low capital intensity and large buybacks. H1 owner-style FCF after PP&E and SBC is roughly $4.0B, while Q3 added $2.52… |
-bull: AI expands TAM while buybacks amplify per-share cash flow growth. / bear: If AI spend becomes defensive and growth slows, high reinvestment may earn lower incremental returns.
-unknowns: Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR…
+| RF | 81 (60–92) | 0.9 | support | V5=cleared, V3=cleared | Cash generation and per-share economics are strong, but direct incremental ROIC remains unmeasured. From cutoff-valid filings/releases, TTM OCF is estimated at… |
+bull: Adobe sustains >$10B TTM OCF, low capex and shrinking shares while absorbing ~45% of OCF into R&D+capex, giving both internal reinvestment and per-share compou… / bear: AI spend may be defensive rather than high-return; Firefly unit economics and true incremental ROIC are not disclosed, so high cash generation does not prove f…
+unknowns: Firefly-specific contribution margin and incremental ROIC. · Maintenance versus growth components of capex/R&D cannot be separated as facts.
 
-## management_allocation — 81.67 (raw 81.67, spread 30.0, DISPUTE)
+## management_allocation — 78.25 (raw 78.25, spread 35.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| MA | 85 (65–95) | 0.8 | support | V1=cleared | Capital allocation is a major strength at the current valuation. H1 repurchases of $4.589B and Q3's ~9.5M shares retire equity at prices materially below the l… |
-bull: Repurchases below intrinsic value and disciplined AI M&A can lift per-share value materially. / bear: Overpaying for AI-related M&A or buying back shares before a structural moat break would destroy value.
-unknowns: Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR…
+| MA | 78.25 (55–90) | 0.87 | support | V1=cleared | Capital allocation is favorable but not yet exceptional. Using the disclosed monthly Q4 FY2025, Q1–Q2 FY2026 repurchase prices plus Q3 repurchase cash/shares, … |
+bull: Adobe is retiring stock well below locked Base value while funding AI adaptation and a modest Semrush acquisition from internal cash generation. / bear: Buybacks can destroy value if the moat is structurally breaking, and Semrush has too little post-close history to demonstrate realized ROIC.
+unknowns: Realized ROIC/IRR and standalone economics of Semrush. · Exact Q3 repurchase execution price and future acquisition discipline under the incoming …
 
-## financial_survival — 76.67 (raw 76.67, spread 30.0, DISPUTE)
+## financial_survival — 80.5 (raw 80.5, spread 27.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| FS | 80 (60–90) | 0.8 | support | V2=cleared, V3=cleared, V9=cleared | Adobe's balance sheet is not net-cash at Q2, but financial survival is exceptionally strong because debt is modest relative to recurring cash generation. The c… |
-bull: Recurring subscription cash flow supports investment even during a slowdown. / bear: A severe moat break could reduce cash generation, but leverage is not high enough to create near-term solvency risk.
-unknowns: Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR…
+| FS | 80.5 (65–92) | 0.93 | support | V2=cleared, V3=cleared, V9=cleared | Financial survival is strong. Q3 cash plus short-term investments were $5.639B against $6.363B debt, leaving only ~$0.724B net debt. TTM OCF is estimated at $1… |
+bull: TTM OCF exceeds total debt, net debt is modest, a $1.5B revolver is undrawn, and share dilution/off-balance commitments score in the strongest observable band. / bear: $1.35B of senior-note principal matures in 2027 and Adobe intends to refinance; purchase obligations remain meaningful if a simultaneous demand shock and credi…
+unknowns: Terms and pricing of the eventual 2027 debt refinancing. · Exact Q3/Q4 update to purchase obligations before the FY2026 10-K.
 
-## expectation_valuation — 81.33 (raw 81.33, spread 30.0, DISPUTE)
+## expectation_valuation — 83.0 (raw 83.0, spread 33.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| EV | 83 (62.25–92.25) | 0.8 | support | V7=cleared | At $248.92, Adobe trades at about half the locked Base DCF of ~$495.57. The valuation no longer requires heroic execution; the market is pricing substantial AI… |
-bull: AI monetization plus continued share-count shrinkage can support Bull value above $800. / bear: If AI commoditizes creative workflows and growth fades, Bear value around $234 leaves little downside cushion from current price.
-unknowns: Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR…
+| EV | 83 (60–93) | 0.88 | support | V7=cleared | The deterministic valuation signal is unchanged: $248.92 / locked Base $495.57 = ~0.502x, mapping to 90 for reverse-DCF burden and 85 for Base return. New evid… |
+bull: Current price is roughly half the locked Base value; AI-first ARR is now >$650M and TTM owner-style FCF/share is near the Base path starting point. / bear: Bear value is only modestly below current price and terminal value remains material; if AI commoditizes workflows, the locked long-run FCF path could prove too…
+unknowns: Firefly contribution margin and AI-first ARR incrementality. · Whether the locked Base owner-FCF/share growth path survives a full AI competition cycle.
 
-## asymmetry — 73.33 (raw 73.33, spread 30.0, DISPUTE)
+## asymmetry — 85.5 (raw 85.5, spread 35.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| AS | 75 (55–85) | 0.8 | support | V9=cleared, V7=cleared | Asymmetry is favorable because the downside case is close to current price while Base/Bull provide substantial upside. The key is that Adobe is not financially… |
-bull: AI-first ARR can turn the current disruption narrative into a new monetization cycle while buybacks shrink the share base. / bear: A permanent shift to model-native creation tools could compress ARR growth and terminal multiples.
-unknowns: Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR…
+| AS | 85.5 (60–95) | 0.88 | support | V9=cleared, V7=cleared | Mechanical asymmetry is stronger than the prior report captured. Locked Bull/current is ~$817.33/$248.92 = 3.28x with at least three independently observable u… |
+bull: Locked Bull value is ~3.28x current price and Adobe has at least three distinct upside paths: AI monetization, broader creative/document user conversion, and e… / bear: Bear value is close to current price only if Adobe's cash engine remains intact; a structural workflow bypass could invalidate the modeled Bear floor rather th…
+unknowns: AI-first ARR incrementality and Firefly contribution margin. · Probability of a workflow-level moat break severe enough to invalidate the Bear path.
 
-## disruptive_innovation — 66.67 (raw 66.67, spread 30.0, DISPUTE)
+## disruptive_innovation — 70.0 (raw 70.0, spread 35.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| DI | 70 (50–80) | 0.82 | neutral | – | Adobe is an incumbent responding effectively to generative AI rather than a pure disruptive entrant. Firefly, Acrobat agents and Experience Cloud AI can expand… |
-bull: Adobe can use its installed base, proprietary workflow data and commercial-safety positioning to absorb AI disruption. / bear: If creation shifts to prompt-native platforms that bypass Adobe apps, AI becomes a moat reducer rather than extender.
-unknowns: Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR…
+| DI | 70 (50–85) | 0.86 | neutral | – | Adobe shows real AI commercialization but does not yet satisfy a high disruptive-innovation score. AI-first ending ARR is >$650M and >150% y/y; Firefly ending … |
+bull: Adobe is commercializing AI across creation, documents and enterprise workflows at large installed-base scale, turning disruption into multiple adjacent value … / bear: Adobe remains an incumbent responding to a cost/performance discontinuity created by external models; rapid usage does not yet prove superior AI unit economics…
+unknowns: Firefly-specific unit economics. · Whether Adobe or model/platform vendors capture the majority of incremental AI value.
 
-## turnaround_quality — 25.0 (raw 25.0, spread 30.0, DISPUTE)
+## turnaround_quality — 30.0 (raw 30.0, spread 30.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
 | TQ | 30 (10–40) | 0.8 | neutral | – | Adobe is not a turnaround. The stock-price drawdown reflects competitive/AI expectations, not broken operations or a distressed financial base. |
@@ -76,24 +76,32 @@ unknowns: Long-run AI monetization per user, Firefly inference economics, and ho
 ## evidence_quality
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| ED | 85 | 0.88 | support | – | Decision-critical historical facts are well supported by the uploaded Q2 FY2026 10-Q and the Q3 FY2026 earnings release. Revenue, ARR, RPO, OCF, debt, cash, SB… |
-unknowns: AI-first ARR composition · normalized Firefly inference margin
+| ED | 85 | 0.93 | support | – | Evidence quality is strong after the Orchestrator pass. Decision-critical historical inputs now have cutoff-valid primary support for AI-first ARR scale, debt … |
+unknowns: AI-first ARR composition/incrementality. · Firefly-specific inference gross margin or contribution margin.
 
 ## red_team
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| RT | 50 | 0.85 | oppose | V1=cleared, V2=cleared, V3=cleared, V4=cleared, V5=cleared, V6=cleared, V7=cleared, V8=cleared, V9=cleared | The strongest short thesis is structural AI commoditization. Generative models can collapse the value of standalone creative tools, reduce switching costs, and… |
-unknowns: True incremental AI ARR · competitive share among prompt-native tools
+| RT | 50 | 0.92 | oppose | V1=cleared, V2=cleared, V3=cleared, V4=cleared, V5=cleared, V6=cleared, V7=cleared, V8=cleared, V9=cleared | The refreshed short thesis is still structural AI commoditization, not solvency or accounting. Adobe is proving AI adoption—AI-first ending ARR >$650M, creativ… |
+unknowns: How much AI-first ARR is truly incremental rather than bundled, migrated or reclassified … · Firefly-specific inference cost, gross margin and contribution margin.
 
 ## macro_overlay
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| MO | 45 | 0.55 | neutral mult=0.7 | – | 금융여건이 완화에서 긴축으로 방향을 틀었다. 연준은 2026-09-16 FOMC에서 25bp를 인상해 3.75~4.00%로 올렸다. 3년여 만의 첫 인상이며 유가 급등발 인플레이션이 이유다. 점도표는 2026년 말과 2027년 말 모두 4.00~4.25%를 가리킨다. 실질금리 상승은 … |
-unknowns: 유가발 인플레이션의 지속 기간과 연준의 반응함수. · 긴축 전환이 AI 인프라 투자 자금조달(특히 투자등급 미만 AI 클라우드)에 미치는 시차 효과.
+| MO | 45 | 0.9 | neutral mult=0.5 | – | 금융여건과 지정학을 분리하면, 금융조건은 0.7 감속이지만 글로벌 지정학이 더 강한 제약이다. 연준은 9월 16일 25bp 인상했고 10년 실질금리는 2.61%였다. 신용은 HY OAS 270bp로 경색이 아니다. 그러나 Hormuz 통항이 10일 평균을 크게 밑돌고 Bab el-Ma… |
+unknowns: Hormuz/Bab el-Mandeb 통항과 중동 에너지 인프라가 얼마나 빠르게 정상화되는가. · 고유가의 core inflation 전이와 Fed의 후속 반응.
 
 ## investment_committee
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| IC | 78.88 | 0.82 | support | – | Expected calibrated score is ~78.9 with Compounder as the primary archetype. Adobe combines category leadership, high recurring cash flow, attractive repurchas… |
-unknowns: AI monetization durability · future acquisition returns
+| IC | 80.97 | 0.9 | support | – | Deterministic fit selects Buffett-style Value as primary and Compounder as secondary. Core score is 80.97, price/Base is 0.502x, TTM owner-style FCF/share is e… |
+unknowns: AI-first ARR incrementality and Firefly-specific contribution margin. · Same-definition long-run retention/market-share evidence versus prompt-native and agentic…
 
+## Archetype fit
+{"buffett_value": {"eligible": true, "fit_score": 80.53382353, "failed_conditions": [], "missing_conditions": [], "blocking_vetoes": []}, "compounder": {"eligible": true, "fit_score": 79.41510417, "failed_conditions": [], "missing_conditions": [], "blocking_vetoes": []}, "moonshot": {"eligible": false, "fit_score": 63.91082, "failed_conditions": ["signal.market_cap_usd", "domain.disruptive_innovation"], "missing_conditions": [], "blocking_vetoes": []}}
+## Provider calibration
+{"mode": "shadow", "applied": true, "decision_effect": false, "family": "openai", "base_offset": 5.0, "max_abs_offset": 5.0, "per_domain_offset": {"structural_leadership": -3.33, "customer_product": -5.0, "moat_trajectory": -3.33, "reinvestment_fcf": -3.33, "management_allocation": -3.33, "financial_survival": -3.33, "expectation_valuation": -1.67, "asymmetry": -1.67, "disruptive_innovation": -3.33, "turnaround_quality": -5.0}, "basis": {"sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조", "n": 27, "measured_mean_gap": 10.2, "measured_sd": 6.9, "direction": "27개 전부 gpt-5.6-sol >= Claude Opus 5. 노이즈가 아니라 계통 편향.", "caveat": "표본은 종목 1개다. 다른 종목의 쌍 실행이 쌓이면 base_offset을 재추정해야 한다. harness.py calibrate로 측정한다."}, "reason": null}
+## Evidence concentration (review only)
+[]
+## Macro / geopolitical transmission
+{"financial_regime": {"financial_conditions": {"scope": "global", "as_of_utc": "2026-09-18T00:00:00+00:00", "summary": "Fed policy tightened on 2026-09-16 and real yields remain elevated; duration-sensitive assets face a restrictive discount-rate backdrop.", "evidence": [{"claim": "FOMC raised the target range 25bp to 3.75%-4.00%.", "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm", "as_of_date": "2026-09-16"}, {"claim": "September SEP median policy rate is 4.1% for end-2026 and end-2027; 2026 PCE/core PCE medians are 3.7%/3.4%.", "source": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm", "as_of_date": "2026-09-16"}, {"claim": "10-year TIPS real yield was 2.61% on 2026-09-17.", "source": "https://fred.stlouisfed.org/data/DFII10", "as_of_date": "2026-09-17"}], "risk_budget_multiplier": 0.7}, "credit_liquidity": {"scope": "global", "as_of_utc": "2026-09-18T00:00:00+00:00", "summary": "US high-yield spreads remain tight despite higher real yields, indicating functioning credit rather than broad liquidity stress.", "evidence": [{"claim": "ICE BofA US High Yield OAS was 2.70% (270bp) on 2026-09-17.", "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2", "as_of_date": "2026-09-17"}], "risk_budget_multiplier": 1}}, "geopolitical_regime": {"military_conflict": {"level": "high", "regions": ["Ukraine", "Russia", "Iran", "Israel", "Yemen", "Saudi Arabia", "Persian Gulf", "Red Sea"], "routes": ["Strait of Hormuz", "Bab el-Mandeb"], "dependencies": ["global energy supply", "commercial shipping"], "structural_events": []}, "energy_disruption": {"level": "high", "regions": ["Persian Gulf", "Saudi Arabia", "Iran", "Red Sea"], "routes": ["Strait of Hormuz", "East-West Pipeline", "Bab el-Mandeb"], "dependencies": ["crude oil", "refining capacity", "diesel supply"], "structural_events": []}, "shipping_disruption": {"level": "high", "regions": ["Persian Gulf", "Red Sea"], "routes": ["Strait of Hormuz", "Bab el-Mandeb"], "dependencies": ["oil and gas shipping", "container and bulk shipping"], "structural_events": []}, "sovereign_policy_instability": {"level": "moderate", "regions": ["Middle East", "Europe"], "routes": [], "dependencies": ["energy policy response", "defense and fiscal policy"], "structural_events": []}, "trade_fragmentation": {"level": "moderate", "regions": ["United States", "Canada", "China"], "routes": [], "dependencies": ["cross-border goods and services trade"], "structural_events": []}, "export_controls": {"level": "moderate", "regions": ["United States", "China"], "routes": [], "dependencies": ["advanced computing", "controlled technology and end users"], "structural_events": []}, "sanctions": {"level": "moderate", "regions": ["Iran", "Russia", "Cuba", "Belarus", "Venezuela"], "routes": [], "dependencies": ["sanctions compliance", "restricted counterparties"], "structural_events": []}}, "company_transmission": {"energy_disruption": {"status": "unknown", "matched_exposures": [], "level": "high"}, "export_controls": {"status": "unknown", "matched_exposures": [], "level": "moderate"}, "military_conflict": {"status": "unknown", "matched_exposures": [], "level": "high"}, "sanctions": {"status": "unknown", "matched_exposures": [], "level": "moderate"}, "shipping_disruption": {"status": "unknown", "matched_exposures": [], "level": "high"}, "sovereign_policy_instability": {"status": "unknown", "matched_exposures": [], "level": "moderate"}, "trade_fragmentation": {"status": "unknown", "matched_exposures": [], "level": "moderate"}}, "missing_or_stale_components": [], "reanalysis_requests": [], "pending_reanalysis_domains": [], "risk_budget_multiplier": 0.5, "purchase_pacing_multiplier": 0.5, "monitoring_urgency": "high", "fundamental_score_effect": 0}

@@ -5,107 +5,135 @@
   "domain": "customer_product",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 85,
-  "confidence_0_1": 0.8,
-  "bull_score": 95,
-  "bear_score": 65,
-  "bull_case": "AI assistants and freemium acquisition can expand both seats and monetization per user.",
-  "bear_case": "If AI generation is good enough outside Adobe, professional willingness to pay for parts of Creative Cloud may fall.",
-  "thesis": "Customer value remains strong. Creative professionals, business users and enterprises continue to expand recurring spend despite AI alternatives, while Acrobat and AI-assisted workflows broaden the user base.",
+  "score_0_100": 78,
+  "confidence_0_1": 0.86,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "AI-first ARR, freemium MAU and subscription spend keep scaling while Adobe preserves software-like margins, turning AI adoption into higher wallet share.",
+  "bear_case": "Prompt-native alternatives can reduce willingness to pay for parts of Creative Cloud; Adobe does not disclose retention cohorts or Firefly-specific inference economics.",
+  "thesis": "Customer value remains strong but the refreshed evidence supports a strong, not exceptional, score. Q3 customer-group subscription revenue grew 14%, AI-first ending ARR exceeded $650M and creative freemium MAU exceeded 100M. These show monetization and usage, but not direct cohort retention or product-level ROI. Consolidated subscription economics remain excellent; Firefly-specific inference margin is still undisclosed.",
   "evidence": [
     {
-      "claim": "Q2 subscription revenue was $6.416B out of $6.618B total revenue.",
+      "claim": "Q3 FY2026 customer-group subscription revenue was $6.56B, +14% y/y, while Total Adobe ARR ended at $27.50B.",
       "source_type": "filing",
-      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
-      "period": "Q2/H1 FY2026",
-      "as_of_date": "2026-06-15",
-      "value": null,
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbeex991q326.htm",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "$6.56B / +14% / $27.50B",
       "fact_or_estimate": "fact"
     },
     {
-      "claim": "Q3 customer-group subscription revenue grew 14% y/y.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "claim": "Q3 AI-first ending ARR exceeded $650M and grew >150% y/y.",
+      "source_type": "ir",
+      "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/01906202/c6yetrerew.pdf",
       "period": "Q3 FY2026",
       "as_of_date": "2026-09-10",
-      "value": "14%",
+      "value": ">$650M; >150% y/y",
       "fact_or_estimate": "fact"
     },
     {
-      "claim": "Adobe reported >1B MAU in Q3.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "claim": "Creative freemium MAU crossed 100M and grew >70% y/y; Adobe reported >1B MAU across creativity and productivity.",
+      "source_type": "ir",
+      "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/01906202/c6yetrerew.pdf",
       "period": "Q3 FY2026",
       "as_of_date": "2026-09-10",
-      "value": ">1B",
+      "value": ">100M / >70% / >1B",
       "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 subscription gross margin was approximately 90.4% from $6.582B subscription revenue and $0.633B subscription cost of revenue.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbeex991q326.htm",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "~90.4%",
+      "fact_or_estimate": "estimate"
     }
   ],
   "counterevidence": [
-    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+    "Adobe does not disclose product-level retention cohorts, NRR or direct customer ROI for AI products.",
+    "Firefly-specific inference cost, gross margin and contribution margin were not found in reviewed cutoff-valid materials.",
+    "AI generation can shift value toward model/distribution layers and lower willingness to pay for some standalone creative functions."
   ],
   "unknowns": [
-    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+    "AI-first ARR incrementality versus bundled/reclassified existing ARR.",
+    "Firefly-specific inference gross margin and retention/cohort economics."
   ],
   "falsifiers": [
-    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+    "Total Adobe ARR or customer-group subscription growth turns negative on a same-definition basis while MAU continues rising.",
+    "AI-first ARR growth stalls without evidence of higher monetization per user.",
+    "Subscription gross margin materially compresses as AI usage scales."
   ],
   "hard_veto_flags": [
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
       "status": "cleared",
-      "rationale": "Growth is supported by recurring subscription spend and usage, not subsidy/marketing dependence."
+      "rationale": "Recurring subscription spend, ARR and usage growth directly contradict growth without customer value; no subsidy dependence is established."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
       "status": "cleared",
-      "rationale": "Adobe is diversified across Creative, Acrobat and enterprise Experience; no single customer/product/regulation is fatal."
+      "rationale": "Revenue and usage span creative, document productivity and enterprise experience workflows; no single fatal dependency is established."
     }
   ],
   "key_kpis": [
     {
-      "name": "owner FCF/share",
+      "name": "Total Adobe ARR growth",
       "direction": "up",
-      "threshold": "sustained high-single-digit+ growth",
-      "cadence": "quarterly/annual"
+      "threshold": "sustain high-single-digit+ growth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "AI-first ARR",
+      "direction": "up",
+      "threshold": "growth remains materially above total ARR growth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "subscription gross margin",
+      "direction": "stable",
+      "threshold": "no structural compression from AI inference",
+      "cadence": "quarterly"
     }
   ],
   "next_checks": [
-    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+    "Q4/FY2026 same-definition AI-first ARR and product composition.",
+    "Any disclosed Firefly inference margin, credit economics or cohort retention.",
+    "Creative & Marketing Professionals subscription growth versus MAU growth."
   ],
   "verdict": "support",
   "subscores": [
     {
       "criterion_id": "customer_roi",
-      "score_0_100": 85,
-      "rationale": "Adobe products are mission-critical professional and enterprise workflows with strong pricing power."
+      "score_0_100": 75,
+      "rationale": "75 anchor: recurring subscription spend and AI ARR support willingness to pay, but direct customer ROI/price realization is not disclosed, so 90 mission-critical evidence is not established."
     },
     {
       "criterion_id": "retention_usage",
-      "score_0_100": 85,
-      "rationale": "ARR and subscription growth remain double-digit; >1B MAU supports breadth of engagement."
+      "score_0_100": 80,
+      "rationale": "Above the 75 expansion anchor because ARR and MAU both grow materially; below 90 because retention cohorts/NRR are not disclosed."
     },
     {
       "criterion_id": "unit_economics",
-      "score_0_100": 85,
-      "rationale": "Gross margins and operating margins remain software-like while subscription revenue dominates."
+      "score_0_100": 80,
+      "rationale": "Consolidated subscription gross margin is ~90% with strong OCF, above the 75 scale-economics anchor; Firefly-specific inference margin is unknown, so 90 strong operating leverage is not established."
     }
   ],
   "uncertainties": [
     {
       "criterion_id": "customer_roi",
       "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "rationale": "Recurring spend and adoption are strong, but direct product-level ROI/pricing evidence is not disclosed."
     },
     {
       "criterion_id": "retention_usage",
       "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "rationale": "MAU and ARR are expanding, but same-definition retention cohorts/NRR are unavailable."
     },
     {
       "criterion_id": "unit_economics",
       "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "rationale": "Consolidated subscription economics are strong; Firefly-specific inference economics remain undisclosed."
     }
   ]
 }
