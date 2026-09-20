@@ -1,5 +1,5 @@
 {
-  "name": "Long Outlier Expectation Gap Strategy v3.1",
+  "name": "Long Outlier Expectation Gap Strategy v3.3",
   "language": "ko",
   "definition": "시장이 기업 성장의 규모와 지속기간을 과소평가한 기업 중, 시간이 흐를수록 경쟁우위가 강화되고 높은 증분자본수익률로 재투자할 수 있으며 현재 가격 대비 성공 시 상승잠재력이 실패 시 영구손실보다 현저히 큰 기업을 장기 보유한다.",
   "principles": [
@@ -80,50 +80,42 @@
           {
             "field": "signal.price_to_base_value",
             "op": "<=",
-            "value": 1.2,
-            "fit_weight": 1.0
+            "value": 1.2
           },
           {
             "field": "domain.moat_trajectory",
             "op": ">=",
-            "value": 76,
-            "fit_weight": 1.0
+            "value": 76
           },
           {
             "field": "domain.reinvestment_fcf",
             "op": ">=",
-            "value": 76,
-            "fit_weight": 1.0
+            "value": 76
           },
           {
             "field": "domain.management_allocation",
             "op": ">=",
-            "value": 72,
-            "fit_weight": 1.0
+            "value": 72
           },
           {
             "field": "domain.financial_survival",
             "op": ">=",
-            "value": 72,
-            "fit_weight": 1.0
+            "value": 72
           },
           {
             "field": "domain.expectation_valuation",
             "op": ">=",
-            "value": 42,
-            "fit_weight": 1.0
+            "value": 42
           },
           {
             "field": "criterion.reinvestment_fcf.incremental_roic",
             "op": ">=",
-            "value": 75,
-            "fit_weight": 1.0
+            "value": 75
           },
           {
             "field": "criterion.reinvestment_fcf.reinvestment_runway",
             "op": ">=",
             "value": 70,
-            "fit_weight": 1.0,
             "note": "관측표가 band_centre 보간을 쓰므로 70은 도달 가능한 값이다(흡수율 약 31.67% 이상). 보간 도입 전에는 표 격자가 [50,65,80,90]뿐이라 70이 존재하지 않았고 실질 기준이 80(흡수율 35%)이었다."
           }
         ],
@@ -138,6 +130,24 @@
           "현재가격이 비현실적인 Bull Case 이상을 요구",
           "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
           "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+        ],
+        "fit_axes": [
+          {
+            "field": "domain.moat_trajectory",
+            "weight": 0.3
+          },
+          {
+            "field": "criterion.reinvestment_fcf.incremental_roic",
+            "weight": 0.3
+          },
+          {
+            "field": "criterion.reinvestment_fcf.reinvestment_runway",
+            "weight": 0.25
+          },
+          {
+            "field": "domain.management_allocation",
+            "weight": 0.15
+          }
         ]
       },
       {
@@ -164,80 +174,89 @@
           {
             "field": "domain.long_term_growth",
             "op": ">=",
-            "value": 70,
-            "fit_weight": 1.0
+            "value": 70
           },
           {
             "field": "criterion.long_term_growth.opportunity_scale_5y",
             "op": ">=",
-            "value": 75,
-            "fit_weight": 1.0
+            "value": 75
           },
           {
             "field": "criterion.long_term_growth.growth_duration_10y",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           },
           {
             "field": "criterion.long_term_growth.culture_adaptability",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           },
           {
             "field": "criterion.long_term_growth.market_misperception",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           },
           {
             "field": "domain.customer_product",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           },
           {
             "field": "domain.moat_trajectory",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           },
           {
             "field": "domain.management_allocation",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           },
           {
             "field": "domain.financial_survival",
             "op": ">=",
-            "value": 60,
-            "fit_weight": 1.0
+            "value": 60
           },
           {
             "field": "domain.asymmetry",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           },
           {
             "field": "criterion.asymmetry.upside_path",
             "op": ">=",
-            "value": 75,
-            "fit_weight": 1.0
+            "value": 75
           },
           {
             "field": "criterion.asymmetry.permanent_loss",
             "op": ">=",
-            "value": 50,
-            "fit_weight": 1.0
+            "value": 50
           },
           {
             "field": "domain.expectation_valuation",
             "op": ">=",
-            "value": 40,
-            "fit_weight": 1.0
+            "value": 40
+          }
+        ],
+        "fit_axes": [
+          {
+            "field": "domain.long_term_growth",
+            "weight": 0.35
+          },
+          {
+            "field": "domain.moat_trajectory",
+            "weight": 0.2
+          },
+          {
+            "field": "domain.customer_product",
+            "weight": 0.15
+          },
+          {
+            "field": "criterion.asymmetry.upside_path",
+            "weight": 0.2
+          },
+          {
+            "field": "domain.management_allocation",
+            "weight": 0.1
           }
         ]
       },
@@ -252,68 +271,57 @@
           {
             "field": "signal.revenue_cagr_next_3y",
             "op": ">=",
-            "value": 0.15,
-            "fit_weight": 1.0
+            "value": 0.15
           },
           {
             "field": "signal.price_to_base_value",
             "op": "<=",
-            "value": 1.1,
-            "fit_weight": 1.0
+            "value": 1.1
           },
           {
             "field": "domain.structural_leadership",
             "op": ">=",
-            "value": 70,
-            "fit_weight": 1.0
+            "value": 70
           },
           {
             "field": "domain.customer_product",
             "op": ">=",
-            "value": 70,
-            "fit_weight": 1.0
+            "value": 70
           },
           {
             "field": "domain.moat_trajectory",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           },
           {
             "field": "domain.reinvestment_fcf",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           },
           {
             "field": "domain.management_allocation",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           },
           {
             "field": "domain.financial_survival",
             "op": ">=",
-            "value": 70,
-            "fit_weight": 1.0
+            "value": 70
           },
           {
             "field": "domain.asymmetry",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           },
           {
             "field": "domain.expectation_valuation",
             "op": ">=",
-            "value": 50,
-            "fit_weight": 1.0
+            "value": 50
           },
           {
             "field": "criterion.reinvestment_fcf.fcf_per_share_quality",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           }
         ],
         "position_cap": "1-3% (성장주 초기 상한)",
@@ -329,7 +337,35 @@
           "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
           "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
         ],
-        "calibration_status": "초기 정책값. 특정 기업에 맞춘 보정이나 사후 수익률 검증을 거친 기준이 아니며 별도 백테스트가 필요하다."
+        "calibration_status": "초기 정책값. 특정 기업에 맞춘 보정이나 사후 수익률 검증을 거친 기준이 아니며 별도 백테스트가 필요하다.",
+        "fit_axes": [
+          {
+            "field": "signal.revenue_cagr_next_3y",
+            "weight": 0.2,
+            "normalization": {
+              "kind": "linear",
+              "min": 0.1,
+              "max": 0.3,
+              "direction": "higher"
+            }
+          },
+          {
+            "field": "domain.customer_product",
+            "weight": 0.25
+          },
+          {
+            "field": "domain.structural_leadership",
+            "weight": 0.2
+          },
+          {
+            "field": "domain.reinvestment_fcf",
+            "weight": 0.2
+          },
+          {
+            "field": "domain.moat_trajectory",
+            "weight": 0.15
+          }
+        ]
       },
       {
         "id": "buffett_value",
@@ -341,38 +377,32 @@
           {
             "field": "signal.price_to_base_value",
             "op": "<=",
-            "value": 0.85,
-            "fit_weight": 1.0
+            "value": 0.85
           },
           {
             "field": "criterion.reinvestment_fcf.fcf_per_share_quality",
             "op": ">=",
-            "value": 75,
-            "fit_weight": 1.0
+            "value": 75
           },
           {
             "field": "domain.financial_survival",
             "op": ">=",
-            "value": 75,
-            "fit_weight": 1.0
+            "value": 75
           },
           {
             "field": "domain.management_allocation",
             "op": ">=",
-            "value": 70,
-            "fit_weight": 1.0
+            "value": 70
           },
           {
             "field": "domain.moat_trajectory",
             "op": ">=",
-            "value": 60,
-            "fit_weight": 1.0
+            "value": 60
           },
           {
             "field": "domain.asymmetry",
             "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
+            "value": 65
           }
         ],
         "position_guidance": "정상화 FCF, 유지보수 투자, 회계 신뢰성, 숨은 레버리지, 자본배분과 영구 쇠퇴를 검증한다. 큰 재투자 활주로는 요구하지 않는다.",
@@ -386,6 +416,28 @@
           "현재가격이 비현실적인 Bull Case 이상을 요구",
           "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
           "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+        ],
+        "fit_axes": [
+          {
+            "field": "criterion.reinvestment_fcf.fcf_per_share_quality",
+            "weight": 0.3
+          },
+          {
+            "field": "domain.financial_survival",
+            "weight": 0.25
+          },
+          {
+            "field": "domain.management_allocation",
+            "weight": 0.2
+          },
+          {
+            "field": "domain.moat_trajectory",
+            "weight": 0.15
+          },
+          {
+            "field": "domain.asymmetry",
+            "weight": 0.1
+          }
         ]
       },
       {
@@ -398,32 +450,27 @@
           {
             "field": "signal.market_cap_usd",
             "op": "<=",
-            "value": 50000000000,
-            "fit_weight": 1.0
+            "value": 50000000000
           },
           {
             "field": "domain.disruptive_innovation",
             "op": ">=",
-            "value": 78,
-            "fit_weight": 1.0
+            "value": 78
           },
           {
             "field": "domain.structural_leadership",
             "op": ">=",
-            "value": 72,
-            "fit_weight": 1.0
+            "value": 72
           },
           {
             "field": "domain.asymmetry",
             "op": ">=",
-            "value": 72,
-            "fit_weight": 1.0
+            "value": 72
           },
           {
             "field": "domain.financial_survival",
             "op": ">=",
-            "value": 60,
-            "fit_weight": 1.0
+            "value": 60
           }
         ],
         "position_cap": "1-3% (문샷 초기 상한 — 채택·단위경제 증거 증가 시 IC 승인으로 단계 확대)",
@@ -438,6 +485,24 @@
           "현재가격이 비현실적인 Bull Case 이상을 요구",
           "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
           "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+        ],
+        "fit_axes": [
+          {
+            "field": "domain.disruptive_innovation",
+            "weight": 0.4
+          },
+          {
+            "field": "domain.asymmetry",
+            "weight": 0.25
+          },
+          {
+            "field": "domain.structural_leadership",
+            "weight": 0.2
+          },
+          {
+            "field": "domain.financial_survival",
+            "weight": 0.15
+          }
         ]
       }
     ],
@@ -450,7 +515,7 @@
       "position_guidance": "유형 적합성이 확인되기 전까지 신규 비중 확대 금지."
     },
     "fit_policy": {
-      "method": "weighted_normalized_conditions",
+      "method": "weighted_fit_axes",
       "tie_tolerance": 1e-06,
       "tie_breaker": [
         "compounder",
@@ -459,7 +524,7 @@
         "buffett_value",
         "moonshot"
       ],
-      "note": "Score criteria use value/100; upper-bound signals use max(0, 1-value/(2*threshold)); missing contributes zero to fit only. Gates remain mandatory."
+      "note": "Eligibility conditions are mandatory gates. Ranking among eligible archetypes uses fit_axes only, so the number of gates an archetype declares cannot give it extra votes. Score fields normalize as value/100; other fields declare an explicit normalization. A missing axis contributes zero to fit and never relaxes a gate."
     }
   },
   "classifications": [
@@ -609,9 +674,9 @@
       "never_below_state": "STARTER_OR_WATCH"
     }
   },
-  "strategy_version": "3.2",
-  "schema_version": "3.2",
-  "decision_policy_version": "3.2",
+  "strategy_version": "3.3",
+  "schema_version": "3.3",
+  "decision_policy_version": "3.3",
   "diagnostics": [
     {
       "id": "turnaround_quality",

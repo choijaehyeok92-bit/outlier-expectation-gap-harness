@@ -41,10 +41,28 @@ if len(ARCHETYPE_IDS)!=len(set(ARCHETYPE_IDS)) or not ARCHETYPE_IDS:
     raise ValueError('Investable archetypes must be a non-empty set of unique identifiers')
 if ARCHETYPES['fallback'] in ARCHETYPE_IDS:
     raise ValueError('The fallback state cannot also be an investable archetype')
-if ARCHETYPES['fit_policy']['method']!='weighted_normalized_conditions':
+if ARCHETYPES['fit_policy']['method'] not in ('weighted_normalized_conditions','weighted_fit_axes'):
     raise ValueError('Unsupported archetype fit method')
 if sorted(ARCHETYPES['fit_policy']['tie_breaker'])!=sorted(ARCHETYPE_IDS):
     raise ValueError('Tie-breaker must name each investable archetype exactly once')
+# Fit ranks eligible archetypes; it must never be able to reach past the gates
+# that made them eligible, so every axis has to name one of this archetype's own
+# conditions, exactly once, with a positive weight.
+if ARCHETYPES['fit_policy']['method']=='weighted_fit_axes':
+    for archetype in ARCHETYPES['types']:
+        axes=archetype.get('fit_axes') or []
+        fields=[a.get('field') for a in axes]
+        condition_fields={c['field'] for c in archetype['conditions']}
+        if not axes or len(fields)!=len(set(fields)) or any(not x for x in fields):
+            raise ValueError(f"{archetype['id']}: fit_axes must be non-empty and unique")
+        if any(field not in condition_fields for field in fields):
+            raise ValueError(f"{archetype['id']}: fit_axes must be a subset of eligibility conditions")
+        if any(not number(a.get('weight')) or float(a['weight'])<=0 for a in axes):
+            raise ValueError(f"{archetype['id']}: fit-axis weights must be positive finite numbers")
+        if abs(sum(float(a['weight']) for a in axes)-1.0)>1e-9:
+            raise ValueError(f"{archetype['id']}: fit-axis weights must sum to 1")
+        if any('fit_weight' in c for c in archetype['conditions']):
+            raise ValueError(f"{archetype['id']}: eligibility conditions must not carry fit_weight in v3.3")
 
 
 def load_json(p:Path): return json.loads(p.read_text(encoding='utf-8'))
@@ -383,7 +401,10 @@ def compute_aggregate(ticker, reports):
     elif covered < 100: state='INCOMPLETE'
     elif confirmed: state='REJECT'
     elif review_only: state='WATCH'
-    elif veto_status in ('UNRESOLVED','PENDING_REVIEW') or overlay['pending_reanalysis_domains'] or valuation['status']!='COMPLETE': state='WATCH'
+    elif (veto_status in ('UNRESOLVED','PENDING_REVIEW')
+          or overlay['pending_reanalysis_domains']
+          or valuation['status']!='COMPLETE'
+          or (valuation.get('sanity') or {}).get('blocking')): state='WATCH'
     else: state=next(b['state'] for b in sorted(STATE_POLICY['bands'],key=lambda x:-x['min']) if state_score>=b['min'])
     if archetype['id']==ARCHETYPES['fallback'] and state in BUY_STATES: state=ARCHETYPES['buy_state_cap_for_fallback']
     if early_exit: archetype['reason']='조기 종료: 현재 decision score와 조건으로 도달 가능한 유형 없음'
@@ -458,9 +479,12 @@ def plan(ticker,reports,result=None):
 def cmd_plan(args):
     reports=load_reports(args.ticker); result=compute_aggregate(args.ticker,reports)
     step=plan(args.ticker,reports,result)
-    research_step = research.build_plan(run_dir(args.ticker), reports, dict(step), result, CALIBRATION)
+    research_step = research.build_plan(
+        run_dir(args.ticker), reports, dict(step), result, CALIBRATION, EXEC.get('research_policy',{}))
     step['research'] = {'questions':len(research_step['questions']),
         'pending':sum(q['status']=='pending' for q in research_step['questions']),
+        'decision_blocking':research_step['research_budget']['decision_blocking_count'],
+        'deferred':research_step['research_budget']['deferred_count'],
         'command':f'python harness.py research-plan {args.ticker.upper()}'}
     print(json.dumps(step,ensure_ascii=False,indent=2))
     for d,aid in step['agents'].items():
@@ -929,7 +953,9 @@ def cmd_policy(args):
 def research_plan(ticker):
     reports = load_reports(ticker)
     result = compute_aggregate(ticker, reports)
-    return research.build_plan(run_dir(ticker), reports, plan(ticker, reports, result), result, CALIBRATION)
+    return research.build_plan(
+        run_dir(ticker), reports, plan(ticker, reports, result), result, CALIBRATION,
+        EXEC.get('research_policy',{}))
 
 
 def cmd_research_plan(args):
@@ -937,7 +963,10 @@ def cmd_research_plan(args):
     payload = research_plan(args.ticker)
     dest = run_dir(args.ticker)/'research'/'plan.json'
     dump_json(dest, payload)
-    print(f'{dest}: {len(payload["questions"])} questions; missing inputs remain absent')
+    budget=payload['research_budget']
+    print(f'{dest}: {budget["active_count"]} active questions '
+          f'({budget["decision_blocking_count"]} blocking), '
+          f'{budget["deferred_count"]} deferred; missing inputs remain absent')
 
 
 def cmd_research_prompt(args):

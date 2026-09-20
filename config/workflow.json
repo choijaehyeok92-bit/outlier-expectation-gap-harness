@@ -38,7 +38,24 @@
         "보완 시도 후에도 없으면 unknowns에 남기되 시도한 경로를 적는다.",
         "2차 자료로 채운 값은 fact_or_estimate를 estimate 또는 interpretation으로 표기한다.",
         "기준 정보와 sources/README.md에 이미 있는 사실은 재검색하지 않는다."
-      ]
+      ],
+      "trigger_classes": {
+        "hard_veto": "decision_blocking",
+        "missing_observable": "decision_blocking",
+        "missing_valuation_input": "decision_blocking",
+        "valuation_sanity_blocking": "decision_blocking",
+        "structural_geopolitical_event": "decision_blocking",
+        "unknowns": "thesis_monitor",
+        "valuation_sanity_review": "thesis_monitor",
+        "next_checks": "optional"
+      },
+      "question_budget": {
+        "max_active_questions": 24,
+        "max_monitoring_questions": 12,
+        "max_optional_questions": 4,
+        "max_nonblocking_per_domain": 4,
+        "note": "예산은 비차단 질문에만 적용한다. decision_blocking 질문은 cap을 넘겨도 숨기지 않으며 blocking_overflow로 기록한다. 보류된 질문은 deferred_questions에 이유와 함께 남는다."
+      }
     },
     "overlay_policy": {
       "component_ttl_hours": {

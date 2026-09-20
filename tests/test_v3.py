@@ -186,7 +186,12 @@ class V3Tests(unittest.TestCase):
         policy=copy.deepcopy(h.ARCHETYPES);policy['types'].reverse()
         self.assertEqual(base,archetypes.classify(policy,ds,signals,85,85,[]))
         conditions=next(t['conditions'] for t in policy['types'] if t['id']=='compounder')
-        for t in policy['types']: t['conditions']=copy.deepcopy(conditions)
+        fit_axes=next(t['fit_axes'] for t in policy['types'] if t['id']=='compounder')
+        # A real tie now needs identical fit axes too: since v3.3 ranking reads
+        # fit_axes, matching the gates alone would leave the scores different.
+        for t in policy['types']:
+            t['conditions']=copy.deepcopy(conditions)
+            t['fit_axes']=copy.deepcopy(fit_axes)
         tie=archetypes.classify(policy,ds,signals,85,85,[])
         self.assertEqual(tie['id'],policy['fit_policy']['tie_breaker'][0])
         self.assertEqual(len(tie['secondary']),len(h.ARCHETYPE_IDS)-1)

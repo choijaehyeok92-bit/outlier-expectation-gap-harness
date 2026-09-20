@@ -18,6 +18,81 @@ def fingerprint(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
+DEFAULT_TRIGGER_CLASSES = {
+    'hard_veto': 'decision_blocking',
+    'missing_observable': 'decision_blocking',
+    'missing_valuation_input': 'decision_blocking',
+    'valuation_sanity_blocking': 'decision_blocking',
+    'structural_geopolitical_event': 'decision_blocking',
+    'unknowns': 'thesis_monitor',
+    'valuation_sanity_review': 'thesis_monitor',
+    'next_checks': 'optional',
+}
+CLASS_RANK = {'decision_blocking': 0, 'thesis_monitor': 1, 'optional': 2}
+
+
+def _question_class(trigger, policy, explicit=None):
+    if explicit:
+        return explicit
+    return (policy or {}).get('trigger_classes', {}).get(
+        trigger, DEFAULT_TRIGGER_CLASSES.get(trigger, 'optional'))
+
+
+def _budget_questions(questions, policy):
+    """Keep every decision blocker; deterministically budget the rest.
+
+    A research budget exists so a long tail of monitoring questions does not
+    crowd out the work. It must never be able to hide something the decision
+    depends on, so blockers are admitted first and unconditionally — if they
+    alone exceed the cap, the plan exceeds the cap and says so in
+    `blocking_overflow` rather than dropping one. Everything deferred stays
+    visible with the rule that deferred it.
+    """
+    policy = policy or {}
+    cfg = policy.get('question_budget', {})
+    unlimited = 10**9
+    max_active = int(cfg.get('max_active_questions', unlimited))
+    class_limits = {'thesis_monitor': int(cfg.get('max_monitoring_questions', unlimited)),
+                    'optional': int(cfg.get('max_optional_questions', unlimited))}
+    per_domain = int(cfg.get('max_nonblocking_per_domain', unlimited))
+    order = lambda q: (CLASS_RANK[q['research_class']], q['priority'], q['research_question_id'])
+    ordered = sorted(questions.values(), key=order)
+
+    active = [q for q in ordered if q['research_class'] == 'decision_blocking']
+    domain_counts, class_counts, deferred = {}, {'thesis_monitor': 0, 'optional': 0}, []
+    for q in ordered:
+        klass = q['research_class']
+        if klass == 'decision_blocking':
+            continue
+        domain = q.get('domain') or '<none>'
+        if len(active) >= max_active:
+            reason = 'max_active_questions'
+        elif class_counts[klass] >= class_limits[klass]:
+            reason = f'max_{klass}_questions'
+        elif domain_counts.get(domain, 0) >= per_domain:
+            reason = 'max_nonblocking_per_domain'
+        else:
+            active.append(q)
+            class_counts[klass] += 1
+            domain_counts[domain] = domain_counts.get(domain, 0) + 1
+            continue
+        deferred.append({**q, 'deferred_reason': reason})
+
+    active.sort(key=order)
+    deferred.sort(key=order)
+    blocking_count = sum(q['research_class'] == 'decision_blocking' for q in active)
+    return active, deferred, {
+        'configured_max_active': max_active,
+        'active_count': len(active),
+        'decision_blocking_count': blocking_count,
+        'thesis_monitor_count': class_counts['thesis_monitor'],
+        'optional_count': class_counts['optional'],
+        'deferred_count': len(deferred),
+        'blocking_overflow': max(0, blocking_count - max_active),
+        'rule': 'decision blockers are never hidden by a research budget',
+    }
+
+
 def inventory(run):
     names = list(INPUTS[:-2]) + [p.relative_to(run).as_posix() for p in sorted((run/'reports').glob('*.json'))
                             if read(p).get('analysis_status') == 'complete'] + list(INPUTS[-2:])
@@ -26,18 +101,24 @@ def inventory(run):
             for name in names]
 
 
-def build_plan(run, reports, stage, aggregate, calibration):
+def build_plan(run, reports, stage, aggregate, calibration, policy=None):
     context = read(run/'company_context.json')
     owners = {r['domain']:r['agent_id'] for r in reports}
     questions = {}
-    def add(aid, text, trigger, priority, domain=None):
+    def add(aid, text, trigger, priority, domain=None, research_class=None):
         text = ' '.join(text.split())
         rid = f'RQ-{aid}-{fingerprint([aid, text])[:10].upper()}'
+        klass = _question_class(trigger, policy, research_class)
         q = questions.setdefault(rid, {'research_question_id': rid, 'question': text,
             'agent_id': aid, 'domain': domain, 'triggers': [], 'priority': priority,
+            'research_class': klass, 'required_for_decision': klass == 'decision_blocking',
             'search_order': ['existing_files', 'regulatory_filings', 'company_ir', 'official_industry', 'secondary'],
             'status': 'pending'})
         q['priority'] = min(q['priority'], priority)
+        # One question can arrive from several triggers; the most binding one wins.
+        if CLASS_RANK[klass] < CLASS_RANK[q['research_class']]:
+            q['research_class'] = klass
+            q['required_for_decision'] = klass == 'decision_blocking'
         if trigger not in q['triggers']: q['triggers'].append(trigger)
     for report in reports:
         if report.get('analysis_status') != 'complete': continue
@@ -59,18 +140,29 @@ def build_plan(run, reports, stage, aggregate, calibration):
             add('GEO', f"{req['event_id']}: {req['domain']}에 미치는 구조적 영향", 'structural_geopolitical_event', 0, req['domain'])
     if aggregate.get('valuation_model', {}).get('status') == 'INCOMPLETE':
         add('EV', aggregate['valuation_model']['reason'], 'missing_valuation_input', 1, 'expectation_valuation')
+    for check in (aggregate.get('valuation_model', {}).get('sanity') or {}).get('checks', []):
+        if check.get('status') == 'FAIL':
+            add('EV', f"Valuation sanity {check['id']}: {check['detail']}",
+                'valuation_sanity_blocking', 0, 'expectation_valuation')
+        elif check.get('status') == 'REVIEW':
+            add('EV', f"Valuation sanity {check['id']}: {check['detail']}",
+                'valuation_sanity_review', 1, 'expectation_valuation')
     snapshot = read(run/'run_manifest.json').get('input_snapshot_sha256')
     available = {q['research_question_id'] for p in history(run) if p['input_snapshot_sha256'] == snapshot
                  for q in p['questions'] if q['status'] == 'resolved'}
     for rid in available & questions.keys(): questions[rid]['status'] = 'evidence_available_for_review'
+    active, deferred, budget = _budget_questions(questions, policy)
     return {'schema_version': '1.0', 'ticker': context['ticker'], 'as_of_date': context['as_of_date'],
         'inputs': inventory(run), 'input_snapshot_sha256': read(run/'run_manifest.json').get('input_snapshot_sha256'),
-        'harness_plan': stage, 'questions': sorted(questions.values(), key=lambda q: (q['priority'], q['research_question_id']))}
+        'harness_plan': stage, 'questions': active, 'deferred_questions': deferred,
+        'research_budget': budget}
 
 
 def prompt(plan):
     return ('# Research Orchestrator\n\n'
         'Harness asks. Research retrieves. Verified evidence stays frozen. Domain reviewers decide.\n'
+        '`questions`만 이번 조사 대상이다. `deferred_questions`는 예산 때문에 보류된 비차단 질문이며 재활성화되기 전에는 검색하지 않는다.\n'
+        'decision_blocking 질문은 예산을 초과하더라도 숨기지 않는다. thesis_monitor와 optional만 예산으로 잘릴 수 있다.\n'
         '각 질문은 existing_files부터 확인한다. 답이 있으면 웹 검색하지 않는다. 공백만 규제 공시 → IR → 공식 산업자료 → 2차 자료 순서로 검색한다.\n'
         'evidence_available_for_review는 research/result-*.json에 답이 이미 수용되어 reviewer 검토가 필요한 질문이다. 같은 질문을 다시 검색하지 않는다.\n'
         'publication_date와 period를 구분하고 마감일 이후 자료는 excluded_post_cutoff로 분리한다. 검색하지 않은 내용을 보충하지 않는다.\n'
@@ -214,6 +306,8 @@ def validate_packet(packet, plan, run, schema, prior=()):
         question['evidence'], question['excluded_post_cutoff'] = usable, late
         question['agent_id'] = requested[rid]['agent_id']
         question['domain'] = requested[rid]['domain']
+        question['research_class'] = requested[rid].get('research_class')
+        question['required_for_decision'] = requested[rid].get('required_for_decision', False)
         for field in ('evidence_supporting_veto', 'evidence_against_veto'):
             if any(eid not in {e['evidence_id'] for e in usable} for eid in question.get(field, [])):
                 raise ValueError('Veto evidence must reference eligible unconflicted evidence')

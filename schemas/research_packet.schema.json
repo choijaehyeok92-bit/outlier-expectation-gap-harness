@@ -49,6 +49,18 @@
             "type": "string",
             "minLength": 1
           },
+          "research_class": {
+            "enum": [
+              "decision_blocking",
+              "thesis_monitor",
+              "optional"
+            ],
+            "description": "조사 우선순위 계층. decision_blocking은 예산으로 보류되지 않는다."
+          },
+          "required_for_decision": {
+            "type": "boolean",
+            "description": "true면 이 질문이 미해결인 채로 투자판정을 확정하지 않는다."
+          },
           "status": {
             "enum": [
               "resolved",

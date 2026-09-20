@@ -1,22 +1,46 @@
 """Render executable thresholds without maintaining a second numeric policy."""
+import json
 
 
 def render(strategy, workflow, calibration):
-    lines=['# Executable v3 policy','',
+    lines=[f"# Executable v{strategy['strategy_version']} policy",'',
         'Generated from config; update with `python harness.py policy --out docs/POLICY.md`.','',
         f"Strategy / schema / decision policy: {strategy['strategy_version']} / {strategy['schema_version']} / {strategy['decision_policy_version']}.",'']
     for t in strategy['archetypes']['types']:
-        lines += [f"## {t['id']} — {t['label_en']}",'','| Field | Operator | Threshold | Fit weight |','|---|---|---:|---:|']
+        lines += [f"## {t['id']} — {t['label_en']}",'',
+            '### Eligibility conditions','',
+            '| Field | Operator | Threshold |','|---|---|---:|']
         for c in t['conditions']:
-            lines += [f"| `{c['field']}` | {c['op']} | {c['value']} | {c['fit_weight']} |"]
+            lines += [f"| `{c['field']}` | {c['op']} | {c['value']} |"]
+        if t.get('fit_axes'):
+            lines += ['', '### Fit axes','',
+                '| Field | Weight | Normalization |','|---|---:|---|']
+            for axis in t['fit_axes']:
+                spec = axis.get('normalization') or {'kind':'score_100'}
+                lines += [f"| `{axis['field']}` | {axis['weight']} | `{json.dumps(spec,ensure_ascii=False,sort_keys=True)}` |"]
         gate='core excluding EV' if t.get('valuation_tolerant') else 'core'
         lines += ['',f"Gate: {gate} >= {t.get('min_gate_score',strategy['archetypes']['min_gate_score'])}.",'']
     fit=strategy['archetypes']['fit_policy']
     lines += ['## Fit and selection','',fit['note'],
         f"Tie tolerance: {fit['tie_tolerance']}; tie priority: {' > '.join(fit['tie_breaker'])}.",'',
         'All listed veto blockers remain binding; ownership coverage is required before buying.',
-        '',f"Provider calibration mode: **{calibration['provider_calibration']['mode']}**.",'',
-        '## Component freshness','', '| Global component | TTL hours |','|---|---:|']
+        '',f"Provider calibration mode: **{calibration['provider_calibration']['mode']}**.",'']
+    qb=workflow['execution'].get('research_policy',{}).get('question_budget',{})
+    if qb:
+        lines += ['## Research budget','',
+            f"- Active-question cap: {qb.get('max_active_questions')}",
+            f"- Monitoring cap: {qb.get('max_monitoring_questions')}",
+            f"- Optional cap: {qb.get('max_optional_questions')}",
+            f"- Non-blocking per-domain cap: {qb.get('max_nonblocking_per_domain')}",
+            '- Decision-blocking questions are never removed by these caps.','']
+    sanity=calibration.get('valuation',{}).get('sanity_policy',{})
+    if sanity:
+        lines += ['## Valuation sanity','',
+            f"- Yearly scenario crossing mode: {sanity.get('yearly_scenario_crossing')}",
+            f"- Terminal-value review threshold: {sanity.get('terminal_fraction_review')}",
+            f"- Terminal-value high threshold: {sanity.get('terminal_fraction_high')}",
+            '- Sanity REVIEW flags do not auto-confirm a Hard Veto.','']
+    lines += ['## Component freshness','', '| Global component | TTL hours |','|---|---:|']
     for name,hours in workflow['execution']['overlay_policy']['component_ttl_hours'].items():
         lines += [f'| {name} | {hours} |']
     lines += ['', '## State bands','', '| Minimum | Mechanical state | Position cap |','|---:|---|---|']
