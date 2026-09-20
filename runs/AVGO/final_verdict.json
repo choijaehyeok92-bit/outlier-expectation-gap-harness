@@ -4,17 +4,19 @@
   "decision_policy_version": "3.1",
   "as_of_date": "2026-09-18",
   "ticker": "AVGO",
-  "score_100": 64.82,
-  "score_100_ex_valuation": 65.25,
+  "score_100": 66.96,
+  "score_100_ex_valuation": 69.0,
   "coverage_weight": 35,
   "classification": "Starter / Watch",
   "disruptive_innovation_score": 73.5,
   "turnaround_quality_score": null,
-  "reachable_archetypes_raw": [],
-  "early_exit": true,
+  "reachable_archetypes_raw": [
+    "growth"
+  ],
+  "early_exit": false,
   "hard_veto_status": "PENDING_REVIEW",
-  "mechanical_pre_ic_state": "EARLY_EXIT_NON_FIT",
-  "position_range_pre_ic": "0% (유형 도달 불가 — 조기 종료)",
+  "mechanical_pre_ic_state": "INCOMPLETE",
+  "position_range_pre_ic": "N/A",
   "domain_scores": {
     "structural_leadership": null,
     "customer_product": null,
@@ -86,13 +88,13 @@
       "bear_score": 30,
       "criteria": {
         "permanent_loss": 55.0,
-        "probability_calibration": 50.0,
+        "probability_calibration": 75.0,
         "upside_path": 75.0
       },
-      "raw_weighted_median": 60.5,
-      "score": 60.5,
+      "raw_weighted_median": 68.0,
+      "score": 68.0,
       "spread": 50.0,
-      "avg_confidence": 0.84,
+      "avg_confidence": 0.87,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
       "domain_dispute": true,
@@ -103,13 +105,13 @@
         "minor": 0
       },
       "score_source": "rubric_subscores",
-      "raw_score": 60.5,
-      "calibrated_score": 58.83,
-      "calibrated_shadow_score": 58.83,
-      "decision_score": 60.5,
+      "raw_score": 68.0,
+      "calibrated_score": 66.33,
+      "calibrated_shadow_score": 66.33,
+      "decision_score": 68.0,
       "provider_offset": -1.67,
-      "score_before_provider_calibration": 60.5,
-      "raw_before_provider_calibration": 60.5
+      "score_before_provider_calibration": 68.0,
+      "raw_before_provider_calibration": 68.0
     },
     "disruptive_innovation": {
       "bull_score": 85,
@@ -212,13 +214,13 @@
       "bear_score": 30,
       "criteria": {
         "permanent_loss": 55.0,
-        "probability_calibration": 50.0,
+        "probability_calibration": 75.0,
         "upside_path": 75.0
       },
-      "raw_weighted_median": 60.5,
-      "score": 60.5,
+      "raw_weighted_median": 68.0,
+      "score": 68.0,
       "spread": 50.0,
-      "avg_confidence": 0.84,
+      "avg_confidence": 0.87,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
       "domain_dispute": true,
@@ -229,13 +231,13 @@
         "minor": 0
       },
       "score_source": "rubric_subscores",
-      "raw_score": 60.5,
-      "calibrated_score": 58.83,
-      "calibrated_shadow_score": 58.83,
-      "decision_score": 60.5,
+      "raw_score": 68.0,
+      "calibrated_score": 66.33,
+      "calibrated_shadow_score": 66.33,
+      "decision_score": 68.0,
       "provider_offset": -1.67,
-      "score_before_provider_calibration": 60.5,
-      "raw_before_provider_calibration": 60.5
+      "score_before_provider_calibration": 68.0,
+      "raw_before_provider_calibration": 68.0
     },
     {
       "domain": "disruptive_innovation",
@@ -639,18 +641,18 @@
   },
   "dispersion_review": {
     "metric": "scored 도메인 전체에 대한 skew = (score - bear_score) - (bull_score - score) 의 평균. 양수면 하방 폭이 더 넓다는 뜻이다.",
-    "mean_skew": 11.62,
-    "label": "downside_skew",
-    "reduce_bands": 1,
+    "mean_skew": 15.38,
+    "label": "severe_downside_skew",
+    "reduce_bands": 2,
     "widest_domain": "expectation_valuation",
-    "most_downside_skewed": "expectation_valuation",
+    "most_downside_skewed": "asymmetry",
     "by_domain": [
       {
         "domain": "asymmetry",
         "spread": 50.0,
-        "upside_width": 19.5,
-        "downside_width": 30.5,
-        "skew": 11.0
+        "upside_width": 12.0,
+        "downside_width": 38.0,
+        "skew": 26.0
       },
       {
         "domain": "disruptive_innovation",
@@ -758,11 +760,10 @@
   "archetype_fit": {
     "buffett_value": {
       "eligible": false,
-      "fit_score": 29.74901961,
+      "fit_score": 30.99901961,
       "failed_conditions": [
         "signal.price_to_base_value",
-        "domain.financial_survival",
-        "domain.asymmetry"
+        "domain.financial_survival"
       ],
       "missing_conditions": [
         "criterion.reinvestment_fcf.fcf_per_share_quality",
@@ -788,11 +789,8 @@
     },
     "growth": {
       "eligible": false,
-      "fit_score": 32.23305785,
-      "failed_conditions": [
-        "domain.asymmetry",
-        "gate_score"
-      ],
+      "fit_score": 32.91487603,
+      "failed_conditions": [],
       "missing_conditions": [
         "domain.structural_leadership",
         "domain.customer_product",
@@ -805,7 +803,7 @@
     },
     "moonshot": {
       "eligible": false,
-      "fit_score": 40.8,
+      "fit_score": 42.3,
       "failed_conditions": [
         "signal.market_cap_usd",
         "domain.disruptive_innovation",
@@ -840,361 +838,12 @@
     "turnaround_candidate": false
   },
   "ic_verdict": null,
-  "early_exit_record": {
-    "stage": "triage",
-    "last_reachable_archetypes": [
-      "growth"
-    ],
-    "reachability_history_method": "Deterministic replay in manifest order; not a claim about wall-clock execution order.",
-    "eliminated_archetypes": {
-      "compounder": {
-        "failed_conditions": [
-          {
-            "field": "domain.financial_survival",
-            "op": ">=",
-            "value": 72,
-            "fit_weight": 1.0
-          }
-        ],
-        "missing_conditions": [
-          "domain.moat_trajectory",
-          "domain.reinvestment_fcf",
-          "domain.management_allocation",
-          "criterion.reinvestment_fcf.incremental_roic",
-          "criterion.reinvestment_fcf.reinvestment_runway"
-        ],
-        "gate_failed": false,
-        "blocking_vetoes": []
-      },
-      "growth": {
-        "failed_conditions": [
-          {
-            "field": "domain.asymmetry",
-            "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
-          }
-        ],
-        "missing_conditions": [
-          "domain.structural_leadership",
-          "domain.customer_product",
-          "domain.moat_trajectory",
-          "domain.reinvestment_fcf",
-          "domain.management_allocation",
-          "criterion.reinvestment_fcf.fcf_per_share_quality"
-        ],
-        "gate_failed": true,
-        "blocking_vetoes": []
-      },
-      "buffett_value": {
-        "failed_conditions": [
-          {
-            "field": "signal.price_to_base_value",
-            "op": "<=",
-            "value": 0.85,
-            "fit_weight": 1.0
-          },
-          {
-            "field": "domain.financial_survival",
-            "op": ">=",
-            "value": 75,
-            "fit_weight": 1.0
-          },
-          {
-            "field": "domain.asymmetry",
-            "op": ">=",
-            "value": 65,
-            "fit_weight": 1.0
-          }
-        ],
-        "missing_conditions": [
-          "criterion.reinvestment_fcf.fcf_per_share_quality",
-          "domain.management_allocation",
-          "domain.moat_trajectory"
-        ],
-        "gate_failed": false,
-        "blocking_vetoes": []
-      },
-      "moonshot": {
-        "failed_conditions": [
-          {
-            "field": "signal.market_cap_usd",
-            "op": "<=",
-            "value": 50000000000,
-            "fit_weight": 1.0
-          },
-          {
-            "field": "domain.disruptive_innovation",
-            "op": ">=",
-            "value": 78,
-            "fit_weight": 1.0
-          },
-          {
-            "field": "domain.asymmetry",
-            "op": ">=",
-            "value": 72,
-            "fit_weight": 1.0
-          }
-        ],
-        "missing_conditions": [
-          "domain.structural_leadership"
-        ],
-        "gate_failed": false,
-        "blocking_vetoes": []
-      }
-    },
-    "confirmed_vetoes": [],
-    "unresolved_vetoes": [],
-    "pending_vetoes": [
-      {
-        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MA",
-          "RT"
-        ],
-        "assessments": [],
-        "missing_reports": [
-          "MA",
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "FS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "FS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Broadcom's own operations generate cash far above ordinary capex and near-term debt maturities, so the company does not require repeated external financing to operate. XPV financing supports customers and is routed to off-balance risk rather than this veto."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "장기간 지속되는 과도한 희석",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "RF",
-          "FS"
-        ],
-        "assessments": [
-          {
-            "agent_id": "FS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Q3 diluted shares increased only about 0.56% y/y while Broadcom repurchased $8.45B of stock in 9M. The 'excessive' element is not supported even though SBC remains material."
-          }
-        ],
-        "missing_reports": [
-          "RF"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [],
-        "missing_reports": [
-          "CP",
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "RF",
-          "RT"
-        ],
-        "assessments": [],
-        "missing_reports": [
-          "RF",
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MT",
-          "RT"
-        ],
-        "assessments": [],
-        "missing_reports": [
-          "MT",
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "EV",
-          "AS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "AS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Frozen price $357.61 is far below locked Bull value $797.84; the veto's sole element is not met."
-          },
-          {
-            "agent_id": "EV",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Frozen price $357.61 is below locked-policy Bull value $797.84 and equals only 0.884x Base $404.48. The defined veto requires current price to exceed Bull value, which is not satisfied."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [],
-        "missing_reports": [
-          "CP",
-          "RT"
-        ],
-        "missing_assessments": []
-      }
-    ],
-    "future_reentry": {
-      "required_conditions": {
-        "compounder": {
-          "failed_conditions": [
-            {
-              "field": "domain.financial_survival",
-              "op": ">=",
-              "value": 72,
-              "fit_weight": 1.0
-            }
-          ],
-          "missing_conditions": [
-            "domain.moat_trajectory",
-            "domain.reinvestment_fcf",
-            "domain.management_allocation",
-            "criterion.reinvestment_fcf.incremental_roic",
-            "criterion.reinvestment_fcf.reinvestment_runway"
-          ],
-          "gate_failed": false,
-          "blocking_vetoes": []
-        },
-        "growth": {
-          "failed_conditions": [
-            {
-              "field": "domain.asymmetry",
-              "op": ">=",
-              "value": 65,
-              "fit_weight": 1.0
-            }
-          ],
-          "missing_conditions": [
-            "domain.structural_leadership",
-            "domain.customer_product",
-            "domain.moat_trajectory",
-            "domain.reinvestment_fcf",
-            "domain.management_allocation",
-            "criterion.reinvestment_fcf.fcf_per_share_quality"
-          ],
-          "gate_failed": true,
-          "blocking_vetoes": []
-        },
-        "buffett_value": {
-          "failed_conditions": [
-            {
-              "field": "signal.price_to_base_value",
-              "op": "<=",
-              "value": 0.85,
-              "fit_weight": 1.0
-            },
-            {
-              "field": "domain.financial_survival",
-              "op": ">=",
-              "value": 75,
-              "fit_weight": 1.0
-            },
-            {
-              "field": "domain.asymmetry",
-              "op": ">=",
-              "value": 65,
-              "fit_weight": 1.0
-            }
-          ],
-          "missing_conditions": [
-            "criterion.reinvestment_fcf.fcf_per_share_quality",
-            "domain.management_allocation",
-            "domain.moat_trajectory"
-          ],
-          "gate_failed": false,
-          "blocking_vetoes": []
-        },
-        "moonshot": {
-          "failed_conditions": [
-            {
-              "field": "signal.market_cap_usd",
-              "op": "<=",
-              "value": 50000000000,
-              "fit_weight": 1.0
-            },
-            {
-              "field": "domain.disruptive_innovation",
-              "op": ">=",
-              "value": 78,
-              "fit_weight": 1.0
-            },
-            {
-              "field": "domain.asymmetry",
-              "op": ">=",
-              "value": 72,
-              "fit_weight": 1.0
-            }
-          ],
-          "missing_conditions": [
-            "domain.structural_leadership"
-          ],
-          "gate_failed": false,
-          "blocking_vetoes": []
-        }
-      },
-      "requirements": [
-        "New evidence must satisfy all gates for at least one archetype.",
-        "Complete core coverage, deterministic valuation and all veto ownership before any buy."
-      ]
-    },
-    "ic_intentionally_not_run": true,
-    "statement": "IC was intentionally not run because no investable archetype remains reachable."
-  },
+  "early_exit_record": null,
   "archetype": "non_fit",
   "secondary_archetypes": [],
-  "archetype_rationale": "조기 종료: 현재 decision score와 조건으로 도달 가능한 유형 없음",
-  "ic_state": "EARLY_EXIT_NON_FIT",
-  "position_range": "0% (유형 도달 불가 — 조기 종료)",
+  "archetype_rationale": "No eligible archetype: see failed/missing conditions and vetoes",
+  "ic_state": "INCOMPLETE",
+  "position_range": "N/A",
   "ic_review_flags": [],
   "falsifiers": [
     "Bull asymmetry weakens materially if AI semiconductor growth falls below 30% while software growth also falls below 10% for two consecutive quarters.",
