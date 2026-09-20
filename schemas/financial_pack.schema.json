@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Financial preprocessing pack (Stage 0 / FP output)",
+  "type": "object",
+  "required": ["schema_version", "ticker", "as_of_date", "documents", "facts"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "ticker": {"type": "string"},
+    "company_name": {"type": ["string", "null"]},
+    "as_of_date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "reporting_currency": {"type": ["string", "null"]},
+    "documents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["document_id", "source_document", "document_type"],
+        "properties": {
+          "document_id": {"type": "string", "pattern": "^DOC-\\d{3,}$"},
+          "source_document": {"type": "string", "minLength": 1},
+          "document_type": {
+            "enum": ["10-K", "10-Q", "20-F", "annual_report", "earnings_release", "proxy", "other"]
+          },
+          "filing_date": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "period_end": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "is_amendment": {"type": "boolean"}
+        }
+      }
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fact_id", "metric", "statement", "gaap_status", "value_reported",
+                     "unit_kind", "scale_multiplier", "period_kind", "source_document"],
+        "properties": {
+          "fact_id": {"type": "string", "pattern": "^FACT-\\d{4,}$"},
+          "metric": {
+            "enum": [
+              "revenue", "cost_of_revenue", "gross_profit", "operating_income", "r_and_d",
+              "s_and_m", "g_and_a", "sbc", "d_and_a", "interest_expense", "tax_expense", "net_income",
+              "cash", "short_term_investments", "long_term_investments", "accounts_receivable",
+              "inventory", "accounts_payable", "deferred_revenue", "ppe_net", "goodwill",
+              "intangibles", "total_assets", "short_term_debt", "long_term_debt", "convertible_debt",
+              "total_debt", "lease_liabilities", "total_liabilities", "total_equity",
+              "operating_cash_flow", "investing_cash_flow", "financing_cash_flow", "capex",
+              "acquisitions", "asset_sales", "stock_repurchases", "stock_issuance", "debt_issuance",
+              "debt_repayment", "fx_effect_on_cash", "beginning_cash", "ending_cash",
+              "period_end_shares", "basic_weighted_average_shares", "diluted_weighted_average_shares",
+              "rsu_outstanding", "options_outstanding", "convertible_share_equivalents",
+              "purchase_commitments", "guarantees", "pension_obligations",
+              "other_off_balance_commitments", "off_balance_commitments_total",
+              "other"
+            ]
+          },
+          "metric_detail": {"type": ["string", "null"]},
+          "reported_label": {"type": ["string", "null"]},
+          "statement": {
+            "enum": ["income", "balance_sheet", "cash_flow", "shares", "commitments", "segment", "other"]
+          },
+          "gaap_status": {"enum": ["gaap", "non_gaap", "not_applicable", "unclear"]},
+          "value_reported": {"type": ["number", "null"]},
+          "unit_kind": {"enum": ["currency", "shares", "ratio", "percent", "count"]},
+          "currency": {"type": ["string", "null"]},
+          "scale_multiplier": {"type": "number", "exclusiveMinimum": 0},
+          "period_start": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "period_end": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "period_kind": {"enum": ["instant", "quarter", "ytd", "fy"]},
+          "fiscal_year": {"type": ["integer", "null"]},
+          "fiscal_quarter": {"type": ["integer", "null"], "minimum": 1, "maximum": 4},
+          "segment": {"type": ["string", "null"]},
+          "filing_date": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "source_document": {"type": "string", "minLength": 1},
+          "source_page": {"type": ["integer", "null"]},
+          "source_section": {"type": ["string", "null"]},
+          "source_locator": {"type": ["string", "null"]},
+          "source_quote": {"type": ["string", "null"]},
+          "is_amended": {"type": "boolean"},
+          "is_restated": {"type": "boolean"},
+          "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+          "requires_review": {"type": "boolean"},
+          "review_reason": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "adjustment_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["adjustment_id", "type", "judgment_status"],
+        "properties": {
+          "adjustment_id": {"type": "string", "pattern": "^ADJ-\\d{3,}$"},
+          "type": {
+            "enum": ["restructuring", "impairment", "litigation", "acquisition_cost",
+                     "integration_cost", "severance", "asset_sale_gain_loss", "unusual_tax",
+                     "sbc", "acquisition_amortization", "working_capital_swing", "subsidy",
+                     "insurance_proceeds", "capitalized_development", "other"]
+          },
+          "amount_fact_id": {"type": ["string", "null"]},
+          "period_end": {"type": ["string", "null"]},
+          "description": {"type": ["string", "null"]},
+          "recurrence_history": {"type": "array"},
+          "judgment_status": {"const": "requires_economic_review"},
+          "source_document": {"type": ["string", "null"]},
+          "source_page": {"type": ["integer", "null"]},
+          "source_section": {"type": ["string", "null"]},
+          "source_quote": {"type": ["string", "null"]},
+          "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "extraction_warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["severity", "message"],
+        "properties": {
+          "severity": {"enum": ["low", "medium", "high"]},
+          "message": {"type": "string", "minLength": 1},
+          "related_fact_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

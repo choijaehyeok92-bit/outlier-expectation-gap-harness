@@ -24,6 +24,9 @@
 - 분석 기준일 이후의 정보를 소급해 사용하지 않는다.
 
 ## Independence protocol
+### Phase 0 — Raw data intake and preprocessing
+`config/intake.json`의 문서 체크리스트로 필요한 원자료를 먼저 확보하고, Financial Preprocessor(FP)가 공시 사실을 atomic fact로 추출해 `sources/financials/normalized_financials.json`을 만든다. FP는 계산·추정·경제적 정상화 판단을 하지 않으며 점수·Bull/Bear·Hard Veto를 산출하지 않는다. 지침은 [`agents/00_financial_preprocessor/AGENTS.md`](agents/00_financial_preprocessor/AGENTS.md)다. 이 단계가 끝나기 전에는 freeze와 이후 분석을 시작하지 않는다.
+
 ### Phase 1 — Blind analysis
 항목당 에이전트 1개가 다른 항목의 결론을 보지 않고 독립 분석한다. triage(EV·AS·DI·FS)를 먼저 실행한다.
 

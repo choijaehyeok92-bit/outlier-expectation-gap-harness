@@ -77,6 +77,21 @@ class V3Tests(unittest.TestCase):
 
     def aggregate(self,reports): return h.compute_aggregate('SYNTH',reports)
 
+    @staticmethod
+    def minimal_pack(ticker):
+        """Smallest pack that satisfies stage 0's required rows."""
+        docs=[{'document_id':'DOC-001','source_document':'annual.htm','document_type':'10-K',
+               'filing_date':None,'period_end':None,'is_amendment':False}]
+        docs+=[{'document_id':'DOC-%03d'%(i+2),'source_document':'q%d.htm'%i,'document_type':'10-Q',
+                'filing_date':None,'period_end':None,'is_amendment':False} for i in range(6)]
+        fact={'fact_id':'FACT-0001','metric':'revenue','metric_detail':None,'reported_label':'Revenue',
+              'statement':'income','gaap_status':'gaap','value_reported':1.0,'unit_kind':'currency',
+              'currency':'USD','scale_multiplier':1000000,'period_kind':'quarter','fiscal_year':2026,
+              'fiscal_quarter':2,'segment':'consolidated','source_document':'q0.htm',
+              'is_amended':False,'is_restated':False,'requires_review':False}
+        return {'schema_version':'1.0','ticker':ticker,'as_of_date':'2026-09-19','documents':docs,
+                'facts':[fact],'adjustment_candidates':[],'extraction_warnings':[]}
+
     def test_exactly_three_and_synthetic_classifications(self):
         self.assertEqual({t['id'] for t in h.ARCHETYPES['types']},{'compounder','buffett_value','moonshot'})
         for kind in ('compounder','buffett_value','moonshot','non_fit'):
@@ -376,6 +391,13 @@ class V3Tests(unittest.TestCase):
         cli('init','ROUNDTRIP','--as-of','2026-09-19',ok=False)
         run=self.root/'runs/ROUNDTRIP';ctx=h.load_json(run/'company_context.json');ctx.update(current_price=100,net_cash_per_share=5,market_cap_usd=100e9)
         h.dump_json(run/'company_context.json',ctx)
+        # Stage 0 first: a new run cannot freeze until the raw pack is in place.
+        cli('intake','ROUNDTRIP',ok=False)
+        cli('freeze','ROUNDTRIP','--provider','openai','--model','gpt-6-astra',ok=False)
+        cli('prompt','ROUNDTRIP','FP')
+        h.dump_json(run/h.FINANCIAL_PACK,self.minimal_pack('ROUNDTRIP'))
+        cli('intake','ROUNDTRIP')
+        cli('validate-pack','ROUNDTRIP')
         cli('freeze','ROUNDTRIP','--provider','openai','--model','gpt-6-astra')
         manifest=h.load_json(run/'run_manifest.json')
         self.assertEqual(manifest['decision_policy_version'],'3.0')
@@ -398,6 +420,7 @@ class V3Tests(unittest.TestCase):
             ticker=kind.upper();cli('init',ticker,'--as-of','2026-09-19')
             path=self.root/'runs'/ticker
             context=copy.deepcopy(self.context);context['ticker']=ticker;h.dump_json(path/'company_context.json',context)
+            h.dump_json(path/h.FINANCIAL_PACK,self.minimal_pack(ticker))
             cli('freeze',ticker,'--provider','openai','--model','gpt-6-astra')
             for r in reports:
                 r['ticker']=ticker;h.dump_json(path/'reports'/f'{r["agent_id"]}.json',r)
@@ -547,3 +570,98 @@ class DispersionTests(unittest.TestCase):
         self.assertEqual(baseline['archetype'], skewed['archetype'])
         self.assertEqual(baseline['veto_gate']['overall'], skewed['veto_gate']['overall'])
         self.assertGreater(skewed['dispersion_review']['mean_skew'], baseline['dispersion_review']['mean_skew'])
+
+
+class Stage0IntakeTests(unittest.TestCase):
+    """Stage 0 gates raw-document readiness and never touches a score."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root_patch = patch.object(h, 'ROOT', Path(self.tmp.name))
+        self.root_patch.start()
+        self.addCleanup(self.root_patch.stop)
+        self.addCleanup(self.tmp.cleanup)
+        context = h.load_json(REPO/'templates/company_context.json')
+        context.update(ticker='SYNTH', as_of_date='2026-09-19', current_price=100,
+                       net_cash_per_share=5, market_cap_usd=100e9)
+        h.dump_json(h.run_dir('SYNTH')/'company_context.json', context)
+
+    def pack(self, quarters=6):
+        built = V3Tests.minimal_pack('SYNTH')
+        built['documents'] = [built['documents'][0]] + built['documents'][1:1 + quarters]
+        return built
+
+    def enforce(self, required=True):
+        h.dump_json(h.run_dir('SYNTH')/'run_manifest.json',
+                    {'ticker': 'SYNTH', 'financial_pack_required': required})
+
+    def test_legacy_runs_without_a_pack_are_never_blocked(self):
+        self.enforce(required=False)
+        status = h.intake_status('SYNTH')
+        self.assertFalse(status['blocking'])
+        self.assertFalse(status['enforced'])
+        self.assertEqual(status['stage_0'], 'missing_pack')
+
+    def test_enforced_run_blocks_until_required_documents_exist(self):
+        self.enforce()
+        self.assertTrue(h.intake_status('SYNTH')['blocking'])
+        h.dump_json(h.run_dir('SYNTH')/h.FINANCIAL_PACK, self.pack(quarters=2))
+        blocked = h.intake_status('SYNTH')
+        self.assertTrue(blocked['blocking'])
+        self.assertIn('trailing_quarters', [g['id'] for g in blocked['coverage']['blocking_gaps']])
+        h.dump_json(h.run_dir('SYNTH')/h.FINANCIAL_PACK, self.pack(quarters=6))
+        ready = h.intake_status('SYNTH')
+        self.assertFalse(ready['blocking'])
+        self.assertEqual(ready['stage_0'], 'ready')
+
+    def test_plan_puts_intake_first_when_stage_0_is_incomplete(self):
+        self.enforce()
+        step = h.plan('SYNTH', [])
+        self.assertEqual(step['stage'], 'intake')
+        self.assertEqual(step['agents'], {'financial_preprocessor': 'FP'})
+
+    def test_freeze_refuses_while_stage_0_is_incomplete(self):
+        self.enforce()
+        with self.assertRaises(SystemExit):
+            h.cmd_freeze(SimpleNamespace(ticker='SYNTH', provider='openai', model='m',
+                                         reasoning_effort=None))
+
+    def test_conditional_requirements_are_not_counted_as_gaps(self):
+        from harness_core import intake as intake_module
+        result = intake_module.coverage(self.pack(), h.INTAKE_POLICY)
+        conditional = {r['id'] for r in result['conditional_unverified']}
+        self.assertIn('registration_statement', conditional)
+        self.assertNotIn('registration_statement', {g['id'] for g in result['advisory_gaps']})
+        self.assertNotIn('registration_statement', {g['id'] for g in result['blocking_gaps']})
+
+    def test_invariants_catch_sign_period_and_dangling_reference(self):
+        from harness_core import intake as intake_module
+        pack = self.pack()
+        base = pack['facts'][0]
+        base.update(metric='capex', value_reported=-5)
+        pack['facts'].append({**base, 'fact_id': 'FACT-0002', 'metric': 'revenue',
+                              'value_reported': 1, 'period_kind': 'fy', 'fiscal_quarter': 2})
+        pack['facts'].append({**base, 'fact_id': 'FACT-0003', 'metric': 'other',
+                              'metric_detail': None, 'value_reported': 1})
+        pack['adjustment_candidates'].append({'adjustment_id': 'ADJ-001', 'type': 'sbc',
+                                              'amount_fact_id': 'FACT-9999',
+                                              'judgment_status': 'requires_economic_review'})
+        errors = ' | '.join(intake_module.pack_invariants(pack))
+        self.assertIn('positive cost magnitude', errors)
+        self.assertIn('period_kind=fy cannot carry fiscal_quarter', errors)
+        self.assertIn('metric=other requires metric_detail', errors)
+        self.assertIn('FACT-9999 does not exist', errors)
+
+    def test_instant_may_carry_the_quarter_it_falls_in(self):
+        from harness_core import intake as intake_module
+        pack = self.pack()
+        pack['facts'][0].update(metric='cash', period_kind='instant', fiscal_quarter=2,
+                                statement='balance_sheet', value_reported=1)
+        self.assertEqual(intake_module.pack_invariants(pack), [])
+
+    def test_shipped_pack_passes_its_own_schema_and_invariants(self):
+        import jsonschema
+        from harness_core import intake as intake_module
+        pack = h.load_json(REPO/'runs/NVDA-V3-2026-09-19'/h.FINANCIAL_PACK)
+        jsonschema.Draft7Validator(h.load_json(REPO/'schemas/financial_pack.schema.json')).validate(pack)
+        self.assertEqual(intake_module.pack_invariants(pack), [])

@@ -15,7 +15,7 @@
 
 ## 분석 흐름
 
-기업 자료 고정 → EV·AS·DI·FS triage → 도달 가능한 유형 계산 → 필요한 핵심 분석·veto reviewer·선택 TQ → 글로벌 금융·지정학 및 회사 전이 → ED·RT → 유형 적합도·Hard Veto·가치평가 게이트 → IC·포지션·모니터링.
+**Stage 0(자료 수집·전처리)** → 기업 자료 고정 → EV·AS·DI·FS triage → 도달 가능한 유형 계산 → 필요한 핵심 분석·veto reviewer·선택 TQ → 글로벌 금융·지정학 및 회사 전이 → ED·RT → 유형 적합도·Hard Veto·가치평가 게이트 → IC·포지션·모니터링.
 
 도메인 간 blind 분석과 각 보고서의 Bull/Verifier/Skeptic 구분을 유지한다. 점수 원천은 검증된 criterion별 `subscores`다. 현대 보고서는 self-confidence·unknown 개수·단일 Bull/Bear 폭으로 감점하지 않는다. 다중 보고서 간 분쟁 처리와 기존 scorecard 가중치는 유지한다.
 
@@ -27,6 +27,9 @@
 
 ```bash
 python harness.py init NEW_TICKER --as-of YYYY-MM-DD
+python harness.py intake NEW_TICKER                 # Stage 0: 필요한 원자료가 무엇이고 무엇이 비었는지
+python harness.py prompt NEW_TICKER FP              # Stage 0: 재무 원자료 전처리 프롬프트
+python harness.py validate-pack NEW_TICKER          # Stage 0: pack 스키마·불변식 검사
 # company_context.json의 가격·순현금·출처·지역 노출을 작성한다.
 python harness.py freeze NEW_TICKER --provider openai --model gpt-6-astra
 python harness.py plan NEW_TICKER
@@ -36,7 +39,13 @@ python harness.py aggregate NEW_TICKER
 python harness.py digest NEW_TICKER
 ```
 
-`init`은 기존 run을 덮어쓰지 않는다. 단계별 실행은 [RUNBOOK](RUNBOOK.md)을 따른다. LLM 호출은 실행 환경에서 수행하며 하네스는 직접 모델을 호출하지 않는다.
+`init`은 기존 run을 덮어쓰지 않는다. `init`으로 만든 새 run은 Stage 0을 강제한다 — required 문서가 비었거나 pack 불변식이 깨지면 `freeze`가 거부하고 `plan`이 `stage: intake`를 반환한다. 기존 run의 manifest에는 이 플래그가 없어 영향을 받지 않는다. 단계별 실행은 [RUNBOOK](RUNBOOK.md)을 따른다. LLM 호출은 실행 환경에서 수행하며 하네스는 직접 모델을 호출하지 않는다.
+
+## Stage 0 — 자료 수집과 재무 전처리
+
+투자 판단 이전에 원자료를 먼저 세운다. [`config/intake.json`](config/intake.json)이 미국·한국 공시 기준의 문서 체크리스트(중요도·최소 개수·용도)를 정의하고, `intake`가 이를 financial pack의 `documents[]`와 대조해 차단 공백과 권고 공백을 분리해 보여준다. 조건부 항목(20-F, S-1 등)은 해당 여부를 자동 판정할 수 없으므로 gap으로 세지 않고 따로 표시한다.
+
+전처리 규격은 [`agents/00_financial_preprocessor/AGENTS.md`](agents/00_financial_preprocessor/AGENTS.md)에 있다. FP는 공시 사실을 atomic fact로 추출하고 계정명을 canonical metric으로 매핑하며 정상화 후보만 표시한다. **계산·추정·경제적 정상화 판단을 하지 않는다.** 출력은 [`schemas/financial_pack.schema.json`](schemas/financial_pack.schema.json)을 따르고 `validate-pack`이 부호 규약, 기간과 FY/Q 모순, GAAP/non-GAAP 혼동, dangling `amount_fact_id`를 검사한다. FP는 점수를 만들지 않으며 100점 스코어와 coverage에 들어가지 않는다.
 
 ## Calibration·증거·Macro
 

@@ -2,11 +2,25 @@
 
 항목당 한 에이전트가 분석한다. 매 단계의 `plan`이 실행할 항목과 조기 종료 여부를 결정한다. 투자 정책 숫자는 [config 생성 표](docs/POLICY.md)를 따른다.
 
-## 1. Intake와 고정
+## 0. Stage 0 — 자료 수집과 재무 전처리
 
 ```bash
 python harness.py init NEW_TICKER --as-of YYYY-MM-DD
 python harness.py sources NEW_TICKER --pdf-dir "<공시 PDF 폴더>"
+python harness.py intake NEW_TICKER
+python harness.py prompt NEW_TICKER FP
+python harness.py validate-pack NEW_TICKER
+```
+
+`intake`는 `config/intake.json`의 체크리스트를 pack의 `documents[]`와 대조한다. `required`가 비면 종료코드 1이고 `freeze`가 거부한다. `near_required`(DEF 14A 등)와 `recommended`는 차단하지 않지만 비면 해당 도메인의 판단 근거가 unknowns로 남는다. 조건부 항목은 해당 여부를 사람이 판단한다.
+
+FP는 제공된 문서만 사용하고 웹 검색을 하지 않는다. 계산·추정·일회성 판단·정상화 FCF 확정을 하지 않으며, 정상화 후보는 `adjustment_candidates`에 `requires_economic_review`로만 남긴다. 판단은 RF·FS·EV·MA가 한다. FP는 점수·Bull/Bear·Hard Veto를 만들지 않는다.
+
+`validate-pack`은 스키마와 함께 부호 규약(capex 등은 양수), 기간과 FY/Q 모순, `metric=other`의 `metric_detail` 누락, dangling `amount_fact_id`, `documents[]`에 없는 `source_document`를 검사한다.
+
+## 1. Intake와 고정
+
+```bash
 python harness.py freeze NEW_TICKER --provider openai --model gpt-6-astra --reasoning-effort high
 ```
 
@@ -14,7 +28,7 @@ python harness.py freeze NEW_TICKER --provider openai --model gpt-6-astra --reas
 
 정상화 진단이 필요하면 `diagnostics.turnaround_candidate=true`로 둔다. 기본값 false에서는 TQ를 실행하지 않고 누락을 coverage 결손으로 취급하지 않는다. true이면 TQ는 분석 뒤 digest와 IC에 들어가지만 유형 분류·100점에는 사용하지 않는다.
 
-freeze는 입력·출처·정책·코드·지침·스키마 hash, Git commit, provider/model과 strategy/schema/decision_policy 버전을 기록한다. 이후 변경되면 prompt가 재고정을 요구한다. 과거 run을 재초기화하지 말고 별도 ticker/run 이름을 사용한다.
+freeze는 Stage 0 상태를 먼저 확인한 뒤 입력·출처·정책·코드·지침·스키마 hash, Git commit, provider/model과 strategy/schema/decision_policy 버전을 기록하고 `stage_0` 요약을 manifest에 남긴다. 이후 변경되면 prompt가 재고정을 요구한다. 과거 run을 재초기화하지 말고 별도 ticker/run 이름을 사용한다.
 
 ## 2. Triage와 핵심 분석
 

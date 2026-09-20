@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from datetime import date, datetime, timedelta, timezone
 import argparse, hashlib, json, os, re, statistics, shutil, subprocess, sys
-from . import rubric, calibration, archetypes, macro_geo, planner
+from . import rubric, calibration, archetypes, macro_geo, planner, intake
 from .conditions import check_condition, number
 from .evidence import concentration_flags
 from .state import dispersion_review, narrowed_position
@@ -13,6 +13,7 @@ STRATEGY=json.loads((ROOT/'config/strategy.json').read_text(encoding='utf-8'))
 MANIFEST=json.loads((ROOT/'config/agents_manifest.json').read_text(encoding='utf-8'))
 WORKFLOW=json.loads((ROOT/'config/workflow.json').read_text(encoding='utf-8'))
 CALIBRATION=json.loads((ROOT/'config/calibration.json').read_text(encoding='utf-8'))
+INTAKE_POLICY=json.loads((ROOT/'config/intake.json').read_text(encoding='utf-8'))
 EXEC=WORKFLOW['execution']
 RUBRICS=CALIBRATION['rubrics']
 VAL_POLICY=CALIBRATION['valuation']
@@ -70,11 +71,32 @@ def combined_hash(items):
 
 def config_hashes():
     files=['config/strategy.json','config/workflow.json','config/agents_manifest.json',
-           'config/calibration.json','harness.py']
+           'config/calibration.json','config/intake.json','harness.py']
     files += [p.relative_to(ROOT).as_posix() for p in sorted((ROOT/'harness_core').glob('*.py'))]
     files += [p.relative_to(ROOT).as_posix() for d in ('schemas','templates','agents') for p in sorted((ROOT/d).rglob('*')) if p.is_file()]
     files += ['AGENTS.md']
     return {x:sha256_file(ROOT/x) for x in files if (ROOT/x).exists()}
+
+FINANCIAL_PACK='sources/financials/normalized_financials.json'
+
+def pack_path(ticker): return run_dir(ticker)/FINANCIAL_PACK
+
+def load_pack(ticker):
+    p=pack_path(ticker)
+    return load_json(p) if p.exists() else None
+
+def intake_status(ticker):
+    """Stage 0 readiness. `required` is only enforced for runs that opted in at init."""
+    pack=load_pack(ticker); m=load_manifest(ticker)
+    enforced=bool(m.get('financial_pack_required'))
+    if pack is None:
+        return {'stage_0':'missing_pack','enforced':enforced,'pack_present':False,
+                'blocking':enforced,'coverage':None,'invariant_errors':[],'summary':None}
+    cov=intake.coverage(pack,INTAKE_POLICY); errs=intake.pack_invariants(pack)
+    blocking=enforced and bool(cov['blocking_gaps'] or errs)
+    state='ready' if not (cov['blocking_gaps'] or errs) else 'incomplete'
+    return {'stage_0':state,'enforced':enforced,'pack_present':True,'blocking':blocking,
+            'coverage':cov,'invariant_errors':errs,'summary':intake.pack_summary(pack)}
 
 def load_manifest(ticker):
     p=run_dir(ticker)/'run_manifest.json'
@@ -151,7 +173,7 @@ def cmd_init(args):
     ctx.setdefault('valuation_overrides',{'required_return':None,'terminal_multiples':{'bear':None,'base':None,'bull':None}})
     dump_json(run/'company_context.json',ctx)
     dump_json(run/'run_manifest.json',{**VERSIONS,'provider_calibration_mode':PROVIDER_CAL['mode'],'ticker':ticker,'as_of_date':args.as_of,
-        'frozen':False,'harness_commit':current_commit(),
+        'frozen':False,'financial_pack_required':True,'harness_commit':current_commit(),
         'runner':{'provider':None,'model':None,'reasoning_effort':None}})
     cached=macro_cache_source(args.as_of)
     for a in MANIFEST:
@@ -190,11 +212,18 @@ def cmd_freeze(args):
     ctx=load_json(run/'company_context.json')
     missing=[k for k in ('current_price','net_cash_per_share') if ctx.get(k) is None]
     if missing: raise SystemExit('freeze requires locked company_context fields: '+', '.join(missing))
+    st=intake_status(t)
+    if st['blocking']:
+        detail=('financial pack missing' if not st['pack_present']
+                else '; '.join([f"{g['id']} ({g['found']}/{g['needed']})" for g in st['coverage']['blocking_gaps']]
+                               + st['invariant_errors'][:3]))
+        raise SystemExit(f'{t}: stage 0 incomplete — {detail}. Run `harness.py intake {t}` for the checklist.')
     inputs=snapshot_hashes(run); m=load_manifest(t)
     m.update({**VERSIONS,'provider_calibration_mode':PROVIDER_CAL['mode'],'ticker':t,'as_of_date':ctx['as_of_date'],'frozen':True,
         'frozen_at_utc':datetime.now(timezone.utc).isoformat(),'harness_commit':current_commit(),
         'config_files':config_hashes(),'input_files':inputs,'input_snapshot_sha256':combined_hash(inputs),
-        'runner':{'provider':args.provider or None,'model':args.model or None,'reasoning_effort':args.reasoning_effort or None}})
+        'runner':{'provider':args.provider or None,'model':args.model or None,'reasoning_effort':args.reasoning_effort or None},
+        'stage_0':{k:st[k] for k in ('stage_0','enforced','pack_present')}})
     dump_json(run/'run_manifest.json',m)
     print(json.dumps({'ticker':t,'input_snapshot_sha256':m['input_snapshot_sha256'],
         'harness_commit':m['harness_commit'],'runner':m['runner']},ensure_ascii=False,indent=2))
@@ -387,8 +416,19 @@ def final_verdict(result,reports):
 
 def plan(ticker,reports,result=None):
     result=result or compute_aggregate(ticker,reports)
-    return planner.next_stage(reports,result,load_json(run_dir(ticker)/'company_context.json'),
+    st=intake_status(ticker)
+    if st['blocking']:
+        gaps=[f"{g['id']} ({g['found']}/{g['needed']})" for g in (st['coverage'] or {}).get('blocking_gaps',[])]
+        return {'stage':'intake','agents':{'financial_preprocessor':'FP'},
+                'stage_0':{k:st[k] for k in ('stage_0','pack_present','invariant_errors')},
+                'blocking_gaps':gaps,
+                'statement':'Stage 0 is incomplete; the reasoning stages do not start until the raw pack is in place.'}
+    step=planner.next_stage(reports,result,load_json(run_dir(ticker)/'company_context.json'),
         MANIFEST,SCORE_DOMAINS,EXEC['triage_domains'],ARCHETYPES,VETO_REVIEWERS)
+    step['stage_0']={k:st[k] for k in ('stage_0','enforced','pack_present')}
+    if st['coverage'] and st['coverage']['advisory_gaps']:
+        step['stage_0']['advisory_gaps']=[g['id'] for g in st['coverage']['advisory_gaps']]
+    return step
 
 
 def cmd_plan(args):
@@ -490,6 +530,12 @@ def skeleton(agent, lim):
 
 def cmd_prompt(args):
     t=args.ticker.upper(); run=run_dir(t)
+    # Stage 0 runs before freeze by definition, so it must not require frozen inputs.
+    if args.target.upper() in ('FP','FINANCIAL_PREPROCESSOR'):
+        text=financial_preprocessor_prompt(t)
+        if args.out: (ROOT/args.out).write_text(text,encoding='utf-8'); print(args.out)
+        else: print(text)
+        return
     assert_frozen_inputs(t)
     agent=next((a for a in MANIFEST if args.target in (a['agent_id'],a['domain'])),None)
     if not agent: raise SystemExit(f'unknown domain or agent: {args.target}')
@@ -623,6 +669,89 @@ def validate_report(r):
                 e.append(f'valuation_inputs.{case}.owner_fcf_per_share must have {VAL_POLICY["horizon_years"]} values')
     return e
 
+def financial_preprocessor_prompt(ticker):
+    run=run_dir(ticker); ctx=load_json(run/'company_context.json')
+    st=intake_status(ticker)
+    spec=(ROOT/'agents/00_financial_preprocessor/AGENTS.md').read_text(encoding='utf-8')
+    P=[f"# 과제: {ticker} / 기준일 {ctx['as_of_date']} / financial_preprocessor (FP) — Stage 0",
+       f"저장소: {ROOT}. 작성할 파일: runs/{ticker}/{FINANCIAL_PACK}. 그 외 파일은 수정하지 않는다.",
+       "웹 검색을 하지 않는다. 사용자가 직접 제공한 공시·감사재무제표·IR 문서만 사용한다.",
+       "", "## Stage 0 문서 확보 현황"]
+    if st['coverage'] is None:
+        P.append('financial pack이 아직 없다. 아래 체크리스트의 required 문서를 먼저 확보한다.')
+        cov=intake.coverage({'documents':[]},INTAKE_POLICY)
+    else:
+        cov=st['coverage']
+        P.append(f"문서 {cov['documents_present']}건, 요건 충족 {cov['satisfied']}/{cov['total']}.")
+    for row in cov['requirements']:
+        mark='OK ' if row['met'] else 'GAP'
+        cond=f" (조건: {row['condition']})" if row.get('condition') else ''
+        P.append(f"- [{mark}] {row['id']} · {row['importance']} · {row['found']}/{row['needed']} — {row['us']} / {row['kr']}{cond}")
+        P.append(f"        용도: {row['purpose']}")
+    if st['invariant_errors']:
+        P += ['', '## 기존 pack의 불변식 위반 (수정 대상)'] + [f'- {e}' for e in st['invariant_errors'][:20]]
+    P += ['', '## 출력 계약',
+          f"스키마: schemas/financial_pack.schema.json. 검증: python harness.py validate-pack {ticker}",
+          '설명문이나 Markdown 없이 스키마에 맞는 JSON 파일 하나만 작성한다.',
+          '', '## 지침 FP (stage 0)', spec]
+    return '\n'.join(P)
+
+
+def cmd_intake(args):
+    t=args.ticker.upper(); st=intake_status(t)
+    if not st['pack_present']:
+        print(f"{t}: financial pack 없음 ({FINANCIAL_PACK}).",
+              f"강제 여부: {'enforced' if st['enforced'] else 'advisory (legacy run)'}")
+        cov=intake.coverage({'documents':[]},INTAKE_POLICY)
+    else:
+        cov=st['coverage']; sm=st['summary']
+        print(f"{t}: stage_0={st['stage_0']} | 문서 {sm['documents']} · fact {sm['facts']} · "
+              f"조정후보 {sm['adjustment_candidates']} · 경고 {sm['extraction_warnings']} · "
+              f"검토요망 fact {sm['facts_requiring_review']} · 재작성 fact {sm['restated_facts']}")
+    print()
+    for row in cov['requirements']:
+        mark='OK ' if row['met'] else ('N/A' if row['conditional'] else 'GAP')
+        print(f"[{mark}] {row['id']:<24}{row['importance']:<22}{row['found']:>3}/{row['needed']:<3} {row['purpose'][:50]}")
+    if st['invariant_errors']:
+        print('\n불변식 위반:')
+        for e in st['invariant_errors'][:20]: print(f'  - {e}')
+    blocking=cov['blocking_gaps']
+    if blocking:
+        print('\n차단 공백 (required):')
+        for g in blocking: print(f"  - {g['id']}: {g['found']}/{g['needed']} — {g['us']} / {g['kr']}")
+    advisory=cov['advisory_gaps']
+    if advisory:
+        print('\n권고 공백:')
+        for g in advisory: print(f"  - {g['id']} ({g['importance']}): {g['found']}/{g['needed']} — {g['us']} / {g['kr']}")
+    cond=cov['conditional_unverified']
+    if cond:
+        print('\n조건부 (해당 여부는 사람이 판단):')
+        for g in cond: print(f"  - {g['id']}: {g['condition']}")
+    sys.exit(1 if st['blocking'] else 0)
+
+
+def cmd_validate_pack(args):
+    t=args.ticker.upper(); pack=load_pack(t)
+    if pack is None: raise SystemExit(f'{t}: {FINANCIAL_PACK} not found')
+    errs=[]
+    try:
+        import jsonschema
+        schema=load_json(ROOT/'schemas/financial_pack.schema.json')
+        errs+= [f'schema: {e.message} at {"/".join(str(x) for x in e.absolute_path)}'
+                for e in sorted(jsonschema.Draft7Validator(schema).iter_errors(pack), key=lambda e:list(e.absolute_path))]
+    except ImportError:
+        print('jsonschema not installed; invariant checks only (pip install -r requirements-dev.txt)')
+    errs+=intake.pack_invariants(pack)
+    summary=intake.pack_summary(pack)
+    print(json.dumps(summary,ensure_ascii=False,indent=2))
+    if errs:
+        print(f'\n{len(errs)} problem(s):')
+        for e in errs[:40]: print(f'  - {e}')
+    else:
+        print('\nOK')
+    sys.exit(1 if errs else 0)
+
+
 def cmd_validate(args):
     t=args.ticker.upper(); d=run_dir(t)/'reports'; bad=0
     targets=args.agents or [p.stem for p in sorted(d.glob('*.json')) if is_complete(load_json(p))]
@@ -729,6 +858,10 @@ def main():
     p=sub.add_parser('selftest',help='run deterministic v3 regression and compatibility checks'); p.set_defaults(func=cmd_selftest)
     p=sub.add_parser('calibrate',help='compare two runs\' subscores to measure provider divergence')
     p.add_argument('run_a'); p.add_argument('run_b'); p.add_argument('--out'); p.set_defaults(func=cmd_calibrate)
+    p=sub.add_parser('intake',help='stage 0: required raw documents vs what the financial pack holds')
+    p.add_argument('ticker'); p.set_defaults(func=cmd_intake)
+    p=sub.add_parser('validate-pack',help='stage 0: validate the financial pack against schema and invariants')
+    p.add_argument('ticker'); p.set_defaults(func=cmd_validate_pack)
     p=sub.add_parser('plan',help='show the next stage to run, or early exit'); p.add_argument('ticker'); p.set_defaults(func=cmd_plan)
     p=sub.add_parser('prompt',help='print a compact self-contained prompt for a domain or agent'); p.add_argument('ticker'); p.add_argument('target'); p.add_argument('--out'); p.set_defaults(func=cmd_prompt)
     p=sub.add_parser('validate'); p.add_argument('ticker'); p.add_argument('agents',nargs='*'); p.set_defaults(func=cmd_validate)

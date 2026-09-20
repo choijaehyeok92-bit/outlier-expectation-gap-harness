@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0",
+  "note": "Stage 0 문서 수집 체크리스트. 재무 전처리(FP) 이전에 어떤 원자료가 필요한지 정의한다. harness.py intake가 이 표를 읽어 sources/financials/normalized_financials.json의 documents[]와 대조한다. 투자 판단이나 점수에는 관여하지 않는다.",
+  "importance_levels": {
+    "required": "없으면 전처리를 시작하지 않는다.",
+    "near_required": "사실상 필수. 없으면 해당 도메인의 판단 근거가 비고 unknowns로 남는다.",
+    "strongly_recommended": "장기 정상화와 추세 판단에 필요하다.",
+    "recommended": "있으면 판단의 해상도가 올라간다.",
+    "conditional_required": "해당 사건이 있으면 필수가 된다.",
+    "conditional": "해당 기업 유형에만 적용된다."
+  },
+  "blocking_levels": ["required"],
+  "detection": {
+    "note": "financial pack의 document_type이 거칠어(10-K|10-Q|20-F|annual_report|earnings_release|proxy|other) 8-K·Form 4·IR 자료가 모두 other로 수렴한다. 따라서 document_type 일치 또는 source_document 정규식 일치 중 하나라도 맞으면 해당 문서로 센다.",
+    "match": "document_type OR source_regex"
+  },
+  "requirements": [
+    {
+      "id": "latest_annual",
+      "importance": "required",
+      "min_count": 1,
+      "us": "최근 10-K",
+      "kr": "최근 사업보고서",
+      "purpose": "연간 3개년 재무제표, segment, 고객집중, 부채, SBC, 약정, 회계정책",
+      "document_types": ["10-K", "annual_report"],
+      "source_regex": "10-K|annual report|사업보고서"
+    },
+    {
+      "id": "latest_interim",
+      "importance": "required",
+      "min_count": 1,
+      "us": "최신 10-Q",
+      "kr": "최신 분기/반기보고서",
+      "purpose": "현재 TTM, 분기 추세, 운전자본, 현금흐름, 희석",
+      "document_types": ["10-Q"],
+      "source_regex": "10-Q|분기보고서|반기보고서"
+    },
+    {
+      "id": "trailing_quarters",
+      "importance": "required",
+      "min_count": 6,
+      "us": "과거 6~8개 분기의 10-Q",
+      "kr": "과거 6~8개 분기보고서",
+      "purpose": "TTM·YoY·FCF/share·증분 ROIC 추세",
+      "document_types": ["10-Q"],
+      "source_regex": "10-Q|분기보고서|반기보고서"
+    },
+    {
+      "id": "historical_annuals",
+      "importance": "strongly_recommended",
+      "min_count": 3,
+      "us": "과거 3~5개년 10-K",
+      "kr": "과거 3~5개년 사업보고서",
+      "purpose": "정상화 이익, 반복 구조조정, 자본집약도, 장기 추세",
+      "document_types": ["10-K", "annual_report"],
+      "source_regex": "10-K|annual report|사업보고서"
+    },
+    {
+      "id": "proxy_compensation",
+      "importance": "near_required",
+      "min_count": 1,
+      "us": "DEF 14A Proxy",
+      "kr": "주주총회소집공고 · 사업보고서 임원보수 항목",
+      "purpose": "경영진 보상, 주식보상, ownership, governance",
+      "document_types": ["proxy"],
+      "source_regex": "DEF ?14A|proxy|schedule 14a|주주총회소집|임원보수"
+    },
+    {
+      "id": "earnings_release",
+      "importance": "recommended",
+      "min_count": 1,
+      "us": "실적 관련 8-K + earnings release",
+      "kr": "잠정실적 · 영업실적 공시",
+      "purpose": "GAAP/non-GAAP reconciliation, 최신 KPI",
+      "document_types": ["earnings_release"],
+      "source_regex": "earnings|cfo commentary|실적발표|잠정실적|영업실적"
+    },
+    {
+      "id": "debt_and_financing",
+      "importance": "conditional_required",
+      "min_count": 1,
+      "condition": "회사채·전환사채·증자·대규모 M&A 등 자금조달 이벤트가 기준일 이전에 있었던 경우",
+      "us": "Debt note / 8-K / 424B / prospectus",
+      "kr": "주요사항보고서 · 증권신고서",
+      "purpose": "회사채, 전환사채, 증자, M&A, 대규모 자금조달",
+      "document_types": [],
+      "source_regex": "8-K|424B|prospectus|주요사항보고서|증권신고서"
+    },
+    {
+      "id": "foreign_issuer_filings",
+      "importance": "conditional",
+      "min_count": 1,
+      "condition": "미국 상장 외국기업이라 10-K/10-Q 대신 20-F/6-K를 제출하는 경우",
+      "us": "20-F / 6-K",
+      "kr": "해당 없음",
+      "purpose": "미국 상장 외국기업의 10-K/10-Q 대체",
+      "document_types": ["20-F"],
+      "source_regex": "20-F|6-K"
+    },
+    {
+      "id": "insider_ownership",
+      "importance": "recommended",
+      "min_count": 1,
+      "us": "Form 4",
+      "kr": "임원 · 주요주주 지분공시",
+      "purpose": "내부자 매매 · ownership 변화",
+      "document_types": [],
+      "source_regex": "form ?4|beneficial ownership|\\(4\\)|지분공시|임원·주요주주"
+    },
+    {
+      "id": "investor_materials",
+      "importance": "recommended",
+      "min_count": 1,
+      "us": "Investor Day / 공식 IR 자료",
+      "kr": "IR · 기업설명회 자료",
+      "purpose": "TAM, capex plan, 장기 margin, 신규 사업",
+      "document_types": [],
+      "source_regex": "investor|presentation|IR|기업설명회"
+    },
+    {
+      "id": "registration_statement",
+      "importance": "conditional",
+      "min_count": 1,
+      "condition": "IPO 또는 상장 초기라 장기 시계열이 부족한 경우",
+      "us": "S-1 / F-1",
+      "kr": "증권신고서",
+      "purpose": "IPO · 상장 초기 기업의 장기 데이터 보강",
+      "document_types": [],
+      "source_regex": "S-1|F-1|증권신고서"
+    }
+  ]
+}
