@@ -1,5 +1,5 @@
 name: ADBE next plan validate
-# macro-components-v2
+# rt-refresh-v3
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
           set -euo pipefail
           mkdir -p runlogs
           exec > >(tee runlogs/adbe-next-plan.log) 2>&1
-          python harness.py validate ADBE CP MT RF MA FS EV AS DI ED MO
+          python harness.py validate ADBE CP MT RF MA FS EV AS DI ED MO RT
           echo "===== PLAN ====="
           python harness.py plan ADBE | tee runlogs/adbe-next-plan.json
           echo "===== INTERIM AGGREGATE ====="
