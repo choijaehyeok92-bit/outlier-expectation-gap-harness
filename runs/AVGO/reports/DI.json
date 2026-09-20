@@ -9,7 +9,7 @@
   "confidence_0_1": 0.88,
   "bull_score": 85,
   "bear_score": 55,
-  "bull_case": "Broadcom is moving AI compute from general-purpose merchant accelerators toward customer-specific silicon plus Ethernet-scale networking. Multi-generation OpenAI and Meta programs, gigawatt deployments and rapidly accelerating AI revenue suggest a structural value-chain shift rather than a product refresh.",
+  "bull_case": "Broadcom is shifting AI compute from general-purpose merchant accelerators toward customer-specific silicon plus Ethernet networking. OpenAI and Meta multi-generation programs, gigawatt deployments and accelerating AI revenue point to a structural value-chain shift rather than a product refresh.",
   "bear_case": "The customers driving the shift are the same hyperscalers and frontier labs capable of internal design and multi-sourcing. Broadcom may be an implementation and networking enabler rather than the durable platform owner; financing support can also pull demand forward.",
   "thesis": "The disruption case is strong but not NVDA-style platform control. Custom XPUs, Ethernet networking and private-cloud software reshape AI infrastructure economics, and adoption is already revenue-scale. However, customer-owned silicon roadmaps cap Broadcom's control of the standard, so disruptive optionality is scored below the top tier.",
   "evidence": [
