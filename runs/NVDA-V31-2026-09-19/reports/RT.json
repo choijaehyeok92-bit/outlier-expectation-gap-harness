@@ -4,54 +4,159 @@
   "as_of_date": "2026-09-19",
   "domain": "red_team",
   "role": "red_team",
-  "analysis_status": "pending",
+  "analysis_status": "complete",
   "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "confidence_0_1": 0.93,
+  "thesis": "가장 강한 반대 논리는 회계부정이나 지급불능이 아니라 'AI 수요의 일부가 NVIDIA 자본·cloud 약정·보증으로 촉진되고 있으며 시장은 이를 자생적 고마진 성장으로 과대평가할 수 있다'는 것이다. 현재가 $222.27는 Base $212.86보다 높고 Bear $74.99까지 하방이 크다. 다만 높은 gross margin, 고객 선수금, 100%+ 고객군 성장, 순현금과 강한 OCF는 성장 자체가 고객가치 없이 보조금으로만 만들어졌다는 주장을 반박한다. 따라서 7개 RT 소유 Hard Veto는 모두 cleared지만 IC가 tail risk와 가격을 별도로 제한해야 한다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 매출은 $96.2B(+105.9% y/y), gross margin 75.0%였고 H1 고객 선수금 유입은 $15.6B이었다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY27 Q2/H1",
+      "as_of_date": "2026-09-19",
+      "value": "75% GM / $15.6B advances",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-NVDA-DEMAND-001",
+      "economic_driver": "customer_value"
+    },
+    {
+      "claim": "$36B AI-cloud agreements와 $108.5B maximum gross guarantees가 존재하지만 $105B PORTS-Pike 보증은 특정 OpenAI default 때 단계적으로 발동하고 재임대·매각 등 회수장치가 있다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt; https://www.sec.gov/Archives/edgar/data/2133037/000162828026059639/sbenergy-sx1.htm",
+      "period": "FY27 Q2 / Aug-Sep 2026",
+      "as_of_date": "2026-09-19",
+      "value": "$36B / $108.5B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-NVDA-SUPPORT-002",
+      "economic_driver": "vendor_financing_risk"
+    },
+    {
+      "claim": "Q2 AR은 $63.1B, DSO는 60일로 전분기 45일보다 상승했으며 회사는 특정 investment-grade 고객의 extended terms를 원인으로 설명했다.",
+      "source_type": "ir",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-09-19",
+      "value": 60,
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-NVDA-DSO-003",
+      "economic_driver": "cash_conversion"
+    },
+    {
+      "claim": "TTM OCF는 약 $134.4B, owner FCF는 약 $119.8B이며 2026-07-26 순현금은 $23.2B로 영업 생존은 외부자본에 의존하지 않는다.",
+      "source_type": "other",
+      "source": "runs/NVDA-V31-2026-09-19/sources/README.md",
+      "period": "TTM to FY27 Q2",
+      "as_of_date": "2026-09-19",
+      "value": "$119.8B owner FCF",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RT-NVDA-CASH-004",
+      "economic_driver": "financial_resilience"
+    },
+    {
+      "claim": "현재가 $222.27 대비 deterministic DCF는 Bear $74.99, Base $212.86, Bull $431.14다.",
+      "source_type": "other",
+      "source": "runs/NVDA-V31-2026-09-19/aggregate.json",
+      "period": "2026-09-19",
+      "as_of_date": "2026-09-19",
+      "value": "1.0442x price/Base",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RT-NVDA-VALUATION-005",
+      "economic_driver": "valuation_burden"
+    },
+    {
+      "claim": "최대 직접고객은 Q2 매출의 16%이고, 중국 데이터센터 시장에서 사실상 배제된 상태에서도 Q2 전체 매출은 +105.9% y/y였다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-09-19",
+      "value": 16,
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-NVDA-CONCENTRATION-006",
+      "economic_driver": "dependency_resilience"
+    }
+  ],
+  "counterevidence": [
+    "75% gross margin과 낮은 판매비, 고객 선수금은 제품 자체의 높은 지불의사를 보여준다.",
+    "TTM owner FCF 약 $119.8B와 순현금은 단기 수요 충격을 흡수할 재무완충을 제공한다.",
+    "$105B 보증은 즉시 전액부채가 아니라 특정 default에만 발동하며 회수·재임대·매각 수단과 감소 구조가 있다.",
+    "중국 시장 접근 상실이 현실화된 뒤에도 매출과 이익이 크게 성장해 단일 규제 의존의 치명성을 반증했다."
+  ],
+  "unknowns": [
+    "투자·보증·AI-cloud 지원 대상 고객의 총매출 및 AR 비중.",
+    "$108.5B gross guarantees의 확률가중 손실·phase별 활성액·회수율과 OpenAI 보상 경제성.",
+    "$279B supply/capacity commitments 중 firm-order 및 취소·재조정 가능 비중.",
+    "고객 AI 인프라의 장기 utilization·payback과 수익성.",
+    "커스텀 ASIC이 공급 정상화 후 NVIDIA의 가격·점유율·gross margin에 미칠 실제 영향."
+  ],
+  "falsifiers": [
+    "지원 대상 매출이 낮고 DSO가 정상화되며 보증손실이 미미하다는 공시가 나오면 순환금융 공매도 논리는 크게 약화된다.",
+    "owner FCF/share가 2개 이상 연속 분기 강하게 증가하면서 고객 선급금·현금회수도 동반 개선되면 수요 정상화 우려를 하향한다.",
+    "반대로 지원 대상 고객의 부실과 보증 실행이 owner FCF의 25% 이상 손실로 이어지면 현재 growth thesis를 재검토한다."
+  ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "재작성·감사인 이견/교체·내부통제 중대결함이 확인되지 않았고 FY26 내부통제는 경영진과 PwC가 유효하다고 결론냈다. 비시장성 지분평가는 감시사항이지 신뢰성 훼손의 증거가 아니다."
     },
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "TTM OCF 약 $134.4B와 owner FCF 약 $119.8B가 총차입 $33.4B를 크게 상회한다. 최근 차입은 자사주·지분투자 등 재량적 유출과 병행됐고 영업 생존 자체가 외부조달에 의존한다는 요건은 반증된다."
     },
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Q2 75% gross margin, 낮은 판관비, $15.6B 고객 선수금과 100%+ 고객군 성장은 고객가치 부재라는 필수 요건을 반증한다. 벤더 금융은 별도 tail risk로 남긴다."
     },
     {
       "veto": "증분 ROIC의 구조적 붕괴",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "RF가 산출한 FY25→FY26 영업자본 기준 증분 ROIC 약 101%는 자본비용을 크게 상회한다. 향후 체감 위험은 있으나 현재 구조적 붕괴 구성요건은 없다."
     },
     {
       "veto": "해자의 지속적인 축소",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "매출 급증과 함께 gross margin이 FY26 71.1%에서 Q2 FY27 75.0%로 상승했고 CUDA·네트워킹 생태계 지표도 유지된다. 미래 ASIC 경쟁은 위험이나 현재 지속 축소의 직접 증거는 아니다."
     },
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "현재가 $222.27는 Bull 가치 $431.14보다 약 48% 낮다. Base보다 높다는 사실은 EV/AS 가격위험이지만 이 Veto의 'Bull 이상 요구' 요건은 충족하지 않는다."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "최대 직접고객 비중은 16%이며 중국 데이터센터 접근 상실이 이미 현실화된 상태에서도 Q2 전체 매출은 +105.9% y/y였다. 집중 위험은 크지만 치명적·회복불가 요건은 반증된다."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "지원 대상 고객 매출·AR 비중",
+      "direction": "down",
+      "threshold": "매출 10% 미만 확인 시 순환금융 우려 완화",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "DSO",
+      "direction": "down",
+      "threshold": "50일 이하 복귀",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "2개 이상 연속 분기 성장 유지",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q에서 DSO·AR·대손·customer advances와 보증 노출 확인",
+    "PORTS-Pike phase 활성화와 OpenAI 보상·회수 조건의 경제성 확인",
+    "지원 대상 고객의 매출·AR 귀속 및 AI-cloud 제3자 사용률 확인"
+  ],
+  "verdict": "oppose",
   "subscores": [],
   "uncertainties": [],
   "valuation_inputs": {
@@ -68,5 +173,9 @@
         "owner_fcf_per_share": []
       }
     }
-  }
+  },
+  "bull_score": 70,
+  "bear_score": 30,
+  "bull_case": "단기 실적과 현금창출은 공매도 논리를 강하게 반박한다. Q2 매출 +105.9%, gross margin 75%, TTM OCF $134.4B, 순현금 $23.2B이며 $105B 보증은 조건부·단계적이고 회수장치가 있다.",
+  "bear_case": "가장 취약한 고리는 AI 인프라 수요의 자생성과 가격이다. $36B AI-cloud 약정, $108.5B gross 보증, $93.9B 지분투자와 DSO 60일이 동시에 존재한다. Base 가치보다 높은 현재가에서 수요 정상화와 고객 신용악화가 겹치면 큰 멀티플·FCF 압축이 가능하다."
 }
