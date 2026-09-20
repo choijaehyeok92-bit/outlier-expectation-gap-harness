@@ -1,0 +1,32 @@
+name: AVGO early-exit research plan
+
+on:
+  push:
+    branches:
+      - analysis/avgo-2026-09-18-stage0-ev
+
+permissions:
+  contents: write
+
+jobs:
+  research-plan:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate research plan
+        run: |
+          python harness.py research-plan AVGO > runs/AVGO/research_plan_early_exit.json
+          python harness.py research-prompt AVGO > runs/AVGO/research_prompt_early_exit.md
+      - name: Commit research plan
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/AVGO/research_plan_early_exit.json runs/AVGO/research_prompt_early_exit.md
+          if ! git diff --cached --quiet; then
+            git commit -m "analysis(avgo): generate early-exit research plan"
+            git push
+          fi
