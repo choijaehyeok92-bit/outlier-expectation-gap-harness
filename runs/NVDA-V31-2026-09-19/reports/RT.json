@@ -1,0 +1,177 @@
+{
+  "agent_id": "RT",
+  "ticker": "NVDA-V31-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 50,
+  "confidence_0_1": 0.94,
+  "thesis": "가장 강한 공매도 논리는 'AI 수요 붕괴' 자체보다 수요의 질과 가격이다. NVIDIA는 $5T+ 시가총액에서 Base 가치보다 약간 높은 가격에 거래되고, $279B 공급·용량 약정, $36B AI-cloud 약정, $108.5B 최대 보증 노출과 급증한 AR을 동시에 안고 있다. 고객 자체실리콘이 가격결정력을 압박하면 높은 장기 FCF 경로가 빠르게 훼손될 수 있다. 반면 75% gross margin, 100%+ 고객군 성장, $15.6B 선수금, 강한 OCF와 CUDA 생태계는 현재 수요가 단순 보조금으로 만들어졌다는 극단적 숏 논리를 반박한다. 따라서 강한 하방 논리는 유지하지만 9개 Hard Veto 중 RT 소유 7개는 현재 증거로 cleared다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 매출 $96.221B, gross margin 75.0%, operating margin 66.2%로 규모와 수익성이 동시에 확대됐다.",
+      "source_type": "10-Q",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-08-26",
+      "value": "$96.221B / 75.0% / 66.2%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-NVDA-MARGIN-001",
+      "economic_driver": "pricing_power"
+    },
+    {
+      "claim": "AR는 FY26 말 $38.466B에서 Q2 FY27 $63.059B로 증가했고, 5개 직접고객이 AR의 22%,14%,13%,11%,10%를 차지한다. 일부 투자등급 고객에는 90일~1년 결제조건을 제공할 수 있다.",
+      "source_type": "10-Q",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-08-26",
+      "value": "AR $63.059B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-NVDA-AR-002",
+      "economic_driver": "demand_quality"
+    },
+    {
+      "claim": "Q2 기준 supply/capacity commitments $279B, 추가 AI-cloud agreements $36B, 보증 maximum gross exposure $108.5B가 공시됐다. 다만 일부 공급계약은 firm order 전 취소·재조정 가능하고, AI-cloud 의무는 제3자 사용 시 감소하며, $105B SB Energy/OpenAI 보증은 phase·default 조건부다.",
+      "source_type": "10-Q",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY27 Q2 / August 2026 subsequent event",
+      "as_of_date": "2026-08-26",
+      "value": "$279B / $36B / $108.5B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-NVDA-COMMIT-003",
+      "economic_driver": "vendor_financing_and_commitment_risk"
+    },
+    {
+      "claim": "H1 FY27 영업현금흐름은 약 $74.4B이며 capex·SBC를 상회하고, 희석주식수는 전년 대비 감소해 현재 사업이 생존을 위해 외부자본에 의존하는 구조는 아니다.",
+      "source_type": "10-Q",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY27 H1",
+      "as_of_date": "2026-08-26",
+      "value": "OCF ~ $74.4B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-NVDA-CASH-004",
+      "economic_driver": "financial_resilience"
+    },
+    {
+      "claim": "하네스의 frozen valuation은 현재가 $222.27 대비 Bear $74.99, Base $212.86, Bull $431.14로 계산한다. 현재가는 Base의 약 1.044배여서 안전마진은 작지만 Bull을 넘지는 않는다.",
+      "source_type": "harness",
+      "source": "runs/NVDA-V31-2026-09-19/aggregate.json",
+      "period": "valuation as of 2026-09-19",
+      "as_of_date": "2026-09-19",
+      "value": "$74.99 / $212.86 / $431.14",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RT-NVDA-VAL-005",
+      "economic_driver": "valuation_risk"
+    },
+    {
+      "claim": "미국 수출규제로 중국 데이터센터 시장 접근이 크게 제한됐지만 Q2 전체 매출은 전년 대비 100% 이상 성장했고 최대 직접고객 매출 비중은 16%였다.",
+      "source_type": "10-Q",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-08-26",
+      "value": "max direct customer 16%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-NVDA-CONC-006",
+      "economic_driver": "concentration_and_regulation"
+    }
+  ],
+  "counterevidence": [
+    "Q2 gross margin 75%와 operating margin 66.2%는 가격결정력과 규모경제가 현재까지 유지되고 있음을 보여준다.",
+    "H1 고객 선수금 $15.6B은 일부 고객이 NVIDIA에 선불을 제공할 정도의 공급 확보 의사를 보여준다.",
+    "CUDA 개발자·소프트웨어·네트워킹 생태계는 GPU 단품보다 높은 전환비용을 만든다.",
+    "$105B 보증은 즉시 현금부채가 아니라 단계별 lease commencement와 tenant default에 조건부이며 회수·종료 장치가 있다."
+  ],
+  "unknowns": [
+    "지원·보증 대상 고객이 전체 매출과 AR에서 차지하는 정확한 비중.",
+    "고객 AI 인프라의 장기 가동률과 실제 투자수익률.",
+    "Rubin 이후 NVIDIA 대비 hyperscaler custom ASIC의 비용/토큰 격차.",
+    "$279B 공급 약정의 firm-order·취소가능 비중.",
+    "OpenAI/SB Energy 보증의 실제 활성 노출과 회수율."
+  ],
+  "falsifiers": [
+    "Data Center 매출이 2개 분기 연속 y/y 감소하지 않고 gross margin도 70% 이상 유지되면 수요붕괴 숏 논리는 약화된다.",
+    "지원 대상 고객향 매출·AR가 10% 미만이고 DSO가 50일 이하로 정상화되면 벤더금융 숏 논리는 크게 약화된다.",
+    "독립 벤치마크에서 Rubin의 비용/토큰이 주요 custom ASIC 대비 20% 이내이면서 CUDA 사용량이 계속 증가하면 기술대체 논리는 약화된다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "cutoff까지 재작성·감사인 이견/교체·내부통제 중대결함이 확인되지 않았다. Level 3 지분평가와 대규모 약정은 위험요인이지만 veto 정의상 회계 신뢰성 훼손 사건 자체는 아니다."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "H1 OCF 약 $74.4B가 필수 capex와 SBC를 크게 상회한다. 2026년 차입 확대는 생존자금이 아니라 재량적 자본배분·전략투자와 함께 발생해 '영업이 자체자금을 못 벌어 반복 조달이 필수'라는 두 구성요건을 충족하지 않는다."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "75% gross margin, 1.4% 수준의 판관비/매출, $15.6B 고객 선수금과 100%+ 고객군 성장은 고객가치 부재라는 필수 요건을 반증한다. 벤더 금융 위험은 CP/FS/AS 점수와 모니터링으로 남긴다."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "기존 RF의 FY25→FY26 영업자본 기준 증분 ROIC 약 101%는 자본비용을 크게 상회한다. 고점 대비 하락 가능성은 있으나 자본비용 아래의 구조적 붕괴가 관측되지 않았다."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "gross margin은 FY26 71.1%에서 Q2 FY27 75.0%로 상승했고 컴퓨트·네트워킹·CUDA 생태계 지표도 현재까지 유지된다. custom ASIC은 미래 위협이지만 지속적 해자 축소의 현재 증거로는 부족하다."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "현재가 $222.27는 frozen Bull 가치 $431.14보다 약 48% 낮다. Base가 야심적이고 Bear downside가 큰 것은 EV/AS 문제지만 veto의 단일 구성요건인 '현재가 > Bull 가치'는 성립하지 않는다."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "최대 직접고객 매출 비중은 16%이고 중국 데이터센터 접근 제한이 현실화된 상태에서도 전체 매출과 이익이 크게 성장했다. Data Center 집중은 높지만 해당 요인 상실 시 경제성이 회복 불가하게 훼손됐다는 증거는 없다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "DSO / AR 성장률",
+      "direction": "down",
+      "threshold": "DSO 50일 이하 및 AR 증가율 < 매출 증가율",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Data Center y/y 성장과 gross margin",
+      "direction": "up",
+      "threshold": "2개 분기 연속 DC 역성장 또는 GM <70%면 경고",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "지원 대상 고객 매출·AR / 보증 활성노출",
+      "direction": "down",
+      "threshold": "매출·AR 25% 초과 또는 실손실 확대 시 재검토",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q의 AR·DSO·customer advances·대손충당과 지원 대상 고객 추가 공시.",
+    "Rubin 및 hyperscaler custom ASIC의 비용/성능과 실제 배포 증가율.",
+    "PORTS-Pike 보증 phase 발효, OpenAI 신용도, 회수·보상 현금흐름."
+  ],
+  "verdict": "oppose",
+  "subscores": [],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

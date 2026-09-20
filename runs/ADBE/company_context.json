@@ -15,7 +15,10 @@
   "known_sources": [
     "User-uploaded Adobe FY2024 Form 10-K filed 2025-01-13",
     "User-uploaded Adobe Q2 FY2026 Form 10-Q filed 2026-06-15",
-    "Adobe Q3 FY2026 earnings release filed 2026-09-10",
+    "Adobe Q2 FY2026 earnings release and earnings script published 2026-06-11",
+    "Adobe Q3 FY2026 earnings release and earnings script published 2026-09-10",
+    "SEC Adobe Q2 FY2026 Form 10-Q filed 2026-06-15 (debt, liquidity, repurchase schedule, Semrush acquisition)",
+    "User-uploaded ADBE normalized-facts extract with internal as_of_date 2026-09-10; partial extraction, not a replacement for core frozen financial facts",
     "2026-09-18 closing price $248.92"
   ],
   "special_questions": [

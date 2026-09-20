@@ -1,5 +1,5 @@
 # Digest — NVDA-V3-2026-09-19 (as of 2026-09-19)
-score 70.69 (ex-val 73.81, Emerging Outlier) · DI 78.75 · TQ None · archetype non_fit — 조기 종료: 현재 decision score와 조건으로 도달 가능한 유형 없음 · veto PENDING_REVIEW · state EARLY_EXIT_NON_FIT
+score 70.06 (ex-val 73.07, Emerging Outlier) · DI 78.75 · TQ None · archetype non_fit — 조기 종료: 현재 decision score와 조건으로 도달 가능한 유형 없음 · veto PENDING_REVIEW · state EARLY_EXIT_NON_FIT
 signals {'price_to_base_value': 1.0442, 'valuation_percentile_5y': 0.05, 'revenue_cagr_next_3y': 0.29, 'market_cap_usd': 5367153690000.0} · reachable(raw) []
 veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
 
@@ -10,61 +10,61 @@ veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적
 bull: 가속 컴퓨팅 전환은 비용곡선과 개발표준을 바꾸는 구조적 변화다. CUDA 개발자 750만명, 지원 앱 6,000개, TOP500 78%, 누적 R&D $76.7B는 NVIDIA가 카테고리 기준을 정한다는 근거다. Blackwell Ultra에서 Rubin으로 이어지는 cadence가 … / bear: Q2 매출의 92.5%가 Data Center이고 10% 이상인 독립 최종시장은 없다. H1 상위 3개 고객이 44%이며 중국 시장은 단일 규제로 사실상 사라졌다. 여러 관할의 경쟁당국 조사와 AI capex 사이클 집중은 구조적 리더십의 취약점을 키운다.
 unknowns: 가속 컴퓨트 시장의 물량·금액 점유율. · 최근 성장의 가격·물량 기여도.
 
-## customer_product — 75.25 (raw 75.25, spread 35.0, DISPUTE)
+## customer_product — 69.0 (raw 69.0, spread 35.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| CP | 75.25 (50–85) | 0.7 | support | V4=cleared, V8=cleared | 고객가치는 강하게 입증된다. Q2 FY27 매출 $96.2B에서 gross margin 75.0%와 영업이익률 66.2%를 냈고, H1 고객 선수금 유입 $15.6B과 기말 잔액 $2.8B은 지불의사를 보여준다. Hyperscale +102%, ACIE +138%로 수요 기반도 확장됐… |
-bull: 매출 $96.2B 분기에 gross margin 75.0%, 판관비 1.4%를 기록했고 H1 고객 선수금 유입은 $15.6B이다. 고객은 제품 확보를 위해 선불을 지급하며 Hyperscale과 ACIE 매출이 모두 100% 이상 성장했다. 가격·사용량·규모경제가 동시에 강화되는 모습이… / bear: NRR·churn·고객 ROI가 공시되지 않는다. H1 지분증권 매입 $42.4B, AI-cloud 보증 $3.5B 등 고객 자금지원이 있어 자생 수요 비중도 알 수 없다. AR·재고가 H1 OCF에서 $34.8B를 흡수해 회계상 단위경제와 현금 전환이 엇갈린다.
-unknowns: 지분투자·보증 대상 기업에서 발생한 매출 비중. · 고객의 AI 인프라 가동률과 투자 회수 기간.
+| CP | 69 (50–85) | 0.7 | support | V4=cleared, V8=cleared | 고객가치 자체는 강하지만 자생 수요와 경제적 단위경제의 분리는 더 어려워졌다. Q2 매출 $96.2B, gross margin 75.0%, H1 고객 선수금 $15.6B은 지불의사를 입증한다. 반면 frozen 10-Q는 별도 AI-cloud agreements $36B와 SB Ene… |
+bull: 매출 $96.2B 분기에 gross margin 75.0%, 판관비 1.4%를 기록했고 H1 고객 선수금 유입은 $15.6B이다. 고객은 제품 확보를 위해 선불을 지급하며 Hyperscale과 ACIE 매출이 모두 100% 이상 성장했다. 가격·사용량·규모경제가 동시에 강화되는 모습이… / bear: 회계 마진은 강하지만 고객·파트너 지원의 경제적 규모가 기존 보고보다 크다. $36B AI-cloud agreements와 $108.5B maximum gross guarantees가 존재하고 지원 대상 매출·AR 비중은 공시되지 않아 자생 수요와 현금 기준 단위경제를 분리할 수 없다.
+unknowns: 지분투자·$36B AI-cloud agreements·$108.5B 보증 대상 기업에서 발생한 매출 비중. · 동일 대상에 귀속되는 AR 금액·결제조건·신용도.
 
 ## moat_trajectory — 73.75 (raw 73.75, spread 35.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| MT | 73.75 (50–85) | 0.75 | support | V6=cleared | 해자는 현재 확대 방향이다. 매출이 배가되는 구간에서 gross margin이 71.1%→75.0%로 올랐고, FY26 Data Center 컴퓨트 +59%와 네트워킹 +142%가 풀스택 결합을 입증한다. CUDA 개발자 750만명, 지원 앱 6,000개, TOP500 78%는 규모가… |
+| MT | 73.75 (50–85) | 0.75 | support | V6=cleared | 해자는 관측상 확대 방향을 유지한다. gross margin 상승, 컴퓨트·네트워킹 동반성장, CUDA 개발자 750만·앱 6,000개·TOP500 78%가 이를 지지한다. 다만 생태계 확대의 자생성에는 추가 불확실성이 생겼다. $36B AI-cloud agreements와 $108.… |
 bull: 매출이 배가되는 동안 gross margin은 71.1%에서 75.0%로 올랐다. CUDA 개발자 750만명, 지원 앱 6,000개, TOP500 78%는 측정 가능한 생태계다. 컴퓨트 +59%와 네트워킹 +142%의 동시 성장은 칩·네트워크·소프트웨어 해자가 함께 확장됨을 보여준다. / bear: 대체 압력의 주체가 자금력이 큰 하이퍼스케일러 고객이다. 중국 배제는 현지 경쟁사의 개발자 생태계를 키웠고, Groq 비독점 라이선스에 약 $15.9B을 썼다. Hugging Face의 타 실리콘 지원 약정은 생태계 확대와 동시에 배타적 락인을 낮춘다.
-unknowns: 커스텀 ASIC의 가속 컴퓨트 물량·금액 점유율. (RO pass 2에서도 신규 증거 미확보) · 공급 정상화 후 지속 가능한 gross margin. 회사 가이드는 Q3 1개 분기(74.0%)뿐이고 장기 정상 수준 진술은 없다.
+unknowns: 커스텀 ASIC의 가속 컴퓨트 물량·금액 점유율. · 공급 정상화 후 지속 가능한 gross margin.
 
 ## reinvestment_fcf — 74.5 (raw 74.5, spread 33.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| RF | 74.5 (55–88) | 0.75 | support | V3=cleared, V5=cleared | 영업자본 기준 증분 수익률은 매우 높다. FY25→FY26 증분 NOPAT 약 $40.1B/증분 영업투하자본 약 $39.8B로 증분 ROIC는 약 101%다. owner FCF/share는 FY25 $2.26→FY26 $3.68→TTM $4.92로 늘었고 희석주식수는 24,804M→2… |
+| RF | 74.5 (55–88) | 0.75 | support | V3=cleared, V5=cleared | 영업자본 기준 증분 ROIC 약 101%와 owner FCF/share $2.26→$3.68→TTM $4.92는 강하지만, TTM 내부 재투자 흡수율은 23.03%로 65점이다. pass4는 미래 자본집약도에 중요한 추가 사실을 전파했다: $36B AI-cloud agreements와… |
 bull: FY25→FY26 증분 NOPAT 약 $40.1B을 증분 영업투하자본 약 $39.8B으로 얻어 증분 ROIC가 약 101%다. owner FCF/share는 FY25 $2.26에서 TTM $4.92로 늘었고 희석주식수는 감소했다. 자본집약도가 낮은 성장과 주당 복리가 동시에 확인된다. / bear: 고수익 내부 재투자 흡수율은 23.9%에 그쳐 자본창출 속도를 못 따라간다. H1 자사주 $39.0B와 지분증권 $42.4B이 외부로 나갔다. 운전자본 $41.3B 유출과 비현금 지분평가익 $23.7B 때문에 정상화 현금수익률도 불확실하다.
-unknowns: 지분증권 $93.9B의 실현 수익률과 관련 매출. (RO pass 2·3 모두 미확보) · 운전자본 증가가 일시적 계약효과인지 영구 수준 이동인지 — Q2 현금전환 악화는 계량됐으나 관측치가 1개 분기뿐이다.
+unknowns: 지분증권 $93.9B과 보증·AI-cloud support 대상에서 발생한 관련 매출·실현 수익률. · $108.5B 보증의 실제 활성액·손실과 $36B AI-cloud agreements의 현금사용액.
 
 ## management_allocation — 73.75 (raw 73.75, spread 30.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| MA | 73.75 (55–85) | 0.7 | support | V1=cleared | 실행력과 기본 거버넌스는 강하지만 최근 자본배분은 검증 부담이 커졌다. 최근 4개 분기 자사주 평균 매입가 약 $191.78은 Base 가치 $212.86의 90.1%로 규칙상 70점이다. 중국 배제 속에서도 Q2 매출 +105.9%를 냈고 Blackwell Ultra에서 Rubin으… |
+| MA | 73.75 (55–85) | 0.7 | support | V1=cleared | 실행력·회계 신뢰성은 유지되지만 자본배분의 검증 부담은 더 커졌다. 자사주 평균 매입가/Base 가치 0.901로 capital_allocation은 규칙상 70이다. 중국 배제 속에서도 Q2 매출 +105.9%와 Rubin 전환은 실행력을 지지한다. 반면 지분투자 $93.9B, Gr… |
 bull: 최근 4개 분기 자사주 평균 매입가는 약 $191.78로 Base 가치 $212.86의 90.1%다. 중국 데이터센터 시장을 잃고도 매출을 배로 키웠으며 Blackwell Ultra에서 Rubin으로 전환을 진행했다. 내부통제는 경영진과 PwC 모두 유효하다고 결론냈다. / bear: H1 지분증권 매입 $42.4B, 평가익 $23.7B, 투자잔액 $93.9B로 자본배분의 검증 가능성이 낮아졌다. Groq 라이선스 약 $15.9B와 Hugging Face $11.9B의 회수 근거도 없다. $366B 약정은 실행 오류의 비용을 크게 만든다.
-unknowns: 지분투자 대상별 투자액과 관련 매출. · 비시장성 지분 $51.2B의 평가기법과 민감도.
+unknowns: 지분투자·보증 대상별 투자액과 관련 매출·AR. · $108.5B 보증의 확률가중 기대손실·회수권·phase별 실제 노출.
 
 ## financial_survival — 76.0 (raw 76.0, spread 35.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| FS | 76.0 (55–90) | 0.8 | support | V2=cleared, V3=cleared, V9=cleared | 기준일 2026-09-19. NVIDIA의 재무 생존력은 강하다. 현금·시장성 채권 $56.6B가 총차입 $33.4B를 넘어 순현금이고, TTM OCF $134.4B는 총차입의 약 4배다. H1 owner FCF도 $66.0B로 양수다. 희석주식수는 전년 동기 대비 약 1.0% 감소해… |
-bull: 순현금 $23.2B, TTM OCF $134.4B와 owner FCF $119.8B가 총차입 $33.4B를 크게 웃돈다. H1에 차입 $24.9B를 늘렸지만 동시에 자사주 $39.0B와 지분투자 $42.4B를 집행해 생존용 조달이 아니다. 매출 급감에도 필수 투자와 부채 상환을 내부현… / bear: $366B 약정은 TTM 매출의 1.21배이며 $279B 공급약정, 장기 데이터센터 리스와 고객보증이 수요 오판 시 현금·재고·신용손실로 전환될 수 있다. AR과 재고가 H1에 각각 $24.6B와 $10.2B 늘어 현금전환이 악화됐고, 일부 지분자산은 변동성과 유동성 제한이 있다.
-unknowns: The proportion of the $279B supply/capacity commitment that is legally noncancelable afte… · Counterparty credit quality and recovery rates for AI-cloud guarantees, warrants and equi…
+| FS | 76 (55–90) | 0.8 | support | V2=cleared, V3=cleared, V9=cleared | 재무 생존력은 여전히 강하지만 부외 노출의 총규모가 기존 보고보다 크다. 순현금 $23.2B, TTM OCF $134.4B로 영업 생존은 외부자본에 의존하지 않는다. 한편 일반 commitments $366B 외에 additional commitments $56B와 maximum gr… |
+bull: 순현금 $23.2B, TTM OCF $134.4B와 owner FCF $119.8B가 총차입 $33.4B를 크게 웃돈다. H1에 차입 $24.9B를 늘렸지만 동시에 자사주 $39.0B와 지분투자 $42.4B를 집행해 생존용 조달이 아니다. 매출 급감에도 필수 투자와 부채 상환을 내부현… / bear: 수요 급락과 고객 신용사건이 겹치면 $279B 공급약정, $56B 추가 약정, $108.5B 최대 총보증이 동시에 현금흐름을 압박할 수 있다. 특히 SB Energy/OpenAI 보증의 확률가중 손실·회수권은 공시되지 않아 tail stress를 정량화할 수 없다.
+unknowns: $279B supply/capacity commitments의 stress-case 취소·재조정 가능 비중. · $108.5B maximum gross guarantees의 phase별 활성 금액, counterparty PD, recovery/recourse.
 
 ## expectation_valuation — 53.0 (raw 53.0, spread 65.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| EV | 53.0 (20–85) | 0.6 | neutral | V7=cleared | 기준일 2026-09-19. 고정 정책(9% 할인율, terminal 15/20/25x)으로 owner FCF/share(OCF-capex-SBC)를 10년 추정하면 Bear $75, Base $213, Bull $431이다. 9월 18일 종가 $222.27는 Base의 1.044배로… |
-bull: AI 인프라 투자가 장기 사이클이면 Y10 owner FCF/share $29.6과 25x terminal로 주당 $431이다. CUDA·NVLink 생태계와 네트워킹·소프트웨어 결합이 강화되고 공급 확대가 수요로 전환되면 높은 점유율과 마진을 함께 유지할 수 있다. DCF에서 제외한… / bear: 고객 일부가 장기 인프라 계약과 투자등급 자금조달 능력이 부족한 상황에서 NVIDIA의 지분투자와 보증이 수요를 보강한다. 이 연결고리가 약해지고 공급약정이 과잉으로 바뀌면 매출·마진·현금전환이 함께 악화될 수 있다. Y3 owner FCF/share $4.2, 15x terminal…
-unknowns: AR 증가 $24,590M 중 투자등급 고객 비중과 NVIDIA의 지분투자·보증으로 자금을 지원받은 AI 클라우드 비중은 공시되지 않아 매출 자기조달 비율을 계… · FY28 supply/capacity 약정 $87B가 수요 정체 신호인지 발주 시계의 한계인지 구분할 수 없다.
+| EV | 53 (20–85) | 0.6 | neutral | V7=cleared | 고정 정책 DCF의 Bear/Base/Bull은 약 $75/$213/$431, 현재가 $222.27는 Base의 1.044배다. 새로 전파된 $36B AI-cloud agreements와 $108.5B maximum gross guarantees는 수요의 자생성과 장기 현금전환을 더 … |
+bull: AI 인프라 투자가 장기 사이클이면 Y10 owner FCF/share $29.6과 25x terminal로 주당 $431이다. CUDA·NVLink 생태계와 네트워킹·소프트웨어 결합이 강화되고 공급 확대가 수요로 전환되면 높은 점유율과 마진을 함께 유지할 수 있다. DCF에서 제외한… / bear: Base도 높은 성장과 현금마진을 요구한다. 지원 대상 매출·AR 비중이 미공시인 가운데 $36B AI-cloud agreements와 $108.5B maximum gross guarantees가 존재해 수요 정상화 시 매출과 현금지원이 동시에 악화될 수 있다. 확률가중 보증손실은 산…
+unknowns: 지분투자·$36B AI-cloud agreements·$108.5B 보증 대상 고객의 매출·AR 비중. · $108.5B maximum gross guarantees의 확률가중 손실과 phase별 활성 노출.
 
 ## asymmetry — 66.75 (raw 66.75, spread 50.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| AS | 66.75 (35–85) | 0.65 | neutral | V7=cleared, V9=cleared | 기준일 2026-09-19. Bull/현재가 1.94배와 컴퓨트·네트워킹/소프트웨어의 두 상승경로는 대형주 기준 의미 있는 상방을 주지만 5x·10x Power Law 경로는 입증되지 않았다. Bear/현재가 0.34배는 큰 가격 하방을 뜻하나, 순현금 $23.2B와 TTM OCF $… |
-bull: AI 인프라 수요가 장기화되고 데이터센터 컴퓨트 외 네트워킹·소프트웨어 가치풀이 확대되면 Bull 가치 $431로 현재가의 1.94배다. 순현금과 높은 현금창출력은 재투자를 지원한다. 다만 시가총액이 이미 $5.4T여서 5x·10x보다 약 2x 경로가 현실적이다. / bear: 고객 자금조달 제약, $366B 약정, 중국 시장 상실과 커스텀 실리콘 확산이 겹치면 Bear 가치 $75로 현재가의 0.34배다. 파산 가능성은 낮지만, 피크 수익성과 terminal multiple이 동시에 정상화되면 가격 기준 영구손실 위험은 크다.
-unknowns: Comparable-company base rates for sustaining more than $100B of annual owner FCF and doub… · The portion of AI-cloud demand enabled by NVIDIA equity investments, guarantees or partne…
+| AS | 66.75 (35–85) | 0.65 | neutral | V7=cleared, V9=cleared | Bull/현재가 1.94배의 두 상승경로는 의미 있지만 Power Law는 아니다. Bear/현재가 0.34배로 가격 하방은 크다. 새로 전파된 $36B AI-cloud agreements와 $108.5B maximum gross guarantees는 수요 둔화와 고객 신용사건이 동시… |
+bull: AI 인프라 수요가 장기화되고 데이터센터 컴퓨트 외 네트워킹·소프트웨어 가치풀이 확대되면 Bull 가치 $431로 현재가의 1.94배다. 순현금과 높은 현금창출력은 재투자를 지원한다. 다만 시가총액이 이미 $5.4T여서 5x·10x보다 약 2x 경로가 현실적이다. / bear: AI-cloud 지원 대상의 매출·AR 비중과 보증의 확률가중 손실이 미공시다. 수요 둔화가 고객 신용악화와 겹치면 매출 감소와 $108.5B maximum gross guarantee exposure의 일부 활성화가 동시 발생할 수 있어 downside correlation이 커진다.
+unknowns: $108.5B maximum gross guarantees의 확률가중 기대손실·회수권·phase별 실제 노출. · 지분투자·AI-cloud agreements·보증 대상 고객의 매출·AR 비중.
 
 ## disruptive_innovation — 78.75 (raw 78.75, spread 30.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| DI | 78.75 (60–90) | 0.75 | support | – | 기준일 2026-09-19. NVIDIA는 단일 GPU가 아니라 GPU·CPU·NVLink·네트워킹·소프트웨어를 공동설계해 AI 학습과 추론의 비용곡선을 재편한다. Rubin은 Blackwell 대비 최대 10배 낮은 토큰 비용을 제시했고, 9월 16일 MLPerf preview는 특… |
-bull: Rubin은 Blackwell 대비 최대 10배 낮은 토큰 비용을 목표로 하고, 9월 MLPerf에서 2.5~3.7배 처리량 향상을 보였다. Blackwell이 이미 출하 대부분과 $89B 분기 데이터센터 매출을 차지해 기술 개선이 파일럿을 넘어 수익으로 전환됐다. 네트워킹·소프트웨어… / bear: 10배 수치는 회사 측 특정 워크로드 주장이고 실제 고객 TCO는 전력·활용률·네트워크·모델 변화에 좌우된다. 하이퍼스케일러는 자체 실리콘으로 대응할 자본과 수요를 보유하며, 고객 금융·보증과 $366B 약정은 채택의 자생성을 흐린다. 규제와 전력 병목도 S-curve를 제한할 수 있…
-unknowns: Independent production TCO per token for Rubin versus Blackwell and leading custom ASICs … · NVIDIA does not separately disclose recurring AI software revenue or gross margin, preven…
+| DI | 78.75 (60–90) | 0.75 | support | – | GPU·CPU·NVLink·네트워킹·소프트웨어 공동설계는 AI 비용곡선을 재편하고, Q2 Data Center $89.0B(+117%)와 Blackwell 과반 출하는 채택이 주류 수익으로 전환됐음을 보여준다. 그러나 채택의 자생성에는 더 큰 공백이 확인됐다. Q2 filing은 $3… |
+bull: Rubin은 Blackwell 대비 최대 10배 낮은 토큰 비용을 목표로 하고, 9월 MLPerf에서 2.5~3.7배 처리량 향상을 보였다. Blackwell이 이미 출하 대부분과 $89B 분기 데이터센터 매출을 차지해 기술 개선이 파일럿을 넘어 수익으로 전환됐다. 네트워킹·소프트웨어… / bear: Rubin의 비용곡선 우위가 독립 생산 TCO로 검증되지 않았고, financed AI-cloud deployment가 채택 속도를 부풀릴 수 있다. $36B AI-cloud agreements와 $108.5B maximum gross guarantees의 지원 대상 매출 비중이 높다…
+unknowns: Rubin과 leading custom ASIC의 comparable production TCO per token. · NVIDIA recurring AI software revenue·gross margin의 독립 공시.
 
 ## Archetype fit
 {"buffett_value": {"eligible": false, "fit_score": 66.47107843, "failed_conditions": ["signal.price_to_base_value", "criterion.reinvestment_fcf.fcf_per_share_quality"], "missing_conditions": [], "blocking_vetoes": []}, "compounder": {"eligible": false, "fit_score": 69.68645833, "failed_conditions": ["domain.moat_trajectory", "domain.reinvestment_fcf", "criterion.reinvestment_fcf.reinvestment_runway"], "missing_conditions": [], "blocking_vetoes": []}, "moonshot": {"eligible": false, "fit_score": 59.4, "failed_conditions": ["signal.market_cap_usd", "domain.asymmetry"], "missing_conditions": [], "blocking_vetoes": []}}

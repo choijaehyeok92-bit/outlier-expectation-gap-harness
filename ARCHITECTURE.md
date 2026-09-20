@@ -1,4 +1,4 @@
-# Architecture and migration — v3
+# Architecture and migration — v3.1
 
 ## Modules and decision flow
 
@@ -16,7 +16,7 @@ Core weights, existing Compounder gates, Moonshot execution gates and all nine v
 and ownership mappings are preserved. Compounder adds criterion refinement without replacing
 its former RF domain gate. Buffett Value uses the existing FCF/share quality rubric rather
 than introducing a new owner-earnings domain. DI remains independent; TQ is an explicitly
-activated optional diagnostic. No fourth investable archetype exists.
+activated optional diagnostic. Growth is a fourth archetype, using existing domains and a forward revenue-growth estimate; its configurable initial gates do not relax the other three types.
 
 ## Fit, reachability and coverage
 
@@ -61,8 +61,7 @@ of the evidence behind acknowledgments remain outside this deterministic matcher
 
 Run manifests and new aggregate/final outputs record strategy_version, schema_version and
 decision_policy_version. Freeze hashes implementation modules, policy, prompts, schemas, templates
-and company/source inputs. Prompt generation refuses stale frozen code or inputs. Aggregate remains
-a read/recompute interface so historical input reports can be inspected under v3 without re-freezing.
+and company/source inputs. Prompt generation refuses stale frozen code or inputs. Aggregate/digest/report also refuse stale snapshots before writing. Use fork-run for a new policy run; pure compute_aggregate remains available for read-only comparisons.
 For reproducible model comparison, freeze before research and use the same commit and input hashes.
 
 Provider calibration is idempotent. raw_score preserves the pre-provider observable-anchored domain
@@ -81,5 +80,10 @@ their apply/revert scripts fail safely rather than reinstall obsolete executable
 CLI commands remain available. `policy` is additive. `init` now refuses to overwrite an existing run.
 IC writes IC.json and the one-page record; aggregate owns final_verdict.json and enforces gates.
 Versioned final schema permits null scores for incomplete/early exits. No historical final JSON is
-required to validate against the new schema. The runtime remains standard-library-only; development
-schema tests use requirements-dev.txt. Source PDF extraction still optionally needs pypdf.
+required to validate against the new schema. Research intake uses jsonschema from requirements.txt; development tests use requirements-dev.txt. Source PDF extraction still optionally needs pypdf.
+
+## v3.1 supplemental research and reporting
+
+research.py creates prioritized questions and validates append-only evidence intake; plain_report.py renders a fresh final decision in Korean. See docs/RESEARCH_ORCHESTRATOR.md for provenance, cutoff and conflict handling. Review-only runs explicitly frozen with --review-only may reach IC despite non-fit. They always prevent new-buy approval; completed MO may record unavailable components without forcing a fabricated fresh observation. Ordinary runs retain the original staging and macro freshness requirements.
+
+New manifests record hash_format=sha256-lf-text-v1: JSON/Markdown/Python/text/YAML hashes normalize CRLF to LF for portable Git checkouts. Other byte changes still invalidate a snapshot. Legacy fork verification accepts matching raw or LF-normalized bytes without editing the historical files.

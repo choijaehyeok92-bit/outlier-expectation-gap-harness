@@ -6,95 +6,123 @@
   "role": "domain_analyst",
   "analysis_status": "complete",
   "score_0_100": 70,
-  "confidence_0_1": 0.82,
-  "bull_score": 80,
+  "confidence_0_1": 0.86,
+  "bull_score": 85,
   "bear_score": 50,
-  "bull_case": "Adobe can use its installed base, proprietary workflow data and commercial-safety positioning to absorb AI disruption.",
-  "bear_case": "If creation shifts to prompt-native platforms that bypass Adobe apps, AI becomes a moat reducer rather than extender.",
-  "thesis": "Adobe is an incumbent responding effectively to generative AI rather than a pure disruptive entrant. Firefly, Acrobat agents and Experience Cloud AI can expand the market, but open/model-native tools can also commoditize portions of Adobe's workflow.",
+  "bull_case": "Adobe is commercializing AI across creation, documents and enterprise workflows at large installed-base scale, turning disruption into multiple adjacent value pools.",
+  "bear_case": "Adobe remains an incumbent responding to a cost/performance discontinuity created by external models; rapid usage does not yet prove superior AI unit economics or control of the new value chain.",
+  "thesis": "Adobe shows real AI commercialization but does not yet satisfy a high disruptive-innovation score. AI-first ending ARR is >$650M and >150% y/y; Firefly ending ARR approached $300M at Q2 under a broader definition; creative freemium MAU exceeds 100M. Adoption is clearly accelerating, but Firefly-specific economics are unavailable. Adobe has multiple adjacent AI value pools, yet evidence does not establish that it defines the new AI value-chain standard.",
   "evidence": [
     {
-      "claim": "AI-first ARR grew >150% y/y in Q3.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
+      "claim": "Q3 AI-first ending ARR exceeded $650M and grew >150% y/y.",
+      "source_type": "ir",
+      "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/01906202/c6yetrerew.pdf",
       "period": "Q3 FY2026",
       "as_of_date": "2026-09-10",
-      "value": ">150%",
+      "value": ">$650M / >150%",
       "fact_or_estimate": "fact"
     },
     {
-      "claim": "Adobe reported >1B MAU across creativity and productivity.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
-      "period": "Q3 FY2026",
-      "as_of_date": "2026-09-10",
-      "value": ">1B",
+      "claim": "Q2 Firefly ending ARR across Firefly App, credit packs and Firefly Enterprise was approaching $300M.",
+      "source_type": "ir",
+      "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/11606202/c5y6yteraf.pdf",
+      "period": "Q2 FY2026",
+      "as_of_date": "2026-06-11",
+      "value": "approaching $300M",
       "fact_or_estimate": "fact"
     },
     {
-      "claim": "Q2 subscription revenue grew 14% y/y.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
-      "period": "Q2/H1 FY2026",
-      "as_of_date": "2026-06-15",
-      "value": null,
+      "claim": "Creative freemium MAU crossed 100M and grew >70% y/y; Adobe reported >1B MAU across creativity/productivity.",
+      "source_type": "ir",
+      "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/01906202/c6yetrerew.pdf",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": ">100M / >70% / >1B",
       "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "AI commercialization spans at least creative generation, document productivity and enterprise customer-experience workflows.",
+      "source_type": "ir",
+      "source": "https://www.adobe.com/cc-shared/assets/investor-relations/pdfs/01906202/c6yetrerew.pdf",
+      "period": "Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "3 adjacent workflow pools",
+      "fact_or_estimate": "interpretation"
     }
   ],
   "counterevidence": [
-    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+    "Adobe did not originate the foundation-model cost curve and faces well-capitalized model/platform competitors.",
+    "Firefly-specific inference margin and contribution margin are not disclosed.",
+    "Three adjacent value pools are present, but evidence does not establish Adobe as the standard-setter for the new AI value chain."
   ],
   "unknowns": [
-    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+    "Firefly-specific unit economics.",
+    "Whether Adobe or model/platform vendors capture the majority of incremental AI value."
   ],
   "falsifiers": [
-    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+    "AI-first ARR growth decelerates toward or below total ARR growth before achieving material scale.",
+    "AI MAU grows without corresponding paid ARR/cash conversion.",
+    "Core workflows shift to external model-native platforms that bypass Adobe."
   ],
   "hard_veto_flags": [],
   "key_kpis": [
     {
-      "name": "owner FCF/share",
+      "name": "AI-first ARR",
       "direction": "up",
-      "threshold": "sustained high-single-digit+ growth",
-      "cadence": "quarterly/annual"
+      "threshold": "sustain materially faster growth than total ARR",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Firefly ARR / economics",
+      "direction": "up",
+      "threshold": "reveal positive scalable unit economics",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "creative freemium MAU",
+      "direction": "up",
+      "threshold": "convert into paid ARR",
+      "cadence": "quarterly"
     }
   ],
   "next_checks": [
-    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+    "Q4 AI-first ARR absolute value and composition.",
+    "Any Firefly inference-margin disclosure.",
+    "Evidence of standard-setting/control in agentic creative or enterprise workflows."
   ],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "cost_performance_shift",
       "score_0_100": 70,
-      "rationale": "Adobe is adapting to AI rather than creating a wholly new 10x cost curve; Firefly lowers creation costs but model competition is intense."
+      "rationale": "Between 50 and 75: generative AI structurally changes creation/productivity economics, but Adobe is an incumbent responder and does not demonstrate a unique 10x cost curve."
     },
     {
       "criterion_id": "adoption_curve",
       "score_0_100": 70,
-      "rationale": "AI-first ARR +150% and >1B MAU show rapid adoption, but monetization depth is still emerging."
+      "rationale": "Rapid ARR/MAU acceleration exceeds early adoption, but the 75 anchor requires economic confirmation; Firefly-specific unit economics are not disclosed."
     },
     {
       "criterion_id": "optionality_incumbent_response",
       "score_0_100": 70,
-      "rationale": "Creative, document and customer-experience workflows provide multiple AI monetization surfaces."
+      "rationale": "Observable anchor: Adobe has at least two clearly monetized adjacent AI value pools and likely three, but lacks evidence that it defines the new value-chain standard required for 85."
     }
   ],
   "uncertainties": [
     {
       "criterion_id": "cost_performance_shift",
       "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "rationale": "AI is a structural cost/performance shift, but Adobe is primarily adapting to it rather than uniquely creating it."
     },
     {
       "criterion_id": "adoption_curve",
       "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "rationale": "ARR and MAU acceleration are verified; unit economics are not."
     },
     {
       "criterion_id": "optionality_incumbent_response",
       "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "rationale": "Multiple adjacent value pools are entered, but new value-chain standard control is unproven."
     }
   ]
 }

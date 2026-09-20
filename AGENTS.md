@@ -1,7 +1,7 @@
 # AGENTS.md — Long Outlier Expectation Gap Investment Harness
 
 ## Mission
-이 저장소의 모든 에이전트는 `장기 아웃라이어 기대차 투자 전략 v3.0`을 훼손하지 않고 종목을 검증한다. 목표는 높은 승률이 아니라 **영구손실을 제한하면서 소수의 장기 Outlier Winner를 식별하고 충분히 오래 보유할 수 있는 증거체계**를 만드는 것이다.
+이 저장소의 모든 에이전트는 `장기 아웃라이어 기대차 투자 전략 v3.1`을 훼손하지 않고 종목을 검증한다. 목표는 높은 승률이 아니라 **영구손실을 제한하면서 소수의 장기 Outlier Winner를 식별하고 충분히 오래 보유할 수 있는 증거체계**를 만드는 것이다.
 
 ## Non-negotiable investment logic
 1. 매출 성장률 자체가 아니라 **주당 FCF와 주당 경제가치의 성장**을 본다.
@@ -13,7 +13,7 @@
 7. Macro는 종목선정 점수에 섞지 않는다. Macro는 Risk Budget / Position Pacing 전용이다.
 8. 추가매수는 `Position Increase ∝ Evidence Increase` 원칙을 따른다. 하락 자체는 추가매수 사유가 아니다.
 9. **파괴적 혁신(DI)**은 독립 평가축이다. **턴어라운드 품질(TQ)**은 diagnostics.turnaround_candidate=true일 때만 실행하는 선택 진단이다. 둘 다 100점에 합산하지 않는다.
-10. 모든 종목은 평가 후 **컴파운더 / 버핏 스타일 가치주 / 문샷형 / 관망·회피형** 중 하나로 분류한다. 문샷형의 고밸류에이션 용인이나 가치주의 할인은 Hard Veto를 면제하지 않는다. 기대차는 모든 유형의 분석 개념이며 별도 유형이 아니다.
+10. 모든 종목은 평가 후 **컴파운더 / 성장주 / 버핏 스타일 가치주 / 문샷형 / 관망·회피형** 중 하나로 분류한다. 문샷형의 고밸류에이션 용인이나 가치주의 할인은 Hard Veto를 면제하지 않는다. 기대차는 모든 유형의 분석 개념이며 별도 유형이 아니다.
 
 ## Evidence policy
 - 모든 사실은 `as_of_date`, `source_type`, `source`, `period`, `value`를 남긴다.
@@ -85,6 +85,7 @@
 - `EXIT_THESIS_BROKEN`
 
 ## Archetypes
+- `growth` — 성장주 (고객가치·현금창출을 확인하고 확장 중인 단계; 가격·생존·veto 게이트 유지)
 - `moonshot` — 문샷형
 - `compounder` — 컴파운더
 - `buffett_value` — 버핏 스타일 가치주 (정상화 owner earnings + 자본배분 + 안전마진)
@@ -104,3 +105,6 @@
 
 ## Reproducibility contract
 분석 프롬프트 전에 `freeze`로 input snapshot과 runner metadata를 고정한다. 직접적인 provider/model 비교는 동일 harness commit과 동일 input snapshot에서만 유효하다. EV 할인 계산은 LLM이 아니라 하네스가 수행한다.
+
+## Research Orchestrator and plain reporting
+Research Orchestrator는 docs/RESEARCH_ORCHESTRATOR.md를 따른다. frozen facts를 보존하고 질문·증거·충돌만 반환한다. 점수·유형·정상화·veto·비중 판정은 domain reviewer와 IC의 책임이다. 모든 추가 자료의 공개일을 cutoff와 비교한다. 최종 aggregate는 easy_report.md를 함께 생성하며 보고서가 새로운 투자판정을 만들지 않는다.

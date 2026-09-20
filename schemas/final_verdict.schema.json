@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "V3 deterministic final verdict and IC synthesis",
+  "title": "V3.1 deterministic final verdict and IC synthesis",
   "type": "object",
   "required": [
     "ticker",
@@ -51,6 +51,7 @@
     "archetype": {
       "enum": [
         "compounder",
+        "growth",
         "buffett_value",
         "moonshot",
         "non_fit"
@@ -61,6 +62,7 @@
       "items": {
         "enum": [
           "compounder",
+          "growth",
           "buffett_value",
           "moonshot"
         ]
@@ -101,18 +103,19 @@
       "description": "Optional normalization diagnostic, never an investable archetype or core score."
     },
     "strategy_version": {
-      "const": "3.0"
+      "const": "3.1"
     },
     "schema_version": {
-      "const": "3.0"
+      "const": "3.1"
     },
     "decision_policy_version": {
-      "const": "3.0"
+      "const": "3.1"
     },
     "archetype_fit": {
       "type": "object",
       "required": [
         "compounder",
+        "growth",
         "buffett_value",
         "moonshot"
       ],
@@ -195,6 +198,44 @@
           }
         },
         "moonshot": {
+          "type": "object",
+          "required": [
+            "eligible",
+            "fit_score",
+            "failed_conditions",
+            "missing_conditions",
+            "blocking_vetoes"
+          ],
+          "properties": {
+            "eligible": {
+              "type": "boolean"
+            },
+            "fit_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "failed_conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "missing_conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "blocking_vetoes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "growth": {
           "type": "object",
           "required": [
             "eligible",

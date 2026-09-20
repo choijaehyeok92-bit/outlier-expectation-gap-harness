@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "ticker": "NVDA",
+  "as_of_date": "2026-09-18",
+  "status": "not_supplied",
+  "note": "The pasted pack did not contain a derived_metrics object. No derived metric was invented during import.",
+  "metrics": []
+}

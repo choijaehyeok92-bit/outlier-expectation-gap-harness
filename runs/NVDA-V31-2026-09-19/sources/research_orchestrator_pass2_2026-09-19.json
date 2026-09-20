@@ -1,0 +1,593 @@
+{
+  "schema_version": "1.0",
+  "ticker": "NVDA",
+  "run_id": "NVDA-V3-2026-09-19",
+  "company_name": "NVIDIA Corporation",
+  "as_of_date": "2026-09-19",
+  "role": "research_orchestrator",
+  "pass": 2,
+  "supersedes": null,
+  "prior_pass_artifact": "sources/research_orchestrator.json (pass 1, 4 questions)",
+  "trigger_basis": {
+    "unknowns_declared_by_agents": 37,
+    "next_checks_declared_by_agents": 27,
+    "hard_vetoes_pending_review": 7,
+    "note": "9개 Hard Veto 중 7개가 PENDING_REVIEW이며 모두 RT(Red Team) 보고서 미실행이 원인이다. 이는 증거 공백이 아니라 에이전트 실행 공백이므로 RO의 검색 대상이 아니다."
+  },
+  "retrieval_environment": {
+    "web_search": "available",
+    "web_fetch": "blocked for www.sec.gov and nvidianews.nvidia.com by the environment's network egress proxy",
+    "consequence": "1차 자료(SEC 8-K 첨부) 본문을 직접 열람하지 못했다. 해당 출처에서 온 값은 WebSearch 요약 경로로 확보했으며 confidence를 낮추고 각 evidence의 note에 검증 한계를 명시했다. §15의 '2차 자료를 1차 자료처럼 표기' 금지를 준수하기 위해 source_tier는 문서 자체의 등급으로 두되 취득 경로를 별도 기재했다."
+  },
+  "research_summary": {
+    "questions_requested": 10,
+    "questions_resolved": 6,
+    "questions_partial": 3,
+    "questions_unresolved": 1,
+    "new_primary_evidence": 6,
+    "new_secondary_evidence": 5,
+    "verified_fact_conflicts": 0,
+    "definition_scope_discrepancies": 1,
+    "requires_refreeze": false,
+    "resolved_without_web_search_step_a": 3,
+    "requires_refreeze_resolved": [
+      "REFREEZE-001"
+    ]
+  },
+  "resolved_questions": [
+    "RQ-RF-FCFQ-001",
+    "RQ-MA-NONGAAP-002",
+    "RQ-FS-DEBT-003",
+    "RQ-MT-DCMIX-007",
+    "RQ-MA-BUYBACK-010"
+  ],
+  "partial_questions": [
+    "RQ-EV-AR-004",
+    "RQ-EV-CHINA-005",
+    "RQ-MT-GM-006",
+    "RQ-FS-COMMIT-008"
+  ],
+  "unresolved_questions": [
+    "RQ-RF-MAINTCAPEX-009"
+  ],
+  "questions": [
+    {
+      "research_question_id": "RQ-RF-FCFQ-001",
+      "question": "Q2 FY27 단일 분기의 영업현금흐름·capex·회사 공시 FCF가 1차/회사 공식자료로 존재하는가? (qa_report가 '분기 단독치는 직접 공시되지 않았고 계산은 금지'로 남긴 gap)",
+      "trigger": [
+        "qa_report.json documented gap",
+        "RF unknowns (owner FCF 정상화)",
+        "AS unknown (normalized owner-FCF margin)"
+      ],
+      "status": "resolved",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-RF-FCF-001",
+          "claim": "Q2 FY27 단일 분기 기준 회사 공시 FCF는 $21,341M이며, 영업활동현금흐름 $24,077M에서 유형·무형자산 취득 $2,677M과 원금상환 $59M을 차감해 산출된 것으로 표에 명시돼 있다.",
+          "value": 21341000000,
+          "unit": "USD",
+          "source_tier": 2,
+          "source_type": "investor_presentation",
+          "source": "NVDA-F2Q27-Quarterly-Presentation-final-1.pdf",
+          "source_section": "p.16 Reconciliation of Non-GAAP to GAAP Financial Measures (contd.)",
+          "period": "Q2 FY2027 (quarter)",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "owner_fcf_quality",
+          "confidence": 0.98,
+          "corroboration": [
+            "Q1 FY27 OCF $50,344M + Q2 $24,077M = H1 YTD $74,421M (frozen 10-Q와 정확히 일치)",
+            "Q1 FY27 capex $1,757M + Q2 $2,677M = H1 YTD $4,434M (frozen 10-Q와 정확히 일치)"
+          ],
+          "note": "교차검증 2건 모두 일치하여 frozen 10-Q와 모순 없음. 분기 단독치가 확보되어 qa_report의 medium severity gap이 Q2 FY27·Q2 FY26에 한해 해소된다."
+        }
+      ],
+      "remaining_unknowns": [
+        "Q4 FY2025·Q4 FY2026 단독 분기치는 여전히 직접 공시되지 않았다.",
+        "maintenance capex는 여전히 미공시 (RQ-RF-MAINTCAPEX-009 참조)."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-MA-NONGAAP-002",
+      "question": "Non-GAAP 정의 변경 또는 과거 non-GAAP 수치의 소급 재작성이 있었는가? (§8 'SBC 위치 불명확 / 정의 불명확' 트리거, 그리고 MA·RT 소유 '경영진 정직성 또는 회계 신뢰성' Hard Veto가 PENDING_REVIEW)",
+      "trigger": [
+        "§8 SBC/정의 불명확",
+        "Hard Veto: 경영진 정직성 또는 회계 신뢰성 훼손 (PENDING_REVIEW)"
+      ],
+      "status": "resolved",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": true,
+          "evidence_id": "SUP-MA-NONGAAP-002",
+          "claim": "회사는 'Beginning in Q1 FY27, NVIDIA's non-GAAP financial measures no longer exclude stock-based compensation expense. The historical non-GAAP financial information presented has been updated to include stock-based compensation expense.'라고 공시했다. 즉 FY27 1분기부터 non-GAAP에서 SBC를 더 이상 제외하지 않으며, 제시된 과거 non-GAAP 수치는 SBC를 포함하도록 소급 재작성됐다.",
+          "value": null,
+          "unit": null,
+          "source_tier": 2,
+          "source_type": "investor_presentation",
+          "source": "NVDA-F2Q27-Quarterly-Presentation-final-1.pdf",
+          "source_section": "p.14 Reconciliation of Non-GAAP to GAAP Financial Measures (Q2 FY2026 표 하단 주석)",
+          "period": "Q1 FY2027 이후 적용, 과거 기간 소급",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "accounting_definition_change",
+          "confidence": 0.99,
+          "corroboration": [
+            "독립 Tier 1 경로: SEC EDGAR Q1 FY27 CFO Commentary (https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/q1fy27cfocommentary.htm) 가 동일 문장을 담고 있음이 검색 결과로 확인됨"
+          ],
+          "note": "이 공시는 병합된 pack에 fact로도 extraction_warning으로도 기록되지 않았다. 결과적으로 DOC-018에서 들어온 Q2 FY2026 non-GAAP fact들(FACT-0124/0125/0132/0138/0144/0152 및 bridge 행)은 is_restated=false로 남아 있으나, 회사 공시에 따르면 이들은 재작성된 수치다. §3·§15에 따라 자동으로 덮어쓰지 않고 requires_refreeze=true로만 보고한다."
+        }
+      ],
+      "remaining_unknowns": [
+        "재작성 전 원래 공시된 Q2 FY2026 non-GAAP 순이익·EPS 값은 이번 코퍼스에 없어, 재작성 폭을 1차 자료로 대조하지 못했다."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-FS-DEBT-003",
+      "question": "2026년 6월 채권 발행의 tranche별 만기·금리와 고정/변동 노출은 얼마인가? (FS가 '노트 부속서류가 필요하다'며 unknown으로 남긴 항목)",
+      "trigger": [
+        "FS unknown: June 2026 debt issuance maturity-by-tranche and fixed/floating exposure"
+      ],
+      "status": "resolved",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-FS-DEBT-003",
+          "claim": "frozen 10-Q Note 9에 14개 tranche 전체가 만기·표면금리·유효금리·잔존연수와 함께 공시돼 있다. Jan 25, 2026에 잔액이 없고 Jul 26, 2026에 잔액이 있는 7개 tranche가 2026년 신규 발행분이다: 4.25% Due 2028 $3,500M, 4.35% Due 2029 $3,500M, 4.50% Due 2031 $4,000M, 4.75% Due 2033 $3,500M, 4.95% Due 2036 $4,000M, 5.55% Due 2046 $3,000M, 5.625% Due 2056 $3,500M. 표에 열거된 모든 tranche는 고정 표면금리이며 변동금리 tranche는 표에 없다.",
+          "value": null,
+          "unit": "USD",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+          "source_section": "Note 9 - Debt (L1564-L1650)",
+          "period": "2026-07-26",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "refinancing_risk",
+          "confidence": 0.99,
+          "note": "§6 Step A로 해소됨 — 웹 검색 불필요. FS가 unknown으로 남긴 내용이 이미 frozen 1차 자료 안에 있었다."
+        },
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-FS-DEBT-003b",
+          "claim": "위 7개 신규 tranche 액면 합계는 $25,000M으로, frozen README의 H1 FY27 financing 'debt issued net 24,896'과 할인·발행비용 차이 범위에서 정합적이다.",
+          "value": 25000000000,
+          "unit": "USD",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+          "source_section": "Note 9 - Debt (합산)",
+          "period": "2026-07-26",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "estimate",
+          "economic_driver": "refinancing_risk",
+          "confidence": 0.95,
+          "note": "개별 tranche는 fact이나 합계는 본 RO가 합산한 값이므로 §7에 따라 estimate로 분류한다."
+        }
+      ],
+      "remaining_unknowns": [
+        "가장 이른 만기(3.20% Due 2026, 잔존 0.1년, $1,000M)의 상환 자금원 계획은 별도 공시되지 않았다."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-EV-AR-004",
+      "question": "AR $63.1B 급증의 성격과 해당 고객의 신용도는 무엇인가? (EV가 '공시되지 않아 매출 자기조달 비율을 계산할 수 없다'고 한 항목, CP의 AR 구성·대손 unknown)",
+      "trigger": [
+        "EV unknown (최저 점수 도메인 53.0)",
+        "CP unknown: AR 고객별 구성과 대손 위험",
+        "CP next_check: AR·DSO 확인"
+      ],
+      "status": "partial",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-EV-AR-004",
+          "claim": "회사는 Q2 FY27 AR을 $63.1B, DSO를 60일(전분기 45일에서 상승)로 밝히고, 상승 원인을 'extended payment terms on large, multi-quarter agreements with certain investment-grade customers'로 설명했다.",
+          "value": 60,
+          "unit": "days sales outstanding",
+          "source_tier": 1,
+          "source_type": "8-K exhibit (CFO Commentary)",
+          "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+          "source_section": "Q2 FY27 CFO Commentary — Balance Sheet",
+          "period": "Q2 FY2027 (2026-07-26)",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "revenue_quality_and_customer_credit",
+          "confidence": 0.75,
+          "note": "Retrieved through the WebSearch tool's summary of this SEC filing; www.sec.gov is blocked by this environment's egress proxy, so the document text itself could not be read and the figure was not verified against the filing. Treat as an unverified rendering of a Tier 1 source until the filing is read directly. AR 잔액 $63.1B는 frozen 10-Q의 $63,059M과 일치한다."
+        },
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-CP-AR-005",
+          "claim": "frozen 10-Q는 AR 집중도를 직접 공시한다: 2026-07-26 기준 5개 direct customer가 AR의 22%, 14%, 13%, 11%, 10%를 차지했고, 2026-01-25 기준으로는 3개 고객이 25%, 18%, 13%를 차지했다.",
+          "value": null,
+          "unit": "percent of accounts receivable",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+          "source_section": "Concentration of Credit Risk (L1350)",
+          "period": "2026-07-26 vs 2026-01-25",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "revenue_quality_and_customer_credit",
+          "confidence": 0.99,
+          "note": "§6 Step A로 확보 — CP가 unknown으로 남긴 'AR의 고객별 구성'은 집중도 형태로 이미 frozen 1차 자료에 존재한다."
+        }
+      ],
+      "remaining_unknowns": [
+        "'investment-grade'로 분류된 고객의 식별자·등급·AR 금액 구성은 공시되지 않았다.",
+        "AR 중 NVIDIA의 지분투자·보증을 받은 AI cloud 거래처에 귀속되는 금액은 공시되지 않았다 (EV unknown의 핵심부는 미해소).",
+        "대손충당금(allowance for credit losses) 잔액과 증감은 이번 조회 범위에서 확인하지 못했다."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-EV-CHINA-005",
+      "question": "중국 데이터센터 compute 매출에 대한 회사의 현재 가정은 무엇인가? (EV·SL unknown: 중국 재진입 시점과 규모)",
+      "trigger": [
+        "EV unknown: 중국 데이터센터 시장 재진입 시점과 규모",
+        "SL unknown: 중국 데이터센터 시장 재진입 가능성"
+      ],
+      "status": "partial",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-EV-CHINA-005",
+          "claim": "Q3 FY27 전망치($108.0B ±2%)에 대해 회사는 각주로 'Outlook does not assume any Data Center compute revenue from China'라고 명시했다. 즉 회사 자신의 base case가 중국 DC compute 매출 0을 전제한다.",
+          "value": 0,
+          "unit": "USD (assumed China DC compute revenue in Q3 FY27 outlook)",
+          "source_tier": 2,
+          "source_type": "investor_presentation",
+          "source": "NVDA-F2Q27-Quarterly-Presentation-final-1.pdf",
+          "source_section": "p.11 Q3 FY27 Outlook – Non-GAAP (footnote)",
+          "period": "Q3 FY2027 (guidance)",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "china_market_access",
+          "confidence": 0.97,
+          "note": "가이던스의 전제조건에 대한 회사 직접 진술이라는 점에서 fact. 재진입 시점·규모에 대한 진술은 아니다."
+        },
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-SL-CHINA-006",
+          "claim": "frozen 10-Q는 H200 출하가 최근 분기 Data Center 매출의 1% 미만이었고, H1 FY27에 H200 관련 $0.4B의 초과재고·구매의무 손실을 인식했으며, H200은 미국 반입 시 25% 관세가 부과되고 이를 고객에 전가하지 못했다고 공시한다.",
+          "value": null,
+          "unit": null,
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+          "source_section": "MD&A — China / export controls (L2202, L2338)",
+          "period": "H1 FY2027",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "china_market_access",
+          "confidence": 0.99
+        }
+      ],
+      "remaining_unknowns": [
+        "재진입 시점·허용 제품·잠재 규모는 어느 자료에서도 공시되지 않았다.",
+        "2025-09-15 중국 반독점 당국의 Mellanox 관련 예비판정에 따른 구제조치 범위·시기는 미확정이다."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-MT-GM-006",
+      "question": "공급 정상화 이후 지속 가능한 gross margin 수준에 대한 회사의 직접 공시가 있는가? (MT unknown 및 next_check)",
+      "trigger": [
+        "MT unknown: 공급 정상화 후 지속 가능한 gross margin",
+        "MT next_check: Q3 FY27 gross margin"
+      ],
+      "status": "partial",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-MT-GM-007",
+          "claim": "회사는 Q3 FY27 gross margin을 non-GAAP 74.0% ±50bps로 가이드했고, 별도 reconciliation에서 인수관련비용 영향이 없어 GAAP gross margin도 74.0%로 제시했다. Q2 FY27 실적치는 GAAP·non-GAAP 모두 75.0%였다.",
+          "value": 0.74,
+          "unit": "ratio (gross margin)",
+          "source_tier": 2,
+          "source_type": "investor_presentation",
+          "source": "NVDA-F2Q27-Quarterly-Presentation-final-1.pdf",
+          "source_section": "p.11 Q3 FY27 Outlook; p.15 Reconciliation (contd.)",
+          "period": "Q3 FY2027 (guidance)",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "gross_margin_sustainability",
+          "confidence": 0.95,
+          "note": "1개 분기 전망치이며 '지속 가능한 수준'에 대한 회사 진술이 아니다. 장기 정상 마진 추정은 §8·§9에 따라 MT·RF 등 도메인 에이전트의 판단으로 남긴다."
+        }
+      ],
+      "remaining_unknowns": [
+        "공급 정상화 후의 구조적·장기 gross margin에 대한 회사 가이드는 존재하지 않는다.",
+        "Q3 가이드 하락(75.0%→74.0%)의 구성요인(믹스/원가/관세)은 분해 공시되지 않았다."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-MT-DCMIX-007",
+      "question": "Hyperscale과 ACIE의 전년 동기 절대 금액은 얼마인가? (성장률 분해를 위한 누락 observable)",
+      "trigger": [
+        "MT next_check: Hyperscale·ACIE 성장률",
+        "SL next_check: Data Center 내 구성",
+        "AS unknown: Data Center 외 매출의 독립 성장률"
+      ],
+      "status": "resolved",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-MT-DCMIX-008",
+          "claim": "Q2 FY26 Hyperscale 매출은 $24.2B, ACIE 매출은 $16.9B였다 (Q2 FY27은 각각 $48.7B, $40.3B).",
+          "value": null,
+          "unit": "USD billions",
+          "source_tier": 2,
+          "source_type": "investor_presentation",
+          "source": "NVDA-F2Q27-Quarterly-Presentation-final-1.pdf",
+          "source_section": "p.4 Data Center Revenue",
+          "period": "Q2 FY2026 및 Q2 FY2027",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "data_center_demand_mix",
+          "confidence": 0.9,
+          "corroboration": [
+            "frozen 10-Q의 정성 서술과 정합: 'Hyperscale revenue more than doubled from a year ago' (48.7/24.2 ≈ 2.0배), 'ACIE revenue increased 138% from a year ago' (40.3/16.9 ≈ +138%)"
+          ],
+          "note": "차트에서 읽은 소수 첫째 자리 반올림 값. 전년 동기 절대 금액은 병합 전 코퍼스에 없었고 정성 서술·증감률로만 존재했다."
+        }
+      ],
+      "remaining_unknowns": [
+        "네트워킹·소프트웨어 매출의 독립 금액과 총이익 기여는 이 자료에도 분해 공시되지 않았다 (AS·DI unknown 미해소).",
+        "Edge Computing의 전년 동기 금액은 이 자료에 없다."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-FS-COMMIT-008",
+      "question": "미착수 데이터센터 리스 약 $25B의 개시 시기와 계약 기간은 어떻게 되는가? (FS의 약정 시기·취소가능성 unknown)",
+      "trigger": [
+        "FS unknown: 약정의 법적 취소불가 비중과 지급시기",
+        "FS next_check: 공급약정의 취소가능액·지급시기"
+      ],
+      "status": "partial",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-FS-COMMIT-009",
+          "claim": "회사는 향후 데이터센터 리스의 계약 기간이 최대 20년이며, Q3 FY27부터 FY2033 사이에 개시될 것으로 예상된다고 밝혔다.",
+          "value": null,
+          "unit": null,
+          "source_tier": 1,
+          "source_type": "8-K exhibit (CFO Commentary)",
+          "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+          "source_section": "Q2 FY27 CFO Commentary — commitments",
+          "period": "Q3 FY2027 ~ FY2033",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "fixed_commitment_burden",
+          "confidence": 0.7,
+          "note": "Retrieved through the WebSearch tool's summary of this SEC filing; www.sec.gov is blocked by this environment's egress proxy, so the document text itself could not be read and the figure was not verified against the filing. Treat as an unverified rendering of a Tier 1 source until the filing is read directly."
+        }
+      ],
+      "remaining_unknowns": [
+        "$279B 공급·capacity 약정 중 스트레스 시나리오에서 법적으로 취소 불가능한 금액은 여전히 미공시 (FS unknown 핵심부 미해소).",
+        "연도별 리스 지급 스케줄은 확보하지 못했다."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-RF-MAINTCAPEX-009",
+      "question": "maintenance capex에 대한 회사의 직접 공시가 존재하는가? (§8이 명시한 예시 항목, RF의 정상화 owner FCF unknown)",
+      "trigger": [
+        "§8 maintenance capex 규칙",
+        "RF unknown: 공급 약정 중 capex 전환액",
+        "AS unknown: normalized owner-FCF"
+      ],
+      "status": "unresolved",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-RF-MAINTCAPEX-010",
+          "claim": "searched_but_not_found — 10-K FY26, 10-Q Q1/Q2 FY27, 8-K(2026-09-03), Q2 FY27 투자자 프레젠테이션 어디에도 'maintenance capital expenditure' 또는 이에 상당하는 유지보수 투자 구분 공시가 존재하지 않는다.",
+          "value": null,
+          "unit": null,
+          "source_tier": 1,
+          "source_type": "absence_of_disclosure",
+          "source": "runs/NVDA-V3-2026-09-19/sources/ 전체 (grep: maintenance capital|maintenance capex → 0건)",
+          "source_section": null,
+          "period": "FY2026 ~ Q2 FY2027",
+          "publication_date": null,
+          "fact_or_estimate": "fact",
+          "economic_driver": "owner_fcf_quality",
+          "confidence": 0.95,
+          "note": "§8·§15에 따라 RO는 maintenance capex를 추정하지 않는다. 정상화 판단은 RF/EV/AS 도메인 에이전트의 몫으로 남긴다. 자료 부재 자체가 결론이며 0으로 처리하지 않는다."
+        }
+      ],
+      "remaining_unknowns": [
+        "유지보수 capex와 성장 capex의 구분은 공시 기반으로는 확정 불가."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-MA-BUYBACK-010",
+      "question": "Q2 FY27 자본환원의 배당·자사주 분해와 자사주 매입 권한 잔액은 얼마인가? (병합된 pack에서 차트 기반 총액만 확보돼 requires_review로 남은 항목)",
+      "trigger": [
+        "MA 자본배분 평가",
+        "normalized_financials.json FACT-0187/0188 requires_review (차트 스택 분해 불가)"
+      ],
+      "status": "resolved",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-MA-BUYBACK-011",
+          "claim": "Q2 FY27에 94백만 주를 $19.7B에 자사주 매입했고 현금배당 $6.0B을 지급했다. 2026-05-18 이사회가 $80.0B의 추가 자사주 매입 권한을 승인해 2026-07-26 기준 잔여 권한은 $99.3B이다.",
+          "value": null,
+          "unit": "USD",
+          "source_tier": 1,
+          "source_type": "8-K exhibit (CFO Commentary)",
+          "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+          "source_section": "Q2 FY27 CFO Commentary — Capital Return",
+          "period": "Q2 FY2027",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "capital_allocation",
+          "confidence": 0.9,
+          "corroboration": [
+            "frozen sources/README.md: 'Q2 FY27 alone: 94M shares repurchased for 19,674 (~$209/share); dividends 6,047' — 검색 경로로 얻은 값과 일치"
+          ],
+          "note": "Retrieved through the WebSearch tool's summary of this SEC filing; www.sec.gov is blocked by this environment's egress proxy, so the document text itself could not be read and the figure was not verified against the filing. Treat as an unverified rendering of a Tier 1 source until the filing is read directly. 다만 매입 주식수·금액·배당은 frozen README의 1차 자료 기반 수치와 독립적으로 일치하므로 신뢰도가 보강된다. 잔여 권한 $99.3B과 $80.0B 승인 건은 코퍼스에 없던 신규 사실이다."
+        }
+      ],
+      "remaining_unknowns": [],
+      "excluded_post_cutoff": []
+    }
+  ],
+  "hard_veto_research": [
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "owners": [
+        "CP",
+        "RT"
+      ],
+      "harness_status": "PENDING_REVIEW (RT 보고서 미실행)",
+      "constituent_elements": "단일 고객/제품/규제에 대한 의존이 회사 존속 또는 핵심 경제성을 좌우하는 수준인가",
+      "evidence_supporting_veto": [
+        "frozen 10-Q: H1 FY27에 3개 direct customer가 매출의 16%, 15%, 13%를 차지 (합계 44%).",
+        "frozen 10-Q: 2026-07-26 기준 5개 direct customer가 AR의 22%, 14%, 13%, 11%, 10%를 차지 (합계 70%).",
+        "SUP-EV-AR-004: DSO가 45일→60일로 상승했고 회사는 대형 다분기 계약의 지급조건 연장을 원인으로 설명.",
+        "SUP-EV-CHINA-005: 회사 스스로 Q3 가이던스에서 중국 DC compute 매출을 0으로 전제 — 단일 규제 관할에서 사실상 배제된 상태."
+      ],
+      "evidence_against_veto": [
+        "frozen 10-Q: 최대 고객 비중이 Q2 FY26 23%에서 Q2 FY27 16%로 하락했고, Q2 FY26에는 10%+ 고객이 2개(23%,16%)였다.",
+        "SUP-MT-DCMIX-008: ACIE가 전년 대비 +138%로 Hyperscale(+101%)보다 빠르게 성장해 Data Center 내 수요 기반이 하이퍼스케일러 외부로 확장.",
+        "SUP-SL-CHINA-006: 중국 DC compute 매출이 사실상 0인 상태에서도 Q2 FY27 매출이 전년 대비 +106% 성장 — 중국 배제가 이미 실적에 반영된 기저."
+      ],
+      "remaining_unknown": [
+        "AR 집중 상위 5개 고객의 식별자와 'investment-grade' 여부의 개별 대응 관계.",
+        "NVIDIA의 지분투자·보증을 받은 거래처에 귀속되는 매출·AR 금액 (EV·CP·DI·AS가 공통으로 unknown으로 지목).",
+        "중국 반독점 구제조치의 범위와 시기."
+      ],
+      "note": "§10에 따라 RO는 cleared/conditional/confirmed 판정을 하지 않는다. 판정은 CP·RT 담당 reviewer의 몫이다."
+    }
+  ],
+  "conflicts": [
+    {
+      "conflict_id": "CONFLICT-001",
+      "conflict_with_verified_fact": false,
+      "type": "definition/scope discrepancy (값 충돌 아님)",
+      "subject": "FY27 세율 가이던스의 적용 범위",
+      "verified_value": "병합된 pack의 FACT-0197/0198: gaap_status='non_gaap', 16.0%~18.0% (투자자 프레젠테이션 p.11 문구 'expect non-GAAP tax rates to be between 16.0% and 18.0%'을 그대로 반영)",
+      "new_value": "SEC Q2 FY27 CFO Commentary(검색 요약 경로)는 'GAAP and non-GAAP tax rates to be between 16.0% and 18.0%'로 기술 — 동일 수치가 GAAP에도 적용된다는 범위 차이",
+      "possible_reason": "definition mismatch 또는 source error (검색 요약의 의역 가능성 포함). 수치 자체는 16.0~18.0%로 동일하다.",
+      "requires_refreeze": false,
+      "recommended_action": "sec.gov 직접 열람이 가능해지면 원문 대조 후 gaap_status 범위를 확정. 현 단계에서 frozen 값을 덮어쓰지 않는다."
+    }
+  ],
+  "requires_refreeze_items": [
+    {
+      "item_id": "REFREEZE-001",
+      "subject": "Q2 FY2026 non-GAAP fact들의 is_restated 플래그",
+      "affected_fact_ids": [
+        "FACT-0124",
+        "FACT-0125",
+        "FACT-0132",
+        "FACT-0138",
+        "FACT-0144",
+        "FACT-0152",
+        "FACT-0167",
+        "FACT-0168",
+        "FACT-0169",
+        "FACT-0170",
+        "FACT-0171",
+        "FACT-0172",
+        "FACT-0173",
+        "FACT-0174",
+        "FACT-0175",
+        "FACT-0176",
+        "FACT-0177",
+        "FACT-0178"
+      ],
+      "current_state": "is_restated=false",
+      "disclosed_state": "회사는 Q1 FY27부터 non-GAAP에서 SBC를 제외하지 않으며 과거 non-GAAP 수치를 소급 갱신했다고 명시 (SUP-MA-NONGAAP-002)",
+      "requires_refreeze": true,
+      "recommended_action": "is_restated=true로 정정하고 해당 공시 문구를 extraction_warning으로 추가한 뒤 재freeze. §3·§15에 따라 RO가 자동 수정하지 않았다.",
+      "resolution": {
+        "status": "applied",
+        "applied_on": "2026-09-19",
+        "authorized_by": "user instruction (REFREEZE-001 갱신하고 재Freeze)",
+        "changes": [
+          "is_restated=true and requires_review=true set on 18 Q2 FY2026 non-GAAP facts: FACT-0124, FACT-0125, FACT-0132, FACT-0138, FACT-0144, FACT-0152, FACT-0167, FACT-0168, FACT-0169, FACT-0170, FACT-0171, FACT-0172, FACT-0173, FACT-0174, FACT-0175, FACT-0176, FACT-0177, FACT-0178",
+          "restated-base caveat recorded on 5 Q2 FY2027 non-GAAP year-over-year facts: FACT-0129, FACT-0135, FACT-0141, FACT-0147, FACT-0155",
+          "adjustment candidate ADJ-014 (type=sbc) added for the definitional change",
+          "high-severity extraction_warning added carrying the disclosure verbatim",
+          "run re-frozen after the update"
+        ],
+        "values_changed": "none — only metadata flags, review reasons, one adjustment candidate and one warning were added; no reported value was altered"
+      }
+    }
+  ],
+  "excluded_post_cutoff": [],
+  "recommended_harness_reruns": [
+    "EV",
+    "RF",
+    "FS",
+    "MA",
+    "MT",
+    "CP",
+    "AS"
+  ],
+  "rerun_rationale": {
+    "EV": "AR/DSO의 investment-grade 성격(SUP-EV-AR-004), 중국 0 전제 가이던스(SUP-EV-CHINA-005), Q3 가이던스가 최저 점수(53.0) 도메인의 핵심 unknown 3건에 직접 대응한다.",
+    "RF": "Q2 FY27 단일 분기 OCF·capex·FCF 확보(SUP-RF-FCF-001)로 owner FCF 분기 추적이 가능해졌다. maintenance capex는 여전히 미공시로 남는다.",
+    "FS": "FS가 unknown으로 남긴 tranche별 만기·고정금리 노출이 frozen 10-Q에 이미 있었다(SUP-FS-DEBT-003). 리스 개시 시기(SUP-FS-COMMIT-009)도 신규.",
+    "MA": "non-GAAP SBC 소급 재작성(SUP-MA-NONGAAP-002)은 MA·RT 소유 회계신뢰성 Hard Veto의 직접 구성요건이며, 자사주 권한 잔액 $99.3B(SUP-MA-BUYBACK-011)은 신규 사실이다.",
+    "MT": "전년 동기 Hyperscale·ACIE 절대금액(SUP-MT-DCMIX-008)과 Q3 GM 가이드(SUP-MT-GM-007)가 확보됐다.",
+    "CP": "AR 고객별 집중도(SUP-CP-AR-005)가 frozen 1차 자료에 이미 존재했고, DSO 상승 원인이 회사 설명으로 확보됐다.",
+    "AS": "SBC 포함 기준의 non-GAAP 순이익(지분평가익 제외)이 확보되어 정상화 owner-FCF 기준선 설정에 직접 사용 가능하다."
+  },
+  "not_recommended_for_rerun": {
+    "SL": "중국 관련 사실은 보강됐으나 SL의 핵심 unknown(점유율, 가격·물량 기여도)은 미해소.",
+    "DI": "TCO 벤치마크·소프트웨어 매출 분해 등 DI의 unknown에 대응하는 신규 증거 없음.",
+    "RT": "미실행 상태이며 7개 Hard Veto를 차단 중이다. rerun이 아니라 최초 실행이 필요하다."
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "agent_id": "ED",
+  "ticker": "NVDA-V31-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 88,
+  "confidence_0_1": 0.94,
+  "thesis": "핵심 투자판단 수치는 대부분 cutoff-valid SEC 10-K/10-Q와 frozen 재무팩에 직접 연결된다. v3.1 Research Orchestrator가 보증·AI-cloud 약정의 조건과 완화장치를 원문에서 추가 확인해 CP의 성장주 게이트 판단 근거도 강화됐다. 다만 지원 대상 고객의 매출·AR 귀속액, 고객 측 AI 인프라 ROI/payback, $279B 공급약정의 firm-order 비중은 공시되지 않아 이 부분은 추정으로 남겨야 한다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 매출 $96.221B, gross margin 75.0%, operating margin 66.2%는 2026-08-26 10-Q에 직접 공시됐다.",
+      "source_type": "10-Q",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-08-26",
+      "value": "$96.221B / 75.0% / 66.2%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ED-NVDA-PRIMARY-001",
+      "economic_driver": "profitability_and_customer_value"
+    },
+    {
+      "claim": "H1 FY27 고객 선수금 유입 $15.6B, 기말 customer advances $2.8B, AR $63.059B 및 특정 투자등급 고객에 90일~1년 연장 결제조건 가능성이 동일 10-Q에 직접 공시됐다.",
+      "source_type": "10-Q",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY27 H1 / Q2",
+      "as_of_date": "2026-08-26",
+      "value": "$15.6B / $2.8B / $63.059B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ED-NVDA-CASH-002",
+      "economic_driver": "demand_quality_and_working_capital"
+    },
+    {
+      "claim": "$36B AI-cloud agreements는 제3자 고객 사용 시 NVIDIA 의무가 감소하고 일정 조건에서 revenue share가 가능하다고 공시됐다.",
+      "source_type": "10-Q",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "as of FY27 Q2",
+      "as_of_date": "2026-08-26",
+      "value": "$36B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-AICLOUD-001",
+      "economic_driver": "vendor_financing_risk"
+    },
+    {
+      "claim": "SB Energy/OpenAI 관련 보증은 총 $105B cap이지만 9개 phase의 lease commencement에 따라 발동하고 tenant default가 지급 조건이며, defined lease/power payments로 범위가 제한되고 OpenAI의 일정 신용등급 달성 시 종료된다.",
+      "source_type": "10-Q",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "August 2026 subsequent event",
+      "as_of_date": "2026-08-26",
+      "value": "$105B cap",
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-SBENERGY-002",
+      "economic_driver": "vendor_financing_risk"
+    },
+    {
+      "claim": "EV/AS의 Bear/Base/Bull 주당가치 74.99/212.86/431.14는 frozen owner-FCF/share 경로와 고정 할인율·terminal multiple을 하네스가 계산한 추정치이며 회사 공시 사실이 아니다.",
+      "source_type": "harness",
+      "source": "runs/NVDA-V31-2026-09-19/aggregate.json",
+      "period": "valuation as of 2026-09-19",
+      "as_of_date": "2026-09-19",
+      "value": "$74.99 / $212.86 / $431.14",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "ED-NVDA-VAL-003",
+      "economic_driver": "valuation"
+    }
+  ],
+  "counterevidence": [
+    "지원·보증 대상 기업에서 실제로 발생한 매출과 AR 비중은 공시되지 않아 벤더 금융 효과를 직접 분리할 수 없다.",
+    "고객 측 AI 인프라의 실현 ROI·payback 및 동일 코호트 NRR/churn은 공시되지 않았다.",
+    "$279B supply/capacity commitment 중 firm order와 취소·재조정 가능한 약정의 정확한 비중은 공시되지 않았다."
+  ],
+  "unknowns": [
+    "지분투자·AI-cloud·보증 대상 고객향 매출과 AR의 정확한 비중.",
+    "고객 AI 인프라의 실현 ROI와 가동률.",
+    "$279B supply/capacity commitments의 firm-order 비중.",
+    "OpenAI/SB Energy 보증의 실제 phase별 활성 노출과 손실률."
+  ],
+  "falsifiers": [
+    "지원 대상 고객 매출·AR가 총매출 또는 AR의 25%를 초과한다고 확인되면 현재의 수요 질 판단을 재검토한다.",
+    "Q3 이후 DSO가 상승하면서 대손충당과 장기 결제조건 사용이 동시에 확대되면 CP/FS 근거 품질을 낮춘다.",
+    "frozen valuation 입력과 원 공시 사이의 정의·기간 충돌이 확인되면 EV/AS를 재실행한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "지원 대상 고객 매출·AR 비중",
+      "direction": "down",
+      "threshold": "25% 미만",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "DSO / 연장 결제조건",
+      "direction": "down",
+      "threshold": "DSO 50일 이하 회복",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "보증 실제 활성 노출",
+      "direction": "stable_or_down",
+      "threshold": "gross cap이 아닌 실제 활성·손실액 추적",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q에서 AR, DSO, 대손충당, customer advances 및 지원 대상 고객 공시를 확인.",
+    "PORTS-Pike 9개 phase별 보증 발효 및 회수·보상 구조를 추적.",
+    "$279B 공급 약정의 firm-order/취소가능 비중 추가 공시를 확인."
+  ],
+  "verdict": "support",
+  "subscores": [],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

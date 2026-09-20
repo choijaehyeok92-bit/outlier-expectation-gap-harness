@@ -25,7 +25,7 @@ def next_stage(reports, result, context, manifest, core_domains, triage_domains,
     needed |= {a['domain'] for a in manifest if a['agent_id'] in owners and a['role']=='domain_analyst'}
     if diagnostic_enabled(context):
         needed.add('turnaround_quality')
-    if result['macro_geo_overlay']['missing_or_stale_components']:
+    if result['macro_geo_overlay']['missing_or_stale_components'] and not (result.get('review_only') and 'MO' in complete):
         pending['macro_overlay']=next(a['agent_id'] for a in manifest if a['domain']=='macro_overlay')
     stages = [('domain_analysis',sorted(needed-set(triage_domains))), ('macro',['macro_overlay']),
               ('evidence_and_red_team',['evidence_quality','red_team']), ('ic',['investment_committee'])]

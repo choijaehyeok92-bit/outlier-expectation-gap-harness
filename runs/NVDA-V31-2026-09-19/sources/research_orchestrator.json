@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0",
+  "ticker": "NVDA",
+  "run_id": "NVDA-V3-2026-09-19",
+  "company_name": "NVIDIA Corporation",
+  "as_of_date": "2026-09-19",
+  "role": "research_orchestrator",
+  "research_summary": {
+    "questions_requested": 4,
+    "questions_resolved": 3,
+    "questions_unresolved": 1,
+    "new_primary_evidence": 0,
+    "new_secondary_evidence": 1,
+    "verified_fact_conflicts": 0,
+    "requires_refreeze": false
+  },
+  "resolved_questions": [
+    {
+      "research_question_id": "RQ-EV-MARKET-001",
+      "question": "What was NVIDIA's latest eligible closing price before the 2026-09-19 cutoff?",
+      "status": "resolved",
+      "evidence": [
+        {
+          "evidence_id": "SUP-EV-MARKET-001",
+          "claim": "NVIDIA closed at $222.27 on 2026-09-18.",
+          "value": 222.27,
+          "unit": "USD per share",
+          "source_tier": 4,
+          "source_type": "secondary_market_data",
+          "source": "https://finance.yahoo.com/quote/NVDA/",
+          "source_section": "Historical quote summary",
+          "period": "2026-09-18 close",
+          "publication_date": "2026-09-18",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "current_market_expectations",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.95,
+          "corroboration": [
+            "https://www.financecharts.com/stocks/NVDA/summary/price",
+            "https://www.historicalstockprice.com/nvda-historical-stock-prices/"
+          ]
+        }
+      ],
+      "remaining_unknowns": [],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-EV-NETCASH-002",
+      "question": "What net-cash input is supported by the latest eligible primary filing?",
+      "status": "resolved",
+      "evidence": [
+        {
+          "evidence_id": "SUP-EV-NETCASH-002",
+          "claim": "At 2026-07-26, cash plus marketable debt securities was $56,586M and total debt was $33,366M, yielding verified net cash of $23,220M or $0.9561 per diluted share; equity securities are excluded.",
+          "value": 23220000000,
+          "unit": "USD",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L280-L345, L2693-L2730; sources/README.md",
+          "source_section": "Balance Sheets; Liquidity and Capital Resources",
+          "period": "2026-07-26",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "estimate",
+          "economic_driver": "net_cash_adjustment",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99
+        }
+      ],
+      "remaining_unknowns": [],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-GEO-SUPPLY-003",
+      "question": "Which geographic dependencies are directly supported by eligible primary filings?",
+      "status": "resolved",
+      "evidence": [
+        {
+          "evidence_id": "SUP-GEO-SUPPLY-003",
+          "claim": "NVIDIA states that its supply chain is mainly concentrated in Asia, names TSMC and Samsung as foundries, and identifies consistent supply from Taiwan and South Korea as a dependency.",
+          "value": null,
+          "unit": null,
+          "source_tier": 1,
+          "source_type": "10-K",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt L236-L237, L475, L578",
+          "source_section": "Business; Risk Factors",
+          "period": "FY2026",
+          "publication_date": "2026-02-25",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "geographic_supply_concentration",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99
+        },
+        {
+          "evidence_id": "SUP-GEO-EXPORT-004",
+          "claim": "NVIDIA states that U.S. and Chinese controls effectively foreclosed it from China's data-center compute market as of FY27 Q2.",
+          "value": null,
+          "unit": null,
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2838-L2857",
+          "source_section": "Risk Factors — export controls",
+          "period": "FY2027 Q2",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "china_export_controls",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99
+        }
+      ],
+      "remaining_unknowns": [
+        "The filing does not quantify the share of production physically exposed to each named country."
+      ],
+      "excluded_post_cutoff": []
+    }
+  ],
+  "unresolved_questions": [
+    {
+      "research_question_id": "RQ-EV-NORMALIZATION-004",
+      "question": "Which reported items should be normalized when forecasting owner FCF per share?",
+      "status": "partial",
+      "evidence": [
+        {
+          "evidence_id": "SUP-EV-EQUITY-GAINS-005",
+          "claim": "H1 FY27 reported $23,707M of net gains from equity securities, primarily unrealized, and the cash-flow statement removes the non-cash gain.",
+          "value": 23707000000,
+          "unit": "USD",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L736-L760, L2653-L2680",
+          "source_section": "Cash Flows; Other Income",
+          "period": "FY2027 H1",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "earnings_normalization",
+          "possible_adjustment": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99
+        },
+        {
+          "evidence_id": "SUP-EV-WORKING-CAPITAL-006",
+          "claim": "H1 FY27 operating cash flow included a $24,590M accounts-receivable use and a $10,204M inventory use; quarter-end accounts receivable was $63,059M.",
+          "value": 34794000000,
+          "unit": "USD combined cash-flow use",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L290-L300, L729-L780",
+          "source_section": "Balance Sheets; Cash Flows",
+          "period": "FY2027 H1",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "working_capital_conversion",
+          "possible_adjustment": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99
+        }
+      ],
+      "remaining_unknowns": [
+        "The filings do not identify a normalized working-capital level or maintenance-capex amount.",
+        "The economic treatment of stock-based compensation and acquisition amortization remains a domain-agent judgment.",
+        "The composition and realizability of the non-marketable equity portfolio remain insufficient for a reliable per-share value adjustment."
+      ],
+      "excluded_post_cutoff": []
+    }
+  ],
+  "candidate_new_evidence": [
+    "SUP-EV-MARKET-001"
+  ],
+  "conflicts": [],
+  "excluded_post_cutoff": [],
+  "searched_but_not_found": [
+    "Company-disclosed maintenance capex",
+    "Company-disclosed normalized owner FCF",
+    "Per-country production percentages"
+  ],
+  "recommended_harness_reruns": [
+    "EV"
+  ]
+}

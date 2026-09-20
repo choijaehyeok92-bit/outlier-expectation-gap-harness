@@ -13,7 +13,7 @@ def reconcile_ic(result, state_policy):
         return requested, '0% new purchases; review existing holdings', []
     rank = policy['buy_state_rank'].get(requested)
     cap = policy['max_buy_rank_by_pre_ic_state'].get(mechanical, 0)
-    safe = (result['coverage_weight']==100 and result['hard_veto_status']=='CLEARED'
+    safe = (not result.get('review_only') and result['coverage_weight']==100 and result['hard_veto_status']=='CLEARED'
             and result['archetype']['id']!='non_fit' and result['valuation_model']['status']=='COMPLETE'
             and not result['macro_geo_overlay']['pending_reanalysis_domains'])
     if rank is None or not safe or rank>cap:
