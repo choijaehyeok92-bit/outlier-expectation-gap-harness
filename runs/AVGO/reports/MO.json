@@ -4,17 +4,107 @@
   "as_of_date": "2026-09-18",
   "domain": "macro_overlay",
   "role": "overlay",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 45,
+  "confidence_0_1": 0.92,
+  "thesis": "금융여건과 지정학을 분리하면 금융조건은 0.7 감속이지만 지정학 충격이 더 강한 제약이다. 연준은 9월 16일 25bp 인상했고 10년 실질금리는 2.61%였다. HY OAS 270bp는 광범위한 신용경색을 부정한다. 반면 Hormuz 통항 급감과 Brent spot $130.80, 우크라이나 전쟁 지속으로 high 지정학 multiplier=0.5가 purchase pacing을 지배한다. fundamental score에는 가감하지 않는다.",
+  "evidence": [
+    {
+      "claim": "FOMC raised the federal-funds target range by 25bp to 3.75%-4.00% on 2026-09-16; the vote was 12-0.",
+      "source_type": "other",
+      "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "period": "2026-09 FOMC",
+      "as_of_date": "2026-09-16",
+      "value": "3.75%-4.00%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "September SEP median appropriate federal-funds rate was 4.1% for end-2026 and end-2027; median 2026 PCE/core PCE inflation projections were 3.7%/3.4%.",
+      "source_type": "other",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm",
+      "period": "2026-09 SEP",
+      "as_of_date": "2026-09-16",
+      "value": "4.1% / 4.1%; PCE 3.7%; core 3.4%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "10-year inflation-indexed Treasury yield was 2.61% on 2026-09-17.",
+      "source_type": "other",
+      "source": "https://fred.stlouisfed.org/data/DFII10",
+      "period": "2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": "2.61%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "ICE BofA US High Yield OAS was 2.70% (270bp) on 2026-09-17, consistent with functioning credit rather than broad funding stress.",
+      "source_type": "other",
+      "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+      "period": "2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": "270bp",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "EIA Europe Brent spot price was $130.80/bbl on 2026-09-15; on 2026-09-17 Reuters reported only three commercial vessels transited Hormuz versus a 10-day average of 17.",
+      "source_type": "other",
+      "source": "https://www.eia.gov/dnav/pet/hist/RBRTED.htm ; https://www.reuters.com/world/middle-east/number-ships-transiting-strait-hormuz-falls-three-wednesday-data-shows-2026-09-17/",
+      "period": "2026-09-15 to 2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": "Brent spot $130.80; Hormuz 3 vs 17",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Trade/export-control/sanctions fragmentation remained active: USTR announced targeted Canada import bans/tariff changes on 2026-09-08, BIS Part 744 maintained end-use/end-user controls including advanced computing, and OFAC recorded Iran-related designations on 2026-09-17.",
+      "source_type": "other",
+      "source": "https://www.ustr.gov/about/policy-offices/press-office/press-releases/2026/september/ambassador-greer-issues-statement-president-trumps-response-canadas-continued-retaliation-against ; https://www.bis.gov/regulations/ear/744 ; https://ofac.treasury.gov/recent-actions/sanctions-list-updates",
+      "period": "through 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "HY OAS near 270bp indicates corporate credit markets are functioning rather than broadly stressed.",
+    "The Fed SEP still projects positive real GDP growth rather than recession.",
+    "Saudi efforts to reroute/export crude through Oman partially offset the disruption, so the energy shock is severe but not a complete supply stop."
+  ],
+  "unknowns": [
+    "Hormuz/Bab el-Mandeb traffic normalization speed.",
+    "High energy prices' pass-through into core inflation and subsequent Fed reaction.",
+    "Whether US-China advanced-computing controls become materially more restrictive after the cutoff."
+  ],
+  "falsifiers": [
+    "Sustained oil/shipping normalization plus clear disinflation and a Fed pivot would justify restoring pacing toward 1.0.",
+    "HY OAS above 400bp or a material issuance freeze would justify reducing the financial multiplier below 0.7.",
+    "A sustained fall in 10-year real yields without weaker growth would reduce discount-rate pressure."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
+  "key_kpis": [
+    {
+      "name": "Strait of Hormuz/Bab el-Mandeb traffic",
+      "direction": "up",
+      "threshold": "sustained normalization toward pre-shock traffic",
+      "cadence": "weekly"
+    },
+    {
+      "name": "10y TIPS real yield",
+      "direction": "down",
+      "threshold": "sustained move materially below ~2.5%",
+      "cadence": "weekly"
+    },
+    {
+      "name": "US HY OAS",
+      "direction": "up",
+      "threshold": ">400bp = additional credit stress",
+      "cadence": "weekly"
+    }
+  ],
+  "next_checks": [
+    "Next FOMC statement and policy-path communication.",
+    "Brent/WTI and shipping normalization versus inflation pass-through.",
+    "HY OAS and 10-year real-yield trend."
+  ],
   "verdict": "neutral",
   "subscores": [],
   "uncertainties": [],
@@ -33,5 +123,204 @@
       }
     }
   },
-  "global_components": {}
+  "risk_budget_multiplier": 0.5,
+  "global_components": {
+    "financial_conditions": {
+      "scope": "global",
+      "as_of_utc": "2026-09-18T00:00:00+00:00",
+      "summary": "Fed policy tightened on 2026-09-16 and real yields remain elevated; duration-sensitive assets face a restrictive discount-rate backdrop.",
+      "evidence": [
+        {
+          "claim": "FOMC raised the target range 25bp to 3.75%-4.00%.",
+          "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+          "as_of_date": "2026-09-16"
+        },
+        {
+          "claim": "September SEP median policy rate is 4.1% for end-2026 and end-2027; 2026 PCE/core PCE medians are 3.7%/3.4%.",
+          "source": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm",
+          "as_of_date": "2026-09-16"
+        },
+        {
+          "claim": "10-year TIPS real yield was 2.61% on 2026-09-17.",
+          "source": "https://fred.stlouisfed.org/data/DFII10",
+          "as_of_date": "2026-09-17"
+        }
+      ],
+      "risk_budget_multiplier": 0.7
+    },
+    "credit_liquidity": {
+      "scope": "global",
+      "as_of_utc": "2026-09-18T00:00:00+00:00",
+      "summary": "US high-yield spreads remain tight despite higher real yields, indicating functioning credit rather than broad liquidity stress.",
+      "evidence": [
+        {
+          "claim": "ICE BofA US High Yield OAS was 2.70% (270bp) on 2026-09-17.",
+          "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+          "as_of_date": "2026-09-17"
+        }
+      ],
+      "risk_budget_multiplier": 1
+    },
+    "geopolitical_events": {
+      "scope": "global",
+      "as_of_utc": "2026-09-18T00:00:00+00:00",
+      "summary": "Active wars and severe Middle East energy/shipping disruption create a high global geopolitical shock even though alternate cargo flows continue.",
+      "evidence": [
+        {
+          "claim": "Only three commercial vessels transited the Strait of Hormuz on 2026-09-16, versus a 10-day average of 17; Bab el-Mandeb traffic was also depressed.",
+          "source": "https://www.reuters.com/world/middle-east/number-ships-transiting-strait-hormuz-falls-three-wednesday-data-shows-2026-09-17/",
+          "as_of_date": "2026-09-17"
+        },
+        {
+          "claim": "EIA Europe Brent spot price reached $130.80/bbl on 2026-09-15.",
+          "source": "https://www.eia.gov/dnav/pet/hist/RBRTED.htm",
+          "as_of_date": "2026-09-15"
+        },
+        {
+          "claim": "Russia's missile campaign against Ukraine remained active through 2026-09-18.",
+          "source": "https://www.reuters.com/world/ukraine-russia-war/revamped-missile-leading-russias-ballistic-onslaught-ukraine-2026-09-18/",
+          "as_of_date": "2026-09-18"
+        }
+      ],
+      "dimensions": {
+        "military_conflict": {
+          "level": "high",
+          "regions": [
+            "Ukraine",
+            "Russia",
+            "Iran",
+            "Israel",
+            "Yemen",
+            "Saudi Arabia",
+            "Persian Gulf",
+            "Red Sea"
+          ],
+          "routes": [
+            "Strait of Hormuz",
+            "Bab el-Mandeb"
+          ],
+          "dependencies": [
+            "global energy supply",
+            "commercial shipping"
+          ],
+          "structural_events": []
+        },
+        "energy_disruption": {
+          "level": "high",
+          "regions": [
+            "Persian Gulf",
+            "Saudi Arabia",
+            "Iran",
+            "Red Sea"
+          ],
+          "routes": [
+            "Strait of Hormuz",
+            "East-West Pipeline",
+            "Bab el-Mandeb"
+          ],
+          "dependencies": [
+            "crude oil",
+            "refining capacity",
+            "diesel supply"
+          ],
+          "structural_events": []
+        },
+        "shipping_disruption": {
+          "level": "high",
+          "regions": [
+            "Persian Gulf",
+            "Red Sea"
+          ],
+          "routes": [
+            "Strait of Hormuz",
+            "Bab el-Mandeb"
+          ],
+          "dependencies": [
+            "oil and gas shipping",
+            "container and bulk shipping"
+          ],
+          "structural_events": []
+        },
+        "sovereign_policy_instability": {
+          "level": "moderate",
+          "regions": [
+            "Middle East",
+            "Europe"
+          ],
+          "routes": [],
+          "dependencies": [
+            "energy policy response",
+            "defense and fiscal policy"
+          ],
+          "structural_events": []
+        }
+      }
+    },
+    "structural_trade": {
+      "scope": "global",
+      "as_of_utc": "2026-09-18T00:00:00+00:00",
+      "summary": "Trade fragmentation, advanced-computing export controls and sanctions remain elevated globally; the component records regime state only.",
+      "evidence": [
+        {
+          "claim": "USTR announced targeted import bans and tariff changes in response to Canadian retaliation on 2026-09-08.",
+          "source": "https://www.ustr.gov/about/policy-offices/press-office/press-releases/2026/september/ambassador-greer-issues-statement-president-trumps-response-canadas-continued-retaliation-against",
+          "as_of_date": "2026-09-08"
+        },
+        {
+          "claim": "BIS Part 744 maintained end-use/end-user restrictions including advanced-computing controls as of the cutoff.",
+          "source": "https://www.bis.gov/regulations/ear/744",
+          "as_of_date": "2026-09-18"
+        },
+        {
+          "claim": "OFAC recorded Iran-related sanctions designations on 2026-09-17.",
+          "source": "https://ofac.treasury.gov/recent-actions/sanctions-list-updates",
+          "as_of_date": "2026-09-17"
+        }
+      ],
+      "dimensions": {
+        "trade_fragmentation": {
+          "level": "moderate",
+          "regions": [
+            "United States",
+            "Canada",
+            "China"
+          ],
+          "routes": [],
+          "dependencies": [
+            "cross-border goods and services trade"
+          ],
+          "structural_events": []
+        },
+        "export_controls": {
+          "level": "moderate",
+          "regions": [
+            "United States",
+            "China"
+          ],
+          "routes": [],
+          "dependencies": [
+            "advanced computing",
+            "controlled technology and end users"
+          ],
+          "structural_events": []
+        },
+        "sanctions": {
+          "level": "moderate",
+          "regions": [
+            "Iran",
+            "Russia",
+            "Cuba",
+            "Belarus",
+            "Venezuela"
+          ],
+          "routes": [],
+          "dependencies": [
+            "sanctions compliance",
+            "restricted counterparties"
+          ],
+          "structural_events": []
+        }
+      }
+    }
+  }
 }
