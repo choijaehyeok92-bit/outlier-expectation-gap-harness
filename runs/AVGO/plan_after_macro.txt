@@ -1,0 +1,25 @@
+{
+  "stage": "evidence_and_red_team",
+  "agents": {
+    "evidence_quality": "ED",
+    "red_team": "RT"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "earnings_release",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "research": {
+    "questions": 69,
+    "pending": 69,
+    "command": "python harness.py research-plan AVGO"
+  }
+}
+python harness.py prompt AVGO ED
+python harness.py prompt AVGO RT
