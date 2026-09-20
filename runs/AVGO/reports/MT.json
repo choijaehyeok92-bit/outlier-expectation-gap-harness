@@ -1,0 +1,62 @@
+{
+  "agent_id": "MT",
+  "ticker": "AVGO",
+  "as_of_date": "2026-09-18",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "pending",
+  "score_0_100": 50,
+  "confidence_0_1": 0.5,
+  "bull_score": null,
+  "bear_score": null,
+  "bull_case": "",
+  "bear_case": "",
+  "thesis": "",
+  "evidence": [],
+  "counterevidence": [],
+  "unknowns": [],
+  "falsifiers": [],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    }
+  ],
+  "key_kpis": [],
+  "next_checks": [],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 50,
+      "rationale": ""
+    }
+  ],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

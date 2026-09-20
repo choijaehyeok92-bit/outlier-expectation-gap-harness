@@ -7,10 +7,13 @@
 ```bash
 python harness.py init NEW_TICKER --as-of YYYY-MM-DD
 python harness.py sources NEW_TICKER --pdf-dir "<공시 PDF 폴더>"
+python harness.py fetch NEW_TICKER --user-agent "Name email@example.com"
 python harness.py intake NEW_TICKER
 python harness.py prompt NEW_TICKER FP
 python harness.py validate-pack NEW_TICKER
 ```
+
+`fetch`는 EDGAR 제출 색인에서 체크리스트의 `edgar_forms`에 해당하는 최신 제출물을 **as_of_date 이전 것만** 내려받고 출처를 `sources/fetch_manifest.json`에 남긴다. SEC 공정이용 정책상 연락처가 담긴 User-Agent가 필수이므로 `--user-agent` 또는 `SEC_USER_AGENT`로 직접 지정한다 — 하네스가 임의로 개인 연락처를 외부에 보내지 않는다. 요구 수량을 못 채우면 `shortfalls`로 기록하고 만들어내지 않는다. 망 정책이 sec.gov를 막는 환경에서는 실패 사유를 밝히고 수동 수집으로 안내한다.
 
 `intake`는 `config/intake.json`의 체크리스트를 pack의 `documents[]`와 대조한다. `required`가 비면 종료코드 1이고 `freeze`가 거부한다. `near_required`(DEF 14A 등)와 `recommended`는 차단하지 않지만 비면 해당 도메인의 판단 근거가 unknowns로 남는다. 조건부 항목은 해당 여부를 사람이 판단한다.
 

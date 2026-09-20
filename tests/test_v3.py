@@ -12,7 +12,7 @@ import unittest
 from types import SimpleNamespace
 from unittest.mock import patch
 
-from harness_core import runtime as h, archetypes, macro_geo, calibration
+from harness_core import runtime as h, archetypes, macro_geo, calibration, fetch
 from harness_core.conditions import resolve, check_condition
 
 REPO = h.ROOT
@@ -711,3 +711,74 @@ class Stage0IntakeTests(unittest.TestCase):
         pack = h.load_json(REPO/'runs/NVDA-V3-2026-09-19'/h.FINANCIAL_PACK)
         jsonschema.Draft7Validator(h.load_json(REPO/'schemas/financial_pack.schema.json')).validate(pack)
         self.assertEqual(intake_module.pack_invariants(pack), [])
+
+
+class Stage0FetchTests(unittest.TestCase):
+    """EDGAR acquisition is deterministic retrieval; the cutoff binds it."""
+
+    TICKERS = {'0': {'cik_str': 1730168, 'ticker': 'AVGO', 'title': 'Broadcom Inc.'}}
+
+    def submissions(self, rows):
+        columns = {'form': [], 'filingDate': [], 'accessionNumber': [],
+                   'primaryDocument': [], 'reportDate': [], 'primaryDocDescription': []}
+        for i, (form, date) in enumerate(rows):
+            columns['form'].append(form)
+            columns['filingDate'].append(date)
+            columns['accessionNumber'].append('0001730168-%02d-000001' % i)
+            columns['primaryDocument'].append('doc%d.htm' % i)
+            columns['reportDate'].append(date)
+            columns['primaryDocDescription'].append(form)
+        return {'name': 'Broadcom Inc.', 'filings': {'recent': columns}}
+
+    def opener(self, rows, captured=None):
+        def _opener(url, user_agent, timeout=30):
+            if captured is not None:
+                captured.append((url, user_agent))
+            if 'company_tickers' in url:
+                return json.dumps(self.TICKERS).encode()
+            if 'submissions' in url:
+                return json.dumps(self.submissions(rows)).encode()
+            return b'<html>filing body</html>'
+        return _opener
+
+    def test_resolves_ticker_and_rejects_unknown_one(self):
+        opener = self.opener([])
+        self.assertEqual(fetch.resolve_cik('AVGO', 'ua', opener)[0], 1730168)
+        with self.assertRaises(fetch.FetchError):
+            fetch.resolve_cik('NOSUCH', 'ua', opener)
+
+    def test_nothing_filed_after_the_cutoff_is_planned(self):
+        rows, _ = fetch.recent_filings(1730168, 'ua', self.opener(
+            [('10-K', '2026-12-01'), ('10-K', '2026-06-01'), ('10-Q', '2026-05-01')]))
+        planned = fetch.plan(rows, h.INTAKE_POLICY, '2026-09-18')
+        self.assertEqual(planned['excluded_post_cutoff'], 1)
+        self.assertTrue(all(r['filingDate'] <= '2026-09-18' for r in planned['download']))
+
+    def test_plan_reports_a_shortfall_rather_than_inventing_filings(self):
+        rows, _ = fetch.recent_filings(1730168, 'ua', self.opener(
+            [('10-K', '2026-06-01')] + [('10-Q', '2026-0%d-01' % m) for m in (1, 2)]))
+        planned = fetch.plan(rows, h.INTAKE_POLICY, '2026-09-18')
+        trailing = next(s for s in planned['shortfalls'] if s['requirement'] == 'trailing_quarters')
+        self.assertEqual(trailing['shortfall'], 4)
+
+    def test_download_writes_files_and_carries_the_contact(self):
+        captured = []
+        opener = self.opener([('10-K', '2026-06-01')], captured)
+        rows, _ = fetch.recent_filings(1730168, 'ua', opener)
+        planned = fetch.plan(rows, h.INTAKE_POLICY, '2026-09-18')
+        with tempfile.TemporaryDirectory() as tmp:
+            saved = fetch.download(1730168, planned['download'][:1], Path(tmp), 'Tester t@example.com', opener)
+            self.assertEqual(len(saved), 1)
+            self.assertTrue((Path(tmp)/saved[0]['file']).exists())
+            self.assertIn('Archives/edgar/data/1730168', saved[0]['source_url'])
+        self.assertTrue(all(agent for _url, agent in captured))
+
+    def test_blocked_egress_surfaces_as_a_fetch_error(self):
+        def blocked(url, user_agent, timeout=30):
+            raise OSError('CONNECT tunnel failed, response 403')
+        with self.assertRaises(fetch.FetchError):
+            fetch.resolve_cik('AVGO', 'ua', lambda u, a, timeout=30: blocked(u, a))
+
+    def test_every_checklist_row_declares_its_edgar_forms(self):
+        for requirement in h.INTAKE_POLICY['requirements']:
+            self.assertIn('edgar_forms', requirement, requirement['id'])

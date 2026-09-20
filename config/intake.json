@@ -9,7 +9,9 @@
     "conditional_required": "해당 사건이 있으면 필수가 된다.",
     "conditional": "해당 기업 유형에만 적용된다."
   },
-  "blocking_levels": ["required"],
+  "blocking_levels": [
+    "required"
+  ],
   "detection": {
     "note": "financial pack의 document_type이 거칠어(10-K|10-Q|20-F|annual_report|earnings_release|proxy|other) 8-K·Form 4·IR 자료가 모두 other로 수렴한다. 따라서 document_type 일치 또는 source_document 정규식 일치 중 하나라도 맞으면 해당 문서로 센다.",
     "match": "document_type OR source_regex"
@@ -22,8 +24,15 @@
       "us": "최근 10-K",
       "kr": "최근 사업보고서",
       "purpose": "연간 3개년 재무제표, segment, 고객집중, 부채, SBC, 약정, 회계정책",
-      "document_types": ["10-K", "annual_report"],
-      "source_regex": "10-K|annual report|사업보고서"
+      "document_types": [
+        "10-K",
+        "annual_report"
+      ],
+      "source_regex": "10-K|annual report|사업보고서",
+      "edgar_forms": [
+        "10-K",
+        "10-K/A"
+      ]
     },
     {
       "id": "latest_interim",
@@ -32,8 +41,14 @@
       "us": "최신 10-Q",
       "kr": "최신 분기/반기보고서",
       "purpose": "현재 TTM, 분기 추세, 운전자본, 현금흐름, 희석",
-      "document_types": ["10-Q"],
-      "source_regex": "10-Q|분기보고서|반기보고서"
+      "document_types": [
+        "10-Q"
+      ],
+      "source_regex": "10-Q|분기보고서|반기보고서",
+      "edgar_forms": [
+        "10-Q",
+        "10-Q/A"
+      ]
     },
     {
       "id": "trailing_quarters",
@@ -42,8 +57,14 @@
       "us": "과거 6~8개 분기의 10-Q",
       "kr": "과거 6~8개 분기보고서",
       "purpose": "TTM·YoY·FCF/share·증분 ROIC 추세",
-      "document_types": ["10-Q"],
-      "source_regex": "10-Q|분기보고서|반기보고서"
+      "document_types": [
+        "10-Q"
+      ],
+      "source_regex": "10-Q|분기보고서|반기보고서",
+      "edgar_forms": [
+        "10-Q",
+        "10-Q/A"
+      ]
     },
     {
       "id": "historical_annuals",
@@ -52,8 +73,15 @@
       "us": "과거 3~5개년 10-K",
       "kr": "과거 3~5개년 사업보고서",
       "purpose": "정상화 이익, 반복 구조조정, 자본집약도, 장기 추세",
-      "document_types": ["10-K", "annual_report"],
-      "source_regex": "10-K|annual report|사업보고서"
+      "document_types": [
+        "10-K",
+        "annual_report"
+      ],
+      "source_regex": "10-K|annual report|사업보고서",
+      "edgar_forms": [
+        "10-K",
+        "10-K/A"
+      ]
     },
     {
       "id": "proxy_compensation",
@@ -62,8 +90,14 @@
       "us": "DEF 14A Proxy",
       "kr": "주주총회소집공고 · 사업보고서 임원보수 항목",
       "purpose": "경영진 보상, 주식보상, ownership, governance",
-      "document_types": ["proxy"],
-      "source_regex": "DEF ?14A|proxy|schedule 14a|주주총회소집|임원보수"
+      "document_types": [
+        "proxy"
+      ],
+      "source_regex": "DEF ?14A|proxy|schedule 14a|주주총회소집|임원보수",
+      "edgar_forms": [
+        "DEF 14A",
+        "DEFA14A"
+      ]
     },
     {
       "id": "earnings_release",
@@ -72,8 +106,13 @@
       "us": "실적 관련 8-K + earnings release",
       "kr": "잠정실적 · 영업실적 공시",
       "purpose": "GAAP/non-GAAP reconciliation, 최신 KPI",
-      "document_types": ["earnings_release"],
-      "source_regex": "earnings|cfo commentary|실적발표|잠정실적|영업실적"
+      "document_types": [
+        "earnings_release"
+      ],
+      "source_regex": "earnings|cfo commentary|실적발표|잠정실적|영업실적",
+      "edgar_forms": [
+        "8-K"
+      ]
     },
     {
       "id": "debt_and_financing",
@@ -84,7 +123,14 @@
       "kr": "주요사항보고서 · 증권신고서",
       "purpose": "회사채, 전환사채, 증자, M&A, 대규모 자금조달",
       "document_types": [],
-      "source_regex": "8-K|424B|prospectus|주요사항보고서|증권신고서"
+      "source_regex": "8-K|424B|prospectus|주요사항보고서|증권신고서",
+      "edgar_forms": [
+        "424B2",
+        "424B3",
+        "424B5",
+        "S-3",
+        "S-3ASR"
+      ]
     },
     {
       "id": "foreign_issuer_filings",
@@ -94,8 +140,14 @@
       "us": "20-F / 6-K",
       "kr": "해당 없음",
       "purpose": "미국 상장 외국기업의 10-K/10-Q 대체",
-      "document_types": ["20-F"],
-      "source_regex": "20-F|6-K"
+      "document_types": [
+        "20-F"
+      ],
+      "source_regex": "20-F|6-K",
+      "edgar_forms": [
+        "20-F",
+        "6-K"
+      ]
     },
     {
       "id": "insider_ownership",
@@ -105,7 +157,10 @@
       "kr": "임원 · 주요주주 지분공시",
       "purpose": "내부자 매매 · ownership 변화",
       "document_types": [],
-      "source_regex": "form ?4|beneficial ownership|\\(4\\)|지분공시|임원·주요주주"
+      "source_regex": "form ?4|beneficial ownership|\\(4\\)|지분공시|임원·주요주주",
+      "edgar_forms": [
+        "4"
+      ]
     },
     {
       "id": "investor_materials",
@@ -115,7 +170,8 @@
       "kr": "IR · 기업설명회 자료",
       "purpose": "TAM, capex plan, 장기 margin, 신규 사업",
       "document_types": [],
-      "source_regex": "investor|presentation|IR|기업설명회"
+      "source_regex": "investor|presentation|IR|기업설명회",
+      "edgar_forms": []
     },
     {
       "id": "registration_statement",
@@ -126,7 +182,17 @@
       "kr": "증권신고서",
       "purpose": "IPO · 상장 초기 기업의 장기 데이터 보강",
       "document_types": [],
-      "source_regex": "S-1|F-1|증권신고서"
+      "source_regex": "S-1|F-1|증권신고서",
+      "edgar_forms": [
+        "S-1",
+        "F-1"
+      ]
     }
-  ]
+  ],
+  "acquisition": {
+    "note": "harness.py fetch가 EDGAR에서 edgar_forms에 해당하는 최신 제출물을 as_of_date 이전 것만 내려받는다. investor_materials처럼 정형 폼이 없는 항목은 자동 수집 대상이 아니며 사람이 IR에서 받아 sources/에 넣는다.",
+    "source": "SEC EDGAR",
+    "user_agent_required": true,
+    "user_agent_note": "SEC 공정이용 정책이 연락처가 담긴 User-Agent를 요구한다. --user-agent 또는 환경변수 SEC_USER_AGENT로 직접 지정한다. 하네스가 임의로 개인 연락처를 외부에 보내지 않는다."
+  }
 }
