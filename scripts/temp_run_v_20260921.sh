@@ -3,24 +3,10 @@ set -u
 set -o pipefail
 
 mkdir -p runlogs
-exec > >(tee runlogs/continuation_triage.log) 2>&1
+exec > >(tee runlogs/continuation_domain.log) 2>&1
 
-echo "=== continue frozen V run ==="
-python - <<'PY'
-import json
-from pathlib import Path
-m=json.loads(Path("runs/V/run_manifest.json").read_text())
-print(json.dumps({
-  "ticker":m.get("ticker"),
-  "as_of_date":m.get("as_of_date"),
-  "frozen":m.get("frozen"),
-  "strategy_version":m.get("strategy_version"),
-  "input_snapshot_sha256":m.get("input_snapshot_sha256"),
-  "runner":m.get("runner")
-},ensure_ascii=False,indent=2))
-PY
-
-for A in AS DI FS; do
+echo "=== continue V domain analysis ==="
+for A in CP MA MT RF SL; do
   echo "=== prompt $A ==="
   python harness.py prompt V "$A" --out "runs/V/${A}_prompt.md"
   echo "prompt_${A}_exit=$?"
@@ -33,15 +19,15 @@ for A in AS DI FS; do
   echo "validate_${A}_exit=$?"
 done
 
-echo "=== aggregate after universal triage ==="
-python harness.py aggregate V | tee runlogs/aggregate_after_triage.json
+echo "=== aggregate after domain analysis ==="
+python harness.py aggregate V | tee runlogs/aggregate_after_domain.json
 echo "aggregate_exit=${PIPESTATUS[0]}"
 
-echo "=== digest after universal triage ==="
+echo "=== digest after domain analysis ==="
 python harness.py digest V
 echo "digest_exit=$?"
 cat runs/V/digest.md
 
-echo "=== plan after universal triage ==="
-python harness.py plan V | tee runlogs/plan_after_triage.txt
+echo "=== plan after domain analysis ==="
+python harness.py plan V | tee runlogs/plan_after_domain.txt
 echo "plan_exit=${PIPESTATUS[0]}"
