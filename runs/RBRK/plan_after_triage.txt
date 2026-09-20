@@ -1,0 +1,32 @@
+{
+  "stage": "domain_analysis",
+  "agents": {
+    "customer_product": "CP",
+    "long_term_growth": "LG",
+    "management_allocation": "MA",
+    "moat_trajectory": "MT",
+    "reinvestment_fcf": "RF",
+    "structural_leadership": "SL"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "research": {
+    "questions": 37,
+    "pending": 37,
+    "command": "python harness.py research-plan RBRK"
+  }
+}
+python harness.py prompt RBRK CP
+python harness.py prompt RBRK LG
+python harness.py prompt RBRK MA
+python harness.py prompt RBRK MT
+python harness.py prompt RBRK RF
+python harness.py prompt RBRK SL
