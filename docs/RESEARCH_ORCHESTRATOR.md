@@ -46,6 +46,8 @@ research-ingest는 research/result-{내용해시}.json을 추가한다. 원본 c
 conflict/refreeze 및 cutoff 이후 자료는 후보 증거에서 제외한다. 다음 prompt에는 동일 snapshot의 적격·비충돌 증거만 제공한다. 도메인 프롬프트는 해당 질문의 증거만 받고 ED·RT·IC는 전체 후보를 검토한다. 결과 파일 내용이 바뀌면 로딩을 거부한다.
 새 독립 증거 수는 evidence_id 기준으로 중복 제거하고 source_independence_groups를 별도로 제공한다. 같은 ID를 재제출하면 새 증거 수를 늘리지 않는다.
 recommended_harness_reruns는 새로운 적격 증거를 받은 질문의 담당자만 포함한다. 자동으로 보고서를 완료하거나 점수를 수정하지 않는다.
+질문은 research_class로 decision_blocking / thesis_monitor / optional을 구분한다. questions만 이번 조사 대상이며 deferred_questions는 예산으로 보류된 비차단 질문이다. 예산은 비차단 질문에만 적용하고 decision_blocking은 cap을 넘겨도 숨기지 않는다. 보류 사유는 deferred_reason에 남으므로 조용히 사라지는 질문은 없다.
+밸류에이션 sanity는 FAIL이면 decision_blocking, REVIEW면 thesis_monitor 질문이 된다. REVIEW는 Hard Veto 판정이 아니라 지정 owner에게 보낼 질문이다.
 
 ## 정책 변경과 재현
 
