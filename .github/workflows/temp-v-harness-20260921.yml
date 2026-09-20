@@ -7,10 +7,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   run-harness:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -65,27 +66,20 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-
           run=Path("runs/V")
           manifest=json.loads((run/"sources/fetch_manifest.json").read_text())
           docs=[]
           seen=set()
           for i,row in enumerate(manifest.get("documents",[]),1):
-              src=row.get("path") or row.get("file") or row.get("filename") or row.get("source_document")
-              if not src:
-                  src=f"EDGAR-{i:03d}"
+              src=row.get("path") or row.get("file") or row.get("filename") or row.get("source_document") or f"EDGAR-{i:03d}"
               form=(row.get("form") or "").upper()
-              if form.startswith("10-K"):
-                  dtype="10-K"
-              elif form.startswith("10-Q"):
-                  dtype="10-Q"
-              elif form=="DEF 14A":
-                  dtype="proxy"
-              elif form=="8-K":
-                  dtype="earnings_release"
-              else:
-                  dtype="other"
-              key=(src,form,row.get("filing_date") or row.get("filingDate"))
+              dtype=("10-K" if form.startswith("10-K") else
+                     "10-Q" if form.startswith("10-Q") else
+                     "proxy" if form=="DEF 14A" else
+                     "earnings_release" if form=="8-K" else "other")
+              filing=row.get("filing_date") or row.get("filingDate")
+              period=row.get("period_end") or row.get("reportDate")
+              key=(src,form,filing)
               if key in seen:
                   continue
               seen.add(key)
@@ -93,9 +87,9 @@ jobs:
                   "document_id":f"DOC-{len(docs)+1:03d}",
                   "source_document":str(src),
                   "document_type":dtype,
-                  "filing_date":row.get("filing_date") or row.get("filingDate"),
-                  "period_end":row.get("period_end") or row.get("reportDate"),
-                  "is_amendment":form.endswith("/A"),
+                  "filing_date":filing,
+                  "period_end":period,
+                  "is_amendment":form.endswith("/A")
               })
           pack={
               "schema_version":"1.0",
@@ -178,6 +172,18 @@ jobs:
           echo "=== 11 digest ==="
           python harness.py digest V
           cat runs/V/digest.md
+
+      - name: Persist execution outputs
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/V runlogs
+          if ! git diff --cached --quiet; then
+            git commit -m "automation: persist requested V harness execution"
+            git push origin HEAD:automation/v-harness-20260921
+          fi
 
       - uses: actions/upload-artifact@v4
         if: always()
