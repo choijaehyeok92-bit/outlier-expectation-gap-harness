@@ -391,6 +391,28 @@
           }
         }
       }
+    },
+    "plain_language": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "business": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "opportunity": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "risk": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "decision_reason": {
+          "type": "string",
+          "maxLength": 600
+        }
+      }
     }
   },
   "additionalProperties": true

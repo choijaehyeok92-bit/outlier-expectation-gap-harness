@@ -2,7 +2,7 @@
 
 Generated from config; update with `python harness.py policy --out docs/POLICY.md`.
 
-Strategy / schema / decision policy: 3.0 / 3.0 / 3.0.
+Strategy / schema / decision policy: 3.1 / 3.1 / 3.1.
 
 ## compounder — Compounder
 
@@ -18,6 +18,24 @@ Strategy / schema / decision policy: 3.0 / 3.0 / 3.0.
 | `criterion.reinvestment_fcf.reinvestment_runway` | >= | 70 | 1.0 |
 
 Gate: core >= 60.
+
+## growth — Growth
+
+| Field | Operator | Threshold | Fit weight |
+|---|---|---:|---:|
+| `signal.revenue_cagr_next_3y` | >= | 0.15 | 1.0 |
+| `signal.price_to_base_value` | <= | 1.1 | 1.0 |
+| `domain.structural_leadership` | >= | 70 | 1.0 |
+| `domain.customer_product` | >= | 70 | 1.0 |
+| `domain.moat_trajectory` | >= | 65 | 1.0 |
+| `domain.reinvestment_fcf` | >= | 65 | 1.0 |
+| `domain.management_allocation` | >= | 65 | 1.0 |
+| `domain.financial_survival` | >= | 70 | 1.0 |
+| `domain.asymmetry` | >= | 65 | 1.0 |
+| `domain.expectation_valuation` | >= | 50 | 1.0 |
+| `criterion.reinvestment_fcf.fcf_per_share_quality` | >= | 65 | 1.0 |
+
+Gate: core >= 65.
 
 ## buffett_value — Buffett-style Value
 
@@ -47,7 +65,7 @@ Gate: core excluding EV >= 60.
 ## Fit and selection
 
 Score criteria use value/100; upper-bound signals use max(0, 1-value/(2*threshold)); missing contributes zero to fit only. Gates remain mandatory.
-Tie tolerance: 1e-06; tie priority: compounder > buffett_value > moonshot.
+Tie tolerance: 1e-06; tie priority: compounder > growth > buffett_value > moonshot.
 
 All listed veto blockers remain binding; ownership coverage is required before buying.
 
