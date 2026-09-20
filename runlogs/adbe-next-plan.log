@@ -10,9 +10,6 @@ ED: OK
 MO: OK
 ===== PLAN =====
 {
-  "stage": "macro",
-  "agents": {
-    "macro_overlay": "MO"
-  }
+  "stage": "complete",
+  "agents": {}
 }
-python harness.py prompt ADBE MO
