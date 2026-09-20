@@ -5,61 +5,107 @@
   "domain": "investment_committee",
   "role": "chair",
   "analysis_status": "complete",
-  "score_0_100": 78.88,
-  "confidence_0_1": 0.82,
-  "thesis": "Expected calibrated score is ~78.9 with Compounder as the primary archetype. Adobe combines category leadership, high recurring cash flow, attractive repurchases and a current price near half the locked Base DCF. The central uncertainty is whether AI is a moat-expanding feature layer or a structural substitute. Hard Veto is expected to clear; mechanical sizing is expected in the normal-candidate band, subject to macro pacing 0.7.",
+  "score_0_100": 80.97,
+  "confidence_0_1": 0.9,
+  "thesis": "Deterministic fit selects Buffett-style Value as primary and Compounder as secondary. Core score is 80.97, price/Base is 0.502x, TTM owner-style FCF/share is estimated near $21.44, repurchases occurred far below locked Base value, and all Hard Vetoes are cleared. The decisive objection is structural AI substitution: AI-first ARR is material but incrementality and Firefly unit economics remain unknown. Dispersion already narrows the mechanical Core band to 2–4%, and high geopolitical stress sets purchase pacing to 0.5. IC therefore approves NORMAL, not a larger deployment state.",
   "evidence": [
     {
-      "claim": "Current price $248.92 vs locked Base ~$495.57.",
+      "claim": "Aggregate score is 80.97 (Core Outlier); Buffett-style Value is the highest eligible deterministic fit and Compounder is secondary.",
       "source_type": "other",
-      "source": "runs/ADBE/sources/README.md",
-      "period": "2026-09-18",
+      "source": "runs/ADBE/aggregate.json",
+      "period": "2026-09-18 run",
       "as_of_date": "2026-09-18",
-      "value": "0.502",
+      "value": "80.97 / buffett_value / compounder",
       "fact_or_estimate": "interpretation"
     },
     {
-      "claim": "Q3 ARR $27.50B and AI-first ARR >150% y/y.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
-      "period": "Q3 FY2026",
-      "as_of_date": "2026-09-10",
-      "value": "27.50/>150%",
-      "fact_or_estimate": "fact"
+      "claim": "Locked price/Base is ~0.502x; Bear/Base/Bull are ~$233.72/$495.57/$817.33 versus $248.92 current price.",
+      "source_type": "other",
+      "source": "runs/ADBE/aggregate.json",
+      "period": "10-year locked DCF",
+      "as_of_date": "2026-09-18",
+      "value": "0.502x; $233.72/$495.57/$817.33",
+      "fact_or_estimate": "estimate"
     },
     {
-      "claim": "H1 OCF $5.123B with $4.589B repurchases supports per-share compounding.",
+      "claim": "RF estimates TTM owner-style FCF after capex and SBC at ~$8.52B, or ~$21.44/share; Q3 diluted shares fell from 424M to 395M y/y.",
       "source_type": "filing",
-      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
-      "period": "Q2/H1 FY2026",
-      "as_of_date": "2026-06-15",
-      "value": null,
-      "fact_or_estimate": "fact"
+      "source": "runs/ADBE/digest.md",
+      "period": "TTM/Q3 FY2026",
+      "as_of_date": "2026-09-18",
+      "value": "~$8.52B / ~$21.44; 424M->395M",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "MA estimates the latest-four-quarter average repurchase price at ~$279.24, ~0.563x locked Base value.",
+      "source_type": "filing",
+      "source": "runs/ADBE/digest.md",
+      "period": "Q4 FY2025-Q3 FY2026",
+      "as_of_date": "2026-09-18",
+      "value": "~$279.24 / ~0.563x",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "All Hard Vetoes are cleared after refreshed domain and Red Team review; mechanical pre-IC state is CORE_WINNER_CANDIDATE but dispersion narrows position_range_pre_ic to 2-4%.",
+      "source_type": "other",
+      "source": "runs/ADBE/aggregate.json",
+      "period": "2026-09-18 run",
+      "as_of_date": "2026-09-18",
+      "value": "CLEARED / 2-4%",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Macro/geopolitical transmission has no fundamental score effect, but purchase pacing is 0.5 because high conflict/energy/shipping stress is the binding global overlay.",
+      "source_type": "other",
+      "source": "runs/ADBE/aggregate.json",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "0.5",
+      "fact_or_estimate": "interpretation"
     }
   ],
   "counterevidence": [
-    "AI can erode workflow lock-in.",
-    "Base DCF assumes owner FCF/share nearly doubles over ten years.",
-    "Calibration is provisional."
+    "AI-first ARR >$650M proves adoption but not how much spend is incremental versus bundled or reclassified.",
+    "Firefly-specific inference cost, gross margin and contribution margin remain undisclosed.",
+    "The modeled Bear value is not a liquidation floor; a structural workflow bypass could invalidate the assumed cash-flow floor.",
+    "Semrush realized ROIC and post-close standalone economics are not yet observable."
   ],
   "unknowns": [
-    "AI monetization durability",
-    "future acquisition returns"
+    "AI-first ARR incrementality and Firefly-specific contribution margin.",
+    "Same-definition long-run retention/market-share evidence versus prompt-native and agentic workflows.",
+    "Realized return on Semrush and capital-allocation discipline through the CEO transition."
   ],
   "falsifiers": [
-    "If MT or RF fall below Compounder thresholds, reclassify; if price/Base rises >1.2, valuation thesis weakens."
+    "Same-definition core ARR/subscription growth turns negative while AI usage rises, indicating substitution without monetization.",
+    "Owner-style FCF/share contracts for multiple periods after SBC while AI/R&D spending rises.",
+    "A refrozen conservative DCF pushes Bear/current materially below 0.6x or price/Base above 0.85x without stronger evidence."
   ],
   "hard_veto_flags": [],
   "key_kpis": [
     {
-      "name": "owner FCF/share",
+      "name": "owner-style FCF/share",
       "direction": "up",
-      "threshold": "high-single-digit+ CAGR",
+      "threshold": "sustained high-single-digit+ growth after SBC",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "AI-first ARR vs Total Adobe ARR",
+      "direction": "up",
+      "threshold": "AI monetization remains additive and faster than total ARR",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "core subscription/ARR growth",
+      "direction": "up",
+      "threshold": "remain positive on a same-definition basis",
       "cadence": "quarterly"
     }
   ],
   "next_checks": [
-    "FY2026 10-K and Q4 results"
+    "FY2026 10-K: full-year OCF, R&D, capex, SBC, commitments and repurchase execution.",
+    "Q4 AI-first ARR composition plus any Firefly contribution-margin disclosure.",
+    "Semrush standalone contribution and evidence through the CEO transition."
   ],
-  "verdict": "support"
+  "verdict": "support",
+  "ic_state": "NORMAL"
 }
