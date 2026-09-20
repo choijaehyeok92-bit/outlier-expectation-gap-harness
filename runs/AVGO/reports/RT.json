@@ -4,54 +4,159 @@
   "as_of_date": "2026-09-18",
   "domain": "red_team",
   "role": "red_team",
-  "analysis_status": "pending",
+  "analysis_status": "complete",
   "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "confidence_0_1": 0.94,
+  "thesis": "가장 강한 숏 논리는 ‘AI 수요가 없다’가 아니라 수요의 질과 집중이다. 한 distributor가 Q3 매출 50%, top-five end customers가 약 55%이고, AVGO는 $126.8B 구매약정·$29B XPV backstop·조건부 $42B customer-note 구조를 동시에 안고 있다. 여기에 factoring이 OCF를 앞당긴다. AI 성장 둔화와 고객 내부실리콘 확대가 겹치면 FCF 기대가 빠르게 낮아질 수 있다. 그러나 현 수익성·현금창출과 계약 증거는 7개 RT 소유 Hard Veto의 구성요건을 충족시키지 않는다.",
+  "evidence": [
+    {
+      "claim": "Q3 FY2026 top-five end customers는 약 55%, 단일 semiconductor distributor는 50%의 revenue를 차지했고, 9M wafer의 약 95%가 TSMC에서 생산됐다.",
+      "source_type": "10-Q",
+      "source": "User-supplied Broadcom Q3 FY2026 10-Q",
+      "period": "FY2026 Q3/9M",
+      "as_of_date": "2026-09-10",
+      "value": "55% / 50% / 95%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-AVGO-CONC-001",
+      "economic_driver": "customer_and_supply_concentration"
+    },
+    {
+      "claim": "2026-08-02 기준 unconditional purchase commitments $126.821B, other contractual commitments $3.941B, AI XPV maximum backstop $29B가 공시됐다. 고객은 조건 충족 시 최대 $42B의 notes를 Broadcom에 발행할 수 있으나 당시 발행액은 0이었다.",
+      "source_type": "10-Q",
+      "source": "User-supplied Broadcom Q3 FY2026 10-Q, Note 10",
+      "period": "2026-08-02",
+      "as_of_date": "2026-09-10",
+      "value": "$126.821B / $3.941B / $29B / up to $42B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-AVGO-XPV-002",
+      "economic_driver": "customer_financing_and_commitment_risk"
+    },
+    {
+      "claim": "9M FY2026 Broadcom은 non-recourse factoring으로 trade receivables $3.950B를 매각했고 이를 operating cash flow로 표시한다.",
+      "source_type": "10-Q",
+      "source": "User-supplied Broadcom Q3 FY2026 10-Q, Note 3",
+      "period": "FY2026 9M",
+      "as_of_date": "2026-09-10",
+      "value": "$3.950B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-AVGO-FACTOR-003",
+      "economic_driver": "cash_quality"
+    },
+    {
+      "claim": "반대편 증거로 Q3 gross margin은 69%, 9M OCF는 $32.950B, quarter-end cash는 $23.975B였고 $7.5B revolver는 미사용 상태였다.",
+      "source_type": "10-Q",
+      "source": "User-supplied Broadcom Q3 FY2026 10-Q",
+      "period": "FY2026 Q3/9M",
+      "as_of_date": "2026-09-10",
+      "value": "69% / $32.950B / $23.975B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-AVGO-CASH-004",
+      "economic_driver": "financial_resilience"
+    },
+    {
+      "claim": "AI semiconductor revenue는 Q3 $16.7B(+221% y/y), Q4 guide $21.7B(+236%)였고 OpenAI/Meta와 multi-generation custom-XPU programs가 공식 발표됐다.",
+      "source_type": "company_ir",
+      "source": "Broadcom official FY2026 Q3 results and OpenAI/Meta announcements",
+      "period": "FY2026",
+      "as_of_date": "2026-09-02",
+      "value": "$16.7B / $21.7B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-AVGO-AI-005",
+      "economic_driver": "current_moat_and_demand"
+    },
+    {
+      "claim": "Frozen valuation은 현재가 $357.61 대비 Bear $137.04, Base $404.48, Bull $797.84다. 가격은 Base보다 낮지만 Bear/current은 약 0.38x라 실행실패 시 가격 하방은 크다.",
+      "source_type": "harness",
+      "source": "runs/AVGO/aggregate.json",
+      "period": "valuation as of 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "$137.04 / $404.48 / $797.84",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RT-AVGO-VAL-006",
+      "economic_driver": "valuation_risk"
+    }
+  ],
+  "counterevidence": [
+    "69% gross margin과 급증한 AI revenue는 현재 고객가치·가격결정력이 붕괴했다는 주장을 반박한다.",
+    "9M OCF $32.95B, $23.98B cash와 미사용 $7.5B revolver는 자체 영업이 생존자금을 벌지 못한다는 주장을 반박한다.",
+    "$29B backstop은 maximum contingent exposure이며 quarter-end까지 지급액이 없고 fair value도 material하지 않았다.",
+    "Multi-generation custom-XPU 계약과 비취소 RPO는 단기 주문만으로 성장하는 기업보다 높은 상업적 가시성을 제공한다."
+  ],
+  "unknowns": [
+    "개별 top-five end-customer 매출 비중과 XPV 지원 고객향 매출/AR 비중.",
+    "$126.8B 구매약정 중 customer commitments로 실질 매칭되는 비중.",
+    "$29B backstop의 실제 phase별 funded exposure·손실률과 $42B notes의 발행 가능성.",
+    "독립 benchmark 기준 custom-XPU TCO/performance와 hyperscaler 내부실리콘의 격차.",
+    "factoring 제거 후 정상화 OCF와 VMware 포함 장기 owner-FCF margin."
+  ],
+  "falsifiers": [
+    "Top-five concentration이 45% 이하로 내려가고 AI growth가 50% 이상 유지되면 집중 기반 숏 논리는 크게 약화된다.",
+    "XPV funded exposure가 미미한 상태에서 factoring/OCF가 5% 아래로 내려가고 OCF margin이 유지되면 cash-quality 숏 논리는 약화된다.",
+    "독립 benchmark에서 Broadcom custom XPU/네트워킹이 고객 내부 대안 대비 지속적인 TCO 우위를 확인하면 기술대체 숏 논리는 약화된다."
+  ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "cutoff까지 재작성·감사인 이견/교체·내부통제 중대결함 또는 미공시 관련자거래가 확인되지 않았다. 10-Q에서 disclosure controls가 effective로 평가됐다. Factoring과 XPV는 공시된 구조이므로 그 자체가 회계 신뢰 훼손 사건은 아니다."
     },
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "9M OCF $32.95B와 현금 $23.98B, 낮은 현행 capex, 미사용 $7.5B revolver는 AVGO 자체 영업이 필수 지출을 조달함을 보여준다. XPV는 고객 자금조달 지원 위험이지 AVGO 영업이 반복 외부자본 없이는 성립하지 않는다는 두 구성요건을 충족하지 않는다."
     },
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "69% gross margin, multi-generation design wins, 비취소 계약/RPO와 AI revenue 성장은 ‘고객가치 부재’라는 필수 요건을 반증한다. XPV vendor-financing 위험은 정책상 CP/FS/AS에 남기며 이 veto와 분리한다."
     },
     {
       "veto": "증분 ROIC의 구조적 붕괴",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "RF는 operating income·owner-FCF가 invested-capital proxy보다 훨씬 빠르게 증가한다고 확인했고 incremental return을 75점 수준으로 평가했다. 자본비용 아래의 구조적 붕괴가 현재 관측됐다는 증거는 없다."
     },
     {
       "veto": "해자의 지속적인 축소",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "현재 evidence는 AI revenue 가속, 69% gross margin, multi-generation design wins와 더 강한 software contract terms를 보여준다. 고객 자체실리콘은 중요한 미래 위협이지만 실제·지속적 moat shrinkage의 현재 증거는 아니다."
     },
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Frozen current price $357.61은 Bull value $797.84보다 크게 낮다. Base valuation의 야심과 Bear downside는 EV/AS 점수 문제지만 veto의 단일 구성요건인 현재가 > Bull은 성립하지 않는다."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Top-five end-customer concentration은 높지만 개별 end-customer >25%는 공시되지 않았고, 50% 수치는 distributor channel이다. Semiconductor 외 infrastructure software도 material하다. 집중위험은 크지만 단일 요인 상실 시 사업경제성이 회복 불가능하게 훼손된다는 fatality는 입증되지 않았다."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "top-five end-customer share / largest disclosed end-customer",
+      "direction": "down",
+      "threshold": "top-five <50%; single end-customer >25%면 재검토",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "XPV funded exposure + factoring / OCF",
+      "direction": "down",
+      "threshold": "funded loss 없음; factoring/OCF <10%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "AI semiconductor growth / gross margin",
+      "direction": "up",
+      "threshold": "AI growth >50% y/y 및 GM >=65%",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "다음 10-Q에서 XPV backstop·customer notes·purchase commitments와 factoring 현금흐름을 재검증.",
+    "개별 대형 AI 고객의 revenue/AR share와 customer-owned silicon 전환 여부 추적.",
+    "독립 XPU TCO benchmark와 AI semiconductor gross-margin/mix 변화를 추적."
+  ],
+  "verdict": "oppose",
   "subscores": [],
   "uncertainties": [],
   "valuation_inputs": {
