@@ -1,8 +1,6 @@
 name: PYPL GPT-5.6 Sol harness run 2026-09-18
 
 on:
-  pull_request:
-    branches: [run/pypl-2026-09-18-sol]
   workflow_dispatch:
 
 permissions:

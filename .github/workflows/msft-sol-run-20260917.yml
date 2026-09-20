@@ -1,8 +1,6 @@
 name: MSFT GPT-5.6 Sol harness run 2026-09-17
 
 on:
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

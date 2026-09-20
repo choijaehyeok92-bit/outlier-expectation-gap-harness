@@ -1,8 +1,6 @@
 name: 000660 GPT-5.6 Sol harness run 2026-09-17
 
 on:
-  pull_request:
-    branches: [run/000660-2026-09-17-sol]
   workflow_dispatch:
 
 permissions:

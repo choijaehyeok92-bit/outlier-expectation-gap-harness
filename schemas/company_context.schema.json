@@ -1,8 +1,84 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "V3 company context (additive legacy compatibility)",
+  "description": "Checked when a run is frozen. Unknown properties stay allowed so older contexts remain readable; the constraints here only pin the fields the valuation and archetype gates read.",
   "type": "object",
+  "required": [
+    "ticker",
+    "as_of_date",
+    "current_price"
+  ],
   "properties": {
+    "ticker": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "as_of_date": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "currency": {
+      "type": "string",
+      "minLength": 1
+    },
+    "current_price": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "0 이하 가격은 내재가치 대비 배수를 의미 없게 만든다."
+    },
+    "shares_diluted": {
+      "type": ["number", "null"],
+      "exclusiveMinimum": 0
+    },
+    "market_cap_usd": {
+      "type": ["number", "null"],
+      "exclusiveMinimum": 0
+    },
+    "enterprise_value": {
+      "type": ["number", "null"]
+    },
+    "net_cash_per_share": {
+      "type": ["number", "null"]
+    },
+    "valuation_percentile_5y": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "valuation_metric": {
+      "type": "string"
+    },
+    "valuation_overrides": {
+      "type": "object",
+      "properties": {
+        "required_return": {
+          "type": ["number", "null"],
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "description": "연 할인율. 0 이하는 할인이 아니고 100%를 넘는 값은 terminal 항을 무의미하게 만든다."
+        },
+        "terminal_multiples": {
+          "type": "object",
+          "properties": {
+            "bear": {"type": ["number", "null"], "minimum": 0},
+            "base": {"type": ["number", "null"], "minimum": 0},
+            "bull": {"type": ["number", "null"], "minimum": 0}
+          }
+        }
+      }
+    },
+    "portfolio_context": {
+      "type": "object",
+      "properties": {
+        "existing_position_pct": {"type": "number", "minimum": 0, "maximum": 100},
+        "sector_exposure_pct": {"type": "number", "minimum": 0, "maximum": 100},
+        "overlap_notes": {"type": "string"}
+      }
+    },
     "diagnostics": {
       "type": "object",
       "properties": {
