@@ -1,0 +1,188 @@
+{
+  "agent_id": "CP",
+  "ticker": "NVDA-V3-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 69,
+  "confidence_0_1": 0.7,
+  "bull_score": 85,
+  "bear_score": 50,
+  "bull_case": "매출 $96.2B 분기에 gross margin 75.0%, 판관비 1.4%를 기록했고 H1 고객 선수금 유입은 $15.6B이다. 고객은 제품 확보를 위해 선불을 지급하며 Hyperscale과 ACIE 매출이 모두 100% 이상 성장했다. 가격·사용량·규모경제가 동시에 강화되는 모습이다.",
+  "bear_case": "회계 마진은 강하지만 고객·파트너 지원의 경제적 규모가 기존 보고보다 크다. $36B AI-cloud agreements와 $108.5B maximum gross guarantees가 존재하고 지원 대상 매출·AR 비중은 공시되지 않아 자생 수요와 현금 기준 단위경제를 분리할 수 없다.",
+  "thesis": "고객가치 자체는 강하지만 자생 수요와 경제적 단위경제의 분리는 더 어려워졌다. Q2 매출 $96.2B, gross margin 75.0%, H1 고객 선수금 $15.6B은 지불의사를 입증한다. 반면 frozen 10-Q는 별도 AI-cloud agreements $36B와 SB Energy/OpenAI 관련 $105B 보증을 포함해 총 maximum gross guarantee exposure $108.5B를 공시한다. 지원 대상 매출·AR 귀속액은 미공시다. 따라서 고객가치 Veto는 cleared지만 unit_economics는 '규모경제 확인'보다 '혼재'에 가깝다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 매출 $96,221M에서 gross margin 75.0%, operating margin 66.2%, 판관비/매출 1.4%를 기록했다. 낮은 판매비로 높은 가격과 수요를 유지했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L126-L161, L2091-L2100",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 75,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-CUSTOMER-VALUE-001",
+      "economic_driver": "pricing_power_and_customer_value"
+    },
+    {
+      "claim": "H1 FY27 이연매출 증가분에 고객 선수금 $15,600M이 포함됐고, 미지급비용 내 고객 선수금 잔액은 FY26 말 $160M에서 $2,800M으로 늘었다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt Note 7 and deferred-revenue footnotes",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 15600,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-ADVANCES-002",
+      "economic_driver": "customer_commitment"
+    },
+    {
+      "claim": "Q2 FY27 Hyperscale 매출은 $48,710M으로 +102% y/y, AI Clouds/Industrial/Enterprise는 $40,313M으로 +138% y/y 성장했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt Revenue by Market Platform",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 138,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-USAGE-003",
+      "economic_driver": "usage_expansion"
+    },
+    {
+      "claim": "수요 지원 구조는 H1 지분증권 매입 $42,404M 외에 별도 AI-cloud agreements $36B와 maximum gross guarantees $108.5B를 포함한다. $108.5B 중 $105B는 SB Energy/OpenAI 관련 조건부 보증으로 FY2029부터 9개 phase에 걸쳐 활성화될 수 있으며 즉시 현금부채는 아니다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1761-L1818, L2193-L2197; sources/financials/normalized_financials.json FACT-0102",
+      "period": "FY27 H1 / August 2026 post-quarter event",
+      "as_of_date": "2026-08-26",
+      "value": 108500,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-FINANCING-004",
+      "economic_driver": "vendor_financing_risk"
+    },
+    {
+      "claim": "Q2 최대 직접고객은 매출의 16%, H1 상위 3개는 44%였다. 중국 데이터센터 시장에서 사실상 배제됐음에도 Q2 매출은 +105.9% y/y였다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2076-L2077, L2548-L2549, L2838-L2857",
+      "period": "FY27 Q2 and H1",
+      "as_of_date": "2026-07-26",
+      "value": 16,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-CONCENTRATION-005",
+      "economic_driver": "dependency_resilience"
+    },
+    {
+      "claim": "FY26에서 Q2 FY27까지 gross margin은 71.1%에서 75.0%, operating margin은 60.4%에서 66.2%로 개선됐다. 규모 증가와 함께 단위경제가 강화됐다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt and 10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY26 to FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 66.2,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-UNIT-ECONOMICS-006",
+      "economic_driver": "operating_leverage"
+    }
+  ],
+  "counterevidence": [
+    "75.0% gross margin, 66.2% operating margin, 낮은 판관비는 제품 자체의 높은 지불의사와 규모경제를 직접 지지한다.",
+    "H1 고객 선수금 $15.6B과 기말 $2.8B은 일부 고객이 NVIDIA에 선불로 자금을 제공한다는 반대 방향의 증거다.",
+    "$105B SB Energy 보증은 즉시 현금지출이 아니라 FY2029 이후 단계적으로 활성화되는 최대 총액이며 OpenAI의 이행에 따라 감소한다.",
+    "지원 대상 고객의 매출·AR 귀속액이 미공시라 지원 구조가 총수요에서 차지하는 비중은 확정할 수 없다."
+  ],
+  "unknowns": [
+    "지분투자·$36B AI-cloud agreements·$108.5B 보증 대상 기업에서 발생한 매출 비중.",
+    "동일 대상에 귀속되는 AR 금액·결제조건·신용도.",
+    "고객의 AI 인프라 가동률과 투자 회수 기간.",
+    "공급 약정 $279B 중 확정 고객 주문으로 뒷받침되는 비중."
+  ],
+  "falsifiers": [
+    "DSO가 2개 분기 연속 50일 이하로 내려가고 AR 증가율이 매출 증가율을 밑돌면 벤더 금융 우려가 약화된다.",
+    "지분투자·보증 대상 기업향 매출이 총매출의 10% 미만으로 확인되면 자생 수요 우려는 해소된다.",
+    "고객 선수금 잔액이 2개 분기 연속 감소하면 지불의사 강화 가설은 약화된다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "고객가치 부재가 반증된다. Q2 gross margin 75.0%, 판관비/매출 1.4%, H1 고객 선수금 유입 $15.6B은 고객이 프리미엄과 선불을 지급한다는 직접 증거다. 금융지원은 별도 감시 항목이지만 가치 없는 성장이라는 구성요건은 충족하지 않는다."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "미국 수출규제로 중국 데이터센터 시장에서 사실상 배제됐지만 Q2 매출은 +105.9%였다. 규제 충격이 현실화돼도 전체 경제성이 훼손되지 않았고 최대 직접고객 비중도 16%다. 다만 Data Center 집중도는 SL에서 별도로 감점한다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "DSO",
+      "direction": "down",
+      "threshold": "50일 이하",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "고객 선수금 잔액",
+      "direction": "up",
+      "threshold": "$2.8B 이상",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "최대 직접고객 매출 비중",
+      "direction": "down",
+      "threshold": "20% 미만",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q에서 지원 대상 고객 매출·AR·DSO·대손충당과 customer advances 확인",
+    "$36B AI-cloud agreements의 제3자 사용·revenue share와 $108.5B 보증의 phase별 활성 노출 확인",
+    "공급 약정 $279B의 고객 주문 연동·취소가능 비중 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 80,
+      "rationale": "75.0% gross margin, 1.4% 판관비율, $15.6B 고객 선수금은 강한 지불의사를 입증한다. 고객 측 회수율이 없어 90점은 배제한다."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 70,
+      "rationale": "Hyperscale +102%, ACIE +138%와 선수금 증가는 사용 확대를 지지한다. NRR·churn·코호트가 없어 직접적인 유지율 75점 기준에는 못 미친다."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 50,
+      "rationale": "gross margin·operating margin은 규모경제를 지지하지만, 정책이 벤더 금융을 이 criterion에 반영하도록 지정한다. frozen 10-Q의 $36B AI-cloud agreements와 $108.5B maximum gross guarantees에 대해 지원 대상 매출·AR 비중이 미공시라 현금 기준 고객획득/수요경제성을 분리할 수 없다. 따라서 75 '규모경제 확인'보다 50 '혼재' 앵커를 적용한다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "지불의사는 입증되나 고객 측 투자회수율이 미공개다."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "NRR·churn 부재로 선수금과 고객군 성장률을 대용한다."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "critical",
+      "rationale": "회계 마진은 개선되지만 AR·재고의 현금 흡수와 고객 금융지원 비중을 분리할 수 없다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  },
+  "rerun_note": "Research Orchestrator pass 4 반영. 이미 frozen primary fact였던 FACT-0102($108.5B total maximum gross guarantee exposure)와 별도 $36B AI-cloud agreements를 전파했다. Hard Veto 정의상 고객가치 부재는 반증돼 cleared를 유지하되, vendor financing은 정책대로 CP unit_economics에 반영하여 75→50으로 하향했다."
+}

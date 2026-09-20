@@ -1,0 +1,1616 @@
+{
+  "schema_version": "1.0",
+  "ticker": "NVDA-V3-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "inputs": [
+    {
+      "path": "company_context.json",
+      "exists": true,
+      "sha256": "a6f83cce5cadac36ed141d46edf6db2f278584c7ab473c5ce537c3709b43f886"
+    },
+    {
+      "path": "run_manifest.json",
+      "exists": true,
+      "sha256": "1052549ad22450a4cf07221786ca6c11d777a77b1f59c18c55fad52f9a8a26d7"
+    },
+    {
+      "path": "sources/README.md",
+      "exists": true,
+      "sha256": "37c435b095a8690c325936008163ce0e7604b9ba5c0337125726c2c5dd1ecad8"
+    },
+    {
+      "path": "sources/financials/normalized_financials.json",
+      "exists": true,
+      "sha256": "6af02c7d5c7080944dac40452e686a22e3e2e710b2a4ce4a7e88be803de13ec3"
+    },
+    {
+      "path": "sources/financials/derived_metrics.json",
+      "exists": true,
+      "sha256": "55034103244c59cd26352210c6cc44e69b36940a2f655e0f8af6647f7bcfa1ee"
+    },
+    {
+      "path": "sources/financials/adjustment_candidates.json",
+      "exists": true,
+      "sha256": "ab557dcfd717660061cf3b59dd05c29401d7132941d607a992180733ceefd680"
+    },
+    {
+      "path": "sources/financials/qa_report.json",
+      "exists": true,
+      "sha256": "9e301c8798cad8af5775f60f08cedd804c4cd7875bf9f9ff22ca394a483f7a12"
+    },
+    {
+      "path": "reports/AS.json",
+      "exists": true,
+      "sha256": "a9d39286867927e344d0f3d516782141d334501614b6a232ab5f8a9cec6a3d4e"
+    },
+    {
+      "path": "reports/CP.json",
+      "exists": true,
+      "sha256": "733627870757b5c98f0f2accb53364450c83a4328a1d633b27e1751a6829a8e4"
+    },
+    {
+      "path": "reports/DI.json",
+      "exists": true,
+      "sha256": "dd9a9143ad30fbd2bd5f009aebbda9aa0e3d2e0b42ee92762b3b581732a2745f"
+    },
+    {
+      "path": "reports/EV.json",
+      "exists": true,
+      "sha256": "6c7369f363ec2c0caa67d52fddcfb09bb2a621f72e1ee94312f31c7350774541"
+    },
+    {
+      "path": "reports/FS.json",
+      "exists": true,
+      "sha256": "188e6ddcb350c3bbdb19ed9e14626a53a1561d3e245c7e0f8663772074c62c2e"
+    },
+    {
+      "path": "reports/MA.json",
+      "exists": true,
+      "sha256": "98e2ed984b24ab1c98ccf626250323b39573056fc960c5124f67c0e20bd27b56"
+    },
+    {
+      "path": "reports/MT.json",
+      "exists": true,
+      "sha256": "d95c1d7895f3dda8404910ac3534d519ae26d6b20a7001704c8693040eab2d8d"
+    },
+    {
+      "path": "reports/RF.json",
+      "exists": true,
+      "sha256": "e085426933510942a303ab18361403f3c41c6b239ebf1608a4e47f17b2894d95"
+    },
+    {
+      "path": "reports/SL.json",
+      "exists": true,
+      "sha256": "5c8609a5f42453b6a779e57e74fc836ff363b6e88b60e6a4b5ac4a482dccd7ce"
+    },
+    {
+      "path": "digest.md",
+      "exists": true,
+      "sha256": "00b39db5f56fb61f40d23e281666d8f95e083edf3172b2372275182efea1fb17"
+    },
+    {
+      "path": "aggregate.json",
+      "exists": true,
+      "sha256": "964167f6360a01dffe9d2938ebace3660db80992c5540f36608029c78d877154"
+    }
+  ],
+  "input_snapshot_sha256": "27e131bf19f63c3e6eea689cd8c8c4893a262b4e0749d702200f4b9bb6259e6b",
+  "harness_plan": {
+    "stage": "early_exit",
+    "agents": {},
+    "early_exit_record": {
+      "stage": "pre_ic",
+      "last_reachable_archetypes": [
+        "compounder"
+      ],
+      "reachability_history_method": "Deterministic replay in manifest order; not a claim about wall-clock execution order.",
+      "eliminated_archetypes": {
+        "compounder": {
+          "failed_conditions": [
+            {
+              "field": "domain.moat_trajectory",
+              "op": ">=",
+              "value": 76,
+              "fit_weight": 1.0
+            },
+            {
+              "field": "domain.reinvestment_fcf",
+              "op": ">=",
+              "value": 76,
+              "fit_weight": 1.0
+            },
+            {
+              "field": "criterion.reinvestment_fcf.reinvestment_runway",
+              "op": ">=",
+              "value": 70,
+              "fit_weight": 1.0,
+              "note": "관측표가 band_centre 보간을 쓰므로 70은 도달 가능한 값이다(흡수율 약 31.67% 이상). 보간 도입 전에는 표 격자가 [50,65,80,90]뿐이라 70이 존재하지 않았고 실질 기준이 80(흡수율 35%)이었다."
+            }
+          ],
+          "missing_conditions": [],
+          "gate_failed": false,
+          "blocking_vetoes": []
+        },
+        "growth": {
+          "failed_conditions": [
+            {
+              "field": "domain.customer_product",
+              "op": ">=",
+              "value": 70,
+              "fit_weight": 1.0
+            }
+          ],
+          "missing_conditions": [],
+          "gate_failed": false,
+          "blocking_vetoes": []
+        },
+        "buffett_value": {
+          "failed_conditions": [
+            {
+              "field": "signal.price_to_base_value",
+              "op": "<=",
+              "value": 0.85,
+              "fit_weight": 1.0
+            },
+            {
+              "field": "criterion.reinvestment_fcf.fcf_per_share_quality",
+              "op": ">=",
+              "value": 75,
+              "fit_weight": 1.0
+            }
+          ],
+          "missing_conditions": [],
+          "gate_failed": false,
+          "blocking_vetoes": []
+        },
+        "moonshot": {
+          "failed_conditions": [
+            {
+              "field": "signal.market_cap_usd",
+              "op": "<=",
+              "value": 50000000000,
+              "fit_weight": 1.0
+            },
+            {
+              "field": "domain.asymmetry",
+              "op": ">=",
+              "value": 72,
+              "fit_weight": 1.0
+            }
+          ],
+          "missing_conditions": [],
+          "gate_failed": false,
+          "blocking_vetoes": []
+        }
+      },
+      "confirmed_vetoes": [],
+      "unresolved_vetoes": [],
+      "pending_vetoes": [
+        {
+          "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+          "status": "PENDING_REVIEW",
+          "owners": [
+            "MA",
+            "RT"
+          ],
+          "assessments": [
+            {
+              "agent_id": "MA",
+              "owner": true,
+              "status": "cleared",
+              "rationale": "FY26 내부통제는 경영진과 PwC가 유효하다고 결론냈고 재작성·감사인 이슈가 확인되지 않는다. 중국 관련 손실과 DSO 악화도 공시에 반영됐다. 다만 비시장성 지분 평가와 관련 고객 매출은 지속 감시한다."
+            }
+          ],
+          "missing_reports": [
+            "RT"
+          ],
+          "missing_assessments": []
+        },
+        {
+          "veto": "구조적으로 과도한 외부자본 조달 의존",
+          "status": "PENDING_REVIEW",
+          "owners": [
+            "FS",
+            "RT"
+          ],
+          "assessments": [
+            {
+              "agent_id": "FS",
+              "owner": true,
+              "status": "cleared",
+              "rationale": "H1 OCF $74.4B가 capex $4.4B와 SBC $4.0B를 충분히 상회한다. 같은 기간 차입 $24.9B보다 자사주·지분투자·배당 등 재량적 유출이 훨씬 커, 외부조달이 영업 생존에 구조적으로 필요한 요건은 반증된다."
+            }
+          ],
+          "missing_reports": [
+            "RT"
+          ],
+          "missing_assessments": []
+        },
+        {
+          "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+          "status": "PENDING_REVIEW",
+          "owners": [
+            "CP",
+            "RT"
+          ],
+          "assessments": [
+            {
+              "agent_id": "CP",
+              "owner": true,
+              "status": "cleared",
+              "rationale": "고객가치 부재가 반증된다. Q2 gross margin 75.0%, 판관비/매출 1.4%, H1 고객 선수금 유입 $15.6B은 고객이 프리미엄과 선불을 지급한다는 직접 증거다. 금융지원은 별도 감시 항목이지만 가치 없는 성장이라는 구성요건은 충족하지 않는다."
+            }
+          ],
+          "missing_reports": [
+            "RT"
+          ],
+          "missing_assessments": []
+        },
+        {
+          "veto": "증분 ROIC의 구조적 붕괴",
+          "status": "PENDING_REVIEW",
+          "owners": [
+            "RF",
+            "RT"
+          ],
+          "assessments": [
+            {
+              "agent_id": "RF",
+              "owner": true,
+              "status": "cleared",
+              "rationale": "FY25→FY26 영업자본 기준 증분 ROIC 약 101%로 자본비용을 크게 상회한다. ROIC 수준 하락과 지분증권 포함 정의는 감시하지만 구조적 붕괴의 구성요건은 없다."
+            }
+          ],
+          "missing_reports": [
+            "RT"
+          ],
+          "missing_assessments": []
+        },
+        {
+          "veto": "해자의 지속적인 축소",
+          "status": "PENDING_REVIEW",
+          "owners": [
+            "MT",
+            "RT"
+          ],
+          "assessments": [
+            {
+              "agent_id": "MT",
+              "owner": true,
+              "status": "cleared",
+              "rationale": "매출이 배가되는 동안 gross margin이 71.1%→75.0%로 상승했고 컴퓨트·네트워킹이 함께 성장했다. 개발자 750만명과 앱 6,000개의 생태계도 유지된다. 하이퍼스케일러·중국 경쟁·벤더 중립성은 확대 폭을 줄이는 위험으로 감시한다."
+            }
+          ],
+          "missing_reports": [
+            "RT"
+          ],
+          "missing_assessments": []
+        },
+        {
+          "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+          "status": "PENDING_REVIEW",
+          "owners": [
+            "EV",
+            "AS",
+            "RT"
+          ],
+          "assessments": [
+            {
+              "agent_id": "AS",
+              "owner": true,
+              "status": "cleared",
+              "rationale": "현재가 $222.27는 Bull 가치 $431.14의 51.6%로, 현재가가 Bull 시나리오 가치를 초과한다는 구성요건이 반증된다."
+            },
+            {
+              "agent_id": "EV",
+              "owner": true,
+              "status": "cleared",
+              "rationale": "현재가 $222.27는 Base $212.86의 1.044배이고 Bull $431.14보다 48% 낮다. 따라서 현재가가 Bull 시나리오 가치를 초과한다는 구성요건은 반증된다. Base 가정의 야심성은 점수와 uncertainty에 반영한다."
+            }
+          ],
+          "missing_reports": [
+            "RT"
+          ],
+          "missing_assessments": []
+        },
+        {
+          "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+          "status": "PENDING_REVIEW",
+          "owners": [
+            "CP",
+            "RT"
+          ],
+          "assessments": [
+            {
+              "agent_id": "CP",
+              "owner": true,
+              "status": "cleared",
+              "rationale": "미국 수출규제로 중국 데이터센터 시장에서 사실상 배제됐지만 Q2 매출은 +105.9%였다. 규제 충격이 현실화돼도 전체 경제성이 훼손되지 않았고 최대 직접고객 비중도 16%다. 다만 Data Center 집중도는 SL에서 별도로 감점한다."
+            }
+          ],
+          "missing_reports": [
+            "RT"
+          ],
+          "missing_assessments": []
+        }
+      ],
+      "future_reentry": {
+        "required_conditions": {
+          "compounder": {
+            "failed_conditions": [
+              {
+                "field": "domain.moat_trajectory",
+                "op": ">=",
+                "value": 76,
+                "fit_weight": 1.0
+              },
+              {
+                "field": "domain.reinvestment_fcf",
+                "op": ">=",
+                "value": 76,
+                "fit_weight": 1.0
+              },
+              {
+                "field": "criterion.reinvestment_fcf.reinvestment_runway",
+                "op": ">=",
+                "value": 70,
+                "fit_weight": 1.0,
+                "note": "관측표가 band_centre 보간을 쓰므로 70은 도달 가능한 값이다(흡수율 약 31.67% 이상). 보간 도입 전에는 표 격자가 [50,65,80,90]뿐이라 70이 존재하지 않았고 실질 기준이 80(흡수율 35%)이었다."
+              }
+            ],
+            "missing_conditions": [],
+            "gate_failed": false,
+            "blocking_vetoes": []
+          },
+          "growth": {
+            "failed_conditions": [
+              {
+                "field": "domain.customer_product",
+                "op": ">=",
+                "value": 70,
+                "fit_weight": 1.0
+              }
+            ],
+            "missing_conditions": [],
+            "gate_failed": false,
+            "blocking_vetoes": []
+          },
+          "buffett_value": {
+            "failed_conditions": [
+              {
+                "field": "signal.price_to_base_value",
+                "op": "<=",
+                "value": 0.85,
+                "fit_weight": 1.0
+              },
+              {
+                "field": "criterion.reinvestment_fcf.fcf_per_share_quality",
+                "op": ">=",
+                "value": 75,
+                "fit_weight": 1.0
+              }
+            ],
+            "missing_conditions": [],
+            "gate_failed": false,
+            "blocking_vetoes": []
+          },
+          "moonshot": {
+            "failed_conditions": [
+              {
+                "field": "signal.market_cap_usd",
+                "op": "<=",
+                "value": 50000000000,
+                "fit_weight": 1.0
+              },
+              {
+                "field": "domain.asymmetry",
+                "op": ">=",
+                "value": 72,
+                "fit_weight": 1.0
+              }
+            ],
+            "missing_conditions": [],
+            "gate_failed": false,
+            "blocking_vetoes": []
+          }
+        },
+        "requirements": [
+          "New evidence must satisfy all gates for at least one archetype.",
+          "Complete core coverage, deterministic valuation and all veto ownership before any buy."
+        ]
+      },
+      "ic_intentionally_not_run": true,
+      "statement": "IC was intentionally not run because no investable archetype remains reachable."
+    }
+  },
+  "questions": [
+    {
+      "research_question_id": "RQ-AS-18731F3C96",
+      "question": "$108.5B maximum gross guarantees의 확률가중 기대손실·회수권·phase별 실제 노출.",
+      "agent_id": "AS",
+      "domain": "asymmetry",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-AS-387899600E",
+      "question": "정상화 owner-FCF margin과 네트워킹·소프트웨어의 독립 가치기여.",
+      "agent_id": "AS",
+      "domain": "asymmetry",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-AS-67CD5042AD",
+      "question": "$5T+ 시가총액에서 장기적으로 $100B+ owner FCF를 유지한 비교기업 기준율.",
+      "agent_id": "AS",
+      "domain": "asymmetry",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-AS-7F1E9ECB99",
+      "question": "지분투자·AI-cloud agreements·보증 대상 고객의 매출·AR 비중.",
+      "agent_id": "AS",
+      "domain": "asymmetry",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-AS-A5C704927D",
+      "question": "보증·AI-cloud agreements의 실제 활성 노출과 손실·revenue share 확인",
+      "agent_id": "AS",
+      "domain": "asymmetry",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-AS-BBD2C6F2C8",
+      "question": "지원 대상 고객의 매출·AR 및 DSO 추적",
+      "agent_id": "AS",
+      "domain": "asymmetry",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-AS-F65D40207E",
+      "question": "owner FCF 정상화 후 Bear/Base/Bull 확률과 가중가치 재산출",
+      "agent_id": "AS",
+      "domain": "asymmetry",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-CP-3EAC9B3856",
+      "question": "공급 약정 $279B의 고객 주문 연동·취소가능 비중 확인",
+      "agent_id": "CP",
+      "domain": "customer_product",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-CP-42C7060D7F",
+      "question": "지분투자·$36B AI-cloud agreements·$108.5B 보증 대상 기업에서 발생한 매출 비중.",
+      "agent_id": "CP",
+      "domain": "customer_product",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-CP-7F524B4C9F",
+      "question": "고객의 AI 인프라 가동률과 투자 회수 기간.",
+      "agent_id": "CP",
+      "domain": "customer_product",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-CP-8D18D2A37E",
+      "question": "공급 약정 $279B 중 확정 고객 주문으로 뒷받침되는 비중.",
+      "agent_id": "CP",
+      "domain": "customer_product",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-CP-9ED4793739",
+      "question": "동일 대상에 귀속되는 AR 금액·결제조건·신용도.",
+      "agent_id": "CP",
+      "domain": "customer_product",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-CP-A403457778",
+      "question": "$36B AI-cloud agreements의 제3자 사용·revenue share와 $108.5B 보증의 phase별 활성 노출 확인",
+      "agent_id": "CP",
+      "domain": "customer_product",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-CP-DA9B67D0AE",
+      "question": "Q3 FY27 10-Q에서 지원 대상 고객 매출·AR·DSO·대손충당과 customer advances 확인",
+      "agent_id": "CP",
+      "domain": "customer_product",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-DI-127CC077A9",
+      "question": "AI-cloud agreements·guarantees의 실제 사용액과 관련 Data Center revenue 비중",
+      "agent_id": "DI",
+      "domain": "disruptive_innovation",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-DI-1DF4587D8B",
+      "question": "Rubin과 leading custom ASIC의 comparable production TCO per token.",
+      "agent_id": "DI",
+      "domain": "disruptive_innovation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-DI-A3B2CC3675",
+      "question": "장기 hyperscaler custom-silicon 점유율 변화.",
+      "agent_id": "DI",
+      "domain": "disruptive_innovation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-DI-B9AD35778A",
+      "question": "$36B AI-cloud agreements·$108.5B 보증 대상 고객의 Data Center 매출 비중.",
+      "agent_id": "DI",
+      "domain": "disruptive_innovation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-DI-BAB6DC4972",
+      "question": "Spectrum-X·software revenue·Rubin shipment mix의 다음 공시",
+      "agent_id": "DI",
+      "domain": "disruptive_innovation",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-DI-D3DE10D60F",
+      "question": "독립 Rubin/custom ASIC production TCO와 MLCommons 최종 결과",
+      "agent_id": "DI",
+      "domain": "disruptive_innovation",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-DI-FB0A6197C2",
+      "question": "NVIDIA recurring AI software revenue·gross margin의 독립 공시.",
+      "agent_id": "DI",
+      "domain": "disruptive_innovation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-EV-16913499D8",
+      "question": "$108.5B maximum gross guarantees의 확률가중 손실과 phase별 활성 노출.",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-EV-1D6DD0BD69",
+      "question": "future commitments 갱신과 owner FCF 정상화 후 Bear/Base/Bull 재산출",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-EV-284A51C031",
+      "question": "중국 데이터센터 시장 재진입 시점과 규모.",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-EV-33AB28372C",
+      "question": "지분투자·$36B AI-cloud agreements·$108.5B 보증 대상 고객의 매출·AR 비중.",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-EV-6D6A5C4A80",
+      "question": "비시장성 지분 $51.2B의 실현 가능 가치와 Hugging Face의 장기 현금기여.",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-EV-7D00288BA9",
+      "question": "FY28 supply/capacity 약정 $87B가 수요 정체 신호인지 발주 시계 한계인지.",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-EV-A4BDE7508D",
+      "question": "Q3 FY27에서 AR·DSO·customer advances 및 지원 대상 고객 매출 비중 확인",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-EV-D02C93D441",
+      "question": "$36B AI-cloud agreements와 $108.5B 보증의 실제 사용·손실·revenue share 확인",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-FS-3B18F992A4",
+      "question": "다음 10-Q에서 $279B 공급약정과 $56B 추가약정의 취소가능액·지급시기 갱신",
+      "agent_id": "FS",
+      "domain": "financial_survival",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-FS-64A5FD5D4D",
+      "question": "June 2026 신규채권의 만기별 원금·쿠폰과 fixed/floating 노출.",
+      "agent_id": "FS",
+      "domain": "financial_survival",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-FS-8CBB6D9743",
+      "question": "신규채권 만기벽과 향후 5년 상환표 갱신",
+      "agent_id": "FS",
+      "domain": "financial_survival",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-FS-BC38165336",
+      "question": "$108.5B 보증의 phase별 활성 노출·손실·escrow·회수 현황 확인",
+      "agent_id": "FS",
+      "domain": "financial_survival",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-FS-D08764C9B5",
+      "question": "$108.5B maximum gross guarantees의 phase별 활성 금액, counterparty PD, recovery/recourse.",
+      "agent_id": "FS",
+      "domain": "financial_survival",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-FS-DCD1CE629F",
+      "question": "$36B AI-cloud agreements와 $20B third-party leases의 제3자 사용으로 감소하는 실제 약정액.",
+      "agent_id": "FS",
+      "domain": "financial_survival",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-FS-F5FCA3E796",
+      "question": "$279B supply/capacity commitments의 stress-case 취소·재조정 가능 비중.",
+      "agent_id": "FS",
+      "domain": "financial_survival",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MA-36025CC77C",
+      "question": "비시장성 지분 평가기법과 실현 수익률 확인",
+      "agent_id": "MA",
+      "domain": "management_allocation",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MA-6203631B92",
+      "question": "Groq·Hugging Face 및 AI-cloud support의 기대수익·통합 KPI.",
+      "agent_id": "MA",
+      "domain": "management_allocation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MA-66D2F283F8",
+      "question": "지분투자·보증 대상별 투자액과 관련 매출·AR.",
+      "agent_id": "MA",
+      "domain": "management_allocation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MA-75E4D72E49",
+      "question": "보증·AI-cloud agreements 대상 고객의 매출·AR와 phase별 실제 노출 확인",
+      "agent_id": "MA",
+      "domain": "management_allocation",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MA-C7F4B75DA4",
+      "question": "비시장성 지분 $51.2B의 평가기법과 민감도.",
+      "agent_id": "MA",
+      "domain": "management_allocation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MA-D59863686E",
+      "question": "$108.5B 보증의 확률가중 기대손실·회수권·phase별 실제 노출.",
+      "agent_id": "MA",
+      "domain": "management_allocation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MA-E230207F00",
+      "question": "Hugging Face·Groq·AI-cloud support의 사후 ROIC/KPI 확인",
+      "agent_id": "MA",
+      "domain": "management_allocation",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MT-22D1805F48",
+      "question": "FY27 10-K 개발자·앱·TOP500 동일 정의 갱신",
+      "agent_id": "MT",
+      "domain": "moat_trajectory",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MT-4BC2BCF222",
+      "question": "지원 대상 ACIE 매출 비중과 custom ASIC 점유율·경쟁당국 조치",
+      "agent_id": "MT",
+      "domain": "moat_trajectory",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MT-62B8A59B9A",
+      "question": "공급 정상화 후 지속 가능한 gross margin.",
+      "agent_id": "MT",
+      "domain": "moat_trajectory",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MT-6EBA245F89",
+      "question": "Q3 FY27 gross margin과 Hyperscale·ACIE 구성",
+      "agent_id": "MT",
+      "domain": "moat_trajectory",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MT-93BCEA3F45",
+      "question": "개발자·앱·TOP500 동일 정의 증가 시계열.",
+      "agent_id": "MT",
+      "domain": "moat_trajectory",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MT-A153F0F81B",
+      "question": "CUDA에서 대체 플랫폼으로 전환하는 실제 비용.",
+      "agent_id": "MT",
+      "domain": "moat_trajectory",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MT-ABCCB5C023",
+      "question": "$36B AI-cloud agreements·$108.5B 보증 대상 고객의 ACIE 매출 비중.",
+      "agent_id": "MT",
+      "domain": "moat_trajectory",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-MT-ACE39AC91D",
+      "question": "커스텀 ASIC의 가속 컴퓨트 물량·금액 점유율.",
+      "agent_id": "MT",
+      "domain": "moat_trajectory",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-RF-04F5553A4E",
+      "question": "maintenance capex와 R&D의 유지/성장 구분(searched_but_not_found).",
+      "agent_id": "RF",
+      "domain": "reinvestment_fcf",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-RF-3335892D7E",
+      "question": "Groq 라이선스 약 $15.9B이 창출한 증분 이익.",
+      "agent_id": "RF",
+      "domain": "reinvestment_fcf",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-RF-4F49658B5E",
+      "question": "보증·AI-cloud support의 실제 현금유출·관련 매출·ROIC 확인",
+      "agent_id": "RF",
+      "domain": "reinvestment_fcf",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-RF-6D4E7F9D6D",
+      "question": "$108.5B 보증의 실제 활성액·손실과 $36B AI-cloud agreements의 현금사용액.",
+      "agent_id": "RF",
+      "domain": "reinvestment_fcf",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-RF-C8FD3CF100",
+      "question": "지분증권 $93.9B과 보증·AI-cloud support 대상에서 발생한 관련 매출·실현 수익률.",
+      "agent_id": "RF",
+      "domain": "reinvestment_fcf",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-RF-CF9C62A5EE",
+      "question": "운전자본 증가가 일시적 계약효과인지 영구 수준 이동인지.",
+      "agent_id": "RF",
+      "domain": "reinvestment_fcf",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-RF-EA6BDA47F5",
+      "question": "Q3 FY27 TTM owner FCF·DSO와 재투자 흡수율 갱신",
+      "agent_id": "RF",
+      "domain": "reinvestment_fcf",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-RF-F1B3B2F153",
+      "question": "비시장성 지분 평가기법과 실현 수익률 확인",
+      "agent_id": "RF",
+      "domain": "reinvestment_fcf",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-SL-2E65C8DF08",
+      "question": "중국 데이터센터 시장 재진입 가능성.",
+      "agent_id": "SL",
+      "domain": "structural_leadership",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-SL-57E456EC70",
+      "question": "Q3 Data Center 내 Hyperscale·ACIE·Edge 구성",
+      "agent_id": "SL",
+      "domain": "structural_leadership",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-SL-615FD5ED71",
+      "question": "최근 성장의 가격·물량 기여도.",
+      "agent_id": "SL",
+      "domain": "structural_leadership",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-SL-8A90FE27FB",
+      "question": "경쟁당국 조사의 구제조치 범위와 시기.",
+      "agent_id": "SL",
+      "domain": "structural_leadership",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-SL-BA3E86DA5A",
+      "question": "FY27 10-K의 개발자 수·앱·TOP500 갱신치",
+      "agent_id": "SL",
+      "domain": "structural_leadership",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-SL-BD1232A516",
+      "question": "다음 10-Q의 경쟁당국 조사·구제조치",
+      "agent_id": "SL",
+      "domain": "structural_leadership",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-SL-FC777C1E86",
+      "question": "가속 컴퓨트 시장의 물량·금액 점유율.",
+      "agent_id": "SL",
+      "domain": "structural_leadership",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    }
+  ]
+}

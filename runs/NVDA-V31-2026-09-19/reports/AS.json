@@ -1,0 +1,173 @@
+{
+  "agent_id": "AS",
+  "ticker": "NVDA-V3-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 66.75,
+  "confidence_0_1": 0.65,
+  "bull_score": 85,
+  "bear_score": 35,
+  "bull_case": "AI 인프라 수요가 장기화되고 데이터센터 컴퓨트 외 네트워킹·소프트웨어 가치풀이 확대되면 Bull 가치 $431로 현재가의 1.94배다. 순현금과 높은 현금창출력은 재투자를 지원한다. 다만 시가총액이 이미 $5.4T여서 5x·10x보다 약 2x 경로가 현실적이다.",
+  "bear_case": "AI-cloud 지원 대상의 매출·AR 비중과 보증의 확률가중 손실이 미공시다. 수요 둔화가 고객 신용악화와 겹치면 매출 감소와 $108.5B maximum gross guarantee exposure의 일부 활성화가 동시 발생할 수 있어 downside correlation이 커진다.",
+  "thesis": "Bull/현재가 1.94배의 두 상승경로는 의미 있지만 Power Law는 아니다. Bear/현재가 0.34배로 가격 하방은 크다. 새로 전파된 $36B AI-cloud agreements와 $108.5B maximum gross guarantees는 수요 둔화와 고객 신용사건이 동시에 발생할 때 하방 상관을 키운다. 다만 $105B 보증은 FY2029 이후 단계적·조건부 maximum cap이고 현재 순현금 $23.2B, TTM OCF $134.4B가 총차입을 크게 웃돈다. 확률가중 손실 자료가 없어 Bear/Base/Bull 확률과 observable subscores는 유지한다.",
+  "evidence": [
+    {
+      "evidence_id": "SUP-AS-UPSIDE-001",
+      "economic_driver": "power_law_upside",
+      "claim": "Locked-policy Bull value is $431.14, or 1.94x the $222.27 current price; independent upside routes are continued accelerated-compute growth and expansion into networking/software value pools.",
+      "source_type": "other",
+      "source": "harness deterministic_valuation; runs/NVDA-V3-2026-09-19/company_context.json",
+      "period": "10-year scenario from 2026-09-19",
+      "as_of_date": "2026-09-19",
+      "value": 1.9397,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "SUP-AS-DOWNSIDE-002",
+      "economic_driver": "permanent_loss_buffer",
+      "claim": "Locked-policy Bear value is $74.99, or 0.3374x the current price. The observable anchor starts at 50, and verified net cash plus TTM OCF above debt adds the specified 10-point modifier.",
+      "source_type": "other",
+      "source": "harness deterministic_valuation; runs/NVDA-V3-2026-09-19/sources/README.md",
+      "period": "10-year scenario from 2026-09-19",
+      "as_of_date": "2026-09-19",
+      "value": 0.3374,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "SUP-AS-PROBABILITY-003",
+      "economic_driver": "scenario_probability",
+      "claim": "Using explicit Bear/Base/Bull probabilities of 25%/55%/20% produces a probability-weighted present value of $222.05 per share, approximately equal to the current price.",
+      "source_type": "other",
+      "source": "AS scenario calibration using locked harness values",
+      "period": "as of 2026-09-19",
+      "as_of_date": "2026-09-19",
+      "value": 222.05,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "SUP-AS-LIQUIDITY-004",
+      "economic_driver": "permanent_loss_buffer",
+      "claim": "At 2026-07-26, cash plus marketable debt securities was $56,586M, debt was $33,366M and net cash was $23,220M; estimated TTM operating cash flow was $134,360M.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L280-L345, L2693-L2730; sources/README.md",
+      "period": "2026-07-26 and TTM",
+      "as_of_date": "2026-08-26",
+      "value": 23220,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-AS-ADOPTION-005",
+      "economic_driver": "ai_infrastructure_adoption",
+      "claim": "Q2 FY27 Data Center revenue was $89,023M, up 117% year over year and 18% sequentially; Q2 gross margin was 75.0% and operating margin was 66.2%.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L126-L161, L2338-L2340, L2557",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-26",
+      "value": 89023,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-AS-COMMITMENTS-006",
+      "economic_driver": "capacity_commitment_risk",
+      "claim": "Future commitments totaled $366B, including $279B of supply and capacity commitments; the company also disclosed customer infrastructure guarantees and customer financing constraints.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1670-L1760, L2192-L2193",
+      "period": "2026-07-26",
+      "as_of_date": "2026-08-26",
+      "value": 366,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "순현금 $23.2B와 TTM OCF $134.4B는 총차입 $33.4B를 크게 상회해 현재 파산경로를 제한한다.",
+    "$105B SB Energy 보증은 즉시 전액 활성화되는 부채가 아니라 FY2029 이후 9개 phase에 걸친 maximum gross cap이다.",
+    "반대로 지원 대상 매출·AR 비중이 미공시라 수요 둔화와 신용손실의 상관관계를 정량화할 수 없다.",
+    "Bull 경로의 네트워킹·소프트웨어 독립 수익화도 아직 별도 공시가 부족하다."
+  ],
+  "unknowns": [
+    "$108.5B maximum gross guarantees의 확률가중 기대손실·회수권·phase별 실제 노출.",
+    "지분투자·AI-cloud agreements·보증 대상 고객의 매출·AR 비중.",
+    "정상화 owner-FCF margin과 네트워킹·소프트웨어의 독립 가치기여.",
+    "$5T+ 시가총액에서 장기적으로 $100B+ owner FCF를 유지한 비교기업 기준율."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Two paths exist, but both depend on the same AI-infrastructure spending cycle and therefore are not fully independent."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Balance-sheet failure risk is low, while valuation-driven loss remains large because Bear value is only 34% of price."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "critical",
+      "rationale": "Scenario probabilities are explicit and sensitivity-tested but lack a directly comparable mega-cap base-rate dataset."
+    }
+  ],
+  "falsifiers": [
+    "If independently monetized networking and software fail to exceed 15% of revenue within three years, the second upside path is not independent and upside_path should fall.",
+    "If TTM owner FCF drops below total debt or net cash turns to net debt while commitments remain above annual revenue, the permanent-loss buffer is weakened.",
+    "If an updated probability-weighted value remains at least 20% above price under Bear probability of 35% or more, the neutral asymmetry conclusion is falsified positively."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "현재가 $222.27는 Bull 가치 $431.14의 51.6%로, 현재가가 Bull 시나리오 가치를 초과한다는 구성요건이 반증된다."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "순현금 $23.2B이고 TTM OCF $134.4B가 총차입 $33.4B를 약 4배 웃돌며 Bear 경로도 양의 owner FCF를 유지한다. 가격 하방은 크지만 사업가치 소멸 요건은 반증된다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Bull value / current price",
+      "direction": "up",
+      "threshold": "2.5x 이상과 독립 상승경로 3개",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "owner FCF / total debt",
+      "direction": "up",
+      "threshold": "2.0x 이상 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "commitments / TTM revenue",
+      "direction": "down",
+      "threshold": "1.0x 미만",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "보증·AI-cloud agreements의 실제 활성 노출과 손실·revenue share 확인",
+    "지원 대상 고객의 매출·AR 및 DSO 추적",
+    "owner FCF 정상화 후 Bear/Base/Bull 확률과 가중가치 재산출"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "Bull/현재가 1.94배이고 컴퓨트 지속성 및 네트워킹·소프트웨어 확장의 두 경로가 있어 observable anchor의 1.6~2.5배·2개 이상 행에 해당한다. 2.5배와 3개 경로가 없어 90점을 배제한다."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 60,
+      "rationale": "Bear/현재가 0.3374는 큰 가격 하방을 보인다. 정책상 vendor financing은 이 criterion의 uncertainty로 반영한다: $108.5B는 maximum gross exposure이고 $105B는 FY2029 이후 단계적·조건부여서 현재 사업가치 소멸을 직접 뜻하지 않는다. 순현금이고 TTM OCF가 총차입을 상회하는 +10 modifier를 유지해 60점으로 둔다."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 65,
+      "rationale": "25%/55%/20% 확률과 가중가치 민감도를 명시해 50점의 근거 제한 단계는 넘지만, 비교 가능한 mega-cap 기준율이 없어 75점의 기준율 사용 앵커에는 미달한다."
+    }
+  ],
+  "rerun_note": "Research Orchestrator pass 4 반영. Vendor-financing risk를 permanent_loss의 downside-correlation uncertainty로 명시했지만 maximum gross cap을 현재부채로 처리하지 않았고, 정량 expected-loss 자료가 없어 observable subscore와 확률을 임의 변경하지 않았다."
+}

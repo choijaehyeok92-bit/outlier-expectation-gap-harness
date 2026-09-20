@@ -1,0 +1,184 @@
+{
+  "agent_id": "MT",
+  "ticker": "NVDA-V3-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 73.75,
+  "confidence_0_1": 0.75,
+  "bull_score": 85,
+  "bear_score": 50,
+  "bull_case": "매출이 배가되는 동안 gross margin은 71.1%에서 75.0%로 올랐다. CUDA 개발자 750만명, 지원 앱 6,000개, TOP500 78%는 측정 가능한 생태계다. 컴퓨트 +59%와 네트워킹 +142%의 동시 성장은 칩·네트워크·소프트웨어 해자가 함께 확장됨을 보여준다.",
+  "bear_case": "대체 압력의 주체가 자금력이 큰 하이퍼스케일러 고객이다. 중국 배제는 현지 경쟁사의 개발자 생태계를 키웠고, Groq 비독점 라이선스에 약 $15.9B을 썼다. Hugging Face의 타 실리콘 지원 약정은 생태계 확대와 동시에 배타적 락인을 낮춘다.",
+  "thesis": "해자는 관측상 확대 방향을 유지한다. gross margin 상승, 컴퓨트·네트워킹 동반성장, CUDA 개발자 750만·앱 6,000개·TOP500 78%가 이를 지지한다. 다만 생태계 확대의 자생성에는 추가 불확실성이 생겼다. $36B AI-cloud agreements와 $108.5B maximum gross guarantees가 고객 인프라 배치를 지원하며 관련 매출 비중은 미공시다. 이는 현재 해자 축소의 증거는 아니지만 switching/pricing의 원인을 순수 제품력만으로 해석하기 어렵게 한다. 관측표 밴드는 변하지 않아 73.75를 유지한다.",
+  "evidence": [
+    {
+      "claim": "FY26에서 Q2 FY27까지 gross margin은 71.1%에서 75.0%로 상승했고 Q2 매출은 +105.9% y/y였다. 분기 동일 기준 비교도 확보됐다: Q2 FY26 GAAP 72.4% → Q2 FY27 GAAP 75.0%(+2.6%p).",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt and 10-Q_FY27Q2_filed_2026-08-26.txt L126-L161; sources/financials/normalized_financials.json DOC-018 (NVDA-F2Q27-Quarterly-Presentation-final-1.pdf) p.9/p.13/p.14",
+      "period": "FY26 to FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 75,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-MT-PRICING-001",
+      "economic_driver": "pricing_power"
+    },
+    {
+      "claim": "CUDA 및 자사 소프트웨어 개발자는 750만명 이상, 지원 애플리케이션은 6,000개, 네트워킹 포함 TOP500 구동 비중은 78%다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt L179, L222",
+      "period": "FY26",
+      "as_of_date": "2026-01-25",
+      "value": 7500000,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-MT-ECOSYSTEM-002",
+      "economic_driver": "developer_network_effect"
+    },
+    {
+      "claim": "FY26 Data Center 컴퓨트 매출은 +59%, 네트워킹은 +142% 성장했다. GPU뿐 아니라 NVLink·InfiniBand·Spectrum-X를 포함한 시스템 계층이 함께 확장됐다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt L965",
+      "period": "FY26",
+      "as_of_date": "2026-01-25",
+      "value": 142,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-MT-FULL-STACK-003",
+      "economic_driver": "full_stack_switching_cost"
+    },
+    {
+      "claim": "NVIDIA는 중국 데이터센터 시장 배제가 경쟁사의 개발자·고객 생태계 확대를 도왔다고 공시했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt L270 and 10-Q_FY27Q2_filed_2026-08-26.txt L2838-L2857",
+      "period": "FY26 to FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-MT-CHINA-004",
+      "economic_driver": "regional_moat_erosion"
+    },
+    {
+      "claim": "Groq 비독점 라이선스 지급은 약 $15.9B이고, Hugging Face 인수 계약은 플랫폼 개방과 타 실리콘 벤더 지원 유지를 명시한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt; 10-Q_FY27Q2_filed_2026-08-26.txt; 8-K_filed_2026-09-03.txt",
+      "period": "FY26 through 2026-09-03",
+      "as_of_date": "2026-09-03",
+      "value": 15944,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-MT-OPENNESS-005",
+      "economic_driver": "commoditization_risk"
+    },
+    {
+      "claim": "Q2 FY26 대비 Q2 FY27 Data Center 하위 플랫폼 절대금액이 처음 확보됐다: Hyperscale $24.2B→$48.7B, ACIE $16.9B→$40.3B. 같은 기간 최대 direct customer 매출 비중은 23%에서 16%로 낮아졌다. Q2 FY27 filing은 별도 $36B AI-cloud agreements와 $108.5B maximum gross guarantees도 공시해 일부 생태계 확장이 고객 인프라 금융지원과 연결될 수 있음을 보여준다.",
+      "source_type": "ir",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1761-L1818, L2193-L2197; sources/financials/normalized_financials.json DOC-018 (NVDA-F2Q27-Quarterly-Presentation-final-1.pdf) p.4; 10-Q_FY27Q2 L2076-L2077, L2338",
+      "period": "FY27 Q2 / August 2026",
+      "as_of_date": "2026-08-26",
+      "value": 40.3,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-MT-DCMIX-008",
+      "economic_driver": "data_center_demand_mix"
+    }
+  ],
+  "counterevidence": [
+    "최근 성장에서 구조적 수요와 공급부족·가격·금융지원 효과를 완전히 분리할 수 없다.",
+    "$36B AI-cloud agreements와 $108.5B maximum gross guarantees 때문에 ACIE 확장 일부의 자생 수요 여부가 미확인이다.",
+    "중국 배제가 경쟁사의 개발자·고객 생태계를 키웠다고 회사가 직접 공시했다.",
+    "하이퍼스케일러 자체 실리콘과 Hugging Face 벤더 중립성은 가치풀 흡수 위험을 높인다."
+  ],
+  "unknowns": [
+    "커스텀 ASIC의 가속 컴퓨트 물량·금액 점유율.",
+    "공급 정상화 후 지속 가능한 gross margin.",
+    "CUDA에서 대체 플랫폼으로 전환하는 실제 비용.",
+    "개발자·앱·TOP500 동일 정의 증가 시계열.",
+    "$36B AI-cloud agreements·$108.5B 보증 대상 고객의 ACIE 매출 비중."
+  ],
+  "falsifiers": [
+    "공급 제약 완화 후 gross margin이 70% 아래로 하락하면 가격결정력 가설을 하향한다.",
+    "Hyperscale 성장률이 2개 분기 연속 ACIE보다 30%p 이상 낮으면 자체 실리콘 침투 가설을 강화한다.",
+    "CUDA 개발자 수가 정체하거나 감소하면 생태계 피드백 가설을 기각한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "매출이 배가되는 동안 gross margin이 71.1%→75.0%로 상승했고 컴퓨트·네트워킹이 함께 성장했다. 개발자 750만명과 앱 6,000개의 생태계도 유지된다. 하이퍼스케일러·중국 경쟁·벤더 중립성은 확대 폭을 줄이는 위험으로 감시한다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Gross margin",
+      "direction": "up",
+      "threshold": "73% 이상",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Hyperscale-ACIE 성장률 격차",
+      "direction": "up",
+      "threshold": "-20%p 이상",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "CUDA 개발자 수",
+      "direction": "up",
+      "threshold": "전년 대비 증가",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 gross margin과 Hyperscale·ACIE 구성",
+    "FY27 10-K 개발자·앱·TOP500 동일 정의 갱신",
+    "지원 대상 ACIE 매출 비중과 custom ASIC 점유율·경쟁당국 조치"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 80,
+      "rationale": "매출 급증에도 gross margin이 71.1%→75.0%로 상승했고 CUDA·네트워크의 전환비용이 작동한다. 공급부족 기여를 분리할 수 없어 90점은 배제한다. [2026-09-19 갱신] 분기 동일 기준 마진 비교(72.4%→75.0%)와 최대고객 비중 하락(23%→16%)이 보강됐으나, 회사가 Q3 74.0%로 100bp 하락을 가이드했고 공급부족 기여를 여전히 분리할 수 없어 80점을 유지한다."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 75,
+      "rationale": "1차 자료의 규모 수치가 3개 이상이다: 개발자 750만명, 앱 6,000개, TOP500 78%. 동일 정의의 증가 추세가 없어 관측표상 75점이다. [2026-09-19 갱신] Hyperscale·ACIE의 동일 정의 2개 시점 금액을 신규 확보했으나 이는 수요 믹스 시계열이며, 이 criterion이 세는 생태계 규모 수치(개발자 750만·앱 6,000개·TOP500 78%)의 동일 정의 증가 추세는 여전히 미확보다. 관측표 85점 행을 충족하지 못해 75점을 유지한다."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 65,
+      "rationale": "칩·네트워크·소프트웨어의 복수 방어층이 있으나 하이퍼스케일러 자체 실리콘, 중국 경쟁 생태계, Groq 라이선스와 벤더 중립성이 방어력을 제한한다. [2026-09-19 갱신] 커스텀 ASIC 점유율에 대한 신규 1차 자료가 없고 Q3 마진 가이드는 하락 방향이어서 65점을 유지한다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "마진 상승에서 공급부족·믹스 효과를 분리할 수 없다."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "규모는 측정되지만 같은 정의의 전년 추세와 멀티호밍 난이도가 없다. 85점 행에 필요한 것은 생태계 규모 수치의 동일 정의 시계열이며, 이번에 확보된 것은 수요 믹스 시계열이다."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "critical",
+      "rationale": "하이퍼스케일러 자체 실리콘 침투율이 공시되지 않는다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  },
+  "rerun_note": "Research Orchestrator pass 4 반영. financed ecosystem expansion을 counterevidence로 추가했지만 현재 gross margin·생태계 규모·동반성장 관측치 자체는 변하지 않아 subscores와 moat veto는 유지했다."
+}
