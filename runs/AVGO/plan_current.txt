@@ -1,0 +1,20 @@
+{
+  "stage": "complete",
+  "agents": {},
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "earnings_release",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "research": {
+    "questions": 93,
+    "pending": 93,
+    "command": "python harness.py research-plan AVGO"
+  }
+}

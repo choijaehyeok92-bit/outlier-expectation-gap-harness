@@ -1,0 +1,31 @@
+{
+  "stage": "domain_analysis",
+  "agents": {
+    "customer_product": "CP",
+    "management_allocation": "MA",
+    "moat_trajectory": "MT",
+    "reinvestment_fcf": "RF",
+    "structural_leadership": "SL"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "earnings_release",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "research": {
+    "questions": 32,
+    "pending": 32,
+    "command": "python harness.py research-plan AVGO"
+  }
+}
+python harness.py prompt AVGO CP
+python harness.py prompt AVGO MA
+python harness.py prompt AVGO MT
+python harness.py prompt AVGO RF
+python harness.py prompt AVGO SL

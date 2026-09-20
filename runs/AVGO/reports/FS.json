@@ -4,56 +4,176 @@
   "as_of_date": "2026-09-18",
   "domain": "financial_survival",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 70,
+  "confidence_0_1": 0.9,
+  "bull_score": 85,
+  "bear_score": 45,
+  "bull_case": "$24.0B cash, a fully undrawn $7.5B revolver, only $2.25B debt principal due within 12 months and roughly $40.7B TTM OCF give Broadcom substantial self-funding capacity. Continued AI/software cash generation can absorb debt reduction, dividends and ordinary capex without survival financing.",
+  "bear_case": "Gross debt is about $59.4B, binding purchase/other commitments total $130.8B, and AI XPV adds a maximum $29B backstop plus conditional customer-note exposure. A customer-led AI downturn could hit demand, working capital and contingent financing at the same time.",
+  "thesis": "Broadcom's operating business is strongly self-funding, so refinancing or dilution is not currently a survival requirement. The constraint is off-balance and customer-financing exposure rather than near-term debt maturity. Binding commitments plus the XPV backstop are roughly 1.79x frozen TTM revenue, keeping the off-balance criterion at 55 despite otherwise strong liquidity.",
+  "evidence": [
+    {
+      "claim": "At 2026-08-02 Broadcom had $23.975B cash and a $7.5B unsecured revolver with no borrowings outstanding; only $2.252B of $61.079B debt principal was payable within 12 months.",
+      "source_type": "filing",
+      "source": "User-supplied 10-Q filed 2026-09-10, Liquidity and Capital Resources / Note 6",
+      "period": "2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 2.252,
+      "evidence_id": "AVGO-FS-LIQUIDITY-001",
+      "economic_driver": "liquidity_runway",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "9M FY2026 OCF was $32.950B; frozen TTM OCF is about $40.653B versus $59.419B carrying debt, while 9M net debt payments were $6.054B.",
+      "source_type": "filing",
+      "source": "User-supplied 10-Q filed 2026-09-10 plus frozen company_context arithmetic",
+      "period": "TTM to 2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 40.653,
+      "evidence_id": "AVGO-FS-CASHFLOW-002",
+      "economic_driver": "self_funding_capacity",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Binding purchase commitments were $126.821B and other contractual commitments $3.941B at 2026-08-02, concentrated in FY2027 and FY2028.",
+      "source_type": "filing",
+      "source": "User-supplied 10-Q filed 2026-09-10, Note 10",
+      "period": "2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 130762,
+      "evidence_id": "AVGO-FS-COMMIT-003",
+      "economic_driver": "contractual_cash_obligations",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "AI XPV carried a maximum potential $29B lease backstop; fair value was not material and no amounts had been paid. The customer could under conditions issue up to $42B of convertible promissory notes to Broadcom, with none issued as of the quarter end.",
+      "source_type": "filing",
+      "source": "User-supplied 10-Q filed 2026-09-10, Note 10",
+      "period": "2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 29,
+      "evidence_id": "AVGO-FS-XPV-004",
+      "economic_driver": "contingent_financing",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 diluted weighted-average shares were 4.887B versus 4.860B a year earlier, an increase of about 0.56%; 9M stock repurchases were $8.450B.",
+      "source_type": "filing",
+      "source": "User-supplied 10-Q filed 2026-09-10",
+      "period": "FY2026 Q3/9M",
+      "as_of_date": "2026-08-02",
+      "value": 0.0056,
+      "evidence_id": "AVGO-FS-DILUTION-005",
+      "economic_driver": "shareholder_dilution",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Broadcom sold $3.950B of receivables under non-recourse factoring arrangements during 9M FY2026, so reported OCF includes accelerated receivable monetization that should be monitored.",
+      "source_type": "filing",
+      "source": "User-supplied 10-Q filed 2026-09-10, Note 3",
+      "period": "FY2026 9M",
+      "as_of_date": "2026-08-02",
+      "value": 3.95,
+      "evidence_id": "AVGO-FS-FACTORING-006",
+      "economic_driver": "cash_quality",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Purchase commitments are large but are partly associated with customer programs and should not be treated as equivalent to funded debt.",
+    "The $29B backstop is a maximum contingent amount, not a current liability; management reported immaterial fair value and no payments.",
+    "The $42B potential customer notes are conditional and had not been issued, so adding the full amount to current obligations would overstate present leverage.",
+    "Receivables factoring is non-recourse and does not by itself imply liquidity stress, although it can flatter operating cash conversion."
+  ],
+  "unknowns": [
+    "The probability-weighted loss distribution and phase-by-phase funded amount of the $29B backstop are not disclosed.",
+    "The binding funding obligation, if any, associated with the up-to-$42B customer convertible-note capacity is unclear.",
+    "The fraction of $126.8B purchase commitments matched to non-cancellable customer RPO is not disclosed.",
+    "Debt maturity detail beyond the next 12 months was not reconstructed into a year-by-year stress table in this pass."
+  ],
+  "falsifiers": [
+    "Liquidity score should fall if TTM OCF drops below $25B while net debt exceeds 2x TTM OCF.",
+    "Off-balance risk becomes severe if funded backstop/customer-note exposure plus binding commitments exceeds 2x TTM revenue without matched non-cancellable customer commitments.",
+    "Dilution veto must be reconsidered if diluted shares rise more than 3% y/y for four consecutive quarters despite repurchases."
+  ],
   "hard_veto_flags": [
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Broadcom's own operations generate cash far above ordinary capex and near-term debt maturities, so the company does not require repeated external financing to operate. XPV financing supports customers and is routed to off-balance risk rather than this veto."
     },
     {
       "veto": "장기간 지속되는 과도한 희석",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Q3 diluted shares increased only about 0.56% y/y while Broadcom repurchased $8.45B of stock in 9M. The 'excessive' element is not supported even though SBC remains material."
     },
     {
       "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Cash plus undrawn revolver, strong OCF and only $2.252B principal due within 12 months refute a material near-term bankruptcy probability. Large AI commitments remain a scored tail risk, not evidence that business value is likely to be extinguished."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "net debt / TTM OCF",
+      "direction": "down",
+      "threshold": "<1.5x; review >2.0x",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "binding commitments + funded XPV exposure / TTM revenue",
+      "direction": "down",
+      "threshold": "<2.0x",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "diluted shares y/y",
+      "direction": "down",
+      "threshold": "<3% growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Reconstruct debt maturities and fixed/floating interest burden by fiscal year.",
+    "Track actual XPV backstop funding, customer-note issuance and recoveries separately from headline AI revenue.",
+    "Adjust cash-conversion analysis for receivables factoring and working-capital timing."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "liquidity_leverage",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Cash $23.975B, undrawn $7.5B revolver, roughly $40.7B TTM OCF and only $2.252B debt due within 12 months fit the 75 strong-liquidity anchor. The 90 anchor is excluded because Broadcom is net debt and has large contractual commitments."
     },
     {
       "criterion_id": "stress_survival",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Current internal cash generation can cover ordinary capex and near-term maturities even under a meaningful slowdown, fitting the 75 internal-cash-defense anchor. 90 is excluded because AI purchase commitments and XPV backstop exposure could become procyclical in a customer stress event."
     },
     {
       "criterion_id": "dilution_offbalance",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 55,
+      "rationale": "Diluted shares rose about 0.56% y/y, mapping to the 0-3% row score of 55. Binding purchase commitments + other contractual commitments + maximum backstop are about $159.8B, roughly 1.79x frozen TTM revenue $89.1B, also mapping to 55; policy takes the lower axis. The conditional $42B customer-note capacity is excluded from the deterministic ratio because no notes were issued and the binding funding obligation is unclear."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "Gross debt is manageable today, but large future purchase commitments create a substantial forward cash requirement not captured by near-term debt alone."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "critical",
+      "rationale": "AI customer default could hit demand, working capital and backstop exposure at the same time."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "critical",
+      "rationale": "If the conditional $42B note capacity becomes a binding funded obligation, off-balance exposure would move above the 2x-revenue severe-risk row."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

@@ -4,46 +4,166 @@
   "as_of_date": "2026-09-18",
   "domain": "moat_trajectory",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 68,
+  "confidence_0_1": 0.86,
+  "bull_score": 85,
+  "bear_score": 45,
+  "bull_case": "Multi-generation custom-XPU design wins, Ethernet networking and increasingly non-terminable VCF contracts reinforce switching costs across silicon, fabric and software. Scale allows Broadcom to fund R&D across several infrastructure layers.",
+  "bear_case": "Custom silicon architectures are ultimately customer-controlled; hyperscalers can internalize design or multi-source. Broadcom has limited classic network effects or user-data flywheels, so its moat depends more on engineering execution and switching costs than ecosystem lock-in.",
+  "thesis": "The moat is widening through design-in switching costs and software contract durability, but it is not a closed platform moat. Pricing/switching and multi-layer technical capability are strong; measurable network/data ecosystem feedback remains limited, which keeps the domain below Compounder threshold.",
+  "evidence": [
+    {
+      "evidence_id": "AVGO-MT-CONTRACT-001",
+      "economic_driver": "switching_costs",
+      "claim": "The majority of new software contracts no longer had termination-for-convenience provisions by Q3 FY2026, while VCF demand drove infrastructure software growth.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q, MD&A",
+      "period": "FY2026 Q3",
+      "as_of_date": "2026-08-02",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-MT-PROGRAMS-002",
+      "economic_driver": "design_in_moat",
+      "claim": "OpenAI and Meta announced multi-generation custom-AI accelerator programs with Broadcom, including networking components and gigawatt-scale deployments.",
+      "source_type": "ir",
+      "source": "Broadcom official OpenAI 2026-06-24 and Meta 2026-04-14 announcements",
+      "period": "FY2026",
+      "as_of_date": "2026-06-24",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-MT-GM-003",
+      "economic_driver": "pricing_and_scale",
+      "claim": "Q3 gross margin increased to 69% from 67% y/y despite a higher semiconductor mix, which management notes carries lower gross margin than infrastructure software.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q",
+      "period": "FY2026 Q3",
+      "as_of_date": "2026-08-02",
+      "value": 0.69,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-MT-RPO-004",
+      "economic_driver": "embedded_base_scale",
+      "claim": "RPO was approximately $179.2B and included long-term custom-AI obligations; approximately 25% was expected to convert over the next 12 months.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q, Note 2",
+      "period": "2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 179200,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-MT-XPV-005",
+      "economic_driver": "deployment_ecosystem_scale",
+      "claim": "The AI XPV platform targets more than 20GW of compute through 2028 and coordinates Broadcom XPUs/networking with external financial partners and customer leases.",
+      "source_type": "ir",
+      "source": "Broadcom/Apollo/Blackstone official announcement 2026-06-09",
+      "period": "through 2028",
+      "as_of_date": "2026-06-09",
+      "value": 20,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-MT-CONCENTRATION-006",
+      "economic_driver": "customer_bargaining_power",
+      "claim": "Top-five end customers represented about 55% of Q3 revenue and one distributor represented 50%, increasing the bargaining power of a small customer/channel set.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q",
+      "period": "FY2026 Q3",
+      "as_of_date": "2026-08-02",
+      "value": 0.55,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "The custom-XPU buyer owns workload data and architecture decisions, so it can shift suppliers over generations.",
+    "RPO and GW capacity measure commercial scale, not a self-reinforcing developer/user network.",
+    "High customer concentration can transfer part of the economic moat to customers through bargaining power.",
+    "No disclosed market-share time series proves that Broadcom's share is structurally rising across all AI infrastructure layers."
+  ],
+  "unknowns": [
+    "Customer switching cost measured in dollars/time between custom-XPU suppliers.",
+    "A consistent user/developer/partner ecosystem-size series.",
+    "Broadcom's custom-AI accelerator market share and change over time.",
+    "Long-run pricing for successive XPU generations."
+  ],
+  "falsifiers": [
+    "Moat trajectory weakens if a major customer shifts two generations away from Broadcom without replacement wins.",
+    "Switching/pricing score falls if gross margin compresses below 60% without an offsetting software mix change.",
+    "Ecosystem score rises only if Broadcom discloses repeatable scale/trend metrics rather than contract value alone."
+  ],
   "hard_veto_flags": [
     {
       "veto": "해자의 지속적인 축소",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "The veto requires actual and persistent shrinkage. Current evidence shows expanding AI revenue, improving consolidated gross margin, multi-generation design wins and tighter software contracts. Future customer insourcing is a monitoring risk, not evidence that the moat is already persistently shrinking."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "gross margin",
+      "direction": "up",
+      "threshold": ">=65%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "major multi-generation XPU programs",
+      "direction": "up",
+      "threshold": ">=3",
+      "cadence": "semiannual"
+    },
+    {
+      "name": "top-five customer concentration",
+      "direction": "down",
+      "threshold": "<50%",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Obtain customer-switching case studies and XPU supplier transition costs.",
+    "Track custom-XPU and Ethernet market share separately.",
+    "Look for repeatable ecosystem participant metrics rather than contract value."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "switching_pricing",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Multi-generation custom-silicon design-ins, tighter VCF contracts and a 69% consolidated gross margin support the 75 strengthening anchor. 90 is excluded because customer concentration and architecture ownership constrain pricing power."
     },
     {
       "criterion_id": "network_data_ecosystem",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 55,
+      "rationale": "RPO and XPV capacity provide 1-2 usable scale proxies, but no same-definition user/developer/partner trend or quantified switching case is disclosed. The observable table therefore maps to 55 rather than 75."
     },
     {
       "criterion_id": "commoditization_resilience",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Custom silicon engineering, Ethernet networking and infrastructure software are distinct defense layers, fitting the 75 multiple-defense anchor. 90 is excluded because hyperscalers can internalize silicon design and standards remain open enough to multi-source."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Design-in costs are evident qualitatively but not quantified."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "Commercial scale is not the same as a network-effect flywheel."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "critical",
+      "rationale": "The strongest potential substitute is the customer itself."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

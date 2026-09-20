@@ -4,51 +4,171 @@
   "as_of_date": "2026-09-18",
   "domain": "reinvestment_fcf",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 73.5,
+  "confidence_0_1": 0.9,
+  "bull_score": 85,
+  "bear_score": 50,
+  "bull_case": "Owner FCF/share keeps compounding as AI and VMware scale on an asset-light base. TTM R&D plus capex absorbs about one-third of OCF while operating income and cash generation rise much faster than invested capital.",
+  "bear_case": "Reported OCF benefits from $3.95B of 9M receivables factoring, SBC remains large, and future AI rack/purchase commitments make growth more capital intensive than historical capex suggests. Current incremental returns may therefore overstate steady-state economics.",
+  "thesis": "Reinvestment economics are strong enough for Growth but not clean enough for a 90. A simple invested-capital bridge is consistent with very high incremental returns, TTM internal reinvestment absorption is about 32%, and owner-FCF/share has risen sharply. Factoring, SBC and AI commitments justify conservative normalization.",
+  "evidence": [
+    {
+      "evidence_id": "AVGO-RF-RD-001",
+      "economic_driver": "internal_reinvestment",
+      "claim": "TTM R&D is estimated at $11.836B from FY2025 $10.977B + 9M FY2026 $8.855B - 9M FY2025 $7.996B.",
+      "source_type": "filing",
+      "source": "User-supplied FY2025 Annual Report and Q3 FY2026 10-Q",
+      "period": "TTM to 2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 11.836,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "AVGO-RF-ABSORB-002",
+      "economic_driver": "reinvestment_runway",
+      "claim": "TTM capex is about $1.250B and TTM OCF about $40.653B; (capex + R&D)/OCF is therefore approximately 32.2%.",
+      "source_type": "filing",
+      "source": "User-supplied FY2025 Annual Report and 2025/2026 Q3 10-Qs; arithmetic",
+      "period": "TTM to 2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 0.3219,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "AVGO-RF-FCFPS-003",
+      "economic_driver": "fcf_per_share_growth",
+      "claim": "Owner-FCF proxy (OCF-capex-SBC) rises from about $19.346B/$3.99 per diluted share in FY2025 to about $30.921B/$6.33 per Q3 diluted share on a TTM basis.",
+      "source_type": "filing",
+      "source": "User-supplied FY2025 Annual Report and Q3 FY2026 10-Q; arithmetic",
+      "period": "FY2025 vs TTM to 2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 6.33,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "AVGO-RF-IC-004",
+      "economic_driver": "incremental_roic",
+      "claim": "A simple invested-capital proxy (debt + equity - cash) increased from about $130.25B at FY2025 year-end to $135.13B at 2026-08-02, while TTM operating income is estimated near $42.81B versus FY2025 $25.48B. The bridge is directionally inconsistent with ROIC collapse, though acquisition accounting limits precision.",
+      "source_type": "filing",
+      "source": "User-supplied FY2025 Annual Report and Q3 FY2026 10-Q; arithmetic",
+      "period": "2025-11-02 to 2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 4.88,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "AVGO-RF-FACTOR-005",
+      "economic_driver": "cash_quality",
+      "claim": "Broadcom sold $3.950B of trade receivables under non-recourse factoring arrangements during 9M FY2026, which accelerates reported operating cash collection.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q, Note 3",
+      "period": "FY2026 9M",
+      "as_of_date": "2026-08-02",
+      "value": 3.95,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-RF-SHARES-006",
+      "economic_driver": "per_share_dilution",
+      "claim": "Q3 diluted weighted-average shares were 4.887B versus 4.860B a year earlier (+0.56%) while 9M stock repurchases were $8.450B.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q",
+      "period": "FY2026 Q3/9M",
+      "as_of_date": "2026-08-02",
+      "value": 0.0056,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "The invested-capital bridge is distorted by acquisition goodwill/intangibles, retained earnings and debt repayment, so it is not a clean project-level incremental ROIC calculation.",
+    "TTM owner FCF includes receivables factoring; subtracting the full 9M factoring amount would reduce the current proxy materially, though it remains above FY2025 per share.",
+    "SBC remains economically large even though buybacks limit share-count dilution.",
+    "$126.8B purchase commitments and XPV support indicate that the next phase of AI growth may require more capital than historical PP&E capex suggests."
+  ],
+  "unknowns": [
+    "Project-level returns on custom-XPU NRE/R&D and capacity commitments.",
+    "Maintenance versus growth R&D/capex split.",
+    "Normalized factoring usage across a full cycle.",
+    "Customer-matched portion of purchase commitments."
+  ],
+  "falsifiers": [
+    "Incremental-ROIC score falls if operating profit growth stalls while invested capital and commitments keep rising.",
+    "FCF/share quality falls if normalized owner FCF/share drops below FY2025's ~$4 level for two quarters.",
+    "Reinvestment-runway score falls if TTM absorption drops below 15% without an offsetting high-return acquisition program."
+  ],
   "hard_veto_flags": [
     {
       "veto": "장기간 지속되는 과도한 희석",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Diluted shares increased only about 0.56% y/y and 9M repurchases totaled $8.45B. Material SBC exists, but the 'long-lasting and excessive dilution' elements are not supported by the share-count evidence."
     },
     {
       "veto": "증분 ROIC의 구조적 붕괴",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Operating income and owner-FCF proxies are rising sharply while a simple invested-capital proxy increased only modestly. The exact incremental ROIC is noisy, but evidence contradicts a structural collapse below cost of capital."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": ">FY2025 ~$4 normalized; Base path FY2027 >=$12",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "(capex + R&D) / OCF",
+      "direction": "stable",
+      "threshold": "15-35% with rising owner FCF/share",
+      "cadence": "TTM quarterly"
+    },
+    {
+      "name": "factoring / OCF",
+      "direction": "down",
+      "threshold": "<10%",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Normalize OCF for factoring and working-capital timing each quarter.",
+    "Match purchase commitments to non-cancellable customer contracts.",
+    "Track project-level XPU NRE/capacity returns where disclosed."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "incremental_roic",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Operating income and owner-FCF growth materially exceed the change in a simple invested-capital proxy, consistent with the 75 'superior' anchor. 90 is excluded because VMware accounting and customer-financing commitments prevent a clean project-level ROIC estimate."
     },
     {
       "criterion_id": "reinvestment_runway",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "TTM internal reinvestment absorption is about 32.2%. Band-centre interpolation within the 15-35% row produces roughly 70 on the 5-point grid, so the configured observable anchor determines this score."
     },
     {
       "criterion_id": "fcf_per_share_quality",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Owner-FCF/share proxy rises from about $3.99 in FY2025 to $6.33 TTM with only 0.56% y/y diluted-share growth. Factoring and SBC prevent a 90 'strong compounding' score but the normalized direction supports 75."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "Acquisition accounting makes the denominator noisy."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "Purchase commitments are not captured in conventional capex absorption."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "critical",
+      "rationale": "Receivables factoring and SBC materially affect cash-quality interpretation."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

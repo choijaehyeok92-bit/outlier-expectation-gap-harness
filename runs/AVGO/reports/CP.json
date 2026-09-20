@@ -4,51 +4,171 @@
   "as_of_date": "2026-09-18",
   "domain": "customer_product",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 70.5,
+  "confidence_0_1": 0.88,
+  "bull_score": 85,
+  "bear_score": 45,
+  "bull_case": "Customers commit to multi-generation custom accelerators, large non-cancellable RPO and expanding VCF contracts because the products improve performance per watt and are deeply embedded in infrastructure. Gross margin expansion indicates strong willingness to pay.",
+  "bear_case": "Direct customer ROI and payback are undisclosed. Top-customer concentration is rising, and XPV backstop/customer-note structures mean some future AI demand is partially finance-enabled. A slowdown could expose weaker unit economics than headline margins imply.",
+  "thesis": "Product-market evidence is strong enough for Growth eligibility but not pristine. Multi-generation design wins, non-terminable contracts and 69% gross margin support willingness to pay and retention proxies. Direct customer ROI/payback is missing, while XPV financing keeps unit economics below the 75 anchor.",
+  "evidence": [
+    {
+      "evidence_id": "AVGO-CP-PERFWATT-001",
+      "economic_driver": "customer_roi",
+      "claim": "OpenAI and Broadcom said early Jalapeño testing showed better performance per watt than the then-current state of the art, and described a multi-generation deployment plan.",
+      "source_type": "ir",
+      "source": "Broadcom/OpenAI official announcement 2026-06-24",
+      "period": "FY2026",
+      "as_of_date": "2026-06-24",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-CP-RPO-002",
+      "economic_driver": "customer_commitment",
+      "claim": "RPO was approximately $179.2B, includes a long-term custom AI accelerator contract, and approximately 25% was expected to be recognized over the next 12 months.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q, Note 2",
+      "period": "2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 179200,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-CP-VCF-003",
+      "economic_driver": "software_retention",
+      "claim": "Infrastructure software growth was driven by strong VCF demand and additional license revenue on contracts where customers do not have termination rights; by Q3 the majority of new software contracts no longer had termination-for-convenience provisions.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q, MD&A",
+      "period": "FY2026 Q3",
+      "as_of_date": "2026-08-02",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-CP-MARGIN-004",
+      "economic_driver": "unit_economics",
+      "claim": "Q3 FY2026 gross margin was 69% versus 67% a year earlier while revenue rose 86%; 9M gross margin was also 69% versus 68%.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q",
+      "period": "FY2026 Q3/9M",
+      "as_of_date": "2026-08-02",
+      "value": 0.69,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-CP-CONCENTRATION-005",
+      "economic_driver": "wallet_share_proxy",
+      "claim": "One semiconductor distributor represented 50% of Q3 revenue and top-five end customers about 55%, up from 32% and about 40% respectively a year earlier, showing rapid expansion with a concentrated customer set.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q",
+      "period": "FY2026 Q3",
+      "as_of_date": "2026-08-02",
+      "value": 0.55,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-CP-XPV-006",
+      "economic_driver": "financing_adjusted_unit_economics",
+      "claim": "AI XPV carries a maximum $29B lease backstop and the customer may under conditions issue up to $42B of convertible promissory notes to Broadcom; no notes had been issued and no backstop payments made at quarter end.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q, Note 10",
+      "period": "2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 29,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "No disclosed customer-level ROI, payback period, NRR, GRR or churn series exists for the custom-AI programs.",
+    "Rising customer concentration can masquerade as retention/wallet-share improvement while increasing bargaining power.",
+    "XPV financing means headline demand cannot be treated as entirely unassisted customer demand.",
+    "Early performance-per-watt results are company/customer claims rather than independent production benchmarks."
+  ],
+  "unknowns": [
+    "Customer-level payback and TCO for custom XPUs and AI networking.",
+    "NRR/renewal/churn for VCF under the new contract structure.",
+    "Supported-customer revenue share attributable to XPV financing.",
+    "Individual top-five end-customer revenue shares."
+  ],
+  "falsifiers": [
+    "Customer-value score falls if independent benchmarks fail to show a material TCO/performance advantage.",
+    "Retention score falls if RPO declines while termination rights return or VCF growth stalls.",
+    "Unit-economics score falls if funded XPV exposure rises materially while gross margin or OCF conversion deteriorates."
+  ],
   "hard_veto_flags": [
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "The veto requires absence of customer value plus subsidy dependence. Multi-generation design wins, non-terminable commitments, 69% gross margin and performance-per-watt evidence refute the required 'no customer value' element. XPV financing remains a unit-economics risk, not this veto by policy."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Concentration is high and the distributor-level >25% watch trigger is met, but a distributor is a channel rather than a disclosed single end customer, and the filings show multiple end customers plus a separate software segment. A single dependency whose loss would irreversibly destroy business economics is not established."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "RPO and non-cancellable share",
+      "direction": "up",
+      "threshold": "RPO >$150B with majority new software contracts non-terminable",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "top-five end-customer share",
+      "direction": "down",
+      "threshold": "<50%; review >60%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "funded XPV exposure / AI revenue",
+      "direction": "down",
+      "threshold": "no sustained increase",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Obtain customer TCO/payback or independent accelerator benchmarks.",
+    "Track VCF renewal/churn when the new contract cohort matures.",
+    "Separate XPV-supported demand from conventionally financed AI demand."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "customer_roi",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "Performance-per-watt evidence plus long-term committed purchases place customer value between the 50 'quantitative evidence lacking' and 75 'ROI/pricing confirmed' anchors. 75 is not used because customer-level financial payback/TCO is undisclosed."
     },
     {
       "criterion_id": "retention_usage",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Multi-generation AI programs, $179.2B RPO and removal of termination-for-convenience from most new software contracts provide direct commitment and wallet-share expansion proxies consistent with the 75 anchor. 90 is excluded because NRR/churn cohorts are not disclosed."
     },
     {
       "criterion_id": "unit_economics",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 65,
+      "rationale": "69% gross margin and strong operating leverage support scale economics, but the $29B backstop and conditional note structure mean some AI growth is finance-assisted. This is stronger than the 50 mixed anchor but below 75."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "No customer-level dollar ROI/payback is disclosed."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "Commitments substitute for, but are not identical to, cohort retention data."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "critical",
+      "rationale": "XPV can shift customer financing risk back toward Broadcom in a stress case."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

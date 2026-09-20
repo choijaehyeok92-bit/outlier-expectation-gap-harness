@@ -4,51 +4,171 @@
   "as_of_date": "2026-09-18",
   "domain": "asymmetry",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 68,
+  "confidence_0_1": 0.87,
+  "bull_score": 80,
+  "bear_score": 30,
+  "bull_case": "Bull value/current price is about 2.23x. Two distinct upside engines exist: custom AI accelerators/networking and infrastructure software/private AI. If AI revenue keeps scaling while software cash conversion holds, the locked Bull path can compound materially above the 9% hurdle.",
+  "bear_case": "Bear value/current price is only about 0.38x. Customer concentration, roughly 95% TSMC wafer dependence, $126.8B purchase commitments and the AI XPV financing structure can correlate demand, working-capital and residual-value losses in a downturn.",
+  "thesis": "AVGO has real power-law upside but not a one-sided payoff. Bull/current of 2.23x with at least two value paths supports upside, while Bear/current of 0.38x implies large valuation downside. A 5,000-company growth-persistence base rate now anchors scenario calibration and argues against extrapolating current AI growth, while strong cash generation lowers business-extinction risk.",
+  "evidence": [
+    {
+      "claim": "Locked DCF values are Bear $137.04, Base $404.48 and Bull $797.84 versus frozen price $357.61; Bull/current is 2.23x and Bear/current is 0.383x.",
+      "source_type": "other",
+      "source": "runs/AVGO/aggregate.json deterministic valuation",
+      "period": "10-year valuation from 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 2.231,
+      "evidence_id": "AVGO-AS-VALUATION-001",
+      "economic_driver": "payoff_asymmetry",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Q3 FY2026 AI semiconductor revenue was $16.7B, +221% y/y and +54% q/q; Q4 AI semiconductor revenue guidance was $21.7B, +236% y/y.",
+      "source_type": "company_ir",
+      "source": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial",
+      "period": "FY2026 Q3/Q4 guide",
+      "as_of_date": "2026-09-02",
+      "value": 16.7,
+      "evidence_id": "AVGO-AS-AI-002",
+      "economic_driver": "ai_growth_path",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "One semiconductor-solutions distributor represented 50% of Q3 revenue and top five end customers about 55%; about 95% of contract-manufactured wafers were produced by TSMC during 9M FY2026.",
+      "source_type": "filing",
+      "source": "User-supplied 10-Q filed 2026-09-10",
+      "period": "FY2026 Q3/9M",
+      "as_of_date": "2026-08-02",
+      "value": 0.55,
+      "evidence_id": "AVGO-AS-CONCENTRATION-004",
+      "economic_driver": "concentration_tail_risk",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "At 2026-08-02 Broadcom disclosed $126.821B of unconditional purchase commitments, $3.941B of other contractual commitments and a maximum $29B AI XPV lease backstop; no backstop amounts had been paid and its fair value was not material.",
+      "source_type": "filing",
+      "source": "User-supplied 10-Q filed 2026-09-10, Note 10",
+      "period": "2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 159762,
+      "evidence_id": "AVGO-AS-COMMITMENTS-005",
+      "economic_driver": "correlated_downside",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "9M FY2026 operating cash flow was $32.950B; the frozen TTM OCF estimate is $40.653B, providing substantial internal funding capacity.",
+      "source_type": "filing",
+      "source": "User-supplied 10-Q filed 2026-09-10 plus frozen company_context arithmetic",
+      "period": "TTM to 2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 40.653,
+      "evidence_id": "AVGO-AS-CASH-006",
+      "economic_driver": "survival_capacity",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "SUP-AVGO-AS-BASE-RATE-001",
+      "economic_driver": "large_company_growth_persistence_base_rate",
+      "claim": "McKinsey studied 5,000 of the world's largest public companies over 2005-2019. Only one in eight recorded revenue growth above 10% per year over the decade; only one in three top-growth-quartile firms sustained that rate in the next five years, and the rate was one in four for predominantly organic growers.",
+      "source_type": "secondary_research",
+      "source": "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-ten-rules-of-growth",
+      "period": "2005-2019 global public-company sample",
+      "as_of_date": "2022-08-12",
+      "value": 0.125,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "The Bull path requires a company already above $1.7T market cap to exceed $3T-equivalent value; scale itself limits plausible multiple expansion.",
+    "The $179.2B RPO is not a clean backlog proxy: the filing explicitly says RPO is not indicative of revenue for future periods.",
+    "AI XPV improves demand financing but also couples Broadcom to customer lease economics through a potential $29B backstop.",
+    "A 50% distributor revenue share and 55% top-five end-customer share make supposedly independent AI upside paths less independent than segment labels imply."
+  ],
+  "unknowns": [
+    "No pre-cutoff empirical base-rate dataset was found that isolates Broadcom-like megacap custom-AI semiconductor companies; the McKinsey base rate is deliberately broad.",
+    "Economic terms and customer identities behind the largest custom-AI contracts remain undisclosed.",
+    "The probability and funding mechanics of up to $42B of conditional customer convertible notes are not quantified.",
+    "How much of the $179.2B RPO is cancellable, low-margin or tied to AI XPV-supported deployments is not separately disclosed."
+  ],
+  "falsifiers": [
+    "Bull asymmetry weakens materially if AI semiconductor growth falls below 30% while software growth also falls below 10% for two consecutive quarters.",
+    "Permanent-loss resilience weakens if backstop exposure becomes funded while TTM OCF falls below $25B or net debt exceeds 2x TTM OCF.",
+    "The concentration bear case weakens if top-five end-customer share falls below 40% without sacrificing AI growth."
+  ],
   "hard_veto_flags": [
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Frozen price $357.61 is far below locked Bull value $797.84; the veto's sole element is not met."
     },
     {
       "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Bear valuation still assumes positive owner FCF and meaningful going-concern value, while current OCF and liquidity are substantial. The large Bear price drawdown is valuation risk, not evidence of business-value extinction; AI XPV commitments remain a scored tail risk."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
+  "key_kpis": [
+    {
+      "name": "Bull value / current price",
+      "direction": "up",
+      "threshold": ">=1.6x with >=2 independent upside paths",
+      "cadence": "quarterly/refreeze"
+    },
+    {
+      "name": "top-five end-customer revenue share",
+      "direction": "down",
+      "threshold": "<50%; review >60%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "AI XPV funded exposure + backstop utilization",
+      "direction": "down",
+      "threshold": "no material funded loss; review if >$10B funded exposure",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Quantify the customer and contract split of AI RPO and XPV-supported deployments.",
+    "Replace the broad large-company base rate if a pre-cutoff semiconductor/custom-AI-specific persistence dataset becomes available.",
+    "Recompute Bear/current and Bull/current after FY2027 guidance and any backstop funding."
+  ],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "upside_path",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Bull/current is 2.23x, inside the 1.6-2.5 observable band, and at least two distinct paths are visible: AI silicon/networking and infrastructure software. The 90 row is excluded because the ratio is below 2.5x and the company is already megacap."
     },
     {
       "criterion_id": "permanent_loss",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 55,
+      "rationale": "Bear/current is 0.383. Band-centre interpolation within the 0.2-0.4 row produces about 56 and rounds to 55 on the 5-point grid. No +10 modifier applies because AVGO is net debt, while no -15 applies because 12-month survival does not require external capital."
     },
     {
       "criterion_id": "probability_calibration",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "The rerun now uses an empirical base rate: McKinsey's 5,000-largest-public-company study found only 1/8 sustained >10% annual revenue growth over a decade and only 1/3 of top-quartile growers sustained their rate into the next five years. Combined with explicit Bear/Base/Bull sensitivity, this meets the 75 'base rate/sensitivity used' anchor. 90 is excluded because the base rate is broad rather than custom-AI/semiconductor-specific."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "AI silicon and networking are economically linked to the same hyperscaler/frontier-lab capex cycle, reducing path independence."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "critical",
+      "rationale": "The $29B backstop and very large purchase commitments create correlated downside if AI customers fail to absorb contracted capacity."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "The new base rate is empirical but broad. It improves calibration discipline without establishing a precise AVGO-specific scenario probability."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
@@ -63,5 +183,6 @@
         "owner_fcf_per_share": []
       }
     }
-  }
+  },
+  "rerun_note": "Research Orchestrator result-b8b208a... added one eligible secondary base-rate study and recommended AS rerun. Probability-calibration moved 50→75; upside_path and permanent_loss were unchanged."
 }

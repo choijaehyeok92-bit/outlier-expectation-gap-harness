@@ -4,63 +4,217 @@
   "as_of_date": "2026-09-18",
   "domain": "expectation_valuation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 64.25,
+  "confidence_0_1": 0.78,
+  "bull_score": 85,
+  "bear_score": 25,
+  "bull_case": "AI custom accelerators, networking and VMware cash flows scale together. Bull owner FCF/share rises from $9.5 to $57 over ten years; locked 25x terminal gives about $797.84/share. This requires multiple large AI customers, durable custom-silicon share and strong software cash conversion.",
+  "bear_case": "AI accelerator demand normalizes after the current buildout, large customers internalize more silicon, and customer/TSMC concentration reduces bargaining power. Bear path grows owner FCF/share only from $7.5 to $12.5 over ten years; locked 15x terminal multiple gives about $137.04/share.",
+  "thesis": "At the frozen $357.61 close, the locked-policy DCF produces Bear/Base/Bull values of about $137/$404/$798. Price/Base is 0.884, so current price does not require the Bull case, but Base still assumes exceptional AI-led expansion and 68% of Base operating value is terminal value. The valuation gap is therefore positive but not robust enough to treat consensus-scale AI growth as certain.",
+  "evidence": [
+    {
+      "claim": "Q3 FY2026 revenue was $29.591B (+86% y/y), operating income $15.955B and net income $13.088B.",
+      "source_type": "filing",
+      "source": "User-supplied 10-Q filed 2026-09-10; fiscal quarter ended 2026-08-02",
+      "period": "FY2026 Q3",
+      "as_of_date": "2026-08-02",
+      "value": 29591,
+      "fact_or_estimate": "fact",
+      "evidence_id": "AVGO-EV-OPERATING-001",
+      "economic_driver": "operating_scale"
+    },
+    {
+      "claim": "9M FY2026 OCF was $32.950B, capex $1.013B and SBC $6.287B. TTM owner-FCF proxy calculated as FY2025 + 9M FY2026 - 9M FY2025 for OCF, capex and SBC is about $30.921B or $6.33/share.",
+      "source_type": "filing",
+      "source": "User-supplied FY2025 Annual Report and 2025/2026 Q3 10-Qs; downstream arithmetic",
+      "period": "TTM to 2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 6.3272,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "AVGO-EV-OWNERFCF-002",
+      "economic_driver": "cash_conversion"
+    },
+    {
+      "claim": "Top five end customers represented approximately 55% of Q3 FY2026 revenue and approximately 50% of 9M revenue; approximately 95% of contract-manufactured wafers were produced by TSMC.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q",
+      "period": "FY2026 Q3 / 9M",
+      "as_of_date": "2026-08-02",
+      "value": 0.55,
+      "fact_or_estimate": "fact",
+      "evidence_id": "AVGO-EV-CONCENTRATION-004",
+      "economic_driver": "concentration_risk"
+    },
+    {
+      "claim": "Remaining performance obligations were approximately $179.2B at 2026-08-02 and include a long-term custom AI accelerator contract.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q",
+      "period": "2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 179200,
+      "fact_or_estimate": "fact",
+      "evidence_id": "AVGO-EV-RPO-005",
+      "economic_driver": "forward_visibility"
+    },
+    {
+      "claim": "Official Q4 FY2026 revenue guidance is approximately $34.8B, +93% y/y. If achieved, FY2026 revenue would be roughly $105.9B.",
+      "source_type": "company_ir",
+      "source": "Broadcom Q3 FY2026 results, published 2026-09-02",
+      "period": "FY2026 Q4 guidance",
+      "as_of_date": "2026-09-02",
+      "value": 34.8,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "AVGO-EV-GUIDANCE-006",
+      "economic_driver": "near_term_growth"
+    },
+    {
+      "claim": "Locked-policy DCF at 9% required return and 15x/20x/25x terminal multiples yields Bear $137.04, Base $404.48 and Bull $797.84 with frozen net cash/share -$7.2527.",
+      "source_type": "other",
+      "source": "Harness deterministic_valuation policy (config/calibration.json)",
+      "period": "10 years from 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 404.4786,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "AVGO-EV-DCF-008",
+      "economic_driver": "expectation_gap"
+    }
+  ],
+  "counterevidence": [
+    "The Base case is deliberately below the current external consensus revenue trajectory, but it still requires roughly 44% FY2025-to-FY2028 revenue CAGR and a large increase in per-share cash generation.",
+    "Base terminal value is about 68% of Base operating value; Bull terminal value is about 75%, so long-duration assumptions remain a major valuation driver.",
+    "Customer concentration has risen materially: the top five end customers account for roughly half of revenue, while the largest custom-AI customers are also capable of internal silicon development.",
+    "The latest filing indicates AI/custom XPU and AI rack mix can improve operating margin while compressing gross margin, so current operating leverage should not be extrapolated mechanically."
+  ],
+  "unknowns": [
+    "Individual revenue shares, contract economics and cancellation/volume-flex terms for the largest custom AI accelerator customers.",
+    "How much of the $179.2B RPO is custom AI silicon versus software, and its recognition/margin profile beyond the next 12 months.",
+    "Sustainable owner-FCF margin after the current AI capacity buildout and VMware integration matures.",
+    "Long-run share of hyperscaler accelerator spend won by Broadcom versus internally designed or competing custom silicon.",
+    "No frozen 5-year valuation percentile is available; EV relies on the locked DCF rather than a historical percentile signal."
+  ],
+  "falsifiers": [
+    "If FY2027 revenue is below $125B or owner FCF/share is below $11, the Base path should be cut materially.",
+    "If the top-five customer share rises above 60% while gross margin and contract visibility weaken, concentration risk should move from a monitoring item to a core valuation haircut.",
+    "If owner FCF/share reaches at least $17 by FY2028 while RPO remains above $150B and customer concentration does not worsen, the Bear case becomes materially less plausible."
+  ],
   "hard_veto_flags": [
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Frozen price $357.61 is below locked-policy Bull value $797.84 and equals only 0.884x Base $404.48. The defined veto requires current price to exceed Bull value, which is not satisfied."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share (OCF-capex-SBC)",
+      "direction": "up",
+      "threshold": "FY2027 >= $11; FY2028 >= $17",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "top-five end-customer revenue share",
+      "direction": "down",
+      "threshold": "<=50%; review if >60%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "remaining performance obligations",
+      "direction": "up",
+      "threshold": ">=$150B while recognition remains cash-generative",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Separate custom-AI RPO, customer concentration and gross-margin evolution in the next 10-Q.",
+    "Reconcile VMware software cash conversion and acquisition-amortization treatment in RF before using EV as a portfolio-sizing input.",
+    "Update the Base revenue path when FY2027 company guidance is available; do not substitute external consensus for company evidence."
+  ],
   "verdict": "neutral",
   "archetype_signals": {
-    "price_to_base_value": null,
+    "price_to_base_value": 0.8841,
     "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null
+    "revenue_cagr_next_3y": 0.4381
   },
   "subscores": [
     {
       "criterion_id": "reverse_dcf_burden",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "price_to_base_value 0.8841 falls in the configured 0.7-0.9 signal band, so the mechanical score is 75."
     },
     {
       "criterion_id": "base_return",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "price_to_base_value 0.8841 falls in the configured 0.7-0.9 signal band, so the mechanical score is 70."
     },
     {
       "criterion_id": "valuation_robustness",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 40,
+      "rationale": "Base depends on exceptional multi-year AI growth and about 68% of operating value comes from the terminal component. This is weaker than the 50 'sensitivity is high' anchor because customer concentration and custom-silicon durability add correlated downside; primary evidence prevents using a sub-40 score."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "The Base path is a large haircut to external consensus yet still assumes roughly 44% three-year revenue CAGR, so a modest demand normalization can move price/Base above 1.1."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Owner FCF treatment subtracts SBC and uses Q3 diluted shares; working-capital timing and integration economics can move the cash path materially."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "critical",
+      "rationale": "Approximately 68% of Base operating value and 75% of Bull operating value is terminal value, while customer and foundry concentration are high."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
+    "revenue_cagr_next_3y": 0.4381,
     "scenarios": {
       "bear": {
-        "owner_fcf_per_share": []
+        "owner_fcf_per_share": [
+          7.5,
+          8.5,
+          9.5,
+          10,
+          10.5,
+          11,
+          11.5,
+          12,
+          12.3,
+          12.5
+        ]
       },
       "base": {
-        "owner_fcf_per_share": []
+        "owner_fcf_per_share": [
+          8.5,
+          12,
+          17,
+          20.5,
+          23,
+          25,
+          27,
+          29,
+          31,
+          33
+        ]
       },
       "bull": {
-        "owner_fcf_per_share": []
+        "owner_fcf_per_share": [
+          9.5,
+          15,
+          22,
+          29,
+          35,
+          40,
+          45,
+          49,
+          53,
+          57
+        ]
       }
     }
   }
