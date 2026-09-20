@@ -4,40 +4,149 @@
   "as_of_date": "2026-09-18",
   "domain": "disruptive_innovation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 70,
+  "confidence_0_1": 0.84,
+  "bull_score": 82,
+  "bear_score": 50,
+  "bull_case": "Rubrik is moving cyber recovery from backup administration toward autonomous data, identity and AI-agent resilience. Strong ARR expansion, >119% NRR and new Agent Cloud integrations suggest a broader control plane may emerge.",
+  "bear_case": "The core product may remain a premium but sustaining cyber-resilience platform rather than a new value-chain standard. Agent Cloud adoption and economics are not separately disclosed, and large incumbents can bundle competing security controls.",
+  "thesis": "Rubrik shows real adoption and product expansion, but the evidence supports meaningful structural innovation rather than a proven 10x disruption. ARR, large-customer growth and >119% NRR validate customer pull. Agent Cloud, agent identity and autonomous recovery open adjacent value pools, yet separate monetization and independent cost/performance proof remain early.",
+  "evidence": [
+    {
+      "claim": "Subscription ARR was $1.66B, up 33% y/y; cloud ARR was $1.48B, up 39%; 3,084 customers had at least $100K of subscription ARR, up 23%.",
+      "source_type": "company_ir",
+      "source": "https://ir.rubrik.com/news-events/press-releases/news-details/2026/Rubrik-Reports-Second-Quarter-Fiscal-Year-2027-Financial-Results/default.aspx",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": "ARR +33%; cloud ARR +39%; large customers +23%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-DI-ADOPT-001",
+      "economic_driver": "adoption_curve"
+    },
+    {
+      "claim": "Average subscription dollar-based NRR was above 119% as of July 31, 2026, indicating existing subscription customers collectively expanded spend despite churn and contraction.",
+      "source_type": "company_ir",
+      "source": "https://ir.rubrik.com/overview/default.aspx",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-09-18",
+      "value": ">119%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-DI-NRR-002",
+      "economic_driver": "customer_economics"
+    },
+    {
+      "claim": "Rubrik Agent Cloud became generally available in 2026 and added integrations for Anthropic Claude Code and Google's Gemini Enterprise Agent Platform, extending the platform from data recovery into AI-agent governance, control and rewind.",
+      "source_type": "company_ir",
+      "source": "https://ir.rubrik.com/news-events/press-releases/news-details/2026/Rubrik-Launches-Rubrik-Agent-Cloud-for-Anthropics-Claude-Code/default.aspx and https://ir.rubrik.com/news-events/press-releases/news-details/2026/Rubrik-Secures-and-Accelerates-AI-Agents-on-Google-Cloud/default.aspx",
+      "period": "2026",
+      "as_of_date": "2026-06-09",
+      "value": "2 major AI-agent integrations",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-DI-AGENT-003",
+      "economic_driver": "adjacent_value_pools"
+    },
+    {
+      "claim": "Rubrik introduced Agent Identity to monitor agents and MCP servers, control tool-level access and remediate unwanted actions, adding identity/authorization to the AI-agent resilience stack.",
+      "source_type": "company_ir",
+      "source": "https://ir.rubrik.com/news-events/press-releases/news-details/2026/Rubrik-Unveils-Agent-Identity-to-Secure-Agentic-Actions-in-Real-Time/default.aspx",
+      "period": "2026-08-04",
+      "as_of_date": "2026-08-04",
+      "value": "agent identity/control product",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-DI-ID-004",
+      "economic_driver": "optionality"
+    },
+    {
+      "claim": "Q2 GAAP gross margin was 78.4% and subscription ARR contribution margin improved to 14.0% from 9.4%, showing adoption is not occurring with deteriorating gross economics.",
+      "source_type": "company_ir",
+      "source": "https://ir.rubrik.com/news-events/press-releases/news-details/2026/Rubrik-Reports-Second-Quarter-Fiscal-Year-2027-Financial-Results/default.aspx",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": "78.4% GM; 14.0% contribution margin",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-DI-ECON-005",
+      "economic_driver": "unit_economics"
+    }
+  ],
+  "counterevidence": [
+    "No independent evidence shows a 10x cost/performance improvement across the full platform.",
+    "Agent Cloud revenue, ARR, retention and margin are not separately disclosed, so product announcements cannot yet be equated with commercial adoption.",
+    "Security incumbents and hyperscalers have strong distribution and can bundle adjacent identity, data and AI governance capabilities.",
+    "Partner/channel concentration means rapid top-line adoption may partly reflect distribution strength rather than proprietary end-user lock-in."
+  ],
+  "unknowns": [
+    "Standalone Agent Cloud ARR, customer count and gross margin.",
+    "Independent recovery-time/TCO benchmarks versus Cohesity, Veeam, hyperscaler-native tools and security suites.",
+    "Attach rate of identity and AI-agent products to existing Rubrik Security Cloud customers.",
+    "Whether the platform becomes a standard control layer or remains an integrated vendor product."
+  ],
+  "falsifiers": [
+    "Cut adoption_curve if ARR growth falls below 20% and NRR below 110% for two quarters.",
+    "Cut optionality if Agent Cloud remains commercially immaterial through FY2028.",
+    "Cut cost_performance_shift if independent benchmarks show no material recovery/TCO advantage versus bundled alternatives."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "ARR growth / NRR",
+      "direction": "up",
+      "threshold": "ARR >25%, NRR >115%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Agent Cloud monetization",
+      "direction": "up",
+      "threshold": "material disclosed ARR/customer adoption",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "subscription ARR contribution margin",
+      "direction": "up",
+      "threshold": ">15% and improving",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Obtain independent cyber-recovery TCO and restore-time benchmarks.",
+    "Track Agent Cloud/Agent Identity paid adoption rather than product announcements.",
+    "Measure attach rates across data, identity and AI-agent resilience."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "cost_performance_shift",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 65,
+      "rationale": "Rubrik materially changes recovery automation and resilience workflows, but available cutoff evidence does not establish a broad 10x cost/performance discontinuity. This sits between sustained and structural innovation."
     },
     {
       "criterion_id": "adoption_curve",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "ARR +33%, cloud ARR +39%, >$100K customers +23%, NRR >119% and improving contribution margin provide direct evidence of accelerating mainstream enterprise adoption with improving economics."
     },
     {
       "criterion_id": "optionality_incumbent_response",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "Core cyber resilience plus Agent Cloud/agent identity represent at least two adjacent value pools with major ecosystem integrations. Incumbents remain well-capitalized and capable, so the rubric's stronger 85-style standard is not met."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Most performance claims are vendor-originated and lack a matched independent benchmark."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "minor",
+      "rationale": "Core platform adoption is well evidenced, but the contribution from newly launched AI products is not."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Adjacent products may increase attach rates without creating a separate durable value pool."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
