@@ -4,40 +4,160 @@
   "as_of_date": "2026-09-18",
   "domain": "disruptive_innovation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 73.5,
+  "confidence_0_1": 0.88,
+  "bull_score": 85,
+  "bear_score": 55,
+  "bull_case": "Broadcom is moving AI compute from general-purpose merchant accelerators toward customer-specific silicon plus Ethernet-scale networking. Multi-generation OpenAI and Meta programs, gigawatt deployments and rapidly accelerating AI revenue suggest a structural value-chain shift rather than a product refresh.",
+  "bear_case": "The customers driving the shift are the same hyperscalers and frontier labs capable of internal design and multi-sourcing. Broadcom may be an implementation and networking enabler rather than the durable platform owner; financing support can also pull demand forward.",
+  "thesis": "The disruption case is strong but not NVDA-style platform control. Custom XPUs, Ethernet networking and private-cloud software reshape AI infrastructure economics, and adoption is already revenue-scale. However, customer-owned silicon roadmaps cap Broadcom's control of the standard, so disruptive optionality is scored below the top tier.",
+  "evidence": [
+    {
+      "claim": "AI semiconductor revenue accelerated from $8.4B in Q1 (+106% y/y) to $10.8B in Q2 (+143%) and $16.7B in Q3 (+221%); Q4 guidance was $21.7B (+236%).",
+      "source_type": "company_ir",
+      "source": "Broadcom FY2026 Q1/Q2/Q3 official earnings releases",
+      "period": "FY2026 Q1-Q4 guide",
+      "as_of_date": "2026-09-02",
+      "value": 16.7,
+      "evidence_id": "AVGO-DI-ADOPTION-001",
+      "economic_driver": "ai_adoption_curve",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "OpenAI and Broadcom unveiled Jalapeño, a blank-slate LLM inference accelerator developed from design to production in nine months; early testing indicated better performance per watt than then-current state of the art and a multi-generation gigawatt-scale deployment plan.",
+      "source_type": "company_ir",
+      "source": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "period": "announced 2026-06-24",
+      "as_of_date": "2026-06-24",
+      "value": null,
+      "evidence_id": "AVGO-DI-JALAPENO-002",
+      "economic_driver": "cost_performance_shift",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Broadcom and Meta announced a multi-year, multi-generation partnership around a 2nm custom AI accelerator and Broadcom Ethernet scale-up/scale-out networking for multi-gigawatt deployments.",
+      "source_type": "company_ir",
+      "source": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-announces-extended-partnership-meta-deploy-technology",
+      "period": "announced 2026-04-14",
+      "as_of_date": "2026-04-14",
+      "value": null,
+      "evidence_id": "AVGO-DI-META-003",
+      "economic_driver": "multi_customer_custom_silicon",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The AI XPV platform targets more than 20GW of compute using Broadcom XPUs and networking through 2028, launching with a $35B transaction for more than 1GW.",
+      "source_type": "company_ir",
+      "source": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-apollo-and-blackstone-establish-landmark-strategic",
+      "period": "announced 2026-06-09",
+      "as_of_date": "2026-06-09",
+      "value": 20,
+      "evidence_id": "AVGO-DI-XPV-004",
+      "economic_driver": "deployment_scale",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "The Q3 10-Q reports about $179.2B of RPO including a long-term custom AI accelerator contract, and semiconductor revenue growth was driven primarily by custom AI accelerators and AI networking.",
+      "source_type": "filing",
+      "source": "User-supplied 10-Q filed 2026-09-10",
+      "period": "2026-08-02",
+      "as_of_date": "2026-08-02",
+      "value": 179200,
+      "evidence_id": "AVGO-DI-RPO-005",
+      "economic_driver": "commercialization_visibility",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Infrastructure software Q3 revenue was $8.752B and increased 29% y/y, giving Broadcom a second AI-adjacent value pool through VMware/private-cloud infrastructure.",
+      "source_type": "company_ir",
+      "source": "Broadcom Q3 FY2026 official earnings release",
+      "period": "FY2026 Q3",
+      "as_of_date": "2026-09-02",
+      "value": 8752,
+      "evidence_id": "AVGO-DI-SOFTWARE-006",
+      "economic_driver": "adjacent_value_pool",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "OpenAI's disclosed Jalapeño performance advantage was still based on early testing; a detailed technical report had not yet been published by the cutoff.",
+    "The largest customers own the workload data, model stack and chip architecture decisions, so they can internalize design or dual-source suppliers.",
+    "AI XPV financing can accelerate deployment without proving that every supported rack has stand-alone customer economics.",
+    "Broadcom's custom-ASIC model is not a broad developer ecosystem; disruption may accrue primarily to customers rather than to Broadcom's platform control."
+  ],
+  "unknowns": [
+    "Independent third-party benchmark data for Jalapeño performance, total cost of ownership and utilization was unavailable before the cutoff.",
+    "Per-customer XPU gross margin and lifetime economics are undisclosed.",
+    "The share of AI revenue attributable to accelerators versus networking is not separately disclosed.",
+    "Long-run software attach or private-AI monetization to custom AI silicon deployments is not quantified."
+  ],
+  "falsifiers": [
+    "Disruption score should fall if AI semiconductor growth drops below 30% before custom XPU deployments diversify across at least three major end customers.",
+    "The cost-performance thesis weakens if independent benchmarks fail to show a material performance-per-watt advantage for custom inference accelerators.",
+    "Optionality weakens if infrastructure software growth falls below 10% and AI networking loses share while hyperscalers internalize more silicon."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "AI semiconductor revenue growth",
+      "direction": "up",
+      "threshold": ">50% y/y through FY2027",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "major custom-XPU customer programs",
+      "direction": "up",
+      "threshold": ">=3 multi-generation programs",
+      "cadence": "semiannual"
+    },
+    {
+      "name": "independent performance-per-watt evidence",
+      "direction": "up",
+      "threshold": "material advantage vs general-purpose alternatives",
+      "cadence": "product generation"
+    }
+  ],
+  "next_checks": [
+    "Obtain independent Jalapeño/XPU benchmark and TCO evidence when published.",
+    "Track customer diversification and accelerator/networking mix separately.",
+    "Verify whether VMware/private-AI software becomes a measurable attach revenue stream to AI infrastructure."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "cost_performance_shift",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Custom LLM-specific accelerators plus networking represent a structural architecture shift and early testing claims better performance per watt. The 90 anchor is excluded because no independent 10x-class cost/performance evidence existed by the cutoff."
     },
     {
       "criterion_id": "adoption_curve",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "AI revenue accelerated across three reported quarters to $16.7B in Q3 with $21.7B Q4 guidance and gigawatt-scale deployments. This exceeds early-pilot status; 90 is excluded because adoption remains highly concentrated and financing-supported."
     },
     {
       "criterion_id": "optionality_incumbent_response",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "Broadcom has monetized at least two adjacent pools—custom AI accelerators and AI networking—with infrastructure software as further optionality. The observable policy caps the score at 70 because major responders are capital-unconstrained customers capable of designing their own silicon."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "The strongest performance claim is company/customer early testing rather than independent production benchmarks."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "A material part of future deployment is linked to XPV financing and a small number of customers."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Customer ownership of chip architecture limits Broadcom's control over the standard and value capture."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
