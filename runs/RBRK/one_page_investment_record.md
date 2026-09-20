@@ -18,6 +18,6 @@
 14. **성공 시 Upside**: Bull/current 약 **5.28x**. 5배 가능 경로는 존재하지만 5배 확률을 뜻하지 않는다.
 15. **실패 시 Permanent Loss**: Bear/current 약 **0.30x**. 사업 파산 veto는 cleared지만 가격 기준 영구손실 여지는 크다.
 16. **가장 중요한 반증조건**: ARR 성장 **20% 미만**으로 내려가기 전에 SBC-adjusted owner FCF/share가 양전환하지 못하거나, 희석이 **5% 이상** 지속되는 경우.
-17. **최초 목표 비중**: IC **STARTER 1–2%**, macro purchase pacing **0.5**.
+17. **최초 목표 비중**: IC 상태는 **STARTER**, deterministic 허용 범위는 **0–2%**, macro purchase pacing은 **0.5**다.
 18. **비중을 늘릴 증거**: owner FCF/share 양전환, annual dilution <3%, NRR >115% 유지, Agent Cloud/Identity의 독립 ARR·retention·margin 확인.
 19. **매도·축소할 증거**: ARR <20%와 높은 희석이 동시에 지속, NRR <110%, moat 지표 악화, refrozen Base 가치가 시장가 이하로 하락.
