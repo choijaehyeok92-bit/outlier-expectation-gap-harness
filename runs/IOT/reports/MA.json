@@ -1,0 +1,148 @@
+{
+  "agent_id": "MA",
+  "ticker": "IOT",
+  "as_of_date": "2026-09-18",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 69.0,
+  "confidence_0_1": 0.7,
+  "bull_score": 85,
+  "bear_score": 45,
+  "bull_case": "창업자형 장기 투자와 빠른 제품 확장이 physical AI 플랫폼을 넓히고 영업 레버리지를 계속 만든다.",
+  "bear_case": "통제권 집중과 높은 SBC가 실패한 투자를 오래 유지하게 만들고 경제적 이익을 임직원에게 이전할 수 있다.",
+  "thesis": "창업자 중심 제품 실행은 강하고 R&D가 ARR·대형고객·영업레버리지로 이어졌다. 다만 듀얼클래스 통제와 높은 SBC는 자본배분·주주정렬의 명백한 감점 요인이다. 회계 신뢰 훼손 사건은 확인되지 않았으므로 실행력은 높게, 거버넌스는 중간으로 분리한다.",
+  "evidence": [
+    {
+      "claim": "ARR은 $2.125B로 전년 $1.640B 대비 29.5% 증가했고, $100k+ ARR 고객은 3,605개로 30.1% 증가했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01 versus 2025-08-02",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 2124742000,
+      "economic_driver": "customer_expansion"
+    },
+    {
+      "claim": "Q2 FY27 매출 $508.4M(+29.9% y/y), H1 매출 $987.3M(+30.2%); H1 GAAP 영업이익 $12.1M로 전년 -$59.9M에서 흑자 전환했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "FY2027 Q2/H1",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 508437000,
+      "economic_driver": "growth_and_operating_leverage"
+    },
+    {
+      "claim": "회사는 fleet에서 시작해 equipment, sites, frontline workers로 앱을 확장했고 운송·건설·제조·유틸리티·정부·교육 등 다양한 physical-operations 산업에 배포했다. FY26 단일 고객 ARR 비중은 2% 이하였다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-K_2026-03-16_0001628280-26-018167.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-01-31",
+      "fact_or_estimate": "fact",
+      "economic_driver": "platform_breadth"
+    },
+    {
+      "claim": "Class B는 Class A 대비 10배 의결권을 가지며 Class B 보유자가 합산 의결권의 과반을 통제해 일반 Class A 주주의 영향력을 제한한다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-K_2026-03-16_0001628280-26-018167.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-01-31",
+      "fact_or_estimate": "fact",
+      "value": 10,
+      "economic_driver": "governance"
+    },
+    {
+      "claim": "TTM SBC $330.6M은 매출의 17.9%이고 Q2 희석주식수 590.5M은 전년 571.7M보다 3.28% 증가했다. OCF-capex-SBC owner-FCF proxy는 -$75.1M이다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM/Q2 to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "estimate",
+      "value": -75147000,
+      "economic_driver": "dilution_and_owner_fcf"
+    }
+  ],
+  "counterevidence": [
+    "Class B의 10배 의결권으로 외부주주의 견제력이 제한된다.",
+    "SBC가 TTM 매출의 17.9%로 경제적 자본배분 비용이 크다.",
+    "완전한 2026 DEF 14A 보상표가 자동 수집되지 않아 성과보상 정렬을 정밀 검증하지 못했다."
+  ],
+  "unknowns": [
+    "2026 full DEF 14A의 보상 KPI·성과주식 조건.",
+    "창업자·임원 10b5-1 매도와 소유지분 변화.",
+    "R&D 프로젝트별 사후 수익성."
+  ],
+  "falsifiers": [
+    "재작성·중대 내부통제 약점·감사인 이견이 발생하면 신뢰성 Veto를 재검토한다.",
+    "SBC/매출이 FY28에도 18% 이상이면 자본배분 점수를 낮춘다.",
+    "ARR 성장률이 20% 아래인데 R&D+S&M 비율이 유지되면 실행점수를 낮춘다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "기준일 이전 재작성·감사인 이견/교체·내부통제 중대결함·미공시 관련자거래를 확인하지 못했다. 듀얼클래스와 SBC는 거버넌스 점수에 반영했으나 신뢰 훼손 사건은 아니다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "ARR growth",
+      "direction": "up",
+      "threshold": ">=25%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "SBC/revenue",
+      "direction": "down",
+      "threshold": "<15%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "GAAP operating margin",
+      "direction": "up",
+      "threshold": ">=5%",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "full DEF 14A 확보 및 보상구조 점검",
+    "내부자 매도·소유구조 추적",
+    "R&D·S&M 증가 대비 ARR 효율"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 70,
+      "rationale": "자사주·대형 M&A보다 R&D에 TTM 매출의 20.3%를 투입해 ARR 29.5% 성장과 제품 확장을 만들었다. 사후 owner FCF가 음수라 75 합리적 앵커보다 보수적이다."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 60,
+      "rationale": "중대한 회계 신뢰 훼손은 없지만 Class B 10:1 의결권 집중과 높은 SBC가 일반주주 정렬을 제한해 75 양호를 배제했다."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 80,
+      "rationale": "fleet에서 equipment·sites·workforce·AI agents로 확장하면서 $100k+ 고객과 RPO를 약 30% 늘리고 GAAP 영업흑자로 전환해 75 일관 실행을 웃돈다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    }
+  ]
+}

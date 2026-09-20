@@ -1,0 +1,203 @@
+{
+  "agent_id": "EV",
+  "ticker": "IOT",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 63.0,
+  "confidence_0_1": 0.72,
+  "bull_score": 85,
+  "bear_score": 25,
+  "bull_case": "30% ARR 성장과 플랫폼 확장이 장기간 지속되고 SBC/매출이 한 자릿수로 내려가면 $83 이상의 가치가 가능하다.",
+  "bear_case": "성장률이 10%대로 둔화하고 SBC가 높게 남으면 owner FCF 전환이 지연돼 $16 부근 Bear 가치가 현실화된다.",
+  "thesis": "고정 9%·15/20/25x owner-FCF DCF의 Bear/Base/Bull은 약 $15.72/$45.13/$83.16이다. 현재가 $39.55는 Base의 0.876배로 Bull 이상을 요구하지 않지만, Base도 SBC 비율 급락과 10년 수익성 확장을 전제하고 가치의 79%가 terminal에 의존한다. 기대차는 양수이나 견고하지 않으며, 장기 아웃라이어형의 관용 가능한 범위로 본다.",
+  "evidence": [
+    {
+      "claim": "TTM 매출 $1.848B, gross margin 76.4%, GAAP 영업이익 $19.4M(1.0%), OCF $288.4M, capex $32.9M, SBC $330.6M이다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "estimate",
+      "value": 1847552000,
+      "economic_driver": "operating_scale"
+    },
+    {
+      "claim": "Q2 FY27 매출 $508.4M(+29.9% y/y), H1 매출 $987.3M(+30.2%); H1 GAAP 영업이익 $12.1M로 전년 -$59.9M에서 흑자 전환했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "FY2027 Q2/H1",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 508437000,
+      "economic_driver": "growth_and_operating_leverage"
+    },
+    {
+      "claim": "ARR은 $2.125B로 전년 $1.640B 대비 29.5% 증가했고, $100k+ ARR 고객은 3,605개로 30.1% 증가했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01 versus 2025-08-02",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 2124742000,
+      "economic_driver": "customer_expansion"
+    },
+    {
+      "claim": "TTM SBC $330.6M은 매출의 17.9%이고 Q2 희석주식수 590.5M은 전년 571.7M보다 3.28% 증가했다. OCF-capex-SBC owner-FCF proxy는 -$75.1M이다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM/Q2 to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "estimate",
+      "value": -75147000,
+      "economic_driver": "dilution_and_owner_fcf"
+    },
+    {
+      "claim": "locked DCF는 Bear/Base/Bull $15.72/$45.13/$83.16, current/Base 0.8763이며 terminal fraction은 75.2%/78.8%/82.2%다.",
+      "source_type": "other",
+      "source": "harness deterministic valuation policy",
+      "period": "10 years from 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "estimate",
+      "value": 45.1321,
+      "economic_driver": "expectation_gap"
+    }
+  ],
+  "counterevidence": [
+    "Base Y10 owner FCF/share $4는 현재 -$0.13에서 큰 전환을 요구한다.",
+    "Base 가치의 78.8%가 terminal multiple에 의존해 성장 지속기간과 배수 변화에 민감하다.",
+    "현재 EV/TTM revenue 약 11.9x는 이미 장기 고성장을 상당 부분 반영한다.",
+    "상장 이력이 5년 미만이라 검증 가능한 5년 valuation percentile이 없다."
+  ],
+  "unknowns": [
+    "동일정의 5년 valuation percentile.",
+    "FY28 이후 company guidance와 장기 GAAP margin 목표.",
+    "SBC가 성숙기에 매출 대비 어느 수준으로 정상화될지."
+  ],
+  "falsifiers": [
+    "FY28 owner FCF/share가 $0.18 미만이면 Base를 하향한다.",
+    "향후 3년 매출 CAGR이 18% 미만이면 Base 성장 지속기간을 줄인다.",
+    "SBC/매출이 FY30에도 15% 이상이면 Y10 FCF 경로를 기각한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "현재가 $39.55는 Bull 가치 $83.16의 47.6%이고 Base $45.13의 87.6%다. 현재가가 Bull 가치를 초과한다는 구성요건은 명백히 충족되지 않는다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "FY28 >=$0.18; FY30 >=$0.80",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "revenue growth",
+      "direction": "up",
+      "threshold": "3y CAGR >=20%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "SBC/revenue",
+      "direction": "down",
+      "threshold": "<12% by FY30",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "다음 분기 owner FCF와 희석 업데이트",
+    "FY28 가이던스 이후 revenue path 재산출",
+    "terminal multiple 15x 민감도 점검"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 75,
+      "rationale": "locked DCF price/Base 0.8763은 0.7~0.9 signal-map 구간이므로 75를 그대로 적용했다."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 70,
+      "rationale": "price/Base 0.8763은 0.7~0.9 signal-map 구간으로 70이다. Base $45.13은 현재가 대비 약 14% 높다."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 35,
+      "rationale": "Base 영업가치의 78.8%, Bull의 82.2%가 terminal value이고 Base는 Y10 owner FCF/share $4를 요구한다. 50 민감도 큼보다 낮지만 Bull 이상 가격은 아니므로 35다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    }
+  ],
+  "archetype_signals": {
+    "price_to_base_value": 0.8763,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.22
+  },
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.22,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          -0.1,
+          0,
+          0.1,
+          0.25,
+          0.45,
+          0.7,
+          0.95,
+          1.2,
+          1.45,
+          1.6
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          0,
+          0.18,
+          0.45,
+          0.8,
+          1.25,
+          1.8,
+          2.4,
+          3.0,
+          3.55,
+          4.0
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          0.1,
+          0.35,
+          0.75,
+          1.3,
+          2.0,
+          2.8,
+          3.7,
+          4.6,
+          5.5,
+          6.3
+        ]
+      }
+    }
+  }
+}

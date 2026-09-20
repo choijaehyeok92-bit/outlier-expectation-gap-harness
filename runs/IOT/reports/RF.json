@@ -1,0 +1,154 @@
+{
+  "agent_id": "RF",
+  "ticker": "IOT",
+  "as_of_date": "2026-09-18",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 63.5,
+  "confidence_0_1": 0.76,
+  "bull_score": 85,
+  "bear_score": 35,
+  "bull_case": "매출 30% 성장과 고정비 레버리지가 지속되고 SBC 비율이 하락하면 높은 증분 경제수익률과 강한 FCF/share 전환이 가능하다.",
+  "bear_case": "SBC가 매출의 고정 비율로 남고 희석이 3% 이상 지속되면 일반 FCF 성장은 주당 owner FCF로 전환되지 않는다.",
+  "thesis": "R&D 흡수력과 영업 레버리지는 강하지만 주당 경제가치 판단에서는 SBC가 결정적이다. TTM 일반 FCF는 양호하나 SBC를 비용으로 본 owner FCF는 아직 음수이고 희석도 3%를 넘는다. 그러므로 컴파운더 수준의 재투자·FCF 품질은 미달하며, 성장형 기업의 개선 궤적으로만 평가한다.",
+  "evidence": [
+    {
+      "claim": "TTM 매출 $1.848B, gross margin 76.4%, GAAP 영업이익 $19.4M(1.0%), OCF $288.4M, capex $32.9M, SBC $330.6M이다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "estimate",
+      "value": 1847552000,
+      "economic_driver": "operating_scale"
+    },
+    {
+      "claim": "Q2 FY27 매출 $508.4M(+29.9% y/y), H1 매출 $987.3M(+30.2%); H1 GAAP 영업이익 $12.1M로 전년 -$59.9M에서 흑자 전환했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "FY2027 Q2/H1",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 508437000,
+      "economic_driver": "growth_and_operating_leverage"
+    },
+    {
+      "claim": "TTM SBC $330.6M은 매출의 17.9%이고 Q2 희석주식수 590.5M은 전년 571.7M보다 3.28% 증가했다. OCF-capex-SBC owner-FCF proxy는 -$75.1M이다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM/Q2 to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "estimate",
+      "value": -75147000,
+      "economic_driver": "dilution_and_owner_fcf"
+    },
+    {
+      "claim": "ARR은 $2.125B로 전년 $1.640B 대비 29.5% 증가했고, $100k+ ARR 고객은 3,605개로 30.1% 증가했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01 versus 2025-08-02",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 2124742000,
+      "economic_driver": "customer_expansion"
+    },
+    {
+      "claim": "현금 $291.4M, 단기 시장성증권 $537.5M, 장기 시장성증권 $496.8M로 합계 $1.326B이며 유의미한 funded debt가 없다; 운용리스 부채는 $69.5M이다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 1325710000,
+      "economic_driver": "liquidity"
+    }
+  ],
+  "counterevidence": [
+    "TTM owner FCF proxy가 -$75.1M으로 아직 경제적 흑자를 입증하지 못했다.",
+    "SBC/매출 17.9%와 희석 3.28%는 FCF의 상당 부분이 주주비용이라는 뜻이다.",
+    "capitalized internal-use software는 일반 capex 외 추가 경제적 투자로 볼 여지가 있다."
+  ],
+  "unknowns": [
+    "SBC grant의 장기 정상화율.",
+    "신규 ARR cohort별 판매투자 회수기간.",
+    "R&D 프로젝트별 사후 수익률."
+  ],
+  "falsifiers": [
+    "TTM owner FCF가 FY28에도 음수면 재투자 복리 가설을 기각한다.",
+    "희석주식수 증가율이 2개 분기 연속 4%를 넘으면 FCF/share 품질을 낮춘다.",
+    "R&D/매출이 20% 부근인데 ARR 성장률이 20% 아래로 내려가면 증분 ROIC를 낮춘다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "FY25→FY26 연간 희석주식수 약 3.1%, Q2 y/y 3.28%는 높아 점수를 크게 낮췄다. 그러나 매출·ARR가 약 30% 성장해 주당 성장도 강하고 폭이 가속하지 않아 현재 자료로 장기간·과도 두 요건을 모두 충족했다고 보지 않는다."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "매출 증가와 동시에 GAAP 영업손익이 -$59.9M에서 +$12.1M, OCF가 개선됐다. 증분 ROIC의 자본비용 하회가 구조적으로 확인된 상태가 아니다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF",
+      "direction": "up",
+      "threshold": "FY28 positive",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "diluted shares growth",
+      "direction": "down",
+      "threshold": "<3% y/y",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "SBC/revenue",
+      "direction": "down",
+      "threshold": "<15%",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "다음 10-Q의 SBC·희석·owner FCF",
+    "capitalized software 포함 투자액 재계산",
+    "ARR 증가 대비 R&D·S&M 효율"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 65,
+      "rationale": "자본경량 구조에서 매출 증가와 영업손익·OCF 개선이 동반됐지만 SBC 차감 owner FCF가 아직 음수여서 75 우수 ROIC를 입증하지 못했다; 50 측정불확실보다는 개선 증거가 강하다."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 80,
+      "rationale": "TTM (capex+R&D)/OCF는 141.7%다. 60% 초과이나 증분 ROIC가 WACC 2배 이상이라는 요건을 입증하지 못해 90 대신 다음 하위 관측점 80을 적용했다."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 45,
+      "rationale": "일반 FCF $255.5M은 성장하지만 SBC 차감 owner FCF는 -$75.1M이고 희석주식수는 3.28% 증가했다. 50 왜곡 큼보다 한 단계 낮게 반영했다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    }
+  ]
+}

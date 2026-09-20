@@ -1,0 +1,183 @@
+{
+  "agent_id": "MA",
+  "ticker": "NVDA-2026-09-18",
+  "as_of_date": "2026-09-18",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 73.75,
+  "confidence_0_1": 0.7,
+  "bull_score": 85,
+  "bear_score": 55,
+  "bull_case": "최근 4개 분기 자사주 평균 매입가는 약 $191.78로 Base 가치 $212.86의 90.1%다. 중국 데이터센터 시장을 잃고도 매출을 배로 키웠으며 Blackwell Ultra에서 Rubin으로 전환을 진행했다. 내부통제는 경영진과 PwC 모두 유효하다고 결론냈다.",
+  "bear_case": "H1 지분증권 매입 $42.4B, 평가익 $23.7B, 투자잔액 $93.9B로 자본배분의 검증 가능성이 낮아졌다. Groq 라이선스 약 $15.9B와 Hugging Face $11.9B의 회수 근거도 없다. $366B 약정은 실행 오류의 비용을 크게 만든다.",
+  "thesis": "실행력·회계 신뢰성은 유지되지만 자본배분의 검증 부담은 더 커졌다. 자사주 평균 매입가/Base 가치 0.901로 capital_allocation은 규칙상 70이다. 중국 배제 속에서도 Q2 매출 +105.9%와 Rubin 전환은 실행력을 지지한다. 반면 지분투자 $93.9B, Groq·Hugging Face 지출에 더해 $36B AI-cloud agreements와 $108.5B maximum gross guarantees가 고객 생태계 지원에 연결된다. $105B 보증은 FY2029 이후 조건부라 즉시 지출은 아니지만 기대수익·손실분포가 미공시다.",
+  "evidence": [
+    {
+      "claim": "최근 4개 분기 자사주 매입은 약 292M주, $56.0B로 평균 단가 약 $191.78이다. EV Base 주당가치 $212.86 대비 비율은 0.901이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-K_FY26_filed_2026-02-25.txt L1107-L1109 and 10-Q_FY27Q2_filed_2026-08-26.txt L1884-L1887, L2737-L2740; reports/EV.json",
+      "period": "FY26 H2 through FY27 H1",
+      "as_of_date": "2026-09-18",
+      "value": 0.901,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "SUP-MA-BUYBACK-001",
+      "economic_driver": "repurchase_value_creation"
+    },
+    {
+      "claim": "H1 FY27 지분증권 매입은 $42,404M, 기말 시장성·비시장성 지분은 $93,940M, H1 비현금 평가익은 $23,707M이었다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt L280-L345, L729-L830",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 93940,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-MA-EQUITY-INVESTMENTS-002",
+      "economic_driver": "capital_allocation_opacity"
+    },
+    {
+      "claim": "경영진은 FY26 내부회계통제가 유효하다고 결론냈고 PwC도 그 효과를 감사했다. 해당 분기 중 중대한 통제 변경은 없었다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-K_FY26_filed_2026-02-25.txt L1176-L1179, L1275-L1281",
+      "period": "FY26",
+      "as_of_date": "2026-01-25",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-MA-CONTROLS-003",
+      "economic_driver": "financial_reporting_integrity"
+    },
+    {
+      "claim": "중국 데이터센터 시장에서 사실상 배제되고 H20 $4.5B·H200 $0.4B 비용을 인식했지만 Q2 FY27 매출은 +105.9% y/y, Data Center는 +117% y/y였다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2091-L2100, L2838-L2857",
+      "period": "FY26 Q1 through FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 105.9,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-MA-EXECUTION-004",
+      "economic_driver": "execution_adaptability"
+    },
+    {
+      "claim": "Groq 비독점 라이선스에 FY26 $13,000M과 H1 FY27 $2,944M을 지급했고, Hugging Face 인수대가는 약 $11.9B에 최대 $1.0B 리텐션이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-K_FY26_filed_2026-02-25.txt; 10-Q_FY27Q2_filed_2026-08-26.txt; 8-K_filed_2026-09-03.txt",
+      "period": "FY26 through 2026-09-03",
+      "as_of_date": "2026-09-03",
+      "value": 27844,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-MA-MA-005",
+      "economic_driver": "acquisition_and_license_returns"
+    },
+    {
+      "claim": "일반 commitments는 $366B이고, 별도 Additional Commitments $56B와 maximum gross guarantees $108.5B도 공시됐다. 이 중 $105B SB Energy/OpenAI 보증은 FY2029 이후 phase별로 활성화되는 조건부 최대 총액이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1700-L1818, L2193-L2197; sources/financials/normalized_financials.json FACT-0102",
+      "period": "FY27 Q2 / August 2026",
+      "as_of_date": "2026-08-26",
+      "value": 108500,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-MA-COMMITMENTS-006",
+      "economic_driver": "ecosystem_capital_support"
+    }
+  ],
+  "counterevidence": [
+    "최근 4개 분기 자사주 평균 매입가/Base 가치 0.901은 규칙상 합리적 구간이다.",
+    "지분투자·보증 대상이 고객이라면 투자수익과 매출이 같은 상대에서 발생해 경제적 독립성이 약해질 수 있다.",
+    "$105B SB Energy 보증은 FY2029 이후 단계적으로 활성화되는 maximum gross cap이지 즉시 현금지출이 아니다.",
+    "회계 재작성·감사인 이슈는 확인되지 않았고 중국 관련 손실도 공시에 반영됐다."
+  ],
+  "unknowns": [
+    "지분투자·보증 대상별 투자액과 관련 매출·AR.",
+    "$108.5B 보증의 확률가중 기대손실·회수권·phase별 실제 노출.",
+    "비시장성 지분 $51.2B의 평가기법과 민감도.",
+    "Groq·Hugging Face 및 AI-cloud support의 기대수익·통합 KPI."
+  ],
+  "falsifiers": [
+    "비시장성 지분 평가손실이 분기 세전이익의 5%를 넘으면 자본배분 점수를 하향한다.",
+    "자사주 평균 매입단가/Base 가치가 2개 분기 연속 1.2를 넘으면 규율 가설이 약화된다.",
+    "중대한 내부통제 취약점이나 재작성이 확인되면 거버넌스 판단을 즉시 뒤집는다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "FY26 내부통제는 경영진과 PwC가 유효하다고 결론냈고 재작성·감사인 이슈가 확인되지 않는다. 중국 관련 손실과 DSO 악화도 공시에 반영됐다. 다만 비시장성 지분 평가와 관련 고객 매출은 지속 감시한다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "자사주 평균가/Base 가치",
+      "direction": "down",
+      "threshold": "1.0 이하",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "세전이익 중 지분평가익 비중",
+      "direction": "down",
+      "threshold": "10% 미만",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "비시장성 지분 증가율",
+      "direction": "down",
+      "threshold": "매출 증가율 이하",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "보증·AI-cloud agreements 대상 고객의 매출·AR와 phase별 실제 노출 확인",
+    "비시장성 지분 평가기법과 실현 수익률 확인",
+    "Hugging Face·Groq·AI-cloud support의 사후 ROIC/KPI 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 70,
+      "rationale": "최근 4개 분기 평균 자사주 매입가 $191.78/Base 가치 $212.86 = 0.901로 0.8~1.0 구간의 70점이다. 검증된 사업 철수 modifier는 없다."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 70,
+      "rationale": "내부통제 유효 의견, 재작성·감사인 문제 부재, 불리한 중국 손실 인식이 75점 부근을 지지한다. 위임장 부재와 Level 3 투자자산 불확실성으로 70점에 둔다."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 85,
+      "rationale": "중국 시장 상실을 흡수하며 Q2 매출 +105.9%, Blackwell Ultra 확장과 Rubin 전환을 진행해 85를 유지한다. 다만 $36B AI-cloud agreements와 $108.5B maximum gross guarantees의 회수 성과는 미검증이므로 90은 배제하며 향후 실행 실패가 확인되면 하향한다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "critical",
+      "rationale": "최근 최대 배분 항목인 지분증권의 수익과 관련 고객 매출을 독립 검증할 수 없다."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "위임장 부재로 보상 정렬과 내부자 거래를 평가하지 못했다."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "material",
+      "rationale": "$366B 약정과 대형 라이선스·인수의 회수 성과는 아직 관측되지 않았다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  },
+  "rerun_note": "Research Orchestrator pass 4 반영. 자사주 observable과 실현된 실행 성과는 변하지 않아 subscores를 유지하되, ecosystem support 규모($36B additional AI-cloud agreements, $108.5B maximum gross guarantees)를 자본배분 불확실성에 명시했다. Carried into the 2026-09-18 policy-migration run because the underlying filing and market-data cutoff is 2026-09-18; ticker/date metadata and local source paths were retargeted."
+}

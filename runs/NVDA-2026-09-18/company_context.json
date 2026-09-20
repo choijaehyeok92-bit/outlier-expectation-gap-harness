@@ -1,0 +1,77 @@
+{
+  "ticker": "NVDA-2026-09-18",
+  "company_name": "NVIDIA Corporation",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 222.27,
+  "shares_diluted": 24285000000,
+  "market_cap_usd": 5367153690000,
+  "enterprise_value": 5343933690000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC EDGAR Form 10-K FY2026 filed 2026-02-25 — sources/10-K_2026-02-25_0001045810-26-000021.htm",
+    "SEC EDGAR Form 10-Q FY2027 Q1 filed 2026-05-20 — sources/10-Q_2026-05-20_0001045810-26-000052.htm",
+    "SEC EDGAR Form 10-Q FY2027 Q2 filed 2026-08-26 — sources/10-Q_2026-08-26_0001045810-26-000075.htm",
+    "SEC EDGAR Form 8-K filed 2026-09-03 — sources/8-K_2026-09-03_0001045810-26-000078.htm",
+    "Normalized filing extraction locked to 2026-09-18 — sources/financials/normalized_financials.json",
+    "2026-09-18 close $222.27 (source recorded in the prior verified NVDA context)"
+  ],
+  "special_questions": [
+    "At $222.27, does the current price require a Bull-case outcome?",
+    "How much reported demand is supported by NVIDIA investments or guarantees, and is that growth repeatable?",
+    "How sensitive is value to terminal assumptions and AI-infrastructure demand normalization?"
+  ],
+  "intake_facts": [
+    "FY26: revenue $215,938M, operating income $130,387M, net income $120,067M, OCF $102,718M, capex $6,042M, SBC $6,386M.",
+    "Q2 FY27: revenue $96,221M (+105.9% y/y), gross margin 75.0%, operating income $63,734M, net income $59,688M and diluted shares 24,285M.",
+    "H1 FY27: revenue $177,837M, net income $118,010M, OCF $74,421M, capex $4,434M and SBC $3,954M.",
+    "H1 FY27 net income includes $23,707M of non-cash gains from equity securities.",
+    "H1 FY27 working-capital uses include AR $24,590M and inventory $10,204M; quarter-end AR was $63,059M.",
+    "2026-07-26 cash plus marketable debt securities was $56,586M, debt $33,366M, and net cash $23,220M; marketable and non-marketable equity securities of $93,940M are excluded from net cash.",
+    "Commitments totaled approximately $366B: supply/capacity $279B, cloud agreements $29B, uncommenced data-center leases $25B, equity investments $25B and capex $8B.",
+    "Land/power/shell guarantees for AI cloud partners had $3,529M notional; partner escrow was $712M.",
+    "The Q2 FY27 10-Q separately disclosed August 2026 SB Energy guarantees capped at $105B for approximately 4.25 GW on behalf of an OpenAI affiliate; combined maximum gross guarantee exposure was $108.5B including $3.5B of AI-cloud partner guarantees. The SB Energy guarantees phase in as nine data-center phases commence (first expected FY2029), are triggered by specified tenant defaults, decline as OpenAI performs, and include an option for credit support on approximately 3.8 additional GW.",
+    "Separate from the $29B cloud-service commitments inside the $366B commitments table, Q2 FY27 Note 10 disclosed $36B of additional AI-cloud agreements under which AI clouds procure NVIDIA infrastructure while NVIDIA commits cloud services that can be redirected to third parties; qualifying third-party use can generate revenue share for NVIDIA.",
+    "Q2 one direct customer was 16% of revenue; H1 three direct customers were 16%, 15% and 13%.",
+    "NVIDIA reports being effectively foreclosed from China's data-center compute market; H200 shipments were under 1% of Data Center revenue and H1 FY27 included a $400M H200 charge.",
+    "2026-09-02 definitive agreement to acquire Hugging Face for about $11.9B plus up to about $1.0B retention equity.",
+    "TTM to 2026-07-26 estimate: revenue $302,970M, net income $192,880M, OCF $134,360M, capex $7,354M, FCF $127,006M, SBC $7,241M, owner FCF $119,765M or $4.92 per diluted share.",
+    "2026-09-18 close $222.27; estimated market cap $5,367.2B, EV $5,343.9B, trailing P/E about 28.1x and P/FCF about 42.3x."
+  ],
+  "net_cash_per_share": 0.9561,
+  "valuation_percentile_5y": 0.05,
+  "valuation_metric": "Trailing P/E (about 28.1x at the 2026-09-18 close; near the low end of the prior five years)",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {},
+    "production_by_region": {},
+    "critical_supplier_regions": [
+      "Taiwan"
+    ],
+    "export_control_dependencies": [
+      "China data-center compute",
+      "US advanced-computing export controls"
+    ],
+    "sanctions_exposure": [
+      "China"
+    ],
+    "critical_shipping_routes": [
+      "Taiwan Strait"
+    ],
+    "government_customer_exposure": []
+  }
+}

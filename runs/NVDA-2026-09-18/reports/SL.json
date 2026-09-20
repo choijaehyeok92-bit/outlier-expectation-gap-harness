@@ -1,0 +1,177 @@
+{
+  "agent_id": "SL",
+  "ticker": "NVDA-2026-09-18",
+  "as_of_date": "2026-09-18",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 75.5,
+  "confidence_0_1": 0.75,
+  "bull_score": 88,
+  "bear_score": 55,
+  "bull_case": "가속 컴퓨팅 전환은 비용곡선과 개발표준을 바꾸는 구조적 변화다. CUDA 개발자 750만명, 지원 앱 6,000개, TOP500 78%, 누적 R&D $76.7B는 NVIDIA가 카테고리 기준을 정한다는 근거다. Blackwell Ultra에서 Rubin으로 이어지는 cadence가 기준선을 계속 높인다.",
+  "bear_case": "Q2 매출의 92.5%가 Data Center이고 10% 이상인 독립 최종시장은 없다. H1 상위 3개 고객이 44%이며 중국 시장은 단일 규제로 사실상 사라졌다. 여러 관할의 경쟁당국 조사와 AI capex 사이클 집중은 구조적 리더십의 취약점을 키운다.",
+  "thesis": "가속 컴퓨팅의 구조 변화는 실재하고 NVIDIA는 카테고리 기준을 정의한다. CUDA 개발자 750만명, 앱 6,000개, TOP500 78%, 누적 R&D $76.7B와 연간 아키텍처 cadence가 이를 뒷받침한다. Q2 FY27 Data Center +117%와 75% gross margin도 리더십이 실적에 반영됨을 보여준다. 그러나 내구성은 집중도로 제한된다. Q2 매출의 92.5%가 Data Center이고 10% 이상인 독립 최종시장은 0개다. 기본 점수 45에 중국 데이터센터 상실을 전체 매출 증가로 흡수한 실적을 +10해 55점을 적용한다.",
+  "evidence": [
+    {
+      "claim": "CUDA 및 자사 소프트웨어 개발자는 750만명 이상, 지원 애플리케이션은 6,000개, 네트워킹 포함 TOP500 구동 비중은 78%다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-K_FY26_filed_2026-02-25.txt L179, L222",
+      "period": "FY26",
+      "as_of_date": "2026-01-25",
+      "value": 7500000,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-SL-ECOSYSTEM-001",
+      "economic_driver": "category_standard"
+    },
+    {
+      "claim": "창사 이래 누적 R&D는 $76.7B이고 엔지니어의 절반 이상이 소프트웨어를 담당한다. Blackwell Ultra 이후 Rubin 생산 출하가 Q3에 시작됐다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-K_FY26_filed_2026-02-25.txt L172 and 10-Q_FY27Q2_filed_2026-08-26.txt L2188-L2193",
+      "period": "FY26 through FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 76700,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-SL-RND-CADENCE-002",
+      "economic_driver": "innovation_cadence"
+    },
+    {
+      "claim": "Q2 FY27 Data Center 매출 $89,023M은 총매출의 92.5%다. H1 상위 3개 직접고객은 16%, 15%, 13%로 합계 44%였다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt Revenue by Market Platform, L2076-L2077",
+      "period": "FY27 Q2 and H1",
+      "as_of_date": "2026-07-26",
+      "value": 92.5,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "SUP-SL-CONCENTRATION-003",
+      "economic_driver": "demand_concentration"
+    },
+    {
+      "claim": "미국 수출규제로 중국 데이터센터 컴퓨트 시장에서 사실상 배제되고 H20 $4.5B·H200 $0.4B 비용을 인식했지만 Q2 매출은 +105.9% y/y였다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2838-L2857",
+      "period": "FY26 Q1 through FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 4900,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-SL-SHOCK-004",
+      "economic_driver": "realized_shock_absorption"
+    },
+    {
+      "claim": "EU·미국·영국·한국·중국 경쟁당국은 GPU 판매, 공급 배분, 파운데이션 모델 기업 투자·파트너십 관련 정보를 요구했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2817",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 5,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-SL-REGULATION-005",
+      "economic_driver": "regulatory_constraint"
+    },
+    {
+      "claim": "Q2 FY27 매출은 +105.9% y/y, Data Center는 +117% y/y였고 gross margin은 75.0%였다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-2026-09-18/sources/10-Q_FY27Q2_filed_2026-08-26.txt L126-L161, L2091-L2100",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 117,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-SL-LEADERSHIP-006",
+      "economic_driver": "category_growth_capture"
+    }
+  ],
+  "counterevidence": [
+    "최근 성장에서 구조적 수요와 공급부족·가격·제품믹스 효과를 분리할 수 없다.",
+    "중국 배제가 경쟁사의 개발자·고객 생태계를 키웠다고 회사가 직접 공시했다.",
+    "ACIE +138%가 Hyperscale +102%보다 빨라 자금력이 약한 고객으로 성장축이 이동할 수 있다.",
+    "TOP500 78%는 HPC 지표이며 상업용 AI 추론 점유율을 직접 측정하지 않는다."
+  ],
+  "unknowns": [
+    "가속 컴퓨트 시장의 물량·금액 점유율.",
+    "최근 성장의 가격·물량 기여도.",
+    "경쟁당국 조사의 구제조치 범위와 시기.",
+    "중국 데이터센터 시장 재진입 가능성."
+  ],
+  "falsifiers": [
+    "Data Center 매출 비중이 85% 아래로 내려가면 단일시장 의존 논리는 약화된다.",
+    "경쟁당국이 판매·공급배분에 구조적 구제조치를 부과하면 리더십 자율성 전제를 하향한다.",
+    "Data Center 매출이 2개 분기 연속 y/y 감소하면 구조적 성장 가설을 재평가한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Data Center 매출 비중",
+      "direction": "down",
+      "threshold": "90% 미만",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "상위 3개 고객 매출 비중",
+      "direction": "down",
+      "threshold": "40% 미만",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "CUDA 개발자 수",
+      "direction": "up",
+      "threshold": "750만명 대비 증가",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "다음 10-Q의 경쟁당국 조사·구제조치",
+    "Q3 Data Center 내 Hyperscale·ACIE·Edge 구성",
+    "FY27 10-K의 개발자 수·앱·TOP500 갱신치"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 80,
+      "rationale": "개발자 750만명, 앱 6,000개, 누적 R&D $76.7B과 연간 cadence는 비용곡선과 표준의 구조 변화를 지지한다. 공급부족·가격효과 분리가 안 돼 90점은 배제한다."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 85,
+      "rationale": "CUDA 생태계, TOP500 78%, 컴퓨트·네트워크 동시 성장과 아키텍처 cadence가 카테고리 기준을 정하는 지위를 입증한다."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 55,
+      "rationale": "관측식: 매출 10% 이상 독립 최종시장 0개(Data Center 92.5%)로 45점. 중국 DC 상실이라는 실현 충격을 전체 매출 감소 없이 흡수해 +10, 총 55점이다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "구조 변화는 확인되지만 현재 성장에서 공급부족·가격효과를 분리할 수 없다."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "minor",
+      "rationale": "개발자 수·앱·TOP500·재무실적으로 리더십은 충분히 입증된다."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "critical",
+      "rationale": "매출 92.5%가 단일 시장이고 다수 관할의 규제 조치 범위가 미정이다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  },
+  "rerun_note": "Carried into the 2026-09-18 policy-migration run because the underlying filing and market-data cutoff is 2026-09-18; ticker/date metadata and local source paths were retargeted."
+}

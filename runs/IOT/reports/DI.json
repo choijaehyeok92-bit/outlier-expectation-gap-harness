@@ -1,0 +1,142 @@
+{
+  "agent_id": "DI",
+  "ticker": "IOT",
+  "as_of_date": "2026-09-18",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 77.0,
+  "confidence_0_1": 0.78,
+  "bull_score": 90,
+  "bear_score": 50,
+  "bull_case": "Physical AI agents와 통합 워크플로가 안전·장비·사이트를 하나의 운영체제로 묶으면 새 가치사슬의 중심이 될 수 있다.",
+  "bear_case": "기능이 텔레매틱스 번들로 범용화되고 새 use case가 fleet cross-sell에 그치면 파괴적 혁신이 아니라 우수한 존속 혁신이다.",
+  "thesis": "Samsara는 분절된 장치·점솔루션을 하나의 connected-operations 데이터 플랫폼과 AI workflow로 통합해 물리산업의 디지털 비용곡선을 바꾼다. 채택은 이미 파일럿을 넘어섰고 인접 use case도 복수다. 다만 하드웨어와 AI 기능 자체의 복제 가능성 때문에 새 가치사슬 지배 단계로 보지는 않는다.",
+  "evidence": [
+    {
+      "claim": "공식 IR은 IDC 연구를 근거로 고객 평균 8배 ROI와 조직당 $2M+ 평균 편익을 제시한다.",
+      "source_type": "company_ir",
+      "source": "https://investors.samsara.com/overview/",
+      "period": "available by 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "fact",
+      "value": 8,
+      "economic_driver": "customer_roi"
+    },
+    {
+      "claim": "ARR은 $2.125B로 전년 $1.640B 대비 29.5% 증가했고, $100k+ ARR 고객은 3,605개로 30.1% 증가했다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01 versus 2025-08-02",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 2124742000,
+      "economic_driver": "customer_expansion"
+    },
+    {
+      "claim": "공식 사이트는 20,000+ operations, 350+ integrations, 380,000+ prevented accidents, 누적 R&D $1B+를 제시한다.",
+      "source_type": "company_ir",
+      "source": "https://www.samsara.com/",
+      "period": "available by 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "fact",
+      "value": 20000,
+      "economic_driver": "ecosystem_scale"
+    },
+    {
+      "claim": "회사는 fleet에서 시작해 equipment, sites, frontline workers로 앱을 확장했고 운송·건설·제조·유틸리티·정부·교육 등 다양한 physical-operations 산업에 배포했다. FY26 단일 고객 ARR 비중은 2% 이하였다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-K_2026-03-16_0001628280-26-018167.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-01-31",
+      "fact_or_estimate": "fact",
+      "economic_driver": "platform_breadth"
+    },
+    {
+      "claim": "RPO는 $4.285B이며 이 중 약 $1.839B를 다음 12개월에 인식할 예정이고, 어떤 고객도 분기·반기 매출의 10%를 넘지 않았다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 4285200000,
+      "economic_driver": "visibility_and_concentration"
+    }
+  ],
+  "counterevidence": [
+    "기존 텔레매틱스·OEM·AI 업체가 기능을 번들링할 수 있다.",
+    "대부분 revenue가 여전히 subscription fleet heritage에 연결돼 인접 옵션의 별도 규모가 불명확하다.",
+    "회사 제시 ROI와 사고방지 수치는 선택편향 가능성이 있다."
+  ],
+  "unknowns": [
+    "equipment·sites·workforce별 ARR.",
+    "전체 target asset 대비 실제 침투율.",
+    "AI agent 유료화와 gross margin."
+  ],
+  "falsifiers": [
+    "신제품 ARR가 전체 성장에 기여하지 못하면 optionality 점수를 낮춘다.",
+    "대형고객 증가율이 15% 아래면 adoption 가속을 기각한다.",
+    "경쟁사 번들로 gross margin이 70% 아래면 cost-performance 우위를 낮춘다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "ARR growth",
+      "direction": "up",
+      "threshold": ">=25%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "large customers",
+      "direction": "up",
+      "threshold": ">=25%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "new-use-case contribution",
+      "direction": "up",
+      "threshold": "quantified and rising",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Investor Day 신제품 ARR bridge",
+    "AI agents 유료채택률",
+    "경쟁사 win/loss와 가격 변화"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 80,
+      "rationale": "통합 데이터·AI로 사고·연료·운영비를 동시에 낮추며 공식 연구는 8x ROI를 제시한다. 75 구조변화보다 강하나 10배급 산업 비용곡선 재편은 미입증이다."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 80,
+      "rationale": "ARR와 $100k+ 고객이 약 30% 성장하고 20,000+ operations가 사용해 75 가속·경제성 확인을 웃돈다. 전체 시장 주류 침투율은 미공시라 90은 배제했다."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 70,
+      "rationale": "fleet에서 equipment·sites·workforce로 진입해 인접 가치풀 2개 이상을 확보했지만 산업 표준을 정의했다고 보기 어려워 관측표 70이다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    }
+  ]
+}

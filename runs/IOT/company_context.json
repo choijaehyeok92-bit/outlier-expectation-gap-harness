@@ -1,0 +1,61 @@
+{
+  "ticker": "IOT",
+  "company_name": "Samsara Inc.",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 39.55,
+  "shares_diluted": 590464665,
+  "market_cap_usd": 23352877500.75,
+  "enterprise_value": 22027167500.75,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC 10-Q filed 2026-09-08, accession 0001628280-26-060909",
+    "SEC 10-K filed 2026-03-16, accession 0001628280-26-018167",
+    "SEC Company Facts for CIK 0001642896 matched to fetched filing accessions",
+    "US market snapshot: IOT $39.55, latest trade 2026-09-18 23:15 UTC"
+  ],
+  "special_questions": [
+    "Can roughly 30% ARR growth persist as the revenue base exceeds $2 billion?",
+    "Does GAAP operating profitability improve fast enough to offset recurring stock-based compensation and dilution?",
+    "How much valuation support remains at roughly 11.9x EV/TTM revenue?"
+  ],
+  "net_cash_per_share": 2.2451978561663806,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "EV/TTM revenue; 5-year percentile unavailable because the December 2021 listing provides less than five full years of public history",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {
+      "United States": 0.86,
+      "Outside United States": 0.14
+    },
+    "production_by_region": {},
+    "critical_supplier_regions": [
+      "China",
+      "Taiwan"
+    ],
+    "export_control_dependencies": [
+      "IoT devices contain globally sourced electronic components; no quantified export-control revenue dependency disclosed"
+    ],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [
+      "Asia-to-North America electronics supply chain"
+    ],
+    "government_customer_exposure": [
+      "State and local government customers are part of the disclosed customer base; exposure is not quantified"
+    ]
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "agent_id": "FS",
+  "ticker": "IOT",
+  "as_of_date": "2026-09-18",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 73.25,
+  "confidence_0_1": 0.82,
+  "bull_score": 90,
+  "bear_score": 50,
+  "bull_case": "대규모 순현금과 양의 FCF가 경기·공급망 충격 속에서도 R&D와 영업 투자를 유지하게 한다.",
+  "bear_case": "성장 둔화에도 SBC와 비용구조가 경직되면 현금은 남아도 주당가치가 희석될 수 있다.",
+  "thesis": "파산·조달 위험은 매우 낮지만 주주 단위의 생존 품질은 희석이 낮춘다. $1.326B 현금·증권과 양의 OCF는 불황에도 외부자본 없이 운영할 수 있게 한다. 반면 희석주식수 증가가 관측 기준 3%를 넘으므로 dilution_offbalance는 30점으로 엄격히 적용한다.",
+  "evidence": [
+    {
+      "claim": "현금 $291.4M, 단기 시장성증권 $537.5M, 장기 시장성증권 $496.8M로 합계 $1.326B이며 유의미한 funded debt가 없다; 운용리스 부채는 $69.5M이다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 1325710000,
+      "economic_driver": "liquidity"
+    },
+    {
+      "claim": "TTM 매출 $1.848B, gross margin 76.4%, GAAP 영업이익 $19.4M(1.0%), OCF $288.4M, capex $32.9M, SBC $330.6M이다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "estimate",
+      "value": 1847552000,
+      "economic_driver": "operating_scale"
+    },
+    {
+      "claim": "TTM SBC $330.6M은 매출의 17.9%이고 Q2 희석주식수 590.5M은 전년 571.7M보다 3.28% 증가했다. OCF-capex-SBC owner-FCF proxy는 -$75.1M이다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/financials/normalized_financials.json",
+      "period": "TTM/Q2 to 2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "estimate",
+      "value": -75147000,
+      "economic_driver": "dilution_and_owner_fcf"
+    },
+    {
+      "claim": "RPO는 $4.285B이며 이 중 약 $1.839B를 다음 12개월에 인식할 예정이고, 어떤 고객도 분기·반기 매출의 10%를 넘지 않았다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-Q_2026-09-08_0001628280-26-060909.htm",
+      "period": "2026-08-01",
+      "as_of_date": "2026-08-01",
+      "fact_or_estimate": "fact",
+      "value": 4285200000,
+      "economic_driver": "visibility_and_concentration"
+    },
+    {
+      "claim": "FY26 매출의 약 14%가 미국 외에서 발생했다. 제조사·공급사와 하위 공급사의 중국·대만 노출은 공급 차질 위험으로 공시됐다.",
+      "source_type": "filing",
+      "source": "runs/IOT/sources/10-K_2026-03-16_0001628280-26-018167.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-01-31",
+      "fact_or_estimate": "fact",
+      "value": 0.14,
+      "economic_driver": "international_and_supply_chain"
+    }
+  ],
+  "counterevidence": [
+    "TTM owner FCF가 음수라 SBC를 현금성 경제비용으로 보면 내부자금 여력은 일반 FCF보다 약하다.",
+    "중국·대만 공급망 충격은 매출과 inventory working capital을 동시에 압박할 수 있다.",
+    "운용리스 부채 $69.5M과 letters of credit $15M은 작지만 0은 아니다."
+  ],
+  "unknowns": [
+    "정량화되지 않은 component purchase commitments.",
+    "장기 클라우드·통신 약정 총액.",
+    "극심한 침체에서 ARR churn 민감도."
+  ],
+  "falsifiers": [
+    "현금+증권이 $800M 아래로 내려가고 OCF가 음수면 스트레스 생존 점수를 낮춘다.",
+    "희석이 4%를 넘고 SBC/매출이 개선되지 않으면 희석 Veto를 재평가한다.",
+    "RPO 증가율이 10% 미만이면 현금흐름 방어력을 재검토한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "TTM OCF $288M가 capex $33M을 상회하고 현금·증권 $1.326B, funded debt 사실상 없음으로 두 구성요건이 반증된다."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "희석 +3.28%는 점수 30의 감점 사유지만 ARR·매출 약 30% 성장 대비 주당 성장은 여전히 높고 가속도도 확인되지 않아 장기간·과도 요건을 모두 충족하지 않는다."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "순현금 $1.326B와 양의 TTM OCF가 차입을 크게 상회해 파산 확률은 사실상 낮다. 주가 하락 가능성은 EV·AS에서 별도 반영한다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "cash plus securities",
+      "direction": "up",
+      "threshold": ">$1.0B",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "TTM OCF",
+      "direction": "up",
+      "threshold": "positive",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "diluted shares growth",
+      "direction": "down",
+      "threshold": "<3%",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "구매·클라우드 약정 총액 확인",
+    "SBC·희석 정상화 속도",
+    "침체 시 ARR 및 미수금 손실률"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 90,
+      "rationale": "현금·시장성증권 $1.326B, funded debt 사실상 없음, TTM OCF $288M로 90 순현금/매우 강함 앵커를 충족한다."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 85,
+      "rationale": "TTM OCF와 일반 FCF가 양수이고 현금성자산이 연간 비용투자 여력을 제공한다. SBC 차감 owner FCF 음수라 90 대신 85다."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 30,
+      "rationale": "희석주식수 y/y +3.28%로 관측표의 +3% 이상 행 30점이다. 최신 letters of credit $15M은 TTM 매출의 1% 미만이라 낮은 쪽인 희석 축을 적용했다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "material",
+      "rationale": "핵심 장기 가정은 기준일 이후 실적에서 재검증해야 한다."
+    }
+  ]
+}

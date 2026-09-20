@@ -10,10 +10,12 @@ Two rules the caller cannot opt out of: nothing filed after the run's as_of_date
 is downloaded, and every request carries a declared contact in the User-Agent
 because SEC fair-access requires one.
 """
+import gzip
 import json
 import time
 import urllib.error
 import urllib.request
+import zlib
 
 TICKER_INDEX = 'https://www.sec.gov/files/company_tickers.json'
 SUBMISSIONS = 'https://data.sec.gov/submissions/CIK{cik:010d}.json'
@@ -29,7 +31,13 @@ def _open(url, user_agent, timeout=30):
     request = urllib.request.Request(url, headers={
         'User-Agent': user_agent, 'Accept-Encoding': 'identity', 'Host': url.split('/')[2]})
     with urllib.request.urlopen(request, timeout=timeout) as response:
-        return response.read()
+        payload = response.read()
+        encoding = (response.headers.get('Content-Encoding') or '').lower()
+        if encoding == 'gzip':
+            return gzip.decompress(payload)
+        if encoding == 'deflate':
+            return zlib.decompress(payload)
+        return payload
 
 
 def _read(url, user_agent, opener=None):
