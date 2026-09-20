@@ -1,0 +1,24 @@
+{
+  "stage": "evidence_and_red_team",
+  "agents": {
+    "evidence_quality": "ED",
+    "red_team": "RT"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "research": {
+    "questions": 78,
+    "pending": 78,
+    "command": "python harness.py research-plan RBRK"
+  }
+}
+python harness.py prompt RBRK ED
+python harness.py prompt RBRK RT
