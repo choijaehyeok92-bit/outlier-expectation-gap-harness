@@ -1,0 +1,223 @@
+{
+  "schema_version": "1.0",
+  "ticker": "AVGO",
+  "as_of_date": "2026-09-18",
+  "input_snapshot_sha256": "c78f8129703115d4f9b154161cb1dc65764a6988507b1fb8413660712b7a2d05",
+  "questions": [
+    {
+      "research_question_id": "RQ-AS-E0789591AF",
+      "question": "No empirical comparable-company base-rate dataset was available before the cutoff for assigning objective Bear/Base/Bull probabilities.",
+      "status": "partial",
+      "evidence": [
+        {
+          "evidence_id": "SUP-AVGO-AS-BASE-RATE-001",
+          "claim": "McKinsey studied 5,000 of the world's largest public companies over 2005-2019. Only one in eight recorded revenue growth above 10% per year over the decade, and only one in three companies in the top growth quartile in 2009-2014 maintained that rate in the subsequent five years; among predominantly organic growers the persistence rate was one in four.",
+          "value": {
+            "decade_growth_above_10pct_share": 0.125,
+            "top_quartile_persistence_share": 0.333333,
+            "organic_top_quartile_persistence_share": 0.25
+          },
+          "unit": "share",
+          "source_tier": 4,
+          "source_type": "secondary_research",
+          "source": "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-ten-rules-of-growth",
+          "source_section": "The ten rules of growth — empirical sample and Exhibit 1 discussion",
+          "period": "2005-2019 global public-company sample",
+          "publication_date": "2022-08-12",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "large_company_growth_persistence_base_rate",
+          "source_origin": "McKinsey The ten rules of growth (2022-08-12)",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.9,
+          "verified_fact_refs": []
+        }
+      ],
+      "remaining_unknowns": [
+        "No pre-cutoff empirical dataset was found that isolates Broadcom-like megacap custom-AI semiconductor companies; the available base rate is broad large-public-company evidence and must be used conservatively."
+      ],
+      "excluded_post_cutoff": [],
+      "search_log": [
+        {
+          "tier": 0,
+          "source": "runs/AVGO frozen context, normalized financial pack, completed AS/DI/EV/FS reports",
+          "outcome": "searched_but_not_found",
+          "note": "No empirical large-company growth-persistence base-rate dataset is contained in the frozen company files."
+        },
+        {
+          "tier": 4,
+          "source": "McKinsey, The ten rules of growth (2022-08-12)",
+          "outcome": "found",
+          "note": "5,000 largest public companies; 2005-2019 growth and persistence base rates."
+        }
+      ],
+      "agent_id": "AS",
+      "domain": "asymmetry"
+    },
+    {
+      "research_question_id": "RQ-AS-E34D29684E",
+      "question": "Build a comparable-company base-rate table before assigning explicit scenario probabilities.",
+      "status": "partial",
+      "evidence": [
+        {
+          "evidence_id": "SUP-AVGO-AS-BASE-RATE-001",
+          "claim": "McKinsey studied 5,000 of the world's largest public companies over 2005-2019. Only one in eight recorded revenue growth above 10% per year over the decade, and only one in three companies in the top growth quartile in 2009-2014 maintained that rate in the subsequent five years; among predominantly organic growers the persistence rate was one in four.",
+          "value": {
+            "decade_growth_above_10pct_share": 0.125,
+            "top_quartile_persistence_share": 0.333333,
+            "organic_top_quartile_persistence_share": 0.25
+          },
+          "unit": "share",
+          "source_tier": 4,
+          "source_type": "secondary_research",
+          "source": "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-ten-rules-of-growth",
+          "source_section": "The ten rules of growth — empirical sample and Exhibit 1 discussion",
+          "period": "2005-2019 global public-company sample",
+          "publication_date": "2022-08-12",
+          "as_of_date": "2026-09-18",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "large_company_growth_persistence_base_rate",
+          "source_origin": "McKinsey The ten rules of growth (2022-08-12)",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.9,
+          "verified_fact_refs": []
+        }
+      ],
+      "remaining_unknowns": [
+        "No pre-cutoff empirical dataset was found that isolates Broadcom-like megacap custom-AI semiconductor companies; the available base rate is broad large-public-company evidence and must be used conservatively."
+      ],
+      "excluded_post_cutoff": [],
+      "search_log": [
+        {
+          "tier": 0,
+          "source": "runs/AVGO frozen context, normalized financial pack, completed AS/DI/EV/FS reports",
+          "outcome": "searched_but_not_found",
+          "note": "No empirical large-company growth-persistence base-rate dataset is contained in the frozen company files."
+        },
+        {
+          "tier": 4,
+          "source": "McKinsey, The ten rules of growth (2022-08-12)",
+          "outcome": "found",
+          "note": "5,000 largest public companies; 2005-2019 growth and persistence base rates."
+        }
+      ],
+      "agent_id": "AS",
+      "domain": "asymmetry"
+    }
+  ],
+  "research_summary": {
+    "questions_requested": 32,
+    "questions_resolved": 0,
+    "questions_unresolved": 32,
+    "new_primary_evidence": 0,
+    "new_secondary_evidence": 1,
+    "verified_fact_conflicts": 0,
+    "requires_refreeze": false
+  },
+  "resolved_questions": [],
+  "unresolved_questions": [
+    "RQ-AS-262A7C280A",
+    "RQ-AS-2F4788EE27",
+    "RQ-AS-875F8C9985",
+    "RQ-AS-C431FFF54A",
+    "RQ-AS-E0789591AF",
+    "RQ-AS-E34D29684E",
+    "RQ-AS-FBE26FBE0E",
+    "RQ-DI-1ED3D033B8",
+    "RQ-DI-3EEC746289",
+    "RQ-DI-43181C0261",
+    "RQ-DI-84F53E841F",
+    "RQ-DI-B8422C2231",
+    "RQ-DI-D225F92CD0",
+    "RQ-DI-F75ECBFFFE",
+    "RQ-EV-12DD0FF427",
+    "RQ-EV-2572FD6D9F",
+    "RQ-EV-563DC09723",
+    "RQ-EV-71849D3A44",
+    "RQ-EV-B44262CAD3",
+    "RQ-EV-C8ACAB2393",
+    "RQ-EV-E6F65C2C92",
+    "RQ-EV-F57C7A8AA2",
+    "RQ-FS-19ED20D455",
+    "RQ-FS-5D8AC2B4EF",
+    "RQ-FS-68CE89B3FF",
+    "RQ-FS-79670809C0",
+    "RQ-FS-83F6C2F2AB",
+    "RQ-FS-96769F3647",
+    "RQ-FS-CC46F2B250",
+    "RQ-RF-4CDA2DE093",
+    "RQ-RF-76E6A7CC08",
+    "RQ-RF-D323B05CAF"
+  ],
+  "unsubmitted_questions": [
+    "RQ-AS-262A7C280A",
+    "RQ-AS-2F4788EE27",
+    "RQ-AS-875F8C9985",
+    "RQ-AS-C431FFF54A",
+    "RQ-AS-FBE26FBE0E",
+    "RQ-DI-1ED3D033B8",
+    "RQ-DI-3EEC746289",
+    "RQ-DI-43181C0261",
+    "RQ-DI-84F53E841F",
+    "RQ-DI-B8422C2231",
+    "RQ-DI-D225F92CD0",
+    "RQ-DI-F75ECBFFFE",
+    "RQ-EV-12DD0FF427",
+    "RQ-EV-2572FD6D9F",
+    "RQ-EV-563DC09723",
+    "RQ-EV-71849D3A44",
+    "RQ-EV-B44262CAD3",
+    "RQ-EV-C8ACAB2393",
+    "RQ-EV-E6F65C2C92",
+    "RQ-EV-F57C7A8AA2",
+    "RQ-FS-19ED20D455",
+    "RQ-FS-5D8AC2B4EF",
+    "RQ-FS-68CE89B3FF",
+    "RQ-FS-79670809C0",
+    "RQ-FS-83F6C2F2AB",
+    "RQ-FS-96769F3647",
+    "RQ-FS-CC46F2B250",
+    "RQ-RF-4CDA2DE093",
+    "RQ-RF-76E6A7CC08",
+    "RQ-RF-D323B05CAF"
+  ],
+  "candidate_new_evidence": [
+    {
+      "evidence_id": "SUP-AVGO-AS-BASE-RATE-001",
+      "claim": "McKinsey studied 5,000 of the world's largest public companies over 2005-2019. Only one in eight recorded revenue growth above 10% per year over the decade, and only one in three companies in the top growth quartile in 2009-2014 maintained that rate in the subsequent five years; among predominantly organic growers the persistence rate was one in four.",
+      "value": {
+        "decade_growth_above_10pct_share": 0.125,
+        "top_quartile_persistence_share": 0.333333,
+        "organic_top_quartile_persistence_share": 0.25
+      },
+      "unit": "share",
+      "source_tier": 4,
+      "source_type": "secondary_research",
+      "source": "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-ten-rules-of-growth",
+      "source_section": "The ten rules of growth — empirical sample and Exhibit 1 discussion",
+      "period": "2005-2019 global public-company sample",
+      "publication_date": "2022-08-12",
+      "as_of_date": "2026-09-18",
+      "eligible_under_as_of_date": true,
+      "fact_or_estimate": "fact",
+      "economic_driver": "large_company_growth_persistence_base_rate",
+      "source_origin": "McKinsey The ten rules of growth (2022-08-12)",
+      "conflict_with_verified_fact": false,
+      "requires_refreeze": false,
+      "confidence": 0.9,
+      "verified_fact_refs": []
+    }
+  ],
+  "conflicts": [],
+  "excluded_post_cutoff": [],
+  "recommended_harness_reruns": [
+    "AS"
+  ],
+  "source_independence_groups": [
+    "McKinsey The ten rules of growth (2022-08-12)"
+  ]
+}
