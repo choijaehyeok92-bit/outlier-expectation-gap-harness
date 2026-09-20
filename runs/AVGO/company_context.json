@@ -1,22 +1,49 @@
 {
   "ticker": "AVGO",
-  "company_name": "",
+  "company_name": "Broadcom Inc.",
   "as_of_date": "2026-09-18",
   "currency": "USD",
-  "current_price": null,
-  "shares_diluted": null,
-  "market_cap_usd": null,
-  "enterprise_value": null,
+  "current_price": 357.61,
+  "shares_diluted": 4887000000,
+  "market_cap_usd": 1707097776022.65,
+  "enterprise_value": 1742541776022.65,
   "portfolio_context": {
     "existing_position_pct": 0,
     "sector_exposure_pct": 0,
     "overlap_notes": ""
   },
-  "known_sources": [],
-  "special_questions": [],
-  "net_cash_per_share": null,
+  "known_sources": [
+    "User-supplied Broadcom FY2025 Annual Report / Form 10-K, fiscal year ended 2025-11-02 — AVGO (Broadcom Inc.) Annual Report to Security Holders (ARS) 2026-03-02.docx",
+    "User-supplied Broadcom 10-Qs for fiscal quarters ended 2024-08-04, 2025-02-02, 2025-05-04, 2025-08-03, 2026-02-01, 2026-05-03 and 2026-08-02",
+    "User-supplied Broadcom 2026 DEF 14A Proxy — AVGO (Broadcom Inc.) Other definitive proxy statements (DEF 14A) 2026-03-02.docx",
+    "Broadcom official Q3 FY2026 results, published 2026-09-02 — https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial",
+    "Yahoo Finance / StockAnalysis historical AVGO: 2026-09-18 close $357.61, observed 2026-09-20",
+    "MarketScreener analyst consensus snapshot observed 2026-09-20: FY2026/27/28 net sales $105.964B/$173.450B/$272.799B; used only as secondary expectation evidence, not an FP fact"
+  ],
+  "special_questions": [
+    "At $357.61, how much sustained AI/custom-accelerator growth is already embedded in price?",
+    "How durable are custom AI accelerator and networking economics if hyperscalers expand in-house silicon or dual-source designs?",
+    "Does customer concentration and approximately 95% TSMC wafer dependence create asymmetry that the headline growth rate obscures?",
+    "How should VMware-driven infrastructure-software cash flows and acquisition amortization be normalized in owner FCF?"
+  ],
+  "intake_facts": [
+    "FY2025: revenue $63.887B, operating income $25.484B, net income $23.126B, OCF $27.537B, capex $0.623B, SBC $7.568B.",
+    "Q3 FY2026: revenue $29.591B (+86% y/y), operating income $15.955B, net income $13.088B and diluted weighted-average shares 4.887B.",
+    "9M FY2026: revenue $71.089B, OCF $32.950B, capex $1.013B and SBC $6.287B.",
+    "2026-08-02 cash $23.975B, short-term debt $2.252B and long-term debt $57.167B; net debt is $35.444B before other financing adjustments.",
+    "TTM to 2026-08-02 estimate from FY2025 plus 9M FY2026 less 9M FY2025: revenue $89.104B, OCF $40.653B, capex $1.250B, SBC $8.482B.",
+    "TTM owner-FCF proxy (OCF-capex-SBC) is $30.921B, or about $6.33 per Q3 diluted share. This is a downstream estimate, not an FP fact.",
+    "Q3 FY2026 segment revenue: Semiconductor Solutions $20.839B; Infrastructure Software $8.752B. 9M figures were $48.363B and $22.726B.",
+    "9M FY2026 geographic shipment revenue: Americas $15.796B, Asia Pacific $47.094B, EMEA $8.199B; geography is based primarily on shipment/delivery location.",
+    "Top five end customers represented approximately 55% of Q3 FY2026 revenue and 50% of 9M revenue; individual customer shares were not disclosed.",
+    "Approximately 95% of contract-manufactured wafers were produced by TSMC during 9M FY2026.",
+    "Remaining performance obligations at 2026-08-02 were approximately $179.2B and include a long-term custom AI accelerator contract.",
+    "Official Q4 FY2026 revenue guidance is approximately $34.8B (+93% y/y), implying full-year revenue around $105.9B if achieved.",
+    "Secondary analyst consensus observed 2026-09-20 projects FY2028 revenue $272.799B; the EV Base case deliberately haircuts that trajectory rather than treating it as fact."
+  ],
+  "net_cash_per_share": -7.2527,
   "valuation_percentile_5y": null,
-  "valuation_metric": "",
+  "valuation_metric": "No 5-year percentile locked; valuation is driven by frozen-price owner-FCF/share DCF.",
   "valuation_overrides": {
     "required_return": null,
     "terminal_multiples": {
@@ -29,12 +56,30 @@
     "turnaround_candidate": false
   },
   "geo_exposure": {
-    "revenue_by_region": {},
-    "production_by_region": {},
-    "critical_supplier_regions": [],
-    "export_control_dependencies": [],
-    "sanctions_exposure": [],
-    "critical_shipping_routes": [],
+    "revenue_by_region": {
+      "Americas": 0.2222,
+      "Asia Pacific": 0.6625,
+      "Europe, Middle East and Africa": 0.1153
+    },
+    "production_by_region": {
+      "Taiwan": 0.95
+    },
+    "critical_supplier_regions": [
+      "Taiwan",
+      "Malaysia",
+      "Singapore"
+    ],
+    "export_control_dependencies": [
+      "US advanced-computing and semiconductor export controls",
+      "China-facing semiconductor/channel demand"
+    ],
+    "sanctions_exposure": [
+      "China"
+    ],
+    "critical_shipping_routes": [
+      "Taiwan Strait",
+      "South China Sea"
+    ],
     "government_customer_exposure": []
   }
 }
