@@ -4,54 +4,159 @@
   "as_of_date": "2026-09-18",
   "domain": "red_team",
   "role": "red_team",
-  "analysis_status": "pending",
+  "analysis_status": "complete",
   "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "confidence_0_1": 0.93,
+  "thesis": "가장 강한 숏 논리는 '사이버보안 수요가 없다'가 아니라 주주경제의 질과 장기 가정이다. 회사 FCF는 빠르게 개선되지만 TTM SBC가 회사식 FCF보다 크고 주식수는 약 5% 증가했다. Base 가치의 81%가 terminal에 의존하며 Agent Cloud 독립 경제성은 미공시다. 성장률이 정상화되기 전에 희석과 마진 전환이 충분히 개선되지 않으면 Bear $31.58 수준의 큰 가격손실이 가능하다. 그러나 현재 유동성·NRR·ARR 성장·해자 추세는 7개 RT 소유 Hard Veto의 구성요건을 충족시키지 않는다.",
+  "evidence": [
+    {
+      "claim": "TTM company-style FCF 약 $286.2M보다 TTM SBC 약 $341.8M이 커, SBC를 경제적 비용으로 보는 owner-FCF stress proxy는 약 -$55.5M이다.",
+      "source_type": "harness",
+      "source": "runs/RBRK/company_context.json and RF arithmetic",
+      "period": "TTM to 2026-07-31",
+      "as_of_date": "2026-09-18",
+      "value": "~-$55.5M",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-RT-FCF-001",
+      "economic_driver": "cash_quality"
+    },
+    {
+      "claim": "Outstanding Class A+B shares는 2025-08-31 약 197.46M에서 2026-08-24 약 207.30M으로 약 5.0% 증가했다.",
+      "source_type": "10-Q",
+      "source": "SEC Q2 FY2026 and Q2 FY2027 10-Q",
+      "period": "2025-08-31 to 2026-08-24",
+      "as_of_date": "2026-09-01",
+      "value": "~+5.0%",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-RT-DIL-002",
+      "economic_driver": "dilution"
+    },
+    {
+      "claim": "Locked valuation은 현재가 $106.71 대비 Bear $31.58, Base $169.29, Bull $563.05이며 Base operating value의 약 81.1%가 terminal value다.",
+      "source_type": "harness",
+      "source": "runs/RBRK/aggregate.json",
+      "period": "valuation as of 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "$31.58 / $169.29 / $563.05; terminal 81.1%",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-RT-VAL-003",
+      "economic_driver": "valuation_risk"
+    },
+    {
+      "claim": "반대편 증거로 Subscription ARR는 $1.66B(+33%), cloud ARR는 $1.48B(+39%), NRR은 >119%, >$100K ARR 고객은 3,084명(+23%)이다.",
+      "source_type": "company_ir",
+      "source": "Rubrik Q2 FY2027 official results and IR overview",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": "33% / 39% / >119% / +23%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-RT-DEMAND-004",
+      "economic_driver": "customer_value"
+    },
+    {
+      "claim": "현금+단기투자 약 $1.75B가 0% 전환사채 원금 $1.15B를 상회하고, 만기는 2030년이며 H1 OCF도 양수다.",
+      "source_type": "10-Q",
+      "source": "SEC Q2 FY2027 10-Q",
+      "period": "2026-07-31 / FY2027 H1",
+      "as_of_date": "2026-09-01",
+      "value": "$1.75B liquidity / $1.15B notes / positive OCF",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-RT-LIQ-005",
+      "economic_driver": "financial_resilience"
+    },
+    {
+      "claim": "Partner A-D가 Q2 매출의 약 26%,28%,10%,10%를 담당하지만 이는 채널 파트너 집중이며 단일 ultimate end customer >25%가 공개된 것은 아니다.",
+      "source_type": "10-Q",
+      "source": "SEC Q2 FY2027 10-Q",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-09-01",
+      "value": "26% / 28% / 10% / 10% channels",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-RT-CONC-006",
+      "economic_driver": "concentration"
+    }
+  ],
+  "counterevidence": [
+    "NRR >119%, ARR +33%, 대형 고객 +23%는 현재 고객가치가 단순 프로모션으로 만들어졌다는 주장을 반박한다.",
+    "약 $1.75B 유동성과 2030년 만기 0% convert, 양의 OCF는 근시일 외부자본 의존 논리를 약화한다.",
+    "MT 77과 7년 연속 Gartner Leader는 현재 해자가 지속적으로 축소 중이라는 주장을 반박한다.",
+    "현재가격은 locked Bull 가치보다 크게 낮아 Bull+ 가격 Hard Veto는 성립하지 않는다."
+  ],
+  "unknowns": [
+    "Agent Cloud와 Agent Identity의 standalone ARR·마진·retention.",
+    "정규화된 annual SBC와 fully diluted share count.",
+    "Gross retention·CAC payback·정확한 end-customer concentration.",
+    "Bundled hyperscaler/security-suite 대안 대비 독립 TCO/복구성능.",
+    "Predibase와 agentic 제품의 장기 투자수익."
+  ],
+  "falsifiers": [
+    "NRR >115%와 ARR 성장 >25%가 지속되면서 희석 <3%, SBC-adjusted owner FCF/share 양전환이면 핵심 숏 논리는 크게 약화된다.",
+    "Agent Cloud가 독립적으로 유의미한 ARR와 retention을 공개하면 '인접가치풀은 서사뿐'이라는 숏 논리는 약화된다.",
+    "반대로 ARR 성장 <20%와 >5% 희석이 동시에 지속되면 영구손실·외부자본·해자 관련 veto를 재검토한다."
+  ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "cutoff까지 재작성, 감사인 분쟁, 중대한 내부통제 실패가 확인되지 않았다. IPO-era SBC와 company-defined FCF의 차이는 공시된 경제적 조정 문제이지 회계 신뢰 훼손 사건 자체는 아니다."
     },
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "H1 OCF가 양수이고 현금+단기투자가 convert 원금을 상회하며 만기는 2030년이다. 현재 운영이 반복 외부자본 없이는 존속 불가능하다는 두 구성요건이 성립하지 않는다."
     },
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "NRR >119%, ARR +33%, large-customer +23%, 78.4% gross margin과 contribution-margin 개선은 반복 고객가치를 입증한다. 높은 S&M은 효율 리스크지만 고객가치 부재의 증거는 아니다."
     },
     {
       "veto": "증분 ROIC의 구조적 붕괴",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "RF에서 증분 ROIC를 신뢰성 있게 측정하지 못해 50을 부여했지만 ARR와 contribution margin이 개선 중이다. '불확실'을 '자본비용 아래 구조적 붕괴'로 승격할 증거는 없다."
     },
     {
       "veto": "해자의 지속적인 축소",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "NRR, ARR, cloud ARR, 대형 고객 수가 증가하고 MT는 77로 강화 방향을 보인다. 경쟁·번들링 위험은 있으나 지속적 해자 축소가 관측되지는 않았다."
     },
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Frozen $106.71은 locked Bull $563.05보다 크게 낮다. Base의 terminal 의존과 Bear 하방은 valuation/asymmetry 위험이지만 정의상 current price > Bull은 아니다."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "채널 파트너 집중은 높지만 ultimate end-customer >25%는 확인되지 않았고 data, identity, cloud/SaaS, agent security로 제품 범위가 확장 중이다. 단일 요인 상실 시 회복 불가능한 사업경제 훼손은 입증되지 않았다."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "SBC-adjusted owner FCF/share / dilution",
+      "direction": "up",
+      "threshold": "owner FCF/share positive; dilution <3%",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "ARR growth / NRR",
+      "direction": "up",
+      "threshold": "ARR >20%; NRR >110%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Agent Cloud standalone economics",
+      "direction": "up",
+      "threshold": "material ARR + retention disclosure",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "FY2027 10-K에서 SBC·fully diluted shares·owner FCF bridge 재검증.",
+    "Agent Cloud/Identity monetization and retention 추적.",
+    "Bundled 대안 대비 independent TCO/restore performance 확인."
+  ],
+  "verdict": "oppose",
   "subscores": [],
   "uncertainties": [],
   "valuation_inputs": {
