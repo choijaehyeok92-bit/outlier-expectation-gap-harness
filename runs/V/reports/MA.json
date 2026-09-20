@@ -4,59 +4,106 @@
   "as_of_date": "2026-09-18",
   "domain": "management_allocation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 82,
+  "confidence_0_1": 0.86,
+  "bull_score": 90,
+  "bear_score": 62,
+  "bull_case": "If VAS and Visa Direct maintain high returns, capital allocation remains highly productive.",
+  "bear_case": "Repurchases above intrinsic value or large value-destructive acquisitions would weaken this score.",
+  "thesis": "Management execution is strong, but current buybacks are closer to fair value than obviously cheap. Capital allocation remains rational because excess cash is returned while adjacent growth investments continue.",
+  "evidence": [
+    {
+      "claim": "9M FY2026 repurchase average was $328.29 versus locked Base $328.59.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3/9M FY2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 repurchases were 54M shares for $18.2B.",
+      "source_type": "filing",
+      "source": "runs/V/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2025-11-06",
+      "value": "18.2B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 10-K had no financial statement correction/restatement flag.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3/9M FY2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Regulatory and interchange litigation can pressure network economics and pricing over time.",
+    "The current valuation already embeds a high-quality compounder profile."
+  ],
+  "unknowns": [
+    "Long-run regulation of interchange and routing",
+    "Sustainable growth rate of Visa Direct and value-added services",
+    "Long-run client incentive intensity"
+  ],
+  "falsifiers": [
+    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens."
+  ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "No restatement, auditor dispute or accounting-integrity impairment is established."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "high-single to low-double-digit long-run growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Payments volume, cross-border volume, processed transactions, value-added services, client incentives, owner FCF/share, buyback price"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "capital_allocation",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "Recent 9M FY2026 buyback average $328.29 is almost exactly the locked Base value $328.59, mapping to the 0.8–1.0 rubric band."
     },
     {
       "criterion_id": "governance_integrity",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "No restatement/correction flag is present and financial reporting is mature."
     },
     {
       "criterion_id": "execution_adaptability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "Management has expanded VAS, money movement and tokenization while preserving core network growth."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
     }
-  }
+  ]
 }

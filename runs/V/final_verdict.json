@@ -4,10 +4,10 @@
   "decision_policy_version": "3.3",
   "as_of_date": "2026-09-18",
   "ticker": "V",
-  "score_100": 63.07,
-  "score_100_ex_valuation": 72.5,
-  "coverage_weight": 35,
-  "classification": "Starter / Watch",
+  "score_100": 78.39,
+  "score_100_ex_valuation": 83.31,
+  "coverage_weight": 100,
+  "classification": "Emerging Outlier",
   "disruptive_innovation_score": 83.25,
   "turnaround_quality_score": null,
   "axis_scores": {
@@ -19,14 +19,159 @@
   ],
   "early_exit": false,
   "hard_veto_status": "PENDING_REVIEW",
-  "mechanical_pre_ic_state": "INCOMPLETE",
-  "position_range_pre_ic": "N/A",
+  "mechanical_pre_ic_state": "WATCH",
+  "position_range_pre_ic": "0% until veto cleared",
   "domain_scores": {
-    "structural_leadership": null,
-    "customer_product": null,
-    "moat_trajectory": null,
-    "reinvestment_fcf": null,
-    "management_allocation": null,
+    "structural_leadership": {
+      "bull_score": 96.75,
+      "bear_score": 68.75,
+      "criteria": {
+        "category_leadership": 90.0,
+        "durability_risks": 85.0,
+        "secular_durability": 90.0
+      },
+      "raw_weighted_median": 88.75,
+      "score": 88.75,
+      "spread": 28.0,
+      "avg_confidence": 0.86,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 88.75,
+      "calibrated_score": 85.42,
+      "calibrated_shadow_score": 85.42,
+      "decision_score": 88.75,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 88.75,
+      "raw_before_provider_calibration": 88.75
+    },
+    "customer_product": {
+      "bull_score": 98,
+      "bear_score": 70,
+      "criteria": {
+        "customer_roi": 90.0,
+        "retention_usage": 90.0,
+        "unit_economics": 90.0
+      },
+      "raw_weighted_median": 90.0,
+      "score": 90.0,
+      "spread": 28.0,
+      "avg_confidence": 0.86,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 90.0,
+      "calibrated_score": 85.0,
+      "calibrated_shadow_score": 85.0,
+      "decision_score": 90.0,
+      "provider_offset": -5.0,
+      "score_before_provider_calibration": 90.0,
+      "raw_before_provider_calibration": 90.0
+    },
+    "moat_trajectory": {
+      "bull_score": 96.5,
+      "bear_score": 68.5,
+      "criteria": {
+        "commoditization_resilience": 85.0,
+        "network_data_ecosystem": 90.0,
+        "switching_pricing": 90.0
+      },
+      "raw_weighted_median": 88.5,
+      "score": 88.5,
+      "spread": 28.0,
+      "avg_confidence": 0.86,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 88.5,
+      "calibrated_score": 85.17,
+      "calibrated_shadow_score": 85.17,
+      "decision_score": 88.5,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 88.5,
+      "raw_before_provider_calibration": 88.5
+    },
+    "reinvestment_fcf": {
+      "bull_score": 91.5,
+      "bear_score": 63.5,
+      "criteria": {
+        "fcf_per_share_quality": 90.0,
+        "incremental_roic": 85.0,
+        "reinvestment_runway": 75.0
+      },
+      "raw_weighted_median": 83.5,
+      "score": 83.5,
+      "spread": 28.0,
+      "avg_confidence": 0.86,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 83.5,
+      "calibrated_score": 80.17,
+      "calibrated_shadow_score": 80.17,
+      "decision_score": 83.5,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 83.5,
+      "raw_before_provider_calibration": 83.5
+    },
+    "management_allocation": {
+      "bull_score": 90,
+      "bear_score": 62,
+      "criteria": {
+        "capital_allocation": 70.0,
+        "execution_adaptability": 90.0,
+        "governance_integrity": 90.0
+      },
+      "raw_weighted_median": 82.0,
+      "score": 82.0,
+      "spread": 28.0,
+      "avg_confidence": 0.86,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 82.0,
+      "calibrated_score": 78.67,
+      "calibrated_shadow_score": 78.67,
+      "decision_score": 82.0,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 82.0,
+      "raw_before_provider_calibration": 82.0
+    },
     "financial_survival": {
       "bull_score": 92,
       "bear_score": 64,
@@ -151,6 +296,161 @@
     "turnaround_quality": null
   },
   "disputes": [
+    {
+      "domain": "structural_leadership",
+      "bull_score": 96.75,
+      "bear_score": 68.75,
+      "criteria": {
+        "category_leadership": 90.0,
+        "durability_risks": 85.0,
+        "secular_durability": 90.0
+      },
+      "raw_weighted_median": 88.75,
+      "score": 88.75,
+      "spread": 28.0,
+      "avg_confidence": 0.86,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 88.75,
+      "calibrated_score": 85.42,
+      "calibrated_shadow_score": 85.42,
+      "decision_score": 88.75,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 88.75,
+      "raw_before_provider_calibration": 88.75
+    },
+    {
+      "domain": "customer_product",
+      "bull_score": 98,
+      "bear_score": 70,
+      "criteria": {
+        "customer_roi": 90.0,
+        "retention_usage": 90.0,
+        "unit_economics": 90.0
+      },
+      "raw_weighted_median": 90.0,
+      "score": 90.0,
+      "spread": 28.0,
+      "avg_confidence": 0.86,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 90.0,
+      "calibrated_score": 85.0,
+      "calibrated_shadow_score": 85.0,
+      "decision_score": 90.0,
+      "provider_offset": -5.0,
+      "score_before_provider_calibration": 90.0,
+      "raw_before_provider_calibration": 90.0
+    },
+    {
+      "domain": "moat_trajectory",
+      "bull_score": 96.5,
+      "bear_score": 68.5,
+      "criteria": {
+        "commoditization_resilience": 85.0,
+        "network_data_ecosystem": 90.0,
+        "switching_pricing": 90.0
+      },
+      "raw_weighted_median": 88.5,
+      "score": 88.5,
+      "spread": 28.0,
+      "avg_confidence": 0.86,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 88.5,
+      "calibrated_score": 85.17,
+      "calibrated_shadow_score": 85.17,
+      "decision_score": 88.5,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 88.5,
+      "raw_before_provider_calibration": 88.5
+    },
+    {
+      "domain": "reinvestment_fcf",
+      "bull_score": 91.5,
+      "bear_score": 63.5,
+      "criteria": {
+        "fcf_per_share_quality": 90.0,
+        "incremental_roic": 85.0,
+        "reinvestment_runway": 75.0
+      },
+      "raw_weighted_median": 83.5,
+      "score": 83.5,
+      "spread": 28.0,
+      "avg_confidence": 0.86,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 83.5,
+      "calibrated_score": 80.17,
+      "calibrated_shadow_score": 80.17,
+      "decision_score": 83.5,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 83.5,
+      "raw_before_provider_calibration": 83.5
+    },
+    {
+      "domain": "management_allocation",
+      "bull_score": 90,
+      "bear_score": 62,
+      "criteria": {
+        "capital_allocation": 70.0,
+        "execution_adaptability": 90.0,
+        "governance_integrity": 90.0
+      },
+      "raw_weighted_median": 82.0,
+      "score": 82.0,
+      "spread": 28.0,
+      "avg_confidence": 0.86,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 82.0,
+      "calibrated_score": 78.67,
+      "calibrated_shadow_score": 78.67,
+      "decision_score": 82.0,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 82.0,
+      "raw_before_provider_calibration": 82.0
+    },
     {
       "domain": "financial_survival",
       "bull_score": 92,
@@ -288,9 +588,15 @@
           "MA",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "MA",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "No restatement, auditor dispute or accounting-integrity impairment is established."
+          }
+        ],
         "missing_reports": [
-          "MA",
           "RT"
         ],
         "missing_assessments": [],
@@ -319,7 +625,7 @@
       },
       {
         "veto": "장기간 지속되는 과도한 희석",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "RF",
           "FS"
@@ -330,11 +636,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Net buybacks reduce share count."
+          },
+          {
+            "agent_id": "RF",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Visa is a large net repurchaser; dilution is not persistent/excessive."
           }
         ],
-        "missing_reports": [
-          "RF"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
@@ -345,9 +655,15 @@
           "CP",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "CP",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Growth is supported by mission-critical network usage, not marketing/subsidy without customer value."
+          }
+        ],
         "missing_reports": [
-          "CP",
           "RT"
         ],
         "missing_assessments": [],
@@ -360,9 +676,15 @@
           "RF",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "RF",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Strong cash conversion, low incremental capital needs and expanding VAS contradict a structural collapse in incremental ROIC."
+          }
+        ],
         "missing_reports": [
-          "RF",
           "RT"
         ],
         "missing_assessments": [],
@@ -375,9 +697,15 @@
           "MT",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "MT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Current volume, transaction and VAS growth do not support a persistent shrinking-moat predicate."
+          }
+        ],
         "missing_reports": [
-          "MT",
           "RT"
         ],
         "missing_assessments": [],
@@ -418,9 +746,15 @@
           "CP",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "CP",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Visa has multiple client types, geographies and revenue pools; regulation is important but no single customer/product/regulation is a fatal dependency."
+          }
+        ],
         "missing_reports": [
-          "CP",
           "RT"
         ],
         "missing_assessments": [],
@@ -462,9 +796,15 @@
           "MA",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "MA",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "No restatement, auditor dispute or accounting-integrity impairment is established."
+          }
+        ],
         "missing_reports": [
-          "MA",
           "RT"
         ],
         "missing_assessments": [],
@@ -492,36 +832,21 @@
         "non_owner_escalations": []
       },
       {
-        "veto": "장기간 지속되는 과도한 희석",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "RF",
-          "FS"
-        ],
-        "assessments": [
-          {
-            "agent_id": "FS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Net buybacks reduce share count."
-          }
-        ],
-        "missing_reports": [
-          "RF"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
         "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
         "status": "PENDING_REVIEW",
         "owners": [
           "CP",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "CP",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Growth is supported by mission-critical network usage, not marketing/subsidy without customer value."
+          }
+        ],
         "missing_reports": [
-          "CP",
           "RT"
         ],
         "missing_assessments": [],
@@ -534,9 +859,15 @@
           "RF",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "RF",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Strong cash conversion, low incremental capital needs and expanding VAS contradict a structural collapse in incremental ROIC."
+          }
+        ],
         "missing_reports": [
-          "RF",
           "RT"
         ],
         "missing_assessments": [],
@@ -549,9 +880,15 @@
           "MT",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "MT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Current volume, transaction and VAS growth do not support a persistent shrinking-moat predicate."
+          }
+        ],
         "missing_reports": [
-          "MT",
           "RT"
         ],
         "missing_assessments": [],
@@ -592,9 +929,15 @@
           "CP",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "CP",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Visa has multiple client types, geographies and revenue pools; regulation is important but no single customer/product/regulation is a fatal dependency."
+          }
+        ],
         "missing_reports": [
-          "CP",
           "RT"
         ],
         "missing_assessments": [],
@@ -681,6 +1024,11 @@
     "base_offset": 5.0,
     "max_abs_offset": 5.0,
     "per_domain_offset": {
+      "structural_leadership": -3.33,
+      "customer_product": -5.0,
+      "moat_trajectory": -3.33,
+      "reinvestment_fcf": -3.33,
+      "management_allocation": -3.33,
       "financial_survival": -3.33,
       "expectation_valuation": -1.67,
       "asymmetry": -1.67,
@@ -712,6 +1060,13 @@
         "skew": 12.0
       },
       {
+        "domain": "customer_product",
+        "spread": 28.0,
+        "upside_width": 8.0,
+        "downside_width": 20.0,
+        "skew": 12.0
+      },
+      {
         "domain": "disruptive_innovation",
         "spread": 28.0,
         "upside_width": 8.0,
@@ -727,6 +1082,34 @@
       },
       {
         "domain": "financial_survival",
+        "spread": 28.0,
+        "upside_width": 8.0,
+        "downside_width": 20.0,
+        "skew": 12.0
+      },
+      {
+        "domain": "management_allocation",
+        "spread": 28.0,
+        "upside_width": 8.0,
+        "downside_width": 20.0,
+        "skew": 12.0
+      },
+      {
+        "domain": "moat_trajectory",
+        "spread": 28.0,
+        "upside_width": 8.0,
+        "downside_width": 20.0,
+        "skew": 12.0
+      },
+      {
+        "domain": "reinvestment_fcf",
+        "spread": 28.0,
+        "upside_width": 8.0,
+        "downside_width": 20.0,
+        "skew": 12.0
+      },
+      {
+        "domain": "structural_leadership",
         "spread": 28.0,
         "upside_width": 8.0,
         "downside_width": 20.0,
@@ -819,14 +1202,14 @@
   "archetype_fit": {
     "buffett_value": {
       "eligible": false,
-      "fit_score": 27.1,
+      "fit_score": 83.775,
       "fit_axes": [
         {
           "field": "criterion.reinvestment_fcf.fcf_per_share_quality",
           "weight": 0.3,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 90.0,
+          "normalized": 0.9,
+          "missing": false
         },
         {
           "field": "domain.financial_survival",
@@ -838,16 +1221,16 @@
         {
           "field": "domain.management_allocation",
           "weight": 0.2,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 82.0,
+          "normalized": 0.82,
+          "missing": false
         },
         {
           "field": "domain.moat_trajectory",
           "weight": 0.15,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 88.5,
+          "normalized": 0.885,
+          "missing": false
         },
         {
           "field": "domain.asymmetry",
@@ -861,59 +1244,49 @@
         "signal.price_to_base_value",
         "domain.asymmetry"
       ],
-      "missing_conditions": [
-        "criterion.reinvestment_fcf.fcf_per_share_quality",
-        "domain.management_allocation",
-        "domain.moat_trajectory"
-      ],
+      "missing_conditions": [],
       "blocking_vetoes": []
     },
     "compounder": {
-      "eligible": false,
-      "fit_score": 0.0,
+      "eligible": true,
+      "fit_score": 83.1,
       "fit_axes": [
         {
           "field": "domain.moat_trajectory",
           "weight": 0.3,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 88.5,
+          "normalized": 0.885,
+          "missing": false
         },
         {
           "field": "criterion.reinvestment_fcf.incremental_roic",
           "weight": 0.3,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 85.0,
+          "normalized": 0.85,
+          "missing": false
         },
         {
           "field": "criterion.reinvestment_fcf.reinvestment_runway",
           "weight": 0.25,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 75.0,
+          "normalized": 0.75,
+          "missing": false
         },
         {
           "field": "domain.management_allocation",
           "weight": 0.15,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 82.0,
+          "normalized": 0.82,
+          "missing": false
         }
       ],
       "failed_conditions": [],
-      "missing_conditions": [
-        "domain.moat_trajectory",
-        "domain.reinvestment_fcf",
-        "domain.management_allocation",
-        "criterion.reinvestment_fcf.incremental_roic",
-        "criterion.reinvestment_fcf.reinvestment_runway"
-      ],
+      "missing_conditions": [],
       "blocking_vetoes": []
     },
     "growth": {
       "eligible": false,
-      "fit_score": 0.0,
+      "fit_score": 70.225,
       "fit_axes": [
         {
           "field": "signal.revenue_cagr_next_3y",
@@ -925,51 +1298,43 @@
         {
           "field": "domain.customer_product",
           "weight": 0.25,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 90.0,
+          "normalized": 0.9,
+          "missing": false
         },
         {
           "field": "domain.structural_leadership",
           "weight": 0.2,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 88.75,
+          "normalized": 0.8875,
+          "missing": false
         },
         {
           "field": "domain.reinvestment_fcf",
           "weight": 0.2,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 83.5,
+          "normalized": 0.835,
+          "missing": false
         },
         {
           "field": "domain.moat_trajectory",
           "weight": 0.15,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 88.5,
+          "normalized": 0.885,
+          "missing": false
         }
       ],
       "failed_conditions": [
         "signal.revenue_cagr_next_3y",
         "signal.price_to_base_value",
-        "domain.asymmetry",
-        "gate_score"
+        "domain.asymmetry"
       ],
-      "missing_conditions": [
-        "domain.structural_leadership",
-        "domain.customer_product",
-        "domain.moat_trajectory",
-        "domain.reinvestment_fcf",
-        "domain.management_allocation",
-        "criterion.reinvestment_fcf.fcf_per_share_quality"
-      ],
+      "missing_conditions": [],
       "blocking_vetoes": []
     },
     "moonshot": {
       "eligible": false,
-      "fit_score": 61.15,
+      "fit_score": 78.9,
       "fit_axes": [
         {
           "field": "domain.disruptive_innovation",
@@ -988,9 +1353,9 @@
         {
           "field": "domain.structural_leadership",
           "weight": 0.2,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 88.75,
+          "normalized": 0.8875,
+          "missing": false
         },
         {
           "field": "domain.financial_survival",
@@ -1004,14 +1369,12 @@
         "signal.market_cap_usd",
         "domain.asymmetry"
       ],
-      "missing_conditions": [
-        "domain.structural_leadership"
-      ],
+      "missing_conditions": [],
       "blocking_vetoes": []
     },
     "outlier_growth": {
       "eligible": false,
-      "fit_score": 12.0,
+      "fit_score": 51.4,
       "fit_axes": [
         {
           "field": "domain.long_term_growth",
@@ -1023,16 +1386,16 @@
         {
           "field": "domain.moat_trajectory",
           "weight": 0.2,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 88.5,
+          "normalized": 0.885,
+          "missing": false
         },
         {
           "field": "domain.customer_product",
           "weight": 0.15,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 90.0,
+          "normalized": 0.9,
+          "missing": false
         },
         {
           "field": "criterion.asymmetry.upside_path",
@@ -1044,9 +1407,9 @@
         {
           "field": "domain.management_allocation",
           "weight": 0.1,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 82.0,
+          "normalized": 0.82,
+          "missing": false
         }
       ],
       "failed_conditions": [
@@ -1058,10 +1421,7 @@
         "criterion.long_term_growth.opportunity_scale_5y",
         "criterion.long_term_growth.growth_duration_10y",
         "criterion.long_term_growth.culture_adaptability",
-        "criterion.long_term_growth.market_misperception",
-        "domain.customer_product",
-        "domain.moat_trajectory",
-        "domain.management_allocation"
+        "criterion.long_term_growth.market_misperception"
       ],
       "blocking_vetoes": []
     }
@@ -1090,13 +1450,18 @@
   },
   "ic_verdict": null,
   "early_exit_record": null,
-  "archetype": "non_fit",
+  "archetype": "compounder",
   "secondary_archetypes": [],
-  "archetype_rationale": "No eligible archetype: see failed/missing conditions and vetoes",
-  "ic_state": "INCOMPLETE",
-  "position_range": "N/A",
+  "archetype_rationale": "Highest eligible deterministic fit; ties use configured priority",
+  "ic_state": "WATCH",
+  "position_range": "0% until veto cleared",
   "ic_review_flags": [],
   "falsifiers": [
+    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
+    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
+    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
+    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
+    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
     "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
     "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
     "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",

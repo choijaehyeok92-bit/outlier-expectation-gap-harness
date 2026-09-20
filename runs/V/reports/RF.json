@@ -4,64 +4,111 @@
   "as_of_date": "2026-09-18",
   "domain": "reinvestment_fcf",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
-  "hard_veto_flags": [
+  "analysis_status": "complete",
+  "score_0_100": 83.5,
+  "confidence_0_1": 0.86,
+  "bull_score": 91.5,
+  "bear_score": 63.5,
+  "bull_case": "VAS and money movement provide high-return adjacent reinvestment opportunities while buybacks compound per-share cash flow.",
+  "bear_case": "If incentives rise faster than gross revenue and new rails reduce pricing, incremental returns can compress.",
+  "thesis": "Visa has high-quality FCF/share compounding and a long reinvestment runway, though conventional capex/R&D absorption metrics understate reinvestment because much network investment runs through operating expense and client incentives.",
+  "evidence": [
     {
-      "veto": "장기간 지속되는 과도한 희석",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "claim": "FY2025 owner-style FCF proxy was $20.68B, about $10.52 per diluted Class A share.",
+      "source_type": "filing",
+      "source": "runs/V/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2025-11-06",
+      "value": "20.68B",
+      "fact_or_estimate": "fact"
     },
     {
-      "veto": "증분 ROIC의 구조적 붕괴",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "claim": "9M FY2026 owner-style FCF proxy was $14.436B.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3/9M FY2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "9M repurchases were about $16.537B at $328.29 average.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3/9M FY2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact"
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "counterevidence": [
+    "Regulatory and interchange litigation can pressure network economics and pricing over time.",
+    "The current valuation already embeds a high-quality compounder profile."
+  ],
+  "unknowns": [
+    "Long-run regulation of interchange and routing",
+    "Sustainable growth rate of Visa Direct and value-added services",
+    "Long-run client incentive intensity"
+  ],
+  "falsifiers": [
+    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Strong cash conversion, low incremental capital needs and expanding VAS contradict a structural collapse in incremental ROIC."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Visa is a large net repurchaser; dilution is not persistent/excessive."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "high-single to low-double-digit long-run growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Payments volume, cross-border volume, processed transactions, value-added services, client incentives, owner FCF/share, buyback price"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "incremental_roic",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Asset-light network economics convert growth into large cash flow with low incremental physical capital needs."
     },
     {
       "criterion_id": "reinvestment_runway",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Reported capex understates economic reinvestment because Visa reinvests through technology, client incentives, tokenization, acquisitions and VAS; multiple long-run growth paths remain."
     },
     {
       "criterion_id": "fcf_per_share_quality",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "Owner-style FCF is very high and buybacks reduce the share denominator while SBC is modest relative to OCF."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
     }
-  }
+  ]
 }
