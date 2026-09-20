@@ -26,7 +26,7 @@
   "method": {
     "canonical_nvda_run": "NVDA-V31-2026-09-19",
     "criterion_compatibility": "Criterion subscores were reconstructed from reports/*.json when legacy aggregate.json omitted domain_scores.*.criteria.",
-    "missing_rule": "Missing LTG report is not a pass. Outlier Growth remains unverified for every current run.",
+    "missing_rule": "LTG was evaluated as a policy-migration shadow assessment using only frozen cross-domain evidence. It is not written into frozen runs as a formal agent report.",
     "korea_overlay": {
       "compounder_price_to_base_max": 1.0,
       "growth_revenue_cagr_3y_min": 0.2,
@@ -39,9 +39,9 @@
   "counts": {
     "compounder": 4,
     "growth": 2,
-    "outlier_growth": 0,
+    "outlier_growth": 1,
     "buffett_value": 2,
-    "moonshot": 2,
+    "moonshot": 1,
     "non_fit": 1
   },
   "rows": [
@@ -55,6 +55,7 @@
       "revalidated_archetype": "compounder",
       "secondary_archetypes": [
         "buffett_value",
+        "outlier_growth",
         "growth"
       ],
       "change_status": "unchanged",
@@ -75,6 +76,10 @@
         {
           "id": "buffett_value",
           "fit_score": 78.67333333
+        },
+        {
+          "id": "outlier_growth",
+          "fit_score": 77.09
         },
         {
           "id": "growth",
@@ -102,19 +107,29 @@
         },
         "outlier_growth": {
           "failed": [],
-          "missing": [
-            "domain.long_term_growth",
-            "criterion.long_term_growth.opportunity_scale_5y",
-            "criterion.long_term_growth.growth_duration_10y",
-            "criterion.long_term_growth.culture_adaptability",
-            "criterion.long_term_growth.market_misperception"
-          ],
+          "missing": [],
           "gate_score": 79.61,
           "gate_threshold": 65.0
         }
       },
-      "reason": "한국 강화 가격·성장 조건을 모두 통과했고, 적격 유형 중 deterministic fit이 가장 높다.",
-      "long_term_growth_status": "missing_report"
+      "reason": "한국 강화 기준에서 Compounder·Buffett-Value·Growth·Outlier Growth가 적격이며 Compounder fit이 가장 높다.",
+      "long_term_growth_status": "shadow_complete_from_frozen_evidence",
+      "long_term_growth_assessment": {
+        "score_0_100": 72.5,
+        "criteria": {
+          "opportunity_scale_5y": 80,
+          "growth_duration_10y": 65,
+          "culture_adaptability": 70,
+          "market_misperception": 75
+        },
+        "rationales": {
+          "opportunity_scale_5y": "HBM3E→HBM4→HBM4E와 AI 메모리·고용량 DRAM·NAND의 복수 벡터로 5년 2배 이상 확장은 가능하지만 메모리 사이클을 반영해 90은 배제했다.",
+          "growth_duration_10y": "AI 메모리 활주로는 5~10년이 타당하나 고객 집중과 ASP·CAPEX 사이클 때문에 10년 초과 확신은 제한된다.",
+          "culture_adaptability": "연속 HBM 세대 전환과 자본 재배치 결과는 강하지만 재창조의 반복성과 지배구조 증거가 75 이상에는 부족하다.",
+          "market_misperception": "가격/Base 0.438과 보수적 DCF가 HBM 지속기간 과소평가를 시사하지만 현재 이익의 사이클 고점 가능성이 반론이다."
+        },
+        "formal_run_report": false
+      }
     },
     {
       "ticker": "267260",
@@ -166,20 +181,33 @@
           "gate_threshold": 65.0
         },
         "outlier_growth": {
-          "failed": [],
-          "missing": [
+          "failed": [
             "domain.long_term_growth",
-            "criterion.long_term_growth.opportunity_scale_5y",
-            "criterion.long_term_growth.growth_duration_10y",
-            "criterion.long_term_growth.culture_adaptability",
             "criterion.long_term_growth.market_misperception"
           ],
+          "missing": [],
           "gate_score": 73.29,
           "gate_threshold": 65.0
         }
       },
-      "reason": "v3.2 적격 유형이 없고 Hard Veto도 미해소다.",
-      "long_term_growth_status": "missing_report"
+      "reason": "시장 기대오류와 LTG 총점이 Outlier Growth 기준에 못 미치고 Hard Veto도 미해소다.",
+      "long_term_growth_status": "shadow_complete_from_frozen_evidence",
+      "long_term_growth_assessment": {
+        "score_0_100": 65.0,
+        "criteria": {
+          "opportunity_scale_5y": 75,
+          "growth_duration_10y": 65,
+          "culture_adaptability": 65,
+          "market_misperception": 50
+        },
+        "rationales": {
+          "opportunity_scale_5y": "₩12.31조 backlog와 미국·UHV 증설로 5년 2배 경로는 가능하다.",
+          "growth_duration_10y": "전력망 투자 활주로는 5~10년이 가능하지만 산업 수주·CAPEX 사이클과 고객 집중이 지속기간을 제한한다.",
+          "culture_adaptability": "생산능력·현지화 실행은 확인됐으나 반복적 자기파괴와 인재·자본 재배치의 장기 실적은 제한적이다.",
+          "market_misperception": "가격/Base 1.041로 시장이 장기 사실을 뚜렷이 과소평가한다는 reverse-DCF 증거가 약하며 integrity veto도 미해소다."
+        },
+        "formal_run_report": false
+      }
     },
     {
       "ticker": "ADBE",
@@ -190,6 +218,7 @@
       "stored_archetype": "buffett_value",
       "revalidated_archetype": "buffett_value",
       "secondary_archetypes": [
+        "outlier_growth",
         "compounder"
       ],
       "change_status": "unchanged",
@@ -206,6 +235,10 @@
         {
           "id": "buffett_value",
           "fit_score": 80.53382353
+        },
+        {
+          "id": "outlier_growth",
+          "fit_score": 79.90384615
         },
         {
           "id": "compounder",
@@ -244,19 +277,29 @@
         },
         "outlier_growth": {
           "failed": [],
-          "missing": [
-            "domain.long_term_growth",
-            "criterion.long_term_growth.opportunity_scale_5y",
-            "criterion.long_term_growth.growth_duration_10y",
-            "criterion.long_term_growth.culture_adaptability",
-            "criterion.long_term_growth.market_misperception"
-          ],
+          "missing": [],
           "gate_score": 80.62,
           "gate_threshold": 65.0
         }
       },
-      "reason": "Buffett-Value와 Compounder를 통과하지만 Buffett-Value fit이 더 높다.",
-      "long_term_growth_status": "missing_report"
+      "reason": "Outlier Growth까지 통과하지만 Buffett-Value fit이 가장 높고 Compounder가 다음이다.",
+      "long_term_growth_status": "shadow_complete_from_frozen_evidence",
+      "long_term_growth_assessment": {
+        "score_0_100": 75.0,
+        "criteria": {
+          "opportunity_scale_5y": 75,
+          "growth_duration_10y": 75,
+          "culture_adaptability": 75,
+          "market_misperception": 75
+        },
+        "rationales": {
+          "opportunity_scale_5y": "ARR $27.5B, AI-first ARR $650M 초과와 Creative·Document·DX의 복수 성장축이 5년 2배 경로를 뒷받침한다.",
+          "growth_duration_10y": "워크플로 내재화와 10억명 이상 MAU는 5~10년 활주로를 지지하지만 생성 계층의 AI 대체 위험이 90을 막는다.",
+          "culture_adaptability": "구독 전환과 Firefly·freemium 확장은 자기잠식과 자원 재배치의 결과 증거다.",
+          "market_misperception": "가격/Base 0.502에서 시장은 AI monetization과 워크플로 지속성을 낮게 본다. 다만 독립된 5배 주당가치 경로는 아직 입증되지 않아 90은 배제했다."
+        },
+        "formal_run_report": false
+      }
     },
     {
       "ticker": "AVGO",
@@ -320,20 +363,32 @@
           "gate_threshold": 60.0
         },
         "outlier_growth": {
-          "failed": [],
-          "missing": [
-            "domain.long_term_growth",
-            "criterion.long_term_growth.opportunity_scale_5y",
-            "criterion.long_term_growth.growth_duration_10y",
-            "criterion.long_term_growth.culture_adaptability",
+          "failed": [
             "criterion.long_term_growth.market_misperception"
           ],
+          "missing": [],
           "gate_score": 71.56,
           "gate_threshold": 65.0
         }
       },
-      "reason": "적격 유형은 Growth 하나다.",
-      "long_term_growth_status": "missing_report"
+      "reason": "LTG 규모·기간은 강하지만 구체적 시장 기대오류가 65점에 못 미쳐 Growth를 유지한다.",
+      "long_term_growth_status": "shadow_complete_from_frozen_evidence",
+      "long_term_growth_assessment": {
+        "score_0_100": 76.5,
+        "criteria": {
+          "opportunity_scale_5y": 90,
+          "growth_duration_10y": 75,
+          "culture_adaptability": 75,
+          "market_misperception": 60
+        },
+        "rationales": {
+          "opportunity_scale_5y": "AI semiconductor +221%, 복수 custom-XPU 프로그램과 VMware 소프트웨어를 합치면 5년 3배 확장이 가능한 독립 벡터가 복수다.",
+          "growth_duration_10y": "AI 인프라와 소프트웨어 계약은 5~10년 활주로를 지지하지만 고객 자체실리콘과 집중도가 장기 지속을 제한한다.",
+          "culture_adaptability": "VMware 통합, 비핵심 자산 매각과 custom silicon 전환은 빠른 자본·조직 재배치를 보여준다.",
+          "market_misperception": "가격/Base 0.884지만 시장이 이미 대규모 AI 성장을 반영한다. 구체적 장기 기대오류를 65 이상으로 뒷받침할 reverse-DCF 증거가 부족하다."
+        },
+        "formal_run_report": false
+      }
     },
     {
       "ticker": "MSFT",
@@ -397,22 +452,33 @@
         },
         "outlier_growth": {
           "failed": [
+            "criterion.long_term_growth.market_misperception",
             "domain.asymmetry",
             "criterion.asymmetry.upside_path"
           ],
-          "missing": [
-            "domain.long_term_growth",
-            "criterion.long_term_growth.opportunity_scale_5y",
-            "criterion.long_term_growth.growth_duration_10y",
-            "criterion.long_term_growth.culture_adaptability",
-            "criterion.long_term_growth.market_misperception"
-          ],
+          "missing": [],
           "gate_score": 75.24,
           "gate_threshold": 65.0
         }
       },
-      "reason": "적격 유형 중 Compounder fit이 가장 높다.",
-      "long_term_growth_status": "missing_report"
+      "reason": "장기 성장축은 강하지만 AS와 시장 기대오류 조건이 부족해 Compounder를 유지한다.",
+      "long_term_growth_status": "shadow_complete_from_frozen_evidence",
+      "long_term_growth_assessment": {
+        "score_0_100": 77.5,
+        "criteria": {
+          "opportunity_scale_5y": 75,
+          "growth_duration_10y": 90,
+          "culture_adaptability": 90,
+          "market_misperception": 50
+        },
+        "rationales": {
+          "opportunity_scale_5y": "Cloud $214.4B, Azure +41%, RPO $678B로 5년 2배 확장은 현실적이다.",
+          "growth_duration_10y": "cloud·AI·M365·developer 도구의 반복 갱신 구조는 10년 초과 활주로를 뒷받침한다.",
+          "culture_adaptability": "온프레미스→cloud→AI/agents로 레거시를 반복 잠식한 결과가 있어 최상위 적응 앵커에 해당한다.",
+          "market_misperception": "가격/Base 약 1.00이고 Base가 큰 AI capex 회수를 요구해 시장이 더 짧은 지속기간을 반영한다는 증거가 약하다."
+        },
+        "formal_run_report": false
+      }
     },
     {
       "ticker": "NVDA",
@@ -475,20 +541,32 @@
           "gate_threshold": 60.0
         },
         "outlier_growth": {
-          "failed": [],
-          "missing": [
-            "domain.long_term_growth",
-            "criterion.long_term_growth.opportunity_scale_5y",
-            "criterion.long_term_growth.growth_duration_10y",
-            "criterion.long_term_growth.culture_adaptability",
+          "failed": [
             "criterion.long_term_growth.market_misperception"
           ],
+          "missing": [],
           "gate_score": 73.22,
           "gate_threshold": 65.0
         }
       },
-      "reason": "최신 정본 run에서 적격 유형은 Growth 하나다.",
-      "long_term_growth_status": "missing_report"
+      "reason": "장기 성장축은 강하지만 시장 기대오류가 입증되지 않아 Growth를 유지한다.",
+      "long_term_growth_status": "shadow_complete_from_frozen_evidence",
+      "long_term_growth_assessment": {
+        "score_0_100": 77.5,
+        "criteria": {
+          "opportunity_scale_5y": 90,
+          "growth_duration_10y": 75,
+          "culture_adaptability": 90,
+          "market_misperception": 50
+        },
+        "rationales": {
+          "opportunity_scale_5y": "가속 컴퓨팅·네트워킹·소프트웨어의 복수 가치풀과 FY27 Q2 Data Center +117%는 5년 3배 기회를 지지한다.",
+          "growth_duration_10y": "AI compute 전환은 5~10년 활주로가 타당하지만 고객 집중, custom ASIC, 지원약정이 10년 초과 확신을 제한한다.",
+          "culture_adaptability": "게임 GPU에서 데이터센터 플랫폼으로의 반복 전환과 연간 아키텍처 cadence는 최상위 적응 증거다.",
+          "market_misperception": "가격/Base 1.044이고 시장도 AI 리더십을 널리 반영한다. 고객지원·보증까지 감안하면 구체적 과소평가를 65 이상으로 입증하지 못했다."
+        },
+        "formal_run_report": false
+      }
     },
     {
       "ticker": "PL",
@@ -553,19 +631,29 @@
           "failed": [
             "domain.management_allocation"
           ],
-          "missing": [
-            "domain.long_term_growth",
-            "criterion.long_term_growth.opportunity_scale_5y",
-            "criterion.long_term_growth.growth_duration_10y",
-            "criterion.long_term_growth.culture_adaptability",
-            "criterion.long_term_growth.market_misperception"
-          ],
+          "missing": [],
           "gate_score": 71.96,
           "gate_threshold": 65.0
         }
       },
-      "reason": "적격 유형은 Moonshot 하나다.",
-      "long_term_growth_status": "missing_report"
+      "reason": "LTG는 통과하지만 MA 61.67이 Outlier Growth 하한 65에 못 미쳐 Moonshot을 유지한다.",
+      "long_term_growth_status": "shadow_complete_from_frozen_evidence",
+      "long_term_growth_assessment": {
+        "score_0_100": 79.5,
+        "criteria": {
+          "opportunity_scale_5y": 90,
+          "growth_duration_10y": 75,
+          "culture_adaptability": 75,
+          "market_misperception": 75
+        },
+        "rationales": {
+          "opportunity_scale_5y": "낮은 매출 기반, 58% 성장, 방산·주권 수요와 AI 분석을 합치면 5년 3배 경로가 가능하다.",
+          "growth_duration_10y": "일일 관측 archive와 반복 계약은 5~10년 활주로를 지지하지만 정부수요·운영레버리지 의존이 90을 막는다.",
+          "culture_adaptability": "위성 하드웨어에서 data/API/AI workflow로 확장한 결과가 적응력을 뒷받침한다.",
+          "market_misperception": "가격/Base 0.614에서 시장은 archive의 누적가치와 방산·AI monetization을 보수적으로 반영한다."
+        },
+        "formal_run_report": false
+      }
     },
     {
       "ticker": "PYPL",
@@ -626,20 +714,34 @@
           "gate_threshold": 60.0
         },
         "outlier_growth": {
-          "failed": [],
-          "missing": [
+          "failed": [
             "domain.long_term_growth",
             "criterion.long_term_growth.opportunity_scale_5y",
-            "criterion.long_term_growth.growth_duration_10y",
-            "criterion.long_term_growth.culture_adaptability",
-            "criterion.long_term_growth.market_misperception"
+            "criterion.long_term_growth.growth_duration_10y"
           ],
+          "missing": [],
           "gate_score": 74.32,
           "gate_threshold": 65.0
         }
       },
-      "reason": "v3.2에서 expectation_gap이 제거됐고 Buffett-Value 조건을 모두 통과한다.",
-      "long_term_growth_status": "missing_report"
+      "reason": "사업 규모·지속기간이 Outlier Growth 기준에 못 미치며 Buffett-Value가 유일한 적격 유형이다.",
+      "long_term_growth_status": "shadow_complete_from_frozen_evidence",
+      "long_term_growth_assessment": {
+        "score_0_100": 58.0,
+        "criteria": {
+          "opportunity_scale_5y": 50,
+          "growth_duration_10y": 50,
+          "culture_adaptability": 65,
+          "market_misperception": 75
+        },
+        "rationales": {
+          "opportunity_scale_5y": "성숙한 결제 규모와 5~10%대 TPV 성장에서는 5년 2배 사업 확장이 뚜렷하지 않다.",
+          "growth_duration_10y": "디지털 결제는 장기 성장하지만 PayPal의 branded checkout 경쟁과 정체된 active accounts로 고부가 활주로는 3~5년 수준이다.",
+          "culture_adaptability": "비용구조·제품 재정렬은 진행 중이나 반복적 재창조의 결과는 아직 제한적이다.",
+          "market_misperception": "가격/Base 0.399와 Bear 아래 가격은 FCF 지속성과 buyback 효과에 대한 구체적 기대차를 보여준다."
+        },
+        "formal_run_report": false
+      }
     },
     {
       "ticker": "RKLB",
@@ -648,9 +750,11 @@
       "source_run": "RKLB",
       "as_of_date": "2026-09-18",
       "stored_archetype": "moonshot",
-      "revalidated_archetype": "moonshot",
-      "secondary_archetypes": [],
-      "change_status": "unchanged",
+      "revalidated_archetype": "outlier_growth",
+      "secondary_archetypes": [
+        "moonshot"
+      ],
+      "change_status": "reclassified",
       "hard_veto_status": "CLEARED",
       "score_100": 70.53,
       "score_100_ex_valuation": 70.83,
@@ -661,6 +765,10 @@
         "market_cap_usd": 40527391622.74
       },
       "eligible_archetypes": [
+        {
+          "id": "outlier_growth",
+          "fit_score": 75.32076923
+        },
         {
           "id": "moonshot",
           "fit_score": 72.36252168
@@ -705,19 +813,29 @@
         },
         "outlier_growth": {
           "failed": [],
-          "missing": [
-            "domain.long_term_growth",
-            "criterion.long_term_growth.opportunity_scale_5y",
-            "criterion.long_term_growth.growth_duration_10y",
-            "criterion.long_term_growth.culture_adaptability",
-            "criterion.long_term_growth.market_misperception"
-          ],
+          "missing": [],
           "gate_score": 70.83,
           "gate_threshold": 65.0
         }
       },
-      "reason": "적격 유형은 Moonshot 하나다.",
-      "long_term_growth_status": "missing_report"
+      "reason": "LTG 84점과 모든 Outlier Growth 조건을 통과해 Moonshot보다 fit이 높은 Outlier Growth로 재분류한다.",
+      "long_term_growth_status": "shadow_complete_from_frozen_evidence",
+      "long_term_growth_assessment": {
+        "score_0_100": 84.0,
+        "criteria": {
+          "opportunity_scale_5y": 90,
+          "growth_duration_10y": 90,
+          "culture_adaptability": 75,
+          "market_misperception": 75
+        },
+        "rationales": {
+          "opportunity_scale_5y": "Electron·Neutron·Space Systems와 Iridium 서비스의 복수 벡터로 5년 3배 이상 확장이 비영웅적 가정에서도 가능하다.",
+          "growth_duration_10y": "발사·위성제조·통신/PNT 서비스가 기회를 반복 갱신해 10년 초과 구조적 활주로가 타당하다.",
+          "culture_adaptability": "발사체에서 수직통합 우주 인프라로 자원을 재배치한 결과는 강하지만 Iridium 통합 전이라 90은 배제했다.",
+          "market_misperception": "가격/Base 0.734와 Bull/current 약 3.5배에서 시장은 Neutron·통합 서비스의 성공 경로를 제한적으로 반영한다."
+        },
+        "formal_run_report": false
+      }
     },
     {
       "ticker": "TSM",
@@ -781,22 +899,33 @@
         },
         "outlier_growth": {
           "failed": [
+            "criterion.long_term_growth.market_misperception",
             "domain.asymmetry",
             "criterion.asymmetry.upside_path"
           ],
-          "missing": [
-            "domain.long_term_growth",
-            "criterion.long_term_growth.opportunity_scale_5y",
-            "criterion.long_term_growth.growth_duration_10y",
-            "criterion.long_term_growth.culture_adaptability",
-            "criterion.long_term_growth.market_misperception"
-          ],
+          "missing": [],
           "gate_score": 81.61,
           "gate_threshold": 65.0
         }
       },
-      "reason": "적격 유형 중 Compounder fit이 가장 높다.",
-      "long_term_growth_status": "missing_report"
+      "reason": "시장 기대오류·AS·upside path가 Outlier Growth 기준에 못 미쳐 Compounder를 유지한다.",
+      "long_term_growth_status": "shadow_complete_from_frozen_evidence",
+      "long_term_growth_assessment": {
+        "score_0_100": 70.0,
+        "criteria": {
+          "opportunity_scale_5y": 75,
+          "growth_duration_10y": 75,
+          "culture_adaptability": 75,
+          "market_misperception": 50
+        },
+        "rationales": {
+          "opportunity_scale_5y": "AI·선단공정·첨단패키징의 복수 벡터로 5년 2배 확장은 가능하다.",
+          "growth_duration_10y": "공정 전환과 패키징 복잡성은 5~10년 활주로를 지지하지만 지정학·고객집중·자본집약도가 90을 막는다.",
+          "culture_adaptability": "연속 노드 전환과 대규모 해외 생산 재배치는 높은 조직 적응력을 보여준다.",
+          "market_misperception": "가격/Base 1.151이고 현재가는 이미 선단공정 리더십을 상당히 반영해 구체적 과소평가 증거가 약하다."
+        },
+        "formal_run_report": false
+      }
     },
     {
       "ticker": "V",
@@ -861,22 +990,35 @@
         },
         "outlier_growth": {
           "failed": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.market_misperception",
             "domain.asymmetry",
             "criterion.asymmetry.upside_path"
           ],
-          "missing": [
-            "domain.long_term_growth",
-            "criterion.long_term_growth.opportunity_scale_5y",
-            "criterion.long_term_growth.growth_duration_10y",
-            "criterion.long_term_growth.culture_adaptability",
-            "criterion.long_term_growth.market_misperception"
-          ],
+          "missing": [],
           "gate_score": 79.98,
           "gate_threshold": 65.0
         }
       },
-      "reason": "적격 유형 중 Compounder fit이 가장 높다.",
-      "long_term_growth_status": "missing_report"
+      "reason": "5년 기회 규모·시장 기대오류·AS가 Outlier Growth 기준에 못 미쳐 Compounder를 유지한다.",
+      "long_term_growth_status": "shadow_complete_from_frozen_evidence",
+      "long_term_growth_assessment": {
+        "score_0_100": 67.0,
+        "criteria": {
+          "opportunity_scale_5y": 50,
+          "growth_duration_10y": 90,
+          "culture_adaptability": 75,
+          "market_misperception": 50
+        },
+        "rationales": {
+          "opportunity_scale_5y": "성숙한 결제 네트워크의 약 10% 성장에서는 5년 2배 확장이 뚜렷하지 않다.",
+          "growth_duration_10y": "현금의 디지털화, VAS와 money movement는 10년 초과 구조적 활주로를 지지한다.",
+          "culture_adaptability": "카드 네트워크에서 tokenization·risk·Visa Direct로 확장한 적응 실적이 있다.",
+          "market_misperception": "가격/Base 1.121과 Bull/current 1.27배로 시장이 장기 사실을 뚜렷이 과소평가한다는 증거가 약하다."
+        },
+        "formal_run_report": false
+      }
     }
   ]
 }
