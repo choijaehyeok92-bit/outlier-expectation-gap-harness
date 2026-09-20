@@ -84,6 +84,12 @@ unknowns: 지원·보증 대상 고객이 전체 매출과 AR에서 차지하는
 | MO | 45 | 0.9 | neutral mult=0.5 | – | 금융여건과 지정학을 분리하면 금융조건은 0.7 감속이지만 글로벌 지정학이 더 강한 제약이다. 연준은 9월 16일 25bp 인상했고 10년 실질금리는 2.61%였다. 신용은 HY OAS 270bp로 광범위한 경색은 아니다. 그러나 Hormuz·Bab el-Mandeb 통항과 중동 에너지… |
 unknowns: Hormuz/Bab el-Mandeb 통항과 중동 에너지 인프라가 얼마나 빠르게 정상화되는가. · 고유가의 core inflation 전이와 Fed의 후속 반응.
 
+## investment_committee
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| IC | 70.19 | 0.91 | support | – | v3.1에서 NVDA는 기존 non-fit에서 Growth 적격으로 이동했다. 결정적 변화는 새 Research Orchestrator 증거가 $36B AI-cloud 약정과 $105B SB Energy/OpenAI 보증의 조건부·감소·회수 구조를 확인해 CP unit_economic… |
+unknowns: Supported/invested customers' share of total revenue and AR. · Customer-side AI infrastructure utilization, ROI and payback.
+
 ## Archetype fit
 {"buffett_value": {"eligible": false, "fit_score": 66.47107843, "failed_conditions": ["signal.price_to_base_value", "criterion.reinvestment_fcf.fcf_per_share_quality"], "missing_conditions": [], "blocking_vetoes": []}, "compounder": {"eligible": false, "fit_score": 69.68645833, "failed_conditions": ["domain.moat_trajectory", "domain.reinvestment_fcf", "criterion.reinvestment_fcf.reinvestment_runway"], "missing_conditions": [], "blocking_vetoes": []}, "growth": {"eligible": true, "fit_score": 71.15482094, "failed_conditions": [], "missing_conditions": [], "blocking_vetoes": []}, "moonshot": {"eligible": false, "fit_score": 59.4, "failed_conditions": ["signal.market_cap_usd", "domain.asymmetry"], "missing_conditions": [], "blocking_vetoes": []}}
 ## Provider calibration

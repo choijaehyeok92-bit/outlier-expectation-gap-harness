@@ -2,11 +2,19 @@
 
 정보 기준일: **2026-09-19** · 정책 3.1
 
-**현재 결과: 일반 투자 후보**
+**현재 결과: 소액 투자 검토**
 
-아직 투자위원회 최종 결론이 아닙니다. 아래 내용은 현재까지의 기계적 집계입니다.
+투자위원회 검토를 반영한 결과입니다.
 
 성장주: 고객과 현금창출을 확인했고 빠르게 사업을 키우는 기업.
+
+**무엇으로 돈을 버는 회사인가** — NVIDIA는 AI 데이터센터에 필요한 GPU, 네트워킹, 소프트웨어 생태계를 함께 판매한다. 현재 매출과 현금창출은 매우 강하지만, 고객의 대규모 AI 투자와 NVIDIA의 지원 약정이 얼마나 지속 가능한지는 계속 확인해야 한다.
+
+**성장할 수 있는 이유** — 새 v3.1 규칙에서는 향후 3년 매출 성장 추정치와 고객가치·현금창출 기준을 통과해 &#x27;성장주&#x27; 유형에 들어왔다. AI 인프라 수요가 장기간 이어지고 CUDA·네트워킹 해자가 유지되면 현재 기준 가정보다 높은 결과도 가능하다.
+
+**가장 조심할 점** — 현재 가격은 하네스의 기준 가치보다 약간 높고 비관 시나리오에서는 손실 폭이 크다. 또한 고객 지원, 보증, 매출채권 증가와 자체 ASIC 경쟁이 장기 수익성을 훼손할 수 있다.
+
+**현재 결론의 이유** — 중대한 탈락 사유는 모두 해소됐지만 가격과 수요의 질에 대한 불확실성이 크다. 그래서 정상 비중이 아니라 1~2% Starter 범위만 승인하고, 거시환경 때문에 실제 매수 속도는 평소의 절반 수준으로 제한한다.
 
 | 살펴본 항목 | 점수 / 100 |
 |---|---:|
@@ -34,11 +42,12 @@
 
 **다음에 확인할 것**
 
-- 보증·AI-cloud agreements의 실제 활성 노출과 손실·revenue share 확인
-- 지원 대상 고객의 매출·AR 및 DSO 추적
-- 주주 몫으로 보는 현금(추정) 정상화 후 비관/기준/낙관 확률과 가중가치 재산출
-- Q3 FY27 10-Q에서 AR·DSO·대손충당·customer advances와 지원 대상 고객 관련 추가 공시 확인
+- Q3 FY27 10-Q: AR, DSO, customer advances, allowance, commitments and any supported-customer disclosure.
+- Rubin deployment and independent cost/performance evidence versus hyperscaler custom ASICs.
+- PORTS-Pike guarantee activation, OpenAI credit status and actual recovery/revenue-share economics.
 
 **사실과 판단의 구분** — 원본 공시와 기준 입력은 보존합니다. 미래 성장률, 시나리오 가치와 위원회의 설명은 추정 또는 판단입니다. 자료가 없는 항목은 0으로 처리하지 않습니다.
 
 [상세 계산과 결정](final_verdict.json) · [분석 요약](digest.md) · [원본과 출처](sources/README.md)
+
+[투자위원회 근거](reports/IC.json)

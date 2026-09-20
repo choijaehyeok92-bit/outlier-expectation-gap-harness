@@ -1,12 +1,9 @@
 {
-  "stage": "ic",
-  "agents": {
-    "investment_committee": "IC"
-  },
+  "stage": "complete",
+  "agents": {},
   "research": {
-    "questions": 87,
-    "pending": 87,
+    "questions": 95,
+    "pending": 95,
     "command": "python harness.py research-plan NVDA-V31-2026-09-19"
   }
 }
-python harness.py prompt NVDA-V31-2026-09-19 IC
