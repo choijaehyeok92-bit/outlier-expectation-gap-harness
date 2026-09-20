@@ -1,0 +1,19 @@
+{
+  "agent_id":"MT","ticker":"NOW","as_of_date":"2026-09-18","domain":"moat_trajectory","role":"domain_analyst","analysis_status":"complete","score_0_100":77.25,"confidence_0_1":0.76,"bull_score":88,"bear_score":50,
+  "bull_case":"통합 workflow 데이터, 파트너·개발 생태계, AI orchestration이 결합해 추가 제품 채택이 전환비용을 더 높인다.","bear_case":"AI 인터페이스가 기존 application layer를 우회하고 경쟁사 번들이 가격을 압박해 workflow 해자가 정체된다.",
+  "thesis":"98% renewal, 대형고객 23.5% 증가, $29B RPO와 21% cRPO 성장은 전환비용과 wallet-share 확대가 강화되고 있음을 보여준다. 설치기반·계약·고객 규모의 세 수치와 추세는 생태계 피드백을 지지하지만 개발자·파트너 규모와 구체 전환 사례가 없어 90점급 복리형 방어벽은 미입증이다.",
+  "evidence":[
+    {"claim":"renewal rate는 98%로 고객 이탈이 제한적이다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":0.98,"fact_or_estimate":"fact","economic_driver":"switching_cost"},
+    {"claim":"$5M 초과 ACV 고객은 658개로 23.5% 증가해 대형고객 wallet-share가 확대됐다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":658,"fact_or_estimate":"fact","economic_driver":"wallet_share"},
+    {"claim":"RPO $29.0B, cRPO 비중 46%, RPO·cRPO 각각 21% 성장은 계약 생태계 규모와 추세를 보여준다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":29000000000,"fact_or_estimate":"fact","economic_driver":"ecosystem_scale"},
+    {"claim":"subscription revenue는 25% 증가해 대규모 설치기반에서도 점유·가격·사용 확장이 이어졌다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":0.25,"fact_or_estimate":"fact","economic_driver":"moat_trajectory"}
+  ],
+  "counterevidence":["개발자·파트너·integration 수의 동일정의 추세가 없다.","AI가 UI와 workflow를 범용화할 경우 기존 전환비용이 낮아질 수 있다.","Moveworks·Veza·Armis 인수는 유기적 해자 확대가 아니라 매입 옵션일 수 있다."],
+  "unknowns":["개발자·파트너·integration 규모와 추세.","경쟁사 대비 win/loss 및 가격 변화.","인수 제품 cross-sell의 유기 ARR."],
+  "falsifiers":["renewal rate가 95% 미만이면 전환비용을 낮춘다.","cRPO 성장률이 15% 미만이면 해자 확대를 정체로 본다.","$5M+ 고객 증가가 10% 미만이면 wallet-share 강화를 기각한다."],
+  "hard_veto_flags":[{"veto":"해자의 지속적인 축소","status":"cleared","rationale":"98% renewal, 대형고객 23.5% 증가, cRPO 21% 성장으로 해자 축소와 반대되는 관측치가 다수다. AI 경쟁은 조건부 위험으로 남긴다."}],
+  "key_kpis":[{"name":"renewal rate","direction":"up","threshold":">=95%","cadence":"quarterly"},{"name":"cRPO growth","direction":"up","threshold":">=15%","cadence":"quarterly"},{"name":"$5M+ customer growth","direction":"up","threshold":">=10%","cadence":"quarterly"}],
+  "next_checks":["partner/developer 생태계 추세","경쟁 win/loss","인수 제품 cross-sell"],"verdict":"support",
+  "subscores":[{"criterion_id":"switching_pricing","score_0_100":80,"rationale":"98% renewal과 대형고객 확장이 전환비용과 wallet-share 강화를 입증한다. 직접 가격 인상 자료 부재로 90은 배제했다."},{"criterion_id":"network_data_ecosystem","score_0_100":85,"rationale":"RPO, cRPO 비중, 대형고객, renewal 등 3개 이상 규모 수치와 대형고객·RPO의 증가 추세가 있어 관측표 85다. 구체 전환 사례가 없어 90은 아니다."},{"criterion_id":"commoditization_resilience","score_0_100":65,"rationale":"통합 데이터·workflow·계약·파트너라는 복수 방어층이 있으나 AI 번들 경쟁과 생태계 수치 부재로 75를 제한했다."}],
+  "uncertainties":[{"criterion_id":"switching_pricing","severity":"material","rationale":"직접 가격 인상·win/loss가 없다."},{"criterion_id":"network_data_ecosystem","severity":"material","rationale":"파트너·개발자 수의 추세가 없다."},{"criterion_id":"commoditization_resilience","severity":"material","rationale":"AI 대체의 초기 단계라 영향이 불확실하다."}]
+}

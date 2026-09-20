@@ -1,0 +1,18 @@
+{
+  "agent_id":"SL","ticker":"NOW","as_of_date":"2026-09-18","domain":"structural_leadership","role":"domain_analyst","analysis_status":"complete","score_0_100":72.5,"confidence_0_1":0.77,"bull_score":85,"bear_score":50,
+  "bull_case":"기업의 AI·데이터·업무 자동화가 하나의 execution layer로 수렴하면서 ServiceNow가 ITSM 밖에서도 장기 표준 플랫폼이 된다.","bear_case":"ITSM 성숙과 hyperscaler·application vendor의 AI 번들링이 겹쳐 성장과 가격결정력이 동시에 정상화된다.",
+  "thesis":"21% cRPO 성장, 25% subscription 성장, 98% renewal과 대형고객 확장은 기업 workflow 자동화의 구조 수요와 카테고리 리더십을 지지한다. 다만 제품·최종시장별 매출을 10% 기준으로 나눈 자료가 없어 독립 성장축의 수를 검증할 수 없고, 최근 인수로 유기적 리더십의 지속성을 분리하기 어렵다.",
+  "evidence":[
+    {"claim":"Q2 subscription revenue $3.877B는 25% 증가했고 전체 매출의 약 97%였다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":0.25,"fact_or_estimate":"fact","economic_driver":"secular_demand"},
+    {"claim":"RPO $29.0B와 cRPO 성장 21%는 장기 수요와 계약 가시성을 보여준다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":29000000000,"fact_or_estimate":"fact","economic_driver":"category_leadership"},
+    {"claim":"$5M 초과 ACV 고객은 658개로 전년 대비 23.5% 증가했고 renewal rate는 98%였다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":658,"fact_or_estimate":"fact","economic_driver":"enterprise_penetration"},
+    {"claim":"FY2025 매출의 37%가 북미 밖에서 발생해 지역 배포가 분산되어 있다.","source_type":"filing","source":"runs/NOW/sources/10-K_2026-01-29_0001373715-26-000007.htm","period":"FY2025","as_of_date":"2025-12-31","value":0.37,"fact_or_estimate":"fact","economic_driver":"geographic_breadth"}
+  ],
+  "counterevidence":["제품군·최종시장별 10% 이상 매출 축이 공시되지 않았다.","ITSM·workflow 시장의 성숙과 AI 번들 경쟁이 장기 성장률을 낮출 수 있다.","최근 인수로 2026 성장의 유기적 부분이 불명확하다."],
+  "unknowns":["제품군별 매출 및 성장률.","인수 제외 유기 cRPO 성장.","AI 제품의 순증 ARR."],
+  "falsifiers":["cRPO 성장률이 두 분기 연속 15% 미만이면 구조 지속성을 낮춘다.","renewal rate가 95% 미만이면 카테고리 리더십을 낮춘다.","대형고객 증가율이 15% 미만이면 장기 wallet-share 가설을 기각한다."],
+  "hard_veto_flags":[],"key_kpis":[{"name":"cRPO growth","direction":"up","threshold":">=15%","cadence":"quarterly"},{"name":"$5M+ ACV customers growth","direction":"up","threshold":">=15%","cadence":"quarterly"},{"name":"renewal rate","direction":"up","threshold":">=95%","cadence":"quarterly"}],
+  "next_checks":["제품군별 성장 공시","인수 제외 성장 bridge","AI 순증 ARR"],"verdict":"support",
+  "subscores":[{"criterion_id":"secular_durability","score_0_100":80,"rationale":"계약 성장과 98% renewal이 5~10년 workflow 자동화 수요를 지지한다. AI 순증 매출 미공시로 90은 배제했다."},{"criterion_id":"category_leadership","score_0_100":80,"rationale":"$29B RPO와 658개 초대형 고객의 23.5% 증가는 배포 리더십을 입증하지만 카테고리 규칙 정의를 정량 확인할 자료는 부족하다."},{"criterion_id":"durability_risks","score_0_100":50,"rationale":"지리·workflow 폭은 있으나 매출 10% 이상인 독립 최종시장 수가 공시되지 않아 관측표의 2개 이상을 인정할 수 없다."}],
+  "uncertainties":[{"criterion_id":"secular_durability","severity":"material","rationale":"AI 기여와 유기성장이 분리되지 않는다."},{"criterion_id":"category_leadership","severity":"material","rationale":"외부 점유율 자료가 frozen bundle에 없다."},{"criterion_id":"durability_risks","severity":"material","rationale":"최종시장별 매출이 없다."}]
+}

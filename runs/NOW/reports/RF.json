@@ -1,0 +1,19 @@
+{
+  "agent_id":"RF","ticker":"NOW","as_of_date":"2026-09-18","domain":"reinvestment_fcf","role":"domain_analyst","analysis_status":"complete","score_0_100":70.0,"confidence_0_1":0.8,"bull_score":85,"bear_score":45,
+  "bull_case":"R&D와 데이터센터 투자가 20%대 계약 성장과 owner-FCF/share 복리로 전환되고 인수 제품이 유기 cross-sell을 만든다.","bear_case":"높은 R&D·SBC와 대형 인수가 낮은 증분수익으로 귀결되어 매출 성장에도 GAAP 마진과 주당현금흐름이 정체된다.",
+  "thesis":"TTM (R&D+capex)/OCF 흡수율은 약 75.2%로 재투자 활주로가 크고 FY2024 대비 owner FCF/share가 약 45% 성장했다. 그러나 최근 인수로 자산과 부채가 커졌고 H1 GAAP 영업이익은 감소해 증분 ROIC가 자본비용의 2배 이상이라는 직접 증거는 없다. 재투자 규모는 강하지만 수익률 검증은 아직 혼재한다.",
+  "evidence":[
+    {"claim":"TTM R&D $3.261B와 capex $0.728B 합계는 OCF $5.308B의 약 75.2%다.","source_type":"filing","source":"runs/NOW/sources/financials/normalized_financials.json","period":"TTM to 2026-06-30","as_of_date":"2026-06-30","value":0.7515,"fact_or_estimate":"estimate","economic_driver":"reinvestment_absorption"},
+    {"claim":"TTM owner FCF proxy는 $2.395B, 약 $2.32/희석주로 FY2024 약 $1.60/주보다 약 45% 높다.","source_type":"filing","source":"runs/NOW/sources/financials/normalized_financials.json","period":"TTM to 2026-06-30 versus FY2024","as_of_date":"2026-06-30","value":2.3154,"fact_or_estimate":"estimate","economic_driver":"fcf_per_share"},
+    {"claim":"Q2 subscription revenue 25%, cRPO 21%, $5M+ 고객 23.5% 성장은 재투자 산출물의 시장 흡수를 보여준다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":0.21,"fact_or_estimate":"fact","economic_driver":"reinvestment_output"},
+    {"claim":"H1 GAAP 영업이익은 $665M으로 전년 $809M보다 감소해 최근 증분수익률에는 인수·통합 부담이 나타났다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 H1 versus 2025 H1","as_of_date":"2026-06-30","value":665000000,"fact_or_estimate":"fact","economic_driver":"incremental_return"}
+  ],
+  "counterevidence":["H1 GAAP 영업이익과 Q2 gross margin이 전년 대비 악화됐다.","SBC $2.185B가 TTM 일반 FCF의 약 48%다.","대형 인수의 사후 ROIC와 유기 ARR 기여가 아직 검증되지 않았다."],
+  "unknowns":["인수별 사후 ROIC.","R&D 코호트별 매출·마진 기여.","SBC/매출 장기 정상화."],
+  "falsifiers":["owner FCF/share가 FY27에 $2.00 아래면 주당복리 가설을 낮춘다.","cRPO 성장률이 15% 미만이면 재투자 활주로를 낮춘다.","GAAP 영업마진이 FY28에도 12% 미만이면 증분 ROIC를 50 이하로 낮춘다."],
+  "hard_veto_flags":[{"veto":"장기간 지속되는 과도한 희석","status":"cleared","rationale":"Q2 희석주식수는 전년 대비 1.17% 감소했고 owner FCF/share도 증가했다. SBC는 크지만 현재 장기간 순희석 요건은 성립하지 않는다."},{"veto":"증분 ROIC의 구조적 붕괴","status":"cleared","rationale":"20%대 계약·매출 성장과 owner FCF/share 개선은 구조적 붕괴를 반증한다. 최근 인수의 증분 ROIC는 미확인이라 점수는 보수적으로 제한했다."}],
+  "key_kpis":[{"name":"owner FCF/share","direction":"up","threshold":">$2.00","cadence":"quarterly"},{"name":"reinvestment absorption","direction":"up","threshold":"35%~80% with positive owner FCF","cadence":"annual"},{"name":"GAAP operating margin","direction":"up","threshold":">=12% by FY28","cadence":"quarterly"}],
+  "next_checks":["인수별 ROIC bridge","SBC/매출","owner FCF/share"],"verdict":"support",
+  "subscores":[{"criterion_id":"incremental_roic","score_0_100":55,"rationale":"20%대 성장과 주당현금흐름 개선은 긍정적이나 H1 영업이익 감소와 인수 영향으로 자본비용 초과를 직접 입증하지 못했다."},{"criterion_id":"reinvestment_runway","score_0_100":80,"rationale":"TTM 재투자 흡수율 75.2%는 60%를 넘지만 증분 ROIC 2배 조건이 미확인이라 90 대신 80으로 제한했다."},{"criterion_id":"fcf_per_share_quality","score_0_100":80,"rationale":"SBC·capex 후 owner FCF/share가 약 $2.32로 FY2024 약 $1.60보다 45% 증가하고 희석주식수도 감소했다. SBC 비중이 높아 90은 아니다."}],
+  "uncertainties":[{"criterion_id":"incremental_roic","severity":"material","rationale":"인수별 투자자본과 유기 이익 bridge가 없다."},{"criterion_id":"reinvestment_runway","severity":"material","rationale":"75% 흡수율 중 인수 통합 관련 R&D를 분리할 수 없다."},{"criterion_id":"fcf_per_share_quality","severity":"material","rationale":"SBC 정상화와 자사주 지속성이 불확실하다."}]
+}

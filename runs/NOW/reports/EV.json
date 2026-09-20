@@ -1,0 +1,28 @@
+{
+  "agent_id": "EV", "ticker": "NOW", "as_of_date": "2026-09-18", "domain": "expectation_valuation", "role": "domain_analyst", "analysis_status": "complete",
+  "score_0_100": 53.0, "confidence_0_1": 0.8, "bull_score": 80, "bear_score": 25,
+  "bull_case": "AI workflow monetization, 20%대 cRPO 성장, 대형고객 확장이 장기화되고 SBC 부담이 매출 대비 낮아지면 주당 $218.90 부근 가치가 가능하다.",
+  "bear_case": "성장이 10% 안팎으로 둔화하고 인수 통합과 SBC 부담이 지속되면 주당 $35.42 수준까지 가치가 훼손될 수 있다.",
+  "thesis": "고정 9%·15/20/25x owner-FCF DCF의 Bear/Base/Bull은 약 $35.42/$124.45/$218.90이다. 현재가 $135.47은 Base의 1.0886배로 Base 실행을 거의 완전히 반영하지만 Bull 이상을 요구하지는 않는다. Base는 owner FCF/share를 TTM 약 $2.32에서 10년차 $10.70까지 높이는 경로이고 가치의 72.2%가 terminal에 의존해 기대차가 얇고 민감하다.",
+  "evidence": [
+    {"claim":"TTM 매출은 $14.732B, 영업이익 $1.680B, 영업현금흐름 $5.308B, capex $0.728B이다.","source_type":"filing","source":"runs/NOW/sources/financials/normalized_financials.json","period":"TTM to 2026-06-30","as_of_date":"2026-06-30","value":14732000000,"fact_or_estimate":"estimate","economic_driver":"operating_scale"},
+    {"claim":"TTM SBC $2.185B를 경제적 비용으로 차감한 owner-FCF proxy는 $2.395B, 약 $2.32/희석주이다.","source_type":"filing","source":"runs/NOW/sources/financials/normalized_financials.json","period":"TTM to 2026-06-30","as_of_date":"2026-06-30","value":2395000000,"fact_or_estimate":"estimate","economic_driver":"owner_fcf"},
+    {"claim":"Q2 subscription revenue는 $3.877B로 25% 증가했고, RPO는 $29.0B 및 cRPO 비중 46%이며 RPO와 cRPO 모두 21% 증가했다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":29000000000,"fact_or_estimate":"fact","economic_driver":"forward_demand"},
+    {"claim":"$5M 초과 ACV 고객은 658개로 전년 533개보다 23.5% 증가했고 renewal rate는 98%였다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":658,"fact_or_estimate":"fact","economic_driver":"large_customer_expansion"},
+    {"claim":"고정 DCF는 Bear/Base/Bull $35.42/$124.45/$218.90, current/Base 1.0886이며 terminal fraction은 54.3%/72.2%/78.4%다.","source_type":"other","source":"harness deterministic valuation policy","period":"10 years from 2026-09-18","as_of_date":"2026-09-18","value":124.4454,"fact_or_estimate":"estimate","economic_driver":"expectation_gap"}
+  ],
+  "counterevidence": ["현재가가 Base 가치보다 8.9% 높아 안전마진이 없다.","Base 가치의 72.2%가 terminal에 의존하며 10년차 owner FCF/share $10.70을 요구한다.","약 9.6x EV/TTM revenue와 GAAP 영업마진 약 11.4%는 AI 성장과 큰 마진 확장을 이미 반영한다.","검증 가능한 동일정의 5년 valuation percentile이 frozen bundle에 없다."],
+  "unknowns": ["동일정의 5년 valuation percentile.","Moveworks·Veza·Armis 인수의 독립 유기성장 및 통합비용.","SBC/매출의 장기 정상화 수준."],
+  "falsifiers": ["향후 3년 매출 CAGR이 15% 미만이면 Base 성장경로를 낮춘다.","FY29 owner FCF/share가 $4.40 미만이면 Base를 기각한다.","cRPO 성장률이 두 분기 연속 15% 미만이면 성장 지속기간을 줄인다."],
+  "hard_veto_flags": [{"veto":"현재가격이 비현실적인 Bull Case 이상을 요구","status":"cleared","rationale":"현재가 $135.47은 Bull 가치 $218.90의 61.9%이며 Bull 가치를 초과하지 않는다. 다만 Base $124.45보다 8.9% 높아 기대수익은 얇다."}],
+  "key_kpis": [{"name":"owner FCF/share","direction":"up","threshold":"FY29 >=$4.40; FY32 >=$7.10","cadence":"quarterly"},{"name":"cRPO growth","direction":"up","threshold":">=15%","cadence":"quarterly"},{"name":"SBC/revenue","direction":"down","threshold":"<12% by FY30","cadence":"quarterly"}],
+  "next_checks": ["다음 분기 cRPO와 유기성장 bridge","인수 통합비용과 GAAP margin 회복","SBC 차감 owner FCF/share 업데이트"], "verdict": "neutral",
+  "subscores": [
+    {"criterion_id":"reverse_dcf_burden","score_0_100":60,"rationale":"locked DCF price/Base 1.0886은 0.9~1.1 signal-map 구간이므로 60을 적용했다."},
+    {"criterion_id":"base_return","score_0_100":55,"rationale":"price/Base 1.0886은 0.9~1.1 signal-map 구간으로 55다. 현재가는 Base보다 약 8.9% 높다."},
+    {"criterion_id":"valuation_robustness","score_0_100":40,"rationale":"Base 가치의 72.2%가 terminal이고 10년차 owner FCF/share $10.70을 요구한다. 현재가격은 Bull 아래지만 terminal과 SBC 정상화에 민감하다."}
+  ],
+  "uncertainties": [{"criterion_id":"reverse_dcf_burden","severity":"material","rationale":"5년 valuation percentile과 인수 제외 유기성장 자료가 없다."},{"criterion_id":"base_return","severity":"material","rationale":"Base는 장기간 mid-teens 이상의 owner-FCF/share 성장을 요구한다."},{"criterion_id":"valuation_robustness","severity":"material","rationale":"가치 대부분이 terminal과 SBC 정상화에 의존한다."}],
+  "archetype_signals": {"price_to_base_value":1.0886,"valuation_percentile_5y":null,"revenue_cagr_next_3y":0.18},
+  "valuation_inputs": {"valuation_percentile_5y":null,"revenue_cagr_next_3y":0.18,"scenarios":{"bear":{"owner_fcf_per_share":[2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3.0,3.1]},"base":{"owner_fcf_per_share":[2.6,3.1,3.7,4.4,5.2,6.1,7.1,8.2,9.4,10.7]},"bull":{"owner_fcf_per_share":[2.9,3.6,4.5,5.6,6.9,8.4,10.1,12.0,14.1,16.3]}}}
+}

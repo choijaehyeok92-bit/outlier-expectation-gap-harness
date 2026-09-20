@@ -1,0 +1,19 @@
+{
+  "agent_id":"CP","ticker":"NOW","as_of_date":"2026-09-18","domain":"customer_product","role":"domain_analyst","analysis_status":"complete","score_0_100":74.0,"confidence_0_1":0.8,"bull_score":88,"bear_score":52,
+  "bull_case":"98% renewal과 대형고객 확장이 AI·workflow cross-sell로 이어져 고객당 지출과 단위경제가 함께 개선된다.","bear_case":"AI ROI가 기대에 못 미치고 인수 제품 번들이 할인 판매되면 성장에도 GAAP 마진과 고객 경제성이 악화된다.",
+  "thesis":"98% renewal, $5M+ ACV 고객 23.5% 증가, cRPO 21% 성장은 높은 지불의사와 wallet-share 확장을 보여준다. 그러나 고객 ROI가 직접 정량화되지 않았고 Q2 gross margin과 GAAP 영업이익이 악화돼 단위경제의 개선은 혼재한다.",
+  "evidence":[
+    {"claim":"renewal rate는 98%로 기업 workflow가 높은 지속 사용성을 보였다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":0.98,"fact_or_estimate":"fact","economic_driver":"retention"},
+    {"claim":"$5M 초과 ACV 고객은 658개로 전년 533개보다 23.5% 늘었다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":658,"fact_or_estimate":"fact","economic_driver":"wallet_share"},
+    {"claim":"subscription revenue $3.877B는 25% 증가했고 RPO·cRPO는 각각 21% 증가했다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":3877000000,"fact_or_estimate":"fact","economic_driver":"customer_demand"},
+    {"claim":"Q2 gross margin은 약 70.7%로 전년 77.5%보다 낮고 GAAP 영업이익은 $162M으로 전년 $358M보다 감소했다.","source_type":"filing","source":"runs/NOW/sources/financials/normalized_financials.json","period":"2026 Q2 versus 2025 Q2","as_of_date":"2026-06-30","value":0.707,"fact_or_estimate":"estimate","economic_driver":"unit_economics"}
+  ],
+  "counterevidence":["고객 ROI·payback이 정량 공시되지 않았다.","Q2 gross margin과 GAAP 영업이익이 전년 대비 악화됐다.","인수·번들 효과 때문에 유기적 가격결정력을 분리하기 어렵다."],
+  "unknowns":["AI 고객의 비용절감과 payback.","동일 코호트 net expansion rate.","신규 고객 CAC와 sales payback."],
+  "falsifiers":["renewal rate가 95% 미만이면 제품 미션크리티컬 가설을 낮춘다.","$5M+ 고객 증가율이 15% 미만이면 wallet-share 개선을 기각한다.","gross margin이 70% 미만에서 두 분기 지속되면 단위경제를 낮춘다."],
+  "hard_veto_flags":[{"veto":"고객가치 없이 마케팅·보조금에 의존하는 성장","status":"cleared","rationale":"98% renewal, $5M+ 고객 23.5% 성장, 21% cRPO 성장이 반복 구매와 확장을 입증해 마케팅·보조금 의존 가설을 반증한다."},{"veto":"단일 제품·단일 고객·단일 규제에 대한 치명적 종속성","status":"cleared","rationale":"다수 workflow·지역·기업고객에 배포되며 단일 고객 10% 이상 의존이 공시되지 않았다. 제품별 매출 부재는 감점했지만 치명적 단일 종속은 아니다."}],
+  "key_kpis":[{"name":"renewal rate","direction":"up","threshold":">=95%","cadence":"quarterly"},{"name":"$5M+ ACV customer growth","direction":"up","threshold":">=15%","cadence":"quarterly"},{"name":"gross margin","direction":"up","threshold":">70%","cadence":"quarterly"}],
+  "next_checks":["AI 고객 ROI 연구","net expansion rate","인수 제외 gross margin"],"verdict":"support",
+  "subscores":[{"criterion_id":"customer_roi","score_0_100":70,"rationale":"높은 renewal과 대형고객 확장이 지불의사를 지지하지만 직접 정량 ROI가 없어 75를 제한했다."},{"criterion_id":"retention_usage","score_0_100":85,"rationale":"98% renewal과 $5M+ 고객 23.5% 증가는 지속 확장에 근접한 증거다. 동일코호트 NRR 부재로 90은 배제했다."},{"criterion_id":"unit_economics","score_0_100":65,"rationale":"TTM 현금창출은 강하지만 Q2 gross margin과 GAAP 영업이익이 악화돼 75 규모경제를 완전히 충족하지 못한다."}],
+  "uncertainties":[{"criterion_id":"customer_roi","severity":"material","rationale":"고객 ROI가 직접 공시되지 않는다."},{"criterion_id":"retention_usage","severity":"material","rationale":"동일정의 NRR·코호트 사용량이 없다."},{"criterion_id":"unit_economics","severity":"material","rationale":"인수비용과 유기 마진을 분리할 수 없다."}]
+}
