@@ -1,0 +1,109 @@
+{
+  "agent_id": "MT",
+  "ticker": "V",
+  "as_of_date": "2026-09-18",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 88.5,
+  "confidence_0_1": 0.86,
+  "bull_score": 96.5,
+  "bear_score": 68.5,
+  "bull_case": "VAS and tokenization increase the amount of value captured per credential and transaction.",
+  "bear_case": "Regulatory forced-routing and low-cost account-to-account payments can commoditize some domestic debit economics.",
+  "thesis": "Visa's moat remains exceptionally wide and is still broadening from card rails into services, risk/security and money movement. Alternative rails are real, but Visa often sits as an enabling layer rather than being displaced outright.",
+  "evidence": [
+    {
+      "claim": "FY2025 payments volume $13.894T and processed transactions 257.545B.",
+      "source_type": "filing",
+      "source": "runs/V/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2025-11-06",
+      "value": "13.894T/257.545B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 processed transactions +10% and VAS revenue +33%.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3/9M FY2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "VAS FY2025 revenue was $10.9B, +24%.",
+      "source_type": "filing",
+      "source": "runs/V/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2025-11-06",
+      "value": "10.9B",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Regulatory and interchange litigation can pressure network economics and pricing over time.",
+    "The current valuation already embeds a high-quality compounder profile."
+  ],
+  "unknowns": [
+    "Long-run regulation of interchange and routing",
+    "Sustainable growth rate of Visa Direct and value-added services",
+    "Long-run client incentive intensity"
+  ],
+  "falsifiers": [
+    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Current volume, transaction and VAS growth do not support a persistent shrinking-moat predicate."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "high-single to low-double-digit long-run growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Payments volume, cross-border volume, processed transactions, value-added services, client incentives, owner FCF/share, buyback price"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 90,
+      "rationale": "Global acceptance, issuer/acquirer integration, tokenization and brand trust create high switching/friction costs."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 90,
+      "rationale": "Multi-trillion-dollar volume, hundreds of billions of transactions and continuing growth provide measurable network effects plus concrete integration switching costs."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 85,
+      "rationale": "VAS, risk/security, tokenization and money movement add defense layers beyond basic card routing."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    }
+  ]
+}
