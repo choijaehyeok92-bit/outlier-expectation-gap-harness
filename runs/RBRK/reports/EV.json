@@ -4,63 +4,217 @@
   "as_of_date": "2026-09-18",
   "domain": "expectation_valuation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 71.75,
+  "confidence_0_1": 0.78,
+  "bull_score": 90,
+  "bear_score": 20,
+  "bull_case": "Bull assumes cyber-resilience plus Agent Cloud create multiple durable growth vectors and owner FCF/share reaches $45 in year 10. Under the locked 25x terminal multiple this produces about $563/share, but requires exceptional execution and dilution control.",
+  "bear_case": "Bear assumes ARR growth decelerates sharply, SBC remains economically heavy and operating leverage improves slowly. Owner FCF/share reaches only $3.50 in year 10; the locked 15x terminal multiple produces about $31.58/share.",
+  "thesis": "At the frozen $106.71 close, locked-policy DCF gives Bear/Base/Bull values near $31.58/$169.29/$563.05. Price/Base is 0.6304, but Base is fragile: roughly 81% of operating value is terminal and it assumes owner FCF/share rises from negative territory to $16. Under the same Base path and 20x terminal multiple, stopping at year 7 gives about $103.63, so current price is roughly consistent with seven years of the Base cash-flow ramp rather than the full ten-year path. This is a model inference, not an observable market forecast.",
+  "evidence": [
+    {
+      "claim": "Q2 FY2027 revenue was $427.260M, up 38% y/y, Subscription ARR was $1.660903B and management reported ARR growth of 33% y/y.",
+      "source_type": "10-Q/company_ir",
+      "source": "SEC 10-Q filed 2026-09-01 and Rubrik Q2 FY2027 official results published 2026-08-27",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-09-01",
+      "value": 427.26,
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-EV-GROWTH-001",
+      "economic_driver": "revenue_and_arr_growth"
+    },
+    {
+      "claim": "H1 FY2027 OCF was $158.535M, property/equipment capex $9.876M, capitalized internal-use software $9.374M and SBC $174.386M. Frozen TTM arithmetic gives company-style FCF about $286.242M but an owner-FCF stress proxy after SBC of about -$55.521M.",
+      "source_type": "10-K/10-Q",
+      "source": "SEC FY2026 10-K plus FY2027 Q2 and prior-year Q2 10-Q; downstream arithmetic",
+      "period": "TTM to 2026-07-31",
+      "as_of_date": "2026-09-01",
+      "value": -55.521,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-EV-FCF-002",
+      "economic_driver": "cash_conversion_and_dilution"
+    },
+    {
+      "claim": "At 2026-07-31 cash plus short-term investments were $1.747649B and convertible notes carrying value was $1.132895B, leaving about $614.754M of balance-sheet net cash before other adjustments.",
+      "source_type": "10-Q",
+      "source": "SEC 10-Q filed 2026-09-01",
+      "period": "2026-07-31",
+      "as_of_date": "2026-09-01",
+      "value": 614.754,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-EV-BALANCE-003",
+      "economic_driver": "net_cash"
+    },
+    {
+      "claim": "FY2027 company guidance is revenue $1.685B-$1.693B, Subscription ARR $1.880B-$1.885B, FCF $323M-$333M and approximately 228M weighted-average shares.",
+      "source_type": "company_ir",
+      "source": "Rubrik Q2 FY2027 official results published 2026-08-27",
+      "period": "FY2027 guidance",
+      "as_of_date": "2026-08-27",
+      "value": "$1.685-$1.693B revenue; $323-$333M FCF",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-EV-GUIDE-004",
+      "economic_driver": "near_term_expectations"
+    },
+    {
+      "claim": "Locked 9%/10-year DCF with net cash/share $2.6963 and 15x/20x/25x terminal multiples yields Bear $31.58, Base $169.29 and Bull $563.05. Base terminal value is about 81.1% of operating value.",
+      "source_type": "harness",
+      "source": "Harness deterministic valuation policy and EV scenario inputs",
+      "period": "10 years from 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 169.286,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-EV-DCF-005",
+      "economic_driver": "expectation_gap"
+    },
+    {
+      "claim": "Using the Base owner-FCF/share ramp but capitalizing at year 7 with the same 20x terminal multiple gives about $103.63/share, close to the frozen $106.71 price. This is a duration sensitivity, not a claim about investor consensus.",
+      "source_type": "harness",
+      "source": "EV duration sensitivity using locked Base path",
+      "period": "sensitivity as of 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 103.6263,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-EV-DURATION-006",
+      "economic_driver": "market_implied_duration"
+    }
+  ],
+  "counterevidence": [
+    "The Base case assumes an aggressive transition from negative SBC-adjusted owner FCF to $16/share in year 10; the apparent discount disappears quickly if that cash-conversion ramp is delayed.",
+    "About 81% of Base operating value and 85% of Bull operating value comes from terminal value, making the valuation highly sensitive to long-run margins, dilution and terminal multiples.",
+    "FY2027 company FCF guidance excludes stock-based compensation as an economic owner cost; RBRK's current cash generation therefore looks materially stronger under conventional FCF than under the owner-FCF stress definition used here.",
+    "RBRK has only traded publicly since 2024, so there is no meaningful five-year public valuation percentile to corroborate the DCF signal."
+  ],
+  "unknowns": [
+    "Normalized long-run SBC as a percent of revenue and the resulting diluted share count.",
+    "Agent Cloud revenue, margins, retention and customer-payback evidence are not separately disclosed.",
+    "How quickly material-right revenue effects disappear from reported growth comparability.",
+    "Long-run gross-margin and sales-efficiency ceiling after international expansion.",
+    "The economic effect of the 2030 convertible notes under sustained high share prices."
+  ],
+  "falsifiers": [
+    "Cut Base materially if Subscription ARR growth falls below 20% before owner FCF/share turns sustainably positive after SBC.",
+    "Cut Base if diluted economic share count grows above 5% annually for two consecutive years without commensurate per-share cash growth.",
+    "Raise the durability case only if owner FCF/share turns positive while ARR growth remains above 25% and retention stays above 115%."
+  ],
   "hard_veto_flags": [
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Frozen price $106.71 is far below the locked Bull value of about $563.05. The defined veto requires current price to exceed the Bull value, which is not satisfied."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "Subscription ARR growth",
+      "direction": "up",
+      "threshold": ">25% while scaling; review <20%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "SBC-adjusted owner FCF/share",
+      "direction": "up",
+      "threshold": "turn sustainably positive and progress toward Base path",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "diluted economic share count",
+      "direction": "down",
+      "threshold": "<5% annual growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Reconcile GAAP share count, RSUs/options and convertible dilution into a normalized economic diluted-share bridge.",
+    "Refreeze owner-FCF path after FY2027 year-end when full-year SBC and FCF are known.",
+    "Separate Agent Cloud economics and material-right normalization from core Rubrik Security Cloud growth."
+  ],
+  "verdict": "support",
   "archetype_signals": {
-    "price_to_base_value": null,
+    "price_to_base_value": 0.6304,
     "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null
+    "revenue_cagr_next_3y": 0.26
   },
   "subscores": [
     {
       "criterion_id": "reverse_dcf_burden",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "Deterministic price/Base is about 0.6304, mapping directly to the configured <=0.7 score of 90."
     },
     {
       "criterion_id": "base_return",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Deterministic price/Base is about 0.6304, mapping directly to the configured <=0.7 score of 85."
     },
     {
       "criterion_id": "valuation_robustness",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 25,
+      "rationale": "Base operating value is about 81% terminal and starts from negative SBC-adjusted owner FCF. A long cash-conversion ramp, dilution normalization and 20x terminal multiple must all hold, fitting the 'very fragile' 25 anchor."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "The low price/Base ratio is driven by a Base scenario with a steep owner-FCF/share ramp; it is not evidence that the stock is conventionally cheap."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Small delays in positive owner-FCF conversion materially reduce value because early cash flows are weak."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "critical",
+      "rationale": "Terminal value dominates and dilution/SBC normalization is unresolved, so the valuation is highly assumption-sensitive."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
+    "revenue_cagr_next_3y": 0.26,
     "scenarios": {
       "bear": {
-        "owner_fcf_per_share": []
+        "owner_fcf_per_share": [
+          -0.5,
+          -0.2,
+          0.2,
+          0.6,
+          1,
+          1.5,
+          2,
+          2.5,
+          3,
+          3.5
+        ]
       },
       "base": {
-        "owner_fcf_per_share": []
+        "owner_fcf_per_share": [
+          -0.2,
+          0.4,
+          1.2,
+          2.5,
+          4,
+          6,
+          8,
+          10.5,
+          13,
+          16
+        ]
       },
       "bull": {
-        "owner_fcf_per_share": []
+        "owner_fcf_per_share": [
+          0,
+          1.5,
+          3.5,
+          6.5,
+          10,
+          15,
+          21,
+          28,
+          36,
+          45
+        ]
       }
     }
   }
