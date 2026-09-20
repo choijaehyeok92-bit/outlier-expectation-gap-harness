@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.0",
+  "ticker": "RBRK",
+  "cik": 1943896,
+  "filer": "Rubrik, Inc.",
+  "as_of_date": "2026-09-18",
+  "source": "SEC EDGAR",
+  "fetched_at_utc": "2026-09-20T10:20:36.345229+00:00",
+  "excluded_post_cutoff": 0,
+  "shortfalls": [
+    {
+      "requirement": "historical_annuals",
+      "importance": "strongly_recommended",
+      "form": "10-K/10-K/A",
+      "shortfall": 1
+    },
+    {
+      "requirement": "debt_and_financing",
+      "importance": "conditional_required",
+      "form": "424B2/424B3/424B5/S-3/S-3ASR",
+      "shortfall": 1
+    },
+    {
+      "requirement": "foreign_issuer_filings",
+      "importance": "conditional",
+      "form": "20-F/6-K",
+      "shortfall": 1
+    }
+  ],
+  "documents": [
+    {
+      "file": "10-K_2026-03-19_0001943896-26-000013.htm",
+      "form": "10-K",
+      "filing_date": "2026-03-19",
+      "report_date": "2026-01-31",
+      "accession": "0001943896-26-000013",
+      "requirement": "latest_annual",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1943896/000194389626000013/rbrk-20260131.htm",
+      "bytes": 2498074
+    },
+    {
+      "file": "10-Q_2026-09-01_0001943896-26-000060.htm",
+      "form": "10-Q",
+      "filing_date": "2026-09-01",
+      "report_date": "2026-07-31",
+      "accession": "0001943896-26-000060",
+      "requirement": "latest_interim",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1943896/000194389626000060/rbrk-20260731.htm",
+      "bytes": 1990245
+    },
+    {
+      "file": "10-Q_2026-06-05_0001943896-26-000047.htm",
+      "form": "10-Q",
+      "filing_date": "2026-06-05",
+      "report_date": "2026-04-30",
+      "accession": "0001943896-26-000047",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1943896/000194389626000047/rbrk-20260430.htm",
+      "bytes": 1596779
+    },
+    {
+      "file": "10-Q_2025-12-08_0001943896-25-000054.htm",
+      "form": "10-Q",
+      "filing_date": "2025-12-08",
+      "report_date": "2025-10-31",
+      "accession": "0001943896-25-000054",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1943896/000194389625000054/rbrk-20251031.htm",
+      "bytes": 2173054
+    },
+    {
+      "file": "10-Q_2025-09-10_0001943896-25-000042.htm",
+      "form": "10-Q",
+      "filing_date": "2025-09-10",
+      "report_date": "2025-07-31",
+      "accession": "0001943896-25-000042",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1943896/000194389625000042/rbrk-20250731.htm",
+      "bytes": 2157004
+    },
+    {
+      "file": "10-Q_2025-06-09_0001943896-25-000030.htm",
+      "form": "10-Q",
+      "filing_date": "2025-06-09",
+      "report_date": "2025-04-30",
+      "accession": "0001943896-25-000030",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1943896/000194389625000030/rbrk-20250430.htm",
+      "bytes": 1631116
+    },
+    {
+      "file": "10-Q_2024-12-12_0001943896-24-000030.htm",
+      "form": "10-Q",
+      "filing_date": "2024-12-12",
+      "report_date": "2024-10-31",
+      "accession": "0001943896-24-000030",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1943896/000194389624000030/rbrk-20241031.htm",
+      "bytes": 2018412
+    },
+    {
+      "file": "10-K_2025-03-20_0001943896-25-000012.htm",
+      "form": "10-K",
+      "filing_date": "2025-03-20",
+      "report_date": "2025-01-31",
+      "accession": "0001943896-25-000012",
+      "requirement": "historical_annuals",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1943896/000194389625000012/rbrk-20250131.htm",
+      "bytes": 2403854
+    },
+    {
+      "file": "DEFA14A_2026-04-15_0001943896-26-000035.htm",
+      "form": "DEFA14A",
+      "filing_date": "2026-04-15",
+      "report_date": "",
+      "accession": "0001943896-26-000035",
+      "requirement": "proxy_compensation",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1943896/000194389626000035/rubrikfy26proxy_defa14a.htm",
+      "bytes": 10540
+    },
+    {
+      "file": "8-K_2026-08-27_0001943896-26-000055.htm",
+      "form": "8-K",
+      "filing_date": "2026-08-27",
+      "report_date": "2026-08-26",
+      "accession": "0001943896-26-000055",
+      "requirement": "earnings_release",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1943896/000194389626000055/rbrk-20260826.htm",
+      "bytes": 31530
+    },
+    {
+      "file": "4_2026-09-17_0002019143-26-000021.htm",
+      "form": "4",
+      "filing_date": "2026-09-17",
+      "report_date": "2026-09-15",
+      "accession": "0002019143-26-000021",
+      "requirement": "insider_ownership",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1943896/000201914326000021/xslF345X06/form4-09182026_010938.xml",
+      "bytes": 15576
+    },
+    {
+      "file": "S-1_2024-04-01_0001193125-24-083525.htm",
+      "form": "S-1",
+      "filing_date": "2024-04-01",
+      "report_date": "",
+      "accession": "0001193125-24-083525",
+      "requirement": "registration_statement",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1943896/000119312524083525/d359771ds1.htm",
+      "bytes": 2146687
+    }
+  ]
+}

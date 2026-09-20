@@ -1,0 +1,16 @@
+{
+  "strategy_version": "3.2",
+  "schema_version": "3.2",
+  "decision_policy_version": "3.2",
+  "provider_calibration_mode": "shadow",
+  "ticker": "RBRK",
+  "as_of_date": "2026-09-18",
+  "frozen": false,
+  "financial_pack_required": true,
+  "harness_commit": "7473b756485af76819382aab2285fe7821823052",
+  "runner": {
+    "provider": null,
+    "model": null,
+    "reasoning_effort": null
+  }
+}

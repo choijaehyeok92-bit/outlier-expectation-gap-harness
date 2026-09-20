@@ -1,0 +1,40 @@
+{
+  "ticker": "RBRK",
+  "company_name": "",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": null,
+  "shares_diluted": null,
+  "market_cap_usd": null,
+  "enterprise_value": null,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [],
+  "special_questions": [],
+  "net_cash_per_share": null,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {},
+    "production_by_region": {},
+    "critical_supplier_regions": [],
+    "export_control_dependencies": [],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": []
+  }
+}
