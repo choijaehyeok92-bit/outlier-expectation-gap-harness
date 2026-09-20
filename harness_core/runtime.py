@@ -97,8 +97,11 @@ def intake_status(ticker):
     pack=load_pack(ticker); m=load_manifest(ticker)
     enforced=bool(m.get('financial_pack_required'))
     if pack is None:
+        # No pack yet still has to name what is required, otherwise plan says
+        # "stage 0" without saying what would finish it.
+        empty=intake.coverage({'documents':[]},INTAKE_POLICY)
         return {'stage_0':'missing_pack','enforced':enforced,'pack_present':False,
-                'blocking':enforced,'coverage':None,'invariant_errors':[],'summary':None}
+                'blocking':enforced,'coverage':empty,'invariant_errors':[],'summary':None}
     cov=intake.coverage(pack,INTAKE_POLICY); errs=intake.pack_invariants(pack)
     blocking=enforced and bool(cov['blocking_gaps'] or errs)
     state='ready' if not (cov['blocking_gaps'] or errs) else 'incomplete'
@@ -216,15 +219,15 @@ def cmd_init(args):
 def cmd_freeze(args):
     t=args.ticker.upper(); run=run_dir(t)
     if not (run/'company_context.json').exists(): raise SystemExit('run not found; use init first')
-    ctx=load_json(run/'company_context.json')
-    missing=[k for k in ('current_price','net_cash_per_share') if ctx.get(k) is None]
-    if missing: raise SystemExit('freeze requires locked company_context fields: '+', '.join(missing))
     st=intake_status(t)
     if st['blocking']:
         detail=('financial pack missing' if not st['pack_present']
                 else '; '.join([f"{g['id']} ({g['found']}/{g['needed']})" for g in st['coverage']['blocking_gaps']]
                                + st['invariant_errors'][:3]))
         raise SystemExit(f'{t}: stage 0 incomplete — {detail}. Run `harness.py intake {t}` for the checklist.')
+    ctx=load_json(run/'company_context.json')
+    missing=[k for k in ('current_price','net_cash_per_share') if ctx.get(k) is None]
+    if missing: raise SystemExit('freeze requires locked company_context fields: '+', '.join(missing))
     inputs=snapshot_hashes(run); m=load_manifest(t)
     m.update({**VERSIONS,'provider_calibration_mode':PROVIDER_CAL['mode'],'ticker':t,'as_of_date':ctx['as_of_date'],'frozen':True,
         'frozen_at_utc':datetime.now(timezone.utc).isoformat(),'harness_commit':current_commit(),
