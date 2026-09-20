@@ -4,46 +4,166 @@
   "as_of_date": "2026-09-18",
   "domain": "management_allocation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 75,
+  "confidence_0_1": 0.91,
+  "bull_score": 85,
+  "bear_score": 60,
+  "bull_case": "Management has integrated VMware while expanding margins, sold assets not aligned with strategy, reduced debt and repurchased stock below the EV Base estimate. Executive pay is overwhelmingly variable and linked to long-term stock performance.",
+  "bear_case": "The organization remains highly dependent on Hock Tan's capital-allocation model, SBC is large, and XPV introduces a new form of customer financing risk. VMware's size means integration success has not yet been tested through a full adverse cycle.",
+  "thesis": "Capital allocation and execution are strong but not without concentration and succession risk. Recent buybacks were made below the frozen Base value, VMware integration improved margins, and non-core EUC assets were sold. Governance controls and variable compensation support integrity; 90-level confidence is not warranted.",
+  "evidence": [
+    {
+      "evidence_id": "AVGO-MA-BUYBACK-001",
+      "economic_driver": "repurchase_discipline",
+      "claim": "Across the latest four reported quarters, FY2025 Q4 had no buybacks, FY2026 Q1 repurchased 23M shares at $340.15 average, Q2 2M at $326.05, and Q3 none; the approximate weighted average is ~$339, or ~0.84x EV Base value $404.48.",
+      "source_type": "filing",
+      "source": "User-supplied FY2025 Annual Report, FY2026 Q1/Q2/Q3 10-Qs; arithmetic",
+      "period": "FY2025 Q4-FY2026 Q3",
+      "as_of_date": "2026-08-02",
+      "value": 0.838,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "AVGO-MA-EUC-002",
+      "economic_driver": "portfolio_pruning",
+      "claim": "Broadcom sold the VMware EUC business for $3.5B after identifying it and certain other assets as not aligned with strategic objectives; it retained no material continuing involvement.",
+      "source_type": "filing",
+      "source": "User-supplied FY2025 Annual Report, VMware acquisition note",
+      "period": "sale completed 2024-07-01",
+      "as_of_date": "2025-11-02",
+      "value": 3.5,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-MA-INTEGRATION-003",
+      "economic_driver": "integration_execution",
+      "claim": "FY2025 gross margin rose to 68% from 63% and SG&A fell 15%; the filing attributes part of the improvement to higher software revenue and lower VMware labor/acquisition-related costs after integration.",
+      "source_type": "filing",
+      "source": "User-supplied FY2025 Annual Report, MD&A",
+      "period": "FY2025",
+      "as_of_date": "2025-11-02",
+      "value": 0.68,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-MA-DEBT-004",
+      "economic_driver": "balance_sheet_allocation",
+      "claim": "During 9M FY2026 Broadcom issued $4.5B of senior notes but repaid/repurchased $10.541B; only $2.252B principal was due in the remainder of FY2026 and none in FY2027.",
+      "source_type": "filing",
+      "source": "User-supplied Q3 FY2026 10-Q, Note 6",
+      "period": "FY2026 9M",
+      "as_of_date": "2026-08-02",
+      "value": 6.041,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "AVGO-MA-COMP-005",
+      "economic_driver": "incentive_alignment",
+      "claim": "The 2026 proxy states 96% of CEO and 95% of other NEO average annualized target compensation in FY2025 was variable, with a majority tied to long-term stock-price performance; CEO stock-ownership guideline is 6x base salary.",
+      "source_type": "filing",
+      "source": "User-supplied 2026 DEF 14A",
+      "period": "FY2025 compensation",
+      "as_of_date": "2026-03-02",
+      "value": 0.96,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "AVGO-MA-AUDIT-006",
+      "economic_driver": "governance_integrity",
+      "claim": "The Audit Committee oversees financial statements, internal controls, auditor independence and related-party transactions; PwC was reappointed for FY2026 and all FY2025/2024 PwC services were pre-approved.",
+      "source_type": "filing",
+      "source": "User-supplied 2026 DEF 14A",
+      "period": "FY2025/FY2026",
+      "as_of_date": "2026-03-02",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "SBC was $7.568B in FY2025 and remains economically material despite limited share-count dilution.",
+    "The VMware transaction was exceptionally large, so favorable early integration metrics do not prove full-cycle acquisition returns.",
+    "XPV financing/backstop expands management's capital-allocation mandate into customer credit-like risk.",
+    "CEO succession is a material governance variable because strategy and capital allocation are closely associated with Hock Tan."
+  ],
+  "unknowns": [
+    "Full-cycle ROIC on VMware after all acquisition consideration and integration costs.",
+    "Economic return on AI XPV support and any future customer convertible notes.",
+    "CEO succession timing and internal successor readiness beyond proxy-process disclosure.",
+    "Long-run repurchase discipline if market price exceeds Base value."
+  ],
+  "falsifiers": [
+    "Capital-allocation score falls if future buybacks occur above 1.2x contemporaneous Base value without superior alternatives exhausted.",
+    "Execution score falls if VMware software growth stalls while restructuring/integration costs reaccelerate.",
+    "Governance score falls on a restatement, material weakness, auditor dispute or undisclosed related-party transaction."
+  ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "The supplied filings disclose established Audit Committee oversight, continued PwC engagement and related-party controls, and do not disclose a restatement, auditor dispute or material weakness. No primary evidence establishes the veto's required integrity/accounting-trust damage event."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "buyback average price / Base value",
+      "direction": "down",
+      "threshold": "<1.0x",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "net debt / TTM OCF",
+      "direction": "down",
+      "threshold": "<1.5x",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "VMware software growth and margin",
+      "direction": "up",
+      "threshold": "positive growth with no restructuring reacceleration",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Compute VMware acquisition ROIC after a full integration cycle.",
+    "Track XPV funding decisions as capital allocation, not merely sales support.",
+    "Monitor CEO succession disclosures and executive retention."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "capital_allocation",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Approximate four-quarter repurchase price/Base is 0.838. Band-centre interpolation of the 0.8-1.0 row gives about 75 on the 5-point grid. No +10 pruning modifier is applied because the EUC sale was described as strategic misalignment, not explicitly as a low-return business."
     },
     {
       "criterion_id": "governance_integrity",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Independent audit oversight, variable long-term compensation and formal related-party controls support the 75 good-governance anchor. 90 is excluded because CEO/key-person and large-equity-award risks remain."
     },
     {
       "criterion_id": "execution_adaptability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "VMware integration margin/cost improvement, non-core divestiture and rapid AI program execution support the 75 consistent-execution anchor. 90 is excluded because full-cycle VMware returns and XPV execution are not yet proven."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "The latest four-quarter repurchase average uses rounded disclosed share counts."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "Key-person and succession risks remain despite formal controls."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "material",
+      "rationale": "XPV introduces an unseasoned execution domain."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
