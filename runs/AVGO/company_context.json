@@ -17,8 +17,7 @@
     "User-supplied Broadcom 10-Qs for fiscal quarters ended 2024-08-04, 2025-02-02, 2025-05-04, 2025-08-03, 2026-02-01, 2026-05-03 and 2026-08-02",
     "User-supplied Broadcom 2026 DEF 14A Proxy — AVGO (Broadcom Inc.) Other definitive proxy statements (DEF 14A) 2026-03-02.docx",
     "Broadcom official Q3 FY2026 results, published 2026-09-02 — https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial",
-    "Yahoo Finance / StockAnalysis historical AVGO: 2026-09-18 close $357.61, observed 2026-09-20",
-    "MarketScreener analyst consensus snapshot observed 2026-09-20: FY2026/27/28 net sales $105.964B/$173.450B/$272.799B; used only as secondary expectation evidence, not an FP fact"
+    "Yahoo Finance / StockAnalysis historical AVGO: 2026-09-18 close $357.61, observed 2026-09-20"
   ],
   "special_questions": [
     "At $357.61, how much sustained AI/custom-accelerator growth is already embedded in price?",
@@ -39,7 +38,7 @@
     "Approximately 95% of contract-manufactured wafers were produced by TSMC during 9M FY2026.",
     "Remaining performance obligations at 2026-08-02 were approximately $179.2B and include a long-term custom AI accelerator contract.",
     "Official Q4 FY2026 revenue guidance is approximately $34.8B (+93% y/y), implying full-year revenue around $105.9B if achieved.",
-    "Secondary analyst consensus observed 2026-09-20 projects FY2028 revenue $272.799B; the EV Base case deliberately haircuts that trajectory rather than treating it as fact."
+    "EV Base revenue path is a scenario assumption rather than a frozen external forecast; the 3-year CAGR signal is 43.81% and is stress-tested through Bear/Base/Bull owner-FCF paths."
   ],
   "net_cash_per_share": -7.2527,
   "valuation_percentile_5y": null,
