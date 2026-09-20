@@ -1,8 +1,8 @@
 {
-  "agent_id": "FS",
+  "agent_id": "LG",
   "ticker": "V",
   "as_of_date": "2026-09-18",
-  "domain": "financial_survival",
+  "domain": "long_term_growth",
   "role": "domain_analyst",
   "analysis_status": "pending",
   "score_0_100": 50,
@@ -16,39 +16,28 @@
   "counterevidence": [],
   "unknowns": [],
   "falsifiers": [],
-  "hard_veto_flags": [
-    {
-      "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
-    },
-    {
-      "veto": "장기간 지속되는 과도한 희석",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
-    },
-    {
-      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
-    }
-  ],
+  "hard_veto_flags": [],
   "key_kpis": [],
   "next_checks": [],
   "verdict": "neutral",
   "subscores": [
     {
-      "criterion_id": "liquidity_leverage",
+      "criterion_id": "opportunity_scale_5y",
       "score_0_100": 50,
       "rationale": ""
     },
     {
-      "criterion_id": "stress_survival",
+      "criterion_id": "growth_duration_10y",
       "score_0_100": 50,
       "rationale": ""
     },
     {
-      "criterion_id": "dilution_offbalance",
+      "criterion_id": "culture_adaptability",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "market_misperception",
       "score_0_100": 50,
       "rationale": ""
     }

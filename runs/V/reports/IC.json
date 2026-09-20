@@ -4,63 +4,33 @@
   "as_of_date": "2026-09-18",
   "domain": "investment_committee",
   "role": "chair",
-  "analysis_status": "complete",
-  "score_0_100": 75.31,
-  "confidence_0_1": 0.86,
-  "thesis": "Visa should classify as a Compounder: moat trajectory, reinvestment/FCF, management and financial survival clear the required thresholds while price/Base remains below 1.2. The stock is not an Expectation Gap because valuation is around the 69th percentile of its own five-year P/E history, and the main risk is paying a full multiple for a great business. Hard Veto should clear.",
-  "evidence": [
-    {
-      "claim": "Current price $368.29 versus locked Base $328.59 and Bull $467.20.",
-      "source_type": "other",
-      "source": "runs/V/sources/README.md",
-      "period": "2026-09-18",
-      "as_of_date": "2026-09-18",
-      "value": "368.29/328.59/467.20",
-      "fact_or_estimate": "interpretation"
-    },
-    {
-      "claim": "Q3 revenue +14%, payments volume +10%, processed transactions +10%, VAS +33%.",
-      "source_type": "filing",
-      "source": "runs/V/sources/Q3_2026_key_facts.txt",
-      "period": "Q3/9M FY2026",
-      "as_of_date": "2026-07-29",
-      "value": null,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "FY2025 owner-style FCF proxy was about $20.68B.",
-      "source_type": "filing",
-      "source": "runs/V/sources/FY2025_10K_key_facts.txt",
-      "period": "FY2025",
-      "as_of_date": "2025-11-06",
-      "value": "20.68B",
-      "fact_or_estimate": "fact"
-    }
-  ],
-  "counterevidence": [
-    "Current price is above locked Base value.",
-    "Five-year valuation percentile is not cheap.",
-    "Regulation and client incentives can pressure monetization."
-  ],
-  "unknowns": [
-    "Long-run take-rate regulation",
-    "Alternative payment rails",
-    "Sustainable VAS growth"
-  ],
-  "falsifiers": [
-    "If MT/RF fall below 76 or price/Base rises above 1.2 without higher intrinsic value, Compounder eligibility fails."
-  ],
+  "analysis_status": "pending",
+  "score_0_100": 50,
+  "confidence_0_1": 0.5,
+  "thesis": "",
+  "evidence": [],
+  "counterevidence": [],
+  "unknowns": [],
+  "falsifiers": [],
   "hard_veto_flags": [],
-  "key_kpis": [
-    {
-      "name": "owner FCF/share",
-      "direction": "up",
-      "threshold": "high-single/low-double-digit compounding",
-      "cadence": "quarterly"
+  "key_kpis": [],
+  "next_checks": [],
+  "verdict": "neutral",
+  "subscores": [],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
     }
-  ],
-  "next_checks": [
-    "FY2026 10-K and valuation rerun"
-  ],
-  "verdict": "support"
+  }
 }

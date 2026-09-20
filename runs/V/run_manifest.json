@@ -1,29 +1,16 @@
 {
-  "schema_version": "2.1",
+  "strategy_version": "3.3",
+  "schema_version": "3.3",
+  "decision_policy_version": "3.3",
+  "provider_calibration_mode": "shadow",
   "ticker": "V",
   "as_of_date": "2026-09-18",
-  "frozen": true,
-  "harness_commit": "39499dedca6e4235b522a05266ad17bc3d5c913b",
+  "frozen": false,
+  "financial_pack_required": true,
+  "harness_commit": "bc65d19af7346b7cbc35f581f944c35dac63c2dc",
   "runner": {
-    "provider": "openai",
-    "model": "gpt-5.6-sol",
-    "reasoning_effort": "high"
-  },
-  "frozen_at_utc": "2026-09-19T10:03:02.408708+00:00",
-  "config_files": {
-    "config/strategy.json": "64cdc118aeabede830d4185c511e4d88c8c6f29b022ecd564489460bf16f1c19",
-    "config/workflow.json": "1f5c6f1016768a2c6d8b53b3b7bcabdbbf417d657e2c8673047e84ac2aca8fcb",
-    "config/agents_manifest.json": "323317d34e89a0df0bf8a38ce9a0dc9c13a898e2435ece28e49c91cc7cb1082c",
-    "config/calibration.json": "6d7d280f0c8abee2a495244384a52f833983d3c82615501c4069ab77785f4021",
-    "harness.py": "886cca77da7711f9895a6d4544e3eb7ef2d351550055a79809155744a06dd7d6"
-  },
-  "input_files": {
-    "company_context.json": "90c5406281611b17ae8415fef29080e0b7799bd70d636cc93a01b8ae9677bba2",
-    "sources/FY2025_10K_key_facts.txt": "9bfbad0913bd398b3c2d8b71596ef4971de2e910ec1b8325b7fc7675d77318e6",
-    "sources/INDEX.md": "3fcaee93e40dd1e22616875909ee8e1e06630d6c14ae230aa1ed31891566d552",
-    "sources/Q3_2026_key_facts.txt": "2ad6c8b603e3bb6cd580e1f8f72f9b1e10080fbed3d9743752a8696453f1e39d",
-    "sources/README.md": "d93aafd15a728a3f9f5ac1e772f6b6227941ccf23d38bf5e9720cb4b77f57579",
-    "sources/VALUATION_2026_key_facts.txt": "38ea3bff706d39fa54e43c5318bae12551e79416358f09dddc27dc5d2f2d7549"
-  },
-  "input_snapshot_sha256": "c933640423c7e22bcb910217e0d8d153a9f26c2ee552d3aeede295c7679d5814"
+    "provider": null,
+    "model": null,
+    "reasoning_effort": null
+  }
 }

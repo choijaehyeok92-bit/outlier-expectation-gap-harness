@@ -4,100 +4,53 @@
   "as_of_date": "2026-09-18",
   "domain": "structural_leadership",
   "role": "domain_analyst",
-  "analysis_status": "complete",
-  "score_0_100": 88.75,
-  "confidence_0_1": 0.86,
-  "bull_score": 96.75,
-  "bear_score": 68.75,
-  "bull_case": "Continued cash displacement, tokenization, Visa Direct and VAS can extend double-digit economics for years.",
-  "bear_case": "Regulatory routing/interchange limits and alternative rails could reduce take rates or network relevance.",
-  "thesis": "Visa combines secular digital-payment penetration with category leadership and multiple adjacent growth vectors. Regulation is persistent, but the network has repeatedly adapted while volume and services keep expanding.",
-  "evidence": [
-    {
-      "claim": "FY2025 nominal payments volume was $13.894T and processed transactions 257.545B.",
-      "source_type": "filing",
-      "source": "runs/V/sources/FY2025_10K_key_facts.txt",
-      "period": "FY2025",
-      "as_of_date": "2025-11-06",
-      "value": "13.894T/257.545B",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "Q3 payments volume +10%, cross-border total +13%.",
-      "source_type": "filing",
-      "source": "runs/V/sources/Q3_2026_key_facts.txt",
-      "period": "Q3/9M FY2026",
-      "as_of_date": "2026-07-29",
-      "value": null,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "Q3 VAS revenue +33%.",
-      "source_type": "filing",
-      "source": "runs/V/sources/Q3_2026_key_facts.txt",
-      "period": "Q3/9M FY2026",
-      "as_of_date": "2026-07-29",
-      "value": null,
-      "fact_or_estimate": "fact"
-    }
-  ],
-  "counterevidence": [
-    "Regulatory and interchange litigation can pressure network economics and pricing over time.",
-    "The current valuation already embeds a high-quality compounder profile."
-  ],
-  "unknowns": [
-    "Long-run regulation of interchange and routing",
-    "Sustainable growth rate of Visa Direct and value-added services",
-    "Long-run client incentive intensity"
-  ],
-  "falsifiers": [
-    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens."
-  ],
+  "analysis_status": "pending",
+  "score_0_100": 50,
+  "confidence_0_1": 0.5,
+  "bull_score": null,
+  "bear_score": null,
+  "bull_case": "",
+  "bear_case": "",
+  "thesis": "",
+  "evidence": [],
+  "counterevidence": [],
+  "unknowns": [],
+  "falsifiers": [],
   "hard_veto_flags": [],
-  "key_kpis": [
-    {
-      "name": "owner FCF/share",
-      "direction": "up",
-      "threshold": "high-single to low-double-digit long-run growth",
-      "cadence": "quarterly/annual"
-    }
-  ],
-  "next_checks": [
-    "Payments volume, cross-border volume, processed transactions, value-added services, client incentives, owner FCF/share, buyback price"
-  ],
-  "verdict": "support",
+  "key_kpis": [],
+  "next_checks": [],
+  "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "secular_durability",
-      "score_0_100": 90,
-      "rationale": "Digitization of payments and money movement is a multi-decade structural trend."
+      "score_0_100": 50,
+      "rationale": ""
     },
     {
       "criterion_id": "category_leadership",
-      "score_0_100": 90,
-      "rationale": "Visa is one of the global networks that defines acceptance, authorization and tokenization standards."
+      "score_0_100": 50,
+      "rationale": ""
     },
     {
       "criterion_id": "durability_risks",
-      "score_0_100": 85,
-      "rationale": "Consumer payments, cross-border, commercial/money movement and VAS create multiple independent growth/earnings buffers."
+      "score_0_100": 50,
+      "rationale": ""
     }
   ],
-  "uncertainties": [
-    {
-      "criterion_id": "secular_durability",
-      "severity": "material",
-      "rationale": "Regulation, incentives and valuation are the main uncertainty."
-    },
-    {
-      "criterion_id": "category_leadership",
-      "severity": "material",
-      "rationale": "Regulation, incentives and valuation are the main uncertainty."
-    },
-    {
-      "criterion_id": "durability_risks",
-      "severity": "material",
-      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
     }
-  ]
+  }
 }

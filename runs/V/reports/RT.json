@@ -4,109 +4,69 @@
   "as_of_date": "2026-09-18",
   "domain": "red_team",
   "role": "red_team",
-  "analysis_status": "complete",
-  "score_0_100": 55,
-  "confidence_0_1": 0.9,
-  "thesis": "The strongest short thesis is not business fragility but valuation and regulation. Visa trades above locked Base value and at the upper half of its five-year P/E history. Routing mandates, interchange pressure, account-to-account rails and rising client incentives could compress economics. Even so, current evidence does not establish any exact Hard Veto.",
-  "evidence": [
-    {
-      "claim": "Current price/Base is about 1.121 and 5Y P/E percentile about 69%.",
-      "source_type": "other",
-      "source": "runs/V/sources/README.md",
-      "period": "2026-09-18",
-      "as_of_date": "2026-09-18",
-      "value": "1.121 / 0.69",
-      "fact_or_estimate": "interpretation"
-    },
-    {
-      "claim": "Q3 processed transactions and payments volume both grew 10%.",
-      "source_type": "filing",
-      "source": "runs/V/sources/Q3_2026_key_facts.txt",
-      "period": "Q3/9M FY2026",
-      "as_of_date": "2026-07-29",
-      "value": null,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "Q3 VAS revenue grew 33%.",
-      "source_type": "filing",
-      "source": "runs/V/sources/Q3_2026_key_facts.txt",
-      "period": "Q3/9M FY2026",
-      "as_of_date": "2026-07-29",
-      "value": null,
-      "fact_or_estimate": "fact"
-    }
-  ],
-  "counterevidence": [
-    "FY2025 OCF was $23.059B.",
-    "VAS is growing materially faster than core payments.",
-    "Visa repurchases substantial stock and has modest net debt relative to cash flow."
-  ],
-  "unknowns": [
-    "Future interchange/routing rules",
-    "Alternative rail share",
-    "Long-run incentive ratio"
-  ],
-  "falsifiers": [
-    "Sustained VAS growth, stable take rates and resilient volume weaken the short thesis; adverse regulation with falling net revenue per transaction strengthens it."
-  ],
+  "analysis_status": "pending",
+  "score_0_100": 50,
+  "confidence_0_1": 0.5,
+  "thesis": "",
+  "evidence": [],
+  "counterevidence": [],
+  "unknowns": [],
+  "falsifiers": [],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "cleared",
-      "rationale": "No restatement, auditor dispute or control failure is established."
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
     },
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "cleared",
-      "rationale": "Strong OCF and manageable net debt rebut structural dependence on outside capital."
-    },
-    {
-      "veto": "장기간 지속되는 과도한 희석",
-      "status": "cleared",
-      "rationale": "Visa is a large net repurchaser."
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
     },
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "cleared",
-      "rationale": "Mission-critical network usage and transaction growth demonstrate real customer value."
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
     },
     {
       "veto": "증분 ROIC의 구조적 붕괴",
-      "status": "cleared",
-      "rationale": "Asset-light cash economics and VAS growth do not establish structural incremental-ROIC collapse."
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
     },
     {
       "veto": "해자의 지속적인 축소",
-      "status": "cleared",
-      "rationale": "Current payment, transaction and VAS growth do not establish continuing moat shrinkage."
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
     },
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "cleared",
-      "rationale": "The price is above Base but below Bull; Bull+ is not required."
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "cleared",
-      "rationale": "Visa has diversified geographies, clients, payment flows and VAS; no single dependency is fatal."
-    },
-    {
-      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "cleared",
-      "rationale": "Strong OCF and manageable leverage make bankruptcy/forced financing remote."
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
     }
   ],
-  "key_kpis": [
-    {
-      "name": "net revenue growth versus incentives",
-      "direction": "up",
-      "threshold": "durable positive spread",
-      "cadence": "quarterly"
+  "key_kpis": [],
+  "next_checks": [],
+  "verdict": "neutral",
+  "subscores": [],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
     }
-  ],
-  "next_checks": [
-    "FY2026 10-K, regulation, VAS growth, buyback pricing"
-  ],
-  "verdict": "oppose"
+  }
 }

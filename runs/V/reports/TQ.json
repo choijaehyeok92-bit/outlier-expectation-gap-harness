@@ -3,111 +3,59 @@
   "ticker": "V",
   "as_of_date": "2026-09-18",
   "domain": "turnaround_quality",
-  "role": "domain_analyst",
-  "analysis_status": "complete",
-  "score_0_100": 41.25,
-  "confidence_0_1": 0.86,
-  "bull_score": 49.25,
-  "bear_score": 21.25,
-  "bull_case": "Not applicable.",
-  "bear_case": "A turnaround framing would mischaracterize an already healthy franchise.",
-  "thesis": "Visa is not a turnaround. Strong ongoing growth and profitability mean this archetype is structurally inapplicable.",
-  "evidence": [
-    {
-      "claim": "Q3 revenue grew 14% and diluted EPS 10%.",
-      "source_type": "filing",
-      "source": "runs/V/sources/Q3_2026_key_facts.txt",
-      "period": "Q3/9M FY2026",
-      "as_of_date": "2026-07-29",
-      "value": null,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "FY2025 revenue grew 11%.",
-      "source_type": "filing",
-      "source": "runs/V/sources/FY2025_10K_key_facts.txt",
-      "period": "FY2025",
-      "as_of_date": "2025-11-06",
-      "value": "11%",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "Q3 value-added services revenue grew 33% year over year.",
-      "source_type": "filing",
-      "source": "runs/V/sources/Q3_2026_key_facts.txt",
-      "period": "Q3 FY2026",
-      "as_of_date": "2026-07-29",
-      "value": "33%",
-      "fact_or_estimate": "fact"
-    }
-  ],
-  "counterevidence": [
-    "Regulatory and interchange litigation can pressure network economics and pricing over time.",
-    "The current valuation already embeds a high-quality compounder profile."
-  ],
-  "unknowns": [
-    "Long-run regulation of interchange and routing",
-    "Sustainable growth rate of Visa Direct and value-added services",
-    "Long-run client incentive intensity"
-  ],
-  "falsifiers": [
-    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens."
-  ],
+  "role": "optional_diagnostic",
+  "analysis_status": "pending",
+  "score_0_100": 50,
+  "confidence_0_1": 0.5,
+  "bull_score": null,
+  "bear_score": null,
+  "bull_case": "",
+  "bear_case": "",
+  "thesis": "",
+  "evidence": [],
+  "counterevidence": [],
+  "unknowns": [],
+  "falsifiers": [],
   "hard_veto_flags": [],
-  "key_kpis": [
-    {
-      "name": "owner FCF/share",
-      "direction": "up",
-      "threshold": "high-single to low-double-digit long-run growth",
-      "cadence": "quarterly/annual"
-    }
-  ],
-  "next_checks": [
-    "Payments volume, cross-border volume, processed transactions, value-added services, client incentives, owner FCF/share, buyback price"
-  ],
+  "key_kpis": [],
+  "next_checks": [],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "operating_inflection",
-      "score_0_100": 25,
-      "rationale": "Visa is not recovering from a trough; it is already a high-performing mature compounder."
+      "score_0_100": 50,
+      "rationale": ""
     },
     {
       "criterion_id": "self_help_quality",
       "score_0_100": 50,
-      "rationale": "Execution matters, but current growth is not a turnaround self-help story."
+      "rationale": ""
     },
     {
       "criterion_id": "normalized_earnings_bridge",
       "score_0_100": 50,
-      "rationale": "There is no depressed earnings base requiring normalization."
+      "rationale": ""
     },
     {
       "criterion_id": "catalyst_accountability",
       "score_0_100": 50,
-      "rationale": "Management has operating KPIs, but no turnaround catalyst is needed."
+      "rationale": ""
     }
   ],
-  "uncertainties": [
-    {
-      "criterion_id": "operating_inflection",
-      "severity": "material",
-      "rationale": "Regulation, incentives and valuation are the main uncertainty."
-    },
-    {
-      "criterion_id": "self_help_quality",
-      "severity": "material",
-      "rationale": "Regulation, incentives and valuation are the main uncertainty."
-    },
-    {
-      "criterion_id": "normalized_earnings_bridge",
-      "severity": "material",
-      "rationale": "Regulation, incentives and valuation are the main uncertainty."
-    },
-    {
-      "criterion_id": "catalyst_accountability",
-      "severity": "material",
-      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
     }
-  ]
+  }
 }

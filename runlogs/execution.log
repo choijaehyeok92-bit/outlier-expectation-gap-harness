@@ -1,0 +1,5 @@
+=== 1 init ===
+/home/runner/work/outlier-expectation-gap-harness/outlier-expectation-gap-harness/runs/V
+=== 2 fetch ===
+V: EDGAR unreachable — https://www.sec.gov/files/company_tickers.json -> HTTP 403
+If this environment blocks sec.gov, download the filings listed by `harness.py intake V` and place them in runs/V/sources/ by hand.
