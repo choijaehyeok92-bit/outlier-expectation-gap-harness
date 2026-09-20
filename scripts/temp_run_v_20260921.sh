@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# rerun after macro timestamp cutoff fix
 set -u
 set -o pipefail
 
