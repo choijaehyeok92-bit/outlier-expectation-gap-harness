@@ -66,6 +66,10 @@ class V3Tests(unittest.TestCase):
         if kind=='buffett_value':
             set_scores(by['RF'],{'incremental_roic':60,'reinvestment_runway':20,'fcf_per_share_quality':90})
             set_scores(by['MT'],{x['criterion_id']:65 for x in by['MT']['subscores']})
+        elif kind=='growth':
+            by['EV']['valuation_inputs']['revenue_cagr_next_3y']=.20
+            for aid in ('MT','RF'):
+                set_scores(by[aid],{x['criterion_id']:70 for x in by[aid]['subscores']})
         elif kind=='moonshot':
             self.context['market_cap_usd']=50e9; self.save_context()
             for aid,value in [('DI',85),('MT',50),('RF',50),('FS',65)]:
@@ -77,14 +81,14 @@ class V3Tests(unittest.TestCase):
 
     def aggregate(self,reports): return h.compute_aggregate('SYNTH',reports)
 
-    def test_exactly_three_and_synthetic_classifications(self):
-        self.assertEqual({t['id'] for t in h.ARCHETYPES['types']},{'compounder','buffett_value','moonshot'})
-        for kind in ('compounder','buffett_value','moonshot','non_fit'):
+    def test_exactly_four_and_synthetic_classifications(self):
+        self.assertEqual({t['id'] for t in h.ARCHETYPES['types']},{'compounder','growth','buffett_value','moonshot'})
+        for kind in ('compounder','growth','buffett_value','moonshot','non_fit'):
             with self.subTest(kind=kind):
                 self.context['market_cap_usd']=100e9; self.save_context()
                 result=self.aggregate(self.fixture(kind))
                 self.assertEqual(result['archetype']['id'],kind)
-                self.assertEqual(len(result['archetype_fit']),3)
+                self.assertEqual(len(result['archetype_fit']),4)
                 if kind!='non_fit': self.assertIn(result['mechanical_pre_ic_state'],h.BUY_STATES)
 
     def test_value_trap_and_integrity_block_cheap_value(self):
@@ -144,7 +148,7 @@ class V3Tests(unittest.TestCase):
         for t in policy['types']: t['conditions']=copy.deepcopy(conditions)
         tie=archetypes.classify(policy,ds,signals,85,85,[])
         self.assertEqual(tie['id'],policy['fit_policy']['tie_breaker'][0])
-        self.assertEqual(len(tie['secondary']),2)
+        self.assertEqual(len(tie['secondary']),3)
 
     def test_shadow_offsets_cannot_flip_decision_and_active_is_explicit(self):
         reports=self.fixture();h.dump_json(h.run_dir('SYNTH')/'run_manifest.json',{'runner':{'provider':'openai'}})
@@ -162,7 +166,7 @@ class V3Tests(unittest.TestCase):
         self.assertEqual(ds,active['domain_scores'])
 
     def test_optional_tq_and_triage_reachability(self):
-        for kind in ('compounder','buffett_value','moonshot'):
+        for kind in ('compounder','growth','buffett_value','moonshot'):
             reports=self.fixture(kind)
             triage=[r for r in reports if r['domain'] in h.EXEC['triage_domains']]
             result=self.aggregate(triage)
@@ -197,7 +201,7 @@ class V3Tests(unittest.TestCase):
             self.assertIsNone(result['ic_verdict'])
             self.assertTrue(result['early_exit_record']['ic_intentionally_not_run'])
             self.assertEqual(h.plan('SYNTH',subset,result)['stage'],'early_exit')
-            self.assertEqual(len(result['early_exit_record']['eliminated_archetypes']),3)
+            self.assertEqual(len(result['early_exit_record']['eliminated_archetypes']),4)
         self.assertEqual(result['early_exit_record']['stage'],'pre_ic')
 
     def test_global_cache_never_copies_company_conclusions(self):
@@ -264,7 +268,7 @@ class V3Tests(unittest.TestCase):
             files=sorted((REPO/'runs'/ticker).rglob('*.json'))
             before={p:h.sha256_file(p) for p in files}
             result=h.compute_aggregate(ticker,h.load_reports(ticker))
-            self.assertIn(result['archetype']['id'],{'compounder','buffett_value','moonshot','non_fit'})
+            self.assertIn(result['archetype']['id'],{'compounder','growth','buffett_value','moonshot','non_fit'})
             self.assertEqual(before,{p:h.sha256_file(p) for p in files})
         legacy=report(h.MANIFEST[0]);legacy.pop('subscores');legacy.update(archetype='expectation_gap',provider_calibration={'old':'metadata'})
         result=h.domain_aggregate([legacy])
@@ -290,7 +294,7 @@ class V3Tests(unittest.TestCase):
             jsonschema.Draft202012Validator.check_schema(h.load_json(path))
         schema=h.load_json(REPO/'schemas/final_verdict.schema.json')
         report_schema=h.load_json(REPO/'schemas/agent_report.schema.json')
-        for kind in ('compounder','buffett_value','moonshot','non_fit'):
+        for kind in ('compounder','growth','buffett_value','moonshot','non_fit'):
             reports=self.fixture(kind);result=self.aggregate(reports)
             jsonschema.validate(h.final_verdict(result,reports),schema)
             for r in reports:
@@ -378,7 +382,7 @@ class V3Tests(unittest.TestCase):
         h.dump_json(run/'company_context.json',ctx)
         cli('freeze','ROUNDTRIP','--provider','openai','--model','gpt-6-astra')
         manifest=h.load_json(run/'run_manifest.json')
-        self.assertEqual(manifest['decision_policy_version'],'3.0')
+        self.assertEqual(manifest['decision_policy_version'],'3.1')
         self.assertIn('harness_core/archetypes.py',manifest['config_files'])
         cli('prompt','ROUNDTRIP','EV')
         cli('prompt','ROUNDTRIP','TQ',ok=False)
@@ -392,7 +396,33 @@ class V3Tests(unittest.TestCase):
         final=h.load_json(run/'final_verdict.json')
         self.assertTrue(final['early_exit_record']['ic_intentionally_not_run'])
         self.assertIn('Deterministic early exit',(run/'digest.md').read_text(encoding='utf-8'))
-        for kind in ('compounder','buffett_value','moonshot'):
+        cli('research-plan','ROUNDTRIP')
+        cli('research-prompt','ROUNDTRIP')
+        rp=h.load_json(run/'research/plan.json')
+        self.assertTrue(rp['questions'])
+        q=rp['questions'][0]
+        packet={'schema_version':'1.0','ticker':rp['ticker'],'as_of_date':rp['as_of_date'],
+            'input_snapshot_sha256':rp['input_snapshot_sha256'],'questions':[{
+                'research_question_id':q['research_question_id'],'question':q['question'],
+                'status':'unresolved','evidence':[],'excluded_post_cutoff':[],
+                'remaining_unknowns':['Fixture has no answer'],
+                'search_log':[{'tier':0,'source':'synthetic fixture','outcome':'searched_but_not_found'}]}]}
+        h.dump_json(self.root/'packet.json',packet)
+        cli('research-ingest','ROUNDTRIP',str(self.root/'packet.json'))
+        cli('report','ROUNDTRIP')
+        self.assertIn('아직 투자위원회 최종 결론이 아닙니다',(run/'easy_report.md').read_text(encoding='utf-8'))
+        before={p:p.read_bytes() for p in run.rglob('*') if p.is_file()}
+        cli('fork-run','ROUNDTRIP','FORKED','--carry-domain-reports')
+        self.assertEqual(before,{p:p.read_bytes() for p in before})
+        fork=self.root/'runs/FORKED'
+        self.assertEqual((run/'company_context.json').read_bytes(),(fork/'company_context.json').read_bytes())
+        self.assertEqual(h.load_json(fork/'reports/IC.json')['analysis_status'],'pending')
+        self.assertFalse(h.load_json(fork/'run_manifest.json')['frozen'])
+        cli('freeze','FORKED','--review-only')
+        cli('aggregate','FORKED')
+        self.assertTrue(h.load_json(fork/'final_verdict.json')['review_only'])
+        cli('fork-run','ROUNDTRIP','FORKED',ok=False)
+        for kind in ('compounder','growth','buffett_value','moonshot'):
             self.context['market_cap_usd']=100e9;self.save_context()
             reports=self.fixture(kind)
             ticker=kind.upper();cli('init',ticker,'--as-of','2026-09-19')
@@ -412,6 +442,21 @@ class V3Tests(unittest.TestCase):
         self.assertNotIn('COMPOUNDER',json.dumps(h.load_json(self.root/'runs/CACHED/reports/MO.json')))
         code=self.root/'harness_core/conditions.py';code.write_text(code.read_text(encoding='utf-8')+'\n# changed\n',encoding='utf-8')
         self.assertIn('frozen policy',cli('prompt','COMPOUNDER','EV',ok=False).stderr)
+        cli('aggregate','COMPOUNDER',ok=False)
+        cli('report','COMPOUNDER',ok=False)
+
+    def test_review_only_allows_nonfit_ic_but_never_buy(self):
+        reports=self.fixture('non_fit')
+        h.dump_json(h.run_dir('SYNTH')/'run_manifest.json',{'review_only':True})
+        self.assertFalse(self.aggregate(reports)['early_exit'])
+        self.assertEqual(h.plan('SYNTH',reports)['stage'],'ic')
+        ic=report(next(a for a in h.MANIFEST if a['agent_id']=='IC'))
+        ic['ic_state']='NORMAL';reports.append(ic)
+        verdict=h.final_verdict(self.aggregate(reports),reports)
+        self.assertEqual(verdict['ic_state'],'WATCH')
+        self.assertTrue(verdict['ic_review_flags'])
+        ic['ic_state']='WATCH'
+        self.assertEqual(h.final_verdict(self.aggregate(reports),reports)['ic_review_flags'],[])
 
 
 if __name__=='__main__':unittest.main()

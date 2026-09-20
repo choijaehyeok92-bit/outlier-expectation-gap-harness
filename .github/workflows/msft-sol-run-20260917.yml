@@ -17,125 +17,46 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install -r requirements-dev.txt
-
-      - name: Execute MSFT harness with early-exit gate
+      - name: Replay historical MSFT inputs without overwriting the archived run
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p runlogs
-          exec > >(tee runlogs/execution.log) 2>&1
-
-          python harness.py selftest
-          python harness.py init MSFT --as-of 2026-09-17
-
-          cp runs/MSFT/manual_inputs/company_context.json runs/MSFT/company_context.json
-          mkdir -p runs/MSFT/sources
-          cp runs/MSFT/manual_sources/* runs/MSFT/sources/
-
-          python harness.py freeze MSFT --provider openai --model gpt-5.6-sol --reasoning-effort high
-          python harness.py plan MSFT | tee runlogs/plan_initial.txt
-
-          # Phase 1a triage — one prompt / one report / one validate per agent.
-          for a in EV AS DI TQ; do
-            python harness.py prompt MSFT "$a" --out "runs/MSFT/${a}_prompt.md"
-            cp "runs/MSFT/manual_reports/${a}.json" "runs/MSFT/reports/${a}.json"
-            python harness.py validate MSFT "$a"
-          done
-
-          python harness.py aggregate MSFT > runlogs/aggregate_after_triage.json
-          python harness.py digest MSFT
-          python harness.py plan MSFT | tee runlogs/plan_after_triage.txt
-
-          if grep -q "EARLY EXIT" runlogs/plan_after_triage.txt; then
-            echo "MSFT EARLY EXIT triggered after EV/AS/DI/TQ; remaining agents intentionally skipped."
-            python harness.py aggregate MSFT
-            python harness.py digest MSFT
-            exit 0
-          fi
-
-          echo "No early exit. Continuing full pipeline."
-
-          # Phase 1b
-          for a in SL CP MT RF MA FS; do
-            python harness.py prompt MSFT "$a" --out "runs/MSFT/${a}_prompt.md"
-            cp "runs/MSFT/manual_reports/${a}.json" "runs/MSFT/reports/${a}.json"
-            python harness.py validate MSFT "$a"
-          done
-
-          # Macro overlay should be reused from the 2026-09-17 cache created on main.
-          python harness.py validate MSFT MO
-
-          # Phase 3 input checkpoint
-          python harness.py aggregate MSFT > runlogs/aggregate_pre_phase3.json
-          python harness.py digest MSFT
-
-          for a in ED RT; do
-            python harness.py prompt MSFT "$a" --out "runs/MSFT/${a}_prompt.md"
-            cp "runs/MSFT/manual_reports/${a}.json" "runs/MSFT/reports/${a}.json"
-            python harness.py validate MSFT "$a"
-          done
-
-          python harness.py aggregate MSFT > runlogs/aggregate_pre_ic.json
-          python harness.py digest MSFT
-          python harness.py plan MSFT | tee runlogs/plan_pre_ic.txt
-
-          # IC
-          python harness.py prompt MSFT IC --out runs/MSFT/IC_prompt.md
-          cp runs/MSFT/manual_reports/IC.json runs/MSFT/reports/IC.json
-          python harness.py validate MSFT IC
-
-          # Final validation / digest / aggregate
-          python harness.py validate MSFT EV AS DI TQ SL CP MT RF MA FS MO ED RT IC
-          python harness.py plan MSFT | tee runlogs/plan_final.txt
-          python harness.py digest MSFT
-          python harness.py aggregate MSFT | tee runlogs/aggregate_final.json
-
           python - <<'PY'
           from pathlib import Path
-          import json
-          run=Path("runs/MSFT")
-          agg=json.loads((run/"aggregate.json").read_text(encoding="utf-8"))
-          mo=json.loads((run/"reports/MO.json").read_text(encoding="utf-8"))
-          ic=json.loads((run/"reports/IC.json").read_text(encoding="utf-8"))
-          v={
-            "ticker":"MSFT","as_of_date":"2026-09-17",
-            "score_100":agg["score_100"],"score_100_ex_valuation":agg["score_100_ex_valuation"],
-            "classification":agg["classification"],"archetype":agg["archetype"]["id"],
-            "hard_veto_status":agg["hard_veto_status"],
-            "ic_state":agg["mechanical_pre_ic_state"],
-            "position_range":agg["position_range_pre_ic"],
-            "macro_pacing_multiplier":mo.get("risk_budget_multiplier"),
-            "ic_verdict":ic.get("verdict"),
-            "early_exit":agg["early_exit"],
-            "reachable_archetypes_raw":agg["reachable_archetypes_raw"],
-            "valuation_model":agg["valuation_model"],
-            "provider_calibration":agg["provider_calibration"],
-            "note":"Agent reports were authored by GPT-5.6 Sol in this ChatGPT session and then executed through the repository harness; no separate OpenAI API adapter call was made."
-          }
-          (run/"final_verdict.json").write_text(json.dumps(v,ensure_ascii=False,indent=2),encoding="utf-8")
-          a=agg["archetype"]
-          lines=[
-            "# One-page Investment Record — MSFT",
-            "",
-            f"기준일 2026-09-17 · score **{agg['score_100']}** · ex-val **{agg['score_100_ex_valuation']}** · classification **{agg['classification']}**",
-            f"archetype **{a['label']} ({a['id']})** · Hard Veto **{agg['hard_veto_status']}** · state **{agg['mechanical_pre_ic_state']}**",
-            f"mechanical position **{agg['position_range_pre_ic']}** · macro pacing **{mo.get('risk_budget_multiplier')}**",
-            "",
-            f"- price/Base: {a['signals'].get('price_to_base_value')}",
-            f"- Bear/Base/Bull: {agg['valuation_model']['scenarios']['bear']['value_per_share']} / {agg['valuation_model']['scenarios']['base']['value_per_share']} / {agg['valuation_model']['scenarios']['bull']['value_per_share']}",
-            "- 핵심 장점: Azure/M365/Cloud/RPO의 구조적 성장, 넓은 배포 생태계, 순현금과 강한 OCF.",
-            "- 핵심 리스크: AI datacenter capex/lease/commitment 회수, owner FCF/share 회복, OpenAI 관련 경제적 집중.",
-            "- IC: 기계적 2–4% 밴드이나 기대차가 작아 macro pacing과 FCF 회복 확인을 적용해 단계적으로 접근."
-          ]
-          (run/"one_page_investment_record.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
+          from types import SimpleNamespace
+          import contextlib, hashlib, io, json, shutil
+          import jsonschema
+          from harness_core import runtime as h
+          source = Path("runs/MSFT")
+          before = {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in source.rglob("*") if p.is_file()}
+          ticker = "MSFT-CI-REPLAY"
+          h.cmd_init(SimpleNamespace(ticker=ticker, as_of="2026-09-17"))
+          run = h.run_dir(ticker)
+          shutil.copy2(source/"manual_inputs/company_context.json", run/"company_context.json")
+          shutil.copytree(source/"manual_sources", run/"sources", dirs_exist_ok=True)
+          # Reuse only the archived domain assessments; current stages determine remaining work.
+          for agent in h.MANIFEST:
+              path = source/"manual_reports"/f"{agent['agent_id']}.json"
+              if agent['role'] == 'domain_analyst' and agent['agent_id'] != 'TQ' and path.exists():
+                  report = h.load_json(path)
+                  assert not h.validate_report(report), agent['agent_id']
+                  shutil.copy2(path, run/"reports"/path.name)
+          h.cmd_freeze(SimpleNamespace(ticker=ticker, provider="openai", model="gpt-5.6-sol", reasoning_effort="high"))
+          with contextlib.redirect_stdout(io.StringIO()):
+              h.cmd_aggregate(SimpleNamespace(ticker=ticker))
+              h.cmd_digest(SimpleNamespace(ticker=ticker, thesis_chars=160, unknowns=2))
+          h.cmd_research_plan(SimpleNamespace(ticker=ticker))
+          h.cmd_report(SimpleNamespace(ticker=ticker))
+          verdict = h.load_json(run/"final_verdict.json")
+          jsonschema.validate(verdict, h.load_json(Path("schemas/final_verdict.schema.json")))
+          assert verdict["ic_verdict"] is None, "Historical IC must not silently approve a new policy run"
+          assert "아직 투자위원회 최종 결론이 아닙니다" in (run/"easy_report.md").read_text(encoding="utf-8")
+          after = {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in source.rglob("*") if p.is_file()}
+          assert before == after, "Historical artifacts changed"
+          print(json.dumps(h.plan(ticker, h.load_reports(ticker)), ensure_ascii=False, indent=2))
           PY
-
-          echo "===== FINAL VERDICT ====="
-          cat runs/MSFT/final_verdict.json
-
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: MSFT-gpt-5.6-sol-harness-2026-09-17
-          path: |
-            runs/MSFT
-            runlogs
+          name: msft-policy-replay
+          path: runs/MSFT-CI-REPLAY/

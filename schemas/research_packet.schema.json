@@ -1,0 +1,282 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Research evidence intake (no decision authority)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "ticker",
+    "as_of_date",
+    "input_snapshot_sha256",
+    "questions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "ticker": {
+      "type": "string",
+      "minLength": 1
+    },
+    "as_of_date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "input_snapshot_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "research_question_id",
+          "question",
+          "status",
+          "evidence",
+          "remaining_unknowns",
+          "excluded_post_cutoff",
+          "search_log"
+        ],
+        "properties": {
+          "research_question_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "resolved",
+              "partial",
+              "unresolved"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/evidence"
+            }
+          },
+          "remaining_unknowns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "excluded_post_cutoff": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/evidence"
+            }
+          },
+          "search_log": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "tier",
+                "source",
+                "outcome"
+              ],
+              "properties": {
+                "tier": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 5
+                },
+                "source": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "outcome": {
+                  "enum": [
+                    "found",
+                    "searched_but_not_found",
+                    "inaccessible",
+                    "excluded_post_cutoff"
+                  ]
+                },
+                "note": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "evidence_supporting_veto": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "evidence_against_veto": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "claim",
+        "value",
+        "unit",
+        "source_tier",
+        "source_type",
+        "source",
+        "source_section",
+        "period",
+        "publication_date",
+        "as_of_date",
+        "eligible_under_as_of_date",
+        "fact_or_estimate",
+        "economic_driver",
+        "source_origin",
+        "conflict_with_verified_fact",
+        "requires_refreeze",
+        "confidence",
+        "verified_fact_refs"
+      ],
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "pattern": "^SUP-[A-Z0-9][A-Z0-9-]+$"
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_section": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_origin": {
+          "type": "string",
+          "minLength": 1
+        },
+        "economic_driver": {
+          "type": "string",
+          "minLength": 1
+        },
+        "metric": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {},
+        "source_tier": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "publication_date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "as_of_date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "eligible_under_as_of_date": {
+          "type": "boolean"
+        },
+        "fact_or_estimate": {
+          "enum": [
+            "fact",
+            "estimate",
+            "interpretation"
+          ]
+        },
+        "conflict_with_verified_fact": {
+          "type": "boolean"
+        },
+        "requires_refreeze": {
+          "type": "boolean"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "verified_fact_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "verified_value": {},
+        "new_value": {},
+        "possible_reason": {
+          "enum": [
+            "restatement",
+            "period mismatch",
+            "definition mismatch",
+            "source error",
+            "unknown"
+          ]
+        },
+        "is_amendment": {
+          "type": "boolean"
+        },
+        "is_restatement": {
+          "type": "boolean"
+        },
+        "possible_adjustment": {
+          "type": "boolean"
+        },
+        "direct_company_disclosure": {
+          "type": "boolean"
+        },
+        "comparison_value": {},
+        "period_end": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "period_kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "segment": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
