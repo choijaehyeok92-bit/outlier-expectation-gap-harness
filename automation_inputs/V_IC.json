@@ -1,0 +1,135 @@
+{
+  "agent_id": "IC",
+  "ticker": "V",
+  "as_of_date": "2026-09-18",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 78.39,
+  "confidence_0_1": 0.9,
+  "thesis": "Visa는 v3.3에서 Compounder 적격이며 core score 78.39, ex-valuation 83.31, deterministic fit 83.1이다. 해자·고객가치·재투자·재무생존력은 강하고 Hard Veto 9개는 모두 cleared다. 다만 현재가 $368.29는 Base $328.59보다 약 12% 높고 EV 50.5·AS 61로 기대차가 크지 않으며, 도메인 전반의 downside skew가 severe로 분류됐다. IC는 NORMAL로 확대하지 않고 STARTER 1–2%만 승인하며 macro pacing 0.5로 분할 집행한다.",
+  "evidence": [
+    {
+      "claim": "Core score is 78.39, ex-valuation score is 83.31, coverage is 100%, and Compounder is the sole reachable eligible archetype with deterministic fit 83.1.",
+      "source_type": "harness",
+      "source": "runs/V/aggregate.json",
+      "period": "2026-09-18 run",
+      "as_of_date": "2026-09-18",
+      "value": "78.39 / 83.31 / 100% / fit 83.1",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "All nine Hard Vetoes are CLEARED after domain-owner and Red Team review.",
+      "source_type": "harness",
+      "source": "runs/V/aggregate.json",
+      "period": "2026-09-18 run",
+      "as_of_date": "2026-09-18",
+      "value": "9/9 CLEARED",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Locked valuation is Bear $133.34, Base $328.59 and Bull $467.20 versus frozen price $368.29; price/Base is 1.1208x.",
+      "source_type": "harness",
+      "source": "runs/V/aggregate.json",
+      "period": "10-year locked DCF",
+      "as_of_date": "2026-09-18",
+      "value": "$133.34 / $328.59 / $467.20; 1.1208x",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Moat Trajectory 88.5, Reinvestment/FCF 83.5, Management 82.0 and Financial Survival 84.0 clear Compounder thresholds; Customer/Product is 90.0 and Structural Leadership 88.75.",
+      "source_type": "harness",
+      "source": "runs/V/aggregate.json",
+      "period": "2026-09-18 run",
+      "as_of_date": "2026-09-18",
+      "value": "MT 88.5 / RF 83.5 / MA 82 / FS 84 / CP 90 / SL 88.75",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Expectation/Valuation is 50.5 and Asymmetry is 61.0; dispersion mean downside skew is 12.0 and reduces the deployment band by two steps, leaving pre-IC deployment at 0–2%.",
+      "source_type": "harness",
+      "source": "runs/V/aggregate.json",
+      "period": "2026-09-18 run",
+      "as_of_date": "2026-09-18",
+      "value": "EV 50.5 / AS 61 / skew 12.0 / 0-2%",
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "The macro overlay has no fundamental score effect but sets purchase pacing to 0.5 because the binding global overlay is high geopolitical energy/shipping stress.",
+      "source_type": "harness",
+      "source": "runs/V/aggregate.json",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 0.5,
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "The frozen price is above locked Base value and the five-year valuation percentile is 69%, so the entry lacks a conventional margin of safety.",
+    "Asymmetry is only 61 and the Bear value is far below market price, so valuation de-rating can produce substantial mark-to-market downside without business failure.",
+    "Regulatory routing/interchange changes and account-to-account alternatives can pressure monetization even if Visa remains a dominant network.",
+    "The macro overlay is restrictive and Visa's frozen geo_exposure is sparse, so company-specific transmission of current geopolitical shocks is not fully mapped."
+  ],
+  "unknowns": [
+    "Long-run regulation of interchange, routing and effective take rates.",
+    "Sustainable growth and unit economics of Visa Direct and value-added services.",
+    "Long-run client-incentive intensity and its effect on incremental margins.",
+    "Company-level geographic exposure needed to map current geopolitical transmission more precisely."
+  ],
+  "falsifiers": [
+    "Compounder eligibility fails if Moat Trajectory or Reinvestment/FCF falls below 76, Management or Financial Survival below 72, or incremental ROIC/reinvestment runway falls below the configured thresholds.",
+    "Do not increase the position if owner FCF/share persistently undershoots the locked Base path or client incentives rise faster than economic value creation.",
+    "If price/Base rises above 1.2 without a higher refrozen intrinsic value, the Compounder price gate fails."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Owner FCF/share vs Base path",
+      "direction": "up",
+      "threshold": "stay on or above the locked Base path",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Payments volume / processed transactions / VAS growth",
+      "direction": "up",
+      "threshold": "sustain high-single to low-double-digit core growth with VAS outgrowth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Client incentives and regulatory take-rate pressure",
+      "direction": "down",
+      "threshold": "no structural compression sufficient to break moat/FCF thresholds",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "FY2026 10-K: refresh owner FCF/share, incentives, buybacks, debt and regulatory disclosures.",
+    "Re-run locked valuation after the next full-year filing and update price/Base.",
+    "Map Visa geographic revenue/regulatory exposure so the macro-geopolitical transmission layer is company-specific."
+  ],
+  "verdict": "support",
+  "ic_state": "STARTER",
+  "plain_language": {
+    "business": "Visa는 카드 대출을 직접 해주는 회사가 아니라, 은행·가맹점·소비자를 연결해 결제를 승인·처리하는 글로벌 결제 네트워크다. 결제량이 늘고 부가서비스 사용이 확대될수록 높은 현금흐름을 만들 수 있는 구조다.",
+    "opportunity": "핵심 카드 네트워크의 규모와 전환비용이 강하고, Visa Direct·상업결제·부가가치 서비스가 추가 성장축이다. 하네스에서는 해자, 고객가치, 재투자 능력과 재무안정성이 모두 컴파운더 기준을 통과했다.",
+    "risk": "가장 큰 위험은 회사의 생존이 아니라 가격과 규제다. 현재 주가는 Base 내재가치보다 높고, 규제·대체 결제망·고객 인센티브가 장기 수익성을 낮추면 주가가 크게 재평가될 수 있다.",
+    "decision_reason": "중대한 탈락 사유는 모두 해소됐지만 현재 가격의 기대차와 상승·하락 비대칭성이 충분히 크지 않다. 따라서 정상 비중으로 바로 가지 않고 1~2% Starter만 허용하며, 현재 거시환경에서는 그 매수도 평소의 절반 속도로 나눈다."
+  },
+  "subscores": [],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
