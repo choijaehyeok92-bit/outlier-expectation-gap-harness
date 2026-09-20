@@ -1,22 +1,34 @@
 {
   "ticker": "RBRK",
-  "company_name": "",
+  "company_name": "Rubrik, Inc.",
   "as_of_date": "2026-09-18",
   "currency": "USD",
-  "current_price": null,
-  "shares_diluted": null,
-  "market_cap_usd": null,
-  "enterprise_value": null,
+  "current_price": 106.71,
+  "shares_diluted": 228000000,
+  "market_cap_usd": 22121456045.43,
+  "enterprise_value": 21506702045.43,
   "portfolio_context": {
     "existing_position_pct": 0,
     "sector_exposure_pct": 0,
     "overlap_notes": ""
   },
-  "known_sources": [],
-  "special_questions": [],
-  "net_cash_per_share": null,
+  "known_sources": [
+    "SEC EDGAR deterministic fetch manifest under runs/RBRK/sources/fetch_manifest.json; cutoff 2026-09-18.",
+    "Rubrik Q2 FY2027 official results, published 2026-08-27 — https://ir.rubrik.com/news-events/press-releases/news-details/2026/Rubrik-Reports-Second-Quarter-Fiscal-Year-2027-Financial-Results/default.aspx",
+    "StockAnalysis RBRK historical price: 2026-09-18 regular close $106.71, observed 2026-09-20.",
+    "Rubrik Q2 FY2027 10-Q filed 2026-09-01 — SEC accession 0001943896-26-000060.",
+    "Rubrik FY2026 10-K filed 2026-03-19 — SEC accession 0001943896-26-000013."
+  ],
+  "special_questions": [
+    "Can Subscription ARR growth above 30% persist as legacy material-right revenue becomes less relevant?",
+    "Do >119% subscription dollar-based net retention and 3,084 customers above $100K ARR support a 5-10 year opportunity rather than a short post-IPO growth burst?",
+    "How much of reported free cash flow is economically offset by recurring SBC and dilution?",
+    "Does channel-partner concentration create customer-access risk even if ultimate end customers are diversified?",
+    "Does Agent Cloud materially expand the addressable market and customer economics, or is it still an early narrative?"
+  ],
+  "net_cash_per_share": 2.6963,
   "valuation_percentile_5y": null,
-  "valuation_metric": "",
+  "valuation_metric": "No 5-year public-market percentile is locked because RBRK has traded publicly only since 2024; valuation uses the frozen owner-FCF/share DCF.",
   "valuation_overrides": {
     "required_return": null,
     "terminal_multiples": {
@@ -29,12 +41,28 @@
     "turnaround_candidate": false
   },
   "geo_exposure": {
-    "revenue_by_region": {},
+    "revenue_by_region": {
+      "Americas": 0.7092,
+      "EMEA": 0.2431,
+      "APAC": 0.0477
+    },
     "production_by_region": {},
     "critical_supplier_regions": [],
     "export_control_dependencies": [],
     "sanctions_exposure": [],
     "critical_shipping_routes": [],
     "government_customer_exposure": []
-  }
+  },
+  "intake_facts": [
+    "FY2026 revenue was $1.316191B, Subscription ARR was $1.462092B, OCF was $282.908M, property/equipment capex was $29.631M and capitalized internal-use software was $15.437M.",
+    "Q2 FY2027 revenue was $427.260M; Subscription ARR was $1.660903B and management reported ARR growth of 33% y/y.",
+    "H1 FY2027 OCF was $158.535M, property/equipment capex $9.876M, capitalized internal-use software $9.374M and SBC $174.386M.",
+    "2026-07-31 cash was $416.166M and short-term investments $1.331483B versus convertible notes carrying value $1.132895B; balance-sheet net cash is $614.754M before lease and other adjustments.",
+    "FY2027 company guidance published 2026-08-27 calls for revenue $1.685B-$1.693B, Subscription ARR $1.880B-$1.885B, FCF $323M-$333M and approximately 228M weighted-average shares.",
+    "TTM to 2026-07-31 estimate from FY2026 plus H1 FY2027 less H1 FY2026: revenue $1.542178B and OCF $337.064M.",
+    "TTM company-style FCF proxy after property/equipment capex and capitalized internal-use software is about $286.242M. After subtracting TTM SBC of about $341.763M as an economic owner-cost stress test, owner-FCF proxy is about -$55.521M; this is a downstream estimate, not an FP fact.",
+    "Remaining non-cancelable performance obligations were approximately $2.62B at 2026-07-31; approximately 53% was expected to be recognized over the next 12 months.",
+    "Q2 FY2027 channel-partner revenue concentration was approximately 26%, 28%, 10% and 10% for Partners A-D; this is channel concentration and not disclosed ultimate end-customer concentration.",
+    "H1 FY2027 geographic revenue mix was approximately 70.92% Americas, 24.31% EMEA and 4.77% APAC."
+  ]
 }
