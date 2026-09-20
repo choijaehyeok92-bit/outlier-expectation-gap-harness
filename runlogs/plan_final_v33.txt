@@ -1,0 +1,22 @@
+{
+  "stage": "complete",
+  "agents": {},
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "proxy_compensation",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "research": {
+    "questions": 20,
+    "pending": 20,
+    "decision_blocking": 4,
+    "deferred": 41,
+    "command": "python harness.py research-plan V"
+  }
+}

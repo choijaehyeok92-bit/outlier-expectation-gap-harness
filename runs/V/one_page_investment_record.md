@@ -1,21 +1,26 @@
-# One-page Investment Record
+# Visa (V) — One-page Investment Record
 
-1. 이 기업이 주도하는 구조적 변화:
-2. 시장이 기대하는 성장:
-3. 내가 예상하는 성장 규모:
-4. 내가 예상하는 성장 지속기간:
-5. Moat Trajectory:
-6. 증분 ROIC:
-7. FCF/share 경로:
-8. 경영진 평가:
-9. 파괴적 혁신 평가 (비용곡선·채택곡선·플랫폼 옵셔널리티):
-10. 종목 유형 (컴파운더 / 장기 아웃라이어 성장주 / 성장주 / 버핏 스타일 가치주 / 문샷형 / 관망·회피형)과 판정 근거:
-11. Bear / Base / Bull:
-12. 현재가격에 내재된 기대:
-13. 성공확률:
-14. 성공 시 Upside:
-15. 실패 시 Permanent Loss:
-16. 가장 중요한 반증조건:
-17. 최초 목표 비중:
-18. 비중을 늘릴 증거:
-19. 매도할 증거:
+- As of: 2026-09-18
+- Strategy / schema / decision policy: v3.3
+- Primary archetype: Compounder
+- Core score: 78.39
+- Ex-valuation score: 83.31
+- Hard Veto: CLEARED
+- IC state: STARTER
+- Position range: 1-2%
+- Macro purchase pacing: 0.5x
+
+## Thesis
+Visa's network moat, customer value, reinvestment economics, management execution and financial survival clear the deterministic Compounder gates. The limiting factor is entry valuation and asymmetry, not franchise quality.
+
+## Valuation
+Frozen price $368.29 versus locked Bear/Base/Bull values of $133.34 / $328.59 / $467.20. Price/Base is 1.1208x.
+
+## Main risks
+Long-run routing/interchange regulation, alternative payment rails, client-incentive intensity, and paying above Base value.
+
+## Increase evidence
+Owner FCF/share tracks or exceeds Base, moat remains strong, Visa Direct/VAS economics strengthen, and refrozen price/Base improves.
+
+## Falsifiers
+Compounder thresholds fail, owner FCF/share persistently misses Base, or price/Base exceeds 1.2 without a higher refrozen intrinsic value.
