@@ -1,0 +1,580 @@
+{
+  "schema_version": "1.0",
+  "ticker": "NVDA-V3-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "input_snapshot_sha256": "27e131bf19f63c3e6eea689cd8c8c4893a262b4e0749d702200f4b9bb6259e6b",
+  "questions": [
+    {
+      "research_question_id": "RQ-CP-3EAC9B3856",
+      "question": "공급 약정 $279B의 고객 주문 연동·취소가능 비중 확인",
+      "status": "partial",
+      "evidence": [
+        {
+          "evidence_id": "SUP-CP-SUPPLY-FLEX-002",
+          "claim": "2026-07-26 기준 $279B의 supply and capacity commitments 가운데 일부 계약은 firm order를 넣기 전 NVIDIA의 사업 필요에 따라 취소, 일정 변경 또는 조정이 가능하다. 변경 시 추가 비용이 발생할 수 있으며, NVIDIA는 전체 $279B 중 이 유연성이 적용되는 비중을 공시하지 않았다.",
+          "value": 279,
+          "unit": "USD billions",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+          "source_section": "Note 12 — Commitments and Contingencies / Supply and capacity",
+          "period": "FY27 Q2 / as of 2026-07-26",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "supply_commitment_flexibility",
+          "source_origin": "SEC-NVDA-10Q-2026-08-26-000104581026000075",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99,
+          "verified_fact_refs": []
+        }
+      ],
+      "remaining_unknowns": [
+        "전체 $279B 중 firm customer orders로 뒷받침되는 금액과 취소·일정변경·조정 가능 계약의 정확한 비중은 공시되지 않았다."
+      ],
+      "excluded_post_cutoff": [],
+      "search_log": [
+        {
+          "tier": 0,
+          "source": "frozen Q2 FY27 10-Q in runs/NVDA-V3-2026-09-19/sources",
+          "outcome": "found",
+          "note": "Supply and capacity 계약의 일부 유연성은 확인됐으나 비중은 미공시."
+        }
+      ],
+      "agent_id": "CP",
+      "domain": "customer_product"
+    },
+    {
+      "research_question_id": "RQ-CP-42C7060D7F",
+      "question": "지분투자·$36B AI-cloud agreements·$108.5B 보증 대상 기업에서 발생한 매출 비중.",
+      "status": "partial",
+      "evidence": [
+        {
+          "evidence_id": "SUP-CP-AICLOUD-TERMS-001",
+          "claim": "NVIDIA의 AI-cloud agreements는 AI cloud가 NVIDIA 인프라를 구매하는 동시에 NVIDIA가 cloud capacity를 약정하는 구조다. AI cloud는 해당 capacity를 NVIDIA에 제공하는 것을 일방적으로 중단하고 제3자에게 더 유리한 요율로 판매할 수 있으며, 제3자 사용 또는 NVIDIA의 R&D 사용만큼 NVIDIA의 약정은 감소한다. 특정 조건 충족 시 NVIDIA는 제3자 매출의 revenue share에도 참여한다. 2026-07-26 기준 약정 총액은 $36B이며 통상 6년이다.",
+          "value": 36,
+          "unit": "USD billions",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+          "source_section": "Note 12 — Commitments and Contingencies / Additional Commitments / AI cloud agreements",
+          "period": "FY27 Q2 / as of 2026-07-26",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "vendor_financing_risk",
+          "source_origin": "SEC-NVDA-10Q-2026-08-26-000104581026000075",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99,
+          "verified_fact_refs": []
+        }
+      ],
+      "remaining_unknowns": [
+        "NVIDIA는 투자·AI-cloud agreement·보증 대상 기업에서 발생하는 총매출 및 AR 비중을 별도로 공시하지 않는다."
+      ],
+      "excluded_post_cutoff": [],
+      "search_log": [
+        {
+          "tier": 0,
+          "source": "frozen Q2 FY27 10-Q and existing research packets",
+          "outcome": "found",
+          "note": "AI-cloud agreement 구조는 확인됐지만 대상기업 매출 비중은 없음."
+        },
+        {
+          "tier": 1,
+          "source": "NVIDIA Q2 FY27 10-Q and cutoff-valid SEC partner filings",
+          "outcome": "searched_but_not_found",
+          "note": "대상기업을 합산한 NVIDIA 매출 비중 공시는 찾지 못함."
+        }
+      ],
+      "agent_id": "CP",
+      "domain": "customer_product"
+    },
+    {
+      "research_question_id": "RQ-CP-7F524B4C9F",
+      "question": "고객의 AI 인프라 가동률과 투자 회수 기간.",
+      "status": "unresolved",
+      "evidence": [],
+      "remaining_unknowns": [
+        "NVIDIA 전체 고객군을 대표하는 가동률·payback·현금수익률의 동일정의 1차 공시는 확인하지 못했다."
+      ],
+      "excluded_post_cutoff": [],
+      "search_log": [
+        {
+          "tier": 0,
+          "source": "frozen NVIDIA filings and research packets",
+          "outcome": "searched_but_not_found"
+        },
+        {
+          "tier": 1,
+          "source": "cutoff-valid SEC filings for NVIDIA and selected AI-cloud counterparties",
+          "outcome": "searched_but_not_found",
+          "note": "개별 사업자 지표는 있으나 NVIDIA 전체 수요의 대표값으로 사용할 수 없음."
+        }
+      ],
+      "agent_id": "CP",
+      "domain": "customer_product"
+    },
+    {
+      "research_question_id": "RQ-CP-8D18D2A37E",
+      "question": "공급 약정 $279B 중 확정 고객 주문으로 뒷받침되는 비중.",
+      "status": "partial",
+      "evidence": [
+        {
+          "evidence_id": "SUP-CP-SUPPLY-FLEX-002",
+          "claim": "2026-07-26 기준 $279B의 supply and capacity commitments 가운데 일부 계약은 firm order를 넣기 전 NVIDIA의 사업 필요에 따라 취소, 일정 변경 또는 조정이 가능하다. 변경 시 추가 비용이 발생할 수 있으며, NVIDIA는 전체 $279B 중 이 유연성이 적용되는 비중을 공시하지 않았다.",
+          "value": 279,
+          "unit": "USD billions",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+          "source_section": "Note 12 — Commitments and Contingencies / Supply and capacity",
+          "period": "FY27 Q2 / as of 2026-07-26",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "supply_commitment_flexibility",
+          "source_origin": "SEC-NVDA-10Q-2026-08-26-000104581026000075",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99,
+          "verified_fact_refs": []
+        }
+      ],
+      "remaining_unknowns": [
+        "확정 customer orders 또는 non-cancellable orders가 $279B 중 차지하는 비율은 공시되지 않았다."
+      ],
+      "excluded_post_cutoff": [],
+      "search_log": [
+        {
+          "tier": 0,
+          "source": "frozen Q2 FY27 10-Q in runs/NVDA-V3-2026-09-19/sources",
+          "outcome": "found",
+          "note": "계약 유연성은 확인됐으나 firm-order 비중은 미공시."
+        }
+      ],
+      "agent_id": "CP",
+      "domain": "customer_product"
+    },
+    {
+      "research_question_id": "RQ-CP-9ED4793739",
+      "question": "동일 대상에 귀속되는 AR 금액·결제조건·신용도.",
+      "status": "partial",
+      "evidence": [
+        {
+          "evidence_id": "SUP-CP-DSO-005",
+          "claim": "NVIDIA는 Q2 FY27 accounts receivable이 $63.1B, DSO가 60일이었으며 전분기 45일에서 상승한 이유를 특정 investment-grade 고객과의 대형 다분기 계약에 대한 extended payment terms라고 설명했다.",
+          "value": 60,
+          "unit": "days DSO",
+          "source_tier": 2,
+          "source_type": "company_ir",
+          "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+          "source_section": "Balance Sheet and Cash Flow",
+          "period": "FY27 Q2",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "receivables_credit_quality",
+          "source_origin": "NVIDIA-Q2FY27-CFO-COMMENTARY-2026-08-26",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.98,
+          "verified_fact_refs": []
+        }
+      ],
+      "remaining_unknowns": [
+        "60일 DSO와 extended terms가 구체적으로 NVIDIA의 투자·보증·AI-cloud 지원 대상 고객에 얼마만큼 귀속되는지는 공시되지 않았다."
+      ],
+      "excluded_post_cutoff": [],
+      "search_log": [
+        {
+          "tier": 0,
+          "source": "frozen NVIDIA source set",
+          "outcome": "searched_but_not_found",
+          "note": "지원 대상별 AR 귀속액은 없음."
+        },
+        {
+          "tier": 2,
+          "source": "NVIDIA Q2 FY27 CFO Commentary",
+          "outcome": "found",
+          "note": "전체 AR/DSO 상승과 investment-grade 고객 extended terms 확인."
+        }
+      ],
+      "agent_id": "CP",
+      "domain": "customer_product"
+    },
+    {
+      "research_question_id": "RQ-CP-A403457778",
+      "question": "$36B AI-cloud agreements의 제3자 사용·revenue share와 $108.5B 보증의 phase별 활성 노출 확인",
+      "status": "partial",
+      "evidence": [
+        {
+          "evidence_id": "SUP-CP-AICLOUD-TERMS-001",
+          "claim": "NVIDIA의 AI-cloud agreements는 AI cloud가 NVIDIA 인프라를 구매하는 동시에 NVIDIA가 cloud capacity를 약정하는 구조다. AI cloud는 해당 capacity를 NVIDIA에 제공하는 것을 일방적으로 중단하고 제3자에게 더 유리한 요율로 판매할 수 있으며, 제3자 사용 또는 NVIDIA의 R&D 사용만큼 NVIDIA의 약정은 감소한다. 특정 조건 충족 시 NVIDIA는 제3자 매출의 revenue share에도 참여한다. 2026-07-26 기준 약정 총액은 $36B이며 통상 6년이다.",
+          "value": 36,
+          "unit": "USD billions",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+          "source_section": "Note 12 — Commitments and Contingencies / Additional Commitments / AI cloud agreements",
+          "period": "FY27 Q2 / as of 2026-07-26",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "vendor_financing_risk",
+          "source_origin": "SEC-NVDA-10Q-2026-08-26-000104581026000075",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99,
+          "verified_fact_refs": []
+        },
+        {
+          "evidence_id": "SUP-CP-SB-GUARANTEE-003",
+          "claim": "SB Energy의 S-1은 NVIDIA의 $105B PORTS-Pike 보증이 초기 약 4.25GW-IT에만 적용되고 OpenAI의 insolvency 또는 치유되지 않은 금전채무 불이행 때만 발동되는 residual-value guaranty라고 설명한다. 발동 후 NVIDIA는 tenancy를 인수·양도하거나 재임대 또는 매각을 지시할 수 있고, 보장 최소가치는 20년 lease 기간에 걸쳐 일정에 따라 감소한다. 특정 OpenAI 신용등급 상향 또는 대체 보증/lease 제공 시 보증은 종료될 수 있다.",
+          "value": 105,
+          "unit": "USD billions aggregate cap",
+          "source_tier": 1,
+          "source_type": "regulatory_filing",
+          "source": "https://www.sec.gov/Archives/edgar/data/2133037/000162828026059639/sbenergy-sx1.htm",
+          "source_section": "Risk Factors / PORTS-Pike residual value guaranty; NVIDIA guaranty description",
+          "period": "PORTS-Pike initial 4.25GW-IT / 20-year leases",
+          "publication_date": "2026-09-01",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "guarantee_expected_loss",
+          "source_origin": "SEC-SBE-S1-2026-09-01-000162828026059639",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99,
+          "verified_fact_refs": []
+        },
+        {
+          "evidence_id": "SUP-CP-SB-COMP-004",
+          "claim": "SB Energy S-1은 SB Energy가 NVIDIA에 보증 대가를 지급하지 않지만, OpenAI가 별도 계약에 따라 NVIDIA에 보증 관련 보상을 제공한다고 공시한다. 보상 금액·수익률·담보 조건은 S-1 본문에 공개되지 않았다.",
+          "value": "separate OpenAI compensation agreement; economics undisclosed",
+          "unit": "text",
+          "source_tier": 1,
+          "source_type": "regulatory_filing",
+          "source": "https://www.sec.gov/Archives/edgar/data/2133037/000162828026059639/sbenergy-sx1.htm",
+          "source_section": "PORTS-Pike residual value guaranty / compensation",
+          "period": "Agreements entered 2026-08-17",
+          "publication_date": "2026-09-01",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "guarantee_consideration",
+          "source_origin": "SEC-SBE-S1-2026-09-01-000162828026059639",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99,
+          "verified_fact_refs": []
+        }
+      ],
+      "remaining_unknowns": [
+        "AI-cloud revenue-share의 정확한 비율·threshold와 $105B 보증의 9개 phase별 개별 달러 cap은 공개되지 않았다.",
+        "OpenAI가 NVIDIA에 제공하는 보증 보상의 금액과 위험조정 수익률은 공개되지 않았다."
+      ],
+      "excluded_post_cutoff": [],
+      "search_log": [
+        {
+          "tier": 0,
+          "source": "frozen Q2 FY27 10-Q",
+          "outcome": "found",
+          "note": "AI-cloud 제3자 전환·revenue-share 및 phased guarantee의 큰 틀 확인."
+        },
+        {
+          "tier": 1,
+          "source": "SB Energy S-1 filed 2026-09-01",
+          "outcome": "found",
+          "note": "보증 발동조건·회수수단·감소/종료 조건·별도 OpenAI 보상계약 확인."
+        }
+      ],
+      "agent_id": "CP",
+      "domain": "customer_product"
+    },
+    {
+      "research_question_id": "RQ-CP-DA9B67D0AE",
+      "question": "Q3 FY27 10-Q에서 지원 대상 고객 매출·AR·DSO·대손충당과 customer advances 확인",
+      "status": "unresolved",
+      "evidence": [],
+      "remaining_unknowns": [
+        "2026-09-19 cutoff 시점에 Q3 FY27 10-Q는 아직 제출되지 않아 확인할 수 없다."
+      ],
+      "excluded_post_cutoff": [],
+      "search_log": [
+        {
+          "tier": 0,
+          "source": "frozen filings through Q2 FY27 and 2026-09-03 8-K",
+          "outcome": "searched_but_not_found",
+          "note": "Q3 FY27 10-Q는 cutoff 이후 미래 공시."
+        }
+      ],
+      "agent_id": "CP",
+      "domain": "customer_product"
+    }
+  ],
+  "research_summary": {
+    "questions_requested": 66,
+    "questions_resolved": 0,
+    "questions_unresolved": 66,
+    "new_primary_evidence": 5,
+    "new_secondary_evidence": 0,
+    "verified_fact_conflicts": 0,
+    "requires_refreeze": false
+  },
+  "resolved_questions": [],
+  "unresolved_questions": [
+    "RQ-AS-18731F3C96",
+    "RQ-AS-387899600E",
+    "RQ-AS-67CD5042AD",
+    "RQ-AS-7F1E9ECB99",
+    "RQ-AS-A5C704927D",
+    "RQ-AS-BBD2C6F2C8",
+    "RQ-AS-F65D40207E",
+    "RQ-CP-3EAC9B3856",
+    "RQ-CP-42C7060D7F",
+    "RQ-CP-7F524B4C9F",
+    "RQ-CP-8D18D2A37E",
+    "RQ-CP-9ED4793739",
+    "RQ-CP-A403457778",
+    "RQ-CP-DA9B67D0AE",
+    "RQ-DI-127CC077A9",
+    "RQ-DI-1DF4587D8B",
+    "RQ-DI-A3B2CC3675",
+    "RQ-DI-B9AD35778A",
+    "RQ-DI-BAB6DC4972",
+    "RQ-DI-D3DE10D60F",
+    "RQ-DI-FB0A6197C2",
+    "RQ-EV-16913499D8",
+    "RQ-EV-1D6DD0BD69",
+    "RQ-EV-284A51C031",
+    "RQ-EV-33AB28372C",
+    "RQ-EV-6D6A5C4A80",
+    "RQ-EV-7D00288BA9",
+    "RQ-EV-A4BDE7508D",
+    "RQ-EV-D02C93D441",
+    "RQ-FS-3B18F992A4",
+    "RQ-FS-64A5FD5D4D",
+    "RQ-FS-8CBB6D9743",
+    "RQ-FS-BC38165336",
+    "RQ-FS-D08764C9B5",
+    "RQ-FS-DCD1CE629F",
+    "RQ-FS-F5FCA3E796",
+    "RQ-MA-36025CC77C",
+    "RQ-MA-6203631B92",
+    "RQ-MA-66D2F283F8",
+    "RQ-MA-75E4D72E49",
+    "RQ-MA-C7F4B75DA4",
+    "RQ-MA-D59863686E",
+    "RQ-MA-E230207F00",
+    "RQ-MT-22D1805F48",
+    "RQ-MT-4BC2BCF222",
+    "RQ-MT-62B8A59B9A",
+    "RQ-MT-6EBA245F89",
+    "RQ-MT-93BCEA3F45",
+    "RQ-MT-A153F0F81B",
+    "RQ-MT-ABCCB5C023",
+    "RQ-MT-ACE39AC91D",
+    "RQ-RF-04F5553A4E",
+    "RQ-RF-3335892D7E",
+    "RQ-RF-4F49658B5E",
+    "RQ-RF-6D4E7F9D6D",
+    "RQ-RF-C8FD3CF100",
+    "RQ-RF-CF9C62A5EE",
+    "RQ-RF-EA6BDA47F5",
+    "RQ-RF-F1B3B2F153",
+    "RQ-SL-2E65C8DF08",
+    "RQ-SL-57E456EC70",
+    "RQ-SL-615FD5ED71",
+    "RQ-SL-8A90FE27FB",
+    "RQ-SL-BA3E86DA5A",
+    "RQ-SL-BD1232A516",
+    "RQ-SL-FC777C1E86"
+  ],
+  "unsubmitted_questions": [
+    "RQ-AS-18731F3C96",
+    "RQ-AS-387899600E",
+    "RQ-AS-67CD5042AD",
+    "RQ-AS-7F1E9ECB99",
+    "RQ-AS-A5C704927D",
+    "RQ-AS-BBD2C6F2C8",
+    "RQ-AS-F65D40207E",
+    "RQ-DI-127CC077A9",
+    "RQ-DI-1DF4587D8B",
+    "RQ-DI-A3B2CC3675",
+    "RQ-DI-B9AD35778A",
+    "RQ-DI-BAB6DC4972",
+    "RQ-DI-D3DE10D60F",
+    "RQ-DI-FB0A6197C2",
+    "RQ-EV-16913499D8",
+    "RQ-EV-1D6DD0BD69",
+    "RQ-EV-284A51C031",
+    "RQ-EV-33AB28372C",
+    "RQ-EV-6D6A5C4A80",
+    "RQ-EV-7D00288BA9",
+    "RQ-EV-A4BDE7508D",
+    "RQ-EV-D02C93D441",
+    "RQ-FS-3B18F992A4",
+    "RQ-FS-64A5FD5D4D",
+    "RQ-FS-8CBB6D9743",
+    "RQ-FS-BC38165336",
+    "RQ-FS-D08764C9B5",
+    "RQ-FS-DCD1CE629F",
+    "RQ-FS-F5FCA3E796",
+    "RQ-MA-36025CC77C",
+    "RQ-MA-6203631B92",
+    "RQ-MA-66D2F283F8",
+    "RQ-MA-75E4D72E49",
+    "RQ-MA-C7F4B75DA4",
+    "RQ-MA-D59863686E",
+    "RQ-MA-E230207F00",
+    "RQ-MT-22D1805F48",
+    "RQ-MT-4BC2BCF222",
+    "RQ-MT-62B8A59B9A",
+    "RQ-MT-6EBA245F89",
+    "RQ-MT-93BCEA3F45",
+    "RQ-MT-A153F0F81B",
+    "RQ-MT-ABCCB5C023",
+    "RQ-MT-ACE39AC91D",
+    "RQ-RF-04F5553A4E",
+    "RQ-RF-3335892D7E",
+    "RQ-RF-4F49658B5E",
+    "RQ-RF-6D4E7F9D6D",
+    "RQ-RF-C8FD3CF100",
+    "RQ-RF-CF9C62A5EE",
+    "RQ-RF-EA6BDA47F5",
+    "RQ-RF-F1B3B2F153",
+    "RQ-SL-2E65C8DF08",
+    "RQ-SL-57E456EC70",
+    "RQ-SL-615FD5ED71",
+    "RQ-SL-8A90FE27FB",
+    "RQ-SL-BA3E86DA5A",
+    "RQ-SL-BD1232A516",
+    "RQ-SL-FC777C1E86"
+  ],
+  "candidate_new_evidence": [
+    {
+      "evidence_id": "SUP-CP-SUPPLY-FLEX-002",
+      "claim": "2026-07-26 기준 $279B의 supply and capacity commitments 가운데 일부 계약은 firm order를 넣기 전 NVIDIA의 사업 필요에 따라 취소, 일정 변경 또는 조정이 가능하다. 변경 시 추가 비용이 발생할 수 있으며, NVIDIA는 전체 $279B 중 이 유연성이 적용되는 비중을 공시하지 않았다.",
+      "value": 279,
+      "unit": "USD billions",
+      "source_tier": 1,
+      "source_type": "10-Q",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "source_section": "Note 12 — Commitments and Contingencies / Supply and capacity",
+      "period": "FY27 Q2 / as of 2026-07-26",
+      "publication_date": "2026-08-26",
+      "as_of_date": "2026-09-19",
+      "eligible_under_as_of_date": true,
+      "fact_or_estimate": "fact",
+      "economic_driver": "supply_commitment_flexibility",
+      "source_origin": "SEC-NVDA-10Q-2026-08-26-000104581026000075",
+      "conflict_with_verified_fact": false,
+      "requires_refreeze": false,
+      "confidence": 0.99,
+      "verified_fact_refs": []
+    },
+    {
+      "evidence_id": "SUP-CP-AICLOUD-TERMS-001",
+      "claim": "NVIDIA의 AI-cloud agreements는 AI cloud가 NVIDIA 인프라를 구매하는 동시에 NVIDIA가 cloud capacity를 약정하는 구조다. AI cloud는 해당 capacity를 NVIDIA에 제공하는 것을 일방적으로 중단하고 제3자에게 더 유리한 요율로 판매할 수 있으며, 제3자 사용 또는 NVIDIA의 R&D 사용만큼 NVIDIA의 약정은 감소한다. 특정 조건 충족 시 NVIDIA는 제3자 매출의 revenue share에도 참여한다. 2026-07-26 기준 약정 총액은 $36B이며 통상 6년이다.",
+      "value": 36,
+      "unit": "USD billions",
+      "source_tier": 1,
+      "source_type": "10-Q",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "source_section": "Note 12 — Commitments and Contingencies / Additional Commitments / AI cloud agreements",
+      "period": "FY27 Q2 / as of 2026-07-26",
+      "publication_date": "2026-08-26",
+      "as_of_date": "2026-09-19",
+      "eligible_under_as_of_date": true,
+      "fact_or_estimate": "fact",
+      "economic_driver": "vendor_financing_risk",
+      "source_origin": "SEC-NVDA-10Q-2026-08-26-000104581026000075",
+      "conflict_with_verified_fact": false,
+      "requires_refreeze": false,
+      "confidence": 0.99,
+      "verified_fact_refs": []
+    },
+    {
+      "evidence_id": "SUP-CP-DSO-005",
+      "claim": "NVIDIA는 Q2 FY27 accounts receivable이 $63.1B, DSO가 60일이었으며 전분기 45일에서 상승한 이유를 특정 investment-grade 고객과의 대형 다분기 계약에 대한 extended payment terms라고 설명했다.",
+      "value": 60,
+      "unit": "days DSO",
+      "source_tier": 2,
+      "source_type": "company_ir",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+      "source_section": "Balance Sheet and Cash Flow",
+      "period": "FY27 Q2",
+      "publication_date": "2026-08-26",
+      "as_of_date": "2026-09-19",
+      "eligible_under_as_of_date": true,
+      "fact_or_estimate": "fact",
+      "economic_driver": "receivables_credit_quality",
+      "source_origin": "NVIDIA-Q2FY27-CFO-COMMENTARY-2026-08-26",
+      "conflict_with_verified_fact": false,
+      "requires_refreeze": false,
+      "confidence": 0.98,
+      "verified_fact_refs": []
+    },
+    {
+      "evidence_id": "SUP-CP-SB-GUARANTEE-003",
+      "claim": "SB Energy의 S-1은 NVIDIA의 $105B PORTS-Pike 보증이 초기 약 4.25GW-IT에만 적용되고 OpenAI의 insolvency 또는 치유되지 않은 금전채무 불이행 때만 발동되는 residual-value guaranty라고 설명한다. 발동 후 NVIDIA는 tenancy를 인수·양도하거나 재임대 또는 매각을 지시할 수 있고, 보장 최소가치는 20년 lease 기간에 걸쳐 일정에 따라 감소한다. 특정 OpenAI 신용등급 상향 또는 대체 보증/lease 제공 시 보증은 종료될 수 있다.",
+      "value": 105,
+      "unit": "USD billions aggregate cap",
+      "source_tier": 1,
+      "source_type": "regulatory_filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/2133037/000162828026059639/sbenergy-sx1.htm",
+      "source_section": "Risk Factors / PORTS-Pike residual value guaranty; NVIDIA guaranty description",
+      "period": "PORTS-Pike initial 4.25GW-IT / 20-year leases",
+      "publication_date": "2026-09-01",
+      "as_of_date": "2026-09-19",
+      "eligible_under_as_of_date": true,
+      "fact_or_estimate": "fact",
+      "economic_driver": "guarantee_expected_loss",
+      "source_origin": "SEC-SBE-S1-2026-09-01-000162828026059639",
+      "conflict_with_verified_fact": false,
+      "requires_refreeze": false,
+      "confidence": 0.99,
+      "verified_fact_refs": []
+    },
+    {
+      "evidence_id": "SUP-CP-SB-COMP-004",
+      "claim": "SB Energy S-1은 SB Energy가 NVIDIA에 보증 대가를 지급하지 않지만, OpenAI가 별도 계약에 따라 NVIDIA에 보증 관련 보상을 제공한다고 공시한다. 보상 금액·수익률·담보 조건은 S-1 본문에 공개되지 않았다.",
+      "value": "separate OpenAI compensation agreement; economics undisclosed",
+      "unit": "text",
+      "source_tier": 1,
+      "source_type": "regulatory_filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/2133037/000162828026059639/sbenergy-sx1.htm",
+      "source_section": "PORTS-Pike residual value guaranty / compensation",
+      "period": "Agreements entered 2026-08-17",
+      "publication_date": "2026-09-01",
+      "as_of_date": "2026-09-19",
+      "eligible_under_as_of_date": true,
+      "fact_or_estimate": "fact",
+      "economic_driver": "guarantee_consideration",
+      "source_origin": "SEC-SBE-S1-2026-09-01-000162828026059639",
+      "conflict_with_verified_fact": false,
+      "requires_refreeze": false,
+      "confidence": 0.99,
+      "verified_fact_refs": []
+    }
+  ],
+  "conflicts": [],
+  "excluded_post_cutoff": [],
+  "recommended_harness_reruns": [
+    "CP"
+  ],
+  "source_independence_groups": [
+    "NVIDIA-Q2FY27-CFO-COMMENTARY-2026-08-26",
+    "SEC-NVDA-10Q-2026-08-26-000104581026000075",
+    "SEC-SBE-S1-2026-09-01-000162828026059639"
+  ]
+}
