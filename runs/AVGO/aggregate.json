@@ -1397,6 +1397,141 @@
   "diagnostics": {
     "turnaround_candidate": false
   },
-  "ic_verdict": null,
+  "ic_verdict": {
+    "agent_id": "IC",
+    "ticker": "AVGO",
+    "as_of_date": "2026-09-18",
+    "domain": "investment_committee",
+    "role": "chair",
+    "analysis_status": "complete",
+    "score_0_100": 70.46,
+    "confidence_0_1": 0.92,
+    "thesis": "AVGO는 v3.1에서 Growth 유형을 통과했고 Hard Veto 9개도 모두 cleared다. 구조적 AI 성장, 주당 현금창출, 경영진 실행력은 강하지만 FS 70·MT 68·AS 68로 완성도는 아직 중간 수준이며, downside skew 11.17과 Bear $137.04가 현재가 $357.61 대비 큰 하방을 보여준다. $126.8B 구매약정, $29B XPV backstop, 조건부 $42B customer notes, factoring까지 감안하면 Growth 초기 상한 1–3%를 그대로 쓰지 않고 STARTER 1–2%만 승인하며 macro pacing 0.5로 분할 집행한다.",
+    "evidence": [
+      {
+        "claim": "Aggregate score is 70.46 (Emerging Outlier); Growth is the only eligible archetype with deterministic fit score about 72.64.",
+        "source_type": "other",
+        "source": "runs/AVGO/aggregate.json",
+        "period": "2026-09-18 run",
+        "as_of_date": "2026-09-18",
+        "value": "70.46 / Growth fit 72.64",
+        "fact_or_estimate": "interpretation"
+      },
+      {
+        "claim": "All nine Hard Vetoes are CLEARED after ED/RT review, and core coverage is 100%.",
+        "source_type": "other",
+        "source": "runs/AVGO/aggregate.json",
+        "period": "2026-09-18 run",
+        "as_of_date": "2026-09-18",
+        "value": "CLEARED / 100%",
+        "fact_or_estimate": "interpretation"
+      },
+      {
+        "claim": "Locked valuation is Bear $137.04, Base $404.48, Bull $797.84 versus frozen price $357.61; price/Base is 0.8841x.",
+        "source_type": "other",
+        "source": "runs/AVGO/aggregate.json",
+        "period": "10-year locked DCF",
+        "as_of_date": "2026-09-18",
+        "value": "$137.04 / $404.48 / $797.84; 0.8841x",
+        "fact_or_estimate": "estimate"
+      },
+      {
+        "claim": "Dispersion review shows mean downside skew 11.17, one-band reduction, with valuation the widest domain and asymmetry the most downside-skewed.",
+        "source_type": "other",
+        "source": "runs/AVGO/aggregate.json",
+        "period": "2026-09-18 run",
+        "as_of_date": "2026-09-18",
+        "value": "11.17 / reduce 1 band",
+        "fact_or_estimate": "interpretation"
+      },
+      {
+        "claim": "Q3/9M primary evidence shows 69% gross margin, 9M OCF $32.95B and strong AI growth, but also $126.821B purchase commitments, a maximum $29B XPV backstop and $3.95B of 9M receivables factoring.",
+        "source_type": "10-Q",
+        "source": "User-supplied Broadcom Q3 FY2026 10-Q",
+        "period": "FY2026 Q3/9M",
+        "as_of_date": "2026-09-10",
+        "value": "69% / $32.95B / $126.821B / $29B / $3.95B",
+        "fact_or_estimate": "fact"
+      },
+      {
+        "claim": "Macro overlay leaves fundamental score unchanged but sets purchase pacing to 0.5 because geopolitical energy/shipping stress is the binding overlay.",
+        "source_type": "other",
+        "source": "runs/AVGO/aggregate.json",
+        "period": "2026-09-18",
+        "as_of_date": "2026-09-18",
+        "value": "0.5",
+        "fact_or_estimate": "interpretation"
+      }
+    ],
+    "counterevidence": [
+      "Current price is below Base value, so AVGO has more valuation support than many high-growth peers.",
+      "69% gross margin, fast AI revenue growth and strong OCF argue that current demand is economically real rather than purely narrative.",
+      "Multi-generation custom-XPU programs and software contracts provide visibility beyond a single quarter.",
+      "XPV backstop is contingent, had no payments at quarter-end and was not recorded at a material fair value."
+    ],
+    "unknowns": [
+      "XPV-supported customers' share of total revenue and AR.",
+      "How much of $126.8B purchase commitments is matched to non-cancellable customer obligations.",
+      "Actual funded loss exposure and recovery economics of the $29B backstop and any customer notes.",
+      "Independent customer-level XPU TCO/payback and long-run gross margin.",
+      "Normalized OCF/owner-FCF after removing factoring and working-capital timing effects."
+    ],
+    "falsifiers": [
+      "AI semiconductor growth falls below 30% for two consecutive quarters while gross margin drops below 65%.",
+      "XPV-supported revenue/AR exceeds 25% or funded backstop/customer-note exposure rises materially while cash conversion weakens.",
+      "Owner FCF/share falls below the locked Base path across multiple periods and a refrozen Base value no longer exceeds market price."
+    ],
+    "hard_veto_flags": [],
+    "key_kpis": [
+      {
+        "name": "Owner FCF/share vs locked Base path",
+        "direction": "up",
+        "threshold": "stay on or above Base path after factoring normalization",
+        "cadence": "quarterly/annual"
+      },
+      {
+        "name": "XPV-supported revenue/AR and funded exposure",
+        "direction": "down",
+        "threshold": "support-linked exposure <25%; no material funded loss",
+        "cadence": "quarterly"
+      },
+      {
+        "name": "AI semiconductor growth / gross margin",
+        "direction": "up",
+        "threshold": "AI growth >30% y/y and GM >=65%",
+        "cadence": "quarterly"
+      }
+    ],
+    "next_checks": [
+      "Next 10-Q: XPV backstop, customer notes, purchase commitments, factoring and customer concentration.",
+      "Independent custom-XPU TCO/performance and customer payback evidence.",
+      "Refreeze valuation after FY2027 company guidance and normalized owner-FCF update."
+    ],
+    "verdict": "support",
+    "ic_state": "STARTER",
+    "plain_language": {
+      "business": "Broadcom은 데이터센터와 통신 장비에 들어가는 반도체, 맞춤형 AI 가속기와 네트워킹 칩을 만들고 VMware 기반 인프라 소프트웨어도 판매한다. 반도체와 소프트웨어 두 사업이 함께 현금을 만든다.",
+      "opportunity": "현재 가장 큰 기회는 대형 AI 고객의 맞춤형 가속기와 이더넷 네트워킹 수요다. 장기 계약과 빠른 AI 매출 성장은 성장성을 뒷받침하고, VMware 소프트웨어는 별도의 현금흐름 원천을 제공한다.",
+      "risk": "고객 집중이 높고, 대규모 구매약정과 AI 고객 지원 구조 때문에 AI 투자가 예상보다 둔화될 때 손실이 서로 겹칠 수 있다. 매출채권 factoring과 고객금융 구조 때문에 현금흐름의 질도 계속 확인해야 한다.",
+      "decision_reason": "성장주 기준과 모든 중대 탈락 조건은 통과했지만 하방 시나리오가 넓고 재무·고객 집중 위험이 남아 있다. 그래서 초기 비중은 1~2% Starter로 제한하고, 현재 거시환경에서는 평소보다 절반 속도로 나눠 집행하는 결론이다."
+    },
+    "subscores": [],
+    "uncertainties": [],
+    "valuation_inputs": {
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": null,
+      "scenarios": {
+        "bear": {
+          "owner_fcf_per_share": []
+        },
+        "base": {
+          "owner_fcf_per_share": []
+        },
+        "bull": {
+          "owner_fcf_per_share": []
+        }
+      }
+    }
+  },
   "early_exit_record": null
 }

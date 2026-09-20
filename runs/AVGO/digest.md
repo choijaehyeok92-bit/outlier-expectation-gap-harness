@@ -84,6 +84,12 @@ unknowns: 개별 top-five end-customer 매출 비중과 XPV 지원 고객향 매
 | MO | 45 | 0.92 | neutral mult=0.5 | – | 금융여건과 지정학을 분리하면 금융조건은 0.7 감속이지만 지정학 충격이 더 강한 제약이다. 연준은 9월 16일 25bp 인상했고 10년 실질금리는 2.61%였다. HY OAS 270bp는 광범위한 신용경색을 부정한다. 반면 Hormuz 통항 급감과 Brent spot $130.80, … |
 unknowns: Hormuz/Bab el-Mandeb traffic normalization speed. · High energy prices' pass-through into core inflation and subsequent Fed reaction.
 
+## investment_committee
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| IC | 70.46 | 0.92 | support | – | AVGO는 v3.1에서 Growth 유형을 통과했고 Hard Veto 9개도 모두 cleared다. 구조적 AI 성장, 주당 현금창출, 경영진 실행력은 강하지만 FS 70·MT 68·AS 68로 완성도는 아직 중간 수준이며, downside skew 11.17과 Bear $137.04… |
+unknowns: XPV-supported customers' share of total revenue and AR. · How much of $126.8B purchase commitments is matched to non-cancellable customer obligatio…
+
 ## Archetype fit
 {"buffett_value": {"eligible": false, "fit_score": 67.33235294, "failed_conditions": ["signal.price_to_base_value", "domain.financial_survival"], "missing_conditions": [], "blocking_vetoes": []}, "compounder": {"eligible": false, "fit_score": 69.8640625, "failed_conditions": ["domain.moat_trajectory", "domain.reinvestment_fcf", "domain.financial_survival"], "missing_conditions": [], "blocking_vetoes": []}, "growth": {"eligible": true, "fit_score": 72.64214876, "failed_conditions": [], "missing_conditions": [], "blocking_vetoes": []}, "moonshot": {"eligible": false, "fit_score": 57.3, "failed_conditions": ["signal.market_cap_usd", "domain.disruptive_innovation", "domain.asymmetry"], "missing_conditions": [], "blocking_vetoes": []}}
 ## Provider calibration

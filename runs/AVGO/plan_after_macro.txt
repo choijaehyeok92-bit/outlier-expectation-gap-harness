@@ -1,9 +1,6 @@
 {
-  "stage": "evidence_and_red_team",
-  "agents": {
-    "evidence_quality": "ED",
-    "red_team": "RT"
-  },
+  "stage": "complete",
+  "agents": {},
   "stage_0": {
     "stage_0": "ready",
     "enforced": true,
@@ -16,10 +13,8 @@
     ]
   },
   "research": {
-    "questions": 69,
-    "pending": 69,
+    "questions": 93,
+    "pending": 93,
     "command": "python harness.py research-plan AVGO"
   }
 }
-python harness.py prompt AVGO ED
-python harness.py prompt AVGO RT
