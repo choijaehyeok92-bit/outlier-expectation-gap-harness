@@ -9,10 +9,11 @@ DI: OK
 ED: OK
 MO: OK
 RT: OK
+IC: OK
 ===== PLAN =====
 {
   "stage": "complete",
   "agents": {}
 }
 ===== INTERIM AGGREGATE =====
-runs/ADBE/digest.md: 16597 bytes (reports 72925 chars -> digest 15819 chars)
+runs/ADBE/digest.md: 16705 bytes (reports 75661 chars -> digest 15925 chars)

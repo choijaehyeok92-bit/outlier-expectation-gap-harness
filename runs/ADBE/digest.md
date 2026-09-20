@@ -94,8 +94,8 @@ unknowns: Hormuz/Bab el-Mandeb 통항과 중동 에너지 인프라가 얼마나
 ## investment_committee
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| IC | 78.88 | 0.82 | support | – | Expected calibrated score is ~78.9 with Compounder as the primary archetype. Adobe combines category leadership, high recurring cash flow, attractive repurchas… |
-unknowns: AI monetization durability · future acquisition returns
+| IC | 80.97 | 0.9 | support | – | Deterministic fit selects Buffett-style Value as primary and Compounder as secondary. Core score is 80.97, price/Base is 0.502x, TTM owner-style FCF/share is e… |
+unknowns: AI-first ARR incrementality and Firefly-specific contribution margin. · Same-definition long-run retention/market-share evidence versus prompt-native and agentic…
 
 ## Archetype fit
 {"buffett_value": {"eligible": true, "fit_score": 80.53382353, "failed_conditions": [], "missing_conditions": [], "blocking_vetoes": []}, "compounder": {"eligible": true, "fit_score": 79.41510417, "failed_conditions": [], "missing_conditions": [], "blocking_vetoes": []}, "moonshot": {"eligible": false, "fit_score": 63.91082, "failed_conditions": ["signal.market_cap_usd", "domain.disruptive_innovation"], "missing_conditions": [], "blocking_vetoes": []}}
