@@ -1,0 +1,882 @@
+{
+  "audit_date": "2026-09-20",
+  "repository_commit": "851e7ac8bc90a4c6d7acfc5e69f0124aef9290d5",
+  "strategy_version": "3.2",
+  "schema_version": "3.2",
+  "decision_policy_version": "3.2",
+  "scope": {
+    "canonical_stock_runs": 11,
+    "superseded_runs": [
+      {
+        "run": "NVDA",
+        "as_of": "2026-09-17",
+        "status": "superseded",
+        "replacement": "NVDA-V31-2026-09-19",
+        "stored_archetype": "compounder"
+      },
+      {
+        "run": "NVDA-V3-2026-09-19",
+        "as_of": "2026-09-19",
+        "status": "superseded",
+        "replacement": "NVDA-V31-2026-09-19",
+        "stored_archetype": "non_fit"
+      }
+    ]
+  },
+  "method": {
+    "canonical_nvda_run": "NVDA-V31-2026-09-19",
+    "criterion_compatibility": "Criterion subscores were reconstructed from reports/*.json when legacy aggregate.json omitted domain_scores.*.criteria.",
+    "missing_rule": "Missing LTG report is not a pass. Outlier Growth remains unverified for every current run.",
+    "korea_overlay": {
+      "compounder_price_to_base_max": 1.0,
+      "growth_revenue_cagr_3y_min": 0.2,
+      "growth_price_to_base_max": 0.9,
+      "buffett_value_price_to_base_max": 0.7,
+      "moonshot_eligible": false,
+      "qualitative": "Require cleared governance/related-party/dilution/capital-allocation review; unresolved evidence remains blocked."
+    }
+  },
+  "counts": {
+    "compounder": 4,
+    "growth": 2,
+    "outlier_growth": 0,
+    "buffett_value": 2,
+    "moonshot": 2,
+    "non_fit": 1
+  },
+  "rows": [
+    {
+      "ticker": "000660",
+      "company_name": "SK hynix Inc.",
+      "market": "KR",
+      "source_run": "000660",
+      "as_of_date": "2026-09-17",
+      "stored_archetype": "compounder",
+      "revalidated_archetype": "compounder",
+      "secondary_archetypes": [
+        "buffett_value",
+        "growth"
+      ],
+      "change_status": "unchanged",
+      "hard_veto_status": "CLEARED",
+      "score_100": 79.87,
+      "score_100_ex_valuation": 79.61,
+      "signals": {
+        "price_to_base_value": 0.4382,
+        "valuation_percentile_5y": null,
+        "revenue_cagr_next_3y": 0.2,
+        "market_cap_usd": 899019524344.3
+      },
+      "eligible_archetypes": [
+        {
+          "id": "compounder",
+          "fit_score": 80.1375
+        },
+        {
+          "id": "buffett_value",
+          "fit_score": 78.67333333
+        },
+        {
+          "id": "growth",
+          "fit_score": 76.69686869
+        }
+      ],
+      "evaluations": {
+        "buffett_value": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 79.87,
+          "gate_threshold": 60.0
+        },
+        "compounder": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 79.87,
+          "gate_threshold": 60.0
+        },
+        "growth": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 79.87,
+          "gate_threshold": 65.0
+        },
+        "outlier_growth": {
+          "failed": [],
+          "missing": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception"
+          ],
+          "gate_score": 79.61,
+          "gate_threshold": 65.0
+        }
+      },
+      "reason": "한국 강화 가격·성장 조건을 모두 통과했고, 적격 유형 중 deterministic fit이 가장 높다.",
+      "long_term_growth_status": "missing_report"
+    },
+    {
+      "ticker": "267260",
+      "company_name": "HD Hyundai Electric Co., Ltd.",
+      "market": "KR",
+      "source_run": "267260",
+      "as_of_date": "2026-09-18",
+      "stored_archetype": "non_fit",
+      "revalidated_archetype": "non_fit",
+      "secondary_archetypes": [],
+      "change_status": "unchanged",
+      "hard_veto_status": "UNRESOLVED",
+      "score_100": 70.93,
+      "score_100_ex_valuation": 73.29,
+      "signals": {
+        "price_to_base_value": 1.0411,
+        "valuation_percentile_5y": 0.75,
+        "revenue_cagr_next_3y": 0.12,
+        "market_cap_usd": 18824771496.0
+      },
+      "eligible_archetypes": [],
+      "evaluations": {
+        "buffett_value": {
+          "failed": [
+            "signal.price_to_base_value",
+            "domain.management_allocation"
+          ],
+          "missing": [],
+          "gate_score": 70.93,
+          "gate_threshold": 60.0
+        },
+        "compounder": {
+          "failed": [
+            "signal.price_to_base_value",
+            "domain.moat_trajectory",
+            "domain.management_allocation"
+          ],
+          "missing": [],
+          "gate_score": 70.93,
+          "gate_threshold": 60.0
+        },
+        "growth": {
+          "failed": [
+            "signal.revenue_cagr_next_3y",
+            "signal.price_to_base_value"
+          ],
+          "missing": [],
+          "gate_score": 70.93,
+          "gate_threshold": 65.0
+        },
+        "outlier_growth": {
+          "failed": [],
+          "missing": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception"
+          ],
+          "gate_score": 73.29,
+          "gate_threshold": 65.0
+        }
+      },
+      "reason": "v3.2 적격 유형이 없고 Hard Veto도 미해소다.",
+      "long_term_growth_status": "missing_report"
+    },
+    {
+      "ticker": "ADBE",
+      "company_name": "Adobe Inc.",
+      "market": "US",
+      "source_run": "ADBE",
+      "as_of_date": "2026-09-18",
+      "stored_archetype": "buffett_value",
+      "revalidated_archetype": "buffett_value",
+      "secondary_archetypes": [
+        "compounder"
+      ],
+      "change_status": "unchanged",
+      "hard_veto_status": "CLEARED",
+      "score_100": 80.97,
+      "score_100_ex_valuation": 80.62,
+      "signals": {
+        "price_to_base_value": 0.5023,
+        "valuation_percentile_5y": null,
+        "revenue_cagr_next_3y": 0.11,
+        "market_cap_usd": 98945900000.0
+      },
+      "eligible_archetypes": [
+        {
+          "id": "buffett_value",
+          "fit_score": 80.53382353
+        },
+        {
+          "id": "compounder",
+          "fit_score": 79.41510417
+        }
+      ],
+      "evaluations": {
+        "buffett_value": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 80.97,
+          "gate_threshold": 60.0
+        },
+        "compounder": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 80.97,
+          "gate_threshold": 60.0
+        },
+        "growth": {
+          "failed": [
+            "signal.revenue_cagr_next_3y"
+          ],
+          "missing": [],
+          "gate_score": 80.97,
+          "gate_threshold": 65.0
+        },
+        "moonshot": {
+          "failed": [
+            "signal.market_cap_usd",
+            "domain.disruptive_innovation"
+          ],
+          "missing": [],
+          "gate_score": 80.62,
+          "gate_threshold": 60.0
+        },
+        "outlier_growth": {
+          "failed": [],
+          "missing": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception"
+          ],
+          "gate_score": 80.62,
+          "gate_threshold": 65.0
+        }
+      },
+      "reason": "Buffett-Value와 Compounder를 통과하지만 Buffett-Value fit이 더 높다.",
+      "long_term_growth_status": "missing_report"
+    },
+    {
+      "ticker": "AVGO",
+      "company_name": "Broadcom Inc.",
+      "market": "US",
+      "source_run": "AVGO",
+      "as_of_date": "2026-09-18",
+      "stored_archetype": "growth",
+      "revalidated_archetype": "growth",
+      "secondary_archetypes": [],
+      "change_status": "unchanged",
+      "hard_veto_status": "CLEARED",
+      "score_100": 70.46,
+      "score_100_ex_valuation": 71.56,
+      "signals": {
+        "price_to_base_value": 0.8841,
+        "valuation_percentile_5y": null,
+        "revenue_cagr_next_3y": 0.4381,
+        "market_cap_usd": 1707097776022.65
+      },
+      "eligible_archetypes": [
+        {
+          "id": "growth",
+          "fit_score": 72.64214876
+        }
+      ],
+      "evaluations": {
+        "buffett_value": {
+          "failed": [
+            "signal.price_to_base_value",
+            "domain.financial_survival"
+          ],
+          "missing": [],
+          "gate_score": 70.46,
+          "gate_threshold": 60.0
+        },
+        "compounder": {
+          "failed": [
+            "domain.moat_trajectory",
+            "domain.reinvestment_fcf",
+            "domain.financial_survival"
+          ],
+          "missing": [],
+          "gate_score": 70.46,
+          "gate_threshold": 60.0
+        },
+        "growth": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 70.46,
+          "gate_threshold": 65.0
+        },
+        "moonshot": {
+          "failed": [
+            "signal.market_cap_usd",
+            "domain.disruptive_innovation",
+            "domain.asymmetry"
+          ],
+          "missing": [],
+          "gate_score": 71.56,
+          "gate_threshold": 60.0
+        },
+        "outlier_growth": {
+          "failed": [],
+          "missing": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception"
+          ],
+          "gate_score": 71.56,
+          "gate_threshold": 65.0
+        }
+      },
+      "reason": "적격 유형은 Growth 하나다.",
+      "long_term_growth_status": "missing_report"
+    },
+    {
+      "ticker": "MSFT",
+      "company_name": "Microsoft Corporation",
+      "market": "US",
+      "source_run": "MSFT",
+      "as_of_date": "2026-09-17",
+      "stored_archetype": "compounder",
+      "revalidated_archetype": "compounder",
+      "secondary_archetypes": [],
+      "change_status": "unchanged",
+      "hard_veto_status": "CLEARED",
+      "score_100": 71.84,
+      "score_100_ex_valuation": 75.24,
+      "signals": {
+        "price_to_base_value": 0.9952,
+        "valuation_percentile_5y": null,
+        "revenue_cagr_next_3y": 0.155,
+        "market_cap_usd": 3709730750000.0
+      },
+      "eligible_archetypes": [
+        {
+          "id": "compounder",
+          "fit_score": 74.75541667
+        }
+      ],
+      "evaluations": {
+        "buffett_value": {
+          "failed": [
+            "signal.price_to_base_value",
+            "criterion.reinvestment_fcf.fcf_per_share_quality",
+            "domain.asymmetry"
+          ],
+          "missing": [],
+          "gate_score": 71.84,
+          "gate_threshold": 60.0
+        },
+        "compounder": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 71.84,
+          "gate_threshold": 60.0
+        },
+        "growth": {
+          "failed": [
+            "domain.asymmetry",
+            "criterion.reinvestment_fcf.fcf_per_share_quality"
+          ],
+          "missing": [],
+          "gate_score": 71.84,
+          "gate_threshold": 65.0
+        },
+        "moonshot": {
+          "failed": [
+            "signal.market_cap_usd",
+            "domain.asymmetry"
+          ],
+          "missing": [],
+          "gate_score": 75.24,
+          "gate_threshold": 60.0
+        },
+        "outlier_growth": {
+          "failed": [
+            "domain.asymmetry",
+            "criterion.asymmetry.upside_path"
+          ],
+          "missing": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception"
+          ],
+          "gate_score": 75.24,
+          "gate_threshold": 65.0
+        }
+      },
+      "reason": "적격 유형 중 Compounder fit이 가장 높다.",
+      "long_term_growth_status": "missing_report"
+    },
+    {
+      "ticker": "NVDA",
+      "company_name": "NVIDIA Corporation",
+      "market": "US",
+      "source_run": "NVDA-V31-2026-09-19",
+      "as_of_date": "2026-09-19",
+      "stored_archetype": "growth",
+      "revalidated_archetype": "growth",
+      "secondary_archetypes": [],
+      "change_status": "canonicalized_latest",
+      "hard_veto_status": "CLEARED",
+      "score_100": 70.19,
+      "score_100_ex_valuation": 73.22,
+      "signals": {
+        "price_to_base_value": 1.0442,
+        "valuation_percentile_5y": 0.05,
+        "revenue_cagr_next_3y": 0.29,
+        "market_cap_usd": 5367153690000.0
+      },
+      "eligible_archetypes": [
+        {
+          "id": "growth",
+          "fit_score": 71.15482094
+        }
+      ],
+      "evaluations": {
+        "buffett_value": {
+          "failed": [
+            "signal.price_to_base_value",
+            "criterion.reinvestment_fcf.fcf_per_share_quality"
+          ],
+          "missing": [],
+          "gate_score": 70.19,
+          "gate_threshold": 60.0
+        },
+        "compounder": {
+          "failed": [
+            "domain.moat_trajectory",
+            "domain.reinvestment_fcf",
+            "criterion.reinvestment_fcf.reinvestment_runway"
+          ],
+          "missing": [],
+          "gate_score": 70.19,
+          "gate_threshold": 60.0
+        },
+        "growth": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 70.19,
+          "gate_threshold": 65.0
+        },
+        "moonshot": {
+          "failed": [
+            "signal.market_cap_usd",
+            "domain.asymmetry"
+          ],
+          "missing": [],
+          "gate_score": 73.22,
+          "gate_threshold": 60.0
+        },
+        "outlier_growth": {
+          "failed": [],
+          "missing": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception"
+          ],
+          "gate_score": 73.22,
+          "gate_threshold": 65.0
+        }
+      },
+      "reason": "최신 정본 run에서 적격 유형은 Growth 하나다.",
+      "long_term_growth_status": "missing_report"
+    },
+    {
+      "ticker": "PL",
+      "company_name": "Planet Labs PBC",
+      "market": "US",
+      "source_run": "PL",
+      "as_of_date": "2026-09-18",
+      "stored_archetype": "moonshot",
+      "revalidated_archetype": "moonshot",
+      "secondary_archetypes": [],
+      "change_status": "unchanged",
+      "hard_veto_status": "CLEARED",
+      "score_100": 72.99,
+      "score_100_ex_valuation": 71.96,
+      "signals": {
+        "price_to_base_value": 0.6141,
+        "valuation_percentile_5y": null,
+        "revenue_cagr_next_3y": 0.26,
+        "market_cap_usd": 5887060462.02
+      },
+      "eligible_archetypes": [
+        {
+          "id": "moonshot",
+          "fit_score": 80.49058791
+        }
+      ],
+      "evaluations": {
+        "buffett_value": {
+          "failed": [
+            "criterion.reinvestment_fcf.fcf_per_share_quality",
+            "domain.management_allocation"
+          ],
+          "missing": [],
+          "gate_score": 72.99,
+          "gate_threshold": 60.0
+        },
+        "compounder": {
+          "failed": [
+            "domain.reinvestment_fcf",
+            "domain.management_allocation",
+            "criterion.reinvestment_fcf.incremental_roic"
+          ],
+          "missing": [],
+          "gate_score": 72.99,
+          "gate_threshold": 60.0
+        },
+        "growth": {
+          "failed": [
+            "domain.management_allocation"
+          ],
+          "missing": [],
+          "gate_score": 72.99,
+          "gate_threshold": 65.0
+        },
+        "moonshot": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 71.96,
+          "gate_threshold": 60.0
+        },
+        "outlier_growth": {
+          "failed": [
+            "domain.management_allocation"
+          ],
+          "missing": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception"
+          ],
+          "gate_score": 71.96,
+          "gate_threshold": 65.0
+        }
+      },
+      "reason": "적격 유형은 Moonshot 하나다.",
+      "long_term_growth_status": "missing_report"
+    },
+    {
+      "ticker": "PYPL",
+      "company_name": "PayPal Holdings, Inc.",
+      "market": "US",
+      "source_run": "PYPL",
+      "as_of_date": "2026-09-18",
+      "stored_archetype": "expectation_gap",
+      "revalidated_archetype": "buffett_value",
+      "secondary_archetypes": [],
+      "change_status": "reclassified",
+      "hard_veto_status": "CLEARED",
+      "score_100": 75.93,
+      "score_100_ex_valuation": 74.32,
+      "signals": {
+        "price_to_base_value": 0.3988,
+        "valuation_percentile_5y": 0.12,
+        "revenue_cagr_next_3y": 0.05,
+        "market_cap_usd": 44835000000.0
+      },
+      "eligible_archetypes": [
+        {
+          "id": "buffett_value",
+          "fit_score": 79.73019608
+        }
+      ],
+      "evaluations": {
+        "buffett_value": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 75.93,
+          "gate_threshold": 60.0
+        },
+        "compounder": {
+          "failed": [
+            "domain.moat_trajectory",
+            "domain.reinvestment_fcf",
+            "criterion.reinvestment_fcf.reinvestment_runway"
+          ],
+          "missing": [],
+          "gate_score": 75.93,
+          "gate_threshold": 60.0
+        },
+        "growth": {
+          "failed": [
+            "signal.revenue_cagr_next_3y"
+          ],
+          "missing": [],
+          "gate_score": 75.93,
+          "gate_threshold": 65.0
+        },
+        "moonshot": {
+          "failed": [
+            "domain.disruptive_innovation"
+          ],
+          "missing": [],
+          "gate_score": 74.32,
+          "gate_threshold": 60.0
+        },
+        "outlier_growth": {
+          "failed": [],
+          "missing": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception"
+          ],
+          "gate_score": 74.32,
+          "gate_threshold": 65.0
+        }
+      },
+      "reason": "v3.2에서 expectation_gap이 제거됐고 Buffett-Value 조건을 모두 통과한다.",
+      "long_term_growth_status": "missing_report"
+    },
+    {
+      "ticker": "RKLB",
+      "company_name": "Rocket Lab Corporation",
+      "market": "US",
+      "source_run": "RKLB",
+      "as_of_date": "2026-09-18",
+      "stored_archetype": "moonshot",
+      "revalidated_archetype": "moonshot",
+      "secondary_archetypes": [],
+      "change_status": "unchanged",
+      "hard_veto_status": "CLEARED",
+      "score_100": 70.53,
+      "score_100_ex_valuation": 70.83,
+      "signals": {
+        "price_to_base_value": 0.7335,
+        "valuation_percentile_5y": null,
+        "revenue_cagr_next_3y": 0.24,
+        "market_cap_usd": 40527391622.74
+      },
+      "eligible_archetypes": [
+        {
+          "id": "moonshot",
+          "fit_score": 72.36252168
+        }
+      ],
+      "evaluations": {
+        "buffett_value": {
+          "failed": [
+            "criterion.reinvestment_fcf.fcf_per_share_quality",
+            "domain.financial_survival"
+          ],
+          "missing": [],
+          "gate_score": 70.53,
+          "gate_threshold": 60.0
+        },
+        "compounder": {
+          "failed": [
+            "domain.moat_trajectory",
+            "domain.reinvestment_fcf",
+            "domain.financial_survival",
+            "criterion.reinvestment_fcf.incremental_roic"
+          ],
+          "missing": [],
+          "gate_score": 70.53,
+          "gate_threshold": 60.0
+        },
+        "growth": {
+          "failed": [
+            "domain.reinvestment_fcf",
+            "domain.financial_survival",
+            "criterion.reinvestment_fcf.fcf_per_share_quality"
+          ],
+          "missing": [],
+          "gate_score": 70.53,
+          "gate_threshold": 65.0
+        },
+        "moonshot": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 70.83,
+          "gate_threshold": 60.0
+        },
+        "outlier_growth": {
+          "failed": [],
+          "missing": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception"
+          ],
+          "gate_score": 70.83,
+          "gate_threshold": 65.0
+        }
+      },
+      "reason": "적격 유형은 Moonshot 하나다.",
+      "long_term_growth_status": "missing_report"
+    },
+    {
+      "ticker": "TSM",
+      "company_name": "Taiwan Semiconductor Manufacturing Company Limited",
+      "market": "US",
+      "source_run": "TSM",
+      "as_of_date": "2026-09-18",
+      "stored_archetype": "compounder",
+      "revalidated_archetype": "compounder",
+      "secondary_archetypes": [],
+      "change_status": "unchanged",
+      "hard_veto_status": "CLEARED",
+      "score_100": 76.32,
+      "score_100_ex_valuation": 81.61,
+      "signals": {
+        "price_to_base_value": 1.1506,
+        "valuation_percentile_5y": null,
+        "revenue_cagr_next_3y": 0.16,
+        "market_cap_usd": 2254418086708.6
+      },
+      "eligible_archetypes": [
+        {
+          "id": "compounder",
+          "fit_score": 75.94604167
+        }
+      ],
+      "evaluations": {
+        "buffett_value": {
+          "failed": [
+            "signal.price_to_base_value",
+            "domain.asymmetry"
+          ],
+          "missing": [],
+          "gate_score": 76.32,
+          "gate_threshold": 60.0
+        },
+        "compounder": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 76.32,
+          "gate_threshold": 60.0
+        },
+        "growth": {
+          "failed": [
+            "signal.price_to_base_value",
+            "domain.asymmetry",
+            "domain.expectation_valuation"
+          ],
+          "missing": [],
+          "gate_score": 76.32,
+          "gate_threshold": 65.0
+        },
+        "moonshot": {
+          "failed": [
+            "signal.market_cap_usd",
+            "domain.asymmetry"
+          ],
+          "missing": [],
+          "gate_score": 81.61,
+          "gate_threshold": 60.0
+        },
+        "outlier_growth": {
+          "failed": [
+            "domain.asymmetry",
+            "criterion.asymmetry.upside_path"
+          ],
+          "missing": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception"
+          ],
+          "gate_score": 81.61,
+          "gate_threshold": 65.0
+        }
+      },
+      "reason": "적격 유형 중 Compounder fit이 가장 높다.",
+      "long_term_growth_status": "missing_report"
+    },
+    {
+      "ticker": "V",
+      "company_name": "Visa Inc.",
+      "market": "US",
+      "source_run": "V",
+      "as_of_date": "2026-09-18",
+      "stored_archetype": "compounder",
+      "revalidated_archetype": "compounder",
+      "secondary_archetypes": [],
+      "change_status": "unchanged",
+      "hard_veto_status": "CLEARED",
+      "score_100": 75.31,
+      "score_100_ex_valuation": 79.98,
+      "signals": {
+        "price_to_base_value": 1.1208,
+        "valuation_percentile_5y": 0.69,
+        "revenue_cagr_next_3y": 0.1,
+        "market_cap_usd": 690000000000.0
+      },
+      "eligible_archetypes": [
+        {
+          "id": "compounder",
+          "fit_score": 73.35125
+        }
+      ],
+      "evaluations": {
+        "buffett_value": {
+          "failed": [
+            "signal.price_to_base_value",
+            "domain.asymmetry"
+          ],
+          "missing": [],
+          "gate_score": 75.31,
+          "gate_threshold": 60.0
+        },
+        "compounder": {
+          "failed": [],
+          "missing": [],
+          "gate_score": 75.31,
+          "gate_threshold": 60.0
+        },
+        "growth": {
+          "failed": [
+            "signal.revenue_cagr_next_3y",
+            "signal.price_to_base_value",
+            "domain.asymmetry",
+            "domain.expectation_valuation"
+          ],
+          "missing": [],
+          "gate_score": 75.31,
+          "gate_threshold": 65.0
+        },
+        "moonshot": {
+          "failed": [
+            "signal.market_cap_usd",
+            "domain.asymmetry"
+          ],
+          "missing": [],
+          "gate_score": 79.98,
+          "gate_threshold": 60.0
+        },
+        "outlier_growth": {
+          "failed": [
+            "domain.asymmetry",
+            "criterion.asymmetry.upside_path"
+          ],
+          "missing": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception"
+          ],
+          "gate_score": 79.98,
+          "gate_threshold": 65.0
+        }
+      },
+      "reason": "적격 유형 중 Compounder fit이 가장 높다.",
+      "long_term_growth_status": "missing_report"
+    }
+  ]
+}
