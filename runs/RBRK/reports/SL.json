@@ -4,40 +4,149 @@
   "as_of_date": "2026-09-18",
   "domain": "structural_leadership",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 69.5,
+  "confidence_0_1": 0.83,
+  "bull_score": 84,
+  "bear_score": 48,
+  "bull_case": "Cyber resilience demand is structural, and Rubrik is broadening from backup into identity, cloud/SaaS and agentic recovery while retaining strong third-party category recognition and >30% ARR growth.",
+  "bear_case": "Most disclosed economics still come from one broad cyber-resilience demand pool. Large incumbents can bundle adjacent capabilities, and Agent Cloud has not yet proven a second material end market.",
+  "thesis": "The secular shift from backup toward cyber resilience and AI-era recovery is durable, and Rubrik has credible category leadership. Gartner leadership, strong ARR growth and broad integrations support that view. The limiter is diversification: disclosed revenue is still overwhelmingly one demand pool, so durability_risks remains low until identity or Agent Cloud becomes a material independent market.",
+  "evidence": [
+    {
+      "claim": "Rubrik was a Gartner Leader in Backup and Data Protection Platforms for the seventh consecutive year and was positioned furthest in Vision in the 2026 report.",
+      "source_type": "third_party_research",
+      "source": "https://ir.rubrik.com/news-events/press-releases/news-details/2026/Rubrik-is-Named-a-Leader-in-the-2026-Gartner-Magic-Quadrant/default.aspx",
+      "period": "2026",
+      "as_of_date": "2026-07-02",
+      "value": "7 years Leader",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-SL-GARTNER-001",
+      "economic_driver": "category_leadership"
+    },
+    {
+      "claim": "Subscription ARR grew 33% to $1.66B and cloud ARR grew 39% to $1.48B, indicating category demand remains structural at meaningful scale.",
+      "source_type": "company_ir",
+      "source": "Rubrik Q2 FY2027 official results",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": "ARR +33%; cloud ARR +39%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-SL-GROWTH-002",
+      "economic_driver": "secular_durability"
+    },
+    {
+      "claim": "Rubrik expanded from data protection into identity resilience and AI-agent governance/recovery, including CrowdStrike, Claude and Google Cloud integrations.",
+      "source_type": "company_ir",
+      "source": "Rubrik official 2026 product and partnership releases",
+      "period": "2026",
+      "as_of_date": "2026-09-01",
+      "value": "data + identity + agentic security",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-SL-EXPAND-003",
+      "economic_driver": "category_expansion"
+    },
+    {
+      "claim": "RPO was about $2.62B at July 31, 2026 and roughly 53% was expected to be recognized within 12 months, supporting ongoing enterprise commitment.",
+      "source_type": "10-Q",
+      "source": "SEC Q2 FY2027 10-Q",
+      "period": "2026-07-31",
+      "as_of_date": "2026-09-01",
+      "value": "$2.62B RPO",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-SL-RPO-004",
+      "economic_driver": "demand_visibility"
+    },
+    {
+      "claim": "No separately disclosed second end market contributes at least 10% of revenue; Agent Cloud and identity are not reported as standalone material revenue pools.",
+      "source_type": "10-Q/company_ir",
+      "source": "Rubrik FY2026 and Q2 FY2027 disclosures",
+      "period": "2026",
+      "as_of_date": "2026-09-18",
+      "value": "0 independently disclosed >10% adjacent markets",
+      "fact_or_estimate": "interpretation",
+      "evidence_id": "RBRK-SL-DIV-005",
+      "economic_driver": "durability_risks"
+    }
+  ],
+  "counterevidence": [
+    "Large platform vendors and security suites can compete through bundling.",
+    "Revenue concentration by channel partner is high.",
+    "Agent Cloud may expand TAM but is not yet a material disclosed revenue pool.",
+    "Cyber budgets are secular but still subject to procurement cycles and macro pressure."
+  ],
+  "unknowns": [
+    "Exact Rubrik market share.",
+    "Agent Cloud and identity revenue shares.",
+    "Independent final-market revenue mix.",
+    "Long-term pricing power versus bundled alternatives."
+  ],
+  "falsifiers": [
+    "Cut secular_durability if normalized ARR growth falls below 15% for multiple quarters.",
+    "Cut category_leadership if third-party position weakens and large-customer growth stalls.",
+    "Raise durability_risks only after a second independent end market exceeds 10% of revenue."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "ARR/cloud ARR growth",
+      "direction": "up",
+      "threshold": ">20% y/y",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "independent adjacent revenue pools",
+      "direction": "up",
+      "threshold": "at least 2 markets >10% revenue",
+      "cadence": "annual"
+    },
+    {
+      "name": "third-party category position",
+      "direction": "up",
+      "threshold": "remain Leader/top tier",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Obtain market-share data from independent research.",
+    "Track Agent Cloud/identity standalone revenue.",
+    "Map end-market mix rather than geography/channel mix."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "secular_durability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Cyber resilience, cloud data protection and AI-agent risk are multi-year structural demand drivers, with >30% ARR growth at $1.66B scale. Evidence supports above-75 durability but not a 90-level industry standard monopoly."
     },
     {
       "criterion_id": "category_leadership",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Seven consecutive Gartner Leader recognitions plus strong enterprise adoption support demonstrated category leadership, but exact market share and pricing-rule control are not disclosed."
     },
     {
       "criterion_id": "durability_risks",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 45,
+      "rationale": "No second independent final market is disclosed above 10% of revenue; most economics remain one cyber-resilience demand pool, matching the observable 0-market diversification row."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "minor",
+      "rationale": "Secular demand is clear but exact market growth is not locked in this run."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "material",
+      "rationale": "Third-party positioning is strong but exact market share is unavailable."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "critical",
+      "rationale": "Adjacent markets are strategically plausible but not yet material enough to count as independent buffers."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
