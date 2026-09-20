@@ -124,9 +124,9 @@
     "growth"
   ],
   "early_exit": false,
-  "hard_veto_status": "PENDING_REVIEW",
-  "mechanical_pre_ic_state": "WATCH",
-  "position_range_pre_ic": "0% until veto cleared",
+  "hard_veto_status": "CLEARED",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "position_range_pre_ic": "1-3% (성장주 초기 상한)",
   "domain_scores": {
     "structural_leadership": {
       "bull_score": 90,
@@ -684,11 +684,11 @@
   "confirmed_vetoes": [],
   "unresolved_vetoes": [],
   "veto_gate": {
-    "overall": "PENDING_REVIEW",
+    "overall": "CLEARED",
     "items": [
       {
         "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "MA",
           "RT"
@@ -699,16 +699,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "The supplied filings disclose established Audit Committee oversight, continued PwC engagement and related-party controls, and do not disclose a restatement, auditor dispute or material weakness. No primary evidence establishes the veto's required integrity/accounting-trust damage event."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "cutoff까지 재작성·감사인 이견/교체·내부통제 중대결함 또는 미공시 관련자거래가 확인되지 않았다. 10-Q에서 disclosure controls가 effective로 평가됐다. Factoring과 XPV는 공시된 구조이므로 그 자체가 회계 신뢰 훼손 사건은 아니다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "FS",
           "RT"
@@ -719,11 +723,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Broadcom's own operations generate cash far above ordinary capex and near-term debt maturities, so the company does not require repeated external financing to operate. XPV financing supports customers and is routed to off-balance risk rather than this veto."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "9M OCF $32.95B와 현금 $23.98B, 낮은 현행 capex, 미사용 $7.5B revolver는 AVGO 자체 영업이 필수 지출을 조달함을 보여준다. XPV는 고객 자금조달 지원 위험이지 AVGO 영업이 반복 외부자본 없이는 성립하지 않는다는 두 구성요건을 충족하지 않는다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
@@ -752,7 +760,7 @@
       },
       {
         "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -763,16 +771,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "The veto requires absence of customer value plus subsidy dependence. Multi-generation design wins, non-terminable commitments, 69% gross margin and performance-per-watt evidence refute the required 'no customer value' element. XPV financing remains a unit-economics risk, not this veto by policy."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "69% gross margin, multi-generation design wins, 비취소 계약/RPO와 AI revenue 성장은 ‘고객가치 부재’라는 필수 요건을 반증한다. XPV vendor-financing 위험은 정책상 CP/FS/AS에 남기며 이 veto와 분리한다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "RF",
           "RT"
@@ -783,16 +795,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Operating income and owner-FCF proxies are rising sharply while a simple invested-capital proxy increased only modestly. The exact incremental ROIC is noisy, but evidence contradicts a structural collapse below cost of capital."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "RF는 operating income·owner-FCF가 invested-capital proxy보다 훨씬 빠르게 증가한다고 확인했고 incremental return을 75점 수준으로 평가했다. 자본비용 아래의 구조적 붕괴가 현재 관측됐다는 증거는 없다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "MT",
           "RT"
@@ -803,16 +819,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "The veto requires actual and persistent shrinkage. Current evidence shows expanding AI revenue, improving consolidated gross margin, multi-generation design wins and tighter software contracts. Future customer insourcing is a monitoring risk, not evidence that the moat is already persistently shrinking."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "현재 evidence는 AI revenue 가속, 69% gross margin, multi-generation design wins와 더 강한 software contract terms를 보여준다. 고객 자체실리콘은 중요한 미래 위협이지만 실제·지속적 moat shrinkage의 현재 증거는 아니다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "EV",
           "AS",
@@ -830,16 +850,20 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Frozen price $357.61 is below locked-policy Bull value $797.84 and equals only 0.884x Base $404.48. The defined veto requires current price to exceed Bull value, which is not satisfied."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Frozen current price $357.61은 Bull value $797.84보다 크게 낮다. Base valuation의 야심과 Bear downside는 EV/AS 점수 문제지만 veto의 단일 구성요건인 현재가 > Bull은 성립하지 않는다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
         "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -850,11 +874,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Concentration is high and the distributor-level >25% watch trigger is met, but a distributor is a channel rather than a disclosed single end customer, and the filings show multiple end customers plus a separate software segment. A single dependency whose loss would irreversibly destroy business economics is not established."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Top-five end-customer concentration은 높지만 개별 end-customer >25%는 공시되지 않았고, 50% 수치는 distributor channel이다. Semiconductor 외 infrastructure software도 material하다. 집중위험은 크지만 단일 요인 상실 시 사업경제성이 회복 불가능하게 훼손된다는 fatality는 입증되지 않았다."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": []
       },
       {
@@ -884,155 +912,7 @@
     ],
     "confirmed": [],
     "unresolved": [],
-    "pending": [
-      {
-        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MA",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "MA",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "The supplied filings disclose established Audit Committee oversight, continued PwC engagement and related-party controls, and do not disclose a restatement, auditor dispute or material weakness. No primary evidence establishes the veto's required integrity/accounting-trust damage event."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "FS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "FS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Broadcom's own operations generate cash far above ordinary capex and near-term debt maturities, so the company does not require repeated external financing to operate. XPV financing supports customers and is routed to off-balance risk rather than this veto."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "The veto requires absence of customer value plus subsidy dependence. Multi-generation design wins, non-terminable commitments, 69% gross margin and performance-per-watt evidence refute the required 'no customer value' element. XPV financing remains a unit-economics risk, not this veto by policy."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "RF",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "RF",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Operating income and owner-FCF proxies are rising sharply while a simple invested-capital proxy increased only modestly. The exact incremental ROIC is noisy, but evidence contradicts a structural collapse below cost of capital."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MT",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "MT",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "The veto requires actual and persistent shrinkage. Current evidence shows expanding AI revenue, improving consolidated gross margin, multi-generation design wins and tighter software contracts. Future customer insourcing is a monitoring risk, not evidence that the moat is already persistently shrinking."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "EV",
-          "AS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "AS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Frozen price $357.61 is far below locked Bull value $797.84; the veto's sole element is not met."
-          },
-          {
-            "agent_id": "EV",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Frozen price $357.61 is below locked-policy Bull value $797.84 and equals only 0.884x Base $404.48. The defined veto requires current price to exceed Bull value, which is not satisfied."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      },
-      {
-        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Concentration is high and the distributor-level >25% watch trigger is met, but a distributor is a channel rather than a disclosed single end customer, and the filings show multiple end customers plus a separate software segment. A single dependency whose loss would irreversibly destroy business economics is not established."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": []
-      }
-    ]
+    "pending": []
   },
   "valuation_model": {
     "status": "COMPLETE",

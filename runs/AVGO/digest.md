@@ -1,5 +1,5 @@
 # Digest — AVGO (as of 2026-09-18)
-score 70.46 (ex-val 71.56, Emerging Outlier) · DI 73.5 · TQ None · archetype growth — Highest eligible deterministic fit; ties use configured priority · veto PENDING_REVIEW · state WATCH
+score 70.46 (ex-val 71.56, Emerging Outlier) · DI 73.5 · TQ None · archetype growth — Highest eligible deterministic fit; ties use configured priority · veto CLEARED · state NORMAL_CANDIDATE
 signals {'price_to_base_value': 0.8841, 'valuation_percentile_5y': None, 'revenue_cagr_next_3y': 0.4381, 'market_cap_usd': 1707097776022.65} · reachable(raw) ['growth']
 veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
 
@@ -65,6 +65,18 @@ unknowns: No pre-cutoff empirical base-rate dataset was found that isolates Broa
 | DI | 73.5 (55–85) | 0.88 | support | – | The disruption case is strong but not NVDA-style platform control. Custom XPUs, Ethernet networking and private-cloud software reshape AI infrastructure econom… |
 bull: Broadcom is shifting AI compute from general-purpose merchant accelerators toward customer-specific silicon plus Ethernet networking. OpenAI and Meta multi-gen… / bear: The customers driving the shift are the same hyperscalers and frontier labs capable of internal design and multi-sourcing. Broadcom may be an implementation an…
 unknowns: Independent third-party benchmark data for Jalapeño performance, total cost of ownership … · Per-customer XPU gross margin and lifetime economics are undisclosed.
+
+## evidence_quality
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| ED | 86 | 0.93 | support | – | 핵심 투자판단 수치는 대부분 cutoff-valid 10-Q·10-K·DEF 14A와 Broadcom 공식 IR에 직접 연결된다. 특히 고객집중, TSMC 의존, $126.8B 구매약정, $29B XPV backstop, factoring은 1차 자료로 확인된다. 다만 고객별 XPU … |
+unknowns: XPV 지원 고객이 AVGO 매출·AR에서 차지하는 비중. · 구매약정 $126.8B 중 비취소 고객계약으로 실질적으로 상쇄되는 비중.
+
+## red_team
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| RT | 50 | 0.94 | oppose | V1=cleared, V2=cleared, V4=cleared, V5=cleared, V6=cleared, V7=cleared, V8=cleared | 가장 강한 숏 논리는 ‘AI 수요가 없다’가 아니라 수요의 질과 집중이다. 한 distributor가 Q3 매출 50%, top-five end customers가 약 55%이고, AVGO는 $126.8B 구매약정·$29B XPV backstop·조건부 $42B customer-not… |
+unknowns: 개별 top-five end-customer 매출 비중과 XPV 지원 고객향 매출/AR 비중. · $126.8B 구매약정 중 customer commitments로 실질 매칭되는 비중.
 
 ## macro_overlay
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |

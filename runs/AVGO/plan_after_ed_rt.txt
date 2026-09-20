@@ -1,0 +1,23 @@
+{
+  "stage": "ic",
+  "agents": {
+    "investment_committee": "IC"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "earnings_release",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "research": {
+    "questions": 85,
+    "pending": 85,
+    "command": "python harness.py research-plan AVGO"
+  }
+}
+python harness.py prompt AVGO IC
