@@ -85,14 +85,59 @@ def prompt(plan):
         + json.dumps(plan, ensure_ascii=False, indent=2) + '\n')
 
 
+def _iso_date(value):
+    """A date only counts as YYYY-MM-DD that parses. Anything else is not a date.
+
+    The financial pack schema writes dates in that one shape, so the other forms
+    fromisoformat accepts (basic 20260801, ISO week dates) would mean the record
+    did not come from the preprocessor and its day cannot be trusted.
+    """
+    if not isinstance(value, str) or len(value) != 10:
+        return None
+    try:
+        return date.fromisoformat(value)
+    except ValueError:
+        return None
+
+
+def fact_filing_date(fact, documents):
+    """The fact's own filing date, else the date on the document it came from.
+
+    The preprocessor is allowed to leave filing_date null when the page does not
+    show one, so the point-in-time test reads the document instead. When neither
+    carries a usable date the caller must drop the fact: a fact whose age cannot
+    be established is not a verified fact, and guessing one would let post-cutoff
+    information through.
+    """
+    own = fact.get('filing_date')
+    if own is not None:
+        # Present but unparseable is a corrupt record, not a missing one: the
+        # document's date must not be used to paper over it.
+        return _iso_date(own)
+    key = fact.get('source_document')
+    if not key:
+        return None
+    for document in documents:
+        if key in (document.get('source_document'), document.get('document_id')):
+            resolved = _iso_date(document.get('filing_date'))
+            if resolved:
+                return resolved
+    return None
+
+
 def verified_catalog(run):
     catalog = {'context:'+k: v for k, v in read(run/'company_context.json').items()}
     path = run/'sources/financials/normalized_financials.json'
     qa = run/'sources/financials/qa_report.json'
     if path.exists() and qa.exists():
-        cutoff = read(run/'company_context.json')['as_of_date']
-        for fact in read(path).get('facts', []):
-            if fact.get('requires_review') is False and fact.get('fact_id') and fact.get('filing_date', '9999') <= cutoff:
+        cutoff = _iso_date(read(run/'company_context.json')['as_of_date'])
+        pack = read(path)
+        documents = pack.get('documents', [])
+        for fact in pack.get('facts', []):
+            if fact.get('requires_review') is not False or not fact.get('fact_id'):
+                continue
+            filed = fact_filing_date(fact, documents)
+            if filed and cutoff and filed <= cutoff:
                 catalog['normalized:'+fact['fact_id']] = fact['value_reported']
     return catalog
 

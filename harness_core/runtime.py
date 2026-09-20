@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from datetime import date, datetime, timedelta, timezone
 import argparse, hashlib, json, os, re, statistics, shutil, subprocess, sys
-from . import rubric, calibration, archetypes, macro_geo, planner, intake, fetch, research, plain_report
+from . import rubric, calibration, archetypes, macro_geo, planner, intake, fetch, research, plain_report, context
 from .conditions import check_condition, number
 from .evidence import concentration_flags
 from .state import dispersion_review, narrowed_position
@@ -234,7 +234,10 @@ def cmd_freeze(args):
     ctx=load_json(run/'company_context.json')
     missing=[k for k in ('current_price','net_cash_per_share') if ctx.get(k) is None]
     if missing: raise SystemExit('freeze requires locked company_context fields: '+', '.join(missing))
-    inputs=snapshot_hashes(run); m=load_manifest(t)
+    m=load_manifest(t)
+    problems=context.validate(ctx,t,m,load_json(ROOT/'schemas/company_context.schema.json'),VAL_POLICY)
+    if problems: raise SystemExit(f'{t}: company_context.json is not fit to freeze —\n  '+'\n  '.join(problems))
+    inputs=snapshot_hashes(run)
     m.update({**VERSIONS,'provider_calibration_mode':PROVIDER_CAL['mode'],'ticker':t,'as_of_date':ctx['as_of_date'],'frozen':True,
         'frozen_at_utc':datetime.now(timezone.utc).isoformat(),'harness_commit':current_commit(),
         'config_files':config_hashes(),'input_files':inputs,'input_snapshot_sha256':combined_hash(inputs),

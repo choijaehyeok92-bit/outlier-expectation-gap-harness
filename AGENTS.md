@@ -38,6 +38,7 @@
 
 ### Phase 4 — Hard Veto gate
 `hard_veto=true`가 하나라도 발생하면 IC는 자동매수할 수 없다. 반드시 `cleared`, `conditional`, `confirmed` 중 하나로 판정하고 근거를 기록한다.
+최종 `CLEARED`와 `CONFIRMED`는 `config/calibration.json`의 지정 owner만 낼 수 있다. owner가 아닌 에이전트의 `candidate`·`conditional`·`confirmed`는 판정이 아니라 발견이다. 해당 veto를 `UNRESOLVED`로 올리고 그 내용을 `non_owner_escalations`에 보존해 owner가 답하게 한다. owner 보고서나 owner 판정이 없는 상태는 어떤 경우에도 clear가 아니다.
 
 ### Phase 5 — Investment Committee
 `harness.py aggregate`가 점수와 기계적 유형을 집계하고(Scorekeeper), IC 의장이 가장 강한 반론을 먼저 구성한 뒤 최종 판정을 내린다.
@@ -104,7 +105,7 @@
 - 경영진 발언을 검증 없이 증거로 취급 금지.
 
 ## Reproducibility contract
-분석 프롬프트 전에 `freeze`로 input snapshot과 runner metadata를 고정한다. 직접적인 provider/model 비교는 동일 harness commit과 동일 input snapshot에서만 유효하다. EV 할인 계산은 LLM이 아니라 하네스가 수행한다.
+분석 프롬프트 전에 `freeze`로 input snapshot과 runner metadata를 고정한다. `freeze`는 `company_context.json`을 `schemas/company_context.schema.json`(Draft 2020-12 + format)으로 검증하고, terminal multiple이 bear ≤ base ≤ bull을 지키는지, 티커가 이 run을 가리키는지, 기준일이 `init` 이후 움직이지 않았는지를 확인한다. 검증은 새로 freeze할 때만 실행하며 과거 frozen run은 그대로 읽힌다. 직접적인 provider/model 비교는 동일 harness commit과 동일 input snapshot에서만 유효하다. EV 할인 계산은 LLM이 아니라 하네스가 수행한다.
 
 ## Research Orchestrator and plain reporting
 Research Orchestrator는 docs/RESEARCH_ORCHESTRATOR.md를 따른다. frozen facts를 보존하고 질문·증거·충돌만 반환한다. 점수·유형·정상화·veto·비중 판정은 domain reviewer와 IC의 책임이다. 모든 추가 자료의 공개일을 cutoff와 비교한다. 최종 aggregate는 easy_report.md를 함께 생성하며 보고서가 새로운 투자판정을 만들지 않는다.
