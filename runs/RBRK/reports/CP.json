@@ -4,51 +4,160 @@
   "as_of_date": "2026-09-18",
   "domain": "customer_product",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 75.25,
+  "confidence_0_1": 0.89,
+  "bull_score": 88,
+  "bear_score": 55,
+  "bull_case": "Customers are expanding spend: NRR is above 119%, ARR grew 33%, cloud ARR 39%, and >$100K ARR customers grew 23%. Cyber recovery is mission-critical and broader identity/AI products can deepen wallet share.",
+  "bear_case": "Direct ROI and CAC payback are not disclosed. High sales-and-marketing intensity and channel concentration could mean customer acquisition is costlier and less proprietary than headline retention suggests.",
+  "thesis": "Customer pull is strong and improving. Rubrik combines high retention, rising large-customer count and improving contribution margins, which is better evidence than raw revenue growth. The main gap is that direct customer ROI and CAC/payback are not disclosed, so product strength is clear but not 90-level.",
+  "evidence": [
+    {
+      "claim": "Average subscription dollar-based NRR was above 119% at July 31, 2026.",
+      "source_type": "company_ir",
+      "source": "https://ir.rubrik.com/overview/default.aspx",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-09-18",
+      "value": ">119%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-CP-NRR-001",
+      "economic_driver": "retention_usage"
+    },
+    {
+      "claim": "Subscription ARR reached $1.66B, up 33% y/y; cloud ARR reached $1.48B, up 39%.",
+      "source_type": "company_ir",
+      "source": "https://ir.rubrik.com/news-events/press-releases/news-details/2026/Rubrik-Reports-Second-Quarter-Fiscal-Year-2027-Financial-Results/default.aspx",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": "ARR +33%; cloud ARR +39%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-CP-ARR-002",
+      "economic_driver": "wallet_share"
+    },
+    {
+      "claim": "Customers with at least $100K of Subscription ARR rose 23% y/y to 3,084.",
+      "source_type": "company_ir",
+      "source": "https://ir.rubrik.com/news-events/press-releases/news-details/2026/Rubrik-Reports-Second-Quarter-Fiscal-Year-2027-Financial-Results/default.aspx",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": 3084,
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-CP-LARGE-003",
+      "economic_driver": "enterprise_adoption"
+    },
+    {
+      "claim": "GAAP gross margin was 78.4% and subscription ARR contribution margin improved to 14.0% from 9.4% a year earlier.",
+      "source_type": "company_ir",
+      "source": "Rubrik Q2 FY2027 official results",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": "78.4% GM; 14.0% contribution margin",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-CP-UE-004",
+      "economic_driver": "unit_economics"
+    },
+    {
+      "claim": "Q2 revenue-normalized-for-material-rights grew 43% y/y, while total revenue grew 38%, reducing the concern that legacy material-right accounting is the main growth driver.",
+      "source_type": "company_ir",
+      "source": "Rubrik Q2 FY2027 official results",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": "43% normalized growth",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-CP-QUAL-005",
+      "economic_driver": "growth_quality"
+    }
+  ],
+  "counterevidence": [
+    "Rubrik does not disclose CAC, sales efficiency, gross retention or cohort payback.",
+    "H1 FY2027 sales and marketing expense remained above half of revenue, so acquisition intensity is still high.",
+    "Four channel partners represented roughly 26%, 28%, 10% and 10% of Q2 revenue; this is channel concentration even if ultimate customers are diversified.",
+    "Agent Cloud-specific retention and willingness-to-pay are not separately disclosed."
+  ],
+  "unknowns": [
+    "Gross retention/churn by cohort.",
+    "CAC payback and incremental sales efficiency.",
+    "Agent Cloud standalone pricing, ARR and retention.",
+    "Ultimate end-customer concentration behind large channel partners."
+  ],
+  "falsifiers": [
+    "Cut retention_usage if NRR falls below 110% or large-customer growth falls below 10%.",
+    "Cut unit_economics if contribution margin stalls while S&M remains above 50% of revenue.",
+    "Escalate dependency risk if one ultimate end customer exceeds 25% of revenue."
+  ],
   "hard_veto_flags": [
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "NRR >119%, 33% ARR growth, 23% large-customer growth and improving contribution margin show repeat customer expansion and economic value. High S&M is a risk but does not establish growth without customer value."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Channel concentration is high, but no ultimate end customer >25% is disclosed and the platform spans data, identity, cloud/SaaS and emerging agent security. Fatal single-factor dependence is not demonstrated."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "subscription NRR",
+      "direction": "up",
+      "threshold": ">115%; review <110%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": ">$100K ARR customer growth",
+      "direction": "up",
+      "threshold": ">15% y/y",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "subscription ARR contribution margin",
+      "direction": "up",
+      "threshold": ">15% and improving",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Obtain gross retention and cohort churn.",
+    "Estimate CAC payback from S&M and net-new ARR.",
+    "Separate Agent Cloud customer economics."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "customer_roi",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "Mission-critical recovery plus >119% NRR supports willingness-to-pay, but direct ROI/payback evidence is insufficient for the 75-90 anchors."
     },
     {
       "criterion_id": "retention_usage",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "NRR >119%, ARR +33%, cloud ARR +39% and large customers +23% show persistent expansion and increasing wallet share, just below a 90-level multi-year cohort dataset."
     },
     {
       "criterion_id": "unit_economics",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "78.4% GAAP gross margin and contribution-margin expansion show improving scale economics, but S&M remains high and CAC payback is undisclosed."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "Customer ROI is inferred from retention/expansion rather than disclosed payback data."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "minor",
+      "rationale": "NRR is disclosed only as >119%, not an exact quarterly series."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "Contribution margin improves but stock-based compensation and acquisition costs complicate owner economics."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
