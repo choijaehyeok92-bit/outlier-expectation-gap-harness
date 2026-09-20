@@ -14,6 +14,320 @@
     "disruptive_innovation": 83.25,
     "long_term_growth": null
   },
+  "archetype": {
+    "id": "compounder",
+    "label": "컴파운더",
+    "label_en": "Compounder",
+    "reason": "Highest eligible deterministic fit; ties use configured priority",
+    "gate_score": 78.39,
+    "secondary": [],
+    "position_guidance": "장기 보유가 기본이다. 밸류에이션 과열 시 매도보다 추가매수 속도를 조절한다.",
+    "position_cap": null,
+    "signals": {
+      "price_to_base_value": 1.1208,
+      "valuation_percentile_5y": 0.69,
+      "revenue_cagr_next_3y": 0.1,
+      "market_cap_usd": 690000000000.0
+    },
+    "evaluations": [
+      {
+        "id": "buffett_value",
+        "label": "버핏 스타일 가치주",
+        "conditions_met": false,
+        "gate_score": 78.39,
+        "gate_threshold": 60.0,
+        "gate_passed": true,
+        "failed": [
+          "signal.price_to_base_value",
+          "domain.asymmetry"
+        ],
+        "missing": []
+      },
+      {
+        "id": "compounder",
+        "label": "컴파운더",
+        "conditions_met": true,
+        "gate_score": 78.39,
+        "gate_threshold": 60.0,
+        "gate_passed": true,
+        "failed": [],
+        "missing": []
+      },
+      {
+        "id": "growth",
+        "label": "성장주",
+        "conditions_met": false,
+        "gate_score": 78.39,
+        "gate_threshold": 65.0,
+        "gate_passed": true,
+        "failed": [
+          "signal.revenue_cagr_next_3y",
+          "signal.price_to_base_value",
+          "domain.asymmetry"
+        ],
+        "missing": []
+      },
+      {
+        "id": "moonshot",
+        "label": "문샷형",
+        "conditions_met": false,
+        "gate_score": 83.31,
+        "gate_threshold": 60.0,
+        "gate_passed": true,
+        "failed": [
+          "signal.market_cap_usd",
+          "domain.asymmetry"
+        ],
+        "missing": []
+      },
+      {
+        "id": "outlier_growth",
+        "label": "장기 아웃라이어 성장주",
+        "conditions_met": false,
+        "gate_score": 83.31,
+        "gate_threshold": 65.0,
+        "gate_passed": true,
+        "failed": [
+          "domain.asymmetry",
+          "criterion.asymmetry.upside_path"
+        ],
+        "missing": [
+          "domain.long_term_growth",
+          "criterion.long_term_growth.opportunity_scale_5y",
+          "criterion.long_term_growth.growth_duration_10y",
+          "criterion.long_term_growth.culture_adaptability",
+          "criterion.long_term_growth.market_misperception"
+        ]
+      }
+    ],
+    "archetype_fit": {
+      "buffett_value": {
+        "eligible": false,
+        "fit_score": 83.775,
+        "fit_axes": [
+          {
+            "field": "criterion.reinvestment_fcf.fcf_per_share_quality",
+            "weight": 0.3,
+            "value": 90.0,
+            "normalized": 0.9,
+            "missing": false
+          },
+          {
+            "field": "domain.financial_survival",
+            "weight": 0.25,
+            "value": 84.0,
+            "normalized": 0.84,
+            "missing": false
+          },
+          {
+            "field": "domain.management_allocation",
+            "weight": 0.2,
+            "value": 82.0,
+            "normalized": 0.82,
+            "missing": false
+          },
+          {
+            "field": "domain.moat_trajectory",
+            "weight": 0.15,
+            "value": 88.5,
+            "normalized": 0.885,
+            "missing": false
+          },
+          {
+            "field": "domain.asymmetry",
+            "weight": 0.1,
+            "value": 61.0,
+            "normalized": 0.61,
+            "missing": false
+          }
+        ],
+        "failed_conditions": [
+          "signal.price_to_base_value",
+          "domain.asymmetry"
+        ],
+        "missing_conditions": [],
+        "blocking_vetoes": []
+      },
+      "compounder": {
+        "eligible": true,
+        "fit_score": 83.1,
+        "fit_axes": [
+          {
+            "field": "domain.moat_trajectory",
+            "weight": 0.3,
+            "value": 88.5,
+            "normalized": 0.885,
+            "missing": false
+          },
+          {
+            "field": "criterion.reinvestment_fcf.incremental_roic",
+            "weight": 0.3,
+            "value": 85.0,
+            "normalized": 0.85,
+            "missing": false
+          },
+          {
+            "field": "criterion.reinvestment_fcf.reinvestment_runway",
+            "weight": 0.25,
+            "value": 75.0,
+            "normalized": 0.75,
+            "missing": false
+          },
+          {
+            "field": "domain.management_allocation",
+            "weight": 0.15,
+            "value": 82.0,
+            "normalized": 0.82,
+            "missing": false
+          }
+        ],
+        "failed_conditions": [],
+        "missing_conditions": [],
+        "blocking_vetoes": []
+      },
+      "growth": {
+        "eligible": false,
+        "fit_score": 70.225,
+        "fit_axes": [
+          {
+            "field": "signal.revenue_cagr_next_3y",
+            "weight": 0.2,
+            "value": 0.1,
+            "normalized": 0.0,
+            "missing": false
+          },
+          {
+            "field": "domain.customer_product",
+            "weight": 0.25,
+            "value": 90.0,
+            "normalized": 0.9,
+            "missing": false
+          },
+          {
+            "field": "domain.structural_leadership",
+            "weight": 0.2,
+            "value": 88.75,
+            "normalized": 0.8875,
+            "missing": false
+          },
+          {
+            "field": "domain.reinvestment_fcf",
+            "weight": 0.2,
+            "value": 83.5,
+            "normalized": 0.835,
+            "missing": false
+          },
+          {
+            "field": "domain.moat_trajectory",
+            "weight": 0.15,
+            "value": 88.5,
+            "normalized": 0.885,
+            "missing": false
+          }
+        ],
+        "failed_conditions": [
+          "signal.revenue_cagr_next_3y",
+          "signal.price_to_base_value",
+          "domain.asymmetry"
+        ],
+        "missing_conditions": [],
+        "blocking_vetoes": []
+      },
+      "moonshot": {
+        "eligible": false,
+        "fit_score": 78.9,
+        "fit_axes": [
+          {
+            "field": "domain.disruptive_innovation",
+            "weight": 0.4,
+            "value": 83.25,
+            "normalized": 0.8325,
+            "missing": false
+          },
+          {
+            "field": "domain.asymmetry",
+            "weight": 0.25,
+            "value": 61.0,
+            "normalized": 0.61,
+            "missing": false
+          },
+          {
+            "field": "domain.structural_leadership",
+            "weight": 0.2,
+            "value": 88.75,
+            "normalized": 0.8875,
+            "missing": false
+          },
+          {
+            "field": "domain.financial_survival",
+            "weight": 0.15,
+            "value": 84.0,
+            "normalized": 0.84,
+            "missing": false
+          }
+        ],
+        "failed_conditions": [
+          "signal.market_cap_usd",
+          "domain.asymmetry"
+        ],
+        "missing_conditions": [],
+        "blocking_vetoes": []
+      },
+      "outlier_growth": {
+        "eligible": false,
+        "fit_score": 51.4,
+        "fit_axes": [
+          {
+            "field": "domain.long_term_growth",
+            "weight": 0.35,
+            "value": null,
+            "normalized": 0.0,
+            "missing": true
+          },
+          {
+            "field": "domain.moat_trajectory",
+            "weight": 0.2,
+            "value": 88.5,
+            "normalized": 0.885,
+            "missing": false
+          },
+          {
+            "field": "domain.customer_product",
+            "weight": 0.15,
+            "value": 90.0,
+            "normalized": 0.9,
+            "missing": false
+          },
+          {
+            "field": "criterion.asymmetry.upside_path",
+            "weight": 0.2,
+            "value": 60.0,
+            "normalized": 0.6,
+            "missing": false
+          },
+          {
+            "field": "domain.management_allocation",
+            "weight": 0.1,
+            "value": 82.0,
+            "normalized": 0.82,
+            "missing": false
+          }
+        ],
+        "failed_conditions": [
+          "domain.asymmetry",
+          "criterion.asymmetry.upside_path"
+        ],
+        "missing_conditions": [
+          "domain.long_term_growth",
+          "criterion.long_term_growth.opportunity_scale_5y",
+          "criterion.long_term_growth.growth_duration_10y",
+          "criterion.long_term_growth.culture_adaptability",
+          "criterion.long_term_growth.market_misperception"
+        ],
+        "blocking_vetoes": []
+      }
+    }
+  },
   "reachable_archetypes_raw": [
     "compounder"
   ],
@@ -1449,27 +1763,5 @@
     "turnaround_candidate": false
   },
   "ic_verdict": null,
-  "early_exit_record": null,
-  "archetype": "compounder",
-  "secondary_archetypes": [],
-  "archetype_rationale": "Highest eligible deterministic fit; ties use configured priority",
-  "ic_state": "WATCH",
-  "position_range": "0% until veto cleared",
-  "ic_review_flags": [],
-  "falsifiers": [
-    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
-    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
-    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
-    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
-    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
-    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
-    "다음 두 차례 FOMC에서 동결 또는 인하로 전환되면 긴축 전환 판단은 기각되고 배수를 1.0으로 되돌린다.",
-    "하이일드 OAS가 400bp를 넘어서면 위험예산 배수를 0.5 이하로 추가 하향한다.",
-    "투자등급 발행시장이 2주 이상 사실상 중단되면 시스템 유동성 스트레스로 재분류한다.",
-    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
-    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens.",
-    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens."
-  ],
-  "macro_pacing_multiplier": 0.5,
-  "decision_authority": "Deterministic eligibility and veto gates; IC may reduce deployment within configured caps."
+  "early_exit_record": null
 }
