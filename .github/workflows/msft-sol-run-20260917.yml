@@ -34,6 +34,13 @@ jobs:
           run = h.run_dir(ticker)
           shutil.copy2(source/"manual_inputs/company_context.json", run/"company_context.json")
           shutil.copytree(source/"manual_sources", run/"sources", dirs_exist_ok=True)
+          # This replays an archived v3.1-era run, which predates stage 0 and has no
+          # financial pack. init marks new runs as pack-required; clear it so the replay
+          # inherits the archived run's stage-0 status instead of being gated on documents
+          # that never existed for it.
+          manifest = h.load_json(run/"run_manifest.json")
+          manifest.pop("financial_pack_required", None)
+          h.dump_json(run/"run_manifest.json", manifest)
           # Reuse only the archived domain assessments; current stages determine remaining work.
           for agent in h.MANIFEST:
               path = source/"manual_reports"/f"{agent['agent_id']}.json"
