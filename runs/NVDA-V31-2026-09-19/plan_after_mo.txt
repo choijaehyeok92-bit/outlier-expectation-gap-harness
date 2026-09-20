@@ -1,0 +1,14 @@
+{
+  "stage": "evidence_and_red_team",
+  "agents": {
+    "evidence_quality": "ED",
+    "red_team": "RT"
+  },
+  "research": {
+    "questions": 72,
+    "pending": 72,
+    "command": "python harness.py research-plan NVDA-V31-2026-09-19"
+  }
+}
+python harness.py prompt NVDA-V31-2026-09-19 ED
+python harness.py prompt NVDA-V31-2026-09-19 RT
