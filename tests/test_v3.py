@@ -772,6 +772,20 @@ class Stage0FetchTests(unittest.TestCase):
         with self.assertRaises(fetch.FetchError):
             fetch.resolve_cik('NOSUCH', 'ua', opener)
 
+    def test_open_requests_identity_encoding_from_sec(self):
+        captured = {}
+        class Response:
+            def __enter__(self): return self
+            def __exit__(self, exc_type, exc, tb): return False
+            def read(self): return b'{}'
+        def fake_urlopen(request, timeout=30):
+            captured['accept_encoding'] = request.get_header('Accept-encoding')
+            return Response()
+        with patch('harness_core.fetch.urllib.request.urlopen', fake_urlopen):
+            self.assertEqual(fetch._open('https://www.sec.gov/files/company_tickers.json',
+                                         'Tester t@example.com'), b'{}')
+        self.assertEqual(captured['accept_encoding'], 'identity')
+
     def test_nothing_filed_after_the_cutoff_is_planned(self):
         rows, _ = fetch.recent_filings(1730168, 'ua', self.opener(
             [('10-K', '2026-12-01'), ('10-K', '2026-06-01'), ('10-Q', '2026-05-01')]))

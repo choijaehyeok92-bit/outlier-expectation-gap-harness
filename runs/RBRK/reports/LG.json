@@ -1,0 +1,186 @@
+{
+  "agent_id": "LG",
+  "ticker": "RBRK",
+  "as_of_date": "2026-09-18",
+  "domain": "long_term_growth",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 73.5,
+  "confidence_0_1": 0.8,
+  "bull_score": 88,
+  "bear_score": 48,
+  "bull_case": "Core cyber resilience can keep compounding while identity and Agent Cloud add new value pools. A roughly 2.4x five-year revenue path is plausible without heroic share assumptions if growth decelerates gradually from current levels.",
+  "bear_case": "The apparent runway may be mostly one category with adjacent features rather than independent businesses. If ARR growth mean-reverts quickly and Agent Cloud stays small, the 10-year thesis collapses into a normal SaaS maturation story.",
+  "thesis": "RBRK fits the Long-Term Outlier Growth concept better than ordinary Growth. A roughly 2.4x five-year scale path and 5-10 year runway are credible, the company has already shifted from legacy CDM to subscription RSC and then into identity/agent resilience, and reverse-DCF suggests the market is pricing a shorter cash-flow duration than the full Base. The thesis remains fragile because long-run owner FCF and Agent Cloud monetization are not proven.",
+  "evidence": [
+    {
+      "claim": "Frozen EV signal assumes 26% three-year revenue CAGR; extending with deceleration toward low-teens growth gives an analyst five-year revenue expansion of roughly 2.4x, not 3x+.",
+      "source_type": "harness",
+      "source": "runs/RBRK/reports/EV.json and analyst sensitivity",
+      "period": "5 years forward from 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 2.4,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-LG-SCALE-001",
+      "economic_driver": "opportunity_scale_5y"
+    },
+    {
+      "claim": "Subscription ARR is $1.66B growing 33%, cloud ARR $1.48B growing 39%, and 3,084 customers exceed $100K ARR, showing continued penetration room at current scale.",
+      "source_type": "company_ir",
+      "source": "Rubrik Q2 FY2027 official results",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": "33% ARR growth; 39% cloud ARR growth",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-LG-RUNWAY-002",
+      "economic_driver": "growth_duration"
+    },
+    {
+      "claim": "Rubrik disclosed that it began transitioning customers from legacy CDM capabilities to subscription-based Rubrik Security Cloud in fiscal 2023, demonstrating a completed product/business-model migration before the current AI expansion.",
+      "source_type": "10-Q",
+      "source": "https://www.sec.gov/Archives/edgar/data/1943896/000194389625000042/rbrk-20250731.htm",
+      "period": "transition began FY2023",
+      "as_of_date": "2025-09-10",
+      "value": "legacy CDM -> subscription RSC",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-LG-CULT-003",
+      "economic_driver": "culture_adaptability"
+    },
+    {
+      "claim": "Rubrik acquired Predibase for about $109.1M in 2025 and subsequently launched Agent Cloud, Claude Code/Gemini integrations and Agent Identity, showing capital and talent reallocation toward agentic AI.",
+      "source_type": "10-Q/company_ir",
+      "source": "SEC Q2 FY2026 10-Q and Rubrik 2026 Agent Cloud releases",
+      "period": "2025-2026",
+      "as_of_date": "2026-08-27",
+      "value": "$109.1M Predibase acquisition",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-LG-ADAPT-004",
+      "economic_driver": "culture_adaptability"
+    },
+    {
+      "claim": "The EV duration sensitivity values the Base path at about $103.63 if capitalized in year 7 versus $169.29 at year 10, compared with a frozen market price of $106.71.",
+      "source_type": "harness",
+      "source": "runs/RBRK/reports/EV.json",
+      "period": "2026-09-18 valuation sensitivity",
+      "as_of_date": "2026-09-18",
+      "value": "~7-year Base duration near market price",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-LG-GAP-005",
+      "economic_driver": "market_misperception"
+    },
+    {
+      "claim": "Rubrik was named a Leader and furthest in Vision in Gartner's 2026 Backup and Data Protection Platforms Magic Quadrant, its seventh consecutive year as a Leader.",
+      "source_type": "third_party_research",
+      "source": "https://ir.rubrik.com/news-events/press-releases/news-details/2026/Rubrik-is-Named-a-Leader-in-the-2026-Gartner-Magic-Quadrant/default.aspx",
+      "period": "2026",
+      "as_of_date": "2026-07-02",
+      "value": "7 consecutive years Leader",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-LG-LEAD-006",
+      "economic_driver": "category_position"
+    }
+  ],
+  "counterevidence": [
+    "The 2.4x five-year scale estimate is an analyst extension, not company guidance.",
+    "Core cyber resilience still accounts for essentially all disclosed economics; Agent Cloud is not separately material yet.",
+    "Base DCF is 81% terminal-value dependent, so the apparent expectation gap could be model optimism rather than market short-termism.",
+    "SBC-adjusted owner FCF is still negative on the current stress definition."
+  ],
+  "unknowns": [
+    "Agent Cloud five-year revenue contribution.",
+    "Current category penetration and exact market share.",
+    "Long-run owner-FCF margin after SBC.",
+    "Independent evidence that AI-agent security becomes a separate durable budget pool."
+  ],
+  "falsifiers": [
+    "Opportunity scale falls below 2x if normalized revenue growth drops below the mid-teens within two years.",
+    "Cut growth_duration below 65 if ARR growth drops below 20% before Agent Cloud is material.",
+    "Cut market_misperception if refrozen Base value falls near or below price without a shorter duration assumption."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "5-year normalized revenue path",
+      "direction": "up",
+      "threshold": ">2x from 2026 base",
+      "cadence": "annual"
+    },
+    {
+      "name": "ARR growth / Agent Cloud contribution",
+      "direction": "up",
+      "threshold": "ARR >20% until new value pools become material",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "positive with dilution normalizing",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Quantify Agent Cloud and identity revenue contribution.",
+    "Build a market-share/penetration model for cyber resilience.",
+    "Refreeze reverse-DCF duration annually."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "opportunity_scale_5y",
+      "score_0_100": 75,
+      "rationale": "A ~2.4x five-year expansion is plausible using the frozen 26% three-year growth signal with deceleration to low teens. It fits the 2.0-3.0x band and does not require 3x+ heroic scale."
+    },
+    {
+      "criterion_id": "growth_duration_10y",
+      "score_0_100": 70,
+      "rationale": "About seven years of high-value runway is defensible from cloud penetration plus identity/agent expansion. This is within the 5-10 year band but below the 75 midpoint because adjacent value pools remain early."
+    },
+    {
+      "criterion_id": "culture_adaptability",
+      "score_0_100": 75,
+      "rationale": "The 75 anchor is supported by an executed legacy-CDM-to-RSC transition, Predibase acquisition and rapid redeployment into agentic products. 90 is excluded because repeated successful reinvention across multiple mature cycles is not yet proven."
+    },
+    {
+      "criterion_id": "market_misperception",
+      "score_0_100": 75,
+      "rationale": "The specific, falsifiable gap is duration: market price is close to a seven-year Base sensitivity while the full ten-year Base is materially higher. 90 is excluded because the Base itself is terminal-heavy and independent consensus evidence is limited."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "opportunity_scale_5y",
+      "severity": "material",
+      "rationale": "The five-year revenue multiple is an analyst scenario, not formal guidance."
+    },
+    {
+      "criterion_id": "growth_duration_10y",
+      "severity": "material",
+      "rationale": "Agent Cloud and identity are not separately disclosed, limiting evidence that the runway renews itself."
+    },
+    {
+      "criterion_id": "culture_adaptability",
+      "severity": "minor",
+      "rationale": "The company is still young as a public issuer, so adaptation is observed over a limited public-history window."
+    },
+    {
+      "criterion_id": "market_misperception",
+      "severity": "critical",
+      "rationale": "Expectation-gap evidence comes primarily from a model whose terminal value is unusually large."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

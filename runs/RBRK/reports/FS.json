@@ -1,0 +1,192 @@
+{
+  "agent_id": "FS",
+  "ticker": "RBRK",
+  "as_of_date": "2026-09-18",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 65.75,
+  "confidence_0_1": 0.92,
+  "bull_score": 80,
+  "bear_score": 35,
+  "bull_case": "RBRK has about $1.75B of cash and short-term investments, positive OCF/FCF, and 0% converts maturing in 2030. Near-term external financing is not required, leaving room to fund growth through operations.",
+  "bear_case": "Dilution is the main financial risk. Outstanding shares rose about 5% y/y, H1 SBC was $174M, and convertibles add potential dilution. A valuation drawdown plus slower growth could expose the gap between reported FCF and owner FCF.",
+  "thesis": "Liquidity is strong and refinancing risk is distant, but dilution materially lowers financial-survival quality. Cash plus short-term investments exceed convertible carrying value by about $615M, the $1.15B 0% notes mature in June 2030, and operations are cash generative. However shares outstanding increased about 5% y/y and SBC remains economically large, forcing dilution_offbalance to the rubric's 30 band.",
+  "evidence": [
+    {
+      "claim": "At July 31, 2026 Rubrik held about $1.75B of cash, cash equivalents and short-term investments versus $1.15B principal of 0% convertible notes due June 15, 2030; conversion conditions had not been met.",
+      "source_type": "10-Q",
+      "source": "https://www.sec.gov/Archives/edgar/data/1943896/000194389626000060/rbrk-20260731.htm",
+      "period": "2026-07-31",
+      "as_of_date": "2026-09-01",
+      "value": "$1.75B liquidity; $1.15B notes",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-FS-LIQ-001",
+      "economic_driver": "liquidity_leverage"
+    },
+    {
+      "claim": "H1 FY2027 operating cash flow was $158.5M; Q2 company-defined free cash flow was $65.7M and FY2027 FCF guidance was raised to $323M-$333M.",
+      "source_type": "10-Q/company_ir",
+      "source": "SEC Q2 FY2027 10-Q and Rubrik Q2 FY2027 official results",
+      "period": "FY2027 H1/Q2 and FY2027 guide",
+      "as_of_date": "2026-09-01",
+      "value": "$158.5M H1 OCF; $323-$333M FY FCF guide",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-FS-CASH-002",
+      "economic_driver": "stress_survival"
+    },
+    {
+      "claim": "FY2026 10-K disclosed enforceable cash requirements of $41.1M operating leases and $448.8M purchase obligations, plus the $1.15B convertible principal due in 2030.",
+      "source_type": "10-K",
+      "source": "https://www.sec.gov/Archives/edgar/data/1943896/000194389626000013/rbrk-20260131.htm",
+      "period": "2026-01-31",
+      "as_of_date": "2026-03-19",
+      "value": "$41.1M leases; $448.8M purchases",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-FS-COMMIT-003",
+      "economic_driver": "off_balance_commitments"
+    },
+    {
+      "claim": "Class A plus Class B shares outstanding increased from about 197.46M at August 31, 2025 to about 207.30M at August 24, 2026, roughly +5.0% y/y.",
+      "source_type": "10-Q",
+      "source": "SEC Q2 FY2026 and Q2 FY2027 Forms 10-Q",
+      "period": "2025-08-31 to 2026-08-24",
+      "as_of_date": "2026-09-01",
+      "value": 0.0499,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-FS-DIL-004",
+      "economic_driver": "share_dilution"
+    },
+    {
+      "claim": "H1 FY2027 stock-based compensation was $174.386M. In the prior-year Q2 filing, Rubrik also disclosed substantial unvested RSUs/options and convertible-note share equivalents, demonstrating continuing dilution capacity.",
+      "source_type": "10-Q",
+      "source": "SEC Q2 FY2027 normalized financial pack and SEC Q2 FY2026 10-Q",
+      "period": "FY2027 H1 / FY2026 Q2",
+      "as_of_date": "2026-09-01",
+      "value": "$174.386M H1 SBC",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-FS-SBC-005",
+      "economic_driver": "dilution"
+    },
+    {
+      "claim": "The convertible notes have an initial conversion price around $124.76 and capped calls initially capped near $175.10, reducing but not eliminating potential conversion dilution.",
+      "source_type": "10-K",
+      "source": "https://www.sec.gov/Archives/edgar/data/1943896/000194389626000013/rbrk-20260131.htm",
+      "period": "notes issued June 2025",
+      "as_of_date": "2026-03-19",
+      "value": "$124.76 conversion; $175.10 cap",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-FS-CONV-006",
+      "economic_driver": "convertible_dilution"
+    }
+  ],
+  "counterevidence": [
+    "Reported company FCF is positive and improving, so dilution is not currently financing an otherwise cash-burning operating model.",
+    "The 0% notes do not mature until 2030 and had not met conversion conditions at July 31, 2026.",
+    "Capped calls are designed to reduce potential note-conversion dilution up to the cap.",
+    "Off-balance purchase obligations are below 0.5x TTM revenue, so dilution—not commitments—is the binding FS weakness."
+  ],
+  "unknowns": [
+    "Fully diluted economic share count after all RSUs, options, ESPP and convertible-note effects.",
+    "Normalized annual SBC after post-IPO award timing effects.",
+    "Whether future acquisitions will require additional equity consideration.",
+    "Exact cancellation flexibility and cloud-hosting mix within purchase obligations."
+  ],
+  "falsifiers": [
+    "Raise FS if annual share growth falls below 3% while SBC-adjusted owner FCF/share turns positive.",
+    "Lower FS if cash plus investments fall below convertible principal before owner FCF becomes sustainably positive.",
+    "Escalate external-capital risk if operating cash flow turns negative for multiple quarters while growth spending remains required."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Rubrik has positive OCF/FCF and about $1.75B liquidity, while the 0% convertible does not mature until 2030. Operations do not currently require repeated external financing to survive."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Dilution is material—about 5% y/y outstanding-share growth and high SBC—but the evidence does not yet establish a long-duration structural pattern. This risk is reflected in dilution_offbalance=30 and must be re-tested annually."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Net liquidity is positive, near-term debt service is minimal, maturity is 2030 and operating cash flow is positive. Price impairment risk is large, but current bankruptcy risk does not meet the veto definition."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "cash + investments minus debt",
+      "direction": "up",
+      "threshold": ">0 and no rapid drawdown",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "outstanding/diluted share growth",
+      "direction": "down",
+      "threshold": "<3% y/y",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "SBC-adjusted owner FCF/share",
+      "direction": "up",
+      "threshold": "positive and rising",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Build a fully diluted share bridge including RSUs, options, ESPP, converts and capped calls.",
+    "Track FY2027 actual FCF versus $323M-$333M guidance and reconcile SBC.",
+    "Reassess 2030 note conversion/refinancing risk if price rises above conversion thresholds."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 80,
+      "rationale": "Liquidity of about $1.75B exceeds the $1.15B 0% convertible principal, maturity is June 2030 and conversion conditions were unmet. This is stronger than the 75 anchor but not effectively debt-free enough for 90."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 75,
+      "rationale": "Positive OCF/FCF, raised full-year FCF guidance and low near-term debt service indicate the company can fund operations through a downturn without immediate external capital, matching the 75 internal-cash-defense anchor."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 30,
+      "rationale": "The rubric takes the weaker of dilution and commitments. Outstanding shares rose about 5% y/y, which falls in the >=3% dilution row scored 30, even though purchase obligations are under 0.5x TTM revenue."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "minor",
+      "rationale": "Convertible settlement could be cash, shares or a combination, and future conversion depends on market conditions."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "Company-defined FCF excludes the economic cost of SBC, so reported cash resilience overstates per-share owner economics."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "critical",
+      "rationale": "Post-IPO SBC, RSUs and converts make per-share dilution the binding financial risk; normalization is not yet established."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "stage": "triage",
+  "agents": {
+    "asymmetry": "AS",
+    "disruptive_innovation": "DI",
+    "financial_survival": "FS"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "research": {
+    "questions": 17,
+    "pending": 17,
+    "command": "python harness.py research-plan RBRK"
+  }
+}
+python harness.py prompt RBRK AS
+python harness.py prompt RBRK DI
+python harness.py prompt RBRK FS

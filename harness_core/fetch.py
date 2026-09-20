@@ -27,7 +27,7 @@ class FetchError(RuntimeError):
 
 def _open(url, user_agent, timeout=30):
     request = urllib.request.Request(url, headers={
-        'User-Agent': user_agent, 'Accept-Encoding': 'gzip, deflate', 'Host': url.split('/')[2]})
+        'User-Agent': user_agent, 'Accept-Encoding': 'identity', 'Host': url.split('/')[2]})
     with urllib.request.urlopen(request, timeout=timeout) as response:
         return response.read()
 

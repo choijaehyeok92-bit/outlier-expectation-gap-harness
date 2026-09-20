@@ -1,0 +1,182 @@
+{
+  "agent_id": "MA",
+  "ticker": "RBRK",
+  "as_of_date": "2026-09-18",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 67.25,
+  "confidence_0_1": 0.82,
+  "bull_score": 82,
+  "bear_score": 45,
+  "bull_case": "Management has repeatedly shifted the product platform, raised guidance with execution, and used a modest Predibase acquisition to accelerate AI capabilities rather than a transformative empire-building deal.",
+  "bear_case": "SBC and dilution remain high, founder/dual-class voting control weakens shareholder checks, and the economic return on Predibase and the AI expansion is not yet measurable.",
+  "thesis": "Execution and strategic adaptability are better than capital-allocation proof. The company has moved from legacy backup to subscription cyber resilience and agentic products, while Q1/Q2 FY2027 guidance was raised. Governance is acceptable but not exceptional because dual-class voting and high equity compensation create owner-alignment questions. Predibase is strategically coherent but too recent for a high post-acquisition return score.",
+  "evidence": [
+    {
+      "claim": "Rubrik transitioned customers from legacy CDM to subscription RSC beginning in FY2023 and then expanded into identity and Agent Cloud, demonstrating strategic adaptation rather than preserving the legacy model.",
+      "source_type": "10-Q/company_ir",
+      "source": "SEC Q2 FY2026 10-Q and Rubrik 2026 product releases",
+      "period": "FY2023-2026",
+      "as_of_date": "2026-09-18",
+      "value": "multiple platform transitions",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-MA-ADAPT-001",
+      "economic_driver": "execution_adaptability"
+    },
+    {
+      "claim": "Rubrik acquired Predibase in July 2025 for fair-value consideration of about $109.1M, primarily equity, to accelerate agentic AI capabilities.",
+      "source_type": "10-Q",
+      "source": "https://www.sec.gov/Archives/edgar/data/1943896/000194389625000042/rbrk-20250731.htm",
+      "period": "2025-07",
+      "as_of_date": "2025-09-10",
+      "value": 109.1,
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-MA-MA-002",
+      "economic_driver": "capital_allocation"
+    },
+    {
+      "claim": "FY2027 guidance was raised after Q1 and again after Q2, while Subscription ARR grew 32% then 33% y/y and contribution margins improved.",
+      "source_type": "company_ir",
+      "source": "Rubrik Q1 and Q2 FY2027 official results",
+      "period": "FY2027 H1",
+      "as_of_date": "2026-08-27",
+      "value": "two guidance raises",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-MA-EXEC-003",
+      "economic_driver": "execution"
+    },
+    {
+      "claim": "KPMG has audited Rubrik since 2018 and was retained for FY2027; no material weakness was identified in the reviewed proxy/filing evidence.",
+      "source_type": "proxy",
+      "source": "https://www.sec.gov/Archives/edgar/data/1943896/000194389626000034/rbrk-20260415.htm",
+      "period": "FY2026 proxy",
+      "as_of_date": "2026-04-15",
+      "value": "KPMG auditor since 2018",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-MA-AUDIT-004",
+      "economic_driver": "governance_integrity"
+    },
+    {
+      "claim": "CEO Bipul Sinha beneficially controlled about 25.2% of total voting power in the 2026 proxy; Class B shares carry 20 votes per share. A lead independent director is appointed.",
+      "source_type": "proxy",
+      "source": "SEC 2026 definitive proxy",
+      "period": "2026-03-31 ownership",
+      "as_of_date": "2026-04-15",
+      "value": "CEO voting power 25.2%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-MA-GOV-005",
+      "economic_driver": "governance"
+    },
+    {
+      "claim": "Outstanding shares rose about 5% y/y and H1 FY2027 SBC was $174.4M, so employee equity compensation is a material owner cost despite strong operating execution.",
+      "source_type": "10-Q",
+      "source": "SEC Q2 FY2026 and Q2 FY2027 filings",
+      "period": "2025-2026",
+      "as_of_date": "2026-09-01",
+      "value": "~5% share growth; $174.4M H1 SBC",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-MA-SBC-006",
+      "economic_driver": "owner_alignment"
+    }
+  ],
+  "counterevidence": [
+    "Predibase's acquisition return is not yet measurable.",
+    "Dual-class voting concentrates control and limits public-shareholder influence.",
+    "Equity compensation is economically large and share count is rising.",
+    "The global sales leader resigned in February 2026, adding execution continuity risk."
+  ],
+  "unknowns": [
+    "Predibase standalone revenue and return on invested capital.",
+    "Long-term normalized SBC policy after IPO-era grants.",
+    "Board effectiveness under founder voting control.",
+    "Post-acquisition retention of Predibase technical talent."
+  ],
+  "falsifiers": [
+    "Cut capital_allocation if Predibase remains immaterial while dilution persists above 5%.",
+    "Cut governance_integrity on any restatement, material weakness or auditor dispute.",
+    "Cut execution_adaptability if repeated guidance misses follow the current expansion phase."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "No restatement, auditor dispute or material internal-control failure was identified through the cutoff; KPMG has audited the company since 2018. Governance concentration and SBC are risks, not evidence of integrity failure."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "guidance attainment",
+      "direction": "up",
+      "threshold": "meet/raise without deteriorating cash conversion",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "SBC and share dilution",
+      "direction": "down",
+      "threshold": "share growth <3% y/y",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Agent Cloud/Predibase economic return",
+      "direction": "up",
+      "threshold": "material revenue or margin contribution",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Measure Predibase post-acquisition economics.",
+    "Track executive turnover and retention.",
+    "Review 2027 proxy for compensation redesign and dilution."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 60,
+      "rationale": "No buyback track record exists and Predibase is too recent for a post-hoc return test. The acquisition is small and strategically coherent, but current evidence supports only a modest-above-average score."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 70,
+      "rationale": "Long-standing auditor continuity and no identified reporting failures support good integrity, offset by dual-class control and economically large equity compensation."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 75,
+      "rationale": "Executed migration to RSC, repeated FY2027 guidance raises and rapid agentic-product expansion meet the 75 consistent-execution/adaptation anchor; longer-cycle evidence is insufficient for 90."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "Predibase economics are not separately disclosed."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "Founder voting control and SBC create alignment risk despite clean reporting evidence."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "minor",
+      "rationale": "Public-company history is short."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

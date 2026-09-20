@@ -1,0 +1,141 @@
+{
+  "agent_id": "ED",
+  "ticker": "RBRK",
+  "as_of_date": "2026-09-18",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 85,
+  "confidence_0_1": 0.92,
+  "thesis": "핵심 성장·유동성·희석 수치는 cutoff-valid 10-K/10-Q와 회사 공식 실적자료에 직접 연결된다. ARR, NRR, 고객 수, 현금·부채, SBC, RPO는 정의와 기간이 비교적 명확하다. 반면 5년 2.4x 기회 규모, 7년 내재 성장기간, SBC 차감 owner-FCF는 하네스 추정이며, Agent Cloud 독립 경제성과 정확한 시장점유율은 미공시다. 따라서 Outlier Growth 가설은 검증 가능하지만 장기 가치의 상당 부분은 아직 추정에 의존한다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY2027 Subscription ARR $1.66B(+33%), cloud ARR $1.48B(+39%), >$100K ARR 고객 3,084명(+23%), NRR >119%는 회사 공식 KPI로 확인된다.",
+      "source_type": "company_ir",
+      "source": "Rubrik Q2 FY2027 official results and IR overview",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": "$1.66B / $1.48B / 3,084 / >119%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-ED-GROWTH-001",
+      "economic_driver": "customer_adoption"
+    },
+    {
+      "claim": "2026-07-31 현금+단기투자 약 $1.748B, 전환사채 장부가 $1.133B, H1 OCF $158.535M, H1 SBC $174.386M은 SEC 10-Q와 frozen FP pack에서 직접 확인된다.",
+      "source_type": "10-Q",
+      "source": "SEC Q2 FY2027 10-Q and runs/RBRK/sources/financials/normalized_financials.json",
+      "period": "FY2027 H1 / 2026-07-31",
+      "as_of_date": "2026-09-01",
+      "value": "$1.748B / $1.133B / $158.535M / $174.386M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-ED-FIN-002",
+      "economic_driver": "financial_survival_and_dilution"
+    },
+    {
+      "claim": "TTM company-style FCF 약 $286.2M와 TTM SBC 약 $341.8M을 이용한 SBC 차감 owner-FCF stress proxy 약 -$55.5M은 공시 수치를 사용한 하네스 추정이며 회사 공시 FCF가 아니다.",
+      "source_type": "harness",
+      "source": "runs/RBRK/company_context.json and RF/EV arithmetic",
+      "period": "TTM to 2026-07-31",
+      "as_of_date": "2026-09-18",
+      "value": "~-$55.5M",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-ED-OWNERFCF-003",
+      "economic_driver": "owner_cash_quality"
+    },
+    {
+      "claim": "Locked Bear/Base/Bull $31.58/$169.29/$563.05와 Base terminal fraction 약 81.1%는 frozen owner-FCF/share 경로와 9% 할인율·고정 terminal multiple로 계산된 하네스 추정치다.",
+      "source_type": "harness",
+      "source": "runs/RBRK/aggregate.json",
+      "period": "valuation as of 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "$31.58 / $169.29 / $563.05; 81.1%",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-ED-VAL-004",
+      "economic_driver": "valuation"
+    },
+    {
+      "claim": "LG의 5년 약 2.4x 확장과 시장이 약 7년 Base duration을 반영한다는 판단은 공식 회사 가이던스가 아니라 EV 성장경로와 duration sensitivity를 연장한 분석가 추정이다.",
+      "source_type": "harness",
+      "source": "runs/RBRK/reports/LG.json and runs/RBRK/reports/EV.json",
+      "period": "5-10 year forward scenario",
+      "as_of_date": "2026-09-18",
+      "value": "~2.4x / ~7 years",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-ED-LG-005",
+      "economic_driver": "long_term_growth"
+    },
+    {
+      "claim": "Q2의 Partner A-D 26%/28%/10%/10%는 유통·채널 파트너 매출 집중이며 ultimate end-customer concentration으로 해석해서는 안 된다.",
+      "source_type": "10-Q",
+      "source": "SEC Q2 FY2027 10-Q",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-09-01",
+      "value": "26% / 28% / 10% / 10%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-ED-CHANNEL-006",
+      "economic_driver": "concentration"
+    }
+  ],
+  "counterevidence": [
+    "Agent Cloud·Agent Identity의 standalone ARR, gross margin, retention은 공시되지 않아 LG/DI의 신규 가치풀 주장은 아직 질적으로 평가된다.",
+    "정확한 시장점유율, gross retention, CAC payback도 공개되지 않아 CP/SL의 최고점 구간을 검증할 수 없다.",
+    "RBRK는 2024년 상장해 5년 public valuation percentile과 장기 public-company 실행 이력이 없다.",
+    "definitive proxy·외부 Gartner 등 일부 근거는 frozen EDGAR pack 밖의 cutoff-valid 공개자료에 의존한다."
+  ],
+  "unknowns": [
+    "Agent Cloud/Identity standalone ARR, 고객 수, gross margin과 retention.",
+    "정규화된 장기 SBC와 fully diluted economic share count.",
+    "Gross retention, CAC payback 및 정확한 시장점유율.",
+    "Predibase 인수의 사후 ROI.",
+    "10년 owner-FCF margin과 terminal multiple의 실현 가능성."
+  ],
+  "falsifiers": [
+    "ARR 성장 <20%, NRR <110%, 대형고객 성장 <10%가 동시에 나타나면 장기 성장·고객가치 근거를 재평가한다.",
+    "연간 희석이 5% 이상 지속되고 SBC-adjusted owner FCF/share가 개선되지 않으면 FS/RF/AS를 재실행한다.",
+    "refrozen valuation에서 Base가 현재가 이하로 내려가거나 terminal fraction이 더 높아지면 expectation-gap 근거를 약화한다."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "ARR growth / NRR",
+      "direction": "up",
+      "threshold": "ARR >20%, NRR >110%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "SBC-adjusted owner FCF/share / share dilution",
+      "direction": "up",
+      "threshold": "owner FCF/share positive; dilution <3% y/y",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Agent Cloud/Identity paid economics",
+      "direction": "up",
+      "threshold": "separately material ARR/retention evidence",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "FY2027 year-end 10-K에서 fully diluted share/SBC/FCF bridge 갱신.",
+    "Agent Cloud·Identity 독립 매출·retention 공시 추적.",
+    "시장점유율·gross retention·CAC payback 1차/신뢰 가능한 2차 근거 확보."
+  ],
+  "verdict": "support",
+  "subscores": [],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

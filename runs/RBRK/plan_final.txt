@@ -1,0 +1,19 @@
+{
+  "stage": "complete",
+  "agents": {},
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "research": {
+    "questions": 102,
+    "pending": 102,
+    "command": "python harness.py research-plan RBRK"
+  }
+}
