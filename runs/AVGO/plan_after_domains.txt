@@ -1,0 +1,23 @@
+{
+  "stage": "macro",
+  "agents": {
+    "macro_overlay": "MO"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "earnings_release",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "research": {
+    "questions": 63,
+    "pending": 63,
+    "command": "python harness.py research-plan AVGO"
+  }
+}
+python harness.py prompt AVGO MO
