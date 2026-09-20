@@ -1,7 +1,8 @@
 {
-  "stage": "macro",
+  "stage": "evidence_and_red_team",
   "agents": {
-    "macro_overlay": "MO"
+    "evidence_quality": "ED",
+    "red_team": "RT"
   },
   "stage_0": {
     "stage_0": "ready",
@@ -22,4 +23,5 @@
     "command": "python harness.py research-plan V"
   }
 }
-python harness.py prompt V MO
+python harness.py prompt V ED
+python harness.py prompt V RT

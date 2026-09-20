@@ -120,7 +120,7 @@
   "global_components": {
     "financial_conditions": {
       "scope": "global",
-      "as_of_utc": "2026-09-18T16:00:00+00:00",
+      "as_of_utc": "2026-09-18T00:00:00+00:00",
       "summary": "Financial conditions were still loose on the latest NFCI reading, but the Fed had just raised rates and global long yields moved higher; use moderate pacing caution.",
       "evidence": [
         {
@@ -136,7 +136,7 @@
     },
     "credit_liquidity": {
       "scope": "global",
-      "as_of_utc": "2026-09-18T15:00:00+00:00",
+      "as_of_utc": "2026-09-18T00:00:00+00:00",
       "summary": "High-yield spreads remained tight, indicating functioning credit markets and no broad liquidity stress.",
       "evidence": [
         {
@@ -148,7 +148,7 @@
     },
     "geopolitical_events": {
       "scope": "global",
-      "as_of_utc": "2026-09-18T23:00:00+00:00",
+      "as_of_utc": "2026-09-18T00:00:00+00:00",
       "summary": "Middle East conflict was materially disrupting energy and shipping routes, while other global conflicts remained active.",
       "evidence": [
         {
@@ -229,7 +229,7 @@
     },
     "structural_trade": {
       "scope": "global",
-      "as_of_utc": "2026-09-18T23:00:00+00:00",
+      "as_of_utc": "2026-09-18T00:00:00+00:00",
       "summary": "Trade fragmentation, export controls and sanctions remained persistent, especially across U.S.-China technology/critical-mineral links and Iran-related finance.",
       "evidence": [
         {

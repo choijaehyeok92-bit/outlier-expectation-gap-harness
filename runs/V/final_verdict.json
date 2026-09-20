@@ -1429,15 +1429,183 @@
   "review_only": false,
   "evidence_concentration_flags": [],
   "macro_geo_overlay": {
-    "financial_regime": {},
-    "geopolitical_regime": {},
-    "company_transmission": {},
-    "missing_or_stale_components": [
-      "credit_liquidity",
-      "financial_conditions",
-      "geopolitical_events",
-      "structural_trade"
-    ],
+    "financial_regime": {
+      "financial_conditions": {
+        "scope": "global",
+        "as_of_utc": "2026-09-18T00:00:00+00:00",
+        "summary": "Financial conditions were still loose on the latest NFCI reading, but the Fed had just raised rates and global long yields moved higher; use moderate pacing caution.",
+        "evidence": [
+          {
+            "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+            "as_of_date": "2026-09-16"
+          },
+          {
+            "source": "https://fred.stlouisfed.org/graph/?graph_id=1308263",
+            "as_of_date": "2026-09-11"
+          }
+        ],
+        "risk_budget_multiplier": 0.8
+      },
+      "credit_liquidity": {
+        "scope": "global",
+        "as_of_utc": "2026-09-18T00:00:00+00:00",
+        "summary": "High-yield spreads remained tight, indicating functioning credit markets and no broad liquidity stress.",
+        "evidence": [
+          {
+            "source": "https://fred.stlouisfed.org/data/BAMLH0A0HYM2",
+            "as_of_date": "2026-09-17"
+          }
+        ],
+        "risk_budget_multiplier": 1
+      }
+    },
+    "geopolitical_regime": {
+      "military_conflict": {
+        "level": "high",
+        "regions": [
+          "Middle East",
+          "Iran",
+          "Saudi Arabia",
+          "Yemen",
+          "Ukraine"
+        ],
+        "routes": [],
+        "dependencies": [
+          "crude oil",
+          "diesel"
+        ],
+        "structural_events": []
+      },
+      "energy_disruption": {
+        "level": "high",
+        "regions": [
+          "Middle East",
+          "Saudi Arabia",
+          "Iran"
+        ],
+        "routes": [
+          "Strait of Hormuz",
+          "Red Sea"
+        ],
+        "dependencies": [
+          "crude oil",
+          "diesel",
+          "LNG"
+        ],
+        "structural_events": []
+      },
+      "shipping_disruption": {
+        "level": "high",
+        "regions": [
+          "Middle East",
+          "Yemen",
+          "Saudi Arabia"
+        ],
+        "routes": [
+          "Strait of Hormuz",
+          "Red Sea"
+        ],
+        "dependencies": [
+          "energy shipping",
+          "commodity shipping"
+        ],
+        "structural_events": []
+      },
+      "sovereign_policy_instability": {
+        "level": "moderate",
+        "regions": [
+          "United States",
+          "Middle East"
+        ],
+        "routes": [],
+        "dependencies": [
+          "monetary policy",
+          "energy policy"
+        ],
+        "structural_events": []
+      },
+      "trade_fragmentation": {
+        "level": "moderate",
+        "regions": [
+          "United States",
+          "China"
+        ],
+        "routes": [],
+        "dependencies": [
+          "critical minerals",
+          "LNG",
+          "tariffs"
+        ],
+        "structural_events": []
+      },
+      "export_controls": {
+        "level": "high",
+        "regions": [
+          "China",
+          "United States"
+        ],
+        "routes": [],
+        "dependencies": [
+          "gallium",
+          "germanium",
+          "advanced semiconductors",
+          "AI chips"
+        ],
+        "structural_events": []
+      },
+      "sanctions": {
+        "level": "moderate",
+        "regions": [
+          "Iran",
+          "Russia",
+          "United States"
+        ],
+        "routes": [],
+        "dependencies": [
+          "financial system",
+          "digital assets"
+        ],
+        "structural_events": []
+      }
+    },
+    "company_transmission": {
+      "energy_disruption": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "high"
+      },
+      "export_controls": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "high"
+      },
+      "military_conflict": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "high"
+      },
+      "sanctions": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "moderate"
+      },
+      "shipping_disruption": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "high"
+      },
+      "sovereign_policy_instability": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "moderate"
+      },
+      "trade_fragmentation": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "moderate"
+      }
+    },
+    "missing_or_stale_components": [],
     "reanalysis_requests": [],
     "pending_reanalysis_domains": [],
     "risk_budget_multiplier": 0.5,
