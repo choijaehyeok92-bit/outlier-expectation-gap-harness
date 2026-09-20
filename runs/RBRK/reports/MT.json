@@ -4,46 +4,155 @@
   "as_of_date": "2026-09-18",
   "domain": "moat_trajectory",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 77,
+  "confidence_0_1": 0.84,
+  "bull_score": 88,
+  "bear_score": 55,
+  "bull_case": "The moat is widening through customer expansion, cloud mix, ecosystem integrations and additional identity/agent workflows. More protected workloads and policy/data context can increase switching friction over time.",
+  "bear_case": "Data protection is competitive and hyperscalers/security suites can bundle adjacent features. NRR may reflect category growth rather than unique network effects, and partner concentration weakens direct distribution ownership.",
+  "thesis": "Rubrik's current moat is meaningful and its trajectory is positive. NRR >119%, rising enterprise-customer counts and repeated Gartner leadership indicate strengthening product position. The strongest evidence is installation/ecosystem expansion, not a classic network effect. Commoditization remains credible because large platform vendors can bundle backup, identity and AI controls.",
+  "evidence": [
+    {
+      "claim": "Subscription NRR was above 119%, indicating installed customers collectively expanded rather than contracted spend.",
+      "source_type": "company_ir",
+      "source": "https://ir.rubrik.com/overview/default.aspx",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-09-18",
+      "value": ">119%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-MT-NRR-001",
+      "economic_driver": "switching_pricing"
+    },
+    {
+      "claim": ">$100K ARR customers rose from 2,505 in Q2 FY2026 to 3,084 in Q2 FY2027, while Subscription ARR rose from $1.25B to $1.66B.",
+      "source_type": "company_ir",
+      "source": "Rubrik Q2 FY2026 and Q2 FY2027 official results",
+      "period": "FY2026 Q2 to FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": "2,505 -> 3,084; $1.25B -> $1.66B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-MT-SCALE-002",
+      "economic_driver": "ecosystem_scale"
+    },
+    {
+      "claim": "Cloud ARR reached $1.48B, up 39% y/y, showing the installed base is shifting toward hosted products rather than remaining a static appliance footprint.",
+      "source_type": "company_ir",
+      "source": "Rubrik Q2 FY2027 official results",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": "$1.48B; +39%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-MT-CLOUD-003",
+      "economic_driver": "ecosystem_trajectory"
+    },
+    {
+      "claim": "Rubrik has integrations spanning Microsoft, CrowdStrike, Claude Code and Google Cloud agent platforms, broadening the platform's ecosystem surface.",
+      "source_type": "company_ir",
+      "source": "Rubrik official partnership/product releases through 2026-09-01",
+      "period": "2025-2026",
+      "as_of_date": "2026-09-01",
+      "value": "multiple major ecosystem integrations",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-MT-ECO-004",
+      "economic_driver": "ecosystem"
+    },
+    {
+      "claim": "Gartner named Rubrik a Leader in Backup and Data Protection Platforms for the seventh consecutive year and positioned it furthest in Vision in 2026.",
+      "source_type": "third_party_research",
+      "source": "https://ir.rubrik.com/news-events/press-releases/news-details/2026/Rubrik-is-Named-a-Leader-in-the-2026-Gartner-Magic-Quadrant/default.aspx",
+      "period": "2026",
+      "as_of_date": "2026-07-02",
+      "value": "7 consecutive years Leader",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-MT-GARTNER-005",
+      "economic_driver": "category_position"
+    }
+  ],
+  "counterevidence": [
+    "NRR does not prove a network effect; it can arise from broader security spend.",
+    "Cloud providers and large security vendors have distribution, data and bundling advantages.",
+    "Four channel partners account for a large majority of Q2 revenue.",
+    "No exact market-share series or price-increase retention data is disclosed."
+  ],
+  "unknowns": [
+    "Gross retention and price uplift by cohort.",
+    "Exact market-share trajectory.",
+    "Workload count/data protected per customer over time.",
+    "Customer switching cost in dollars and migration time."
+  ],
+  "falsifiers": [
+    "Cut switching_pricing if NRR falls below 110%.",
+    "Cut network_data_ecosystem if large-customer and cloud-ARR growth both fall below 10%.",
+    "Escalate moat-shrinkage risk if bundled alternatives cause persistent gross-retention losses."
+  ],
   "hard_veto_flags": [
     {
       "veto": "해자의 지속적인 축소",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Observed ARR, cloud ARR, enterprise-customer count and NRR are all expanding, while third-party category recognition remains strong. Commoditization risk exists but sustained moat contraction is not observed."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "NRR / large-customer count",
+      "direction": "up",
+      "threshold": "NRR >115%; large customers +15%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "cloud ARR growth",
+      "direction": "up",
+      "threshold": ">25% y/y",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "gross retention / competitive losses",
+      "direction": "up",
+      "threshold": "no sustained deterioration",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Obtain exact market-share and gross-retention series.",
+    "Measure workload/data growth per customer.",
+    "Track competitive displacement by hyperscaler/security-suite bundles."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "switching_pricing",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "NRR >119%, rising large-customer count and recurring multi-year commitments indicate strengthening switching/wallet-share dynamics, but direct pricing-power evidence is limited."
     },
     {
       "criterion_id": "network_data_ecosystem",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "At least three primary scale metrics—Subscription ARR, Cloud ARR and >$100K customer count—show same-definition growth, satisfying the 85 observable row. This is ecosystem/install-base evidence, not proof of a classic network effect."
     },
     {
       "criterion_id": "commoditization_resilience",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "Data, identity, recovery and agent-security layers create multiple defenses, but well-capitalized hyperscalers and security vendors can bundle competing capabilities, preventing a 75+ score."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Gross retention and price-renewal data are undisclosed."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "minor",
+      "rationale": "Scale is measurable, but causal positive-feedback mechanics are less directly measured."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Bundling competition may compress differentiation over time."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
