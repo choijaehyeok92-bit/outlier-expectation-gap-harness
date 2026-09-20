@@ -10,7 +10,7 @@
   "bull_score": 85,
   "bear_score": 45,
   "bull_case": "$24.0B cash, a fully undrawn $7.5B revolver, only $2.25B debt principal due within 12 months and roughly $40.7B TTM OCF give Broadcom substantial self-funding capacity. Continued AI/software cash generation can absorb debt reduction, dividends and ordinary capex without survival financing.",
-  "bear_case": "The balance sheet is not risk-free: gross debt is about $59.4B carrying value, binding purchase/other commitments total $130.8B, and AI XPV adds a maximum $29B backstop plus conditional customer-note exposure. A customer-led AI downturn could turn commitments and working capital against cash flow simultaneously.",
+  "bear_case": "Gross debt is about $59.4B, binding purchase/other commitments total $130.8B, and AI XPV adds a maximum $29B backstop plus conditional customer-note exposure. A customer-led AI downturn could hit demand, working capital and contingent financing at the same time.",
   "thesis": "Broadcom's operating business is strongly self-funding, so refinancing or dilution is not currently a survival requirement. The constraint is off-balance and customer-financing exposure rather than near-term debt maturity. Binding commitments plus the XPV backstop are roughly 1.79x frozen TTM revenue, keeping the off-balance criterion at 55 despite otherwise strong liquidity.",
   "evidence": [
     {
