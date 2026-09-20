@@ -97,7 +97,7 @@ import json
 from pathlib import Path
 p=Path("runs/V/company_context.json")
 ctx=json.loads(p.read_text())
-legacy=Path("/tmp/V_legacy/company_context.json")
+legacy=Path("automation_inputs/V_company_context.json")
 if legacy.exists():
     old=json.loads(legacy.read_text())
     for k in ("company_name","currency","current_price","shares_diluted","market_cap_usd",
@@ -137,9 +137,9 @@ echo "prompt_ev_exit=$PROMPT_EV_RC"
 if [ -f runs/V/EV_prompt.md ]; then cat runs/V/EV_prompt.md; fi
 
 echo "=== EV response handoff ==="
-if [ -f /tmp/V_legacy/reports/EV.json ]; then
-  cp /tmp/V_legacy/reports/EV.json runs/V/reports/EV.json
-  echo "reused prior completed V EV report as the response payload for this harness execution"
+if [ -f automation_inputs/V_EV.json ]; then
+  cp automation_inputs/V_EV.json runs/V/reports/EV.json
+  echo "staged completed V EV report as the response payload for this harness execution"
 fi
 
 echo "=== 9 validate EV ==="
