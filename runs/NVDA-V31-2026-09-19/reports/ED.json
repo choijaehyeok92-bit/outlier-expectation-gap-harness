@@ -4,18 +4,111 @@
   "as_of_date": "2026-09-19",
   "domain": "evidence_quality",
   "role": "evidence_auditor",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 84,
+  "confidence_0_1": 0.93,
+  "thesis": "증거 품질은 강하다. 핵심 손익·현금흐름·재무상태·약정·보증·고객집중은 SEC 공시로 고정돼 있고, 정규화 팩은 원문과 QA 경고를 함께 보존한다. v3.1 조사에서 추가된 5개 CP 근거도 cutoff-valid 1차자료 중심이며 충돌·refreeze 요구가 없다. 반면 지원 대상 고객의 매출·AR 비중과 보증의 확률가중 손실·보상률은 공개되지 않아 추정으로 메우지 않았다. 따라서 현재 Growth 판정은 데이터가 풍부하지만 핵심 tail-risk 공백을 가진 상태다.",
+  "evidence": [
+    {
+      "claim": "FY26 10-K와 FY27 Q1/Q2 10-Q가 매출, 현금흐름, AR, 재고, 부채, 투자증권, 약정·보증을 직접 제공한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V31-2026-09-19/sources/README.md",
+      "period": "FY26–FY27 Q2",
+      "as_of_date": "2026-09-19",
+      "value": "primary filing bundle",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ED-NVDA-PRIMARY-001",
+      "economic_driver": "evidence_integrity"
+    },
+    {
+      "claim": "정규화 재무팩은 18개 문서에서 198개 facts를 보존하고 QA 경고와 조정후보를 별도 파일로 유지해 미확인 경제적 조정을 사실로 승격하지 않는다.",
+      "source_type": "other",
+      "source": "runs/NVDA-V31-2026-09-19/sources/financials/normalized_financials.json; qa_report.json; adjustment_candidates.json",
+      "period": "through 2026-09-18",
+      "as_of_date": "2026-09-19",
+      "value": 198,
+      "fact_or_estimate": "fact",
+      "evidence_id": "ED-NVDA-NORM-002",
+      "economic_driver": "evidence_integrity"
+    },
+    {
+      "claim": "v3.1 CP Research Orchestrator intake는 5개의 cutoff-valid primary/IR evidence를 수용했고 verified fact conflict 0, requires_refreeze=false를 기록했다.",
+      "source_type": "other",
+      "source": "runs/NVDA-V31-2026-09-19/research/result-ce2549c1321913a4fe30ac90dcd9cdb63295bdfbff4e0f1c45ef7c278ef43b52.json",
+      "period": "2026-09-19 research pass",
+      "as_of_date": "2026-09-19",
+      "value": 5,
+      "fact_or_estimate": "fact",
+      "evidence_id": "ED-NVDA-ORCH-003",
+      "economic_driver": "research_provenance"
+    },
+    {
+      "claim": "$36B AI-cloud 약정의 제3자 전환/revenue-share 구조와 $105B residual-value 보증의 default trigger·회수장치는 SEC 10-Q 및 SB Energy S-1로 교차 보강됐다.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm; https://www.sec.gov/Archives/edgar/data/2133037/000162828026059639/sbenergy-sx1.htm",
+      "period": "FY27 Q2 / Aug-Sep 2026",
+      "as_of_date": "2026-09-19",
+      "value": "contract mechanics",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ED-NVDA-CONTRACTS-004",
+      "economic_driver": "vendor_financing_risk"
+    },
+    {
+      "claim": "DCF의 Bear/Base/Bull은 하네스 고정 9% 요구수익률과 15x/20x/25x terminal multiple로 재계산되며 현재가·순현금과 LLM의 FCF 경로 역할이 분리돼 있다.",
+      "source_type": "other",
+      "source": "runs/NVDA-V31-2026-09-19/aggregate.json; config/calibration.json",
+      "period": "2026-09-19",
+      "as_of_date": "2026-09-19",
+      "value": "$74.99 / $212.86 / $431.14",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "ED-NVDA-DCF-005",
+      "economic_driver": "valuation_reproducibility"
+    }
+  ],
+  "counterevidence": [
+    "지원 대상 고객의 매출·AR 비중은 여러 공시와 조사 패스에서도 직접 수치가 확인되지 않았다.",
+    "$105B 보증의 phase별 활성 cap, counterparty default probability, OpenAI 보상률은 미공개다.",
+    "고객의 AI 인프라 ROI·payback과 장기 utilization에 대한 동일정의 직접 공시는 없다.",
+    "현재가 이력 백분위는 회사 공시가 아니라 시장자료와 계산에 의존한다."
+  ],
+  "unknowns": [
+    "투자·AI-cloud 약정·보증 대상 고객의 총매출 및 AR 비중.",
+    "$108.5B maximum gross guarantees의 확률가중 기대손실·phase별 활성액·회수율.",
+    "OpenAI가 제공하는 NVIDIA 보증 보상의 금액·수익률·담보.",
+    "대표 고객의 AI 인프라 utilization·payback·현금 ROI."
+  ],
+  "falsifiers": [
+    "후속 10-Q가 지원 대상 매출·AR이 현재 가정과 크게 다르거나 대손·보증손실이 급증했음을 공시하면 관련 CP/FS/AS 판단을 재실행한다.",
+    "재작성·감사인 이견·중대한 내부통제 결함이 확인되면 현재 높은 증거 신뢰도 평가를 폐기한다.",
+    "동일 기간 재무팩과 SEC 원문 사이에 중요 수치 충돌이 확인되면 refreeze 후 영향을 받은 모든 도메인을 재실행한다."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "지원 대상 고객 매출·AR 비중",
+      "direction": "disclose",
+      "threshold": "공시 시 즉시 CP/FS/AS 재평가",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "DSO 및 대손충당",
+      "direction": "down",
+      "threshold": "DSO 50일 이하 또는 악화 시 원인 분해",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "활성 보증액·실현 손실",
+      "direction": "down",
+      "threshold": "owner FCF 대비 유의미한 손실 발생 시 재평가",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q에서 AR·DSO·대손·customer advances와 보증 관련 공시 확인",
+    "PORTS-Pike phase별 보증 활성액·OpenAI 보상 경제성 확인",
+    "지원 대상 counterparties의 매출·AR 귀속 공개 여부 확인"
+  ],
+  "verdict": "support",
   "subscores": [],
   "uncertainties": [],
   "valuation_inputs": {
@@ -32,5 +125,9 @@
         "owner_fcf_per_share": []
       }
     }
-  }
+  },
+  "bull_score": 90,
+  "bear_score": 70,
+  "bull_case": "10-K·10-Q·8-K와 정규화 재무팩이 핵심 숫자의 대부분을 직접 지지하고, v3.1 Research Orchestrator는 cutoff·충돌·fact/estimate를 분리한다. 새 CP 근거 5건도 1차자료 중심이고 verified fact conflict가 없다.",
+  "bear_case": "핵심 투자질문인 지원 대상 고객의 매출·AR 비중, $105B 보증의 확률가중 손실·보상 경제성, 고객 AI 인프라 ROI는 회사가 공개하지 않는다. 강한 원자료 품질과 별개로 이 공백은 최종 판단의 불확실성을 남긴다."
 }
