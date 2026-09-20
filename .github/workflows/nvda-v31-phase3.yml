@@ -1,0 +1,40 @@
+name: NVDA v3.1 validate phase 3
+
+on:
+  push:
+    branches:
+      - analysis/nvda-v31-2026-09-19
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: analysis/nvda-v31-2026-09-19
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Validate ED and RT, open IC
+        shell: bash
+        run: |
+          set -euo pipefail
+          python harness.py validate NVDA-V31-2026-09-19 ED RT
+          python harness.py aggregate NVDA-V31-2026-09-19
+          python harness.py digest NVDA-V31-2026-09-19
+          python harness.py plan NVDA-V31-2026-09-19 | tee runs/NVDA-V31-2026-09-19/plan_pre_ic.txt
+          python harness.py prompt NVDA-V31-2026-09-19 IC --out runs/NVDA-V31-2026-09-19/IC_prompt_v31.md
+      - name: Commit state
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/NVDA-V31-2026-09-19
+          git commit -m "analysis(nvda): validate phase 3 and open IC" || exit 0
+          git push
