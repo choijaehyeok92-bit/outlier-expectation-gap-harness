@@ -190,6 +190,8 @@
       "name": "score_archetype_and_ic",
       "archetypes": [
         "compounder",
+        "outlier_growth",
+        "growth",
         "buffett_value",
         "moonshot",
         "non_fit"
@@ -197,7 +199,8 @@
       "rule": "Deterministic eligible fit ranking; IC tests the strongest objections and cannot bypass gates.",
       "agents": [
         "IC"
-      ]
+      ],
+      "note": "다섯 개의 투자 가능 유형과 시스템 상태 non_fit. 목록은 config/strategy.json의 archetypes와 일치해야 하며, 문서가 실행 config와 갈라지지 않게 한다."
     },
     {
       "phase": 6,

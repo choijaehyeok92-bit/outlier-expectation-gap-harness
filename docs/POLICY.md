@@ -2,7 +2,7 @@
 
 Generated from config; update with `python harness.py policy --out docs/POLICY.md`.
 
-Strategy / schema / decision policy: 3.1 / 3.1 / 3.1.
+Strategy / schema / decision policy: 3.2 / 3.2 / 3.2.
 
 ## compounder — Compounder
 
@@ -18,6 +18,26 @@ Strategy / schema / decision policy: 3.1 / 3.1 / 3.1.
 | `criterion.reinvestment_fcf.reinvestment_runway` | >= | 70 | 1.0 |
 
 Gate: core >= 60.
+
+## outlier_growth — Long-Term Outlier Growth
+
+| Field | Operator | Threshold | Fit weight |
+|---|---|---:|---:|
+| `domain.long_term_growth` | >= | 70 | 1.0 |
+| `criterion.long_term_growth.opportunity_scale_5y` | >= | 75 | 1.0 |
+| `criterion.long_term_growth.growth_duration_10y` | >= | 65 | 1.0 |
+| `criterion.long_term_growth.culture_adaptability` | >= | 65 | 1.0 |
+| `criterion.long_term_growth.market_misperception` | >= | 65 | 1.0 |
+| `domain.customer_product` | >= | 65 | 1.0 |
+| `domain.moat_trajectory` | >= | 65 | 1.0 |
+| `domain.management_allocation` | >= | 65 | 1.0 |
+| `domain.financial_survival` | >= | 60 | 1.0 |
+| `domain.asymmetry` | >= | 65 | 1.0 |
+| `criterion.asymmetry.upside_path` | >= | 75 | 1.0 |
+| `criterion.asymmetry.permanent_loss` | >= | 50 | 1.0 |
+| `domain.expectation_valuation` | >= | 40 | 1.0 |
+
+Gate: core excluding EV >= 65.
 
 ## growth — Growth
 
@@ -65,7 +85,7 @@ Gate: core excluding EV >= 60.
 ## Fit and selection
 
 Score criteria use value/100; upper-bound signals use max(0, 1-value/(2*threshold)); missing contributes zero to fit only. Gates remain mandatory.
-Tie tolerance: 1e-06; tie priority: compounder > growth > buffett_value > moonshot.
+Tie tolerance: 1e-06; tie priority: compounder > outlier_growth > growth > buffett_value > moonshot.
 
 All listed veto blockers remain binding; ownership coverage is required before buying.
 
@@ -114,6 +134,8 @@ Continuous single-metric tables interpolate between rows; counts and gated table
 | `asymmetry.permanent_loss` | band_centre | 25, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90 |
 | `disruptive_innovation.optionality_incumbent_response` | none | 30, 50, 70, 85 |
 | `financial_survival.dilution_offbalance` | none | 30, 55, 70, 90 |
+| `long_term_growth.opportunity_scale_5y` | band_centre | 25, 40, 45, 50, 55, 60, 65, 70, 75, 80, 90 |
+| `long_term_growth.growth_duration_10y` | band_centre | 25, 40, 45, 50, 55, 60, 65, 70, 75, 80, 90 |
 | `management_allocation.capital_allocation` | band_centre | 30, 40, 45, 50, 55, 60, 65, 70, 75, 80 |
 | `moat_trajectory.network_data_ecosystem` | none | 25, 55, 75, 85, 90 |
 | `reinvestment_fcf.reinvestment_runway` | band_centre | 50, 60, 65, 70, 75, 80, 85, 90 |

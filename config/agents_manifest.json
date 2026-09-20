@@ -63,6 +63,13 @@
     "instructions": "agents/13_disruptive_innovation/AGENTS.md"
   },
   {
+    "agent_id": "LG",
+    "title": "Long-Term Outlier Growth Analyst",
+    "domain": "long_term_growth",
+    "role": "domain_analyst",
+    "instructions": "agents/15_long_term_growth/AGENTS.md"
+  },
+  {
     "agent_id": "TQ",
     "title": "Turnaround Quality Analyst",
     "domain": "turnaround_quality",
