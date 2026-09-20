@@ -4,51 +4,172 @@
   "as_of_date": "2026-09-18",
   "domain": "asymmetry",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 66.25,
+  "confidence_0_1": 0.82,
+  "bull_score": 85,
+  "bear_score": 40,
+  "bull_case": "A 5x path exists if core cyber-resilience ARR compounds, identity/cloud workloads broaden, Agent Cloud becomes a second platform, and SBC-adjusted owner FCF/share reaches the Bull path without relying only on multiple expansion.",
+  "bear_case": "Bear value is only about 30% of price. Growth mean-reversion, heavy SBC/dilution, weaker Agent Cloud monetization or margin delay could destroy most of the valuation even without bankruptcy.",
+  "thesis": "RBRK has genuine power-law upside but also severe valuation downside. Locked Bull/current is about 5.28x, while Bear/current is about 0.30x. Core cyber resilience, identity/cloud expansion and Agent Cloud create more than one economic path, but the Bull case still requires exceptional owner-FCF conversion. Broad growth-persistence base rates justify keeping Bull probability modest rather than extrapolating 30%+ ARR growth.",
+  "evidence": [
+    {
+      "claim": "Locked DCF gives Bull value $563.05 versus frozen price $106.71, or about 5.28x; the path is driven by owner FCF/share reaching $45 by year 10 with a 25x terminal multiple.",
+      "source_type": "harness",
+      "source": "runs/RBRK/aggregate.json and runs/RBRK/reports/EV.json",
+      "period": "2026-09-18 locked valuation",
+      "as_of_date": "2026-09-18",
+      "value": 5.2764,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-AS-UP-001",
+      "economic_driver": "long_term_upside"
+    },
+    {
+      "claim": "Locked Bear value is $31.58, about 0.296x current price, so a failed cash-conversion thesis can cause large permanent capital impairment even if the company remains solvent.",
+      "source_type": "harness",
+      "source": "runs/RBRK/aggregate.json",
+      "period": "2026-09-18 locked valuation",
+      "as_of_date": "2026-09-18",
+      "value": 0.2959,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RBRK-AS-DOWN-002",
+      "economic_driver": "permanent_loss"
+    },
+    {
+      "claim": "Subscription ARR reached $1.66B, up 33% y/y; >$100K ARR customers reached 3,084, up 23%; average subscription dollar-based NRR was above 119%.",
+      "source_type": "company_ir",
+      "source": "https://ir.rubrik.com/news-events/press-releases/news-details/2026/Rubrik-Reports-Second-Quarter-Fiscal-Year-2027-Financial-Results/default.aspx",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-27",
+      "value": "ARR +33%; 3,084 large customers; NRR >119%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-AS-ADOPT-003",
+      "economic_driver": "growth_persistence"
+    },
+    {
+      "claim": "Rubrik had GA Agent Cloud by FY2026 year-end and by Q2 FY2027 had launched integrations and governance/recovery products spanning Claude Code, cloud apps and agent identity, creating an adjacent AI-operations value pool beyond core backup/recovery.",
+      "source_type": "company_ir",
+      "source": "Rubrik FY2026 and Q2 FY2027 official results plus 2026 Agent Cloud announcements",
+      "period": "2026",
+      "as_of_date": "2026-08-27",
+      "value": "multiple product vectors",
+      "fact_or_estimate": "interpretation",
+      "evidence_id": "RBRK-AS-OPTION-004",
+      "economic_driver": "upside_path_diversity"
+    },
+    {
+      "claim": "McKinsey's study of 5,000 large public companies found only one in eight sustained >10% annual revenue growth over a decade and only one in three top-quartile growers sustained their growth rate in the next five years.",
+      "source_type": "secondary_research",
+      "source": "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/the-ten-rules-of-growth",
+      "period": "2005-2019 public-company sample",
+      "as_of_date": "2022-08-12",
+      "value": "1/8 decade >10%; 1/3 persistence",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-AS-BASE-005",
+      "economic_driver": "growth_base_rate"
+    },
+    {
+      "claim": "Bessembinder found that among US stocks already achieving a 5x cumulative gross return from 1973-2020, 29.8% later achieved another 5x to reach 25x; extreme winners exist but are rare and the statistic is not company-specific.",
+      "source_type": "academic",
+      "source": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID3994957_code667.pdf?abstractid=3873010&type=2",
+      "period": "US listed stocks 1973-2020",
+      "as_of_date": "2021-12-27",
+      "value": 0.298,
+      "fact_or_estimate": "fact",
+      "evidence_id": "RBRK-AS-BASE-006",
+      "economic_driver": "power_law_base_rate"
+    }
+  ],
+  "counterevidence": [
+    "Base and Bull values are 81% and 85% terminal-value dependent, so upside is unusually sensitive to long-run margin, dilution and multiple assumptions.",
+    "SBC-adjusted TTM owner-FCF stress proxy is still negative even though company-defined FCF is positive.",
+    "Agent Cloud is strategically interesting but separate revenue, retention and margins are not disclosed.",
+    "The external base rates are broad and not specific to post-IPO cyber-resilience SaaS."
+  ],
+  "unknowns": [
+    "Agent Cloud standalone ARR, gross margin and customer retention.",
+    "Normalized SBC/share dilution once post-IPO grants mature.",
+    "Cyber-resilience category growth and Rubrik market share over a full recession.",
+    "Whether identity recovery and Agent Cloud become economically independent growth engines.",
+    "A directly comparable public-company base rate for 5x outcomes in cyber-security software."
+  ],
+  "falsifiers": [
+    "Reduce upside_path if ARR growth drops below 20% before SBC-adjusted owner FCF/share turns positive.",
+    "Treat the 5x path as broken if Agent Cloud remains immaterial and core customer expansion falls below 110% NRR.",
+    "Raise permanent-loss risk if net liquidity erodes materially while dilution remains above 5% annually."
+  ],
   "hard_veto_flags": [
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Frozen price $106.71 is far below locked Bull value $563.05; the defined Bull+ price condition is not met."
     },
     {
       "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Bear valuation implies severe price impairment, but current liquidity, positive operating cash flow and a 0% convertible due 2030 do not support an excessive bankruptcy probability. The price-risk penalty remains in permanent_loss=50."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "Subscription ARR growth / NRR",
+      "direction": "up",
+      "threshold": "ARR >25% and NRR >115%; review if ARR <20%",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "SBC-adjusted owner FCF/share",
+      "direction": "up",
+      "threshold": "sustainably positive and tracking Base path",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Agent Cloud economic contribution",
+      "direction": "up",
+      "threshold": "separately disclosed material ARR or customer expansion",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Build a cyber/SaaS-specific growth-persistence base-rate set.",
+    "Separate Agent Cloud, identity and core cyber-resilience revenue/value pools.",
+    "Update dilution-adjusted owner-FCF path after FY2027 year-end."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "upside_path",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Bull/current exceeds 5x, but the economic path still depends on exceptional owner-FCF conversion. Core cyber resilience, identity/cloud expansion and Agent Cloud provide multiple value pools, supporting the 75 anchor rather than 90."
     },
     {
       "criterion_id": "permanent_loss",
       "score_0_100": 50,
-      "rationale": ""
+      "rationale": "Bear/current is about 0.296x, squarely in the 0.2-0.4 observable band. Net cash is positive, but TTM OCF does not exceed total convertible principal, so no +10 modifier applies."
     },
     {
       "criterion_id": "probability_calibration",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "The scenario range is sensitivity-tested and external growth/power-law base rates are explicitly used to prevent straight-line extrapolation. Cyber-specific base rates are still missing, so 90 is not justified."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "The three value pools are strategically distinct but not yet separately monetized or disclosed."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Bear value is model-sensitive and does not capture an exact probability of business failure."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Base rates are broad public-company and market-return studies, not a matched RBRK cohort."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
