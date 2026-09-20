@@ -4,69 +4,116 @@
   "as_of_date": "2026-09-18",
   "domain": "financial_survival",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 84,
+  "confidence_0_1": 0.86,
+  "bull_score": 92,
+  "bear_score": 64,
+  "bull_case": "High recurring OCF allows Visa to keep investing and returning capital through downturns.",
+  "bear_case": "A severe regulatory settlement plus global spending shock could reduce flexibility, but not plausibly force financing under current conditions.",
+  "thesis": "Visa's balance sheet is easily supportable by cash generation. Net debt is modest relative to annual OCF and regulatory/litigation cash needs are manageable within internal liquidity.",
+  "evidence": [
+    {
+      "claim": "Q3 cash+investments were about $13.94B versus debt $23.86B.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3/9M FY2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "FY2025 OCF was $23.059B.",
+      "source_type": "filing",
+      "source": "runs/V/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2025-11-06",
+      "value": "23.059B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "9M FY2026 OCF was $16.342B.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3/9M FY2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Regulatory and interchange litigation can pressure network economics and pricing over time.",
+    "The current valuation already embeds a high-quality compounder profile."
+  ],
+  "unknowns": [
+    "Long-run regulation of interchange and routing",
+    "Sustainable growth rate of Visa Direct and value-added services",
+    "Long-run client incentive intensity"
+  ],
+  "falsifiers": [
+    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens."
+  ],
   "hard_veto_flags": [
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Cash generation is sufficient; Visa is not structurally dependent on external capital."
     },
     {
       "veto": "장기간 지속되는 과도한 희석",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Net buybacks reduce share count."
     },
     {
       "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Debt is small relative to OCF and the business has no credible near-term solvency pathway."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "high-single to low-double-digit long-run growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Payments volume, cross-border volume, processed transactions, value-added services, client incentives, owner FCF/share, buyback price"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "liquidity_leverage",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Visa has modest net debt relative to enormous OCF, with diversified maturities and investment-grade access."
     },
     {
       "criterion_id": "stress_survival",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "FY2025 OCF exceeded $23B and the business can fund capex, dividends and buybacks internally."
     },
     {
       "criterion_id": "dilution_offbalance",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "Shares are repurchased aggressively and SBC is modest; no off-balance obligation dominates the capital structure."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
     }
-  }
+  ]
 }

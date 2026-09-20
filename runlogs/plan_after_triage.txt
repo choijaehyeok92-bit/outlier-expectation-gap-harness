@@ -1,0 +1,33 @@
+{
+  "stage": "domain_analysis",
+  "agents": {
+    "customer_product": "CP",
+    "management_allocation": "MA",
+    "moat_trajectory": "MT",
+    "reinvestment_fcf": "RF",
+    "structural_leadership": "SL"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "proxy_compensation",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "research": {
+    "questions": 23,
+    "pending": 23,
+    "decision_blocking": 7,
+    "deferred": 0,
+    "command": "python harness.py research-plan V"
+  }
+}
+python harness.py prompt V CP
+python harness.py prompt V MA
+python harness.py prompt V MT
+python harness.py prompt V RF
+python harness.py prompt V SL

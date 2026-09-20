@@ -4,53 +4,100 @@
   "as_of_date": "2026-09-18",
   "domain": "disruptive_innovation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 83.25,
+  "confidence_0_1": 0.86,
+  "bull_score": 91.25,
+  "bear_score": 63.25,
+  "bull_case": "Agentic commerce, tokenized credentials and real-time money movement can extend Visa's network into new flows.",
+  "bear_case": "Account-to-account rails and regulatory routing mandates can reduce Visa's role in some payment flows.",
+  "thesis": "Visa is an incumbent that remains a major enabler of the shift from cash to digital money movement. Innovation is not startup-style disruption, but network standards, tokenization, risk/security and Visa Direct continue to expand the value chain.",
+  "evidence": [
+    {
+      "claim": "FY2025 processed transactions were 257.545B, +10%.",
+      "source_type": "filing",
+      "source": "runs/V/sources/FY2025_10K_key_facts.txt",
+      "period": "FY2025",
+      "as_of_date": "2025-11-06",
+      "value": "257.545B",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 processed transactions were 71.7B, +10%.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3/9M FY2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Q3 VAS revenue was $3.8B, +33%.",
+      "source_type": "filing",
+      "source": "runs/V/sources/Q3_2026_key_facts.txt",
+      "period": "Q3/9M FY2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Regulatory and interchange litigation can pressure network economics and pricing over time.",
+    "The current valuation already embeds a high-quality compounder profile."
+  ],
+  "unknowns": [
+    "Long-run regulation of interchange and routing",
+    "Sustainable growth rate of Visa Direct and value-added services",
+    "Long-run client incentive intensity"
+  ],
+  "falsifiers": [
+    "If processed transactions and payments volume decelerate materially while client incentives rise faster than gross revenue, the moat/FCF thesis weakens."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "high-single to low-double-digit long-run growth",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Payments volume, cross-border volume, processed transactions, value-added services, client incentives, owner FCF/share, buyback price"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "cost_performance_shift",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Visa continues digitizing cash and account-to-account flows with tokenization, Visa Direct and network-scale authorization."
     },
     {
       "criterion_id": "adoption_curve",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "Visa operates at mainstream global scale with payments volume and processed transactions still growing around 10%."
     },
     {
       "criterion_id": "optionality_incumbent_response",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Consumer payments, commercial/money movement and value-added services are multiple adjacent value pools where Visa can define standards and distribution."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Regulation, incentives and valuation are the main uncertainty."
     }
-  }
+  ]
 }
