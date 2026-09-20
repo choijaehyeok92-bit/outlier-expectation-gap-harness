@@ -1,0 +1,189 @@
+{
+  "agent_id": "RF",
+  "ticker": "NVDA-V3-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 74.5,
+  "confidence_0_1": 0.75,
+  "bull_score": 88,
+  "bear_score": 55,
+  "bull_case": "FY25→FY26 증분 NOPAT 약 $40.1B을 증분 영업투하자본 약 $39.8B으로 얻어 증분 ROIC가 약 101%다. owner FCF/share는 FY25 $2.26에서 TTM $4.92로 늘었고 희석주식수는 감소했다. 자본집약도가 낮은 성장과 주당 복리가 동시에 확인된다.",
+  "bear_case": "고수익 내부 재투자 흡수율은 23.9%에 그쳐 자본창출 속도를 못 따라간다. H1 자사주 $39.0B와 지분증권 $42.4B이 외부로 나갔다. 운전자본 $41.3B 유출과 비현금 지분평가익 $23.7B 때문에 정상화 현금수익률도 불확실하다.",
+  "thesis": "영업자본 기준 증분 ROIC 약 101%와 owner FCF/share $2.26→$3.68→TTM $4.92는 강하지만, TTM 내부 재투자 흡수율은 23.03%로 65점이다. pass4는 미래 자본집약도에 중요한 추가 사실을 전파했다: $36B AI-cloud agreements와 $108.5B maximum gross guarantees. 이는 아직 현금투하자본이 아니므로 과거 증분 ROIC에 임의 가산하지 않는다. 다만 향후 보증 활성·지원손실이 발생하면 경제적 reinvestment와 owner FCF가 악화될 수 있어 관련 매출·실현손실을 핵심 unknown으로 둔다.",
+  "evidence": [
+    {
+      "claim": "FY25→FY26 증분 NOPAT은 약 $40,079M, 증분 영업투하자본은 약 $39,761M으로 추정되어 증분 ROIC는 약 101%다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt Consolidated Statements of Income and Balance Sheets",
+      "period": "FY25 to FY26",
+      "as_of_date": "2026-01-25",
+      "value": 101,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "SUP-RF-IROIC-001",
+      "economic_driver": "incremental_return_on_capital"
+    },
+    {
+      "claim": "내부 재투자 흡수율은 확정된 측정 기간인 TTM 기준 (capex $7,354M + R&D $23,592M) / OCF $134,360M = 23.03%다. R&D는 분기 단독치까지 1차 자료에 공시돼 있다: Q2 FY27 $7,054M, Q1 FY27 $6,321M, H1 FY27 $13,375M, FY26 $18,497M, H1 FY26 $8,280M. 같은 산식을 다른 기간에 적용하면 Q1 16.05%, Q2 40.42%, H1 23.93%로 갈린다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt 손익계산서 Three/Six Months 컬럼; runs/NVDA-V3-2026-09-19/sources/10-K_FY26_filed_2026-02-25.txt; sources/README.md TTM",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 0.2303,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "SUP-RF-ABSORPTION-002",
+      "economic_driver": "reinvestment_absorption"
+    },
+    {
+      "claim": "owner FCF/share는 FY25 $2.26, FY26 $3.68, TTM $4.92로 증가했고 희석주식수는 FY25 24,804M에서 Q2 FY27 24,285M으로 감소했다. 분기 단독 현금흐름도 회사 공시로 확보됐다: Q2 FY27 OCF $24,077M, capex $2,677M, 회사 공시 FCF $21,341M (Q2 FY26은 각각 $15,365M·$1,894M·$13,450M). Q1 $50,344M + Q2 $24,077M = H1 $74,421M으로 frozen 10-Q와 정확히 일치한다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/README.md; 10-K_FY26_filed_2026-02-25.txt; 10-Q_FY27Q2_filed_2026-08-26.txt; sources/financials/normalized_financials.json DOC-018 (NVDA-F2Q27-Quarterly-Presentation-final-1.pdf) p.16",
+      "period": "FY25 through TTM 2026-07-26",
+      "as_of_date": "2026-07-26",
+      "value": 4.92,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "SUP-RF-FCF-PER-SHARE-003",
+      "economic_driver": "per_share_cash_compounding"
+    },
+    {
+      "claim": "H1 현금 자본배분은 자사주 $39,044M, 지분증권 매입 $42,404M, 배당 $6,290M, capex $4,434M이었다. 별도로 Q2 filing은 $36B AI-cloud agreements와 $108.5B maximum gross guarantees를 공시한다. 이 contingent support는 아직 현금투하자본이 아니지만 미래 reinvestment/FCF의 tail exposure다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L729-L830, L1761-L1818, L2193-L2197; sources/financials/normalized_financials.json FACT-0102",
+      "period": "FY27 H1 / August 2026",
+      "as_of_date": "2026-08-26",
+      "value": 108500,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-RF-OUTSIDE-ALLOCATION-004",
+      "economic_driver": "future_capital_intensity"
+    },
+    {
+      "claim": "H1 운전자본은 AR $24,590M, 재고 $10,204M, 선급·기타자산 $6,480M을 흡수했고 순이익에는 비현금 지분평가익 $23,707M이 포함됐다. 회사가 지분평가익을 제외한 non-GAAP 순이익을 직접 공시해 Q2 FY27 기준 $53,954M(GAAP $59,688M, 평가익 기여 $7,771M·EPS $0.32)으로 분리됐다. 다만 이 non-GAAP은 Q1 FY27부터 SBC를 포함하는 변경된 기준이다(ADJ-014). DSO는 45일에서 60일로 상승했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L729-L780; sources/financials/normalized_financials.json DOC-018 (NVDA-F2Q27-Quarterly-Presentation-final-1.pdf) p.13; SEC Q2 FY27 CFO Commentary",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 41274,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-RF-CASH-QUALITY-005",
+      "economic_driver": "cash_conversion_quality"
+    },
+    {
+      "claim": "Q2 희석주식수는 전년 동기 24,532M에서 24,285M으로 약 1.0% 감소했고 FY26 자사주 매입 $40,388M은 SBC $6,386M의 6.3배였다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/financials/normalized_financials.json FACT-0048, FACT-0056; 10-K_FY26_filed_2026-02-25.txt",
+      "period": "FY26 through FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": -1.01,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "SUP-RF-DILUTION-006",
+      "economic_driver": "dilution_control"
+    }
+  ],
+  "counterevidence": [
+    "증분 ROIC 101%는 전략적 지분증권과 contingent guarantees를 영업투하자본에서 제외한다. 실제 현금지원이 발생하면 미래 수익률은 낮아질 수 있다.",
+    "Q2 OCF/FCF 마진은 전년 대비 하락했고 DSO는 45→60일로 올라 현금전환이 악화됐다.",
+    "FY26 goodwill·라이선스·인수 지출 증가는 영업투하자본 계산을 왜곡할 수 있다.",
+    "TTM 재투자 흡수율 23.03%는 자본창출 속도보다 내부 투자 흡수가 낮음을 보여준다."
+  ],
+  "unknowns": [
+    "지분증권 $93.9B과 보증·AI-cloud support 대상에서 발생한 관련 매출·실현 수익률.",
+    "$108.5B 보증의 실제 활성액·손실과 $36B AI-cloud agreements의 현금사용액.",
+    "운전자본 증가가 일시적 계약효과인지 영구 수준 이동인지.",
+    "Groq 라이선스 약 $15.9B이 창출한 증분 이익.",
+    "maintenance capex와 R&D의 유지/성장 구분(searched_but_not_found)."
+  ],
+  "falsifiers": [
+    "증분 ROIC가 2년 연속 30% 미만이면 고수익 재투자 가설을 기각한다.",
+    "운전자본 증가/매출 증가가 2개 분기 연속 20% 이하로 내려가면 현금전환 우려가 약화된다.",
+    "평가익 제외 owner FCF/share가 FY28에 $7 미만이면 주당 복리 가설을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "희석주식수는 FY25 24,804M에서 Q2 FY27 24,285M으로 감소했다. FY26 자사주 매입은 SBC의 6.3배였고 현재는 순희석이 아니라 역희석이다."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "FY25→FY26 영업자본 기준 증분 ROIC 약 101%로 자본비용을 크게 상회한다. ROIC 수준 하락과 지분증권 포함 정의는 감시하지만 구조적 붕괴의 구성요건은 없다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "증분 ROIC(지분증권 포함)",
+      "direction": "up",
+      "threshold": "30% 이상",
+      "cadence": "annual"
+    },
+    {
+      "name": "운전자본 증가/매출 증가",
+      "direction": "down",
+      "threshold": "20% 이하",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "FY28 $7 이상",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 TTM owner FCF·DSO와 재투자 흡수율 갱신",
+    "보증·AI-cloud support의 실제 현금유출·관련 매출·ROIC 확인",
+    "비시장성 지분 평가기법과 실현 수익률 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 85,
+      "rationale": "FY25→FY26 영업자본 기준 증분 ROIC 약 101%는 매우 높다. $93.9B 지분증권과 새로 전파된 $108.5B maximum gross guarantees는 미래 경제적 투하자본·지원손실을 키울 수 있지만 보증은 아직 현금투하자본이 아니므로 과거 ROIC에 임의 가산하지 않는다. 실현수익률·손실 자료가 없어 90은 배제하고 85를 유지한다."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 65,
+      "rationale": "관측식: (capex + R&D) / OCF. 측정 기간은 calibration.json이 TTM으로 확정하고 있다. TTM 기준 ($7,354M + $23,592M) / $134,360M = 23.03%로 관측표 15~35% 행이며, band_centre 보간 결과 64.2 → 5점 단위 65다. 80점 행(35~60%)에 닿으려면 TTM capex+R&D가 $47.0B 이상이어야 하나 실제는 $30.9B다. [2026-09-19 정정] 직전 갱신이 'R&D 분기 단독치 미공시로 분기 흡수율 계산 불가'라고 적은 것은 사실이 아니다. 10-Q 손익계산서에 Three Months 컬럼이 있어 Q2 FY27 R&D $7,054M이 직접 공시돼 있다. 기간별로는 Q1 16.05%→60, Q2 40.42%→75, H1 23.93%→65로 갈리지만, 정책이 정한 기준은 TTM이므로 65를 적용한다."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 70,
+      "rationale": "owner FCF/share가 $2.26→$4.92로 증가하고 주식수는 감소했다. 운전자본 유출 $41.3B과 비현금 평가익 $23.7B으로 정상화 수준이 불확실하다. [2026-09-19 갱신] 분기 단독 데이터로 현금전환 악화가 계량됐고(OCF 마진 -7.9%p, FCF 마진 -6.6%p YoY), 동시에 평가익을 제외한 회사 공시 non-GAAP 순이익이 확보돼 이익의 평가익 의존도는 오히려 명확해졌다. 회사는 AR 증가를 투자등급 고객의 지급조건 연장으로 귀속시켜 대손 성격의 악화 근거는 확인되지 않았다. 악화·개선 근거가 상쇄되어 '정상화 성장'(75)과 '왜곡 큼'(50) 사이의 70점을 유지한다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "전략적 지분증권을 투하자본에 포함하는지에 따라 증분 ROIC가 크게 달라진다."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "낮은 내부 흡수율이 자본효율인지 재투자 기회 부족인지 구분하기 어렵다."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "critical",
+      "rationale": "운전자본 유출과 지분평가익이 현금흐름과 이익을 반대 방향으로 왜곡한다. Q2 단독 현금전환 악화는 계량됐으나 운전자본 흡수가 일시적인지 영구적 수준 이동인지 판정할 관측치가 아직 1개 분기뿐이다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  },
+  "rerun_note": "Research Orchestrator pass 4 반영. $108.5B는 maximum gross contingent exposure이므로 과거 invested capital에 임의 포함하지 않았다. TTM observable과 기존 realized cash-flow facts가 변하지 않아 subscores는 유지하고 미래 ROIC/FCF uncertainty에 반영했다."
+}

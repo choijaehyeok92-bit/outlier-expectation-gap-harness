@@ -1,0 +1,235 @@
+{
+  "schema_version": "1.0",
+  "ticker": "NVDA",
+  "run_id": "NVDA-V3-2026-09-19",
+  "company_name": "NVIDIA Corporation",
+  "as_of_date": "2026-09-19",
+  "role": "research_orchestrator",
+  "pass": 4,
+  "prior_pass_artifacts": [
+    "sources/research_orchestrator.json (pass 1)",
+    "sources/research_orchestrator_pass2_2026-09-19.json (pass 2)",
+    "sources/research_orchestrator_pass3_2026-09-19.json (pass 3)"
+  ],
+  "scope_note": "전체 재조사를 하지 않았다. pass 3의 RQ-CP-SELFFUND-012를 재검토하는 과정에서 frozen Q2 FY27 10-Q와 normalized_financials.json의 FACT-0102에 이미 존재하던 $108.5B maximum gross guarantee exposure가 pass 1~3 및 최신 domain reports에 전파되지 않은 evidence-propagation defect를 확인했다. 본 pass는 verified/frozen primary fact를 덮어쓰지 않고 해당 누락을 구조화해 downstream domain rerun 대상으로 넘긴다.",
+  "research_summary": {
+    "questions_requested": 3,
+    "questions_resolved": 2,
+    "questions_partial": 1,
+    "questions_unresolved": 0,
+    "carried_forward_unresolved": 1,
+    "new_primary_evidence": 0,
+    "newly_propagated_verified_primary_evidence": 3,
+    "new_secondary_evidence": 0,
+    "verified_fact_conflicts": 0,
+    "requires_refreeze": true,
+    "evidence_propagation_defects": 1
+  },
+  "questions": [
+    {
+      "research_question_id": "RQ-CP-SELFFUND-012",
+      "question": "NVIDIA의 지분투자·보증으로 뒷받침된 거래처에 귀속되는 매출 또는 AR 금액을 공시나 신뢰 가능한 자료로 확인할 수 있는가?",
+      "trigger": [
+        "pass 3 unresolved question",
+        "company_context special_questions #2",
+        "frozen 10-Q / normalized pack과 downstream reports 간 evidence propagation 불일치"
+      ],
+      "status": "partial",
+      "evidence": [
+        {
+          "evidence_id": "SUP-CP-AICLOUD-018",
+          "claim": "Q2 FY27 10-Q는 별도 Additional Commitments로 AI-cloud agreements $36B를 공시했다. 이 구조에서 AI clouds는 NVIDIA data-center infrastructure를 구매하고 NVIDIA는 cloud services를 약정하며, AI clouds는 더 유리한 조건으로 제3자에게 서비스를 제공할 수 있고 일정 조건에서 NVIDIA가 제3자 매출의 revenue share에 참여할 수 있다.",
+          "value": 36000000000,
+          "unit": "USD",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1761-L1805, L2196",
+          "source_section": "Note 10 - Additional Commitments; Risk Factors/MD&A discussion",
+          "period": "2026-07-26",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "demand_self_funding",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99
+        },
+        {
+          "evidence_id": "SUP-FS-SBENERGY-017",
+          "claim": "In August 2026 NVIDIA entered guarantees capped at $105B for approximately 4.25 GW of SB Energy data-center leases on behalf of an OpenAI affiliate. The guarantees phase in as nine phases commence, first expected FY2029, trigger on specified tenant defaults, decline as OpenAI performs, and are limited to defined lease and power payments; NVIDIA also has an option to support approximately 3.8 additional GW.",
+          "value": 105000000000,
+          "unit": "USD maximum gross cap",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1808-L1818, L2193-L2194",
+          "source_section": "Note 10 - Guarantees; Risk Factors/MD&A discussion",
+          "period": "August 2026 post-quarter event",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "customer_financing_and_contingent_support",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99
+        }
+      ],
+      "remaining_unknowns": [
+        "지분투자·보증 대상 거래처에서 이미 인식된 매출 금액과 총매출 비중.",
+        "동일 대상에 귀속되는 AR 금액, 결제조건 및 신용도.",
+        "AI-cloud agreements $36B 중 제3자 사용으로 소멸한 약정액과 NVIDIA revenue-share 실현액.",
+        "SB Energy/OpenAI 보증의 확률가중 기대손실, 회수권 및 실제 phase별 활성 노출."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-FS-GUARANTEE-014",
+      "question": "2026-09-19 cutoff 기준 NVIDIA가 공시한 보증의 maximum gross exposure와 조건부 구조는 무엇인가?",
+      "trigger": [
+        "FS unknown: counterparty credit quality / recovery rates",
+        "Hard Veto research priority: contingent obligations may affect stress-survival and external-capital-dependence review",
+        "normalized_financials.json FACT-0102 not propagated downstream"
+      ],
+      "status": "resolved",
+      "evidence": [
+        {
+          "evidence_id": "SUP-FS-GUARANTEE-016",
+          "claim": "Q2 FY27 10-Q의 Note 10 guarantee table은 AI-cloud land/power/shell guarantees $3.5B와 SB Energy guarantees $105.0B를 합쳐 total maximum gross exposure $108.5B를 공시한다.",
+          "value": 108500000000,
+          "unit": "USD maximum gross exposure",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1807-L1818; sources/financials/normalized_financials.json FACT-0102",
+          "source_section": "Note 10 - Guarantees",
+          "period": "Q2 FY27 filing including August 2026 post-quarter guarantee",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "contingent_credit_exposure",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99
+        },
+        {
+          "evidence_id": "SUP-FS-SBENERGY-017",
+          "claim": "The $105B SB Energy amount is a maximum gross cap rather than an immediately funded liability: guarantees generally activate as applicable leases commence, phase in across nine data centers beginning no earlier than FY2029, are triggered by specified defaults, and decline as OpenAI performs.",
+          "value": 105000000000,
+          "unit": "USD maximum gross cap",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1809-L1818, L2194",
+          "source_section": "Note 10 - Guarantees",
+          "period": "August 2026 post-quarter event",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "contingent_credit_exposure",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99
+        }
+      ],
+      "remaining_unknowns": [
+        "OpenAI affiliate의 guarantee activation 시점별 신용도 및 probability of default.",
+        "각 phase별 실제 guarantee amount와 recovery/recourse terms.",
+        "추가 약 3.8 GW option이 행사될 경우의 최대 추가 노출액."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-FS-COMMITMENT-SCOPE-015",
+      "question": "$29B cloud service agreements와 $36B AI-cloud agreements는 같은 항목인가?",
+      "trigger": [
+        "definition mismatch risk in commitment disclosures",
+        "company_context/README currently summarize only the $29B line inside the $366B table"
+      ],
+      "status": "resolved",
+      "evidence": [
+        {
+          "evidence_id": "SUP-FS-COMMITMENT-SCOPE-019",
+          "claim": "They are distinct disclosed commitment categories. The general future-commitments table includes $29B of cloud service agreements used for NVIDIA R&D/open models/autonomous-vehicle software, while the separate Additional Commitments table includes $36B of AI-cloud agreements supporting partner deployments where AI clouds procure NVIDIA infrastructure.",
+          "value": null,
+          "unit": null,
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1700-L1805, L2196",
+          "source_section": "Note 10 - Commitments and Additional Commitments",
+          "period": "2026-07-26",
+          "publication_date": "2026-08-26",
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "fact_or_estimate": "fact",
+          "economic_driver": "commitment_scope",
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "confidence": 0.99
+        }
+      ],
+      "remaining_unknowns": [],
+      "excluded_post_cutoff": []
+    }
+  ],
+  "carried_forward": [
+    {
+      "research_question_id": "RQ-RF-MAINTCAPEX-009",
+      "status": "unresolved",
+      "reason": "No new eligible evidence. Pass 2 established searched_but_not_found for maintenance capex; do not fill by inference."
+    }
+  ],
+  "candidate_new_evidence": [
+    "SUP-FS-GUARANTEE-016",
+    "SUP-FS-SBENERGY-017",
+    "SUP-CP-AICLOUD-018",
+    "SUP-FS-COMMITMENT-SCOPE-019"
+  ],
+  "conflicts": [],
+  "excluded_post_cutoff": [],
+  "evidence_propagation_defects": [
+    {
+      "defect_id": "PROP-001",
+      "subject": "$108.5B maximum gross guarantee exposure omitted from pass 1-3 and current domain reports",
+      "frozen_primary_state": "Q2 FY27 10-Q contains $108.5B total maximum gross guarantee exposure; normalized_financials.json FACT-0102 records 108.5 USD billions with confidence 0.99.",
+      "downstream_state": "pass 3 RQ-CP-SELFFUND-012 and current CP/FS/MA/EV/AS/DI/MT/RF narratives emphasize the $3.529B AI-cloud guarantee and do not propagate the additional $105B SB Energy guarantee.",
+      "conflict_with_verified_fact": false,
+      "action": "Do not overwrite scores. Refreeze corrected input summary and rerun affected reasoning domains so they can adjudicate economic relevance and any veto implications."
+    }
+  ],
+  "requires_refreeze_items": [
+    {
+      "item_id": "REFREEZE-003",
+      "subject": "Propagate already-frozen guarantee and additional-commitment facts into company_context/source summary plus Orchestrator pass 4",
+      "requires_refreeze": true,
+      "value_impact": "undetermined by Research Orchestrator",
+      "recommended_action": "Run freeze after reviewing these input-summary corrections. Then rerun affected domains before aggregate/digest."
+    }
+  ],
+  "recommended_harness_reruns": [
+    "CP",
+    "FS",
+    "MA",
+    "EV",
+    "AS",
+    "DI",
+    "MT",
+    "RF"
+  ],
+  "rerun_rationale": {
+    "CP": "Customer financing/self-funding evidence changed materially in scale, while attributable revenue/AR remains unknown.",
+    "FS": "Contingent maximum gross guarantee exposure is $108.5B, not only $3.529B; probability-weighted loss remains unknown.",
+    "MA": "Capital-allocation and ecosystem-support scale must incorporate the contingent SB Energy structure.",
+    "EV": "Demand-quality and normalization assumptions should consider the larger contingent support structure without treating maximum gross exposure as current cash liability.",
+    "AS": "Permanent-loss/downside analysis should test contingent guarantee activation rather than equate max gross cap with expected loss.",
+    "DI": "Adoption/self-funding assessment should distinguish genuine third-party demand from NVIDIA-supported deployment mechanisms.",
+    "MT": "Moat durability analysis should consider whether financing/support mechanisms are required to sustain ecosystem expansion.",
+    "RF": "Incremental-return analysis should assess contingent support and the separate $36B AI-cloud commitment structure."
+  },
+  "not_recommended_for_rerun": {
+    "SL": "No newly propagated fact directly changes category leadership or secular durability observables.",
+    "RT": "Do not force Red Team while deterministic planner remains in early_exit. Revisit only if affected domain reruns restore an investable archetype.",
+    "IC": "Do not run IC unless deterministic eligibility becomes reachable after reruns."
+  },
+  "orchestrator_boundary": "No domain score, valuation conclusion, Hard Veto status, archetype, position sizing or IC state was modified in this pass."
+}

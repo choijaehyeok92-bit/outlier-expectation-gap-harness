@@ -1,0 +1,162 @@
+{
+  "agent_id": "DI",
+  "ticker": "NVDA-V3-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 78.75,
+  "confidence_0_1": 0.75,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Rubin은 Blackwell 대비 최대 10배 낮은 토큰 비용을 목표로 하고, 9월 MLPerf에서 2.5~3.7배 처리량 향상을 보였다. Blackwell이 이미 출하 대부분과 $89B 분기 데이터센터 매출을 차지해 기술 개선이 파일럿을 넘어 수익으로 전환됐다. 네트워킹·소프트웨어 확장은 새 가치풀을 연다.",
+  "bear_case": "Rubin의 비용곡선 우위가 독립 생산 TCO로 검증되지 않았고, financed AI-cloud deployment가 채택 속도를 부풀릴 수 있다. $36B AI-cloud agreements와 $108.5B maximum gross guarantees의 지원 대상 매출 비중이 높다면 관측된 S-curve 일부는 자생 수요가 아닐 수 있다.",
+  "thesis": "GPU·CPU·NVLink·네트워킹·소프트웨어 공동설계는 AI 비용곡선을 재편하고, Q2 Data Center $89.0B(+117%)와 Blackwell 과반 출하는 채택이 주류 수익으로 전환됐음을 보여준다. 그러나 채택의 자생성에는 더 큰 공백이 확인됐다. Q2 filing은 $36B AI-cloud agreements와 $108.5B maximum gross guarantees를 공시한다. 이는 기술적 채택을 부정하지 않지만 financed deployment 비중을 분리하지 못하게 한다. 독립 TCO·소프트웨어 매출·지원 대상 매출 비중이 없어 90점대 확신은 배제하고 기존 78.75를 유지한다.",
+  "evidence": [
+    {
+      "evidence_id": "SUP-DI-COST-001",
+      "economic_driver": "ai_compute_cost_curve",
+      "claim": "NVIDIA's January 5, 2026 Rubin announcement targets up to a 10x reduction in inference token cost and 4x fewer GPUs to train mixture-of-experts models versus Blackwell.",
+      "source_type": "ir",
+      "source": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+      "period": "Rubin platform specification",
+      "as_of_date": "2026-01-05",
+      "value": 10,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "SUP-DI-MLPERF-002",
+      "economic_driver": "ai_compute_cost_curve",
+      "claim": "In MLPerf Inference v6.1 preview results published September 16, Rubin NVL72 delivered up to 3.7x GB300 NVL72 throughput on Qwen3-VL and up to 2.5x on DeepSeek-R1.",
+      "source_type": "industry",
+      "source": "https://blogs.nvidia.com/blog/vera-rubin-nvl72-mlperf-inference/; MLCommons entries 6.1-0106, 6.1-0074",
+      "period": "MLPerf Inference v6.1",
+      "as_of_date": "2026-09-16",
+      "value": 3.7,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-DI-ADOPTION-003",
+      "economic_driver": "ai_infrastructure_adoption",
+      "claim": "Q2 FY27 Data Center revenue was $89,023M, up 117% year over year and 18% sequentially; Blackwell accounted for the majority of system shipments.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2188-L2189, L2338-L2340",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-26",
+      "value": 89023,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-DI-ECONOMICS-004",
+      "economic_driver": "platform_unit_economics",
+      "claim": "Q2 FY27 gross margin was 75.0%, up from 72.4% a year earlier, with the increase attributed to improved Blackwell Ultra mix.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L2338-L2340, L2557",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-26",
+      "value": 0.75,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-DI-ADJACENCY-005",
+      "economic_driver": "adjacent_value_pools",
+      "claim": "The platform spans accelerated compute, NVLink and Ethernet networking, AI software and open models; Spectrum-X Ethernet revenue grew 2.6x year over year in the Q2 FY27 earnings call.",
+      "source_type": "ir",
+      "source": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf; 10-Q L1745-L1746, L2278",
+      "period": "FY2027 Q2",
+      "as_of_date": "2026-08-26",
+      "value": 2.6,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "SUP-DI-BOTTLENECK-006",
+      "economic_driver": "adoption_financing_constraint",
+      "claim": "NVIDIA disclosed $366B of future commitments and said some AI-cloud and model-maker customers lack long-term infrastructure contracts and investment-grade financing capacity.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1670-L1760, L2192-L2193",
+      "period": "2026-07-26",
+      "as_of_date": "2026-08-26",
+      "value": 366,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Rubin's 10x token-cost claim is vendor-provided and workload-specific; the September MLPerf preview shows 2.5x to 3.7x throughput on the cited models rather than a universal 10x outcome.",
+    "Major customers such as hyperscalers can fund custom accelerators and are not constrained incumbent vendors, limiting NVIDIA's ability to monopolize the value chain.",
+    "Customer land, power and financing constraints have led NVIDIA to provide guarantees and investments, so reported adoption may partly reflect vendor-supported capacity creation.",
+    "China data-center market foreclosure and broader AI regulation can prevent technical advantage from converting into addressable revenue."
+  ],
+  "unknowns": [
+    "Rubin과 leading custom ASIC의 comparable production TCO per token.",
+    "NVIDIA recurring AI software revenue·gross margin의 독립 공시.",
+    "$36B AI-cloud agreements·$108.5B 보증 대상 고객의 Data Center 매출 비중.",
+    "장기 hyperscaler custom-silicon 점유율 변화."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "The platform-level improvement is benchmarked, but the largest 10x claims remain vendor-specific and workload-dependent."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "Revenue and shipment adoption are strong, while customer financing support makes the durability of marginal demand uncertain."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "critical",
+      "rationale": "Networking and software are real adjacent pools, but hyperscalers can deploy internally funded custom silicon and cap platform control."
+    }
+  ],
+  "falsifiers": [
+    "If independent production benchmarks show Rubin cost per token within 20% of leading custom ASICs at comparable latency and utilization, the cost-performance disruption thesis weakens materially.",
+    "If Data Center revenue declines year over year for two consecutive quarters while customer guarantees and investment commitments rise, adoption is no longer self-sustaining.",
+    "If networking and software fail to produce separately observable revenue growth or standards adoption within two years, the multiple-adjacency thesis is falsified."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "independent inference cost per token",
+      "direction": "down",
+      "threshold": "at least 2x advantage versus comparable custom ASICs",
+      "cadence": "semiannual"
+    },
+    {
+      "name": "Data Center revenue growth",
+      "direction": "up",
+      "threshold": "above 25% year over year without rising guarantee losses",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "networking and software value-pool growth",
+      "direction": "up",
+      "threshold": "separately disclosed growth above core compute",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "독립 Rubin/custom ASIC production TCO와 MLCommons 최종 결과",
+    "Spectrum-X·software revenue·Rubin shipment mix의 다음 공시",
+    "AI-cloud agreements·guarantees의 실제 사용액과 관련 Data Center revenue 비중"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 80,
+      "rationale": "10x token-cost targets and 2.5~3.7x MLPerf throughput show a structural rather than incremental shift, placing the result above the 75 anchor. Vendor-specific workloads and incomplete independent TCO evidence exclude 90."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 85,
+      "rationale": "Data Center $89.0B, +117%, Blackwell 과반 출하와 Rubin production shipments는 주류 확산을 지지한다. 반면 $36B AI-cloud agreements와 $108.5B maximum gross guarantees 때문에 채택 중 financed deployment 비중을 분리할 수 없어 90을 배제한다. 관측된 매출·마진이 이미 대규모여서 기존 85를 유지한다."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 70,
+      "rationale": "Networking and AI software/open-model infrastructure provide two adjacent value pools, matching the observable 70 row. Hyperscalers are capital-unconstrained customers building custom silicon, so the rubric modifier caps this criterion at 70."
+    }
+  ],
+  "rerun_note": "Research Orchestrator pass 4 반영. financed adoption의 규모를 명시했으나 지원 대상 매출 귀속이 미공시이고 실제 대규모 매출·마진 채택은 유지돼 subscores는 변경하지 않았다."
+}

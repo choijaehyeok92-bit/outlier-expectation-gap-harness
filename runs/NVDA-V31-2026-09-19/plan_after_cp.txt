@@ -1,0 +1,12 @@
+{
+  "stage": "macro",
+  "agents": {
+    "macro_overlay": "MO"
+  },
+  "research": {
+    "questions": 66,
+    "pending": 66,
+    "command": "python harness.py research-plan NVDA-V31-2026-09-19"
+  }
+}
+python harness.py prompt NVDA-V31-2026-09-19 MO

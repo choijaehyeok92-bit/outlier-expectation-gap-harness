@@ -1,0 +1,239 @@
+{
+  "schema_version": "1.0",
+  "ticker": "NVDA",
+  "run_id": "NVDA-V3-2026-09-19",
+  "company_name": "NVIDIA Corporation",
+  "as_of_date": "2026-09-19",
+  "role": "research_orchestrator",
+  "pass": 3,
+  "prior_pass_artifacts": [
+    "sources/research_orchestrator.json (pass 1)",
+    "sources/research_orchestrator_pass2_2026-09-19.json (pass 2)"
+  ],
+  "scope_note": "§4에 따라 전체 재조사를 하지 않았다. pass 2 이후 실제로 새로 생긴 trigger만 다룬다: (가) 앵커 보간 도입으로 reinvestment_runway의 정밀도가 점수를 직접 좌우하게 된 점, (나) 신규 dispersion_review가 지목한 증거 취약 도메인, (다) pass 2에서 egress 차단으로 미해결된 CONFLICT-001. pass 2에서 이미 해소된 질문은 다시 검색하지 않았다.",
+  "retrieval_environment": {
+    "web_search": "available",
+    "web_fetch": "www.sec.gov 및 nvidianews.nvidia.com 차단 (egress 정책)",
+    "consequence": "1차 자료 본문 직접 열람 불가. 해당 출처 evidence는 confidence를 낮추고 note에 한계를 명시했다."
+  },
+  "research_summary": {
+    "questions_requested": 3,
+    "questions_resolved": 2,
+    "questions_partial": 0,
+    "questions_unresolved": 1,
+    "carried_forward_unresolved": 1,
+    "new_primary_evidence": 4,
+    "new_secondary_evidence": 0,
+    "verified_fact_conflicts": 0,
+    "conflicts_resolved_from_prior_pass": 1,
+    "requires_refreeze": true,
+    "resolved_without_web_search_step_a": 1,
+    "report_corrections_raised": 1
+  },
+  "resolved_questions": [
+    "RQ-RF-RUNWAY-011",
+    "RQ-MA-TAX-013"
+  ],
+  "unresolved_questions": [
+    "RQ-CP-SELFFUND-012"
+  ],
+  "questions": [
+    {
+      "research_question_id": "RQ-RF-RUNWAY-011",
+      "question": "내부 재투자 흡수율 (capex + R&D) / OCF 을 분기 기준으로 산출할 R&D 분기 단독치가 1차 자료에 존재하는가? 그리고 이 criterion의 측정 기간은 무엇으로 정의돼 있는가?",
+      "trigger": [
+        "정책 변경으로 새로 생긴 누락 observable: reinvestment_runway가 계단표에서 연속 보간으로 바뀌어 흡수율의 정밀도가 점수를 직접 좌우하게 됐다",
+        "RF unknown (직전 갱신에서 '분기 단독 R&D 미공시'로 기재)",
+        "§8 정의 불명확 / 기간 불일치"
+      ],
+      "status": "resolved",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-RF-RND-012",
+          "claim": "frozen 10-Q 손익계산서는 Three Months / Six Months 두 컬럼을 모두 제시하며 분기 단독 R&D가 직접 공시돼 있다: Q2 FY27 R&D $7,054M, SG&A $1,354M (합계 $8,408M로 DOC-018의 GAAP 영업비용과 일치), Q2 FY26 R&D $4,291M, SG&A $1,122M (합계 $5,413M로 일치). Q1 FY27 R&D는 H1 $13,375M − Q2 $7,054M = $6,321M이다.",
+          "value": 7054000000,
+          "unit": "USD",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "/home/user/outlier-expectation-gap-harness/runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+          "source_section": "Condensed Consolidated Statements of Income (L2374 부근, Three/Six Months 컬럼)",
+          "period": "Q2 FY2027 (quarter)",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "reinvestment_capacity",
+          "confidence": 0.99,
+          "note": "§6 Step A로 해소 — 웹 검색 불필요. 직전 RF 갱신(커밋 bf17f93)이 이 항목을 '분기 단독치 미공시'로 unknowns에 기재한 것은 사실과 다르다. 해당 수치는 frozen 코퍼스 안에 이미 있었다. RF unknowns 정정이 필요하다."
+        },
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-RF-RUNWAY-013",
+          "claim": "공시 수치로 산출한 흡수율은 측정 기간에 따라 크게 갈린다: Q1 FY27 16.05%, Q2 FY27 40.42%, H1 FY27 23.93%, Q2 FY26 40.25%. Q1 FY27의 영업현금흐름 $50,344M이 Q2 $24,077M의 두 배를 넘어 H1 분모를 키운 것이 원인이다.",
+          "value": null,
+          "unit": "ratio",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "/home/user/outlier-expectation-gap-harness/runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt; sources/financials/normalized_financials.json DOC-018 (NVDA-F2Q27-Quarterly-Presentation-final-1.pdf) p.16",
+          "source_section": "Statements of Income; Statements of Cash Flows; 투자자 프레젠테이션 FCF 조정표",
+          "period": "Q1 FY2027 / Q2 FY2027 / H1 FY2027 / Q2 FY2026",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "reinvestment_capacity",
+          "confidence": 0.98,
+          "note": "개별 비율은 공시 수치의 직접 산출이므로 fact이나, 어느 기간을 criterion의 측정 기준으로 삼을지는 RO의 판단 범위가 아니다(§8·§9·§15). 아래 remaining_unknowns의 정책 공백으로 넘긴다."
+        }
+      ],
+      "remaining_unknowns": [
+        "calibration.json의 reinvestment_runway 관측표는 metric을 '(capex + R&D) / 영업현금흐름'으로만 정의하고 측정 기간을 명시하지 않는다. band_centre 보간 도입 전에는 Q1·H1이 모두 15~35% 행이라 65로 같았으나, 보간 후에는 Q1 60 / H1 65 / Q2 75로 갈린다. 기간 정의는 정책 소유자와 RF가 정할 사안이며 RO는 결정하지 않는다.",
+        "R&D 중 유지 성격과 성장 성격의 구분은 공시되지 않는다(maintenance capex와 동일한 한계)."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-CP-SELFFUND-012",
+      "question": "NVIDIA의 지분투자·보증으로 뒷받침된 거래처에 귀속되는 매출 또는 AR 금액을 공시나 신뢰 가능한 자료로 확인할 수 있는가?",
+      "trigger": [
+        "CP·EV·AS·DI 네 도메인이 공통으로 지목한 unknown",
+        "company_context special_questions #2 (How much reported demand is supported by NVIDIA investments or guarantees)",
+        "dispersion_review: customer_product가 가장 하방편중(skew +15.5), expectation_valuation이 가장 넓은 폭(65)"
+      ],
+      "status": "unresolved",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": false,
+          "evidence_id": "SUP-CP-SELFFUND-014",
+          "claim": "searched_but_not_found — 회사는 메커니즘과 익스포저 규모는 공시하지만 매출·AR 귀속 금액은 공시하지 않는다. 확인된 것: AI cloud 파트너의 데이터센터 리스 채무에 대한 land/power/shell 보증 notional $3,529M(신용파생으로 분류, 공정가치는 유의적이지 않음), 파트너 에스크로 $712M, 그리고 'AI clouds and AI model makers ... currently lack the ability to secure long-term infrastructure contracts and investment-grade financing capacity' 및 'securing and providing guarantees of land, power, shell, and capacity of select data center infrastructure that customers require to deploy our products'라는 서술. 관련자·피투자자 매출 귀속 공시는 10-Q·10-K 어디에도 없다.",
+          "value": 3529000000,
+          "unit": "USD (보증 notional)",
+          "source_tier": 1,
+          "source_type": "10-Q",
+          "source": "/home/user/outlier-expectation-gap-harness/runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+          "source_section": "Additional Commitments and Guarantees (L1523, L1749-L1750); Risk factors (L2193)",
+          "period": "2026-07-26",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "demand_self_funding",
+          "confidence": 0.97,
+          "note": "§6 Step C 시도: 지분투자·보증 대상 매출 비중을 정량화한 Tier 3~4 자료를 검색했으나 신뢰 가능한 추정치를 찾지 못했다. 검색 결과는 Data Center 매출 총액·고객집중도 일반 기사에 그쳤다. §15에 따라 추정으로 채우지 않는다."
+        }
+      ],
+      "remaining_unknowns": [
+        "지분투자·보증 대상 거래처에 귀속되는 매출 금액.",
+        "같은 대상에 귀속되는 AR 금액과 그 신용도(회사는 AR 증가를 'investment-grade customers'의 지급조건 연장으로 설명하나 금액 구성은 미공시).",
+        "보증이 실행될 경우의 최대 손실과 회수 가정."
+      ],
+      "excluded_post_cutoff": []
+    },
+    {
+      "research_question_id": "RQ-MA-TAX-013",
+      "question": "FY27 세율 가이던스 16.0~18.0%는 non-GAAP에만 적용되는가, GAAP에도 적용되는가? (pass 2 CONFLICT-001)",
+      "trigger": [
+        "pass 2 CONFLICT-001 미해결",
+        "§8 정의 불명확"
+      ],
+      "status": "resolved",
+      "evidence": [
+        {
+          "as_of_date": "2026-09-19",
+          "eligible_under_as_of_date": true,
+          "conflict_with_verified_fact": false,
+          "requires_refreeze": true,
+          "evidence_id": "SUP-MA-TAX-015",
+          "claim": "SEC 8-K 첨부 Q2 FY27 CFO Commentary는 'For the full year fiscal 2027, NVIDIA expects GAAP and non-GAAP tax rates to be between 16.0% and 18.0%, excluding any discrete items and material changes to their tax environment'로 기술한다. 즉 16.0~18.0% 범위는 GAAP과 non-GAAP 모두에 적용된다. 투자자 프레젠테이션 p.11은 같은 범위를 'non-GAAP tax rates'로만 기술해 범위가 더 좁다.",
+          "value": null,
+          "unit": "ratio range",
+          "source_tier": 1,
+          "source_type": "8-K exhibit (CFO Commentary)",
+          "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+          "source_section": "Q2 FY27 CFO Commentary — outlook",
+          "period": "FY2027",
+          "publication_date": "2026-08-26",
+          "fact_or_estimate": "fact",
+          "economic_driver": "tax_normalization",
+          "confidence": 0.8,
+          "note": "WebSearch 요약 경로로 확보했다. www.sec.gov는 이 환경의 egress 정책상 차단되어 원문을 직접 열람하지 못했다. 서로 다른 검색 질의 2회가 동일 문구를 반환해 신뢰도는 보강됐으나 원문 대조는 아니다. 병합된 pack의 FACT-0197/0198은 gaap_status=non_gaap으로만 기재돼 있어 실제 공시보다 적용 범위가 좁다. §3·§15에 따라 자동 수정하지 않고 requires_refreeze=true로만 보고한다."
+        }
+      ],
+      "remaining_unknowns": [
+        "프레젠테이션과 CFO Commentary의 문구 차이가 의도된 것인지 편집상의 차이인지는 확인할 수 없다."
+      ],
+      "excluded_post_cutoff": []
+    }
+  ],
+  "carried_forward": [
+    {
+      "research_question_id": "RQ-RF-MAINTCAPEX-009",
+      "status": "unresolved (pass 2에서 이월, 재검색하지 않음)",
+      "reason": "pass 2에서 10-K FY26·10-Q Q1/Q2 FY27·8-K·투자자 프레젠테이션 전체에 maintenance capex 구분 공시가 없음을 확인했다. 이후 신규 자료가 추가되지 않았으므로 재검색의 기대값이 없다. §16에 따라 UNRESOLVED로 유지한다."
+    }
+  ],
+  "conflicts": [],
+  "prior_conflicts_resolved": [
+    {
+      "conflict_id": "CONFLICT-001 (pass 2)",
+      "resolution": "SUP-MA-TAX-015로 해소 — 값 충돌이 아니라 적용 범위 차이였고, 16.0~18.0%는 GAAP·non-GAAP 모두에 적용된다.",
+      "follow_up": "REFREEZE-002"
+    }
+  ],
+  "requires_refreeze_items": [
+    {
+      "item_id": "REFREEZE-002",
+      "subject": "FY27 세율 가이던스 fact의 적용 범위",
+      "affected_fact_ids": [
+        "FACT-0197",
+        "FACT-0198"
+      ],
+      "current_state": "gaap_status=non_gaap (투자자 프레젠테이션 p.11 문구 기준)",
+      "disclosed_state": "SEC CFO Commentary는 동일 범위를 GAAP과 non-GAAP 모두에 적용한다고 기술 (SUP-MA-TAX-015)",
+      "requires_refreeze": true,
+      "recommended_action": "두 fact의 적용 범위를 GAAP·non-GAAP 공통으로 넓히거나 GAAP 범위 fact를 별도 추가하고, 취득 경로가 검색 요약임을 review_reason에 남긴 뒤 재freeze. 수치(16.0~18.0%)는 변하지 않는다.",
+      "value_impact": "none — 수치 변화 없음, 적용 범위 라벨만 확대"
+    }
+  ],
+  "report_corrections": [
+    {
+      "item_id": "CORRECTION-001",
+      "subject": "RF 보고서 unknowns의 사실오류",
+      "detail": "커밋 bf17f93의 RF 갱신이 'R&D의 분기 단독치 — reinvestment_runway를 분기 기준으로 재계산하려면 필요하다'를 unknowns에 기재했으나, 해당 수치는 frozen 10-Q 손익계산서의 Three Months 컬럼에 이미 공시돼 있다(SUP-RF-RND-012). 같은 이유로 reinvestment_runway rationale의 '분기 기준 흡수율은 계산할 수 없다'는 서술도 사실과 다르다.",
+      "raised_by": "research_orchestrator pass 3 Step A",
+      "owner": "RF",
+      "note": "RO는 도메인 보고서를 직접 수정하지 않는다(§15). RF 재실행 시 정정 대상이다."
+    }
+  ],
+  "policy_gaps_raised": [
+    {
+      "gap_id": "POLICY-GAP-001",
+      "subject": "reinvestment_runway 관측표의 측정 기간 미정의",
+      "detail": "metric이 '(capex + R&D) / 영업현금흐름'으로만 정의돼 기간이 없다. band_centre 보간 도입 전에는 Q1·H1이 같은 15~35% 행이라 결과가 65로 동일했으나, 보간 후에는 Q1 60 / H1 65 / Q2 75로 갈린다. compounder의 criterion.reinvestment_fcf.reinvestment_runway >= 70 통과 여부가 기간 선택에 좌우된다.",
+      "owner": "정책 소유자 및 RF",
+      "ro_position": "RO는 기간을 선택하지 않는다(§8·§9·§15). 산출값과 출처만 제공한다.",
+      "observed_values": {
+        "Q1 FY27": 0.1605,
+        "Q2 FY27": 0.4042,
+        "H1 FY27": 0.2393,
+        "Q2 FY26": 0.4025
+      }
+    }
+  ],
+  "excluded_post_cutoff": [],
+  "recommended_harness_reruns": [
+    "RF"
+  ],
+  "rerun_rationale": {
+    "RF": "분기 단독 R&D가 frozen 1차 자료에 있어 흡수율을 기간별로 산출할 수 있고(SUP-RF-RND-012, SUP-RF-RUNWAY-013), 직전 갱신의 unknowns·rationale에 사실오류가 있으며(CORRECTION-001), 측정 기간 정의가 확정되면 reinvestment_runway 점수가 달라질 수 있다."
+  },
+  "not_recommended_for_rerun": {
+    "CP/EV/AS/DI": "공통 최대 공백(지분투자·보증 귀속 매출)이 1차·2차 모두에서 미확보로 남아 새 증거가 없다.",
+    "MT": "pass 3에서 MT에 영향을 주는 신규 증거가 없다.",
+    "RT": "여전히 미실행이며 early_exit 게이트가 프롬프트 생성을 막는다. pass 3가 이를 바꾸지 않는다."
+  }
+}

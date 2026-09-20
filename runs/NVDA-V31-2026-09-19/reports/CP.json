@@ -1,0 +1,188 @@
+{
+  "agent_id": "CP",
+  "ticker": "NVDA-V3-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 70.25,
+  "confidence_0_1": 0.78,
+  "bull_score": 85,
+  "bear_score": 50,
+  "bull_case": "Q2 매출 $96.2B, gross margin 75.0%, H1 고객 선수금 $15.6B와 Hyperscale·ACIE의 100%+ 성장은 강한 지불의사와 사용 확대를 지지한다. AI-cloud capacity의 제3자 전환·revenue share와 보증 회수장치도 gross exposure보다 순경제위험이 작을 수 있음을 보여준다.",
+  "bear_case": "지원 대상 고객의 총매출·AR 비중과 OpenAI의 보증 보상 경제성은 여전히 미공개다. DSO도 45일에서 60일로 상승했다. 따라서 $36B AI-cloud 약정과 $105B residual-value 보증이 수요를 얼마나 보조하는지 완전히 분리할 수 없다.",
+  "thesis": "고객가치와 사용 확대는 강하다. 새 1차자료는 $36B AI-cloud 약정이 제3자 사용으로 줄고 qualifying revenue share가 가능하며, $105B PORTS-Pike 보증도 OpenAI의 특정 default 때만 발동하고 재임대·매각 등 회수장치와 별도 OpenAI 보상계약이 있음을 확인한다. 이는 gross exposure를 곧바로 보조금·손실로 보는 해석을 약화시킨다. 다만 지원 대상 고객의 매출·AR 비중, 보상률, 실제 고객 ROI는 미공개이고 DSO는 60일로 상승했다. 따라서 unit economics는 50 '혼재'에서 55로만 소폭 상향한다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 매출 $96,221M에서 gross margin 75.0%, operating margin 66.2%, 판관비/매출 1.4%를 기록했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 75,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-CUSTOMER-VALUE-001",
+      "economic_driver": "pricing_power_and_customer_value"
+    },
+    {
+      "claim": "H1 FY27 이연매출 증가분에는 고객 선수금 $15,600M이 포함됐고 기말 고객 선수금 잔액은 $2,800M이었다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 15600,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-ADVANCES-002",
+      "economic_driver": "customer_commitment"
+    },
+    {
+      "claim": "Q2 FY27 Hyperscale 매출은 $48,710M으로 +102% y/y, AI Clouds/Industrial/Enterprise는 $40,313M으로 +138% y/y 성장했다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V31-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-07-26",
+      "value": 138,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-USAGE-003",
+      "economic_driver": "usage_expansion"
+    },
+    {
+      "claim": "$36B AI-cloud agreements는 AI cloud의 제3자 capacity 판매 또는 NVIDIA R&D 사용만큼 NVIDIA 약정이 감소하고, 일정 조건에서 NVIDIA가 제3자 매출의 revenue share에 참여할 수 있는 구조다.",
+      "source_type": "10-Q",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "period": "FY27 Q2 / as of 2026-07-26",
+      "as_of_date": "2026-09-19",
+      "value": 36,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-AICLOUD-TERMS-001",
+      "economic_driver": "vendor_financing_risk"
+    },
+    {
+      "claim": "SB Energy S-1에 따르면 $105B PORTS-Pike 보증은 OpenAI의 특정 insolvency 또는 치유되지 않은 금전채무 불이행 때 발동하는 residual-value guaranty이며, NVIDIA는 tenancy 인수·양도, 재임대 또는 매각 지시로 회수할 수 있고 보장 최소가치는 20년 동안 감소한다.",
+      "source_type": "regulatory_filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/2133037/000162828026059639/sbenergy-sx1.htm",
+      "period": "PORTS-Pike initial 4.25GW-IT / 20-year leases",
+      "as_of_date": "2026-09-19",
+      "value": 105,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-SB-GUARANTEE-003",
+      "economic_driver": "guarantee_expected_loss"
+    },
+    {
+      "claim": "Q2 FY27 accounts receivable은 $63.1B, DSO는 60일로 전분기 45일에서 상승했다. NVIDIA는 특정 investment-grade 고객의 대형 다분기 계약에 대한 extended payment terms를 원인으로 설명했다.",
+      "source_type": "company_ir",
+      "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm",
+      "period": "FY27 Q2",
+      "as_of_date": "2026-09-19",
+      "value": 60,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-CP-DSO-005",
+      "economic_driver": "receivables_credit_quality"
+    }
+  ],
+  "counterevidence": [
+    "지원 대상 고객의 매출·AR 귀속액이 미공시라 투자·보증·AI-cloud 약정이 총수요에서 차지하는 비중은 확정할 수 없다.",
+    "DSO가 45일에서 60일로 상승했고 extended payment terms가 원인이라는 설명은 현금 전환 측면의 부담을 남긴다.",
+    "OpenAI가 NVIDIA에 보증 관련 보상을 제공하지만 금액·수익률·담보 조건은 공개되지 않았다.",
+    "$279B supply/capacity commitments의 일부는 firm order 전 취소·일정변경·조정이 가능하지만 정확한 비중과 고객 주문 연동률은 공시되지 않았다."
+  ],
+  "unknowns": [
+    "지분투자·AI-cloud agreements·보증 대상 기업에서 발생한 매출 및 AR 비중.",
+    "OpenAI의 NVIDIA 보증 보상 금액·수익률·담보와 9개 phase별 실제 보증 cap.",
+    "고객 AI 인프라의 동일정의 가동률·payback·현금 ROI.",
+    "$279B 공급·capacity commitments 중 firm customer orders로 뒷받침되는 비중."
+  ],
+  "falsifiers": [
+    "지원 대상 기업향 매출이 총매출의 10% 미만이고 해당 AR 조건이 비지원 고객과 유사하다고 확인되면 벤더 금융 우려가 크게 약화된다.",
+    "DSO가 2개 분기 연속 50일 이하로 복귀하고 AR 증가율이 매출 증가율을 밑돌면 현금 전환 우려가 약화된다.",
+    "지원 대상 고객의 부실 또는 보증 실행으로 연간 owner FCF의 25%를 넘는 손실이 발생하면 현재 단위경제 판단을 하향한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "75.0% gross margin, 1.4% 판관비율, $15.6B 고객 선수금과 Hyperscale·ACIE의 100%+ 성장은 고객가치가 부재한 보조금형 성장과 양립하기 어렵다. 새 자료는 AI-cloud 약정의 제3자 전환·revenue share와 보증 회수장치도 확인한다. 다만 지원 대상 매출 비중은 별도 모니터링한다."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "최대 직접고객 비중은 16%이고 중국 데이터센터 시장에서 사실상 배제된 상태에서도 Q2 전체 매출은 +105.9% y/y였다. Data Center 집중과 규제 위험은 크지만 현재 자료만으로 단일 고객·규제가 치명적 종속성이라는 구성요건은 충족하지 않는다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "DSO",
+      "direction": "down",
+      "threshold": "50일 이하",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "지원 대상 고객 매출·AR 비중",
+      "direction": "down",
+      "threshold": "총매출 10% 미만 확인",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "고객 선수금 잔액",
+      "direction": "stable_or_up",
+      "threshold": "수요 성장과 함께 유지",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 10-Q에서 AR·DSO·대손충당·customer advances와 지원 대상 고객 관련 추가 공시 확인",
+    "OpenAI 보증 보상 경제성과 PORTS-Pike phase별 활성 노출·회수액 추적",
+    "$279B 공급 약정 중 firm-order 및 취소·재조정 가능 비중 확인"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 80,
+      "rationale": "75% gross margin, 낮은 판관비와 고객 선수금은 높은 지불의사를 입증한다. 고객 자체의 직접 ROI/payback 공시는 없어 90은 배제한다."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 70,
+      "rationale": "Hyperscale +102%, ACIE +138%와 선수금은 사용 확대를 지지하지만 NRR·churn·동일코호트 데이터가 없어 75 이상의 직접 검증은 부족하다."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 55,
+      "rationale": "회계 마진과 운영레버리지는 강하다. 새 1차자료는 $36B cloud 약정의 제3자 전환·revenue-share와 $105B 보증의 조건부 발동·회수권·감소 구조를 확인해 gross exposure가 곧바로 보조금 비용이라는 해석을 완화한다. 그러나 지원 대상 매출·AR, 보증 보상률과 고객 ROI가 미공개이고 DSO가 60일로 상승해 75 '규모경제 확인'에는 못 미친다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "지불의사는 강하지만 고객 측 AI 인프라의 직접 ROI와 payback은 공개되지 않았다."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "NRR·churn·동일 코호트가 없어 고객군 성장과 선수금을 대용한다."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "critical",
+      "rationale": "계약상 위험 완화장치는 확인됐지만 지원 대상 매출·AR 비중과 보증 보상 경제성이 없어 자생 수요와 금융지원 효과를 완전히 분리할 수 없다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  },
+  "rerun_note": "v3.1 Research Orchestrator가 수용한 cutoff-valid 1차 증거 5건을 검토했다. $36B AI-cloud 약정의 제3자 전환/revenue-share와 $105B residual-value 보증의 조건부 발동·회수장치가 gross exposure 해석을 완화하므로 unit_economics를 50→55로 소폭 조정했다. 지원 대상 매출·AR와 보상 경제성은 미공개이므로 75 앵커는 적용하지 않는다. 다른 criterion과 Hard Veto 판정은 유지한다."
+}

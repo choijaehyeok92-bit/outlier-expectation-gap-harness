@@ -1,0 +1,222 @@
+{
+  "agent_id": "EV",
+  "ticker": "NVDA-V3-2026-09-19",
+  "as_of_date": "2026-09-19",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 53,
+  "confidence_0_1": 0.6,
+  "bull_score": 85,
+  "bear_score": 20,
+  "bull_case": "AI 인프라 투자가 장기 사이클이면 Y10 owner FCF/share $29.6과 25x terminal로 주당 $431이다. CUDA·NVLink 생태계와 네트워킹·소프트웨어 결합이 강화되고 공급 확대가 수요로 전환되면 높은 점유율과 마진을 함께 유지할 수 있다. DCF에서 제외한 지분투자자산 $93.9B는 추가 옵션이다.",
+  "bear_case": "Base도 높은 성장과 현금마진을 요구한다. 지원 대상 매출·AR 비중이 미공시인 가운데 $36B AI-cloud agreements와 $108.5B maximum gross guarantees가 존재해 수요 정상화 시 매출과 현금지원이 동시에 악화될 수 있다. 확률가중 보증손실은 산출할 근거가 없다.",
+  "thesis": "고정 정책 DCF의 Bear/Base/Bull은 약 $75/$213/$431, 현재가 $222.27는 Base의 1.044배다. 새로 전파된 $36B AI-cloud agreements와 $108.5B maximum gross guarantees는 수요의 자생성과 장기 현금전환을 더 불확실하게 만들지만, $105B 보증은 FY2029 이후 조건부 maximum cap이고 확률가중 손실이 공시되지 않아 현 시점 owner-FCF 경로에 임의 차감하지 않았다. 따라서 signal-map 점수와 DCF는 유지하고 valuation_robustness 40에 이 위험을 포함한다.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 매출 $96,221M(+105.9% y/y), Data Center $89,023M(+117% y/y, +18% q/q), gross margin 75.0%, operating margin 66.2%.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L126-L161, L2091-L2100",
+      "period": "FY27 Q2 (2026-04-27~2026-07-26)",
+      "as_of_date": "2026-07-26",
+      "value": 96221,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-EV-OPERATING-007",
+      "economic_driver": "operating_scale_and_margin"
+    },
+    {
+      "claim": "H1 FY27 세전이익 $141,410M 중 주식평가익(Gains from equity securities, net)이 $23,707M으로 약 17%다. 현금흐름표에서 비현금 항목으로 차감된다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L736-L760, L2653-L2680",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 23707,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-EV-EQUITY-GAINS-005",
+      "economic_driver": "earnings_normalization"
+    },
+    {
+      "claim": "H1 FY27 OCF $74,421M, capex $4,434M, SBC $3,954M → owner FCF $66,033M. 같은 기간 AR -$24,590M, 재고 -$10,204M의 운전자본 유출이 있었고 기말 AR은 $63,059M이다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L290-L300, L729-L780",
+      "period": "FY27 H1",
+      "as_of_date": "2026-07-26",
+      "value": 66033,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-EV-WORKING-CAPITAL-006",
+      "economic_driver": "working_capital_conversion"
+    },
+    {
+      "claim": "TTM to 2026-07-26 estimate: revenue $302,970M, net income $192,880M, FCF $127,006M, owner FCF $119,765M or $4.92 per diluted share. At the eligible 2026-09-18 close of $222.27, trailing P/E is about 28.1x and P/FCF about 42.3x.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/README.md; https://finance.yahoo.com/quote/NVDA/",
+      "period": "TTM to 2026-07-26; market close 2026-09-18",
+      "as_of_date": "2026-09-19",
+      "value": 4.92,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "SUP-EV-TTM-008",
+      "economic_driver": "current_market_expectations"
+    },
+    {
+      "claim": "Locked-policy DCF result: Bear $74.99, Base $212.86, Bull $431.14; current price/Base = 1.0442. Terminal value is 53% of Bear, 64% of Base and 73% of Bull.",
+      "source_type": "other",
+      "source": "harness deterministic_valuation (config/calibration.json)",
+      "period": "10 years from 2026-09-19",
+      "as_of_date": "2026-09-19",
+      "value": 212.86,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "SUP-EV-DCF-009",
+      "economic_driver": "expectation_gap"
+    },
+    {
+      "claim": "Q2 FY27 filing은 일반 commitments $366B 외에 Additional Commitments $56B와 maximum gross guarantees $108.5B를 공시한다. $105B SB Energy/OpenAI 보증은 FY2029 이후 phase별로 활성화되는 조건부 최대 총액이며, 지원 대상 매출·AR 귀속액과 확률가중 손실은 미공시다.",
+      "source_type": "filing",
+      "source": "runs/NVDA-V3-2026-09-19/sources/10-Q_FY27Q2_filed_2026-08-26.txt L1700-L1818, L2193-L2197; sources/financials/normalized_financials.json FACT-0102",
+      "period": "FY27 Q2 / August 2026 post-quarter event",
+      "as_of_date": "2026-08-26",
+      "value": 108500,
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-EV-COMMITMENTS-010",
+      "economic_driver": "demand_quality_and_contingent_support"
+    }
+  ],
+  "counterevidence": [
+    "valuation_percentile_5y 0.05는 자기 5년 이력 최저권이지만, 분모 EPS가 H1에만 $23.7B의 주식평가익을 포함해 저평가 신호가 과장됐을 수 있다.",
+    "순현금에서 제외한 시장성 지분 $42,783M과 비시장성 지분 $51,157M 합계 $93,940M(주당 약 $3.87)을 Base 가치에 넣지 않아 DCF는 이 자산가치를 보수적으로 처리한다.",
+    "Q3 FY27 매출 가이던스 $108B는 중국 데이터센터 컴퓨트 매출 0을 가정한다. 규제 완화와 시장 재진입은 Base 경로의 상방 요인이다.",
+    "Base는 10년간 owner FCF 마진 약 40% 유지를 가정한다. 커스텀 ASIC 비중 확대는 하방, 네트워킹·소프트웨어 결합 확대는 상방 변수다."
+  ],
+  "unknowns": [
+    "지분투자·$36B AI-cloud agreements·$108.5B 보증 대상 고객의 매출·AR 비중.",
+    "$108.5B maximum gross guarantees의 확률가중 손실과 phase별 활성 노출.",
+    "FY28 supply/capacity 약정 $87B가 수요 정체 신호인지 발주 시계 한계인지.",
+    "비시장성 지분 $51.2B의 실현 가능 가치와 Hugging Face의 장기 현금기여.",
+    "중국 데이터센터 시장 재진입 시점과 규모."
+  ],
+  "falsifiers": [
+    "DSO가 2개 분기 연속 50일 이하로 복귀하고 AR 증가율이 매출 증가율을 밑돌면 고객 자금조달 베어 논리는 크게 약화된다.",
+    "FY28 supply/capacity 약정이 다음 10-Q에서 $120B 이상으로 상향되면 FY28 수요 정체 가설은 기각된다.",
+    "Base 경로가 맞다면 FY29 owner FCF/share는 $10 이상이어야 한다. $7 미만이면 Base는 기각되고 Bear 쪽으로 이동한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "현재가 $222.27는 Base $212.86의 1.044배이고 Bull $431.14보다 48% 낮다. 따라서 현재가가 Bull 시나리오 가치를 초과한다는 구성요건은 반증된다. Base 가정의 야심성은 점수와 uncertainty에 반영한다."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share (OCF-capex-SBC, 희석주식수)",
+      "direction": "up",
+      "threshold": "FY28 $7.4 이상, FY30 $10.4 이상",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "DSO",
+      "direction": "down",
+      "threshold": "50일 이하로 복귀",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "세전이익 중 주식평가익 비중",
+      "direction": "down",
+      "threshold": "10% 미만",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27에서 AR·DSO·customer advances 및 지원 대상 고객 매출 비중 확인",
+    "$36B AI-cloud agreements와 $108.5B 보증의 실제 사용·손실·revenue share 확인",
+    "future commitments 갱신과 owner FCF 정상화 후 Bear/Base/Bull 재산출"
+  ],
+  "verdict": "neutral",
+  "archetype_signals": {
+    "price_to_base_value": 1.0442,
+    "valuation_percentile_5y": 0.05,
+    "revenue_cagr_next_3y": 0.29
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "price_to_base_value 1.0442는 signal_map 0.9~1.1 구간으로 60점이다. Base의 야심성은 valuation_robustness와 uncertainties에 기록한다."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "price_to_base_value 1.0442는 signal_map 0.9~1.1 구간으로 55점이다. Base $212.86 대비 현재가 $222.27는 약 4.4% 높아 공정가치 부근이다."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 40,
+      "rationale": "Base 가치의 64%가 terminal multiple에 의존하고 Bear는 현재가 대비 크게 낮다. 추가로 $36B AI-cloud agreements와 $108.5B maximum gross guarantees가 수요·현금전환의 상관 하방을 키우지만 확률가중 손실을 산출할 1차 자료가 없다. 50 '민감도 큼'보다 보수적인 40을 유지한다."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "향후 3년 매출 CAGR 29%는 Q3 가이던스 이후 기간에 외부 검증 수단이 부족해 장기 경로 불확실성이 크다."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "owner FCF 정의와 운전자본 정상화 속도에 따라 Base 주당가치가 크게 움직인다."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "critical",
+      "rationale": "Base 가치의 64%, Bull의 73%가 terminal multiple에서 나온다. 정책상 배수가 고정이어서 이 의존도는 모델 내 핵심 민감도다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": 0.05,
+    "revenue_cagr_next_3y": 0.29,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          6.8,
+          5.5,
+          4.2,
+          4.4,
+          4.8,
+          5.2,
+          5.5,
+          5.8,
+          6,
+          6.2
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          7.45,
+          9.1,
+          10.4,
+          11.5,
+          12.5,
+          13.35,
+          14.15,
+          14.85,
+          15.5,
+          16.1
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          8.2,
+          11.2,
+          14.2,
+          17,
+          19.6,
+          22,
+          24.2,
+          26.2,
+          28,
+          29.6
+        ]
+      }
+    }
+  },
+  "rerun_note": "Research Orchestrator pass 4 반영. maximum gross guarantee를 현재부채로 오인하지 않고, 확률가중 손실 자료가 없으므로 DCF path를 임의 변경하지 않았다. demand-quality 불확실성은 valuation_robustness와 unknowns에 반영했다."
+}
