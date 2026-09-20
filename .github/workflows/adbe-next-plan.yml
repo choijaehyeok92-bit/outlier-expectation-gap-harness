@@ -27,7 +27,7 @@ jobs:
           set -euo pipefail
           mkdir -p runlogs
           exec > >(tee runlogs/adbe-next-plan.log) 2>&1
-          python harness.py validate ADBE CP MT RF MA FS EV AS DI ED
+          python harness.py validate ADBE CP MT RF MA FS EV AS DI ED MO
           echo "===== PLAN ====="
           python harness.py plan ADBE | tee runlogs/adbe-next-plan.json
       - name: Commit logs
