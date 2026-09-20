@@ -1,7 +1,42 @@
 # Digest — RBRK (as of 2026-09-18)
-score 68.46 (ex-val 66.0, Starter / Watch) · DI 70.0 · TQ None · archetype non_fit — No eligible archetype: see failed/missing conditions and vetoes · veto PENDING_REVIEW · state INCOMPLETE
+score 69.04 (ex-val 68.56, Starter / Watch) · DI 70.0 · TQ None · archetype outlier_growth — Highest eligible deterministic fit; ties use configured priority · veto PENDING_REVIEW · state WATCH
 signals {'price_to_base_value': 0.6304, 'valuation_percentile_5y': None, 'revenue_cagr_next_3y': 0.26, 'market_cap_usd': 22121456045.43} · reachable(raw) ['outlier_growth']
 veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
+
+## structural_leadership — 69.5 (raw 69.5, spread 36.0, DISPUTE)
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| SL | 69.5 (48–84) | 0.83 | support | – | The secular shift from backup toward cyber resilience and AI-era recovery is durable, and Rubrik has credible category leadership. Gartner leadership, strong A… |
+bull: Cyber resilience demand is structural, and Rubrik is broadening from backup into identity, cloud/SaaS and agentic recovery while retaining strong third-party c… / bear: Most disclosed economics still come from one broad cyber-resilience demand pool. Large incumbents can bundle adjacent capabilities, and Agent Cloud has not yet…
+unknowns: Exact Rubrik market share. · Agent Cloud and identity revenue shares.
+
+## customer_product — 75.25 (raw 75.25, spread 33.0, DISPUTE)
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| CP | 75.25 (55–88) | 0.89 | support | V4=cleared, V8=cleared | Customer pull is strong and improving. Rubrik combines high retention, rising large-customer count and improving contribution margins, which is better evidence… |
+bull: Customers are expanding spend: NRR is above 119%, ARR grew 33%, cloud ARR 39%, and >$100K ARR customers grew 23%. Cyber recovery is mission-critical and broade… / bear: Direct ROI and CAC payback are not disclosed. High sales-and-marketing intensity and channel concentration could mean customer acquisition is costlier and less…
+unknowns: Gross retention/churn by cohort. · CAC payback and incremental sales efficiency.
+
+## moat_trajectory — 77.0 (raw 77.0, spread 33.0, DISPUTE)
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| MT | 77 (55–88) | 0.84 | support | V6=cleared | Rubrik's current moat is meaningful and its trajectory is positive. NRR >119%, rising enterprise-customer counts and repeated Gartner leadership indicate stren… |
+bull: The moat is widening through customer expansion, cloud mix, ecosystem integrations and additional identity/agent workflows. More protected workloads and policy… / bear: Data protection is competitive and hyperscalers/security suites can bundle adjacent features. NRR may reflect category growth rather than unique network effect…
+unknowns: Gross retention and price uplift by cohort. · Exact market-share trajectory.
+
+## reinvestment_fcf — 59.0 (raw 59.0, spread 43.0, DISPUTE)
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| RF | 59 (35–78) | 0.86 | neutral | V3=cleared, V5=cleared | Reinvestment runway is long, but owner-level return quality is not yet proven. TTM R&D plus physical/software capex is roughly $492M versus about $337M OCF, an… |
+bull: Rubrik is absorbing more than its current OCF into R&D and product investment while ARR and contribution margin rise. If SBC normalizes, the same reinvestment … / bear: Reported FCF masks heavy equity compensation. TTM SBC exceeds company-style FCF, and share count rose about 5% y/y. High reinvestment intensity does not yet pr…
+unknowns: Incremental ARR contribution per dollar of R&D and S&M. · Normalized SBC after IPO-era equity awards.
+
+## management_allocation — 67.25 (raw 67.25, spread 37.0, DISPUTE)
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| MA | 67.25 (45–82) | 0.82 | support | V1=cleared | Execution and strategic adaptability are better than capital-allocation proof. The company has moved from legacy backup to subscription cyber resilience and ag… |
+bull: Management has repeatedly shifted the product platform, raised guidance with execution, and used a modest Predibase acquisition to accelerate AI capabilities r… / bear: SBC and dilution remain high, founder/dual-class voting control weakens shareholder checks, and the economic return on Predibase and the AI expansion is not ye…
+unknowns: Predibase standalone revenue and return on invested capital. · Long-term normalized SBC policy after IPO-era grants.
 
 ## financial_survival — 65.75 (raw 65.75, spread 45.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
@@ -31,11 +66,18 @@ unknowns: Agent Cloud standalone ARR, gross margin and customer retention. · No
 bull: Rubrik is moving cyber recovery from backup administration toward autonomous data, identity and AI-agent resilience. Strong ARR expansion, >119% NRR and new Ag… / bear: The core product may remain a premium but sustaining cyber-resilience platform rather than a new value-chain standard. Agent Cloud adoption and economics are n…
 unknowns: Standalone Agent Cloud ARR, customer count and gross margin. · Independent recovery-time/TCO benchmarks versus Cohesity, Veeam, hyperscaler-native tools…
 
+## long_term_growth — 73.5 (raw 73.5, spread 40.0, DISPUTE)
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| LG | 73.5 (48–88) | 0.8 | support | – | RBRK fits the Long-Term Outlier Growth concept better than ordinary Growth. A roughly 2.4x five-year scale path and 5-10 year runway are credible, the company … |
+bull: Core cyber resilience can keep compounding while identity and Agent Cloud add new value pools. A roughly 2.4x five-year revenue path is plausible without heroi… / bear: The apparent runway may be mostly one category with adjacent features rather than independent businesses. If ARR growth mean-reverts quickly and Agent Cloud st…
+unknowns: Agent Cloud five-year revenue contribution. · Current category penetration and exact market share.
+
 ## Archetype fit
-{"buffett_value": {"eligible": false, "fit_score": 32.48627451, "failed_conditions": ["domain.financial_survival"], "missing_conditions": ["criterion.reinvestment_fcf.fcf_per_share_quality", "domain.management_allocation", "domain.moat_trajectory"], "blocking_vetoes": []}, "compounder": {"eligible": false, "fit_score": 26.40416667, "failed_conditions": ["domain.financial_survival"], "missing_conditions": ["domain.moat_trajectory", "domain.reinvestment_fcf", "domain.management_allocation", "criterion.reinvestment_fcf.incremental_roic", "criterion.reinvestment_fcf.reinvestment_runway"], "blocking_vetoes": []}, "growth": {"eligible": false, "fit_score": 32.88746556, "failed_conditions": ["domain.financial_survival"], "missing_conditions": ["domain.structural_leadership", "domain.customer_product", "domain.moat_trajectory", "domain.reinvestment_fcf", "domain.management_allocation", "criterion.reinvestment_fcf.fcf_per_share_quality"], "blocking_vetoes": []}, "moonshot": {"eligible": false, "fit_score": 55.97570879, "failed_conditions": ["domain.disruptive_innovation", "domain.asymmetry"], "missing_conditions": ["domain.structural_leadership"], "blocking_vetoes": []}, "outlier_growth": {"eligible": false, "fit_score": 25.28846154, "failed_conditions": [], "missing_conditions": ["domain.long_term_growth", "criterion.long_term_growth.opportunity_scale_5y", "criterion.long_term_growth.growth_duration_10y", "criterion.long_term_growth.culture_adaptability", "criterion.long_term_growth.market_misperception", "domain.customer_product", "domain.moat_trajectory", "domain.management_allocation"], "blocking_vetoes": []}}
+{"buffett_value": {"eligible": false, "fit_score": 64.86127451, "failed_conditions": ["criterion.reinvestment_fcf.fcf_per_share_quality", "domain.financial_survival", "domain.management_allocation"], "missing_conditions": [], "blocking_vetoes": []}, "compounder": {"eligible": false, "fit_score": 68.06041667, "failed_conditions": ["domain.reinvestment_fcf", "domain.management_allocation", "domain.financial_survival", "criterion.reinvestment_fcf.incremental_roic"], "missing_conditions": [], "blocking_vetoes": []}, "growth": {"eligible": false, "fit_score": 69.06928375, "failed_conditions": ["domain.structural_leadership", "domain.reinvestment_fcf", "domain.financial_survival", "criterion.reinvestment_fcf.fcf_per_share_quality"], "missing_conditions": [], "blocking_vetoes": []}, "moonshot": {"eligible": false, "fit_score": 69.87570879, "failed_conditions": ["domain.disruptive_innovation", "domain.structural_leadership", "domain.asymmetry"], "missing_conditions": [], "blocking_vetoes": []}, "outlier_growth": {"eligible": true, "fit_score": 70.51923077, "failed_conditions": [], "missing_conditions": [], "blocking_vetoes": []}}
 ## Provider calibration
-{"mode": "shadow", "applied": true, "decision_effect": false, "family": "openai", "base_offset": 5.0, "max_abs_offset": 5.0, "per_domain_offset": {"financial_survival": -3.33, "expectation_valuation": -1.67, "asymmetry": -1.67, "disruptive_innovation": -3.33}, "basis": {"sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조", "n": 27, "measured_mean_gap": 10.2, "measured_sd": 6.9, "direction": "27개 전부 gpt-5.6-sol >= Claude Opus 5. 노이즈가 아니라 계통 편향.", "caveat": "표본은 종목 1개다. 다른 종목의 쌍 실행이 쌓이면 base_offset을 재추정해야 한다. harness.py calibrate로 측정한다."}, "reason": null}
+{"mode": "shadow", "applied": true, "decision_effect": false, "family": "openai", "base_offset": 5.0, "max_abs_offset": 5.0, "per_domain_offset": {"structural_leadership": -3.33, "customer_product": -5.0, "moat_trajectory": -3.33, "reinvestment_fcf": -3.33, "management_allocation": -3.33, "financial_survival": -3.33, "expectation_valuation": -1.67, "asymmetry": -1.67, "disruptive_innovation": -3.33, "long_term_growth": -2.5}, "basis": {"sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조", "n": 27, "measured_mean_gap": 10.2, "measured_sd": 6.9, "direction": "27개 전부 gpt-5.6-sol >= Claude Opus 5. 노이즈가 아니라 계통 편향.", "caveat": "표본은 종목 1개다. 다른 종목의 쌍 실행이 쌓이면 base_offset을 재추정해야 한다. harness.py calibrate로 측정한다."}, "reason": null}
 ## Evidence concentration (review only)
-[]
+[{"kind": "economic_driver", "value": "category_position", "domains": ["long_term_growth", "moat_trajectory"], "score_effect": 0, "review": "Check whether these positive domains rely on one economic fact."}, {"kind": "economic_driver", "value": "unit_economics", "domains": ["customer_product", "disruptive_innovation"], "score_effect": 0, "review": "Check whether these positive domains rely on one economic fact."}]
 ## Macro / geopolitical transmission
 {"financial_regime": {}, "geopolitical_regime": {}, "company_transmission": {}, "missing_or_stale_components": ["credit_liquidity", "financial_conditions", "geopolitical_events", "structural_trade"], "reanalysis_requests": [], "pending_reanalysis_domains": [], "risk_budget_multiplier": 0.5, "purchase_pacing_multiplier": 0.5, "monitoring_urgency": "high", "fundamental_score_effect": 0}
