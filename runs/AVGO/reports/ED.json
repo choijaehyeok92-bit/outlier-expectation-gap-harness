@@ -4,18 +4,123 @@
   "as_of_date": "2026-09-18",
   "domain": "evidence_quality",
   "role": "evidence_auditor",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 86,
+  "confidence_0_1": 0.93,
+  "thesis": "핵심 투자판단 수치는 대부분 cutoff-valid 10-Q·10-K·DEF 14A와 Broadcom 공식 IR에 직접 연결된다. 특히 고객집중, TSMC 의존, $126.8B 구매약정, $29B XPV backstop, factoring은 1차 자료로 확인된다. 다만 고객별 XPU 경제성, XPV 지원 매출 비중, 구매약정과 비취소 고객계약의 매칭은 미공시이고, AS 확률보정의 McKinsey 기준율은 광범위한 2차 자료이므로 세부 확률로 과잉해석하면 안 된다.",
+  "evidence": [
+    {
+      "claim": "Q3 FY2026 10-Q가 top-five end customers 약 55%, 단일 semiconductor distributor 50%, 9M TSMC wafer share 약 95%를 직접 공시한다.",
+      "source_type": "10-Q",
+      "source": "User-supplied Broadcom Q3 FY2026 10-Q filed 2026-09-10",
+      "period": "FY2026 Q3/9M",
+      "as_of_date": "2026-09-10",
+      "value": "55% / 50% / 95%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ED-AVGO-CONC-001",
+      "economic_driver": "concentration_risk"
+    },
+    {
+      "claim": "동일 10-Q는 unconditional purchase commitments $126.821B, other contractual commitments $3.941B, AI XPV maximum backstop $29B를 공시하며, backstop 지급액은 없고 fair value는 material하지 않았다고 밝힌다.",
+      "source_type": "10-Q",
+      "source": "User-supplied Broadcom Q3 FY2026 10-Q, Note 10",
+      "period": "2026-08-02",
+      "as_of_date": "2026-09-10",
+      "value": "$126.821B / $3.941B / $29B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ED-AVGO-COMMIT-002",
+      "economic_driver": "off_balance_and_customer_financing"
+    },
+    {
+      "claim": "동일 10-Q는 9M FY2026 non-recourse receivables factoring $3.950B와 고객이 조건부로 Broadcom에 최대 $42B convertible promissory notes를 발행할 수 있으나 quarter-end까지 발행되지 않았음을 공시한다.",
+      "source_type": "10-Q",
+      "source": "User-supplied Broadcom Q3 FY2026 10-Q, Notes 3 and 10",
+      "period": "FY2026 9M / 2026-08-02",
+      "as_of_date": "2026-09-10",
+      "value": "$3.950B / up to $42B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ED-AVGO-CASH-003",
+      "economic_driver": "cash_quality_and_contingent_financing"
+    },
+    {
+      "claim": "Q3 공식 실적자료의 AI semiconductor revenue $16.7B와 Q4 guide $21.7B는 회사 공식 IR 수치이며, Growth 가설의 채택 속도 근거로 사용된다.",
+      "source_type": "company_ir",
+      "source": "Broadcom official Q3 FY2026 results published 2026-09-02",
+      "period": "FY2026 Q3/Q4 guidance",
+      "as_of_date": "2026-09-02",
+      "value": "$16.7B / $21.7B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ED-AVGO-AI-004",
+      "economic_driver": "ai_adoption"
+    },
+    {
+      "claim": "Bear/Base/Bull $137.04/$404.48/$797.84와 price/Base 0.8841은 frozen owner-FCF/share 경로와 고정 DCF 정책의 하네스 산출치이며 회사 공시 사실이 아니다.",
+      "source_type": "harness",
+      "source": "runs/AVGO/aggregate.json",
+      "period": "valuation as of 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "$137.04 / $404.48 / $797.84",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "ED-AVGO-VAL-005",
+      "economic_driver": "valuation"
+    },
+    {
+      "claim": "AS 재검토에 사용된 McKinsey 5,000-company growth-persistence 자료는 cutoff 이전의 2차 연구로 수용됐지만 AVGO·custom-AI 전용 기준율은 아니다.",
+      "source_type": "secondary_research",
+      "source": "McKinsey, The ten rules of growth, 2022-08-12; research result-b8b208a...",
+      "period": "2005-2019 global large public companies",
+      "as_of_date": "2022-08-12",
+      "value": "1/8 >10% decade growth; 1/3 top-quartile persistence",
+      "fact_or_estimate": "fact",
+      "evidence_id": "SUP-AVGO-AS-BASE-RATE-001",
+      "economic_driver": "large_company_growth_persistence_base_rate"
+    }
+  ],
+  "counterevidence": [
+    "RPO $179.2B는 회사 스스로 future revenue의 직접 지표가 아니라고 명시하므로 backlog처럼 해석하면 안 된다.",
+    "고객별 XPU gross margin·ROI·payback과 개별 top-five end-customer 매출 비중이 공개되지 않았다.",
+    "XPV backstop·조건부 customer notes의 실제 funded exposure와 확률가중 손실분포가 공시되지 않았다.",
+    "McKinsey 기준율은 대형 상장사 일반 표본이라 Broadcom 같은 custom-AI 반도체 기업의 정밀 확률로 사용할 수 없다."
+  ],
+  "unknowns": [
+    "XPV 지원 고객이 AVGO 매출·AR에서 차지하는 비중.",
+    "구매약정 $126.8B 중 비취소 고객계약으로 실질적으로 상쇄되는 비중.",
+    "개별 top-five end-customer 매출 비중과 장기 contract economics.",
+    "독립적인 custom-XPU 성능/TCO 및 고객 payback 자료.",
+    "factoring 조정 후 정상화 OCF와 owner-FCF/share의 지속성."
+  ],
+  "falsifiers": [
+    "다음 10-Q에서 XPV funded exposure·factoring·AR가 동시에 확대되고 gross margin/OCF conversion이 악화되면 현재 Growth 근거의 증거 품질을 하향한다.",
+    "개별 고객 또는 XPV 지원 매출 비중이 25%를 넘는 것으로 확인되면 CP/RT 집중·벤더금융 검토를 재실행한다.",
+    "frozen 재무팩과 원 공시 간 정의·기간·수치 충돌이 확인되면 해당 도메인과 EV를 재실행한다."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "XPV funded exposure + backstop/customer-note activation",
+      "direction": "down",
+      "threshold": "실제 funded loss 없음; 지원 매출/AR 25% 초과 시 재검토",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "factoring / OCF 및 AR 성장률",
+      "direction": "down",
+      "threshold": "factoring/OCF <10% 및 AR 증가율이 매출 증가율을 장기 초과하지 않음",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "top-five end-customer share / gross margin",
+      "direction": "down",
+      "threshold": "top-five <50%; GM >=65%",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "다음 10-Q에서 XPV 실제 funded exposure, customer-note 발행, backstop 지급·회수 여부 확인.",
+    "RPO·구매약정의 고객별/계약별 매칭과 cancellation terms 추가 공시 확인.",
+    "factoring을 제거한 cash-conversion bridge와 independent XPU TCO 자료 확보."
+  ],
+  "verdict": "support",
   "subscores": [],
   "uncertainties": [],
   "valuation_inputs": {
