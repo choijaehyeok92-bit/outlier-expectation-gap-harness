@@ -5,107 +5,135 @@
   "domain": "reinvestment_fcf",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 85,
-  "confidence_0_1": 0.8,
-  "bull_score": 95,
-  "bear_score": 65,
-  "bull_case": "AI expands TAM while buybacks amplify per-share cash flow growth.",
-  "bear_case": "If AI spend becomes defensive and growth slows, high reinvestment may earn lower incremental returns.",
-  "thesis": "Adobe combines high cash conversion with low capital intensity and large buybacks. H1 owner-style FCF after PP&E and SBC is roughly $4.0B, while Q3 added $2.52B OCF. The remaining question is whether AI-related R&D keeps producing ARR growth rather than merely defending the installed base.",
+  "score_0_100": 81,
+  "confidence_0_1": 0.9,
+  "bull_score": 92,
+  "bear_score": 60,
+  "bull_case": "Adobe sustains >$10B TTM OCF, low capex and shrinking shares while absorbing ~45% of OCF into R&D+capex, giving both internal reinvestment and per-share compounding capacity.",
+  "bear_case": "AI spend may be defensive rather than high-return; Firefly unit economics and true incremental ROIC are not disclosed, so high cash generation does not prove future reinvestment returns.",
+  "thesis": "Cash generation and per-share economics are strong, but direct incremental ROIC remains unmeasured. From cutoff-valid filings/releases, TTM OCF is estimated at $10.806B, R&D $4.694B and capex $214M. The rubric-defined TTM reinvestment absorption is 45.4%, mapping to 80. TTM owner-style FCF after capex and SBC is about $8.52B (~$21.44/share on the frozen 397.5M share reference), while Q3 diluted shares fell ~6.8% y/y.",
   "evidence": [
     {
-      "claim": "H1 OCF was $5.123B and PP&E purchases only $95M.",
+      "claim": "TTM OCF is estimated at $10.806B from FY2025 OCF plus FY2026 nine-month OCF less FY2025 nine-month OCF.",
       "source_type": "filing",
-      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
-      "period": "Q2/H1 FY2026",
-      "as_of_date": "2026-06-15",
-      "value": null,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "H1 SBC was $1.043B.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q2_FY2026_key_facts.txt",
-      "period": "Q2/H1 FY2026",
-      "as_of_date": "2026-06-15",
-      "value": null,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "H1 repurchases were $4.589B; Q3 added ~9.5M shares repurchased.",
-      "source_type": "filing",
-      "source": "runs/ADBE/sources/Q3_FY2026_key_facts.txt",
-      "period": "Q3 FY2026",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm; https://www.sec.gov/Archives/edgar/data/796343/000079634326000112/adbe-20260529.htm; https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbeex991q326.htm",
+      "period": "TTM through Q3 FY2026",
       "as_of_date": "2026-09-10",
-      "value": "9.5M",
+      "value": "$10.806B",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "TTM R&D is estimated at $4.694B and TTM capex at $214M; (R&D+capex)/OCF = ~45.4%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm; https://www.sec.gov/Archives/edgar/data/796343/000079634326000112/adbe-20260529.htm; https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbeex991q326.htm",
+      "period": "TTM through Q3 FY2026",
+      "as_of_date": "2026-09-10",
+      "value": "~45.4%",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "TTM SBC is estimated at $2.071B; owner-style FCF after capex and SBC is ~$8.521B, or ~$21.44/share using frozen 397.5M shares.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm; https://www.sec.gov/Archives/edgar/data/796343/000079634326000112/adbe-20260529.htm; https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbeex991q326.htm",
+      "period": "TTM through Q3 FY2026",
+      "as_of_date": "2026-09-18",
+      "value": "$8.521B / ~$21.44",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Q3 diluted shares used for EPS were 395M versus 424M a year earlier, a decline of ~6.8%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000147/adbeex991q326.htm",
+      "period": "Q3 FY2026 vs Q3 FY2025",
+      "as_of_date": "2026-09-10",
+      "value": "395M vs 424M",
       "fact_or_estimate": "fact"
     }
   ],
   "counterevidence": [
-    "AI lowers content-creation barriers and could shift value from application vendors toward models, distribution layers or new agentic workflows."
+    "The filings do not disclose Firefly-specific inference margin or a direct incremental-ROIC series.",
+    "R&D growth can be defensive if generative AI erodes application-layer pricing power.",
+    "Large buybacks create per-share growth but are not equivalent to internal high-ROIC reinvestment."
   ],
   "unknowns": [
-    "Long-run AI monetization per user, Firefly inference economics, and how much AI-first ARR is incremental versus bundled/reclassified ARR."
+    "Firefly-specific contribution margin and incremental ROIC.",
+    "Maintenance versus growth components of capex/R&D cannot be separated as facts."
   ],
   "falsifiers": [
-    "If ARR growth falls to low single digits while AI usage rises, or owner FCF/share stops compounding despite buybacks, the moat/compounder thesis is downgraded."
+    "TTM owner-style FCF/share declines for multiple periods after adjusting for SBC.",
+    "R&D absorption rises while OCF and ARR growth structurally weaken.",
+    "Diluted shares stop shrinking despite continued large repurchase cash outlays."
   ],
   "hard_veto_flags": [
     {
       "veto": "증분 ROIC의 구조적 붕괴",
       "status": "cleared",
-      "rationale": "Strong cash generation and low capital intensity rebut structural incremental-ROIC collapse."
+      "rationale": "No structural collapse is evidenced; consolidated cash returns remain high even though AI-specific incremental ROIC is unknown."
     },
     {
       "veto": "장기간 지속되는 과도한 희석",
       "status": "cleared",
-      "rationale": "Share count is shrinking, not persistently diluting."
+      "rationale": "Q3 diluted shares used for EPS declined from 424M to 395M y/y."
     }
   ],
   "key_kpis": [
     {
-      "name": "owner FCF/share",
+      "name": "TTM (R&D+capex)/OCF",
+      "direction": "stable",
+      "threshold": "35–60% with maintained cash returns",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "owner-style FCF/share",
       "direction": "up",
       "threshold": "sustained high-single-digit+ growth",
       "cadence": "quarterly/annual"
+    },
+    {
+      "name": "diluted share count",
+      "direction": "down",
+      "threshold": "net shrinkage after SBC",
+      "cadence": "quarterly"
     }
   ],
   "next_checks": [
-    "Q4/FY2026 ARR, AI-first ARR, OCF, SBC, repurchases, share count and Digital Media/Experience growth"
+    "FY2026 10-K for full-year R&D, OCF, capex and SBC.",
+    "Any Firefly contribution-margin or inference-cost disclosure.",
+    "Recompute TTM absorption and owner-style FCF/share at Q4."
   ],
   "verdict": "support",
   "subscores": [
     {
       "criterion_id": "incremental_roic",
-      "score_0_100": 85,
-      "rationale": "High software margins and low physical capex support strong incremental cash returns."
+      "score_0_100": 75,
+      "rationale": "75 anchor: high margins, OCF and low physical capex support excellent returns; 85+ is not used because direct incremental ROIC on AI investment is not observable."
     },
     {
       "criterion_id": "reinvestment_runway",
       "score_0_100": 80,
-      "rationale": "R&D, AI products, document productivity and Experience Cloud provide multiple reinvestment paths."
+      "rationale": "Rubric TTM metric: (capex $0.214B + R&D $4.694B) / OCF $10.806B = 45.4%. This sits in the 35–60% band near its centre; band-centre interpolation rounds to 80."
     },
     {
       "criterion_id": "fcf_per_share_quality",
       "score_0_100": 90,
-      "rationale": "OCF is strong, capex low and aggressive repurchases reduce shares outstanding materially."
+      "rationale": "90 anchor: TTM OCF, low capex, quantified SBC and ~6.8% y/y diluted-share decline jointly support strong per-share compounding; the strongest counterpoint is that buybacks do not prove AI reinvestment returns."
     }
   ],
   "uncertainties": [
     {
       "criterion_id": "incremental_roic",
       "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "rationale": "Strong consolidated cash returns support quality, but direct incremental ROIC on current AI investment is not disclosed."
     },
     {
       "criterion_id": "reinvestment_runway",
-      "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "severity": "minor",
+      "rationale": "TTM absorption is mechanically observable at ~45.4%; return quality of the absorbed spend remains uncertain."
     },
     {
       "criterion_id": "fcf_per_share_quality",
-      "severity": "material",
-      "rationale": "AI monetization and competitive workflow migration remain the central uncertainty."
+      "severity": "minor",
+      "rationale": "Owner-style FCF and share shrinkage are strong; SBC remains economically material."
     }
   ]
 }
