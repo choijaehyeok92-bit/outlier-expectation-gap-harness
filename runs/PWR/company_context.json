@@ -1,0 +1,57 @@
+{
+  "ticker": "PWR",
+  "company_name": "Quanta Services, Inc.",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 636.71,
+  "shares_diluted": 152289000,
+  "market_cap_usd": 95624000000.0,
+  "enterprise_value": 101820000000.0,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC 2025 Form 10-K: https://www.sec.gov/Archives/edgar/data/1050915/000105091526000006/pwr-20251231.htm",
+    "SEC Q2 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1050915/000105091526000025/pwr-20260630.htm",
+    "SEC 2026 DEF 14A: https://www.sec.gov/Archives/edgar/data/1050915/000119312526150293/d118470ddef14a.htm",
+    "Quanta Q2 2026 earnings release: https://investors.quantaservices.com/news-events/press-releases/detail/402/quanta-services-reports-second-quarter-2026-results",
+    "StockAnalysis historical price: 2026-09-18 close $636.71",
+    "FinanceCharts market cap: 2026-09-18 $95.624B"
+  ],
+  "special_questions": [
+    "Normalize owner FCF against 2026 company FCF guidance because H1 working capital was unusually favorable.",
+    "Separate organic grid/load-center demand from acquisition contribution.",
+    "Evaluate whether $53.4B backlog and $33.6B RPO support a durable multi-year expectation gap or mostly near-term visibility.",
+    "Track leverage and acquisition discipline after 2025-2026 deal activity."
+  ],
+  "net_cash_per_share": -40.033778,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "owner-FCF/share DCF; five-year percentile not frozen",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {
+      "United States": 0.93,
+      "Foreign operations (primarily Canada/Australia)": 0.07
+    },
+    "production_by_region": {},
+    "critical_supplier_regions": [
+      "North American electrical equipment and utility supply chain"
+    ],
+    "export_control_dependencies": [],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": []
+  }
+}
