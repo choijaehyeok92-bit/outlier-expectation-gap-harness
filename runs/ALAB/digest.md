@@ -66,6 +66,18 @@ unknowns: Scorpio's long-run share and pricing across multiple hyperscalers. · 
 bull: Astera can become a rack-scale connectivity control plane spanning PCIe/CXL retimers, fabric switches, smart cable modules and custom connectivity, monetizing … / bear: The innovation is enabling infrastructure rather than a monopoly platform. Hyperscalers can design in-house silicon, merchant competitors can bundle alternativ…
 unknowns: Scorpio share across customers beyond the largest hyperscalers. · Long-run price/performance advantage versus integrated merchant alternatives.
 
+## evidence_quality
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| ED | 84 | 0.86 | support | – | Evidence quality is strong for the key decision variables: revenue growth, margins, liquidity, cash flow, customer concentration, dilution and the Amazon warra… |
+unknowns: Normalized owner FCF margin through a semiconductor downcycle. · True end-customer concentration after manufacturing partners are mapped to end customers.
+
+## red_team
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| RT | 62 | 0.84 | oppose | V1=cleared, V2=cleared, V4=cleared, V5=cleared, V6=cleared, V7=cleared, V8=conditional | The strongest challenge to ALAB is not business quality but expectations and concentration. The company combines excellent liquidity, rapid adoption and expand… |
+unknowns: Ultimate end-customer mapping behind manufacturing partners. · Scorpio's sustainable share after competitor responses.
+
 ## macro_overlay
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|

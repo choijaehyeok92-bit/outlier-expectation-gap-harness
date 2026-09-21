@@ -622,11 +622,15 @@
           "owner": false,
           "status": "conditional",
           "rationale": "Product families are diversifying, but direct-customer concentration is high and requires CP/RT review."
+        },
+        {
+          "agent_id": "RT",
+          "owner": true,
+          "status": "conditional",
+          "rationale": "Customer concentration is high, but product families and multiple end-market programs reduce the case for a fatal single-product dependency. End-customer mapping remains incomplete, so this should remain under review."
         }
       ],
-      "missing_reports": [
-        "RT"
-      ],
+      "missing_reports": [],
       "missing_assessments": [],
       "non_owner_escalations": [
         {
@@ -668,7 +672,7 @@
     "items": [
       {
         "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "MA",
           "RT"
@@ -679,17 +683,21 @@
             "owner": true,
             "status": "cleared",
             "rationale": "No restatement, auditor dispute, material-control failure or comparable integrity event was identified in reviewed filings."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "No restatement, auditor dispute, material-control failure or integrity event was identified in the reviewed primary filings."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "FS",
           "RT"
@@ -700,11 +708,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "ALAB is strongly net cash and operating-cash-flow positive; ordinary survival does not depend on external financing."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "ALAB is net cash and operating-cash-flow positive, so external financing is not structurally required for survival."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
@@ -735,7 +747,7 @@
       },
       {
         "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -752,17 +764,21 @@
             "owner": false,
             "status": "cleared",
             "rationale": "Triple-digit revenue growth, 73.3% GAAP gross margin and production deployments demonstrate paid customer value."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Triple-digit revenue growth with >70% GAAP gross margin and production design wins demonstrates paid customer value rather than subsidy-led demand."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "RF",
           "RT"
@@ -773,17 +789,21 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Revenue, operating profit and cash flow have improved rapidly alongside R&D investment; no evidence shows incremental returns structurally below the cost of capital."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Revenue, operating income and cash generation expanded alongside R&D investment; no structural collapse in incremental returns is established."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "MT",
           "RT"
@@ -794,17 +814,21 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Current evidence shows expanding product breadth, design wins and high-margin revenue rather than persistent moat contraction."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Product breadth, co-design and qualification depth are expanding rather than showing persistent moat contraction."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "EV",
           "AS",
@@ -822,11 +846,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Current price is about 1.07x the locked Base value and far below the modeled Bull value. The valuation is demanding but does not require a Bull+ outcome."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Current price is above Base but substantially below Bull value, so Bull+ is not required."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
@@ -849,11 +877,15 @@
             "owner": false,
             "status": "conditional",
             "rationale": "Product families are diversifying, but direct-customer concentration is high and requires CP/RT review."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "conditional",
+            "rationale": "Customer concentration is high, but product families and multiple end-market programs reduce the case for a fatal single-product dependency. End-customer mapping remains incomplete, so this should remain under review."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": [
           {
@@ -936,11 +968,15 @@
             "owner": false,
             "status": "conditional",
             "rationale": "Product families are diversifying, but direct-customer concentration is high and requires CP/RT review."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "conditional",
+            "rationale": "Customer concentration is high, but product families and multiple end-market programs reduce the case for a fatal single-product dependency. End-customer mapping remains incomplete, so this should remain under review."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": [
           {
@@ -977,147 +1013,7 @@
         "non_owner_escalations": []
       }
     ],
-    "pending": [
-      {
-        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MA",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "MA",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "No restatement, auditor dispute, material-control failure or comparable integrity event was identified in reviewed filings."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "FS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "FS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "ALAB is strongly net cash and operating-cash-flow positive; ordinary survival does not depend on external financing."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Production revenue, quantified system-performance improvements and high gross margins show genuine customer value rather than subsidy-led growth."
-          },
-          {
-            "agent_id": "DI",
-            "owner": false,
-            "status": "cleared",
-            "rationale": "Triple-digit revenue growth, 73.3% GAAP gross margin and production deployments demonstrate paid customer value."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "RF",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "RF",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Revenue, operating profit and cash flow have improved rapidly alongside R&D investment; no evidence shows incremental returns structurally below the cost of capital."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MT",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "MT",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Current evidence shows expanding product breadth, design wins and high-margin revenue rather than persistent moat contraction."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "EV",
-          "AS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "AS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Current price is about 1.07x Base but only 0.38x Bull; the market does not require a Bull+ outcome."
-          },
-          {
-            "agent_id": "EV",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Current price is about 1.07x the locked Base value and far below the modeled Bull value. The valuation is demanding but does not require a Bull+ outcome."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      }
-    ],
+    "pending": [],
     "non_owner_escalations": [
       {
         "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
@@ -1826,6 +1722,9 @@
     "If Scorpio or Leo X fails to broaden beyond a small number of customers, optionality should be rescored lower.",
     "If gross margin compresses sharply while unit growth continues, adoption may reflect commoditization rather than durable value.",
     "If hyperscaler internal silicon displaces Astera at major programs, the incumbent-response cap becomes binding at a lower score.",
+    "A later filing that materially revises revenue, cash flow, share count or customer concentration would require re-opening the affected domains.",
+    "If billing-location geography is shown to be unrelated to end demand, macro transmission based on geographic revenue should be reduced.",
+    "If SBC-adjusted per-share FCF diverges materially from GAAP/OCF trends, RF and valuation normalization should be revisited.",
     "If Scorpio revenue growth stalls before broad multi-customer adoption, the Base owner-FCF path becomes too aggressive.",
     "If gross margin falls materially below 65% without an offsetting acceleration in revenue or FCF, Base value should be cut.",
     "If diluted share growth persistently exceeds per-share FCF growth, the expectation-gap thesis fails.",
@@ -1844,6 +1743,9 @@
     "If revenue growth slows sharply while R&D remains elevated, incremental ROIC should fall.",
     "If FCF/share does not outgrow diluted shares over 2027-2028, reinvestment quality is overstated.",
     "If new product ramps materially compress gross margin, the runway score should decline.",
+    "Meaningful diversification of end customers would weaken the concentration bear case.",
+    "Sustained diluted-share growth below 3% with rising FCF/share would weaken the dilution bear case.",
+    "A lower stock price or materially higher owner-FCF path could improve permanent-loss asymmetry without changing business quality.",
     "A sustained decline in hyperscale AI capex without offsetting enterprise/cloud demand would weaken structural durability.",
     "Loss of major platform qualifications would weaken category leadership.",
     "If custom silicon captures most scale-up switching, Astera's structural role would narrow."

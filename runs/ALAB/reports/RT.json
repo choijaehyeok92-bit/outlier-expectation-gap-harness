@@ -4,56 +4,142 @@
   "as_of_date": "2026-09-18",
   "domain": "red_team",
   "role": "red_team",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 62,
+  "confidence_0_1": 0.84,
+  "thesis": "The strongest challenge to ALAB is not business quality but expectations and concentration. The company combines excellent liquidity, rapid adoption and expanding product breadth with a $56B market cap, a Base DCF below the cutoff price, high direct-customer concentration, material SBC and dependence on hyperscale AI infrastructure. The compounder case remains economically plausible, but the evidence does not justify dismissing permanent-loss and dilution concerns.",
+  "evidence": [
+    {
+      "claim": "Current price $303.25 is above the locked Base value $284.56 but well below Bull $808.46.",
+      "source_type": "other",
+      "source": "runs/ALAB/aggregate.json",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "303.25 / 284.56 / 808.46",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "ALAB-RT-VAL"
+    },
+    {
+      "claim": "Q2 direct-customer revenue shares were 29%, 25%, 15% and 13%, establishing concentrated commercial exposure even though some direct customers are manufacturing partners.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": "29/25/15/13%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-RT-CONC"
+    },
+    {
+      "claim": "H1 2026 SBC was $112.9M while H1 operating cash flow was $162.3M, showing that equity compensation remains economically material.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-05",
+      "value": "112.9M SBC / 162.3M OCF",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-RT-SBC"
+    },
+    {
+      "claim": "June liquidity was about $1.253B with negligible funded debt, sharply limiting financing and bankruptcy risk.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-05",
+      "value": "1.253B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-RT-LIQ"
+    },
+    {
+      "claim": "The Amazon warrant can cover up to 3.262M shares and is linked to purchase-performance conditions, illustrating both customer validation and bargaining power concentrated with a major customer.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000110465926012606/tm265461d1_8k.htm",
+      "period": "2026-02-05",
+      "as_of_date": "2026-02-10",
+      "value": "3.262M shares",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-RT-AMZN"
+    }
+  ],
+  "counterevidence": [
+    "Q2 revenue grew 104% YoY and Q3 guidance implies another large sequential increase.",
+    "GAAP gross margin remained above 70%, arguing against subsidy-driven adoption.",
+    "Product breadth has expanded from retimers into switching, memory, Ethernet and optical/custom connectivity.",
+    "Net cash and positive OCF make forced financing unlikely."
+  ],
+  "unknowns": [
+    "Ultimate end-customer mapping behind manufacturing partners.",
+    "Scorpio's sustainable share after competitor responses.",
+    "Long-run SBC/dilution once growth normalizes.",
+    "How severe an AI infrastructure downcycle would be for owner FCF/share."
+  ],
+  "falsifiers": [
+    "Meaningful diversification of end customers would weaken the concentration bear case.",
+    "Sustained diluted-share growth below 3% with rising FCF/share would weaken the dilution bear case.",
+    "A lower stock price or materially higher owner-FCF path could improve permanent-loss asymmetry without changing business quality."
+  ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "No restatement, auditor dispute, material-control failure or integrity event was identified in the reviewed primary filings."
     },
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "ALAB is net cash and operating-cash-flow positive, so external financing is not structurally required for survival."
     },
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Triple-digit revenue growth with >70% GAAP gross margin and production design wins demonstrates paid customer value rather than subsidy-led demand."
     },
     {
       "veto": "증분 ROIC의 구조적 붕괴",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Revenue, operating income and cash generation expanded alongside R&D investment; no structural collapse in incremental returns is established."
     },
     {
       "veto": "해자의 지속적인 축소",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Product breadth, co-design and qualification depth are expanding rather than showing persistent moat contraction."
     },
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Current price is above Base but substantially below Bull value, so Bull+ is not required."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "conditional",
+      "rationale": "Customer concentration is high, but product families and multiple end-market programs reduce the case for a fatal single-product dependency. End-customer mapping remains incomplete, so this should remain under review."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
-  "subscores": [],
-  "uncertainties": [],
+  "key_kpis": [
+    {
+      "name": "top end-customer revenue share",
+      "direction": "down",
+      "threshold": "clear diversification",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "diluted shares vs FCF/share",
+      "direction": "down",
+      "threshold": "dilution below FCF/share growth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "price/Base value",
+      "direction": "down",
+      "threshold": "meaningful margin of safety",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "End-customer concentration mapping",
+    "SBC/dilution versus FCF/share",
+    "Scorpio competitive-share evidence"
+  ],
+  "verdict": "oppose",
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
