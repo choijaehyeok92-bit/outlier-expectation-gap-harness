@@ -1,0 +1,77 @@
+{
+  "ticker": "RKLB",
+  "company_name": "Rocket Lab Corporation",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 64.57,
+  "shares_diluted": 627650482,
+  "market_cap_usd": 40527391622.74,
+  "enterprise_value": 41249189677.04,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC Form 10-K for FY2025 filed 2026-02-26",
+    "SEC Form 10-Q for quarter ended 2026-03-31",
+    "SEC Form 10-Q for quarter ended 2026-06-30 filed 2026-08-10",
+    "SEC 2026 DEF 14A filed 2026-04-06",
+    "SEC Q2 2026 earnings release filed 2026-08-10",
+    "SEC 8-K filed 2026-09-15 on Iridium acquisition financing and completed $1.944B ATM",
+    "StockAnalysis historical close 2026-09-18: $64.57"
+  ],
+  "special_questions": [
+    "Can Rocket Lab evolve from launch and space-hardware manufacturing into a vertically integrated recurring space-services platform after Iridium?",
+    "Does Neutron create a credible second growth engine without forcing structurally excessive capital consumption?",
+    "Do the 2025-2026 ATM issuances and pending Iridium stock consideration create excessive per-share dilution despite strategic asset acquisition?"
+  ],
+  "intake_facts": [
+    "Q2 2026 revenue $234.066M; H1 revenue $434.414M.",
+    "H1 2026 operating cash flow -$134.407M; capex $53.112M.",
+    "2026-06-30 cash and marketable securities $2.388B; backlog $2.356B.",
+    "H1 2026 stock-based compensation $47.677M; R&D $162.942M.",
+    "Government customer represented 42% of H1 2026 revenue.",
+    "As of 2026-08-05, 598.350M common shares were outstanding.",
+    "By 2026-09-15 Rocket Lab had raised ~$1.944B through sale of ~29.3M shares under the replacement ATM to fund the pending Iridium acquisition.",
+    "Iridium transaction consideration is $27 cash plus RKLB stock per share under a collar; acquisition expected to close in mid-2027 subject to approvals."
+  ],
+  "net_cash_per_share": -1.15,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "Transaction-adjusted valuation: pre-close liquidity is strongly net cash, but September ATM proceeds are earmarked for the pending Iridium acquisition. Net cash/share is set to -$1.15 post-deal economic convention to avoid double-counting acquisition financing while valuation scenarios contemplate Iridium-related earnings.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {
+      "United States": 1
+    },
+    "production_by_region": {
+      "United States": 1,
+      "New Zealand": 1,
+      "Germany": 1
+    },
+    "critical_supplier_regions": [
+      "United States",
+      "New Zealand",
+      "Germany"
+    ],
+    "export_control_dependencies": [
+      "ITAR",
+      "U.S. export controls"
+    ],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": [
+      "United States government"
+    ]
+  }
+}
