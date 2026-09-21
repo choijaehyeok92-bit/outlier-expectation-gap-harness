@@ -14,7 +14,8 @@
   ],
   "detection": {
     "note": "financial pack의 document_type이 거칠어(10-K|10-Q|20-F|annual_report|earnings_release|proxy|other) 8-K·Form 4·IR 자료가 모두 other로 수렴한다. 따라서 document_type 일치 또는 source_document 정규식 일치 중 하나라도 맞으면 해당 문서로 센다.",
-    "match": "document_type OR source_regex"
+    "match": "document_type OR source_regex",
+    "equivalence": "요구사항은 equivalents[]로 대체 문서군을 선언할 수 있다. 1차 폼이 맞지 않아도 대체 문서군에 맞으면 같은 요구사항으로 센다. requires_interim_facts=true인 대체 문서군은 해당 문서에서 quarter/ytd fact가 추출되었을 때만 인정한다. 대체로 충족된 개수는 coverage의 equivalents_counted에 남고, 폼은 맞지만 중간재무 내용이 없어 제외된 문서는 equivalents_rejected에 이유와 함께 남는다."
   },
   "requirements": [
     {
@@ -38,7 +39,7 @@
       "id": "latest_interim",
       "importance": "required",
       "min_count": 1,
-      "us": "최신 10-Q",
+      "us": "최신 10-Q (FPI는 6-K 중간 실적으로 대체)",
       "kr": "최신 분기/반기보고서",
       "purpose": "현재 TTM, 분기 추세, 운전자본, 현금흐름, 희석",
       "document_types": [
@@ -47,14 +48,24 @@
       "source_regex": "10-Q|분기보고서|반기보고서",
       "edgar_forms": [
         "10-Q",
-        "10-Q/A"
+        "10-Q/A",
+        "6-K"
+      ],
+      "equivalents": [
+        {
+          "id": "fpi_interim_6k",
+          "note": "외국 민간발행인(FPI)은 10-Q를 제출하지 않고 6-K로 중간 실적을 보고한다. 6-K는 신고(filed)가 아니라 제출(furnished)이며 보도자료·수시사항도 같은 폼으로 나오므로, 전처리기가 그 문서에서 quarter 또는 ytd 기간 fact를 실제로 추출한 6-K만 분기보고서로 인정한다.",
+          "document_types": [],
+          "source_regex": "6-K|report of foreign private issuer",
+          "requires_interim_facts": true
+        }
       ]
     },
     {
       "id": "trailing_quarters",
       "importance": "required",
       "min_count": 6,
-      "us": "과거 6~8개 분기의 10-Q",
+      "us": "과거 6~8개 분기의 10-Q (FPI는 6-K 중간 실적으로 대체)",
       "kr": "과거 6~8개 분기보고서",
       "purpose": "TTM·YoY·FCF/share·증분 ROIC 추세",
       "document_types": [
@@ -63,7 +74,17 @@
       "source_regex": "10-Q|분기보고서|반기보고서",
       "edgar_forms": [
         "10-Q",
-        "10-Q/A"
+        "10-Q/A",
+        "6-K"
+      ],
+      "equivalents": [
+        {
+          "id": "fpi_interim_6k",
+          "note": "외국 민간발행인(FPI)은 10-Q를 제출하지 않고 6-K로 중간 실적을 보고한다. 6-K는 신고(filed)가 아니라 제출(furnished)이며 보도자료·수시사항도 같은 폼으로 나오므로, 전처리기가 그 문서에서 quarter 또는 ytd 기간 fact를 실제로 추출한 6-K만 분기보고서로 인정한다.",
+          "document_types": [],
+          "source_regex": "6-K|report of foreign private issuer",
+          "requires_interim_facts": true
+        }
       ]
     },
     {
@@ -190,7 +211,7 @@
     }
   ],
   "acquisition": {
-    "note": "harness.py fetch가 EDGAR에서 edgar_forms에 해당하는 최신 제출물을 as_of_date 이전 것만 내려받는다. investor_materials처럼 정형 폼이 없는 항목은 자동 수집 대상이 아니며 사람이 IR에서 받아 sources/에 넣는다.",
+    "note": "harness.py fetch가 EDGAR에서 edgar_forms에 해당하는 최신 제출물을 as_of_date 이전 것만 내려받는다. investor_materials처럼 정형 폼이 없는 항목은 자동 수집 대상이 아니며 사람이 IR에서 받아 sources/에 넣는다. latest_interim·trailing_quarters는 6-K도 내려받는다. 국내 신고인에게는 6-K 자체가 존재하지 않아 결과가 달라지지 않는다.",
     "source": "SEC EDGAR",
     "user_agent_required": true,
     "user_agent_note": "SEC 공정이용 정책이 연락처가 담긴 User-Agent를 요구한다. --user-agent 또는 환경변수 SEC_USER_AGENT로 직접 지정한다. 하네스가 임의로 개인 연락처를 외부에 보내지 않는다."

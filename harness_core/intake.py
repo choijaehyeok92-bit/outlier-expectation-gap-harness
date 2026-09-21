@@ -21,6 +21,9 @@ DIRECTION_PRESERVED_METRICS = {
 }
 
 
+INTERIM_PERIOD_KINDS = ('quarter', 'ytd')
+
+
 def _matches(document, requirement):
     if document.get('document_type') in (requirement.get('document_types') or []):
         return True
@@ -30,13 +33,50 @@ def _matches(document, requirement):
     return bool(re.search(pattern, str(document.get('source_document') or ''), re.I))
 
 
+def interim_fact_sources(pack):
+    """Documents the preprocessor actually pulled interim-period facts out of."""
+    return {f.get('source_document') for f in ((pack or {}).get('facts') or [])
+            if f.get('period_kind') in INTERIM_PERIOD_KINDS}
+
+
+def _equivalent_for(document, requirement, interim_sources):
+    """Which declared equivalent, if any, lets this document stand in.
+
+    Returns (equivalent_id, reason_it_was_rejected). A 6-K is furnished, not
+    filed, and carries anything from a press release to a full interim report,
+    so a form match alone is not enough: the equivalent may require that the
+    preprocessor extracted quarter or year-to-date facts from that very
+    document. Otherwise six unrelated announcements would satisfy a trailing
+    quarters gate that exists to establish a trend.
+    """
+    for equivalent in requirement.get('equivalents') or []:
+        if not _matches(document, equivalent):
+            continue
+        if equivalent.get('requires_interim_facts') and document.get('source_document') not in interim_sources:
+            return None, f"{equivalent['id']}: no quarter/ytd facts extracted from this document"
+        return equivalent['id'], None
+    return None, None
+
+
 def coverage(pack, policy):
     """Per-requirement document counts, with the blocking gaps separated out."""
     documents = (pack or {}).get('documents') or []
+    interim_sources = interim_fact_sources(pack)
     blocking_levels = set(policy.get('blocking_levels') or [])
     rows, blocking, advisory, conditional = [], [], [], []
     for requirement in policy['requirements']:
-        matched = [d['source_document'] for d in documents if _matches(d, requirement)]
+        matched, equivalents, rejected = [], [], []
+        for document in documents:
+            name = document.get('source_document')
+            if _matches(document, requirement):
+                matched.append(name)
+                continue
+            accepted, reason = _equivalent_for(document, requirement, interim_sources)
+            if accepted:
+                matched.append(name)
+                equivalents.append({'source_document': name, 'equivalent': accepted})
+            elif reason:
+                rejected.append({'source_document': name, 'reason': reason})
         needed = int(requirement.get('min_count', 1))
         met = len(matched) >= needed
         row = {
@@ -45,6 +85,11 @@ def coverage(pack, policy):
             'purpose': requirement['purpose'], 'us': requirement.get('us'), 'kr': requirement.get('kr'),
             'condition': requirement.get('condition'),
             'examples': matched[:3],
+            # Counted through an equivalence rather than the primary form: a reviewer
+            # reading a trailing series built from 6-Ks should be told so.
+            'equivalents_counted': len(equivalents),
+            'equivalents': equivalents[:3],
+            'equivalents_rejected': rejected[:3],
         }
         row['conditional'] = bool(requirement.get('condition'))
         rows.append(row)

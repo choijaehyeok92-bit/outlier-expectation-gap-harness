@@ -718,6 +718,97 @@ class Stage0IntakeTests(unittest.TestCase):
             h.cmd_freeze(SimpleNamespace(ticker='SYNTH', provider='openai', model='m',
                                          reasoning_effort=None))
 
+    # --- foreign private issuers ------------------------------------------
+
+    @staticmethod
+    def fpi_pack(interim_facts=True, interim_count=6):
+        """A foreign private issuer: 20-F annually, 6-K for interim results, never a 10-Q."""
+        documents = [{'document_id': 'DOC-001', 'source_document': '20-F_2026-04-10_0000.htm',
+                      'document_type': '20-F', 'filing_date': '2026-04-10', 'period_end': '2025-12-31',
+                      'is_amendment': False}]
+        documents += [{'document_id': f'DOC-{i+2:03d}',
+                       'source_document': f'6-K_2026-0{i+1}-15_000{i}.htm',
+                       'document_type': 'other', 'filing_date': f'2026-0{i+1}-15',
+                       'period_end': None, 'is_amendment': False} for i in range(interim_count)]
+        facts = []
+        if interim_facts:
+            facts = [{'fact_id': f'FACT-{i:04d}', 'metric': 'revenue', 'statement': 'income_statement',
+                      'gaap_status': 'ifrs', 'value_reported': 1, 'unit_kind': 'currency',
+                      'scale_multiplier': 1000, 'period_kind': 'quarter', 'fiscal_quarter': (i % 4) + 1,
+                      'source_document': f'6-K_2026-0{i+1}-15_000{i}.htm'} for i in range(interim_count)]
+        return {'schema_version': '1.0', 'documents': documents, 'facts': facts,
+                'adjustment_candidates': [], 'extraction_warnings': []}
+
+    def interim_rows(self, pack):
+        from harness_core import intake as intake_module
+        rows = {r['id']: r for r in intake_module.coverage(pack, h.INTAKE_POLICY)['requirements']}
+        return rows['latest_interim'], rows['trailing_quarters']
+
+    def test_trailing_6k_interim_filings_count_as_quarterly_reports(self):
+        latest, trailing = self.interim_rows(self.fpi_pack())
+        for row in (latest, trailing):
+            with self.subTest(requirement=row['id']):
+                self.assertTrue(row['met'])
+                self.assertEqual(row['found'], 6)
+                self.assertEqual(row['equivalents_counted'], 6)
+                self.assertEqual({e['equivalent'] for e in row['equivalents']}, {'fpi_interim_6k'})
+
+    def test_a_6k_without_interim_facts_is_not_a_quarterly_report(self):
+        """6-K is furnished for anything; a press release is not an interim report."""
+        latest, trailing = self.interim_rows(self.fpi_pack(interim_facts=False))
+        for row in (latest, trailing):
+            with self.subTest(requirement=row['id']):
+                self.assertFalse(row['met'])
+                self.assertEqual(row['found'], 0)
+                self.assertEqual(row['equivalents_counted'], 0)
+                self.assertTrue(all('no quarter/ytd facts' in x['reason'] for x in row['equivalents_rejected']))
+
+    def test_the_equivalence_needs_facts_from_that_same_document(self):
+        pack = self.fpi_pack()
+        # Move every interim fact onto the annual filing: the 6-Ks no longer carry any.
+        for fact in pack['facts']:
+            fact['source_document'] = '20-F_2026-04-10_0000.htm'
+        latest, trailing = self.interim_rows(pack)
+        self.assertFalse(latest['met'])
+        self.assertFalse(trailing['met'])
+
+    def test_a_year_to_date_6k_also_counts(self):
+        pack = self.fpi_pack()
+        for fact in pack['facts']:
+            fact.update(period_kind='ytd', fiscal_quarter=None)
+        self.assertTrue(self.interim_rows(pack)[1]['met'])
+
+    def test_an_annual_only_6k_fact_does_not_count(self):
+        pack = self.fpi_pack()
+        for fact in pack['facts']:
+            fact.update(period_kind='fy', fiscal_quarter=None)
+        self.assertFalse(self.interim_rows(pack)[1]['met'])
+
+    def test_a_domestic_filer_is_unaffected_by_the_equivalence(self):
+        latest, trailing = self.interim_rows(self.pack())
+        for row in (latest, trailing):
+            with self.subTest(requirement=row['id']):
+                self.assertTrue(row['met'])
+                self.assertEqual(row['equivalents_counted'], 0)
+                self.assertEqual(row['equivalents_rejected'], [])
+
+    def test_too_few_interim_6k_filings_still_block(self):
+        latest, trailing = self.interim_rows(self.fpi_pack(interim_count=3))
+        self.assertTrue(latest['met'])          # one is enough for the latest interim
+        self.assertFalse(trailing['met'])       # six are not there
+        self.assertEqual(trailing['found'], 3)
+
+    def test_fetch_can_reach_the_6k_filings_the_rule_accepts(self):
+        rows = [{'form': '20-F', 'filingDate': '2026-04-10', 'accessionNumber': '0-1',
+                 'primaryDocument': 'a.htm', 'reportDate': None, 'primaryDocDescription': None}]
+        rows += [{'form': '6-K', 'filingDate': f'2026-0{i+1}-15', 'accessionNumber': f'0-{i+2}',
+                  'primaryDocument': f'q{i}.htm', 'reportDate': None,
+                  'primaryDocDescription': None} for i in range(6)]
+        planned = fetch.plan(rows, h.INTAKE_POLICY, '2026-09-18')
+        wanted = {r['requirement'] for r in planned['download']}
+        self.assertIn('trailing_quarters', wanted)
+        self.assertNotIn('trailing_quarters', {s['requirement'] for s in planned['shortfalls']})
+
     def test_conditional_requirements_are_not_counted_as_gaps(self):
         from harness_core import intake as intake_module
         result = intake_module.coverage(self.pack(), h.INTAKE_POLICY)
