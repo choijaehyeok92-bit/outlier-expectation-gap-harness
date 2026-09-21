@@ -1,0 +1,164 @@
+{
+  "agent_id": "MT",
+  "ticker": "ALAB",
+  "as_of_date": "2026-09-18",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 78.25,
+  "confidence_0_1": 0.79,
+  "bull_score": 88,
+  "bear_score": 62,
+  "bull_case": "Astera's moat is broadening from signal conditioning into switching, memory and software-assisted fleet observability. Qualification cycles, customer-optimized firmware and interoperability work can deepen switching costs as products span more of the rack.",
+  "bear_case": "The moat remains exposed to merchant-semiconductor competition and hyperscaler custom silicon. Open standards reduce lock-in, and strong customers can multi-source or internalize parts of the connectivity stack.",
+  "thesis": "Moat trajectory is strengthening. Astera combines deep hyperscaler co-design, qualification-heavy hardware, customer-optimized firmware, COSMOS observability and a growing multi-product portfolio across PCIe, CXL, Ethernet and UALink. Revenue and design-win momentum show increasing relevance. The moat is not impregnable because open standards and customer-designed silicon constrain pricing power, but the breadth of qualified products raises replacement cost over time.",
+  "evidence": [
+    {
+      "claim": "Scorpio P-Series spans 32 to 320 lanes and uses customer-optimized firmware plus COSMOS software for updates, diagnostics and a common management interface.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-first-quarter-2026-financial-results",
+      "period": "Q1 2026",
+      "as_of_date": "2026-05-05",
+      "value": "32-320 lanes",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MT-COSMOS"
+    },
+    {
+      "claim": "Astera reported multiple-customer Scorpio shipments and broader design wins, with Scorpio expected to become the largest product family in Q3.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
+      "period": "Q2/Q3 2026",
+      "as_of_date": "2026-08-04",
+      "value": "multiple customers",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MT-SCORPIO"
+    },
+    {
+      "claim": "The portfolio spans Scorpio switches, Aries retimers, Taurus Ethernet/UALink conditioning, Leo memory controllers and custom solutions across merchant GPU platforms.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-first-quarter-2026-financial-results",
+      "period": "Q1 2026",
+      "as_of_date": "2026-05-05",
+      "value": "5 product/solution families",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MT-BREADTH"
+    },
+    {
+      "claim": "Astera expanded its Taiwan Cloud-Scale Interop Lab and cited platform-provider coordination with AMD, Arm, Intel and NVIDIA.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-04",
+      "value": "4 named platform providers",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MT-ECOSYSTEM"
+    },
+    {
+      "claim": "Q2 revenue grew 104% YoY while gross margin remained 73.3%, evidence that scale and product expansion have not yet commoditized economics.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000033/q226exhibit991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-04",
+      "value": "+104% / 73.3%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MT-ECON"
+    }
+  ],
+  "counterevidence": [
+    "Open standards make multi-vendor substitution possible.",
+    "Hyperscalers can build custom silicon and possess much larger R&D budgets.",
+    "Current customer concentration reduces bargaining-power visibility."
+  ],
+  "unknowns": [
+    "Qualification duration and replacement cost by product family.",
+    "Astera market share in merchant scale-up switching after 2027.",
+    "COSMOS adoption depth across installed customer fleets."
+  ],
+  "falsifiers": [
+    "Major design losses at hyperscalers would indicate weakening switching costs.",
+    "Gross-margin erosion alongside slowing design wins would suggest commoditization.",
+    "If custom silicon displaces merchant products faster than adjacent products scale, moat breadth would shrink."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Current evidence shows expanding product breadth, design wins and high-margin revenue rather than persistent moat contraction."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "multi-product design wins per customer",
+      "direction": "up",
+      "threshold": "cross-product expansion",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "gross margin",
+      "direction": "stable",
+      "threshold": "high-60s or better",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "customer diversification",
+      "direction": "up",
+      "threshold": "lower top-account concentration",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Scorpio share and qualification wins",
+    "COSMOS cross-product adoption",
+    "Gross-margin trend"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 80,
+      "rationale": "Qualification-heavy hardware, customer-optimized firmware, common diagnostics and expanding multi-product design-ins create meaningful switching costs while margins remain high."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 75,
+      "rationale": "Primary sources provide multiple quantitative ecosystem-scale indicators—32-320 lane portfolio, five major solution families, four named platform partners—though same-definition longitudinal growth and explicit switching-cost data remain incomplete."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 80,
+      "rationale": "The moat has multiple layers across switching, signal conditioning, memory, software/telemetry and custom solutions, reducing exposure to commoditization of any one chip category."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Customer concentration can obscure true supplier bargaining power."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "COSMOS installed-base scale and longitudinal usage are not publicly quantified."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Hyperscaler custom silicon remains a credible substitute."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
