@@ -1,0 +1,114 @@
+{
+  "agent_id": "IC",
+  "ticker": "MA",
+  "as_of_date": "2026-09-18",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 78.35,
+  "confidence_0_1": 0.87,
+  "thesis": "Mastercard qualifies deterministically as a Compounder: moat trajectory 85.25, reinvestment/FCF 83.50, management 75.00 and financial survival 84.00 clear the required gates, and all Hard Vetoes are cleared. The strongest objection is price: $565.24 is above locked Base $520.71, incentives are rising faster than network revenue, and recent buybacks were near/above Base. NORMAL is justified, but deployment stays at the dispersion-narrowed 0-2% range with macro pacing 0.5.",
+  "evidence": [
+    {
+      "claim": "Completed core score is 78.35 with 100% coverage; compounder conditions and all Hard Veto owner reviews pass.",
+      "source_type": "other",
+      "source": "MA aggregate.pre_ic.reconstructed.json",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 78.35,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "MA-IC-SCORE"
+    },
+    {
+      "claim": "Locked DCF values are Bear $291.77, Base $520.71, Bull $778.54 versus price $565.24.",
+      "source_type": "other",
+      "source": "MA valuation_model.json",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "291.77/520.71/778.54",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "MA-IC-VAL"
+    },
+    {
+      "claim": "FY2025 GDV +9%, cross-border +15%, switched transactions +10%, and VAS revenue +23%; Q2 2026 core and VAS growth remained positive.",
+      "source_type": "filing",
+      "source": "Mastercard 2025 Form 10-K https://www.sec.gov/Archives/edgar/data/1141391/000114139126000013/ma-20251231.htm; Mastercard Q2 2026 Form 10-Q https://www.sec.gov/Archives/edgar/data/1141391/000114139126000083/ma-20260630.htm",
+      "period": "FY2025/Q2 2026",
+      "as_of_date": "2026-07-30",
+      "value": "broad growth",
+      "fact_or_estimate": "fact",
+      "evidence_id": "MA-IC-GROWTH"
+    },
+    {
+      "claim": "Conservative owner-FCF/share proxy rose from about $11.51 in 2023 to $18.14 in 2025 while the share count declined.",
+      "source_type": "filing",
+      "source": "Mastercard 2025 Form 10-K https://www.sec.gov/Archives/edgar/data/1141391/000114139126000013/ma-20251231.htm",
+      "period": "FY2023-FY2025",
+      "as_of_date": "2026-02-11",
+      "value": "$11.51 -> $18.14",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "MA-IC-FCF"
+    },
+    {
+      "claim": "Macro overlay purchase pacing is 0.5 because global Middle East energy/shipping risk is high even though US credit spreads remain tight.",
+      "source_type": "other",
+      "source": "MA MO.json",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 0.5,
+      "fact_or_estimate": "interpretation",
+      "evidence_id": "MA-IC-MACRO"
+    }
+  ],
+  "counterevidence": [
+    "Current price is about 8.6% above locked Base value, so there is no large initial margin of safety.",
+    "Network rebates/incentives are growing faster than payment-network net revenue, which can erode take economics.",
+    "Multiple positive domains depend on the same volume/VAS growth complex rather than fully independent evidence.",
+    "Recent buybacks averaged slightly above locked Base value, limiting capital-allocation upside."
+  ],
+  "unknowns": [
+    "Long-run routing/interchange regulation.",
+    "Long-run incentive intensity and large-contract renewal economics.",
+    "Post-acquisition ROIC for Recorded Future/security assets.",
+    "Full quarter-by-quarter normalized FP extraction for all six trailing 10-Qs."
+  ],
+  "falsifiers": [
+    "MT or RF falls below the compounder thresholds, or owner-FCF/share growth fails to sustain high-single digits on a normalized multi-year basis.",
+    "Price/Base rises above 1.2 without a commensurate increase in intrinsic value.",
+    "Incentives/regulation/A2A displacement cause persistent deterioration in network economics that VAS cannot offset."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "normalized owner FCF/share",
+      "direction": "up",
+      "threshold": "high-single-digit or better long-run growth",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "network revenue vs incentives",
+      "direction": "positive spread",
+      "threshold": "no structural take-rate deterioration",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "switched/cross-border/VAS growth",
+      "direction": "up",
+      "threshold": "broad growth remains intact",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 results and valuation rerun.",
+    "Routing/interchange and A2A regulatory changes.",
+    "Buyback price versus updated Base value."
+  ],
+  "verdict": "support",
+  "ic_state": "NORMAL",
+  "plain_language": {
+    "business": "Mastercard는 카드 대출을 직접 해주는 회사가 아니라, 전 세계 결제의 승인·정산·보안과 관련 서비스를 연결하는 네트워크 회사입니다.",
+    "opportunity": "결제량 증가뿐 아니라 보안·인증·데이터·송금 같은 부가서비스가 더 빠르게 성장하고 있어 장기 복리의 두 번째 축이 있습니다.",
+    "risk": "가장 큰 위험은 회사가 망하는 것이 아니라 좋은 사업을 너무 비싼 가격에 사는 것입니다. 고객 인센티브 증가, 규제, 계좌이체형 결제망이 장기 수익성을 깎을 수 있습니다.",
+    "decision_reason": "현재 자료에서는 컴파운더 조건과 Hard Veto 검사를 통과하지만 현재가는 Base 가치보다 높습니다. 따라서 NORMAL 판정은 유지하되 실제 신규 배치는 0~2% 범위와 거시환경 0.5배 매수속도를 적용하는 것이 하네스 규칙에 맞습니다."
+  }
+}

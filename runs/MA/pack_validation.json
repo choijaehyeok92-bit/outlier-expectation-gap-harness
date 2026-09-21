@@ -1,0 +1,24 @@
+{
+  "validation_mode": "local reconstruction of validate-pack/freeze invariants",
+  "pack": "/mnt/data/MA_stage0/sources/financials/normalized_financials.json",
+  "company_context": "/mnt/data/MA_stage0/company_context.json",
+  "status": "PASS",
+  "errors": [],
+  "warnings": [],
+  "document_counts": {
+    "10-K": 3,
+    "10-Q": 6,
+    "proxy": 1,
+    "earnings_release": 1
+  },
+  "intake_checks": {
+    "latest_annual": true,
+    "latest_interim": true,
+    "trailing_quarters": true,
+    "historical_annuals": true,
+    "proxy_compensation": true,
+    "earnings_release": true
+  },
+  "facts_count": 52,
+  "adjustment_candidates_count": 2
+}
