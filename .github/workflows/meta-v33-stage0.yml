@@ -40,7 +40,11 @@ jobs:
           set -e
           echo "fetch_exit_code=$FETCH_RC" | tee runlogs/fetch_status.txt
 
+          set +e
           python harness.py intake META | tee runlogs/intake.txt
+          INTAKE_RC=${PIPESTATUS[0]}
+          set -e
+          echo "intake_exit_code=$INTAKE_RC" | tee runlogs/intake_status.txt
           python harness.py prompt META FP --out runs/META/FP_prompt.md
 
           git config user.name "github-actions[bot]"
