@@ -1812,6 +1812,112 @@
   "diagnostics": {
     "turnaround_candidate": false
   },
-  "ic_verdict": null,
+  "ic_verdict": {
+    "agent_id": "IC",
+    "ticker": "VRT",
+    "as_of_date": "2026-09-18",
+    "domain": "investment_committee",
+    "role": "chair",
+    "analysis_status": "complete",
+    "score_0_100": 76,
+    "confidence_0_1": 0.82,
+    "thesis": "The deterministic result supports Vertiv as a compounder with growth as a secondary fit. Structural AI power/cooling demand, strong customer economics, rising FCF/share and effective execution justify NORMAL status, while price near Base value, working-capital-assisted H1 cash flow and the unseasoned UIG acquisition argue for the mechanical 0-2% starting range rather than aggressive sizing. Macro pacing remains 0.8 and does not alter the company score.",
+    "evidence": [
+      {
+        "claim": "The completed core score is 75.38 with full 100% coverage; compounder and growth are eligible and all Hard Vetoes are cleared.",
+        "source_type": "other",
+        "source": "runs/VRT/aggregate.json",
+        "period": "2026-09-18",
+        "as_of_date": "2026-09-18",
+        "value": 75.38,
+        "fact_or_estimate": "estimate",
+        "evidence_id": "VRT-IC-SCORE"
+      },
+      {
+        "claim": "Locked DCF values are Bear $82.25, Base $240.42 and Bull $473.84 versus the $249.39 cutoff price.",
+        "source_type": "other",
+        "source": "runs/VRT/aggregate.json",
+        "period": "2026-09-18",
+        "as_of_date": "2026-09-18",
+        "value": "82.25 / 240.42 / 473.84",
+        "fact_or_estimate": "estimate",
+        "evidence_id": "VRT-IC-VAL"
+      },
+      {
+        "claim": "Q2 sales grew 24.1% and operating profit 44.2% YoY, while full-year organic growth guidance was 30%-32%.",
+        "source_type": "company_primary",
+        "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050323/q22026exhibit991vrt07292026.htm",
+        "period": "Q2/FY2026",
+        "as_of_date": "2026-07-29",
+        "value": "+24.1% sales; +44.2% op profit; 30-32% organic guide",
+        "fact_or_estimate": "fact",
+        "evidence_id": "VRT-IC-GROWTH"
+      },
+      {
+        "claim": "H1 OCF was $1.867B but included a $678.8M working-capital source, so current cash conversion requires normalization.",
+        "source_type": "filing",
+        "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/vrt-20260630.htm",
+        "period": "H1 2026",
+        "as_of_date": "2026-07-29",
+        "value": "1.867B OCF; 678.8M WC source",
+        "fact_or_estimate": "fact",
+        "evidence_id": "VRT-IC-WC"
+      },
+      {
+        "claim": "The signed UIG transaction requires about $1.45B upfront cash plus up to $1.15B contingent cash consideration.",
+        "source_type": "filing",
+        "source": "https://www.sec.gov/Archives/edgar/data/1674101/000119312526379306/d472406d8k.htm",
+        "period": "2026-09-01",
+        "as_of_date": "2026-09-02",
+        "value": "up to 2.6B",
+        "fact_or_estimate": "fact",
+        "evidence_id": "VRT-IC-UIG"
+      }
+    ],
+    "counterevidence": [
+      "Price is already slightly above locked Base value, so the case lacks a large initial valuation cushion.",
+      "Several growth vectors remain correlated to the same AI/hyperscaler capex cycle.",
+      "H1 cash flow benefits from working capital and should not be annualized mechanically.",
+      "UIG return on invested capital is unproven at the cutoff."
+    ],
+    "unknowns": [
+      "Normalized FCF/share after working-capital reversal.",
+      "Top-customer concentration and backlog cancellation profile.",
+      "UIG post-close ROIC and pro-forma leverage."
+    ],
+    "falsifiers": [
+      "Normalized FCF/share misses the Base path for two years while retained capital and inventory continue rising.",
+      "Backlog/orders contract persistently while AI infrastructure spending remains healthy, indicating share or execution loss.",
+      "UIG earns sub-cost-of-capital returns or materially weakens the balance sheet without offsetting cash-flow growth."
+    ],
+    "hard_veto_flags": [],
+    "key_kpis": [
+      {
+        "name": "normalized FCF/share",
+        "direction": "up",
+        "threshold": "Base path maintained",
+        "cadence": "quarterly/TTM"
+      },
+      {
+        "name": "orders/backlog conversion",
+        "direction": "stable",
+        "threshold": "no sustained deterioration",
+        "cadence": "quarterly"
+      },
+      {
+        "name": "UIG ROIC/net leverage",
+        "direction": "up",
+        "threshold": "ROIC above cost of capital with controlled leverage",
+        "cadence": "quarterly/annual"
+      }
+    ],
+    "next_checks": [
+      "Q3 2026 results and working capital",
+      "UIG close/integration economics",
+      "Backlog and customer concentration"
+    ],
+    "verdict": "support",
+    "ic_state": "NORMAL"
+  },
   "early_exit_record": null
 }
