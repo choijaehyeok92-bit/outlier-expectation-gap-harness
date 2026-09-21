@@ -1,0 +1,56 @@
+{
+  "ticker": "FIX",
+  "company_name": "Comfort Systems USA, Inc.",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 1651.37,
+  "shares_diluted": 35255000,
+  "market_cap_usd": 57507000000.0,
+  "enterprise_value": 55654666000.0,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC 2025 Form 10-K: https://www.sec.gov/Archives/edgar/data/1035983/000110465926017530/fix-20251231x10k.htm",
+    "SEC Q2 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1035983/000110465926086258/fix-20260630x10q.htm",
+    "SEC 2026 DEF 14A: https://www.sec.gov/Archives/edgar/data/1035983/000130817926000245/fix014562-def14a.htm",
+    "Q2 2026 earnings release: https://www.sec.gov/Archives/edgar/data/1035983/000110465926086255/fix-20260723xex99d1.htm",
+    "StockAnalysis historical price: 2026-09-18 close $1,651.37",
+    "FinanceCharts historical market cap: 2026-09-18 $57.507B"
+  ],
+  "special_questions": [
+    "Normalize H1 2026 OCF for advance billings/AP timing before judging durable owner FCF.",
+    "Separate data-center/technology boom from normalized nonresidential construction economics.",
+    "Separate same-store growth from M&A contribution.",
+    "Evaluate whether backlog growth and modular/data-center capacity justify a long-duration premium multiple."
+  ],
+  "net_cash_per_share": 44.769962,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "owner-FCF/share DCF; five-year percentile not frozen",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {
+      "United States": 1.0
+    },
+    "production_by_region": {
+      "United States": 1.0
+    },
+    "critical_supplier_regions": [],
+    "export_control_dependencies": [],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": []
+  }
+}
