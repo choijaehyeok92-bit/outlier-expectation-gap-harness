@@ -1,0 +1,10 @@
+{
+  "ticker": "META",
+  "input_snapshot_sha256": "45c41a16a7d78c22df36fce637ea5df756ae8e5e13edd692e5697e00b56d10ee",
+  "harness_commit": "586818886da4d9b0ccbe59af9c8eab219c444091",
+  "runner": {
+    "provider": "openai",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "high"
+  }
+}
