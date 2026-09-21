@@ -1,0 +1,152 @@
+name: BRK.B GPT-5.6 Sol harness run 2026-09-18
+
+on:
+  push:
+    branches:
+      - work/brkb-2026-09-18-sol
+    paths:
+      - ".harness_inputs/BRK.B/**"
+      - ".github/workflows/brkb-sol-run-20260918.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  harness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/brkb-2026-09-18-sol
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+
+      - name: Execute BRK.B continuous harness
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/brkb-execution.log) 2>&1
+
+          INPUT=".harness_inputs/BRK.B"
+          TICKER="BRK.B"
+
+          python harness.py selftest
+          rm -rf "runs/$TICKER"
+          python harness.py init "$TICKER" --as-of 2026-09-18
+
+          cp "$INPUT/company_context.json" "runs/$TICKER/company_context.json"
+          mkdir -p "runs/$TICKER/sources/financials"
+          cp "$INPUT/sources/README.md" "runs/$TICKER/sources/README.md"
+          cp "$INPUT/sources/financials/normalized_financials.json" "runs/$TICKER/sources/financials/normalized_financials.json"
+
+          python harness.py intake "$TICKER"
+          python harness.py prompt "$TICKER" FP --out "runs/$TICKER/FP_prompt.md"
+          python harness.py validate-pack "$TICKER"
+          python harness.py freeze "$TICKER" --provider openai --model gpt-5.6-sol --reasoning-effort high
+
+          cycle() {
+            local label="$1"
+            python harness.py aggregate "$TICKER" > "runlogs/aggregate_${label}.json"
+            python harness.py digest "$TICKER"
+            python harness.py plan "$TICKER" | tee "runlogs/plan_${label}.txt"
+          }
+
+          control() {
+            python - <<'PY'
+          from harness_core import runtime as h
+          reports=h.load_reports("BRK.B")
+          result=h.compute_aggregate("BRK.B",reports)
+          print(h.plan("BRK.B",reports,result)["execution_control"])
+          PY
+          }
+
+          stage_now() {
+            python - <<'PY'
+          from harness_core import runtime as h
+          reports=h.load_reports("BRK.B")
+          result=h.compute_aggregate("BRK.B",reports)
+          print(h.plan("BRK.B",reports,result)["stage"])
+          PY
+          }
+
+          run_agent() {
+            local aid="$1"
+            python harness.py prompt "$TICKER" "$aid" --out "runs/$TICKER/${aid}_prompt.md"
+            cp "$INPUT/reports/${aid}.json" "runs/$TICKER/reports/${aid}.json"
+            python harness.py validate "$TICKER" "$aid"
+            cycle "after_${aid}"
+          }
+
+          cycle "initial"
+
+          for aid in EV AS DI FS; do
+            run_agent "$aid"
+          done
+
+          ctl="$(control)"
+          if [ "$ctl" = "stop_early" ]; then
+            echo "STOP_EARLY after triage"
+          else
+            for aid in SL CP MT RF MA LG; do
+              run_agent "$aid"
+              ctl="$(control)"
+              if [ "$ctl" = "stop_early" ]; then
+                echo "STOP_EARLY during domain analysis at $aid"
+                break
+              fi
+            done
+          fi
+
+          ctl="$(control)"
+          if [ "$ctl" = "continue" ] && [ "$(stage_now)" = "macro" ]; then
+            run_agent MO
+          fi
+
+          ctl="$(control)"
+          if [ "$ctl" = "continue" ] && [ "$(stage_now)" = "evidence_and_red_team" ]; then
+            run_agent ED
+            ctl="$(control)"
+            if [ "$ctl" = "continue" ]; then run_agent RT; fi
+          fi
+
+          ctl="$(control)"
+          if [ "$ctl" = "continue" ] && [ "$(stage_now)" = "ic" ]; then
+            run_agent IC
+          fi
+
+          python harness.py validate "$TICKER"
+          python harness.py aggregate "$TICKER" | tee runlogs/aggregate_final.json
+          python harness.py digest "$TICKER"
+          python harness.py plan "$TICKER" | tee runlogs/plan_final.txt
+          python harness.py report "$TICKER"
+
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          run=Path("runs/BRK.B")
+          verdict=json.loads((run/"final_verdict.json").read_text(encoding="utf-8"))
+          print("===== FINAL VERDICT =====")
+          print(json.dumps(verdict,ensure_ascii=False,indent=2))
+          print("===== EASY REPORT =====")
+          print((run/"easy_report.md").read_text(encoding="utf-8"))
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "runs/$TICKER"
+          if ! git diff --cached --quiet; then
+            git commit -m "persist: BRK.B harness outputs 2026-09-18"
+            git push origin HEAD:work/brkb-2026-09-18-sol
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BRK.B-gpt-5.6-sol-harness-2026-09-18
+          path: |
+            runs/BRK.B
+            runlogs
