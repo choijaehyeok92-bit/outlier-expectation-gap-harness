@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install -r requirements-dev.txt
-      - name: Fetch and inspect TMDX Stage 0
+      - name: Fetch and persist TMDX Stage 0
         shell: bash
         run: |
           set -euo pipefail
@@ -31,19 +31,23 @@ jobs:
           exec > >(tee runlogs/tmdx-stage0.log) 2>&1
 
           python harness.py selftest
-          python harness.py init TMDX --as-of 2026-09-18
+          if [ ! -d runs/TMDX ]; then
+            python harness.py init TMDX --as-of 2026-09-18
+          fi
           python harness.py fetch TMDX --user-agent "choijaehyeok92@gmail.com"
-          python harness.py intake TMDX | tee runlogs/intake.txt
-          python harness.py prompt TMDX FP --out runs/TMDX/FP_prompt.md
 
           set +e
+          python harness.py intake TMDX | tee runlogs/intake_before_fp.txt
+          echo "INTAKE_RC=$?" | tee -a runlogs/intake_before_fp.txt
+          python harness.py prompt TMDX FP --out runs/TMDX/FP_prompt.md
+          echo "FP_PROMPT_RC=$?" | tee -a runlogs/intake_before_fp.txt
           python harness.py validate-pack TMDX | tee runlogs/validate_pack_before_fp.txt
           echo "VALIDATE_PACK_RC=$?" | tee -a runlogs/validate_pack_before_fp.txt
           set -e
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .harness_inputs/TMDX runs/TMDX
+          git add runs/TMDX
           if ! git diff --cached --quiet; then
             git commit -m "stage0: fetch TMDX as of 2026-09-18"
             git push origin HEAD:work/tmdx-2026-09-18-v33
@@ -54,6 +58,5 @@ jobs:
         with:
           name: TMDX-v33-stage0
           path: |
-            .harness_inputs/TMDX
             runs/TMDX
             runlogs
