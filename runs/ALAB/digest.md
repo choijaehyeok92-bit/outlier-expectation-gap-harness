@@ -66,6 +66,12 @@ unknowns: Probability that Scorpio retains high merchant-switch share through 20
 bull: Astera is expanding from retimers into switches, memory connectivity, optical and custom connectivity, with COSMOS software spanning the stack. If these produc… / bear: The products improve AI interconnect performance but hyperscalers and large semiconductor vendors can design competing silicon. Astera may remain a highly succ…
 unknowns: Merchant share of scale-up switching after 2027. · Custom-silicon share of Astera revenue and customer concentration.
 
+## macro_overlay
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| MO | 50 | 0.82 | neutral mult=0.7 | – | Macro conditions do not alter ALAB's fundamental score, but they justify slower purchase pacing. The Fed's September rate increase pressures long-duration valu… |
+unknowns: Exact end-demand share attributable to China versus billing through manufacturing partner… · Foundry/package redundancy outside Taiwan.
+
 ## veto conflicts
 - V9: AS=conditional, FS=cleared
 ## Archetype fit
@@ -75,4 +81,4 @@ unknowns: Merchant share of scale-up switching after 2027. · Custom-silicon sha
 ## Evidence concentration (review only)
 []
 ## Macro / geopolitical transmission
-{"financial_regime": {}, "geopolitical_regime": {}, "company_transmission": {}, "missing_or_stale_components": ["credit_liquidity", "financial_conditions", "geopolitical_events", "structural_trade"], "reanalysis_requests": [], "pending_reanalysis_domains": [], "risk_budget_multiplier": 0.5, "purchase_pacing_multiplier": 0.5, "monitoring_urgency": "high", "fundamental_score_effect": 0}
+{"financial_regime": {"financial_conditions": {"scope": "global", "as_of_utc": "2026-09-16T18:00:00+00:00", "summary": "The Fed raised rates to 3.75%-4.00%, increasing discount-rate pressure on long-duration growth valuations.", "evidence": [{"claim": "The FOMC raised the federal funds target range by 25bp to 3.75%-4.00% on September 16, 2026.", "source_type": "other", "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm", "period": "2026-09 FOMC", "as_of_date": "2026-09-16", "value": "3.75%-4.00%", "fact_or_estimate": "fact", "evidence_id": "ALAB-MO-FED"}], "risk_budget_multiplier": 0.8}, "credit_liquidity": {"scope": "global", "as_of_utc": "2026-09-17T21:00:00+00:00", "summary": "High-yield spreads near 270bp indicate no broad funding stress.", "evidence": [{"claim": "ICE BofA US High Yield OAS was 2.70% on September 17, 2026, indicating relatively benign credit-market stress.", "source_type": "secondary", "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2", "period": "2026-09-17", "as_of_date": "2026-09-17", "value": 2.7, "fact_or_estimate": "fact", "evidence_id": "ALAB-MO-HY"}], "risk_budget_multiplier": 1}}, "geopolitical_regime": {}, "company_transmission": {}, "missing_or_stale_components": ["geopolitical_events", "structural_trade"], "reanalysis_requests": [], "pending_reanalysis_domains": [], "risk_budget_multiplier": 0.5, "purchase_pacing_multiplier": 0.5, "monitoring_urgency": "high", "fundamental_score_effect": 0}
