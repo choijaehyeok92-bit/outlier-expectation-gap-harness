@@ -4,40 +4,140 @@
   "as_of_date": "2026-09-18",
   "domain": "disruptive_innovation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
-  "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "analysis_status": "complete",
+  "score_0_100": 86.75,
+  "confidence_0_1": 0.88,
+  "bull_score": 94,
+  "bear_score": 70,
+  "bull_case": "Falcon becomes the agentic-security operating layer across endpoint, cloud, identity, SIEM, data and AI workloads, replacing fragmented point solutions with a single telemetry/AI platform.",
+  "bear_case": "AI features commoditize across Microsoft, Palo Alto and cloud platforms, reducing Falcon's differentiation to a strong but conventional cybersecurity suite.",
+  "thesis": "CrowdStrike is a genuine disruptive-platform candidate. Cloud-native single-agent architecture, unified telemetry, Falcon Flex consumption and an expanding module set are changing how enterprises consolidate security. Adoption is already mainstream at scale, not experimental. The limiting factor is powerful incumbent response rather than lack of product-market fit.",
+  "evidence": [
+    {
+      "claim": "CrowdStrike describes Falcon as a cloud-native AI platform spanning endpoint, cloud workloads, identity, data, SIEM, exposure management and AI security.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000010/crwd-20260131.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-03-05",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-DI-PLATFORM"
+    },
+    {
+      "claim": "ARR reached $5.84B, and six+/seven+/eight+ module adoption reached 51%/35%/26%.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000029/crwd-20260826xex991.htm",
+      "period": "Q2 FY27",
+      "as_of_date": "2026-08-26",
+      "value": "ARR 5.84B; modules 51/35/26%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-DI-ADOPTION"
+    },
+    {
+      "claim": "Falcon Flex ARR exceeded $2.29B and grew 101% YoY, with >40% average ending-ARR uplift when standard customers converted to Flex.",
+      "source_type": "company_primary",
+      "source": "https://ir.crowdstrike.com/static-files/7d32e91f-6184-4ade-8f02-f685e91b420f",
+      "period": "Q2 FY27",
+      "as_of_date": "2026-08-26",
+      "value": "2.29B; +101%; >40% uplift",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-DI-FLEX"
+    },
+    {
+      "claim": "New AI-agent identity, cloud, Next-Gen SIEM and AI-security capabilities broaden the platform into adjacent security value pools.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000029/crwd-20260826xex991.htm",
+      "period": "Q2 FY27",
+      "as_of_date": "2026-08-26",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-DI-AI"
+    }
+  ],
+  "counterevidence": [
+    "Microsoft and Palo Alto Networks have large installed bases, distribution and R&D budgets.",
+    "Cybersecurity customers can multi-vendor and may resist complete platform consolidation.",
+    "AI-native positioning can become less differentiated as competitors adopt similar architectures.",
+    "The July 19 incident demonstrated operational concentration risk in a widely deployed agent."
+  ],
+  "unknowns": [
+    "Share of enterprise security spend captured by Flex cohorts over 3-5 years.",
+    "Independent evidence of AI-agent security monetization.",
+    "Win rates against Microsoft/Palo Alto in large platform consolidations.",
+    "Whether third-party SIEM/data ingestion becomes a durable moat or low-margin commodity."
+  ],
+  "falsifiers": [
+    "If multi-module adoption plateaus while ARR growth decelerates, platform disruption is weaker than assumed.",
+    "If Flex expansion cohorts show little renewal uplift after initial use, adoption-curve score should fall.",
+    "If incumbents match Falcon's security outcomes and deployment simplicity, cost/performance differentiation compresses."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "ARR, retention, multi-module adoption and Flex expansion show paid enterprise adoption rather than subsidized demand."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "module adoption",
+      "direction": "up",
+      "threshold": "continued rise in 6+/7+/8+ modules",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Flex ARR",
+      "direction": "up",
+      "threshold": ">30% growth after current hypergrowth normalizes",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "cross-platform wins",
+      "direction": "up",
+      "threshold": "cloud/identity/SIEM/AI become material ARR pools",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Flex renewal cohorts",
+    "AI security monetization",
+    "competitive win rates"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "cost_performance_shift",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Single-agent cloud delivery, unified telemetry and AI automation materially reduce tool sprawl and operating complexity."
     },
     {
       "criterion_id": "adoption_curve",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "$5.84B ARR, strong net new ARR and rising high-module adoption represent mainstream scaled adoption."
     },
     {
       "criterion_id": "optionality_incumbent_response",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Endpoint, cloud, identity, SIEM, data and AI are multiple adjacent value pools, but very strong incumbents constrain control of the full stack."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Cross-vendor total-cost comparisons are not standardized."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "minor",
+      "rationale": "Scale and growth are directly observable."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Incumbent response is unusually well funded and technically credible."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

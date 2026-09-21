@@ -4,56 +4,150 @@
   "as_of_date": "2026-09-18",
   "domain": "financial_survival",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 81.25,
+  "confidence_0_1": 0.9,
+  "bull_score": 91,
+  "bear_score": 65,
+  "bull_case": "More than $5B of cash, strong recurring revenue and >$2B TTM operating cash flow provide ample capacity to fund commitments, acquisitions and product investment.",
+  "bear_case": "Large long-term infrastructure commitments, elevated SBC, acquisitions and incident-related liabilities could consume liquidity if growth or cash conversion breaks.",
+  "thesis": "Financial survival is very strong. CrowdStrike has roughly $4.27B net cash against funded debt, strong OCF and recurring revenue. The main financial risk is not refinancing but the combination of high SBC and multi-billion-dollar purchase commitments, including an additional $2.9B entered after July 31 and before the cutoff.",
+  "evidence": [
+    {
+      "claim": "Cash and cash equivalents were $5.014B versus $746M of long-term debt at July 31, 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000031/crwd-20260731.htm",
+      "period": "2026-07-31",
+      "as_of_date": "2026-08-27",
+      "value": "5.014B / 746M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-FS-LIQ"
+    },
+    {
+      "claim": "H1 FY27 operating cash flow was $1.121B, up from $716.9M in H1 FY26.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000031/crwd-20260731.htm",
+      "period": "H1 FY27",
+      "as_of_date": "2026-08-27",
+      "value": "1.121B vs 716.9M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-FS-OCF"
+    },
+    {
+      "claim": "Purchase commitments totaled $4.1B at July 31, and the company subsequently entered an additional $2.9B of non-cancelable purchase obligations through FY2034.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000031/crwd-20260731.htm",
+      "period": "2026-07-31 through cutoff",
+      "as_of_date": "2026-08-27",
+      "value": "4.1B + 2.9B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-FS-COMMIT"
+    },
+    {
+      "claim": "H1 FY27 SBC was $674.6M; common shares outstanding rose from 1.013B at Jan. 31 to 1.024B at Jul. 31 after split-adjustment.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000031/crwd-20260731.htm",
+      "period": "H1 FY27",
+      "as_of_date": "2026-08-27",
+      "value": "SBC 674.6M; shares 1.013B to 1.024B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-FS-DIL"
+    }
+  ],
+  "counterevidence": [
+    "Purchase commitments are largely tied to infrastructure/services supporting revenue growth and are spread over many years.",
+    "Cash plus OCF easily cover near-term debt service.",
+    "The company began repurchasing shares in H1 FY27, partially offsetting dilution.",
+    "Debt is small relative to cash and enterprise value."
+  ],
+  "unknowns": [
+    "Exact cancellation/renegotiation flexibility of post-quarter infrastructure commitments.",
+    "Long-run dilution after the four-for-one split and new equity grants.",
+    "Ultimate incident-related settlement/customer-commitment cash outflows.",
+    "Acquisition cadence after Pangea, Onum and XM Cyber."
+  ],
+  "falsifiers": [
+    "If net cash turns into material net debt while commitments continue rising, liquidity score should fall.",
+    "If diluted shares grow >3% annually for several years, V3 becomes more serious.",
+    "A material legal judgment tied to the July 19 incident could reduce stress-survival capacity."
+  ],
   "hard_veto_flags": [
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Operations generate substantial cash and net cash is large; ordinary funding does not depend on external capital."
     },
     {
       "veto": "장기간 지속되는 과도한 희석",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "conditional",
+      "rationale": "Current share-count growth is moderate, but SBC is economically large and requires continued per-share monitoring."
     },
     {
       "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Solvency risk is low given net cash and OCF, although valuation risk is separately high."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "net cash",
+      "direction": "up",
+      "threshold": "remain strongly positive",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "diluted share growth",
+      "direction": "down",
+      "threshold": "<3% YoY",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "purchase commitments / revenue",
+      "direction": "down",
+      "threshold": "decline as scale rises",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Post-July infrastructure commitment details",
+    "Share-count/SBC trend",
+    "Incident liabilities"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "liquidity_leverage",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "Cash exceeds funded debt by more than $4B and operating cash generation is strong."
     },
     {
       "criterion_id": "stress_survival",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "Recurring revenue, cash and OCF allow continued investment through a meaningful downturn."
     },
     {
       "criterion_id": "dilution_offbalance",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 55,
+      "rationale": "Share growth itself is moderate, but purchase commitments exceed one year of revenue when post-quarter commitments are included, and SBC remains large."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "minor",
+      "rationale": "Balance-sheet liquidity is directly observable."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "A simultaneous cyber incident, legal shock and growth slowdown has limited precedent."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "critical",
+      "rationale": "Multi-year infrastructure commitments and SBC can materially affect future owner economics despite strong current liquidity."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
