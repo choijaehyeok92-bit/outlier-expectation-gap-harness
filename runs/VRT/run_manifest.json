@@ -1,0 +1,16 @@
+{
+  "strategy_version": "3.3",
+  "schema_version": "3.3",
+  "decision_policy_version": "3.3",
+  "provider_calibration_mode": "shadow",
+  "ticker": "VRT",
+  "as_of_date": "2026-09-18",
+  "frozen": false,
+  "financial_pack_required": true,
+  "harness_commit": "b35da93481ca8ad00bdea75619a6f4abf8cb635f",
+  "runner": {
+    "provider": null,
+    "model": null,
+    "reasoning_effort": null
+  }
+}
