@@ -957,7 +957,7 @@
       "metric": "stock_issuance",
       "metric_detail": "replacement_atm",
       "reported_label": "Gross proceeds from replacement ATM through Sep 15",
-      "statement": "financing",
+      "statement": "cash_flow",
       "gaap_status": "not_applicable",
       "value_reported": 1944000,
       "unit_kind": "currency",
