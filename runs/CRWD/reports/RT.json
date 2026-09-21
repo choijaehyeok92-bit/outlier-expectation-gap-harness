@@ -1,0 +1,72 @@
+{
+  "agent_id": "RT",
+  "ticker": "CRWD",
+  "as_of_date": "2026-09-18",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "pending",
+  "score_0_100": 50,
+  "confidence_0_1": 0.5,
+  "thesis": "",
+  "evidence": [],
+  "counterevidence": [],
+  "unknowns": [],
+  "falsifiers": [],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    }
+  ],
+  "key_kpis": [],
+  "next_checks": [],
+  "verdict": "neutral",
+  "subscores": [],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

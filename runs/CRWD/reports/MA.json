@@ -1,0 +1,62 @@
+{
+  "agent_id": "MA",
+  "ticker": "CRWD",
+  "as_of_date": "2026-09-18",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "pending",
+  "score_0_100": 50,
+  "confidence_0_1": 0.5,
+  "bull_score": null,
+  "bear_score": null,
+  "bull_case": "",
+  "bear_case": "",
+  "thesis": "",
+  "evidence": [],
+  "counterevidence": [],
+  "unknowns": [],
+  "falsifiers": [],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    }
+  ],
+  "key_kpis": [],
+  "next_checks": [],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 50,
+      "rationale": ""
+    }
+  ],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
