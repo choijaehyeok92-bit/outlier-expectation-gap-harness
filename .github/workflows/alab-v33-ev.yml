@@ -5,7 +5,6 @@ on:
     branches:
       - work/alab-2026-09-18-v33
     paths:
-      - ".harness_inputs/ALAB/**"
       - ".github/workflows/alab-v33-ev.yml"
   workflow_dispatch:
 
