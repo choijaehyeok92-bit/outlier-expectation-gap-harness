@@ -73,7 +73,7 @@ def _warehouse_entries_from_runs(runs_dir=None, tickers=None, as_of=None):
     import json as _json
     from packages.screening import runs_index
     base = Path(runs_dir or runs_index.RUNS_DIR)
-    entries = []
+    entries, unreadable = [], []
     for run_id in runs_index.run_ids(runs_dir):
         run = base / run_id
         pack_path = run / 'sources' / 'financials' / 'normalized_financials.json'
@@ -82,7 +82,10 @@ def _warehouse_entries_from_runs(runs_dir=None, tickers=None, as_of=None):
         try:
             pack = _json.loads(pack_path.read_text(encoding='utf-8'))
             context = _json.loads((run / 'company_context.json').read_text(encoding='utf-8'))
-        except ValueError:
+        except ValueError as error:
+            # A corrupt artifact is a finding, not something to pass over quietly.
+            unreadable.append(f'{run_id}: {type(error).__name__} in '
+                              f'{pack_path.relative_to(base)} ({error})')
             continue
         if not (pack.get('facts') or []):
             continue
@@ -110,7 +113,7 @@ def _warehouse_entries_from_runs(runs_dir=None, tickers=None, as_of=None):
     newest = {}
     for entry in sorted(entries, key=lambda e: (e['run_as_of'], e['run_id'])):
         newest[entry['ticker']] = entry
-    return list(newest.values())
+    return list(newest.values()), unreadable
 
 
 def _warehouse_entries_from_packs(directory):
@@ -160,12 +163,14 @@ def _attach_market_data(entries, root, as_of):
 def cmd_screen_build(args):
     """Stage 2: compute the deterministic metric warehouse. No LLM is involved."""
     from packages.screening import warehouse
-    entries = []
+    entries, unreadable = [], []
     if args.packs:
         entries.extend(_warehouse_entries_from_packs(args.packs))
     if args.from_runs or not entries:
         tickers = {t.strip().upper() for t in (args.tickers or '').split(',') if t.strip()}
-        entries.extend(_warehouse_entries_from_runs(tickers=tickers or None, as_of=args.as_of))
+        from_runs, unreadable = _warehouse_entries_from_runs(tickers=tickers or None,
+                                                             as_of=args.as_of)
+        entries.extend(from_runs)
     if not entries:
         raise SystemExit('no Stage 0 packs found; pass --packs DIR or use --from-runs')
     attached = _attach_market_data(entries, args.market_data, args.as_of) if args.market_data else 0
@@ -176,17 +181,18 @@ def cmd_screen_build(args):
     coverage = {k: v for k, v in payload['coverage'].items()}
     _print({'as_of_date': payload['as_of_date'], 'companies': payload['companies'],
             'tickers': payload['tickers'], 'failures': payload['failures'],
+            'unreadable_artifacts': unreadable,
             'market_snapshots_attached': attached, 'coverage': coverage})
 
 
-def _execute(spec, save, markdown_out=None):
+def _execute(spec, save, markdown_out=None, source='auto'):
     from packages.screening import compiler, rows as row_source, store
     fx = spec.get('fx_rates') or {}
-    rows = row_source.load_rows(spec.get('as_of_date'), fx_rates=fx)
+    rows = row_source.load_rows(spec.get('as_of_date'), fx_rates=fx, source=source)
     result = compiler.run(spec, rows)
     record = store.build_record(spec, result, rows_sha256=store.content_hash(
         [{k: v for k, v in row.items() if k != 'match_explain'} for row in rows]))
-    record['backends'] = row_source.backend_summary(rows)
+    record['backends'] = row_source.backend_summary(rows, source)
     if save:
         print(store.save(record), file=sys.stderr)
     if markdown_out:
@@ -198,7 +204,7 @@ def _execute(spec, save, markdown_out=None):
 def cmd_screen_query(args):
     from packages.screening import spec as spec_module
     spec = spec_module.normalise(json.loads(Path(args.spec).read_text(encoding='utf-8')))
-    record = _execute(spec, args.save, args.markdown)
+    record = _execute(spec, args.save, args.markdown, getattr(args, 'source', 'auto'))
     _print(record if args.full else {**record, 'results': [
         {k: row.get(k) for k in ('ticker', 'company_name', 'jurisdiction', 'core_score', 'ex_valuation_score',
                                  'archetype', 'hard_veto_status', 'price_to_base_value', 'ic_state')}
@@ -209,7 +215,7 @@ def cmd_screen_run(args):
     from packages.screening import nl
     provider = _provider(args.provider, args.model, args.fixtures) if args.provider != 'lexicon' else None
     spec = nl.parse(args.text, args.as_of, provider=provider, fx_rates=_fx_rates(args.fx, args.as_of))
-    record = _execute(spec, not args.no_save, args.markdown)
+    record = _execute(spec, not args.no_save, args.markdown, getattr(args, 'source', 'auto'))
     _print({'screen_run_id': record['screen_run_id'],
             'unresolved_conditions': spec['unresolved_conditions'],
             'requires_harness_run': spec['requires_harness_run'],
@@ -302,6 +308,8 @@ def register(sub):
     p.add_argument('--save', action='store_true', help='persist an immutable screen run')
     p.add_argument('--markdown')
     p.add_argument('--full', action='store_true')
+    p.add_argument('--source', choices=['auto', 'files', 'db'], default='auto',
+                   help='where rows come from; db needs $HARNESS_DATABASE_URL')
     p.set_defaults(func=cmd_screen_query)
 
     p = screen_sub.add_parser('run', help='parse and execute in one step')
@@ -313,6 +321,8 @@ def register(sub):
     p.add_argument('--fx', action='append', metavar='CODE=PER_USD')
     p.add_argument('--markdown')
     p.add_argument('--no-save', action='store_true')
+    p.add_argument('--source', choices=['auto', 'files', 'db'], default='auto',
+                   help='where rows come from; db needs $HARNESS_DATABASE_URL')
     p.set_defaults(func=cmd_screen_run)
 
     p = screen_sub.add_parser('build', help='stage 2: compute the deterministic metric warehouse')
@@ -353,7 +363,21 @@ def register(sub):
     p.set_defaults(func=cmd_deep_list)
 
     _register_data_adapters(sub)
+    _register_database(sub)
     return sub
+
+
+def _register_database(sub):
+    """Database commands, when SQLAlchemy is installed.
+
+    The database is optional. A checkout without it keeps every other command,
+    and nothing else in the platform reads from it unless asked.
+    """
+    try:
+        from db import cli as database_cli
+    except Exception:
+        return None
+    return database_cli.register(sub)
 
 
 def _register_data_adapters(sub):

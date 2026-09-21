@@ -79,6 +79,23 @@ python harness.py screen run "매출총이익률 70% 이상이고 영업이익�
 가격은 `MarketDataProvider`에서만 오고 규제기관에서 오지 않는다.
 지표 정의와 계산하지 않는 경우는 [SCREENING_WAREHOUSE.md](SCREENING_WAREHOUSE.md)에 있다.
 
+## 1d. 데이터베이스 (Phase 2, 선택)
+
+```bash
+pip install -r db/requirements.txt
+export HARNESS_DATABASE_URL="postgresql+psycopg://user:pass@host/harness"
+python harness.py db upgrade
+python harness.py db sync --as-of 2026-09-18       # 반복 실행 안전
+python harness.py db status
+python harness.py screen run "..." --as-of 2026-09-18 --source db
+
+# 서버 없이 둘러보기
+python harness.py db upgrade --sqlite
+```
+
+`HARNESS_DATABASE_URL`이 없으면 모든 것이 지금까지처럼 파일로 동작한다.
+계약과 발견 사항은 [DATABASE.md](DATABASE.md)에 있다.
+
 ## 2. API
 
 ```bash
@@ -136,5 +153,8 @@ python -m pytest tests/test_deep_dive.py -q
 python -m pytest tests/test_api.py -q           # FastAPI 미설치 시 자동 skip
 python -m pytest tests/test_data_adapters.py -q # PyYAML 미설치 시 자동 skip
 python -m pytest tests/test_warehouse.py -q     # 창고 유무와 무관하게 통과해야 한다
+python -m pytest tests/test_database.py -q      # SQLite
+HARNESS_TEST_DATABASE_URL=postgresql+psycopg://user@host/db \
+  python -m pytest tests/test_database.py -q    # PostgreSQL
 (cd apps/web && npm run build)                  # 타입 체크 포함
 ```

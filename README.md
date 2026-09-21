@@ -36,11 +36,13 @@
 | Quantitative filter | `harness_core` (무변경) | 기존 정책 엔진이 판정한다 |
 | Qualitative deep dive | `packages/research` | 증거 수집 → 독립 정성판단 → 독립 Red Team → 종합 |
 | Report / Monitoring UI | `apps/api`, `apps/web` | FastAPI + Next.js |
+| Index (선택) | `db/` | 아티팩트 위의 PostgreSQL 색인. `runs/`가 여전히 source of truth다 |
 
 설계는 [WEB_PLATFORM_ARCHITECTURE.md](docs/WEB_PLATFORM_ARCHITECTURE.md), 실행 방법은
 [WEB_PLATFORM_RUNBOOK.md](docs/WEB_PLATFORM_RUNBOOK.md), SEC/DART 적재 계약은
 [DATA_ADAPTERS.md](docs/DATA_ADAPTERS.md), 지표 계산 규칙은
-[SCREENING_WAREHOUSE.md](docs/SCREENING_WAREHOUSE.md)에 있다.
+[SCREENING_WAREHOUSE.md](docs/SCREENING_WAREHOUSE.md), 선택적 DB 색인은
+[DATABASE.md](docs/DATABASE.md)에 있다.
 
 ```bash
 python harness.py screen run "미국과 한국에서 시총 1조 이상, 순현금이고 해자가 강한 종목" \

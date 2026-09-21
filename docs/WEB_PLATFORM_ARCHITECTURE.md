@@ -160,10 +160,21 @@ tests/test_warehouse.py
 docs/SCREENING_WAREHOUSE.md
 ```
 
+### Phase 2에서 추가된 것
+
+```
+db/
+  models.py types.py session.py    11개 테이블 · dialect 호환 컬럼 · 엔진/세션
+  sync.py                          아티팩트 → DB (멱등, 판정은 append/계산은 replace)
+  repository.py                    읽기 (파일 경로와 동일한 행 모양)
+  cli.py migrations/ alembic.ini   db upgrade/sync/status/rows/company
+tests/test_database.py             SQLite + PostgreSQL 양쪽
+docs/DATABASE.md
+```
+
 ### 이후 Phase에서 추가될 것
 
 ```
-db/migrations/                           Alembic
 workers/                                 ARQ 작업: universe sync, ingestion, metric build, triage, full, deep research
 ```
 
@@ -469,6 +480,7 @@ remaining_unknowns / evidence_quality / final_synthesis
 | GET | `/api/universe` | ✅ (현재는 완료된 run 인덱스) |
 | GET | `/api/universe/securities` | ✅ SEC/DART 기반 상장 유니버스 |
 | GET | `/api/warehouse`, `/api/warehouse/{ticker}` | ✅ 지표 커버리지 · 기업별 provenance |
+| GET | `/api/db/status` | ✅ DB 설정 시 행 수·동기화 이력, 아니면 501 |
 | GET | `/api/screen/fields` | ✅ field registry |
 | GET | `/api/runs`, `/api/runs/{run_id}` | ✅ 읽기 전용 |
 | GET | `/api/companies/{ticker}` | ✅ 기본정보 + 하네스 이력 + 딥다이브 목록 |
@@ -518,7 +530,7 @@ python harness.py deep-list
 | Phase | 내용 | 상태 |
 |---|---|---|
 | 1 | 기존 하네스 read-only API | ✅ 완료 |
-| 2 | DB + run index (PostgreSQL, Alembic) | ⏳ 현재는 파일시스템 인덱스 |
+| 2 | DB + run index (PostgreSQL, Alembic) | ✅ 11개 테이블·마이그레이션·동기화·동등성 완료 |
 | 3 | US/KR universe + SEC/DART ingestion | ✅ 어댑터·유니버스·적재 완료 (라이브 API 미검증) |
 | 4 | screening warehouse (결정론적 지표 계산) | ✅ 24개 지표·provenance·조건부 백엔드 완료 |
 | 5 | ScreeningSpec | ✅ 완료 |
@@ -533,7 +545,9 @@ python harness.py deep-list
 Phase 5·6·9·10·11이 먼저 완성된 것은 vertical slice를 먼저 관통시켰기 때문이다.
 Phase 4가 붙으면서 `screening_warehouse` 백엔드가 조건부로 활성화됐고, `backend_unavailable`로
 남던 조건들이 창고를 빌드한 뒤에는 그대로 컴파일된다 — spec 형식은 바뀌지 않았다.
-남은 것은 Phase 2(DB), Phase 7·8(오케스트레이션), Phase 12(모니터링 시계열)다.
+Phase 2가 붙으면서 아티팩트 위에 선택적 PostgreSQL 색인이 생겼고, 스크리너는 `--source`로
+파일과 DB 중 어느 쪽에서든 **같은 행**을 읽는다. 남은 것은 Phase 7·8(오케스트레이션)과
+Phase 12(모니터링 시계열)다.
 
 ---
 

@@ -71,8 +71,24 @@ def _rows(as_of_date=None, fx_rates=None):
 def health():
     from packages.screening.fields import Registry
     return {'status': 'ok', 'backends': sorted(Registry().active_backends()),
+            'row_source': row_source.resolve_source('auto'),
             'runs': len(runs_index.run_ids()),
             'llm_provider_default': os.environ.get('HARNESS_LLM_PROVIDER', 'fixture')}
+
+
+@app.get('/api/db/status')
+def database_status():
+    """Row counts and recent syncs, when a database is configured.
+
+    The index is optional; this route says so rather than pretending to one.
+    """
+    if row_source.resolve_source('auto') != 'db':
+        raise HTTPException(501, 'no database configured; set HARNESS_DATABASE_URL and run '
+                                 '`python harness.py db upgrade && python harness.py db sync`')
+    from db.repository import status as database_status_rows
+    from db.session import engine_for, session_scope
+    with session_scope(engine_for()) as session:
+        return database_status_rows(session)
 
 
 @app.get('/api/universe')

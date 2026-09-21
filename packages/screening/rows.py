@@ -19,6 +19,7 @@ absent, so any filter over them evaluates unknown and the default missing
 policy excludes it from the *ranked* results while the spec's
 `requires_harness_run` flag says why.
 """
+import os
 from typing import Optional
 
 from . import runs_index, warehouse
@@ -77,10 +78,38 @@ def merge_row(harness: Optional[dict], metrics: Optional[dict],
     return row
 
 
+def resolve_source(source: str = 'auto') -> str:
+    """Where rows come from: the files, or the database if one is configured.
+
+    `auto` uses the database only when `HARNESS_DATABASE_URL` is set, which is
+    itself an explicit opt-in. Nothing starts depending on a database silently.
+    """
+    if source != 'auto':
+        return source
+    if not os.environ.get('HARNESS_DATABASE_URL'):
+        return 'files'
+    try:
+        import db.repository                        # noqa: F401
+    except Exception:
+        return 'files'
+    return 'db'
+
+
+def load_rows_from_db(as_of_date: Optional[str] = None,
+                      fx_rates: Optional[dict] = None) -> list:
+    """The same merged shape, assembled from the index rather than the files."""
+    from db.repository import merged_rows
+    from db.session import engine_for, session_scope
+    with session_scope(engine_for()) as session:
+        return merged_rows(session, as_of_date, fx_rates)
+
+
 def load_rows(as_of_date: Optional[str] = None, fx_rates: Optional[dict] = None,
               runs_dir=None, warehouse_payload: Optional[dict] = None,
-              include_warehouse: bool = True) -> list:
+              include_warehouse: bool = True, source: str = 'auto') -> list:
     """Every company either backend knows about, merged and keyed by ticker."""
+    if runs_dir is None and warehouse_payload is None and resolve_source(source) == 'db':
+        return load_rows_from_db(as_of_date, fx_rates)
     harness_rows = runs_index.load_rows(runs_dir)
     if as_of_date:
         harness_rows = [row for row in harness_rows if (row.get('as_of_date') or '') <= as_of_date]
@@ -105,8 +134,8 @@ def load_rows(as_of_date: Optional[str] = None, fx_rates: Optional[dict] = None,
     return merged
 
 
-def backend_summary(rows: list) -> dict:
-    return {'rows': len(rows),
+def backend_summary(rows: list, source: str = 'auto') -> dict:
+    return {'rows': len(rows), 'source': resolve_source(source),
             'with_harness_run': sum(1 for r in rows if r.get('has_harness_run')),
             'with_warehouse_metrics': sum(1 for r in rows if r.get('has_warehouse_metrics')),
             'warehouse_only': sum(1 for r in rows

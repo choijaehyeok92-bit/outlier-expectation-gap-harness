@@ -374,7 +374,7 @@ class MergeTests(unittest.TestCase):
         self.assertEqual(with_rate['field_sources']['market_cap_usd'], 'derived:fx(KRW)')
 
     def test_merged_rows_respect_the_cutoff(self):
-        rows = row_source.load_rows('2026-09-17', include_warehouse=False)
+        rows = row_source.load_rows('2026-09-17', include_warehouse=False, source='files')
         for row in rows:
             self.assertLessEqual(row.get('as_of_date') or '', '2026-09-17')
 

@@ -29,6 +29,14 @@ real RBRK pack, where they produced a 2,037% gross margin), the as-of cutoff on 
 filing date, and every ratio, growth rate and CAGR this layer declines to compute rather than
 report a misleading one. It passes whether or not a warehouse has been built.
 
+`test_database.py` covers the optional index: the real Alembic migrations applied and reversed
+(not `create_all`, which would leave the migration unexercised), the CHECK constraints actually
+rejecting a full year that carries a quarter or a consolidation basis that is neither CFS nor OFS,
+a second sync changing nothing, a re-aggregated run appended rather than overwritten, a recorded
+refusal being distinguishable from a metric never attempted, and the property the index exists
+for: the same rows from the database as from the files. It runs on SQLite by default and on
+PostgreSQL when `HARNESS_TEST_DATABASE_URL` is set.
+
 `test_api.py` skips itself when `apps/api/requirements.txt` is not installed and
 `test_data_adapters.py` when `data_adapters/requirements.txt` is not; the rest need only
 `jsonschema`.
