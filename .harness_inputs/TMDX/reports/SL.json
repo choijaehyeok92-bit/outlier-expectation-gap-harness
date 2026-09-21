@@ -1,0 +1,150 @@
+{
+  "agent_id": "SL",
+  "ticker": "TMDX",
+  "as_of_date": "2026-09-18",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 80.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 91,
+  "bear_score": 61,
+  "bull_case": "Warm perfusion plus NOP becomes the default U.S. workflow for complex heart/liver/lung procurement, Kidney expands the addressable organ base, and international networks replicate the U.S. model.",
+  "bear_case": "Transplant volumes remain structurally limited, liver dominates revenue, alternatives such as NRP/cold perfusion improve, and reimbursement/regulatory friction caps adoption outside the U.S.",
+  "thesis": "TransMedics holds genuine category leadership in a structurally changing transplant workflow. OCS replaces static preservation with portable warm perfusion and NOP integrates procurement and logistics, creating a platform rather than a single disposable. The secular runway is long, but durability is reduced by concentration in transplant medicine, liver-heavy revenue, regulatory/reimbursement dependence and operational complexity.",
+  "evidence": [
+    {
+      "claim": "OCS is the only FDA-approved portable multi-organ warm-perfusion platform, with heart, lung and liver approvals for DBD and DCD organs.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-24",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-SL-CAT"
+    },
+    {
+      "claim": "NOP provides end-to-end organ procurement, OCS perfusion management and dedicated air/ground logistics, allowing transplant centers to retrieve more organs without building the full infrastructure themselves.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-24",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-SL-NOP"
+    },
+    {
+      "claim": "H1 2026 U.S. OCS transplant revenue was $350.647M, led by liver $286.959M and heart $59.238M; outside-U.S. OCS transplant revenue was $10.889M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332843/tmdx-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-04",
+      "value": "US 350.647M; liver 286.959M; heart 59.238M; ex-US 10.889M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-SL-MIX"
+    },
+    {
+      "claim": "Management is investing in OCS Kidney, Gen 3 and a European transplant-logistics network via PAD Aviation.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332767/tmdx-ex99_1.htm",
+      "period": "Q2 2026 update",
+      "as_of_date": "2026-08-04",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-SL-NEXT"
+    }
+  ],
+  "counterevidence": [
+    "Liver accounts for most U.S. OCS transplant revenue, so organ diversification is less balanced than the multi-organ label implies.",
+    "The transplant market is regulated, reimbursement-dependent and constrained by donor availability.",
+    "NRP, cold storage/cold perfusion and competing warm-perfusion technologies remain alternatives.",
+    "Nearly all revenue is U.S.-based, limiting evidence that the model generalizes internationally."
+  ],
+  "unknowns": [
+    "Five-year U.S. OCS penetration by organ.",
+    "Kidney approval and commercial timing.",
+    "International reimbursement adoption rate.",
+    "How much transplant-volume growth is incremental versus share shift from other preservation methods."
+  ],
+  "falsifiers": [
+    "If U.S. OCS transplant growth falls below transplant-market growth for several years, category leadership weakens.",
+    "If Kidney/Gen 3 fail to expand the platform, durability should be reduced.",
+    "If reimbursement rules materially reduce NOP/OCS economics, secular durability falls."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "U.S. OCS transplant revenue",
+      "direction": "up",
+      "threshold": "sustained double-digit multi-organ growth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "revenue mix by organ",
+      "direction": "up",
+      "threshold": "less liver concentration over time",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "new-organ approvals",
+      "direction": "up",
+      "threshold": "Kidney/Gen3 milestones",
+      "cadence": "event-driven"
+    }
+  ],
+  "next_checks": [
+    "Kidney trial/regulatory milestones",
+    "Liver concentration trend",
+    "Europe reimbursement and PAD rollout"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 80,
+      "rationale": "Transplant under-utilization and the shift from static preservation to active perfusion/logistics can persist for many years, with established U.S. reimbursement."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 85,
+      "rationale": "TransMedics is the only FDA-approved portable multi-organ warm-perfusion platform and has built a vertically integrated NOP distribution model."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 75,
+      "rationale": "Heart and liver are two meaningful organ markets and Kidney/international add optionality, but common reimbursement/regulatory and NOP dependencies prevent a higher diversification score."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "Donor availability and transplant policy can constrain the addressable market even if technology adoption remains strong."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "material",
+      "rationale": "Competitive technologies can improve and NRP can substitute in some use cases."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "critical",
+      "rationale": "Liver concentration and shared OCS/NOP infrastructure create correlated risk across revenue streams."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
