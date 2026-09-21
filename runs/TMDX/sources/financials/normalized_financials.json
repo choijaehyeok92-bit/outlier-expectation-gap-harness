@@ -2009,7 +2009,7 @@
     {
       "adjustment_id": "ADJ-001",
       "type": "sbc",
-      "amount_fact_id": "FACT-0050",
+      "amount_fact_id": "FACT-0049",
       "period_end": "2026-06-30",
       "description": "Stock-based compensation is separately disclosed and requires economic review when converting reported cash flow to owner FCF.",
       "recurrence_history": [
