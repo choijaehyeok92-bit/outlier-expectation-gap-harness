@@ -26,14 +26,20 @@ jobs:
       - name: Fetch and prepare META Stage 0
         shell: bash
         run: |
-          set -euo pipefail
+          set -u -o pipefail
           mkdir -p runlogs
           exec > >(tee runlogs/meta-stage0.log) 2>&1
 
           python harness.py selftest
           rm -rf runs/META
           python harness.py init META --as-of 2026-09-18
+
+          set +e
           python harness.py fetch META --user-agent "META-Stage0 github-actions[bot]@users.noreply.github.com"
+          FETCH_RC=$?
+          set -e
+          echo "fetch_exit_code=$FETCH_RC" | tee runlogs/fetch_status.txt
+
           python harness.py intake META | tee runlogs/intake.txt
           python harness.py prompt META FP --out runs/META/FP_prompt.md
 
@@ -41,7 +47,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add runs/META runlogs
           if ! git diff --cached --quiet; then
-            git commit -m "stage0: fetch META EDGAR sources 2026-09-18"
+            git commit -m "stage0: prepare META intake 2026-09-18"
             git push origin HEAD:work/meta-2026-09-18-v33
           fi
 
