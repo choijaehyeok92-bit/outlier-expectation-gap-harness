@@ -890,13 +890,13 @@
     "as_of_date": "2026-09-18",
     "frozen": true,
     "financial_pack_required": true,
-    "harness_commit": "daed54c10d6df105f7d36fa32123b7730319ac09",
+    "harness_commit": "889991508cb8755d01ab4234780991f54eba886e",
     "runner": {
       "provider": "openai",
       "model": "gpt-5.6-sol",
       "reasoning_effort": "high"
     },
-    "frozen_at_utc": "2026-09-21T06:47:29.316788+00:00",
+    "frozen_at_utc": "2026-09-21T07:01:22.161211+00:00",
     "config_files": {
       "config/strategy.json": "040763050372dfc76d44615ec648cc6ab1b3f3fa061bf7f3f46da79a6beb7e96",
       "config/workflow.json": "48f16264ca67cd75e6b5b76800c437eb456e2a069e698c9cd2080997f086b301",
