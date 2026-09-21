@@ -1,106 +1,13 @@
 {
-  "agent_id": "MT",
-  "ticker": "MSFT",
-  "as_of_date": "2026-09-17",
-  "domain": "moat_trajectory",
-  "role": "domain_analyst",
-  "analysis_status": "complete",
-  "score_0_100": 80.25,
-  "confidence_0_1": 0.75,
-  "bull_score": 90,
-  "bear_score": 55,
-  "bull_case": "Azure·M365·GitHub·Security·Dynamics가 identity/data/developer workflow를 공유해 전환비용이 서로 복리화된다.",
-  "bear_case": "AI 모델과 개발도구의 멀티모델·오픈소스 범용화, hyperscaler 경쟁과 높은 capex가 해자 수익률을 잠식할 수 있다.",
-  "thesis": "해자는 넓어지는 방향이지만 AI 인프라가 경제적 해자를 자동 강화하는 것은 아니다. Microsoft Cloud revenue가 FY2024 $137.7B→FY2025 $168.9B→FY2026 $214.4B로 증가했고 RPO도 Q2 $625B→Q3 $627B→FY말 $678B로 상승했다. M365 seats 확대와 제품 통합은 생태계 확장을 보여준다.",
-  "evidence": [
-    {
-      "claim": "Microsoft Cloud revenue FY2024 $137.7B→FY2025 $168.9B→FY2026 $214.4B다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/README.md",
-      "period": "FY2024-FY2026",
-      "as_of_date": "2026-06-30",
-      "value": "137.7→168.9→214.4",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "Commercial RPO는 Q2 $625B→Q3 $627B→FY말 $678B로 증가했다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/README.md",
-      "period": "FY2026",
-      "as_of_date": "2026-06-30",
-      "value": "625→627→678",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "M365 commercial seats +6%, Azure +41%다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
-      "period": "FY2026",
-      "as_of_date": "2026-06-30",
-      "value": "6%/41%",
-      "fact_or_estimate": "fact"
-    }
-  ],
-  "counterevidence": [
-    "AI 인프라 자본집약도와 OpenAI 관련 경제적 집중은 장기 현금수익률의 핵심 반대근거다."
-  ],
-  "unknowns": [
-    "FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률."
-  ],
-  "falsifiers": [
-    "owner FCF/share가 2개 회계연도 연속 회복하지 못하면 현재 복리 가설을 하향한다."
-  ],
-  "hard_veto_flags": [
-    {
-      "veto": "해자의 지속적인 축소",
-      "status": "cleared",
-      "rationale": "cloud revenue, RPO, seats 등 해자 지표가 유지/강화되고 있어 지속 축소 요건이 반증된다."
-    }
-  ],
-  "key_kpis": [
-    {
-      "name": "owner FCF/share",
-      "direction": "up",
-      "threshold": "FY27 이후 회복",
-      "cadence": "annual"
-    }
-  ],
-  "next_checks": [
-    "FY27 Q1 10-Q에서 Azure 성장, capex, OCF와 RPO 갱신 확인"
-  ],
-  "verdict": "support",
-  "subscores": [
-    {
-      "criterion_id": "switching_pricing",
-      "score_0_100": 80,
-      "rationale": "Azure/M365/RPO 동시 성장으로 가격·전환비용이 강화되는 방향이다."
-    },
-    {
-      "criterion_id": "network_data_ecosystem",
-      "score_0_100": 85,
-      "rationale": "Cloud, RPO, seats 등 3개 이상 규모수치와 같은 정의의 증가추세가 확인된다."
-    },
-    {
-      "criterion_id": "commoditization_resilience",
-      "score_0_100": 75,
-      "rationale": "identity·productivity·developer·cloud의 복수 방어층이 있으나 모델 범용화 위험은 남는다."
-    }
-  ],
-  "uncertainties": [
-    {
-      "criterion_id": "switching_pricing",
-      "severity": "material",
-      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
-    },
-    {
-      "criterion_id": "network_data_ecosystem",
-      "severity": "material",
-      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
-    },
-    {
-      "criterion_id": "commoditization_resilience",
-      "severity": "material",
-      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
-    }
-  ]
+  "agent_id":"MT","ticker":"MSFT","as_of_date":"2026-09-18","domain":"moat_trajectory","role":"domain_analyst","analysis_status":"complete","score_0_100":80.25,"confidence_0_1":0.8,"bull_score":90,"bear_score":55,
+  "bull_case":"Azure·M365·GitHub·Security의 통합 데이터와 distribution이 AI 시대에도 전환비용과 cross-sell을 강화한다.","bear_case":"foundation-model 및 compute가 commodity화되고 멀티클라우드가 확산되면 AI capex는 차별화보다 가격경쟁을 키운다.",
+  "thesis":"moat는 현재 확대 중이다. Microsoft Cloud는 FY2024 $137.7B에서 FY2025 $168.9B, FY2026 $214.4B로 성장했고 commercial RPO는 최근 분기 $625B→$627B→$678B로 늘었다. M365 seat·ARPU 확대와 Azure +41%는 switching cost와 ecosystem 결합을 지지한다. 반면 AI 인프라의 빠른 commodity화와 66% Cloud margin은 방어력의 핵심 시험이다.",
+  "evidence":[{"claim":"Microsoft Cloud 매출은 FY2024 $137.7B, FY2025 $168.9B, FY2026 $214.4B로 확대됐다.","source_type":"filing","source":"runs/MSFT/sources/10-K_2026-07-29_0001193125-26-323660.htm","period":"FY2024-FY2026","as_of_date":"2026-06-30","value":214400000000,"fact_or_estimate":"fact"},{"claim":"commercial RPO는 FY2026 Q2 $625B, Q3 $627B, 연말 $678B로 증가했다.","source_type":"filing","source":"runs/MSFT/sources/10-Q_2026-01-28_0001193125-26-027207.htm; runs/MSFT/sources/10-Q_2026-04-29_0001193125-26-191507.htm; runs/MSFT/sources/10-K_2026-07-29_0001193125-26-323660.htm","period":"FY2026 Q2-Q4","as_of_date":"2026-06-30","value":678000000000,"fact_or_estimate":"fact"},{"claim":"Azure +41%, M365 Commercial cloud +17%, paid seats +6%로 ecosystem의 사용량과 monetization이 함께 늘었다.","source_type":"filing","source":"runs/MSFT/sources/10-K_2026-07-29_0001193125-26-323660.htm","period":"FY2026","as_of_date":"2026-06-30","value":0.41,"fact_or_estimate":"fact"},{"claim":"Microsoft Cloud gross margin은 66%로 AI 인프라 비용 압력이 있다.","source_type":"filing","source":"runs/MSFT/sources/10-K_2026-07-29_0001193125-26-323660.htm","period":"FY2026","as_of_date":"2026-06-30","value":0.66,"fact_or_estimate":"fact"}],
+  "counterevidence":["멀티클라우드와 오픈모델은 switching cost를 낮출 수 있다.","AI compute 공급확대가 가격차별화를 약화할 수 있다.","Cloud margin 66%는 moat의 수익 전환이 capex에 흡수됨을 보여준다.","OpenAI 관련 수요 비중은 독립 고객기반의 질을 일부 흐린다."],
+  "unknowns":["Copilot 데이터 flywheel의 독점성.","워크로드별 Azure churn.","경쟁사 대비 AI inference 단가.","RPO 중 OpenAI 관련 비중.","보안·GitHub·Dynamics cross-sell별 retention."],
+  "falsifiers":["Azure 성장률이 동종 hyperscaler보다 10%p 이상 낮은 상태가 3개 분기 지속되면 leadership을 하향한다.","commercial RPO가 2개 분기 연속 감소하면 switching-cost 판단을 하향한다.","Cloud gross margin이 62% 미만으로 내려가 회복하지 못하면 commoditization resilience를 하향한다."],
+  "hard_veto_flags":[{"veto":"해자의 지속적인 축소","status":"cleared","rationale":"3년 cloud 성장, RPO 확대, M365 seats 및 Azure 성장 모두 현재 moat 축소보다 확대를 지지한다."}],
+  "key_kpis":[{"name":"commercial RPO","direction":"up","threshold":">prior year","cadence":"quarterly"},{"name":"Azure growth","direction":"up","threshold":">=20%","cadence":"quarterly"},{"name":"Microsoft Cloud gross margin","direction":"up","threshold":">=66%","cadence":"quarterly"}],"next_checks":["FY2027 Q1 hyperscaler 상대 성장","RPO 구성과 기간","Cloud margin 회복"],"verdict":"support",
+  "subscores":[{"criterion_id":"switching_pricing","score_0_100":80,"rationale":"RPO·M365 seat·cloud ARPU 확대가 높은 전환비용과 가격결정력을 지지한다."},{"criterion_id":"network_data_ecosystem","score_0_100":85,"rationale":"Azure·M365·GitHub·Security의 통합 distribution과 데이터가 강하다."},{"criterion_id":"commoditization_resilience","score_0_100":75,"rationale":"통합 stack은 방어적이나 AI compute commodity화와 margin 압력이 점수를 제한한다."}],
+  "uncertainties":[{"criterion_id":"switching_pricing","severity":"material","rationale":"제품별 churn과 RPO 구성이 비공개다."},{"criterion_id":"network_data_ecosystem","severity":"minor","rationale":"데이터 flywheel의 정량 기여가 분리 공시되지 않는다."},{"criterion_id":"commoditization_resilience","severity":"material","rationale":"AI 인프라 가격경쟁의 장기 영향이 미확정이다."}]
 }

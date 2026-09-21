@@ -1,0 +1,1805 @@
+{
+  "strategy_version": "3.2",
+  "schema_version": "3.2",
+  "decision_policy_version": "3.2",
+  "as_of_date": "2026-09-18",
+  "ticker": "NOW",
+  "score_100": 68.79,
+  "score_100_ex_valuation": 71.57,
+  "coverage_weight": 100,
+  "classification": "Starter / Watch",
+  "disruptive_innovation_score": 70.0,
+  "turnaround_quality_score": null,
+  "axis_scores": {
+    "disruptive_innovation": 70.0,
+    "long_term_growth": null
+  },
+  "archetype": {
+    "id": "non_fit",
+    "label": "관망·회피형",
+    "label_en": "Non-fit / Avoid",
+    "reason": "조기 종료: 현재 decision score와 조건으로 도달 가능한 유형 없음",
+    "gate_score": null,
+    "secondary": [],
+    "position_guidance": "유형 적합성이 확인되기 전까지 신규 비중 확대 금지.",
+    "position_cap": null,
+    "signals": {
+      "price_to_base_value": 1.0886,
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": 0.18,
+      "market_cap_usd": 140121226980.0
+    },
+    "evaluations": [
+      {
+        "id": "buffett_value",
+        "label": "버핏 스타일 가치주",
+        "conditions_met": false,
+        "gate_score": 68.79,
+        "gate_threshold": 60.0,
+        "gate_passed": true,
+        "failed": [
+          "signal.price_to_base_value",
+          "domain.financial_survival",
+          "domain.management_allocation",
+          "domain.asymmetry"
+        ],
+        "missing": []
+      },
+      {
+        "id": "compounder",
+        "label": "컴파운더",
+        "conditions_met": false,
+        "gate_score": 68.79,
+        "gate_threshold": 60.0,
+        "gate_passed": true,
+        "failed": [
+          "domain.reinvestment_fcf",
+          "domain.management_allocation",
+          "criterion.reinvestment_fcf.incremental_roic"
+        ],
+        "missing": []
+      },
+      {
+        "id": "growth",
+        "label": "성장주",
+        "conditions_met": false,
+        "gate_score": 68.79,
+        "gate_threshold": 65.0,
+        "gate_passed": true,
+        "failed": [
+          "domain.asymmetry"
+        ],
+        "missing": []
+      },
+      {
+        "id": "moonshot",
+        "label": "문샷형",
+        "conditions_met": false,
+        "gate_score": 71.57,
+        "gate_threshold": 60.0,
+        "gate_passed": true,
+        "failed": [
+          "signal.market_cap_usd",
+          "domain.disruptive_innovation",
+          "domain.asymmetry"
+        ],
+        "missing": []
+      },
+      {
+        "id": "outlier_growth",
+        "label": "장기 아웃라이어 성장주",
+        "conditions_met": false,
+        "gate_score": 71.57,
+        "gate_threshold": 65.0,
+        "gate_passed": true,
+        "failed": [
+          "domain.asymmetry"
+        ],
+        "missing": [
+          "domain.long_term_growth",
+          "criterion.long_term_growth.opportunity_scale_5y",
+          "criterion.long_term_growth.growth_duration_10y",
+          "criterion.long_term_growth.culture_adaptability",
+          "criterion.long_term_growth.market_misperception"
+        ]
+      }
+    ],
+    "archetype_fit": {
+      "buffett_value": {
+        "eligible": false,
+        "fit_score": 66.32745098,
+        "failed_conditions": [
+          "signal.price_to_base_value",
+          "domain.financial_survival",
+          "domain.management_allocation",
+          "domain.asymmetry"
+        ],
+        "missing_conditions": [],
+        "blocking_vetoes": []
+      },
+      "compounder": {
+        "eligible": false,
+        "fit_score": 66.39270833,
+        "failed_conditions": [
+          "domain.reinvestment_fcf",
+          "domain.management_allocation",
+          "criterion.reinvestment_fcf.incremental_roic"
+        ],
+        "missing_conditions": [],
+        "blocking_vetoes": []
+      },
+      "growth": {
+        "eligible": false,
+        "fit_score": 67.45619835,
+        "failed_conditions": [
+          "domain.asymmetry"
+        ],
+        "missing_conditions": [],
+        "blocking_vetoes": []
+      },
+      "moonshot": {
+        "eligible": false,
+        "fit_score": 55.9,
+        "failed_conditions": [
+          "signal.market_cap_usd",
+          "domain.disruptive_innovation",
+          "domain.asymmetry"
+        ],
+        "missing_conditions": [],
+        "blocking_vetoes": []
+      },
+      "outlier_growth": {
+        "eligible": false,
+        "fit_score": 41.46153846,
+        "failed_conditions": [
+          "domain.asymmetry"
+        ],
+        "missing_conditions": [
+          "domain.long_term_growth",
+          "criterion.long_term_growth.opportunity_scale_5y",
+          "criterion.long_term_growth.growth_duration_10y",
+          "criterion.long_term_growth.culture_adaptability",
+          "criterion.long_term_growth.market_misperception"
+        ],
+        "blocking_vetoes": []
+      }
+    }
+  },
+  "reachable_archetypes_raw": [],
+  "early_exit": true,
+  "hard_veto_status": "PENDING_REVIEW",
+  "mechanical_pre_ic_state": "EARLY_EXIT_NON_FIT",
+  "position_range_pre_ic": "0% (유형 도달 불가 — 조기 종료)",
+  "domain_scores": {
+    "structural_leadership": {
+      "bull_score": 85,
+      "bear_score": 50,
+      "criteria": {
+        "category_leadership": 80.0,
+        "durability_risks": 50.0,
+        "secular_durability": 80.0
+      },
+      "raw_weighted_median": 72.5,
+      "score": 72.5,
+      "spread": 35.0,
+      "avg_confidence": 0.77,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 72.5,
+      "calibrated_score": 69.17,
+      "calibrated_shadow_score": 69.17,
+      "decision_score": 72.5,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 72.5,
+      "raw_before_provider_calibration": 72.5
+    },
+    "customer_product": {
+      "bull_score": 88,
+      "bear_score": 52,
+      "criteria": {
+        "customer_roi": 70.0,
+        "retention_usage": 85.0,
+        "unit_economics": 65.0
+      },
+      "raw_weighted_median": 74.0,
+      "score": 74.0,
+      "spread": 36.0,
+      "avg_confidence": 0.8,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 74.0,
+      "calibrated_score": 69.0,
+      "calibrated_shadow_score": 69.0,
+      "decision_score": 74.0,
+      "provider_offset": -5.0,
+      "score_before_provider_calibration": 74.0,
+      "raw_before_provider_calibration": 74.0
+    },
+    "moat_trajectory": {
+      "bull_score": 88,
+      "bear_score": 50,
+      "criteria": {
+        "commoditization_resilience": 65.0,
+        "network_data_ecosystem": 85.0,
+        "switching_pricing": 80.0
+      },
+      "raw_weighted_median": 77.25,
+      "score": 77.25,
+      "spread": 38.0,
+      "avg_confidence": 0.76,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 77.25,
+      "calibrated_score": 73.92,
+      "calibrated_shadow_score": 73.92,
+      "decision_score": 77.25,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 77.25,
+      "raw_before_provider_calibration": 77.25
+    },
+    "reinvestment_fcf": {
+      "bull_score": 85,
+      "bear_score": 45,
+      "criteria": {
+        "fcf_per_share_quality": 80.0,
+        "incremental_roic": 55.0,
+        "reinvestment_runway": 80.0
+      },
+      "raw_weighted_median": 70.0,
+      "score": 70.0,
+      "spread": 40.0,
+      "avg_confidence": 0.8,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 70.0,
+      "calibrated_score": 66.67,
+      "calibrated_shadow_score": 66.67,
+      "decision_score": 70.0,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 70.0,
+      "raw_before_provider_calibration": 70.0
+    },
+    "management_allocation": {
+      "bull_score": 82,
+      "bear_score": 45,
+      "criteria": {
+        "capital_allocation": 55.0,
+        "execution_adaptability": 85.0,
+        "governance_integrity": 70.0
+      },
+      "raw_weighted_median": 67.75,
+      "score": 67.75,
+      "spread": 37.0,
+      "avg_confidence": 0.75,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 67.75,
+      "calibrated_score": 64.42,
+      "calibrated_shadow_score": 64.42,
+      "decision_score": 67.75,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 67.75,
+      "raw_before_provider_calibration": 67.75
+    },
+    "financial_survival": {
+      "bull_score": 85,
+      "bear_score": 55,
+      "criteria": {
+        "dilution_offbalance": 70.0,
+        "liquidity_leverage": 70.0,
+        "stress_survival": 80.0
+      },
+      "raw_weighted_median": 73.5,
+      "score": 73.5,
+      "spread": 30.0,
+      "avg_confidence": 0.84,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 73.5,
+      "calibrated_score": 70.17,
+      "calibrated_shadow_score": 70.17,
+      "decision_score": 73.5,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 73.5,
+      "raw_before_provider_calibration": 73.5
+    },
+    "expectation_valuation": {
+      "bull_score": 80,
+      "bear_score": 25,
+      "criteria": {
+        "base_return": 55.0,
+        "reverse_dcf_burden": 60.0,
+        "valuation_robustness": 40.0
+      },
+      "raw_weighted_median": 53.0,
+      "score": 53.0,
+      "spread": 55.0,
+      "avg_confidence": 0.8,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 53.0,
+      "calibrated_score": 51.33,
+      "calibrated_shadow_score": 51.33,
+      "decision_score": 53.0,
+      "provider_offset": -1.67,
+      "score_before_provider_calibration": 53.0,
+      "raw_before_provider_calibration": 53.0
+    },
+    "asymmetry": {
+      "bull_score": 80,
+      "bear_score": 35,
+      "criteria": {
+        "permanent_loss": 55.0,
+        "probability_calibration": 60.0,
+        "upside_path": 75.0
+      },
+      "raw_weighted_median": 63.5,
+      "score": 63.5,
+      "spread": 45.0,
+      "avg_confidence": 0.76,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 63.5,
+      "calibrated_score": 61.83,
+      "calibrated_shadow_score": 61.83,
+      "decision_score": 63.5,
+      "provider_offset": -1.67,
+      "score_before_provider_calibration": 63.5,
+      "raw_before_provider_calibration": 63.5
+    },
+    "disruptive_innovation": {
+      "bull_score": 85,
+      "bear_score": 45,
+      "criteria": {
+        "adoption_curve": 75.0,
+        "cost_performance_shift": 65.0,
+        "optionality_incumbent_response": 70.0
+      },
+      "raw_weighted_median": 70.0,
+      "score": 70.0,
+      "spread": 40.0,
+      "avg_confidence": 0.73,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 70.0,
+      "calibrated_score": 66.67,
+      "calibrated_shadow_score": 66.67,
+      "decision_score": 70.0,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 70.0,
+      "raw_before_provider_calibration": 70.0
+    },
+    "long_term_growth": null,
+    "turnaround_quality": null
+  },
+  "disputes": [
+    {
+      "domain": "structural_leadership",
+      "bull_score": 85,
+      "bear_score": 50,
+      "criteria": {
+        "category_leadership": 80.0,
+        "durability_risks": 50.0,
+        "secular_durability": 80.0
+      },
+      "raw_weighted_median": 72.5,
+      "score": 72.5,
+      "spread": 35.0,
+      "avg_confidence": 0.77,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 72.5,
+      "calibrated_score": 69.17,
+      "calibrated_shadow_score": 69.17,
+      "decision_score": 72.5,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 72.5,
+      "raw_before_provider_calibration": 72.5
+    },
+    {
+      "domain": "customer_product",
+      "bull_score": 88,
+      "bear_score": 52,
+      "criteria": {
+        "customer_roi": 70.0,
+        "retention_usage": 85.0,
+        "unit_economics": 65.0
+      },
+      "raw_weighted_median": 74.0,
+      "score": 74.0,
+      "spread": 36.0,
+      "avg_confidence": 0.8,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 74.0,
+      "calibrated_score": 69.0,
+      "calibrated_shadow_score": 69.0,
+      "decision_score": 74.0,
+      "provider_offset": -5.0,
+      "score_before_provider_calibration": 74.0,
+      "raw_before_provider_calibration": 74.0
+    },
+    {
+      "domain": "moat_trajectory",
+      "bull_score": 88,
+      "bear_score": 50,
+      "criteria": {
+        "commoditization_resilience": 65.0,
+        "network_data_ecosystem": 85.0,
+        "switching_pricing": 80.0
+      },
+      "raw_weighted_median": 77.25,
+      "score": 77.25,
+      "spread": 38.0,
+      "avg_confidence": 0.76,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 77.25,
+      "calibrated_score": 73.92,
+      "calibrated_shadow_score": 73.92,
+      "decision_score": 77.25,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 77.25,
+      "raw_before_provider_calibration": 77.25
+    },
+    {
+      "domain": "reinvestment_fcf",
+      "bull_score": 85,
+      "bear_score": 45,
+      "criteria": {
+        "fcf_per_share_quality": 80.0,
+        "incremental_roic": 55.0,
+        "reinvestment_runway": 80.0
+      },
+      "raw_weighted_median": 70.0,
+      "score": 70.0,
+      "spread": 40.0,
+      "avg_confidence": 0.8,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 70.0,
+      "calibrated_score": 66.67,
+      "calibrated_shadow_score": 66.67,
+      "decision_score": 70.0,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 70.0,
+      "raw_before_provider_calibration": 70.0
+    },
+    {
+      "domain": "management_allocation",
+      "bull_score": 82,
+      "bear_score": 45,
+      "criteria": {
+        "capital_allocation": 55.0,
+        "execution_adaptability": 85.0,
+        "governance_integrity": 70.0
+      },
+      "raw_weighted_median": 67.75,
+      "score": 67.75,
+      "spread": 37.0,
+      "avg_confidence": 0.75,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 67.75,
+      "calibrated_score": 64.42,
+      "calibrated_shadow_score": 64.42,
+      "decision_score": 67.75,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 67.75,
+      "raw_before_provider_calibration": 67.75
+    },
+    {
+      "domain": "financial_survival",
+      "bull_score": 85,
+      "bear_score": 55,
+      "criteria": {
+        "dilution_offbalance": 70.0,
+        "liquidity_leverage": 70.0,
+        "stress_survival": 80.0
+      },
+      "raw_weighted_median": 73.5,
+      "score": 73.5,
+      "spread": 30.0,
+      "avg_confidence": 0.84,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 73.5,
+      "calibrated_score": 70.17,
+      "calibrated_shadow_score": 70.17,
+      "decision_score": 73.5,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 73.5,
+      "raw_before_provider_calibration": 73.5
+    },
+    {
+      "domain": "expectation_valuation",
+      "bull_score": 80,
+      "bear_score": 25,
+      "criteria": {
+        "base_return": 55.0,
+        "reverse_dcf_burden": 60.0,
+        "valuation_robustness": 40.0
+      },
+      "raw_weighted_median": 53.0,
+      "score": 53.0,
+      "spread": 55.0,
+      "avg_confidence": 0.8,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 53.0,
+      "calibrated_score": 51.33,
+      "calibrated_shadow_score": 51.33,
+      "decision_score": 53.0,
+      "provider_offset": -1.67,
+      "score_before_provider_calibration": 53.0,
+      "raw_before_provider_calibration": 53.0
+    },
+    {
+      "domain": "asymmetry",
+      "bull_score": 80,
+      "bear_score": 35,
+      "criteria": {
+        "permanent_loss": 55.0,
+        "probability_calibration": 60.0,
+        "upside_path": 75.0
+      },
+      "raw_weighted_median": 63.5,
+      "score": 63.5,
+      "spread": 45.0,
+      "avg_confidence": 0.76,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 63.5,
+      "calibrated_score": 61.83,
+      "calibrated_shadow_score": 61.83,
+      "decision_score": 63.5,
+      "provider_offset": -1.67,
+      "score_before_provider_calibration": 63.5,
+      "raw_before_provider_calibration": 63.5
+    },
+    {
+      "domain": "disruptive_innovation",
+      "bull_score": 85,
+      "bear_score": 45,
+      "criteria": {
+        "adoption_curve": 75.0,
+        "cost_performance_shift": 65.0,
+        "optionality_incumbent_response": 70.0
+      },
+      "raw_weighted_median": 70.0,
+      "score": 70.0,
+      "spread": 40.0,
+      "avg_confidence": 0.73,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 70.0,
+      "calibrated_score": 66.67,
+      "calibrated_shadow_score": 66.67,
+      "decision_score": 70.0,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 70.0,
+      "raw_before_provider_calibration": 70.0
+    }
+  ],
+  "confirmed_vetoes": [],
+  "unresolved_vetoes": [],
+  "veto_gate": {
+    "overall": "PENDING_REVIEW",
+    "items": [
+      {
+        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MA",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "MA",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "동결된 10-K·10-Q에서 material weakness, restatement 또는 독립감사 부정의견이 확인되지 않았다. 높은 SBC와 인수위험은 자본배분 감점이지 정직성 훼손의 직접 증거는 아니다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "구조적으로 과도한 외부자본 조달 의존",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "FS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "TTM OCF $5.308B와 FCF $4.580B가 양수이며 $6.707B 유동성 자산으로 운영에 외부자본이 필수적이지 않다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "장기간 지속되는 과도한 희석",
+        "status": "CLEARED",
+        "owners": [
+          "RF",
+          "FS"
+        ],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Q2 희석주식수는 전년 대비 1.17% 감소해 장기간 과도한 희석의 현재 구성요건이 반증된다. SBC 경제비용은 별도 감점했다."
+          },
+          {
+            "agent_id": "RF",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Q2 희석주식수는 전년 대비 1.17% 감소했고 owner FCF/share도 증가했다. SBC는 크지만 현재 장기간 순희석 요건은 성립하지 않는다."
+          }
+        ],
+        "missing_reports": [],
+        "missing_assessments": []
+      },
+      {
+        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "CP",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "98% renewal, $5M+ 고객 23.5% 성장, 21% cRPO 성장이 반복 구매와 확장을 입증해 마케팅·보조금 의존 가설을 반증한다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "증분 ROIC의 구조적 붕괴",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "RF",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "RF",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "20%대 계약·매출 성장과 owner FCF/share 개선은 구조적 붕괴를 반증한다. 최근 인수의 증분 ROIC는 미확인이라 점수는 보수적으로 제한했다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "해자의 지속적인 축소",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MT",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "MT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "98% renewal, 대형고객 23.5% 증가, cRPO 21% 성장으로 해자 축소와 반대되는 관측치가 다수다. AI 경쟁은 조건부 위험으로 남긴다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "EV",
+          "AS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "현재가는 Bull 가치의 61.9%로 Bull 이상을 요구하지 않는다."
+          },
+          {
+            "agent_id": "EV",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "현재가 $135.47은 Bull 가치 $218.90의 61.9%이며 Bull 가치를 초과하지 않는다. 다만 Base $124.45보다 8.9% 높아 기대수익은 얇다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "CP",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "다수 workflow·지역·기업고객에 배포되며 단일 고객 10% 이상 의존이 공시되지 않았다. 제품별 매출 부재는 감점했지만 치명적 단일 종속은 아니다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+        "status": "CLEARED",
+        "owners": [
+          "FS",
+          "AS"
+        ],
+        "assessments": [
+          {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "순부채는 작고 TTM OCF $5.3B, 반복계약과 98% renewal이 파산 위험을 낮춘다. 가격 하방은 크지만 파산 확률이 기대수익을 압도하지 않는다."
+          },
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "총차입 $7.517B 대비 유동성 자산 $6.707B이고 TTM OCF가 $5.308B여서 단기 지급불능 가능성은 낮다."
+          }
+        ],
+        "missing_reports": [],
+        "missing_assessments": []
+      }
+    ],
+    "confirmed": [],
+    "unresolved": [],
+    "pending": [
+      {
+        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MA",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "MA",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "동결된 10-K·10-Q에서 material weakness, restatement 또는 독립감사 부정의견이 확인되지 않았다. 높은 SBC와 인수위험은 자본배분 감점이지 정직성 훼손의 직접 증거는 아니다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "구조적으로 과도한 외부자본 조달 의존",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "FS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "TTM OCF $5.308B와 FCF $4.580B가 양수이며 $6.707B 유동성 자산으로 운영에 외부자본이 필수적이지 않다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "CP",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "98% renewal, $5M+ 고객 23.5% 성장, 21% cRPO 성장이 반복 구매와 확장을 입증해 마케팅·보조금 의존 가설을 반증한다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "증분 ROIC의 구조적 붕괴",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "RF",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "RF",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "20%대 계약·매출 성장과 owner FCF/share 개선은 구조적 붕괴를 반증한다. 최근 인수의 증분 ROIC는 미확인이라 점수는 보수적으로 제한했다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "해자의 지속적인 축소",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MT",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "MT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "98% renewal, 대형고객 23.5% 증가, cRPO 21% 성장으로 해자 축소와 반대되는 관측치가 다수다. AI 경쟁은 조건부 위험으로 남긴다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "EV",
+          "AS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "현재가는 Bull 가치의 61.9%로 Bull 이상을 요구하지 않는다."
+          },
+          {
+            "agent_id": "EV",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "현재가 $135.47은 Bull 가치 $218.90의 61.9%이며 Bull 가치를 초과하지 않는다. 다만 Base $124.45보다 8.9% 높아 기대수익은 얇다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "CP",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "다수 workflow·지역·기업고객에 배포되며 단일 고객 10% 이상 의존이 공시되지 않았다. 제품별 매출 부재는 감점했지만 치명적 단일 종속은 아니다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      }
+    ]
+  },
+  "valuation_model": {
+    "status": "COMPLETE",
+    "method": "locked owner-FCF/share DCF",
+    "required_return": 0.09,
+    "horizon_years": 10,
+    "net_cash_per_share": -0.7831126115935472,
+    "current_price": 135.47,
+    "scenarios": {
+      "bear": {
+        "value_per_share": 35.4151,
+        "pv_owner_fcf": 16.5561,
+        "pv_terminal": 19.6421,
+        "terminal_multiple": 15.0,
+        "terminal_fraction": 0.5426
+      },
+      "base": {
+        "value_per_share": 124.4454,
+        "pv_owner_fcf": 34.8326,
+        "pv_terminal": 90.3959,
+        "terminal_multiple": 20.0,
+        "terminal_fraction": 0.7218
+      },
+      "bull": {
+        "value_per_share": 218.8998,
+        "pv_owner_fcf": 47.5505,
+        "pv_terminal": 172.1324,
+        "terminal_multiple": 25.0,
+        "terminal_fraction": 0.7835
+      }
+    },
+    "signals": {
+      "price_to_base_value": 1.0886,
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": 0.18
+    }
+  },
+  "provider_calibration": {
+    "mode": "shadow",
+    "applied": true,
+    "decision_effect": false,
+    "family": "openai",
+    "base_offset": 5.0,
+    "max_abs_offset": 5.0,
+    "per_domain_offset": {
+      "structural_leadership": -3.33,
+      "customer_product": -5.0,
+      "moat_trajectory": -3.33,
+      "reinvestment_fcf": -3.33,
+      "management_allocation": -3.33,
+      "financial_survival": -3.33,
+      "expectation_valuation": -1.67,
+      "asymmetry": -1.67,
+      "disruptive_innovation": -3.33
+    },
+    "basis": {
+      "sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조",
+      "n": 27,
+      "measured_mean_gap": 10.2,
+      "measured_sd": 6.9,
+      "direction": "27개 전부 gpt-5.6-sol >= Claude Opus 5. 노이즈가 아니라 계통 편향.",
+      "caveat": "표본은 종목 1개다. 다른 종목의 쌍 실행이 쌓이면 base_offset을 재추정해야 한다. harness.py calibrate로 측정한다."
+    },
+    "reason": null
+  },
+  "dispersion_review": {
+    "metric": "scored 도메인 전체에 대한 skew = (score - bear_score) - (bull_score - score) 의 평균. 양수면 하방 폭이 더 넓다는 뜻이다.",
+    "mean_skew": 9.22,
+    "label": "downside_skew",
+    "reduce_bands": 1,
+    "widest_domain": "expectation_valuation",
+    "most_downside_skewed": "moat_trajectory",
+    "by_domain": [
+      {
+        "domain": "asymmetry",
+        "spread": 45.0,
+        "upside_width": 16.5,
+        "downside_width": 28.5,
+        "skew": 12.0
+      },
+      {
+        "domain": "customer_product",
+        "spread": 36.0,
+        "upside_width": 14.0,
+        "downside_width": 22.0,
+        "skew": 8.0
+      },
+      {
+        "domain": "disruptive_innovation",
+        "spread": 40.0,
+        "upside_width": 15.0,
+        "downside_width": 25.0,
+        "skew": 10.0
+      },
+      {
+        "domain": "expectation_valuation",
+        "spread": 55.0,
+        "upside_width": 27.0,
+        "downside_width": 28.0,
+        "skew": 1.0
+      },
+      {
+        "domain": "financial_survival",
+        "spread": 30.0,
+        "upside_width": 11.5,
+        "downside_width": 18.5,
+        "skew": 7.0
+      },
+      {
+        "domain": "management_allocation",
+        "spread": 37.0,
+        "upside_width": 14.25,
+        "downside_width": 22.75,
+        "skew": 8.5
+      },
+      {
+        "domain": "moat_trajectory",
+        "spread": 38.0,
+        "upside_width": 10.75,
+        "downside_width": 27.25,
+        "skew": 16.5
+      },
+      {
+        "domain": "reinvestment_fcf",
+        "spread": 40.0,
+        "upside_width": 15.0,
+        "downside_width": 25.0,
+        "skew": 10.0
+      },
+      {
+        "domain": "structural_leadership",
+        "spread": 35.0,
+        "upside_width": 12.5,
+        "downside_width": 22.5,
+        "skew": 10.0
+      }
+    ]
+  },
+  "run_manifest": {
+    "strategy_version": "3.2",
+    "schema_version": "3.2",
+    "decision_policy_version": "3.2",
+    "provider_calibration_mode": "shadow",
+    "ticker": "NOW",
+    "as_of_date": "2026-09-18",
+    "frozen": true,
+    "financial_pack_required": true,
+    "harness_commit": "2b0da4e892c9690fb27f0fb79e9a072d76ee4cc4",
+    "runner": {
+      "provider": "openai",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high"
+    },
+    "frozen_at_utc": "2026-09-20T16:35:28.029039+00:00",
+    "config_files": {
+      "config/strategy.json": "c8adfef88e51123110205e3bd1601619214efa08af1a71dacedc37ce105f4e6c",
+      "config/workflow.json": "e4aacbe742ad500f03a11ee441a37fd041af7577c40ee0970c735693470344dd",
+      "config/agents_manifest.json": "2d9ef24f1b069c015e3a9e6894180757c0ab91874887da0ca404fe19efcd01fc",
+      "config/calibration.json": "c6ade8e6746a4d387cba1f3722bb33453242ab203948ba0fe2d79961e16641ba",
+      "config/intake.json": "56858f97387a6a4c1424c40b2f396a531f1d73f4bcdf9b81ee7e128bfd8b3bc0",
+      "harness.py": "46e9ff70a910bce61d61151457e1c2dba06e2a89d81f5ed7f353a2fca3a4af3d",
+      "harness_core/__init__.py": "c26a3aeec387e7849ba5e02816341417f132e2b679c7df63070f643a08147f7a",
+      "harness_core/anchors.py": "3f38df3c346eb9a3e0c6f9d728d39db4bac6600965dbeadf87c52c4a64798799",
+      "harness_core/archetypes.py": "f5a6ed31fbe7ae3646bdbf2e5bbff2b4313bd9111e46efb474a1489054dbddba",
+      "harness_core/calibration.py": "8e0620171fdf8fbebee2afff12ee8630e71e78584e663ba1d6dbe64f24a685bd",
+      "harness_core/conditions.py": "2eb31a46e589fce62ae5270cc1d62a606b1805b2d8ab1849bf290d8f09396a6a",
+      "harness_core/evidence.py": "055a1cba252e8962091fe869269eb57e4327bf582876b024104708aa124cb4fb",
+      "harness_core/fetch.py": "ff53cf4ee3a1b46e980b06ee3fe698e7619d58354b6ddf0407820abd4b150fb7",
+      "harness_core/intake.py": "e9100f7935ea64891e47c168ca2dd2a3408be1e4c6dec23aca82bdbec0a71ae3",
+      "harness_core/macro_geo.py": "aff07ec9ede98eb89e344d5d5d793dbd49d99a42f5e356ce79c7d1dcf0c4d844",
+      "harness_core/plain_report.py": "4007d857df0e09b2c6d4fb4bd677dc902560383d80700324576144fb6def8d2e",
+      "harness_core/planner.py": "cf748c3179fd86590b174c7206281cbd2b3cb913e4b7e83b6f1eab3477077006",
+      "harness_core/policy.py": "40d4c013b86547b1b22c7a2467b746cd2ac47f20edc1768a8d593b5186b52e8e",
+      "harness_core/research.py": "924212069ad8bf5484679ad59ee48e1a8e92aa431e8565be4032b40d7de28c51",
+      "harness_core/rubric.py": "6e0f4d1d3b6bc051e08e3c42fff3766ebc3ebf3362c01a2b2503f67ec922edbf",
+      "harness_core/runtime.py": "66d4a3def70bf926749818121cb1091ed2f45992b40b68c22b8d66d35df86d3d",
+      "harness_core/state.py": "e0378df2e023d98ffaddc6af1b4100db5ee5de279a80b0c361d722449d57a0bc",
+      "harness_core/valuation.py": "6b13b0b500ed56bd02b75e6e259870cba542ac2d6714f42cedf43699be31fb23",
+      "harness_core/veto.py": "e26b2fac987742e96452e3dcef396eb22a99ed7f861d01c39d498770e927f8fe",
+      "schemas/agent_report.schema.json": "494cb28a51896763186ea6a47d0c867c0b1a8864b224c8e2b9f4cdd4ce86203a",
+      "schemas/company_context.schema.json": "f098f586eddf339dc27612001d0e36f924b34d2740c95d47cb92adf3bb58ae1f",
+      "schemas/final_verdict.schema.json": "e1b5252b65efa550b793eb8116fa5694c9238d685022701e2f98a7041a704365",
+      "schemas/financial_pack.schema.json": "ff3f6b84bf69fa586792e2dfa61315118735a0917b86586aaf79d91f84153ee0",
+      "schemas/research_packet.schema.json": "0061b96bac829a8bfa2acc44afb3a4fba71e55803fd6e5e6eead2c3f0c169761",
+      "templates/agent_report.json": "8199df20add5058a83d586601c819a9e347f4155cb584a53e3f6beb499d7358d",
+      "templates/company_context.json": "06cb8a08a62548acebed026c780091f03ce7d7376309a3665851c1bad178442a",
+      "templates/one_page_investment_record.md": "566025c0e490526c7f409ac497f074e49404bcf0e855a95b15105f52cc13029b",
+      "agents/00_financial_preprocessor/AGENTS.md": "c94c14cc0e9842b045da1a8d10440cf73d46480b3547df5efeb0e268ecf8a4f7",
+      "agents/01_structural_leadership/AGENTS.md": "65ea1c401f8020e0301c483bcc11ff39accb02813fc67b7bdfa7c07ede543e64",
+      "agents/02_customer_product/AGENTS.md": "1833f094c4d828c42587f63d5238bc84e1c6e0a2d67a4ee9834293a948b875cc",
+      "agents/03_moat_trajectory/AGENTS.md": "89be9a463551db281dcfd3e24eee06959dcaab812152a8fdb1bd8244a99eac15",
+      "agents/04_reinvestment_fcf/AGENTS.md": "b7f734a4842e40b469b970db4b894767e20dbb5c55693aa425b284a1c9d9541d",
+      "agents/05_management_allocation/AGENTS.md": "9412a3da0ae9c1f386437fb8c73f9a24d6a46f5fb237f717b8c9cde470c2f867",
+      "agents/06_financial_survival/AGENTS.md": "d6adb72d46e7c5cae73f86f510dd53fb6b8439ae472dffa1abc0d1ccf9405876",
+      "agents/07_expectation_valuation/AGENTS.md": "824187cc65b7741dcafcf1689086e1cdc0dac0bd33239c111013947fb0762438",
+      "agents/08_asymmetry/AGENTS.md": "6e8f29d0ee0752091757a9b01276a8bd69f9b8a845ac3d43773afe0cfb445d54",
+      "agents/09_evidence/AGENTS.md": "a9fe938eb2a7507003be30c4bec63b5f1f3a8fcf30a81c5e125d4be6f24666d4",
+      "agents/10_red_team/AGENTS.md": "bcb85fab79b0d64ae8c83325606eea16121e9497c0d11ed78fe3deede98aaa3e",
+      "agents/11_macro_overlay/AGENTS.md": "e730b5bf54fa16c88f2164e3f7fda666c27004d4673fa3b340cf14de2ab4377f",
+      "agents/12_investment_committee/AGENTS.md": "9573d164433325ec5e093acb0cba1831c3dcab758488ad50c812e8e0686a825e",
+      "agents/13_disruptive_innovation/AGENTS.md": "25e530fb4257bf2d4399389727c0a0075501a64ed9e03bf4503ba1800b633e37",
+      "agents/14_turnaround_quality/AGENTS.md": "ecb7978a1540dd8c49ffb1b2d20397887179d164c81aa3958141a920006c5aec",
+      "agents/15_long_term_growth/AGENTS.md": "bd23806ba20cd8d325bf4856b17bacd77f6c46db247fd2b9fd758247909e1ae8",
+      "agents/COMMON.md": "8c680a9043b0ee2bb54d51a5fc403a2d31ca31ae0d17e56d6e54c3bb58b63365",
+      "AGENTS.md": "d583f58b7c089f3469e95d53c3794c5c078086a1186fd6ea5e06e2a2887fb709"
+    },
+    "input_files": {
+      "company_context.json": "abd86f833ee3402e5be163ed4d8ecc12d5498534d1a11d92c5af555ba6a5f803",
+      "sources/10-K_2024-01-25_0001373715-24-000030.htm": "1e74dc2d53b56604a111f48ccfb268edfe15d4e54483556f1862e5bcf713d690",
+      "sources/10-K_2025-01-30_0001373715-25-000010.htm": "b4a7323d5409ab020e62b90e12c6848e9221c558e391b0f60dcf8db0fa845c42",
+      "sources/10-K_2026-01-29_0001373715-26-000007.htm": "961ace85c63f0e73d3f95c69bf0d923a6b8488dafa803737878a1b35aabb4904",
+      "sources/10-Q_2024-10-24_0001373715-24-000344.htm": "a6400dfad13fac4ac86ee963fcbef1954e305bf8abbdbd8aadb444108654be11",
+      "sources/10-Q_2025-04-23_0001373715-25-000126.htm": "c7e256ca52c10ab5fd88fb73eae4ae0cc2a4872642f8a1a632fda1f19ff7df4b",
+      "sources/10-Q_2025-07-24_0001373715-25-000276.htm": "62779eda9c1fc783ce0c1797d387f9866db88cd12dba654feadc6733f18351ac",
+      "sources/10-Q_2025-10-30_0001373715-25-000309.htm": "c1110c094581a6f9ec03827fcced8b148f85bdfc814e6409fe85a30fda0bfdf5",
+      "sources/10-Q_2026-04-23_0001373715-26-000056.htm": "9a1b6e886f2e095c50aceea4ae45f95ac4acead14284cd42d1c173c576f09def",
+      "sources/10-Q_2026-07-23_0001373715-26-000076.htm": "95c384f53ace961cd1a6bb319f0eb8b14caff4a195693066727d3a971af998c2",
+      "sources/424B2_2026-05-13_0001193125-26-221929.htm": "2cd6329d050f382e42dcbe0ba0ab0eefbafc241719b4328560e845a2120c0c30",
+      "sources/4_2026-09-01_0001667422-26-000036.htm": "8e44ca6fe5b71c7bb4c27336a7458559d922d2b3573da9ebb9d624e1d460aeb9",
+      "sources/8-K_2026-07-22_0001373715-26-000072.htm": "f35d82853db01dae3d5c6c3793f0b57b7f9a93fe55ae825ab4c664dc7f834aae",
+      "sources/DEFA14A_2026-05-11_0001373715-26-000058.htm": "fc5c8e775c1aa1554f133bca080f4ad8871896708a41fc000db9f1fe710aedb9",
+      "sources/INDEX.md": "90a17eadd26b62e156faaebde7fffc2d496f83852ab60c0fd546fb4f19ba64ce",
+      "sources/fetch_manifest.json": "51cc2f3a438ec1b663fe9019e49317e7b98581eecf24d2aafe6d98c5ee670a0d",
+      "sources/financials/normalized_financials.json": "306f9df4cf4a22a2ada668e6294b5c3e7645c897770bd2d21010d325fdfe466e"
+    },
+    "input_snapshot_sha256": "34ce7fd49c90da29b26657d0507c1d5d0554e1ae4a06166c0a162d4a39a2ee6f",
+    "stage_0": {
+      "stage_0": "ready",
+      "enforced": true,
+      "pack_present": true
+    },
+    "review_only": false,
+    "hash_format": "sha256-lf-text-v1"
+  },
+  "archetype_fit": {
+    "buffett_value": {
+      "eligible": false,
+      "fit_score": 66.32745098,
+      "failed_conditions": [
+        "signal.price_to_base_value",
+        "domain.financial_survival",
+        "domain.management_allocation",
+        "domain.asymmetry"
+      ],
+      "missing_conditions": [],
+      "blocking_vetoes": []
+    },
+    "compounder": {
+      "eligible": false,
+      "fit_score": 66.39270833,
+      "failed_conditions": [
+        "domain.reinvestment_fcf",
+        "domain.management_allocation",
+        "criterion.reinvestment_fcf.incremental_roic"
+      ],
+      "missing_conditions": [],
+      "blocking_vetoes": []
+    },
+    "growth": {
+      "eligible": false,
+      "fit_score": 67.45619835,
+      "failed_conditions": [
+        "domain.asymmetry"
+      ],
+      "missing_conditions": [],
+      "blocking_vetoes": []
+    },
+    "moonshot": {
+      "eligible": false,
+      "fit_score": 55.9,
+      "failed_conditions": [
+        "signal.market_cap_usd",
+        "domain.disruptive_innovation",
+        "domain.asymmetry"
+      ],
+      "missing_conditions": [],
+      "blocking_vetoes": []
+    },
+    "outlier_growth": {
+      "eligible": false,
+      "fit_score": 41.46153846,
+      "failed_conditions": [
+        "domain.asymmetry"
+      ],
+      "missing_conditions": [
+        "domain.long_term_growth",
+        "criterion.long_term_growth.opportunity_scale_5y",
+        "criterion.long_term_growth.growth_duration_10y",
+        "criterion.long_term_growth.culture_adaptability",
+        "criterion.long_term_growth.market_misperception"
+      ],
+      "blocking_vetoes": []
+    }
+  },
+  "review_only": false,
+  "evidence_concentration_flags": [
+    {
+      "kind": "economic_driver",
+      "value": "wallet_share",
+      "domains": [
+        "customer_product",
+        "moat_trajectory"
+      ],
+      "score_effect": 0,
+      "review": "Check whether these positive domains rely on one economic fact."
+    }
+  ],
+  "macro_geo_overlay": {
+    "financial_regime": {},
+    "geopolitical_regime": {},
+    "company_transmission": {},
+    "missing_or_stale_components": [
+      "credit_liquidity",
+      "financial_conditions",
+      "geopolitical_events",
+      "structural_trade"
+    ],
+    "reanalysis_requests": [],
+    "pending_reanalysis_domains": [],
+    "risk_budget_multiplier": 0.5,
+    "purchase_pacing_multiplier": 0.5,
+    "monitoring_urgency": "high",
+    "fundamental_score_effect": 0
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "ic_verdict": null,
+  "early_exit_record": {
+    "stage": "pre_ic",
+    "last_reachable_archetypes": [
+      "growth",
+      "outlier_growth"
+    ],
+    "reachability_history_method": "Deterministic replay in manifest order; not a claim about wall-clock execution order.",
+    "eliminated_archetypes": {
+      "compounder": {
+        "failed_conditions": [
+          {
+            "field": "domain.reinvestment_fcf",
+            "op": ">=",
+            "value": 76,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "domain.management_allocation",
+            "op": ">=",
+            "value": 72,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "criterion.reinvestment_fcf.incremental_roic",
+            "op": ">=",
+            "value": 75,
+            "fit_weight": 1.0
+          }
+        ],
+        "missing_conditions": [],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      },
+      "outlier_growth": {
+        "failed_conditions": [
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 65,
+            "fit_weight": 1.0
+          }
+        ],
+        "missing_conditions": [
+          "domain.long_term_growth",
+          "criterion.long_term_growth.opportunity_scale_5y",
+          "criterion.long_term_growth.growth_duration_10y",
+          "criterion.long_term_growth.culture_adaptability",
+          "criterion.long_term_growth.market_misperception"
+        ],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      },
+      "growth": {
+        "failed_conditions": [
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 65,
+            "fit_weight": 1.0
+          }
+        ],
+        "missing_conditions": [],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      },
+      "buffett_value": {
+        "failed_conditions": [
+          {
+            "field": "signal.price_to_base_value",
+            "op": "<=",
+            "value": 0.85,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "domain.financial_survival",
+            "op": ">=",
+            "value": 75,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "domain.management_allocation",
+            "op": ">=",
+            "value": 70,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 65,
+            "fit_weight": 1.0
+          }
+        ],
+        "missing_conditions": [],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      },
+      "moonshot": {
+        "failed_conditions": [
+          {
+            "field": "signal.market_cap_usd",
+            "op": "<=",
+            "value": 50000000000,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "domain.disruptive_innovation",
+            "op": ">=",
+            "value": 78,
+            "fit_weight": 1.0
+          },
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 72,
+            "fit_weight": 1.0
+          }
+        ],
+        "missing_conditions": [],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      }
+    },
+    "confirmed_vetoes": [],
+    "unresolved_vetoes": [],
+    "pending_vetoes": [
+      {
+        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MA",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "MA",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "동결된 10-K·10-Q에서 material weakness, restatement 또는 독립감사 부정의견이 확인되지 않았다. 높은 SBC와 인수위험은 자본배분 감점이지 정직성 훼손의 직접 증거는 아니다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "구조적으로 과도한 외부자본 조달 의존",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "FS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "TTM OCF $5.308B와 FCF $4.580B가 양수이며 $6.707B 유동성 자산으로 운영에 외부자본이 필수적이지 않다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "CP",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "98% renewal, $5M+ 고객 23.5% 성장, 21% cRPO 성장이 반복 구매와 확장을 입증해 마케팅·보조금 의존 가설을 반증한다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "증분 ROIC의 구조적 붕괴",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "RF",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "RF",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "20%대 계약·매출 성장과 owner FCF/share 개선은 구조적 붕괴를 반증한다. 최근 인수의 증분 ROIC는 미확인이라 점수는 보수적으로 제한했다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "해자의 지속적인 축소",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MT",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "MT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "98% renewal, 대형고객 23.5% 증가, cRPO 21% 성장으로 해자 축소와 반대되는 관측치가 다수다. AI 경쟁은 조건부 위험으로 남긴다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "EV",
+          "AS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "현재가는 Bull 가치의 61.9%로 Bull 이상을 요구하지 않는다."
+          },
+          {
+            "agent_id": "EV",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "현재가 $135.47은 Bull 가치 $218.90의 61.9%이며 Bull 가치를 초과하지 않는다. 다만 Base $124.45보다 8.9% 높아 기대수익은 얇다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      },
+      {
+        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "CP",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "다수 workflow·지역·기업고객에 배포되며 단일 고객 10% 이상 의존이 공시되지 않았다. 제품별 매출 부재는 감점했지만 치명적 단일 종속은 아니다."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": []
+      }
+    ],
+    "future_reentry": {
+      "required_conditions": {
+        "compounder": {
+          "failed_conditions": [
+            {
+              "field": "domain.reinvestment_fcf",
+              "op": ">=",
+              "value": 76,
+              "fit_weight": 1.0
+            },
+            {
+              "field": "domain.management_allocation",
+              "op": ">=",
+              "value": 72,
+              "fit_weight": 1.0
+            },
+            {
+              "field": "criterion.reinvestment_fcf.incremental_roic",
+              "op": ">=",
+              "value": 75,
+              "fit_weight": 1.0
+            }
+          ],
+          "missing_conditions": [],
+          "gate_failed": false,
+          "blocking_vetoes": []
+        },
+        "outlier_growth": {
+          "failed_conditions": [
+            {
+              "field": "domain.asymmetry",
+              "op": ">=",
+              "value": 65,
+              "fit_weight": 1.0
+            }
+          ],
+          "missing_conditions": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception"
+          ],
+          "gate_failed": false,
+          "blocking_vetoes": []
+        },
+        "growth": {
+          "failed_conditions": [
+            {
+              "field": "domain.asymmetry",
+              "op": ">=",
+              "value": 65,
+              "fit_weight": 1.0
+            }
+          ],
+          "missing_conditions": [],
+          "gate_failed": false,
+          "blocking_vetoes": []
+        },
+        "buffett_value": {
+          "failed_conditions": [
+            {
+              "field": "signal.price_to_base_value",
+              "op": "<=",
+              "value": 0.85,
+              "fit_weight": 1.0
+            },
+            {
+              "field": "domain.financial_survival",
+              "op": ">=",
+              "value": 75,
+              "fit_weight": 1.0
+            },
+            {
+              "field": "domain.management_allocation",
+              "op": ">=",
+              "value": 70,
+              "fit_weight": 1.0
+            },
+            {
+              "field": "domain.asymmetry",
+              "op": ">=",
+              "value": 65,
+              "fit_weight": 1.0
+            }
+          ],
+          "missing_conditions": [],
+          "gate_failed": false,
+          "blocking_vetoes": []
+        },
+        "moonshot": {
+          "failed_conditions": [
+            {
+              "field": "signal.market_cap_usd",
+              "op": "<=",
+              "value": 50000000000,
+              "fit_weight": 1.0
+            },
+            {
+              "field": "domain.disruptive_innovation",
+              "op": ">=",
+              "value": 78,
+              "fit_weight": 1.0
+            },
+            {
+              "field": "domain.asymmetry",
+              "op": ">=",
+              "value": 72,
+              "fit_weight": 1.0
+            }
+          ],
+          "missing_conditions": [],
+          "gate_failed": false,
+          "blocking_vetoes": []
+        }
+      },
+      "requirements": [
+        "New evidence must satisfy all gates for at least one archetype.",
+        "Complete core coverage, deterministic valuation and all veto ownership before any buy."
+      ]
+    },
+    "ic_intentionally_not_run": true,
+    "statement": "IC was intentionally not run because no investable archetype remains reachable."
+  }
+}

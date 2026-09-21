@@ -1,0 +1,63 @@
+{
+  "ticker": "NOW",
+  "company_name": "ServiceNow, Inc.",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 135.47,
+  "shares_diluted": 1034334000,
+  "market_cap_usd": 140121226980.0,
+  "enterprise_value": 140931226980.0,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC 10-Q filed 2026-07-23, accession 0001373715-26-000076",
+    "SEC 10-K filed 2026-01-29, accession 0001373715-26-000007",
+    "SEC Company Facts for CIK 0001373715 matched to fetched filing accessions",
+    "US market snapshot: NOW $135.47, latest trade 2026-09-18 23:48:59 UTC"
+  ],
+  "special_questions": [
+    "Can roughly 21% cRPO growth persist while ServiceNow scales beyond $14 billion of TTM revenue?",
+    "Does AI monetization and large-customer expansion offset acquisition integration risk and rising stock-based compensation?",
+    "How much valuation support remains at roughly 9.6x EV/TTM revenue when owner FCF is adjusted for stock-based compensation?"
+  ],
+  "net_cash_per_share": -0.7831126115935472,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "EV/TTM revenue; 5-year percentile unavailable from the frozen primary-source and market snapshot bundle",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {
+      "North America": 0.629,
+      "EMEA": 0.256,
+      "Asia Pacific and other": 0.115
+    },
+    "production_by_region": {},
+    "critical_supplier_regions": [
+      "United States",
+      "Europe",
+      "Asia Pacific"
+    ],
+    "export_control_dependencies": [
+      "Cloud and AI services rely on third-party data-center and public-cloud infrastructure; no quantified export-controlled hardware revenue dependency was disclosed"
+    ],
+    "sanctions_exposure": [
+      "37% of FY2025 revenue was generated outside North America; country-level sanctioned-market exposure was not quantified"
+    ],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": [
+      "Public-sector customers are included; U.S. federal business relies on a small number of distributors, resellers or service providers, with revenue exposure not quantified"
+    ]
+  }
+}

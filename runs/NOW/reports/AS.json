@@ -1,0 +1,19 @@
+{
+  "agent_id":"AS","ticker":"NOW","as_of_date":"2026-09-18","domain":"asymmetry","role":"domain_analyst","analysis_status":"complete","score_0_100":63.5,"confidence_0_1":0.76,"bull_score":80,"bear_score":35,
+  "bull_case":"AI monetization과 workflow 확장, 대형고객 wallet-share 상승이 동시에 작동하면 고정 Bull 가치 $218.90로 현재가 대비 약 1.62배가 가능하다.","bear_case":"성장 둔화와 인수·SBC 부담이 겹치면 Bear 가치 $35.42로 현재가 대비 약 74% 하락할 수 있다.",
+  "thesis":"상승 경로는 AI 유료화와 기존 고객 cross-sell이라는 두 축이 있고 Bull/현재가 1.616배로 의미 있으나 대형주 3배급 비대칭은 아니다. Bear/현재가는 0.261배에 불과해 계약형 매출과 현금창출에도 밸류에이션 축소 시 하방이 크다. 확률가중 비대칭은 중립보다 낫지만 강한 안전마진은 없다.",
+  "evidence":[
+    {"claim":"RPO $29.0B와 cRPO 21% 성장은 다년 계약 가시성과 중기 확장 경로를 제공한다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":29000000000,"fact_or_estimate":"fact","economic_driver":"contracted_growth"},
+    {"claim":"$5M 초과 ACV 고객이 658개로 23.5% 증가하고 renewal rate가 98%여서 대형고객 wallet-share 경로가 확인된다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":0.98,"fact_or_estimate":"fact","economic_driver":"customer_expansion"},
+    {"claim":"고정 DCF의 Bear/Base/Bull은 $35.42/$124.45/$218.90로 Bear/현재가 0.261, Bull/현재가 1.616이다.","source_type":"other","source":"harness deterministic valuation policy","period":"10 years from 2026-09-18","as_of_date":"2026-09-18","value":1.6159,"fact_or_estimate":"estimate","economic_driver":"payoff_distribution"},
+    {"claim":"TTM OCF $5.308B와 일반 FCF $4.580B가 운영 충격의 완충재지만 SBC 차감 owner FCF는 $2.395B로 낮다.","source_type":"filing","source":"runs/NOW/sources/financials/normalized_financials.json","period":"TTM to 2026-06-30","as_of_date":"2026-06-30","value":2395000000,"fact_or_estimate":"estimate","economic_driver":"downside_buffer"}
+  ],
+  "counterevidence":["현재가가 Base 가치보다 높아 정상 실행만으로는 충분한 수익이 어렵다.","Bear 가치가 현재가의 26%에 불과해 멀티플 압축 하방이 크다.","Bull 가치의 78.4%가 terminal에 의존해 장기 경로 오차가 크다."],
+  "unknowns":["AI 제품별 순증 ARR.","대형 인수의 유기성장 기여와 통합비용.","장기 SBC 정상화율."],
+  "falsifiers":["cRPO 성장률이 두 분기 연속 15% 미만이면 두 상승경로의 독립성을 낮춘다.","renewal rate가 95% 미만이면 잔존가치 점수를 낮춘다.","owner FCF/share가 FY29 $4.40에 미달하면 Base/Bull 확률을 하향한다."],
+  "hard_veto_flags":[{"veto":"현재가격이 비현실적인 Bull Case 이상을 요구","status":"cleared","rationale":"현재가는 Bull 가치의 61.9%로 Bull 이상을 요구하지 않는다."},{"veto":"파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음","status":"cleared","rationale":"순부채는 작고 TTM OCF $5.3B, 반복계약과 98% renewal이 파산 위험을 낮춘다. 가격 하방은 크지만 파산 확률이 기대수익을 압도하지 않는다."}],
+  "key_kpis":[{"name":"Bull/current value","direction":"up","threshold":">=1.6x","cadence":"quarterly"},{"name":"cRPO growth","direction":"up","threshold":">=15%","cadence":"quarterly"},{"name":"renewal rate","direction":"up","threshold":">=95%","cadence":"quarterly"}],
+  "next_checks":["AI 순증 ARR 공개 여부","인수 제외 cRPO 성장","owner FCF/share와 DCF 재산출"],"verdict":"support",
+  "subscores":[{"criterion_id":"upside_path","score_0_100":75,"rationale":"Bull/현재가 1.616배이며 AI 유료화와 대형고객 cross-sell의 두 독립 경로가 있어 관측표 75다."},{"criterion_id":"permanent_loss","score_0_100":55,"rationale":"Bear/현재가 0.261은 0.2~0.4 구간이다. 반복계약과 현금창출은 파산을 막지만 밸류에이션 하방은 크다."},{"criterion_id":"probability_calibration","score_0_100":60,"rationale":"세 시나리오와 계약지표를 사용했지만 인수 제외 성장과 AI 순증 ARR이 없어 확률 보정은 제한적이다."}],
+  "uncertainties":[{"criterion_id":"upside_path","severity":"material","rationale":"AI와 cross-sell 기여가 별도 공시되지 않는다."},{"criterion_id":"permanent_loss","severity":"material","rationale":"Bear는 멀티플과 장기 owner-FCF 경로에 민감하다."},{"criterion_id":"probability_calibration","severity":"material","rationale":"대규모 인수 후 기준율 자료가 제한적이다."}]
+}

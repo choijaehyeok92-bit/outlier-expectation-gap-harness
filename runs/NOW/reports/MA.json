@@ -1,0 +1,20 @@
+{
+  "agent_id":"MA","ticker":"NOW","as_of_date":"2026-09-18","domain":"management_allocation","role":"domain_analyst","analysis_status":"complete","score_0_100":67.75,"confidence_0_1":0.75,"bull_score":82,"bear_score":45,
+  "bull_case":"경영진이 높은 R&D를 20%대 계약 성장으로 전환하고 저가 자사주 매입과 인수 통합으로 주당가치를 복리화한다.","bear_case":"대형 인수와 공격적 자사주 매입이 비싼 가격에 집행되고 SBC·통합비용을 가려 자본배분 수익률이 악화된다.",
+  "thesis":"실행력은 25% subscription 성장, 21% cRPO 성장, 98% renewal로 강하다. 최근 4개 분기 추정 자사주 평균 매입가는 약 $130.31로 Base 가치 $124.45의 1.047배여서 규칙상 capital allocation은 55점이다. 감사의견과 통제상 중대 신뢰문제는 확인되지 않지만 대형 인수의 사후 수익률과 높은 SBC가 거버넌스·배분 점수를 제한한다.",
+  "evidence":[
+    {"claim":"FY2025 H2와 2026 H1을 합쳐 약 26.97M주를 $3.514B에 매입한 것으로 계산되며 평균가는 약 $130.31이다.","source_type":"filing","source":"runs/NOW/sources/10-K_2026-01-29_0001373715-26-000007.htm; runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"four quarters to 2026-06-30","as_of_date":"2026-06-30","value":130.31,"fact_or_estimate":"estimate","economic_driver":"buyback_allocation"},
+    {"claim":"최근 4개 분기 평균 매입가/Base 가치 비율은 약 1.047로 1.0~1.2 관측구간이다.","source_type":"other","source":"harness deterministic Base value and filing repurchase bridge","period":"four quarters to 2026-06-30","as_of_date":"2026-09-18","value":1.0471,"fact_or_estimate":"estimate","economic_driver":"capital_allocation"},
+    {"claim":"Q2 subscription revenue 25%, cRPO 21%, $5M+ 고객 23.5% 성장과 98% renewal은 운영 실행력을 보여준다.","source_type":"filing","source":"runs/NOW/sources/10-Q_2026-07-23_0001373715-26-000076.htm","period":"2026 Q2","as_of_date":"2026-06-30","value":0.25,"fact_or_estimate":"fact","economic_driver":"execution"},
+    {"claim":"2025 10-K의 독립감사 보고서에서 재무제표 및 내부통제에 대한 중대한 부정의견이나 material weakness가 확인되지 않았다.","source_type":"filing","source":"runs/NOW/sources/10-K_2026-01-29_0001373715-26-000007.htm","period":"FY2025","as_of_date":"2025-12-31","fact_or_estimate":"fact","economic_driver":"reporting_integrity"},
+    {"claim":"TTM SBC $2.185B는 일반 FCF $4.580B의 약 47.7%로 보상 정렬의 경제적 부담이 크다.","source_type":"filing","source":"runs/NOW/sources/financials/normalized_financials.json","period":"TTM to 2026-06-30","as_of_date":"2026-06-30","value":0.4771,"fact_or_estimate":"estimate","economic_driver":"compensation_alignment"}
+  ],
+  "counterevidence":["최근 4개 분기 자사주 평균 매입가가 Base 가치보다 약 4.7% 높다.","Moveworks·Veza·Armis의 사후 ROIC가 아직 검증되지 않았다.","SBC가 일반 FCF의 약 48%이고 Q2 GAAP 영업이익이 감소했다."],
+  "unknowns":["인수별 구매가격·유기 ARR·사후 ROIC의 완전한 bridge.","임원 보상의 장기 owner-FCF/share 연계 강도.","향후 자사주 평균 매입단가."],
+  "falsifiers":["인수 후 2년 내 유기 cRPO 성장률이 15% 미만이면 배분 점수를 낮춘다.","자사주 평균 매입가/Base가 1.2배를 넘으면 capital allocation을 30으로 낮춘다.","재무통제 material weakness가 확인되면 정직성 Veto를 재개한다."],
+  "hard_veto_flags":[{"veto":"경영진 정직성 또는 회계 신뢰성 훼손","status":"cleared","rationale":"동결된 10-K·10-Q에서 material weakness, restatement 또는 독립감사 부정의견이 확인되지 않았다. 높은 SBC와 인수위험은 자본배분 감점이지 정직성 훼손의 직접 증거는 아니다."}],
+  "key_kpis":[{"name":"buyback price/Base value","direction":"down","threshold":"<=1.0x","cadence":"quarterly"},{"name":"SBC/general FCF","direction":"down","threshold":"<35%","cadence":"quarterly"},{"name":"organic cRPO growth","direction":"up","threshold":">=15%","cadence":"quarterly"}],
+  "next_checks":["인수별 사후 ROIC","보상 proxy 세부 검토","자사주 평균단가 갱신"],"verdict":"neutral",
+  "subscores":[{"criterion_id":"capital_allocation","score_0_100":55,"rationale":"최근 4개 분기 평균 매입가 약 $130.31/Base $124.45 = 1.047배로 관측표 1.0~1.2 구간 55점이다. 대형 인수 사후수익률도 미검증이다."},{"criterion_id":"governance_integrity","score_0_100":70,"rationale":"감사·통제 중대 문제는 확인되지 않았지만 SBC가 일반 FCF의 48%로 보상 정렬 부담이 있어 75를 제한했다."},{"criterion_id":"execution_adaptability","score_0_100":85,"rationale":"대규모 기반에서 subscription 25%, cRPO 21%, 대형고객 23.5%, renewal 98%를 달성해 일관 실행이 강하다."}],
+  "uncertainties":[{"criterion_id":"capital_allocation","severity":"material","rationale":"ASR 최종 정산과 인수별 사후 ROIC가 미확정이다."},{"criterion_id":"governance_integrity","severity":"material","rationale":"동결 bundle에 정식 DEF 14A가 없어 보상 구조 검증이 제한된다."},{"criterion_id":"execution_adaptability","severity":"material","rationale":"인수 제외 유기 성장 bridge가 없다."}]
+}

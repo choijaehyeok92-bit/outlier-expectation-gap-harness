@@ -1,154 +1,22 @@
 {
-  "agent_id": "EV",
-  "ticker": "MSFT",
-  "as_of_date": "2026-09-17",
-  "domain": "expectation_valuation",
-  "role": "domain_analyst",
-  "analysis_status": "complete",
-  "score_0_100": 54.25,
-  "confidence_0_1": 0.7,
-  "bull_score": 75,
-  "bear_score": 30,
-  "bull_case": "AI·Azure·Copilot 수익화와 capex 효율 개선이 겹치면 owner FCF/share Y10 $53, Bull 약 $741이다.",
-  "bear_case": "AI 인프라 capex가 고정비로 남고 cloud margin 회복이 늦으면 Bear 약 $133이다.",
-  "thesis": "고정 9%/10년/15x·20x·25x DCF에서 Bear/Base/Bull은 약 $133/$500/$741이다. $497.75는 Base의 약 1.00배로 Bull을 요구하지 않지만 기대차도 거의 없다. Base는 FY2026 owner FCF/share $7.32가 AI capex 효율화와 매출 성장으로 Y10 $42까지 복리화된다는 전제이며 가치의 약 72%가 terminal에 의존한다.",
-  "evidence": [
-    {
-      "claim": "FY2026 OCF $182.935B, PP&E additions $115.948B, SBC $12.405B로 owner FCF는 $54.582B, 약 $7.32/share다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
-      "period": "FY2026",
-      "as_of_date": "2026-06-30",
-      "value": 7.32,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "FY27 Q1 매출 가이던스는 $89.85B-$90.95B이고 Azure 성장 가이던스는 약 45% constant currency다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/8-K_2026-09-02_key_facts.txt",
-      "period": "FY27 Q1 guide",
-      "as_of_date": "2026-06-30",
-      "value": "$89.85B-$90.95B",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "하네스 고정 정책과 10년 owner-FCF/share 경로로 Bear/Base/Bull 약 $133/$500/$741을 얻는다.",
-      "source_type": "other",
-      "source": "harness deterministic valuation",
-      "period": "10y",
-      "as_of_date": "2026-06-30",
-      "value": "133/500/741",
-      "fact_or_estimate": "estimate"
-    }
+  "agent_id":"EV","ticker":"MSFT","as_of_date":"2026-09-18","domain":"expectation_valuation","role":"domain_analyst","analysis_status":"complete","score_0_100":54.25,"confidence_0_1":0.8,"bull_score":75,"bear_score":30,
+  "bull_case":"Azure AI·Copilot 수익화와 데이터센터 효율 개선이 겹쳐 owner FCF/share가 10년차 $53에 도달하면 Bull 가치 약 $741이 가능하다.","bear_case":"AI 인프라 capex가 고정비로 남고 cloud margin 회복이 늦으면 owner FCF/share가 10년차 $12.5에 그쳐 Bear 가치 약 $133이 된다.",
+  "thesis":"고정 9%·10년·15/20/25x DCF의 Bear/Base/Bull은 약 $133.20/$500.13/$740.94다. $493.78은 Base의 0.9873배로 Bull을 요구하지 않지만 기대차도 거의 없다. Base는 FY2026 owner FCF/share $7.32가 AI capex 효율화와 매출 성장으로 10년차 $42까지 복리화된다는 전제이며 영업가치의 71.7%가 terminal에 의존한다.",
+  "evidence":[
+    {"evidence_id":"MSFT-FY26-FCF","economic_driver":"owner_fcf","claim":"FY2026 OCF $182.935B, capex $115.948B, SBC $12.405B로 SBC 차감 owner FCF proxy는 $54.582B, 약 $7.32/희석주다.","source_type":"filing","source":"runs/MSFT/sources/financials/normalized_financials.json","period":"FY2026","as_of_date":"2026-06-30","value":7.3235,"fact_or_estimate":"estimate"},
+    {"evidence_id":"MSFT-FY26-GROWTH","economic_driver":"cloud_ai_growth","claim":"FY2026 총매출은 $331.839B로 전년 $281.724B 대비 17.8% 증가했고 영업이익은 $155.237B로 20.8% 증가했다.","source_type":"filing","source":"runs/MSFT/sources/10-K_2026-07-29_0001193125-26-323660.htm","period":"FY2026 versus FY2025","as_of_date":"2026-06-30","value":331839000000,"fact_or_estimate":"fact"},
+    {"evidence_id":"MSFT-FY26-CLOUD","economic_driver":"cloud_ai_growth","claim":"Microsoft Cloud 매출은 $214.4B로 27% 증가했고 Azure 및 기타 cloud services는 41% 성장했다.","source_type":"filing","source":"runs/MSFT/sources/10-K_2026-07-29_0001193125-26-323660.htm","period":"FY2026","as_of_date":"2026-06-30","value":214400000000,"fact_or_estimate":"fact"},
+    {"evidence_id":"MSFT-FY26-RPO","economic_driver":"contracted_demand","claim":"commercial remaining performance obligation은 FY2026 말 $678B로 장기 계약 가시성을 제공한다.","source_type":"filing","source":"runs/MSFT/sources/10-K_2026-07-29_0001193125-26-323660.htm","period":"FY2026","as_of_date":"2026-06-30","value":678000000000,"fact_or_estimate":"fact"},
+    {"evidence_id":"MSFT-DCF-20260918","economic_driver":"expectation_gap","claim":"locked DCF Bear/Base/Bull은 $133.20/$500.13/$740.94, current/Base 0.9873이며 terminal fraction은 61.7%/71.7%/76.0%다.","source_type":"other","source":"harness deterministic valuation policy","period":"10 years from 2026-09-18","as_of_date":"2026-09-18","value":500.1269,"fact_or_estimate":"estimate"}
   ],
-  "counterevidence": [
-    "AI 인프라 자본집약도와 OpenAI 관련 경제적 집중은 장기 현금수익률의 핵심 반대근거다."
-  ],
-  "unknowns": [
-    "FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률."
-  ],
-  "falsifiers": [
-    "owner FCF/share가 2개 회계연도 연속 회복하지 못하면 현재 복리 가설을 하향한다."
-  ],
-  "hard_veto_flags": [
-    {
-      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "cleared",
-      "rationale": "현재가 $497.75는 Base 약 $500 수준이며 Bull 약 $741 이상을 요구하지 않는다."
-    }
-  ],
-  "key_kpis": [
-    {
-      "name": "owner FCF/share",
-      "direction": "up",
-      "threshold": "FY27 이후 회복",
-      "cadence": "annual"
-    }
-  ],
-  "next_checks": [
-    "FY27 Q1 10-Q에서 Azure 성장, capex, OCF와 RPO 갱신 확인"
-  ],
-  "verdict": "neutral",
-  "subscores": [
-    {
-      "criterion_id": "reverse_dcf_burden",
-      "score_0_100": 60,
-      "rationale": "price/Base≈0.995로 signal_map 0.9~1.1 구간=60."
-    },
-    {
-      "criterion_id": "base_return",
-      "score_0_100": 55,
-      "rationale": "price/Base≈0.995로 signal_map 0.9~1.1 구간=55."
-    },
-    {
-      "criterion_id": "valuation_robustness",
-      "score_0_100": 45,
-      "rationale": "Base 가치의 약 72%가 terminal에 의존해 민감도가 크다."
-    }
-  ],
-  "uncertainties": [
-    {
-      "criterion_id": "reverse_dcf_burden",
-      "severity": "material",
-      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
-    },
-    {
-      "criterion_id": "base_return",
-      "severity": "material",
-      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
-    },
-    {
-      "criterion_id": "valuation_robustness",
-      "severity": "material",
-      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
-    }
-  ],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": 0.155,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": [
-          5.5,
-          5,
-          5.5,
-          6.5,
-          7.5,
-          8.5,
-          9.5,
-          10.5,
-          11.5,
-          12.5
-        ]
-      },
-      "base": {
-        "owner_fcf_per_share": [
-          9,
-          11.5,
-          14.5,
-          18,
-          22,
-          26,
-          30,
-          34,
-          38,
-          42
-        ]
-      },
-      "bull": {
-        "owner_fcf_per_share": [
-          10.5,
-          14,
-          18,
-          23,
-          28,
-          33,
-          38,
-          43,
-          48,
-          53
-        ]
-      }
-    }
-  }
+  "counterevidence":["현재가는 Base와 거의 같아 정상 실행만으로 큰 초과수익이 없다.","Base owner FCF/share는 10년차 $42로 FY2026 대비 5.7배가 필요하다.","Base 영업가치의 71.7%가 terminal에 의존한다.","FY2026 capex $115.948B가 owner FCF/share를 압박하며 AI 투자 회수기간은 미검증이다."],
+  "unknowns":["동일정의 5년 valuation percentile은 frozen bundle과 공시에서 확보되지 않았다.","FY2027 이후 데이터센터 capex 정상화 속도와 신규 자산의 증분 현금수익률."],
+  "falsifiers":["FY2029 owner FCF/share가 $18 미만이면 Base를 낮춘다.","향후 3년 매출 CAGR이 12% 미만이면 Base 성장 지속기간을 줄인다.","Azure 성장률이 20% 미만으로 두 분기 지속되면 Bull 경로를 기각한다."],
+  "hard_veto_flags":[{"veto":"현재가격이 비현실적인 Bull Case 이상을 요구","status":"cleared","rationale":"현재가 $493.78은 Bull 가치 $740.94의 66.6%이며 Bull 가치를 초과하지 않는다."}],
+  "key_kpis":[{"name":"owner FCF/share","direction":"up","threshold":"FY2029 >=$18","cadence":"quarterly"},{"name":"Azure growth","direction":"up","threshold":">=20%","cadence":"quarterly"},{"name":"capex/OCF","direction":"down","threshold":"<55% by FY2029","cadence":"quarterly"}],
+  "next_checks":["FY2027 Q1 owner FCF/share","Azure·AI 수익화와 cloud gross margin","data-center capex 및 lease commitments"],"verdict":"neutral",
+  "subscores":[{"criterion_id":"reverse_dcf_burden","score_0_100":60,"rationale":"locked DCF price/Base 0.9873은 0.9~1.1 signal-map 구간이므로 60이다."},{"criterion_id":"base_return","score_0_100":55,"rationale":"price/Base 0.9873은 0.9~1.1 signal-map 구간으로 55다. 현재가는 Base보다 약 1.3% 낮다."},{"criterion_id":"valuation_robustness","score_0_100":45,"rationale":"Base 영업가치의 71.7%가 terminal이고 10년차 owner FCF/share $42를 요구해 50 민감도 큼보다 낮은 45다. 25는 Bull 초과 가격이 아니므로 배제했다."}],
+  "uncertainties":[{"criterion_id":"reverse_dcf_burden","severity":"material","rationale":"AI capex 정상화가 reverse DCF의 핵심 미확인 변수다."},{"criterion_id":"base_return","severity":"material","rationale":"Base는 장기간 두 자릿수 owner-FCF/share 성장을 요구한다."},{"criterion_id":"valuation_robustness","severity":"material","rationale":"가치 대부분이 terminal과 capex 효율화에 의존한다."}],
+  "valuation_inputs":{"valuation_percentile_5y":null,"revenue_cagr_next_3y":0.155,"scenarios":{"bear":{"owner_fcf_per_share":[5.5,5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5]},"base":{"owner_fcf_per_share":[9,11.5,14.5,18,22,26,30,34,38,42]},"bull":{"owner_fcf_per_share":[10.5,14,18,23,28,33,38,43,48,53]}}},
+  "archetype_signals":{"price_to_base_value":0.9873,"valuation_percentile_5y":null,"revenue_cagr_next_3y":0.155}
 }
