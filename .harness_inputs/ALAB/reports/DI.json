@@ -5,150 +5,152 @@
   "domain": "disruptive_innovation",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 78.75,
-  "confidence_0_1": 0.83,
-  "bull_score": 90,
-  "bear_score": 60,
-  "bull_case": "Astera is expanding from retimers into switches, memory connectivity, optical and custom connectivity, with COSMOS software spanning the stack. If these products become common rack-scale building blocks, Astera can capture a larger share of AI-system value.",
-  "bear_case": "The products improve AI interconnect performance but hyperscalers and large semiconductor vendors can design competing silicon. Astera may remain a highly successful merchant supplier without controlling the value-chain standard.",
-  "thesis": "Astera qualifies as a strong disruptive innovator in AI connectivity. Scorpio, Aries, Taurus, Leo and COSMOS address multiple interconnect bottlenecks as rack-scale AI systems become bandwidth- and memory-constrained. Adoption is already commercial, with Q2 revenue doubling YoY and Scorpio expected to become the largest product family in Q3. The score is capped because hyperscalers can build custom silicon and Astera does not yet control an industry standard.",
+  "score_0_100": 75.25,
+  "confidence_0_1": 0.82,
+  "bull_score": 88,
+  "bear_score": 58,
+  "bull_case": "Astera can become a rack-scale connectivity control plane spanning PCIe/CXL retimers, fabric switches, smart cable modules and custom connectivity, monetizing each new AI accelerator generation.",
+  "bear_case": "The innovation is enabling infrastructure rather than a monopoly platform. Hyperscalers can design in-house silicon, merchant competitors can bundle alternatives, and standards-based markets can erode differentiation.",
+  "thesis": "Astera Labs is a strong disruptive-infrastructure candidate because AI racks are becoming connectivity-constrained and the company is expanding from point products into a portfolio of retimers, switches, controllers and smart cable modules. Adoption is already visible in triple-digit revenue growth and a large Q3 step-up. The score stops short of top-tier disruption because Astera does not control the underlying PCIe/CXL standards and its largest customers can fund internal alternatives.",
   "evidence": [
     {
-      "claim": "Q2 revenue rose 104% YoY to $392.4M and Q3 growth was expected to be driven by Scorpio X-Series production ramp.",
+      "claim": "Q2 2026 revenue reached $392.4M, +104% YoY, while Q3 revenue guidance was $540M-$560M.",
       "source_type": "company_primary",
       "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
       "period": "Q2/Q3 2026",
       "as_of_date": "2026-08-04",
-      "value": "392.4M / +104%",
+      "value": "392.4M / 540-560M",
       "fact_or_estimate": "fact",
-      "evidence_id": "ALAB-DI-REV"
+      "evidence_id": "ALAB-DI-ADOPT"
     },
     {
-      "claim": "Scorpio X-Series 320-lane fabric switch targets the merchant scale-up market and was already shipping in Q1 2026.",
+      "claim": "Astera's portfolio spans Aries PCIe/CXL Smart DSP Retimers, Taurus Ethernet Smart Cable Modules, Leo CXL Memory Connectivity Controllers, Scorpio fabric switches and custom connectivity platforms.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000010/alab-20251231.htm",
+      "period": "FY2025 business description",
+      "as_of_date": "2026-02-20",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-DI-PORT"
+    },
+    {
+      "claim": "Leo X-Series was announced September 15, extending the smart cable portfolio for next-generation AI scale-up architectures.",
       "source_type": "company_primary",
-      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-first-quarter-2026-financial-results",
-      "period": "Q1 2026",
-      "as_of_date": "2026-05-05",
-      "value": "320-lane",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-unveils-leo-x-series-smart-cable-modules",
+      "period": "2026-09-15",
+      "as_of_date": "2026-09-15",
+      "value": null,
       "fact_or_estimate": "fact",
-      "evidence_id": "ALAB-DI-SCORPIO"
+      "evidence_id": "ALAB-DI-LEOX"
     },
     {
-      "claim": "The Taurus portfolio added 3.2T Smart Retimers and Redrivers for 224G Ethernet and UALink, with a common COSMOS observability layer.",
+      "claim": "Q2 GAAP gross margin was 73.3%, supporting evidence that adoption is occurring with attractive unit economics rather than through subsidy.",
       "source_type": "company_primary",
       "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
       "period": "Q2 2026",
       "as_of_date": "2026-08-04",
-      "value": "3.2T / 224G",
+      "value": "73.3%",
       "fact_or_estimate": "fact",
-      "evidence_id": "ALAB-DI-TAURUS"
+      "evidence_id": "ALAB-DI-GM"
     },
     {
-      "claim": "Leo X-Series demonstrated up to 62% faster time to first token and up to 22% more tokens per second in cited platform configurations, expanding into fabric-attached memory.",
-      "source_type": "company_primary",
-      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-bolsters-leo-smart-memory-controller-family-agentic",
-      "period": "2026-09-15",
-      "as_of_date": "2026-09-15",
-      "value": "62% TTFT / 22% TPS",
+      "claim": "Astera disclosed customer concentration and an Amazon customer warrant tied to purchase-performance conditions, showing both commercial validation and bargaining power residing partly with hyperscale customers.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000110465926012606/tm265461d1_8k.htm",
+      "period": "2026-02-05",
+      "as_of_date": "2026-02-10",
+      "value": "3,262,299 warrant shares",
       "fact_or_estimate": "fact",
-      "evidence_id": "ALAB-DI-LEO"
-    },
-    {
-      "claim": "Management highlighted design wins across a broadening customer set and expansion into optical interconnects and custom solutions.",
-      "source_type": "company_primary",
-      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000033/q226exhibit991.htm",
-      "period": "Q2 2026",
-      "as_of_date": "2026-08-04",
-      "value": null,
-      "fact_or_estimate": "fact",
-      "evidence_id": "ALAB-DI-OPTICAL"
+      "evidence_id": "ALAB-DI-AMZN"
     }
   ],
   "counterevidence": [
-    "Large hyperscalers can design custom connectivity silicon and are not capital-constrained incumbents.",
-    "Scorpio and Leo X-Series are early in their production/adoption curves compared with Aries retimers.",
-    "Growth across multiple product families is still correlated to hyperscale AI infrastructure spending."
+    "PCIe and CXL are open industry standards, so Astera does not own the protocol standard itself.",
+    "Hyperscalers are capital-rich and can develop custom connectivity silicon internally.",
+    "A few direct customers account for a large share of revenue, creating design-win concentration risk.",
+    "Rapid AI interconnect growth may attract aggressive pricing and integrated offerings from larger semiconductor vendors."
   ],
   "unknowns": [
-    "Merchant share of scale-up switching after 2027.",
-    "Custom-silicon share of Astera revenue and customer concentration.",
-    "Whether COSMOS creates durable software switching costs or mainly complements hardware."
+    "Scorpio share across customers beyond the largest hyperscalers.",
+    "Long-run price/performance advantage versus integrated merchant alternatives.",
+    "Extent to which custom connectivity deepens switching costs versus facilitating customer-specific insourcing.",
+    "Sustainable gross margin as switches become a larger share of revenue."
   ],
   "falsifiers": [
-    "If Scorpio fails to become a material multi-customer product family, the platform-disruption thesis weakens.",
-    "If hyperscaler custom silicon displaces merchant connectivity faster than Astera expands adjacent products, optionality falls.",
-    "If new products grow revenue without sustaining high gross margins, cost/performance leadership may not translate into economic disruption."
+    "If Scorpio or Leo X fails to broaden beyond a small number of customers, optionality should be rescored lower.",
+    "If gross margin compresses sharply while unit growth continues, adoption may reflect commoditization rather than durable value.",
+    "If hyperscaler internal silicon displaces Astera at major programs, the incumbent-response cap becomes binding at a lower score."
   ],
   "hard_veto_flags": [
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
       "status": "cleared",
-      "rationale": "Revenue growth, production shipments and customer-linked design wins demonstrate paid commercial adoption."
+      "rationale": "Triple-digit revenue growth, 73.3% GAAP gross margin and production deployments demonstrate paid customer value."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
       "status": "conditional",
-      "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+      "rationale": "Product families are diversifying, but direct-customer concentration is high and requires CP/RT review."
     }
   ],
   "key_kpis": [
     {
-      "name": "Scorpio revenue share",
+      "name": "Scorpio/Leo/Aries/Taurus design wins",
       "direction": "up",
-      "threshold": "largest product family with broad customer base",
+      "threshold": "broader multi-customer adoption",
       "cadence": "quarterly"
     },
     {
-      "name": "new-product revenue diversification",
+      "name": "GAAP gross margin",
       "direction": "up",
-      "threshold": "Leo/Taurus/custom/optical material contribution",
+      "threshold": "high-60s or better",
       "cadence": "quarterly"
     },
     {
-      "name": "gross margin",
-      "direction": "up",
-      "threshold": "remain structurally high through product mix shift",
+      "name": "top-customer revenue share",
+      "direction": "down",
+      "threshold": "declining concentration",
       "cadence": "quarterly"
     }
   ],
   "next_checks": [
-    "Scorpio multi-customer production ramp",
-    "Leo/custom/optical revenue contribution",
-    "Hyperscaler custom-silicon response"
+    "Scorpio share of Q3 revenue",
+    "Leo X customer ramps",
+    "Competitive response from hyperscaler in-house silicon"
   ],
   "verdict": "support",
   "subscores": [
     {
       "criterion_id": "cost_performance_shift",
-      "score_0_100": 80,
-      "rationale": "Scorpio, Taurus and Leo address structural rack-scale bandwidth, memory and observability bottlenecks with material performance improvements, above sustaining innovation but below a proven 10x system-wide shift."
+      "score_0_100": 75,
+      "rationale": "Astera addresses AI rack bottlenecks with purpose-built connectivity silicon and modules, a structural architecture shift rather than a simple feature upgrade."
     },
     {
       "criterion_id": "adoption_curve",
-      "score_0_100": 85,
-      "rationale": "Revenue doubled YoY, PCIe 6 products are in production, and Scorpio was expected to become the largest product family in Q3. Adoption is clearly commercial and accelerating, though not yet mature."
+      "score_0_100": 80,
+      "rationale": "Revenue doubled YoY, Q3 guidance implies another sharp sequential step-up, and gross margin remains above 70%, indicating accelerating adoption with attractive economics."
     },
     {
       "criterion_id": "optionality_incumbent_response",
       "score_0_100": 70,
-      "rationale": "Astera has entered at least three adjacent value pools, but major customers can design their own silicon. The rubric caps this axis at 70 when the primary responders are capital-rich customers."
+      "rationale": "At least three adjacent value pools are present, but the explicit policy caps this criterion at 70 when capital-rich hyperscaler customers can build competing internal silicon."
     }
   ],
   "uncertainties": [
     {
       "criterion_id": "cost_performance_shift",
       "severity": "material",
-      "rationale": "Vendor performance claims may not translate uniformly across production workloads."
+      "rationale": "Public evidence supports architectural importance more clearly than a quantified 10x cost/performance advantage."
     },
     {
       "criterion_id": "adoption_curve",
       "severity": "material",
-      "rationale": "Scorpio's broad production history is still short."
+      "rationale": "Current adoption is rapid but still concentrated in a short AI infrastructure cycle."
     },
     {
       "criterion_id": "optionality_incumbent_response",
-      "severity": "material",
-      "rationale": "Hyperscaler in-house silicon can limit merchant share even if the total market grows quickly."
+      "severity": "critical",
+      "rationale": "Large customers have the financial and technical capacity to insource."
     }
   ],
   "valuation_inputs": {
