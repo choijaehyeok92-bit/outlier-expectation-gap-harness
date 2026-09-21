@@ -1,0 +1,53 @@
+{
+  "ticker": "MA",
+  "company_name": "Mastercard Incorporated",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 565.24,
+  "shares_diluted": 883000000,
+  "market_cap_usd": 495160000000,
+  "enterprise_value": 508050000000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC 2025 Form 10-K: https://www.sec.gov/Archives/edgar/data/1141391/000114139126000013/ma-20251231.htm",
+    "SEC Q2 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1141391/000114139126000083/ma-20260630.htm",
+    "SEC 2026 DEF 14A: https://www.sec.gov/Archives/edgar/data/1141391/000114139126000021/ma-20260427.htm",
+    "StockAnalysis MA historical price: 2026-09-18 close $565.24",
+    "StockAnalysis MA market cap/EV: 2026-09-18 market cap $495.16B, EV $508.05B"
+  ],
+  "special_questions": [
+    "Assess whether capitalized software should be treated as owner-FCF reinvestment in addition to property/equipment capex.",
+    "Assess recurring litigation provisions rather than assuming they are one-time.",
+    "Test whether regulation and alternative payment rails weaken Mastercard's network economics over a 10-year horizon."
+  ],
+  "net_cash_per_share": -14.761042,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {
+      "Americas": 0.427893,
+      "APEMEA": 0.572107
+    },
+    "production_by_region": {},
+    "critical_supplier_regions": [],
+    "export_control_dependencies": [],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": []
+  }
+}

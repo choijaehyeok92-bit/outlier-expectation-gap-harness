@@ -1,0 +1,209 @@
+{
+  "agent_id": "EV",
+  "ticker": "MA",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 61.75,
+  "confidence_0_1": 0.84,
+  "bull_score": 74.0,
+  "bear_score": 48.0,
+  "bull_case": "Value-added services, cross-border growth and sustained buybacks can keep per-share cash compounding in the low-double digits, supporting the Bull path.",
+  "bear_case": "Higher customer incentives, regulation/litigation and slower payment-volume growth could push owner-FCF/share growth toward low single digits and compress terminal value.",
+  "thesis": "Mastercard remains a high-quality payment network, but the frozen price already requires roughly 10.0% annual owner-FCF/share growth for ten years under the locked 9%/20x Base policy. The modeled Base value is $520.71, below the $565.24 price, while Bull remains materially above price. The expectation gap is therefore limited rather than absent.",
+  "evidence": [
+    {
+      "claim": "Locked Bear/Base/Bull values are $291.77/$520.71/$778.54.",
+      "source_type": "other",
+      "source": "deterministic valuation from frozen company_context and locked calibration policy",
+      "period": "10-year DCF",
+      "as_of_date": "2026-09-18",
+      "value": "291.77/520.71/778.54",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "EV-MA-DCF-001",
+      "economic_driver": "valuation"
+    },
+    {
+      "claim": "TTM owner-FCF proxy after PP&E capex and capitalized software is about $15.975B, or $17.85/share.",
+      "source_type": "filing",
+      "source": "Mastercard 2025 10-K and Q2 2026 10-Q",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-09-18",
+      "value": 17.8492,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "EV-MA-FCF-001",
+      "economic_driver": "owner_fcf"
+    },
+    {
+      "claim": "H1 2026 net revenue grew 15% reported / 12% currency-neutral; value-added services and solutions grew 21% reported / 18% currency-neutral.",
+      "source_type": "filing",
+      "source": "Mastercard Q2 2026 Form 10-Q",
+      "period": "H1 2026",
+      "as_of_date": "2026-07-30",
+      "value": "15% revenue; 21% VAS",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-MA-GROWTH-001",
+      "economic_driver": "revenue_growth"
+    },
+    {
+      "claim": "H1 2026 customer rebates and incentives in the payment network rose 22% reported / 19% currency-neutral.",
+      "source_type": "filing",
+      "source": "Mastercard Q2 2026 Form 10-Q",
+      "period": "H1 2026",
+      "as_of_date": "2026-07-30",
+      "value": "22% reported / 19% currency-neutral",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-MA-INCENTIVES-001",
+      "economic_driver": "net_revenue_take_rate"
+    },
+    {
+      "claim": "At the frozen price of $565.24, the locked 20x Base DCF requires about 10.0% constant annual owner-FCF/share growth for ten years.",
+      "source_type": "other",
+      "source": "reverse DCF using locked harness policy",
+      "period": "2027-2036 model horizon",
+      "as_of_date": "2026-09-18",
+      "value": 0.100251,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "EV-MA-RDCF-001",
+      "economic_driver": "market_expectations"
+    }
+  ],
+  "counterevidence": [
+    "The H1 operating-cash-flow comparison is depressed by customer-incentive payments and litigation-settlement cash timing, so a single TTM cash-flow window can understate normalized economics.",
+    "Mastercard's value-added services are growing materially faster than payment-network revenue, which can support a longer growth runway than a mature card-network framing implies.",
+    "Aggressive repurchases reduce the diluted share base and can lift owner-FCF/share faster than aggregate owner FCF.",
+    "The Base terminal fraction is about 67%, so terminal assumptions remain economically important even though they are below the harness's 80% review threshold."
+  ],
+  "unknowns": [
+    "Five-year own-history valuation percentile is not frozen in company_context.",
+    "Long-run customer-incentive intensity and its effect on payment-network net revenue.",
+    "Long-run regulatory/interchange/routing economics across major jurisdictions.",
+    "Sustainable contribution of value-added services to consolidated margins and reinvestment returns."
+  ],
+  "falsifiers": [
+    "If owner-FCF/share compounds materially below high-single digits while incentives continue to outgrow underlying network revenue, the Base case is too optimistic.",
+    "If regulation causes a durable deterioration in network take economics that cannot be offset by volume/VAS growth, the Base and Bull paths fail.",
+    "If buybacks cease to reduce the share count at economically sensible prices, expected per-share compounding weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Frozen price $565.24 is below the locked Bull value $778.54; Bull+ is not required."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "high-single-digit or better long-run growth",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "payment-network rebates and incentives",
+      "direction": "controlled",
+      "threshold": "not persistently outgrowing underlying network economics",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "VAS revenue growth",
+      "direction": "up",
+      "threshold": "sustainably above core payment-network growth without margin dilution",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Update owner-FCF/share after Q3 2026 and separate working-capital/litigation settlement timing from structural cash generation.",
+    "Measure five-year own-history valuation percentile before freeze if reproducible source data is available.",
+    "Stress-test customer incentives and regulation against a lower terminal multiple."
+  ],
+  "verdict": "neutral",
+  "archetype_signals": {
+    "price_to_base_value": 1.0855,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.11
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "price/Base=1.0855, which falls in the 0.9–1.1 locked signal-map band; 60 is used."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "price/Base=1.0855, which falls in the 0.9–1.1 locked signal-map band; 55 is used."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 75,
+      "rationale": "Bear/Base/Bull values remain ordered, Base terminal fraction is 66.7% (<80% review threshold), and the paths span 4%/9%/12% owner-FCF/share growth. This supports the 75 anchor rather than 50; 90 is excluded because terminal assumptions remain material."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "Current price requires roughly 10% owner-FCF/share growth for a decade."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Frozen price is modestly above the modeled Base value."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "Terminal value contributes roughly two-thirds of Base operating value."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.11,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          18.5631,
+          19.3057,
+          20.0779,
+          20.881,
+          21.7162,
+          22.5849,
+          23.4883,
+          24.4278,
+          25.4049,
+          26.4211
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          19.4556,
+          21.2066,
+          23.1152,
+          25.1955,
+          27.4631,
+          29.9348,
+          32.629,
+          35.5656,
+          38.7665,
+          42.2555
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          19.9911,
+          22.39,
+          25.0768,
+          28.086,
+          31.4563,
+          35.2311,
+          39.4588,
+          44.1939,
+          49.4971,
+          55.4368
+        ]
+      }
+    }
+  }
+}
