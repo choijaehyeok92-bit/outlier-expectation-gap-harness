@@ -1,0 +1,53 @@
+name: TMDX v3.3 stage0 validate freeze
+
+on:
+  push:
+    branches:
+      - work/tmdx-2026-09-18-v33
+    paths:
+      - ".github/workflows/tmdx-v33-freeze.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/tmdx-2026-09-18-v33
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Validate pack and freeze TMDX
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/tmdx-freeze.log) 2>&1
+
+          python harness.py selftest
+          python harness.py intake TMDX | tee runlogs/intake_after_fp.txt
+          python harness.py validate-pack TMDX
+          python harness.py freeze TMDX --provider openai --model GPT-5.6-Sol
+          python harness.py plan TMDX | tee runlogs/plan_after_freeze.txt
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/TMDX
+          if ! git diff --cached --quiet; then
+            git commit -m "stage0: validate and freeze TMDX"
+            git push origin HEAD:work/tmdx-2026-09-18-v33
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: TMDX-v33-freeze
+          path: |
+            runs/TMDX
+            runlogs
