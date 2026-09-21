@@ -1,0 +1,49 @@
+{
+  "agent_id": "IC",
+  "ticker": "FIX",
+  "as_of_date": "2026-09-18",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 79.44,
+  "confidence_0_1": 0.88,
+  "thesis": "FIX qualifies as Long-Term Outlier Growth with core score 79.44, ex-valuation 80.79, full coverage and all Hard Vetoes cleared. The frozen price is below Base value, while backlog and organic growth support a concrete expectation gap. Compounder fails only the mechanical reinvestment-runway gate. Mechanical state is NORMAL with 2-4% range; macro slows purchase pacing to 0.50x.",
+  "hard_veto_flags": [],
+  "verdict": "support",
+  "ic_state": "NORMAL",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "position_range": "2-4%",
+  "macro_purchase_pacing_multiplier": 0.5,
+  "evidence": [
+    {
+      "claim": "Core score and valuation support Outlier Growth eligibility.",
+      "source_type": "other",
+      "source": "FIX aggregate/valuation",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "eligible",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Working-capital-normalized FCF may be lower than TTM.",
+    "Technology/data-center mix is elevated."
+  ],
+  "unknowns": [
+    "Normalized FCF."
+  ],
+  "falsifiers": [
+    "Organic backlog and normalized FCF deteriorate together."
+  ],
+  "key_kpis": [
+    {
+      "name": "normalized FCF/share",
+      "direction": "up",
+      "threshold": "sustained",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026."
+  ]
+}
