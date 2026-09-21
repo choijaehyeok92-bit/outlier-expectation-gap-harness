@@ -1,0 +1,128 @@
+{
+  "agent_id": "AS",
+  "ticker": "BRK.B",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 80.25,
+  "confidence_0_1": 0.78,
+  "bull_score": 90,
+  "bear_score": 68,
+  "bull_case": "유리한 사업·자본배분 가정이 유지되면 기준 점수보다 높은 결과가 가능하다.",
+  "bear_case": "성장·마진·자본배분이 정상화되고 핵심 불확실성이 불리하게 전개되면 기준 점수보다 낮아질 수 있다.",
+  "thesis": "Bear 하방은 제한적이고 Base/Bull 상방이 비대칭적이다. 다만 $1T 이상 규모 때문에 5배형 파워로 경로는 비현실적이며 비대칭의 주된 원천은 유동성·다각화·자본배분이다.",
+  "evidence": [
+    {
+      "claim": "Operating earnings H1 2026 were $24.329B versus $20.801B in H1 2025.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026 H1",
+      "as_of_date": "2026-08-10",
+      "value": 24329,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-OE-GROWTH"
+    },
+    {
+      "claim": "Cash/T-bill holdings were $359.2B at June 30, 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-10",
+      "value": 359200,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-LIQ-2026Q2"
+    },
+    {
+      "claim": "Berkshire repurchased about $4.8B of stock in H1 2026, mostly in Q2.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026 H1",
+      "as_of_date": "2026-08-10",
+      "value": 4800,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-BUYBACK-2026H1"
+    },
+    {
+      "claim": "Taylor Morrison acquisition completed July 24 for about $6.8B equity value.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1562476/000119312526316037/d148123dex991.htm",
+      "period": "2026-07-24",
+      "as_of_date": "2026-07-24",
+      "value": 6800,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-TM-ACQ"
+    }
+  ],
+  "counterevidence": [
+    "A severe insurance catastrophe plus market drawdown can hit underwriting and invested assets simultaneously.",
+    "Large cash balances lower downside but dilute upside if reinvestment opportunities remain scarce.",
+    "BNSF/BHE are capital-intensive and exposed to cyclical/regulatory shocks."
+  ],
+  "unknowns": [
+    "True economic duration and cost of insurance float under clustered catastrophe scenarios.",
+    "Incremental returns on 2026 acquisitions.",
+    "Potential tax/regulatory changes affecting the investment portfolio."
+  ],
+  "uncertainties": [],
+  "falsifiers": [
+    "Bear intrinsic value falls below 60% of price after updated inputs.",
+    "Insurance float turns structurally costly over a multi-year period.",
+    "Large acquisitions destroy capital and reduce liquidity without earnings growth."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is below Bull intrinsic value."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Liquidity and operating earnings make bankruptcy/business-value extinction remote; valuation drawdown is handled in AS."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner earnings/share",
+      "direction": "up",
+      "threshold": "base path 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "operating earnings",
+      "direction": "up",
+      "threshold": "실질 성장 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "capital allocation",
+      "direction": "up",
+      "threshold": "intrinsic-value discipline 유지",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 Q3 10-Q",
+    "2026 annual report",
+    "capital allocation update"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "Bull/현재가≈1.62이고 보험·자본배분·운영자회사 성장의 복수 상승 경로가 있다."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 90,
+      "rationale": "Bear/현재가≈0.885이고 대규모 순현금/T-bill이 사업가치 영구손실에 대한 완충을 제공한다."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 75,
+      "rationale": "Bear/Base/Bull과 9% 요구수익률을 고정하고 투자이익 변동성을 정상화했다."
+    }
+  ]
+}

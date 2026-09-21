@@ -32,7 +32,8 @@ def _open(url, user_agent, timeout=30):
         'User-Agent': user_agent, 'Accept-Encoding': 'identity', 'Host': url.split('/')[2]})
     with urllib.request.urlopen(request, timeout=timeout) as response:
         payload = response.read()
-        encoding = (response.headers.get('Content-Encoding') or '').lower()
+        headers = getattr(response, 'headers', None)
+        encoding = ((headers.get('Content-Encoding') if headers is not None else None) or '').lower()
         if encoding == 'gzip':
             return gzip.decompress(payload)
         if encoding == 'deflate':

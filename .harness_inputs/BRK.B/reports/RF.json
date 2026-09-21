@@ -1,0 +1,127 @@
+{
+  "agent_id": "RF",
+  "ticker": "BRK.B",
+  "as_of_date": "2026-09-18",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 74.5,
+  "confidence_0_1": 0.78,
+  "bull_score": 85,
+  "bear_score": 62,
+  "bull_case": "유리한 사업·자본배분 가정이 유지되면 기준 점수보다 높은 결과가 가능하다.",
+  "bear_case": "성장·마진·자본배분이 정상화되고 핵심 불확실성이 불리하게 전개되면 기준 점수보다 낮아질 수 있다.",
+  "thesis": "Per-share economics are improving and Berkshire still absorbs substantial capital, but the limiting factor is not funding; it is the availability of very large high-return opportunities. Evidence supports strong FCF/share quality but not a 75+ verified incremental ROIC today.",
+  "evidence": [
+    {
+      "claim": "H1 2026 operating earnings were $24.329B versus $20.801B in H1 2025.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026 H1",
+      "as_of_date": "2026-08-10",
+      "value": 24329,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-OE-GROWTH"
+    },
+    {
+      "claim": "H1 operating cash flow was $21.7B and consolidated capex was $10.6B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026 H1",
+      "as_of_date": "2026-08-10",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-OCF-CAPEX"
+    },
+    {
+      "claim": "Average B-equivalent shares were 2.1559B in H1 2026 versus 2.1573B in H1 2025.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026 H1",
+      "as_of_date": "2026-08-10",
+      "value": 2155918015,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-SHARES"
+    },
+    {
+      "claim": "OxyChem cost about $9.4B and Taylor Morrison about $6.8B equity value.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026 acquisitions",
+      "as_of_date": "2026-08-10",
+      "value": 16200,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-ACQ-2026"
+    }
+  ],
+  "counterevidence": [
+    "H1 OCF is affected by insurance/investment working capital and is not a clean owner-FCF measure.",
+    "Returns from the 2026 acquisitions are not yet established.",
+    "Large T-bill holdings demonstrate unused capital and may signal a constrained reinvestment runway."
+  ],
+  "unknowns": [
+    "Post-acquisition ROIC for OxyChem and Taylor Morrison.",
+    "Maintenance versus growth capex split at BNSF/BHE."
+  ],
+  "uncertainties": [],
+  "falsifiers": [
+    "Incremental returns on major deployments remain below cost of capital for several years.",
+    "Per-share operating earnings stagnate while retained capital rises.",
+    "Share issuance becomes a persistent source of growth financing."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Average share count declined and Berkshire repurchased shares."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "No evidence incremental ROIC has structurally fallen below cost of capital; uncertainty is scored rather than vetoed."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner earnings/share",
+      "direction": "up",
+      "threshold": "base path 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "operating earnings",
+      "direction": "up",
+      "threshold": "실질 성장 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "capital allocation",
+      "direction": "up",
+      "threshold": "intrinsic-value discipline 유지",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 Q3 10-Q",
+    "2026 annual report",
+    "capital allocation update"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 70,
+      "rationale": "Recent acquisitions and capex appear disciplined, but returns on OxyChem/Taylor Morrison are not yet observable and huge scale limits certainty."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 80,
+      "rationale": "Using H1 fallback, capex $10.6B / OCF $21.7B ≈49%, inside the 35–60% observable band; rounded interpolated score ~80."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 75,
+      "rationale": "Operating earnings grew 17% H1 y/y while average B-equivalent shares declined; investment gains are excluded from normalized operating earnings."
+    }
+  ]
+}

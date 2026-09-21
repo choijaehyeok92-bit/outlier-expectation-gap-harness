@@ -1,0 +1,131 @@
+{
+  "agent_id": "RT",
+  "ticker": "BRK.B",
+  "as_of_date": "2026-09-18",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 70,
+  "confidence_0_1": 0.8,
+  "thesis": "The strongest bear case is not solvency but scale and reinvestment: roughly $359B of cash/T-bills can depress returns if Abel cannot find sufficiently large opportunities. Insurance catastrophe, falling short rates, capital-intensive BHE/BNSF and acquisition integration can reduce normalized per-share growth. None currently meets a Hard Veto definition.",
+  "evidence": [
+    {
+      "claim": "Cash/T-bills were $359.2B, indicating enormous dry powder but also an opportunity-cost burden.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-10",
+      "value": 359200,
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-CASH"
+    },
+    {
+      "claim": "H1 capex was $10.6B and BNSF/BHE expected another $8.6B for the rest of 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026",
+      "as_of_date": "2026-08-10",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-CAPEX"
+    },
+    {
+      "claim": "2026 acquisitions include OxyChem ~$9.4B and Taylor Morrison ~$6.8B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026",
+      "as_of_date": "2026-08-10",
+      "value": 16200,
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-ACQ"
+    },
+    {
+      "claim": "Insurance investment income fell to $5.738B H1 2026 from $6.260B H1 2025.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026 H1",
+      "as_of_date": "2026-08-10",
+      "value": 5738,
+      "fact_or_estimate": "fact",
+      "evidence_id": "RT-INVINC"
+    }
+  ],
+  "counterevidence": [
+    "Liquidity is exceptionally strong and repurchases are disciplined.",
+    "Operating earnings grew 17% H1 y/y.",
+    "Business diversification limits single-point failure."
+  ],
+  "unknowns": [
+    "Catastrophe tail correlation with equity-market losses.",
+    "Post-close returns of 2026 acquisitions.",
+    "Long-run T-bill allocation if rates normalize."
+  ],
+  "falsifiers": [
+    "Three-year per-share operating earnings growth falls below inflation.",
+    "Large acquisitions generate sub-cost-of-capital returns.",
+    "Insurance float cost rises while investment income falls."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "No qualifying integrity/accounting reliability event identified."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "External financing is not structurally required for operations."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Mature profitable businesses disprove customer-value absence."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "No evidence incremental ROIC is structurally below cost of capital."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "No persistent consolidated moat contraction is established."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is below modeled Bull value."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Diversification prevents fatal single product/customer/regulation dependence."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner earnings/share",
+      "direction": "up",
+      "threshold": "base path 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "liquidity",
+      "direction": "stable",
+      "threshold": "ample redundancy",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "major subsidiary returns",
+      "direction": "up",
+      "threshold": "cost of capital 초과",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 Q3 10-Q",
+    "updated acquisition economics",
+    "capital allocation disclosures"
+  ],
+  "verdict": "oppose"
+}

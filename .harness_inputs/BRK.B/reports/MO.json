@@ -1,0 +1,215 @@
+{
+  "agent_id": "MO",
+  "ticker": "BRK.B",
+  "as_of_date": "2026-09-18",
+  "domain": "macro_overlay",
+  "role": "overlay",
+  "analysis_status": "complete",
+  "score_0_100": 55,
+  "confidence_0_1": 0.8,
+  "thesis": "September 2026 financial conditions are moderately restrictive while credit markets remain liquid. Per strategy this affects purchase pacing only, not company quality. The deterministic overlay should cap pacing around 0.8.",
+  "evidence": [
+    {
+      "claim": "Federal Reserve raised the target range to 3.75%-4.00% on 2026-09-16.",
+      "source_type": "other",
+      "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "period": "2026-09 FOMC",
+      "as_of_date": "2026-09-16",
+      "value": 4,
+      "fact_or_estimate": "fact",
+      "evidence_id": "MO-FED"
+    },
+    {
+      "claim": "US high-yield OAS was near 271bp in September 2026, indicating benign credit spreads.",
+      "source_type": "secondary",
+      "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+      "period": "2026-09",
+      "as_of_date": "2026-09-17",
+      "value": 271,
+      "fact_or_estimate": "fact",
+      "evidence_id": "MO-HY"
+    },
+    {
+      "claim": "Global geopolitical and energy risks remain elevated but no Berkshire-specific permanent-access event was identified before the cutoff.",
+      "source_type": "secondary",
+      "source": "https://www.reuters.com/world/",
+      "period": "2026-09",
+      "as_of_date": "2026-09-17",
+      "value": null,
+      "fact_or_estimate": "interpretation"
+    },
+    {
+      "claim": "Trade fragmentation and export controls remain active global policy risks.",
+      "source_type": "secondary",
+      "source": "https://www.wto.org/",
+      "period": "2026-09",
+      "as_of_date": "2026-09-17",
+      "value": null,
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "Tight credit spreads show private funding remains available.",
+    "Berkshire's large liquidity reduces sensitivity to external financing conditions."
+  ],
+  "unknowns": [
+    "Persistence of the September rate increase.",
+    "Energy-price shock duration."
+  ],
+  "falsifiers": [
+    "Fed reverses tightening quickly.",
+    "Credit OAS widens sharply.",
+    "A Berkshire-specific structural trade event emerges."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner earnings/share",
+      "direction": "up",
+      "threshold": "base path 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "liquidity",
+      "direction": "stable",
+      "threshold": "ample redundancy",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "major subsidiary returns",
+      "direction": "up",
+      "threshold": "cost of capital 초과",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 Q3 10-Q",
+    "updated acquisition economics",
+    "capital allocation disclosures"
+  ],
+  "verdict": "neutral",
+  "risk_budget_multiplier": 0.8,
+  "global_components": {
+    "financial_conditions": {
+      "scope": "global",
+      "as_of_utc": "2026-09-17T20:00:00+00:00",
+      "summary": "Policy rates turned modestly more restrictive after the September FOMC.",
+      "evidence": [
+        {
+          "claim": "Federal Reserve raised the target range to 3.75%-4.00% on 2026-09-16.",
+          "source_type": "other",
+          "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+          "period": "2026-09 FOMC",
+          "as_of_date": "2026-09-16",
+          "value": 4,
+          "fact_or_estimate": "fact",
+          "evidence_id": "MO-FED"
+        }
+      ],
+      "risk_budget_multiplier": 0.8
+    },
+    "credit_liquidity": {
+      "scope": "global",
+      "as_of_utc": "2026-09-17T20:00:00+00:00",
+      "summary": "Credit spreads remain relatively tight; no systemic funding stress is evident.",
+      "evidence": [
+        {
+          "claim": "US high-yield OAS was near 271bp in September 2026, indicating benign credit spreads.",
+          "source_type": "secondary",
+          "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+          "period": "2026-09",
+          "as_of_date": "2026-09-17",
+          "value": 271,
+          "fact_or_estimate": "fact",
+          "evidence_id": "MO-HY"
+        }
+      ],
+      "risk_budget_multiplier": 1
+    },
+    "geopolitical_events": {
+      "scope": "global",
+      "as_of_utc": "2026-09-17T20:00:00+00:00",
+      "summary": "Global geopolitical risks remain material without a Berkshire-specific structural event.",
+      "evidence": [
+        {
+          "claim": "Global geopolitical and energy risks remain elevated but no Berkshire-specific permanent-access event was identified before the cutoff.",
+          "source_type": "secondary",
+          "source": "https://www.reuters.com/world/",
+          "period": "2026-09",
+          "as_of_date": "2026-09-17",
+          "value": null,
+          "fact_or_estimate": "interpretation"
+        }
+      ],
+      "dimensions": {
+        "military_conflict": {
+          "level": "moderate",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        },
+        "energy_disruption": {
+          "level": "moderate",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        },
+        "shipping_disruption": {
+          "level": "low",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        },
+        "sovereign_policy_instability": {
+          "level": "low",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        }
+      }
+    },
+    "structural_trade": {
+      "scope": "global",
+      "as_of_utc": "2026-09-17T20:00:00+00:00",
+      "summary": "Trade fragmentation/export controls remain structural global risks.",
+      "evidence": [
+        {
+          "claim": "Trade fragmentation and export controls remain active global policy risks.",
+          "source_type": "secondary",
+          "source": "https://www.wto.org/",
+          "period": "2026-09",
+          "as_of_date": "2026-09-17",
+          "value": null,
+          "fact_or_estimate": "interpretation"
+        }
+      ],
+      "dimensions": {
+        "trade_fragmentation": {
+          "level": "moderate",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        },
+        "export_controls": {
+          "level": "low",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        },
+        "sanctions": {
+          "level": "low",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        }
+      }
+    }
+  }
+}

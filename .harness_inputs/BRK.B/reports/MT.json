@@ -1,0 +1,122 @@
+{
+  "agent_id": "MT",
+  "ticker": "BRK.B",
+  "as_of_date": "2026-09-18",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 66.25,
+  "confidence_0_1": 0.78,
+  "bull_score": 78,
+  "bear_score": 55,
+  "bull_case": "유리한 사업·자본배분 가정이 유지되면 기준 점수보다 높은 결과가 가능하다.",
+  "bear_case": "성장·마진·자본배분이 정상화되고 핵심 불확실성이 불리하게 전개되면 기준 점수보다 낮아질 수 있다.",
+  "thesis": "Moat trajectory remains positive but is driven by hard assets, regulation, brand, scale and capital structure rather than a compounding software/network ecosystem. The key question is post-succession durability.",
+  "evidence": [
+    {
+      "claim": "BNSF and BHE remain major earnings contributors with large long-lived infrastructure asset bases.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026 H1",
+      "as_of_date": "2026-08-10",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-INFRA"
+    },
+    {
+      "claim": "Berkshire's insurance float was $177.5B at June 30, 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-10",
+      "value": 177500,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-FLOAT-2026Q2"
+    },
+    {
+      "claim": "PCC Q1 revenue growth was supported by strong aerospace and industrial gas turbine demand and higher prices.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526202243/brka-20260331.htm",
+      "period": "2026 Q1",
+      "as_of_date": "2026-05-04",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-PCC-PRICING"
+    },
+    {
+      "claim": "Berkshire retained $359.2B in cash/T-bills, giving unusual capacity to act counter-cyclically.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-10",
+      "value": 359200,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-LIQ-2026Q2"
+    }
+  ],
+  "counterevidence": [
+    "GEICO loss ratios worsened in 2026 H1.",
+    "Large cash accumulation can signal a shrinking opportunity set.",
+    "Some industrial/homebuilding businesses are cyclical and lack structural switching costs."
+  ],
+  "unknowns": [
+    "Market-share trajectory for GEICO and BNSF under new management.",
+    "Return on incremental regulated capital at BHE."
+  ],
+  "uncertainties": [],
+  "falsifiers": [
+    "GEICO, BNSF or BHE shows multi-year loss of share/returns.",
+    "Acquisition economics consistently trail cost of capital.",
+    "Parent liquidity advantage ceases to create superior capital deployment."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Current evidence shows durable barriers and profitable major franchises; no persistent consolidated moat shrinkage is established."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner earnings/share",
+      "direction": "up",
+      "threshold": "base path 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "operating earnings",
+      "direction": "up",
+      "threshold": "실질 성장 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "capital allocation",
+      "direction": "up",
+      "threshold": "intrinsic-value discipline 유지",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 Q3 10-Q",
+    "2026 annual report",
+    "capital allocation update"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 70,
+      "rationale": "Rail network, regulated utility assets, insurance scale and specialized industrial franchises retain meaningful barriers."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 55,
+      "rationale": "Berkshire lacks a parent-level network/data ecosystem with three-plus same-definition scale metrics."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 75,
+      "rationale": "Multiple unrelated moat layers and decentralized ownership reduce exposure to a single commoditization vector."
+    }
+  ]
+}

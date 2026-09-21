@@ -1,0 +1,127 @@
+{
+  "agent_id": "CP",
+  "ticker": "BRK.B",
+  "as_of_date": "2026-09-18",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 68.25,
+  "confidence_0_1": 0.78,
+  "bull_score": 78,
+  "bear_score": 58,
+  "bull_case": "유리한 사업·자본배분 가정이 유지되면 기준 점수보다 높은 결과가 가능하다.",
+  "bear_case": "성장·마진·자본배분이 정상화되고 핵심 불확실성이 불리하게 전개되면 기준 점수보다 낮아질 수 있다.",
+  "thesis": "Customer value is broad but heterogeneous. Berkshire owns many essential or repeat-use businesses, yet consolidated retention metrics are sparse, so product quality is easier to verify at subsidiary than parent level.",
+  "evidence": [
+    {
+      "claim": "Berkshire's major activities include insurance, rail transportation, utilities/energy, manufacturing, services and retail.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026",
+      "as_of_date": "2026-08-10",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-BUSINESSES"
+    },
+    {
+      "claim": "PCC Q1 2026 revenue rose 8.2%, with aerospace revenue up 9.4% and industrial gas turbine products up 18.9%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526202243/brka-20260331.htm",
+      "period": "2026 Q1",
+      "as_of_date": "2026-05-04",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-PCC-Q1"
+    },
+    {
+      "claim": "Clayton Homes Q2 2026 revenue was about $3.4B and H1 $6.3B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026 H1/Q2",
+      "as_of_date": "2026-08-10",
+      "value": 6300,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-CLAYTON"
+    },
+    {
+      "claim": "Insurance underwriting produced $3.448B after-tax operating earnings in H1 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026 H1",
+      "as_of_date": "2026-08-10",
+      "value": 3448,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-UNDERWRITE"
+    }
+  ],
+  "counterevidence": [
+    "GEICO Q2/H1 loss ratios worsened year over year as claim frequency/severity increased.",
+    "Some building-products businesses faced lower demand due to weak home construction.",
+    "Consolidated disclosure lacks customer retention/NPS/market-share measures."
+  ],
+  "unknowns": [
+    "Customer retention and pricing elasticity by major non-insurance subsidiary.",
+    "Post-acquisition Taylor Morrison order/backlog economics."
+  ],
+  "uncertainties": [],
+  "falsifiers": [
+    "Major subsidiaries require sustained subsidies to retain customers.",
+    "Pricing power disappears while volumes decline across multiple units.",
+    "A single customer/product loss permanently impairs consolidated economics."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Profitable mature subsidiaries demonstrate customer value; growth is not dependent on marketing/subsidy without customer value."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Diversification across insurance, rail, energy and many operating companies prevents fatal dependence on one product/customer/regulation."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner earnings/share",
+      "direction": "up",
+      "threshold": "base path 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "operating earnings",
+      "direction": "up",
+      "threshold": "실질 성장 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "capital allocation",
+      "direction": "up",
+      "threshold": "intrinsic-value discipline 유지",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 Q3 10-Q",
+    "2026 annual report",
+    "capital allocation update"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 70,
+      "rationale": "BNSF freight, utility service, insurance and industrial components are mission-critical or economically necessary."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 65,
+      "rationale": "Customer persistence is high in many subsidiaries, but Berkshire does not disclose consolidated retention or wallet-share metrics."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 70,
+      "rationale": "Major units are profitable without parent-level marketing subsidy, though capital intensity differs materially by business."
+    }
+  ]
+}

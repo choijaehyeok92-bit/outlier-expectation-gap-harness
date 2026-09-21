@@ -1,0 +1,121 @@
+{
+  "agent_id": "LG",
+  "ticker": "BRK.B",
+  "as_of_date": "2026-09-18",
+  "domain": "long_term_growth",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 61,
+  "confidence_0_1": 0.78,
+  "bull_score": 72,
+  "bear_score": 50,
+  "bull_case": "유리한 사업·자본배분 가정이 유지되면 기준 점수보다 높은 결과가 가능하다.",
+  "bear_case": "성장·마진·자본배분이 정상화되고 핵심 불확실성이 불리하게 전개되면 기준 점수보다 낮아질 수 있다.",
+  "thesis": "Berkshire has exceptional duration but not outlier-scale growth. The long-term case is steady compounding plus disciplined capital allocation, not a five-year doubling of the operating base.",
+  "evidence": [
+    {
+      "claim": "H1 2026 operating earnings rose to $24.329B from $20.801B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026 H1",
+      "as_of_date": "2026-08-10",
+      "value": 24329,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-OE-GROWTH"
+    },
+    {
+      "claim": "Berkshire operates across multiple long-duration industries.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026",
+      "as_of_date": "2026-08-10",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-DIVERSITY"
+    },
+    {
+      "claim": "Greg Abel became CEO Jan.1 2026 after a planned succession.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526106253/d882687ddef14a.htm",
+      "period": "2026",
+      "as_of_date": "2026-03-13",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-SUCCESSION"
+    },
+    {
+      "claim": "P/B 1.47 was near the 5-year average 1.49 at the cutoff.",
+      "source_type": "secondary",
+      "source": "https://www.financecharts.com/stocks/BRK.B/value/price-to-book-value-averages",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 1.47,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-PB-20260918"
+    }
+  ],
+  "counterevidence": [
+    "Scale creates a high denominator for future growth.",
+    "T-bill accumulation shows high-return opportunities do not always match cash generation.",
+    "Several key subsidiaries are mature and capital intensive."
+  ],
+  "unknowns": [
+    "Long-run acquisition pace under Abel.",
+    "Five-year normalized owner-earnings CAGR after 2026 acquisitions."
+  ],
+  "uncertainties": [],
+  "falsifiers": [
+    "Five-year owner earnings fail to grow at least mid-single digits.",
+    "Capital deployment remains structurally below cash generation.",
+    "Major subsidiaries lose competitive position."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner earnings/share",
+      "direction": "up",
+      "threshold": "base path 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "operating earnings",
+      "direction": "up",
+      "threshold": "실질 성장 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "capital allocation",
+      "direction": "up",
+      "threshold": "intrinsic-value discipline 유지",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 Q3 10-Q",
+    "2026 annual report",
+    "capital allocation update"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "opportunity_scale_5y",
+      "score_0_100": 25,
+      "rationale": "Base owner-earnings path grows only about 1.25x over five years, below the 1.5x rubric threshold; $1T scale limits plausible doubling."
+    },
+    {
+      "criterion_id": "growth_duration_10y",
+      "score_0_100": 75,
+      "rationale": "Diversified insurance/infrastructure/industrial franchises and acquisition capacity support 5–10 year economic growth."
+    },
+    {
+      "criterion_id": "culture_adaptability",
+      "score_0_100": 80,
+      "rationale": "Decentralization and cross-industry capital reallocation show durable adaptive culture, though CEO succession is new."
+    },
+    {
+      "criterion_id": "market_misperception",
+      "score_0_100": 75,
+      "rationale": "price/Base≈0.80 is a concrete expectation gap, but P/B 1.47 is near the five-year average, so mispricing is not extreme."
+    }
+  ]
+}
