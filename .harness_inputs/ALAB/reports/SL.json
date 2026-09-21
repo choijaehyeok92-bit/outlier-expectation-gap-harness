@@ -1,0 +1,158 @@
+{
+  "agent_id": "SL",
+  "ticker": "ALAB",
+  "as_of_date": "2026-09-18",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 73.25,
+  "confidence_0_1": 0.79,
+  "bull_score": 85,
+  "bear_score": 58,
+  "bull_case": "Rack-scale AI requires more bandwidth, switching, memory connectivity and observability as clusters grow. Astera is already shipping across several standards and product families with major platform partners, positioning it near the structural bottleneck.",
+  "bear_case": "The secular trend is powerful but concentrated in one end-market: hyperscale AI infrastructure. A slower AI capex cycle, custom silicon or architectural consolidation could hit multiple Astera product families at once.",
+  "thesis": "Astera has real structural leadership in AI connectivity. The shift to rack-scale systems creates durable demand for switching, retiming, memory and telemetry, and Astera participates across PCIe, CXL, Ethernet and UALink. Category execution is strong and design wins are broadening. The main limitation is end-market concentration: most products ultimately depend on the same hyperscale AI infrastructure cycle rather than independent demand pools.",
+  "evidence": [
+    {
+      "claim": "Q2 revenue grew 104% YoY and Q3 guidance called for $540M-$560M as Scorpio entered a major production ramp.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
+      "period": "Q2/Q3 2026",
+      "as_of_date": "2026-08-04",
+      "value": "+104% / 540-560M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-SL-GROWTH"
+    },
+    {
+      "claim": "Scorpio X targets a merchant scale-up market that Astera projected at $20B by 2030 and spans open/platform-specific protocols for large accelerator clusters.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-first-quarter-2026-financial-results",
+      "period": "2026-2030 outlook",
+      "as_of_date": "2026-05-05",
+      "value": "$20B by 2030",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "ALAB-SL-TAM"
+    },
+    {
+      "claim": "Astera collaborated on UALink 2.0 and supports PCIe, CXL, Ethernet and platform-specific connectivity across its product portfolio.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-first-quarter-2026-financial-results",
+      "period": "2026",
+      "as_of_date": "2026-05-05",
+      "value": "PCIe/CXL/Ethernet/UALink",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-SL-STANDARDS"
+    },
+    {
+      "claim": "The Taiwan Cloud-Scale Interop Lab expansion is intended to deepen coordination with AMD, Arm, Intel and NVIDIA platform ecosystems.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-04",
+      "value": "4 named platform providers",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-SL-PARTNERS"
+    },
+    {
+      "claim": "Despite product breadth, Astera describes its core business around rack-scale AI infrastructure, indicating a common end-market demand driver.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "2026",
+      "as_of_date": "2026-08-05",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-SL-CONC"
+    }
+  ],
+  "counterevidence": [
+    "AI infrastructure spending can be cyclical despite structural growth.",
+    "Large customers can internalize connectivity silicon or change architectures.",
+    "Trade restrictions and Taiwan supply-chain concentration can disrupt the same end market across products."
+  ],
+  "unknowns": [
+    "Share of revenue from non-AI cloud/server workloads by 2030.",
+    "Astera share of future UALink/scale-up switching deployments.",
+    "Durability of hyperscale AI capex after current buildout."
+  ],
+  "falsifiers": [
+    "A sustained decline in hyperscale AI capex without offsetting enterprise/cloud demand would weaken structural durability.",
+    "Loss of major platform qualifications would weaken category leadership.",
+    "If custom silicon captures most scale-up switching, Astera's structural role would narrow."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "AI connectivity market growth",
+      "direction": "up",
+      "threshold": "sustained multi-year expansion",
+      "cadence": "annual"
+    },
+    {
+      "name": "major-platform design wins",
+      "direction": "up",
+      "threshold": "broadening across accelerator ecosystems",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "non-single-cycle revenue diversification",
+      "direction": "up",
+      "threshold": "more independent demand pools",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2027 platform design wins",
+    "Non-AI/enterprise revenue diversification",
+    "UALink/PCIe 7 roadmap position"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 85,
+      "rationale": "Rack-scale AI architectures structurally increase bandwidth, switching, memory and observability requirements across multiple connectivity standards."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 80,
+      "rationale": "Astera is shipping leading PCIe 6/switching products, collaborating on UALink and integrating with major accelerator ecosystems, though it does not unilaterally define standards."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 45,
+      "rationale": "Despite multiple products, the dominant end-market demand driver is still hyperscale AI infrastructure. Under the observable anchor, this resembles zero independent >10% final markets beyond the core cycle."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "The long-run pace of AI infrastructure capital spending is uncertain."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "material",
+      "rationale": "Merchant share can change rapidly as customers develop internal silicon."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "critical",
+      "rationale": "Product diversification does not yet equal independent end-market diversification."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
