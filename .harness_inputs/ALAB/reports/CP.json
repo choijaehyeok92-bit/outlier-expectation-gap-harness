@@ -1,0 +1,169 @@
+{
+  "agent_id": "CP",
+  "ticker": "ALAB",
+  "as_of_date": "2026-09-18",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 81.5,
+  "confidence_0_1": 0.82,
+  "bull_score": 90,
+  "bear_score": 68,
+  "bull_case": "Astera products sit directly in AI data-movement bottlenecks. Measured performance gains, rapid production ramps and multiple design wins imply customers can justify premium connectivity spend when it improves accelerator utilization and token economics.",
+  "bear_case": "Customer ROI is strong but concentrated. Hyperscalers can redesign platforms or use custom silicon, and Astera discloses several direct customers above 10% of revenue, so retention and wallet-share evidence is less mature than revenue growth suggests.",
+  "thesis": "Customer value is strong and increasingly measurable. Scorpio, Leo, Aries and Taurus solve bandwidth, memory and observability bottlenecks with quantified performance benefits, while Q2 revenue doubled YoY and Scorpio is moving into volume production. High gross margin and operating leverage support attractive unit economics. The main weakness is concentration: direct-customer exposure is high and end-customer retention metrics are not disclosed.",
+  "evidence": [
+    {
+      "claim": "Q2 revenue was $392.4M, up 104% YoY, with Scorpio expected to become the largest product family in Q3.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
+      "period": "Q2/Q3 2026",
+      "as_of_date": "2026-08-04",
+      "value": "392.4M / +104%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-CP-REV"
+    },
+    {
+      "claim": "Leo X-Series showed up to 62% faster time to first token and up to 22% more tokens per second in cited platform configurations.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-bolsters-leo-smart-memory-controller-family-agentic",
+      "period": "2026-09-15",
+      "as_of_date": "2026-09-15",
+      "value": "62% TTFT / 22% TPS",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-CP-LEO"
+    },
+    {
+      "claim": "Scorpio X-Series capabilities such as Hypercast and In-Network Compute were described as improving collective operations by up to 2x.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-first-quarter-2026-financial-results",
+      "period": "Q1 2026",
+      "as_of_date": "2026-05-05",
+      "value": "up to 2x",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-CP-SCORPIO"
+    },
+    {
+      "claim": "Q2 GAAP gross margin was 73.3% and GAAP operating margin 22.7%, while non-GAAP operating margin was 39.1%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000033/q226exhibit991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-04",
+      "value": "73.3% / 22.7% / 39.1%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-CP-MARGIN"
+    },
+    {
+      "claim": "Four direct customers represented 29%, 25%, 15% and 13% of Q2 revenue, although some direct customers are manufacturing partners purchasing for end customers.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": "29/25/15/13%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-CP-CONC"
+    }
+  ],
+  "counterevidence": [
+    "End-customer retention and net-revenue-retention metrics are not disclosed.",
+    "High concentration means a small number of hyperscaler program decisions can move revenue materially.",
+    "Some performance figures are vendor-supplied platform benchmarks rather than independently audited customer ROI."
+  ],
+  "unknowns": [
+    "End-customer retention by platform generation.",
+    "Revenue wallet share inside the largest hyperscale accounts.",
+    "Long-run pricing power once merchant alternatives mature."
+  ],
+  "falsifiers": [
+    "Major hyperscaler design losses or falling content per system would weaken customer ROI.",
+    "Gross margin falling below the mid-60s with slower growth would weaken unit economics.",
+    "Concentration rising while new-customer ramps stall would undermine retention/usage quality."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Production revenue, quantified system-performance improvements and high gross margins show genuine customer value rather than subsidy-led growth."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "conditional",
+      "rationale": "Product breadth is strong, but direct-customer concentration remains high and true end-customer concentration is not fully disclosed."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "top-customer revenue share",
+      "direction": "down",
+      "threshold": "declining concentration",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "gross margin",
+      "direction": "stable",
+      "threshold": "mid-to-high 60s or better",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Scorpio/Leo multi-customer production programs",
+      "direction": "up",
+      "threshold": "broadening design-win conversion",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 customer concentration",
+    "Scorpio/Leo production customers",
+    "Gross-margin durability"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 85,
+      "rationale": "Quantified latency/token-throughput and collective-operation gains, combined with hyperscale production ramps, support strong customer ROI and willingness to pay."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 75,
+      "rationale": "Multiple design wins, platform expansions and repeat product generations indicate expanding use, but explicit retention/cohort metrics are unavailable."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 85,
+      "rationale": "Q2 gross margin above 73%, positive GAAP operating margin and rapid revenue scaling demonstrate strong operating leverage despite heavy R&D."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "Several performance claims come from company testing and may vary by production workload."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "End-customer retention is not directly disclosed."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "minor",
+      "rationale": "Current margins are well evidenced, though mix shift toward switches/custom products can change them."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
