@@ -4,115 +4,69 @@
   "as_of_date": "2026-09-18",
   "domain": "financial_survival",
   "role": "domain_analyst",
-  "analysis_status": "complete",
-  "score_0_100": 67.75,
-  "confidence_0_1": 0.82,
-  "bull_score": 77.75,
-  "bear_score": 47.75,
-  "bull_case": "Iridium recurring cash flow can materially reduce dependence on future capital markets after closing.",
-  "bear_case": "If acquisition closing is delayed or Neutron spending rises while share prices fall, future funding flexibility can deteriorate.",
-  "thesis": "Financial survival is stronger than the standalone income statement suggests because the company has raised substantial equity and locked in transaction financing. The main financial risk is dilution and integration, not near-term liquidity.",
-  "evidence": [
-    {
-      "claim": "Q2 cash plus marketable securities totaled about $2.39B.",
-      "source_type": "filing",
-      "source": "runs/RKLB/sources/Q2_2026_key_facts.txt",
-      "period": "Q2/H1 2026",
-      "as_of_date": "2026-08-10",
-      "value": null,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "September ATM raised $1.944B and the $3.6B bridge was terminated.",
-      "source_type": "other",
-      "source": "runs/RKLB/sources/IRIDIUM_2026_key_facts.txt",
-      "period": "Sep 2026",
-      "as_of_date": "2026-09-15",
-      "value": "1.944B",
-      "fact_or_estimate": "estimate"
-    },
-    {
-      "claim": "Iridium's $1.775B term loan is permitted to remain after closing.",
-      "source_type": "other",
-      "source": "runs/RKLB/sources/IRIDIUM_2026_key_facts.txt",
-      "period": "Sep 2026",
-      "as_of_date": "2026-09-15",
-      "value": "1.775B",
-      "fact_or_estimate": "estimate"
-    }
-  ],
-  "counterevidence": [
-    "Rocket Lab remains cash-flow negative on a standalone basis and the Iridium transaction materially increases integration, financing and dilution complexity."
-  ],
-  "unknowns": [
-    "Neutron commercial readiness and launch economics",
-    "Post-close Iridium integration synergies",
-    "Long-run dilution cadence and owner FCF/share conversion"
-  ],
-  "falsifiers": [
-    "A major Neutron delay, persistent launch failures, failure to close/integrate Iridium, or continued double-digit share dilution without per-share FCF progress would weaken the thesis."
-  ],
+  "analysis_status": "pending",
+  "score_0_100": 50,
+  "confidence_0_1": 0.5,
+  "bull_score": null,
+  "bear_score": null,
+  "bull_case": "",
+  "bear_case": "",
+  "thesis": "",
+  "evidence": [],
+  "counterevidence": [],
+  "unknowns": [],
+  "falsifiers": [],
   "hard_veto_flags": [
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "cleared",
-      "rationale": "Current liquidity and fully funded acquisition financing rebut a near-term structural dependence on emergency external capital, even though historical growth has used equity markets heavily."
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
     },
     {
       "veto": "장기간 지속되는 과도한 희석",
-      "status": "cleared",
-      "rationale": "Dilution is material and unusually high, but the strict long-duration predicate is not yet established; this remains a primary monitoring item."
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
     },
     {
       "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "cleared",
-      "rationale": "Liquidity plus Iridium cash generation make bankruptcy/forced financing risk lower than the execution downside embedded in the Bear case."
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
     }
   ],
-  "key_kpis": [
-    {
-      "name": "owner FCF/share",
-      "direction": "up",
-      "threshold": "sustained positive inflection",
-      "cadence": "quarterly/annual"
-    }
-  ],
-  "next_checks": [
-    "Neutron schedule, backlog conversion, post-close Iridium FCF, diluted share count, ATM usage"
-  ],
+  "key_kpis": [],
+  "next_checks": [],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "liquidity_leverage",
-      "score_0_100": 85,
-      "rationale": "Pre-close liquidity is very large and the acquisition financing package is committed/fully funded; bridge financing was eliminated."
+      "score_0_100": 50,
+      "rationale": ""
     },
     {
       "criterion_id": "stress_survival",
-      "score_0_100": 75,
-      "rationale": "Iridium adds recurring cash flow and the company has substantial cash, but standalone Rocket Lab still burns cash."
+      "score_0_100": 50,
+      "rationale": ""
     },
     {
       "criterion_id": "dilution_offbalance",
-      "score_0_100": 30,
-      "rationale": "Share count has risen sharply through repeated ATM programs and will rise further through Iridium stock consideration."
+      "score_0_100": 50,
+      "rationale": ""
     }
   ],
-  "uncertainties": [
-    {
-      "criterion_id": "liquidity_leverage",
-      "severity": "material",
-      "rationale": "Rocket Lab remains in a high-investment, acquisition-heavy transition with large execution variance."
-    },
-    {
-      "criterion_id": "stress_survival",
-      "severity": "material",
-      "rationale": "Rocket Lab remains in a high-investment, acquisition-heavy transition with large execution variance."
-    },
-    {
-      "criterion_id": "dilution_offbalance",
-      "severity": "material",
-      "rationale": "Rocket Lab remains in a high-investment, acquisition-heavy transition with large execution variance."
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
     }
-  ]
+  }
 }

@@ -1,8 +1,8 @@
 {
-  "agent_id": "AS",
+  "agent_id": "LG",
   "ticker": "RKLB",
   "as_of_date": "2026-09-18",
-  "domain": "asymmetry",
+  "domain": "long_term_growth",
   "role": "domain_analyst",
   "analysis_status": "pending",
   "score_0_100": 50,
@@ -16,34 +16,28 @@
   "counterevidence": [],
   "unknowns": [],
   "falsifiers": [],
-  "hard_veto_flags": [
-    {
-      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
-    },
-    {
-      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
-    }
-  ],
+  "hard_veto_flags": [],
   "key_kpis": [],
   "next_checks": [],
   "verdict": "neutral",
   "subscores": [
     {
-      "criterion_id": "upside_path",
+      "criterion_id": "opportunity_scale_5y",
       "score_0_100": 50,
       "rationale": ""
     },
     {
-      "criterion_id": "permanent_loss",
+      "criterion_id": "growth_duration_10y",
       "score_0_100": 50,
       "rationale": ""
     },
     {
-      "criterion_id": "probability_calibration",
+      "criterion_id": "culture_adaptability",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "market_misperception",
       "score_0_100": 50,
       "rationale": ""
     }
