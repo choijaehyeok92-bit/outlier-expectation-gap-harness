@@ -785,7 +785,7 @@
       "reported_label": "Government customer share of H1 revenue",
       "statement": "other",
       "gaap_status": "not_applicable",
-      "value_reported": 42,
+      "value_reported": 0.42,
       "unit_kind": "percent",
       "currency": null,
       "scale_multiplier": 1,
