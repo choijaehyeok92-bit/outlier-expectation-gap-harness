@@ -1,0 +1,143 @@
+{
+  "agent_id": "RT",
+  "ticker": "VRT",
+  "as_of_date": "2026-09-18",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 68,
+  "confidence_0_1": 0.82,
+  "thesis": "The strongest short thesis is that Vertiv is being valued on peak AI-infrastructure growth while H1 cash conversion is flattered by working capital, customers retain substantial design/procurement power, capacity is expanding aggressively, and the signed UIG deal deploys up to $2.6B near a cyclical high. A 50%-plus drawdown is plausible if organic growth and margins normalize together. However, strong backlog, low dilution, effective controls and internal cash generation prevent any Hard Veto from being confirmed.",
+  "evidence": [
+    {
+      "claim": "The cutoff price is about 1.04x locked Base value, leaving limited valuation margin if Base growth/margins miss.",
+      "source_type": "other",
+      "source": "runs/VRT/aggregate.json",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "price/Base ~1.04x",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "VRT-RT-VAL"
+    },
+    {
+      "claim": "H1 2026 OCF of $1.867B included a $678.8M working-capital source while inventory increased sharply.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/vrt-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-07-29",
+      "value": "OCF 1.867B; WC source 678.8M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-RT-WC"
+    },
+    {
+      "claim": "The UIG agreement calls for approximately $1.45B upfront cash plus up to $1.15B contingent cash consideration.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000119312526379306/d472406d8k.htm",
+      "period": "2026-09-01",
+      "as_of_date": "2026-09-02",
+      "value": "up to 2.6B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-RT-UIG"
+    },
+    {
+      "claim": "Large cloud and hyperscale customers have significant purchasing power, while global industrial competitors can respond with power and cooling alternatives.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025 risks",
+      "as_of_date": "2026-02-13",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-RT-COMP"
+    },
+    {
+      "claim": "Backlog was $15.0B at 2025 year-end, which supports demand but also creates delivery, pricing and execution exposure if schedules or input economics shift.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "2025-12-31",
+      "as_of_date": "2026-02-13",
+      "value": 15000,
+      "fact_or_estimate": "interpretation",
+      "evidence_id": "VRT-RT-BACKLOG"
+    }
+  ],
+  "counterevidence": [
+    "Operating profit has grown far faster than sales since 2023, demonstrating real operating leverage.",
+    "June cash plus short-term investments slightly exceeded long-term debt and H1 OCF was strong.",
+    "Diluted share growth has been modest while FCF/share increased.",
+    "Power density, liquid cooling and grid constraints are structural demand drivers beyond ordinary replacement cycles."
+  ],
+  "unknowns": [
+    "Top-customer concentration and cancellation rights within backlog.",
+    "Normalized FCF after deferred-revenue/working-capital reversal.",
+    "UIG valuation multiple and integration returns.",
+    "How much current pricing power survives when industry capacity catches up."
+  ],
+  "falsifiers": [
+    "Organic growth remains above 15% with stable/improving margins after backlog growth normalizes.",
+    "Normalized FCF/share continues compounding after working-capital reversal and UIG closes.",
+    "Service/liquid-cooling content expands across customers without material pricing pressure."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "FY2025 internal controls were effective and no material restatement, auditor dispute or integrity event is identified."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Operating cash flow comfortably funds ordinary operations and capex; external financing is not structurally required for survival."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Firm backlog, mission-critical uptime demand and expanding operating margins directly contradict absence of customer value."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Operating profit and FCF/share rose substantially from 2023-2025, contradicting a structural collapse below the cost of capital."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Backlog, service scale, margins and portfolio breadth are expanding rather than persistently shrinking."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is materially below the locked Bull DCF value; the literal Bull+ veto condition is not met."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Vertiv spans multiple power, thermal, rack and service offerings across three major regions; concentration risk exists but no single disclosed dependency is shown to be fatal."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "normalized FCF/share",
+      "direction": "up",
+      "threshold": "Base path maintained after WC normalization",
+      "cadence": "quarterly/TTM"
+    },
+    {
+      "name": "orders/backlog",
+      "direction": "stable",
+      "threshold": "no sustained contraction ahead of sales",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "UIG ROIC/net leverage",
+      "direction": "up",
+      "threshold": "returns above cost of capital with leverage controlled",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 working-capital reversal",
+    "UIG financing/integration",
+    "Customer concentration/backlog quality"
+  ],
+  "verdict": "oppose"
+}

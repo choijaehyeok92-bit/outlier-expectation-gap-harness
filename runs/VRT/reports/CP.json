@@ -1,0 +1,161 @@
+{
+  "agent_id": "CP",
+  "ticker": "VRT",
+  "as_of_date": "2026-09-18",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 83.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 92,
+  "bear_score": 64,
+  "bull_case": "Vertiv's power and cooling systems become increasingly mission-critical as rack density rises, while the installed base pulls through high-value service, spares and system upgrades.",
+  "bear_case": "Large customers dual-source components, demand more standardized designs and capture much of the economic surplus, limiting pricing power and lifetime wallet share.",
+  "thesis": "Customer value is unusually high because downtime, power constraints and thermal failure directly limit compute availability. The global service network and expanding installed base support retention and wallet share, while margin expansion demonstrates improving unit economics. Cohort retention and customer-level wallet-share data are not disclosed, so usage gets a lower score than mission criticality.",
+  "evidence": [
+    {
+      "claim": "Vertiv operates a global service network with about 5,000 field service engineers and more than 300 service centers, with more than 90% first-time fix performance on emergency visits.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-13",
+      "value": "~5,000 engineers; 300+ centers; >90% first-time fix",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-CP-SERVICE"
+    },
+    {
+      "claim": "Q2 operating profit grew 44.2% on 24.1% sales growth, evidence of operating leverage during rapid scale.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/vrt-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-07-29",
+      "value": "+44.2% op profit vs +24.1% sales",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-CP-LEV"
+    },
+    {
+      "claim": "The $15.0B year-end backlog, largely considered firm, indicates customers commit substantial capital before delivery.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "2025-12-31",
+      "as_of_date": "2026-02-13",
+      "value": "15.0B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-CP-COMMIT"
+    },
+    {
+      "claim": "Vertiv's products support continuous operation of critical data-center power and thermal systems, making failure avoidance central to customer economics.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025 business",
+      "as_of_date": "2026-02-13",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-CP-ROI"
+    }
+  ],
+  "counterevidence": [
+    "Hyperscale customers have strong procurement leverage and can multi-source.",
+    "Hardware projects are not subscription contracts; retention must be inferred from installed-base service and repeat projects.",
+    "Backlog can reflect industry capacity constraints rather than durable vendor lock-in.",
+    "Customer-level ROI and lifetime value are not quantified in standardized disclosures."
+  ],
+  "unknowns": [
+    "Repeat-order rates by customer cohort.",
+    "Service attach rate and service margin.",
+    "Customer concentration and pricing by hyperscaler.",
+    "Share of wallet across power, thermal, racks and service."
+  ],
+  "falsifiers": [
+    "If service growth and margin lag equipment growth for several years, installed-base economics are weaker than assumed.",
+    "If major customers migrate to alternate vendors without meaningful switching cost, retention score should fall.",
+    "Sustained margin expansion while backlog converts would support a higher unit-economics score."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Demand is supported by firm backlog, mission-critical uptime economics and paid infrastructure deployment rather than subsidies."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Revenue spans power, thermal, racks and services across three global regions; customer concentration remains a monitoring risk but no single disclosed dependency is fatal."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "service growth",
+      "direction": "up",
+      "threshold": "outpace installed-base growth over time",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "operating margin",
+      "direction": "up",
+      "threshold": "remain structurally above pre-AI-cycle levels",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "repeat/backlog conversion",
+      "direction": "up",
+      "threshold": "stable cancellation and repeat-order behavior",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Customer concentration",
+    "Service attach and margins",
+    "Backlog cancellations"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 90,
+      "rationale": "Power and thermal availability are mission-critical constraints on compute uptime and deployment, supporting high willingness to pay."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 75,
+      "rationale": "Large installed base and service infrastructure support repeat usage, but customer-cohort retention/wallet-share metrics are not disclosed."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 85,
+      "rationale": "Operating profit has materially outgrown revenue and cash generation improved as scale rose, demonstrating strong operating leverage."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "minor",
+      "rationale": "Mission criticality is clear even though standardized ROI metrics are absent."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "Industrial repeat usage lacks SaaS-like retention disclosure."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "Current margins may benefit from exceptional demand and pricing conditions."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

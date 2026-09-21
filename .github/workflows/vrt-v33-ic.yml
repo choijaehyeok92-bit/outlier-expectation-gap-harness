@@ -1,0 +1,63 @@
+name: VRT v3.3 investment committee
+
+on:
+  push:
+    branches:
+      - work/vrt-2026-09-18-v33
+    paths:
+      - ".github/workflows/vrt-v33-ic.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/vrt-2026-09-18-v33
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Execute VRT investment committee
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/vrt-ic.log) 2>&1
+
+          python harness.py selftest
+          python harness.py prompt VRT IC --out runs/VRT/IC_prompt.md
+          cp ".harness_inputs/VRT/reports/IC.json" "runs/VRT/reports/IC.json"
+          cp ".harness_inputs/VRT/one_page_investment_record.md" "runs/VRT/one_page_investment_record.md"
+          python harness.py validate VRT IC
+
+          python harness.py aggregate VRT | tee runlogs/aggregate_final.json
+          python harness.py digest VRT
+          python harness.py plan VRT | tee runlogs/plan_final.txt
+          python harness.py report VRT > runlogs/report_final.txt
+
+          echo "===== FINAL PLAN ====="
+          cat runlogs/plan_final.txt
+          echo "===== FINAL REPORT ====="
+          cat runlogs/report_final.txt
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/VRT
+          if ! git diff --cached --quiet; then
+            git commit -m "ic: complete VRT analysis"
+            git push origin HEAD:work/vrt-2026-09-18-v33
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: VRT-v33-final
+          path: |
+            runs/VRT
+            runlogs

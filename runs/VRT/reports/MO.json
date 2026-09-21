@@ -1,0 +1,222 @@
+{
+  "agent_id": "MO",
+  "ticker": "VRT",
+  "as_of_date": "2026-09-18",
+  "domain": "macro_overlay",
+  "role": "overlay",
+  "analysis_status": "complete",
+  "score_0_100": 50,
+  "confidence_0_1": 0.8,
+  "thesis": "September 2026 financial conditions are moderately restrictive while credit remains liquid. For Vertiv, the main macro transmission is through the discount rate and the pace of hyperscaler/data-center capital spending, not near-term refinancing. Per policy, macro changes pacing only and the deterministic overlay is 0.8.",
+  "evidence": [
+    {
+      "claim": "Federal Reserve target range was 3.75%-4.00% following the 2026-09-16 FOMC decision.",
+      "source_type": "other",
+      "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "period": "2026-09 FOMC",
+      "as_of_date": "2026-09-16",
+      "value": 4,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-MO-FED"
+    },
+    {
+      "claim": "US high-yield option-adjusted spreads were near 271bp on 2026-09-17, consistent with benign credit liquidity.",
+      "source_type": "secondary",
+      "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+      "period": "2026-09",
+      "as_of_date": "2026-09-17",
+      "value": 271,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-MO-HY"
+    },
+    {
+      "claim": "Vertiv's demand is exposed to global data-center capital spending, making changes in financing conditions and hyperscaler investment plans relevant to order pacing.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025 risk factors",
+      "as_of_date": "2026-02-13",
+      "value": null,
+      "fact_or_estimate": "interpretation",
+      "evidence_id": "VRT-MO-CAPEX"
+    },
+    {
+      "claim": "Trade fragmentation and export controls remain structural global risks for multinational equipment supply chains.",
+      "source_type": "secondary",
+      "source": "https://www.wto.org/",
+      "period": "2026-09",
+      "as_of_date": "2026-09-17",
+      "value": null,
+      "fact_or_estimate": "interpretation",
+      "evidence_id": "VRT-MO-TRADE"
+    }
+  ],
+  "counterevidence": [
+    "Vertiv had strong internal cash generation and essentially net-cash June liquidity, limiting direct funding sensitivity.",
+    "The $15B backlog provides near-term demand visibility even if financial conditions slow new projects.",
+    "Tight credit spreads indicate no broad private-credit stress at the cutoff."
+  ],
+  "unknowns": [
+    "Duration of restrictive policy rates.",
+    "Hyperscaler capital-spending sensitivity to real rates.",
+    "Energy-grid constraints and permitting delays by region.",
+    "Trade restrictions affecting power-electronics component sourcing."
+  ],
+  "falsifiers": [
+    "A rapid easing cycle with continued tight credit spreads would raise the pacing multiplier.",
+    "A sharp credit-spread widening or hyperscaler capex retrenchment would lower pacing.",
+    "A company-specific export-control or supply-chain structural event would require domain reanalysis rather than only a macro overlay."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "backlog/order growth",
+      "direction": "up",
+      "threshold": "positive through macro normalization",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "net leverage",
+      "direction": "stable",
+      "threshold": "remain manageable after UIG",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "hyperscaler/data-center capex",
+      "direction": "up",
+      "threshold": "support structural demand",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Federal Reserve policy and HY OAS",
+    "Hyperscaler capex guidance",
+    "Data-center power/grid constraints"
+  ],
+  "verdict": "neutral",
+  "risk_budget_multiplier": 0.8,
+  "global_components": {
+    "financial_conditions": {
+      "scope": "global",
+      "as_of_utc": "2026-09-17T20:00:00+00:00",
+      "summary": "Policy rates are moderately restrictive after the September FOMC.",
+      "evidence": [
+        {
+          "claim": "Federal Reserve target range was 3.75%-4.00% following the 2026-09-16 FOMC decision.",
+          "source_type": "other",
+          "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+          "period": "2026-09 FOMC",
+          "as_of_date": "2026-09-16",
+          "value": 4,
+          "fact_or_estimate": "fact",
+          "evidence_id": "VRT-MO-FED"
+        }
+      ],
+      "risk_budget_multiplier": 0.8
+    },
+    "credit_liquidity": {
+      "scope": "global",
+      "as_of_utc": "2026-09-17T20:00:00+00:00",
+      "summary": "Credit spreads remain relatively tight and systemic funding stress is not evident.",
+      "evidence": [
+        {
+          "claim": "US high-yield option-adjusted spreads were near 271bp on 2026-09-17.",
+          "source_type": "secondary",
+          "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+          "period": "2026-09",
+          "as_of_date": "2026-09-17",
+          "value": 271,
+          "fact_or_estimate": "fact",
+          "evidence_id": "VRT-MO-HY"
+        }
+      ],
+      "risk_budget_multiplier": 1
+    },
+    "geopolitical_events": {
+      "scope": "global",
+      "as_of_utc": "2026-09-17T20:00:00+00:00",
+      "summary": "Global geopolitical and energy risks remain material without a confirmed Vertiv-specific structural-access event.",
+      "evidence": [
+        {
+          "claim": "Global geopolitical and energy risks remain elevated without a confirmed Vertiv-specific structural event before the cutoff.",
+          "source_type": "secondary",
+          "source": "https://www.reuters.com/world/",
+          "period": "2026-09",
+          "as_of_date": "2026-09-17",
+          "value": null,
+          "fact_or_estimate": "interpretation",
+          "evidence_id": "VRT-MO-GEO"
+        }
+      ],
+      "dimensions": {
+        "military_conflict": {
+          "level": "moderate",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        },
+        "energy_disruption": {
+          "level": "moderate",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        },
+        "shipping_disruption": {
+          "level": "low",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        },
+        "sovereign_policy_instability": {
+          "level": "low",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        }
+      }
+    },
+    "structural_trade": {
+      "scope": "global",
+      "as_of_utc": "2026-09-17T20:00:00+00:00",
+      "summary": "Trade fragmentation and export controls remain structural risks for global equipment supply chains.",
+      "evidence": [
+        {
+          "claim": "Trade fragmentation and export controls remain active global policy risks.",
+          "source_type": "secondary",
+          "source": "https://www.wto.org/",
+          "period": "2026-09",
+          "as_of_date": "2026-09-17",
+          "value": null,
+          "fact_or_estimate": "interpretation",
+          "evidence_id": "VRT-MO-TRADE"
+        }
+      ],
+      "dimensions": {
+        "trade_fragmentation": {
+          "level": "moderate",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        },
+        "export_controls": {
+          "level": "low",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        },
+        "sanctions": {
+          "level": "low",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        }
+      }
+    }
+  }
+}

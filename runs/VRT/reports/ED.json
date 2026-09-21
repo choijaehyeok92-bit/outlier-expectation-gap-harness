@@ -1,0 +1,107 @@
+{
+  "agent_id": "ED",
+  "ticker": "VRT",
+  "as_of_date": "2026-09-18",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 82,
+  "confidence_0_1": 0.84,
+  "thesis": "Evidence quality is strong for financial statements, backlog, regional mix, cash flow, debt, internal controls and the signed UIG transaction. The main limitations are incomplete Stage 0 proxy compensation coverage, lack of a fetched IR/investor-day package, and the need to normalize unusually favorable H1 2026 working capital before treating current FCF as sustainable. The valuation therefore uses explicit scenario paths rather than extrapolating H1 cash flow.",
+  "evidence": [
+    {
+      "claim": "The FY2025 10-K provides three-year income/cash-flow history, backlog, R&D, controls, competition, customer and service-network disclosures.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-13",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-ED-10K"
+    },
+    {
+      "claim": "The Q2 2026 10-Q provides H1 sales, operating profit, cash flow, working capital, debt, inventory and diluted-share data.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/vrt-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-ED-Q2"
+    },
+    {
+      "claim": "The July 29 earnings release supplies 2026 organic-growth, margin, EPS and adjusted-FCF guidance used only as management guidance rather than GAAP fact.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050323/q22026exhibit991vrt07292026.htm",
+      "period": "FY2026 guidance",
+      "as_of_date": "2026-07-29",
+      "value": "sales 13.8-14.2B; adjusted FCF 2.4-2.6B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-ED-GUIDE"
+    },
+    {
+      "claim": "The September 2 8-K documents the signed UIG consideration terms before the cutoff.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000119312526379306/d472406d8k.htm",
+      "period": "2026-09-01",
+      "as_of_date": "2026-09-02",
+      "value": "1.45B upfront + up to 1.15B contingent",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-ED-UIG"
+    },
+    {
+      "claim": "H1 2026 OCF included a $678.8M working-capital source, preventing mechanical extrapolation of reported cash flow.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/vrt-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-07-29",
+      "value": 678.8,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-ED-WC"
+    }
+  ],
+  "counterevidence": [
+    "The fetched DEFA14A does not provide the full definitive proxy compensation package.",
+    "Investor-day/official IR materials are an advisory Stage 0 gap, limiting independent long-duration TAM/capacity detail.",
+    "End-market and customer concentration are less granular than regional revenue disclosure.",
+    "UIG had not closed by the cutoff, so no realized post-acquisition return evidence exists."
+  ],
+  "unknowns": [
+    "Definitive executive compensation and ownership details not present in the fetched DEFA14A.",
+    "Normalized maintenance capex and working-capital intensity after backlog growth slows.",
+    "Top-customer/end-market revenue concentration.",
+    "UIG purchase multiple and post-close EBITDA/FCF contribution."
+  ],
+  "falsifiers": [
+    "Later audited filings materially contradict the extracted backlog, cash-flow or debt facts.",
+    "Working-capital reversal shows that normalized owner FCF is materially below the locked Base path.",
+    "UIG economics or customer concentration prove materially worse than the monitoring assumptions."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "normalized FCF/share",
+      "direction": "up",
+      "threshold": "sustain growth after working-capital normalization",
+      "cadence": "quarterly/TTM"
+    },
+    {
+      "name": "backlog/order growth",
+      "direction": "stable",
+      "threshold": "healthy conversion without cancellations",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "UIG post-close ROIC",
+      "direction": "up",
+      "threshold": "above cost of capital",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 10-Q and working capital",
+    "Definitive proxy/compensation detail",
+    "UIG close economics"
+  ],
+  "verdict": "support"
+}

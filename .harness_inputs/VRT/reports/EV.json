@@ -1,0 +1,194 @@
+{
+  "agent_id": "EV",
+  "ticker": "VRT",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 59.25,
+  "confidence_0_1": 0.82,
+  "bull_score": 79,
+  "bear_score": 38,
+  "bull_case": "AI data-center power and thermal density stays structurally high, Vertiv converts backlog with continued margin expansion, liquid cooling and microgrid adjacency broaden wallet share, and owner FCF/share compounds into the 30s over a decade.",
+  "bear_case": "Hyperscaler capex normalizes, backlog conversion exposes fixed-price/supply-chain risk, working-capital benefits reverse, and acquisitions absorb cash without sustaining incremental returns.",
+  "thesis": "At $249.39, Vertiv is close to the locked Base DCF rather than obviously cheap. Current operating momentum and backlog justify a high owner-FCF growth path, but the model already assumes substantial margin/cash-flow durability. Valuation is acceptable for a high-quality growth platform, not a wide-margin-of-safety entry.",
+  "evidence": [
+    {
+      "claim": "Q2 2026 net sales were $3.274B, up 24.1% YoY, and operating profit was $637.9M, up 44.2%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/vrt-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-07-29",
+      "value": "3.274B / 637.9M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-EV-Q2"
+    },
+    {
+      "claim": "Full-year 2026 guidance was raised to $13.8B-$14.2B sales, 30%-32% organic growth and $2.4B-$2.6B adjusted free cash flow.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050323/q22026exhibit991vrt07292026.htm",
+      "period": "FY2026 guidance",
+      "as_of_date": "2026-07-29",
+      "value": "13.8-14.2B sales; 2.4-2.6B adjusted FCF",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-EV-GUIDE"
+    },
+    {
+      "claim": "FY2025 sales were $10.230B and operating cash flow was $2.114B; backlog was $15.0B at year-end.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-13",
+      "value": "10.230B / 2.114B / 15.0B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-EV-FY25"
+    },
+    {
+      "claim": "The September 1 acquisition agreement for UtilityInnovation Group requires about $1.45B cash at closing plus up to $1.15B contingent cash consideration.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000119312526379306/d472406d8k.htm",
+      "period": "2026-09-01",
+      "as_of_date": "2026-09-02",
+      "value": "1.45B + up to 1.15B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-EV-UIG"
+    }
+  ],
+  "counterevidence": [
+    "The $15B year-end backlog and 30%-32% 2026 organic-growth guide indicate unusually strong near-term demand visibility.",
+    "Operating margins expanded materially while revenue grew, showing operating leverage rather than pure volume growth.",
+    "H1 2026 operating cash flow was exceptionally strong, though helped by working capital.",
+    "Liquid cooling and behind-the-meter power can expand Vertiv's addressable content per AI rack."
+  ],
+  "unknowns": [
+    "Normalized owner FCF after deferred-revenue working-capital normalization.",
+    "Post-close UIG integration economics and contingent consideration probability.",
+    "How rapidly AI infrastructure growth normalizes after 2027-2028.",
+    "Long-run maintenance versus growth capex after current capacity buildout."
+  ],
+  "falsifiers": [
+    "If organic growth falls to low teens while owner FCF/share does not keep compounding, Base value should be reduced.",
+    "If margins and FCF/share continue rising despite slower industry growth, Base can move higher.",
+    "A price materially above Bull value without new cash-flow evidence would trigger V7 review."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "The cutoff price is near Base and materially below the locked Bull DCF, so Bull+ assumptions are not required."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained high-teens growth",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "organic sales growth",
+      "direction": "up",
+      "threshold": "remain >15% through normalization",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "adjusted operating margin",
+      "direction": "up",
+      "threshold": "hold low/mid-20s",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 backlog/order growth",
+    "Working-capital normalization",
+    "UIG acquisition close and financing"
+  ],
+  "verdict": "neutral",
+  "archetype_signals": {
+    "price_to_base_value": null,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.18
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "Locked price/Base falls in the 0.9-1.1 band: Base execution broadly supports price, but without a wide expectation gap."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "Current price is near Base fair value under the locked policy."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 65,
+      "rationale": "Backlog and margin evidence support the path, but terminal value and normalized cash conversion remain material drivers."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "Working-capital timing makes current FCF unusually strong."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Base assumes durable AI-infrastructure growth and margin retention."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "critical",
+      "rationale": "UIG and capacity expansion increase capital-allocation sensitivity."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.18,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          4.5,
+          4.8,
+          5.1,
+          5.4,
+          5.7,
+          6,
+          6.3,
+          6.6,
+          6.9,
+          7.2
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          6.2,
+          7.5,
+          9,
+          10.5,
+          12,
+          13.5,
+          15,
+          16.5,
+          18,
+          19.5
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          7.5,
+          9.5,
+          12,
+          14.8,
+          17.8,
+          21,
+          24.3,
+          27.5,
+          30.8,
+          34
+        ]
+      }
+    }
+  }
+}
