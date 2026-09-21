@@ -1,0 +1,106 @@
+{
+  "agent_id": "DI",
+  "ticker": "BRK.B",
+  "as_of_date": "2026-09-18",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 50,
+  "confidence_0_1": 0.78,
+  "bull_score": 65,
+  "bear_score": 40,
+  "bull_case": "유리한 사업·자본배분 가정이 유지되면 기준 점수보다 높은 결과가 가능하다.",
+  "bear_case": "성장·마진·자본배분이 정상화되고 핵심 불확실성이 불리하게 전개되면 기준 점수보다 낮아질 수 있다.",
+  "thesis": "Berkshire is not a disruption-led investment. Its edge is capital allocation, insurance float and decentralized operating ownership rather than a single technology adoption curve.",
+  "evidence": [
+    {
+      "claim": "Berkshire's businesses span insurance, energy, rail, manufacturing, service and retail.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026",
+      "as_of_date": "2026-08-10",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-DIVERSITY"
+    },
+    {
+      "claim": "OxyChem was acquired for about $9.4B on January 2, 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026-01-02",
+      "as_of_date": "2026-08-10",
+      "value": 9400,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-OXY"
+    },
+    {
+      "claim": "Taylor Morrison was acquired in July 2026 for about $6.8B equity value.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026-07-24",
+      "as_of_date": "2026-08-10",
+      "value": 6800,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-TM"
+    }
+  ],
+  "counterevidence": [
+    "BHE grid and renewable investments can benefit from electrification.",
+    "GEICO can use data/telematics and digital distribution to improve economics.",
+    "Acquisition optionality can shift Berkshire into new value pools."
+  ],
+  "unknowns": [
+    "Quantified returns from technology investment inside major subsidiaries.",
+    "Evidence that a Berkshire platform creates cross-subsidiary network effects."
+  ],
+  "uncertainties": [],
+  "falsifiers": [
+    "A subsidiary creates a category-defining platform with independent adoption evidence.",
+    "Multiple new value pools become material to consolidated earnings.",
+    "Technology materially changes consolidated unit economics."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner earnings/share",
+      "direction": "up",
+      "threshold": "base path 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "operating earnings",
+      "direction": "up",
+      "threshold": "실질 성장 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "capital allocation",
+      "direction": "up",
+      "threshold": "intrinsic-value discipline 유지",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 Q3 10-Q",
+    "2026 annual report",
+    "capital allocation update"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 50,
+      "rationale": "Berkshire mainly owns mature businesses; innovation is generally sustaining rather than a 10x cost/performance disruption."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 50,
+      "rationale": "No single Berkshire-wide adoption S-curve defines the thesis."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 50,
+      "rationale": "Diversified acquisitions create options but do not establish a new value-chain standard."
+    }
+  ]
+}

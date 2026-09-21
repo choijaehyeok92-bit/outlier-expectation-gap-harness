@@ -1,0 +1,61 @@
+{
+  "ticker": "BRK.B",
+  "company_name": "Berkshire Hathaway Inc.",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 509.77,
+  "shares_diluted": 2155918015,
+  "market_cap_usd": 1091269818773,
+  "enterprise_value": 775369818773,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC Form 10-Q for quarter ended 2026-06-30, filed 2026-08-10",
+    "SEC Q2 2026 earnings release filed 2026-08-10",
+    "SEC Form 10-Q for quarter ended 2026-03-31, filed 2026-05-04",
+    "SEC 2026 DEF 14A filed 2026-03-13",
+    "SEC Form 10-K for year ended 2025",
+    "StockAnalysis BRK.B historical close: 2026-09-18 $509.77",
+    "FinanceCharts BRK.B P/B: 1.47 vs 5Y average 1.49 on 2026-09-18"
+  ],
+  "special_questions": [
+    "Does Berkshire's very large cash/T-bill balance signal a structural reinvestment constraint?",
+    "Can Greg Abel sustain Buffett-era capital allocation discipline after becoming CEO on 2026-01-01?",
+    "At $509.77, is the margin of safety sufficient after normalizing investment gains and insurance cash-flow noise?"
+  ],
+  "intake_facts": [
+    "2026 H1 operating earnings $24.329B vs $20.801B in 2025 H1; Q2 operating earnings $12.983B.",
+    "2026-06-30 Insurance & Other cash/cash equivalents/U.S. Treasury Bills $359.2B; borrowings excluding BHE/BNSF $43.3B.",
+    "2026 H1 operating cash flow $21.7B; capex $10.6B.",
+    "2026 H1 repurchases about $4.8B, mostly Q2.",
+    "Insurance float about $177.5B at 2026-06-30.",
+    "OxyChem acquired 2026-01-02 for about $9.4B; Taylor Morrison acquired 2026-07-24 for about $6.8B equity value.",
+    "BRK.B 2026-09-18 close $509.77; P/B 1.47 vs 5Y average 1.49."
+  ],
+  "net_cash_per_share": 147.5679,
+  "valuation_percentile_5y": 0.5,
+  "valuation_metric": "Price/book 1.47 on 2026-09-18 versus 5-year average 1.49; percentile set to neutral 0.50 because mean alone does not establish an exact percentile.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {},
+    "production_by_region": {},
+    "critical_supplier_regions": [],
+    "export_control_dependencies": [],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": []
+  }
+}

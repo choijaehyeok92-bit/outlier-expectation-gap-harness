@@ -1,0 +1,95 @@
+{
+  "agent_id": "IC",
+  "ticker": "BRK.B",
+  "as_of_date": "2026-09-18",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 78,
+  "confidence_0_1": 0.8,
+  "thesis": "Deterministic gates should support Berkshire as a Buffett-style value holding rather than an outlier-growth name. Strong liquidity, durable multi-engine earnings and disciplined buybacks offset reinvestment-at-scale risk. A NORMAL allocation is appropriate only if the mechanical archetype and veto gate remain intact after aggregation.",
+  "evidence": [
+    {
+      "claim": "H1 operating earnings were $24.329B and diversified across multiple operating buckets.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026 H1",
+      "as_of_date": "2026-08-10",
+      "value": 24329,
+      "fact_or_estimate": "fact",
+      "evidence_id": "IC-OE"
+    },
+    {
+      "claim": "Cash/T-bills were $359.2B and repurchases $4.8B H1.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026 H1",
+      "as_of_date": "2026-08-10",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "IC-LIQ"
+    },
+    {
+      "claim": "Current price $509.77 is below modeled Base about $633.66 and Bull about $824.30.",
+      "source_type": "secondary",
+      "source": "https://stockanalysis.com/stocks/brk.b/history/",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 509.77,
+      "fact_or_estimate": "fact",
+      "evidence_id": "IC-VAL"
+    },
+    {
+      "claim": "Greg Abel became CEO Jan.1 2026 with Buffett remaining Chairman.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526106253/d882687ddef14a.htm",
+      "period": "2026",
+      "as_of_date": "2026-03-13",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "IC-MGMT"
+    }
+  ],
+  "counterevidence": [
+    "Incremental ROIC on 2026 acquisitions is unproven.",
+    "Base valuation relies on normalized operating earnings as owner-earnings proxy.",
+    "Cash accumulation can be a long-term drag if deployment opportunities remain scarce."
+  ],
+  "unknowns": [
+    "Q3 2026 acquisition contribution and cash balance.",
+    "Abel-era capital allocation outcomes."
+  ],
+  "falsifiers": [
+    "Hard Veto becomes confirmed or unresolved.",
+    "Price/Base rises above 1.0 without higher owner earnings.",
+    "Per-share operating earnings stagnate while retained capital rises."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner earnings/share",
+      "direction": "up",
+      "threshold": "base path 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "liquidity",
+      "direction": "stable",
+      "threshold": "ample redundancy",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "major subsidiary returns",
+      "direction": "up",
+      "threshold": "cost of capital 초과",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 Q3 10-Q",
+    "updated acquisition economics",
+    "capital allocation disclosures"
+  ],
+  "verdict": "support",
+  "ic_state": "NORMAL"
+}
