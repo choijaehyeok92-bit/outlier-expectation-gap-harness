@@ -142,7 +142,7 @@
   "uncertainties": [
     {
       "criterion_id": "liquidity_leverage",
-      "severity": "immaterial",
+      "severity": "minor",
       "rationale": "Reported balance-sheet liquidity is straightforward and debt is immaterial."
     },
     {
