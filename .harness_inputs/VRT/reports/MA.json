@@ -1,0 +1,156 @@
+{
+  "agent_id": "MA",
+  "ticker": "VRT",
+  "as_of_date": "2026-09-18",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 82.25,
+  "confidence_0_1": 0.82,
+  "bull_score": 91,
+  "bear_score": 63,
+  "bull_case": "Management converts the AI demand shock into durable margin, capacity and service leadership while disciplined acquisitions fill power/cooling gaps at attractive returns.",
+  "bear_case": "The organization overbuilds capacity and pays peak-cycle prices for acquisitions, converting an excellent operating cycle into lower future returns.",
+  "thesis": "Execution has been strong: margins, cash flow and backlog conversion improved while internal controls were effective. Management has also used acquisitions to extend liquid cooling and power architecture. The main capital-allocation question is whether the $1.45B upfront plus contingent UIG consideration earns acceptable returns near a cyclical demand peak, so capital allocation is scored below governance and execution.",
+  "evidence": [
+    {
+      "claim": "Management reported internal control over financial reporting effective as of Dec. 31, 2025.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-13",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-MA-CONTROL"
+    },
+    {
+      "claim": "Operating profit increased from $872M in 2023 to $1.830B in 2025 and Q2 2026 operating profit rose 44.2% YoY.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "2023-Q2 2026",
+      "as_of_date": "2026-07-29",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-MA-EXEC"
+    },
+    {
+      "claim": "PurgeRite added liquid-cooling services and the signed UIG transaction adds microgrid controls, switchgear and behind-the-meter power architecture.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/vrt-20260630.htm",
+      "period": "2025-2026",
+      "as_of_date": "2026-09-02",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-MA-MA"
+    },
+    {
+      "claim": "UIG consideration is about $1.45B upfront cash plus up to $1.15B contingent cash, making post-close returns a material test of allocation discipline.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000119312526379306/d472406d8k.htm",
+      "period": "2026-09-01",
+      "as_of_date": "2026-09-02",
+      "value": "1.45B + up to 1.15B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-MA-UIG"
+    }
+  ],
+  "counterevidence": [
+    "Acquisition economics for UIG are not yet observable because the deal had not closed by the cutoff.",
+    "Demand strength can make management execution look better during a favorable cycle.",
+    "The fetched DEFA14A is not a complete definitive proxy, limiting detailed compensation analysis.",
+    "Capacity expansion and inventory growth raise the cost of a forecasting error."
+  ],
+  "unknowns": [
+    "UIG purchase multiple and synergy realization.",
+    "Executive compensation details from definitive proxy.",
+    "Return on 2025-2027 capacity capex.",
+    "Any explicit hurdle rates for acquisitions and capacity projects."
+  ],
+  "falsifiers": [
+    "A material impairment or weak post-close UIG cash return would cut capital-allocation score.",
+    "Sustained margin/FCF gains through a demand slowdown would strengthen execution score.",
+    "A control weakness or accounting restatement would reopen V1."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "FY2025 internal controls were effective and no fraud, material restatement or integrity breach is identified in the cutoff materials."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "UIG post-close ROIC",
+      "direction": "up",
+      "threshold": "comfortably above cost of capital",
+      "cadence": "annual"
+    },
+    {
+      "name": "operating margin",
+      "direction": "up",
+      "threshold": "retain gains through normalization",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "capacity utilization",
+      "direction": "up",
+      "threshold": "avoid material underutilization",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Definitive proxy/compensation",
+    "UIG close and integration",
+    "Capacity capex returns"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 75,
+      "rationale": "R&D, capacity and prior portfolio expansion have produced strong growth, but the large peak-cycle UIG commitment is not yet seasoned enough for an 80-90 score."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 85,
+      "rationale": "Effective internal controls and no identified accounting-integrity issue support high trust, subject to incomplete proxy compensation detail."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 90,
+      "rationale": "Management scaled capacity, margins, cash flow and portfolio breadth rapidly in response to the AI data-center architecture shift."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "critical",
+      "rationale": "The largest current acquisition had not closed, so realized returns are unknown."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "Full proxy compensation data are not in the frozen Stage 0 pack."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "material",
+      "rationale": "Execution has not yet been tested through a sharp AI capex downturn."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
