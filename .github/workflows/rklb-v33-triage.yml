@@ -1,5 +1,5 @@
 name: RKLB v3.3 complete triage
-# rerun after AS rubric normalization
+# rerun after DI normalization
 
 on:
   push:
