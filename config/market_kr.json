@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "note": "KRX 호환 시세 서비스 설정. 한국 주가는 여기서만 가져오고 DART에서 가져오지 않는다. 엔드포인트와 필드명은 서비스마다 다르므로 코드가 아니라 이 파일에서 바꾼다. 이 환경은 외부 망이 차단되어 라이브 호출로 검증하지 않았다.",
+  "endpoint": "http://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd",
+  "request_spacing_seconds": 0.2,
+  "snapshot_lookback_start": "1990-01-01",
+  "rows_path": ["output"],
+  "params": {
+    "ticker": "isuCd",
+    "start_date": "strtDd",
+    "end_date": "endDd"
+  },
+  "static_params": {
+    "bld": "dbms/MDC/STAT/standard/MDCSTAT01701"
+  },
+  "response_fields": {
+    "date": "TRD_DD",
+    "close": "TDD_CLSPRC",
+    "market_cap": "MKTCAP",
+    "shares_outstanding": "LIST_SHRS"
+  }
+}

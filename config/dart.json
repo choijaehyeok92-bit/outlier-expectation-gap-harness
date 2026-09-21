@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.0",
+  "note": "OpenDART 적재 정책. 엔드포인트·보고서코드·연결기준·문서유형 매핑을 코드가 아니라 여기에 선언한다. 이 파일은 네트워크가 차단된 환경에서 공개 규격 문서를 근거로 작성했으며 라이브 호출로 검증하지 않았다. 엔드포인트 경로나 응답 필드명이 규격과 다르면 코드가 아니라 이 파일을 고친다.",
+  "api_base": "https://opendart.fss.or.kr/api",
+  "api_key_env": "OPENDART_API_KEY",
+  "request_spacing_seconds": 0.12,
+  "endpoints": {
+    "corp_code": "corpCode.xml",
+    "filing_search": "list.json",
+    "company_profile": "company.json",
+    "financial_statements_all": "fnlttSinglAcntAll.json",
+    "raw_document": "document.xml",
+    "share_total": "stockTotqySttus.json"
+  },
+  "capital_event_endpoints": {
+    "paid_in_capital_increase": {
+      "path": "piicDecsn.json",
+      "label": "유상증자 결정",
+      "dilution_kind": "rights_or_public_offering"
+    },
+    "bonus_issue": {
+      "path": "fricDecsn.json",
+      "label": "무상증자 결정",
+      "dilution_kind": "bonus_issue"
+    },
+    "paid_and_bonus_increase": {
+      "path": "pifricDecsn.json",
+      "label": "유무상증자 결정",
+      "dilution_kind": "mixed_issue"
+    },
+    "convertible_bond": {
+      "path": "cvbdIsDecsn.json",
+      "label": "전환사채권 발행결정",
+      "dilution_kind": "convertible"
+    },
+    "warrant_bond": {
+      "path": "bdwtIsDecsn.json",
+      "label": "신주인수권부사채권 발행결정",
+      "dilution_kind": "warrant"
+    },
+    "exchangeable_bond": {
+      "path": "exbdIsDecsn.json",
+      "label": "교환사채권 발행결정",
+      "dilution_kind": "exchangeable"
+    }
+  },
+  "status_codes": {
+    "000": {
+      "ok": true,
+      "meaning": "정상"
+    },
+    "013": {
+      "ok": true,
+      "empty": true,
+      "meaning": "조회된 데이터가 없음 — 오류가 아니라 빈 결과다"
+    },
+    "010": {
+      "ok": false,
+      "meaning": "등록되지 않은 키"
+    },
+    "011": {
+      "ok": false,
+      "meaning": "사용할 수 없는 키"
+    },
+    "012": {
+      "ok": false,
+      "meaning": "접근할 수 없는 IP"
+    },
+    "020": {
+      "ok": false,
+      "retryable": true,
+      "meaning": "요청 제한 초과"
+    },
+    "021": {
+      "ok": false,
+      "retryable": true,
+      "meaning": "조회 가능한 개수 초과"
+    },
+    "100": {
+      "ok": false,
+      "meaning": "필드의 부적절한 값"
+    },
+    "101": {
+      "ok": false,
+      "meaning": "부적절한 접근"
+    },
+    "800": {
+      "ok": false,
+      "retryable": true,
+      "meaning": "시스템 점검"
+    },
+    "900": {
+      "ok": false,
+      "meaning": "정의되지 않은 오류"
+    },
+    "901": {
+      "ok": false,
+      "meaning": "사용자 계정의 개인정보 보유기간 만료"
+    }
+  },
+  "report_codes": {
+    "11011": {
+      "name": "사업보고서",
+      "period_kind": "fy",
+      "covers_months": 12,
+      "quarter": null,
+      "document_type": "annual_report"
+    },
+    "11012": {
+      "name": "반기보고서",
+      "period_kind": "quarter",
+      "covers_months": 3,
+      "quarter": 2,
+      "ytd_months": 6,
+      "document_type": "other"
+    },
+    "11013": {
+      "name": "1분기보고서",
+      "period_kind": "quarter",
+      "covers_months": 3,
+      "quarter": 1,
+      "ytd_months": 3,
+      "document_type": "other"
+    },
+    "11014": {
+      "name": "3분기보고서",
+      "period_kind": "quarter",
+      "covers_months": 3,
+      "quarter": 3,
+      "ytd_months": 9,
+      "document_type": "other"
+    }
+  },
+  "periodic_report_order": [
+    "11011",
+    "11014",
+    "11012",
+    "11013"
+  ],
+  "consolidation": {
+    "preference": [
+      "CFS",
+      "OFS"
+    ],
+    "never_mix": true,
+    "fs_div_map": {
+      "CFS": "CFS",
+      "OFS": "OFS"
+    },
+    "note": "연결(CFS)을 우선하고 없으면 별도(OFS)를 쓴다. 한 pack 안에서 두 기준을 섞지 않는다. 섞인 시계열은 존재하지 않은 성장률을 보고한다."
+  },
+  "statement_map": {
+    "BS": {
+      "statement": "balance_sheet",
+      "period_kind": "instant"
+    },
+    "IS": {
+      "statement": "income",
+      "period_kind": "flow"
+    },
+    "CIS": {
+      "statement": "income",
+      "period_kind": "flow"
+    },
+    "CF": {
+      "statement": "cash_flow",
+      "period_kind": "flow",
+      "cumulative_only": true
+    },
+    "SCE": {
+      "statement": "other",
+      "period_kind": "flow"
+    }
+  },
+  "amount_columns": {
+    "current_period": "thstrm_amount",
+    "current_cumulative": "thstrm_add_amount",
+    "prior_period": "frmtrm_amount",
+    "prior_cumulative": "frmtrm_add_amount",
+    "prior_prior_period": "bfefrmtrm_amount",
+    "note": "정기보고서의 손익·현금흐름은 thstrm_amount(당기 3개월)와 thstrm_add_amount(당기 누계)를 모두 제공할 수 있다. 3개월치는 period_kind=quarter, 누계는 period_kind=ytd로 각각 별도 fact가 되며 절대 같은 것으로 취급하지 않는다. 현금흐름표는 누계만 공시하는 경우가 많아 quarter가 비어 있을 수 있고, 그때 quarter를 만들어내지 않는다."
+  },
+  "document_type_map": {
+    "사업보고서": "annual_report",
+    "반기보고서": "other",
+    "분기보고서": "other",
+    "주주총회소집공고": "proxy",
+    "연결감사보고서": "other",
+    "감사보고서": "other"
+  },
+  "universe": {
+    "exchanges": [
+      "KOSPI",
+      "KOSDAQ"
+    ],
+    "excluded_exchanges": [
+      "KONEX"
+    ],
+    "exclude_when_no_stock_code": true,
+    "exchange_source": "dart_corp_cls",
+    "exchange_source_note": "corpCode.xml은 상장 여부(stock_code 존재)만 담고 시장 구분은 없다. 시장 세그먼트는 company.json / list.json의 corp_cls(Y·K·N·E)에서 읽는다. corp_cls를 확인하지 못한 종목은 exchange=KRX와 requires_review=true로 남기고 추측하지 않는다.",
+    "name_exclusions": [
+      {
+        "pattern": "스팩\\s*\\d*\\s*호|기업인수목적",
+        "security_type": "spac",
+        "reason": "SPAC shell"
+      },
+      {
+        "pattern": "리츠$|위탁관리부동산투자회사|자기관리부동산투자회사",
+        "security_type": "reit",
+        "reason": "REIT"
+      },
+      {
+        "pattern": "^KODEX|^TIGER|^KBSTAR|^ARIRANG|^HANARO|^SOL |상장지수",
+        "security_type": "etf",
+        "reason": "ETF"
+      }
+    ]
+  },
+  "share_metrics": {
+    "issued_total": "period_end_shares",
+    "treasury": "other",
+    "distributed": "other"
+  },
+  "emit_ytd_when_equal_to_quarter": false,
+  "ambiguous_single_column": "ytd_with_review",
+  "ingest_prior_period_columns": false,
+  "ingest_prior_period_note": "전기·전전기 컬럼은 기본적으로 적재하지 않는다. 같은 수치를 과거 보고서에서 이미 받아오므로, 두 문서에서 서로 다른 filing_date로 같은 사실이 중복 생성되는 것을 피한다.",
+  "corp_cls_map": {
+    "Y": {
+      "exchange": "KOSPI",
+      "label": "유가증권시장"
+    },
+    "K": {
+      "exchange": "KOSDAQ",
+      "label": "코스닥시장"
+    },
+    "N": {
+      "exchange": "KONEX",
+      "label": "코넥스시장"
+    },
+    "E": {
+      "exchange": "OTHER",
+      "label": "기타법인"
+    }
+  }
+}

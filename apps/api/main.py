@@ -80,6 +80,33 @@ def universe():
                                  for row in rows})}
 
 
+@app.get('/api/universe/securities')
+def universe_securities(market: str | None = None, investable_only: bool = True,
+                        limit: int = Query(200, ge=1, le=5000)):
+    """The listed US/KR universe built by `harness.py universe sync`.
+
+    This is the regulator-derived universe, not the completed-run corpus that
+    `/api/universe` summarises. Rows excluded as ETFs, warrants, SPAC shells or
+    off-market listings stay in the file with the reason, so the answer to
+    "why is this missing" does not require a re-sync.
+    """
+    try:
+        from data_adapters import universe as universe_store
+    except Exception as error:
+        raise HTTPException(501, f'data adapters are not installed: {error}') from error
+    payload = universe_store.load()
+    if payload is None:
+        raise HTTPException(404, 'no universe file yet; run '
+                                 '`python harness.py universe sync --markets US,KR`')
+    rows = universe_store.investable(payload) if investable_only else payload['securities']
+    if market:
+        currency = 'KRW' if market.upper() == 'KR' else 'USD'
+        rows = [row for row in rows if row.get('currency') == currency]
+    return {'synced_at_utc': payload['synced_at_utc'], 'as_of_date': payload.get('as_of_date'),
+            'summary': payload['summary'], 'markets': payload.get('markets', {}),
+            'count': len(rows), 'securities': rows[:limit]}
+
+
 @app.get('/api/screen/fields')
 def screen_fields(available_only: bool = False):
     rows = Registry().describe()

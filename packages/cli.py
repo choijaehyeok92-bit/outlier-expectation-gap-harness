@@ -222,4 +222,20 @@ def register(sub):
 
     p = sub.add_parser('deep-list', help='list stored deep dives')
     p.set_defaults(func=cmd_deep_list)
+
+    _register_data_adapters(sub)
     return sub
+
+
+def _register_data_adapters(sub):
+    """SEC/DART ingestion commands, when the adapters are installed.
+
+    They carry their own dependencies (PyYAML for the Korean account map), so a
+    checkout without them keeps every other command rather than failing at
+    argument-parsing time.
+    """
+    try:
+        from data_adapters import cli as adapters_cli
+    except Exception:
+        return None
+    return adapters_cli.register(sub)

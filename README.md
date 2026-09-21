@@ -31,17 +31,21 @@
 | 계층 | 위치 | 역할 |
 |---|---|---|
 | Universe Screener | `packages/screening` | 자연어 → ScreeningSpec → 결정론적 컴파일러. LLM은 SQL을 만들지 않는다 |
+| Data adapters | `data_adapters/{sec,dart,market_us,market_kr}` | SEC/DART가 같은 인터페이스로 `financial_pack` 호환 출력을 만든다. 시장 데이터는 규제기관과 분리 |
 | Quantitative filter | `harness_core` (무변경) | 기존 정책 엔진이 판정한다 |
 | Qualitative deep dive | `packages/research` | 증거 수집 → 독립 정성판단 → 독립 Red Team → 종합 |
 | Report / Monitoring UI | `apps/api`, `apps/web` | FastAPI + Next.js |
 
 설계는 [WEB_PLATFORM_ARCHITECTURE.md](docs/WEB_PLATFORM_ARCHITECTURE.md), 실행 방법은
-[WEB_PLATFORM_RUNBOOK.md](docs/WEB_PLATFORM_RUNBOOK.md)에 있다.
+[WEB_PLATFORM_RUNBOOK.md](docs/WEB_PLATFORM_RUNBOOK.md), SEC/DART 적재 계약은
+[DATA_ADAPTERS.md](docs/DATA_ADAPTERS.md)에 있다.
 
 ```bash
 python harness.py screen run "미국과 한국에서 시총 1조 이상, 순현금이고 해자가 강한 종목" \
   --as-of 2026-09-18 --fx KRW=1380.2
 python harness.py deep-run MSFT --markdown /tmp/MSFT.md
+python harness.py universe sync --markets US,KR --as-of 2026-09-18 --fixtures
+python harness.py ingest 267260 --market KR --as-of 2026-09-18 --api-key TEST --fixtures
 ```
 
 기존 20개 서브커맨드는 인자·동작 모두 변하지 않았다. 새 커맨드의 구현은 지연 import되므로

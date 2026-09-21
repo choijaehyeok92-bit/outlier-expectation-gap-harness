@@ -1,0 +1,4 @@
+# The adapters' own dependencies. The harness runtime stays on the standard
+# library; nothing in harness_core imports this package.
+PyYAML>=6,<7
+jsonschema>=4.18,<5

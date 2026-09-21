@@ -38,6 +38,29 @@ python harness.py deep-list
 환율은 조회되지 않는다. `--fx KRW=1380.2`를 주지 않으면 원화 임계값 조건은 적용되지 않고
 `unresolved_conditions`에 `missing_fx_rate`로 남는다.
 
+## 1b. SEC / DART 적재 (Phase 3)
+
+```bash
+pip install -r data_adapters/requirements.txt     # PyYAML (한국 계정 맵)
+
+# 오프라인: 기록 픽스처로 전체 경로를 실행한다
+python harness.py ingest 267260 --market KR --as-of 2026-09-18 --api-key TEST --fixtures
+python harness.py ingest MSFT   --market US --as-of 2026-09-18 \
+  --user-agent "test t@example.com" --fixtures
+python harness.py universe sync --markets US,KR --as-of 2026-09-18 \
+  --user-agent "test t@example.com" --api-key TEST --fixtures
+
+# 라이브: 키와 연락처가 필요하다. 둘 다 백엔드 secret이며 프론트엔드로 가지 않는다
+export OPENDART_API_KEY=...
+export SEC_USER_AGENT="your name your@email"
+python harness.py universe sync --markets US,KR --as-of 2026-09-18 --enrich-limit 500
+python harness.py universe show --market KR --investable-only
+python harness.py ingest 267260 --market KR --as-of 2026-09-18 --out /tmp/pack.json
+```
+
+`--out` 없이 실행하면 pack을 어디에 놓아야 할지만 알려준다. 적재기는 run의 sources를 덮어쓰지
+않는다. 자세한 계약과 한국 특유의 처리는 [DATA_ADAPTERS.md](DATA_ADAPTERS.md)에 있다.
+
 ## 2. API
 
 ```bash
@@ -93,5 +116,6 @@ python harness.py selftest                      # 전체 (하네스 + 신규 계
 python -m pytest tests/test_screening.py -q
 python -m pytest tests/test_deep_dive.py -q
 python -m pytest tests/test_api.py -q           # FastAPI 미설치 시 자동 skip
+python -m pytest tests/test_data_adapters.py -q # PyYAML 미설치 시 자동 skip
 (cd apps/web && npm run build)                  # 타입 체크 포함
 ```

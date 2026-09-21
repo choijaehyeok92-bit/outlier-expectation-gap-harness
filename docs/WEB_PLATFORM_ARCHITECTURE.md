@@ -127,14 +127,30 @@ tests/{test_screening,test_deep_dive,test_api}.py
 docs/WEB_PLATFORM_ARCHITECTURE.md
 ```
 
+### Phase 3에서 추가된 것
+
+```
+data_adapters/
+  types.py base.py http.py         공통 엔티티·provider 인터페이스·주입 가능 transport
+  pack.py                          financial_pack.schema.json 호환 pack 조립 (CFS/OFS 비혼합)
+  marketdata.py                    CSV/HTTP 시장 데이터 기반 클래스
+  universe.py cli.py testing.py    유니버스 동기화·CLI·오프라인 transport
+  sec/{provider,xbrl}.py           SecEdgarProvider (harness_core/fetch.py 재사용) + companyfacts
+  dart/{provider,corpcode,accounts,periods}.py
+                                   DartProvider + corpCode 캐시 + 계정 체인 + 기간 산술
+  market_us/, market_kr/           MarketDataProvider (KRX 호환)
+  fixtures/{sec,dart}/             오프라인 기록 응답
+config/{sec,dart,market_kr}.json   엔드포인트·보고서코드·연결기준·유니버스 필터
+config/account_mappings_kr.yaml    XBRL account_id → 정규화 metric (버전 2026.09.1)
+scripts/build_{sec,dart}_fixtures.py
+tests/test_data_adapters.py
+docs/DATA_ADAPTERS.md
+```
+
 ### 이후 Phase에서 추가될 것
 
 ```
 db/migrations/                           Alembic
-data_adapters/sec/                       SecEdgarProvider (harness_core/fetch.py 재사용)
-data_adapters/dart/                      DartProvider + corpCode 캐시 + 계정 매핑
-data_adapters/market_us/, market_kr/     MarketDataProvider (KRX 호환 인터페이스)
-config/account_mappings_kr.yaml          XBRL account_id → 정규화 metric (버전 관리)
 packages/screening/metrics.py            결정론적 screening metric 계산 (Python/SQL)
 packages/screening/warehouse.py          screening_warehouse 백엔드
 workers/                                 ARQ 작업: universe sync, ingestion, metric build, triage, full, deep research
@@ -440,6 +456,7 @@ remaining_unknowns / evidence_quality / final_synthesis
 |---|---|---|
 | GET | `/api/health` | ✅ |
 | GET | `/api/universe` | ✅ (현재는 완료된 run 인덱스) |
+| GET | `/api/universe/securities` | ✅ SEC/DART 기반 상장 유니버스 |
 | GET | `/api/screen/fields` | ✅ field registry |
 | GET | `/api/runs`, `/api/runs/{run_id}` | ✅ 읽기 전용 |
 | GET | `/api/companies/{ticker}` | ✅ 기본정보 + 하네스 이력 + 딥다이브 목록 |
@@ -490,7 +507,7 @@ python harness.py deep-list
 |---|---|---|
 | 1 | 기존 하네스 read-only API | ✅ 완료 |
 | 2 | DB + run index (PostgreSQL, Alembic) | ⏳ 현재는 파일시스템 인덱스 |
-| 3 | US/KR universe + SEC/DART ingestion | ⏳ |
+| 3 | US/KR universe + SEC/DART ingestion | ✅ 어댑터·유니버스·적재 완료 (라이브 API 미검증) |
 | 4 | screening warehouse (결정론적 지표 계산) | ⏳ |
 | 5 | ScreeningSpec | ✅ 완료 |
 | 6 | NL screener | ✅ 완료 (lexicon + LLM 양쪽) |

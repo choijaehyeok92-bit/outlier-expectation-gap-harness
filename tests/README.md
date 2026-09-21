@@ -15,5 +15,13 @@ percent parsing, the ScreeningSpec contract and its field allowlist, the compile
 logic (missing is never zero), natural-language resolution against the config lexicon, the
 read-only run index, deep-dive selection and stage validation, the report invariants that keep a
 deep dive from editing a harness result or returning positive-only research, and the API routes.
-`test_api.py` skips itself when `apps/api/requirements.txt` is not installed; the rest need only
+`test_data_adapters.py` covers SEC and DART ingestion against recorded fixtures: the account
+resolution chain, fiscal period arithmetic for December and non-December year ends, the refusal to
+read a nine-month cumulative as a quarter, CFS/OFS preference and the refusal to mix them, the
+as-of cutoff on both filings and facts, restatement flagging, universe exclusions with their
+reasons, the separation of market data from the regulators, and the rule that an API key never
+reaches a fixture filename.
+
+`test_api.py` skips itself when `apps/api/requirements.txt` is not installed and
+`test_data_adapters.py` when `data_adapters/requirements.txt` is not; the rest need only
 `jsonschema`.
