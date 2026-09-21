@@ -1,5 +1,5 @@
 name: ALAB v3.3 complete triage
-# clean rerun after trigger narrowing
+# final clean rerun after severity fix
 
 on:
   push:
