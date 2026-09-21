@@ -1,0 +1,122 @@
+{
+  "agent_id": "MA",
+  "ticker": "BRK.B",
+  "as_of_date": "2026-09-18",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 83,
+  "confidence_0_1": 0.78,
+  "bull_score": 92,
+  "bear_score": 70,
+  "bull_case": "유리한 사업·자본배분 가정이 유지되면 기준 점수보다 높은 결과가 가능하다.",
+  "bear_case": "성장·마진·자본배분이 정상화되고 핵심 불확실성이 불리하게 전개되면 기준 점수보다 낮아질 수 있다.",
+  "thesis": "Greg Abel inherited a strong capital-allocation system and has operated within Buffett-era discipline: conservative liquidity, intrinsic-value-based repurchases and selective acquisitions. Governance continuity is strong, though the post-Buffett CEO record is brief.",
+  "evidence": [
+    {
+      "claim": "Greg Abel became CEO on January 1, 2026; Warren Buffett remained Chairman.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526106253/d882687ddef14a.htm",
+      "period": "2026",
+      "as_of_date": "2026-03-13",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-SUCCESSION"
+    },
+    {
+      "claim": "The repurchase program requires CEO judgment that price is below intrinsic value after consultation with the Chairman.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026 Q2",
+      "as_of_date": "2026-08-10",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-REPURCHASE-POLICY"
+    },
+    {
+      "claim": "H1 2026 repurchases totaled $4.8B, with Q2 B-share average prices around $476–$488.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026 H1/Q2",
+      "as_of_date": "2026-08-10",
+      "value": 4800,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-BUYBACK-2026H1"
+    },
+    {
+      "claim": "OxyChem and Taylor Morrison acquisitions used roughly $16.2B of cash consideration/equity value in 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026",
+      "as_of_date": "2026-08-10",
+      "value": 16200,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-ACQ-2026"
+    }
+  ],
+  "counterevidence": [
+    "Greg Abel's public CEO track record is less than one year at the cutoff.",
+    "The very large cash balance indicates capital deployment constraints.",
+    "Acquisition returns cannot yet be measured for 2026 deals."
+  ],
+  "unknowns": [
+    "Abel-era acquisition hurdle rates and post-close return targets.",
+    "Future role of Buffett in large capital allocation decisions."
+  ],
+  "uncertainties": [],
+  "falsifiers": [
+    "Large acquisition write-downs emerge.",
+    "Repurchases occur persistently above conservative intrinsic value.",
+    "Governance/control disclosures show material reliability failures."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "No restatement, auditor dispute, material-control failure or undisclosed related-party event is identified in reviewed primary filings."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner earnings/share",
+      "direction": "up",
+      "threshold": "base path 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "operating earnings",
+      "direction": "up",
+      "threshold": "실질 성장 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "capital allocation",
+      "direction": "up",
+      "threshold": "intrinsic-value discipline 유지",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 Q3 10-Q",
+    "2026 annual report",
+    "capital allocation update"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 80,
+      "rationale": "Q2 buybacks were around $476–$489 B-equivalent while modeled Base value is ~$634, ratio below 0.8."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 85,
+      "rationale": "CEO succession was pre-announced and completed Jan.1 2026; filings and controls remain conventional with Abel/Chang certifications."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 85,
+      "rationale": "Decentralized operating model and long history of reallocating capital across industries support adaptability; post-succession sample remains short."
+    }
+  ]
+}
