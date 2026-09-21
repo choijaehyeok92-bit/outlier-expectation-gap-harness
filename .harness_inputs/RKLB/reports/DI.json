@@ -5,12 +5,12 @@
   "domain": "disruptive_innovation",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 78.75,
+  "score_0_100": 78.5,
   "confidence_0_1": 0.79,
   "bull_score": 90,
   "bear_score": 60,
-  "bull_case": "Rocket Lab is moving from dedicated small launch into an integrated stack of launch, spacecraft, components, deployable infrastructure and, if Iridium closes, spectrum plus recurring satellite services. Electron's cadence and 90+ launch backlog show adoption while Neutron could extend the model into medium lift.",
-  "bear_case": "Electron is a strong niche product rather than a 10x cost revolution, Neutron is unflown, and Iridium is an acquisition of an existing network rather than a newly created market. Competitors with deeper balance sheets can respond, so the disruption claim depends on integration and execution rather than technology narrative alone.",
+  "bull_case": "Rocket Lab is expanding from dedicated small launch into launch, spacecraft, components, deployable infrastructure and, if Iridium closes, spectrum plus recurring satellite services. Electron cadence and 90+ launch backlog show adoption, while Neutron could extend the model into medium lift.",
+  "bear_case": "Electron is a strong niche product rather than a proven 10x cost revolution, Neutron is unflown, and Iridium is an acquired network rather than a newly created market. The disruption case therefore depends on integration and execution, while better-capitalized competitors can respond.",
   "thesis": "Rocket Lab qualifies as a meaningful disruptive innovator, but the disruption is primarily value-chain integration and responsiveness rather than a proven 10x unit-cost break. Electron had 16 launches in 2026 through September 11, the launch backlog exceeds 90 missions, and the company is adding HASTE/GHOST, Neutron, spacecraft, GEO platforms, optical terminals and potentially Iridium's spectrum/network. This is a credible transition from component supplier and launcher toward an end-to-end space platform. The main constraint is that Neutron has not yet flown and Iridium has not closed.",
   "evidence": [
     {
