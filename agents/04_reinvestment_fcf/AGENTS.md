@@ -23,6 +23,15 @@
 - 증분 ROIC의 구조적 붕괴
 - 장기간 지속되는 과도한 희석
 
+## pre-FCF 기업의 주당 경제가치
+사는 것은 회사 성장이 아니라 **주당 경제가치의 성장**이다. FCF가 아직 구조적으로 음수여서 FCF/share가 의미를 갖지 못하는 단계라도, 희석의 경제적 영향을 평가하지 못한 채 넘어가지 않는다. 이때는 보조 proxy를 명시적으로 골라 확인한다.
+
+우선순위는 `veto_criteria.definitions`의 `per_share_value_proxies`를 따른다 — `owner_fcf_per_share` → `gross_profit_per_share` → `arr_per_share` → 명시적으로 정당화한 `economic_value_per_share_proxy`. 어느 것을 왜 골랐는지 rationale에 적는다.
+
+예: 주식수 +7%에 gross profit +50%면 GP/share는 크게 증가한다. 희석은 여전히 점수 감점 사유지만 희석 Hard Veto의 주당가치 파괴 요건은 충족되지 않는다. 반대로 주식수 +10%에 gross profit +5%이거나 FCF/share가 지속 감소하면 파괴 증거가 강해진다.
+
+**보조 proxy는 `fcf_per_share_quality`의 공식 점수를 대체하지 않는다.** 그 점수는 rubric의 관측표를 그대로 따른다. proxy는 희석 Hard Veto의 주당가치 요건 판단과 `dilution_metrics`에 쓴다.
+
 ## v3 분석 계약
 v3는 incremental_roic, reinvestment_runway, fcf_per_share_quality의 검증된 subscores를 직접 읽는다. 버핏 스타일 가치주는 큰 재투자 활주로를 요구하지 않지만 유지보수 capex·운전자본·SBC·일회성을 차감한 지속 가능한 정상화 owner earnings를 요구한다.
 

@@ -386,6 +386,38 @@
         ]
       },
       "description": "독립 평가축 점수. 100점 핵심 점수에는 합산하지 않는다."
+    },
+    "dilution_watch": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "희석 watch 상태. Hard Veto가 아니며 archetype을 제거하지 않는다. dilution_metrics를 선언한 보고서가 없으면 null이다(기존 run 호환).",
+      "properties": {
+        "status": {
+          "enum": [
+            "normal",
+            "monitor",
+            "elevated",
+            "severe"
+          ]
+        },
+        "position_cap": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "position_before": {
+          "type": "string"
+        },
+        "declared_by": {
+          "type": "string"
+        },
+        "is_hard_veto": {
+          "const": false
+        }
+      }
     }
   },
   "allOf": [
