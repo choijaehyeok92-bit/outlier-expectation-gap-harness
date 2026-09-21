@@ -251,6 +251,21 @@ class V3Tests(unittest.TestCase):
             self.assertEqual(len(result['early_exit_record']['eliminated_archetypes']),len(h.ARCHETYPE_IDS))
         self.assertEqual(result['early_exit_record']['stage'],'pre_ic')
 
+    def test_plan_emits_explicit_continuation_control(self):
+        # No completed reports means triage is pending: this is a continue state,
+        # not a reason for an orchestrator to stop after the current CLI call.
+        step=h.plan('SYNTH',[])
+        self.assertEqual(step['stage'],'triage')
+        self.assertEqual(step['execution_control'],'continue')
+
+        # A deterministic non-fit after triage is the explicit policy stop.
+        reports=self.fixture('non_fit')
+        triage=[r for r in reports if r['domain'] in h.EXEC['triage_domains']]
+        result=self.aggregate(triage)
+        step=h.plan('SYNTH',triage,result)
+        self.assertEqual(step['stage'],'early_exit')
+        self.assertEqual(step['execution_control'],'stop_early')
+
     def test_global_cache_never_copies_company_conclusions(self):
         reports=self.fixture();mo=next(r for r in reports if r['agent_id']=='MO')
         mo['company_transmission']={'ticker':'WRONG','secret':'never cache'}
