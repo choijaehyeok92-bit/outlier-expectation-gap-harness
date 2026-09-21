@@ -1,5 +1,5 @@
 name: ALAB v3.3 macro overlay
-# rerun after triage refresh
+# rerun after same-day cutoff timestamp normalization
 
 on:
   push:
