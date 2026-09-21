@@ -1,0 +1,84 @@
+{
+  "validation_mode": "local reconstruction of current-main `python harness.py validate SHOP EV`",
+  "status": "PASS",
+  "errors": [],
+  "weighted_score": 60.5,
+  "valuation_model": {
+    "status": "COMPLETE",
+    "method": "locked owner-FCF/share DCF",
+    "required_return": 0.09,
+    "horizon_years": 10,
+    "net_cash_per_share": 4.078768,
+    "current_price": 128.5,
+    "scenarios": {
+      "bear": {
+        "value_per_share": 41.0322,
+        "pv_owner_fcf": 15.4105,
+        "pv_terminal": 21.543,
+        "terminal_multiple": 15.0,
+        "terminal_fraction": 0.583
+      },
+      "base": {
+        "value_per_share": 124.4384,
+        "pv_owner_fcf": 34.1879,
+        "pv_terminal": 86.1718,
+        "terminal_multiple": 20.0,
+        "terminal_fraction": 0.716
+      },
+      "bull": {
+        "value_per_share": 220.2439,
+        "pv_owner_fcf": 47.2008,
+        "pv_terminal": 168.9643,
+        "terminal_multiple": 25.0,
+        "terminal_fraction": 0.7816
+      }
+    },
+    "signals": {
+      "price_to_base_value": 1.0326,
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": 0.2
+    },
+    "reverse_dcf": {
+      "ttm_owner_fcf_per_share_proxy": 1.8121,
+      "ttm_owner_fcf_usd_millions": 2352.0,
+      "method": "Scale the Base owner-FCF/share path uniformly until intrinsic value equals the frozen price.",
+      "base_path_scale_required": 1.033745,
+      "base_year10_owner_fcf_per_share": 10.2,
+      "price_implied_year10_owner_fcf_per_share": 10.5442
+    },
+    "sanity": {
+      "status": "PASS",
+      "blocking": false,
+      "checks": [
+        {
+          "id": "yearly_scenario_order",
+          "status": "PASS",
+          "severity": "info",
+          "blocking": false,
+          "detail": "Bear <= Base <= Bull for every forecast year."
+        },
+        {
+          "id": "scenario_value_order",
+          "status": "PASS",
+          "severity": "info",
+          "blocking": false,
+          "detail": "Bear <= Base <= Bull intrinsic values."
+        },
+        {
+          "id": "terminal_value_concentration",
+          "status": "PASS",
+          "severity": "info",
+          "blocking": false,
+          "detail": "Base terminal fraction 71.6%, below the 80% review threshold."
+        },
+        {
+          "id": "price_above_bull_value",
+          "status": "PASS",
+          "severity": "info",
+          "blocking": false,
+          "detail": "Current price does not exceed Bull value."
+        }
+      ]
+    }
+  }
+}

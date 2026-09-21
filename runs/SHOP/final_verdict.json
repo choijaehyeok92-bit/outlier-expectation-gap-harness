@@ -1,0 +1,47 @@
+{
+  "ticker": "SHOP",
+  "as_of_date": "2026-09-18",
+  "score_100": 79.4,
+  "score_100_ex_valuation": 82.74,
+  "coverage_weight": 100,
+  "classification": "Emerging Outlier",
+  "archetype": "compounder",
+  "secondary_archetype": "growth",
+  "hard_veto_status": "CLEARED",
+  "ic_state": "NORMAL",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "position_range": "2-4%",
+  "macro_purchase_pacing_multiplier": 0.7,
+  "disruptive_innovation_score": 83.25,
+  "long_term_growth_score": 70.0,
+  "valuation": {
+    "current_price": 128.5,
+    "bear": 41.0322,
+    "base": 124.4384,
+    "bull": 220.2439,
+    "price_to_base": 1.0326
+  },
+  "dispersion_review": {
+    "metric": "mean downside skew",
+    "per_domain_skew": {
+      "SL": 1.5,
+      "CP": 4.0,
+      "MT": 2.5,
+      "RF": 5.0,
+      "MA": 0.5,
+      "FS": 5.5,
+      "EV": 0.5,
+      "AS": 4.5,
+      "DI": 6.5
+    },
+    "mean_skew": 3.39,
+    "band": "balanced_or_upside_skew",
+    "reduce_bands": 0,
+    "base_state": "NORMAL_CANDIDATE",
+    "base_position_range": "2-4%",
+    "adjusted_state": "NORMAL_CANDIDATE",
+    "adjusted_position_range": "2-4%"
+  },
+  "execution_control": "stop_complete",
+  "reconstruction": true
+}

@@ -1,0 +1,95 @@
+{
+  "agent_id": "IC",
+  "ticker": "SHOP",
+  "as_of_date": "2026-09-18",
+  "domain": "investment_committee",
+  "role": "chair",
+  "analysis_status": "complete",
+  "score_0_100": 79.4,
+  "confidence_0_1": 0.88,
+  "thesis": "Shopify qualifies as a Compounder. Core score is 79.40 with full coverage, ex-valuation quality is 82.74, Compounder gates clear, and every Hard Veto is cleared. The company is not a strong expectation-gap setup at $128.50: locked Base is $124.44, so the investment case rests on durable compounding rather than an obvious valuation discount. Mechanical state is NORMAL_CANDIDATE with a 2-4% range; macro overlay slows purchase pacing to 0.7x but does not alter the score or position band.",
+  "evidence": [
+    {
+      "claim": "Locked price/Base is 1.0326; Bear/Base/Bull values are $41.03/$124.44/$220.24.",
+      "source_type": "other",
+      "source": "SHOP valuation_model.json",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "valuation",
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "claim": "Q2 2026 GMV grew 32%, revenue 34%, operating income 68%, and FCF margin reached 18%.",
+      "source_type": "filing",
+      "source": "Shopify Q2 2026 10-Q/results",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": "32%/34%/68%/18%",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "Payments penetration reached 68%, App Store breadth exceeded 21,000 apps at year-end 2025, and UCP/Catalog extend the platform into AI commerce.",
+      "source_type": "filing",
+      "source": "Shopify 2025 10-K, Q2 2026 10-Q and 2026 product disclosures",
+      "period": "2025-2026",
+      "as_of_date": "2026-09-18",
+      "value": "moat expansion",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "claim": "TTM owner FCF is about $2.35B and diluted shares declined YoY; H1 repurchases averaged $114.63, below locked Base value.",
+      "source_type": "filing",
+      "source": "Shopify financial filings",
+      "period": "TTM/H1 2026",
+      "as_of_date": "2026-08-05",
+      "value": "strong per-share cash economics",
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Bear value is only about 32% of spot, so valuation compression can still cause large drawdowns.",
+    "Founder voting control is a persistent governance discount.",
+    "Merchant credit and Payments increase exposure to consumer/transaction cycles.",
+    "The frozen price already reflects approximately the Base long-run FCF path, limiting a clear expectation gap."
+  ],
+  "unknowns": [
+    "Long-run AI/agentic-commerce profit capture.",
+    "Normalized merchant-credit losses over a recession.",
+    "Long-run payment take economics and regulatory/competitive pressure.",
+    "Five-year own-history owner-FCF valuation percentile."
+  ],
+  "falsifiers": [
+    "If MT or RF falls below Compounder thresholds, price/Base rises above 1.2 without higher intrinsic value, or FCF/share decouples negatively from GMV for multiple periods, Compounder eligibility must be re-tested."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "durable double-digit compounding",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "GMV / Payments penetration",
+      "direction": "up",
+      "threshold": "platform and wallet share remain strong",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "repurchase price / intrinsic value",
+      "direction": "disciplined",
+      "threshold": "buybacks remain value-accretive",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 10-Q and FCF normalization.",
+    "Payments/merchant-credit trend.",
+    "AI/B2B monetization and 2027 capital allocation."
+  ],
+  "verdict": "support",
+  "ic_state": "NORMAL",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "position_range": "2-4%",
+  "macro_purchase_pacing_multiplier": 0.7
+}

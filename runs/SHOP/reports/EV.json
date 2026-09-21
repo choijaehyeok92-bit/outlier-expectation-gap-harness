@@ -1,0 +1,220 @@
+{
+  "agent_id": "EV",
+  "ticker": "SHOP",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 60.5,
+  "confidence_0_1": 0.87,
+  "bull_score": 76.5,
+  "bear_score": 44.0,
+  "bull_case": "Shopify sustains high-teens/20%+ GMV and revenue growth, expands Payments and merchant services, monetizes AI/agentic commerce, and compounds owner FCF/share well above the Base path.",
+  "bear_case": "Commerce growth normalizes, payment/merchant-service take economics compress, AI adds less incremental monetization than expected, and the current multiple contracts despite continued FCF growth.",
+  "thesis": "Shopify is already a strong cash generator: reconstructed TTM owner FCF through Q2 2026 is about $2352M, or $1.81/share. The locked DCF produces Bear/Base/Bull values of $41.03/$124.44/$220.24 versus $128.50. Price/Base is 1.033x, so current valuation roughly requires the Base FCF/share path to be 1.03x stronger—year-10 owner FCF/share about $10.54 versus Base $10.20. This is a demanding but not Bull+ expectation; the main risk is multiple/expectation compression rather than weak current cash generation.",
+  "evidence": [
+    {
+      "claim": "Reconstructed TTM owner FCF through Q2 2026 is about $2352M, or $1.81/share, using OCF less PP&E capex.",
+      "source_type": "filing",
+      "source": "Shopify 2025 Form 10-K, Q2 2025 Form 10-Q and Q2 2026 Form 10-Q",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-08-05",
+      "value": 1.8121,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "EV-SHOP-FCF-001",
+      "economic_driver": "owner_fcf"
+    },
+    {
+      "claim": "Q2 2026 revenue grew 34% YoY and free-cash-flow margin was 18%; Q1 2026 revenue also grew 34% with a 15% FCF margin.",
+      "source_type": "company",
+      "source": "Shopify Q2 2026 and Q1 2026 results",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-05",
+      "value": "34% Q2 growth / 18% FCF margin; 34% Q1 growth / 15% FCF margin",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-SHOP-GROWTH-001",
+      "economic_driver": "growth_and_cash_conversion"
+    },
+    {
+      "claim": "Q2 2026 revenue was $3.583B and H1 2026 revenue was $6.753B; H1 operating cash flow was $1.139B with only $9M of PP&E purchases.",
+      "source_type": "filing",
+      "source": "Shopify Q2 2026 Form 10-Q",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-05",
+      "value": "$3.583B / $6.753B / $1.139B / $9M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-SHOP-H1-001",
+      "economic_driver": "operating_leverage"
+    },
+    {
+      "claim": "At June 30, 2026 cash plus current and long-term marketable securities were approximately $5.472B; operating lease liabilities were about $178M.",
+      "source_type": "filing",
+      "source": "Shopify Q2 2026 Form 10-Q",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-05",
+      "value": "$5.472B liquid securities; $178M lease liabilities",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-SHOP-BS-001",
+      "economic_driver": "net_cash"
+    },
+    {
+      "claim": "Shopify's 2024 Q2 and Q3 interim financial statements were furnished on Form 6-K and are now valid trailing-quarter equivalents because the FP pack extracts quarter/ytd financial facts from those exact documents.",
+      "source_type": "filing",
+      "source": "Shopify 2024 Q2/Q3 Forms 6-K; current harness intake equivalence policy",
+      "period": "2024 Q2-Q3",
+      "as_of_date": "2026-09-18",
+      "value": "2 accepted 6-K equivalents",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-SHOP-INTAKE-001",
+      "economic_driver": "data_quality"
+    },
+    {
+      "claim": "Locked Bear/Base/Bull values are $41.03/$124.44/$220.24; Base terminal value is 71.6% of operating value.",
+      "source_type": "other",
+      "source": "Deterministic harness valuation from frozen SHOP inputs",
+      "period": "10-year DCF",
+      "as_of_date": "2026-09-18",
+      "value": "41.03/124.44/220.24",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "EV-SHOP-DCF-001",
+      "economic_driver": "valuation"
+    }
+  ],
+  "counterevidence": [
+    "Q2 2026 GAAP net income benefited from equity-investment gains; owner FCF rather than EPS is the cleaner valuation anchor.",
+    "Beginning in April 2026, Canadian merchant cash advance cash flows moved from operating to investing classification, improving reported OCF/FCF comparability only after adjustment.",
+    "The frozen price still embeds durable high-teens owner-FCF/share compounding for a decade; a meaningful growth deceleration could compress value sharply.",
+    "Shopify Payments and merchant solutions expose the model to payment competition, transaction economics and consumer/merchant cyclicality."
+  ],
+  "unknowns": [
+    "Normalized FCF margin after fully adjusting for the 2026 merchant-cash-advance classification change.",
+    "Incremental monetization attributable specifically to AI/agentic-commerce products.",
+    "Long-run Payments penetration and merchant-services take economics.",
+    "Five-year own-history valuation percentile under a consistent owner-FCF metric."
+  ],
+  "falsifiers": [
+    "If owner FCF/share growth falls materially below the Base path for multiple quarters while GMV growth also decelerates, Base value should be cut.",
+    "If Payments/merchant-services economics compress without offsetting subscription or AI monetization, the terminal FCF path weakens.",
+    "If FCF/share compounds faster than Base with stable share count, the current expectation burden becomes easier to justify."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Frozen price $128.50 is well below locked Bull value $220.24; Bull+ is not required."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "high-teens long-run compounding with disciplined share count",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "GMV/revenue growth",
+      "direction": "up",
+      "threshold": "durable mid/high-teens or better as scale increases",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Payments penetration / merchant solutions economics",
+      "direction": "up",
+      "threshold": "penetration rises without structural take-rate or loss deterioration",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Normalize Q3 2026 OCF/FCF for the merchant-cash-advance classification change.",
+    "Track 2026 repurchases versus Base intrinsic value and share-count reduction.",
+    "Quantify AI/agentic-commerce contribution to merchant adoption and monetization."
+  ],
+  "verdict": "support",
+  "archetype_signals": {
+    "price_to_base_value": 1.0326,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.2
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "price/Base=1.0326, mapping to the locked 0.9-1.1 band and score 60."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "price/Base=1.0326, mapping to the locked 0.9-1.1 band and score 55."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 70,
+      "rationale": "Positive current owner FCF, ordered scenarios and Base terminal fraction 71.6% support reasonable robustness, but the decade-long Base FCF path remains execution-sensitive."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "Current price requires roughly the Base cash-generation trajectory, leaving limited room for sustained growth misses."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Current price is only slightly above Base value, so expected return is highly sensitive to the exact long-run FCF path."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "Merchant cash advance classification, payments economics and terminal FCF margin remain material sensitivities."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.2,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          1.8,
+          1.9,
+          2.0,
+          2.2,
+          2.4,
+          2.6,
+          2.8,
+          3.0,
+          3.2,
+          3.4
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          2.3,
+          2.9,
+          3.6,
+          4.4,
+          5.3,
+          6.2,
+          7.2,
+          8.2,
+          9.2,
+          10.2
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          2.6,
+          3.4,
+          4.4,
+          5.6,
+          7.0,
+          8.6,
+          10.3,
+          12.1,
+          14.0,
+          16.0
+        ]
+      }
+    }
+  }
+}
