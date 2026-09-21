@@ -1,0 +1,169 @@
+{
+  "agent_id": "RF",
+  "ticker": "ALAB",
+  "as_of_date": "2026-09-18",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 83.5,
+  "confidence_0_1": 0.8,
+  "bull_score": 92,
+  "bear_score": 68,
+  "bull_case": "Astera is reinvesting heavily into R&D while generating positive cash flow, and new products are scaling revenue faster than physical capital needs. If Scorpio/custom/optical programs repeat this pattern, per-share FCF can compound rapidly.",
+  "bear_case": "SBC remains large, the AI cycle may be unusually favorable, and current growth could overstate normalized incremental returns. If new product families require more engineering while customer concentration persists, reinvestment returns can normalize sharply.",
+  "thesis": "Reinvestment quality is strong. FY2025 R&D plus capex exceeded operating cash flow, yet revenue more than doubled and operating income swung from loss to profit; H1 2026 continued rapid growth with positive OCF and modest capex. The model is R&D-intensive but physically capital-light. FCF/share quality is reduced by high SBC and share growth, so the score stops below exceptional despite a long multi-product runway.",
+  "evidence": [
+    {
+      "claim": "FY2025 revenue was $852.5M, up 115% YoY; operating income was $173.4M versus a $116.1M loss in 2024.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000010/alab-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-20",
+      "value": "852.5M / 173.4M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-RF-2025"
+    },
+    {
+      "claim": "FY2025 R&D was $304.0M and capex $37.5M versus operating cash flow $319.3M, an internal reinvestment absorption ratio of about 107% using the rubric fallback year.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000010/alab-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-20",
+      "value": "304.0M + 37.5M / 319.3M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-RF-ABSORB"
+    },
+    {
+      "claim": "H1 2026 revenue was $700.8M, operating cash flow $162.3M and capex $28.1M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-05",
+      "value": "700.8M / 162.3M / 28.1M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-RF-H1"
+    },
+    {
+      "claim": "H1 2026 stock-based compensation was $112.9M and period-end common shares rose about 1.9% from 2025 year-end.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-05",
+      "value": "112.9M / +1.9%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-RF-SBC"
+    },
+    {
+      "claim": "Management is expanding into Scorpio, Leo, optical and custom connectivity while maintaining Q2 gross margin above 73%.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-04",
+      "value": "73.3% GAAP gross margin",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-RF-RUNWAY"
+    }
+  ],
+  "counterevidence": [
+    "FY2025 and 2026 occurred during an exceptional AI infrastructure spending cycle.",
+    "SBC is material relative to operating cash flow and must be treated as an economic cost.",
+    "Incremental ROIC is difficult to isolate because R&D creates multi-year intangible assets not carried as invested capital."
+  ],
+  "unknowns": [
+    "Normalized incremental ROIC through a downcycle.",
+    "Maintenance versus growth R&D by product family.",
+    "Long-run SBC normalization and option/warrant dilution."
+  ],
+  "falsifiers": [
+    "If revenue growth slows sharply while R&D remains elevated, incremental ROIC should fall.",
+    "If FCF/share does not outgrow diluted shares over 2027-2028, reinvestment quality is overstated.",
+    "If new product ramps materially compress gross margin, the runway score should decline."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Revenue, operating profit and cash flow have improved rapidly alongside R&D investment; no evidence shows incremental returns structurally below the cost of capital."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Share growth is currently modest relative to business growth, although SBC and customer warrants require continued monitoring."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "incremental operating profit / R&D",
+      "direction": "up",
+      "threshold": "remain strongly positive over rolling multi-year periods",
+      "cadence": "annual"
+    },
+    {
+      "name": "FCF/share",
+      "direction": "up",
+      "threshold": "grow faster than diluted share count",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "R&D plus capex / OCF",
+      "direction": "stable",
+      "threshold": "high reinvestment with positive OCF",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 full-year FCF/share",
+    "Scorpio/custom R&D productivity",
+    "SBC normalization"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 85,
+      "rationale": "Revenue more than doubled in 2025 while operating income improved by nearly $290M and physical capital needs stayed modest. Exact intangible invested capital is uncertain, so the score remains below 90."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 90,
+      "rationale": "Using FY2025 fallback, (R&D $304.0M + capex $37.5M) / OCF $319.3M is about 107%. Rapid profit growth and multiple adjacent product ramps support the >60% high-return reinvestment anchor."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 75,
+      "rationale": "Cash generation is positive and scaling, but high SBC and continued share growth materially reduce the quality of headline FCF for common shareholders."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "R&D is expensed, so conventional invested-capital accounting understates economic capital."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "AI infrastructure spending could normalize before all adjacent products mature."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "SBC and customer warrants can dilute per-share cash compounding."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
