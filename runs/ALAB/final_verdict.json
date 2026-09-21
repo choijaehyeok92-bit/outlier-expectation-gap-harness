@@ -4,23 +4,21 @@
   "decision_policy_version": "3.3",
   "as_of_date": "2026-09-18",
   "ticker": "ALAB",
-  "score_100": 55.5,
-  "score_100_ex_valuation": null,
-  "coverage_weight": 15,
-  "classification": "Reject",
-  "disruptive_innovation_score": null,
+  "score_100": 65.07,
+  "score_100_ex_valuation": 72.25,
+  "coverage_weight": 35,
+  "classification": "Starter / Watch",
+  "disruptive_innovation_score": 78.75,
   "turnaround_quality_score": null,
   "axis_scores": {
-    "disruptive_innovation": null,
+    "disruptive_innovation": 78.75,
     "long_term_growth": null
   },
   "reachable_archetypes_raw": [
-    "compounder",
-    "growth",
-    "outlier_growth"
+    "compounder"
   ],
   "early_exit": false,
-  "hard_veto_status": "PENDING_REVIEW",
+  "hard_veto_status": "UNRESOLVED",
   "mechanical_pre_ic_state": "INCOMPLETE",
   "position_range_pre_ic": "N/A",
   "domain_scores": {
@@ -29,7 +27,36 @@
     "moat_trajectory": null,
     "reinvestment_fcf": null,
     "management_allocation": null,
-    "financial_survival": null,
+    "financial_survival": {
+      "bull_score": 92,
+      "bear_score": 68,
+      "criteria": {
+        "dilution_offbalance": 55.0,
+        "liquidity_leverage": 90.0,
+        "stress_survival": 90.0
+      },
+      "raw_weighted_median": 81.25,
+      "score": 81.25,
+      "spread": 24.0,
+      "avg_confidence": 0.88,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 2,
+        "minor": 1
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 81.25,
+      "calibrated_score": 77.92,
+      "calibrated_shadow_score": 77.92,
+      "decision_score": 81.25,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 81.25,
+      "raw_before_provider_calibration": 81.25
+    },
     "expectation_valuation": {
       "bull_score": 75,
       "bear_score": 35,
@@ -60,12 +87,101 @@
       "score_before_provider_calibration": 55.5,
       "raw_before_provider_calibration": 55.5
     },
-    "asymmetry": null,
-    "disruptive_innovation": null,
+    "asymmetry": {
+      "bull_score": 82,
+      "bear_score": 38,
+      "criteria": {
+        "permanent_loss": 35.0,
+        "probability_calibration": 65.0,
+        "upside_path": 90.0
+      },
+      "raw_weighted_median": 63.25,
+      "score": 63.25,
+      "spread": 44.0,
+      "avg_confidence": 0.77,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 63.25,
+      "calibrated_score": 61.58,
+      "calibrated_shadow_score": 61.58,
+      "decision_score": 63.25,
+      "provider_offset": -1.67,
+      "score_before_provider_calibration": 63.25,
+      "raw_before_provider_calibration": 63.25
+    },
+    "disruptive_innovation": {
+      "bull_score": 90,
+      "bear_score": 60,
+      "criteria": {
+        "adoption_curve": 85.0,
+        "cost_performance_shift": 80.0,
+        "optionality_incumbent_response": 70.0
+      },
+      "raw_weighted_median": 78.75,
+      "score": 78.75,
+      "spread": 30.0,
+      "avg_confidence": 0.83,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 78.75,
+      "calibrated_score": 75.42,
+      "calibrated_shadow_score": 75.42,
+      "decision_score": 78.75,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 78.75,
+      "raw_before_provider_calibration": 78.75
+    },
     "long_term_growth": null,
     "turnaround_quality": null
   },
   "disputes": [
+    {
+      "domain": "financial_survival",
+      "bull_score": 92,
+      "bear_score": 68,
+      "criteria": {
+        "dilution_offbalance": 55.0,
+        "liquidity_leverage": 90.0,
+        "stress_survival": 90.0
+      },
+      "raw_weighted_median": 81.25,
+      "score": 81.25,
+      "spread": 24.0,
+      "avg_confidence": 0.88,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 2,
+        "minor": 1
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 81.25,
+      "calibrated_score": 77.92,
+      "calibrated_shadow_score": 77.92,
+      "decision_score": 81.25,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 81.25,
+      "raw_before_provider_calibration": 81.25
+    },
     {
       "domain": "expectation_valuation",
       "bull_score": 75,
@@ -96,12 +212,129 @@
       "provider_offset": -1.67,
       "score_before_provider_calibration": 55.5,
       "raw_before_provider_calibration": 55.5
+    },
+    {
+      "domain": "asymmetry",
+      "bull_score": 82,
+      "bear_score": 38,
+      "criteria": {
+        "permanent_loss": 35.0,
+        "probability_calibration": 65.0,
+        "upside_path": 90.0
+      },
+      "raw_weighted_median": 63.25,
+      "score": 63.25,
+      "spread": 44.0,
+      "avg_confidence": 0.77,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 63.25,
+      "calibrated_score": 61.58,
+      "calibrated_shadow_score": 61.58,
+      "decision_score": 63.25,
+      "provider_offset": -1.67,
+      "score_before_provider_calibration": 63.25,
+      "raw_before_provider_calibration": 63.25
+    },
+    {
+      "domain": "disruptive_innovation",
+      "bull_score": 90,
+      "bear_score": 60,
+      "criteria": {
+        "adoption_curve": 85.0,
+        "cost_performance_shift": 80.0,
+        "optionality_incumbent_response": 70.0
+      },
+      "raw_weighted_median": 78.75,
+      "score": 78.75,
+      "spread": 30.0,
+      "avg_confidence": 0.83,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 78.75,
+      "calibrated_score": 75.42,
+      "calibrated_shadow_score": 75.42,
+      "decision_score": 78.75,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 78.75,
+      "raw_before_provider_calibration": 78.75
     }
   ],
   "confirmed_vetoes": [],
-  "unresolved_vetoes": [],
+  "unresolved_vetoes": [
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "UNRESOLVED",
+      "owners": [
+        "CP",
+        "RT"
+      ],
+      "assessments": [
+        {
+          "agent_id": "DI",
+          "owner": false,
+          "status": "conditional",
+          "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+        }
+      ],
+      "missing_reports": [
+        "CP",
+        "RT"
+      ],
+      "missing_assessments": [],
+      "non_owner_escalations": [
+        {
+          "agent_id": "DI",
+          "owner": false,
+          "status": "conditional",
+          "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+        }
+      ]
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "UNRESOLVED",
+      "owners": [
+        "FS",
+        "AS"
+      ],
+      "assessments": [
+        {
+          "agent_id": "AS",
+          "owner": true,
+          "status": "conditional",
+          "rationale": "Solvency is strong, but Bear value is only about 17% of price. The concern is valuation-linked permanent loss rather than financing distress."
+        },
+        {
+          "agent_id": "FS",
+          "owner": true,
+          "status": "cleared",
+          "rationale": "Balance-sheet solvency risk is low; valuation-linked permanent-loss risk is assessed by AS rather than FS."
+        }
+      ],
+      "missing_reports": [],
+      "missing_assessments": [],
+      "non_owner_escalations": []
+    }
+  ],
   "veto_gate": {
-    "overall": "PENDING_REVIEW",
+    "overall": "UNRESOLVED",
     "items": [
       {
         "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
@@ -125,9 +358,15 @@
           "FS",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "The company is net cash, operating-cash-flow positive and has modest capex relative to liquidity."
+          }
+        ],
         "missing_reports": [
-          "FS",
           "RT"
         ],
         "missing_assessments": [],
@@ -140,10 +379,16 @@
           "RF",
           "FS"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Observed period-end share growth was about 1.9% from year-end to June; warrants and SBC require monitoring but do not yet establish persistent excessive dilution."
+          }
+        ],
         "missing_reports": [
-          "RF",
-          "FS"
+          "RF"
         ],
         "missing_assessments": [],
         "non_owner_escalations": []
@@ -155,7 +400,14 @@
           "CP",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "cleared",
+            "rationale": "Revenue growth, production shipments and customer-linked design wins demonstrate paid commercial adoption."
+          }
+        ],
         "missing_reports": [
           "CP",
           "RT"
@@ -203,6 +455,12 @@
         ],
         "assessments": [
           {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Current price is only about 38% of modeled Bull value and roughly 1.07x Base, so Bull+ is not required."
+          },
+          {
             "agent_id": "EV",
             "owner": true,
             "status": "cleared",
@@ -210,7 +468,6 @@
           }
         ],
         "missing_reports": [
-          "AS",
           "RT"
         ],
         "missing_assessments": [],
@@ -218,37 +475,116 @@
       },
       {
         "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
+        "status": "UNRESOLVED",
         "owners": [
           "CP",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "conditional",
+            "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+          }
+        ],
         "missing_reports": [
           "CP",
           "RT"
         ],
         "missing_assessments": [],
-        "non_owner_escalations": []
+        "non_owner_escalations": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "conditional",
+            "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+          }
+        ]
       },
       {
         "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-        "status": "PENDING_REVIEW",
+        "status": "UNRESOLVED",
         "owners": [
           "FS",
           "AS"
         ],
-        "assessments": [],
-        "missing_reports": [
-          "FS",
-          "AS"
+        "assessments": [
+          {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "conditional",
+            "rationale": "Solvency is strong, but Bear value is only about 17% of price. The concern is valuation-linked permanent loss rather than financing distress."
+          },
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Balance-sheet solvency risk is low; valuation-linked permanent-loss risk is assessed by AS rather than FS."
+          }
         ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       }
     ],
     "confirmed": [],
-    "unresolved": [],
+    "unresolved": [
+      {
+        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "status": "UNRESOLVED",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "conditional",
+            "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+          }
+        ],
+        "missing_reports": [
+          "CP",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "conditional",
+            "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+          }
+        ]
+      },
+      {
+        "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+        "status": "UNRESOLVED",
+        "owners": [
+          "FS",
+          "AS"
+        ],
+        "assessments": [
+          {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "conditional",
+            "rationale": "Solvency is strong, but Bear value is only about 17% of price. The concern is valuation-linked permanent loss rather than financing distress."
+          },
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Balance-sheet solvency risk is low; valuation-linked permanent-loss risk is assessed by AS rather than FS."
+          }
+        ],
+        "missing_reports": [],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      }
+    ],
     "pending": [
       {
         "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
@@ -272,9 +608,15 @@
           "FS",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "The company is net cash, operating-cash-flow positive and has modest capex relative to liquidity."
+          }
+        ],
         "missing_reports": [
-          "FS",
           "RT"
         ],
         "missing_assessments": [],
@@ -287,10 +629,16 @@
           "RF",
           "FS"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Observed period-end share growth was about 1.9% from year-end to June; warrants and SBC require monitoring but do not yet establish persistent excessive dilution."
+          }
+        ],
         "missing_reports": [
-          "RF",
-          "FS"
+          "RF"
         ],
         "missing_assessments": [],
         "non_owner_escalations": []
@@ -302,7 +650,14 @@
           "CP",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "cleared",
+            "rationale": "Revenue growth, production shipments and customer-linked design wins demonstrate paid commercial adoption."
+          }
+        ],
         "missing_reports": [
           "CP",
           "RT"
@@ -350,6 +705,12 @@
         ],
         "assessments": [
           {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Current price is only about 38% of modeled Bull value and roughly 1.07x Base, so Bull+ is not required."
+          },
+          {
             "agent_id": "EV",
             "owner": true,
             "status": "cleared",
@@ -357,44 +718,25 @@
           }
         ],
         "missing_reports": [
-          "AS",
           "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [],
-        "missing_reports": [
-          "CP",
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "FS",
-          "AS"
-        ],
-        "assessments": [],
-        "missing_reports": [
-          "FS",
-          "AS"
         ],
         "missing_assessments": [],
         "non_owner_escalations": []
       }
     ],
-    "non_owner_escalations": []
+    "non_owner_escalations": [
+      {
+        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "agent_id": "DI",
+        "owner": false,
+        "status": "conditional",
+        "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+      }
+    ]
   },
   "valuation_model": {
     "status": "COMPLETE",
@@ -474,7 +816,10 @@
     "base_offset": 5.0,
     "max_abs_offset": 5.0,
     "per_domain_offset": {
-      "expectation_valuation": -1.67
+      "financial_survival": -3.33,
+      "expectation_valuation": -1.67,
+      "asymmetry": -1.67,
+      "disruptive_innovation": -3.33
     },
     "basis": {
       "sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조",
@@ -488,18 +833,39 @@
   },
   "dispersion_review": {
     "metric": "scored 도메인 전체에 대한 skew = (score - bear_score) - (bull_score - score) 의 평균. 양수면 하방 폭이 더 넓다는 뜻이다.",
-    "mean_skew": 1.0,
+    "mean_skew": 4.38,
     "label": "balanced_or_upside_skew",
     "reduce_bands": 0,
-    "widest_domain": "expectation_valuation",
-    "most_downside_skewed": "expectation_valuation",
+    "widest_domain": "asymmetry",
+    "most_downside_skewed": "disruptive_innovation",
     "by_domain": [
+      {
+        "domain": "asymmetry",
+        "spread": 44.0,
+        "upside_width": 18.75,
+        "downside_width": 25.25,
+        "skew": 6.5
+      },
+      {
+        "domain": "disruptive_innovation",
+        "spread": 30.0,
+        "upside_width": 11.25,
+        "downside_width": 18.75,
+        "skew": 7.5
+      },
       {
         "domain": "expectation_valuation",
         "spread": 40.0,
         "upside_width": 19.5,
         "downside_width": 20.5,
         "skew": 1.0
+      },
+      {
+        "domain": "financial_survival",
+        "spread": 24.0,
+        "upside_width": 10.75,
+        "downside_width": 13.25,
+        "skew": 2.5
       }
     ]
   },
@@ -589,7 +955,7 @@
   "archetype_fit": {
     "buffett_value": {
       "eligible": false,
-      "fit_score": 0.0,
+      "fit_score": 26.6375,
       "fit_axes": [
         {
           "field": "criterion.reinvestment_fcf.fcf_per_share_quality",
@@ -601,9 +967,9 @@
         {
           "field": "domain.financial_survival",
           "weight": 0.25,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 81.25,
+          "normalized": 0.8125,
+          "missing": false
         },
         {
           "field": "domain.management_allocation",
@@ -622,23 +988,24 @@
         {
           "field": "domain.asymmetry",
           "weight": 0.1,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 63.25,
+          "normalized": 0.6325,
+          "missing": false
         }
       ],
       "failed_conditions": [
         "signal.price_to_base_value",
-        "gate_score"
+        "domain.asymmetry"
       ],
       "missing_conditions": [
         "criterion.reinvestment_fcf.fcf_per_share_quality",
-        "domain.financial_survival",
         "domain.management_allocation",
-        "domain.moat_trajectory",
-        "domain.asymmetry"
+        "domain.moat_trajectory"
       ],
-      "blocking_vetoes": []
+      "blocking_vetoes": [
+        "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+      ]
     },
     "compounder": {
       "eligible": false,
@@ -673,18 +1040,18 @@
           "missing": true
         }
       ],
-      "failed_conditions": [
-        "gate_score"
-      ],
+      "failed_conditions": [],
       "missing_conditions": [
         "domain.moat_trajectory",
         "domain.reinvestment_fcf",
         "domain.management_allocation",
-        "domain.financial_survival",
         "criterion.reinvestment_fcf.incremental_roic",
         "criterion.reinvestment_fcf.reinvestment_runway"
       ],
-      "blocking_vetoes": []
+      "blocking_vetoes": [
+        "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+      ]
     },
     "growth": {
       "eligible": false,
@@ -727,7 +1094,7 @@
         }
       ],
       "failed_conditions": [
-        "gate_score"
+        "domain.asymmetry"
       ],
       "missing_conditions": [
         "domain.structural_leadership",
@@ -735,29 +1102,30 @@
         "domain.moat_trajectory",
         "domain.reinvestment_fcf",
         "domain.management_allocation",
-        "domain.financial_survival",
-        "domain.asymmetry",
         "criterion.reinvestment_fcf.fcf_per_share_quality"
       ],
-      "blocking_vetoes": []
+      "blocking_vetoes": [
+        "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+      ]
     },
     "moonshot": {
       "eligible": false,
-      "fit_score": 0.0,
+      "fit_score": 59.5,
       "fit_axes": [
         {
           "field": "domain.disruptive_innovation",
           "weight": 0.4,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 78.75,
+          "normalized": 0.7875,
+          "missing": false
         },
         {
           "field": "domain.asymmetry",
           "weight": 0.25,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 63.25,
+          "normalized": 0.6325,
+          "missing": false
         },
         {
           "field": "domain.structural_leadership",
@@ -769,26 +1137,26 @@
         {
           "field": "domain.financial_survival",
           "weight": 0.15,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 81.25,
+          "normalized": 0.8125,
+          "missing": false
         }
       ],
       "failed_conditions": [
-        "signal.market_cap_usd"
+        "signal.market_cap_usd",
+        "domain.asymmetry"
       ],
       "missing_conditions": [
-        "domain.disruptive_innovation",
-        "domain.structural_leadership",
-        "domain.asymmetry",
-        "domain.financial_survival",
-        "gate_score"
+        "domain.structural_leadership"
       ],
-      "blocking_vetoes": []
+      "blocking_vetoes": [
+        "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+      ]
     },
     "outlier_growth": {
       "eligible": false,
-      "fit_score": 0.0,
+      "fit_score": 18.0,
       "fit_axes": [
         {
           "field": "domain.long_term_growth",
@@ -814,9 +1182,9 @@
         {
           "field": "criterion.asymmetry.upside_path",
           "weight": 0.2,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 90.0,
+          "normalized": 0.9,
+          "missing": false
         },
         {
           "field": "domain.management_allocation",
@@ -826,7 +1194,10 @@
           "missing": true
         }
       ],
-      "failed_conditions": [],
+      "failed_conditions": [
+        "domain.asymmetry",
+        "criterion.asymmetry.permanent_loss"
+      ],
       "missing_conditions": [
         "domain.long_term_growth",
         "criterion.long_term_growth.opportunity_scale_5y",
@@ -835,14 +1206,12 @@
         "criterion.long_term_growth.market_misperception",
         "domain.customer_product",
         "domain.moat_trajectory",
-        "domain.management_allocation",
-        "domain.financial_survival",
-        "domain.asymmetry",
-        "criterion.asymmetry.upside_path",
-        "criterion.asymmetry.permanent_loss",
-        "gate_score"
+        "domain.management_allocation"
       ],
-      "blocking_vetoes": []
+      "blocking_vetoes": [
+        "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+      ]
     }
   },
   "review_only": false,
@@ -876,9 +1245,18 @@
   "position_range": "N/A",
   "ic_review_flags": [],
   "falsifiers": [
+    "If Scorpio fails to broaden beyond a few hyperscale programs, the multiple-upside-path thesis weakens.",
+    "If Bear value rises materially through demonstrated recurring FCF and customer diversification, the permanent-loss score should improve.",
+    "If customer concentration increases while growth slows, downside asymmetry worsens.",
+    "If Scorpio fails to become a material multi-customer product family, the platform-disruption thesis weakens.",
+    "If hyperscaler custom silicon displaces merchant connectivity faster than Astera expands adjacent products, optionality falls.",
+    "If new products grow revenue without sustaining high gross margins, cost/performance leadership may not translate into economic disruption.",
     "If Scorpio revenue growth stalls before broad multi-customer adoption, the Base owner-FCF path becomes too aggressive.",
     "If gross margin falls materially below 65% without an offsetting acceleration in revenue or FCF, Base value should be cut.",
-    "If diluted share growth persistently exceeds per-share FCF growth, the expectation-gap thesis fails."
+    "If diluted share growth persistently exceeds per-share FCF growth, the expectation-gap thesis fails.",
+    "If annual diluted-share growth exceeds 5% without faster owner-FCF/share growth, dilution should become a stronger veto concern.",
+    "If operating cash flow turns negative for multiple quarters while R&D and capex accelerate, stress-survival score should fall.",
+    "If the company takes material debt to fund ordinary operations, external-capital dependence should be reassessed."
   ],
   "macro_pacing_multiplier": 0.5,
   "decision_authority": "Deterministic eligibility and veto gates; IC may reduce deployment within configured caps."

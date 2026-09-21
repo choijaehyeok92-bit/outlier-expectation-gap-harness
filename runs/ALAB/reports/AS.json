@@ -4,51 +4,153 @@
   "as_of_date": "2026-09-18",
   "domain": "asymmetry",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
-  "hard_veto_flags": [
+  "analysis_status": "complete",
+  "score_0_100": 63.25,
+  "confidence_0_1": 0.77,
+  "bull_score": 82,
+  "bear_score": 38,
+  "bull_case": "Bull value is about 2.67x the cutoff price. Upside can come from Scorpio switching, Aries/Taurus/Leo connectivity, and custom/optical solutions, giving ALAB several distinct AI-infrastructure growth paths.",
+  "bear_case": "Bear value is only about 17% of price. At a roughly $56B market cap, even excellent execution can produce poor returns if AI capex, customer concentration or merchant-switch competition normalize faster than expected.",
+  "thesis": "ALAB has strong upside multiplicity but weak downside asymmetry at $303.25. Bull/current is 2.67x with at least three growth paths, while Bear/current is only 0.17x. Net cash and positive operating cash flow improve survival, but they do not protect the equity from expectation compression. The result is attractive business optionality with only moderate risk-adjusted asymmetry.",
+  "evidence": [
     {
-      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "claim": "Locked DCF is Bear/Base/Bull $50.15/$284.56/$808.46 per share versus a $303.25 cutoff price.",
+      "source_type": "other",
+      "source": "runs/ALAB/aggregate.json deterministic_valuation",
+      "period": "10y from 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "50.15/284.56/808.46",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "ALAB-AS-DCF"
     },
     {
-      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "claim": "Q2 2026 revenue was $392.4M, up 104% YoY, and management expected Scorpio to become the largest product family in Q3.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
+      "period": "Q2/Q3 2026",
+      "as_of_date": "2026-08-04",
+      "value": "392.4M / +104%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-AS-SCORPIO"
+    },
+    {
+      "claim": "Leo X-Series and Leo 2 expanded Astera into fabric-attached and pooled memory, with management citing design activity across AI labs, hyperscalers and neoclouds.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-bolsters-leo-smart-memory-controller-family-agentic",
+      "period": "2026-09-15",
+      "as_of_date": "2026-09-15",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-AS-LEO"
+    },
+    {
+      "claim": "June 30 cash plus marketable securities were about $1.253B and H1 operating cash flow was $162.3M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "2026 H1 / 2026-06-30",
+      "as_of_date": "2026-08-05",
+      "value": "1.253B / 162.3M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-AS-LIQ"
+    },
+    {
+      "claim": "Four direct customers represented 29%, 25%, 15% and 13% of Q2 revenue, although some are manufacturing partners purchasing for end customers.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": "29/25/15/13%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-AS-CONC"
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
+  "counterevidence": [
+    "Q3 guidance of $540M-$560M implies another sharp sequential revenue step-up.",
+    "Gross margin remained above 73% in Q2 and operating cash flow was already positive.",
+    "Scorpio, Leo, Taurus, Aries and custom/optical projects diversify product-level growth drivers."
+  ],
+  "unknowns": [
+    "Probability that Scorpio retains high merchant-switch share through 2030.",
+    "True end-customer concentration after removing manufacturing-partner billing effects.",
+    "Long-run FCF margin once switching, custom and optical products become a larger mix."
+  ],
+  "falsifiers": [
+    "If Scorpio fails to broaden beyond a few hyperscale programs, the multiple-upside-path thesis weakens.",
+    "If Bear value rises materially through demonstrated recurring FCF and customer diversification, the permanent-loss score should improve.",
+    "If customer concentration increases while growth slows, downside asymmetry worsens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "conditional",
+      "rationale": "Solvency is strong, but Bear value is only about 17% of price. The concern is valuation-linked permanent loss rather than financing distress."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is only about 38% of modeled Bull value and roughly 1.07x Base, so Bull+ is not required."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Scorpio and new-platform revenue mix",
+      "direction": "up",
+      "threshold": "broad multi-customer ramp",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "grow faster than diluted shares",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "top-customer revenue concentration",
+      "direction": "down",
+      "threshold": "declining over time",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 Scorpio ramp versus guidance",
+    "Customer concentration by end customer",
+    "FCF/share through 2027"
+  ],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "upside_path",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "Bull/current is about 2.67x and there are at least three independent growth paths: Scorpio switching, Aries/Taurus/Leo connectivity and memory, and custom/optical solutions."
     },
     {
       "criterion_id": "permanent_loss",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 35,
+      "rationale": "Bear/current is about 0.17, mapping below the 0.2 anchor. Net cash and operating cash flow exceeding debt justify the +10 modifier from 25 to 35."
     },
     {
       "criterion_id": "probability_calibration",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 65,
+      "rationale": "The analysis uses locked Bear/Base/Bull values, explicit customer concentration and multiple growth paths, but lacks a reliable base-rate sample for AI-connectivity firms at this valuation scale."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Several growth paths are early in their ramp and can be correlated to the same hyperscale AI capex cycle."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Bear value is highly sensitive to growth-duration and margin compression despite strong liquidity."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Public history is short and the AI fabric market is changing quickly."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

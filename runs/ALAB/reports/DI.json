@@ -4,40 +4,153 @@
   "as_of_date": "2026-09-18",
   "domain": "disruptive_innovation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
-  "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "analysis_status": "complete",
+  "score_0_100": 78.75,
+  "confidence_0_1": 0.83,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Astera is expanding from retimers into switches, memory connectivity, optical and custom connectivity, with COSMOS software spanning the stack. If these products become common rack-scale building blocks, Astera can capture a larger share of AI-system value.",
+  "bear_case": "The products improve AI interconnect performance but hyperscalers and large semiconductor vendors can design competing silicon. Astera may remain a highly successful merchant supplier without controlling the value-chain standard.",
+  "thesis": "Astera qualifies as a strong disruptive innovator in AI connectivity. Scorpio, Aries, Taurus, Leo and COSMOS address multiple interconnect bottlenecks as rack-scale AI systems become bandwidth- and memory-constrained. Adoption is already commercial, with Q2 revenue doubling YoY and Scorpio expected to become the largest product family in Q3. The score is capped because hyperscalers can build custom silicon and Astera does not yet control an industry standard.",
+  "evidence": [
+    {
+      "claim": "Q2 revenue rose 104% YoY to $392.4M and Q3 growth was expected to be driven by Scorpio X-Series production ramp.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
+      "period": "Q2/Q3 2026",
+      "as_of_date": "2026-08-04",
+      "value": "392.4M / +104%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-DI-REV"
+    },
+    {
+      "claim": "Scorpio X-Series 320-lane fabric switch targets the merchant scale-up market and was already shipping in Q1 2026.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-first-quarter-2026-financial-results",
+      "period": "Q1 2026",
+      "as_of_date": "2026-05-05",
+      "value": "320-lane",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-DI-SCORPIO"
+    },
+    {
+      "claim": "The Taurus portfolio added 3.2T Smart Retimers and Redrivers for 224G Ethernet and UALink, with a common COSMOS observability layer.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-04",
+      "value": "3.2T / 224G",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-DI-TAURUS"
+    },
+    {
+      "claim": "Leo X-Series demonstrated up to 62% faster time to first token and up to 22% more tokens per second in cited platform configurations, expanding into fabric-attached memory.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-bolsters-leo-smart-memory-controller-family-agentic",
+      "period": "2026-09-15",
+      "as_of_date": "2026-09-15",
+      "value": "62% TTFT / 22% TPS",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-DI-LEO"
+    },
+    {
+      "claim": "Management highlighted design wins across a broadening customer set and expansion into optical interconnects and custom solutions.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000033/q226exhibit991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-04",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-DI-OPTICAL"
+    }
+  ],
+  "counterevidence": [
+    "Large hyperscalers can design custom connectivity silicon and are not capital-constrained incumbents.",
+    "Scorpio and Leo X-Series are early in their production/adoption curves compared with Aries retimers.",
+    "Growth across multiple product families is still correlated to hyperscale AI infrastructure spending."
+  ],
+  "unknowns": [
+    "Merchant share of scale-up switching after 2027.",
+    "Custom-silicon share of Astera revenue and customer concentration.",
+    "Whether COSMOS creates durable software switching costs or mainly complements hardware."
+  ],
+  "falsifiers": [
+    "If Scorpio fails to become a material multi-customer product family, the platform-disruption thesis weakens.",
+    "If hyperscaler custom silicon displaces merchant connectivity faster than Astera expands adjacent products, optionality falls.",
+    "If new products grow revenue without sustaining high gross margins, cost/performance leadership may not translate into economic disruption."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Revenue growth, production shipments and customer-linked design wins demonstrate paid commercial adoption."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "conditional",
+      "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Scorpio revenue share",
+      "direction": "up",
+      "threshold": "largest product family with broad customer base",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "new-product revenue diversification",
+      "direction": "up",
+      "threshold": "Leo/Taurus/custom/optical material contribution",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "gross margin",
+      "direction": "up",
+      "threshold": "remain structurally high through product mix shift",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Scorpio multi-customer production ramp",
+    "Leo/custom/optical revenue contribution",
+    "Hyperscaler custom-silicon response"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "cost_performance_shift",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Scorpio, Taurus and Leo address structural rack-scale bandwidth, memory and observability bottlenecks with material performance improvements, above sustaining innovation but below a proven 10x system-wide shift."
     },
     {
       "criterion_id": "adoption_curve",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Revenue doubled YoY, PCIe 6 products are in production, and Scorpio was expected to become the largest product family in Q3. Adoption is clearly commercial and accelerating, though not yet mature."
     },
     {
       "criterion_id": "optionality_incumbent_response",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "Astera has entered at least three adjacent value pools, but major customers can design their own silicon. The rubric caps this axis at 70 when the primary responders are capital-rich customers."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Vendor performance claims may not translate uniformly across production workloads."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "Scorpio's broad production history is still short."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Hyperscaler in-house silicon can limit merchant share even if the total market grows quickly."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
