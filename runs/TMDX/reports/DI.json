@@ -4,40 +4,145 @@
   "as_of_date": "2026-09-18",
   "domain": "disruptive_innovation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
-  "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "analysis_status": "complete",
+  "score_0_100": 80.25,
+  "confidence_0_1": 0.85,
+  "bull_score": 91,
+  "bear_score": 62,
+  "bull_case": "OCS plus NOP shifts transplantation from static cold storage and fragmented procurement into a portable warm-perfusion and integrated logistics platform that increases usable organs and transplant capacity.",
+  "bear_case": "Alternative preservation technologies, normothermic regional perfusion, regulatory constraints and hospital economics can limit how much of the transplant value chain TransMedics ultimately controls.",
+  "thesis": "TMDX qualifies as a strong disruptive-innovation candidate. OCS changes organ preservation from static cold storage to active warm perfusion and assessment, while NOP vertically integrates procurement and logistics. Adoption is already commercial at scale and supported by established U.S. reimbursement. The score stops below 90 because competing preservation methods exist and regulatory/reimbursement systems constrain value-chain control.",
+  "evidence": [
+    {
+      "claim": "OCS is described as the only FDA-approved portable multi-organ warm-perfusion platform, with approved heart, lung and liver systems for DBD and DCD organs.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-24",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-DI-OCS"
+    },
+    {
+      "claim": "NOP provides outsourced organ procurement, OCS perfusion management and dedicated air/ground transplant logistics, allowing centers to expand retrieval capacity.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-24",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-DI-NOP"
+    },
+    {
+      "claim": "Q2 2026 revenue rose 21% YoY to $189.9M and service revenue rose 29%, demonstrating scaled commercial adoption rather than pilot use.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332767/tmdx-ex99_1.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-04",
+      "value": "revenue 189.9M; service +29%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-DI-ADOPT"
+    },
+    {
+      "claim": "Management is investing in OCS Kidney and Gen 3, while PAD Aviation is intended as the first step in a dedicated European transplant-logistics network.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332767/tmdx-ex99_1.htm",
+      "period": "Q2 2026 update",
+      "as_of_date": "2026-08-04",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-DI-OPTION"
+    }
+  ],
+  "counterevidence": [
+    "Cold storage, cold perfusion, warm perfusion competitors and normothermic regional perfusion remain alternative approaches.",
+    "The innovation is heavily regulated and each new organ/indication requires clinical and regulatory work.",
+    "NOP service economics are structurally lower margin than OCS product economics.",
+    "Single/sole-source component suppliers and aircraft dependencies can constrain scaling."
+  ],
+  "unknowns": [
+    "Clinical and regulatory performance of OCS Kidney.",
+    "Long-term transplant-volume uplift attributable specifically to OCS/NOP.",
+    "Competitive share versus NRP and other perfusion systems by organ.",
+    "Whether Europe can replicate U.S. reimbursement and NOP economics."
+  ],
+  "falsifiers": [
+    "If OCS utilization stalls despite transplant growth, the adoption-curve score should fall.",
+    "If Kidney/Gen 3 fail to broaden the platform, optionality should be rescored lower.",
+    "If hospitals achieve similar utilization gains with materially cheaper alternatives, cost/performance disruption weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Commercial revenue is large and recurring per transplant, U.S. reimbursement is established, and hospitals use NOP/OCS to expand procurement capacity."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "conditional",
+      "rationale": "OCS spans three approved organs and NOP services, but the entire model remains highly dependent on OCS regulatory status, transplant reimbursement and NOP execution."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "OCS transplant revenue",
+      "direction": "up",
+      "threshold": "sustained multi-organ growth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "service gross margin",
+      "direction": "up",
+      "threshold": "operating leverage with NOP scale",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "new organ/platform approvals",
+      "direction": "up",
+      "threshold": "Kidney/Gen3 de-risking",
+      "cadence": "event-driven"
+    }
+  ],
+  "next_checks": [
+    "OCS Kidney trial/regulatory milestones",
+    "Gen 3 development timeline",
+    "Europe NOP economics"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "cost_performance_shift",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Warm perfusion plus organ assessment and integrated procurement changes what organs can be used and how transplant centers source them; it is more than an incremental device improvement."
     },
     {
       "criterion_id": "adoption_curve",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Hundreds of millions of dollars of annual revenue, broad NOP participation and >20% growth show scaled adoption with positive economics."
     },
     {
       "criterion_id": "optionality_incumbent_response",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Heart/liver/lung, Kidney, Gen 3 and logistics provide multiple adjacent value pools, but TransMedics does not unilaterally control reimbursement/regulatory standards and alternatives remain."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Public filings describe clinical and workflow benefits more clearly than a single normalized 10x cost metric."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "material",
+      "rationale": "Growth is strong but 2026 margins show the cost of scaling an integrated service network."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "critical",
+      "rationale": "New-organ approvals and international reimbursement remain external constraints."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

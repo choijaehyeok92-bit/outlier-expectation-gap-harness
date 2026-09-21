@@ -4,63 +4,190 @@
   "as_of_date": "2026-09-18",
   "domain": "expectation_valuation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 59.25,
+  "confidence_0_1": 0.78,
+  "bull_score": 78,
+  "bear_score": 35,
+  "bull_case": "OCS/NOP remains the dominant U.S. warm-perfusion platform, Kidney and Gen 3 add new revenue pools, Europe logistics scales, and owner FCF/share compounds into the mid-teens over a decade.",
+  "bear_case": "Growth slows toward the transplant market's underlying volume, service mix and aviation/facility investment keep margins capital-intensive, and the 2028 convert plus lease obligations cap per-share value.",
+  "thesis": "At the $86.42 cutoff price, TMDX is neither a deep expectation-gap bargain nor dependent on an extreme Bull case. The locked Base path assumes roughly 20% three-year revenue CAGR, improving owner FCF/share as current R&D, logistics and facility investment mature, and produces value near the current price. The largest valuation risk is that the market is capitalizing a durable platform while H1 2026 cash conversion and operating margins have weakened.",
+  "evidence": [
+    {
+      "claim": "Q2 2026 revenue was $189.9M, +21% YoY; management raised 2026 revenue guidance to $737M-$757M, excluding PAD Aviation.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332767/tmdx-ex99_1.htm",
+      "period": "Q2 2026 / FY2026 guide",
+      "as_of_date": "2026-08-04",
+      "value": "189.9M / 737-757M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-EV-GROWTH"
+    },
+    {
+      "claim": "H1 2026 operating cash flow was $41.842M versus $88.754M in H1 2025, while capex was $43.749M versus $36.113M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332843/tmdx-20260630.htm",
+      "period": "H1 2026 vs H1 2025",
+      "as_of_date": "2026-08-04",
+      "value": "OCF 41.842/88.754M; capex 43.749/36.113M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-EV-CF"
+    },
+    {
+      "claim": "FY2025 revenue was $605.494M and operating cash flow was $192.840M; 2025 capex was $59.251M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-24",
+      "value": "605.494M / 192.840M / 59.251M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-EV-FY25"
+    },
+    {
+      "claim": "The frozen cutoff price is $86.42 and funded debt exceeds cash by about $41.3M before the separate finance-lease obligation.",
+      "source_type": "other",
+      "source": "runs/TMDX/company_context.json",
+      "period": "2026-09-18 price / 2026-06-30 balance sheet",
+      "as_of_date": "2026-09-18",
+      "value": "86.42 / net funded debt ~41.3M",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "TMDX-EV-PRICE"
+    }
+  ],
+  "counterevidence": [
+    "Product gross margin remains high and service gross margin improved in Q2, so current cash conversion may understate mature economics.",
+    "Kidney, Gen 3 and Europe logistics are not credited with near-term revenue in management's 2026 guide and can create upside beyond the Base case.",
+    "The OCS/NOP model may increase transplant volumes rather than merely take share in a fixed market.",
+    "2025 OCF benefited from a different working-capital profile, making a single TTM FCF normalization noisy."
+  ],
+  "unknowns": [
+    "Normalized maintenance capex after aircraft and Somerville buildout.",
+    "Long-run service gross margin and logistics capital intensity.",
+    "Commercial timing and economics of OCS Kidney and Gen 3.",
+    "Diluted share count if the convertible notes settle in shares."
+  ],
+  "falsifiers": [
+    "If owner FCF/share remains below $2 after the current investment cycle while revenue growth falls below the mid-teens, Base value should be reduced.",
+    "If OCS Kidney/Gen 3 and Europe scale with improving service margins, the Base path should be revised upward.",
+    "If price rises above locked Bull value without commensurate evidence, V7 should be re-opened."
+  ],
   "hard_veto_flags": [
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "The cutoff price is expected to remain far below the locked Bull DCF value; the thesis does not require Bull+ economics."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "sustainably above $2 and compounding",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "service gross margin",
+      "direction": "up",
+      "threshold": "durable improvement above low-30s",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "revenue growth",
+      "direction": "up",
+      "threshold": "mid-teens or better through 2029",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 cash conversion and service margin",
+    "2027 Kidney/Gen 3 clinical-commercial milestones",
+    "Maintenance versus growth capex disclosure"
+  ],
   "verdict": "neutral",
   "archetype_signals": {
     "price_to_base_value": null,
     "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null
+    "revenue_cagr_next_3y": 0.2
   },
   "subscores": [
     {
       "criterion_id": "reverse_dcf_burden",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 60,
+      "rationale": "The locked Base DCF is expected to land within the 0.9-1.1 price/Base band, implying demanding but not extreme embedded expectations."
     },
     {
       "criterion_id": "base_return",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 55,
+      "rationale": "At roughly fair value to a modest discount under Base, prospective return depends on sustained execution rather than a wide initial margin of safety."
     },
     {
       "criterion_id": "valuation_robustness",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 65,
+      "rationale": "The Base path does not require Kidney revenue immediately, but terminal value and long-run owner-FCF margin remain material drivers."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "Owner FCF normalization is noisy because 2026 working capital, R&D and facility/logistics capex are elevated."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Three-year growth and margin assumptions depend on transplant adoption and NOP operating leverage."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "critical",
+      "rationale": "A large portion of value depends on long-duration cash flow after the current investment cycle."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
+    "revenue_cagr_next_3y": 0.2,
     "scenarios": {
       "bear": {
-        "owner_fcf_per_share": []
+        "owner_fcf_per_share": [
+          1,
+          1.1,
+          1.2,
+          1.3,
+          1.4,
+          1.5,
+          1.6,
+          1.7,
+          1.8,
+          1.9
+        ]
       },
       "base": {
-        "owner_fcf_per_share": []
+        "owner_fcf_per_share": [
+          1.8,
+          2.3,
+          2.9,
+          3.5,
+          4.2,
+          4.9,
+          5.6,
+          6.3,
+          7,
+          7.7
+        ]
       },
       "bull": {
-        "owner_fcf_per_share": []
+        "owner_fcf_per_share": [
+          2.2,
+          3.2,
+          4.4,
+          5.8,
+          7.2,
+          8.8,
+          10.5,
+          12.2,
+          14,
+          15.8
+        ]
       }
     }
   }
