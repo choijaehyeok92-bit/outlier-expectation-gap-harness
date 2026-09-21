@@ -83,11 +83,9 @@
     }
   ],
   "next_checks": [
-    "Neutron schedule",
-    "backlog conversion",
-    "post-close Iridium FCF",
-    "diluted share count",
-    "ATM usage"
+    "Neutron schedule and commercial launch economics",
+    "Backlog conversion and post-close Iridium FCF/synergies",
+    "Diluted share count and further ATM usage"
   ],
   "verdict": "neutral",
   "subscores": [
