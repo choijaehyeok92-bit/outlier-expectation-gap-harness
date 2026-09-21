@@ -1,22 +1,31 @@
 {
   "ticker": "META",
-  "company_name": "",
+  "company_name": "Meta Platforms, Inc.",
   "as_of_date": "2026-09-18",
   "currency": "USD",
-  "current_price": null,
-  "shares_diluted": null,
-  "market_cap_usd": null,
-  "enterprise_value": null,
+  "current_price": 665.75,
+  "shares_diluted": 2566000000,
+  "market_cap_usd": 1708314500000,
+  "enterprise_value": 1701718500000,
   "portfolio_context": {
     "existing_position_pct": 0,
     "sector_exposure_pct": 0,
     "overlap_notes": ""
   },
-  "known_sources": [],
-  "special_questions": [],
-  "net_cash_per_share": null,
+  "known_sources": [
+    "Meta Platforms 2025 Form 10-K filed 2026-01-29",
+    "Meta Platforms Q1 2026 Form 10-Q filed 2026-04-30",
+    "Meta Platforms Q2 2026 Form 10-Q filed 2026-07-30",
+    "META 2026-09-18 closing price $665.75"
+  ],
+  "special_questions": [
+    "Can AI-driven ad ranking and messaging monetization sustain durable per-share cash-flow growth despite sharply rising infrastructure spend?",
+    "How much of 2026-2030 capex is growth investment versus economically maintenance-like spending?",
+    "Does Reality Labs remain a tolerable option-like drag relative to Family of Apps economics and valuation?"
+  ],
+  "net_cash_per_share": 2.570537802,
   "valuation_percentile_5y": null,
-  "valuation_metric": "",
+  "valuation_metric": "No reproducible full 5-year valuation percentile frozen; use deterministic owner-FCF/share scenarios in EV.",
   "valuation_overrides": {
     "required_return": null,
     "terminal_multiples": {
@@ -31,8 +40,14 @@
   "geo_exposure": {
     "revenue_by_region": {},
     "production_by_region": {},
-    "critical_supplier_regions": [],
-    "export_control_dependencies": [],
+    "critical_supplier_regions": [
+      "United States",
+      "Taiwan",
+      "South Korea"
+    ],
+    "export_control_dependencies": [
+      "Advanced AI accelerators and semiconductor supply chains"
+    ],
     "sanctions_exposure": [],
     "critical_shipping_routes": [],
     "government_customer_exposure": []
