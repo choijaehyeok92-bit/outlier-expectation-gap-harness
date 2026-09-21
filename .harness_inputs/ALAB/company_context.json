@@ -1,0 +1,78 @@
+{
+  "ticker": "ALAB",
+  "company_name": "Astera Labs, Inc.",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 303.25,
+  "shares_diluted": 185000000,
+  "market_cap_usd": 56101250000,
+  "enterprise_value": 54848292000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC Form 10-K FY2025 filed 2026-02-20",
+    "SEC Form 10-Q Q1 2026 filed 2026-05-06",
+    "SEC Form 10-Q Q2 2026 filed 2026-08-05",
+    "SEC 2026 DEF 14A filed 2026-04-23",
+    "SEC 8-K/Q2 2026 earnings release filed 2026-08-04",
+    "SEC 8-K filed 2026-02-10 for Amazon customer warrant",
+    "Astera Labs IR release dated 2026-09-15 for Leo X-Series",
+    "StockAnalysis historical close 2026-09-18: $303.25"
+  ],
+  "special_questions": [
+    "How much of Astera Labs' current valuation already capitalizes a multi-year AI interconnect supercycle?",
+    "Can Scorpio, Aries, Taurus, Leo and custom connectivity expand from point products into a durable rack-scale AI fabric platform?",
+    "Does customer concentration, including the Amazon warrant structure, create a single-customer dependency risk despite product diversification?"
+  ],
+  "intake_facts": [
+    "Q2 2026 revenue $392.4M, +27% QoQ and +104% YoY; H1 2026 revenue $700.761M.",
+    "Q2 2026 GAAP gross margin 73.3%, operating income $89.248M, net income $153.088M.",
+    "H1 2026 operating cash flow $162.276M and capex $28.054M.",
+    "2026-06-30 cash $111.453M plus marketable securities $1.141505B; no material funded debt identified.",
+    "Q3 2026 revenue guidance $540M-$560M and diluted share guidance approximately 185M.",
+    "Q2/H1 2026 top direct-customer revenue concentrations were 29%, 25%, 15%, 13% for the quarter and 29%, 21%, 17%, 13% for H1; some are manufacturing partners rather than end customers.",
+    "A February 2026 Amazon customer warrant permits up to 3,262,299 shares at $142.82, contingent on specified purchase-performance conditions.",
+    "June 2026 outstanding common shares were 173.485M versus 170.186M at 2025 year-end; H1 SBC was $112.905M in the cash-flow reconciliation."
+  ],
+  "net_cash_per_share": 6.772745945945946,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "Locked owner-FCF/share DCF. Astera Labs has less than five years of public trading history, so valuation_percentile_5y is left null. Net cash/share uses June 30 cash plus marketable securities divided by Q3 guided diluted shares.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {
+      "China": 0.34571986740129657,
+      "Singapore": 0.2923564524852268,
+      "Taiwan": 0.28386711018449945,
+      "United States": 0.029251057065104936,
+      "Other": 0.048805512863872275
+    },
+    "production_by_region": {
+      "Taiwan": 0.67,
+      "United States": 0.26,
+      "Other": 0.07
+    },
+    "critical_supplier_regions": [
+      "Taiwan"
+    ],
+    "export_control_dependencies": [
+      "U.S.-China semiconductor export controls",
+      "Advanced AI infrastructure trade restrictions"
+    ],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": []
+  }
+}
