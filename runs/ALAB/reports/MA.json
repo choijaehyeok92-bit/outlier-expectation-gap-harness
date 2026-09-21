@@ -4,46 +4,148 @@
   "as_of_date": "2026-09-18",
   "domain": "management_allocation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 77.5,
+  "confidence_0_1": 0.78,
+  "bull_score": 87,
+  "bear_score": 63,
+  "bull_case": "Management has converted heavy R&D into multiple product families, strong revenue growth and positive operating cash flow while maintaining a debt-free balance sheet. Product ramps have often arrived ahead of prior expectations.",
+  "bear_case": "SBC is high, an Amazon customer warrant creates contingent dilution, and public operating history is short. Capital allocation has not yet been tested through a full semiconductor downcycle or a large acquisition integration.",
+  "thesis": "Management allocation is strong but not yet elite. R&D spending produced rapid expansion from retimers into switches, memory, Ethernet and custom/optical connectivity, while cash generation and liquidity remained strong. Scorpio's Q3 leadership ramp was pulled forward versus prior expectations. Governance is conventional and no accounting-integrity issue is identified, but elevated SBC and customer warrants temper alignment quality.",
+  "evidence": [
+    {
+      "claim": "FY2025 R&D was $304.0M, up 51% YoY, while revenue rose 115% to $852.5M and operating income turned positive at $173.4M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000010/alab-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-20",
+      "value": "304.0M R&D / 852.5M revenue / 173.4M op income",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MA-RD"
+    },
+    {
+      "claim": "Management expected Scorpio to become the largest product family in Q3, one quarter ahead of prior expectations.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
+      "period": "Q3 2026 outlook",
+      "as_of_date": "2026-08-04",
+      "value": "one quarter ahead",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MA-EXEC"
+    },
+    {
+      "claim": "June cash plus marketable securities were about $1.253B and the company had no material funded debt, preserving strategic flexibility.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-05",
+      "value": "1.253B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MA-CASH"
+    },
+    {
+      "claim": "The February 2026 Amazon warrant covers up to 3.262M shares at $142.82 and vests with specified purchase-performance conditions.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000110465926012606/tm265461d1_8k.htm",
+      "period": "2026-02-05",
+      "as_of_date": "2026-02-10",
+      "value": "3.262M / $142.82",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MA-WARRANT"
+    },
+    {
+      "claim": "H1 2026 stock-based compensation was $112.9M, material relative to GAAP operating income.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-05",
+      "value": "112.9M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MA-SBC"
+    }
+  ],
+  "counterevidence": [
+    "High SBC reduces per-share alignment.",
+    "Customer-linked warrants exchange equity value for strategic purchases.",
+    "Management's public-company record is short and untested through a severe AI/semiconductor downturn."
+  ],
+  "unknowns": [
+    "Post-2026 SBC normalization.",
+    "Long-run returns from custom/optical investments.",
+    "Management response to the first major demand contraction."
+  ],
+  "falsifiers": [
+    "Persistent dilution above FCF/share growth would lower capital-allocation quality.",
+    "Large acquisitions with poor post-close returns would weaken the score.",
+    "Accounting-control or related-party issues would trigger integrity review."
+  ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "No restatement, auditor dispute, material-control failure or comparable integrity event was identified in reviewed filings."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "R&D productivity",
+      "direction": "up",
+      "threshold": "revenue and FCF growth outpace R&D growth over cycle",
+      "cadence": "annual"
+    },
+    {
+      "name": "SBC/revenue",
+      "direction": "down",
+      "threshold": "declining with scale",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "new-product schedule execution",
+      "direction": "up",
+      "threshold": "major ramps on or ahead of disclosed targets",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "SBC normalization",
+    "Scorpio/optical/custom ROI",
+    "Governance disclosures"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "capital_allocation",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "No buyback benchmark exists; R&D and targeted capability investment have produced rapid revenue, margin and cash-flow expansion. High SBC prevents an 80+ allocation score."
     },
     {
       "criterion_id": "governance_integrity",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Filings and governance appear conventional with no identified accounting-reliability event, but the public track record is short and customer warrants add alignment complexity."
     },
     {
       "criterion_id": "execution_adaptability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Management expanded from retimers into multiple adjacent product families and pulled the Scorpio revenue-leadership milestone forward by a quarter."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "Long-term returns on optical/custom investments are not yet observable."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "minor",
+      "rationale": "No current red flag is identified, but public-company history is limited."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "material",
+      "rationale": "Execution has not yet been tested through a major cyclical downturn."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
