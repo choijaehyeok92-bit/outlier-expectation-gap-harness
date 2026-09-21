@@ -1,5 +1,5 @@
 name: RKLB v3.3 complete triage
-# rerun after DI normalization
+# rerun after FS length normalization
 
 on:
   push:
