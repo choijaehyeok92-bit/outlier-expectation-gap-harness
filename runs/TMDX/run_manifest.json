@@ -1,0 +1,16 @@
+{
+  "strategy_version": "3.3",
+  "schema_version": "3.3",
+  "decision_policy_version": "3.3",
+  "provider_calibration_mode": "shadow",
+  "ticker": "TMDX",
+  "as_of_date": "2026-09-18",
+  "frozen": false,
+  "financial_pack_required": true,
+  "harness_commit": "a573b9a3decd25161119dab3ceb32e6e41d0af38",
+  "runner": {
+    "provider": null,
+    "model": null,
+    "reasoning_effort": null
+  }
+}
