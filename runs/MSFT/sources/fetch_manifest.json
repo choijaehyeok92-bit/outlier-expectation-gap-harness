@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "ticker": "MSFT",
+  "cik": 789019,
+  "filer": "MICROSOFT CORP",
+  "as_of_date": "2026-09-18",
+  "source": "SEC EDGAR",
+  "fetched_at_utc": "2026-09-20T17:05:26.382829+00:00",
+  "excluded_post_cutoff": 0,
+  "shortfalls": [
+    {
+      "requirement": "foreign_issuer_filings",
+      "importance": "conditional",
+      "form": "20-F/6-K",
+      "shortfall": 1
+    },
+    {
+      "requirement": "registration_statement",
+      "importance": "conditional",
+      "form": "S-1/F-1",
+      "shortfall": 1
+    }
+  ],
+  "documents": [
+    {
+      "file": "10-K_2026-07-29_0001193125-26-323660.htm",
+      "form": "10-K",
+      "filing_date": "2026-07-29",
+      "report_date": "2026-06-30",
+      "accession": "0001193125-26-323660",
+      "requirement": "latest_annual",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "bytes": 8585610
+    },
+    {
+      "file": "10-Q_2026-04-29_0001193125-26-191507.htm",
+      "form": "10-Q",
+      "filing_date": "2026-04-29",
+      "report_date": "2026-03-31",
+      "accession": "0001193125-26-191507",
+      "requirement": "latest_interim",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm",
+      "bytes": 7732057
+    },
+    {
+      "file": "10-Q_2026-01-28_0001193125-26-027207.htm",
+      "form": "10-Q",
+      "filing_date": "2026-01-28",
+      "report_date": "2025-12-31",
+      "accession": "0001193125-26-027207",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526027207/msft-20251231.htm",
+      "bytes": 7483387
+    },
+    {
+      "file": "10-Q_2025-10-29_0001193125-25-256321.htm",
+      "form": "10-Q",
+      "filing_date": "2025-10-29",
+      "report_date": "2025-09-30",
+      "accession": "0001193125-25-256321",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm",
+      "bytes": 5597570
+    },
+    {
+      "file": "10-Q_2025-04-30_0000950170-25-061046.htm",
+      "form": "10-Q",
+      "filing_date": "2025-04-30",
+      "report_date": "2025-03-31",
+      "accession": "0000950170-25-061046",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/msft-20250331.htm",
+      "bytes": 6995551
+    },
+    {
+      "file": "10-Q_2025-01-29_0000950170-25-010491.htm",
+      "form": "10-Q",
+      "filing_date": "2025-01-29",
+      "report_date": "2024-12-31",
+      "accession": "0000950170-25-010491",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025010491/msft-20241231.htm",
+      "bytes": 6297522
+    },
+    {
+      "file": "10-Q_2024-10-30_0000950170-24-118967.htm",
+      "form": "10-Q",
+      "filing_date": "2024-10-30",
+      "report_date": "2024-09-30",
+      "accession": "0000950170-24-118967",
+      "requirement": "trailing_quarters",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024118967/msft-20240930.htm",
+      "bytes": 4284068
+    },
+    {
+      "file": "10-K_2025-07-30_0000950170-25-100235.htm",
+      "form": "10-K",
+      "filing_date": "2025-07-30",
+      "report_date": "2025-06-30",
+      "accession": "0000950170-25-100235",
+      "requirement": "historical_annuals",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+      "bytes": 8158176
+    },
+    {
+      "file": "10-K_2024-07-30_0000950170-24-087843.htm",
+      "form": "10-K",
+      "filing_date": "2024-07-30",
+      "report_date": "2024-06-30",
+      "accession": "0000950170-24-087843",
+      "requirement": "historical_annuals",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
+      "bytes": 6861020
+    },
+    {
+      "file": "DEFA14A_2025-11-05_0001193125-25-267270.htm",
+      "form": "DEFA14A",
+      "filing_date": "2025-11-05",
+      "report_date": "",
+      "accession": "0001193125-25-267270",
+      "requirement": "proxy_compensation",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312525267270/d87183ddefa14a.htm",
+      "bytes": 12352
+    },
+    {
+      "file": "8-K_2026-09-02_0001193125-26-380280.htm",
+      "form": "8-K",
+      "filing_date": "2026-09-02",
+      "report_date": "2026-09-02",
+      "accession": "0001193125-26-380280",
+      "requirement": "earnings_release",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526380280/d291965d8k.htm",
+      "bytes": 28668
+    },
+    {
+      "file": "S-3ASR_2024-12-12_0001193125-24-277062.htm",
+      "form": "S-3ASR",
+      "filing_date": "2024-12-12",
+      "report_date": "",
+      "accession": "0001193125-24-277062",
+      "requirement": "debt_and_financing",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312524277062/d901891ds3asr.htm",
+      "bytes": 230098
+    },
+    {
+      "file": "4_2026-09-17_0000789019-26-000224.htm",
+      "form": "4",
+      "filing_date": "2026-09-17",
+      "report_date": "2026-09-15",
+      "accession": "0000789019-26-000224",
+      "requirement": "insider_ownership",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000078901926000224/xslF345X06/form4.xml",
+      "bytes": 15824
+    }
+  ]
+}

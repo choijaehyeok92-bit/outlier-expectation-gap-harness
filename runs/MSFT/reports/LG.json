@@ -1,9 +1,9 @@
 {
-  "agent_id": "TQ",
+  "agent_id": "LG",
   "ticker": "MSFT",
   "as_of_date": "2026-09-18",
-  "domain": "turnaround_quality",
-  "role": "optional_diagnostic",
+  "domain": "long_term_growth",
+  "role": "domain_analyst",
   "analysis_status": "pending",
   "score_0_100": 50,
   "confidence_0_1": 0.5,
@@ -22,22 +22,22 @@
   "verdict": "neutral",
   "subscores": [
     {
-      "criterion_id": "operating_inflection",
+      "criterion_id": "opportunity_scale_5y",
       "score_0_100": 50,
       "rationale": ""
     },
     {
-      "criterion_id": "self_help_quality",
+      "criterion_id": "growth_duration_10y",
       "score_0_100": 50,
       "rationale": ""
     },
     {
-      "criterion_id": "normalized_earnings_bridge",
+      "criterion_id": "culture_adaptability",
       "score_0_100": 50,
       "rationale": ""
     },
     {
-      "criterion_id": "catalyst_accountability",
+      "criterion_id": "market_misperception",
       "score_0_100": 50,
       "rationale": ""
     }

@@ -1,101 +1,21 @@
 {
-  "agent_id": "MO",
-  "ticker": "MSFT",
-  "as_of_date": "2026-09-17",
-  "domain": "macro_overlay",
-  "role": "overlay",
-  "analysis_status": "complete",
-  "score_0_100": 45,
-  "confidence_0_1": 0.55,
-  "thesis": "금융여건이 완화에서 긴축으로 방향을 틀었다. 연준은 2026-09-16 FOMC에서 25bp를 인상해 3.75~4.00%로 올렸다. 3년여 만의 첫 인상이며 유가 급등발 인플레이션이 이유다. 점도표는 2026년 말과 2027년 말 모두 4.00~4.25%를 가리킨다. 실질금리 상승은 듀레이션이 긴 성장주 밸류에이션에 직접적인 역풍이다. 동시에 미 하이일드 OAS는 약 271bp로 장기 중앙값 450bp 대비 역사적 최저 십분위에 있어 신용시장이 완벽을 가정한 가격이다. 시스템 유동성 스트레스나 발행시장 경색의 증거는 없다. 긴축 전환과 무쿠션 신용 프리미엄의 조합은 신규 매수 속도를 늦출 근거이며 위험예산 배수 0.7을 제안한다. 종목 점수에는 반영하지 않는다.",
-  "evidence": [
-    {
-      "claim": "연준이 2026-09-16 FOMC에서 정책금리를 25bp 인상해 3.75~4.00%로 올렸다. 3년여 만의 첫 인상이며 표결은 12-0이었다. 성명은 \"인플레이션이 여전히 높다\"고 기술했고 유가 급등이 배경으로 지목됐다.",
-      "source_type": "other",
-      "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
-      "period": "2026-09 FOMC",
-      "as_of_date": "2026-09-16",
-      "value": 4.0,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "9월 점도표는 2026년 말과 2027년 말 정책금리를 모두 4.00~4.25%로 제시해 추가 인상 가능성을 남겼다.",
-      "source_type": "other",
-      "source": "https://www.bondsavvy.com/fixed-income-investments-blog/fed-dot-plot",
-      "period": "2026-09 SEP",
-      "as_of_date": "2026-09-16",
-      "value": 4.25,
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "미 하이일드 OAS는 2026년 9월 약 271bp로 장기 중앙값 약 450bp 대비 역사적 최저 십분위에 있다. 신용 위험 프리미엄에 완충이 거의 없다.",
-      "source_type": "secondary",
-      "source": "https://tradingeconomics.com/united-states/bofa-merrill-lynch-us-high-yield-option-adjusted-spread-fed-data.html",
-      "period": "2026-09",
-      "as_of_date": "2026-09-10",
-      "value": 271,
-      "fact_or_estimate": "fact"
-    }
+  "agent_id":"MO","ticker":"MSFT","as_of_date":"2026-09-18","domain":"macro_overlay","role":"overlay","analysis_status":"complete","score_0_100":45,"confidence_0_1":0.75,
+  "thesis":"2026-09-18 기준 금융여건은 긴축 방향과 낮은 신용위험 프리미엄이 공존한다. 연준은 9월 16일 25bp 인상해 3.75~4.00%로 올렸고, 하이일드 OAS는 270bp로 역사적 완충이 얇다. 동시에 중동 분쟁으로 Hormuz 통항이 10일 평균을 크게 밑돌아 에너지·물류 위험이 높다. 이는 fundamental score가 아니라 신규 매수 속도와 위험예산을 0.5배로 제한하는 오버레이다.",
+  "evidence":[
+    {"evidence_id":"FED-20260916","economic_driver":"financial_conditions","claim":"FOMC가 25bp 인상해 연방기금금리 목표범위를 3.75~4.00%로 정했다.","source_type":"other","source":"https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm","period":"2026-09 FOMC","as_of_date":"2026-09-16","value":4.0,"fact_or_estimate":"fact"},
+    {"evidence_id":"FRED-HYOAS-20260916","economic_driver":"credit_liquidity","claim":"ICE BofA US High Yield OAS는 2026-09-16 2.70%로 신용위험 완충이 얇다.","source_type":"other","source":"https://fred.stlouisfed.org/series/BAMLH0A0HYM2","period":"2026-09-16","as_of_date":"2026-09-16","value":2.70,"fact_or_estimate":"fact"},
+    {"evidence_id":"HORMUZ-20260918","economic_driver":"energy_shipping","claim":"Hormuz 상품선 통항은 4척으로 직전 10일 평균 16척을 크게 밑돌았다.","source_type":"secondary","source":"https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/","period":"2026-09-17 observations","as_of_date":"2026-09-18","value":4,"fact_or_estimate":"fact"},
+    {"evidence_id":"BIS-AC-202605","economic_driver":"export_controls","claim":"BIS는 Country Group D:5 및 Macau 관련 advanced-computing 품목의 역외 법인에도 라이선스 요건이 적용됨을 명확히 했다.","source_type":"other","source":"https://www.bis.gov/","period":"May 2026 guidance","as_of_date":"2026-05-31","value":null,"fact_or_estimate":"fact"}
   ],
-  "counterevidence": [
-    "신용 스프레드가 최저 십분위라는 것은 자금조달 여건 자체는 여전히 우호적이라는 뜻이다. 발행시장 경색이나 시스템 유동성 스트레스의 증거는 없다.",
-    "25bp 한 번의 인상은 절대 수준으로 보면 여전히 중립 근처다. 긴축 사이클의 시작이라고 단정할 근거는 아직 부족하다.",
-    "인플레이션 원인이 유가라는 공급측 요인이면 정책 지속성이 낮을 수 있다."
-  ],
-  "unknowns": [
-    "유가발 인플레이션의 지속 기간과 연준의 반응함수.",
-    "긴축 전환이 AI 인프라 투자 자금조달(특히 투자등급 미만 AI 클라우드)에 미치는 시차 효과.",
-    "하이일드 스프레드 정상화가 시작될 경우의 속도."
-  ],
-  "falsifiers": [
-    "다음 두 차례 FOMC에서 동결 또는 인하로 전환되면 긴축 전환 판단은 기각되고 배수를 1.0으로 되돌린다.",
-    "하이일드 OAS가 400bp를 넘어서면 위험예산 배수를 0.5 이하로 추가 하향한다.",
-    "투자등급 발행시장이 2주 이상 사실상 중단되면 시스템 유동성 스트레스로 재분류한다."
-  ],
-  "hard_veto_flags": [],
-  "key_kpis": [
-    {
-      "name": "연방기금금리 목표범위",
-      "direction": "down",
-      "threshold": "4.25% 초과 시 추가 감속",
-      "cadence": "FOMC마다"
-    },
-    {
-      "name": "미 하이일드 OAS",
-      "direction": "down",
-      "threshold": "400bp 초과 시 배수 0.5",
-      "cadence": "weekly"
-    },
-    {
-      "name": "10년 실질금리",
-      "direction": "down",
-      "threshold": "상승 지속 시 듀레이션 리스크 확대",
-      "cadence": "monthly"
-    }
-  ],
-  "next_checks": [
-    "다음 FOMC 성명과 점도표 변화 확인",
-    "하이일드·투자등급 OAS 추세와 발행 규모 확인",
-    "10년 TIPS 실질금리 추세 확인"
-  ],
-  "verdict": "neutral",
-  "subscores": [],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
-    }
-  },
-  "risk_budget_multiplier": 0.7,
-  "cached_from": "runs/_macro/2026-09-17/MO.json"
+  "counterevidence":["270bp OAS는 현재 자금조달 자체가 경색됐다는 증거가 아니라 오히려 우호적 여건을 뜻한다.","단 한 차례 25bp 인상만으로 장기 긴축 사이클을 확정할 수 없다.","Hormuz 통항 데이터는 AIS 비활성화로 실제 흐름을 과소계상할 수 있다.","MSFT는 순현금과 강한 OCF로 외부자금 비용 상승의 직접 영향이 제한적이다."],
+  "unknowns":["유가발 인플레이션의 지속기간.","다음 FOMC의 반응함수.","Hormuz·Bab el-Mandeb 정상화 시점.","AI 데이터센터 전력비에 대한 에너지 충격의 전가율.","advanced-computing 통제의 cloud-service 적용 확대 가능성."],
+  "falsifiers":["다음 두 차례 FOMC가 동결 또는 인하하면 금융여건 배수를 상향한다.","하이일드 OAS가 400bp를 넘으면 신용 배수를 추가 하향한다.","Hormuz 통항이 10일 평균 수준으로 2주 회복하면 에너지·물류 severity를 낮춘다."],
+  "hard_veto_flags":[],"key_kpis":[{"name":"Federal funds target upper bound","direction":"down","threshold":"<=4.0%","cadence":"FOMC"},{"name":"US HY OAS","direction":"down","threshold":"<400bp","cadence":"weekly"},{"name":"Hormuz vessel transits","direction":"up","threshold":">=10-day average","cadence":"weekly"}],"next_checks":["다음 FOMC 성명","HY OAS와 발행시장","Hormuz·Bab el-Mandeb 통항 회복"],"verdict":"neutral","subscores":[],"uncertainties":[],
+  "valuation_inputs":{"valuation_percentile_5y":null,"revenue_cagr_next_3y":null,"scenarios":{"bear":{"owner_fcf_per_share":[]},"base":{"owner_fcf_per_share":[]},"bull":{"owner_fcf_per_share":[]}}},
+  "global_components":{
+    "financial_conditions":{"scope":"global","as_of_utc":"2026-09-18T00:00:00+00:00","summary":"연준의 25bp 인상으로 정책 방향이 긴축 쪽으로 이동했다.","evidence":[{"source":"https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm","as_of_date":"2026-09-16T18:00:00+00:00"}],"risk_budget_multiplier":0.7},
+    "credit_liquidity":{"scope":"global","as_of_utc":"2026-09-18T00:00:00+00:00","summary":"HY OAS 270bp로 유동성은 원활하지만 충격 완충이 얇다.","evidence":[{"source":"https://fred.stlouisfed.org/series/BAMLH0A0HYM2","as_of_date":"2026-09-16T00:00:00+00:00"}],"risk_budget_multiplier":0.8},
+    "geopolitical_events":{"scope":"global","as_of_utc":"2026-09-18T00:00:00+00:00","summary":"중동 분쟁으로 Hormuz와 Bab el-Mandeb 통항·에너지 공급 위험이 높다.","evidence":[{"source":"https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/","as_of_date":"2026-09-18T00:00:00+00:00"}],"dimensions":{"military_conflict":{"level":"high","regions":["Middle East","Iran","Yemen","Saudi Arabia"],"routes":["Strait of Hormuz","Bab el-Mandeb"],"dependencies":["energy","shipping"],"structural_events":[]},"energy_disruption":{"level":"high","regions":["Middle East"],"routes":["Strait of Hormuz"],"dependencies":["oil","gas","electricity"],"structural_events":[]},"shipping_disruption":{"level":"high","regions":["Middle East"],"routes":["Strait of Hormuz","Bab el-Mandeb"],"dependencies":["global shipping"],"structural_events":[]},"sovereign_policy_instability":{"level":"moderate","regions":["Iran","Yemen"],"routes":[],"dependencies":["sanctions","energy policy"],"structural_events":[]}}},
+    "structural_trade":{"scope":"global","as_of_utc":"2026-09-18T00:00:00+00:00","summary":"advanced-computing 수출통제와 Iran 제재가 기술·금융 분절을 유지한다.","evidence":[{"source":"https://www.bis.gov/","as_of_date":"2026-09-18T00:00:00+00:00"},{"source":"https://ofac.treasury.gov/","as_of_date":"2026-09-17T00:00:00+00:00"}],"dimensions":{"trade_fragmentation":{"level":"moderate","regions":["United States","China"],"routes":["technology trade"],"dependencies":["semiconductors","cloud services"],"structural_events":[]},"export_controls":{"level":"high","regions":["China","Macau","Country Group D:5"],"routes":["advanced computing"],"dependencies":["AI accelerators","semiconductors"],"structural_events":[]},"sanctions":{"level":"high","regions":["Iran","Middle East"],"routes":["Strait of Hormuz"],"dependencies":["payments","energy","shipping"],"structural_events":[{"event_id":"IRAN-SANCTIONS-20260917","event_type":"sanctions","source":"https://ofac.treasury.gov/","as_of_date":"2026-09-17T00:00:00+00:00","regions":["Iran"],"routes":["Strait of Hormuz"],"dependencies":["payments","shipping"]}]}}}
+  }
 }

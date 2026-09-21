@@ -1,99 +1,100 @@
-# Digest — MSFT (as of 2026-09-17)
-score 71.84 (ex-val 75.24, Emerging Outlier) · DI 78.17 · TQ 26.75 · archetype compounder — 유형 조건 및 게이트 점수 충족 · veto CLEARED · state NORMAL_CANDIDATE
-signals {'price_to_base_value': 0.9952, 'valuation_percentile_5y': None, 'revenue_cagr_next_3y': 0.155, 'market_cap_usd': 3709730750000.0} · reachable(raw) ['compounder']
+# Digest — MSFT (as of 2026-09-18)
+score 74.75 (ex-val 78.37, Emerging Outlier) · DI 81.5 · TQ None · archetype compounder — Highest eligible deterministic fit; ties use configured priority · veto CLEARED · state NORMAL_CANDIDATE
+signals {'price_to_base_value': 0.9873, 'valuation_percentile_5y': None, 'revenue_cagr_next_3y': 0.155, 'market_cap_usd': 3680142340000.0} · reachable(raw) ['compounder']
 veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
 
-## structural_leadership — 79.17 (raw 79.17, spread 30.0, DISPUTE)
+## structural_leadership — 82.5 (raw 82.5, spread 34.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| SL | 82.5 (60–90) | 0.8 | support | – | 구조적 변화와 리더십은 강하다. FY2026 Cloud $214.4B(+27%), Azure +41%, RPO $678B는 cloud/AI 전환이 장기 수요임을 보여주고 FY27 Agents and Infra 구조는 앱·agent·developer·infra를 하나의 경쟁단위로 묶는다… |
-bull: Enterprise AI·cloud·developer tooling이 하나의 platform stack으로 수렴하며 Microsoft가 배포표준을 함께 정의한다. / bear: AI 인프라 투자경쟁이 commoditize되고 모델 파트너 의존이 커지면 초과수익 일부가 외부로 이동할 수 있다.
-unknowns: FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률.
+| SL | 82.5 (58–92) | 0.82 | support | – | Microsoft는 enterprise software에서 cloud·AI 플랫폼으로 구조적 리더십을 확장 중이다. FY2026 Microsoft Cloud $214.4B(+27%), Azure +41%, commercial RPO $678B와 M365 cloud +17%가 수요의 폭… |
+bull: cloud·AI·productivity·security의 장기 침투가 통합 stack과 distribution을 통해 경쟁사보다 빠른 복합성장으로 이어진다. / bear: AI가 commodity화되고 hyperscaler 가격경쟁·규제·전력제약이 심화되면 선도 지위의 경제적 이익이 낮아진다.
+unknowns: Agents 제품군의 독립 매출 규모. · AI infra 신규 cohort 수익률.
 
-## customer_product — 74.5 (raw 74.5, spread 33.0, DISPUTE)
+## customer_product — 79.5 (raw 79.5, spread 33.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| CP | 79.5 (55–88) | 0.75 | support | V4=cleared, V8=cleared | 고객가치와 지불의사는 강하다. Microsoft Cloud $214.4B(+27%), commercial RPO $678B, M365 cloud +17%와 seats +6%가 가격·사용량·계약잔고의 동시 확대를 보여준다. OpenAI 관련 매출 $24.1B은 관계사 집중 리스크지만 총… |
+| CP | 79.5 (55–88) | 0.78 | support | V4=cleared, V8=cleared | 고객가치와 지불의사는 강하다. Microsoft Cloud $214.4B(+27%), commercial RPO $678B, M365 Commercial cloud +17%와 seats +6%가 가격·사용량·계약잔고의 동시 확대를 보여준다. OpenAI 관련 매출 $24.1B은 관계사… |
 bull: RPO·cloud 성장·M365 seat와 ARPU 확대는 enterprise 고객이 Microsoft wallet share를 늘리는 직접 신호다. / bear: OpenAI 거래와 대형 AI commitments가 수요 품질을 왜곡할 수 있고 Cloud margin 하락은 AI 고객 ROI가 완전히 현금화되지 않았음을 보여준다.
-unknowns: FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률.
+unknowns: Copilot별 유료 seat·해지율·고객 ROI는 공시되지 않는다. · OpenAI 관련 매출의 정상화 후 성장률.
 
-## moat_trajectory — 76.92 (raw 76.92, spread 35.0, DISPUTE)
+## moat_trajectory — 80.25 (raw 80.25, spread 35.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| MT | 80.25 (55–90) | 0.75 | support | V6=cleared | 해자는 넓어지는 방향이지만 AI 인프라가 경제적 해자를 자동 강화하는 것은 아니다. Microsoft Cloud revenue가 FY2024 $137.7B→FY2025 $168.9B→FY2026 $214.4B로 증가했고 RPO도 Q2 $625B→Q3 $627B→FY말 $678B로 상승… |
-bull: Azure·M365·GitHub·Security·Dynamics가 identity/data/developer workflow를 공유해 전환비용이 서로 복리화된다. / bear: AI 모델과 개발도구의 멀티모델·오픈소스 범용화, hyperscaler 경쟁과 높은 capex가 해자 수익률을 잠식할 수 있다.
-unknowns: FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률.
+| MT | 80.25 (55–90) | 0.8 | support | V6=cleared | moat는 현재 확대 중이다. Microsoft Cloud는 FY2024 $137.7B에서 FY2025 $168.9B, FY2026 $214.4B로 성장했고 commercial RPO는 최근 분기 $625B→$627B→$678B로 늘었다. M365 seat·ARPU 확대와 Azure … |
+bull: Azure·M365·GitHub·Security의 통합 데이터와 distribution이 AI 시대에도 전환비용과 cross-sell을 강화한다. / bear: foundation-model 및 compute가 commodity화되고 멀티클라우드가 확산되면 AI capex는 차별화보다 가격경쟁을 키운다.
+unknowns: Copilot 데이터 flywheel의 독점성. · 워크로드별 Azure churn.
 
-## reinvestment_fcf — 76.17 (raw 76.17, spread 40.0, DISPUTE)
+## reinvestment_fcf — 79.5 (raw 79.5, spread 45.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| RF | 79.5 (50–90) | 0.7 | support | V5=cleared, V3=cleared | 재투자 규모와 수익률은 강하지만 현금복리는 아직 검증 중이다. FY25→FY26 증분 NOPAT 대비 단순 증분 투자자본 수익률은 약 23%로 자본비용을 상회하고, capex+R&D/OCF는 82.8%로 대규모 재투자다. 반면 owner FCF/share는 FY2024 $8.48→FY… |
-bull: 증분 ROIC 약 23%, 내부 재투자 흡수율 83%로 대규모 장기 복리 활주로가 확인된다. / bear: AI capex가 유지 capex로 굳어지면 높은 회계이익이 주당 현금복리로 전환되지 않는다.
-unknowns: FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률.
+| RF | 79.5 (45–90) | 0.75 | support | V3=cleared, V5=cleared | FY2025→FY2026 단순 증분 세후영업이익 대비 증분 투자자본은 약 23%로 높고 cloud·AI 수요의 runway도 길다. 그러나 FY2026 capex+R&D가 OCF의 약 82.8%를 흡수해 SBC 차감 owner FCF/share는 FY2024 $8.48에서 FY2026… |
+bull: AI·cloud 재투자가 높은 증분 매출과 NOPAT으로 전환되고 capex가 정상화되면 owner FCF/share가 빠르게 회복한다. / bear: capex와 lease commitments가 계속 OCF를 흡수하고 AI asset 수익률이 WACC 이하이면 성장과 주당가치가 분리된다.
+unknowns: maintenance capex 비중. · 신규 데이터센터 cohort ROIC.
 
-## management_allocation — 73.92 (raw 73.92, spread 33.0, DISPUTE)
+## management_allocation — 77.25 (raw 77.25, spread 33.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| MA | 77.25 (55–88) | 0.75 | support | V1=cleared | 자본배분 실행력은 강하지만 AI 투자 사이클의 사후수익률은 아직 검증 전이다. FY2026 자사주 평균 약 $464는 deterministic Base 약 $500의 0.93배로 관측표상 70점이다. R&D와 cloud 전환 트랙레코드, 내부통제·공시 투명성은 긍정적이다. $115.9… |
-bull: Nadella 체제는 Office→cloud→AI로 자원을 재배치했고 R&D와 AI infra 투자를 감수하며 매출·영업이익을 함께 성장시켰다. / bear: FY26 capex $115.9B와 장기 commitments는 자본배분 오류 시 장기 FCF 훼손을 크게 만든다.
-unknowns: FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률.
+| MA | 77.25 (55–88) | 0.78 | support | V1=cleared | 자본배분 실행력은 강하지만 AI 투자 사이클의 사후수익률은 아직 검증 전이다. FY2026 repurchase-program 평균 약 $463.89는 deterministic Base $500.13의 0.928배로 관측표상 70점이다. R&D와 cloud 전환 트랙레코드, 내부통제·관… |
+bull: Office에서 cloud, 이어 AI로 자원을 재배치한 실행력이 데이터센터 투자에서도 높은 증분수익률로 이어진다. / bear: FY2026 capex $115.948B와 장기 commitments는 수요 또는 가격이 흔들릴 때 자본배분 오류를 장기 FCF 훼손으로 증폭한다.
+unknowns: 신규 데이터센터 cohort별 ROIC. · OpenAI 관계에서 장기 현금회수 구조.
 
-## financial_survival — 79.92 (raw 79.92, spread 32.0, DISPUTE)
+## financial_survival — 83.25 (raw 83.25, spread 32.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| FS | 83.25 (60–92) | 0.8 | support | V2=cleared, V3=cleared, V9=cleared | 재무 생존력은 매우 강하다. 순현금 약 $36.5B, OCF $182.9B, debt $40.3B로 외부자본 없이 필수 투자와 부채를 감당할 수 있다. 다만 AI datacenter 투자 때문에 purchase $194.1B·construction $34.6B 약정과 finance l… |
-bull: 현금+단기투자 $76.8B, debt $40.3B, OCF $182.9B로 AI capex를 외부증자 없이 자체 현금흐름으로 감당할 수 있다. / bear: purchase+construction commitments $228.6B와 lease obligations가 AI 수요 둔화 시 FCF를 압박할 수 있다.
-unknowns: FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률.
+| FS | 83.25 (60–92) | 0.86 | support | V2=cleared, V3=cleared, V9=cleared | 재무 생존력은 매우 강하다. 순현금 약 $36.5B, OCF $182.9B, debt $40.3B로 외부자본 없이 필수 투자와 부채를 감당할 수 있다. 다만 AI 데이터센터 투자 때문에 purchase $194.1B·construction $34.6B 약정과 finance lease … |
+bull: 현금·단기투자 $76.8B, debt $40.3B, OCF $182.9B로 AI capex를 외부증자 없이 자체 현금흐름으로 감당한다. / bear: purchase·construction commitments와 lease obligations가 AI 수요 둔화 시 FCF를 압박해 자본효율이 악화된다.
+unknowns: 데이터센터 purchase·construction 약정의 취소 가능성과 연도별 지급 일정. · FY2027 이후 finance lease 증분과 AI 자산 가동률.
 
-## expectation_valuation — 52.58 (raw 52.58, spread 45.0, DISPUTE)
+## expectation_valuation — 54.25 (raw 54.25, spread 45.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| EV | 54.25 (30–75) | 0.7 | neutral | V7=cleared | 고정 9%/10년/15x·20x·25x DCF에서 Bear/Base/Bull은 약 $133/$500/$741이다. $497.75는 Base의 약 1.00배로 Bull을 요구하지 않지만 기대차도 거의 없다. Base는 FY2026 owner FCF/share $7.32가 AI capex… |
-bull: AI·Azure·Copilot 수익화와 capex 효율 개선이 겹치면 owner FCF/share Y10 $53, Bull 약 $741이다. / bear: AI 인프라 capex가 고정비로 남고 cloud margin 회복이 늦으면 Bear 약 $133이다.
-unknowns: FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률.
+| EV | 54.25 (30–75) | 0.8 | neutral | V7=cleared | 고정 9%·10년·15/20/25x DCF의 Bear/Base/Bull은 약 $133.20/$500.13/$740.94다. $493.78은 Base의 0.9873배로 Bull을 요구하지 않지만 기대차도 거의 없다. Base는 FY2026 owner FCF/share $7.32가 AI … |
+bull: Azure AI·Copilot 수익화와 데이터센터 효율 개선이 겹쳐 owner FCF/share가 10년차 $53에 도달하면 Bull 가치 약 $741이 가능하다. / bear: AI 인프라 capex가 고정비로 남고 cloud margin 회복이 늦으면 owner FCF/share가 10년차 $12.5에 그쳐 Bear 가치 약 $133이 된다.
+unknowns: 동일정의 5년 valuation percentile은 frozen bundle과 공시에서 확보되지 않았다. · FY2027 이후 데이터센터 capex 정상화 속도와 신규 자산의 증분 현금수익률.
 
-## asymmetry — 62.83 (raw 62.83, spread 38.0, DISPUTE)
+## asymmetry — 62.75 (raw 62.75, spread 43.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| AS | 64.5 (40–78) | 0.65 | neutral | V9=cleared, V7=cleared | MSFT의 비대칭성은 사업 생존보다 가격·capex 회수에 달려 있다. deterministic Bull/current는 약 1.49배, Bear/current는 약 0.27배다. 순현금과 OCF>debt로 파산경로는 약하지만 현 가격의 위험조정 기대차는 크지 않다. |
-bull: Bull 약 $741(+49%)에 Azure AI·M365/GitHub Copilot·Industry solutions의 복수 경로가 기여한다. / bear: Bear 약 $133(-73%)로 valuation/FCF reset 하방은 크며 AI datacenter 약정과 OpenAI 집중이 동시 악화될 수 있다.
-unknowns: FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률.
+| AS | 62.75 (35–78) | 0.72 | neutral | V7=cleared, V9=cleared | MSFT의 비대칭은 사업 생존보다 가격과 AI capex 회수에 달려 있다. deterministic Bull/current는 1.5005배, Bear/current는 0.2697배다. 순현금 $36.5B와 OCF가 debt를 크게 상회해 파산경로는 약하지만 현 가격의 위험조정 기대차… |
+bull: Bull 약 $741(+50%)에 Azure AI, M365/GitHub Copilot, industry agents의 복수 상승경로가 기여한다. / bear: Bear 약 $133(-73%)로 valuation·FCF reset 하방이 크며 AI 데이터센터 약정과 OpenAI 집중이 함께 악화될 수 있다.
+unknowns: FY2027 이후 AI 인프라 capex 정상화 속도와 신규 자산의 증분 현금수익률. · OpenAI 관련 RPO와 gross-margin 기여의 순액.
 
-## disruptive_innovation — 78.17 (raw 78.17, spread 30.0, DISPUTE)
+## disruptive_innovation — 81.5 (raw 81.5, spread 30.0, DISPUTE)
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| DI | 81.5 (60–90) | 0.75 | support | – | AI와 cloud 전환은 실제 매출·RPO·사용량으로 검증된 산업 재편이다. FY2026 Cloud $214.4B(+27%), Azure +41%, M365 cloud +17%, RPO $678B는 파일럿 단계를 넘어섰다. FY27 Agents and Infra 구조도 가치사슬 통합을… |
-bull: Azure에서 M365·GitHub·Security·Industry agents까지 한 distribution graph로 AI를 확산시켜 업무 소프트웨어의 사용방식을 재편한다. / bear: 대형 incumbent라는 점과 모델 범용화, 막대한 capex가 파괴적 혁신의 경제적 과실을 일부 상쇄할 수 있다.
-unknowns: FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률.
-
-## turnaround_quality — 26.75 (raw 26.75, spread 30.0, DISPUTE)
-| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
-|---|---|---|---|---|---|
-| TQ | 31.75 (20–50) | 0.85 | neutral | – | MSFT는 턴어라운드 후보가 아니다(T4 Re-rated/healthy incumbent). FY2026 매출 +18%, 영업이익 +21%, Azure +41%로 실적 저점이 없고 self-help가 손익 회복의 주동력도 아니다. 개선이 필요한 것은 owner FCF/share와 AI… |
-bull: AI capex 효율화와 일부 구조조정은 self-help를 만들 수 있으나 정상화보다 강한 사업의 최적화다. / bear: 매출·영업이익이 고성장인 구간으로 턴어라운드 저점이 없고 owner FCF/share는 capex 때문에 감소했다.
-unknowns: FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률.
+| DI | 81.5 (60–90) | 0.8 | support | – | AI와 cloud 전환은 실제 매출·RPO·사용량으로 검증된 산업 재편이다. FY2026 Microsoft Cloud $214.4B(+27%), Azure +41%, M365 Commercial cloud +17%, commercial RPO $678B는 파일럿 단계를 넘어섰다. FY… |
+bull: Azure에서 M365·GitHub·Security·industry agents까지 하나의 distribution graph로 AI를 확산시켜 업무 소프트웨어의 사용방식을 재편한다. / bear: 대형 incumbent라는 점, 모델 범용화와 막대한 capex가 파괴적 혁신의 경제적 과실을 일부 상쇄한다.
+unknowns: Copilot·agents의 제품별 순증 ARR와 gross margin. · 신규 AI 데이터센터 자산별 증분 ROIC.
 
 ## evidence_quality
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| ED | 82 | 0.82 | support | – | 핵심 수치의 대부분이 업로드된 FY2026 10-K·Q2/Q3 10-Q·9월 8-K에 직접 연결된다. 매출·Azure 성장·RPO·OCF·capex·부채·OpenAI 거래·FY27 세그먼트 개편은 1차 자료 기반이다. 주요 제한은 두 가지다. 2026-09-17 종가와 P/E는 외부 … |
-unknowns: FY27 이후 datacenter 자산별 증분 ROIC. · OpenAI 관련 계약의 gross-margin 및 RPO 기여 세부내역.
+| ED | 85 | 0.86 | support | – | 핵심 재무수치와 운영 KPI는 FY2026 10-K·FY2026 10-Q·9월 8-K 원문 및 SEC CompanyFacts 기반 normalized pack에 직접 연결된다. 매출·Azure 성장·RPO·OCF·capex·부채·OpenAI 거래·세그먼트 개편은 1차자료 기반이다. 제… |
+unknowns: datacenter cohort별 증분 ROIC. · maintenance와 growth capex의 구분.
 
 ## red_team
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| RT | 52 | 0.75 | oppose | V1=cleared, V2=cleared, V4=cleared, V5=cleared, V6=cleared, V7=cleared, V8=cleared | 가장 강한 반대논리는 AI 투자 회수다. FY2026 owner FCF/share는 capex 급증으로 약 $7.32까지 하락했고, purchase+construction commitments 약 $228.6B와 대규모 lease 의무가 남았다. OpenAI는 매출 $24.1B·AR … |
-unknowns: AI datacenter cohort별 utilization/ROIC. · OpenAI 관련 매출의 gross margin과 RPO 기여.
+| RT | 52 | 0.8 | oppose | V1=cleared, V2=cleared, V4=cleared, V5=cleared, V6=cleared, V7=cleared, V8=cleared | 가장 강한 반대논리는 AI 투자회수다. FY2026 owner FCF/share는 capex 급증으로 약 $7.32까지 낮아졌고 purchase+construction commitments 약 $228.6B와 finance-lease liabilities $66.6B가 남았다. Ope… |
+unknowns: AI datacenter cohort별 utilization·ROIC. · OpenAI 관련 매출의 gross margin과 RPO 기여.
 
 ## macro_overlay
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| MO | 45 | 0.55 | neutral mult=0.7 | – | 금융여건이 완화에서 긴축으로 방향을 틀었다. 연준은 2026-09-16 FOMC에서 25bp를 인상해 3.75~4.00%로 올렸다. 3년여 만의 첫 인상이며 유가 급등발 인플레이션이 이유다. 점도표는 2026년 말과 2027년 말 모두 4.00~4.25%를 가리킨다. 실질금리 상승은 … |
-unknowns: 유가발 인플레이션의 지속 기간과 연준의 반응함수. · 긴축 전환이 AI 인프라 투자 자금조달(특히 투자등급 미만 AI 클라우드)에 미치는 시차 효과.
+| MO | 45 | 0.75 | neutral | – | 2026-09-18 기준 금융여건은 긴축 방향과 낮은 신용위험 프리미엄이 공존한다. 연준은 9월 16일 25bp 인상해 3.75~4.00%로 올렸고, 하이일드 OAS는 270bp로 역사적 완충이 얇다. 동시에 중동 분쟁으로 Hormuz 통항이 10일 평균을 크게 밑돌아 에너지·물류 위… |
+unknowns: 유가발 인플레이션의 지속기간. · 다음 FOMC의 반응함수.
 
 ## investment_committee
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
 |---|---|---|---|---|---|
-| IC | 71.84 | 0.75 | neutral | – | 기계적 집계는 약 71.84점의 Emerging Outlier이며, OpenAI provider 하향보정 후에도 MT·RF·MA·FS·EV와 price/Base 조건을 간신히 충족해 Compounder로 분류된다. Hard Veto는 모두 cleared다. 다만 $497.75는 Bas… |
-unknowns: FY27~FY28 AI datacenter 증분 ROIC와 owner FCF/share 회복속도. · OpenAI 관련 수요·RPO의 독립성.
+| IC | 74.75 | 0.8 | neutral | – | 기계적 집계는 74.75점, valuation 제외 78.37점의 Emerging Outlier이며 Compounder 조건을 충족한다. Hard Veto는 모두 cleared다. 그러나 $493.78은 Base $500.13과 거의 같아 기대차가 작고, FY2026 owner FCF… |
+unknowns: FY2027~FY2028 AI datacenter cohort별 증분 ROIC. · owner FCF/share 회복속도.
 
+## Archetype fit
+{"buffett_value": {"eligible": false, "fit_score": 66.7372549, "failed_conditions": ["signal.price_to_base_value", "criterion.reinvestment_fcf.fcf_per_share_quality", "domain.asymmetry"], "missing_conditions": [], "blocking_vetoes": []}, "compounder": {"eligible": true, "fit_score": 76.6703125, "failed_conditions": [], "missing_conditions": [], "blocking_vetoes": []}, "growth": {"eligible": false, "fit_score": 69.18539945, "failed_conditions": ["domain.asymmetry", "criterion.reinvestment_fcf.fcf_per_share_quality"], "missing_conditions": [], "blocking_vetoes": []}, "moonshot": {"eligible": false, "fit_score": 62.0, "failed_conditions": ["signal.market_cap_usd", "domain.asymmetry"], "missing_conditions": [], "blocking_vetoes": []}, "outlier_growth": {"eligible": false, "fit_score": 42.48076923, "failed_conditions": ["domain.asymmetry", "criterion.asymmetry.upside_path"], "missing_conditions": ["domain.long_term_growth", "criterion.long_term_growth.opportunity_scale_5y", "criterion.long_term_growth.growth_duration_10y", "criterion.long_term_growth.culture_adaptability", "criterion.long_term_growth.market_misperception"], "blocking_vetoes": []}}
+## Provider calibration
+{"mode": "shadow", "applied": true, "decision_effect": false, "family": "openai", "base_offset": 5.0, "max_abs_offset": 5.0, "per_domain_offset": {"structural_leadership": -3.33, "customer_product": -5.0, "moat_trajectory": -3.33, "reinvestment_fcf": -3.33, "management_allocation": -3.33, "financial_survival": -3.33, "expectation_valuation": -1.67, "asymmetry": -1.67, "disruptive_innovation": -3.33}, "basis": {"sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조", "n": 27, "measured_mean_gap": 10.2, "measured_sd": 6.9, "direction": "27개 전부 gpt-5.6-sol >= Claude Opus 5. 노이즈가 아니라 계통 편향.", "caveat": "표본은 종목 1개다. 다른 종목의 쌍 실행이 쌓이면 base_offset을 재추정해야 한다. harness.py calibrate로 측정한다."}, "reason": null}
+## Evidence concentration (review only)
+[]
+## Macro / geopolitical transmission
+{"financial_regime": {"financial_conditions": {"scope": "global", "as_of_utc": "2026-09-18T00:00:00+00:00", "summary": "연준의 25bp 인상으로 정책 방향이 긴축 쪽으로 이동했다.", "evidence": [{"source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm", "as_of_date": "2026-09-16T18:00:00+00:00"}], "risk_budget_multiplier": 0.7}, "credit_liquidity": {"scope": "global", "as_of_utc": "2026-09-18T00:00:00+00:00", "summary": "HY OAS 270bp로 유동성은 원활하지만 충격 완충이 얇다.", "evidence": [{"source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2", "as_of_date": "2026-09-16T00:00:00+00:00"}], "risk_budget_multiplier": 0.8}}, "geopolitical_regime": {"military_conflict": {"level": "high", "regions": ["Middle East", "Iran", "Yemen", "Saudi Arabia"], "routes": ["Strait of Hormuz", "Bab el-Mandeb"], "dependencies": ["energy", "shipping"], "structural_events": []}, "energy_disruption": {"level": "high", "regions": ["Middle East"], "routes": ["Strait of Hormuz"], "dependencies": ["oil", "gas", "electricity"], "structural_events": []}, "shipping_disruption": {"level": "high", "regions": ["Middle East"], "routes": ["Strait of Hormuz", "Bab el-Mandeb"], "dependencies": ["global shipping"], "structural_events": []}, "sovereign_policy_instability": {"level": "moderate", "regions": ["Iran", "Yemen"], "routes": [], "dependencies": ["sanctions", "energy policy"], "structural_events": []}, "trade_fragmentation": {"level": "moderate", "regions": ["United States", "China"], "routes": ["technology trade"], "dependencies": ["semiconductors", "cloud services"], "structural_events": []}, "export_controls": {"level": "high", "regions": ["China", "Macau", "Country Group D:5"], "routes": ["advanced computing"], "dependencies": ["AI accelerators", "semiconductors"], "structural_events": []}, "sanctions": {"level": "high", "regions": ["Iran", "Middle East"], "routes": ["Strait of Hormuz"], "dependencies": ["payments", "energy", "shipping"], "structural_events": [{"event_id": "IRAN-SANCTIONS-20260917", "event_type": "sanctions", "source": "https://ofac.treasury.gov/", "as_of_date": "2026-09-17T00:00:00+00:00", "regions": ["Iran"], "routes": ["Strait of Hormuz"], "dependencies": ["payments", "shipping"]}]}}, "company_transmission": {"energy_disruption": {"status": "no_direct_match", "matched_exposures": [], "level": "high"}, "export_controls": {"status": "no_direct_match", "matched_exposures": [], "level": "high"}, "military_conflict": {"status": "no_direct_match", "matched_exposures": [], "level": "high"}, "sanctions": {"status": "no_direct_match", "matched_exposures": [], "level": "high"}, "shipping_disruption": {"status": "no_direct_match", "matched_exposures": [], "level": "high"}, "sovereign_policy_instability": {"status": "no_direct_match", "matched_exposures": [], "level": "moderate"}, "trade_fragmentation": {"status": "exposed", "matched_exposures": ["united states"], "level": "moderate"}}, "missing_or_stale_components": [], "reanalysis_requests": [], "pending_reanalysis_domains": [], "risk_budget_multiplier": 0.5, "purchase_pacing_multiplier": 0.5, "monitoring_urgency": "high", "fundamental_score_effect": 0}

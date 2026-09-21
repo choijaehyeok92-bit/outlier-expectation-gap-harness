@@ -1,11 +1,21 @@
-# One-page Investment Record — MSFT
+# One-page Investment Record
 
-기준일 2026-09-17 · score **71.84** · ex-val **75.24** · classification **Emerging Outlier**
-archetype **컴파운더 (compounder)** · Hard Veto **CLEARED** · state **NORMAL_CANDIDATE**
-mechanical position **2-4%** · macro pacing **0.7**
-
-- price/Base: 0.9952
-- Bear/Base/Bull: 133.1962 / 500.1269 / 740.9386
-- 핵심 장점: Azure/M365/Cloud/RPO의 구조적 성장, 넓은 배포 생태계, 순현금과 강한 OCF.
-- 핵심 리스크: AI datacenter capex/lease/commitment 회수, owner FCF/share 회복, OpenAI 관련 경제적 집중.
-- IC: 기계적 2–4% 밴드이나 기대차가 작아 macro pacing과 FCF 회복 확인을 적용해 단계적으로 접근.
+1. 이 기업이 주도하는 구조적 변화:
+2. 시장이 기대하는 성장:
+3. 내가 예상하는 성장 규모:
+4. 내가 예상하는 성장 지속기간:
+5. Moat Trajectory:
+6. 증분 ROIC:
+7. FCF/share 경로:
+8. 경영진 평가:
+9. 파괴적 혁신 평가 (비용곡선·채택곡선·플랫폼 옵셔널리티):
+10. 종목 유형 (컴파운더 / 장기 아웃라이어 성장주 / 성장주 / 버핏 스타일 가치주 / 문샷형 / 관망·회피형)과 판정 근거:
+11. Bear / Base / Bull:
+12. 현재가격에 내재된 기대:
+13. 성공확률:
+14. 성공 시 Upside:
+15. 실패 시 Permanent Loss:
+16. 가장 중요한 반증조건:
+17. 최초 목표 비중:
+18. 비중을 늘릴 증거:
+19. 매도할 증거:

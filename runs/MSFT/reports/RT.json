@@ -1,121 +1,23 @@
 {
-  "agent_id": "RT",
-  "ticker": "MSFT",
-  "as_of_date": "2026-09-17",
-  "domain": "red_team",
-  "role": "red_team",
-  "analysis_status": "complete",
-  "score_0_100": 52,
-  "confidence_0_1": 0.75,
-  "thesis": "가장 강한 반대논리는 AI 투자 회수다. FY2026 owner FCF/share는 capex 급증으로 약 $7.32까지 하락했고, purchase+construction commitments 약 $228.6B와 대규모 lease 의무가 남았다. OpenAI는 매출 $24.1B·AR $6B·지분관계가 겹친다. 그러나 순현금·강한 OCF·복수 제품축·성장하는 RPO 때문에 현재 증거는 어느 Hard Veto의 구성요건도 충족시키지 못한다.",
-  "evidence": [
-    {
-      "claim": "Owner FCF/share는 FY2024 약 $8.48→FY2025 $7.99→FY2026 $7.32로 감소했다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/README.md",
-      "period": "FY2024-FY2026",
-      "as_of_date": "2026-09-17",
-      "value": "8.48→7.99→7.32",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "FY2026 PP&E additions $115.948B, purchase+construction commitments 합계 약 $228.6B, finance lease liabilities $66.594B이다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
-      "period": "FY2026",
-      "as_of_date": "2026-09-17",
-      "value": "115.948/228.6/66.594",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "OpenAI 관련 commercial-arrangement revenue $24.1B, AR $6.0B, 약 25% as-converted 지분관계가 공존한다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
-      "period": "FY2026",
-      "as_of_date": "2026-09-17",
-      "value": "24.1/6.0/25%",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "반대증거로 cash+short-term investments $76.843B, debt $40.294B, OCF $182.935B이며 commercial RPO는 $678B이다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
-      "period": "FY2026",
-      "as_of_date": "2026-09-17",
-      "value": "76.843/40.294/182.935/678",
-      "fact_or_estimate": "fact"
-    }
+  "agent_id":"RT","ticker":"MSFT","as_of_date":"2026-09-18","domain":"red_team","role":"red_team","analysis_status":"complete","score_0_100":52,"confidence_0_1":0.8,
+  "thesis":"가장 강한 반대논리는 AI 투자회수다. FY2026 owner FCF/share는 capex 급증으로 약 $7.32까지 낮아졌고 purchase+construction commitments 약 $228.6B와 finance-lease liabilities $66.6B가 남았다. OpenAI는 매출 $24.1B·AR $6.0B·지분관계가 겹친다. 그러나 순현금·강한 OCF·복수 제품축·성장하는 RPO 때문에 현재 증거는 어느 Hard Veto의 구성요건도 충족시키지 못한다.",
+  "evidence":[
+    {"evidence_id":"MSFT-FCF-DECLINE","economic_driver":"owner_fcf","claim":"SBC 차감 owner FCF/share proxy는 FY2024 약 $8.48에서 FY2026 $7.32로 하락했다.","source_type":"filing","source":"runs/MSFT/sources/financials/normalized_financials.json","period":"FY2024-FY2026","as_of_date":"2026-06-30","value":7.3235,"fact_or_estimate":"estimate"},
+    {"evidence_id":"MSFT-COMMITMENTS-FY26","economic_driver":"capital_intensity","claim":"FY2026 capex $115.948B, purchase+construction commitments 약 $228.6B, finance lease liabilities 약 $66.6B이다.","source_type":"filing","source":"runs/MSFT/sources/10-K_2026-07-29_0001193125-26-323660.htm","period":"FY2026","as_of_date":"2026-06-30","value":228626000000,"fact_or_estimate":"fact"},
+    {"evidence_id":"MSFT-FY26-OPENAI","economic_driver":"related_party_concentration","claim":"OpenAI 관련 commercial-arrangement revenue $24.1B, accounts receivable $6.0B과 약 25% as-converted 지분관계가 공존한다.","source_type":"filing","source":"runs/MSFT/sources/10-K_2026-07-29_0001193125-26-323660.htm","period":"FY2026","as_of_date":"2026-06-30","value":24100000000,"fact_or_estimate":"fact"},
+    {"evidence_id":"MSFT-BALANCE-RPO-FY26","economic_driver":"survival_demand","claim":"반대증거로 cash+short investments $76.843B, debt $40.294B, OCF $182.935B이며 commercial RPO는 $678B이다.","source_type":"filing","source":"runs/MSFT/sources/10-K_2026-07-29_0001193125-26-323660.htm","period":"FY2026","as_of_date":"2026-06-30","value":678000000000,"fact_or_estimate":"fact"}
   ],
-  "counterevidence": [
-    "Azure +41%와 RPO +84%는 AI/cloud 수요가 회계상 서사에 그치지 않음을 보여준다.",
-    "OpenAI 관련 매출은 총매출의 약 7.3%로 현재 단일고객 치명적 종속 수준이 아니다.",
-    "순현금과 OCF 규모가 약정·lease의 생존위험을 크게 완충한다."
+  "counterevidence":["Azure +41%와 $678B RPO는 AI/cloud 수요가 서사에 그치지 않음을 보여준다.","OpenAI 관련 매출은 총매출의 약 7.3%로 현재 치명적 단일고객 종속은 아니다.","순현금과 OCF가 약정·lease의 생존위험을 크게 완충한다.","희석주식수는 FY2024 7.469B에서 FY2026 7.453B로 감소했다."],
+  "unknowns":["AI datacenter cohort별 utilization·ROIC.","OpenAI 관련 매출의 gross margin과 RPO 기여.","장기 lease·purchase 의무 중 취소 가능한 비중.","AI compute 가격하락이 Azure margin에 미칠 영향.","FY2027 이후 capex 정상화 시점."],
+  "falsifiers":["FY2027~FY2028 owner FCF/share가 회복하고 capex/revenue가 안정되면 short thesis는 약화된다.","OpenAI 의존 매출이 25%에 접근하거나 관련 AR 손실이 발생하면 집중 리스크를 재판정한다.","Azure와 RPO 성장이 동시에 급락하면 해자·고객가치 판단을 하향한다."],
+  "hard_veto_flags":[
+    {"veto":"경영진 정직성 또는 회계 신뢰성 훼손","status":"cleared","rationale":"재작성·감사인 이견·중대 내부통제 결함이 확인되지 않는다."},
+    {"veto":"구조적으로 과도한 외부자본 조달 의존","status":"cleared","rationale":"순현금과 $182.935B OCF로 외부자본이 사업 존속의 구조적 요건이 아니다."},
+    {"veto":"고객가치 없이 마케팅·보조금에 의존하는 성장","status":"cleared","rationale":"Azure·cloud·RPO·seat 성장이 고객가치 부재를 반증한다."},
+    {"veto":"증분 ROIC의 구조적 붕괴","status":"cleared","rationale":"단순 증분 수익률은 자본비용을 상회하며 현재 구조적 붕괴 증거가 없다."},
+    {"veto":"해자의 지속적인 축소","status":"cleared","rationale":"Cloud revenue·RPO·M365 seats 등 관측 해자지표가 성장한다."},
+    {"veto":"현재가격이 비현실적인 Bull Case 이상을 요구","status":"cleared","rationale":"현재가 $493.78은 Bull 가치 $740.94를 넘지 않는다."},
+    {"veto":"단일 제품·단일 고객·단일 규제에 대한 치명적 종속성","status":"cleared","rationale":"OpenAI 관련 매출은 약 7.3%이고 Azure·M365·consumer 등 복수 수요축이 있다."}
   ],
-  "unknowns": [
-    "AI datacenter cohort별 utilization/ROIC.",
-    "OpenAI 관련 매출의 gross margin과 RPO 기여.",
-    "장기 lease/payment 의무 중 취소·재협상 가능한 비중."
-  ],
-  "falsifiers": [
-    "FY27~FY28 owner FCF/share가 회복하고 capex/revenue가 안정되면 short thesis는 약화된다.",
-    "OpenAI 의존 매출이 25%에 접근하거나 관련 AR 손실이 발생하면 집중 리스크를 재판정한다.",
-    "Azure 성장 둔화와 RPO 성장 둔화가 동시에 발생하면 해자/수요 논리를 하향한다."
-  ],
-  "hard_veto_flags": [
-    {
-      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "cleared",
-      "rationale": "재작성·감사인 이견·내부통제 중대결함 등 신뢰성 훼손 사건이 확인되지 않는다."
-    },
-    {
-      "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "cleared",
-      "rationale": "OCF가 필수지출을 지원하며 외부자본 조달이 사업 존속의 구조적 요건이 아니다."
-    },
-    {
-      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "cleared",
-      "rationale": "Azure/cloud/RPO/seat 성장으로 고객가치 부재라는 필수 요건이 반증된다."
-    },
-    {
-      "veto": "증분 ROIC의 구조적 붕괴",
-      "status": "cleared",
-      "rationale": "증분 수익률이 자본비용을 상회하며 구조적 ROIC 붕괴 증거가 없다."
-    },
-    {
-      "veto": "해자의 지속적인 축소",
-      "status": "cleared",
-      "rationale": "Cloud revenue, RPO, seats 등 해자 지표가 성장해 지속 축소 요건이 반증된다."
-    },
-    {
-      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "cleared",
-      "rationale": "현재가는 deterministic Base 부근이며 Bull 이상을 요구하지 않는다."
-    },
-    {
-      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "cleared",
-      "rationale": "OpenAI 관련 매출 약 7.3%이고 Azure·M365·consumer 등 복수 수요축이 있어 단일 종속이 치명적이지 않다."
-    }
-  ],
-  "key_kpis": [
-    {
-      "name": "owner FCF/share",
-      "direction": "up",
-      "threshold": ">$8 회복",
-      "cadence": "annual"
-    },
-    {
-      "name": "capex/revenue",
-      "direction": "down",
-      "threshold": "증가세 둔화",
-      "cadence": "quarterly"
-    }
-  ],
-  "next_checks": [
-    "FY27 Q1 capex·OCF·Azure 성장과 RPO 확인",
-    "OpenAI 관련 AR/매출/투자 변화 확인",
-    "lease·purchase commitment 갱신 확인"
-  ],
-  "verdict": "oppose"
+  "key_kpis":[{"name":"owner FCF/share","direction":"up","threshold":">$8.48 by FY2028","cadence":"annual"},{"name":"capex/OCF","direction":"down","threshold":"<55% by FY2029","cadence":"quarterly"},{"name":"OpenAI-related revenue share","direction":"down","threshold":"<25%","cadence":"annual"}],"next_checks":["FY2027 Q1 capex·OCF·Azure·RPO","OpenAI AR·매출·투자 변화","lease·purchase commitments 갱신"],"verdict":"oppose","uncertainties":[]
 }

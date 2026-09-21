@@ -1,111 +1,18 @@
 {
-  "agent_id": "AS",
-  "ticker": "MSFT",
-  "as_of_date": "2026-09-17",
-  "domain": "asymmetry",
-  "role": "domain_analyst",
-  "analysis_status": "complete",
-  "score_0_100": 64.5,
-  "confidence_0_1": 0.65,
-  "bull_score": 78,
-  "bear_score": 40,
-  "bull_case": "Bull 약 $741(+49%)에 Azure AI·M365/GitHub Copilot·Industry solutions의 복수 경로가 기여한다.",
-  "bear_case": "Bear 약 $133(-73%)로 valuation/FCF reset 하방은 크며 AI datacenter 약정과 OpenAI 집중이 동시 악화될 수 있다.",
-  "thesis": "MSFT의 비대칭성은 사업 생존보다 가격·capex 회수에 달려 있다. deterministic Bull/current는 약 1.49배, Bear/current는 약 0.27배다. 순현금과 OCF>debt로 파산경로는 약하지만 현 가격의 위험조정 기대차는 크지 않다.",
-  "evidence": [
-    {
-      "claim": "DCF Bull/current≈1.49, Bear/current≈0.27이다.",
-      "source_type": "other",
-      "source": "harness deterministic valuation",
-      "period": "10y",
-      "as_of_date": "2026-06-30",
-      "value": "1.49/0.27",
-      "fact_or_estimate": "estimate"
-    },
-    {
-      "claim": "Cash+short-term investments $76.843B가 debt $40.294B을 상회하고 OCF는 $182.935B이다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
-      "period": "FY2026",
-      "as_of_date": "2026-06-30",
-      "value": "76.843/40.294/182.935",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "Purchase+construction commitments 약 $228.6B과 lease liabilities가 AI 투자 하방민감도를 키운다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
-      "period": "FY2026",
-      "as_of_date": "2026-06-30",
-      "value": 228.6,
-      "fact_or_estimate": "fact"
-    }
+  "agent_id":"AS","ticker":"MSFT","as_of_date":"2026-09-18","domain":"asymmetry","role":"domain_analyst","analysis_status":"complete","score_0_100":62.75,"confidence_0_1":0.72,"bull_score":78,"bear_score":35,
+  "bull_case":"Bull 약 $741(+50%)에 Azure AI, M365/GitHub Copilot, industry agents의 복수 상승경로가 기여한다.","bear_case":"Bear 약 $133(-73%)로 valuation·FCF reset 하방이 크며 AI 데이터센터 약정과 OpenAI 집중이 함께 악화될 수 있다.",
+  "thesis":"MSFT의 비대칭은 사업 생존보다 가격과 AI capex 회수에 달려 있다. deterministic Bull/current는 1.5005배, Bear/current는 0.2697배다. 순현금 $36.5B와 OCF가 debt를 크게 상회해 파산경로는 약하지만 현 가격의 위험조정 기대차는 크지 않다. 상승경로는 복수지만 대형주 3배급 비대칭은 아니다.",
+  "evidence":[
+    {"evidence_id":"MSFT-AS-DCF","economic_driver":"payoff_distribution","claim":"DCF Bear/Base/Bull $133.20/$500.13/$740.94로 Bear/current 0.2697, Bull/current 1.5005다.","source_type":"other","source":"harness deterministic valuation policy","period":"10 years from 2026-09-18","as_of_date":"2026-09-18","value":1.5005,"fact_or_estimate":"estimate"},
+    {"evidence_id":"MSFT-FY26-RPO","economic_driver":"contracted_demand","claim":"commercial RPO $678B와 Microsoft Cloud $214.4B(+27%)는 Azure·Copilot 확장의 계약·배포 기반을 제공한다.","source_type":"filing","source":"runs/MSFT/sources/10-K_2026-07-29_0001193125-26-323660.htm","period":"FY2026","as_of_date":"2026-06-30","value":678000000000,"fact_or_estimate":"fact"},
+    {"evidence_id":"MSFT-FY26-LIQUIDITY","economic_driver":"downside_buffer","claim":"현금·단기투자 $76.843B에서 debt $40.294B를 차감한 순현금은 $36.549B이고 OCF는 $182.935B다.","source_type":"filing","source":"runs/MSFT/sources/financials/normalized_financials.json","period":"FY2026","as_of_date":"2026-06-30","value":36549000000,"fact_or_estimate":"estimate"}
   ],
-  "counterevidence": [
-    "AI 인프라 자본집약도와 OpenAI 관련 경제적 집중은 장기 현금수익률의 핵심 반대근거다."
-  ],
-  "unknowns": [
-    "FY27 이후 AI 인프라 capex의 정상화 속도와 신규 datacenter 자산의 증분 현금수익률."
-  ],
-  "falsifiers": [
-    "owner FCF/share가 2개 회계연도 연속 회복하지 못하면 현재 복리 가설을 하향한다."
-  ],
-  "hard_veto_flags": [
-    {
-      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "cleared",
-      "rationale": "순현금·강한 OCF로 파산경로가 약하고 Bear에서도 유의미한 owner FCF가 남는다. 가격 하락 위험은 AS/EV 점수로 처리한다."
-    },
-    {
-      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "cleared",
-      "rationale": "현재가는 Bull 가치 이상을 요구하지 않는다."
-    }
-  ],
-  "key_kpis": [
-    {
-      "name": "owner FCF/share",
-      "direction": "up",
-      "threshold": "FY27 이후 회복",
-      "cadence": "annual"
-    }
-  ],
-  "next_checks": [
-    "FY27 Q1 10-Q에서 Azure 성장, capex, OCF와 RPO 갱신 확인"
-  ],
-  "verdict": "neutral",
-  "subscores": [
-    {
-      "criterion_id": "upside_path",
-      "score_0_100": 60,
-      "rationale": "Bull/current≈1.49, 독립 상승경로 2개 이상이므로 observable table 60."
-    },
-    {
-      "criterion_id": "permanent_loss",
-      "score_0_100": 60,
-      "rationale": "Bear/current≈0.27은 50점 구간, 순현금이고 OCF>debt이므로 +10."
-    },
-    {
-      "criterion_id": "probability_calibration",
-      "score_0_100": 75,
-      "rationale": "20/55/25 Bear/Base/Bull과 민감도를 명시적으로 적용."
-    }
-  ],
-  "uncertainties": [
-    {
-      "criterion_id": "upside_path",
-      "severity": "material",
-      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
-    },
-    {
-      "criterion_id": "permanent_loss",
-      "severity": "material",
-      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
-    },
-    {
-      "criterion_id": "probability_calibration",
-      "severity": "material",
-      "rationale": "장기 AI 투자회수와 경쟁구도에 추정 불확실성이 남는다."
-    }
-  ]
+  "counterevidence":["Base/current가 1.013배에 불과해 정상 실행의 기대차가 거의 없다.","Bear/current 0.27로 AI capex 실패 시 하방이 크다.","Bull은 capex 효율화와 복수 AI 제품 수익화를 동시에 요구한다.","Bull 가치의 76%가 terminal에 의존한다."],
+  "unknowns":["FY2027 이후 AI 인프라 capex 정상화 속도와 신규 자산의 증분 현금수익률.","OpenAI 관련 RPO와 gross-margin 기여의 순액."],
+  "falsifiers":["Bull/current가 1.2배 미만이면 upside_path를 30으로 낮춘다.","순현금이 사라지고 OCF/debt가 1배 미만이면 영구손실 방어를 낮춘다.","Azure 성장률이 20% 미만으로 두 분기 지속되면 독립 상승경로 수를 줄인다."],
+  "hard_veto_flags":[{"veto":"현재가격이 비현실적인 Bull Case 이상을 요구","status":"cleared","rationale":"현재가는 Bull 가치의 66.6%로 Bull 이상을 요구하지 않는다."},{"veto":"파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음","status":"cleared","rationale":"순현금 $36.5B와 OCF $182.9B가 debt $40.3B를 크게 상회해 파산 가능성이 기대수익을 압도하지 않는다. 가격 하방은 점수에 반영했다."}],
+  "key_kpis":[{"name":"Bull/current","direction":"up","threshold":">=1.5x","cadence":"quarterly"},{"name":"Bear/current","direction":"up","threshold":">=0.3x","cadence":"quarterly"},{"name":"OCF/debt","direction":"up","threshold":">1.0x","cadence":"quarterly"}],
+  "next_checks":["FY2027 Q1 DCF 재산출","OpenAI 집중과 상호거래","AI capex commitments"],"verdict":"neutral",
+  "subscores":[{"criterion_id":"upside_path","score_0_100":60,"rationale":"Bull/current 1.5005배이며 Azure AI와 Copilot/agents의 독립 경로가 2개 이상이므로 관측표 1.2~1.6·2개 이상 행 60이다."},{"criterion_id":"permanent_loss","score_0_100":55,"rationale":"Bear/current 0.2697은 0.2~0.4 밴드에서 보간 전 45점(중앙 0.3의 50점보다 아래)이며 순현금이고 OCF가 debt를 상회해 +10, 최종 55다."},{"criterion_id":"probability_calibration","score_0_100":75,"rationale":"세 시나리오와 terminal 의존도를 명시해 75 기준율·민감도 사용 앵커를 충족한다. 인수·AI 자산별 기준율 부재로 90은 배제했다."}],
+  "uncertainties":[{"criterion_id":"upside_path","severity":"material","rationale":"AI 제품별 순증 owner FCF가 분리되지 않는다."},{"criterion_id":"permanent_loss","severity":"material","rationale":"Bear 가치는 장기 capex와 multiple에 민감하다."},{"criterion_id":"probability_calibration","severity":"material","rationale":"대규모 생성형 AI 투자 사이클의 기준율 표본이 짧다."}]
 }

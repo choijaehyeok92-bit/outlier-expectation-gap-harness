@@ -1,91 +1,17 @@
 {
-  "agent_id": "IC",
-  "ticker": "MSFT",
-  "as_of_date": "2026-09-17",
-  "domain": "investment_committee",
-  "role": "chair",
-  "analysis_status": "complete",
-  "score_0_100": 71.84,
-  "confidence_0_1": 0.75,
-  "thesis": "기계적 집계는 약 71.84점의 Emerging Outlier이며, OpenAI provider 하향보정 후에도 MT·RF·MA·FS·EV와 price/Base 조건을 간신히 충족해 Compounder로 분류된다. Hard Veto는 모두 cleared다. 다만 $497.75는 Base 약 $500과 거의 같아 기대차가 없고 FY2026 owner FCF/share는 AI capex로 감소했다. 따라서 2–4% 기계적 밴드는 유효하되 macro pacing 0.7과 FCF 회복 확인을 전제로 단계적으로 접근한다.",
-  "evidence": [
-    {
-      "claim": "기계적 aggregate는 core score 약 71.84, ex-valuation 약 75.1, Compounder 조건 충족으로 계산된다.",
-      "source_type": "other",
-      "source": "runs/MSFT/aggregate.json",
-      "period": "run 2026-09-17",
-      "as_of_date": "2026-09-17",
-      "value": 71.84,
-      "fact_or_estimate": "interpretation"
-    },
-    {
-      "claim": "price/Base≈1.00이며 DCF Bear/Base/Bull은 약 $133/$500/$741이다.",
-      "source_type": "other",
-      "source": "runs/MSFT/aggregate.json",
-      "period": "10y",
-      "as_of_date": "2026-09-17",
-      "value": "133/500/741",
-      "fact_or_estimate": "interpretation"
-    },
-    {
-      "claim": "FY2026 Cloud $214.4B(+27%), Azure +41%, RPO $678B이 구조적 성장과 해자를 지지한다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/10-K_FY26_key_facts.txt",
-      "period": "FY2026",
-      "as_of_date": "2026-09-17",
-      "value": "214.4/41%/678",
-      "fact_or_estimate": "fact"
-    },
-    {
-      "claim": "FY2026 owner FCF/share 약 $7.32는 FY2024 $8.48보다 낮아 AI 투자 회수 검증이 필요하다.",
-      "source_type": "filing",
-      "source": "runs/MSFT/sources/README.md",
-      "period": "FY2024-FY2026",
-      "as_of_date": "2026-09-17",
-      "value": "8.48→7.32",
-      "fact_or_estimate": "fact"
-    }
+  "agent_id":"IC","ticker":"MSFT","as_of_date":"2026-09-18","domain":"investment_committee","role":"chair","analysis_status":"complete","score_0_100":74.75,"confidence_0_1":0.8,
+  "thesis":"기계적 집계는 74.75점, valuation 제외 78.37점의 Emerging Outlier이며 Compounder 조건을 충족한다. Hard Veto는 모두 cleared다. 그러나 $493.78은 Base $500.13과 거의 같아 기대차가 작고, FY2026 owner FCF/share는 AI capex로 FY2024보다 낮다. 하방 편향 dispersion이 기본 비중을 0~2%로 낮추고 macro pacing 0.5가 매수 속도를 추가 제한하므로 IC 상태는 WATCH다.",
+  "evidence":[
+    {"evidence_id":"MSFT-AGG-20260918","economic_driver":"composite_quality","claim":"aggregate score는 74.75, ex-valuation 78.37이며 Compounder가 유일한 적격 archetype이다.","source_type":"other","source":"runs/MSFT/aggregate.json","period":"run 2026-09-18","as_of_date":"2026-09-18","value":74.75,"fact_or_estimate":"interpretation"},
+    {"evidence_id":"MSFT-DCF-20260918","economic_driver":"expectation_gap","claim":"현재가/Base는 0.9873이고 DCF Bear/Base/Bull은 약 $133.20/$500.13/$740.94다.","source_type":"other","source":"runs/MSFT/aggregate.json","period":"10 years","as_of_date":"2026-09-18","value":0.9873,"fact_or_estimate":"estimate"},
+    {"evidence_id":"MSFT-FY26-CLOUD-RPO","economic_driver":"cloud_ai_growth","claim":"FY2026 Cloud $214.4B(+27%), Azure +41%, commercial RPO $678B가 구조적 성장과 해자를 지지한다.","source_type":"filing","source":"runs/MSFT/sources/10-K_2026-07-29_0001193125-26-323660.htm","period":"FY2026","as_of_date":"2026-06-30","value":678000000000,"fact_or_estimate":"fact"},
+    {"evidence_id":"MSFT-FCF-DECLINE","economic_driver":"owner_fcf","claim":"owner FCF/share proxy 약 $7.32는 FY2024 약 $8.48보다 낮아 AI 투자회수 검증이 필요하다.","source_type":"filing","source":"runs/MSFT/sources/financials/normalized_financials.json","period":"FY2024-FY2026","as_of_date":"2026-06-30","value":7.3235,"fact_or_estimate":"estimate"},
+    {"evidence_id":"MSFT-MACRO-20260918","economic_driver":"purchase_pacing","claim":"금융·지정학 overlay는 fundamental score를 바꾸지 않지만 purchase pacing multiplier를 0.5로 제한한다.","source_type":"other","source":"runs/MSFT/aggregate.json","period":"2026-09-18","as_of_date":"2026-09-18","value":0.5,"fact_or_estimate":"interpretation"}
   ],
-  "counterevidence": [
-    "Compounder 통과는 MT·RF가 OpenAI provider 보정 후 임계값 76을 근소하게 넘는 구조여서 robust하지 않다.",
-    "Base 가치의 terminal 의존도가 높아 장기 FCF 경로 변화에 민감하다.",
-    "macro pacing 0.7은 신규 비중 확대 속도를 낮춘다."
-  ],
-  "unknowns": [
-    "FY27~FY28 AI datacenter 증분 ROIC와 owner FCF/share 회복속도.",
-    "OpenAI 관련 수요·RPO의 독립성.",
-    "5년 valuation percentile을 재현 가능한 시계열로 계산한 값."
-  ],
-  "falsifiers": [
-    "MT 또는 RF가 다음 재실행에서 76 아래로 지속되면 Compounder 분류를 재검토한다.",
-    "owner FCF/share가 FY28까지 FY2024 수준을 회복하지 못하면 재투자 점수를 하향한다.",
-    "price/Base가 1.2를 넘고 Base FCF 경로가 상향되지 않으면 신규매수 속도를 중단한다."
-  ],
-  "hard_veto_flags": [],
-  "key_kpis": [
-    {
-      "name": "owner FCF/share",
-      "direction": "up",
-      "threshold": ">$8.5",
-      "cadence": "annual"
-    },
-    {
-      "name": "price/Base",
-      "direction": "down",
-      "threshold": "<0.9 선호",
-      "cadence": "quarterly"
-    },
-    {
-      "name": "Azure growth",
-      "direction": "up",
-      "threshold": ">30%",
-      "cadence": "quarterly"
-    }
-  ],
-  "next_checks": [
-    "FY27 Q1 10-Q 후 전 도메인 재검토",
-    "AI capex/revenue와 OCF/capex 추세 확인",
-    "OpenAI 관련 매출·AR·RPO 집중도 갱신"
-  ],
-  "verdict": "neutral"
+  "counterevidence":["Base 가치의 71.7%가 terminal에 의존해 장기 FCF 경로에 민감하다.","severe downside skew가 기계적 비중 밴드를 2단계 줄였다.","macro·geopolitical overlay는 매수 속도를 0.5배로 제한한다.","Compounder 적격성은 높은 moat·reinvestment 점수와 낮은 valuation 점수의 조합으로 valuation margin이 얇다."],
+  "unknowns":["FY2027~FY2028 AI datacenter cohort별 증분 ROIC.","owner FCF/share 회복속도.","OpenAI 관련 수요·RPO의 독립성.","5년 valuation percentile.","AI workload별 gross margin."],
+  "falsifiers":["owner FCF/share가 FY2028까지 FY2024 $8.48을 회복하지 못하면 Compounder 분류를 재검토한다.","Azure 성장률이 20% 미만으로 두 분기 지속되거나 RPO가 감소하면 moat·growth 판단을 하향한다.","price/Base가 1.2를 넘고 Base FCF 경로가 상향되지 않으면 신규매수를 중단한다."],
+  "hard_veto_flags":[],
+  "key_kpis":[{"name":"owner FCF/share","direction":"up","threshold":">$8.48 by FY2028","cadence":"annual"},{"name":"price/Base","direction":"down","threshold":"<0.9 preferred","cadence":"quarterly"},{"name":"Azure growth","direction":"up","threshold":">=20%","cadence":"quarterly"}],
+  "next_checks":["FY2027 Q1 10-Q 후 전 도메인 재검토","AI capex/revenue와 OCF/capex 추세","OpenAI 관련 매출·AR·RPO 집중도"],"verdict":"neutral","ic_state":"WATCH","uncertainties":[]
 }

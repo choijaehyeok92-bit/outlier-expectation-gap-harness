@@ -1,38 +1,44 @@
 {
   "ticker": "MSFT",
   "company_name": "Microsoft Corporation",
-  "as_of_date": "2026-09-17",
+  "as_of_date": "2026-09-18",
   "currency": "USD",
-  "current_price": 497.75,
+  "current_price": 493.78,
   "shares_diluted": 7453000000,
-  "market_cap_usd": 3709730750000,
-  "enterprise_value": 3673181750000,
-  "portfolio_context": {
-    "existing_position_pct": 0,
-    "sector_exposure_pct": 0,
-    "overlap_notes": ""
-  },
+  "market_cap_usd": 3680142340000.0,
+  "enterprise_value": 3643593340000.0,
+  "portfolio_context": {"existing_position_pct": 0, "sector_exposure_pct": 0, "overlap_notes": ""},
   "known_sources": [
-    "User-uploaded Microsoft FY2026 Form 10-K filed 2026-07-29",
-    "User-uploaded Microsoft FY2026 Q2 Form 10-Q filed 2026-01-28",
-    "User-uploaded Microsoft FY2026 Q3 Form 10-Q filed 2026-04-29",
-    "User-uploaded Microsoft Form 8-K filed 2026-09-02",
-    "MSFT 2026-09-17 closing price $497.75 verified from historical market data"
+    "SEC 10-K filed 2026-07-29, accession 0001193125-26-323660",
+    "SEC 10-Q filed 2026-04-29, accession 0001193125-26-191507",
+    "SEC Company Facts for CIK 0000789019 matched to fetched filing accessions",
+    "US market snapshot: MSFT $493.78, latest trade 2026-09-19 00:15:00 UTC"
   ],
   "special_questions": [
     "Does the AI datacenter investment cycle create sufficient incremental ROIC despite owner FCF/share compression?",
-    "How should OpenAI-related revenue/RPO concentration and reciprocal economics affect customer quality, moat, and downside?",
-    "Does the FY27 Agents and Infra segment redesign strengthen evidence for a compounder classification?"
+    "How should OpenAI-related revenue/RPO concentration and reciprocal economics affect customer quality, moat and downside?",
+    "Does the FY2027 Agents and Infrastructure segment redesign strengthen evidence for a compounder classification?"
   ],
-  "net_cash_per_share": 4.9039,
+  "net_cash_per_share": 4.903931302831075,
   "valuation_percentile_5y": null,
-  "valuation_metric": "Trailing P/E about 27.7x on 2026-09-17 versus a reported 5-year average about 31.6x; percentile intentionally left null because a reproducible full distribution was not frozen.",
-  "valuation_overrides": {
-    "required_return": null,
-    "terminal_multiples": {
-      "bear": null,
-      "base": null,
-      "bull": null
-    }
+  "valuation_metric": "EV/FY2026 revenue; 5-year percentile unavailable from the frozen primary-source and market snapshot bundle",
+  "valuation_overrides": {"required_return": null, "terminal_multiples": {"bear": null, "base": null, "bull": null}},
+  "diagnostics": {"turnaround_candidate": false},
+  "geo_exposure": {
+    "revenue_by_region": {"United States": 0.5146893523666597, "Other countries": 0.48531064763334025},
+    "production_by_region": {},
+    "critical_supplier_regions": ["United States", "East Asia", "Europe"],
+    "export_control_dependencies": [
+      "Azure and AI capacity depends on advanced accelerators, servers and global data-center deployment that may be affected by semiconductor export controls and local cloud restrictions; revenue dependency was not quantified"
+    ],
+    "sanctions_exposure": [
+      "48.5% of FY2026 revenue was generated from countries outside the United States; sanctioned-market exposure was not separately quantified"
+    ],
+    "critical_shipping_routes": [
+      "Physical device and data-center hardware supply depends on global semiconductor and server logistics; route-level exposure was not quantified"
+    ],
+    "government_customer_exposure": [
+      "Government and public-sector customers use Microsoft cloud and software offerings, but revenue exposure was not separately quantified"
+    ]
   }
 }
