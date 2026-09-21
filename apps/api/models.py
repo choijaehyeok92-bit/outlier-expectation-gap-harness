@@ -1,0 +1,45 @@
+"""Request and response models.
+
+Pydantic lives at the edge only. Inside, the screening and research packages
+use plain dictionaries validated against the same JSON Schemas the CLI uses, so
+there is exactly one definition of a ScreeningSpec and one of a DeepDiveReport
+and the API cannot drift away from them.
+
+Secrets never appear here. Provider keys are read from the environment inside
+the provider classes and no route echoes them back.
+"""
+from typing import Any, Literal
+
+from pydantic import BaseModel, Field
+
+
+class ParseRequest(BaseModel):
+    text: str = Field(min_length=1, description='자연어 스크리닝 요청')
+    as_of_date: str = Field(pattern=r'^\d{4}-\d{2}-\d{2}$')
+    provider: Literal['lexicon', 'fixture', 'anthropic', 'openai'] = 'lexicon'
+    model: str | None = None
+    fx_rates: dict[str, float] | None = Field(
+        default=None,
+        description='명시적 as-of 환율. USD 1단위당 해당 통화 수량. 서버는 환율을 조회하지 않는다.')
+
+
+class ScreenRunRequest(BaseModel):
+    spec: dict[str, Any] | None = None
+    text: str | None = None
+    as_of_date: str | None = Field(default=None, pattern=r'^\d{4}-\d{2}-\d{2}$')
+    provider: Literal['lexicon', 'fixture', 'anthropic', 'openai'] = 'lexicon'
+    model: str | None = None
+    fx_rates: dict[str, float] | None = None
+    persist: bool = True
+
+
+class DeepDivePlanRequest(BaseModel):
+    run_id: str
+    user_requested: bool = False
+
+
+class DeepDiveRunRequest(BaseModel):
+    run_id: str
+    provider: Literal['fixture', 'anthropic', 'openai'] = 'fixture'
+    model: str | None = None
+    user_requested: bool = False

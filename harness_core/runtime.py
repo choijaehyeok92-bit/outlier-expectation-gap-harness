@@ -1108,6 +1108,23 @@ def cmd_fork_run(args):
 
 
 
+def register_application_commands(sub):
+    """Attach the optional screening / deep-dive commands, if the packages are present.
+
+    The harness runs on the standard library; those packages are the web
+    application's layer and bring their own dependencies. A checkout without
+    them keeps every command it had, so this import can fail without taking the
+    CLI down with it.
+    """
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
+    try:
+        from packages import cli as application_cli
+    except Exception:
+        return None
+    return application_cli.register(sub)
+
+
 def main():
     sys.stdout.reconfigure(encoding='utf-8')
     ap=argparse.ArgumentParser()
@@ -1143,5 +1160,6 @@ def main():
     p=sub.add_parser('fork-run',help='copy a verified historical snapshot into a new unfrozen run')
     p.add_argument('source'); p.add_argument('ticker'); p.add_argument('--carry-domain-reports',action='store_true'); p.set_defaults(func=cmd_fork_run)
     p=sub.add_parser('aggregate'); p.add_argument('ticker'); p.set_defaults(func=cmd_aggregate)
+    register_application_commands(sub)
     args=ap.parse_args(); args.func(args)
 if __name__=='__main__': main()

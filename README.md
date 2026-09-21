@@ -23,6 +23,30 @@
 
 네 범주는 서로 다른 것을 재며 겹치지 않는다. 단기 성장률이 높다는 이유만으로 `outlier_growth`가 되지 않는다.
 
+## 웹 리서치 플랫폼 (선택 계층)
+
+하네스 위에 US/KR 스크리너 · 딥다이브 리서치 · 보고서 UI가 얹혀 있다. 하네스는 그대로이며 이 계층은
+결과를 **읽기만** 한다. 점수·archetype·Hard Veto·밸류에이션·포지션은 전부 하네스가 결정한다.
+
+| 계층 | 위치 | 역할 |
+|---|---|---|
+| Universe Screener | `packages/screening` | 자연어 → ScreeningSpec → 결정론적 컴파일러. LLM은 SQL을 만들지 않는다 |
+| Quantitative filter | `harness_core` (무변경) | 기존 정책 엔진이 판정한다 |
+| Qualitative deep dive | `packages/research` | 증거 수집 → 독립 정성판단 → 독립 Red Team → 종합 |
+| Report / Monitoring UI | `apps/api`, `apps/web` | FastAPI + Next.js |
+
+설계는 [WEB_PLATFORM_ARCHITECTURE.md](docs/WEB_PLATFORM_ARCHITECTURE.md), 실행 방법은
+[WEB_PLATFORM_RUNBOOK.md](docs/WEB_PLATFORM_RUNBOOK.md)에 있다.
+
+```bash
+python harness.py screen run "미국과 한국에서 시총 1조 이상, 순현금이고 해자가 강한 종목" \
+  --as-of 2026-09-18 --fx KRW=1380.2
+python harness.py deep-run MSFT --markdown /tmp/MSFT.md
+```
+
+기존 20개 서브커맨드는 인자·동작 모두 변하지 않았다. 새 커맨드의 구현은 지연 import되므로
+`harness.py aggregate`는 스크리닝 스택을 로드하지 않는다.
+
 ## 분석 흐름
 
 **Stage 0(자료 수집·전처리)** → 기업 자료 고정 → EV·AS·DI·FS triage → 도달 가능한 유형 계산 → 필요한 핵심 분석·veto reviewer·선택 TQ → 글로벌 금융·지정학 및 회사 전이 → ED·RT → 유형 적합도·Hard Veto·가치평가 게이트 → IC·포지션·모니터링 → 쉬운 한국어 보고서.

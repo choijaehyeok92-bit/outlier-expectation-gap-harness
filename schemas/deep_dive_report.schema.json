@@ -1,0 +1,286 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://outlier-harness/schemas/deep_dive_report.schema.json",
+  "title": "DeepDiveReport",
+  "description": "Evidence-linked qualitative research report. It reads the harness result but never edits it: harness_snapshot is copied verbatim from the run's aggregate and is the only place in this document where a harness score, archetype, Hard Veto status or position range may appear. Qualitative sections carry no numeric score of their own; a new composite investment score is not produced anywhere.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "metadata", "harness_snapshot", "investment_question", "evidence", "executive_summary", "business_model", "industry", "customer_product", "moat", "moat_trajectory", "growth_runway", "unit_economics", "per_share_economics", "financial_quality", "management", "capital_allocation", "technology_disruption", "risk_analysis", "valuation_interpretation", "bull_case", "base_case", "bear_case", "red_team", "harness_comparison", "falsifiers", "monitoring_kpis", "remaining_unknowns", "evidence_quality", "final_synthesis"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deep_dive_id", "ticker", "jurisdiction", "as_of_date", "created_at_utc", "harness_run", "provenance"],
+      "properties": {
+        "deep_dive_id": {"type": "string"},
+        "ticker": {"type": "string"},
+        "company_name": {"type": ["string", "null"]},
+        "jurisdiction": {"enum": ["US", "KR"]},
+        "as_of_date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+        "created_at_utc": {"type": "string"},
+        "harness_run": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["run_id", "aggregate_sha256"],
+          "properties": {
+            "run_id": {"type": "string"},
+            "aggregate_sha256": {"type": "string"},
+            "input_snapshot_sha256": {"type": ["string", "null"]},
+            "strategy_version": {"type": ["string", "null"]},
+            "decision_policy_version": {"type": ["string", "null"]}
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code_commit_sha", "stages"],
+          "properties": {
+            "code_commit_sha": {"type": "string"},
+            "market_snapshot_sha256": {"type": ["string", "null"]},
+            "stages": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["stage", "provider", "model"],
+                "properties": {
+                  "stage": {"type": "string"},
+                  "provider": {"type": "string"},
+                  "model": {"type": ["string", "null"]},
+                  "prompt_sha256": {"type": ["string", "null"]},
+                  "completed_at_utc": {"type": ["string", "null"]}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "harness_snapshot": {
+      "type": "object",
+      "description": "Copied verbatim from the harness aggregate. The deep dive must not alter any value here.",
+      "required": ["ticker", "as_of_date", "core_score", "hard_veto_status", "archetype"],
+      "properties": {
+        "ticker": {"type": "string"},
+        "as_of_date": {"type": "string"},
+        "core_score": {"type": ["number", "null"]},
+        "ex_valuation_score": {"type": ["number", "null"]},
+        "classification": {"type": ["string", "null"]},
+        "archetype": {"type": ["string", "null"]},
+        "hard_veto_status": {"type": ["string", "null"]},
+        "ic_state": {"type": ["string", "null"]},
+        "position_range": {"type": ["string", "null"]},
+        "price_to_base_value": {"type": ["number", "null"]},
+        "domain_scores": {"type": "object"},
+        "axis_scores": {"type": "object"},
+        "dilution_watch_status": {"type": ["string", "null"]}
+      }
+    },
+    "investment_question": {
+      "type": "array",
+      "description": "The ten questions every deep dive must answer, each with its own answer and evidence.",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "question", "answer", "supporting_evidence", "confidence"],
+        "properties": {
+          "id": {"type": "string"},
+          "question": {"type": "string"},
+          "answer": {"type": "string", "minLength": 1},
+          "supporting_evidence": {"type": "array", "items": {"type": "string"}},
+          "unknowns": {"type": "array", "items": {"type": "string"}},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/definitions/evidence"}
+    },
+    "executive_summary": {"type": "string", "minLength": 1},
+    "business_model": {"$ref": "#/definitions/assessment"},
+    "industry": {"$ref": "#/definitions/assessment"},
+    "customer_product": {"$ref": "#/definitions/assessment"},
+    "moat": {"$ref": "#/definitions/assessment"},
+    "moat_trajectory": {"$ref": "#/definitions/assessment"},
+    "growth_runway": {"$ref": "#/definitions/assessment"},
+    "unit_economics": {"$ref": "#/definitions/assessment"},
+    "per_share_economics": {"$ref": "#/definitions/assessment"},
+    "financial_quality": {"$ref": "#/definitions/assessment"},
+    "management": {"$ref": "#/definitions/assessment"},
+    "capital_allocation": {"$ref": "#/definitions/assessment"},
+    "technology_disruption": {"$ref": "#/definitions/assessment"},
+    "risk_analysis": {"$ref": "#/definitions/assessment"},
+    "valuation_interpretation": {"$ref": "#/definitions/assessment"},
+    "bull_case": {"$ref": "#/definitions/narrative_case"},
+    "base_case": {"$ref": "#/definitions/narrative_case"},
+    "bear_case": {"$ref": "#/definitions/narrative_case"},
+    "red_team": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["overall", "supporting_harness", "contradicting_harness", "domains_with_material_disagreement", "reason", "attack_paths"],
+      "properties": {
+        "overall": {"enum": ["strengthened", "unchanged", "weakened", "material_disagreement"]},
+        "supporting_harness": {"type": "array", "items": {"type": "string"}},
+        "contradicting_harness": {"type": "array", "items": {"type": "string"}},
+        "domains_with_material_disagreement": {"type": "array", "items": {"type": "string"}},
+        "reason": {"type": "string", "minLength": 1},
+        "attack_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["vector", "thesis_break_mechanism", "evidence", "assessed_likelihood"],
+            "properties": {
+              "vector": {"enum": ["moat_erosion", "customer_loss", "industry_structure_change", "technological_disruption", "management_failure", "capital_allocation_failure", "accounting_quality", "dilution", "regulatory_risk", "valuation_expectation_error", "hidden_dependency"]},
+              "thesis_break_mechanism": {"type": "string", "minLength": 1},
+              "evidence": {"type": "array", "items": {"type": "string"}},
+              "assessed_likelihood": {"enum": ["low", "moderate", "high", "unknown"]},
+              "strongest_counterargument": {"type": ["string", "null"]}
+            }
+          }
+        }
+      }
+    },
+    "harness_comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strongest_supporting_evidence", "strongest_contradicting_evidence", "possible_harness_overstatement", "possible_harness_blind_spots", "unresolved_contradictions", "by_domain"],
+      "properties": {
+        "strongest_supporting_evidence": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "strongest_contradicting_evidence": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "possible_harness_overstatement": {"type": "array", "items": {"type": "string"}},
+        "possible_harness_blind_spots": {"type": "array", "items": {"type": "string"}},
+        "unresolved_contradictions": {"type": "array", "items": {"type": "string"}},
+        "by_domain": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["domain", "harness_score", "qualitative_assessment", "agreement"],
+            "properties": {
+              "domain": {"type": "string"},
+              "harness_score": {"type": ["number", "null"]},
+              "qualitative_assessment": {"enum": ["strong", "favorable", "mixed", "weak", "critical"]},
+              "agreement": {"enum": ["consistent", "qualified", "material_disagreement"]},
+              "note": {"type": ["string", "null"]}
+            }
+          }
+        }
+      }
+    },
+    "falsifiers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["statement", "observable", "would_break"],
+        "properties": {
+          "statement": {"type": "string", "minLength": 1},
+          "observable": {"type": "string", "minLength": 1},
+          "would_break": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "monitoring_kpis": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "why_it_matters", "current_value", "direction_required", "warning_threshold", "thesis_break_threshold", "cadence", "source"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "why_it_matters": {"type": "string", "minLength": 1},
+          "current_value": {"type": ["string", "number", "null"]},
+          "direction_required": {"enum": ["increasing", "decreasing", "stable", "above_threshold", "below_threshold"]},
+          "warning_threshold": {"type": ["string", "number"]},
+          "thesis_break_threshold": {"type": ["string", "number"]},
+          "cadence": {"enum": ["quarterly", "semiannual", "annual", "event_driven", "monthly"]},
+          "source": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "remaining_unknowns": {"type": "array", "items": {"type": "string"}},
+    "evidence_quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tier_counts", "primary_share", "independent_origins", "concerns"],
+      "properties": {
+        "tier_counts": {"type": "object"},
+        "primary_share": {"type": "number", "minimum": 0, "maximum": 1},
+        "independent_origins": {"type": "integer", "minimum": 0},
+        "concerns": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "final_synthesis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["thesis", "what_must_be_true", "what_would_change_our_mind", "agreement_with_harness", "decision_authority"],
+      "properties": {
+        "thesis": {"type": "string", "minLength": 1},
+        "what_must_be_true": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "what_would_change_our_mind": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "agreement_with_harness": {"enum": ["consistent", "qualified", "material_disagreement"]},
+        "decision_authority": {"type": "string"}
+      }
+    }
+  },
+  "definitions": {
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assessment", "direction", "confidence", "thesis", "supporting_evidence", "contradicting_evidence", "unknowns", "falsifiers"],
+      "properties": {
+        "assessment": {"enum": ["strong", "favorable", "mixed", "weak", "critical"]},
+        "direction": {"enum": ["strengthening", "stable", "weakening", "unclear"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "thesis": {"type": "string", "minLength": 1},
+        "supporting_evidence": {"type": "array", "items": {"type": "string"}},
+        "contradicting_evidence": {"type": "array", "items": {"type": "string"}},
+        "unknowns": {"type": "array", "items": {"type": "string"}},
+        "falsifiers": {"type": "array", "items": {"type": "string"}},
+        "independent_of_harness": {"type": "boolean"}
+      }
+    },
+    "narrative_case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["narrative", "key_drivers", "evidence", "what_must_be_true"],
+      "properties": {
+        "narrative": {"type": "string", "minLength": 1},
+        "key_drivers": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "evidence": {"type": "array", "items": {"type": "string"}},
+        "what_must_be_true": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "claim", "source", "source_origin", "source_tier", "publication_date", "period", "as_of_date", "fact_or_estimate", "economic_driver", "confidence", "verified_fact_refs"],
+      "properties": {
+        "evidence_id": {"type": "string", "minLength": 1},
+        "claim": {"type": "string", "minLength": 1},
+        "value": {},
+        "unit": {"type": ["string", "null"]},
+        "source": {"type": "string", "minLength": 1},
+        "source_origin": {"type": "string", "minLength": 1},
+        "source_type": {"type": ["string", "null"]},
+        "source_tier": {"type": "integer", "minimum": 0, "maximum": 5},
+        "publication_date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+        "period": {"type": "string"},
+        "as_of_date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+        "fact_or_estimate": {"enum": ["fact", "estimate", "interpretation"]},
+        "economic_driver": {"type": "string", "minLength": 1},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "verified_fact_refs": {"type": "array", "items": {"type": "string"}},
+        "supports": {"enum": ["harness", "contradicts_harness", "neutral"]}
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "red_team": {
+    "overall": "unchanged",
+    "supporting_harness": [
+      "EV-ED-01",
+      "EV-ED-02",
+      "EV-ED-03"
+    ],
+    "contradicting_harness": [
+      "CE-RT-01",
+      "CE-RT-02",
+      "CE-RT-03"
+    ],
+    "domains_with_material_disagreement": [],
+    "reason": "가장 강한 반대논리는 2026 H1가 구조성장보다 메모리 업사이클 정점에 가깝다는 것이다. 영업이익률과 OCF가 비정상적으로 높고, 대규모 선행 CAPEX는 공급 증가로 이어질 수 있다. DRAM/HBM 집중과 AI 고객 집중이 동시에 발생하면 실적 변동성이 커질 수 있다. 다만 순현금, 신용도, 기술 로드맵 때문에 현재 Hard Veto는 성립하지 않는다.",
+    "attack_paths": [
+      {
+        "vector": "moat_erosion",
+        "thesis_break_mechanism": "메모리는 본질적으로 표준화된 부품이고 경쟁사 증설이 장기 rent를 압박할 수 있다.",
+        "evidence": [
+          "CE-MT-01"
+        ],
+        "assessed_likelihood": "moderate",
+        "strongest_counterargument": "HBM 수율과 고객 qualification 학습곡선이 다음 세대에서도 반복 우위를 만든다."
+      },
+      {
+        "vector": "valuation_expectation_error",
+        "thesis_break_mechanism": "메모리 가격 정상화와 과잉 CAPEX가 겹치면 136만원대 Bear까지 내려갈 수 있다.",
+        "evidence": [
+          "CE-EV-01"
+        ],
+        "assessed_likelihood": "moderate",
+        "strongest_counterargument": "HBM4/HBM4E와 AI 서버 메모리 지배력이 유지되면 740만원대 가치가 가능하다."
+      },
+      {
+        "vector": "technological_disruption",
+        "thesis_break_mechanism": "패키징·경쟁사 수율 개선과 커스텀 메모리 구조가 HBM의 초과수익을 빠르게 정상화할 수 있다.",
+        "evidence": [
+          "CE-DI-01"
+        ],
+        "assessed_likelihood": "moderate",
+        "strongest_counterargument": "HBM과 차세대 고대역폭 메모리가 AI compute scaling의 필수 인프라로 자리잡을 수 있다."
+      },
+      {
+        "vector": "capital_allocation_failure",
+        "thesis_break_mechanism": "업사이클 정점의 과잉투자나 그룹 차원의 자본배분이 주주수익을 훼손할 수 있다.",
+        "evidence": [
+          "CE-MA-01"
+        ],
+        "assessed_likelihood": "moderate",
+        "strongest_counterargument": "HBM 선행투자와 자사주 소각이 장기 주당가치를 높인다."
+      },
+      {
+        "vector": "regulatory_risk",
+        "thesis_break_mechanism": "금융여건이 완화에서 긴축으로 방향을 틀었다. 연준은 2026-09-16 FOMC에서 25bp를 인상해 3.75~4.00%로 올렸다. 3년여 만의 첫 인상이며 유가 급등발 인플레이션이 이유다. 점도표는 2026년 말과 2027년 말 모두 4.00~4.25%를 가리킨다. 실질금리 상승은 듀레이션이 긴 성장주 밸류에이션에 직접적인 역풍이다. 동시에 미 하이일드 OAS는 약 271bp로 장기 중앙값 450bp 대비 역사적 최저 십분위에 있어 신용시장이 완벽을 가정한 가격이다. 시스템 유동성 스트레스나 발행시장 경색의 증거는 없다. 긴축 전환과 무쿠션 신용 프리미엄의 조합은 신규 매수 속도를 늦출 근거이며 위험예산 배수 0.7을 제안한다. 종목 점수에는 반영하지 않는다.",
+        "evidence": [
+          "CE-MO-01",
+          "CE-MO-02"
+        ],
+        "assessed_likelihood": "moderate",
+        "strongest_counterargument": null
+      }
+    ]
+  }
+}

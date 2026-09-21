@@ -1,2 +1,14 @@
 __pycache__/
 *.py[cod]
+
+# web application
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+
+# generated run artifacts; reproducible from the CLI, persisted to DB/object
+# storage from Phase 2. A fixture-derived deep dive is not research and does
+# not belong in the analytical record under runs/.
+screen_runs/
+deep_dive/

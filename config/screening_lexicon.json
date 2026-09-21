@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "note": "Natural-language phrases that may be turned into a deterministic filter. Only what is declared here is resolvable. Anything else is preserved as an unresolved condition; the parser never invents a threshold and never estimates a qualitative judgement the harness has not made. Thresholds here are declared policy, not a backtested result.",
+  "number_scales": {
+    "조": 1000000000000, "억": 100000000, "만": 10000, "천": 1000,
+    "trillion": 1000000000000, "t": 1000000000000,
+    "billion": 1000000000, "bn": 1000000000, "b": 1000000000,
+    "million": 1000000, "mn": 1000000, "m": 1000000,
+    "thousand": 1000, "k": 1000
+  },
+  "currency_tokens": {
+    "원": "KRW", "krw": "KRW", "₩": "KRW", "won": "KRW",
+    "달러": "USD", "usd": "USD", "$": "USD", "dollar": "USD"
+  },
+  "jurisdiction_tokens": {
+    "미국": "US", "us": "US", "usa": "US", "united states": "US", "나스닥": "US", "nasdaq": "US", "nyse": "US",
+    "한국": "KR", "kr": "KR", "korea": "KR", "코스피": "KR", "kospi": "KR", "코스닥": "KR", "kosdaq": "KR"
+  },
+  "exchange_tokens": {
+    "나스닥": "NASDAQ", "nasdaq": "NASDAQ", "nyse": "NYSE",
+    "코스피": "KOSPI", "kospi": "KOSPI", "코스닥": "KOSDAQ", "kosdaq": "KOSDAQ"
+  },
+  "comparators": {
+    "이상": ">=", "초과": ">", "이하": "<=", "미만": "<",
+    "at least": ">=", "or more": ">=", "above": ">", "over": ">",
+    "at most": "<=", "or less": "<=", "below": "<", "under": "<"
+  },
+  "metric_phrases": [
+    {"id": "market_cap", "patterns": ["시총", "시가총액", "market cap", "marketcap"], "field": "market_cap_usd", "field_unit": "usd", "value_kind": "currency", "default_currency": "KRW_when_korean_scale"},
+    {"id": "revenue_cagr_3y", "patterns": ["3년 매출 cagr", "3년 매출 성장", "최근 3년 매출 cagr", "3y revenue cagr", "three year revenue cagr"], "field": "revenue_cagr_3y", "field_unit": "ratio", "value_kind": "ratio"},
+    {"id": "revenue_growth_yoy", "patterns": ["매출 성장률", "매출성장률", "revenue growth"], "field": "revenue_growth_yoy", "field_unit": "ratio", "value_kind": "ratio"},
+    {"id": "gross_margin", "patterns": ["매출총이익률", "gross margin"], "field": "gross_margin", "field_unit": "ratio", "value_kind": "ratio"},
+    {"id": "operating_margin", "patterns": ["영업이익률", "operating margin"], "field": "operating_margin", "field_unit": "ratio", "value_kind": "ratio"},
+    {"id": "core_score", "patterns": ["코어 점수", "core score", "종합점수", "harness score"], "field": "core_score", "field_unit": "score_0_100", "value_kind": "score"},
+    {"id": "price_to_base", "patterns": ["price/base", "p/base", "base 대비"], "field": "price_to_base_value", "field_unit": "ratio", "value_kind": "ratio"}
+  ],
+  "qualitative_phrases": [
+    {
+      "id": "net_cash",
+      "patterns": ["순현금", "net cash"],
+      "filters": [{"field": "net_cash_per_share", "operator": ">", "value": 0, "unit": "local_currency"}],
+      "rationale": "Net cash is positive net cash per share on the frozen company context."
+    },
+    {
+      "id": "below_base_value",
+      "patterns": ["base 가치 이하", "base 이하", "기준가치 이하", "below base", "under base value"],
+      "filters": [{"field": "price_to_base_value", "operator": "<=", "value": 1.0, "unit": "ratio"}],
+      "requires_harness_run": true,
+      "rationale": "price / deterministic Base intrinsic value, from the locked owner-FCF DCF."
+    },
+    {
+      "id": "strong_moat",
+      "patterns": ["해자가 강", "해자 강", "moat가 강", "strong moat", "wide moat"],
+      "filters": [{"field": "domain.moat_trajectory", "operator": ">=", "value": 75, "unit": "score_0_100"}],
+      "requires_harness_run": true,
+      "rationale": "Harness moat_trajectory domain score at or above the declared strong-moat threshold. A company without a harness run is never assumed to have a moat; it is marked requires_harness_run instead."
+    },
+    {
+      "id": "improving_moat",
+      "patterns": ["해자가 강화", "moat strengthening", "widening moat"],
+      "filters": [{"field": "domain.moat_trajectory", "operator": ">=", "value": 80, "unit": "score_0_100"}],
+      "requires_harness_run": true,
+      "rationale": "Strengthening trajectory is read from the moat_trajectory domain score only; the parser never infers direction from text."
+    },
+    {
+      "id": "low_dilution",
+      "patterns": ["희석이 적", "희석 적", "저희석", "low dilution", "little dilution"],
+      "filters": [{"field": "dilution_watch_status", "operator": "in", "value": ["none", "clean", "low"], "unit": "none"}],
+      "requires_harness_run": true,
+      "rationale": "Mapped to the dilution watch band declared by the veto owner. The dilution Hard Veto itself is untouched."
+    },
+    {
+      "id": "veto_cleared",
+      "patterns": ["하드 비토 통과", "hard veto 통과", "veto cleared", "비토 해소"],
+      "filters": [{"field": "hard_veto_status", "operator": "==", "value": "CLEARED", "unit": "none"}],
+      "requires_harness_run": true,
+      "rationale": "Only the configured veto owner can produce CLEARED; the screener reads it, never sets it."
+    },
+    {
+      "id": "not_early_exit",
+      "patterns": ["조기 종료 제외", "early exit 제외", "exclude early exit"],
+      "filters": [{"field": "early_exit", "operator": "==", "value": false, "unit": "none"}],
+      "requires_harness_run": true,
+      "rationale": "Excludes runs the planner terminated for lack of a reachable archetype."
+    }
+  ],
+  "sort_phrases": [
+    {"patterns": ["점수 순", "코어 점수 순", "by score", "highest score"], "field": "core_score", "direction": "desc"},
+    {"patterns": ["시총 순", "by market cap"], "field": "market_cap_usd", "direction": "desc"},
+    {"patterns": ["저평가 순", "가장 싼", "cheapest"], "field": "price_to_base_value", "direction": "asc"}
+  ]
+}

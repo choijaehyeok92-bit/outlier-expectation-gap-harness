@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://outlier-harness/schemas/deep_dive_plan.schema.json",
+  "title": "DeepDivePlan",
+  "description": "What the deep dive is asked to research, built deterministically from a completed harness run. The plan states the questions; it never states an answer, a score or a verdict.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "ticker", "as_of_date", "harness_run", "selection", "harness_snapshot", "domains", "local_evidence", "questions"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "ticker": {"type": "string"},
+    "company_name": {"type": ["string", "null"]},
+    "jurisdiction": {"enum": ["US", "KR"]},
+    "as_of_date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "harness_run": {
+      "type": "object",
+      "required": ["run_id", "aggregate_sha256"],
+      "properties": {
+        "run_id": {"type": "string"},
+        "aggregate_sha256": {"type": "string"},
+        "input_snapshot_sha256": {"type": ["string", "null"]},
+        "strategy_version": {"type": ["string", "null"]},
+        "decision_policy_version": {"type": ["string", "null"]}
+      }
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eligible", "route", "reasons"],
+      "properties": {
+        "eligible": {"type": "boolean"},
+        "route": {"enum": ["automatic", "optional", "early_exit", "blocked"]},
+        "reasons": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "harness_snapshot": {"type": "object"},
+    "domains": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "prompt_focus", "harness_reference"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "prompt_focus": {"type": "string"},
+          "harness_reference": {
+            "type": "object",
+            "description": "Shown to the qualitative analyst only AFTER an independent judgement, and recorded here so the comparison stage can be audited.",
+            "properties": {
+              "domain": {"type": ["string", "null"]},
+              "score": {"type": ["number", "null"]}
+            }
+          }
+        }
+      }
+    },
+    "local_evidence": {
+      "type": "array",
+      "description": "Frozen Tier-0 material already on disk. The research stage must read these before any search.",
+      "items": {
+        "type": "object",
+        "required": ["path", "exists"],
+        "properties": {
+          "path": {"type": "string"},
+          "exists": {"type": "boolean"},
+          "sha256": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question_id", "question", "domain", "origin"],
+        "properties": {
+          "question_id": {"type": "string"},
+          "question": {"type": "string"},
+          "domain": {"type": ["string", "null"]},
+          "origin": {"enum": ["harness_research_plan", "deep_dive_domain", "investment_question", "red_team"]},
+          "research_class": {"type": ["string", "null"]},
+          "required_for_decision": {"type": "boolean"}
+        }
+      }
+    },
+    "red_team_mandate": {"type": "array", "items": {"type": "string"}}
+  }
+}
