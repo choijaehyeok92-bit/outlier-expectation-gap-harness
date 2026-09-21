@@ -1,5 +1,5 @@
 # Digest — VRT (as of 2026-09-18)
-score 75.38 (ex-val 78.22, Emerging Outlier) · DI 80.25 · TQ None · archetype compounder — Highest eligible deterministic fit; ties use configured priority · veto PENDING_REVIEW · state WATCH
+score 75.38 (ex-val 78.22, Emerging Outlier) · DI 80.25 · TQ None · archetype compounder — Highest eligible deterministic fit; ties use configured priority · veto CLEARED · state NORMAL_CANDIDATE
 signals {'price_to_base_value': 1.0373, 'valuation_percentile_5y': None, 'revenue_cagr_next_3y': 0.18, 'market_cap_usd': 97947172085.49} · reachable(raw) ['compounder', 'growth']
 veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
 
@@ -72,6 +72,18 @@ unknowns: Vertiv share of liquid-cooling deployments. · Customer-level share of
 | LG | 73 (52–88) | 0.76 | support | – | A five-year doubling is credible without assuming extreme share gain: 2026 organic growth is guided above 30%, power density is rising, and liquid cooling/serv… |
 bull: AI data-center power demand, liquid cooling, service penetration and behind-the-meter generation let Vertiv roughly double economic value over five years and s… / bear: The current backlog represents front-loaded hyperscaler investment; after 3-5 years, capacity catches up, pricing normalizes and acquisitions become the main g…
 unknowns: Five-year industry power/cooling spend growth. · Liquid-cooling penetration curve.
+
+## evidence_quality
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| ED | 82 | 0.84 | support | – | Evidence quality is strong for financial statements, backlog, regional mix, cash flow, debt, internal controls and the signed UIG transaction. The main limitat… |
+unknowns: Definitive executive compensation and ownership details not present in the fetched DEFA14… · Normalized maintenance capex and working-capital intensity after backlog growth slows.
+
+## red_team
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| RT | 68 | 0.82 | oppose | V1=cleared, V2=cleared, V4=cleared, V5=cleared, V6=cleared, V7=cleared, V8=cleared | The strongest short thesis is that Vertiv is being valued on peak AI-infrastructure growth while H1 cash conversion is flattered by working capital, customers … |
+unknowns: Top-customer concentration and cancellation rights within backlog. · Normalized FCF after deferred-revenue/working-capital reversal.
 
 ## macro_overlay
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |

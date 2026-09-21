@@ -311,9 +311,9 @@
     "growth"
   ],
   "early_exit": false,
-  "hard_veto_status": "PENDING_REVIEW",
-  "mechanical_pre_ic_state": "WATCH",
-  "position_range_pre_ic": "0% until veto cleared",
+  "hard_veto_status": "CLEARED",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "position_range_pre_ic": "0-2%",
   "domain_scores": {
     "structural_leadership": {
       "bull_score": 90,
@@ -934,11 +934,11 @@
   "confirmed_vetoes": [],
   "unresolved_vetoes": [],
   "veto_gate": {
-    "overall": "PENDING_REVIEW",
+    "overall": "CLEARED",
     "items": [
       {
         "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "MA",
           "RT"
@@ -949,17 +949,21 @@
             "owner": true,
             "status": "cleared",
             "rationale": "FY2025 internal controls were effective and no fraud, material restatement or integrity breach is identified in the cutoff materials."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "FY2025 internal controls were effective and no material restatement, auditor dispute or integrity event is identified."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "FS",
           "RT"
@@ -970,11 +974,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Current operations and capex are strongly supported by internal cash generation."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Operating cash flow comfortably funds ordinary operations and capex; external financing is not structurally required for survival."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
@@ -1005,7 +1013,7 @@
       },
       {
         "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -1022,17 +1030,21 @@
             "owner": false,
             "status": "cleared",
             "rationale": "Demand is backed by paid backlog, rapidly growing sales and mission-critical infrastructure needs."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Firm backlog, mission-critical uptime demand and expanding operating margins directly contradict absence of customer value."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "RF",
           "RT"
@@ -1043,17 +1055,21 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Multi-year operating profit and FCF/share expansion provide direct evidence of improving incremental returns rather than collapse."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Operating profit and FCF/share rose substantially from 2023-2025, contradicting a structural collapse below the cost of capital."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "MT",
           "RT"
@@ -1064,17 +1080,21 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Backlog, service scale, margin expansion and portfolio breadth indicate a strengthening rather than shrinking competitive position as of the cutoff."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Backlog, service scale, margins and portfolio breadth are expanding rather than persistently shrinking."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "EV",
           "AS",
@@ -1092,17 +1112,21 @@
             "owner": true,
             "status": "cleared",
             "rationale": "The cutoff price is near Base and materially below the locked Bull DCF, so Bull+ assumptions are not required."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Current price is materially below the locked Bull DCF value; the literal Bull+ veto condition is not met."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -1113,11 +1137,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Revenue spans power, thermal, racks and services across three global regions; customer concentration remains a monitoring risk but no single disclosed dependency is fatal."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Vertiv spans multiple power, thermal, rack and service offerings across three major regions; concentration risk exists but no single disclosed dependency is shown to be fatal."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
@@ -1149,168 +1177,7 @@
     ],
     "confirmed": [],
     "unresolved": [],
-    "pending": [
-      {
-        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MA",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "MA",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "FY2025 internal controls were effective and no fraud, material restatement or integrity breach is identified in the cutoff materials."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "FS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "FS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Current operations and capex are strongly supported by internal cash generation."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Demand is supported by firm backlog, mission-critical uptime economics and paid infrastructure deployment rather than subsidies."
-          },
-          {
-            "agent_id": "DI",
-            "owner": false,
-            "status": "cleared",
-            "rationale": "Demand is backed by paid backlog, rapidly growing sales and mission-critical infrastructure needs."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "RF",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "RF",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Multi-year operating profit and FCF/share expansion provide direct evidence of improving incremental returns rather than collapse."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MT",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "MT",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Backlog, service scale, margin expansion and portfolio breadth indicate a strengthening rather than shrinking competitive position as of the cutoff."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "EV",
-          "AS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "AS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Current price is near Base and well below Bull."
-          },
-          {
-            "agent_id": "EV",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "The cutoff price is near Base and materially below the locked Bull DCF, so Bull+ assumptions are not required."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Revenue spans power, thermal, racks and services across three global regions; customer concentration remains a monitoring risk but no single disclosed dependency is fatal."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      }
-    ],
+    "pending": [],
     "non_owner_escalations": []
   },
   "valuation_model": {
@@ -1490,7 +1357,8 @@
         "downside_width": 19.0,
         "skew": 6.0
       }
-    ]
+    ],
+    "position_before": "2-4%"
   },
   "run_manifest": {
     "strategy_version": "3.3",
