@@ -1,0 +1,161 @@
+{
+  "agent_id": "AS",
+  "ticker": "TMDX",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 66.5,
+  "confidence_0_1": 0.76,
+  "bull_score": 84,
+  "bear_score": 42,
+  "bull_case": "A multi-organ OCS/NOP platform plus Kidney, Gen 3 and international logistics can expand transplant volume, raise wallet share per transplant and create several independent compounding paths.",
+  "bear_case": "The stock can suffer a large permanent loss if growth normalizes while service/aviation capital intensity remains high; convertibles, leases, regulatory dependence and single-source suppliers amplify downside.",
+  "thesis": "TMDX offers meaningful upside optionality from transplant-volume expansion, OCS Kidney/Gen 3 and international logistics, but downside is not well protected by balance-sheet net cash or a low valuation. The locked Bear value is expected to be only about one-quarter of the cutoff price, while the Bull path can exceed roughly two times current price. This is favorable but not extreme asymmetry.",
+  "evidence": [
+    {
+      "claim": "TransMedics is the only FDA-approved portable multi-organ warm-perfusion platform for heart, lung and liver and combines it with the NOP procurement/logistics network.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2025 business",
+      "as_of_date": "2026-02-24",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-AS-PLATFORM"
+    },
+    {
+      "claim": "Management is investing in OCS Kidney, Gen 3 and clinical programs, and completed a July 1 strategic investment in PAD Aviation to begin a European organ-logistics network.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332767/tmdx-ex99_1.htm",
+      "period": "Q2 2026 update",
+      "as_of_date": "2026-08-04",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-AS-OPTIONS"
+    },
+    {
+      "claim": "June cash was $472.675M, but convertible and funded bank debt totaled roughly $514M carrying value and a finance lease liability was $347.660M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332843/tmdx-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-04",
+      "value": "cash 472.675M; funded debt ~514M; finance lease 347.660M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-AS-BS"
+    },
+    {
+      "claim": "The company depends on a limited number of customers, the NOP, single/sole-source OCS suppliers and a single aircraft model/engine ecosystem.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2025 risk factors",
+      "as_of_date": "2026-02-24",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-AS-CONC"
+    }
+  ],
+  "counterevidence": [
+    "U.S. reimbursement is established through transplant billing and organ-acquisition cost mechanisms.",
+    "Revenue is diversified across heart, liver and lung and the platform can add kidney rather than relying on one organ indication.",
+    "Current cash is substantial and management says it is sufficient for at least 12 months of operations, capex and debt service.",
+    "NOP integration can create network effects and operational data advantages that are difficult for point-product rivals to match."
+  ],
+  "unknowns": [
+    "Kidney approval/commercialization timing and economics.",
+    "Long-run aircraft utilization and service margin.",
+    "Actual customer concentration percentages after NOP expansion.",
+    "Whether the 2028 convertible notes are refinanced, repaid or settled in shares."
+  ],
+  "falsifiers": [
+    "If Kidney/Gen 3 fail and U.S. transplant-volume growth slows, independent upside paths contract materially.",
+    "If service gross margin rises sustainably while capex intensity falls, Bear residual value should be raised.",
+    "A major reimbursement, FDA or aviation-safety event would materially worsen permanent-loss probability."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "The cutoff price is materially below the Bull DCF path."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "conditional",
+      "rationale": "Near-term liquidity is adequate, but Bear intrinsic value is far below current price and funded/lease obligations reduce balance-sheet downside protection."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Bull/current and Bear/current",
+      "direction": "up",
+      "threshold": "Bull >1.6x while Bear improves above 0.4x",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "NOP service margin",
+      "direction": "up",
+      "threshold": "sustained operating leverage",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Kidney/Gen3 milestones",
+      "direction": "up",
+      "threshold": "clinical and regulatory progress",
+      "cadence": "event-driven"
+    }
+  ],
+  "next_checks": [
+    "Locked DCF ratios after aggregate",
+    "2028 convert strategy",
+    "Kidney/Gen 3 progress"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "Bull value is expected in the 1.6-2.5x current-price band with at least two independent paths: core U.S. OCS/NOP scaling and new-organ/international expansion."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 55,
+      "rationale": "Bear value is expected near one-quarter of current price. Strong cash helps liquidity but the company is not net cash once funded debt is included, so no +10 modifier applies."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 70,
+      "rationale": "The scenario tree explicitly separates current approved products from Kidney/Gen 3 and logistics optionality, but the business lacks a long full-cycle public base rate."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Kidney and European expansion are not yet mature revenue contributors."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "critical",
+      "rationale": "Capital intensity, debt/lease obligations and regulatory/reimbursement dependence create non-trivial residual-value risk."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Transplant adoption and integrated-logistics economics have limited historical analogues."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

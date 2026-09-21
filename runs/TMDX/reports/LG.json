@@ -1,0 +1,160 @@
+{
+  "agent_id": "LG",
+  "ticker": "TMDX",
+  "as_of_date": "2026-09-18",
+  "domain": "long_term_growth",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 71.5,
+  "confidence_0_1": 0.75,
+  "bull_score": 87,
+  "bear_score": 50,
+  "bull_case": "The approved heart/liver/lung platform doubles again over five years while Kidney, Gen 3 and Europe extend the runway beyond a decade and NOP captures more value per transplant.",
+  "bear_case": "Core U.S. liver/heart adoption matures within five years, Kidney is delayed, international reimbursement remains limited and logistics complexity absorbs much of the economic growth.",
+  "thesis": "A five-year doubling is plausible without heroic assumptions: 2026 revenue guidance is about $747M at midpoint, the U.S. platform is still growing, and Kidney/Gen 3/international logistics create additional vectors. The 5-10 year duration is credible, but the current price already approximates the locked Base DCF, so the market-misperception element is only moderate rather than a clear outlier expectation gap.",
+  "evidence": [
+    {
+      "claim": "2026 revenue guidance is $737M-$757M, representing 22%-25% growth and excluding PAD Aviation revenue and incremental ENHANCE Part B/DENOVO trial revenue.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332767/tmdx-ex99_1.htm",
+      "period": "FY2026 guide",
+      "as_of_date": "2026-08-04",
+      "value": "737-757M / 22-25%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-LG-BASE"
+    },
+    {
+      "claim": "Management is investing in OCS Kidney and Gen 3 while beginning a European organ-logistics network through PAD Aviation.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332767/tmdx-ex99_1.htm",
+      "period": "Q2 2026 update",
+      "as_of_date": "2026-08-04",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-LG-VECTORS"
+    },
+    {
+      "claim": "Revenue expanded from $241.6M in 2023 to $605.5M in 2025, demonstrating the ability to scale the platform before the new growth vectors contribute materially.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2023-FY2025",
+      "as_of_date": "2026-02-24",
+      "value": "241.6M to 605.5M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-LG-HIST"
+    },
+    {
+      "claim": "Locked Base valuation from the triage run is close to the $86.42 cutoff price, limiting evidence that the market is underestimating a clearly identified long-term fact.",
+      "source_type": "other",
+      "source": "runs/TMDX/aggregate.json",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "price near Base",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "TMDX-LG-MIS"
+    }
+  ],
+  "counterevidence": [
+    "U.S. liver already dominates revenue, so doubling from the current base requires broader organ, volume or geographic expansion.",
+    "International reimbursement is not established at U.S. scale.",
+    "Kidney and Gen 3 are development programs, not current approved commercial revenue streams.",
+    "Founder-led execution is strong but the material weakness and increasing operational complexity temper culture confidence."
+  ],
+  "unknowns": [
+    "Kidney commercial launch date and addressable economics.",
+    "Five-year transplant volume penetration by heart/liver/lung.",
+    "Europe reimbursement and logistics profitability.",
+    "Whether market expectations already capitalize most of the new-product optionality."
+  ],
+  "falsifiers": [
+    "If 2027-2028 growth falls to low single digits before Kidney/international contribution, the five-year opportunity score should be cut.",
+    "A successful Kidney launch with strong unit economics would extend duration and opportunity scale.",
+    "A meaningful price discount to unchanged Base economics could raise the market-misperception score."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "5-year revenue trajectory",
+      "direction": "up",
+      "threshold": ">2x from 2026 base without M&A dependence",
+      "cadence": "annual"
+    },
+    {
+      "name": "new growth-vector revenue",
+      "direction": "up",
+      "threshold": "Kidney/Gen3/international become material",
+      "cadence": "annual"
+    },
+    {
+      "name": "price/Base value",
+      "direction": "down",
+      "threshold": "clear expectation gap",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Kidney and Gen 3 milestones",
+    "International reimbursement",
+    "Updated reverse-DCF burden"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "opportunity_scale_5y",
+      "score_0_100": 80,
+      "rationale": "A >2x five-year path is plausible from continued U.S. OCS/NOP penetration plus new-organ and international vectors without requiring a single heroic market-share assumption."
+    },
+    {
+      "criterion_id": "growth_duration_10y",
+      "score_0_100": 75,
+      "rationale": "The approved platform plus Kidney, Gen 3 and geography support a 5-10 year runway, but >10-year durability is not yet proven."
+    },
+    {
+      "criterion_id": "culture_adaptability",
+      "score_0_100": 70,
+      "rationale": "The founder-led organization successfully added NOP/logistics to the original device model, but internal-control and scaling complexity prevent a 75+ score."
+    },
+    {
+      "criterion_id": "market_misperception",
+      "score_0_100": 55,
+      "rationale": "The long-term opportunity is real, but cutoff price is near locked Base value, so evidence of a concrete market underestimation is limited."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "opportunity_scale_5y",
+      "severity": "material",
+      "rationale": "The doubling path depends partly on unapproved or early international initiatives."
+    },
+    {
+      "criterion_id": "growth_duration_10y",
+      "severity": "critical",
+      "rationale": "Ten-year durability depends on repeated product renewal and transplant-policy stability."
+    },
+    {
+      "criterion_id": "culture_adaptability",
+      "severity": "material",
+      "rationale": "The organization is scaling across devices, aviation and international operations simultaneously."
+    },
+    {
+      "criterion_id": "market_misperception",
+      "severity": "critical",
+      "rationale": "Reverse DCF shows little obvious margin of safety; market expectations are not directly observable beyond price."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

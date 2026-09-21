@@ -1,0 +1,67 @@
+{
+  "ticker": "TMDX",
+  "company_name": "TransMedics Group, Inc.",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 86.42,
+  "shares_diluted": 40709227,
+  "market_cap_usd": 2992697118.44,
+  "enterprise_value": 3034025118.44,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC Form 10-K FY2025 filed 2026-02-24",
+    "SEC Form 10-Q Q1 2026 filed 2026-05-05",
+    "SEC Form 10-Q Q2 2026 filed 2026-08-04",
+    "SEC DEFA14A filed 2026-05-07",
+    "SEC 8-K filed 2026-09-10 announcing CFO transition effective 2026-09-21",
+    "SEC Form 4 filed 2026-09-14",
+    "StockAnalysis historical close 2026-09-18: $86.42"
+  ],
+  "special_questions": [
+    "Is OCS plus the National OCS Program becoming a durable transplant platform, or is growth increasingly dependent on a capital-intensive aviation/logistics network?",
+    "Can OCS Kidney, next-generation products and European logistics expansion extend growth while preserving clinical, regulatory and reimbursement advantages?",
+    "How should convertible debt, stock dilution and the large Somerville finance lease affect owner FCF and permanent-loss risk?"
+  ],
+  "net_cash_per_share": -1.015199821897871,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "Locked owner-FCF/share DCF. Historical multiple percentile is left null because the business mix changed materially with NOP/logistics expansion and current owner-FCF normalization is not comparable across the full five-year window.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {
+      "United States": 0.9700451521239086,
+      "Other": 0.029954847876091362
+    },
+    "production_by_region": {
+      "United States": 1
+    },
+    "critical_supplier_regions": [],
+    "export_control_dependencies": [],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": []
+  },
+  "intake_facts": [
+    "FY2025 revenue was $605.494M and operating cash flow was $192.840M.",
+    "Q2 2026 revenue was $189.948M and H1 2026 revenue was $363.881M.",
+    "H1 2026 operating cash flow was $41.842M while capex was $43.749M.",
+    "June 30, 2026 cash was $472.675M; funded debt carrying values were approximately $454.260M convertible notes, $20.000M current debt and $39.743M long-term debt.",
+    "June 30, 2026 finance lease liability was $347.660M and common shares outstanding were 34.630M.",
+    "Q2 2026 diluted weighted-average shares were 40.709M, reflecting meaningful dilution from convertibles/equity instruments when dilutive.",
+    "H1 2026 stock-based compensation was $18.558M.",
+    "2025 net income included a large tax benefit associated primarily with release of a deferred-tax valuation allowance and requires normalization review."
+  ]
+}
