@@ -1,0 +1,60 @@
+{
+  "ticker": "CRWD",
+  "company_name": "CrowdStrike Holdings, Inc.",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 237.65,
+  "shares_diluted": 1044469000,
+  "market_cap_usd": 248218057850,
+  "enterprise_value": 243950426850,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC Form 10-K FY2026 filed 2026-03-05",
+    "SEC Form 10-Q Q1 FY2027 filed 2026-06-04",
+    "SEC Form 10-Q Q2 FY2027 filed 2026-08-27",
+    "CrowdStrike Q2 FY2027 earnings release dated 2026-08-26",
+    "SEC S-3ASR filed 2026-09-11",
+    "SEC Form 4 filed 2026-09-17",
+    "StockAnalysis historical close 2026-09-18: $237.65"
+  ],
+  "special_questions": [
+    "Does Falcon Flex and multi-module consolidation create durable platform economics after the July 19 incident?",
+    "How should very large recurring SBC be treated in owner FCF/share and dilution analysis?",
+    "Does Falcon's data/telemetry scale and AI-native architecture widen the moat versus Microsoft, Palo Alto, SentinelOne and cloud-native competitors?",
+    "Are $4.1B of July 31 purchase commitments plus $2.9B entered after quarter-end evidence of high-return scale investment or fixed-cost risk?"
+  ],
+  "net_cash_per_share": 4.085933617943663,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "Locked owner-FCF/share DCF. Five-year valuation percentile left null because the July 2026 four-for-one split and changing profitability/SBC profile make a simple historical earnings multiple an unstable comparator.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {
+      "United States": 0.67,
+      "Europe, Middle East, and Africa": 0.16,
+      "Asia Pacific": 0.1,
+      "Other": 0.07
+    },
+    "production_by_region": {},
+    "critical_supplier_regions": [],
+    "export_control_dependencies": [],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": [
+      "U.S. public-sector cybersecurity contracts are material to demand but exact consolidated revenue share is not disclosed in the frozen pack."
+    ]
+  }
+}

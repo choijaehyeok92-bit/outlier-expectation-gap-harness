@@ -1,0 +1,62 @@
+name: CRWD v3.3 stage0 fetch
+
+on:
+  push:
+    branches:
+      - work/crwd-2026-09-18-v33
+    paths:
+      - ".github/workflows/crwd-v33-stage0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stage0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/crwd-2026-09-18-v33
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Fetch and persist CRWD Stage 0
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/crwd-stage0.log) 2>&1
+
+          python harness.py selftest
+          if [ ! -d runs/CRWD ]; then
+            python harness.py init CRWD --as-of 2026-09-18
+          fi
+          python harness.py fetch CRWD --user-agent "choijaehyeok92@gmail.com"
+
+          set +e
+          python harness.py intake CRWD | tee runlogs/intake_before_fp.txt
+          echo "INTAKE_RC=$?" | tee -a runlogs/intake_before_fp.txt
+          python harness.py prompt CRWD FP --out runs/CRWD/FP_prompt.md
+          echo "FP_PROMPT_RC=$?" | tee -a runlogs/intake_before_fp.txt
+          python harness.py validate-pack CRWD | tee runlogs/validate_pack_before_fp.txt
+          echo "VALIDATE_PACK_RC=$?" | tee -a runlogs/validate_pack_before_fp.txt
+          set -e
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/CRWD
+          if ! git diff --cached --quiet; then
+            git commit -m "stage0: fetch CRWD as of 2026-09-18"
+            git push origin HEAD:work/crwd-2026-09-18-v33
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: CRWD-v33-stage0
+          path: |
+            runs/CRWD
+            runlogs
