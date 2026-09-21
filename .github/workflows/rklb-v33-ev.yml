@@ -1,0 +1,84 @@
+name: RKLB v3.3 Stage0 to EV 2026-09-18
+
+on:
+  push:
+    branches:
+      - work/rklb-2026-09-18-v33
+    paths:
+      - ".harness_inputs/RKLB/**"
+      - ".github/workflows/rklb-v33-ev.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rklb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/rklb-2026-09-18-v33
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+
+      - name: Execute requested RKLB sequence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/rklb-v33-ev.log) 2>&1
+
+          INPUT=".harness_inputs/RKLB"
+
+          python harness.py selftest
+          rm -rf runs/RKLB
+          python harness.py init RKLB --as-of 2026-09-18
+
+          if ! python harness.py fetch RKLB --user-agent "RKLB-Stage0 github-actions[bot]@users.noreply.github.com"; then
+            echo "SEC fetch unavailable in runner; applying harness manual fallback."
+          fi
+
+          mkdir -p runs/RKLB/sources/financials
+          cp "$INPUT/sources/financials/normalized_financials.json" runs/RKLB/sources/financials/normalized_financials.json
+          cp "$INPUT/sources/README.md" runs/RKLB/sources/README.md
+
+          python harness.py intake RKLB | tee runlogs/intake.txt
+          python harness.py prompt RKLB FP --out runs/RKLB/FP_prompt.md
+          python harness.py validate-pack RKLB
+
+          cp "$INPUT/company_context.json" runs/RKLB/company_context.json
+          python harness.py freeze RKLB --provider openai --model gpt-5.6-sol --reasoning-effort high
+          python harness.py plan RKLB | tee runlogs/plan_after_freeze.txt
+
+          python harness.py prompt RKLB EV --out runs/RKLB/EV_prompt.md
+          cp "$INPUT/reports/EV.json" runs/RKLB/reports/EV.json
+          python harness.py validate RKLB EV
+
+          python harness.py aggregate RKLB | tee runlogs/aggregate_after_ev.json
+          python harness.py digest RKLB
+          python harness.py plan RKLB | tee runlogs/plan_after_ev.txt
+
+          echo "===== AGGREGATE ====="
+          cat runs/RKLB/aggregate.json
+          echo "===== DIGEST ====="
+          cat runs/RKLB/digest.md
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/RKLB
+          if ! git diff --cached --quiet; then
+            git commit -m "persist: RKLB v3.3 Stage0 through EV 2026-09-18"
+            git push origin HEAD:work/rklb-2026-09-18-v33
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: RKLB-v33-stage0-ev-2026-09-18
+          path: |
+            runs/RKLB
+            runlogs

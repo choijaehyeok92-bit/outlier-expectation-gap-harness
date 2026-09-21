@@ -4,68 +4,30 @@
 자료 공백은 수동적으로 남기지 않는다. 점수·Veto·밸류에이션에 직접 영향을 주는 항목이 기준 정보와 1차 자료에 없으면 예산 내에서 웹 검색·IR·2차 자료로 보완을 시도한 뒤, 그래도 확보하지 못한 것만 unknowns에 남기고 무엇을 어디서 찾으려 했는지 함께 적는다. 확보한 자료는 evidence에 source_type과 함께 기록하고 EVIDENCE_POLICY.md의 출처 위계를 지킨다.
 
 ## 기업 기준 정보 (재검증 금지)
-{"ticker":"RKLB","company_name":"Rocket Lab Corporation","as_of_date":"2026-09-18","currency":"USD","current_price":64.57,"shares_diluted":627650482,"market_cap_usd":40527391622.74,"enterprise_value":41170000000,"portfolio_context":{"existing_position_pct":0,"sector_exposure_pct":0},"known_sources":["User-uploaded Rocket Lab FY2025 Form 10-K filed 2026-02-26","User-uploaded Rocket Lab Q1 FY2026 Form 10-Q filed 2026-05-07","User-uploaded Rocket Lab Q2 FY2026 Form 10-Q filed 2026-08-10","User-uploaded Rocket Lab Form 8-K filed 2026-09-15","Rocket Lab Q2 2026 earnings release dated 2026-08-10","Rocket Lab/Iridium transaction materials and SEC pro forma information","2026-09-18 closing price $64.57 from historical market data"],"special_questions":["Can Rocket Lab evolve from launch and space-hardware manufacturing into a vertically integrated recurring space-services platform after Iridium?","Does Neutron create a credible second growth engine without forcing structurally excessive capital consumption?","Do the 2025-2026 ATM issuances and pending Iridium stock consideration create excessive per-share dilution despite strategic asset acquisition?"],"net_cash_per_share":-1.15,"valuation_metric":"Transaction-adjusted valuation. Raw pre-close liquidity is strongly net-cash, but most September ATM proceeds are earmarked for the pending Iridium acquisition; DCF uses approximately -$1.15/share post-deal economic net cash/debt to avoid double-counting acquisition financing.","valuation_overrides":{"terminal_multiples":{}}}
+{"ticker":"RKLB","company_name":"Rocket Lab Corporation","as_of_date":"2026-09-18","currency":"USD","current_price":64.57,"shares_diluted":627650482,"market_cap_usd":40527391622.74,"enterprise_value":41249189677.04,"portfolio_context":{"existing_position_pct":0,"sector_exposure_pct":0},"known_sources":["SEC Form 10-K for FY2025 filed 2026-02-26","SEC Form 10-Q for quarter ended 2026-03-31","SEC Form 10-Q for quarter ended 2026-06-30 filed 2026-08-10","SEC 2026 DEF 14A filed 2026-04-06","SEC Q2 2026 earnings release filed 2026-08-10","SEC 8-K filed 2026-09-15 on Iridium acquisition financing and completed $1.944B ATM","StockAnalysis historical close 2026-09-18: $64.57"],"special_questions":["Can Rocket Lab evolve from launch and space-hardware manufacturing into a vertically integrated recurring space-services platform after Iridium?","Does Neutron create a credible second growth engine without forcing structurally excessive capital consumption?","Do the 2025-2026 ATM issuances and pending Iridium stock consideration create excessive per-share dilution despite strategic asset acquisition?"],"intake_facts":["Q2 2026 revenue $234.066M; H1 revenue $434.414M.","H1 2026 operating cash flow -$134.407M; capex $53.112M.","2026-06-30 cash and marketable securities $2.388B; backlog $2.356B.","H1 2026 stock-based compensation $47.677M; R&D $162.942M.","Government customer represented 42% of H1 2026 revenue.","As of 2026-08-05, 598.350M common shares were outstanding.","By 2026-09-15 Rocket Lab had raised ~$1.944B through sale of ~29.3M shares under the replacement ATM to fund the pending Iridium acquisition.","Iridium transaction consideration is $27 cash plus RKLB stock per share under a collar; acquisition expected to close in mid-2027 subject to approvals."],"net_cash_per_share":-1.15,"valuation_metric":"Transaction-adjusted valuation: pre-close liquidity is strongly net cash, but September ATM proceeds are earmarked for the pending Iridium acquisition. Net cash/share is set to -$1.15 post-deal economic convention to avoid double-counting acquisition financing while valuation scenarios contemplate Iridium-related earnings.","valuation_overrides":{"terminal_multiples":{}},"diagnostics":{"turnaround_candidate":false},"geo_exposure":{"revenue_by_region":{"United States":1},"production_by_region":{"United States":1,"New Zealand":1,"Germany":1},"critical_supplier_regions":["United States","New Zealand","Germany"],"export_control_dependencies":["ITAR","U.S. export controls"],"government_customer_exposure":["United States government"]}}
 
 ## 검증된 1차 자료 사실
-# RKLB frozen source bundle — as of 2026-09-18
+# RKLB Stage 0 source bundle — as of 2026-09-18
 
-## Frozen market / transaction inputs
-- 2026-09-18 close: **$64.57**.
-- Shares outstanding on 2026-08-05: **598.350M**.
-- Completed Sep-2026 replacement ATM: **29.3M shares**, **$1.944B gross proceeds**.
-- Estimated current shares after the completed ATM: **~627.65M**.
-- Current market cap signal: **~$40.53B**, below the harness $50B Moonshot cap.
-- Q2 cash + current/non-current marketable securities: **$2.388B**.
-- Q2 debt/borrowings: about **$14.8M** before the Iridium transaction.
-- Raw pre-close liquidity plus Sep ATM is strongly net-cash, but most ATM proceeds are earmarked for Iridium cash consideration.
-- Transaction-adjusted economic net cash/debt used in DCF: **-$1.15/share**.
-- Iridium transaction: **$54/share**, approx **$8.0B enterprise value**, expected mid-2027 close.
-- Iridium consideration: **$27 cash + RKLB shares**, exchange-ratio collar $67.50-$112.50; at current price below the floor, the ratio would be 0.4000 if closing price mechanics were unchanged.
-- Iridium existing **$1.775B** term loan is permitted to remain outstanding after closing; the former $3.6B bridge was terminated.
-- Required return: **9%**; horizon **10 years**; terminal multiples **15x/20x/25x**.
-- Owner-FCF/share paths, transaction-adjusted and post-deal diluted-economics:
-  - Bear: -0.2, 0.0, 0.2, 0.4, 0.7, 1.0, 1.3, 1.6, 1.9, 2.2
-  - Base: 0.0, 0.4, 0.8, 1.4, 2.2, 3.2, 4.4, 5.7, 7.0, 8.5
-  - Bull: 0.2, 0.8, 1.6, 2.8, 4.5, 6.5, 8.8, 11.5, 14.5, 18.0
-- Locked DCF: Bear **$17.41**, Base **$88.03**, Bull **$224.68**.
-- price/Base: **~0.7335**.
-- Bull/current: **~3.48x**.
-- Bear/current: **~0.27x**.
+Automated EDGAR fetch was attempted under the harness but SEC returned HTTP 403 from the GitHub runner. The harness-documented manual fallback was used.
 
-## FY2025 10-K
-- Revenue **$601.799M**, +38% y/y.
-- Launch Services revenue **$199.042M**; Space Systems revenue **$402.757M**.
-- Gross profit **$207.181M**.
-- Net loss **$198.209M**.
-- OCF **-$165.521M**.
-- Purchases of property, equipment and software **$156.285M**.
-- SBC expense **$71.099M**.
-- 21 Electron launches in 2025 vs 16 in 2024.
-- Government customer represented **28%** of FY2025 revenue.
-- 2025 ATM proceeds **$1.146B** gross before issuance costs.
-- Management concluded ICFR effective; no correction/restatement flag.
+## Primary SEC sources
+- FY2025 10-K filed 2026-02-26: https://www.sec.gov/Archives/edgar/data/1819994/000181999426000013/rklb-20251231.htm
+- Q1 2026 10-Q: https://www.sec.gov/Archives/edgar/data/1819994/000181999426000028/rklb-20260331.htm
+- Q2 2026 10-Q filed 2026-08-10: https://www.sec.gov/Archives/edgar/data/1819994/000181999426000062/rklb-20260630.htm
+- 2026 DEF 14A filed 2026-04-06: https://www.sec.gov/Archives/edgar/data/1819994/000162828026023922/rklb-20260406.htm
+- Q2 2026 earnings release: https://www.sec.gov/Archives/edgar/data/1819994/000181999426000061/rklb-08102026ex991.htm
+- Iridium merger 8-K: https://www.sec.gov/Archives/edgar/data/1819994/000175392626001085/g085783_8k.htm
+- Iridium financing 8-K filed 2026-09-15: https://www.sec.gov/Archives/edgar/data/1819994/000175392626001769/g085951_8k.htm
 
-## Q2 / H1 2026
-- Q2 revenue **$234.1M**, +62% y/y.
-- Q2 backlog **$2.36B**, +137% y/y.
-- More than **$437M** of new launch contracts across Electron, HASTE and Neutron during Q2 plus post-quarter signings; launch backlog >90 missions.
-- Six-month net loss **$94.280M**.
-- H1 OCF **-$134.407M**.
-- H1 capex/property/equipment/software purchases **$53.112M**.
-- H1 SBC **$47.677M**.
-- Q2 cash **$2.129B**; current marketable securities **$172.7M**; non-current marketable securities **$85.4M**.
-- Shares outstanding at June 30 **598.180M** and at Aug 5 **598.350M**.
-- Pending Iridium transaction expected to require >$3B cash consideration/fees and additional Iridium debt financing/refinancing needs.
+## Cutoff market data
+- RKLB close 2026-09-18: $64.57 — https://stockanalysis.com/stocks/rklb/history/
 
-## Iridium transaction / Sep-15 financing
-- Rocket Lab agreed to acquire Iridium for **$54/share**, approx **$8.0B EV**.
-- Iridium 2025 revenue **$871.7M**, OEBITDA **$495.3M**, capex **$100.3M**.
-- Sep 15: completed **$1.944B ATM**, issuing **29.3M shares**.
-- Iridium's **$1.775B** existing term loan was amended to remain outstanding after change of control.
-- Initial **$3.6B bridge facility terminated**.
-- Rocket Lab stated the ATM proceeds, amended Iridium facility and available liquidity are sufficient for anticipated closing cash payments.
-
-공시 원문: runs/RKLB/sources/*.txt — runs/RKLB/sources/INDEX.md의 섹션 줄번호로 grep·부분 읽기만 한다.
+## Frozen context conventions
+- Q2 10-Q cover: 598,350,482 shares outstanding as of 2026-08-05.
+- Sep-15 8-K: about 29.3M additional shares sold under replacement ATM for about $1.944B gross.
+- Frozen share count estimate: 627,650,482.
+- Transaction-adjusted net cash/share: -$1.15. This is a modeling convention, not a reported balance-sheet figure. It prevents double counting ATM cash already earmarked for the pending Iridium transaction while the EV scenarios contemplate post-deal economics.
 
 ## 독립성
 runs/RKLB/reports/의 다른 에이전트 보고서는 읽지 않는다.
@@ -96,6 +58,23 @@ runs/RKLB/reports/의 다른 에이전트 보고서는 읽지 않는다.
 
 ## Hard Veto 중점
 - 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
+
+## v3 분석 계약
+기대차는 모든 유형에 적용한다. 버핏 스타일 가치주의 낮은 배수는 영구 손실·숨은 레버리지·정상화 이익 과대평가 검증을 면제하지 않는다.
+
+## upside_path 정의 (장기 5배 경로)
+기존 5배/10배 프레임을 유지하되 `upside_path`를 다음으로 명확히 한다.
+
+- **장기 5배 경로의 경제적 실현 가능성**이다. 가격 상승 가능성이 아니라 경제가치 경로다.
+- 5배는 **매출, 마진, 주당 FCF, 또는 새로운 가치풀** 중 무엇으로 구성되는지 분해해 제시한다.
+- **멀티플 확장에만 의존하는 5배는 인정하지 않는다.** 멀티플 기여분을 분리해 밝히고, 나머지가 경제적으로 성립하는지 본다.
+- 확률 보정은 가능한 경우 **관련 base rate**를 사용한다. 동일 규모·동일 산업에서 5배에 도달한 빈도가 있으면 인용하고, 없으면 없다고 적는다.
+- **5배 가능성과 5배 확률을 혼동하지 않는다.** 경로의 존재는 `upside_path`, 실현 확률은 별도 추정이다.
+
+`permanent_loss`는 변동성이 아니라 **영구손실**을 본다. 결과 분포가 넓다는 것 자체는 영구손실 근거가 아니며, 하방이 구조적으로 회복 불가한지를 본다.
+
+## Structural geopolitical re-analysis
+When reviewing a routed structural event, add its event_id to geo_events_reviewed only after citing new company-level evidence.
 
 ## 고정 채점 루브릭
 {
@@ -178,7 +157,11 @@ runs/RKLB/reports/의 다른 에이전트 보고서는 읽지 않는다.
               "test": "2.5 초과, 독립 경로 3개 이상",
               "score": 90
             }
-          ]
+          ],
+          "interpolation": {
+            "mode": "none",
+            "reason": "Bull/현재가(연속)와 독립 경로 개수(이산)가 함께 밴드를 결정한다. 이산 게이트가 구속하므로 비율만 보간하면 오해를 만든다."
+          }
         }
       },
       {
@@ -196,29 +179,42 @@ runs/RKLB/reports/의 다른 에이전트 보고서는 읽지 않는다.
           "table": [
             {
               "test": "0.2 미만",
-              "score": 25
+              "score": 25,
+              "hi": 0.2
             },
             {
               "test": "0.2~0.4",
-              "score": 50
+              "score": 50,
+              "lo": 0.2,
+              "hi": 0.4
             },
             {
               "test": "0.4~0.6",
-              "score": 65
+              "score": 65,
+              "lo": 0.4,
+              "hi": 0.6
             },
             {
               "test": "0.6~0.8",
-              "score": 80
+              "score": 80,
+              "lo": 0.6,
+              "hi": 0.8
             },
             {
               "test": "0.8 초과",
-              "score": 90
+              "score": 90,
+              "lo": 0.8
             }
           ],
           "modifiers": [
             "순현금이고 TTM 영업현금흐름이 총차입을 상회하면 +10 (상한 90)",
             "외부자본 없이는 12개월 내 유동성 부족이 예상되면 -15"
-          ]
+          ],
+          "interpolation": {
+            "mode": "band_centre",
+            "metric_direction": "increasing",
+            "note": "Bear/현재가는 연속 비율이므로 행간 보간한다."
+          }
         }
       },
       {
@@ -244,13 +240,18 @@ runs/RKLB/reports/의 다른 에이전트 보고서는 읽지 않는다.
       "같은 사실을 두 criterion에서 중복 감점하지 않는다. 한 곳에서만 반영하고 다른 곳에는 uncertainties로 남긴다.",
       "점수는 5점 단위를 유지한다.",
       "판정표 점수와 modifier 적용 결과는 반드시 5점 단위가 되도록 반올림한다.",
-      "veto는 도메인 점수에 이미 반영된 사실만으로 세우지 않는다. veto_criteria의 구성요건이 독립적으로 충족될 때만 성립한다."
+      "veto는 도메인 점수에 이미 반영된 사실만으로 세우지 않는다. veto_criteria의 구성요건이 독립적으로 충족될 때만 성립한다.",
+      "observable_anchors에 interpolation.mode=band_centre가 있으면 행 사이를 보간한다. 밴드 중앙은 표 값과 같고 경계에서는 이웃 밴드와의 중간값이 되며, 결과는 5점 단위로 반올림한다. rationale에 사용한 지표값과 보간 결과를 함께 적는다.",
+      "interpolation.mode=none인 관측표와 형용사 앵커만 있는 criterion은 보간하지 않는다. 계수형 지표를 보간하면 확보하지 못한 관측치를 있는 것처럼 만들고, 형용사 앵커는 observed_divergence가 기록한 프로바이더 분산의 진원지이므로 표 값에 고정한다.",
+      "observable_anchors에 period가 있으면 그 기간으로만 지표를 산출한다. 다른 기간을 쓰면 rationale에 이유와 사용 기간을 적는다."
     ],
     "observed_divergence": "NVDA 2026-09-17/18 동일 종가 기준 gpt-5.6-sol 대 Claude Opus 5 실행 비교: criterion 27개 평균 격차 +10.2점(sol이 높음), 27개 전부 sol >= opus. 관측 가능한 사실형 criterion은 +3.1, 위험 가중 판단형은 +13.2로 4배 차이였다. 앵커가 형용사인 criterion에서만 갈라진다는 뜻이다."
   }
 }
 criterion은 5점 단위로 채점한다. score_0_100은 subscores 고정 가중평균과 같아야 한다. self-confidence와 bull/bear 폭은 자동 감점하지 않는다.
 anchor_policy를 반드시 지킨다. observable_anchors가 있는 criterion은 판정표가 앵커 형용사보다 우선한다. 85 이상과 40 미만에는 각각 상단·하단 게이트가 걸려 있다.
+interpolation.mode=band_centre인 관측표는 행 사이를 보간한다. 밴드 안 위치 p=(x-lo)/(hi-lo)에 대해 p<0.5면 S-(0.5-p)(S-S_prev), p>=0.5면 S+(p-0.5)(S_next-S)이고 결과를 5점 단위로 반올림한다. 밴드 중앙은 표 값과 같다. rationale에 사용한 지표값 x와 보간 결과를 함께 적는다.
+interpolation.mode=none인 표와 형용사 앵커 criterion은 보간하지 않고 표 값을 그대로 쓴다.
 
 ## 필수 Hard Veto 판정
 아래 항목은 생략하면 clear가 아니다. cleared|conditional|confirmed 중 하나를 기록한다. 근거 부족이면 candidate로 남겨 WATCH를 유발한다.
@@ -290,6 +291,9 @@ anchor_policy를 반드시 지킨다. observable_anchors가 있는 criterion은 
 - agent 실행 전 `python harness.py freeze TICKER --provider ... --model ...`로 company_context와 sources를 해시 고정한다.
 - freeze 이후 입력이 바뀌면 prompt 생성을 중단한다. 모델 비교는 동일 `input_snapshot_sha256`에서만 유효하다.
 - EV는 고정된 할인율·terminal multiple·현재가격·순현금을 사용하며 LLM은 연도별 owner FCF/share 경로만 제안한다.
+
+## v3 분석 계약
+새 evidence에는 가능하면 안정적인 evidence_id와 공유 economic_driver를 기록한다. 동일 사실을 여러 긍정 도메인에 재사용한 evidence_concentration_flags는 ED/RT/IC 검토용이며 자동 감점하지 않는다. Macro/지정학은 점수를 바꾸지 않고 pacing·위험예산·모니터링 또는 회사 근거를 통한 재분석 요청만 만든다.
 
 ## Hard Veto (정확한 문자열 사용)
 - 경영진 정직성 또는 회계 신뢰성 훼손
@@ -339,7 +343,7 @@ Hard Veto는 "중대한 리스크"가 아니라 "이 문장이 실제로 성립�
 
 ## 출력
 agent_id/ticker/as_of_date/domain/role은 그대로 두고 아래 필드를 채운다. 분량 상한: thesis 600자, evidence 3~6개, counterevidence 4개, unknowns 5개(핵심 가설에 직결되는 것만), falsifiers·key_kpis·next_checks 각 3개. hard_veto_flags에는 상태가 none이 아닌 항목만 쓴다.
-{"analysis_status": "complete", "score_0_100": 0, "confidence_0_1": 0, "bull_score": 0, "bear_score": 0, "bull_case": "≤300자", "bear_case": "≤300자", "thesis": "≤600자", "evidence": [{"claim": "", "source_type": "filing|ir|industry|secondary|other", "source": "URL 또는 파일 p.N", "period": "", "as_of_date": "", "value": null, "fact_or_estimate": "fact|estimate|interpretation"}], "counterevidence": [""], "unknowns": [""], "uncertainties": [], "falsifiers": [""], "hard_veto_flags": [{"veto": "현재가격이 비현실적인 Bull Case 이상을 요구", "status": "candidate", "rationale": "미평가 — cleared/conditional/confirmed 중 하나로 변경"}, {"veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음", "status": "candidate", "rationale": "미평가 — cleared/conditional/confirmed 중 하나로 변경"}], "key_kpis": [{"name": "", "direction": "", "threshold": "", "cadence": ""}], "next_checks": [""], "verdict": "support|neutral|oppose", "subscores": [{"criterion_id": "upside_path", "score_0_100": 50, "rationale": ""}, {"criterion_id": "permanent_loss", "score_0_100": 50, "rationale": ""}, {"criterion_id": "probability_calibration", "score_0_100": 50, "rationale": ""}]}
+{"analysis_status": "complete", "score_0_100": 0, "confidence_0_1": 0, "bull_score": 0, "bear_score": 0, "bull_case": "≤300자", "bear_case": "≤300자", "thesis": "≤600자", "evidence": [{"evidence_id": "stable fact identifier", "economic_driver": "optional shared economic driver", "claim": "", "source_type": "filing|ir|industry|secondary|other", "source": "URL 또는 파일 p.N", "period": "", "as_of_date": "", "value": null, "fact_or_estimate": "fact|estimate|interpretation"}], "counterevidence": [""], "unknowns": [""], "uncertainties": [], "falsifiers": [""], "hard_veto_flags": [{"veto": "현재가격이 비현실적인 Bull Case 이상을 요구", "status": "candidate", "rationale": "미평가 — cleared/conditional/confirmed 중 하나로 변경"}, {"veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음", "status": "candidate", "rationale": "미평가 — cleared/conditional/confirmed 중 하나로 변경"}], "key_kpis": [{"name": "", "direction": "", "threshold": "", "cadence": ""}], "next_checks": [""], "verdict": "support|neutral|oppose", "subscores": [{"criterion_id": "upside_path", "score_0_100": 50, "rationale": ""}, {"criterion_id": "permanent_loss", "score_0_100": 50, "rationale": ""}, {"criterion_id": "probability_calibration", "score_0_100": 50, "rationale": ""}]}
 작성 후 `python harness.py validate RKLB AS`로 검증한다.
 
 최종 답변은 120단어 이내: 점수(bear–bull)·신뢰도·verdict·none이 아닌 Veto, 가장 중요한 미확인 사항 1개.

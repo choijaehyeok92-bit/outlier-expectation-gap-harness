@@ -1,8 +1,8 @@
 {
-  "agent_id": "CP",
+  "agent_id": "LG",
   "ticker": "RKLB",
   "as_of_date": "2026-09-18",
-  "domain": "customer_product",
+  "domain": "long_term_growth",
   "role": "domain_analyst",
   "analysis_status": "pending",
   "score_0_100": 50,
@@ -16,34 +16,28 @@
   "counterevidence": [],
   "unknowns": [],
   "falsifiers": [],
-  "hard_veto_flags": [
-    {
-      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
-    },
-    {
-      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
-    }
-  ],
+  "hard_veto_flags": [],
   "key_kpis": [],
   "next_checks": [],
   "verdict": "neutral",
   "subscores": [
     {
-      "criterion_id": "customer_roi",
+      "criterion_id": "opportunity_scale_5y",
       "score_0_100": 50,
       "rationale": ""
     },
     {
-      "criterion_id": "retention_usage",
+      "criterion_id": "growth_duration_10y",
       "score_0_100": 50,
       "rationale": ""
     },
     {
-      "criterion_id": "unit_economics",
+      "criterion_id": "culture_adaptability",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "market_misperception",
       "score_0_100": 50,
       "rationale": ""
     }
