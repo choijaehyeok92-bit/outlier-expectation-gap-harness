@@ -2,6 +2,12 @@
 
 항목당 한 에이전트가 분석한다. 매 단계의 `plan`이 실행할 항목과 조기 종료 여부를 결정한다. 투자 정책 숫자는 [config 생성 표](docs/POLICY.md)를 따른다.
 
+## 연속 실행 원칙
+
+운영자·에이전트는 각 단계가 끝날 때 멈추지 않고 `aggregate → digest → plan`으로 다음 상태를 계산한다. `plan`의 `execution_control`이 `continue`이면 반환된 `agents`를 계속 실행한다. 정상 종료는 `stop_early`(정책상 조기 종료) 또는 `stop_complete`(전체 워크플로 완료)뿐이다. `blocked`는 Stage 0/검증 입력을 고쳐야 한다는 뜻이며 분석 완료가 아니다.
+
+예를 들어 EV 하나를 끝냈다면 `validate EV` 후 멈추지 말고 즉시 `aggregate`, `digest`, `plan`을 실행해 AS·DI·FS 또는 다음 단계로 진행한다. 이 반복은 코드가 명시적인 종료 신호를 낼 때까지 계속한다.
+
 ## 0. Stage 0 — 자료 수집과 재무 전처리
 
 ```bash

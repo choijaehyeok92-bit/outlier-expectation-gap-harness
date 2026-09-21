@@ -46,6 +46,17 @@
 ### Phase 6 — Position sizing
 종합점수가 아니라 **증거 수준, 하방 영구손실, 기대차, 포트폴리오 중복위험**을 함께 사용한다.
 
+## Continuous execution contract
+분석 실행은 기본적으로 **계속 진행**한다. 한 단계가 끝났다는 이유만으로 세션을 종료하거나 사용자의 추가 지시를 기다리지 않는다.
+
+- Stage 0에서 FP 산출물을 작성한 뒤 `validate-pack`을 통과시키고, `company_context.json`의 잠금 필드를 채운 뒤 `freeze`한다.
+- frozen run에서는 각 에이전트 결과를 작성한 즉시 `validate TICKER AGENT_ID`를 통과시킨다.
+- 성공적으로 검증된 결과가 생길 때마다 `aggregate → digest → plan`을 다시 실행한다.
+- `plan.execution_control=continue`이면 `plan.agents`에 나온 작업을 즉시 계속 수행한다. 여러 에이전트가 있으면 독립성 규칙을 지키며 모두 처리한 뒤 다시 검증·집계·계획한다.
+- `plan.execution_control=stop_early` 또는 `stop_complete`만 정상적인 종료 신호다. `blocked`는 분석 종료가 아니라 수정이 필요한 입력/검증 차단 상태이며, 원인을 고친 뒤 같은 run을 재개한다.
+- validation 실패, stale freeze, Stage 0 required gap은 우회하지 않는다. 오류를 수정하고 검증을 다시 통과한 뒤 이어간다.
+- 단일 도메인(EV 등) 완료를 전체 분석 완료로 간주하지 않는다.
+
 ## Token discipline
 모든 에이전트는 [`agents/COMMON.md`](agents/COMMON.md)의 공통 규칙과 토큰 예산을 따른다. 실행은 `python harness.py prompt TICKER <AGENT_ID>`가 만든 프롬프트로 하며, triage 후 `plan`이 조기 종료를 판정하면 나머지 단계는 실행하지 않는다.
 
