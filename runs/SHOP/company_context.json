@@ -1,0 +1,58 @@
+{
+  "ticker": "SHOP",
+  "company_name": "Shopify Inc.",
+  "as_of_date": "2026-09-18",
+  "currency": "USD",
+  "current_price": 128.5,
+  "shares_diluted": 1297940958,
+  "market_cap_usd": 165330000000.0,
+  "enterprise_value": 160040000000.0,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "SEC 2025 Form 10-K: https://www.sec.gov/Archives/edgar/data/1594805/000159480526000007/shop-20251231.htm",
+    "SEC Q2 2026 Form 10-Q: https://www.sec.gov/Archives/edgar/data/1594805/000159480526000047/shop-20260630.htm",
+    "SEC Q2 2024 Form 6-K interim financial statements: https://www.sec.gov/Archives/edgar/data/1594805/000159480524000070/exhibit991financialstateme.htm",
+    "SEC Q3 2024 Form 6-K interim financial statements: https://www.sec.gov/Archives/edgar/data/1594805/000159480524000090/exhibit991financialstateme.htm",
+    "Shopify Q2 2026 investor results: https://www.shopify.com/investors/press-releases/shopify-delivers-big-30-growth-across-gmv-revenue-gross-profit",
+    "StockAnalysis SHOP 2026-09-18 close: $128.50; market cap $165.33B; enterprise value $160.04B"
+  ],
+  "special_questions": [
+    "Treat equity-investment gains as non-operating and value the company on owner FCF/share.",
+    "Adjust for the April 2026 reclassification of Canadian merchant cash advance cash flows when comparing OCF periods.",
+    "Track whether 2026 share repurchases create value relative to Base intrinsic value.",
+    "Evaluate AI/agentic-commerce products as incremental merchant-value and GMV/Payments drivers, not as a standalone narrative premium."
+  ],
+  "net_cash_per_share": 4.078768,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "P/FCF / EV-FCF; five-year percentile not frozen",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {
+      "United States": 0.63,
+      "Canada": 0.05,
+      "EMEA": 0.21,
+      "APAC": 0.1,
+      "Latin America": 0.01
+    },
+    "production_by_region": {},
+    "critical_supplier_regions": [],
+    "export_control_dependencies": [],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": []
+  }
+}
