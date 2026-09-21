@@ -1,0 +1,161 @@
+{
+  "agent_id": "AS",
+  "ticker": "VRT",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 66.25,
+  "confidence_0_1": 0.78,
+  "bull_score": 86,
+  "bear_score": 45,
+  "bull_case": "AI power density, liquid cooling, service penetration and microgrid/behind-the-meter power create several independent routes to substantially higher content per data-center build.",
+  "bear_case": "A capex-cycle reversal plus large-customer bargaining power and acquisition commitments can compress multiples and leave substantial downside despite a good industrial franchise.",
+  "thesis": "VRT has attractive operating upside but only moderate valuation downside protection. Locked Bull value is roughly 1.9x the cutoff price through multiple growth paths, while Bear value is about one-third of price. Strong cash generation and a globally diversified installed base support residual value, but the stock remains cycle- and multiple-sensitive.",
+  "evidence": [
+    {
+      "claim": "Year-end 2025 backlog was $15.0B versus $7.2B a year earlier, with most considered firm and expected within 12-18 months.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "2025-12-31",
+      "as_of_date": "2026-02-13",
+      "value": "15.0B vs 7.2B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-AS-BACKLOG"
+    },
+    {
+      "claim": "Q2 Americas, Asia Pacific and EMEA sales were $2.071B, $719.9M and $483.6M, respectively, providing geographic diversification.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/vrt-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-07-29",
+      "value": "2.071B / 719.9M / 483.6M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-AS-GEO"
+    },
+    {
+      "claim": "Vertiv agreed to acquire UIG to add microgrid controls, switchgear and behind-the-meter power architecture, extending the portfolio from grid interconnect to chip.",
+      "source_type": "company_primary",
+      "source": "https://investors.vertiv.com/news/news-details/2026/Vertiv-Announces-Agreement-to-Acquire-UtilityInnovation-Group-to-Accelerate-Time-to-Power-for-AI-Data-Centers/default.aspx",
+      "period": "2026-09-02",
+      "as_of_date": "2026-09-02",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-AS-UIG"
+    },
+    {
+      "claim": "At June 30 cash plus short-term investments slightly exceeded net long-term debt before the announced UIG cash consideration.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/vrt-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-07-29",
+      "value": "3.111B cash+ST investments vs 2.940B long-term debt",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-AS-BS"
+    }
+  ],
+  "counterevidence": [
+    "Large hyperscale and cloud customers have strong bargaining power and can delay/cancel projects.",
+    "The $1.45B upfront UIG cash payment reduces balance-sheet downside protection if the deal closes.",
+    "Backlog may amplify rather than reduce risk if fixed-price execution or supply constraints deteriorate.",
+    "A large portion of the equity value reflects continued AI capex intensity."
+  ],
+  "unknowns": [
+    "Backlog by customer and cancellation profile.",
+    "UIG EBITDA and acquisition multiple.",
+    "Long-run liquid-cooling share and service attach rates.",
+    "AI data-center capex cycle duration."
+  ],
+  "falsifiers": [
+    "If book-to-bill/backlog falls sharply while hyperscaler capex slows, upside-path score should decline.",
+    "If service/liquid-cooling/microgrid content per project expands faster than expected, Bull value should rise.",
+    "A material price decline without fundamental deterioration would improve permanent-loss asymmetry."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is near Base and well below Bull."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Balance-sheet liquidity and cash generation make insolvency risk low; valuation/cycle risk remains but is not disproportionate to upside."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Bull/current",
+      "direction": "up",
+      "threshold": ">1.6x",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Bear/current",
+      "direction": "up",
+      "threshold": ">0.4x over time",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "backlog/order growth",
+      "direction": "up",
+      "threshold": "positive after current surge normalizes",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "UIG close economics",
+    "Backlog conversion",
+    "Data-center capex cycle"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "Locked Bull/current is about 1.9x with multiple paths through core power/cooling, services and microgrid adjacency."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 50,
+      "rationale": "Locked Bear/current is roughly one-third, indicating meaningful downside despite strong franchise residual value."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 75,
+      "rationale": "Scenario tree separates core backlog conversion, cycle normalization and adjacency/M&A upside, with explicit sensitivity to working capital."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Several upside paths share exposure to the same AI infrastructure capex cycle."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "UIG cash consideration will reduce net liquidity."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "critical",
+      "rationale": "The current AI data-center buildout has limited historical analogues at this power density."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
