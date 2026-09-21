@@ -1,0 +1,261 @@
+{
+  "agent_id": "MO",
+  "ticker": "ALAB",
+  "as_of_date": "2026-09-18",
+  "domain": "macro_overlay",
+  "role": "overlay",
+  "analysis_status": "complete",
+  "score_0_100": 50,
+  "confidence_0_1": 0.82,
+  "thesis": "Macro conditions do not alter ALAB's fundamental score, but they justify slower purchase pacing. The Fed's September rate increase pressures long-duration valuations, while credit markets remain liquid. The larger company-specific macro risk is geopolitical and structural trade exposure: Taiwan-centered semiconductor production, China-billed revenue and U.S.-China AI/export-control friction. A 0.7 risk-budget multiplier is appropriate pending evidence of lower policy and supply-chain risk.",
+  "evidence": [
+    {
+      "claim": "The FOMC raised the federal funds target range by 25bp to 3.75%-4.00% on September 16, 2026.",
+      "source_type": "other",
+      "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+      "period": "2026-09 FOMC",
+      "as_of_date": "2026-09-16",
+      "value": "3.75%-4.00%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MO-FED"
+    },
+    {
+      "claim": "ICE BofA US High Yield OAS was 2.70% on September 17, 2026, indicating relatively benign credit-market stress.",
+      "source_type": "secondary",
+      "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+      "period": "2026-09-17",
+      "as_of_date": "2026-09-17",
+      "value": 2.7,
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MO-HY"
+    },
+    {
+      "claim": "U.S.-China discussions immediately before the cutoff centered on AI, trade, rare earths and Taiwan-sensitive issues, while technology restrictions remained contested.",
+      "source_type": "secondary",
+      "source": "https://www.reuters.com/world/china/us-treasurys-bessent-plans-discuss-ai-rare-earths-with-chinas-he-source-says-2026-09-18/",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MO-GEO"
+    },
+    {
+      "claim": "U.S.-China AI and semiconductor access remained an active strategic dispute before the cutoff, with advanced-chip restrictions and potential further trade measures still under discussion.",
+      "source_type": "secondary",
+      "source": "https://www.reuters.com/legal/litigation/ai-rivalry-hangs-over-trump-xi-talks-2026-09-16/",
+      "period": "2026-09-16",
+      "as_of_date": "2026-09-16",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-MO-TRADE"
+    }
+  ],
+  "counterevidence": [
+    "ALAB is net cash and internally cash-generative, so tighter credit conditions do not threaten financing.",
+    "AI infrastructure capital investment remained robust at the macro level.",
+    "Product diversification across standards and platform partners partially reduces any single export-control transmission channel."
+  ],
+  "unknowns": [
+    "Exact end-demand share attributable to China versus billing through manufacturing partners.",
+    "Foundry/package redundancy outside Taiwan.",
+    "Sensitivity of hyperscale AI capex to further rate increases."
+  ],
+  "falsifiers": [
+    "A durable easing cycle with stable inflation would reduce discount-rate pressure.",
+    "Meaningful supply-chain diversification away from Taiwan would reduce geopolitical transmission.",
+    "Broader export controls covering ALAB's products or end customers would raise the overlay risk."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Fed policy rate",
+      "direction": "down",
+      "threshold": "easing without recessionary demand shock",
+      "cadence": "FOMC"
+    },
+    {
+      "name": "US high-yield OAS",
+      "direction": "stable",
+      "threshold": "remain below severe-stress levels",
+      "cadence": "weekly"
+    },
+    {
+      "name": "Taiwan/export-control exposure",
+      "direction": "down",
+      "threshold": "greater supply and customer diversification",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Next FOMC and long-duration yields",
+    "U.S.-China AI/export-control developments",
+    "Taiwan supply-chain diversification"
+  ],
+  "verdict": "neutral",
+  "risk_budget_multiplier": 0.7,
+  "global_components": {
+    "financial_conditions": {
+      "scope": "global",
+      "as_of_utc": "2026-09-16T18:00:00+00:00",
+      "summary": "The Fed raised rates to 3.75%-4.00%, increasing discount-rate pressure on long-duration growth valuations.",
+      "evidence": [
+        {
+          "claim": "The FOMC raised the federal funds target range by 25bp to 3.75%-4.00% on September 16, 2026.",
+          "source_type": "other",
+          "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+          "period": "2026-09 FOMC",
+          "as_of_date": "2026-09-16",
+          "value": "3.75%-4.00%",
+          "fact_or_estimate": "fact",
+          "evidence_id": "ALAB-MO-FED"
+        }
+      ],
+      "risk_budget_multiplier": 0.8
+    },
+    "credit_liquidity": {
+      "scope": "global",
+      "as_of_utc": "2026-09-17T21:00:00+00:00",
+      "summary": "High-yield spreads near 270bp indicate no broad funding stress.",
+      "evidence": [
+        {
+          "claim": "ICE BofA US High Yield OAS was 2.70% on September 17, 2026, indicating relatively benign credit-market stress.",
+          "source_type": "secondary",
+          "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+          "period": "2026-09-17",
+          "as_of_date": "2026-09-17",
+          "value": 2.7,
+          "fact_or_estimate": "fact",
+          "evidence_id": "ALAB-MO-HY"
+        }
+      ],
+      "risk_budget_multiplier": 1
+    },
+    "geopolitical_events": {
+      "scope": "global",
+      "as_of_utc": "2026-09-18T16:00:00+00:00",
+      "summary": "U.S.-China/Taiwan tensions remain material for a fabless semiconductor company dependent on Asian manufacturing and hyperscale AI demand.",
+      "evidence": [
+        {
+          "claim": "U.S.-China discussions immediately before the cutoff centered on AI, trade, rare earths and Taiwan-sensitive issues, while technology restrictions remained contested.",
+          "source_type": "secondary",
+          "source": "https://www.reuters.com/world/china/us-treasurys-bessent-plans-discuss-ai-rare-earths-with-chinas-he-source-says-2026-09-18/",
+          "period": "2026-09-18",
+          "as_of_date": "2026-09-18",
+          "value": null,
+          "fact_or_estimate": "fact",
+          "evidence_id": "ALAB-MO-GEO"
+        }
+      ],
+      "dimensions": {
+        "military_conflict": {
+          "level": "moderate",
+          "regions": [
+            "Taiwan Strait"
+          ],
+          "routes": [],
+          "dependencies": [
+            "Taiwan semiconductor manufacturing"
+          ],
+          "structural_events": []
+        },
+        "energy_disruption": {
+          "level": "low",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        },
+        "shipping_disruption": {
+          "level": "low",
+          "regions": [
+            "Taiwan"
+          ],
+          "routes": [],
+          "dependencies": [
+            "semiconductor logistics"
+          ],
+          "structural_events": []
+        },
+        "sovereign_policy_instability": {
+          "level": "moderate",
+          "regions": [
+            "United States",
+            "China",
+            "Taiwan"
+          ],
+          "routes": [],
+          "dependencies": [
+            "AI and semiconductor policy"
+          ],
+          "structural_events": []
+        }
+      }
+    },
+    "structural_trade": {
+      "scope": "global",
+      "as_of_utc": "2026-09-18T16:00:00+00:00",
+      "summary": "Semiconductor export controls and U.S.-China technology restrictions remain a structural transmission risk for ALAB's China-billed revenue and Taiwan-centered supply chain.",
+      "evidence": [
+        {
+          "claim": "U.S.-China AI and semiconductor access remained an active strategic dispute before the cutoff, with advanced-chip restrictions and potential further trade measures still under discussion.",
+          "source_type": "secondary",
+          "source": "https://www.reuters.com/legal/litigation/ai-rivalry-hangs-over-trump-xi-talks-2026-09-16/",
+          "period": "2026-09-16",
+          "as_of_date": "2026-09-16",
+          "value": null,
+          "fact_or_estimate": "fact",
+          "evidence_id": "ALAB-MO-TRADE"
+        }
+      ],
+      "dimensions": {
+        "trade_fragmentation": {
+          "level": "moderate",
+          "regions": [
+            "United States",
+            "China",
+            "Taiwan"
+          ],
+          "routes": [],
+          "dependencies": [
+            "AI infrastructure",
+            "semiconductor supply chain"
+          ],
+          "structural_events": []
+        },
+        "export_controls": {
+          "level": "moderate",
+          "regions": [
+            "China"
+          ],
+          "routes": [],
+          "dependencies": [
+            "advanced AI infrastructure demand"
+          ],
+          "structural_events": []
+        },
+        "sanctions": {
+          "level": "low",
+          "regions": [],
+          "routes": [],
+          "dependencies": [],
+          "structural_events": []
+        }
+      }
+    }
+  },
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
