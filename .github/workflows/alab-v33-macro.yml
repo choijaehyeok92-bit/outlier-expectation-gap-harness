@@ -1,0 +1,58 @@
+name: ALAB v3.3 macro overlay
+
+on:
+  push:
+    branches:
+      - work/alab-2026-09-18-v33
+    paths:
+      - ".github/workflows/alab-v33-macro.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  macro:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/alab-2026-09-18-v33
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Execute ALAB macro plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/alab-macro.log) 2>&1
+
+          python harness.py selftest
+          python harness.py prompt ALAB MO --out runs/ALAB/MO_prompt.md
+          cp ".harness_inputs/ALAB/reports/MO.json" "runs/ALAB/reports/MO.json"
+          python harness.py validate ALAB MO
+
+          python harness.py aggregate ALAB | tee runlogs/aggregate_after_macro.json
+          python harness.py digest ALAB
+          python harness.py plan ALAB | tee runlogs/plan_after_macro.txt
+
+          echo "===== NEXT PLAN ====="
+          cat runlogs/plan_after_macro.txt
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/ALAB
+          if ! git diff --cached --quiet; then
+            git commit -m "macro: complete ALAB MO"
+            git push origin HEAD:work/alab-2026-09-18-v33
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ALAB-v33-macro
+          path: |
+            runs/ALAB
+            runlogs
