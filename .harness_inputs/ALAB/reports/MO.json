@@ -132,7 +132,7 @@
     },
     "geopolitical_events": {
       "scope": "global",
-      "as_of_utc": "2026-09-18T16:00:00+00:00",
+      "as_of_utc": "2026-09-18T00:00:00+00:00",
       "summary": "U.S.-China/Taiwan tensions remain material for a fabless semiconductor company dependent on Asian manufacturing and hyperscale AI demand.",
       "evidence": [
         {
@@ -193,7 +193,7 @@
     },
     "structural_trade": {
       "scope": "global",
-      "as_of_utc": "2026-09-18T16:00:00+00:00",
+      "as_of_utc": "2026-09-18T00:00:00+00:00",
       "summary": "Semiconductor export controls and U.S.-China technology restrictions remain a structural transmission risk for ALAB's China-billed revenue and Taiwan-centered supply chain.",
       "evidence": [
         {
