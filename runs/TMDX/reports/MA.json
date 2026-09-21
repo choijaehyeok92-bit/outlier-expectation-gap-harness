@@ -4,46 +4,150 @@
   "as_of_date": "2026-09-18",
   "domain": "management_allocation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 67.5,
+  "confidence_0_1": 0.79,
+  "bull_score": 83,
+  "bear_score": 45,
+  "bull_case": "Founder-led management repeatedly converted R&D and strategic expansion into OCS approvals, NOP scale and rapid revenue growth, and is now reinvesting into Kidney, Gen 3 and international logistics.",
+  "bear_case": "Management is simultaneously funding aircraft, facilities, Europe, new products and large equity awards while an inventory-control material weakness remains unremediated, increasing execution and governance risk.",
+  "thesis": "Management's strategic execution is strong but governance quality is not yet high enough for a premium score. The founder has built OCS and then deliberately expanded into NOP/logistics, and prior investment generated rapid growth. However, the unresolved inventory-control material weakness, a 2.75M-share incentive-plan increase, continuing SBC, complex capital commitments and a CFO transition require a lower governance score.",
+  "evidence": [
+    {
+      "claim": "Founder/CEO Waleed Hassanein has led the company since 1998 and beneficially owned about 4.3% of shares in the 2026 proxy.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526150357/d833933ddef14a.htm",
+      "period": "2026 proxy",
+      "as_of_date": "2026-04-10",
+      "value": "~4.3%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-MA-OWNER"
+    },
+    {
+      "claim": "The 2026 proxy sought shareholder approval to increase the 2019 stock-incentive plan by 2,750,000 shares; executive compensation emphasizes equity awards.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526150357/d833933ddef14a.htm",
+      "period": "2026 proxy",
+      "as_of_date": "2026-04-10",
+      "value": "2.75M shares",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-MA-COMP"
+    },
+    {
+      "claim": "Management disclosed an unresolved material weakness in inventory-movement controls as of June 30, 2026, while stating the financial statements were fairly presented and remediation controls had been implemented but not yet tested long enough.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332843/tmdx-20260630.htm",
+      "period": "Q2 2026 controls",
+      "as_of_date": "2026-08-04",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-MA-CONTROL"
+    },
+    {
+      "claim": "The company shifted from a device-only model into NOP/logistics, completed the Summit aviation acquisition earlier, and in 2026 invested in PAD Aviation while funding Kidney and Gen 3.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "2023-2026 strategy",
+      "as_of_date": "2026-02-24",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-MA-ALLOC"
+    },
+    {
+      "claim": "On September 10 the board announced Fernando Araujo as CFO/Treasurer effective September 21, succeeding Gerardo Hernandez.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526387960/d116447d8k.htm",
+      "period": "2026-09-10 announcement",
+      "as_of_date": "2026-09-10",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-MA-CFO"
+    }
+  ],
+  "counterevidence": [
+    "The internal-control weakness is specific to interim inventory movement and management says the financial statements remain fairly presented.",
+    "Founder ownership and equity-heavy compensation create meaningful long-term alignment.",
+    "Prior NOP/logistics investment has produced strong revenue growth and service-margin improvement.",
+    "No large goodwill impairment or failed transformative acquisition is evident in the reviewed period."
+  ],
+  "unknowns": [
+    "Why the CFO transition occurred and whether it changes finance/control execution.",
+    "Post-buildout returns on Somerville, aircraft and PAD capital.",
+    "Long-run dilution from the expanded equity plan.",
+    "Whether the material weakness is fully remediated in the next audit cycle."
+  ],
+  "falsifiers": [
+    "Failure to remediate the material weakness would materially lower governance integrity.",
+    "If Kidney/Gen3/PAD investments do not earn attractive returns, capital-allocation score should fall.",
+    "Successful remediation plus improving per-share FCF would support a higher score."
+  ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "conditional",
+      "rationale": "An unremediated material weakness impairs accounting-control reliability, but management reports the statements fairly present results and no fraud/restatement is identified; RT review is required."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
+  "key_kpis": [
+    {
+      "name": "internal-control remediation",
+      "direction": "up",
+      "threshold": "material weakness remediated",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "SBC/dilution",
+      "direction": "down",
+      "threshold": "per-share FCF outgrows equity issuance",
+      "cadence": "annual"
+    },
+    {
+      "name": "returns on strategic investment",
+      "direction": "up",
+      "threshold": "Kidney/Gen3/PAD improve revenue and cash economics",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Q3/Q4 internal-control status",
+    "CFO transition and finance execution",
+    "Return on PAD/Somerville/fleet investment"
+  ],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "capital_allocation",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Prior R&D and NOP/logistics investment created substantial growth, but simultaneous aircraft, facility and international commitments increase execution risk."
     },
     {
       "criterion_id": "governance_integrity",
       "score_0_100": 50,
-      "rationale": ""
+      "rationale": "Founder ownership and formal oversight are positives, but an unremediated material weakness and sizable equity-plan expansion prevent a high-trust score."
     },
     {
       "criterion_id": "execution_adaptability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Management has repeatedly expanded the model from OCS devices to NOP, aviation/logistics and new-organ programs while scaling revenue rapidly."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "Major 2026 investments have not yet produced observable cash returns."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "critical",
+      "rationale": "The material weakness remains formally unremediated at the cutoff."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "material",
+      "rationale": "The organization is entering Europe and larger facilities simultaneously, increasing complexity."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

@@ -4,46 +4,140 @@
   "as_of_date": "2026-09-18",
   "domain": "moat_trajectory",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 80.25,
+  "confidence_0_1": 0.82,
+  "bull_score": 91,
+  "bear_score": 62,
+  "bull_case": "Clinical approvals, trained users, loaned consoles/disposables, NOP logistics density and accumulated transplant operating know-how reinforce each other as volume scales.",
+  "bear_case": "Open clinical alternatives, powerful hospitals/OPOs, regulatory dependence, supplier concentration and the ability to use NRP/cold approaches keep the moat from becoming an uncontested network monopoly.",
+  "thesis": "The moat is strengthening from a device/IP moat into an integrated workflow moat. OCS approvals, patents, user certification, disposable pull-through and NOP logistics create switching friction, while revenue and service scale provide operating data and route density. The principal limits are alternative preservation methods, single-source suppliers and the absence of explicit long-term contracts or minimum purchases.",
+  "evidence": [
+    {
+      "claim": "Heart, lung and liver OCS systems have FDA PMA approvals; patent families extend in parts into the 2030s and 2040s.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-24",
+      "value": "heart/liver/lung approvals; patent expiries through 2043",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-MT-IP"
+    },
+    {
+      "claim": "Customers are trained/certified on OCS; consoles can be loaned while recurring disposable sets are purchased for each transplant, embedding workflow and consumable pull-through.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-24",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-MT-SWITCH"
+    },
+    {
+      "claim": "Revenue rose from $241.6M in 2023 to $441.5M in 2024 and $605.5M in 2025, while substantially all U.S. customers now participate in NOP.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2023-FY2025",
+      "as_of_date": "2026-02-24",
+      "value": "241.6M/441.5M/605.5M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-MT-SCALE"
+    },
+    {
+      "claim": "Q2 2026 service revenue grew 29% YoY and service gross margin improved to 35% from 32%, evidence that logistics density can improve economics.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332843/tmdx-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-04",
+      "value": "+29%; 35% vs 32%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-MT-NET"
+    }
+  ],
+  "counterevidence": [
+    "Loaned consoles do not require minimum OCS product-purchase commitments.",
+    "NRP, cold storage/cold perfusion and other warm-perfusion technologies can substitute.",
+    "Several OCS components rely on single or sole-source suppliers.",
+    "Hospitals and OPOs remain concentrated and sophisticated counterparties."
+  ],
+  "unknowns": [
+    "Measured customer switching rates after NOP adoption.",
+    "Route-density economics and data advantages versus third-party logistics.",
+    "Competitive market share by organ preservation method.",
+    "Patent enforceability and practical design-around risk."
+  ],
+  "falsifiers": [
+    "If large centers multi-source away from OCS without workflow disruption, switching moat is weaker than assumed.",
+    "If service margin fails to improve with route density, network effects are overstated.",
+    "Loss of a key patent/approval or supplier disruption would weaken moat trajectory."
+  ],
   "hard_veto_flags": [
     {
       "veto": "해자의 지속적인 축소",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Revenue scale, NOP participation, patents/approvals and service economics show a broadening rather than shrinking moat as of the cutoff."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "NOP participation and transplant volume",
+      "direction": "up",
+      "threshold": "continued density gains",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "service gross margin",
+      "direction": "up",
+      "threshold": "mid-30s or better",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "competitive share by organ",
+      "direction": "up",
+      "threshold": "maintain leadership",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "NRP/competitor adoption",
+    "Patent/approval developments",
+    "NOP density economics"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "switching_pricing",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Regulatory approvals, trained workflows, console/disposable architecture and NOP integration create meaningful switching friction."
     },
     {
       "criterion_id": "network_data_ecosystem",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Multi-year revenue scale, broad U.S. NOP participation and improving service economics provide several primary-source scale/trend signals."
     },
     {
       "criterion_id": "commoditization_resilience",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Patents, clinical approvals, consumables and logistics are multiple defenses, but alternative preservation methods and supplier dependencies remain."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Minimum purchases are generally absent, so switching cost is operational/clinical rather than contractual."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "The company does not disclose a standardized network-density or data-advantage KPI."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "critical",
+      "rationale": "Alternative perfusion/NRP methods can improve without infringing TransMedics' patents."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

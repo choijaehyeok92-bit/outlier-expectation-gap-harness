@@ -4,51 +4,145 @@
   "as_of_date": "2026-09-18",
   "domain": "customer_product",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 78.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "OCS/NOP is mission-critical infrastructure that expands transplant-center procurement capacity, is reimbursed through established mechanisms and earns recurring disposable/service revenue per transplant.",
+  "bear_case": "Hospitals can use alternative preservation/procurement workflows, NOP services are lower margin, and the company does not disclose cohort retention or wallet-share metrics that prove lock-in.",
+  "thesis": "Customer value is strong and economically visible. NOP lets centers outsource scarce procurement, perfusion and logistics resources; OCS products are reimbursed through established U.S. transplant billing and product gross margins remain high. Usage is expanding, but retention is inferred from revenue and broad NOP participation rather than disclosed cohorts, while service economics are materially lower-margin than product economics.",
+  "evidence": [
+    {
+      "claim": "Substantially all U.S. customers participate in NOP, which outsources procurement, OCS perfusion management and logistics to expand transplant-center capacity.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-24",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-CP-USAGE"
+    },
+    {
+      "claim": "Medicare and private payors reimburse OCS products and NOP services through established transplant and organ-acquisition billing mechanisms.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-24",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-CP-REIMB"
+    },
+    {
+      "claim": "H1 2026 product gross margin was 77% and service gross margin was 31%; Q2 service gross margin improved to 35% from 32% a year earlier.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332843/tmdx-20260630.htm",
+      "period": "H1/Q2 2026",
+      "as_of_date": "2026-08-04",
+      "value": "77% product; 31% H1 service; 35% Q2 service",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-CP-UNIT"
+    },
+    {
+      "claim": "Q2 2026 product revenue grew 16% and service revenue grew 29% YoY, with total revenue up 21%.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332767/tmdx-ex99_1.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-04",
+      "value": "product +16%; service +29%; total +21%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-CP-GROWTH"
+    }
+  ],
+  "counterevidence": [
+    "NOP service gross margins are much lower than OCS product margins.",
+    "No standardized public retention, NRR or customer-wallet-share cohort metric is disclosed.",
+    "Customers retain alternatives including cold storage, NRP and other perfusion approaches.",
+    "Customer contracts can include loaned consoles without minimum product-purchase commitments."
+  ],
+  "unknowns": [
+    "Per-center transplant volume before versus after NOP adoption.",
+    "Customer retention and wallet share by transplant center.",
+    "Price elasticity if reimbursement becomes more restrictive.",
+    "NOP contribution margin after fully allocated aircraft/facility overhead."
+  ],
+  "falsifiers": [
+    "If service revenue grows while service gross margin falls persistently, unit economics weaken.",
+    "If large centers reduce OCS/NOP utilization despite stable transplant volumes, retention should be rescored down.",
+    "Loss of reimbursement precedent would directly weaken customer ROI."
+  ],
   "hard_veto_flags": [
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Customers pay recurring product/service fees within established reimbursement channels and use NOP to solve real procurement-capacity constraints."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "conditional",
+      "rationale": "Revenue spans multiple organ products and services, but all are tied to the OCS/NOP transplant ecosystem and regulatory/reimbursement framework."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "service gross margin",
+      "direction": "up",
+      "threshold": "mid-30s with scale",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "product gross margin",
+      "direction": "stable",
+      "threshold": "mid/high-70s",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "OCS/NOP transplant volume",
+      "direction": "up",
+      "threshold": "outgrow underlying transplant market",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Center-level utilization evidence",
+    "Reimbursement changes",
+    "Service contribution margin"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "customer_roi",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "The product supports life-saving transplantation, expands procurement capacity and is reimbursed through established U.S. mechanisms, indicating mission-critical willingness to pay."
     },
     {
       "criterion_id": "retention_usage",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Broad NOP participation and recurring transplant revenue imply expansion, but cohort retention/wallet-share data are not disclosed."
     },
     {
       "criterion_id": "unit_economics",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 65,
+      "rationale": "Product economics are excellent and service margin is improving, but integrated logistics materially lowers blended margin and raises fixed-cost intensity."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "minor",
+      "rationale": "Reimbursement and clinical workflow support are strong, though exact center-level ROI is not publicly quantified."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "No public cohort retention or wallet-share metric is available."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "critical",
+      "rationale": "NOP economics depend on aircraft utilization, fuel, staffing and route density."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
