@@ -1,0 +1,32 @@
+{
+  "stage": "triage",
+  "agents": {
+    "asymmetry": "AS",
+    "disruptive_innovation": "DI",
+    "financial_survival": "FS"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "historical_annuals",
+      "proxy_compensation",
+      "earnings_release",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "execution_control": "continue",
+  "research": {
+    "questions": 13,
+    "pending": 13,
+    "decision_blocking": 9,
+    "deferred": 1,
+    "command": "python harness.py research-plan META"
+  }
+}
+python harness.py prompt META AS
+python harness.py prompt META DI
+python harness.py prompt META FS
+CONTINUE: complete the listed agent work, validate it, then rerun aggregate, digest, and plan for META.
