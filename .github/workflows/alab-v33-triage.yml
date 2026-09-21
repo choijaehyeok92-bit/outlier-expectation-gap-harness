@@ -1,5 +1,4 @@
 name: ALAB v3.3 complete triage
-# final clean rerun after severity fix
 
 on:
   push:
@@ -24,7 +23,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install -r requirements-dev.txt
-      - name: Execute ALAB remaining triage plan
+
+      - name: Execute ALAB remaining triage
         shell: bash
         run: |
           set -euo pipefail
@@ -57,6 +57,7 @@ jobs:
             git commit -m "triage: complete ALAB AS DI FS"
             git push origin HEAD:work/alab-2026-09-18-v33
           fi
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
