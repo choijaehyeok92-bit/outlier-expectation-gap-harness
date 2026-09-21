@@ -1,0 +1,75 @@
+{
+  "ticker": "FIX",
+  "as_of_date": "2026-09-18",
+  "score_100": 79.44,
+  "score_100_ex_valuation": 80.79,
+  "classification": "Emerging Outlier",
+  "archetype": "outlier_growth",
+  "secondary_archetype": "growth",
+  "hard_veto_status": "CLEARED",
+  "ic_state": "NORMAL",
+  "position_range": "2-4%",
+  "macro_purchase_pacing_multiplier": 0.5,
+  "disruptive_innovation_score": 73.5,
+  "long_term_growth_score": 75.0,
+  "valuation": {
+    "current_price": 1651.37,
+    "bear": 722.1779,
+    "base": 1908.3209,
+    "bull": 3149.519,
+    "price_to_base": 0.8654
+  },
+  "dispersion_review": {
+    "mean_skew": 3.28,
+    "reduce_bands": 0,
+    "by_domain": [
+      {
+        "domain": "structural_leadership",
+        "skew": 0.5,
+        "spread": 21.0
+      },
+      {
+        "domain": "customer_product",
+        "skew": 4.0,
+        "spread": 21.0
+      },
+      {
+        "domain": "moat_trajectory",
+        "skew": 0.5,
+        "spread": 22.0
+      },
+      {
+        "domain": "reinvestment_fcf",
+        "skew": -1.0,
+        "spread": 26.0
+      },
+      {
+        "domain": "management_allocation",
+        "skew": 4.5,
+        "spread": 22.0
+      },
+      {
+        "domain": "financial_survival",
+        "skew": 4.5,
+        "spread": 20.0
+      },
+      {
+        "domain": "expectation_valuation",
+        "skew": 6.5,
+        "spread": 31.0
+      },
+      {
+        "domain": "asymmetry",
+        "skew": 5.0,
+        "spread": 27.0
+      },
+      {
+        "domain": "disruptive_innovation",
+        "skew": 5.0,
+        "spread": 26.0
+      }
+    ]
+  },
+  "execution_control": "stop_complete",
+  "reconstruction": true
+}
