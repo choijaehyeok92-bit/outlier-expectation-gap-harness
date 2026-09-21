@@ -5,11 +5,11 @@
   "domain": "asymmetry",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 65.69,
+  "score_0_100": 65.25,
   "confidence_0_1": 0.72,
   "bull_score": 82,
   "bear_score": 42,
-  "bull_case": "A 5x path exists if three value pools scale together: Neutron medium-lift, defense/space-systems prime contracts, and Iridium recurring communications. The locked Bull DCF is $224.68/share, 3.48x current value before counting interim cash flows, and the implied Y10 Bull terminal value is roughly $448/share.",
+  "bull_case": "A 5x path exists if three value pools scale together: Neutron medium-lift, defense/space-systems prime contracts, and Iridium recurring communications. Locked Bull DCF is $224.68/share, 3.48x current value, with a Y10 Bull terminal value near $448/share.",
   "bear_case": "The locked Bear DCF is only $17.41/share, 27% of the $64.57 cutoff price. Standalone Rocket Lab is still cash-flow negative and the Iridium transaction adds integration, debt-guarantee and dilution risk. A 5x outcome is therefore possible but not the central case.",
   "thesis": "RKLB has genuine power-law optionality, but current asymmetry is not yet exceptional because downside remains large. At $64.57 and roughly $40.5B market cap, 5x requires about $203B of equity value. That is economically conceivable only if Neutron, space systems/defense and Iridium services all contribute; it is not supported by Electron alone. The locked Bull value is 3.48x current price while Bear is 0.27x, so the distribution is wide. A probability-weighted view is sensitive to the assumed chance of successful Neutron commercialization and Iridium integration.",
   "evidence": [
@@ -127,8 +127,8 @@
     },
     {
       "criterion_id": "permanent_loss",
-      "score_0_100": 46.25,
-      "rationale": "Locked Bear/current = 17.41/64.57 = 0.27, inside the 0.2-0.4 band. Band-centre interpolation puts the score below the 50-point centre; no liquidity modifier is applied because transaction-adjusted net cash is negative and standalone OCF is negative."
+      "score_0_100": 45,
+      "rationale": "Locked Bear/current = 17.41/64.57 = 0.27, inside the 0.2-0.4 band and below its centre. The nearest allowed 5-point rubric score is 45; no liquidity modifier is applied because transaction-adjusted net cash is negative and standalone OCF is negative."
     },
     {
       "criterion_id": "probability_calibration",
