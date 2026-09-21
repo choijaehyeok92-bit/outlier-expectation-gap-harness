@@ -1515,19 +1515,137 @@
   "review_only": false,
   "evidence_concentration_flags": [],
   "macro_geo_overlay": {
-    "financial_regime": {},
-    "geopolitical_regime": {},
-    "company_transmission": {},
-    "missing_or_stale_components": [
-      "credit_liquidity",
-      "financial_conditions",
-      "geopolitical_events",
-      "structural_trade"
-    ],
+    "financial_regime": {
+      "financial_conditions": {
+        "scope": "global",
+        "as_of_utc": "2026-09-17T20:00:00+00:00",
+        "summary": "Policy rates are moderately restrictive after the September FOMC.",
+        "evidence": [
+          {
+            "claim": "Federal Reserve target range was 3.75%-4.00% following the 2026-09-16 FOMC decision.",
+            "source_type": "other",
+            "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+            "period": "2026-09 FOMC",
+            "as_of_date": "2026-09-16",
+            "value": 4,
+            "fact_or_estimate": "fact",
+            "evidence_id": "VRT-MO-FED"
+          }
+        ],
+        "risk_budget_multiplier": 0.8
+      },
+      "credit_liquidity": {
+        "scope": "global",
+        "as_of_utc": "2026-09-17T20:00:00+00:00",
+        "summary": "Credit spreads remain relatively tight and systemic funding stress is not evident.",
+        "evidence": [
+          {
+            "claim": "US high-yield option-adjusted spreads were near 271bp on 2026-09-17.",
+            "source_type": "secondary",
+            "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+            "period": "2026-09",
+            "as_of_date": "2026-09-17",
+            "value": 271,
+            "fact_or_estimate": "fact",
+            "evidence_id": "VRT-MO-HY"
+          }
+        ],
+        "risk_budget_multiplier": 1
+      }
+    },
+    "geopolitical_regime": {
+      "military_conflict": {
+        "level": "moderate",
+        "regions": [],
+        "routes": [],
+        "dependencies": [],
+        "structural_events": []
+      },
+      "energy_disruption": {
+        "level": "moderate",
+        "regions": [],
+        "routes": [],
+        "dependencies": [],
+        "structural_events": []
+      },
+      "shipping_disruption": {
+        "level": "low",
+        "regions": [],
+        "routes": [],
+        "dependencies": [],
+        "structural_events": []
+      },
+      "sovereign_policy_instability": {
+        "level": "low",
+        "regions": [],
+        "routes": [],
+        "dependencies": [],
+        "structural_events": []
+      },
+      "trade_fragmentation": {
+        "level": "moderate",
+        "regions": [],
+        "routes": [],
+        "dependencies": [],
+        "structural_events": []
+      },
+      "export_controls": {
+        "level": "low",
+        "regions": [],
+        "routes": [],
+        "dependencies": [],
+        "structural_events": []
+      },
+      "sanctions": {
+        "level": "low",
+        "regions": [],
+        "routes": [],
+        "dependencies": [],
+        "structural_events": []
+      }
+    },
+    "company_transmission": {
+      "energy_disruption": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "moderate"
+      },
+      "export_controls": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "low"
+      },
+      "military_conflict": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "moderate"
+      },
+      "sanctions": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "low"
+      },
+      "shipping_disruption": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "low"
+      },
+      "sovereign_policy_instability": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "low"
+      },
+      "trade_fragmentation": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "moderate"
+      }
+    },
+    "missing_or_stale_components": [],
     "reanalysis_requests": [],
     "pending_reanalysis_domains": [],
-    "risk_budget_multiplier": 0.5,
-    "purchase_pacing_multiplier": 0.5,
+    "risk_budget_multiplier": 0.8,
+    "purchase_pacing_multiplier": 0.8,
     "monitoring_urgency": "high",
     "fundamental_score_effect": 0
   },
@@ -1566,6 +1684,9 @@
     "A material impairment or weak post-close UIG cash return would cut capital-allocation score.",
     "Sustained margin/FCF gains through a demand slowdown would strengthen execution score.",
     "A control weakness or accounting restatement would reopen V1.",
+    "A rapid easing cycle with continued tight credit spreads would raise the pacing multiplier.",
+    "A sharp credit-spread widening or hyperscaler capex retrenchment would lower pacing.",
+    "A company-specific export-control or supply-chain structural event would require domain reanalysis rather than only a macro overlay.",
     "If margins and service share fall as industry capacity expands, pricing/switching moat should be cut.",
     "If cross-stack project wins and service attach continue rising, moat trajectory strengthens.",
     "If hyperscalers successfully commoditize component specifications, commoditization resilience falls.",
@@ -1576,6 +1697,6 @@
     "If liquid-cooling and integrated-power content per rack keeps expanding across multiple customer types, secular durability rises.",
     "If one customer/end market proves to represent >50% of economic growth, durability-risk score should fall."
   ],
-  "macro_pacing_multiplier": 0.5,
+  "macro_pacing_multiplier": 0.8,
   "decision_authority": "Deterministic eligibility and veto gates; IC may reduce deployment within configured caps."
 }
