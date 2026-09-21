@@ -1,0 +1,13 @@
+{
+  "validation_mode": "reconstructed current-main validate-pack",
+  "status": "PASS",
+  "errors": [],
+  "stage_0": "ready",
+  "trailing_quarters": {
+    "found": 7,
+    "needed": 6,
+    "equivalents_counted": 2,
+    "equivalents_rejected": 0
+  },
+  "note": "2024 Q2/Q3 Form 6-K equivalents counted only because quarter/ytd facts are extracted from those exact documents."
+}

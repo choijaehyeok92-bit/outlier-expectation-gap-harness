@@ -1,0 +1,220 @@
+{
+  "agent_id": "EV",
+  "ticker": "FIX",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 71.75,
+  "confidence_0_1": 0.85,
+  "bull_score": 84.0,
+  "bear_score": 53.0,
+  "bull_case": "Data-center/technology MEP demand, modular construction, electrical expansion and disciplined acquisitions sustain high-teens owner-FCF/share growth longer than the market expects.",
+  "bear_case": "Data-center construction normalizes, working-capital advances reverse, backlog growth slows and the premium multiple compresses toward a mature construction-services profile.",
+  "thesis": "Reconstructed TTM owner FCF is about $2159.8M or $61.26/share, but current cash generation is unusually aided by advance billings and AP timing. The locked DCF therefore starts Base below TTM cash generation and yields Bear/Base/Bull values of $722.18/$1908.32/$3149.52 versus $1651.37. Price/Base is 0.865x, indicating a meaningful but not extreme expectation gap.",
+  "evidence": [
+    {
+      "claim": "Reconstructed TTM owner FCF through Q2 2026 is about $2159.8M or $61.26/share before working-capital normalization.",
+      "source_type": "filing",
+      "source": "Comfort Systems 2025 10-K and Q2 2026 10-Q",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-07-24",
+      "value": 61.2624,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "EV-FIX-FCF-001",
+      "economic_driver": "owner_fcf"
+    },
+    {
+      "claim": "H1 2026 OCF was $1.528B versus $164.5M in H1 2025, with about $684.7M benefit from billings/deferred revenue and $535.6M from AP/other current liabilities.",
+      "source_type": "filing",
+      "source": "Comfort Systems Q2 2026 10-Q",
+      "period": "H1 2026",
+      "as_of_date": "2026-07-24",
+      "value": "$1.528B OCF / major WC benefit",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-FIX-WC-001",
+      "economic_driver": "cash_normalization"
+    },
+    {
+      "claim": "Q2 2026 revenue was $3.266B, up 50.3% YoY, and H1 revenue was $6.131B, up 53.1%, including 47.3% same-store H1 growth.",
+      "source_type": "filing",
+      "source": "Comfort Systems Q2 2026 10-Q",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-24",
+      "value": "$3.266B / $6.131B / +47.3% same-store",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-FIX-GROWTH-001",
+      "economic_driver": "growth"
+    },
+    {
+      "claim": "Backlog was $14.06B at June 30, 2026, up 73.1% YoY; technology/data-center projects were the primary driver of same-store backlog growth.",
+      "source_type": "filing",
+      "source": "Comfort Systems Q2 2026 10-Q",
+      "period": "2026-06-30",
+      "as_of_date": "2026-07-24",
+      "value": "$14.06B / +73.1%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-FIX-BACKLOG-001",
+      "economic_driver": "visibility"
+    },
+    {
+      "claim": "At Q2 2026, cash plus Treasury bills were about $1.906B versus only $54.1M funded debt; lease liabilities were $274.0M.",
+      "source_type": "filing",
+      "source": "Comfort Systems Q2 2026 10-Q",
+      "period": "2026-06-30",
+      "as_of_date": "2026-07-24",
+      "value": "$1.906B liquidity / $54.1M debt",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-FIX-BS-001",
+      "economic_driver": "net_cash"
+    },
+    {
+      "claim": "Locked Bear/Base/Bull values are $722.18/$1908.32/$3149.52; Base terminal fraction is 68.0%.",
+      "source_type": "other",
+      "source": "Deterministic harness valuation from frozen FIX inputs",
+      "period": "10y",
+      "as_of_date": "2026-09-18",
+      "value": "722.18/1908.32/3149.52",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "EV-FIX-DCF-001",
+      "economic_driver": "valuation"
+    }
+  ],
+  "counterevidence": [
+    "H1 2026 FCF is materially boosted by project billing and payable timing and should not be treated as a steady-state margin.",
+    "Technology customers were already 45% of FY2025 revenue, creating exposure to data-center construction cycles.",
+    "Backlog is mostly 6-12 month visibility and is cancellable; it is not a 5-10 year contract base.",
+    "Acquisitions contribute to growth and can reduce comparability across periods."
+  ],
+  "unknowns": [
+    "Normalized owner FCF after advance-payment timing reverses.",
+    "Durable technology/data-center revenue share after the current buildout cycle.",
+    "Long-run modular capacity returns on 2026 building purchases.",
+    "Five-year owner-FCF valuation percentile."
+  ],
+  "falsifiers": [
+    "Backlog decelerates sharply while advance billings reverse and same-store growth falls below Base assumptions.",
+    "Technology/data-center project cancellations materially impair gross margin or working capital.",
+    "Normalized FCF/share fails to grow after current advance-payment benefits wash out."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Spot $1651.37 is below locked Bull $3149.52."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "normalized owner FCF/share",
+      "direction": "up",
+      "threshold": "durable double-digit compounding after WC normalization",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "same-store backlog/revenue",
+      "direction": "up",
+      "threshold": "organic growth remains broad, not only M&A",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "technology mix and margins",
+      "direction": "stable",
+      "threshold": "data-center growth does not create concentration or margin reversal",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Normalize Q3 2026 cash flow for billings/AP timing.",
+    "Track same-store backlog and technology share.",
+    "Track modular capex productivity and acquisition contribution."
+  ],
+  "verdict": "support",
+  "archetype_signals": {
+    "price_to_base_value": 0.8654,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.18
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 75,
+      "rationale": "price/Base=0.8654 maps to the locked band."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 70,
+      "rationale": "price/Base=0.8654 maps to the locked band."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 70,
+      "rationale": "DCF has ordered scenarios and moderate terminal concentration, but near-term cash conversion is working-capital sensitive and data-center demand is cyclical."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "Current price still requires sustained above-normal construction economics."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Base value depends on durable high-margin organic growth after the present data-center boom."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "Working-capital timing creates substantial uncertainty around normalized owner FCF."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.18,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          38,
+          40,
+          42,
+          44,
+          46,
+          48,
+          51,
+          54,
+          57,
+          60
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          52,
+          62,
+          73,
+          84,
+          95,
+          106,
+          117,
+          128,
+          139,
+          150
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          60,
+          75,
+          92,
+          110,
+          128,
+          146,
+          164,
+          182,
+          200,
+          218
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "validation_mode": "reconstructed current-main validate-pack",
+  "status": "PASS",
+  "errors": [],
+  "stage_0": "ready",
+  "document_counts": {
+    "10-Q": 8,
+    "10-K": 3,
+    "proxy": 1,
+    "earnings_release": 1
+  },
+  "facts_count": 53,
+  "adjustment_candidates_count": 3
+}

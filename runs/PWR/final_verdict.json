@@ -1,0 +1,77 @@
+{
+  "ticker": "PWR",
+  "as_of_date": "2026-09-18",
+  "score_100": 74.95,
+  "score_100_ex_valuation": 77.72,
+  "coverage_weight": 100,
+  "classification": "Emerging Outlier",
+  "archetype": "growth",
+  "secondary_archetype": null,
+  "hard_veto_status": "CLEARED",
+  "ic_state": "NORMAL",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "position_range": "1-3% (성장주 초기 상한)",
+  "macro_purchase_pacing_multiplier": 0.5,
+  "disruptive_innovation_score": 75.5,
+  "long_term_growth_score": 69.0,
+  "valuation": {
+    "current_price": 636.71,
+    "bear": 207.1641,
+    "base": 629.1788,
+    "bull": 1210.0379,
+    "price_to_base": 1.012
+  },
+  "dispersion_review": {
+    "mean_skew": 1.22,
+    "reduce_bands": 0,
+    "by_domain": [
+      {
+        "domain": "structural_leadership",
+        "skew": 3.0,
+        "spread": 23.0
+      },
+      {
+        "domain": "customer_product",
+        "skew": 2.5,
+        "spread": 20.0
+      },
+      {
+        "domain": "moat_trajectory",
+        "skew": 1.5,
+        "spread": 22.0
+      },
+      {
+        "domain": "reinvestment_fcf",
+        "skew": 0.0,
+        "spread": 26.0
+      },
+      {
+        "domain": "management_allocation",
+        "skew": 2.5,
+        "spread": 24.0
+      },
+      {
+        "domain": "financial_survival",
+        "skew": 0.5,
+        "spread": 28.0
+      },
+      {
+        "domain": "expectation_valuation",
+        "skew": -4.5,
+        "spread": 35.0
+      },
+      {
+        "domain": "asymmetry",
+        "skew": 3.5,
+        "spread": 31.0
+      },
+      {
+        "domain": "disruptive_innovation",
+        "skew": 2.0,
+        "spread": 25.0
+      }
+    ]
+  },
+  "execution_control": "stop_complete",
+  "reconstruction": true
+}

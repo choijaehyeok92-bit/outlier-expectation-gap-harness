@@ -1,0 +1,490 @@
+{
+  "schema_version": "3.3",
+  "strategy_version": "3.3",
+  "decision_policy_version": "3.3",
+  "as_of_date": "2026-09-18",
+  "ticker": "FIX",
+  "score_100": 79.44,
+  "score_100_ex_valuation": 80.79,
+  "coverage_weight": 100,
+  "classification": "Emerging Outlier",
+  "disruptive_innovation_score": 73.5,
+  "turnaround_quality_score": null,
+  "axis_scores": {
+    "disruptive_innovation": 73.5,
+    "long_term_growth": 75.0
+  },
+  "archetype": {
+    "id": "outlier_growth",
+    "label": "장기 아웃라이어 성장주",
+    "label_en": "Long-Term Outlier Growth",
+    "reason": "Outlier Growth and Growth both pass; weighted fit favors Outlier Growth. Compounder fails only reinvestment_runway.",
+    "gate_score": 78.0,
+    "secondary": [
+      {
+        "id": "growth",
+        "fit_score": 72.51
+      }
+    ],
+    "position_guidance": "신규 진입은 보통 STARTER/NORMAL에서 시작하고 확대는 검증된 장기 증거 증가에 비례한다.",
+    "position_cap": null,
+    "signals": {
+      "price_to_base_value": 0.8654,
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": 0.18,
+      "market_cap_usd": 57507000000.0
+    }
+  },
+  "reachable_archetypes_raw": [
+    "outlier_growth",
+    "growth"
+  ],
+  "early_exit": false,
+  "hard_veto_status": "CLEARED",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "position_range_pre_ic": "2-4%",
+  "domain_scores": {
+    "structural_leadership": {
+      "bull_score": 91.0,
+      "bear_score": 70.0,
+      "criteria": {
+        "secular_durability": 85,
+        "category_leadership": 80,
+        "durability_risks": 75
+      },
+      "raw_weighted_median": 80.75,
+      "raw_score": 80.75,
+      "calibrated_score": 77.42,
+      "calibrated_shadow_score": 77.42,
+      "decision_score": 80.75,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 80.75,
+      "raw_before_provider_calibration": 80.75,
+      "score": 80.75,
+      "spread": 21.0,
+      "avg_confidence": 0.88,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    },
+    "customer_product": {
+      "bull_score": 93.0,
+      "bear_score": 72.0,
+      "criteria": {
+        "customer_roi": 85,
+        "retention_usage": 80,
+        "unit_economics": 90
+      },
+      "raw_weighted_median": 84.5,
+      "raw_score": 84.5,
+      "calibrated_score": 79.5,
+      "calibrated_shadow_score": 79.5,
+      "decision_score": 84.5,
+      "provider_offset": -5.0,
+      "score_before_provider_calibration": 84.5,
+      "raw_before_provider_calibration": 84.5,
+      "score": 84.5,
+      "spread": 21.0,
+      "avg_confidence": 0.88,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    },
+    "moat_trajectory": {
+      "bull_score": 89.0,
+      "bear_score": 67.0,
+      "criteria": {
+        "switching_pricing": 80,
+        "network_data_ecosystem": 75,
+        "commoditization_resilience": 80
+      },
+      "raw_weighted_median": 78.25,
+      "raw_score": 78.25,
+      "calibrated_score": 74.92,
+      "calibrated_shadow_score": 74.92,
+      "decision_score": 78.25,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 78.25,
+      "raw_before_provider_calibration": 78.25,
+      "score": 78.25,
+      "spread": 22.0,
+      "avg_confidence": 0.84,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    },
+    "reinvestment_fcf": {
+      "bull_score": 91.0,
+      "bear_score": 65.0,
+      "criteria": {
+        "incremental_roic": 85,
+        "reinvestment_runway": 55,
+        "fcf_per_share_quality": 90
+      },
+      "raw_weighted_median": 77.5,
+      "raw_score": 77.5,
+      "calibrated_score": 74.17,
+      "calibrated_shadow_score": 74.17,
+      "decision_score": 77.5,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 77.5,
+      "raw_before_provider_calibration": 77.5,
+      "score": 77.5,
+      "spread": 26.0,
+      "avg_confidence": 0.86,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    },
+    "management_allocation": {
+      "bull_score": 93.0,
+      "bear_score": 71.0,
+      "criteria": {
+        "capital_allocation": 80,
+        "governance_integrity": 85,
+        "execution_adaptability": 90
+      },
+      "raw_weighted_median": 84.25,
+      "raw_score": 84.25,
+      "calibrated_score": 80.92,
+      "calibrated_shadow_score": 80.92,
+      "decision_score": 84.25,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 84.25,
+      "raw_before_provider_calibration": 84.25,
+      "score": 84.25,
+      "spread": 22.0,
+      "avg_confidence": 0.88,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    },
+    "financial_survival": {
+      "bull_score": 96.0,
+      "bear_score": 76.0,
+      "criteria": {
+        "liquidity_leverage": 90,
+        "stress_survival": 85,
+        "dilution_offbalance": 90
+      },
+      "raw_weighted_median": 88.25,
+      "raw_score": 88.25,
+      "calibrated_score": 84.92,
+      "calibrated_shadow_score": 84.92,
+      "decision_score": 88.25,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 88.25,
+      "raw_before_provider_calibration": 88.25,
+      "score": 88.25,
+      "spread": 20.0,
+      "avg_confidence": 0.93,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    },
+    "expectation_valuation": {
+      "bull_score": 84.0,
+      "bear_score": 53.0,
+      "criteria": {
+        "reverse_dcf_burden": 75,
+        "base_return": 70,
+        "valuation_robustness": 70
+      },
+      "raw_weighted_median": 71.75,
+      "raw_score": 71.75,
+      "calibrated_score": 70.08,
+      "calibrated_shadow_score": 70.08,
+      "decision_score": 71.75,
+      "provider_offset": -1.67,
+      "score_before_provider_calibration": 71.75,
+      "raw_before_provider_calibration": 71.75,
+      "score": 71.75,
+      "spread": 31.0,
+      "avg_confidence": 0.85,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    },
+    "asymmetry": {
+      "bull_score": 86.0,
+      "bear_score": 59.0,
+      "criteria": {
+        "upside_path": 75,
+        "permanent_loss": 75,
+        "probability_calibration": 75
+      },
+      "raw_weighted_median": 75.0,
+      "raw_score": 75.0,
+      "calibrated_score": 73.33,
+      "calibrated_shadow_score": 73.33,
+      "decision_score": 75.0,
+      "provider_offset": -1.67,
+      "score_before_provider_calibration": 75.0,
+      "raw_before_provider_calibration": 75.0,
+      "score": 75.0,
+      "spread": 27.0,
+      "avg_confidence": 0.87,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    },
+    "disruptive_innovation": {
+      "bull_score": 84.0,
+      "bear_score": 58.0,
+      "criteria": {
+        "cost_performance_shift": 75,
+        "adoption_curve": 75,
+        "optionality_incumbent_response": 70
+      },
+      "raw_weighted_median": 73.5,
+      "raw_score": 73.5,
+      "calibrated_score": 70.17,
+      "calibrated_shadow_score": 70.17,
+      "decision_score": 73.5,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 73.5,
+      "raw_before_provider_calibration": 73.5,
+      "score": 73.5,
+      "spread": 26.0,
+      "avg_confidence": 0.82,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    },
+    "long_term_growth": {
+      "bull_score": 87.0,
+      "bear_score": 61.0,
+      "criteria": {
+        "opportunity_scale_5y": 75,
+        "growth_duration_10y": 75,
+        "culture_adaptability": 75,
+        "market_misperception": 75
+      },
+      "raw_weighted_median": 75.0,
+      "raw_score": 75.0,
+      "calibrated_score": 72.5,
+      "calibrated_shadow_score": 72.5,
+      "decision_score": 75.0,
+      "provider_offset": -2.5,
+      "score_before_provider_calibration": 75.0,
+      "raw_before_provider_calibration": 75.0,
+      "score": 75.0,
+      "spread": 26.0,
+      "avg_confidence": 0.84,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    }
+  },
+  "confirmed_vetoes": [],
+  "unresolved_vetoes": [],
+  "veto_gate": {
+    "overall": "CLEARED",
+    "confirmed": [],
+    "unresolved": [],
+    "pending": []
+  },
+  "valuation_model": {
+    "status": "COMPLETE",
+    "method": "locked owner-FCF/share DCF",
+    "required_return": 0.09,
+    "horizon_years": 10,
+    "net_cash_per_share": 44.769962,
+    "current_price": 1651.37,
+    "scenarios": {
+      "bear": {
+        "value_per_share": 722.1779,
+        "pv_owner_fcf": 297.2382,
+        "pv_terminal": 380.1697,
+        "terminal_multiple": 15.0,
+        "terminal_fraction": 0.5612
+      },
+      "base": {
+        "value_per_share": 1908.3209,
+        "pv_owner_fcf": 596.3185,
+        "pv_terminal": 1267.2324,
+        "terminal_multiple": 20.0,
+        "terminal_fraction": 0.68
+      },
+      "bull": {
+        "value_per_share": 3149.519,
+        "pv_owner_fcf": 802.6102,
+        "pv_terminal": 2302.1389,
+        "terminal_multiple": 25.0,
+        "terminal_fraction": 0.7415
+      }
+    },
+    "signals": {
+      "price_to_base_value": 0.8654,
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": 0.18
+    },
+    "reverse_dcf": {
+      "ttm_owner_fcf_per_share_proxy": 61.2624,
+      "ttm_owner_fcf_usd_millions": 2159.8,
+      "base_path_scale_required": 0.862118,
+      "price_implied_year10_owner_fcf_per_share": 129.3176
+    },
+    "sanity": {
+      "status": "PASS",
+      "blocking": false,
+      "checks": [
+        {
+          "id": "scenario_value_order",
+          "status": "PASS",
+          "blocking": false
+        },
+        {
+          "id": "terminal_value_concentration",
+          "status": "PASS",
+          "blocking": false
+        },
+        {
+          "id": "price_above_bull_value",
+          "status": "PASS",
+          "blocking": false
+        }
+      ]
+    }
+  },
+  "provider_calibration": {
+    "mode": "shadow",
+    "applied": true,
+    "decision_effect": false,
+    "family": "openai",
+    "per_domain_offset": {
+      "structural_leadership": -3.33,
+      "customer_product": -5.0,
+      "moat_trajectory": -3.33,
+      "reinvestment_fcf": -3.33,
+      "management_allocation": -3.33,
+      "financial_survival": -3.33,
+      "expectation_valuation": -1.67,
+      "asymmetry": -1.67,
+      "disruptive_innovation": -3.33,
+      "long_term_growth": -2.5
+    }
+  },
+  "archetype_fit": {
+    "outlier_growth": {
+      "eligible_if_veto_clears": true,
+      "fit_score": 78.0
+    },
+    "growth": {
+      "eligible_if_veto_clears": true,
+      "fit_score": 72.51
+    },
+    "compounder": {
+      "eligible_if_veto_clears": false,
+      "failed_conditions": [
+        "criterion.reinvestment_fcf.reinvestment_runway"
+      ]
+    },
+    "buffett_value": {
+      "eligible_if_veto_clears": false,
+      "failed_conditions": [
+        "signal.price_to_base_value"
+      ]
+    },
+    "moonshot": {
+      "eligible_if_veto_clears": false,
+      "failed_conditions": [
+        "signal.market_cap_usd"
+      ]
+    }
+  },
+  "run_manifest": {
+    "schema_version": "3.3",
+    "strategy_version": "3.3",
+    "decision_policy_version": "3.3",
+    "provider_calibration_mode": "shadow",
+    "ticker": "FIX",
+    "as_of_date": "2026-09-18",
+    "frozen": true,
+    "reconstruction": true,
+    "harness_commit_observed_on_main": "6203d6ece1cd8feabe556f3aa861441f86ec2aac",
+    "runner": {
+      "provider": "openai",
+      "model": "gpt-6-astra",
+      "reasoning_effort": null
+    },
+    "input_files": {
+      "company_context.json": "9b3b88723c77cadfeb115205cc6abdb933df178a75c288825a38a2bf4d826523",
+      "sources/financials/normalized_financials.json": "b97f8c69d35a082548667ab7c7a3782f02819776e32969530aa3505b192cee81"
+    },
+    "input_snapshot_sha256": "3797fc02edc57158c41b06bd073d827ba2ad2cf515f1a293e7b5285ae176ca73",
+    "stage_0": {
+      "stage_0": "ready",
+      "enforced": true,
+      "pack_present": true
+    }
+  },
+  "review_only": false,
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "reconstruction": true,
+  "dispersion_review": {
+    "mean_skew": 3.28,
+    "reduce_bands": 0,
+    "by_domain": [
+      {
+        "domain": "structural_leadership",
+        "skew": 0.5,
+        "spread": 21.0
+      },
+      {
+        "domain": "customer_product",
+        "skew": 4.0,
+        "spread": 21.0
+      },
+      {
+        "domain": "moat_trajectory",
+        "skew": 0.5,
+        "spread": 22.0
+      },
+      {
+        "domain": "reinvestment_fcf",
+        "skew": -1.0,
+        "spread": 26.0
+      },
+      {
+        "domain": "management_allocation",
+        "skew": 4.5,
+        "spread": 22.0
+      },
+      {
+        "domain": "financial_survival",
+        "skew": 4.5,
+        "spread": 20.0
+      },
+      {
+        "domain": "expectation_valuation",
+        "skew": 6.5,
+        "spread": 31.0
+      },
+      {
+        "domain": "asymmetry",
+        "skew": 5.0,
+        "spread": 27.0
+      },
+      {
+        "domain": "disruptive_innovation",
+        "skew": 5.0,
+        "spread": 26.0
+      }
+    ]
+  },
+  "macro_geo_overlay": {
+    "risk_budget_multiplier": 0.5,
+    "purchase_pacing_multiplier": 0.5,
+    "fundamental_score_effect": 0,
+    "pending_reanalysis_domains": []
+  },
+  "ic_verdict": {
+    "state": "NORMAL",
+    "position_range": "2-4%",
+    "macro_purchase_pacing_multiplier": 0.5,
+    "confidence": 0.88
+  }
+}

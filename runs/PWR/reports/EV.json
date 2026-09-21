@@ -1,0 +1,220 @@
+{
+  "agent_id": "EV",
+  "ticker": "PWR",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 59.25,
+  "confidence_0_1": 0.84,
+  "bull_score": 79.0,
+  "bear_score": 44.0,
+  "bull_case": "Electric-grid modernization, large-load/data-center infrastructure, generation interconnection and acquisition integration sustain high-teens per-share FCF growth while leverage declines.",
+  "bear_case": "Utility/load-center project timing slows, acquisition-led growth normalizes, working-capital benefits reverse and premium construction/infrastructure multiples compress while debt remains elevated.",
+  "thesis": "Reconstructed TTM owner FCF is about $2391.2M or $15.70/share, but FY2026 company FCF guidance is only $2.0-$2.5B, so the locked Base path starts from a normalized level rather than extrapolating TTM. Bear/Base/Bull values are $207.16/$629.18/$1210.04 versus $636.71. Price/Base=1.012x: spot is approximately Base value, leaving limited expectation gap despite excellent operating momentum.",
+  "evidence": [
+    {
+      "claim": "TTM owner FCF proxy through Q2 2026 is about $2391.2M or $15.70/share.",
+      "source_type": "filing",
+      "source": "Quanta 2025 10-K and Q2 2026 10-Q",
+      "period": "TTM through Q2 2026",
+      "as_of_date": "2026-07-30",
+      "value": 15.7014,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "EV-PWR-FCF-001",
+      "economic_driver": "owner_fcf"
+    },
+    {
+      "claim": "Quanta's FY2026 guidance calls for $2.0-$2.5B of free cash flow, below the raw TTM owner-FCF proxy and supporting normalization.",
+      "source_type": "company",
+      "source": "Quanta Q2 2026 results",
+      "period": "FY2026 guidance",
+      "as_of_date": "2026-07-30",
+      "value": "$2.0-$2.5B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-PWR-GUIDE-001",
+      "economic_driver": "cash_normalization"
+    },
+    {
+      "claim": "Q2 2026 revenue was $9.557B, +41.1% YoY; H1 revenue was $17.432B, +34.0%.",
+      "source_type": "filing",
+      "source": "Quanta Q2 2026 10-Q",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-07-30",
+      "value": "$9.557B / $17.432B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-PWR-GROWTH-001",
+      "economic_driver": "growth"
+    },
+    {
+      "claim": "Q2 2026 RPO was $33.55B and total backlog $53.44B, providing substantial near/intermediate-term visibility.",
+      "source_type": "filing",
+      "source": "Quanta Q2 2026 10-Q",
+      "period": "2026-06-30",
+      "as_of_date": "2026-07-30",
+      "value": "$33.55B RPO / $53.44B backlog",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-PWR-BACKLOG-001",
+      "economic_driver": "visibility"
+    },
+    {
+      "claim": "At Q2 2026 Quanta had $506M cash, about $6.10B funded debt and ~$498M operating lease liabilities after acquisition-led expansion.",
+      "source_type": "filing",
+      "source": "Quanta Q2 2026 10-Q",
+      "period": "2026-06-30",
+      "as_of_date": "2026-07-30",
+      "value": "net debt profile",
+      "fact_or_estimate": "fact",
+      "evidence_id": "EV-PWR-DEBT-001",
+      "economic_driver": "balance_sheet"
+    },
+    {
+      "claim": "Locked Bear/Base/Bull values are $207.16/$629.18/$1210.04; Base terminal fraction is 68.2%.",
+      "source_type": "other",
+      "source": "Deterministic harness valuation from frozen PWR inputs",
+      "period": "10y",
+      "as_of_date": "2026-09-18",
+      "value": "207.16/629.18/1210.04",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "EV-PWR-DCF-001",
+      "economic_driver": "valuation"
+    }
+  ],
+  "counterevidence": [
+    "Current price already approximates Base intrinsic value, leaving limited margin of safety.",
+    "Growth includes material acquisition contribution and leverage has risen with deal activity.",
+    "H1 2026 OCF was helped by large increases in AP/accrued liabilities and contract liabilities.",
+    "Backlog/RPO can be delayed, reduced or cancelled and is not a guaranteed 10-year cash-flow stream."
+  ],
+  "unknowns": [
+    "Normalized FCF after 2026 working-capital timing washes out.",
+    "Long-run organic versus acquisition contribution to growth.",
+    "Incremental returns on Dynamic Systems and 2026 acquisitions.",
+    "Five-year owner-FCF valuation percentile."
+  ],
+  "falsifiers": [
+    "Backlog growth remains high but normalized FCF/share fails to compound.",
+    "Leverage remains elevated while acquired-business returns disappoint.",
+    "Grid/load-center demand decelerates below Base assumptions without offsetting margin expansion."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Spot $636.71 is below locked Bull $1210.04."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "normalized owner FCF/share",
+      "direction": "up",
+      "threshold": "double-digit compounding beyond acquisition/working-capital timing",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "backlog/RPO conversion",
+      "direction": "healthy",
+      "threshold": "convert without margin erosion or cancellations",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "net debt / cash generation",
+      "direction": "down",
+      "threshold": "delever as acquisitions mature",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 FCF versus guidance.",
+    "Organic vs acquired revenue growth.",
+    "Leverage and integration returns."
+  ],
+  "verdict": "neutral",
+  "archetype_signals": {
+    "price_to_base_value": 1.012,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.15
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "price/Base=1.0120."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "price/Base=1.0120."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 65,
+      "rationale": "Scenario order and terminal concentration are acceptable, but normalization, leverage and acquisition dependence materially widen valuation uncertainty."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "Spot is essentially Base value."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Returns require a long period of strong FCF/share growth from an already large base."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "FCF normalization and acquisition returns are important uncertainties."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.15,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          18,
+          22,
+          26,
+          30,
+          34,
+          38,
+          42,
+          46,
+          50,
+          54
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          21,
+          27,
+          34,
+          41,
+          49,
+          57,
+          65,
+          73,
+          81,
+          89
+        ]
+      }
+    }
+  }
+}
