@@ -1,0 +1,161 @@
+{
+  "agent_id": "AS",
+  "ticker": "CRWD",
+  "as_of_date": "2026-09-18",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 41.5,
+  "confidence_0_1": 0.82,
+  "bull_score": 61,
+  "bear_score": 20,
+  "bull_case": "Agentic AI security, Flex-driven consolidation, Next-Gen SIEM, cloud, identity and data protection create several independent growth vectors on a globally scaled platform.",
+  "bear_case": "At roughly $248B diluted market cap, even excellent execution produces limited upside from the locked Bull DCF while valuation compression can cause a severe permanent loss.",
+  "thesis": "The operating opportunity is broad, but the stock's asymmetry is poor at the cutoff price. The locked Bull DCF is only about current market value while Bear value is a small fraction of price. Strong cash, retention and platform breadth reduce existential risk, but they do not create valuation downside protection.",
+  "evidence": [
+    {
+      "claim": "Falcon Flex accounts represented more than $2.29B of ending ARR, up 101% YoY, with >2,900 Flex customers and >630 Re-Flex customers.",
+      "source_type": "company_primary",
+      "source": "https://ir.crowdstrike.com/static-files/7d32e91f-6184-4ade-8f02-f685e91b420f",
+      "period": "Q2 FY27",
+      "as_of_date": "2026-08-26",
+      "value": "2.29B; +101%; >2,900; >630",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-AS-FLEX"
+    },
+    {
+      "claim": "Module adoption reached 51%, 35% and 26% for six+, seven+ and eight+ modules, respectively.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000029/crwd-20260826xex991.htm",
+      "period": "Q2 FY27",
+      "as_of_date": "2026-08-26",
+      "value": "51% / 35% / 26%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-AS-MODULES"
+    },
+    {
+      "claim": "Cash was $5.014B and long-term debt $746M at July 31, 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000031/crwd-20260731.htm",
+      "period": "2026-07-31",
+      "as_of_date": "2026-08-27",
+      "value": "Cash 5.014B; debt 746M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-AS-BS"
+    },
+    {
+      "claim": "The July 19 Incident remains a source of legal, remediation and customer-related uncertainty.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000031/crwd-20260731.htm",
+      "period": "Q2 FY27",
+      "as_of_date": "2026-08-27",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-AS-INCIDENT"
+    }
+  ],
+  "counterevidence": [
+    "Cybersecurity is a secular priority and CrowdStrike has multiple product categories rather than a single endpoint product.",
+    "Net cash and strong OCF materially reduce bankruptcy risk.",
+    "Falcon Flex can increase contract value without proportional customer-acquisition cost.",
+    "The July 19 incident has not prevented ARR acceleration by Q2 FY27."
+  ],
+  "unknowns": [
+    "Long-run Flex renewal economics after initial contract consumption.",
+    "Magnitude of remaining incident-related settlements/customer credits.",
+    "Competitive pricing response from Microsoft and Palo Alto.",
+    "Economic cost of future acquisition equity and SBC."
+  ],
+  "falsifiers": [
+    "A large price decline with unchanged operating evidence would improve asymmetry.",
+    "If Flex and AI security sustain >25% growth for several years while dilution falls, Bull value can move materially higher.",
+    "If ARR decelerates while valuation remains extreme, asymmetry worsens further."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "conditional",
+      "rationale": "Price is just below the locked Bull value rather than above it, but the expected-return profile depends on near-Bull outcomes."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "conditional",
+      "rationale": "Bankruptcy risk is low, but valuation-driven permanent-loss risk is high relative to the limited locked-Bull upside."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Bull/current",
+      "direction": "up",
+      "threshold": ">1.6x for attractive upside",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Bear/current",
+      "direction": "up",
+      "threshold": ">0.4x for stronger downside support",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Flex ARR and re-Flex uplift",
+      "direction": "up",
+      "threshold": "sustained strong expansion",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Recalculate DCF after Q3",
+    "Monitor Flex cohort economics",
+    "Incident-related liabilities"
+  ],
+  "verdict": "oppose",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 30,
+      "rationale": "Locked Bull/current is near 1.0x, below the 1.2x minimum band for attractive upside."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 25,
+      "rationale": "Locked Bear/current is below 0.2x; net cash helps solvency but not valuation downside."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 70,
+      "rationale": "Scenarios distinguish core ARR, Flex/AI optionality and SBC/dilution, but long-duration cybersecurity outcomes remain uncertain."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "critical",
+      "rationale": "The current price already capitalizes much of the Bull path."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "critical",
+      "rationale": "Valuation compression can dominate strong operating performance."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "AI-security TAM and long-run platform share are difficult to calibrate."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
