@@ -1,0 +1,63 @@
+{
+  "status": "COMPLETE",
+  "method": "locked owner-FCF/share DCF",
+  "required_return": 0.09,
+  "horizon_years": 10,
+  "net_cash_per_share": 44.769962,
+  "current_price": 1651.37,
+  "scenarios": {
+    "bear": {
+      "value_per_share": 722.1779,
+      "pv_owner_fcf": 297.2382,
+      "pv_terminal": 380.1697,
+      "terminal_multiple": 15.0,
+      "terminal_fraction": 0.5612
+    },
+    "base": {
+      "value_per_share": 1908.3209,
+      "pv_owner_fcf": 596.3185,
+      "pv_terminal": 1267.2324,
+      "terminal_multiple": 20.0,
+      "terminal_fraction": 0.68
+    },
+    "bull": {
+      "value_per_share": 3149.519,
+      "pv_owner_fcf": 802.6102,
+      "pv_terminal": 2302.1389,
+      "terminal_multiple": 25.0,
+      "terminal_fraction": 0.7415
+    }
+  },
+  "signals": {
+    "price_to_base_value": 0.8654,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.18
+  },
+  "reverse_dcf": {
+    "ttm_owner_fcf_per_share_proxy": 61.2624,
+    "ttm_owner_fcf_usd_millions": 2159.8,
+    "base_path_scale_required": 0.862118,
+    "price_implied_year10_owner_fcf_per_share": 129.3176
+  },
+  "sanity": {
+    "status": "PASS",
+    "blocking": false,
+    "checks": [
+      {
+        "id": "scenario_value_order",
+        "status": "PASS",
+        "blocking": false
+      },
+      {
+        "id": "terminal_value_concentration",
+        "status": "PASS",
+        "blocking": false
+      },
+      {
+        "id": "price_above_bull_value",
+        "status": "PASS",
+        "blocking": false
+      }
+    ]
+  }
+}
