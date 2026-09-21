@@ -1,0 +1,186 @@
+{
+  "agent_id": "FS",
+  "ticker": "RKLB",
+  "as_of_date": "2026-09-18",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 62.25,
+  "confidence_0_1": 0.84,
+  "bull_score": 78,
+  "bear_score": 40,
+  "bull_case": "At June 30 Rocket Lab held about $2.39B of cash and marketable securities against only about $15M of reported borrowings/convertible debt, and management stated existing liquidity was sufficient for at least 12 months. The September ATM fully funded the Iridium cash component and replaced the $3.6B bridge with Iridium's existing term loan.",
+  "bear_case": "The company remains cash-flow negative and equity issuance has been heavy. Common shares outstanding rose from 543.6M at Dec. 31, 2025 to 598.2M at June 30, and another 29.3M shares were sold by Sep. 15. After Iridium closes, Rocket Lab USA is expected to guarantee Iridium's $1.775B term loan.",
+  "thesis": "Near-term survival is strong, but per-share financial resilience is only moderate because dilution has become material. June 30 cash plus marketable securities were about $2.39B versus minimal reported Rocket Lab debt, giving the standalone company a multi-year gross runway relative to H1 operating cash burn and capex. The September ATM also removed the need for the original $3.6B bridge facility for Iridium. However, the share count increased roughly 10% from year-end to June, and the additional 29.3M ATM shares imply roughly 15% growth from year-end on the frozen count. This is not a solvency crisis, but it is a real per-share risk and keeps the long-duration dilution veto under review.",
+  "evidence": [
+    {
+      "claim": "At June 30 Rocket Lab had $2.129B cash, $172.7M current marketable securities and $85.4M non-current marketable securities, versus $13.1M net convertible notes and $1.7M long-term borrowings.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000062/rklb-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-10",
+      "value": "2.388B liquidity / ~14.8M debt",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RKLB-FS-BS"
+    },
+    {
+      "claim": "Rocket Lab stated that existing cash, marketable securities and customer payments were expected to meet working-capital and capex needs for at least the next twelve months.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000062/rklb-20260630.htm",
+      "period": "Q2 2026 liquidity outlook",
+      "as_of_date": "2026-08-10",
+      "value": "12+ months",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RKLB-FS-RUNWAY"
+    },
+    {
+      "claim": "H1 2026 operating cash flow was -$134.4M and capex $53.1M. Against June liquidity, the pre-acquisition gross funding runway is multiple years even under an annualized burn approximation.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000062/rklb-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-10",
+      "value": "-134.4M OCF / 53.1M capex",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RKLB-FS-BURN"
+    },
+    {
+      "claim": "Common shares outstanding increased from 543.575M at Dec. 31, 2025 to 598.180M at June 30, 2026, approximately +10.0%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000062/rklb-20260630.htm",
+      "period": "2025-12-31 to 2026-06-30",
+      "as_of_date": "2026-06-30",
+      "value": "543.575M -> 598.180M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RKLB-FS-DILUTION1"
+    },
+    {
+      "claim": "By Sep. 15 Rocket Lab completed a $1.944B ATM through 29.3M additional shares, fully funding the Iridium cash consideration alongside liquidity and enabling termination of the $3.6B bridge commitment.",
+      "source_type": "company_primary",
+      "source": "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-fully-funds-iridium-acquisition-including-completion",
+      "period": "through 2026-09-15",
+      "as_of_date": "2026-09-15",
+      "value": "1.944B / 29.3M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RKLB-FS-DILUTION2"
+    },
+    {
+      "claim": "After closing, Rocket Lab USA is expected to provide an unsecured guarantee of Iridium's $1.775B term loan; Iridium Q2 2026 service revenue was 72% of revenue and Q2 OEBITDA was $119.1M, providing recurring cash-flow support but adding leverage.",
+      "source_type": "company_primary",
+      "source": "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-fully-funds-iridium-acquisition-including-completion",
+      "period": "transaction financing as of 2026-09-15",
+      "as_of_date": "2026-09-15",
+      "value": "1.775B term loan",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RKLB-FS-IRDMDEBT"
+    }
+  ],
+  "counterevidence": [
+    "The September ATM proceeds are primarily acquisition financing, not emergency funding for existing operations.",
+    "Iridium is already profitable on an OEBITDA basis and generated 72% of Q2 revenue from recurring service revenue, so acquired debt is backed by a cash-generating asset.",
+    "Rocket Lab's reported June debt was very small relative to liquidity; near-term bankruptcy risk is low before transaction effects.",
+    "Share issuance could be economically accretive if Iridium and Neutron raise long-term FCF/share faster than the share count."
+  ],
+  "unknowns": [
+    "Exact pro-forma net leverage and interest burden at Iridium closing after all transaction adjustments.",
+    "Post-close capex required for Iridium constellation replenishment and Neutron scale-up simultaneously.",
+    "Whether equity issuance normalizes after transaction financing is complete.",
+    "Magnitude of purchase commitments and other off-balance obligations relative to forward revenue."
+  ],
+  "falsifiers": [
+    "If diluted share growth falls below 5% annually after the acquisition financing period and FCF/share rises, the dilution veto candidate should be cleared.",
+    "If pro-forma net leverage remains high while combined FCF misses plan, financial-survival score should fall.",
+    "If Rocket Lab requires another large equity raise for ordinary operations before Iridium closes, external-capital dependence should become a confirmed concern."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "June liquidity was about $2.39B with minimal Rocket Lab debt, management stated at least 12 months of operating/capex liquidity, and the September equity raise was designated to fund an acquisition rather than ordinary survival."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "candidate",
+      "rationale": "Outstanding common shares rose about 10% from Dec. 31, 2025 to June 30, 2026, and another 29.3M ATM shares were issued by Sep. 15. Whether this is a one-time acquisition-financing episode or a persistent multi-year pattern remains unresolved."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Near-term solvency risk is low given June liquidity and the completed transaction financing. The price-downside component remains AS's responsibility; FS does not treat valuation drawdown as bankruptcy."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "diluted shares outstanding YoY",
+      "direction": "down",
+      "threshold": "below 5% after transaction financing",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "combined net leverage / EBITDA or FCF",
+      "direction": "down",
+      "threshold": "declining after Iridium close",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "owner FCF after capex",
+      "direction": "up",
+      "threshold": "sustained positive",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Pro-forma leverage at Iridium close",
+    "Post-ATM share-count normalization",
+    "Combined Neutron + Iridium capex and FCF"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 80,
+      "rationale": "Standalone June liquidity of about $2.39B against roughly $15M of reported debt is very strong. Score is below 90 because the pending transaction adds a guaranteed $1.775B Iridium term loan and consumes acquisition-funded liquidity."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 65,
+      "rationale": "Annualized H1 OCF+capex burn is small relative to June liquidity and the company states 12+ months runway, but Rocket Lab remains FCF-negative while simultaneously funding Neutron and integrating acquisitions."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 30,
+      "rationale": "The observable dilution anchor is binding: outstanding common shares rose about 10% from Dec. 31 to June 30, well above the +3% threshold, with another 29.3M shares issued by Sep. 15. Off-balance data are incomplete, so no upward adjustment is justified."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "The frozen transaction-adjusted balance sheet differs sharply from the reported June standalone balance sheet; final close mechanics remain uncertain."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "Neutron development and Iridium integration/replenishment can make future capex materially different from the H1 2026 burn rate."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "critical",
+      "rationale": "2026 dilution is objectively large, but persistence beyond acquisition financing is not yet observable and off-balance commitments are incompletely quantified."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
