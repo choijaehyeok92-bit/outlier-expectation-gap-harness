@@ -35,6 +35,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 
 export const api = {
   health: () => request<Health>('/api/health'),
+  warehouse: () => request<WarehouseSummary>('/api/warehouse'),
   universe: () => request<Universe>('/api/universe'),
   runs: () => request<RunRow[]>('/api/runs'),
   run: (id: string) => request<RunRow>(`/api/runs/${encodeURIComponent(id)}`),
@@ -53,7 +54,16 @@ export const api = {
   report: (id: string) => request<DeepDiveReport>(`/api/reports/${encodeURIComponent(id)}`),
 };
 
-export interface Health { status: string; backend: string; runs: number; llm_provider_default: string }
+export interface Health { status: string; backends: string[]; runs: number; llm_provider_default: string }
+
+export interface WarehouseSummary {
+  as_of_date: string;
+  built_at_utc: string;
+  companies: number;
+  tickers: string[];
+  coverage: Record<string, { computed: number; missing: number }>;
+  failures: { ticker: string | null; error: string }[];
+}
 
 export interface Universe {
   backend: string;
@@ -94,6 +104,28 @@ export interface RunRow {
   result_source?: string | null;
   result_sha256?: string | null;
   decision_policy_version?: string | null;
+  has_harness_run?: boolean;
+  has_warehouse_metrics?: boolean;
+  field_sources?: Record<string, string>;
+  consolidation_basis?: string | null;
+  anchor_fiscal_year?: number | null;
+  warehouse_unavailable?: string[];
+  warehouse_requires_review?: string[];
+  market_cap?: number | null;
+  revenue_ttm?: number | null;
+  revenue_growth_yoy?: number | null;
+  revenue_cagr_3y?: number | null;
+  gross_margin?: number | null;
+  operating_margin?: number | null;
+  owner_fcf_ttm?: number | null;
+  owner_fcf_margin?: number | null;
+  owner_fcf_per_share?: number | null;
+  net_cash?: number | null;
+  debt_to_ocf?: number | null;
+  sbc_to_revenue?: number | null;
+  rnd_to_revenue?: number | null;
+  capex_to_ocf?: number | null;
+  price_to_owner_fcf?: number | null;
   valuation_status?: string | null;
   coverage_weight?: number | null;
   net_cash_per_share?: number | null;
@@ -148,8 +180,17 @@ export interface ScreeningSpec {
   fx_rates?: Record<string, { per_usd: number; source: string }>;
 }
 
+export interface BackendSummary {
+  rows: number;
+  with_harness_run: number;
+  with_warehouse_metrics: number;
+  warehouse_only: number;
+  backends: string[];
+}
+
 export interface ScreenRecord {
   screen_run_id: string;
+  backends?: BackendSummary;
   as_of_date: string;
   backend: string;
   spec: ScreeningSpec;

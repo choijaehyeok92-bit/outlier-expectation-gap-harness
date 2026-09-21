@@ -58,9 +58,9 @@ class FixtureTransport:
             payload = self.extra[key]
             return payload if isinstance(payload, bytes) else \
                 json.dumps(payload, ensure_ascii=False).encode('utf-8')
-        for suffix in ('.json', '.xml', '.zip', '.bin'):
+        for suffix in ('', '.json', '.xml', '.zip', '.bin'):
             candidate = self.root / f'{key}{suffix}'
-            if candidate.exists():
+            if candidate.exists() and candidate.is_file():
                 return candidate.read_bytes()
         if self.default is not None:
             return self.default if isinstance(self.default, bytes) else \
@@ -81,5 +81,7 @@ class RecordingTransport:
         self.root.mkdir(parents=True, exist_ok=True)
         suffix = '.json' if payload[:1] in (b'{', b'[') else (
             '.zip' if payload[:2] == b'PK' else ('.xml' if payload[:1] == b'<' else '.bin'))
-        (self.root / f'{fixture_key(url)}{suffix}').write_bytes(payload)
+        key = fixture_key(url)
+        name = key if key.endswith(suffix) else f'{key}{suffix}'
+        (self.root / name).write_bytes(payload)
         return payload

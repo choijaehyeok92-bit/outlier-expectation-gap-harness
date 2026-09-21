@@ -41,11 +41,25 @@ def rows():
     ]
 
 
-def spec_with(clauses, **overrides):
+def registry_without_warehouse():
+    """A registry whose conditional backend has no data, as on a fresh checkout."""
+    data = copy.deepcopy(Registry().data)
+    data['backends']['screening_warehouse'] = {'status': 'conditional',
+                                               'data_glob': 'data/__no_such_warehouse__/*.json'}
+    return Registry(data)
+
+
+def registry_with_warehouse():
+    data = copy.deepcopy(Registry().data)
+    data['backends']['screening_warehouse'] = {'status': 'active'}
+    return Registry(data)
+
+
+def spec_with(clauses, registry=None, **overrides):
     base = spec_module.empty(AS_OF)
     base['filters'] = {'op': 'and', 'clauses': clauses}
     base.update(overrides)
-    return spec_module.normalise(base)
+    return spec_module.normalise(base, registry or registry_without_warehouse())
 
 
 class UnitTests(unittest.TestCase):
@@ -86,6 +100,14 @@ class SpecTests(unittest.TestCase):
         result = spec_with([{'field': 'revenue_cagr_3y', 'operator': '>=', 'value': 0.15}])
         self.assertEqual(result['filters']['clauses'], [])
         self.assertEqual(result['unresolved_conditions'][0]['reason'], 'backend_unavailable')
+
+    def test_a_conditional_backend_activates_once_it_has_data(self):
+        # The same clause, with the warehouse built, compiles instead of being
+        # reported unresolved. That switch is the whole point of Phase 4.
+        result = spec_with([{'field': 'revenue_cagr_3y', 'operator': '>=', 'value': 0.15}],
+                           registry=registry_with_warehouse())
+        self.assertEqual(result['unresolved_conditions'], [])
+        self.assertEqual(result['filters']['clauses'][0]['field'], 'revenue_cagr_3y')
 
     def test_cross_currency_without_a_rate_is_unresolved(self):
         result = spec_with([{'field': 'market_cap_usd', 'operator': '>=', 'value': 1e12,
@@ -200,16 +222,24 @@ class CompilerTests(unittest.TestCase):
 
 class NaturalLanguageTests(unittest.TestCase):
     def test_korean_query_resolves_declared_phrases_only(self):
-        spec = nl.parse('미국과 한국에서 시총 1조 이상, 순현금이고 최근 3년 매출 CAGR 15% 이상이며 '
-                        '희석이 적은 기업 중, 해자가 강하고 Base 가치 이하인 종목 찾아줘.', AS_OF,
-                        fx_rates={'KRW': {'per_usd': 1380.2, 'source': 'test'}})
-        fields = {c['field'] for c in spec_module.iter_filters(spec)}
-        self.assertEqual(fields, {'market_cap_usd', 'net_cash_per_share', 'dilution_watch_status',
-                                  'domain.moat_trajectory', 'price_to_base_value'})
+        query = ('미국과 한국에서 시총 1조 이상, 순현금이고 최근 3년 매출 CAGR 15% 이상이며 '
+                 '희석이 적은 기업 중, 해자가 강하고 Base 가치 이하인 종목 찾아줘.')
+        fx = {'KRW': {'per_usd': 1380.2, 'source': 'test'}}
+        harness_only = {'market_cap_usd', 'net_cash_per_share', 'dilution_watch_status',
+                        'domain.moat_trajectory', 'price_to_base_value'}
+
+        # Before the warehouse exists the CAGR condition is named, not dropped.
+        spec = nl.parse(query, AS_OF, fx_rates=fx, registry=registry_without_warehouse())
+        self.assertEqual({c['field'] for c in spec_module.iter_filters(spec)}, harness_only)
         self.assertEqual(spec['universe']['jurisdictions'], ['US', 'KR'])
-        # The only thing it could not answer is named, not dropped.
         self.assertEqual([u['suggested_field'] for u in spec['unresolved_conditions']],
                          ['revenue_cagr_3y'])
+
+        # Once it exists the same sentence compiles completely.
+        built = nl.parse(query, AS_OF, fx_rates=fx, registry=registry_with_warehouse())
+        self.assertEqual({c['field'] for c in spec_module.iter_filters(built)},
+                         harness_only | {'revenue_cagr_3y'})
+        self.assertEqual(built['unresolved_conditions'], [])
 
     def test_moat_is_never_estimated_without_a_harness_run(self):
         spec = nl.parse('해자가 강한 기업', AS_OF)

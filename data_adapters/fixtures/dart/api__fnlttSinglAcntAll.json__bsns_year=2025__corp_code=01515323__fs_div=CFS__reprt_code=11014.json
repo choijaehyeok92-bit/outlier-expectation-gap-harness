@@ -3,7 +3,7 @@
  "message": "정상",
  "list": [
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -23,7 +23,7 @@
    "thstrm_add_amount": "3,675,000,000,000"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -43,7 +43,7 @@
    "thstrm_add_amount": "2,646,000,000,000"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -63,7 +63,7 @@
    "thstrm_add_amount": "1,029,000,000,000"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -83,7 +83,7 @@
    "thstrm_add_amount": "330,750,000,000"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -103,7 +103,7 @@
    "thstrm_add_amount": "698,250,000,000"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -123,7 +123,67 @@
    "thstrm_add_amount": "530,670,000,000"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
+   "reprt_code": "11014",
+   "bsns_year": "2025",
+   "corp_code": "01515323",
+   "sj_div": "IS",
+   "sj_nm": "손익계산서",
+   "account_id": "ifrs-full_ResearchAndDevelopmentExpense",
+   "account_nm": "경상연구개발비",
+   "account_detail": "-",
+   "thstrm_nm": "제 79 기 09월",
+   "thstrm_amount": "41,013,000,000",
+   "frmtrm_nm": "",
+   "frmtrm_amount": "",
+   "bfefrmtrm_nm": "",
+   "bfefrmtrm_amount": "",
+   "ord": "1",
+   "currency": "KRW",
+   "thstrm_add_amount": "113,925,000,000"
+  },
+  {
+   "rcept_no": "20251114000015",
+   "reprt_code": "11014",
+   "bsns_year": "2025",
+   "corp_code": "01515323",
+   "sj_div": "IS",
+   "sj_nm": "손익계산서",
+   "account_id": "-표준계정코드 미사용-",
+   "account_nm": "주식보상비용",
+   "account_detail": "-",
+   "thstrm_nm": "제 79 기 09월",
+   "thstrm_amount": "7,938,000,000",
+   "frmtrm_nm": "",
+   "frmtrm_amount": "",
+   "bfefrmtrm_nm": "",
+   "bfefrmtrm_amount": "",
+   "ord": "1",
+   "currency": "KRW",
+   "thstrm_add_amount": "22,050,000,000"
+  },
+  {
+   "rcept_no": "20251114000015",
+   "reprt_code": "11014",
+   "bsns_year": "2025",
+   "corp_code": "01515323",
+   "sj_div": "IS",
+   "sj_nm": "손익계산서",
+   "account_id": "ifrs-full_WeightedAverageNumberOfDilutedOrdinarySharesOutstanding",
+   "account_nm": "희석주당이익 계산에 사용된 가중평균유통보통주식수",
+   "account_detail": "-",
+   "thstrm_nm": "제 79 기 09월",
+   "thstrm_amount": "36,940,000",
+   "frmtrm_nm": "",
+   "frmtrm_amount": "",
+   "bfefrmtrm_nm": "",
+   "bfefrmtrm_amount": "",
+   "ord": "1",
+   "currency": "KRW",
+   "thstrm_add_amount": "36,940,000"
+  },
+  {
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -143,7 +203,7 @@
    "thstrm_add_amount": "14,700,000,000"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -158,11 +218,11 @@
    "frmtrm_amount": "",
    "bfefrmtrm_nm": "",
    "bfefrmtrm_amount": "",
-   "ord": "8",
+   "ord": "11",
    "currency": "KRW"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -177,11 +237,11 @@
    "frmtrm_amount": "",
    "bfefrmtrm_nm": "",
    "bfefrmtrm_amount": "",
-   "ord": "8",
+   "ord": "11",
    "currency": "KRW"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -196,11 +256,11 @@
    "frmtrm_amount": "",
    "bfefrmtrm_nm": "",
    "bfefrmtrm_amount": "",
-   "ord": "8",
+   "ord": "11",
    "currency": "KRW"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -215,11 +275,11 @@
    "frmtrm_amount": "",
    "bfefrmtrm_nm": "",
    "bfefrmtrm_amount": "",
-   "ord": "8",
+   "ord": "11",
    "currency": "KRW"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -234,11 +294,11 @@
    "frmtrm_amount": "",
    "bfefrmtrm_nm": "",
    "bfefrmtrm_amount": "",
-   "ord": "8",
+   "ord": "11",
    "currency": "KRW"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -253,11 +313,11 @@
    "frmtrm_amount": "",
    "bfefrmtrm_nm": "",
    "bfefrmtrm_amount": "",
-   "ord": "8",
+   "ord": "11",
    "currency": "KRW"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -272,11 +332,11 @@
    "frmtrm_amount": "",
    "bfefrmtrm_nm": "",
    "bfefrmtrm_amount": "",
-   "ord": "8",
+   "ord": "11",
    "currency": "KRW"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -291,11 +351,11 @@
    "frmtrm_amount": "",
    "bfefrmtrm_nm": "",
    "bfefrmtrm_amount": "",
-   "ord": "8",
+   "ord": "11",
    "currency": "KRW"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -310,12 +370,12 @@
    "frmtrm_amount": "",
    "bfefrmtrm_nm": "",
    "bfefrmtrm_amount": "",
-   "ord": "16",
+   "ord": "19",
    "currency": "KRW",
    "thstrm_add_amount": "477,750,000,000"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -330,12 +390,12 @@
    "frmtrm_amount": "",
    "bfefrmtrm_nm": "",
    "bfefrmtrm_amount": "",
-   "ord": "16",
+   "ord": "19",
    "currency": "KRW",
    "thstrm_add_amount": "-257,250,000,000"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -350,12 +410,12 @@
    "frmtrm_amount": "",
    "bfefrmtrm_nm": "",
    "bfefrmtrm_amount": "",
-   "ord": "16",
+   "ord": "19",
    "currency": "KRW",
    "thstrm_add_amount": "-183,750,000,000"
   },
   {
-   "rcept_no": "20251114000005",
+   "rcept_no": "20251114000015",
    "reprt_code": "11014",
    "bsns_year": "2025",
    "corp_code": "01515323",
@@ -370,7 +430,7 @@
    "frmtrm_amount": "",
    "bfefrmtrm_nm": "",
    "bfefrmtrm_amount": "",
-   "ord": "16",
+   "ord": "19",
    "currency": "KRW",
    "thstrm_add_amount": "1,029,000,000,000"
   }

@@ -37,6 +37,7 @@ from packages.reporting import render_markdown, render_screen_markdown  # noqa: 
 from packages.research import deep_plan, deep_run  # noqa: E402
 from packages.research import store as deep_store  # noqa: E402
 from packages.screening import compiler, nl, runs_index  # noqa: E402
+from packages.screening import rows as row_source  # noqa: E402
 from packages.screening import spec as spec_module  # noqa: E402
 from packages.screening import store as screen_store  # noqa: E402
 from packages.screening.fields import Registry  # noqa: E402
@@ -61,20 +62,22 @@ def _fx(rates, as_of_date):
             for code, value in (rates or {}).items()}
 
 
-def _rows():
-    return runs_index.load_rows()
+def _rows(as_of_date=None, fx_rates=None):
+    """Harness runs merged with the screening warehouse, when it has been built."""
+    return row_source.load_rows(as_of_date, fx_rates=fx_rates)
 
 
 @app.get('/api/health')
 def health():
-    return {'status': 'ok', 'backend': 'harness_run_index',
+    from packages.screening.fields import Registry
+    return {'status': 'ok', 'backends': sorted(Registry().active_backends()),
             'runs': len(runs_index.run_ids()),
             'llm_provider_default': os.environ.get('HARNESS_LLM_PROVIDER', 'fixture')}
 
 
 @app.get('/api/universe')
 def universe():
-    rows = _rows()
+    rows = runs_index.load_rows()
     return {**runs_index.universe_summary(rows),
             'companies': sorted({(row['ticker'], row.get('company_name'), row['jurisdiction'])
                                  for row in rows})}
@@ -105,6 +108,30 @@ def universe_securities(market: str | None = None, investable_only: bool = True,
     return {'synced_at_utc': payload['synced_at_utc'], 'as_of_date': payload.get('as_of_date'),
             'summary': payload['summary'], 'markets': payload.get('markets', {}),
             'count': len(rows), 'securities': rows[:limit]}
+
+
+@app.get('/api/warehouse')
+def warehouse_summary(as_of_date: str | None = None):
+    """The deterministic metric warehouse: what it covers and what it could not compute."""
+    from packages.screening import warehouse as warehouse_store
+    payload = warehouse_store.load(as_of_date)
+    if payload is None:
+        raise HTTPException(404, 'the screening warehouse has not been built; run '
+                                 '`python harness.py screen build --as-of <DATE> --from-runs`')
+    return {k: v for k, v in payload.items() if k != 'rows'}
+
+
+@app.get('/api/warehouse/{ticker}')
+def warehouse_company(ticker: str, as_of_date: str | None = None):
+    """One company's metrics with the provenance behind every number."""
+    from packages.screening import warehouse as warehouse_store
+    payload = warehouse_store.load(as_of_date)
+    if payload is None:
+        raise HTTPException(404, 'the screening warehouse has not been built')
+    row = next((r for r in payload['rows'] if r['ticker'].upper() == ticker.upper()), None)
+    if row is None:
+        raise HTTPException(404, f'{ticker}: not in the warehouse at {payload["as_of_date"]}')
+    return row
 
 
 @app.get('/api/screen/fields')
@@ -171,10 +198,11 @@ def screen_run(request: ScreenRunRequest):
     except (LLMError, spec_module.SpecError) as error:
         raise HTTPException(422, str(error)) from error
 
-    rows = _rows()
+    rows = _rows(spec.get('as_of_date'), spec.get('fx_rates'))
     result = compiler.run(spec, rows)
     record = screen_store.build_record(spec, result, rows_sha256=screen_store.content_hash(
         [{k: v for k, v in row.items() if k != 'match_explain'} for row in rows]))
+    record['backends'] = row_source.backend_summary(rows)
     if request.persist:
         screen_store.save(record)
     return record

@@ -63,12 +63,130 @@ def cmd_screen_nl(args):
         _print(spec)
 
 
+def _warehouse_entries_from_runs(runs_dir=None, tickers=None, as_of=None):
+    """Stage 0 packs that existing runs already hold, with their frozen prices.
+
+    A completed run carries a preprocessed pack and a frozen market
+    observation. Reusing them means the warehouse can be built and checked
+    against real disclosures rather than only against fixtures.
+    """
+    import json as _json
+    from packages.screening import runs_index
+    base = Path(runs_dir or runs_index.RUNS_DIR)
+    entries = []
+    for run_id in runs_index.run_ids(runs_dir):
+        run = base / run_id
+        pack_path = run / 'sources' / 'financials' / 'normalized_financials.json'
+        if not pack_path.exists():
+            continue
+        try:
+            pack = _json.loads(pack_path.read_text(encoding='utf-8'))
+            context = _json.loads((run / 'company_context.json').read_text(encoding='utf-8'))
+        except ValueError:
+            continue
+        if not (pack.get('facts') or []):
+            continue
+        ticker = (context.get('ticker') or pack.get('ticker') or run_id).upper()
+        if tickers and ticker not in tickers:
+            continue
+        run_as_of = context.get('as_of_date') or ''
+        if as_of and run_as_of > as_of:
+            continue            # a run dated after the cutoff is not evidence this cutoff had
+        price, shares = context.get('current_price'), context.get('shares_diluted')
+        snapshot = {'as_of_date': context.get('as_of_date'),
+                    'source': f'runs/{run_id}/company_context.json (frozen)'}
+        if isinstance(price, (int, float)):
+            snapshot['close'] = float(price)
+        if isinstance(shares, (int, float)):
+            snapshot['shares_outstanding'] = float(shares)
+        entries.append({
+            'ticker': ticker, 'company_name': context.get('company_name'),
+            'jurisdiction': 'KR' if (context.get('currency') or '').upper() == 'KRW' else 'US',
+            'currency': context.get('currency') or pack.get('reporting_currency'),
+            'pack': pack, 'market_snapshot': snapshot, 'run_id': run_id,
+            'run_as_of': run_as_of})
+    # One entry per ticker: several runs of the same company differ by policy
+    # version, not by what the company disclosed.
+    newest = {}
+    for entry in sorted(entries, key=lambda e: (e['run_as_of'], e['run_id'])):
+        newest[entry['ticker']] = entry
+    return list(newest.values())
+
+
+def _warehouse_entries_from_packs(directory):
+    import json as _json
+    entries = []
+    for path in sorted(Path(directory).glob('*.json')):
+        pack = _json.loads(path.read_text(encoding='utf-8'))
+        if not pack.get('facts'):
+            continue
+        entries.append({'ticker': (pack.get('ticker') or path.stem).upper(),
+                        'company_name': pack.get('company_name'),
+                        'jurisdiction': 'KR' if (pack.get('reporting_currency') or '') == 'KRW' else 'US',
+                        'currency': pack.get('reporting_currency'),
+                        'pack': pack, 'market_snapshot': {}, 'source_file': str(path)})
+    return entries
+
+
+def _attach_market_data(entries, root, as_of):
+    """Fill each entry's market snapshot from a market provider, not from a filing.
+
+    A regulator publishes what a company disclosed; a price is not one of those
+    things. So the snapshot arrives through `MarketDataProvider`, and an entry
+    with no market observation simply has no market-derived metric.
+    """
+    try:
+        from data_adapters.market_kr.provider import KrMarketCsvProvider
+        from data_adapters.market_us import UsMarketDataProvider
+    except Exception:
+        return 0
+    providers = {'US': UsMarketDataProvider(root=root), 'KR': KrMarketCsvProvider(root=root)}
+    attached = 0
+    for entry in entries:
+        if entry.get('market_snapshot'):
+            continue
+        provider = providers.get(entry.get('jurisdiction'))
+        if provider is None:
+            continue
+        security = provider.resolve_security(entry['ticker'])
+        snapshot = provider.get_snapshot(security, as_of)
+        if snapshot is None:
+            continue
+        entry['market_snapshot'] = {k: v for k, v in snapshot.to_dict().items() if v is not None}
+        attached += 1
+    return attached
+
+
+def cmd_screen_build(args):
+    """Stage 2: compute the deterministic metric warehouse. No LLM is involved."""
+    from packages.screening import warehouse
+    entries = []
+    if args.packs:
+        entries.extend(_warehouse_entries_from_packs(args.packs))
+    if args.from_runs or not entries:
+        tickers = {t.strip().upper() for t in (args.tickers or '').split(',') if t.strip()}
+        entries.extend(_warehouse_entries_from_runs(tickers=tickers or None, as_of=args.as_of))
+    if not entries:
+        raise SystemExit('no Stage 0 packs found; pass --packs DIR or use --from-runs')
+    attached = _attach_market_data(entries, args.market_data, args.as_of) if args.market_data else 0
+    payload = warehouse.build(entries, args.as_of)
+    payload['market_snapshots_attached'] = attached
+    path = warehouse.save(payload, args.out)
+    print(path, file=sys.stderr)
+    coverage = {k: v for k, v in payload['coverage'].items()}
+    _print({'as_of_date': payload['as_of_date'], 'companies': payload['companies'],
+            'tickers': payload['tickers'], 'failures': payload['failures'],
+            'market_snapshots_attached': attached, 'coverage': coverage})
+
+
 def _execute(spec, save, markdown_out=None):
-    from packages.screening import compiler, runs_index, store
-    rows = runs_index.load_rows()
+    from packages.screening import compiler, rows as row_source, store
+    fx = spec.get('fx_rates') or {}
+    rows = row_source.load_rows(spec.get('as_of_date'), fx_rates=fx)
     result = compiler.run(spec, rows)
     record = store.build_record(spec, result, rows_sha256=store.content_hash(
         [{k: v for k, v in row.items() if k != 'match_explain'} for row in rows]))
+    record['backends'] = row_source.backend_summary(rows)
     if save:
         print(store.save(record), file=sys.stderr)
     if markdown_out:
@@ -196,6 +314,17 @@ def register(sub):
     p.add_argument('--markdown')
     p.add_argument('--no-save', action='store_true')
     p.set_defaults(func=cmd_screen_run)
+
+    p = screen_sub.add_parser('build', help='stage 2: compute the deterministic metric warehouse')
+    p.add_argument('--as-of', required=True)
+    p.add_argument('--packs', help='directory of Stage 0 packs from `harness.py ingest --out`')
+    p.add_argument('--from-runs', action='store_true',
+                   help='use the packs completed runs already hold')
+    p.add_argument('--tickers', help='comma-separated subset')
+    p.add_argument('--market-data', help='market CSV root (data/market/<US|KR>/<TICKER>.csv); '
+                                         'prices never come from a regulator')
+    p.add_argument('--out')
+    p.set_defaults(func=cmd_screen_build)
 
     p = screen_sub.add_parser('runs', help='list persisted screen runs')
     p.set_defaults(func=cmd_screen_runs)

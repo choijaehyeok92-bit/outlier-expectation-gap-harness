@@ -24,7 +24,7 @@ class ApiTests(unittest.TestCase):
     def test_health(self):
         body = CLIENT.get('/api/health').json()
         self.assertEqual(body['status'], 'ok')
-        self.assertEqual(body['backend'], 'harness_run_index')
+        self.assertIn('harness_run_index', body['backends'])
 
     def test_universe_reports_both_markets(self):
         body = CLIENT.get('/api/universe').json()
@@ -40,13 +40,23 @@ class ApiTests(unittest.TestCase):
     def test_unknown_run_is_404(self):
         self.assertEqual(CLIENT.get('/api/runs/NOT-A-RUN').status_code, 404)
 
-    def test_parse_returns_a_spec_with_unresolved_conditions(self):
+    def test_parse_preserves_what_it_could_not_resolve(self):
         response = CLIENT.post('/api/screen/parse', json={
-            'text': '최근 3년 매출 CAGR 15% 이상인 기업', 'as_of_date': '2026-09-18'})
+            'text': '경영진이 유머감각이 뛰어난 기업', 'as_of_date': '2026-09-18'})
         self.assertEqual(response.status_code, 200)
         body = response.json()
         self.assertEqual(body['filters']['clauses'], [])
-        self.assertEqual(body['unresolved_conditions'][0]['reason'], 'backend_unavailable')
+        self.assertEqual(body['unresolved_conditions'][0]['reason'], 'unparsed_remainder')
+
+    def test_a_warehouse_field_parses_into_a_real_filter_or_is_named(self):
+        body = CLIENT.post('/api/screen/parse', json={
+            'text': '최근 3년 매출 CAGR 15% 이상인 기업', 'as_of_date': '2026-09-18'}).json()
+        clauses = body['filters']['clauses']
+        if clauses:
+            self.assertEqual(clauses[0]['field'], 'revenue_cagr_3y')
+            self.assertAlmostEqual(clauses[0]['value'], 0.15)
+        else:
+            self.assertEqual(body['unresolved_conditions'][0]['reason'], 'backend_unavailable')
 
     def test_screen_run_executes_deterministically(self):
         payload = {'text': '한국과 미국에서 순현금이고 해자가 강하고 Base 가치 이하인 종목',

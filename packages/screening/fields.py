@@ -36,7 +36,26 @@ class Registry:
         return self.fields.get(field_id)
 
     def active_backends(self):
-        return {name for name, row in self.backends.items() if row.get('status') == 'active'}
+        """Which backends can actually answer today.
+
+        `active` is always on. `conditional` is on only when its declared data
+        is present, which is what lets a field like `revenue_cagr_3y` compile
+        after `screen build` and stay an explicit unresolved condition before
+        it — rather than silently matching nothing either way.
+        """
+        live = set()
+        for name, row in self.backends.items():
+            status = row.get('status')
+            if status == 'active':
+                live.add(name)
+            elif status == 'conditional' and self._has_data(row):
+                live.add(name)
+        return live
+
+    @staticmethod
+    def _has_data(backend: dict) -> bool:
+        pattern = backend.get('data_glob')
+        return bool(pattern) and any(ROOT.glob(pattern))
 
     def is_available(self, field_id, backend):
         field = self.fields.get(field_id)

@@ -56,6 +56,8 @@ by_account_id:
   ifrs-full_CashFlowsFromUsedInFinancingActivities: financing_cash_flow
   ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities: capex
   ifrs-full_EffectOfExchangeRateChangesOnCashAndCashEquivalents: fx_effect_on_cash
+  ifrs-full_WeightedAverageNumberOfDilutedOrdinarySharesOutstanding: diluted_weighted_average_shares
+  ifrs-full_WeightedAverageNumberOfOrdinarySharesOutstanding: basic_weighted_average_shares
   dart_ShortTermBorrowings: short_term_debt
   dart_LongTermBorrowingsGross: long_term_debt
 
@@ -104,6 +106,8 @@ by_label:
   무형자산상각비: d_and_a
   주식보상비용: sbc
   주식기준보상: sbc
+  희석주당이익계산에사용된가중평균유통보통주식수: diluted_weighted_average_shares
+  기본주당이익계산에사용된가중평균유통보통주식수: basic_weighted_average_shares
 
 # --------------------------------------------------- 3. statement-scoped label
 # Same words mean different things in different statements. "현금및현금성자산"

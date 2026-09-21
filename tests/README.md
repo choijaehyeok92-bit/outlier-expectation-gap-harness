@@ -22,6 +22,13 @@ as-of cutoff on both filings and facts, restatement flagging, universe exclusion
 reasons, the separation of market data from the regulators, and the rule that an API key never
 reaches a fixture filename.
 
+`test_warehouse.py` covers the deterministic metric layer: the three TTM paths and the rule that
+the most recent window wins, the refusal to sum a quarter with a year-to-date figure or to average
+share counts by adding them, segment rows never standing in for company totals (fixed against the
+real RBRK pack, where they produced a 2,037% gross margin), the as-of cutoff on both period and
+filing date, and every ratio, growth rate and CAGR this layer declines to compute rather than
+report a misleading one. It passes whether or not a warehouse has been built.
+
 `test_api.py` skips itself when `apps/api/requirements.txt` is not installed and
 `test_data_adapters.py` when `data_adapters/requirements.txt` is not; the rest need only
 `jsonschema`.

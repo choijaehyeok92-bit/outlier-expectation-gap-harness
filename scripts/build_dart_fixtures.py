@@ -47,16 +47,17 @@ COMPANIES = [
 ]
 FULL = next(c for c in COMPANIES if c['full'])
 
-REPORTS = [(2023, '11011'), (2024, '11011'), (2025, '11011'),
-           (2025, '11013'), (2025, '11012'), (2025, '11014'),
-           (2026, '11013'), (2026, '11012')]
+REPORTS = [(year, code) for year in (2022, 2023, 2024, 2025)
+           for code in ('11011', '11013', '11012', '11014')] + \
+          [(2026, '11013'), (2026, '11012')]
 REPORT_NAMES = {'11011': '사업보고서', '11012': '반기보고서', '11013': '분기보고서', '11014': '분기보고서'}
 PERIOD_LABEL = {'11011': '12', '11013': '03', '11012': '06', '11014': '09'}
 FILING_MONTH = {'11011': '03-17', '11013': '05-15', '11012': '08-14', '11014': '11-14'}
 
 # Illustrative KRW figures, in won, scaled so a year reads like a mid-cap.
-ANNUAL = {2023: 2_200_000_000_000, 2024: 3_300_000_000_000, 2025: 4_900_000_000_000}
-MARGIN = {2023: 0.09, 2024: 0.14, 2025: 0.19}
+ANNUAL = {2022: 1_500_000_000_000, 2023: 2_200_000_000_000, 2024: 3_300_000_000_000,
+          2025: 4_900_000_000_000, 2026: 6_100_000_000_000}
+MARGIN = {2022: 0.05, 2023: 0.09, 2024: 0.14, 2025: 0.19, 2026: 0.21}
 
 
 def write(url: str, payload) -> None:
@@ -65,8 +66,9 @@ def write(url: str, payload) -> None:
     if isinstance(payload, bytes):
         (OUT / f'{key}.zip').write_bytes(payload)
         return
-    (OUT / f'{key}.json').write_text(json.dumps(payload, ensure_ascii=False, indent=1) + '\n',
-                                     encoding='utf-8')
+    name = key if key.endswith('.json') else f'{key}.json'
+    (OUT / name).write_text(json.dumps(payload, ensure_ascii=False, indent=1) + '\n',
+                            encoding='utf-8')
 
 
 def money(value) -> str:
@@ -116,6 +118,7 @@ def statement_rows(year: int, code: str, rcept_no: str, basis: str) -> list:
     annual = ANNUAL.get(year, ANNUAL[2025])
     share = {'11011': 1.0, '11013': 0.22, '11012': 0.26, '11014': 0.27}[code]
     cumulative = {'11011': 1.0, '11013': 0.22, '11012': 0.48, '11014': 0.75}[code]
+    annual = ANNUAL.get(year, ANNUAL[max(ANNUAL)])
     factor = 1.0 if basis == 'CFS' else 0.82        # 별도 is smaller; never mixed with 연결
     revenue = annual * share * factor
     revenue_ytd = annual * cumulative * factor
@@ -153,6 +156,12 @@ def statement_rows(year: int, code: str, rcept_no: str, basis: str) -> list:
         flow('IS', 'dart_OperatingIncomeLoss', '영업이익', revenue * margin, revenue_ytd * margin),
         flow('IS', 'ifrs-full_ProfitLoss', '당기순이익', revenue * margin * 0.76,
              revenue_ytd * margin * 0.76),
+        flow('IS', 'ifrs-full_ResearchAndDevelopmentExpense', '경상연구개발비', revenue * 0.031,
+             revenue_ytd * 0.031),
+        flow('IS', '-표준계정코드 미사용-', '주식보상비용', revenue * 0.006, revenue_ytd * 0.006),
+        flow('IS', 'ifrs-full_WeightedAverageNumberOfDilutedOrdinarySharesOutstanding',
+             '희석주당이익 계산에 사용된 가중평균유통보통주식수',
+             36_400_000 + (year - 2022) * 180_000, 36_400_000 + (year - 2022) * 180_000),
         # A line the map does not know: must land as metric=other, requires_review.
         flow('IS', '-표준계정코드 미사용-', '지분법적용투자주식처분이익', revenue * 0.004,
              revenue_ytd * 0.004),
@@ -184,7 +193,7 @@ def statement_rows(year: int, code: str, rcept_no: str, basis: str) -> list:
 
 
 def share_rows(year: int, code: str) -> list:
-    issued = 36_000_000 + (year - 2023) * 250_000
+    issued = 36_000_000 + (year - 2022) * 250_000
     return [{'rcept_no': '-', 'corp_code': FULL['corp_code'], 'corp_name': FULL['corp_name'],
              'se': '보통주', 'isu_stock_totqy': money(issued * 3), 'now_to_isu_stock_totqy': '-',
              'now_to_dcrs_stock_totqy': '-', 'redc_stock_totqy': '-',

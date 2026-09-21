@@ -159,9 +159,39 @@ export default function ScreenerPage() {
           <div className="flex flex-wrap items-center gap-2 text-sm">
             <span className="chip">screen run {record.screen_run_id}</span>
             <span className="chip">{record.summary.matched_count} / {record.summary.considered} matched</span>
-            <span className="chip">backend {record.backend}</span>
+            {(record.backends?.backends ?? [record.backend]).map((name) => (
+              <span key={name} className="chip">{name}</span>
+            ))}
+            {record.backends && record.backends.warehouse_only > 0 && (
+              <span className="chip">
+                정량 지표만 {record.backends.warehouse_only}개 · 하네스 미분석
+              </span>
+            )}
           </div>
           <Leaderboard rows={record.results} deepDiveByTicker={deepDiveByTicker} />
+
+          {record.results.some((row) => row.has_harness_run === false) && (
+            <div className="card p-4">
+              <div className="text-sm font-medium">하네스 미분석 후보 (Stage 2 통과)</div>
+              <p className="muted mt-1 text-xs">
+                정량 지표만으로 조건을 만족한 기업이다. 점수·archetype·Hard Veto는 하네스를
+                실행해야 나오며, 이 화면이 추정하지 않는다.
+              </p>
+              <ul className="mt-2 space-y-1 text-sm">
+                {record.results.filter((row) => row.has_harness_run === false).map((row) => (
+                  <li key={row.run_id ?? row.ticker}>
+                    <span className="font-medium">{row.ticker}</span>
+                    <span className="muted">
+                      {' '}— {row.company_name ?? '이름 미상'} · 매출 TTM{' '}
+                      {row.revenue_ttm === null || row.revenue_ttm === undefined
+                        ? '미상'
+                        : row.revenue_ttm.toLocaleString()}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {record.summary.excluded_missing_data.length > 0 && (
             <div className="card p-4">

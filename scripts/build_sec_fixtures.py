@@ -28,7 +28,8 @@ TICKER = 'MSFT'
 NAME = 'MICROSOFT CORP'
 FY_END = (6, 30)                   # June fiscal year end, so the period bands get exercised
 
-ANNUAL_REVENUE = {2024: 245_100_000_000, 2025: 281_700_000_000, 2026: 324_400_000_000}
+ANNUAL_REVENUE = {2022: 198_300_000_000, 2023: 211_900_000_000, 2024: 245_100_000_000,
+                  2025: 281_700_000_000, 2026: 324_400_000_000}
 QUARTER_SHARE = [0.235, 0.245, 0.255, 0.265]
 
 TAGS = [
@@ -43,20 +44,26 @@ TAGS = [
     ('PaymentsToAcquirePropertyPlantAndEquipment', 'USD', 0.26),
     ('ShareBasedCompensation', 'USD', 0.04),
 ]
+SHARE_TAGS = [
+    ('WeightedAverageNumberOfDilutedSharesOutstanding', 'shares', 7_600_000_000, -45_000_000),
+]
 INSTANTS = [
     ('CashAndCashEquivalentsAtCarryingValue', 'USD', 0.09),
     ('Assets', 'USD', 2.10),
     ('Liabilities', 'USD', 0.95),
     ('StockholdersEquity', 'USD', 1.15),
     ('LongTermDebtNoncurrent', 'USD', 0.14),
+    ('ShortTermBorrowings', 'USD', 0.02),
     ('Goodwill', 'USD', 0.42),
 ]
 
 
 def write(url: str, payload) -> None:
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / f'{fixture_key(url)}.json').write_text(
-        json.dumps(payload, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+    key = fixture_key(url)
+    name = key if key.endswith('.json') else f'{key}.json'
+    (OUT / name).write_text(json.dumps(payload, ensure_ascii=False, indent=1) + '\n',
+                            encoding='utf-8')
 
 
 def fy_bounds(fiscal_year: int):
@@ -154,6 +161,20 @@ def company_facts(filings):
             row = by_period.get(end.isoformat())
             if row:
                 observations.append(entry(None, end, revenue * ratio, '10-K',
+                                          row['accessionNumber'], fiscal_year, 'FY',
+                                          row['filingDate']))
+        facts['us-gaap'][tag] = {'label': tag, 'description': 'fixture',
+                                 'units': {unit: observations}}
+
+    # Annual diluted share counts, so the per-share and dilution metrics have a
+    # fiscal-year series to compare across.
+    for tag, unit, base, step in SHARE_TAGS:
+        observations = []
+        for offset, fiscal_year in enumerate(sorted(ANNUAL_REVENUE)):
+            start, end = fy_bounds(fiscal_year)
+            row = by_period.get(end.isoformat())
+            if row:
+                observations.append(entry(start, end, base + step * offset, '10-K',
                                           row['accessionNumber'], fiscal_year, 'FY',
                                           row['filingDate']))
         facts['us-gaap'][tag] = {'label': tag, 'description': 'fixture',

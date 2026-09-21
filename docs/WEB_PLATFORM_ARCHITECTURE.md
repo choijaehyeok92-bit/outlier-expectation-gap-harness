@@ -147,12 +147,23 @@ tests/test_data_adapters.py
 docs/DATA_ADAPTERS.md
 ```
 
+### Phase 4에서 추가된 것
+
+```
+packages/screening/
+  facts.py                         pack 색인 + TTM/FY/instant 창 해석 (세그먼트·마감일 필터)
+  metrics.py                       표현식 트리 계산기 (ttm/fy 두 문맥)
+  warehouse.py                     지표 창고 빌드·저장·백엔드 행
+  rows.py                          harness_run_index + screening_warehouse 병합
+config/screening_metrics.json      24개 공개 지표 정의 + TTM·CAGR·증가율 정책
+tests/test_warehouse.py
+docs/SCREENING_WAREHOUSE.md
+```
+
 ### 이후 Phase에서 추가될 것
 
 ```
 db/migrations/                           Alembic
-packages/screening/metrics.py            결정론적 screening metric 계산 (Python/SQL)
-packages/screening/warehouse.py          screening_warehouse 백엔드
 workers/                                 ARQ 작업: universe sync, ingestion, metric build, triage, full, deep research
 ```
 
@@ -457,6 +468,7 @@ remaining_unknowns / evidence_quality / final_synthesis
 | GET | `/api/health` | ✅ |
 | GET | `/api/universe` | ✅ (현재는 완료된 run 인덱스) |
 | GET | `/api/universe/securities` | ✅ SEC/DART 기반 상장 유니버스 |
+| GET | `/api/warehouse`, `/api/warehouse/{ticker}` | ✅ 지표 커버리지 · 기업별 provenance |
 | GET | `/api/screen/fields` | ✅ field registry |
 | GET | `/api/runs`, `/api/runs/{run_id}` | ✅ 읽기 전용 |
 | GET | `/api/companies/{ticker}` | ✅ 기본정보 + 하네스 이력 + 딥다이브 목록 |
@@ -508,7 +520,7 @@ python harness.py deep-list
 | 1 | 기존 하네스 read-only API | ✅ 완료 |
 | 2 | DB + run index (PostgreSQL, Alembic) | ⏳ 현재는 파일시스템 인덱스 |
 | 3 | US/KR universe + SEC/DART ingestion | ✅ 어댑터·유니버스·적재 완료 (라이브 API 미검증) |
-| 4 | screening warehouse (결정론적 지표 계산) | ⏳ |
+| 4 | screening warehouse (결정론적 지표 계산) | ✅ 24개 지표·provenance·조건부 백엔드 완료 |
 | 5 | ScreeningSpec | ✅ 완료 |
 | 6 | NL screener | ✅ 완료 (lexicon + LLM 양쪽) |
 | 7 | Harness triage orchestration | ⏸ 501 |
@@ -519,8 +531,9 @@ python harness.py deep-list
 | 12 | Monitoring | ⏳ KPI 스키마·표시는 완료, 시계열 추적은 미구현 |
 
 Phase 5·6·9·10·11이 먼저 완성된 것은 vertical slice를 먼저 관통시켰기 때문이다.
-Phase 2~4가 붙으면 `runs_index` 백엔드 옆에 `screening_warehouse` 백엔드가 활성화되고,
-지금 `backend_unavailable`로 남는 조건들이 그대로 동작하기 시작한다 — spec 형식은 바뀌지 않는다.
+Phase 4가 붙으면서 `screening_warehouse` 백엔드가 조건부로 활성화됐고, `backend_unavailable`로
+남던 조건들이 창고를 빌드한 뒤에는 그대로 컴파일된다 — spec 형식은 바뀌지 않았다.
+남은 것은 Phase 2(DB), Phase 7·8(오케스트레이션), Phase 12(모니터링 시계열)다.
 
 ---
 

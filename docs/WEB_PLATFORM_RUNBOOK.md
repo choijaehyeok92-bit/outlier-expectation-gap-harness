@@ -61,6 +61,24 @@ python harness.py ingest 267260 --market KR --as-of 2026-09-18 --out /tmp/pack.j
 `--out` 없이 실행하면 pack을 어디에 놓아야 할지만 알려준다. 적재기는 run의 sources를 덮어쓰지
 않는다. 자세한 계약과 한국 특유의 처리는 [DATA_ADAPTERS.md](DATA_ADAPTERS.md)에 있다.
 
+## 1c. 스크리닝 창고 (Phase 4)
+
+```bash
+# 완료된 run들의 Stage 0 pack으로 지표 창고를 만든다
+python harness.py screen build --as-of 2026-09-18 --from-runs
+
+# 어댑터가 만든 pack + 시세 CSV로
+python harness.py screen build --as-of 2026-09-18 \
+  --packs /tmp/packs --from-runs --market-data data/market
+
+# 창고가 생기면 정량 조건이 미해석 조건이 아니라 실제 필터가 된다
+python harness.py screen run "매출총이익률 70% 이상이고 영업이익률 10% 이상" --as-of 2026-09-18
+```
+
+시세 CSV는 `data/market/<US|KR>/<TICKER>.csv` (`date,close,shares_outstanding[,market_cap]`).
+가격은 `MarketDataProvider`에서만 오고 규제기관에서 오지 않는다.
+지표 정의와 계산하지 않는 경우는 [SCREENING_WAREHOUSE.md](SCREENING_WAREHOUSE.md)에 있다.
+
 ## 2. API
 
 ```bash
@@ -117,5 +135,6 @@ python -m pytest tests/test_screening.py -q
 python -m pytest tests/test_deep_dive.py -q
 python -m pytest tests/test_api.py -q           # FastAPI 미설치 시 자동 skip
 python -m pytest tests/test_data_adapters.py -q # PyYAML 미설치 시 자동 skip
+python -m pytest tests/test_warehouse.py -q     # 창고 유무와 무관하게 통과해야 한다
 (cd apps/web && npm run build)                  # 타입 체크 포함
 ```

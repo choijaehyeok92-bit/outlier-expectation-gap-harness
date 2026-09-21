@@ -18,11 +18,30 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SCREEN_RUNS = ROOT / 'screen_runs'
-SUMMARY_FIELDS = ('run_id', 'ticker', 'company_name', 'jurisdiction', 'exchange', 'currency',
-                  'as_of_date', 'market_cap_usd', 'core_score', 'ex_valuation_score',
-                  'classification', 'archetype', 'hard_veto_status', 'ic_state', 'position_range',
-                  'price_to_base_value', 'dilution_watch_status', 'domain_scores', 'axis_scores',
-                  'early_exit', 'full_harness_complete', 'result_sha256')
+IDENTITY_FIELDS = ('run_id', 'ticker', 'company_name', 'jurisdiction', 'exchange', 'currency',
+                   'as_of_date', 'market_cap_usd', 'core_score', 'ex_valuation_score',
+                   'classification', 'archetype', 'hard_veto_status', 'ic_state', 'position_range',
+                   'price_to_base_value', 'dilution_watch_status', 'domain_scores', 'axis_scores',
+                   'early_exit', 'full_harness_complete', 'result_sha256',
+                   'has_harness_run', 'has_warehouse_metrics', 'field_sources',
+                   'consolidation_basis', 'anchor_fiscal_year')
+
+
+def summary_fields():
+    """Identity and harness columns, plus every warehouse metric the registry offers.
+
+    Derived from the registry rather than repeated here, so a metric added to
+    the warehouse shows up in a saved screen without a second edit — and a
+    screen record never silently loses a column the screen actually filtered on.
+    """
+    from .fields import Registry
+    metrics = tuple(field['id'] for field in Registry().data['fields']
+                    if 'screening_warehouse' in (field.get('backends') or [])
+                    and field['id'] not in IDENTITY_FIELDS)
+    return IDENTITY_FIELDS + metrics
+
+
+SUMMARY_FIELDS = summary_fields()
 
 
 def code_commit_sha():

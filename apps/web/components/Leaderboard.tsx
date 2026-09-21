@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { money, show, type RunRow } from '@/lib/api';
 
 const COLUMNS = [
-  'Rank', 'Ticker', 'Company', 'Market', 'MCap', 'Core', 'Ex-Val', 'Archetype',
+  'Rank', 'Ticker', 'Company', 'Market', 'Source', 'MCap', 'Core', 'Ex-Val', 'Archetype',
   'EV', 'AS', 'FS', 'MT', 'Veto', 'P/Base', 'Deep Dive',
 ];
 
@@ -33,6 +33,13 @@ export function Leaderboard({ rows, deepDiveByTicker }: { rows: RunRow[]; deepDi
                 </td>
                 <td>{row.company_name ?? '미상'}</td>
                 <td><span className="chip">{row.jurisdiction}</span></td>
+                <td>
+                  <span className="chip" title={row.has_harness_run
+                    ? '하네스가 분석한 기업. 점수·Veto는 하네스가 기록한 값이다.'
+                    : '정량 지표만 있는 기업. 하네스 판정이 없으므로 점수·Veto 칸은 비어 있다.'}>
+                    {row.has_harness_run === false ? '정량만' : 'Harness'}
+                  </span>
+                </td>
                 <td>{money(row.market_cap_usd)}</td>
                 <td>{show(row.core_score)}</td>
                 <td>{show(row.ex_valuation_score)}</td>

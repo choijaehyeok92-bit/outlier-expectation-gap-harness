@@ -2,78 +2,601 @@
   "schema_version": "1.0",
   "note": "Deterministic field registry for ScreeningSpec. The LLM may only name identifiers declared here; it never invents a field, a unit or a backend. `backends` records where a field can actually be read today: `harness_run_index` is the completed-run corpus under runs/, `screening_warehouse` is the normalized US/KR metric warehouse (Phase 4). A filter naming a field whose backend is not active compiles to an unresolved condition rather than being silently dropped or defaulted.",
   "backends": {
-    "harness_run_index": {"status": "active", "description": "Completed harness runs read from runs/<TICKER>/aggregate.json and company_context.json"},
-    "screening_warehouse": {"status": "planned", "phase": 4, "description": "Deterministic screening metrics computed from SEC/DART normalized financials"}
+    "harness_run_index": {
+      "status": "active",
+      "description": "Completed harness runs read from runs/<TICKER>/aggregate.json and company_context.json"
+    },
+    "screening_warehouse": {
+      "status": "conditional",
+      "phase": 4,
+      "data_glob": "data/warehouse/*/metrics.json",
+      "build_command": "python harness.py screen build --as-of <DATE> --from-runs",
+      "description": "SEC/DART 정규화 재무에서 결정론적으로 계산한 스크리닝 지표. 창고 파일이 있을 때만 활성이다.",
+      "note": "`conditional`은 데이터가 있어야 켜진다는 뜻이다. 빌드 전에는 이 백엔드를 쓰는 조건이 조용히 사라지지 않고 backend_unavailable 미해석 조건으로 남는다."
+    }
   },
   "units": {
-    "usd": {"kind": "currency", "currency": "USD"},
-    "local_currency": {"kind": "currency", "currency": "per_row"},
-    "ratio": {"kind": "ratio", "note": "decimal fraction; 15% is 0.15, never 15"},
-    "score_0_100": {"kind": "score"},
-    "count": {"kind": "count"},
-    "none": {"kind": "none"}
+    "usd": {
+      "kind": "currency",
+      "currency": "USD"
+    },
+    "local_currency": {
+      "kind": "currency",
+      "currency": "per_row"
+    },
+    "ratio": {
+      "kind": "ratio",
+      "note": "decimal fraction; 15% is 0.15, never 15"
+    },
+    "score_0_100": {
+      "kind": "score"
+    },
+    "count": {
+      "kind": "count"
+    },
+    "none": {
+      "kind": "none"
+    }
   },
   "fields": [
-    {"id": "ticker", "group": "identity", "dtype": "string", "unit": "none", "backends": ["harness_run_index", "screening_warehouse"]},
-    {"id": "company_name", "group": "identity", "dtype": "string", "unit": "none", "backends": ["harness_run_index", "screening_warehouse"]},
-    {"id": "jurisdiction", "group": "identity", "dtype": "string", "unit": "none", "enum": ["US", "KR"], "backends": ["harness_run_index", "screening_warehouse"]},
-    {"id": "exchange", "group": "identity", "dtype": "string", "unit": "none", "backends": ["harness_run_index", "screening_warehouse"]},
-    {"id": "currency", "group": "identity", "dtype": "string", "unit": "none", "backends": ["harness_run_index", "screening_warehouse"]},
-    {"id": "as_of_date", "group": "identity", "dtype": "date", "unit": "none", "backends": ["harness_run_index", "screening_warehouse"]},
-
-    {"id": "market_cap_usd", "group": "market", "dtype": "number", "unit": "usd", "backends": ["harness_run_index", "screening_warehouse"]},
-    {"id": "current_price", "group": "market", "dtype": "number", "unit": "local_currency", "backends": ["harness_run_index", "screening_warehouse"]},
-    {"id": "net_cash_per_share", "group": "market", "dtype": "number", "unit": "local_currency", "backends": ["harness_run_index", "screening_warehouse"]},
-
-    {"id": "core_score", "group": "harness", "dtype": "number", "unit": "score_0_100", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "ex_valuation_score", "group": "harness", "dtype": "number", "unit": "score_0_100", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "coverage_weight", "group": "harness", "dtype": "number", "unit": "count", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "classification", "group": "harness", "dtype": "string", "unit": "none", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "archetype", "group": "harness", "dtype": "string", "unit": "none", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "hard_veto_status", "group": "harness", "dtype": "string", "unit": "none", "enum": ["CLEARED", "UNRESOLVED", "PENDING_REVIEW", "CONFIRMED"], "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "ic_state", "group": "harness", "dtype": "string", "unit": "none", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "mechanical_pre_ic_state", "group": "harness", "dtype": "string", "unit": "none", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "position_range", "group": "harness", "dtype": "string", "unit": "none", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "early_exit", "group": "harness", "dtype": "boolean", "unit": "none", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "valuation_status", "group": "harness", "dtype": "string", "unit": "none", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "price_to_base_value", "group": "harness", "dtype": "number", "unit": "ratio", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "revenue_cagr_next_3y", "group": "harness", "dtype": "number", "unit": "ratio", "requires_harness_run": true, "note": "Forward estimate declared by the EV agent. This is NOT a historical revenue CAGR and must never stand in for revenue_cagr_3y.", "backends": ["harness_run_index"]},
-    {"id": "dilution_watch_status", "group": "harness", "dtype": "string", "unit": "none", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "triage_complete", "group": "harness", "dtype": "boolean", "unit": "none", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "full_harness_complete", "group": "harness", "dtype": "boolean", "unit": "none", "requires_harness_run": true, "backends": ["harness_run_index"]},
-
-    {"id": "domain.structural_leadership", "group": "domain_score", "dtype": "number", "unit": "score_0_100", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "domain.customer_product", "group": "domain_score", "dtype": "number", "unit": "score_0_100", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "domain.moat_trajectory", "group": "domain_score", "dtype": "number", "unit": "score_0_100", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "domain.reinvestment_fcf", "group": "domain_score", "dtype": "number", "unit": "score_0_100", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "domain.management_allocation", "group": "domain_score", "dtype": "number", "unit": "score_0_100", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "domain.financial_survival", "group": "domain_score", "dtype": "number", "unit": "score_0_100", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "domain.expectation_valuation", "group": "domain_score", "dtype": "number", "unit": "score_0_100", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "domain.asymmetry", "group": "domain_score", "dtype": "number", "unit": "score_0_100", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "axis.disruptive_innovation", "group": "axis_score", "dtype": "number", "unit": "score_0_100", "requires_harness_run": true, "backends": ["harness_run_index"]},
-    {"id": "axis.long_term_growth", "group": "axis_score", "dtype": "number", "unit": "score_0_100", "requires_harness_run": true, "backends": ["harness_run_index"]},
-
-    {"id": "market_cap", "group": "screening_metric", "dtype": "number", "unit": "local_currency", "backends": ["screening_warehouse"]},
-    {"id": "revenue_ttm", "group": "screening_metric", "dtype": "number", "unit": "local_currency", "backends": ["screening_warehouse"]},
-    {"id": "revenue_growth_yoy", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "revenue_cagr_3y", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "gross_profit_ttm", "group": "screening_metric", "dtype": "number", "unit": "local_currency", "backends": ["screening_warehouse"]},
-    {"id": "gross_margin", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "operating_margin", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "ocf_ttm", "group": "screening_metric", "dtype": "number", "unit": "local_currency", "backends": ["screening_warehouse"]},
-    {"id": "owner_fcf_ttm", "group": "screening_metric", "dtype": "number", "unit": "local_currency", "backends": ["screening_warehouse"]},
-    {"id": "owner_fcf_margin", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "owner_fcf_per_share", "group": "screening_metric", "dtype": "number", "unit": "local_currency", "backends": ["screening_warehouse"]},
-    {"id": "owner_fcf_per_share_cagr_3y", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "gross_profit_per_share", "group": "screening_metric", "dtype": "number", "unit": "local_currency", "backends": ["screening_warehouse"]},
-    {"id": "gross_profit_per_share_cagr_3y", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "net_cash", "group": "screening_metric", "dtype": "number", "unit": "local_currency", "backends": ["screening_warehouse"]},
-    {"id": "debt_to_ocf", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "diluted_share_growth_yoy", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "diluted_share_cagr_3y", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "sbc_to_revenue", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "rnd_to_revenue", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "capex_to_ocf", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]},
-    {"id": "price_to_owner_fcf", "group": "screening_metric", "dtype": "number", "unit": "ratio", "backends": ["screening_warehouse"]}
+    {
+      "id": "ticker",
+      "group": "identity",
+      "dtype": "string",
+      "unit": "none",
+      "backends": [
+        "harness_run_index",
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "company_name",
+      "group": "identity",
+      "dtype": "string",
+      "unit": "none",
+      "backends": [
+        "harness_run_index",
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "jurisdiction",
+      "group": "identity",
+      "dtype": "string",
+      "unit": "none",
+      "enum": [
+        "US",
+        "KR"
+      ],
+      "backends": [
+        "harness_run_index",
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "exchange",
+      "group": "identity",
+      "dtype": "string",
+      "unit": "none",
+      "backends": [
+        "harness_run_index",
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "currency",
+      "group": "identity",
+      "dtype": "string",
+      "unit": "none",
+      "backends": [
+        "harness_run_index",
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "as_of_date",
+      "group": "identity",
+      "dtype": "date",
+      "unit": "none",
+      "backends": [
+        "harness_run_index",
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "market_cap_usd",
+      "group": "market",
+      "dtype": "number",
+      "unit": "usd",
+      "backends": [
+        "harness_run_index",
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "current_price",
+      "group": "market",
+      "dtype": "number",
+      "unit": "local_currency",
+      "backends": [
+        "harness_run_index",
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "net_cash_per_share",
+      "group": "market",
+      "dtype": "number",
+      "unit": "local_currency",
+      "backends": [
+        "harness_run_index",
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "core_score",
+      "group": "harness",
+      "dtype": "number",
+      "unit": "score_0_100",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "ex_valuation_score",
+      "group": "harness",
+      "dtype": "number",
+      "unit": "score_0_100",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "coverage_weight",
+      "group": "harness",
+      "dtype": "number",
+      "unit": "count",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "classification",
+      "group": "harness",
+      "dtype": "string",
+      "unit": "none",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "archetype",
+      "group": "harness",
+      "dtype": "string",
+      "unit": "none",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "hard_veto_status",
+      "group": "harness",
+      "dtype": "string",
+      "unit": "none",
+      "enum": [
+        "CLEARED",
+        "UNRESOLVED",
+        "PENDING_REVIEW",
+        "CONFIRMED"
+      ],
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "ic_state",
+      "group": "harness",
+      "dtype": "string",
+      "unit": "none",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "mechanical_pre_ic_state",
+      "group": "harness",
+      "dtype": "string",
+      "unit": "none",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "position_range",
+      "group": "harness",
+      "dtype": "string",
+      "unit": "none",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "early_exit",
+      "group": "harness",
+      "dtype": "boolean",
+      "unit": "none",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "valuation_status",
+      "group": "harness",
+      "dtype": "string",
+      "unit": "none",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "price_to_base_value",
+      "group": "harness",
+      "dtype": "number",
+      "unit": "ratio",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "revenue_cagr_next_3y",
+      "group": "harness",
+      "dtype": "number",
+      "unit": "ratio",
+      "requires_harness_run": true,
+      "note": "Forward estimate declared by the EV agent. This is NOT a historical revenue CAGR and must never stand in for revenue_cagr_3y.",
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "dilution_watch_status",
+      "group": "harness",
+      "dtype": "string",
+      "unit": "none",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "triage_complete",
+      "group": "harness",
+      "dtype": "boolean",
+      "unit": "none",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "full_harness_complete",
+      "group": "harness",
+      "dtype": "boolean",
+      "unit": "none",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "domain.structural_leadership",
+      "group": "domain_score",
+      "dtype": "number",
+      "unit": "score_0_100",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "domain.customer_product",
+      "group": "domain_score",
+      "dtype": "number",
+      "unit": "score_0_100",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "domain.moat_trajectory",
+      "group": "domain_score",
+      "dtype": "number",
+      "unit": "score_0_100",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "domain.reinvestment_fcf",
+      "group": "domain_score",
+      "dtype": "number",
+      "unit": "score_0_100",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "domain.management_allocation",
+      "group": "domain_score",
+      "dtype": "number",
+      "unit": "score_0_100",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "domain.financial_survival",
+      "group": "domain_score",
+      "dtype": "number",
+      "unit": "score_0_100",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "domain.expectation_valuation",
+      "group": "domain_score",
+      "dtype": "number",
+      "unit": "score_0_100",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "domain.asymmetry",
+      "group": "domain_score",
+      "dtype": "number",
+      "unit": "score_0_100",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "axis.disruptive_innovation",
+      "group": "axis_score",
+      "dtype": "number",
+      "unit": "score_0_100",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "axis.long_term_growth",
+      "group": "axis_score",
+      "dtype": "number",
+      "unit": "score_0_100",
+      "requires_harness_run": true,
+      "backends": [
+        "harness_run_index"
+      ]
+    },
+    {
+      "id": "market_cap",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "local_currency",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "revenue_ttm",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "local_currency",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "revenue_growth_yoy",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "revenue_cagr_3y",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "gross_profit_ttm",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "local_currency",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "gross_margin",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "operating_margin",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "ocf_ttm",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "local_currency",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "owner_fcf_ttm",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "local_currency",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "owner_fcf_margin",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "owner_fcf_per_share",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "local_currency",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "owner_fcf_per_share_cagr_3y",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "gross_profit_per_share",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "local_currency",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "gross_profit_per_share_cagr_3y",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "net_cash",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "local_currency",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "debt_to_ocf",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "diluted_share_growth_yoy",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "diluted_share_cagr_3y",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "sbc_to_revenue",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "rnd_to_revenue",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "capex_to_ocf",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    },
+    {
+      "id": "price_to_owner_fcf",
+      "group": "screening_metric",
+      "dtype": "number",
+      "unit": "ratio",
+      "backends": [
+        "screening_warehouse"
+      ]
+    }
   ]
 }
