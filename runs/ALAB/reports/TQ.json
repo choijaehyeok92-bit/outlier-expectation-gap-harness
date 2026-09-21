@@ -1,0 +1,61 @@
+{
+  "agent_id": "TQ",
+  "ticker": "ALAB",
+  "as_of_date": "2026-09-18",
+  "domain": "turnaround_quality",
+  "role": "optional_diagnostic",
+  "analysis_status": "pending",
+  "score_0_100": 50,
+  "confidence_0_1": 0.5,
+  "bull_score": null,
+  "bear_score": null,
+  "bull_case": "",
+  "bear_case": "",
+  "thesis": "",
+  "evidence": [],
+  "counterevidence": [],
+  "unknowns": [],
+  "falsifiers": [],
+  "hard_veto_flags": [],
+  "key_kpis": [],
+  "next_checks": [],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "operating_inflection",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "self_help_quality",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "normalized_earnings_bridge",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "catalyst_accountability",
+      "score_0_100": 50,
+      "rationale": ""
+    }
+  ],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
