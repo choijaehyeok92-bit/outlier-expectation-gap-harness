@@ -787,14 +787,20 @@ def cmd_intake(args):
     print()
     for row in cov['requirements']:
         mark='OK ' if row['met'] else ('N/A' if row['conditional'] else 'GAP')
-        print(f"[{mark}] {row['id']:<24}{row['importance']:<22}{row['found']:>3}/{row['needed']:<3} {row['purpose'][:50]}")
+        # A trailing series built from equivalents is still a substitution; say so.
+        note=f"  [대체 {row['equivalents_counted']}건]" if row.get('equivalents_counted') else ''
+        print(f"[{mark}] {row['id']:<24}{row['importance']:<22}{row['found']:>3}/{row['needed']:<3} {row['purpose'][:50]}{note}")
     if st['invariant_errors']:
         print('\n불변식 위반:')
         for e in st['invariant_errors'][:20]: print(f'  - {e}')
     blocking=cov['blocking_gaps']
     if blocking:
         print('\n차단 공백 (required):')
-        for g in blocking: print(f"  - {g['id']}: {g['found']}/{g['needed']} — {g['us']} / {g['kr']}")
+        for g in blocking:
+            print(f"  - {g['id']}: {g['found']}/{g['needed']} — {g['us']} / {g['kr']}")
+            # Without this an operator sees 0/6 with six 6-K files already on disk.
+            for skipped in g.get('equivalents_rejected', []):
+                print(f"      대체 불인정 {skipped['source_document']}: {skipped['reason']}")
         print(f'\n자동 수집: python harness.py fetch {t} --user-agent "Name email@example.com"')
         print(f'수동 수집: 위 문서를 runs/{t}/sources/ 에 넣는다')
     advisory=cov['advisory_gaps']

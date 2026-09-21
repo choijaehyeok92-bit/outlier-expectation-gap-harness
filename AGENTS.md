@@ -25,7 +25,7 @@
 
 ## Independence protocol
 ### Phase 0 — Raw data intake and preprocessing
-`config/intake.json`의 문서 체크리스트로 필요한 원자료를 먼저 확보하고, Financial Preprocessor(FP)가 공시 사실을 atomic fact로 추출해 `sources/financials/normalized_financials.json`을 만든다. FP는 계산·추정·경제적 정상화 판단을 하지 않으며 점수·Bull/Bear·Hard Veto를 산출하지 않는다. 지침은 [`agents/00_financial_preprocessor/AGENTS.md`](agents/00_financial_preprocessor/AGENTS.md)다. 이 단계가 끝나기 전에는 freeze와 이후 분석을 시작하지 않는다.
+`config/intake.json`의 문서 체크리스트로 필요한 원자료를 먼저 확보하고, Financial Preprocessor(FP)가 공시 사실을 atomic fact로 추출해 `sources/financials/normalized_financials.json`을 만든다. FP는 계산·추정·경제적 정상화 판단을 하지 않으며 점수·Bull/Bear·Hard Veto를 산출하지 않는다. 지침은 [`agents/00_financial_preprocessor/AGENTS.md`](agents/00_financial_preprocessor/AGENTS.md)다. 이 단계가 끝나기 전에는 freeze와 이후 분석을 시작하지 않는다. 외국 민간발행인은 10-Q를 제출하지 않으므로 과거 6-K 중간 보고서를 trailing 10-Q 등가물로 인정하되, 그 문서에서 quarter·ytd 기간 fact가 실제로 추출된 6-K만 센다. 보도자료 6-K는 분기보고서가 아니다.
 
 ### Phase 1 — Blind analysis
 항목당 에이전트 1개가 다른 항목의 결론을 보지 않고 독립 분석한다. triage(EV·AS·DI·FS)를 먼저 실행한다.

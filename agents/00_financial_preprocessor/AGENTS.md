@@ -18,6 +18,8 @@
 ## 입력
 Stage 0의 문서 체크리스트는 [`config/intake.json`](../../config/intake.json)에 있다. `python harness.py intake <TICKER>`가 필요 문서와 현재 확보 상태를 대조해 공백을 출력한다. `required` 항목이 비어 있으면 전처리를 시작하지 않는다.
 
+외국 민간발행인(FPI)은 10-Q를 제출하지 않는다. 중간 실적은 6-K로 나오므로 `latest_interim`과 `trailing_quarters`는 **과거 6-K 중간 보고서를 10-Q 등가물로 인정한다.** 다만 6-K는 신고가 아니라 제출이고 보도자료·수시사항도 같은 폼을 쓰므로, **그 문서에서 `period_kind`가 `quarter` 또는 `ytd`인 fact를 실제로 추출한 6-K만** 분기보고서로 센다. 따라서 FPI를 전처리할 때는 6-K의 중간 손익·현금흐름을 해당 문서를 출처로 삼아 기간 fact로 남겨야 한다. 출처를 연간 20-F로 몰아 적으면 그 6-K는 인정되지 않는다.
+
 문서 확보는 `python harness.py fetch <TICKER>`가 SEC EDGAR에서 자동으로 하거나 사람이 직접 `sources/`에 넣는다. **fetch는 규제기관 색인에서의 결정론적 내려받기이지 조사가 아니다.** 티커를 CIK로 바꾸고, 제출 색인을 읽고, 체크리스트가 요구하는 폼을 as_of_date 이전 것만 받아 `sources/fetch_manifest.json`에 출처 URL·접수번호·제출일을 남긴다. IR 자료처럼 EDGAR에 정형 폼이 없는 항목은 자동 수집 대상이 아니다.
 
 FP 자신은 어떤 경우에도 웹에 접근하지 않는다. 디스크에 있는 파일만 읽는다. 이 경계가 아래 절대 규칙을 유지시킨다.
