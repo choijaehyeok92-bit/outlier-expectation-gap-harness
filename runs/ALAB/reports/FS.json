@@ -5,21 +5,21 @@
   "domain": "financial_survival",
   "role": "domain_analyst",
   "analysis_status": "complete",
-  "score_0_100": 81.25,
+  "score_0_100": 73.25,
   "confidence_0_1": 0.88,
-  "bull_score": 92,
-  "bear_score": 68,
-  "bull_case": "ALAB had about $1.25B of cash and marketable securities, little funded debt, positive operating cash flow and low capex intensity. It can fund aggressive R&D and product ramps internally even in a weaker capital-market environment.",
-  "bear_case": "The main financial-survival risks are not solvency but dilution, customer-linked warrants and a sharp AI-demand correction. High SBC and rapid hiring can reduce per-share economics even while the balance sheet remains strong.",
-  "thesis": "Astera's financial survival profile is strong. June liquidity was about $1.25B, funded debt was immaterial, H1 operating cash flow was positive and capex was modest. This supports a 90-level liquidity and stress-survival assessment. The limiting factor is dilution: period-end common shares rose about 1.9% from 2025 year-end to June 2026, Q3 guided diluted shares were about 185M, and customer warrants can add further shares. This is manageable, not a solvency threat.",
+  "bull_score": 88,
+  "bear_score": 58,
+  "bull_case": "ALAB has roughly $1.25B of cash and marketable securities, negligible funded debt and positive operating cash flow. Even under a severe AI-capex slowdown, financing survival is not the central risk.",
+  "bear_case": "Financial solvency is strong, but dilution is not trivial. Q3 guidance uses about 185M diluted shares versus 179.6M FY2025 weighted diluted shares, and SBC remains large relative to GAAP operating income.",
+  "thesis": "Astera Labs has excellent liquidity and very low leverage, so near-term survival risk is minimal. H1 operating cash flow was positive and June liquidity exceeded $1.25B. The main financial-survival deduction is dilution: guided Q3 diluted shares are just over 3% above FY2025 weighted diluted shares, and an Amazon warrant plus substantial SBC create additional per-share risk. This is a capital-allocation and ownership-quality issue, not a solvency problem.",
   "evidence": [
     {
-      "claim": "June 30 cash was $111.5M and marketable securities were $1.142B; total liabilities were $205.8M with no material funded debt shown.",
+      "claim": "June 30 cash was $111.5M and marketable securities $1.142B, totaling about $1.253B of liquidity.",
       "source_type": "filing",
       "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
       "period": "2026-06-30",
       "as_of_date": "2026-08-05",
-      "value": "1.253B liquidity / 205.8M liabilities",
+      "value": "1.253B",
       "fact_or_estimate": "fact",
       "evidence_id": "ALAB-FS-LIQ"
     },
@@ -34,126 +34,137 @@
       "evidence_id": "ALAB-FS-CF"
     },
     {
-      "claim": "Common shares outstanding were about 173.485M at June 30 versus 170.186M at 2025 year-end, an increase of about 1.9%.",
+      "claim": "Q2 total liabilities were $205.8M and the balance sheet showed no material funded debt.",
       "source_type": "filing",
       "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
-      "period": "2025-12-31 to 2026-06-30",
+      "period": "2026-06-30",
       "as_of_date": "2026-08-05",
-      "value": "170.186M -> 173.485M",
+      "value": "205.8M total liabilities",
       "fact_or_estimate": "fact",
-      "evidence_id": "ALAB-FS-SHARES"
+      "evidence_id": "ALAB-FS-DEBT"
     },
     {
-      "claim": "Q3 guidance assumed approximately 185M diluted shares.",
+      "claim": "Q3 guidance assumes approximately 185M diluted shares versus 179.551M FY2025 weighted diluted shares, an increase of roughly 3.0%.",
       "source_type": "company_primary",
       "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
-      "period": "Q3 2026 guidance",
+      "period": "Q3 2026 guidance vs FY2025",
       "as_of_date": "2026-08-04",
-      "value": "185M diluted shares",
+      "value": "185M vs 179.551M",
       "fact_or_estimate": "fact",
-      "evidence_id": "ALAB-FS-GUIDE"
+      "evidence_id": "ALAB-FS-DIL"
     },
     {
-      "claim": "The February 2026 Amazon warrant permits up to 3,262,299 shares at $142.82 and vests based on specified purchase-performance conditions.",
+      "claim": "H1 2026 stock-based compensation was $112.9M in the cash-flow reconciliation.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-05",
+      "value": "112.9M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-FS-SBC"
+    },
+    {
+      "claim": "The February 2026 Amazon customer warrant covers up to 3,262,299 shares at $142.82 subject to specified purchase-performance conditions.",
       "source_type": "filing",
       "source": "https://www.sec.gov/Archives/edgar/data/1736297/000110465926012606/tm265461d1_8k.htm",
       "period": "2026-02-05",
       "as_of_date": "2026-02-10",
-      "value": "3.262M shares / $142.82",
+      "value": "3.262M shares",
       "fact_or_estimate": "fact",
       "evidence_id": "ALAB-FS-WARRANT"
     }
   ],
   "counterevidence": [
-    "H1 stock-based compensation was high at about $112.9M.",
-    "Customer warrants can create incremental dilution if purchase thresholds are met.",
-    "AI semiconductor demand can be cyclical and customer concentration raises revenue-volatility risk."
+    "The share-count increase partly reflects option/RSU dilution accompanying very rapid revenue and FCF growth.",
+    "The Amazon warrant is performance-conditioned and can align a strategic customer's purchases with shareholder value if the associated revenue is highly incremental.",
+    "No external financing is needed for ordinary operations given current liquidity and cash generation."
   ],
   "unknowns": [
-    "Fully diluted share count after all existing customer warrants and employee awards.",
-    "Future SBC as a percentage of revenue after the current hiring and product-ramp phase.",
-    "Magnitude of long-term purchase commitments relative to TTM revenue."
+    "2027 diluted share count after employee equity grants and warrant vesting.",
+    "Total future share issuance associated with existing RSUs/options.",
+    "Whether SBC as a percentage of owner FCF declines as revenue scales.",
+    "Stress behavior of working capital if AI demand corrects abruptly."
   ],
   "falsifiers": [
-    "If annual diluted-share growth exceeds 5% without faster owner-FCF/share growth, dilution should become a stronger veto concern.",
-    "If operating cash flow turns negative for multiple quarters while R&D and capex accelerate, stress-survival score should fall.",
-    "If the company takes material debt to fund ordinary operations, external-capital dependence should be reassessed."
+    "If OCF turns sustainably negative while inventories/receivables rise, stress-survival should be rescored lower.",
+    "If diluted shares grow above 5% annually for multiple years, dilution risk should become a veto candidate.",
+    "If liquidity falls materially without productive reinvestment or buybacks, financial resilience should be reassessed."
   ],
   "hard_veto_flags": [
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
       "status": "cleared",
-      "rationale": "The company is net cash, operating-cash-flow positive and has modest capex relative to liquidity."
+      "rationale": "ALAB is strongly net cash and operating-cash-flow positive; ordinary survival does not depend on external financing."
     },
     {
       "veto": "장기간 지속되는 과도한 희석",
-      "status": "cleared",
-      "rationale": "Observed period-end share growth was about 1.9% from year-end to June; warrants and SBC require monitoring but do not yet establish persistent excessive dilution."
+      "status": "conditional",
+      "rationale": "Near-term diluted-share growth is around the rubric's 3% threshold and SBC is material. Persistence is not yet established, so the long-duration veto remains under review rather than confirmed."
     },
     {
       "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
       "status": "cleared",
-      "rationale": "Balance-sheet solvency risk is low; valuation-linked permanent-loss risk is assessed by AS rather than FS."
+      "rationale": "Balance-sheet solvency risk is very low. Valuation-driven downside belongs to AS rather than bankruptcy analysis."
     }
   ],
   "key_kpis": [
     {
-      "name": "cash plus marketable securities",
-      "direction": "stable",
-      "threshold": "ample versus annual capex and OCF stress",
+      "name": "cash + marketable securities",
+      "direction": "up",
+      "threshold": "maintain large net-cash buffer",
       "cadence": "quarterly"
     },
     {
-      "name": "diluted share growth",
-      "direction": "down",
-      "threshold": "below 3% annually",
-      "cadence": "quarterly/annual"
-    },
-    {
-      "name": "operating cash flow",
+      "name": "operating FCF",
       "direction": "up",
       "threshold": "remain sustainably positive",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "diluted shares YoY",
+      "direction": "down",
+      "threshold": "below 3% and trending lower",
       "cadence": "quarterly"
     }
   ],
   "next_checks": [
-    "Q3 cash flow and liquidity",
-    "SBC and diluted-share growth",
-    "Customer-warrant vesting"
+    "Q3 operating cash flow and working capital",
+    "Q3 diluted share count",
+    "SBC plus Amazon-warrant vesting"
   ],
   "verdict": "support",
   "subscores": [
     {
       "criterion_id": "liquidity_leverage",
       "score_0_100": 90,
-      "rationale": "About $1.25B of cash and marketable securities, negligible funded debt and positive cash flow support the rubric's very-strong/net-cash anchor."
+      "rationale": "Approximately $1.25B of liquidity, negligible funded debt and positive OCF support the top net-cash anchor."
     },
     {
       "criterion_id": "stress_survival",
-      "score_0_100": 90,
-      "rationale": "Positive H1 operating cash flow, modest capex and large liquidity indicate the company can continue R&D and product investment through a financing-market stress scenario."
+      "score_0_100": 85,
+      "rationale": "The company can fund operations and R&D internally through a meaningful downturn while retaining a large liquidity buffer; score is below 90 because customer concentration and AI cyclicality can still hit cash generation."
     },
     {
       "criterion_id": "dilution_offbalance",
-      "score_0_100": 55,
-      "rationale": "Period-end shares rose about 1.9% from year-end, placing dilution in the 0-3% band. Customer warrants and SBC prevent a higher score."
+      "score_0_100": 30,
+      "rationale": "Q3 guided diluted shares are slightly above 3% versus FY2025 weighted diluted shares, triggering the conservative +3% observable anchor. SBC and the Amazon warrant reinforce the need for monitoring."
     }
   ],
   "uncertainties": [
     {
       "criterion_id": "liquidity_leverage",
-      "severity": "minor",
-      "rationale": "Reported balance-sheet liquidity is straightforward and debt is immaterial."
+      "severity": "material",
+      "rationale": "Cash and securities are directly reported and debt is minimal."
     },
     {
       "criterion_id": "stress_survival",
       "severity": "material",
-      "rationale": "A severe hyperscale AI spending correction could reduce operating cash flow faster than current history suggests."
+      "rationale": "A severe AI-capex correction has not yet been observed through a full cycle."
     },
     {
       "criterion_id": "dilution_offbalance",
-      "severity": "material",
-      "rationale": "Warrant vesting and employee equity awards can raise the fully diluted share count beyond period-end common shares."
+      "severity": "critical",
+      "rationale": "The exact multi-year dilution path depends on future equity grants and warrant vesting."
     }
   ],
   "valuation_inputs": {

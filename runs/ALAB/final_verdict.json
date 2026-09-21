@@ -4,14 +4,14 @@
   "decision_policy_version": "3.3",
   "as_of_date": "2026-09-18",
   "ticker": "ALAB",
-  "score_100": 73.92,
-  "score_100_ex_valuation": 77.18,
+  "score_100": 73.12,
+  "score_100_ex_valuation": 76.24,
   "coverage_weight": 100,
   "classification": "Emerging Outlier",
-  "disruptive_innovation_score": 78.75,
+  "disruptive_innovation_score": 75.25,
   "turnaround_quality_score": null,
   "axis_scores": {
-    "disruptive_innovation": 78.75,
+    "disruptive_innovation": 75.25,
     "long_term_growth": null
   },
   "reachable_archetypes_raw": [
@@ -173,34 +173,34 @@
       "raw_before_provider_calibration": 77.5
     },
     "financial_survival": {
-      "bull_score": 92,
-      "bear_score": 68,
+      "bull_score": 88,
+      "bear_score": 58,
       "criteria": {
-        "dilution_offbalance": 55.0,
+        "dilution_offbalance": 30.0,
         "liquidity_leverage": 90.0,
-        "stress_survival": 90.0
+        "stress_survival": 85.0
       },
-      "raw_weighted_median": 81.25,
-      "score": 81.25,
-      "spread": 24.0,
+      "raw_weighted_median": 73.25,
+      "score": 73.25,
+      "spread": 30.0,
       "avg_confidence": 0.88,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
       "domain_dispute": true,
       "review_required": true,
       "uncertainties": {
-        "critical": 0,
+        "critical": 1,
         "material": 2,
-        "minor": 1
+        "minor": 0
       },
       "score_source": "rubric_subscores",
-      "raw_score": 81.25,
-      "calibrated_score": 77.92,
-      "calibrated_shadow_score": 77.92,
-      "decision_score": 81.25,
+      "raw_score": 73.25,
+      "calibrated_score": 69.92,
+      "calibrated_shadow_score": 69.92,
+      "decision_score": 73.25,
       "provider_offset": -3.33,
-      "score_before_provider_calibration": 81.25,
-      "raw_before_provider_calibration": 81.25
+      "score_before_provider_calibration": 73.25,
+      "raw_before_provider_calibration": 73.25
     },
     "expectation_valuation": {
       "bull_score": 75,
@@ -234,7 +234,7 @@
     },
     "asymmetry": {
       "bull_score": 82,
-      "bear_score": 38,
+      "bear_score": 35,
       "criteria": {
         "permanent_loss": 35.0,
         "probability_calibration": 65.0,
@@ -242,15 +242,15 @@
       },
       "raw_weighted_median": 63.25,
       "score": 63.25,
-      "spread": 44.0,
-      "avg_confidence": 0.77,
+      "spread": 47.0,
+      "avg_confidence": 0.78,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
       "domain_dispute": true,
       "review_required": true,
       "uncertainties": {
-        "critical": 0,
-        "material": 3,
+        "critical": 1,
+        "material": 2,
         "minor": 0
       },
       "score_source": "rubric_subscores",
@@ -263,34 +263,34 @@
       "raw_before_provider_calibration": 63.25
     },
     "disruptive_innovation": {
-      "bull_score": 90,
-      "bear_score": 60,
+      "bull_score": 88,
+      "bear_score": 58,
       "criteria": {
-        "adoption_curve": 85.0,
-        "cost_performance_shift": 80.0,
+        "adoption_curve": 80.0,
+        "cost_performance_shift": 75.0,
         "optionality_incumbent_response": 70.0
       },
-      "raw_weighted_median": 78.75,
-      "score": 78.75,
+      "raw_weighted_median": 75.25,
+      "score": 75.25,
       "spread": 30.0,
-      "avg_confidence": 0.83,
+      "avg_confidence": 0.82,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
       "domain_dispute": true,
       "review_required": true,
       "uncertainties": {
-        "critical": 0,
-        "material": 3,
+        "critical": 1,
+        "material": 2,
         "minor": 0
       },
       "score_source": "rubric_subscores",
-      "raw_score": 78.75,
-      "calibrated_score": 75.42,
-      "calibrated_shadow_score": 75.42,
-      "decision_score": 78.75,
+      "raw_score": 75.25,
+      "calibrated_score": 71.92,
+      "calibrated_shadow_score": 71.92,
+      "decision_score": 75.25,
       "provider_offset": -3.33,
-      "score_before_provider_calibration": 78.75,
-      "raw_before_provider_calibration": 78.75
+      "score_before_provider_calibration": 75.25,
+      "raw_before_provider_calibration": 75.25
     },
     "long_term_growth": null,
     "turnaround_quality": null
@@ -453,34 +453,34 @@
     },
     {
       "domain": "financial_survival",
-      "bull_score": 92,
-      "bear_score": 68,
+      "bull_score": 88,
+      "bear_score": 58,
       "criteria": {
-        "dilution_offbalance": 55.0,
+        "dilution_offbalance": 30.0,
         "liquidity_leverage": 90.0,
-        "stress_survival": 90.0
+        "stress_survival": 85.0
       },
-      "raw_weighted_median": 81.25,
-      "score": 81.25,
-      "spread": 24.0,
+      "raw_weighted_median": 73.25,
+      "score": 73.25,
+      "spread": 30.0,
       "avg_confidence": 0.88,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
       "domain_dispute": true,
       "review_required": true,
       "uncertainties": {
-        "critical": 0,
+        "critical": 1,
         "material": 2,
-        "minor": 1
+        "minor": 0
       },
       "score_source": "rubric_subscores",
-      "raw_score": 81.25,
-      "calibrated_score": 77.92,
-      "calibrated_shadow_score": 77.92,
-      "decision_score": 81.25,
+      "raw_score": 73.25,
+      "calibrated_score": 69.92,
+      "calibrated_shadow_score": 69.92,
+      "decision_score": 73.25,
       "provider_offset": -3.33,
-      "score_before_provider_calibration": 81.25,
-      "raw_before_provider_calibration": 81.25
+      "score_before_provider_calibration": 73.25,
+      "raw_before_provider_calibration": 73.25
     },
     {
       "domain": "expectation_valuation",
@@ -516,7 +516,7 @@
     {
       "domain": "asymmetry",
       "bull_score": 82,
-      "bear_score": 38,
+      "bear_score": 35,
       "criteria": {
         "permanent_loss": 35.0,
         "probability_calibration": 65.0,
@@ -524,15 +524,15 @@
       },
       "raw_weighted_median": 63.25,
       "score": 63.25,
-      "spread": 44.0,
-      "avg_confidence": 0.77,
+      "spread": 47.0,
+      "avg_confidence": 0.78,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
       "domain_dispute": true,
       "review_required": true,
       "uncertainties": {
-        "critical": 0,
-        "material": 3,
+        "critical": 1,
+        "material": 2,
         "minor": 0
       },
       "score_source": "rubric_subscores",
@@ -546,38 +546,63 @@
     },
     {
       "domain": "disruptive_innovation",
-      "bull_score": 90,
-      "bear_score": 60,
+      "bull_score": 88,
+      "bear_score": 58,
       "criteria": {
-        "adoption_curve": 85.0,
-        "cost_performance_shift": 80.0,
+        "adoption_curve": 80.0,
+        "cost_performance_shift": 75.0,
         "optionality_incumbent_response": 70.0
       },
-      "raw_weighted_median": 78.75,
-      "score": 78.75,
+      "raw_weighted_median": 75.25,
+      "score": 75.25,
       "spread": 30.0,
-      "avg_confidence": 0.83,
+      "avg_confidence": 0.82,
       "unknown_penalty": 0,
       "dispute_penalty": 0,
       "domain_dispute": true,
       "review_required": true,
       "uncertainties": {
-        "critical": 0,
-        "material": 3,
+        "critical": 1,
+        "material": 2,
         "minor": 0
       },
       "score_source": "rubric_subscores",
-      "raw_score": 78.75,
-      "calibrated_score": 75.42,
-      "calibrated_shadow_score": 75.42,
-      "decision_score": 78.75,
+      "raw_score": 75.25,
+      "calibrated_score": 71.92,
+      "calibrated_shadow_score": 71.92,
+      "decision_score": 75.25,
       "provider_offset": -3.33,
-      "score_before_provider_calibration": 78.75,
-      "raw_before_provider_calibration": 78.75
+      "score_before_provider_calibration": 75.25,
+      "raw_before_provider_calibration": 75.25
     }
   ],
   "confirmed_vetoes": [],
   "unresolved_vetoes": [
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "UNRESOLVED",
+      "owners": [
+        "RF",
+        "FS"
+      ],
+      "assessments": [
+        {
+          "agent_id": "FS",
+          "owner": true,
+          "status": "conditional",
+          "rationale": "Near-term diluted-share growth is around the rubric's 3% threshold and SBC is material. Persistence is not yet established, so the long-duration veto remains under review rather than confirmed."
+        },
+        {
+          "agent_id": "RF",
+          "owner": true,
+          "status": "cleared",
+          "rationale": "Share growth is currently modest relative to business growth, although SBC and customer warrants require continued monitoring."
+        }
+      ],
+      "missing_reports": [],
+      "missing_assessments": [],
+      "non_owner_escalations": []
+    },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
       "status": "UNRESOLVED",
@@ -596,7 +621,7 @@
           "agent_id": "DI",
           "owner": false,
           "status": "conditional",
-          "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+          "rationale": "Product families are diversifying, but direct-customer concentration is high and requires CP/RT review."
         }
       ],
       "missing_reports": [
@@ -608,7 +633,7 @@
           "agent_id": "DI",
           "owner": false,
           "status": "conditional",
-          "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+          "rationale": "Product families are diversifying, but direct-customer concentration is high and requires CP/RT review."
         }
       ]
     },
@@ -624,13 +649,13 @@
           "agent_id": "AS",
           "owner": true,
           "status": "conditional",
-          "rationale": "Solvency is strong, but Bear value is only about 17% of price. The concern is valuation-linked permanent loss rather than financing distress."
+          "rationale": "Solvency risk is low because of net cash and positive OCF, but Bear intrinsic value is only about 16.5% of current price, so valuation-driven permanent-loss risk remains material."
         },
         {
           "agent_id": "FS",
           "owner": true,
           "status": "cleared",
-          "rationale": "Balance-sheet solvency risk is low; valuation-linked permanent-loss risk is assessed by AS rather than FS."
+          "rationale": "Balance-sheet solvency risk is very low. Valuation-driven downside belongs to AS rather than bankruptcy analysis."
         }
       ],
       "missing_reports": [],
@@ -674,7 +699,7 @@
             "agent_id": "FS",
             "owner": true,
             "status": "cleared",
-            "rationale": "The company is net cash, operating-cash-flow positive and has modest capex relative to liquidity."
+            "rationale": "ALAB is strongly net cash and operating-cash-flow positive; ordinary survival does not depend on external financing."
           }
         ],
         "missing_reports": [
@@ -685,7 +710,7 @@
       },
       {
         "veto": "장기간 지속되는 과도한 희석",
-        "status": "CLEARED",
+        "status": "UNRESOLVED",
         "owners": [
           "RF",
           "FS"
@@ -694,8 +719,8 @@
           {
             "agent_id": "FS",
             "owner": true,
-            "status": "cleared",
-            "rationale": "Observed period-end share growth was about 1.9% from year-end to June; warrants and SBC require monitoring but do not yet establish persistent excessive dilution."
+            "status": "conditional",
+            "rationale": "Near-term diluted-share growth is around the rubric's 3% threshold and SBC is material. Persistence is not yet established, so the long-duration veto remains under review rather than confirmed."
           },
           {
             "agent_id": "RF",
@@ -726,7 +751,7 @@
             "agent_id": "DI",
             "owner": false,
             "status": "cleared",
-            "rationale": "Revenue growth, production shipments and customer-linked design wins demonstrate paid commercial adoption."
+            "rationale": "Triple-digit revenue growth, 73.3% GAAP gross margin and production deployments demonstrate paid customer value."
           }
         ],
         "missing_reports": [
@@ -790,7 +815,7 @@
             "agent_id": "AS",
             "owner": true,
             "status": "cleared",
-            "rationale": "Current price is only about 38% of modeled Bull value and roughly 1.07x Base, so Bull+ is not required."
+            "rationale": "Current price is about 1.07x Base but only 0.38x Bull; the market does not require a Bull+ outcome."
           },
           {
             "agent_id": "EV",
@@ -823,7 +848,7 @@
             "agent_id": "DI",
             "owner": false,
             "status": "conditional",
-            "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+            "rationale": "Product families are diversifying, but direct-customer concentration is high and requires CP/RT review."
           }
         ],
         "missing_reports": [
@@ -835,7 +860,7 @@
             "agent_id": "DI",
             "owner": false,
             "status": "conditional",
-            "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+            "rationale": "Product families are diversifying, but direct-customer concentration is high and requires CP/RT review."
           }
         ]
       },
@@ -851,13 +876,13 @@
             "agent_id": "AS",
             "owner": true,
             "status": "conditional",
-            "rationale": "Solvency is strong, but Bear value is only about 17% of price. The concern is valuation-linked permanent loss rather than financing distress."
+            "rationale": "Solvency risk is low because of net cash and positive OCF, but Bear intrinsic value is only about 16.5% of current price, so valuation-driven permanent-loss risk remains material."
           },
           {
             "agent_id": "FS",
             "owner": true,
             "status": "cleared",
-            "rationale": "Balance-sheet solvency risk is low; valuation-linked permanent-loss risk is assessed by AS rather than FS."
+            "rationale": "Balance-sheet solvency risk is very low. Valuation-driven downside belongs to AS rather than bankruptcy analysis."
           }
         ],
         "missing_reports": [],
@@ -867,6 +892,31 @@
     ],
     "confirmed": [],
     "unresolved": [
+      {
+        "veto": "장기간 지속되는 과도한 희석",
+        "status": "UNRESOLVED",
+        "owners": [
+          "RF",
+          "FS"
+        ],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "conditional",
+            "rationale": "Near-term diluted-share growth is around the rubric's 3% threshold and SBC is material. Persistence is not yet established, so the long-duration veto remains under review rather than confirmed."
+          },
+          {
+            "agent_id": "RF",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Share growth is currently modest relative to business growth, although SBC and customer warrants require continued monitoring."
+          }
+        ],
+        "missing_reports": [],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
       {
         "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
         "status": "UNRESOLVED",
@@ -885,7 +935,7 @@
             "agent_id": "DI",
             "owner": false,
             "status": "conditional",
-            "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+            "rationale": "Product families are diversifying, but direct-customer concentration is high and requires CP/RT review."
           }
         ],
         "missing_reports": [
@@ -897,7 +947,7 @@
             "agent_id": "DI",
             "owner": false,
             "status": "conditional",
-            "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+            "rationale": "Product families are diversifying, but direct-customer concentration is high and requires CP/RT review."
           }
         ]
       },
@@ -913,13 +963,13 @@
             "agent_id": "AS",
             "owner": true,
             "status": "conditional",
-            "rationale": "Solvency is strong, but Bear value is only about 17% of price. The concern is valuation-linked permanent loss rather than financing distress."
+            "rationale": "Solvency risk is low because of net cash and positive OCF, but Bear intrinsic value is only about 16.5% of current price, so valuation-driven permanent-loss risk remains material."
           },
           {
             "agent_id": "FS",
             "owner": true,
             "status": "cleared",
-            "rationale": "Balance-sheet solvency risk is low; valuation-linked permanent-loss risk is assessed by AS rather than FS."
+            "rationale": "Balance-sheet solvency risk is very low. Valuation-driven downside belongs to AS rather than bankruptcy analysis."
           }
         ],
         "missing_reports": [],
@@ -961,7 +1011,7 @@
             "agent_id": "FS",
             "owner": true,
             "status": "cleared",
-            "rationale": "The company is net cash, operating-cash-flow positive and has modest capex relative to liquidity."
+            "rationale": "ALAB is strongly net cash and operating-cash-flow positive; ordinary survival does not depend on external financing."
           }
         ],
         "missing_reports": [
@@ -988,7 +1038,7 @@
             "agent_id": "DI",
             "owner": false,
             "status": "cleared",
-            "rationale": "Revenue growth, production shipments and customer-linked design wins demonstrate paid commercial adoption."
+            "rationale": "Triple-digit revenue growth, 73.3% GAAP gross margin and production deployments demonstrate paid customer value."
           }
         ],
         "missing_reports": [
@@ -1052,7 +1102,7 @@
             "agent_id": "AS",
             "owner": true,
             "status": "cleared",
-            "rationale": "Current price is only about 38% of modeled Bull value and roughly 1.07x Base, so Bull+ is not required."
+            "rationale": "Current price is about 1.07x Base but only 0.38x Bull; the market does not require a Bull+ outcome."
           },
           {
             "agent_id": "EV",
@@ -1078,7 +1128,7 @@
         "agent_id": "DI",
         "owner": false,
         "status": "conditional",
-        "rationale": "Product breadth is expanding, but revenue remains concentrated among a few direct customers and end-customer concentration is not fully disclosed."
+        "rationale": "Product families are diversifying, but direct-customer concentration is high and requires CP/RT review."
       }
     ]
   },
@@ -1182,18 +1232,18 @@
   },
   "dispersion_review": {
     "metric": "scored 도메인 전체에 대한 skew = (score - bear_score) - (bull_score - score) 의 평균. 양수면 하방 폭이 더 넓다는 뜻이다.",
-    "mean_skew": 4.94,
+    "mean_skew": 4.72,
     "label": "balanced_or_upside_skew",
     "reduce_bands": 0,
     "widest_domain": "asymmetry",
-    "most_downside_skewed": "disruptive_innovation",
+    "most_downside_skewed": "asymmetry",
     "by_domain": [
       {
         "domain": "asymmetry",
-        "spread": 44.0,
+        "spread": 47.0,
         "upside_width": 18.75,
-        "downside_width": 25.25,
-        "skew": 6.5
+        "downside_width": 28.25,
+        "skew": 9.5
       },
       {
         "domain": "customer_product",
@@ -1205,9 +1255,9 @@
       {
         "domain": "disruptive_innovation",
         "spread": 30.0,
-        "upside_width": 11.25,
-        "downside_width": 18.75,
-        "skew": 7.5
+        "upside_width": 12.75,
+        "downside_width": 17.25,
+        "skew": 4.5
       },
       {
         "domain": "expectation_valuation",
@@ -1218,10 +1268,10 @@
       },
       {
         "domain": "financial_survival",
-        "spread": 24.0,
-        "upside_width": 10.75,
-        "downside_width": 13.25,
-        "skew": 2.5
+        "spread": 30.0,
+        "upside_width": 14.75,
+        "downside_width": 15.25,
+        "skew": 0.5
       },
       {
         "domain": "management_allocation",
@@ -1339,7 +1389,7 @@
   "archetype_fit": {
     "buffett_value": {
       "eligible": false,
-      "fit_score": 76.375,
+      "fit_score": 74.375,
       "fit_axes": [
         {
           "field": "criterion.reinvestment_fcf.fcf_per_share_quality",
@@ -1351,8 +1401,8 @@
         {
           "field": "domain.financial_survival",
           "weight": 0.25,
-          "value": 81.25,
-          "normalized": 0.8125,
+          "value": 73.25,
+          "normalized": 0.7325,
           "missing": false
         },
         {
@@ -1379,11 +1429,13 @@
       ],
       "failed_conditions": [
         "signal.price_to_base_value",
+        "domain.financial_survival",
         "domain.asymmetry"
       ],
       "missing_conditions": [],
       "blocking_vetoes": [
         "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "장기간 지속되는 과도한 희석",
         "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
       ]
     },
@@ -1424,6 +1476,7 @@
       "missing_conditions": [],
       "blocking_vetoes": [
         "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "장기간 지속되는 과도한 희석",
         "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
       ]
     },
@@ -1473,18 +1526,19 @@
       "missing_conditions": [],
       "blocking_vetoes": [
         "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "장기간 지속되는 과도한 희석",
         "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
       ]
     },
     "moonshot": {
       "eligible": false,
-      "fit_score": 74.15,
+      "fit_score": 71.55,
       "fit_axes": [
         {
           "field": "domain.disruptive_innovation",
           "weight": 0.4,
-          "value": 78.75,
-          "normalized": 0.7875,
+          "value": 75.25,
+          "normalized": 0.7525,
           "missing": false
         },
         {
@@ -1504,18 +1558,20 @@
         {
           "field": "domain.financial_survival",
           "weight": 0.15,
-          "value": 81.25,
-          "normalized": 0.8125,
+          "value": 73.25,
+          "normalized": 0.7325,
           "missing": false
         }
       ],
       "failed_conditions": [
         "signal.market_cap_usd",
+        "domain.disruptive_innovation",
         "domain.asymmetry"
       ],
       "missing_conditions": [],
       "blocking_vetoes": [
         "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "장기간 지속되는 과도한 희석",
         "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
       ]
     },
@@ -1572,6 +1628,7 @@
       ],
       "blocking_vetoes": [
         "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "장기간 지속되는 과도한 희석",
         "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
       ]
     }
@@ -1642,21 +1699,21 @@
   "position_range": "0% until veto cleared",
   "ic_review_flags": [],
   "falsifiers": [
-    "If Scorpio fails to broaden beyond a few hyperscale programs, the multiple-upside-path thesis weakens.",
-    "If Bear value rises materially through demonstrated recurring FCF and customer diversification, the permanent-loss score should improve.",
-    "If customer concentration increases while growth slows, downside asymmetry worsens.",
+    "If Q3/Q4 growth decelerates sharply before Scorpio broadens beyond a small number of customers, the 3-path upside thesis weakens.",
+    "If gross margin structurally falls below the high-60s while revenue growth normalizes, Base and Bull values should be cut.",
+    "If diluted shares rise faster than owner FCF/share for multiple years, the upside distribution becomes less favorable.",
     "Major hyperscaler design losses or falling content per system would weaken customer ROI.",
     "Gross margin falling below the mid-60s with slower growth would weaken unit economics.",
     "Concentration rising while new-customer ramps stall would undermine retention/usage quality.",
-    "If Scorpio fails to become a material multi-customer product family, the platform-disruption thesis weakens.",
-    "If hyperscaler custom silicon displaces merchant connectivity faster than Astera expands adjacent products, optionality falls.",
-    "If new products grow revenue without sustaining high gross margins, cost/performance leadership may not translate into economic disruption.",
+    "If Scorpio or Leo X fails to broaden beyond a small number of customers, optionality should be rescored lower.",
+    "If gross margin compresses sharply while unit growth continues, adoption may reflect commoditization rather than durable value.",
+    "If hyperscaler internal silicon displaces Astera at major programs, the incumbent-response cap becomes binding at a lower score.",
     "If Scorpio revenue growth stalls before broad multi-customer adoption, the Base owner-FCF path becomes too aggressive.",
     "If gross margin falls materially below 65% without an offsetting acceleration in revenue or FCF, Base value should be cut.",
     "If diluted share growth persistently exceeds per-share FCF growth, the expectation-gap thesis fails.",
-    "If annual diluted-share growth exceeds 5% without faster owner-FCF/share growth, dilution should become a stronger veto concern.",
-    "If operating cash flow turns negative for multiple quarters while R&D and capex accelerate, stress-survival score should fall.",
-    "If the company takes material debt to fund ordinary operations, external-capital dependence should be reassessed.",
+    "If OCF turns sustainably negative while inventories/receivables rise, stress-survival should be rescored lower.",
+    "If diluted shares grow above 5% annually for multiple years, dilution risk should become a veto candidate.",
+    "If liquidity falls materially without productive reinvestment or buybacks, financial resilience should be reassessed.",
     "Persistent dilution above FCF/share growth would lower capital-allocation quality.",
     "Large acquisitions with poor post-close returns would weaken the score.",
     "Accounting-control or related-party issues would trigger integrity review.",
