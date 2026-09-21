@@ -1,0 +1,161 @@
+{
+  "agent_id": "RF",
+  "ticker": "TMDX",
+  "as_of_date": "2026-09-18",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 71,
+  "confidence_0_1": 0.84,
+  "bull_score": 87,
+  "bear_score": 45,
+  "bull_case": "Heavy reinvestment in R&D, aircraft/logistics and facilities opens Kidney, Gen 3 and international expansion while route density and product scale restore owner FCF/share growth.",
+  "bear_case": "The company is evolving into a capital-intensive logistics operator; capex, working capital, SBC and R&D absorb cash faster than per-share economics improve.",
+  "thesis": "TMDX has an unusually large reinvestment runway and strong historical incremental economics, but current per-share cash quality has weakened. TTM capex plus R&D exceeds TTM operating cash flow, showing aggressive internal absorption, while SBC-adjusted owner FCF/share has fallen from the unusually strong 2025 level. This is consistent with a growth investment phase, but the strategy requires evidence that the spending converts back into per-share FCF.",
+  "evidence": [
+    {
+      "claim": "Using reported periods, TTM OCF is about $145.9M, TTM capex $66.9M and TTM R&D $92.5M, implying capex+R&D absorption of roughly 109% of OCF.",
+      "source_type": "other",
+      "source": "runs/TMDX/sources/financials/normalized_financials.json",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-09-18",
+      "value": "OCF 145.9M; capex 66.9M; R&D 92.5M; absorption ~109%",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "TMDX-RF-ABSORB"
+    },
+    {
+      "claim": "FY2025 revenue grew to $605.5M from $441.5M in 2024 and $241.6M in 2023, while OCF improved to $192.8M in 2025.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526067032/tmdx-20251231.htm",
+      "period": "FY2023-FY2025",
+      "as_of_date": "2026-02-24",
+      "value": "revenue 241.6/441.5/605.5M; 2025 OCF 192.8M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-RF-HIST"
+    },
+    {
+      "claim": "H1 2026 R&D rose to $56.5M from $33.1M, primarily for next-generation OCS, Kidney and clinical programs, while H1 OCF fell to $41.8M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1756262/000119312526332843/tmdx-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-04",
+      "value": "R&D 56.5M; OCF 41.8M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "TMDX-RF-RD"
+    },
+    {
+      "claim": "TTM raw FCF is about $79.0M; after roughly $37.1M TTM SBC, a conservative owner-FCF proxy is about $42.0M or ~$1.03 per Q2 diluted share.",
+      "source_type": "other",
+      "source": "runs/TMDX/sources/financials/normalized_financials.json",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-09-18",
+      "value": "~42.0M / ~$1.03 per diluted share",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "TMDX-RF-OWNER"
+    }
+  ],
+  "counterevidence": [
+    "2026 capex includes growth real estate and strategic infrastructure rather than only maintenance spending.",
+    "Working-capital growth consumed $36.8M of H1 2026 operating cash flow and may partially reverse.",
+    "Product gross margins remain high and service gross margin improved, supporting future operating leverage.",
+    "Historical revenue and OCF expansion suggest prior R&D/NOP investment created substantial value."
+  ],
+  "unknowns": [
+    "True maintenance versus growth capex.",
+    "Normalized owner FCF after Somerville and fleet buildout.",
+    "Incremental economics of Kidney/Gen 3.",
+    "Long-run aircraft replacement and maintenance capital."
+  ],
+  "falsifiers": [
+    "If owner FCF/share does not recover despite revenue growth, incremental ROIC should be cut below cost-of-capital quality.",
+    "If Kidney/Gen3 convert R&D into high-margin revenue and working capital normalizes, FCF/share quality should be raised.",
+    "If capex+R&D remains above OCF for years without margin improvement, the reinvestment thesis fails."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "2026 cash returns have weakened, but multi-year revenue/OCF growth and identified growth investments do not establish a structural collapse in incremental returns."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "conditional",
+      "rationale": "SBC is recurring and convertibles can dilute shares; current dilution is manageable but long-duration per-share impact remains unresolved."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "recover above $2 then compound",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "capex+R&D / OCF",
+      "direction": "down",
+      "threshold": "normalize below 100% with growth",
+      "cadence": "TTM"
+    },
+    {
+      "name": "incremental operating profit / reinvestment",
+      "direction": "up",
+      "threshold": "clear conversion of current investments",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Maintenance capex disclosure",
+    "Kidney/Gen3 commercialization",
+    "Working-capital normalization"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 80,
+      "rationale": "2023-2025 revenue and OCF scaled rapidly on prior investment, but 2026 margin/cash conversion pressure prevents an elite score."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 90,
+      "rationale": "TTM capex+R&D exceeds 100% of OCF and multiple internal growth avenues exist; prior returns support the high-absorption rubric condition."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 40,
+      "rationale": "Conservative SBC-adjusted owner FCF/share has fallen materially versus the strong 2025 level, so current per-share cash quality is weak despite plausible normalization."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "Current investment has not yet matured into observable returns."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "The runway is large, but some spending is infrastructure rather than directly scalable R&D."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "critical",
+      "rationale": "Working-capital timing and growth capex make current owner-FCF normalization highly uncertain."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
