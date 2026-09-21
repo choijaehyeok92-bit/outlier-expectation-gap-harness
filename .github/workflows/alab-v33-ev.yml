@@ -1,0 +1,86 @@
+name: ALAB v3.3 Stage0 to EV 2026-09-18
+
+on:
+  push:
+    branches:
+      - work/alab-2026-09-18-v33
+    paths:
+      - ".harness_inputs/ALAB/**"
+      - ".github/workflows/alab-v33-ev.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  alab:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/alab-2026-09-18-v33
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+
+      - name: Execute requested ALAB sequence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/alab-v33-ev.log) 2>&1
+
+          INPUT=".harness_inputs/ALAB"
+
+          python harness.py selftest
+          rm -rf runs/ALAB
+          python harness.py init ALAB --as-of 2026-09-18
+
+          if ! python harness.py fetch ALAB --user-agent "ALAB-Stage0 github-actions[bot]@users.noreply.github.com"; then
+            echo "SEC fetch unavailable in runner; applying harness manual fallback."
+          fi
+
+          mkdir -p runs/ALAB/sources/financials
+          cp "$INPUT/sources/financials/normalized_financials.json" runs/ALAB/sources/financials/normalized_financials.json
+          cp "$INPUT/sources/README.md" runs/ALAB/sources/README.md
+
+          python harness.py intake ALAB | tee runlogs/intake.txt
+          python harness.py prompt ALAB FP --out runs/ALAB/FP_prompt.md
+          python harness.py validate-pack ALAB
+
+          cp "$INPUT/company_context.json" runs/ALAB/company_context.json
+          python harness.py freeze ALAB --provider openai --model gpt-5.6-sol --reasoning-effort high
+          python harness.py plan ALAB | tee runlogs/plan_after_freeze.txt
+
+          python harness.py prompt ALAB EV --out runs/ALAB/EV_prompt.md
+          cp "$INPUT/reports/EV.json" runs/ALAB/reports/EV.json
+          python harness.py validate ALAB EV
+
+          python harness.py aggregate ALAB | tee runlogs/aggregate_after_ev.json
+          python harness.py digest ALAB
+          python harness.py plan ALAB | tee runlogs/plan_after_ev.txt
+
+          echo "===== AGGREGATE ====="
+          cat runs/ALAB/aggregate.json
+          echo "===== DIGEST ====="
+          cat runs/ALAB/digest.md
+          echo "===== NEXT PLAN ====="
+          cat runlogs/plan_after_ev.txt
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/ALAB
+          if ! git diff --cached --quiet; then
+            git commit -m "persist: ALAB v3.3 Stage0 through EV 2026-09-18"
+            git push origin HEAD:work/alab-2026-09-18-v33
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ALAB-v33-stage0-ev-2026-09-18
+          path: |
+            runs/ALAB
+            runlogs
