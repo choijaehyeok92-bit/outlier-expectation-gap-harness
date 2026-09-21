@@ -1,0 +1,176 @@
+{
+  "agent_id": "EV",
+  "ticker": "BRK.B",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 71.75,
+  "confidence_0_1": 0.78,
+  "bull_score": 82,
+  "bear_score": 58,
+  "bull_case": "유리한 사업·자본배분 가정이 유지되면 기준 점수보다 높은 결과가 가능하다.",
+  "bear_case": "성장·마진·자본배분이 정상화되고 핵심 불확실성이 불리하게 전개되면 기준 점수보다 낮아질 수 있다.",
+  "thesis": "현재가는 정상화 영업이익 기반 owner-earnings proxy DCF의 Base보다 약 20% 낮다. 대규모 순현금/T-bill이 하방을 지지하지만 Berkshire의 보험·투자 구조 때문에 단순 FCF 정의에는 모델 위험이 있다.",
+  "evidence": [
+    {
+      "claim": "2026 H1 operating earnings were $24.329B; Q2 operating earnings were $12.983B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026 H1/Q2",
+      "as_of_date": "2026-08-10",
+      "value": 24329,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-OE-2026H1"
+    },
+    {
+      "claim": "Insurance and Other held $359.2B cash/cash equivalents/U.S. Treasury Bills at June 30, 2026; borrowings excluding BHE/BNSF were $43.3B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-10",
+      "value": 359200,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-LIQ-2026Q2"
+    },
+    {
+      "claim": "BRK.B closed at $509.77 on 2026-09-18.",
+      "source_type": "secondary",
+      "source": "https://stockanalysis.com/stocks/brk.b/history/",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 509.77,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-PRICE-20260918"
+    },
+    {
+      "claim": "Current P/B was about 1.47 versus a 5-year average around 1.49.",
+      "source_type": "secondary",
+      "source": "https://www.financecharts.com/stocks/BRK.B/value/price-to-book-value-averages",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 1.47,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-PB-20260918"
+    }
+  ],
+  "counterevidence": [
+    "Operating earnings are not literal free cash flow and include insurance investment income; valuation uses a normalized owner-earnings proxy.",
+    "Berkshire's size constrains reinvestment and makes terminal assumptions material.",
+    "Q2 2026 net earnings included $12.684B of investment gains excluded from the normalized base."
+  ],
+  "unknowns": [
+    "Long-run normalized insurance underwriting margin under Greg Abel.",
+    "Sustainable return on the enlarged cash/T-bill portfolio if rates decline.",
+    "Post-acquisition economics of OxyChem and Taylor Morrison."
+  ],
+  "uncertainties": [],
+  "falsifiers": [
+    "Normalized owner earnings/share falls below the Bear path for two years.",
+    "Net cash/T-bill cushion falls materially without offsetting owner earnings.",
+    "Price exceeds Bull intrinsic value without a stronger fundamental path."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price $509.77 is below modeled Bull value about $824 and Base about $634."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner earnings/share",
+      "direction": "up",
+      "threshold": "base path 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "operating earnings",
+      "direction": "up",
+      "threshold": "실질 성장 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "capital allocation",
+      "direction": "up",
+      "threshold": "intrinsic-value discipline 유지",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 Q3 10-Q",
+    "2026 annual report",
+    "capital allocation update"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 75,
+      "rationale": "고정 DCF Base 약 $633.66, 현재가 $509.77로 price/Base≈0.804. signal_map 0.7~0.9 구간=75."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 70,
+      "rationale": "price/Base≈0.804로 signal_map 0.7~0.9 구간=70."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 70,
+      "rationale": "Base terminal fraction 약 62.6%로 80% review 기준보다 낮지만 owner-FCF를 operating-earnings proxy로 정상화한 불확실성이 남는다."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": 0.5,
+    "revenue_cagr_next_3y": 0.06,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          21,
+          21.4,
+          21.8,
+          22.2,
+          22.6,
+          23,
+          23.5,
+          24,
+          24.5,
+          25
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          23,
+          24.3,
+          25.7,
+          27.1,
+          28.6,
+          30,
+          31.5,
+          33,
+          34.5,
+          36
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          24,
+          25.8,
+          27.8,
+          29.9,
+          32.1,
+          34.4,
+          36.8,
+          39.3,
+          41.9,
+          44.6
+        ]
+      }
+    }
+  },
+  "archetype_signals": {
+    "price_to_base_value": null,
+    "valuation_percentile_5y": 0.5,
+    "revenue_cagr_next_3y": 0.06
+  }
+}
