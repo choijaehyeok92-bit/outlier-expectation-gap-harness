@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from datetime import date, datetime, timedelta, timezone
 import argparse, hashlib, json, os, re, statistics, shutil, subprocess, sys
-from . import rubric, calibration, archetypes, macro_geo, planner, intake, fetch, research, plain_report, context
+from . import rubric, calibration, archetypes, macro_geo, planner, intake, fetch, research, plain_report, context, dilution
 from .conditions import check_condition, number
 from .evidence import concentration_flags
 from .state import dispersion_review, narrowed_position
@@ -31,6 +31,11 @@ MACRO_DOMAIN='macro_overlay'
 REVIEW_DOMAINS=('evidence_quality','red_team')
 IC_DOMAIN='investment_committee'
 VETO_STATUSES=('none','candidate','conditional','confirmed','cleared')
+VETO_CRITERIA=CALIBRATION.get('veto_criteria',{})
+DILUTION_POLICY=CALIBRATION.get('dilution_policy')
+# The veto whose watch layer this is, resolved from config rather than spelled in code.
+DILUTION_VETO=next((v for v,d in VETO_CRITERIA.get('definitions',{}).items()
+                    if d.get('requires_element_assessment')),None)
 VERSIONS={k:STRATEGY[k] for k in ('strategy_version','schema_version','decision_policy_version')}
 OVERLAY_POLICY=EXEC['overlay_policy']
 ARCHETYPE_IDS=[t['id'] for t in ARCHETYPES['types']]
@@ -416,8 +421,16 @@ def compute_aggregate(ticker, reports):
         narrowed=narrowed_position(state,dispersion['reduce_bands'],STATE_POLICY)
         if narrowed:
             dispersion['position_before']=pos; pos=narrowed
+    # Dilution the analyst could not establish as a veto is sized for, not ignored.
+    dilution_watch=dilution.watch(reports,VETO_REVIEWERS.get(DILUTION_VETO,[]),DILUTION_POLICY)
+    if (dilution_watch and dilution_watch['position_cap'] and state in BUY_STATES
+            and archetype['id'] in (DILUTION_POLICY or {}).get('applies_position_cap_to_archetypes',[])):
+        dilution_watch['position_before']=pos
+        # A constraint already applied is never dropped: a watch may only add to it.
+        pos=(f"{pos}; also subject to {dilution_watch['position_cap']}"
+             if dispersion and dispersion.get('position_before') else dilution_watch['position_cap'])
     di=ds.get('disruptive_innovation'); tq=ds.get('turnaround_quality')
-    result={**VERSIONS,'as_of_date':ctx['as_of_date'],'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'turnaround_quality_score':tq['score'] if tq else None,'axis_scores':{a:(ds[a]['score'] if isinstance(ds.get(a),dict) else None) for a in AXIS_DOMAINS},'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'provider_calibration':provider_cal,'dispersion_review':dispersion,'run_manifest':manifest}
+    result={**VERSIONS,'as_of_date':ctx['as_of_date'],'ticker':ticker.upper(),'score_100':round(normalized,2) if normalized is not None else None,'score_100_ex_valuation':round(score_ex_valuation,2) if score_ex_valuation is not None else None,'coverage_weight':covered,'classification':cls,'disruptive_innovation_score':di['score'] if di else None,'turnaround_quality_score':tq['score'] if tq else None,'axis_scores':{a:(ds[a]['score'] if isinstance(ds.get(a),dict) else None) for a in AXIS_DOMAINS},'archetype':archetype,'reachable_archetypes_raw':reachable,'early_exit':early_exit,'hard_veto_status':veto_status,'mechanical_pre_ic_state':state,'position_range_pre_ic':pos,'domain_scores':ds,'disputes':disputes,'confirmed_vetoes':confirmed,'unresolved_vetoes':unresolved,'veto_gate':gate,'valuation_model':valuation,'provider_calibration':provider_cal,'dispersion_review':dispersion,'dilution_watch':dilution_watch,'run_manifest':manifest}
     result.update(archetype_fit=archetype['archetype_fit'], review_only=review_only,
         evidence_concentration_flags=concentration_flags(reports),macro_geo_overlay=overlay,
         diagnostics={'turnaround_candidate':planner.diagnostic_enabled(ctx)},ic_verdict=ic,early_exit_record=None)
@@ -678,6 +691,49 @@ def cmd_prompt(args):
     if args.out: Path(args.out).write_text(text,encoding='utf-8'); print(f'{args.out}: {len(text)} chars')
     else: sys.stdout.write(text)
 
+def veto_element_errors(report):
+    """Config-driven: some vetoes demand their elements be answered, not asserted.
+
+    A definition marking `requires_element_assessment` may not be pushed to
+    `confirmed` or `conditional` by its owner on prose alone. `confirmed` must
+    answer every element true; `conditional` must leave exactly one unmet and
+    name the decisive evidence that would settle it. That is what keeps
+    `conditional` meaning "almost confirmed" rather than "not yet known" — the
+    state that was eliminating early-stage companies for lack of a long record.
+    Nothing here relaxes a veto: `cleared` and `candidate` are untouched, and the
+    gate still reads `conditional` as UNRESOLVED.
+    """
+    errors=[]
+    owned={v for v,ids in VETO_REVIEWERS.items() if report.get('agent_id') in ids}
+    for flag in report.get('hard_veto_flags',[]):
+        veto=flag.get('veto'); status=flag.get('status')
+        definition=VETO_CRITERIA.get('definitions',{}).get(veto) or {}
+        if veto not in owned or status not in ('confirmed','conditional'): continue
+        if not definition.get('requires_element_assessment'): continue
+        elements=definition.get('elements') or []
+        answered=flag.get('elements_met')
+        if not isinstance(answered,dict):
+            errors.append(f'{veto}: {status} requires elements_met answering {len(elements)} elements')
+            continue
+        missing_keys=[x for x in elements if x not in answered]
+        if missing_keys:
+            errors.append(f'{veto}: elements_met does not answer {missing_keys}')
+            continue
+        bad=[x for x in elements if not isinstance(answered[x],bool)]
+        if bad:
+            errors.append(f'{veto}: elements_met must be true/false for {bad}')
+            continue
+        unmet=[x for x in elements if not answered[x]]
+        if status=='confirmed' and unmet:
+            errors.append(f'{veto}: confirmed requires every element met; unmet {unmet}')
+        if status=='conditional':
+            if len(unmet)!=1:
+                errors.append(f'{veto}: conditional requires exactly one unmet element, got {len(unmet)}: {unmet}')
+            if not str(flag.get('decisive_missing_evidence') or '').strip():
+                errors.append(f'{veto}: conditional requires decisive_missing_evidence naming the one missing item')
+    return errors
+
+
 def validate_report(r):
     lim=EXEC['report_limits']; e=[]
     req=['agent_id','ticker','as_of_date','domain','role','analysis_status','score_0_100','confidence_0_1','thesis','evidence','counterevidence','unknowns','falsifiers','hard_veto_flags','key_kpis','next_checks','verdict']
@@ -730,6 +786,7 @@ def validate_report(r):
     for v in owned:
         if flags.get(v) not in ('cleared','conditional','confirmed','candidate'):
             e.append(f'owned veto not explicitly assessed: {v}')
+    e+=veto_element_errors(r)
     if r['domain']==SIGNAL_DOMAIN:
         vi=r.get('valuation_inputs') or {}
         for case in ('bear','base','bull'):

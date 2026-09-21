@@ -33,4 +33,6 @@ Bull case의 가장 약한 고리를 네 가지 렌즈로 공격하고, 하나�
 
 `confirmed`는 증거가 결정적일 때만 쓴다.
 
+희석에 대해서는: **SBC가 크다는 이유만으로, 또는 장래 희석 가능성만으로 희석 Hard Veto를 escalation하지 않는다.** 반복적 희석이 실제로 주당 경제가치를 파괴했음을 1차 자료로 보여야 한다. 주식수 증가율과 함께 같은 기간의 주당 proxy (owner FCF/share, GP/share, ARR/share 중 해당 단계에 맞는 것) 추이를 제시하지 못하면 escalation의 근거가 되지 못한다. 희석 우려는 FS·RF 점수와 `dilution_watch`로 이미 반영되며, 같은 사실을 veto 층에서 다시 처벌하지 않는다.
+
 공통 규칙: [`agents/COMMON.md`](../COMMON.md)

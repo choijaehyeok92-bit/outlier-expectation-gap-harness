@@ -174,6 +174,17 @@
           },
           "rationale": {
             "type": "string"
+          },
+          "elements_met": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "boolean"
+            },
+            "description": "requires_element_assessment가 선언된 veto에서 confirmed·conditional을 쓸 때 필수. definitions의 elements를 하나도 빠뜨리지 않고 참/거짓으로 답한다."
+          },
+          "decisive_missing_evidence": {
+            "type": "string",
+            "description": "conditional일 때 필수. 미충족 구성요건 하나를 확정할 결정적 자료와 해소 조건."
           }
         }
       }
@@ -411,6 +422,61 @@
         "decision_reason": {
           "type": "string",
           "maxLength": 600
+        }
+      }
+    },
+    "dilution_metrics": {
+      "type": "object",
+      "description": "선택. 희석 watch 층의 입력. 하네스가 dilution_policy의 밴드로 분류한다. Hard Veto 판정이 아니며 점수를 바꾸지 않는다.",
+      "properties": {
+        "annualized_dilution": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "연환산 희석주식수 증가율. 0.052 = 5.2%"
+        },
+        "three_year_diluted_share_cagr": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "three_year_cumulative_dilution": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "consecutive_years_material_dilution": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "per_share_value_proxy": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "veto_criteria의 per_share_value_proxies 중 사용한 것"
+        },
+        "per_share_value_growth": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "희석 기간 동안 그 proxy의 주당 증가율"
+        },
+        "structural_financing_need": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "rationale": {
+          "type": "string"
         }
       }
     }

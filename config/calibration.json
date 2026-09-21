@@ -997,15 +997,59 @@
         "not_covered": "차입 자체가 아니라 차입 없이 사업이 성립하지 않는 구조가 요건이다."
       },
       "장기간 지속되는 과도한 희석": {
+        "requires_element_assessment": true,
         "elements": [
           "희석이 장기간 지속될 것",
-          "그 폭이 과도할 것"
+          "그 폭이 과도할 것",
+          "희석을 감안한 주당 경제가치가 충분히 증가하지 않을 것",
+          "향후에도 반복될 구조적 자금조달 또는 SBC 원인이 있을 것"
+        ],
+        "element_tests": {
+          "희석이 장기간 지속될 것": "다음 중 하나가 1차 자료로 확인될 때만 충족: (1) multi_year_min_years 이상 연속 회계연도에서 의미 있는 순희석 반복, (2) 최근 3년 희석주식수 CAGR ≥ three_year_diluted_share_cagr, (3) 최근 3년 누적 희석 ≥ three_year_cumulative_dilution. 한 분기 또는 한 번의 ATM·M&A 자금조달은 이 요건을 충족하지 못한다. 상장 이력이 짧아 장기 자료가 없는 것은 '충족되지 않음'이지 '미확인'이 아니다.",
+          "그 폭이 과도할 것": "희석률 자체가 아니라 아래 주당 경제가치 요건과 함께 판단한다. 단일 연도 희석률이 높다는 사실만으로는 충족하지 않는다.",
+          "희석을 감안한 주당 경제가치가 충분히 증가하지 않을 것": "per_share_value_proxies의 우선순위에 따라 선택한 proxy가 희석 기간 동안 정체·감소해야 충족된다. 주식수 +7%에 gross profit +50%처럼 주당 proxy가 크게 증가하면 이 요건은 반증되고 veto는 cleared다.",
+          "향후에도 반복될 구조적 자금조달 또는 SBC 원인이 있을 것": "사업 유지에 반복 ATM이 필요하거나, runway가 짧아 FCF breakeven 전 추가 증자가 불가피하거나, SBC가 장기간 매출·GP 성장보다 빠르게 증가하거나, 자본계획상 반복 equity issuance가 불가피할 때 충족된다. 일회성 M&A·일시적 증자이고 현재 runway가 충분하면 충족되지 않는다."
+        },
+        "thresholds": {
+          "multi_year_min_years": 2,
+          "three_year_diluted_share_cagr": 0.08,
+          "three_year_cumulative_dilution": 0.25
+        },
+        "per_share_value_proxies": [
+          {
+            "priority": 1,
+            "proxy": "owner_fcf_per_share",
+            "use_when": "기본. FCF가 구조적으로 의미 있는 단계"
+          },
+          {
+            "priority": 2,
+            "proxy": "gross_profit_per_share",
+            "use_when": "FCF가 아직 구조적으로 음수인 초기 성장기업"
+          },
+          {
+            "priority": 3,
+            "proxy": "arr_per_share",
+            "use_when": "SaaS 등 ARR이 검증 가능하게 공시되는 경우"
+          },
+          {
+            "priority": 4,
+            "proxy": "economic_value_per_share_proxy",
+            "use_when": "위 셋이 부적절한 사업. 선택 이유를 명시한다"
+          }
         ],
         "cleared_if": [
           "희석주식수가 보합 또는 감소",
-          "자사주 매입이 SBC를 상쇄"
+          "자사주 매입이 SBC를 상쇄",
+          "희석 기간 동안 선택한 주당 경제가치 proxy가 충분히 증가",
+          "장기간 지속 요건의 세 가지 임계값 중 어느 것도 충족되지 않음 (상장 이력이 짧아 자료가 없는 경우 포함)",
+          "희석 원인이 일회성이고 현재 runway로 추가 증자 필요성이 확인되지 않음"
         ],
-        "not_covered": "SBC 존재 자체는 요건이 아니다."
+        "watch_triggers": [
+          "연환산 희석률이 dilution_policy의 monitor 밴드 이상",
+          "SBC가 매출 또는 gross profit 성장보다 빠르게 증가",
+          "전환증권·ATM 잔여 한도가 유의미"
+        ],
+        "not_covered": "SBC 존재 자체는 요건이 아니다. 단일 연도의 높은 희석, 상장 이력이 짧아 장기 자료가 없는 것, 장래 희석 가능성에 대한 우려도 요건이 아니다. 이들은 FS·RF 점수와 dilution_watch로 보낸다."
       },
       "고객가치 없이 마케팅·보조금에 의존하는 성장": {
         "elements": [
@@ -1090,6 +1134,45 @@
         ],
         "escalation": "대상 기업향 매출 비중이 공시되어 25%를 초과함이 확인되면 \"고객가치 없이 마케팅·보조금에 의존하는 성장\"의 두 번째 요건이 충족되므로 그 veto로 판정한다."
       }
-    ]
+    ],
+    "element_assessment_rule": "definitions에 requires_element_assessment=true가 선언된 veto는 owner가 confirmed 또는 conditional을 쓸 때 elements_met에 선언된 구성요건을 하나도 빠뜨리지 않고 참/거짓으로 답해야 한다. confirmed는 전부 참이어야 하고, conditional은 정확히 하나만 미충족이며 decisive_missing_evidence에 그 결정적 자료가 무엇이고 어떻게 해소되는지 적어야 한다. 구성요건을 채우지 못하면 그 상태를 쓸 수 없다. 이는 '아직 모른다'를 conditional로 올리는 것을 막기 위한 장치이며 veto의 게이트 semantics(conditional → UNRESOLVED)는 그대로다."
+  },
+  "dilution_policy": {
+    "note": "희석 리스크의 3단계 분리: 점수(FS·RF) → watch·포지션 제약 → Hard Veto. watch는 Hard Veto가 아니며 archetype을 제거하지 않는다. IC와 position sizing의 입력이다. 밴드 경계는 veto_criteria의 임계값과 같지 않다. 여기서 elevated라도 veto 구성요건이 충족되지 않으면 cleared다.",
+    "metric": "annualized_diluted_share_growth",
+    "source": "FS 또는 RF 보고서의 dilution_metrics. 없으면 dilution_watch는 생성되지 않는다(기존 run 호환).",
+    "bands": [
+      {
+        "min": 0.08,
+        "status": "severe",
+        "position_cap": "1% 이하 신규 — 확대는 주당 경제가치 개선의 명시적 1차 증거를 IC가 확인한 뒤에만",
+        "note": "8% 이상 또는 반복 ATM"
+      },
+      {
+        "min": 0.05,
+        "status": "elevated",
+        "position_cap": "1-2% (희석 감시 상한)",
+        "note": "5~8%"
+      },
+      {
+        "min": 0.03,
+        "status": "monitor",
+        "position_cap": null,
+        "note": "3~5%. FS·RF 감점과 모니터링으로 처리한다"
+      },
+      {
+        "min": null,
+        "status": "normal",
+        "position_cap": null,
+        "note": "3% 미만"
+      }
+    ],
+    "escalate_one_band_if": [
+      "structural_financing_need"
+    ],
+    "applies_position_cap_to_archetypes": [
+      "moonshot"
+    ],
+    "relation_to_hard_veto": "watch 상태는 Hard Veto 판정에 직접 쓰이지 않는다. severe도 veto의 네 구성요건이 모두 충족되어야 confirmed다."
   }
 }

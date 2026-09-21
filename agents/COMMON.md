@@ -26,6 +26,8 @@
 - Phase 3·IC 에이전트는 다른 에이전트의 원 보고서 대신 `digest.md`를 읽는다. 원 보고서는 특정 주장을 검증할 때만 그 파일 하나를 연다.
 - 보고서 분량은 `report_limits`를 지킨다(thesis 600자, evidence 3~6개, counterevidence 4개, unknowns 5개, falsifiers·key_kpis·next_checks 각 3개). `unknowns`에는 핵심 가설에 직결되는 것만 쓴다.
 - `config/calibration.json`에서 자신에게 배정된 Hard Veto는 반드시 `cleared / conditional / confirmed` 중 하나로 명시한다. 미기재는 clear가 아니다.
+- **`conditional`은 정보 부족 상태가 아니다.** 구성요건이 거의 모두 1차 자료로 확인되었고 결정적 자료 하나만 미확보인 "거의 confirmed" 상태다. 자료가 없어 판단할 수 없으면 `conditional`이 아니라, 구성요건이 반증되었으면 `cleared`, 평가 자체를 못 했으면 `candidate`다. "아직 장기 이력이 없다", "앞으로 나빠질 수 있다"는 `conditional`의 사유가 될 수 없다. 그런 우려는 점수·`uncertainties`·`key_kpis`로 보낸다.
+- `requires_element_assessment`가 선언된 veto에 `confirmed`·`conditional`을 쓰려면 `elements_met`에 구성요건 전부를 참/거짓으로 답해야 한다. `confirmed`는 전부 참, `conditional`은 정확히 하나만 거짓이며 `decisive_missing_evidence`에 그 자료와 해소 조건을 적는다. `validate`가 이를 검사한다.
 - 작성 후 `python harness.py validate <TICKER> <AGENT_ID>`로 검증한다. 스키마 파일을 직접 읽지 않아도 된다.
 
 ## 재현성

@@ -157,6 +157,43 @@ Provider calibration mode: **shadow**.
 - Non-blocking per-domain cap: 4
 - Decision-blocking questions are never removed by these caps.
 
+## Dilution watch
+
+희석 리스크의 3단계 분리: 점수(FS·RF) → watch·포지션 제약 → Hard Veto. watch는 Hard Veto가 아니며 archetype을 제거하지 않는다. IC와 position sizing의 입력이다. 밴드 경계는 veto_criteria의 임계값과 같지 않다. 여기서 elevated라도 veto 구성요건이 충족되지 않으면 cleared다.
+
+Metric: annualized_diluted_share_growth
+
+| Annualized dilution at least | Watch status | Position cap |
+|---:|---|---|
+| 0.08 | severe | 1% 이하 신규 — 확대는 주당 경제가치 개선의 명시적 1차 증거를 IC가 확인한 뒤에만 |
+| 0.05 | elevated | 1-2% (희석 감시 상한) |
+| 0.03 | monitor | — |
+| (any) | normal | — |
+
+Escalates one band when: structural_financing_need.
+Position cap applies to: moonshot.
+
+watch 상태는 Hard Veto 판정에 직접 쓰이지 않는다. severe도 veto의 네 구성요건이 모두 충족되어야 confirmed다.
+
+## Element-gated Hard Vetoes
+
+These vetoes cannot reach `confirmed` or `conditional` on prose. The owner answers every element; `conditional` leaves exactly one unmet and names the decisive missing evidence.
+
+### 장기간 지속되는 과도한 희석
+
+1. 희석이 장기간 지속될 것
+2. 그 폭이 과도할 것
+3. 희석을 감안한 주당 경제가치가 충분히 증가하지 않을 것
+4. 향후에도 반복될 구조적 자금조달 또는 SBC 원인이 있을 것
+
+| Threshold | Value |
+|---|---:|
+| `multi_year_min_years` | 2 |
+| `three_year_diluted_share_cagr` | 0.08 |
+| `three_year_cumulative_dilution` | 0.25 |
+
+Not covered: SBC 존재 자체는 요건이 아니다. 단일 연도의 높은 희석, 상장 이력이 짧아 장기 자료가 없는 것, 장래 희석 가능성에 대한 우려도 요건이 아니다. 이들은 FS·RF 점수와 dilution_watch로 보낸다.
+
 ## Valuation sanity
 
 - Yearly scenario crossing mode: review
