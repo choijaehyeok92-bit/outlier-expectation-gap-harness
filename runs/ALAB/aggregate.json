@@ -2038,6 +2038,128 @@
   "diagnostics": {
     "turnaround_candidate": false
   },
-  "ic_verdict": null,
+  "ic_verdict": {
+    "agent_id": "IC",
+    "ticker": "ALAB",
+    "as_of_date": "2026-09-18",
+    "domain": "investment_committee",
+    "role": "chair",
+    "analysis_status": "complete",
+    "score_0_100": 73.12,
+    "confidence_0_1": 0.82,
+    "thesis": "ALAB has the economics of an emerging high-quality compounder: rapid revenue growth, strong gross margins, positive cash generation, high reinvestment returns and a strengthening product moat. The current price, however, is slightly above locked Base value and the veto gate remains unresolved on dilution, customer concentration and valuation-driven permanent-loss risk. The committee therefore keeps the name on WATCH rather than authorizing a new position.",
+    "evidence": [
+      {
+        "claim": "Core score is 73.12 with 100% coverage; the compounder conditions are mechanically met before veto blocking, with fit score 83.1.",
+        "source_type": "other",
+        "source": "runs/ALAB/aggregate.json",
+        "period": "2026-09-18",
+        "as_of_date": "2026-09-18",
+        "value": "73.12 / compounder fit 83.1",
+        "fact_or_estimate": "estimate",
+        "evidence_id": "ALAB-IC-SCORE"
+      },
+      {
+        "claim": "Locked valuation is Bear/Base/Bull $50.15/$284.56/$808.46 versus $303.25 current price, making current price about 1.07x Base.",
+        "source_type": "other",
+        "source": "runs/ALAB/aggregate.json",
+        "period": "2026-09-18",
+        "as_of_date": "2026-09-18",
+        "value": "50.15/284.56/808.46",
+        "fact_or_estimate": "estimate",
+        "evidence_id": "ALAB-IC-VAL"
+      },
+      {
+        "claim": "Q2 revenue was $392.4M, +104% YoY, with Q3 revenue guidance of $540M-$560M.",
+        "source_type": "company_primary",
+        "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
+        "period": "Q2/Q3 2026",
+        "as_of_date": "2026-08-04",
+        "value": "392.4M / 540-560M",
+        "fact_or_estimate": "fact",
+        "evidence_id": "ALAB-IC-GROWTH"
+      },
+      {
+        "claim": "June liquidity was about $1.253B with negligible funded debt and H1 operating cash flow was positive.",
+        "source_type": "filing",
+        "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+        "period": "H1 2026",
+        "as_of_date": "2026-08-05",
+        "value": "1.253B liquidity / 162.3M OCF",
+        "fact_or_estimate": "fact",
+        "evidence_id": "ALAB-IC-BS"
+      },
+      {
+        "claim": "Direct-customer concentration remained high and H1 SBC was $112.9M, preserving unresolved concentration and dilution concerns.",
+        "source_type": "filing",
+        "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+        "period": "Q2/H1 2026",
+        "as_of_date": "2026-08-05",
+        "value": "29/25/15/13% Q2 customers; 112.9M SBC",
+        "fact_or_estimate": "fact",
+        "evidence_id": "ALAB-IC-RISK"
+      }
+    ],
+    "counterevidence": [
+      "The strongest business-quality domains—CP, MT and RF—score well above 75 and support a genuine compounder interpretation.",
+      "Net cash and positive operating cash flow make financial distress unlikely.",
+      "Bull value is far above current price, so the stock does not require a Bull+ outcome.",
+      "Rapid Scorpio and adjacent-product adoption could make the Base path conservative if multi-customer scaling persists."
+    ],
+    "unknowns": [
+      "Whether customer concentration declines as Scorpio and Leo broaden.",
+      "Whether diluted-share growth and SBC normalize below owner-FCF/share growth.",
+      "How ALAB performs through a full AI infrastructure downcycle.",
+      "Long-run switching share and gross-margin durability."
+    ],
+    "falsifiers": [
+      "A clear resolution of all three unresolved vetoes with stable or improved fundamentals would justify reconsidering a starter/normal position.",
+      "A material customer loss, structural gross-margin decline or persistent >5% dilution would strengthen the WATCH/avoid case.",
+      "A lower price without thesis deterioration could materially improve AS and EV gates."
+    ],
+    "hard_veto_flags": [],
+    "key_kpis": [
+      {
+        "name": "price/Base value",
+        "direction": "down",
+        "threshold": "below 0.9x or Base value rises materially",
+        "cadence": "quarterly"
+      },
+      {
+        "name": "top-customer concentration",
+        "direction": "down",
+        "threshold": "clear diversification",
+        "cadence": "quarterly"
+      },
+      {
+        "name": "diluted shares vs owner FCF/share",
+        "direction": "down",
+        "threshold": "per-share FCF outgrows dilution",
+        "cadence": "quarterly"
+      }
+    ],
+    "next_checks": [
+      "Q3 2026 earnings and Scorpio mix",
+      "Customer concentration and warrant/SBC dilution",
+      "Updated owner-FCF DCF"
+    ],
+    "verdict": "neutral",
+    "ic_state": "WATCH",
+    "valuation_inputs": {
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": null,
+      "scenarios": {
+        "bear": {
+          "owner_fcf_per_share": []
+        },
+        "base": {
+          "owner_fcf_per_share": []
+        },
+        "bull": {
+          "owner_fcf_per_share": []
+        }
+      }
+    }
+  },
   "early_exit_record": null
 }

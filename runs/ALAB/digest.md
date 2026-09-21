@@ -84,6 +84,12 @@ unknowns: Ultimate end-customer mapping behind manufacturing partners. · Scorpi
 | MO | 50 | 0.82 | neutral mult=0.7 | – | Macro conditions do not alter ALAB's fundamental score, but they justify slower purchase pacing. The Fed's September rate increase pressures long-duration valu… |
 unknowns: Exact end-demand share attributable to China versus billing through manufacturing partner… · Foundry/package redundancy outside Taiwan.
 
+## investment_committee
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| IC | 73.12 | 0.82 | neutral | – | ALAB has the economics of an emerging high-quality compounder: rapid revenue growth, strong gross margins, positive cash generation, high reinvestment returns … |
+unknowns: Whether customer concentration declines as Scorpio and Leo broaden. · Whether diluted-share growth and SBC normalize below owner-FCF/share growth.
+
 ## veto conflicts
 - V9: AS=conditional, FS=cleared
 - V3: FS=conditional, RF=cleared
