@@ -1,0 +1,132 @@
+{
+  "agent_id": "FS",
+  "ticker": "BRK.B",
+  "as_of_date": "2026-09-18",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 90,
+  "confidence_0_1": 0.78,
+  "bull_score": 95,
+  "bear_score": 78,
+  "bull_case": "유리한 사업·자본배분 가정이 유지되면 기준 점수보다 높은 결과가 가능하다.",
+  "bear_case": "성장·마진·자본배분이 정상화되고 핵심 불확실성이 불리하게 전개되면 기준 점수보다 낮아질 수 있다.",
+  "thesis": "Berkshire's balance-sheet survival capacity is exceptional. The main risks are not solvency but opportunity cost, insurance tail losses and capital deployment at enormous scale.",
+  "evidence": [
+    {
+      "claim": "Insurance and Other cash/cash equivalents/T-bills were $359.2B at June 30, 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-10",
+      "value": 359200,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-LIQ-2026Q2"
+    },
+    {
+      "claim": "Borrowings excluding BHE/BNSF were $43.3B; Berkshire does not guarantee BNSF/BHE debt.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-10",
+      "value": 43300,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-DEBT-2026Q2"
+    },
+    {
+      "claim": "Berkshire acquired $4.8B of treasury stock in H1 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+      "period": "2026 H1",
+      "as_of_date": "2026-08-10",
+      "value": 4800,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-BUYBACK-2026H1"
+    },
+    {
+      "claim": "Insurance float was about $177.5B at June 30, 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526344495/d159922dex991.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-10",
+      "value": 177500,
+      "fact_or_estimate": "fact",
+      "evidence_id": "BRK-FLOAT-2026Q2"
+    }
+  ],
+  "counterevidence": [
+    "BHE/BNSF carry large debt loads at subsidiary level.",
+    "Insurance liabilities can create large but uncertain cash demands after catastrophes.",
+    "The securities portfolio creates mark-to-market volatility even when solvency remains strong."
+  ],
+  "unknowns": [
+    "Maximum probable aggregate catastrophe cash outflow under clustered events.",
+    "Future BHE capital requirements and regulatory recovery timing."
+  ],
+  "uncertainties": [],
+  "falsifiers": [
+    "Cash/T-bill liquidity falls below management's $30B floor.",
+    "Operating cash generation fails to cover mandatory capex and claims.",
+    "Berkshire begins repeated parent-level financing for ordinary operations."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Operating businesses and investment income generate internal funds; external capital is not structurally required for survival."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Share count is falling and H1 2026 included $4.8B repurchases."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Exceptional liquidity and diversified earning power make bankruptcy/business extinction probability very low."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "owner earnings/share",
+      "direction": "up",
+      "threshold": "base path 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "operating earnings",
+      "direction": "up",
+      "threshold": "실질 성장 유지",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "capital allocation",
+      "direction": "up",
+      "threshold": "intrinsic-value discipline 유지",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "2026 Q3 10-Q",
+    "2026 annual report",
+    "capital allocation update"
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 90,
+      "rationale": "Insurance/Other cash and T-bills $359.2B versus $43.3B borrowings excluding BNSF/BHE; liquidity is exceptional."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 90,
+      "rationale": "Berkshire preserves a $30B cash/T-bill floor for repurchases and has diversified internally generated earnings."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 90,
+      "rationale": "Share count is declining through repurchases; BNSF/BHE debt is structurally ring-fenced and Berkshire does not guarantee it."
+    }
+  ]
+}
