@@ -4,46 +4,140 @@
   "as_of_date": "2026-09-18",
   "domain": "moat_trajectory",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 78.25,
+  "confidence_0_1": 0.8,
+  "bull_score": 89,
+  "bear_score": 60,
+  "bull_case": "The moat compounds as Vertiv combines installed equipment, service density, engineering know-how, reference designs and cross-stack integration across power and cooling.",
+  "bear_case": "Hardware standards converge, hyperscalers dual-source and internalize design, and competitors match liquid-cooling capability, leaving Vertiv with scale but limited structural switching power.",
+  "thesis": "The moat is strengthening through scale, service density and cross-system engineering rather than classical software network effects. The global service footprint and installed base create switching friction; backlog and margin expansion indicate pricing/execution strength. Because the ecosystem feedback is operational rather than a proprietary data network, the score remains below the highest moat tier.",
+  "evidence": [
+    {
+      "claim": "Vertiv's service network includes about 5,000 field engineers and 300+ service centers, with >90% first-time emergency fix performance.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-13",
+      "value": "5,000 / 300+ / >90%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-MT-SERVICE"
+    },
+    {
+      "claim": "Backlog more than doubled from $7.2B to $15.0B during 2025.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "2024-2025",
+      "as_of_date": "2026-02-13",
+      "value": "7.2B to 15.0B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-MT-SCALE"
+    },
+    {
+      "claim": "2025 operating profit rose to $1.830B from $1.367B in 2024 and $872M in 2023 as sales scaled.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2023-FY2025",
+      "as_of_date": "2026-02-13",
+      "value": "872M / 1.367B / 1.830B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-MT-MARGIN"
+    },
+    {
+      "claim": "PurgeRite and the planned UIG transaction extend Vertiv into liquid-cooling services and behind-the-meter power architecture.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/vrt-20260630.htm",
+      "period": "2025-2026",
+      "as_of_date": "2026-09-02",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-MT-ADJ"
+    }
+  ],
+  "counterevidence": [
+    "Large customers can dual-source and influence technical specifications.",
+    "Schneider, Eaton and other competitors have global service and engineering scale.",
+    "Industrial products do not create direct user-network effects.",
+    "Acquired capabilities can be copied or integrated poorly."
+  ],
+  "unknowns": [
+    "Customer switching rates after integrated deployments.",
+    "Service renewal/attach rates by installed-base cohort.",
+    "Share of liquid-cooling reference designs.",
+    "Pricing power after supply constraints normalize."
+  ],
+  "falsifiers": [
+    "If margins and service share fall as industry capacity expands, pricing/switching moat should be cut.",
+    "If cross-stack project wins and service attach continue rising, moat trajectory strengthens.",
+    "If hyperscalers successfully commoditize component specifications, commoditization resilience falls."
+  ],
   "hard_veto_flags": [
     {
       "veto": "해자의 지속적인 축소",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Backlog, service scale, margin expansion and portfolio breadth indicate a strengthening rather than shrinking competitive position as of the cutoff."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "service installed-base metrics",
+      "direction": "up",
+      "threshold": "continued scale and attach growth",
+      "cadence": "annual"
+    },
+    {
+      "name": "operating margin",
+      "direction": "up",
+      "threshold": "durable through capacity normalization",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "cross-stack project wins",
+      "direction": "up",
+      "threshold": "higher content per deployment",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Competitive win rates",
+    "Service attach rate",
+    "Pricing after capacity catches up"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "switching_pricing",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Mission-critical installed systems, engineering integration and service relationships create meaningful switching friction and pricing power."
     },
     {
       "criterion_id": "network_data_ecosystem",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Primary sources disclose at least three concrete ecosystem-scale metrics (engineers, service centers, first-time fix rate) and strong installed-base/backlog scale, but no same-definition longitudinal network KPI."
     },
     {
       "criterion_id": "commoditization_resilience",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Power, thermal, engineering, service and integrated solutions provide multiple defensive layers, although well-funded industrial rivals remain."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Customer contracts and switching costs are not disclosed in standardized form."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "The feedback loop is service/engineering density, not a proprietary software network."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Hyperscaler standardization can lower differentiation."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

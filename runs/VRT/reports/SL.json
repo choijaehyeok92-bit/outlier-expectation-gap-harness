@@ -4,40 +4,134 @@
   "as_of_date": "2026-09-18",
   "domain": "structural_leadership",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 77,
+  "confidence_0_1": 0.84,
+  "bull_score": 90,
+  "bear_score": 58,
+  "bull_case": "AI compute density drives a decade-long redesign of power and thermal architecture, and Vertiv becomes a preferred integrated supplier across hyperscale, colocation and enterprise critical infrastructure.",
+  "bear_case": "The 2025-26 surge proves to be a concentrated AI capex cycle; hyperscalers standardize more of the stack and supplier competition compresses pricing as capacity catches up.",
+  "thesis": "Vertiv has strong structural leadership in a secular architecture shift, not merely a normal equipment upcycle. Its breadth across AC/DC power, thermal management, liquid cooling, racks and service is difficult to replicate quickly. The score stops below the mid-80s because disclosed end-market concentration is not granular enough to prove multiple independent >10% demand pools, and hyperscalers retain substantial design and procurement power.",
+  "evidence": [
+    {
+      "claim": "Vertiv serves critical digital infrastructure across power management, thermal management, integrated rack solutions and services.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-13",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-SL-STACK"
+    },
+    {
+      "claim": "Backlog reached $15.0B at Dec. 31, 2025 versus $7.2B a year earlier, with most considered firm and expected within 12-18 months.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-13",
+      "value": "15.0B vs 7.2B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-SL-BACKLOG"
+    },
+    {
+      "claim": "2026 organic sales growth guidance was 30%-32%, while Q2 sales grew 24.1% and operating profit 44.2% YoY.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050323/q22026exhibit991vrt07292026.htm",
+      "period": "Q2/FY2026",
+      "as_of_date": "2026-07-29",
+      "value": "30-32%; Q2 sales +24.1%; op profit +44.2%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-SL-GROWTH"
+    },
+    {
+      "claim": "Americas, Asia Pacific and EMEA provide geographic breadth, with 2025 sales mix approximately 62%, 20% and 18%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-13",
+      "value": "62% / 20% / 18%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-SL-GEO"
+    }
+  ],
+  "counterevidence": [
+    "A meaningful portion of incremental demand is tied to the same AI/hyperscale capex cycle, so geography is not independent demand diversification.",
+    "Large cloud and hyperscale customers have strong bargaining power and can delay or redesign projects.",
+    "Schneider Electric, Eaton and other global industrial competitors have comparable capital resources.",
+    "Backlog can create execution and fixed-price risk if input costs or customer schedules move."
+  ],
+  "unknowns": [
+    "Revenue concentration by end market and top hyperscale customers.",
+    "Long-run share of AI data-center capex captured by Vertiv.",
+    "Normalized demand once current backlog growth slows.",
+    "Whether microgrid/behind-the-meter power becomes a genuinely independent demand pool."
+  ],
+  "falsifiers": [
+    "If orders/backlog contract for several quarters while AI capex remains strong, category leadership should be cut.",
+    "If liquid-cooling and integrated-power content per rack keeps expanding across multiple customer types, secular durability rises.",
+    "If one customer/end market proves to represent >50% of economic growth, durability-risk score should fall."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "backlog and book-to-bill",
+      "direction": "up",
+      "threshold": "remain supportive after 2026 surge",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "organic sales growth",
+      "direction": "up",
+      "threshold": "sustain >15% through normalization",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "high-density cooling/power mix",
+      "direction": "up",
+      "threshold": "outgrow conventional infrastructure",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Backlog/customer concentration",
+    "Liquid-cooling share",
+    "Hyperscaler capex plans"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "secular_durability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "AI rack density and power constraints require multi-year redesign of power and thermal infrastructure, with strong backlog and customer spending evidence."
     },
     {
       "criterion_id": "category_leadership",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Vertiv has global scale, broad product/service coverage and strong execution, but does not alone define hyperscaler architecture or industry standards."
     },
     {
       "criterion_id": "durability_risks",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 60,
+      "rationale": "Geographic and product breadth are real, but primary disclosures do not establish two or more independent final markets above the rubric's 10% threshold; AI/data-center demand remains correlated."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "material",
+      "rationale": "The current AI buildout is historically unusual and cycle length is uncertain."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "material",
+      "rationale": "Large customers influence specifications and multi-source supply."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "critical",
+      "rationale": "End-market concentration is insufficiently disclosed for a higher rubric row."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

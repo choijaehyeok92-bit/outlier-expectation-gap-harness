@@ -4,51 +4,145 @@
   "as_of_date": "2026-09-18",
   "domain": "reinvestment_fcf",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
-  "hard_veto_flags": [
+  "analysis_status": "complete",
+  "score_0_100": 80.5,
+  "confidence_0_1": 0.86,
+  "bull_score": 92,
+  "bear_score": 60,
+  "bull_case": "Vertiv redeploys rapidly rising cash flow into capacity, engineering, liquid cooling and power adjacencies at high incremental returns while per-share FCF compounds with minimal dilution.",
+  "bear_case": "Current returns are inflated by backlog scarcity and working-capital inflows; capacity and acquisition spending earn lower returns once hyperscaler capex normalizes.",
+  "thesis": "Reinvestment quality is strong. From 2023 to 2025, operating profit and FCF/share expanded sharply with modest dilution, while engineering R&D and capex remained meaningful but absorbable. H1 2026 cash flow is unusually strong and includes a large working-capital source, so the score does not extrapolate that run-rate. Using FY2025 as the disclosed fallback, capex plus R&D absorbed about 31% of OCF, consistent with a healthy but not maximal internal reinvestment rate.",
+  "evidence": [
     {
-      "veto": "장기간 지속되는 과도한 희석",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "claim": "Raw FCF/share rose from about $2.00 in 2023 to $2.98 in 2024 and $4.85 in 2025 using OCF minus capex divided by diluted shares.",
+      "source_type": "other",
+      "source": "runs/VRT/sources/financials/normalized_financials.json",
+      "period": "FY2023-FY2025",
+      "as_of_date": "2026-09-18",
+      "value": "~2.00 / 2.98 / 4.85 per share",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "VRT-RF-FCFPS"
     },
     {
-      "veto": "증분 ROIC의 구조적 붕괴",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "claim": "Operating profit rose from $872.2M in 2023 to $1.367B in 2024 and $1.830B in 2025 while diluted shares remained near 386-391M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2023-FY2025",
+      "as_of_date": "2026-02-13",
+      "value": "872.2M / 1.367B / 1.830B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-RF-ROIC"
+    },
+    {
+      "claim": "FY2025 capex plus engineering R&D was $661.7M versus $2.114B of OCF, an internal absorption rate of about 31%; TTM R&D is not separately available, so the rubric fallback uses the latest full fiscal year.",
+      "source_type": "other",
+      "source": "runs/VRT/sources/financials/normalized_financials.json",
+      "period": "FY2025 fallback",
+      "as_of_date": "2026-09-18",
+      "value": "661.7M / 2.114B ≈31%",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "VRT-RF-ABSORB"
+    },
+    {
+      "claim": "H1 2026 OCF was $1.867B but included a $678.8M working-capital source, requiring normalization before extrapolating FCF.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/vrt-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-07-29",
+      "value": "OCF 1.867B; WC source 678.8M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-RF-WC"
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "counterevidence": [
+    "Current FCF benefits from deferred-revenue and other working-capital inflows.",
+    "Capacity capex is rising and may earn lower returns after backlog normalizes.",
+    "UIG and PurgeRite increase M&A capital intensity and integration risk.",
+    "Historical returns were achieved from a much smaller revenue base."
+  ],
+  "unknowns": [
+    "True TTM R&D and maintenance capex split.",
+    "Incremental ROIC on 2025-2027 capacity projects.",
+    "Post-close UIG return on invested capital.",
+    "Normalized working-capital needs after backlog stabilizes."
+  ],
+  "falsifiers": [
+    "If FCF/share falls for two years despite sales growth, quality score should be reduced.",
+    "If new capacity sustains margins and converts backlog without excess inventory, incremental ROIC remains high.",
+    "If acquisition goodwill/impairments emerge or pro-forma leverage rises without FCF growth, reinvestment quality deteriorates."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Multi-year operating profit and FCF/share expansion provide direct evidence of improving incremental returns rather than collapse."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Diluted share count increased only modestly from 2023 to 2025 while FCF/share rose materially."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "FCF/share",
+      "direction": "up",
+      "threshold": "compound at least low/mid-teens over cycle",
+      "cadence": "annual/TTM"
+    },
+    {
+      "name": "inventory vs sales",
+      "direction": "down",
+      "threshold": "inventory growth normalize with backlog conversion",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "incremental operating profit / capital deployed",
+      "direction": "up",
+      "threshold": "remain well above cost of capital",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Normalized TTM working capital",
+    "UIG ROIC",
+    "Capacity utilization"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "incremental_roic",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Operating profit and FCF/share rose rapidly from 2023-2025 with modest share growth and manageable capital spending."
     },
     {
       "criterion_id": "reinvestment_runway",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "FY2025 fallback absorption was about 31%, inside the 15%-35% rubric band and supported by multiple capacity/R&D/adjacency projects."
     },
     {
       "criterion_id": "fcf_per_share_quality",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Raw FCF/share more than doubled from 2023 to 2025 with low dilution; H1 2026 working-capital help is explicitly not treated as normalized."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "The current investment wave has not completed a full cycle."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "TTM R&D is unavailable, requiring the rubric's latest-FY fallback."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "2026 cash conversion is temporarily boosted by working capital."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,

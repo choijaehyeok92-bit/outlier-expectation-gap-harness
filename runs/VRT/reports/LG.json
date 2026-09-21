@@ -4,45 +4,144 @@
   "as_of_date": "2026-09-18",
   "domain": "long_term_growth",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 73,
+  "confidence_0_1": 0.76,
+  "bull_score": 88,
+  "bear_score": 52,
+  "bull_case": "AI data-center power demand, liquid cooling, service penetration and behind-the-meter generation let Vertiv roughly double economic value over five years and sustain high-value growth through the next decade.",
+  "bear_case": "The current backlog represents front-loaded hyperscaler investment; after 3-5 years, capacity catches up, pricing normalizes and acquisitions become the main growth source.",
+  "thesis": "A five-year doubling is credible without assuming extreme share gain: 2026 organic growth is guided above 30%, power density is rising, and liquid cooling/service/microgrid add content per project. The 5-10 year runway is plausible, but the market already prices near the locked Base DCF, so the evidence for a material market misperception is only moderate.",
+  "evidence": [
+    {
+      "claim": "2026 organic sales growth guidance is 30%-32% from a 2025 base of $10.23B.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050323/q22026exhibit991vrt07292026.htm",
+      "period": "FY2026",
+      "as_of_date": "2026-07-29",
+      "value": "30%-32%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-LG-GROWTH"
+    },
+    {
+      "claim": "Backlog reached $15.0B at 2025 year-end, more than doubling YoY.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-13",
+      "value": "15.0B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-LG-BACKLOG"
+    },
+    {
+      "claim": "PurgeRite and UIG extend the addressable stack into liquid cooling and microgrid/behind-the-meter power.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000119312526379306/d472406d8k.htm",
+      "period": "2025-2026",
+      "as_of_date": "2026-09-02",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-LG-VECTORS"
+    },
+    {
+      "claim": "Locked price/Base value is about 1.04x, indicating the market already discounts a strong long-term trajectory.",
+      "source_type": "other",
+      "source": "runs/VRT/aggregate.json",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "~1.04x",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "VRT-LG-MIS"
+    }
+  ],
+  "counterevidence": [
+    "Several growth vectors share the same hyperscaler/AI capex driver rather than being fully independent.",
+    "Five-year doubling from a near-$14B 2026 run-rate would require substantial sustained infrastructure spending.",
+    "UIG growth is acquisition-dependent and not yet proven under Vertiv ownership.",
+    "Current valuation already reflects a meaningful portion of the structural thesis."
+  ],
+  "unknowns": [
+    "Five-year industry power/cooling spend growth.",
+    "Liquid-cooling penetration curve.",
+    "Recurring service growth relative to equipment.",
+    "Post-2028 AI capex normalization."
+  ],
+  "falsifiers": [
+    "If organic growth drops below 10% by 2027-28 without service/liquid-cooling offset, the five-year doubling case weakens.",
+    "If high-density content per rack and service attach keep rising, growth duration extends.",
+    "A large valuation reset with unchanged fundamentals would improve market-misperception score."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "5-year revenue/economic value trajectory",
+      "direction": "up",
+      "threshold": "credible >2x path",
+      "cadence": "annual"
+    },
+    {
+      "name": "liquid cooling + service mix",
+      "direction": "up",
+      "threshold": "growing share of revenue",
+      "cadence": "annual"
+    },
+    {
+      "name": "price/Base value",
+      "direction": "down",
+      "threshold": "clearer expectation gap",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "2027-2028 organic growth",
+    "Liquid cooling/service mix",
+    "Valuation after UIG"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "opportunity_scale_5y",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "A roughly 2x five-year expansion is credible from high-density power/cooling demand and adjacent services without requiring 3x+ heroic scale."
     },
     {
       "criterion_id": "growth_duration_10y",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "A 5-10 year runway is plausible from power-density, cooling and service vectors, but >10-year high growth is not yet evidenced."
     },
     {
       "criterion_id": "culture_adaptability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Management has rapidly reallocated capacity and portfolio toward liquid cooling, AI power and service while preserving execution."
     },
     {
       "criterion_id": "market_misperception",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 60,
+      "rationale": "There is a reasonable case that duration/content per rack is underestimated, but price near locked Base means a clear reverse-DCF expectation gap is not demonstrated."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "opportunity_scale_5y",
+      "severity": "material",
+      "rationale": "The current base is already large after exceptional 2026 growth."
+    },
+    {
+      "criterion_id": "growth_duration_10y",
+      "severity": "critical",
+      "rationale": "AI infrastructure cycle duration is the central long-horizon uncertainty."
+    },
+    {
+      "criterion_id": "culture_adaptability",
+      "severity": "material",
+      "rationale": "Acquisition integration and downturn response remain untested."
+    },
+    {
+      "criterion_id": "market_misperception",
+      "severity": "critical",
+      "rationale": "Current valuation already embeds substantial structural growth."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
