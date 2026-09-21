@@ -5,9 +5,16 @@
 
 ## 집계 결과는 바뀌지 않는다
 
-저장된 22개 run을 변경 전후 코드로 각각 `compute_aggregate`한 결과, `hard_veto_status`·`mechanical_pre_ic_state`·
+저장된 25개 run을 변경 전후 코드로 각각 `compute_aggregate`한 결과, `hard_veto_status`·`mechanical_pre_ic_state`·
 `archetype`·`position_range_pre_ic`·`score_100`이 **모두 동일하다.** 어떤 기존 run도 `dilution_metrics`를 선언하지
 않으므로 `dilution_watch`는 전부 `null`이고 포지션도 움직이지 않는다.
+
+## 전체 corpus에서 희석 판정의 분포
+
+25개 run에 담긴 희석 veto 판정 48건: `cleared` 42건 · `conditional` 3건 · `candidate` 3건.
+
+`cleared`가 압도적이고, 새 규율에 걸리는 것은 `conditional` 3건 전부다. 즉 이 변경이 바꾸는 것은 corpus의
+극히 일부이며, 그 일부가 정확히 문제로 지목된 패턴이다. `candidate` 3건은 규율 대상이 아니다(평가 미실시).
 
 ## 저장된 희석 판정에 새 규율을 적용하면
 
