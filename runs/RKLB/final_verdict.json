@@ -4,34 +4,57 @@
   "decision_policy_version": "3.3",
   "as_of_date": "2026-09-18",
   "ticker": "RKLB",
-  "score_100": 70.5,
-  "score_100_ex_valuation": null,
-  "coverage_weight": 15,
-  "classification": "Emerging Outlier",
-  "disruptive_innovation_score": null,
+  "score_100": 66.64,
+  "score_100_ex_valuation": 63.75,
+  "coverage_weight": 35,
+  "classification": "Starter / Watch",
+  "disruptive_innovation_score": 78.5,
   "turnaround_quality_score": null,
   "axis_scores": {
-    "disruptive_innovation": null,
+    "disruptive_innovation": 78.5,
     "long_term_growth": null
   },
-  "reachable_archetypes_raw": [
-    "buffett_value",
-    "compounder",
-    "growth",
-    "moonshot",
-    "outlier_growth"
-  ],
-  "early_exit": false,
-  "hard_veto_status": "PENDING_REVIEW",
-  "mechanical_pre_ic_state": "INCOMPLETE",
-  "position_range_pre_ic": "N/A",
+  "reachable_archetypes_raw": [],
+  "early_exit": true,
+  "hard_veto_status": "UNRESOLVED",
+  "mechanical_pre_ic_state": "EARLY_EXIT_NON_FIT",
+  "position_range_pre_ic": "0% (유형 도달 불가 — 조기 종료)",
   "domain_scores": {
     "structural_leadership": null,
     "customer_product": null,
     "moat_trajectory": null,
     "reinvestment_fcf": null,
     "management_allocation": null,
-    "financial_survival": null,
+    "financial_survival": {
+      "bull_score": 78,
+      "bear_score": 40,
+      "criteria": {
+        "dilution_offbalance": 30.0,
+        "liquidity_leverage": 80.0,
+        "stress_survival": 65.0
+      },
+      "raw_weighted_median": 62.25,
+      "score": 62.25,
+      "spread": 38.0,
+      "avg_confidence": 0.84,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 1,
+        "material": 2,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 62.25,
+      "calibrated_score": 58.92,
+      "calibrated_shadow_score": 58.92,
+      "decision_score": 62.25,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 62.25,
+      "raw_before_provider_calibration": 62.25
+    },
     "expectation_valuation": {
       "bull_score": 80.5,
       "bear_score": 50.5,
@@ -62,12 +85,101 @@
       "score_before_provider_calibration": 70.5,
       "raw_before_provider_calibration": 70.5
     },
-    "asymmetry": null,
-    "disruptive_innovation": null,
+    "asymmetry": {
+      "bull_score": 82,
+      "bear_score": 42,
+      "criteria": {
+        "permanent_loss": 45.0,
+        "probability_calibration": 60.0,
+        "upside_path": 90.0
+      },
+      "raw_weighted_median": 65.25,
+      "score": 65.25,
+      "spread": 40.0,
+      "avg_confidence": 0.72,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 1,
+        "material": 2,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 65.25,
+      "calibrated_score": 63.58,
+      "calibrated_shadow_score": 63.58,
+      "decision_score": 65.25,
+      "provider_offset": -1.67,
+      "score_before_provider_calibration": 65.25,
+      "raw_before_provider_calibration": 65.25
+    },
+    "disruptive_innovation": {
+      "bull_score": 90,
+      "bear_score": 60,
+      "criteria": {
+        "adoption_curve": 80.0,
+        "cost_performance_shift": 80.0,
+        "optionality_incumbent_response": 75.0
+      },
+      "raw_weighted_median": 78.5,
+      "score": 78.5,
+      "spread": 30.0,
+      "avg_confidence": 0.79,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 78.5,
+      "calibrated_score": 75.17,
+      "calibrated_shadow_score": 75.17,
+      "decision_score": 78.5,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 78.5,
+      "raw_before_provider_calibration": 78.5
+    },
     "long_term_growth": null,
     "turnaround_quality": null
   },
   "disputes": [
+    {
+      "domain": "financial_survival",
+      "bull_score": 78,
+      "bear_score": 40,
+      "criteria": {
+        "dilution_offbalance": 30.0,
+        "liquidity_leverage": 80.0,
+        "stress_survival": 65.0
+      },
+      "raw_weighted_median": 62.25,
+      "score": 62.25,
+      "spread": 38.0,
+      "avg_confidence": 0.84,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 1,
+        "material": 2,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 62.25,
+      "calibrated_score": 58.92,
+      "calibrated_shadow_score": 58.92,
+      "decision_score": 62.25,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 62.25,
+      "raw_before_provider_calibration": 62.25
+    },
     {
       "domain": "expectation_valuation",
       "bull_score": 80.5,
@@ -98,12 +210,155 @@
       "provider_offset": -1.67,
       "score_before_provider_calibration": 70.5,
       "raw_before_provider_calibration": 70.5
+    },
+    {
+      "domain": "asymmetry",
+      "bull_score": 82,
+      "bear_score": 42,
+      "criteria": {
+        "permanent_loss": 45.0,
+        "probability_calibration": 60.0,
+        "upside_path": 90.0
+      },
+      "raw_weighted_median": 65.25,
+      "score": 65.25,
+      "spread": 40.0,
+      "avg_confidence": 0.72,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 1,
+        "material": 2,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 65.25,
+      "calibrated_score": 63.58,
+      "calibrated_shadow_score": 63.58,
+      "decision_score": 65.25,
+      "provider_offset": -1.67,
+      "score_before_provider_calibration": 65.25,
+      "raw_before_provider_calibration": 65.25
+    },
+    {
+      "domain": "disruptive_innovation",
+      "bull_score": 90,
+      "bear_score": 60,
+      "criteria": {
+        "adoption_curve": 80.0,
+        "cost_performance_shift": 80.0,
+        "optionality_incumbent_response": 75.0
+      },
+      "raw_weighted_median": 78.5,
+      "score": 78.5,
+      "spread": 30.0,
+      "avg_confidence": 0.79,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores",
+      "raw_score": 78.5,
+      "calibrated_score": 75.17,
+      "calibrated_shadow_score": 75.17,
+      "decision_score": 78.5,
+      "provider_offset": -3.33,
+      "score_before_provider_calibration": 78.5,
+      "raw_before_provider_calibration": 78.5
     }
   ],
   "confirmed_vetoes": [],
-  "unresolved_vetoes": [],
+  "unresolved_vetoes": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "UNRESOLVED",
+      "owners": [
+        "FS",
+        "RT"
+      ],
+      "assessments": [
+        {
+          "agent_id": "DI",
+          "owner": false,
+          "status": "conditional",
+          "rationale": "Core innovation has real revenue and backlog, but Neutron development and the Iridium acquisition are capital intensive. Financial-survival analysis should determine whether this becomes structural dependence."
+        },
+        {
+          "agent_id": "FS",
+          "owner": true,
+          "status": "cleared",
+          "rationale": "June liquidity was about $2.39B with minimal Rocket Lab debt, management stated at least 12 months of operating/capex liquidity, and the September equity raise was designated to fund an acquisition rather than ordinary survival."
+        }
+      ],
+      "missing_reports": [
+        "RT"
+      ],
+      "missing_assessments": [],
+      "non_owner_escalations": [
+        {
+          "agent_id": "DI",
+          "owner": false,
+          "status": "conditional",
+          "rationale": "Core innovation has real revenue and backlog, but Neutron development and the Iridium acquisition are capital intensive. Financial-survival analysis should determine whether this becomes structural dependence."
+        }
+      ]
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "UNRESOLVED",
+      "owners": [
+        "RF",
+        "FS"
+      ],
+      "assessments": [
+        {
+          "agent_id": "FS",
+          "owner": true,
+          "status": "candidate",
+          "rationale": "Outstanding common shares rose about 10% from Dec. 31, 2025 to June 30, 2026, and another 29.3M ATM shares were issued by Sep. 15. Whether this is a one-time acquisition-financing episode or a persistent multi-year pattern remains unresolved."
+        }
+      ],
+      "missing_reports": [
+        "RF"
+      ],
+      "missing_assessments": [],
+      "non_owner_escalations": []
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "UNRESOLVED",
+      "owners": [
+        "FS",
+        "AS"
+      ],
+      "assessments": [
+        {
+          "agent_id": "AS",
+          "owner": true,
+          "status": "conditional",
+          "rationale": "Bear value is only 27% of current price and the company is still standalone FCF-negative, but June liquidity was large and acquisition funding was secured. Permanent-loss risk is material but not yet clearly excessive relative to the upside distribution."
+        },
+        {
+          "agent_id": "FS",
+          "owner": true,
+          "status": "cleared",
+          "rationale": "Near-term solvency risk is low given June liquidity and the completed transaction financing. The price-downside component remains AS's responsibility; FS does not treat valuation drawdown as bankruptcy."
+        }
+      ],
+      "missing_reports": [],
+      "missing_assessments": [],
+      "non_owner_escalations": []
+    }
+  ],
   "veto_gate": {
-    "overall": "PENDING_REVIEW",
+    "overall": "UNRESOLVED",
     "items": [
       {
         "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
@@ -122,30 +377,55 @@
       },
       {
         "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
+        "status": "UNRESOLVED",
         "owners": [
           "FS",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "conditional",
+            "rationale": "Core innovation has real revenue and backlog, but Neutron development and the Iridium acquisition are capital intensive. Financial-survival analysis should determine whether this becomes structural dependence."
+          },
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "June liquidity was about $2.39B with minimal Rocket Lab debt, management stated at least 12 months of operating/capex liquidity, and the September equity raise was designated to fund an acquisition rather than ordinary survival."
+          }
+        ],
         "missing_reports": [
-          "FS",
           "RT"
         ],
         "missing_assessments": [],
-        "non_owner_escalations": []
+        "non_owner_escalations": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "conditional",
+            "rationale": "Core innovation has real revenue and backlog, but Neutron development and the Iridium acquisition are capital intensive. Financial-survival analysis should determine whether this becomes structural dependence."
+          }
+        ]
       },
       {
         "veto": "장기간 지속되는 과도한 희석",
-        "status": "PENDING_REVIEW",
+        "status": "UNRESOLVED",
         "owners": [
           "RF",
           "FS"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "candidate",
+            "rationale": "Outstanding common shares rose about 10% from Dec. 31, 2025 to June 30, 2026, and another 29.3M ATM shares were issued by Sep. 15. Whether this is a one-time acquisition-financing episode or a persistent multi-year pattern remains unresolved."
+          }
+        ],
         "missing_reports": [
-          "RF",
-          "FS"
+          "RF"
         ],
         "missing_assessments": [],
         "non_owner_escalations": []
@@ -157,7 +437,14 @@
           "CP",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "cleared",
+            "rationale": "Repeated Electron launches, multi-launch commercial bookings, a $2.36B backlog and contracted U.S. government missions show paid adoption rather than marketing-only demand."
+          }
+        ],
         "missing_reports": [
           "CP",
           "RT"
@@ -205,6 +492,12 @@
         ],
         "assessments": [
           {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Current price is 0.73x locked Base value and 0.29x locked Bull value; the cutoff price does not require a Bull+ outcome."
+          },
+          {
             "agent_id": "EV",
             "owner": true,
             "status": "cleared",
@@ -212,7 +505,6 @@
           }
         ],
         "missing_reports": [
-          "AS",
           "RT"
         ],
         "missing_assessments": [],
@@ -235,22 +527,113 @@
       },
       {
         "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-        "status": "PENDING_REVIEW",
+        "status": "UNRESOLVED",
         "owners": [
           "FS",
           "AS"
         ],
-        "assessments": [],
-        "missing_reports": [
-          "FS",
-          "AS"
+        "assessments": [
+          {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "conditional",
+            "rationale": "Bear value is only 27% of current price and the company is still standalone FCF-negative, but June liquidity was large and acquisition funding was secured. Permanent-loss risk is material but not yet clearly excessive relative to the upside distribution."
+          },
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Near-term solvency risk is low given June liquidity and the completed transaction financing. The price-downside component remains AS's responsibility; FS does not treat valuation drawdown as bankruptcy."
+          }
         ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       }
     ],
     "confirmed": [],
-    "unresolved": [],
+    "unresolved": [
+      {
+        "veto": "구조적으로 과도한 외부자본 조달 의존",
+        "status": "UNRESOLVED",
+        "owners": [
+          "FS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "conditional",
+            "rationale": "Core innovation has real revenue and backlog, but Neutron development and the Iridium acquisition are capital intensive. Financial-survival analysis should determine whether this becomes structural dependence."
+          },
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "June liquidity was about $2.39B with minimal Rocket Lab debt, management stated at least 12 months of operating/capex liquidity, and the September equity raise was designated to fund an acquisition rather than ordinary survival."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "conditional",
+            "rationale": "Core innovation has real revenue and backlog, but Neutron development and the Iridium acquisition are capital intensive. Financial-survival analysis should determine whether this becomes structural dependence."
+          }
+        ]
+      },
+      {
+        "veto": "장기간 지속되는 과도한 희석",
+        "status": "UNRESOLVED",
+        "owners": [
+          "RF",
+          "FS"
+        ],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "candidate",
+            "rationale": "Outstanding common shares rose about 10% from Dec. 31, 2025 to June 30, 2026, and another 29.3M ATM shares were issued by Sep. 15. Whether this is a one-time acquisition-financing episode or a persistent multi-year pattern remains unresolved."
+          }
+        ],
+        "missing_reports": [
+          "RF"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+        "status": "UNRESOLVED",
+        "owners": [
+          "FS",
+          "AS"
+        ],
+        "assessments": [
+          {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "conditional",
+            "rationale": "Bear value is only 27% of current price and the company is still standalone FCF-negative, but June liquidity was large and acquisition funding was secured. Permanent-loss risk is material but not yet clearly excessive relative to the upside distribution."
+          },
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Near-term solvency risk is low given June liquidity and the completed transaction financing. The price-downside component remains AS's responsibility; FS does not treat valuation drawdown as bankruptcy."
+          }
+        ],
+        "missing_reports": [],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      }
+    ],
     "pending": [
       {
         "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
@@ -268,43 +651,20 @@
         "non_owner_escalations": []
       },
       {
-        "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "FS",
-          "RT"
-        ],
-        "assessments": [],
-        "missing_reports": [
-          "FS",
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "장기간 지속되는 과도한 희석",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "RF",
-          "FS"
-        ],
-        "assessments": [],
-        "missing_reports": [
-          "RF",
-          "FS"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
         "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
         "status": "PENDING_REVIEW",
         "owners": [
           "CP",
           "RT"
         ],
-        "assessments": [],
+        "assessments": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "cleared",
+            "rationale": "Repeated Electron launches, multi-launch commercial bookings, a $2.36B backlog and contracted U.S. government missions show paid adoption rather than marketing-only demand."
+          }
+        ],
         "missing_reports": [
           "CP",
           "RT"
@@ -352,6 +712,12 @@
         ],
         "assessments": [
           {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Current price is 0.73x locked Base value and 0.29x locked Bull value; the cutoff price does not require a Bull+ outcome."
+          },
+          {
             "agent_id": "EV",
             "owner": true,
             "status": "cleared",
@@ -359,7 +725,6 @@
           }
         ],
         "missing_reports": [
-          "AS",
           "RT"
         ],
         "missing_assessments": [],
@@ -379,24 +744,21 @@
         ],
         "missing_assessments": [],
         "non_owner_escalations": []
-      },
-      {
-        "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "FS",
-          "AS"
-        ],
-        "assessments": [],
-        "missing_reports": [
-          "FS",
-          "AS"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
       }
     ],
-    "non_owner_escalations": []
+    "non_owner_escalations": [
+      {
+        "veto": "구조적으로 과도한 외부자본 조달 의존",
+        "owners": [
+          "FS",
+          "RT"
+        ],
+        "agent_id": "DI",
+        "owner": false,
+        "status": "conditional",
+        "rationale": "Core innovation has real revenue and backlog, but Neutron development and the Iridium acquisition are capital intensive. Financial-survival analysis should determine whether this becomes structural dependence."
+      }
+    ]
   },
   "valuation_model": {
     "status": "COMPLETE",
@@ -476,7 +838,10 @@
     "base_offset": 5.0,
     "max_abs_offset": 5.0,
     "per_domain_offset": {
-      "expectation_valuation": -1.67
+      "financial_survival": -3.33,
+      "expectation_valuation": -1.67,
+      "asymmetry": -1.67,
+      "disruptive_innovation": -3.33
     },
     "basis": {
       "sample": "NVDA 2026-09-17/18, 동일 종가 $219.34, criterion 27개 대조",
@@ -490,18 +855,39 @@
   },
   "dispersion_review": {
     "metric": "scored 도메인 전체에 대한 skew = (score - bear_score) - (bull_score - score) 의 평균. 양수면 하방 폭이 더 넓다는 뜻이다.",
-    "mean_skew": 10.0,
+    "mean_skew": 7.5,
     "label": "downside_skew",
     "reduce_bands": 1,
-    "widest_domain": "expectation_valuation",
+    "widest_domain": "asymmetry",
     "most_downside_skewed": "expectation_valuation",
     "by_domain": [
+      {
+        "domain": "asymmetry",
+        "spread": 40.0,
+        "upside_width": 16.75,
+        "downside_width": 23.25,
+        "skew": 6.5
+      },
+      {
+        "domain": "disruptive_innovation",
+        "spread": 30.0,
+        "upside_width": 11.5,
+        "downside_width": 18.5,
+        "skew": 7.0
+      },
       {
         "domain": "expectation_valuation",
         "spread": 30.0,
         "upside_width": 10.0,
         "downside_width": 20.0,
         "skew": 10.0
+      },
+      {
+        "domain": "financial_survival",
+        "spread": 38.0,
+        "upside_width": 15.75,
+        "downside_width": 22.25,
+        "skew": 6.5
       }
     ]
   },
@@ -591,7 +977,7 @@
   "archetype_fit": {
     "buffett_value": {
       "eligible": false,
-      "fit_score": 0.0,
+      "fit_score": 22.0875,
       "fit_axes": [
         {
           "field": "criterion.reinvestment_fcf.fcf_per_share_quality",
@@ -603,9 +989,9 @@
         {
           "field": "domain.financial_survival",
           "weight": 0.25,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 62.25,
+          "normalized": 0.6225,
+          "missing": false
         },
         {
           "field": "domain.management_allocation",
@@ -624,20 +1010,24 @@
         {
           "field": "domain.asymmetry",
           "weight": 0.1,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 65.25,
+          "normalized": 0.6525,
+          "missing": false
         }
       ],
-      "failed_conditions": [],
+      "failed_conditions": [
+        "domain.financial_survival"
+      ],
       "missing_conditions": [
         "criterion.reinvestment_fcf.fcf_per_share_quality",
-        "domain.financial_survival",
         "domain.management_allocation",
-        "domain.moat_trajectory",
-        "domain.asymmetry"
+        "domain.moat_trajectory"
       ],
-      "blocking_vetoes": []
+      "blocking_vetoes": [
+        "구조적으로 과도한 외부자본 조달 의존",
+        "장기간 지속되는 과도한 희석",
+        "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+      ]
     },
     "compounder": {
       "eligible": false,
@@ -672,16 +1062,21 @@
           "missing": true
         }
       ],
-      "failed_conditions": [],
+      "failed_conditions": [
+        "domain.financial_survival"
+      ],
       "missing_conditions": [
         "domain.moat_trajectory",
         "domain.reinvestment_fcf",
         "domain.management_allocation",
-        "domain.financial_survival",
         "criterion.reinvestment_fcf.incremental_roic",
         "criterion.reinvestment_fcf.reinvestment_runway"
       ],
-      "blocking_vetoes": []
+      "blocking_vetoes": [
+        "구조적으로 과도한 외부자본 조달 의존",
+        "장기간 지속되는 과도한 희석",
+        "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+      ]
     },
     "growth": {
       "eligible": false,
@@ -723,36 +1118,40 @@
           "missing": true
         }
       ],
-      "failed_conditions": [],
+      "failed_conditions": [
+        "domain.financial_survival"
+      ],
       "missing_conditions": [
         "domain.structural_leadership",
         "domain.customer_product",
         "domain.moat_trajectory",
         "domain.reinvestment_fcf",
         "domain.management_allocation",
-        "domain.financial_survival",
-        "domain.asymmetry",
         "criterion.reinvestment_fcf.fcf_per_share_quality"
       ],
-      "blocking_vetoes": []
+      "blocking_vetoes": [
+        "구조적으로 과도한 외부자본 조달 의존",
+        "장기간 지속되는 과도한 희석",
+        "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+      ]
     },
     "moonshot": {
       "eligible": false,
-      "fit_score": 0.0,
+      "fit_score": 57.05,
       "fit_axes": [
         {
           "field": "domain.disruptive_innovation",
           "weight": 0.4,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 78.5,
+          "normalized": 0.785,
+          "missing": false
         },
         {
           "field": "domain.asymmetry",
           "weight": 0.25,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 65.25,
+          "normalized": 0.6525,
+          "missing": false
         },
         {
           "field": "domain.structural_leadership",
@@ -764,24 +1163,26 @@
         {
           "field": "domain.financial_survival",
           "weight": 0.15,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 62.25,
+          "normalized": 0.6225,
+          "missing": false
         }
       ],
-      "failed_conditions": [],
-      "missing_conditions": [
-        "domain.disruptive_innovation",
-        "domain.structural_leadership",
-        "domain.asymmetry",
-        "domain.financial_survival",
-        "gate_score"
+      "failed_conditions": [
+        "domain.asymmetry"
       ],
-      "blocking_vetoes": []
+      "missing_conditions": [
+        "domain.structural_leadership"
+      ],
+      "blocking_vetoes": [
+        "구조적으로 과도한 외부자본 조달 의존",
+        "장기간 지속되는 과도한 희석",
+        "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+      ]
     },
     "outlier_growth": {
       "eligible": false,
-      "fit_score": 0.0,
+      "fit_score": 18.0,
       "fit_axes": [
         {
           "field": "domain.long_term_growth",
@@ -807,9 +1208,9 @@
         {
           "field": "criterion.asymmetry.upside_path",
           "weight": 0.2,
-          "value": null,
-          "normalized": 0.0,
-          "missing": true
+          "value": 90.0,
+          "normalized": 0.9,
+          "missing": false
         },
         {
           "field": "domain.management_allocation",
@@ -819,7 +1220,10 @@
           "missing": true
         }
       ],
-      "failed_conditions": [],
+      "failed_conditions": [
+        "criterion.asymmetry.permanent_loss",
+        "gate_score"
+      ],
       "missing_conditions": [
         "domain.long_term_growth",
         "criterion.long_term_growth.opportunity_scale_5y",
@@ -828,14 +1232,13 @@
         "criterion.long_term_growth.market_misperception",
         "domain.customer_product",
         "domain.moat_trajectory",
-        "domain.management_allocation",
-        "domain.financial_survival",
-        "domain.asymmetry",
-        "criterion.asymmetry.upside_path",
-        "criterion.asymmetry.permanent_loss",
-        "gate_score"
+        "domain.management_allocation"
       ],
-      "blocking_vetoes": []
+      "blocking_vetoes": [
+        "구조적으로 과도한 외부자본 조달 의존",
+        "장기간 지속되는 과도한 희석",
+        "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+      ]
     }
   },
   "review_only": false,
@@ -861,15 +1264,454 @@
     "turnaround_candidate": false
   },
   "ic_verdict": null,
-  "early_exit_record": null,
+  "early_exit_record": {
+    "stage": "triage",
+    "last_reachable_archetypes": [
+      "moonshot",
+      "outlier_growth"
+    ],
+    "reachability_history_method": "Deterministic replay in manifest order; not a claim about wall-clock execution order.",
+    "eliminated_archetypes": {
+      "compounder": {
+        "failed_conditions": [
+          {
+            "field": "domain.financial_survival",
+            "op": ">=",
+            "value": 72
+          }
+        ],
+        "missing_conditions": [
+          "domain.moat_trajectory",
+          "domain.reinvestment_fcf",
+          "domain.management_allocation",
+          "criterion.reinvestment_fcf.incremental_roic",
+          "criterion.reinvestment_fcf.reinvestment_runway"
+        ],
+        "gate_failed": false,
+        "blocking_vetoes": [
+          "구조적으로 과도한 외부자본 조달 의존",
+          "장기간 지속되는 과도한 희석",
+          "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+        ]
+      },
+      "outlier_growth": {
+        "failed_conditions": [
+          {
+            "field": "criterion.asymmetry.permanent_loss",
+            "op": ">=",
+            "value": 50
+          }
+        ],
+        "missing_conditions": [
+          "domain.long_term_growth",
+          "criterion.long_term_growth.opportunity_scale_5y",
+          "criterion.long_term_growth.growth_duration_10y",
+          "criterion.long_term_growth.culture_adaptability",
+          "criterion.long_term_growth.market_misperception",
+          "domain.customer_product",
+          "domain.moat_trajectory",
+          "domain.management_allocation"
+        ],
+        "gate_failed": true,
+        "blocking_vetoes": [
+          "구조적으로 과도한 외부자본 조달 의존",
+          "장기간 지속되는 과도한 희석",
+          "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+        ]
+      },
+      "growth": {
+        "failed_conditions": [
+          {
+            "field": "domain.financial_survival",
+            "op": ">=",
+            "value": 70
+          }
+        ],
+        "missing_conditions": [
+          "domain.structural_leadership",
+          "domain.customer_product",
+          "domain.moat_trajectory",
+          "domain.reinvestment_fcf",
+          "domain.management_allocation",
+          "criterion.reinvestment_fcf.fcf_per_share_quality"
+        ],
+        "gate_failed": false,
+        "blocking_vetoes": [
+          "구조적으로 과도한 외부자본 조달 의존",
+          "장기간 지속되는 과도한 희석",
+          "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+        ]
+      },
+      "buffett_value": {
+        "failed_conditions": [
+          {
+            "field": "domain.financial_survival",
+            "op": ">=",
+            "value": 75
+          }
+        ],
+        "missing_conditions": [
+          "criterion.reinvestment_fcf.fcf_per_share_quality",
+          "domain.management_allocation",
+          "domain.moat_trajectory"
+        ],
+        "gate_failed": false,
+        "blocking_vetoes": [
+          "구조적으로 과도한 외부자본 조달 의존",
+          "장기간 지속되는 과도한 희석",
+          "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+        ]
+      },
+      "moonshot": {
+        "failed_conditions": [
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 72
+          }
+        ],
+        "missing_conditions": [
+          "domain.structural_leadership"
+        ],
+        "gate_failed": false,
+        "blocking_vetoes": [
+          "구조적으로 과도한 외부자본 조달 의존",
+          "장기간 지속되는 과도한 희석",
+          "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+        ]
+      }
+    },
+    "confirmed_vetoes": [],
+    "unresolved_vetoes": [
+      {
+        "veto": "구조적으로 과도한 외부자본 조달 의존",
+        "status": "UNRESOLVED",
+        "owners": [
+          "FS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "conditional",
+            "rationale": "Core innovation has real revenue and backlog, but Neutron development and the Iridium acquisition are capital intensive. Financial-survival analysis should determine whether this becomes structural dependence."
+          },
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "June liquidity was about $2.39B with minimal Rocket Lab debt, management stated at least 12 months of operating/capex liquidity, and the September equity raise was designated to fund an acquisition rather than ordinary survival."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "conditional",
+            "rationale": "Core innovation has real revenue and backlog, but Neutron development and the Iridium acquisition are capital intensive. Financial-survival analysis should determine whether this becomes structural dependence."
+          }
+        ]
+      },
+      {
+        "veto": "장기간 지속되는 과도한 희석",
+        "status": "UNRESOLVED",
+        "owners": [
+          "RF",
+          "FS"
+        ],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "candidate",
+            "rationale": "Outstanding common shares rose about 10% from Dec. 31, 2025 to June 30, 2026, and another 29.3M ATM shares were issued by Sep. 15. Whether this is a one-time acquisition-financing episode or a persistent multi-year pattern remains unresolved."
+          }
+        ],
+        "missing_reports": [
+          "RF"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+        "status": "UNRESOLVED",
+        "owners": [
+          "FS",
+          "AS"
+        ],
+        "assessments": [
+          {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "conditional",
+            "rationale": "Bear value is only 27% of current price and the company is still standalone FCF-negative, but June liquidity was large and acquisition funding was secured. Permanent-loss risk is material but not yet clearly excessive relative to the upside distribution."
+          },
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Near-term solvency risk is low given June liquidity and the completed transaction financing. The price-downside component remains AS's responsibility; FS does not treat valuation drawdown as bankruptcy."
+          }
+        ],
+        "missing_reports": [],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      }
+    ],
+    "pending_vetoes": [
+      {
+        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MA",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "MA",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "DI",
+            "owner": false,
+            "status": "cleared",
+            "rationale": "Repeated Electron launches, multi-launch commercial bookings, a $2.36B backlog and contracted U.S. government missions show paid adoption rather than marketing-only demand."
+          }
+        ],
+        "missing_reports": [
+          "CP",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "증분 ROIC의 구조적 붕괴",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "RF",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "RF",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "해자의 지속적인 축소",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MT",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "MT",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "EV",
+          "AS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Current price is 0.73x locked Base value and 0.29x locked Bull value; the cutoff price does not require a Bull+ outcome."
+          },
+          {
+            "agent_id": "EV",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Current price is below the modeled Base and far below Bull, so it does not require a Bull+ outcome."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "CP",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      }
+    ],
+    "future_reentry": {
+      "required_conditions": {
+        "compounder": {
+          "failed_conditions": [
+            {
+              "field": "domain.financial_survival",
+              "op": ">=",
+              "value": 72
+            }
+          ],
+          "missing_conditions": [
+            "domain.moat_trajectory",
+            "domain.reinvestment_fcf",
+            "domain.management_allocation",
+            "criterion.reinvestment_fcf.incremental_roic",
+            "criterion.reinvestment_fcf.reinvestment_runway"
+          ],
+          "gate_failed": false,
+          "blocking_vetoes": [
+            "구조적으로 과도한 외부자본 조달 의존",
+            "장기간 지속되는 과도한 희석",
+            "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+          ]
+        },
+        "outlier_growth": {
+          "failed_conditions": [
+            {
+              "field": "criterion.asymmetry.permanent_loss",
+              "op": ">=",
+              "value": 50
+            }
+          ],
+          "missing_conditions": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception",
+            "domain.customer_product",
+            "domain.moat_trajectory",
+            "domain.management_allocation"
+          ],
+          "gate_failed": true,
+          "blocking_vetoes": [
+            "구조적으로 과도한 외부자본 조달 의존",
+            "장기간 지속되는 과도한 희석",
+            "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+          ]
+        },
+        "growth": {
+          "failed_conditions": [
+            {
+              "field": "domain.financial_survival",
+              "op": ">=",
+              "value": 70
+            }
+          ],
+          "missing_conditions": [
+            "domain.structural_leadership",
+            "domain.customer_product",
+            "domain.moat_trajectory",
+            "domain.reinvestment_fcf",
+            "domain.management_allocation",
+            "criterion.reinvestment_fcf.fcf_per_share_quality"
+          ],
+          "gate_failed": false,
+          "blocking_vetoes": [
+            "구조적으로 과도한 외부자본 조달 의존",
+            "장기간 지속되는 과도한 희석",
+            "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+          ]
+        },
+        "buffett_value": {
+          "failed_conditions": [
+            {
+              "field": "domain.financial_survival",
+              "op": ">=",
+              "value": 75
+            }
+          ],
+          "missing_conditions": [
+            "criterion.reinvestment_fcf.fcf_per_share_quality",
+            "domain.management_allocation",
+            "domain.moat_trajectory"
+          ],
+          "gate_failed": false,
+          "blocking_vetoes": [
+            "구조적으로 과도한 외부자본 조달 의존",
+            "장기간 지속되는 과도한 희석",
+            "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+          ]
+        },
+        "moonshot": {
+          "failed_conditions": [
+            {
+              "field": "domain.asymmetry",
+              "op": ">=",
+              "value": 72
+            }
+          ],
+          "missing_conditions": [
+            "domain.structural_leadership"
+          ],
+          "gate_failed": false,
+          "blocking_vetoes": [
+            "구조적으로 과도한 외부자본 조달 의존",
+            "장기간 지속되는 과도한 희석",
+            "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음"
+          ]
+        }
+      },
+      "requirements": [
+        "New evidence must satisfy all gates for at least one archetype.",
+        "Complete core coverage, deterministic valuation and all veto ownership before any buy."
+      ]
+    },
+    "ic_intentionally_not_run": true,
+    "statement": "IC was intentionally not run because no investable archetype remains reachable."
+  },
   "archetype": "non_fit",
   "secondary_archetypes": [],
-  "archetype_rationale": "No eligible archetype: see failed/missing conditions and vetoes",
-  "ic_state": "INCOMPLETE",
-  "position_range": "N/A",
+  "archetype_rationale": "조기 종료: 현재 decision score와 조건으로 도달 가능한 유형 없음",
+  "ic_state": "EARLY_EXIT_NON_FIT",
+  "position_range": "0% (유형 도달 불가 — 조기 종료)",
   "ic_review_flags": [],
   "falsifiers": [
-    "A major Neutron delay, failure to close or integrate Iridium, or continued double-digit share dilution without per-share FCF progress would weaken the thesis."
+    "If Neutron slips materially beyond 2027 or fails to obtain repeat commercial missions, one of the three independent upside paths is removed.",
+    "If combined owner FCF/share does not turn sustainably positive within several years after Iridium close, the 5x economic path weakens sharply.",
+    "If diluted shares continue rising at double-digit annual rates after acquisition financing is complete, per-share power-law upside is impaired.",
+    "If Neutron cannot achieve repeat flight and customer launches after first flight, the medium-lift disruption thesis fails.",
+    "If launch backlog grows while launch gross economics deteriorate, adoption would not prove value creation.",
+    "If Iridium integration does not create cross-sell or constellation-replenishment economics, end-to-end platform optionality is overstated.",
+    "A major Neutron delay, failure to close or integrate Iridium, or continued double-digit share dilution without per-share FCF progress would weaken the thesis.",
+    "If diluted share growth falls below 5% annually after the acquisition financing period and FCF/share rises, the dilution veto candidate should be cleared.",
+    "If pro-forma net leverage remains high while combined FCF misses plan, financial-survival score should fall.",
+    "If Rocket Lab requires another large equity raise for ordinary operations before Iridium closes, external-capital dependence should become a confirmed concern."
   ],
   "macro_pacing_multiplier": 0.5,
   "decision_authority": "Deterministic eligibility and veto gates; IC may reduce deployment within configured caps."

@@ -4,51 +4,155 @@
   "as_of_date": "2026-09-18",
   "domain": "asymmetry",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
-  "hard_veto_flags": [
+  "analysis_status": "complete",
+  "score_0_100": 65.25,
+  "confidence_0_1": 0.72,
+  "bull_score": 82,
+  "bear_score": 42,
+  "bull_case": "A 5x path exists if three value pools scale together: Neutron medium-lift, defense/space-systems prime contracts, and Iridium recurring communications. Locked Bull DCF is $224.68/share, 3.48x current value, with a Y10 Bull terminal value near $448/share.",
+  "bear_case": "The locked Bear DCF is only $17.41/share, 27% of the $64.57 cutoff price. Standalone Rocket Lab is still cash-flow negative and the Iridium transaction adds integration, debt-guarantee and dilution risk. A 5x outcome is therefore possible but not the central case.",
+  "thesis": "RKLB has genuine power-law optionality, but current asymmetry is not yet exceptional because downside remains large. At $64.57 and roughly $40.5B market cap, 5x requires about $203B of equity value. That is economically conceivable only if Neutron, space systems/defense and Iridium services all contribute; it is not supported by Electron alone. The locked Bull value is 3.48x current price while Bear is 0.27x, so the distribution is wide. A probability-weighted view is sensitive to the assumed chance of successful Neutron commercialization and Iridium integration.",
+  "evidence": [
     {
-      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "claim": "Locked valuation is Bear/Base/Bull $17.41/$88.03/$224.68 per share versus cutoff price $64.57; Bull/current is 3.48x and Bear/current is 0.27x.",
+      "source_type": "other",
+      "source": "runs/RKLB/aggregate.json deterministic_valuation",
+      "period": "10y from 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "17.41/88.03/224.68",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RKLB-AS-DCF"
     },
     {
-      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "claim": "Q2 revenue was $234M (+62% YoY), backlog $2.36B (+137% YoY), and Rocket Lab reported more than $437M of new launch contracts across Electron, HASTE and Neutron, expanding launch backlog to 90+ launches.",
+      "source_type": "company_primary",
+      "source": "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-announces-second-quarter-2026-financial-results-posts",
+      "period": "Q2 2026 and post-quarter updates",
+      "as_of_date": "2026-08-10",
+      "value": "234M / 2.36B / 90+",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RKLB-AS-BACKLOG"
+    },
+    {
+      "claim": "By September 11 Rocket Lab had completed its 16th Electron launch of 2026 and 95th overall, demonstrating an operating launch business rather than a pre-revenue technology option.",
+      "source_type": "company_primary",
+      "source": "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-successfully-launches-16th-electron-mission-year",
+      "period": "2026 YTD through 2026-09-11",
+      "as_of_date": "2026-09-11",
+      "value": 16,
+      "fact_or_estimate": "fact",
+      "evidence_id": "RKLB-AS-LAUNCH"
+    },
+    {
+      "claim": "The pending Iridium deal adds an established recurring-services business: Iridium generated $871.7M 2025 revenue and $495M OEBITDA, with 57% OEBITDA margin.",
+      "source_type": "company_primary",
+      "source": "https://investor.iridium.com/2026-06-29-Rocket-Lab-to-Acquire-Iridium-in-Historic-Deal%2C-Creating-A-Fully-Vertically-Integrated-Space-Powerhouse-Primed-for-Growth",
+      "period": "FY2025",
+      "as_of_date": "2026-06-29",
+      "value": "871.7M / 495M / 57%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "RKLB-AS-IRDM"
+    },
+    {
+      "claim": "A practical 5x equity path implies about $203B market capitalization at the frozen share count. The economic drivers must therefore include multiple businesses; Electron launch cadence alone is insufficient.",
+      "source_type": "other",
+      "source": "runs/RKLB/company_context.json + arithmetic",
+      "period": "5-10y outlook",
+      "as_of_date": "2026-09-18",
+      "value": 202.6,
+      "fact_or_estimate": "estimate",
+      "evidence_id": "RKLB-AS-5X"
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
+  "counterevidence": [
+    "Neutron remains pre-first-flight and Rocket Lab itself states new-launch-vehicle development can create further delays.",
+    "The $1.944B September ATM shows that strategic upside is being financed partly through substantial new share issuance.",
+    "Iridium adds durable recurring cash flow but also a $1.775B term loan that Rocket Lab USA is expected to guarantee after close.",
+    "The locked Base valuation is 80.5% terminal value, so much of the upside depends on distant execution rather than near-term cash generation."
+  ],
+  "unknowns": [
+    "A clean historical base rate for $30B-$50B space/defense platforms reaching 5x value does not exist.",
+    "Neutron launch cadence, gross margin and reuse economics after initial flight are unproven.",
+    "Post-close Iridium synergy capture and capital requirements for constellation replenishment are not yet observable.",
+    "Future equity issuance after the completed September ATM is unknown."
+  ],
+  "falsifiers": [
+    "If Neutron slips materially beyond 2027 or fails to obtain repeat commercial missions, one of the three independent upside paths is removed.",
+    "If combined owner FCF/share does not turn sustainably positive within several years after Iridium close, the 5x economic path weakens sharply.",
+    "If diluted shares continue rising at double-digit annual rates after acquisition financing is complete, per-share power-law upside is impaired."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "conditional",
+      "rationale": "Bear value is only 27% of current price and the company is still standalone FCF-negative, but June liquidity was large and acquisition funding was secured. Permanent-loss risk is material but not yet clearly excessive relative to the upside distribution."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is 0.73x locked Base value and 0.29x locked Bull value; the cutoff price does not require a Bull+ outcome."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Neutron commercial missions and launch cadence",
+      "direction": "up",
+      "threshold": "repeat successful commercial missions after first flight",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "combined owner FCF/share",
+      "direction": "up",
+      "threshold": "sustained positive after Iridium integration",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "diluted shares outstanding",
+      "direction": "down",
+      "threshold": "single-digit annual growth after transaction financing",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Neutron first-flight and contracted launch conversion",
+    "Iridium close and combined FCF bridge",
+    "Post-ATM diluted share count trend"
+  ],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "upside_path",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 90,
+      "rationale": "Locked Bull/current = 224.68/64.57 = 3.48x (>2.5x), with at least three independent economic paths: Neutron, defense/space systems, and Iridium recurring services."
     },
     {
       "criterion_id": "permanent_loss",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 45,
+      "rationale": "Locked Bear/current = 17.41/64.57 = 0.27, inside the 0.2-0.4 band and below its centre. The nearest allowed 5-point rubric score is 45; no liquidity modifier is applied because transaction-adjusted net cash is negative and standalone OCF is negative."
     },
     {
       "criterion_id": "probability_calibration",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 60,
+      "rationale": "The report uses explicit scenario values, a 5x market-cap hurdle and sensitivity to multiple independent drivers. Calibration remains limited because there is no clean historical base rate for a vertically integrated launch/satellite/network platform of this scale."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Neutron and Iridium are both major forward changes; the 3-path structure exists but two paths are not yet fully operational inside Rocket Lab."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Bear value is terminal-sensitive and the acquisition materially changes leverage and share count."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "critical",
+      "rationale": "Scenario probabilities cannot be anchored to a robust comparable-company base rate."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
