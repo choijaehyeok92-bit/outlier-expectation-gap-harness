@@ -1,0 +1,33 @@
+META: financial pack 없음 (sources/financials/normalized_financials.json). 강제 여부: enforced
+
+[GAP] latest_annual           required                0/1   연간 3개년 재무제표, segment, 고객집중, 부채, SBC, 약정, 회계정책
+[GAP] latest_interim          required                0/1   현재 TTM, 분기 추세, 운전자본, 현금흐름, 희석
+[GAP] trailing_quarters       required                0/6   TTM·YoY·FCF/share·증분 ROIC 추세
+[GAP] historical_annuals      strongly_recommended    0/3   정상화 이익, 반복 구조조정, 자본집약도, 장기 추세
+[GAP] proxy_compensation      near_required           0/1   경영진 보상, 주식보상, ownership, governance
+[GAP] earnings_release        recommended             0/1   GAAP/non-GAAP reconciliation, 최신 KPI
+[N/A] debt_and_financing      conditional_required    0/1   회사채, 전환사채, 증자, M&A, 대규모 자금조달
+[N/A] foreign_issuer_filings  conditional             0/1   미국 상장 외국기업의 10-K/10-Q 대체
+[GAP] insider_ownership       recommended             0/1   내부자 매매 · ownership 변화
+[GAP] investor_materials      recommended             0/1   TAM, capex plan, 장기 margin, 신규 사업
+[N/A] registration_statement  conditional             0/1   IPO · 상장 초기 기업의 장기 데이터 보강
+
+차단 공백 (required):
+  - latest_annual: 0/1 — 최근 10-K / 최근 사업보고서
+  - latest_interim: 0/1 — 최신 10-Q (FPI는 6-K 중간 실적으로 대체) / 최신 분기/반기보고서
+  - trailing_quarters: 0/6 — 과거 6~8개 분기의 10-Q (FPI는 6-K 중간 실적으로 대체) / 과거 6~8개 분기보고서
+
+자동 수집: python harness.py fetch META --user-agent "Name email@example.com"
+수동 수집: 위 문서를 runs/META/sources/ 에 넣는다
+
+권고 공백:
+  - historical_annuals (strongly_recommended): 0/3 — 과거 3~5개년 10-K / 과거 3~5개년 사업보고서
+  - proxy_compensation (near_required): 0/1 — DEF 14A Proxy / 주주총회소집공고 · 사업보고서 임원보수 항목
+  - earnings_release (recommended): 0/1 — 실적 관련 8-K + earnings release / 잠정실적 · 영업실적 공시
+  - insider_ownership (recommended): 0/1 — Form 4 / 임원 · 주요주주 지분공시
+  - investor_materials (recommended): 0/1 — Investor Day / 공식 IR 자료 / IR · 기업설명회 자료
+
+조건부 (해당 여부는 사람이 판단):
+  - debt_and_financing: 회사채·전환사채·증자·대규모 M&A 등 자금조달 이벤트가 기준일 이전에 있었던 경우
+  - foreign_issuer_filings: 미국 상장 외국기업이라 10-K/10-Q 대신 20-F/6-K를 제출하는 경우
+  - registration_statement: IPO 또는 상장 초기라 장기 시계열이 부족한 경우

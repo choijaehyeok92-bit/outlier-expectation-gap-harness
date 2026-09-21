@@ -1,0 +1,67 @@
+{
+  "agent_id": "RF",
+  "ticker": "META",
+  "as_of_date": "2026-09-18",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "pending",
+  "score_0_100": 50,
+  "confidence_0_1": 0.5,
+  "bull_score": null,
+  "bear_score": null,
+  "bull_case": "",
+  "bear_case": "",
+  "thesis": "",
+  "evidence": [],
+  "counterevidence": [],
+  "unknowns": [],
+  "falsifiers": [],
+  "hard_veto_flags": [
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    }
+  ],
+  "key_kpis": [],
+  "next_checks": [],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 50,
+      "rationale": ""
+    }
+  ],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

@@ -1,0 +1,215 @@
+test_no_dilution_threshold_is_hardcoded_in_python (test_dilution.ConfigTests.test_no_dilution_threshold_is_hardcoded_in_python)
+Every fractional threshold must live in config, not in a module. ... ok
+test_the_veto_declares_four_elements_and_its_thresholds (test_dilution.ConfigTests.test_the_veto_declares_four_elements_and_its_thresholds) ... ok
+test_the_watch_bands_are_not_the_veto_thresholds (test_dilution.ConfigTests.test_the_watch_bands_are_not_the_veto_thresholds) ... ok
+test_a_non_moonshot_keeps_its_own_cap_but_still_reports_the_watch (test_dilution.DecisionFlowTests.test_a_non_moonshot_keeps_its_own_cap_but_still_reports_the_watch) ... ok
+test_case_A_healthy_moonshot_dilution_is_watched_not_vetoed (test_dilution.DecisionFlowTests.test_case_A_healthy_moonshot_dilution_is_watched_not_vetoed)
+5% dilution, GP/share strongly up, no multi-year record, runway long. ... ok
+test_case_B_structural_dilution_confirms_the_veto (test_dilution.DecisionFlowTests.test_case_B_structural_dilution_confirms_the_veto)
+3y share CAGR 10%, GP/share flat, short runway, further raises required. ... ok
+test_case_C_one_off_acquisition_financing_is_not_long_duration (test_dilution.DecisionFlowTests.test_case_C_one_off_acquisition_financing_is_not_long_duration)
++12% in one year, low before and after, GP/share up on the acquired business. ... ok
+test_case_D_almost_confirmed_is_conditional_and_blocks (test_dilution.DecisionFlowTests.test_case_D_almost_confirmed_is_conditional_and_blocks)
+Two years at 9%, per-share economics worsening, runway short, one item missing. ... ok
+test_runs_without_dilution_metrics_still_aggregate (test_dilution.DecisionFlowTests.test_runs_without_dilution_metrics_still_aggregate) ... ok
+test_the_watch_never_removes_an_archetype_or_moves_a_score (test_dilution.DecisionFlowTests.test_the_watch_never_removes_an_archetype_or_moves_a_score) ... ok
+test_a_run_that_declares_nothing_gets_no_watch (test_dilution.DilutionWatchTests.test_a_run_that_declares_nothing_gets_no_watch) ... ok
+test_a_structural_financing_need_tightens_one_band (test_dilution.DilutionWatchTests.test_a_structural_financing_need_tightens_one_band) ... ok
+test_a_watch_is_never_a_veto (test_dilution.DilutionWatchTests.test_a_watch_is_never_a_veto) ... ok
+test_an_incomplete_report_does_not_declare (test_dilution.DilutionWatchTests.test_an_incomplete_report_does_not_declare) ... ok
+test_bands_classify_declared_dilution (test_dilution.DilutionWatchTests.test_bands_classify_declared_dilution) ... ok
+test_owner_order_decides_which_declaration_wins (test_dilution.DilutionWatchTests.test_owner_order_decides_which_declaration_wins) ... ok
+test_a_partial_or_mistyped_element_answer_is_rejected (test_dilution.ElementDisciplineTests.test_a_partial_or_mistyped_element_answer_is_rejected) ... ok
+test_cleared_and_candidate_stay_unencumbered (test_dilution.ElementDisciplineTests.test_cleared_and_candidate_stay_unencumbered) ... ok
+test_conditional_requires_exactly_one_unmet_and_names_it (test_dilution.ElementDisciplineTests.test_conditional_requires_exactly_one_unmet_and_names_it) ... ok
+test_confirmed_requires_every_element (test_dilution.ElementDisciplineTests.test_confirmed_requires_every_element) ... ok
+test_only_an_owner_of_an_element_gated_veto_is_held_to_it (test_dilution.ElementDisciplineTests.test_only_an_owner_of_an_element_gated_veto_is_held_to_it) ... ok
+test_other_vetoes_are_untouched_by_the_rule (test_dilution.ElementDisciplineTests.test_other_vetoes_are_untouched_by_the_rule) ... ok
+test_prose_alone_cannot_reach_conditional_or_confirmed (test_dilution.ElementDisciplineTests.test_prose_alone_cannot_reach_conditional_or_confirmed) ... ok
+test_a_forked_run_may_still_carry_its_source_ticker (test_hardening.FreezeContextValidationTests.test_a_forked_run_may_still_carry_its_source_ticker)
+fork-run copies inputs byte for byte on purpose, so the snapshot stays comparable. ... ok
+test_a_locked_context_passes (test_hardening.FreezeContextValidationTests.test_a_locked_context_passes) ... ok
+test_a_partial_override_is_checked_against_the_policy_it_merges_into (test_hardening.FreezeContextValidationTests.test_a_partial_override_is_checked_against_the_policy_it_merges_into) ... ok
+test_an_already_frozen_run_stays_readable_when_its_context_would_now_be_refused (test_hardening.FreezeContextValidationTests.test_an_already_frozen_run_stays_readable_when_its_context_would_now_be_refused) ... ok
+test_freeze_accepts_a_sound_context_and_refuses_an_unsound_one (test_hardening.FreezeContextValidationTests.test_freeze_accepts_a_sound_context_and_refuses_an_unsound_one) ... ok
+test_scenario_multiples_must_not_invert (test_hardening.FreezeContextValidationTests.test_scenario_multiples_must_not_invert) ... ok
+test_terminal_multiples_are_non_negative (test_hardening.FreezeContextValidationTests.test_terminal_multiples_are_non_negative) ... ok
+test_the_context_must_name_this_run (test_hardening.FreezeContextValidationTests.test_the_context_must_name_this_run) ... ok
+test_the_cutoff_cannot_move_after_init (test_hardening.FreezeContextValidationTests.test_the_cutoff_cannot_move_after_init) ... ok
+test_the_cutoff_must_be_a_real_calendar_date (test_hardening.FreezeContextValidationTests.test_the_cutoff_must_be_a_real_calendar_date) ... ok
+test_the_price_must_be_a_real_positive_price (test_hardening.FreezeContextValidationTests.test_the_price_must_be_a_real_positive_price) ... ok
+test_the_required_return_must_discount (test_hardening.FreezeContextValidationTests.test_the_required_return_must_discount) ... ok
+test_a_non_owner_clearing_is_not_an_escalation_and_cannot_clear (test_hardening.HardVetoOwnershipTests.test_a_non_owner_clearing_is_not_an_escalation_and_cannot_clear) ... ok
+test_a_non_owner_never_confirms_but_always_escalates (test_hardening.HardVetoOwnershipTests.test_a_non_owner_never_confirms_but_always_escalates) ... ok
+test_an_escalation_on_one_veto_leaves_the_others_alone (test_hardening.HardVetoOwnershipTests.test_an_escalation_on_one_veto_leaves_the_others_alone) ... ok
+test_an_owner_confirming_still_confirms_and_outranks_an_escalation (test_hardening.HardVetoOwnershipTests.test_an_owner_confirming_still_confirms_and_outranks_an_escalation) ... ok
+test_every_owner_clearing_is_the_only_route_to_cleared (test_hardening.HardVetoOwnershipTests.test_every_owner_clearing_is_the_only_route_to_cleared) ... ok
+test_silence_from_an_owner_is_never_clearance (test_hardening.HardVetoOwnershipTests.test_silence_from_an_owner_is_never_clearance) ... ok
+test_the_non_owner_finding_is_preserved_not_discarded (test_hardening.HardVetoOwnershipTests.test_the_non_owner_finding_is_preserved_not_discarded) ... ok
+test_a_document_match_by_document_id_also_works (test_hardening.VerifiedCatalogDateTests.test_a_document_match_by_document_id_also_works) ... ok
+test_a_fact_with_no_usable_date_anywhere_is_excluded_not_dated (test_hardening.VerifiedCatalogDateTests.test_a_fact_with_no_usable_date_anywhere_is_excluded_not_dated) ... ok
+test_a_malformed_fact_date_is_excluded_rather_than_papered_over (test_hardening.VerifiedCatalogDateTests.test_a_malformed_fact_date_is_excluded_rather_than_papered_over) ... ok
+test_a_null_filing_date_falls_back_to_the_document (test_hardening.VerifiedCatalogDateTests.test_a_null_filing_date_falls_back_to_the_document) ... ok
+test_an_absent_filing_date_falls_back_to_the_document (test_hardening.VerifiedCatalogDateTests.test_an_absent_filing_date_falls_back_to_the_document) ... ok
+test_the_context_half_of_the_catalog_is_unaffected (test_hardening.VerifiedCatalogDateTests.test_the_context_half_of_the_catalog_is_unaffected) ... ok
+test_the_fallback_still_obeys_the_cutoff (test_hardening.VerifiedCatalogDateTests.test_the_fallback_still_obeys_the_cutoff) ... ok
+test_growth_each_condition_boundary_missing_gate_and_veto (test_research.GrowthAndReportTests.test_growth_each_condition_boundary_missing_gate_and_veto) ... ok
+test_plain_report_provisional_missing_and_guarded_final (test_research.GrowthAndReportTests.test_plain_report_provisional_missing_and_guarded_final) ... ok
+test_conflict_quarantined_and_not_auto_overwritten (test_research.ResearchTests.test_conflict_quarantined_and_not_auto_overwritten) ... ok
+test_content_addressed_archive_and_domain_routing (test_research.ResearchTests.test_content_addressed_archive_and_domain_routing) ... ok
+test_intake_preserves_files_and_reports (test_research.ResearchTests.test_intake_preserves_files_and_reports) ... ok
+test_local_plan_stable_prioritized_and_missing_input_visible (test_research.ResearchTests.test_local_plan_stable_prioritized_and_missing_input_visible) ... ok
+test_no_normalization_as_fact_without_direct_disclosure (test_research.ResearchTests.test_no_normalization_as_fact_without_direct_disclosure) ... ok
+test_portable_hash_ignores_only_line_endings (test_research.ResearchTests.test_portable_hash_ignores_only_line_endings) ... ok
+test_post_cutoff_excluded_not_supplemented (test_research.ResearchTests.test_post_cutoff_excluded_not_supplemented) ... ok
+test_restated_primary_requires_refreeze_even_without_value_conflict (test_research.ResearchTests.test_restated_primary_requires_refreeze_even_without_value_conflict) ... ok
+test_same_fact_requires_same_id_and_driver_across_packets (test_research.ResearchTests.test_same_fact_requires_same_id_and_driver_across_packets) ... ok
+test_search_order_and_decision_field_rejected (test_research.ResearchTests.test_search_order_and_decision_field_rejected) ... ok
+test_source_tier_and_unknown_fact_reference (test_research.ResearchTests.test_source_tier_and_unknown_fact_reference) ... ok
+test_veto_both_sides_and_unresolved_missing_not_zero (test_research.ResearchTests.test_veto_both_sides_and_unresolved_missing_not_zero) ... ok
+test_wrong_identity_unknown_question_and_invalid_date (test_research.ResearchTests.test_wrong_identity_unknown_question_and_invalid_date) ... ok
+test_band_centre_is_unchanged_by_interpolation (test_v3.AnchorInterpolationTests.test_band_centre_is_unchanged_by_interpolation) ... ok
+test_discrete_and_adjective_anchors_are_never_interpolated (test_v3.AnchorInterpolationTests.test_discrete_and_adjective_anchors_are_never_interpolated) ... ok
+test_every_policy_threshold_is_reachable (test_v3.AnchorInterpolationTests.test_every_policy_threshold_is_reachable)
+A criterion threshold the anchor grid cannot produce is a silent, stricter gate. ... ok
+test_interpolation_is_continuous_across_band_edges (test_v3.AnchorInterpolationTests.test_interpolation_is_continuous_across_band_edges) ... ok
+test_dispersion_changes_no_score_archetype_or_veto (test_v3.DispersionTests.test_dispersion_changes_no_score_archetype_or_veto) ... ok
+test_dispersion_never_rejects_on_its_own (test_v3.DispersionTests.test_dispersion_never_rejects_on_its_own)
+Rejection belongs to scores and vetoes; dispersion only narrows deployment. ... ok
+test_downside_skew_narrows_and_upside_never_widens (test_v3.DispersionTests.test_downside_skew_narrows_and_upside_never_widens) ... ok
+test_A_short_term_growth_without_five_year_scale_fails (test_v3.OutlierGrowthTests.test_A_short_term_growth_without_five_year_scale_fails) ... ok
+test_B_scale_without_duration_fails (test_v3.OutlierGrowthTests.test_B_scale_without_duration_fails) ... ok
+test_C_without_a_specific_expectation_gap_fails (test_v3.OutlierGrowthTests.test_C_without_a_specific_expectation_gap_fails) ... ok
+test_D_without_a_five_times_path_fails (test_v3.OutlierGrowthTests.test_D_without_a_five_times_path_fails) ... ok
+test_E_weak_financial_survival_fails (test_v3.OutlierGrowthTests.test_E_weak_financial_survival_fails) ... ok
+test_F_price_above_bull_blocks_any_buy_state (test_v3.OutlierGrowthTests.test_F_price_above_bull_blocks_any_buy_state) ... ok
+test_G2_planner_does_not_ask_for_LG_once_outlier_growth_is_unreachable (test_v3.OutlierGrowthTests.test_G2_planner_does_not_ask_for_LG_once_outlier_growth_is_unreachable) ... ok
+test_G_missing_LG_leaves_it_reachable_but_not_eligible_and_planner_asks (test_v3.OutlierGrowthTests.test_G_missing_LG_leaves_it_reachable_but_not_eligible_and_planner_asks) ... ok
+test_H_outlier_growth_can_be_secondary_to_compounder (test_v3.OutlierGrowthTests.test_H_outlier_growth_can_be_secondary_to_compounder) ... ok
+test_I_tie_break_order_is_deterministic_and_config_driven (test_v3.OutlierGrowthTests.test_I_tie_break_order_is_deterministic_and_config_driven) ... ok
+test_L2_v31_verdicts_with_four_archetypes_still_validate (test_v3.OutlierGrowthTests.test_L2_v31_verdicts_with_four_archetypes_still_validate)
+A stored v3.1 verdict has four fits and must keep validating unmigrated. ... ok
+test_L_final_verdict_schema_accepts_the_fifth_archetype (test_v3.OutlierGrowthTests.test_L_final_verdict_schema_accepts_the_fifth_archetype) ... ok
+test_baseline_fixture_is_eligible_and_ordinary_growth_is_not (test_v3.OutlierGrowthTests.test_baseline_fixture_is_eligible_and_ordinary_growth_is_not) ... ok
+test_cheapness_and_current_fcf_quality_are_not_required (test_v3.OutlierGrowthTests.test_cheapness_and_current_fcf_quality_are_not_required) ... ok
+test_long_term_growth_stays_out_of_the_core_score (test_v3.OutlierGrowthTests.test_long_term_growth_stays_out_of_the_core_score) ... ok
+test_blocked_egress_surfaces_as_a_fetch_error (test_v3.Stage0FetchTests.test_blocked_egress_surfaces_as_a_fetch_error) ... ok
+test_default_opener_decodes_gzip_responses (test_v3.Stage0FetchTests.test_default_opener_decodes_gzip_responses) ... ok
+test_download_writes_files_and_carries_the_contact (test_v3.Stage0FetchTests.test_download_writes_files_and_carries_the_contact) ... ok
+test_every_checklist_row_declares_its_edgar_forms (test_v3.Stage0FetchTests.test_every_checklist_row_declares_its_edgar_forms) ... ok
+test_nothing_filed_after_the_cutoff_is_planned (test_v3.Stage0FetchTests.test_nothing_filed_after_the_cutoff_is_planned) ... ok
+test_open_requests_identity_encoding_from_sec (test_v3.Stage0FetchTests.test_open_requests_identity_encoding_from_sec) ... ok
+test_plan_reports_a_shortfall_rather_than_inventing_filings (test_v3.Stage0FetchTests.test_plan_reports_a_shortfall_rather_than_inventing_filings) ... ok
+test_resolves_ticker_and_rejects_unknown_one (test_v3.Stage0FetchTests.test_resolves_ticker_and_rejects_unknown_one) ... ok
+test_a_6k_without_interim_facts_is_not_a_quarterly_report (test_v3.Stage0IntakeTests.test_a_6k_without_interim_facts_is_not_a_quarterly_report)
+6-K is furnished for anything; a press release is not an interim report. ... ok
+test_a_domestic_filer_is_unaffected_by_the_equivalence (test_v3.Stage0IntakeTests.test_a_domestic_filer_is_unaffected_by_the_equivalence) ... ok
+test_a_year_to_date_6k_also_counts (test_v3.Stage0IntakeTests.test_a_year_to_date_6k_also_counts) ... ok
+test_an_annual_only_6k_fact_does_not_count (test_v3.Stage0IntakeTests.test_an_annual_only_6k_fact_does_not_count) ... ok
+test_conditional_requirements_are_not_counted_as_gaps (test_v3.Stage0IntakeTests.test_conditional_requirements_are_not_counted_as_gaps) ... ok
+test_enforced_run_blocks_until_required_documents_exist (test_v3.Stage0IntakeTests.test_enforced_run_blocks_until_required_documents_exist) ... ok
+test_fetch_can_reach_the_6k_filings_the_rule_accepts (test_v3.Stage0IntakeTests.test_fetch_can_reach_the_6k_filings_the_rule_accepts) ... ok
+test_freeze_refuses_while_stage_0_is_incomplete (test_v3.Stage0IntakeTests.test_freeze_refuses_while_stage_0_is_incomplete) ... ok
+test_instant_may_carry_the_quarter_it_falls_in (test_v3.Stage0IntakeTests.test_instant_may_carry_the_quarter_it_falls_in) ... ok
+test_invariants_catch_sign_period_and_dangling_reference (test_v3.Stage0IntakeTests.test_invariants_catch_sign_period_and_dangling_reference) ... ok
+test_legacy_runs_without_a_pack_are_never_blocked (test_v3.Stage0IntakeTests.test_legacy_runs_without_a_pack_are_never_blocked) ... ok
+test_plan_puts_intake_first_when_stage_0_is_incomplete (test_v3.Stage0IntakeTests.test_plan_puts_intake_first_when_stage_0_is_incomplete) ... ok
+test_shipped_pack_passes_its_own_schema_and_invariants (test_v3.Stage0IntakeTests.test_shipped_pack_passes_its_own_schema_and_invariants) ... ok
+test_the_equivalence_needs_facts_from_that_same_document (test_v3.Stage0IntakeTests.test_the_equivalence_needs_facts_from_that_same_document) ... ok
+test_too_few_interim_6k_filings_still_block (test_v3.Stage0IntakeTests.test_too_few_interim_6k_filings_still_block) ... ok
+test_trailing_6k_interim_filings_count_as_quarterly_reports (test_v3.Stage0IntakeTests.test_trailing_6k_interim_filings_count_as_quarterly_reports) ... ok
+test_cli_roundtrip_isolated (test_v3.V3Tests.test_cli_roundtrip_isolated) ... ok
+test_compounder_each_gate_boundary (test_v3.V3Tests.test_compounder_each_gate_boundary) ... ok
+test_criterion_resolution_missing_and_validation (test_v3.V3Tests.test_criterion_resolution_missing_and_validation) ... ok
+test_duplicate_confirmed_veto_cannot_be_hidden (test_v3.V3Tests.test_duplicate_confirmed_veto_cannot_be_hidden) ... ok
+test_early_exit_triage_and_pre_ic_record (test_v3.V3Tests.test_early_exit_triage_and_pre_ic_record) ... ok
+test_evidence_concentration_flags_do_not_change_scores (test_v3.V3Tests.test_evidence_concentration_flags_do_not_change_scores) ... ok
+test_exactly_five_and_synthetic_classifications (test_v3.V3Tests.test_exactly_five_and_synthetic_classifications) ... ok
+test_existing_rubric_and_valuation_invariants (test_v3.V3Tests.test_existing_rubric_and_valuation_invariants) ... ok
+test_expiry_cannot_clear_known_structural_reanalysis (test_v3.V3Tests.test_expiry_cannot_clear_known_structural_reanalysis) ... ok
+test_generated_documentation_and_policy_invariants (test_v3.V3Tests.test_generated_documentation_and_policy_invariants) ... ok
+test_global_cache_never_copies_company_conclusions (test_v3.V3Tests.test_global_cache_never_copies_company_conclusions) ... ok
+test_historical_reports_read_without_mutation (test_v3.V3Tests.test_historical_reports_read_without_mutation) ... ok
+test_ic_can_reduce_state_but_cannot_bypass_veto_or_caps (test_v3.V3Tests.test_ic_can_reduce_state_but_cannot_bypass_veto_or_caps) ... ok
+test_missing_modern_valuation_does_not_use_declared_signal (test_v3.V3Tests.test_missing_modern_valuation_does_not_use_declared_signal) ... ok
+test_missing_veto_owner_never_buy_and_planner_requests_it (test_v3.V3Tests.test_missing_veto_owner_never_buy_and_planner_requests_it) ... ok
+test_moonshot_market_cap_boundary (test_v3.V3Tests.test_moonshot_market_cap_boundary) ... ok
+test_optional_tq_and_triage_reachability (test_v3.V3Tests.test_optional_tq_and_triage_reachability) ... ok
+test_order_independence_and_explicit_ties (test_v3.V3Tests.test_order_independence_and_explicit_ties) ... ok
+test_plan_emits_explicit_continuation_control (test_v3.V3Tests.test_plan_emits_explicit_continuation_control) ... ok
+test_review_only_allows_nonfit_ic_but_never_buy (test_v3.V3Tests.test_review_only_allows_nonfit_ic_but_never_buy) ... ok
+test_schemas_and_new_reports (test_v3.V3Tests.test_schemas_and_new_reports) ... ok
+test_shadow_offsets_cannot_flip_decision_and_active_is_explicit (test_v3.V3Tests.test_shadow_offsets_cannot_flip_decision_and_active_is_explicit) ... ok
+test_stale_and_malformed_macro_requests_refresh (test_v3.V3Tests.test_stale_and_malformed_macro_requests_refresh) ... ok
+test_structural_geo_routes_and_core_score_invariant (test_v3.V3Tests.test_structural_geo_routes_and_core_score_invariant) ... ok
+test_ttl_boundary_and_invalidation (test_v3.V3Tests.test_ttl_boundary_and_invalidation) ... ok
+test_value_trap_and_integrity_block_cheap_value (test_v3.V3Tests.test_value_trap_and_integrity_block_cheap_value) ... ok
+test_a_sanity_review_never_confirms_the_valuation_hard_veto (test_v33.DecisionSemanticsTests.test_a_sanity_review_never_confirms_the_valuation_hard_veto) ... ok
+test_an_ordered_valuation_leaves_the_buy_state_alone (test_v33.DecisionSemanticsTests.test_an_ordered_valuation_leaves_the_buy_state_alone) ... ok
+test_an_ordering_contradiction_forces_watch (test_v33.DecisionSemanticsTests.test_an_ordering_contradiction_forces_watch) ... ok
+test_v31_and_v32_verdicts_still_validate_under_the_v33_schema (test_v33.DecisionSemanticsTests.test_v31_and_v32_verdicts_still_validate_under_the_v33_schema)
+Adding a version must not strand the artifacts written under the old ones. ... ok
+test_yearly_crossing_alone_does_not_force_watch (test_v33.DecisionSemanticsTests.test_yearly_crossing_alone_does_not_force_watch) ... ok
+test_a_gate_absent_from_the_axes_does_not_move_the_ranking (test_v33.FitAxisTests.test_a_gate_absent_from_the_axes_does_not_move_the_ranking)
+price_to_base_value gates compounder but does not define what a compounder is. ... ok
+test_a_legacy_config_without_fit_axes_still_ranks (test_v33.FitAxisTests.test_a_legacy_config_without_fit_axes_still_ranks) ... ok
+test_eligibility_condition_count_cannot_change_fit_score (test_v33.FitAxisTests.test_eligibility_condition_count_cannot_change_fit_score) ... ok
+test_executable_config_ranks_on_gate_backed_fit_axes (test_v33.FitAxisTests.test_executable_config_ranks_on_gate_backed_fit_axes) ... ok
+test_fit_axis_rows_explain_the_score_and_mark_what_is_missing (test_v33.FitAxisTests.test_fit_axis_rows_explain_the_score_and_mark_what_is_missing) ... ok
+test_signal_fit_axis_uses_explicit_linear_normalization (test_v33.FitAxisTests.test_signal_fit_axis_uses_explicit_linear_normalization) ... ok
+test_a_blocking_sanity_failure_becomes_a_decision_blocking_question (test_v33.ResearchBudgetTests.test_a_blocking_sanity_failure_becomes_a_decision_blocking_question) ... ok
+test_budget_never_hides_decision_blockers (test_v33.ResearchBudgetTests.test_budget_never_hides_decision_blockers) ... ok
+test_budgeting_is_deterministic (test_v33.ResearchBudgetTests.test_budgeting_is_deterministic) ... ok
+test_nonblocking_research_is_bounded_classified_and_visible_when_deferred (test_v33.ResearchBudgetTests.test_nonblocking_research_is_bounded_classified_and_visible_when_deferred) ... ok
+test_the_most_binding_trigger_decides_a_shared_question (test_v33.ResearchBudgetTests.test_the_most_binding_trigger_decides_a_shared_question) ... ok
+test_an_ordered_valuation_passes_every_check (test_v33.ValuationSanityTests.test_an_ordered_valuation_passes_every_check) ... ok
+test_intrinsic_value_ordering_contradiction_blocks (test_v33.ValuationSanityTests.test_intrinsic_value_ordering_contradiction_blocks) ... ok
+test_price_above_bull_is_routed_for_review_not_auto_vetoed (test_v33.ValuationSanityTests.test_price_above_bull_is_routed_for_review_not_auto_vetoed) ... ok
+test_terminal_concentration_is_review_not_automatic_reject (test_v33.ValuationSanityTests.test_terminal_concentration_is_review_not_automatic_reject) ... ok
+test_the_executable_config_declares_the_sanity_policy (test_v33.ValuationSanityTests.test_the_executable_config_declares_the_sanity_policy) ... ok
+test_the_thresholds_come_from_config_not_from_the_code (test_v33.ValuationSanityTests.test_the_thresholds_come_from_config_not_from_the_code) ... ok
+test_yearly_path_crossing_is_review_not_automatic_block (test_v33.ValuationSanityTests.test_yearly_path_crossing_is_review_not_automatic_block) ... ok
+
+----------------------------------------------------------------------
+Ran 159 tests in 10.258s
+
+OK
+/home/runner/work/outlier-expectation-gap-harness/outlier-expectation-gap-harness/runs/META
+META: EDGAR unreachable — https://www.sec.gov/files/company_tickers.json -> HTTP 403
+If this environment blocks sec.gov, download the filings listed by `harness.py intake META` and place them in runs/META/sources/ by hand.
+fetch_exit_code=1
+META: financial pack 없음 (sources/financials/normalized_financials.json). 강제 여부: enforced
+
+[GAP] latest_annual           required                0/1   연간 3개년 재무제표, segment, 고객집중, 부채, SBC, 약정, 회계정책
+[GAP] latest_interim          required                0/1   현재 TTM, 분기 추세, 운전자본, 현금흐름, 희석
+[GAP] trailing_quarters       required                0/6   TTM·YoY·FCF/share·증분 ROIC 추세
+[GAP] historical_annuals      strongly_recommended    0/3   정상화 이익, 반복 구조조정, 자본집약도, 장기 추세
+[GAP] proxy_compensation      near_required           0/1   경영진 보상, 주식보상, ownership, governance
+[GAP] earnings_release        recommended             0/1   GAAP/non-GAAP reconciliation, 최신 KPI
+[N/A] debt_and_financing      conditional_required    0/1   회사채, 전환사채, 증자, M&A, 대규모 자금조달
+[N/A] foreign_issuer_filings  conditional             0/1   미국 상장 외국기업의 10-K/10-Q 대체
+[GAP] insider_ownership       recommended             0/1   내부자 매매 · ownership 변화
+[GAP] investor_materials      recommended             0/1   TAM, capex plan, 장기 margin, 신규 사업
+[N/A] registration_statement  conditional             0/1   IPO · 상장 초기 기업의 장기 데이터 보강
+
+차단 공백 (required):
+  - latest_annual: 0/1 — 최근 10-K / 최근 사업보고서
+  - latest_interim: 0/1 — 최신 10-Q (FPI는 6-K 중간 실적으로 대체) / 최신 분기/반기보고서
+  - trailing_quarters: 0/6 — 과거 6~8개 분기의 10-Q (FPI는 6-K 중간 실적으로 대체) / 과거 6~8개 분기보고서
+
+자동 수집: python harness.py fetch META --user-agent "Name email@example.com"
+수동 수집: 위 문서를 runs/META/sources/ 에 넣는다
+
+권고 공백:
+  - historical_annuals (strongly_recommended): 0/3 — 과거 3~5개년 10-K / 과거 3~5개년 사업보고서
+  - proxy_compensation (near_required): 0/1 — DEF 14A Proxy / 주주총회소집공고 · 사업보고서 임원보수 항목
+  - earnings_release (recommended): 0/1 — 실적 관련 8-K + earnings release / 잠정실적 · 영업실적 공시
+  - insider_ownership (recommended): 0/1 — Form 4 / 임원 · 주요주주 지분공시
+  - investor_materials (recommended): 0/1 — Investor Day / 공식 IR 자료 / IR · 기업설명회 자료
+
+조건부 (해당 여부는 사람이 판단):
+  - debt_and_financing: 회사채·전환사채·증자·대규모 M&A 등 자금조달 이벤트가 기준일 이전에 있었던 경우
+  - foreign_issuer_filings: 미국 상장 외국기업이라 10-K/10-Q 대신 20-F/6-K를 제출하는 경우
+  - registration_statement: IPO 또는 상장 초기라 장기 시계열이 부족한 경우
+intake_exit_code=1
+runs/META/FP_prompt.md

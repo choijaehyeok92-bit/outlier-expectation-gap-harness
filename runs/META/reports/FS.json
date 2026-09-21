@@ -1,0 +1,72 @@
+{
+  "agent_id": "FS",
+  "ticker": "META",
+  "as_of_date": "2026-09-18",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "pending",
+  "score_0_100": 50,
+  "confidence_0_1": 0.5,
+  "bull_score": null,
+  "bear_score": null,
+  "bull_case": "",
+  "bear_case": "",
+  "thesis": "",
+  "evidence": [],
+  "counterevidence": [],
+  "unknowns": [],
+  "falsifiers": [],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "candidate",
+      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+    }
+  ],
+  "key_kpis": [],
+  "next_checks": [],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 50,
+      "rationale": ""
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 50,
+      "rationale": ""
+    }
+  ],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

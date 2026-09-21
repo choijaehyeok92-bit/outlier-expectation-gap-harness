@@ -1,0 +1,16 @@
+{
+  "strategy_version": "3.3",
+  "schema_version": "3.3",
+  "decision_policy_version": "3.3",
+  "provider_calibration_mode": "shadow",
+  "ticker": "META",
+  "as_of_date": "2026-09-18",
+  "frozen": false,
+  "financial_pack_required": true,
+  "harness_commit": "fd69dce776022bbf06d4d8f05ff1b265322f4b47",
+  "runner": {
+    "provider": null,
+    "model": null,
+    "reasoning_effort": null
+  }
+}
