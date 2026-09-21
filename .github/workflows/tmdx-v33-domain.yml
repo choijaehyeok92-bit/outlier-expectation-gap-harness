@@ -1,0 +1,61 @@
+name: TMDX v3.3 domain analysis
+
+on:
+  push:
+    branches:
+      - work/tmdx-2026-09-18-v33
+    paths:
+      - ".github/workflows/tmdx-v33-domain.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  domain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/tmdx-2026-09-18-v33
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Execute TMDX domain analysis
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/tmdx-domain.log) 2>&1
+
+          python harness.py selftest
+          for AGENT in SL CP MT RF MA LG; do
+            python harness.py prompt TMDX "$AGENT" --out "runs/TMDX/${AGENT}_prompt.md"
+            cp ".harness_inputs/TMDX/reports/${AGENT}.json" "runs/TMDX/reports/${AGENT}.json"
+            python harness.py validate TMDX "$AGENT"
+          done
+
+          python harness.py aggregate TMDX | tee runlogs/aggregate_after_domain.json
+          python harness.py digest TMDX
+          python harness.py plan TMDX | tee runlogs/plan_after_domain.txt
+
+          echo "===== NEXT PLAN ====="
+          cat runlogs/plan_after_domain.txt
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/TMDX
+          if ! git diff --cached --quiet; then
+            git commit -m "analysis: complete TMDX core domains"
+            git push origin HEAD:work/tmdx-2026-09-18-v33
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: TMDX-v33-domain
+          path: |
+            runs/TMDX
+            runlogs
