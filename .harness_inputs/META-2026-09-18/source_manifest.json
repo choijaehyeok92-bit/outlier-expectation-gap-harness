@@ -1,0 +1,76 @@
+{
+  "ticker": "META",
+  "as_of_date": "2026-09-18",
+  "note": "SEC EDGAR direct fetch in GitHub Actions returned HTTP 403. These primary-source URLs were retrieved independently; normalized_financials.json maps reported facts without economic normalization.",
+  "sources": [
+    {
+      "source_document": "SEC_10-K_2025_meta-20251231.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "filing_date": "2026-01-29",
+      "period_end": "2025-12-31",
+      "type": "10-K"
+    },
+    {
+      "source_document": "SEC_10-K_2024_meta-20241231.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm",
+      "filing_date": "2025-01-30",
+      "period_end": "2024-12-31",
+      "type": "10-K"
+    },
+    {
+      "source_document": "SEC_10-K_2023_meta-20231231.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000012/meta-20231231.htm",
+      "filing_date": "2024-02-02",
+      "period_end": "2023-12-31",
+      "type": "10-K"
+    },
+    {
+      "source_document": "SEC_10-Q_2024Q3_meta-20240930.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm",
+      "filing_date": "2024-10-31",
+      "period_end": "2024-09-30",
+      "type": "10-Q"
+    },
+    {
+      "source_document": "SEC_10-Q_2025Q1_meta-20250331.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm",
+      "filing_date": "2025-05-01",
+      "period_end": "2025-03-31",
+      "type": "10-Q"
+    },
+    {
+      "source_document": "SEC_10-Q_2025Q2_meta-20250630.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm",
+      "filing_date": "2025-07-31",
+      "period_end": "2025-06-30",
+      "type": "10-Q"
+    },
+    {
+      "source_document": "SEC_10-Q_2025Q3_meta-20250930.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm",
+      "filing_date": "2025-10-30",
+      "period_end": "2025-09-30",
+      "type": "10-Q"
+    },
+    {
+      "source_document": "SEC_10-Q_2026Q1_meta-20260331.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm",
+      "filing_date": "2026-04-30",
+      "period_end": "2026-03-31",
+      "type": "10-Q"
+    },
+    {
+      "source_document": "SEC_10-Q_2026Q2_meta-20260630.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "filing_date": "2026-07-30",
+      "period_end": "2026-06-30",
+      "type": "10-Q"
+    },
+    {
+      "source_document": "META_price_2026-09-18",
+      "url": "https://finance.yahoo.com/quote/META/history/",
+      "date": "2026-09-18",
+      "close_usd": 665.75
+    }
+  ]
+}
