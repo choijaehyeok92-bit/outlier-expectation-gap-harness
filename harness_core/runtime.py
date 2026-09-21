@@ -465,14 +465,20 @@ def plan(ticker,reports,result=None):
     if st['blocking']:
         gaps=[f"{g['id']} ({g['found']}/{g['needed']})" for g in (st['coverage'] or {}).get('blocking_gaps',[])]
         return {'stage':'intake','agents':{'financial_preprocessor':'FP'},
+                'execution_control':'blocked',
                 'stage_0':{k:st[k] for k in ('stage_0','pack_present','invariant_errors')},
                 'blocking_gaps':gaps,
-                'statement':'Stage 0 is incomplete; the reasoning stages do not start until the raw pack is in place.'}
+                'statement':'Stage 0 is incomplete; fix the blocking gaps, then resume. This is not a completed analysis or an early-exit decision.'}
     step=planner.next_stage(reports,result,load_json(run_dir(ticker)/'company_context.json'),
         MANIFEST,SCORE_DOMAINS,EXEC['triage_domains'],ARCHETYPES,VETO_REVIEWERS)
     step['stage_0']={k:st[k] for k in ('stage_0','enforced','pack_present')}
     if st['coverage'] and st['coverage']['advisory_gaps']:
         step['stage_0']['advisory_gaps']=[g['id'] for g in st['coverage']['advisory_gaps']]
+    step['execution_control'] = (
+        'stop_early' if step['stage']=='early_exit'
+        else 'stop_complete' if step['stage']=='complete'
+        else 'continue'
+    )
     return step
 
 
@@ -489,8 +495,12 @@ def cmd_plan(args):
     print(json.dumps(step,ensure_ascii=False,indent=2))
     for d,aid in step['agents'].items():
         print(f'python harness.py prompt {args.ticker.upper()} {aid}')
-    if step['stage']=='early_exit':
-        print(f'IC intentionally skipped; run aggregate and digest for {args.ticker.upper()}.')
+    if step['execution_control']=='continue':
+        print(f'CONTINUE: complete the listed agent work, validate it, then rerun aggregate, digest, and plan for {args.ticker.upper()}.')
+    elif step['stage']=='early_exit':
+        print(f'STOP_EARLY: IC intentionally skipped; run aggregate and digest for {args.ticker.upper()}.')
+    elif step['stage']=='complete':
+        print(f'STOP_COMPLETE: analysis workflow complete for {args.ticker.upper()}.')
 
 def short(text, n):
     text=' '.join(str(text).split())
