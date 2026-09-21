@@ -4,40 +4,140 @@
   "as_of_date": "2026-09-18",
   "domain": "disruptive_innovation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
-  "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "analysis_status": "complete",
+  "score_0_100": 80.25,
+  "confidence_0_1": 0.83,
+  "bull_score": 91,
+  "bear_score": 63,
+  "bull_case": "Vertiv becomes the systems integrator for high-density AI infrastructure, spanning power train, thermal management, liquid cooling, services and behind-the-meter microgrids.",
+  "bear_case": "Much of Vertiv's growth remains an industrial capacity cycle in which hyperscalers and equipment competitors dictate architecture, limiting durable control of standards.",
+  "thesis": "Vertiv is participating in a real infrastructure architecture shift: rack power density and liquid cooling requirements are forcing redesign from grid connection through thermal management. Vertiv has multiple adjacent value pools and scaled adoption, but it is not the sole standard-setter because hyperscalers, chip vendors, Schneider, Eaton and other suppliers retain substantial control.",
+  "evidence": [
+    {
+      "claim": "Vertiv positions power management, thermal management, integrated rack solutions and services across critical digital infrastructure.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-13",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-DI-STACK"
+    },
+    {
+      "claim": "FY2026 guidance calls for 30%-32% organic growth and Q2 sales rose 24%, showing scaled adoption rather than pilot-stage demand.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050323/q22026exhibit991vrt07292026.htm",
+      "period": "Q2/FY2026",
+      "as_of_date": "2026-07-29",
+      "value": "Q2 +24%; FY guide 30-32%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-DI-ADOPT"
+    },
+    {
+      "claim": "Recent acquisitions add liquid cooling, heat rejection and custom-engineered structural fabrication; UIG adds microgrid and behind-the-meter power architecture.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050609/vrt-20260630.htm",
+      "period": "H1 2026 / Sep 2026",
+      "as_of_date": "2026-09-02",
+      "value": null,
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-DI-ADJ"
+    },
+    {
+      "claim": "Vertiv spent $441.7M on engineering R&D in 2025 and operates a global field-service network.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000008/vrt-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-13",
+      "value": "ER&D 441.7M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "VRT-DI-RD"
+    }
+  ],
+  "counterevidence": [
+    "High-density power/cooling architectures are being co-designed by customers and other suppliers rather than controlled by Vertiv alone.",
+    "Major competitors have comparable capital resources and global distribution.",
+    "Hardware-intensive businesses can face commoditization and customer insourcing.",
+    "Acquisitions, rather than purely organic innovation, contribute to some adjacent capabilities."
+  ],
+  "unknowns": [
+    "Vertiv share of liquid-cooling deployments.",
+    "Customer-level share of wallet across power+thermal+services.",
+    "Gross-margin economics of microgrid and behind-the-meter products.",
+    "How much architecture is dictated by NVIDIA/hyperscaler reference designs."
+  ],
+  "falsifiers": [
+    "If liquid-cooling and high-density product growth underperforms conventional data-center infrastructure, disruption score should fall.",
+    "If Vertiv becomes the preferred integrated architecture across multiple hyperscalers, option value rises.",
+    "If hyperscalers standardize commodity components and multi-source aggressively, differentiation weakens."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Demand is backed by paid backlog, rapidly growing sales and mission-critical infrastructure needs."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "liquid cooling / high-density sales",
+      "direction": "up",
+      "threshold": "outgrow total company",
+      "cadence": "annual/quarterly"
+    },
+    {
+      "name": "service & spares growth",
+      "direction": "up",
+      "threshold": "sustain recurring installed-base value",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "integrated project wins",
+      "direction": "up",
+      "threshold": "more cross-stack content per project",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Liquid-cooling share",
+    "UIG integration",
+    "Hyperscaler architecture decisions"
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "cost_performance_shift",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "AI rack density forces structural changes in power and cooling architecture rather than incremental replacement alone."
     },
     {
       "criterion_id": "adoption_curve",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Backlog, organic growth and capacity expansion show mainstream rapid adoption with improving margins."
     },
     {
       "criterion_id": "optionality_incumbent_response",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Power, cooling, service and microgrid are multiple value pools, but Vertiv does not unilaterally define the stack and customers remain powerful."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "The economic advantage is system-level and not reducible to one standardized cost metric."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "minor",
+      "rationale": "Revenue/backlog adoption is directly observable."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Customers and rivals are well-capitalized and can shape architecture."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
