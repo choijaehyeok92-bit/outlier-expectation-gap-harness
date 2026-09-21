@@ -1,0 +1,209 @@
+{
+  "agent_id": "EV",
+  "ticker": "ALAB",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 55.5,
+  "confidence_0_1": 0.8,
+  "bull_score": 75,
+  "bear_score": 35,
+  "bull_case": "If Scorpio becomes a major AI-fabric switching platform while Aries, Taurus, Leo and custom connectivity scale across hyperscalers, owner FCF/share could compound fast enough to support value well above today's price.",
+  "bear_case": "At $303.25, ALAB already capitalizes a long runway of high growth and high margins. Customer concentration, competitive responses or a slower AI capex cycle can compress both FCF expectations and the terminal multiple.",
+  "thesis": "The locked DCF places $303.25 slightly above a demanding Base value of about $284.6, so the stock is not a clear expectation-gap bargain despite exceptional operating momentum. Base requires owner FCF/share to rise from roughly current low-single-digit economics to $25 by year 10, while Bull reaches $63. The balance sheet is strongly net cash, but valuation leaves limited room for ordinary execution misses. Current price is below Bull, so the Bull+ hard veto is not triggered.",
+  "evidence": [
+    {
+      "claim": "ALAB closed at $303.25 on September 18, 2026.",
+      "source_type": "secondary",
+      "source": "https://stockanalysis.com/stocks/alab/history/",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 303.25,
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-PRICE-20260918"
+    },
+    {
+      "claim": "Q2 2026 revenue was $392.4M, +27% QoQ and +104% YoY; Q3 revenue guidance was $540M-$560M.",
+      "source_type": "company_primary",
+      "source": "https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results",
+      "period": "Q2 2026 / Q3 guidance",
+      "as_of_date": "2026-08-04",
+      "value": "392.4M / 540-560M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-Q2-2026"
+    },
+    {
+      "claim": "June 30 cash plus marketable securities were $1.253B and total liabilities were $205.8M, with no material funded debt shown on the balance sheet.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-05",
+      "value": "1.253B liquidity",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-CASH-2026"
+    },
+    {
+      "claim": "H1 2026 operating cash flow was $162.3M and capex was $28.1M; FY2025 OCF was $319.3M and capex $37.5M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "H1 2026 / FY2025",
+      "as_of_date": "2026-08-05",
+      "value": "162.3M / 28.1M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-FCF"
+    },
+    {
+      "claim": "Q2 direct-customer revenue concentration was 29%, 25%, 15% and 13% for four customers, although some direct customers are manufacturing partners purchasing for end customers.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": "29/25/15/13%",
+      "fact_or_estimate": "fact",
+      "evidence_id": "ALAB-CONC"
+    },
+    {
+      "claim": "Locked DCF with 9% required return and 15x/20x/25x terminal multiples yields approximately $50.1 Bear, $284.6 Base and $808.5 Bull per share on the supplied owner-FCF paths.",
+      "source_type": "other",
+      "source": "harness deterministic valuation from EV valuation_inputs",
+      "period": "10y from 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "50.1/284.6/808.5",
+      "fact_or_estimate": "estimate",
+      "evidence_id": "ALAB-DCF"
+    }
+  ],
+  "counterevidence": [
+    "Q3 guidance implies a very large sequential revenue step-up and Scorpio is expected to become the largest product family, so near-term fundamentals are stronger than a simple historical-growth extrapolation.",
+    "June liquidity is large and the business is already GAAP operating-profitable, reducing financing risk.",
+    "PCIe 6.0 represented more than half of Q2 revenue according to management, showing real adoption rather than pre-revenue optionality.",
+    "Astera's public-market history is short, so a five-year self-valuation percentile cannot be observed."
+  ],
+  "unknowns": [
+    "Long-run gross margin after Scorpio mix becomes dominant.",
+    "2027-2030 market share of Astera switches/retimers/controllers versus hyperscaler in-house and merchant alternatives.",
+    "True end-customer concentration after removing manufacturing-partner billing effects.",
+    "Sustainable SBC and fully diluted share growth through 2030."
+  ],
+  "falsifiers": [
+    "If Scorpio revenue growth stalls before broad multi-customer adoption, the Base owner-FCF path becomes too aggressive.",
+    "If gross margin falls materially below 65% without an offsetting acceleration in revenue or FCF, Base value should be cut.",
+    "If diluted share growth persistently exceeds per-share FCF growth, the expectation-gap thesis fails."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is about 1.07x the locked Base value and far below the modeled Bull value. The valuation is demanding but does not require a Bull+ outcome."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Scorpio revenue mix and growth",
+      "direction": "up",
+      "threshold": "sustained multi-customer production ramp",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "owner FCF/share",
+      "direction": "up",
+      "threshold": "compound materially faster than diluted shares",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "gross margin",
+      "direction": "up",
+      "threshold": "maintain high-60s or better through mix shift",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 revenue/Scorpio mix versus guidance",
+    "Customer concentration and Amazon-warrant vesting",
+    "SBC and diluted-share growth"
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "Locked price/Base is about 1.07x, which maps to the 0.9-1.1 policy band: Base-level execution is nearly required."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "Locked price/Base is about 1.07x, mapping to the 0.9-1.1 policy band. Expected Base return is around fair-value territory rather than a material discount."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 50,
+      "rationale": "Base value is not excessively terminal-concentrated under the locked policy, but it assumes a very large decade-long FCF/share expansion and remains sensitive to growth duration, customer concentration and AI-cycle competition."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "The implied expectations depend on sustaining rapid growth well beyond the current PCIe 6/Scorpio ramp."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Base value is close to current price, so modest execution misses can erase expected excess return."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "Long-run FCF margins, customer diversification and competitive share are not yet observable across a full cycle."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.35,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          1.2,
+          1.4,
+          1.7,
+          2,
+          2.4,
+          2.8,
+          3.2,
+          3.6,
+          4,
+          4.4
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          1.8,
+          3,
+          5,
+          7.5,
+          10,
+          13,
+          16,
+          19,
+          22,
+          25
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          2.2,
+          4.5,
+          7.5,
+          12,
+          18,
+          25,
+          33,
+          42,
+          52,
+          63
+        ]
+      }
+    }
+  }
+}
