@@ -1,0 +1,194 @@
+{
+  "agent_id": "EV",
+  "ticker": "CRWD",
+  "as_of_date": "2026-09-18",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 30,
+  "confidence_0_1": 0.84,
+  "bull_score": 48,
+  "bear_score": 15,
+  "bull_case": "Falcon becomes the dominant agentic-security consolidation layer, Falcon Flex drives large wallet-share expansion, ARR compounds near 20% for years, and owner FCF/share scales into the high teens despite dilution.",
+  "bear_case": "Growth decelerates toward mature cybersecurity rates, Microsoft/Palo Alto and cloud-native competitors compress pricing, SBC remains economically heavy, and the market de-rates a premium software multiple.",
+  "thesis": "CrowdStrike's business momentum is exceptional, but the $237.65 cutoff price embeds a very demanding long-duration cash-flow path. The locked Base owner-FCF/share path produces value near $123, while even the Bull path is only modestly above the stock price. This makes expectation risk the dominant issue, not operating quality.",
+  "evidence": [
+    {
+      "claim": "Q2 FY27 revenue was $1.471B, up 26% YoY; ARR reached $5.84B, up 25%, and net new ARR was $332.8M, up 51%.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000029/crwd-20260826xex991.htm",
+      "period": "Q2 FY27",
+      "as_of_date": "2026-08-26",
+      "value": "Revenue 1.471B; ARR 5.84B; NNARR 332.8M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-EV-GROWTH"
+    },
+    {
+      "claim": "FY27 revenue guidance was raised to $5.991B-$6.011B and ending ARR guidance to $6.603B-$6.612B.",
+      "source_type": "company_primary",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000029/crwd-20260826xex991.htm",
+      "period": "FY27 guidance",
+      "as_of_date": "2026-08-26",
+      "value": "Revenue 5.991-6.011B; ARR 6.603-6.612B",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-EV-GUIDE"
+    },
+    {
+      "claim": "H1 FY27 OCF was $1.121B and property/equipment capex was $222.0M, but stock-based compensation was $674.6M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1535527/000153552726000031/crwd-20260731.htm",
+      "period": "H1 FY27",
+      "as_of_date": "2026-08-27",
+      "value": "OCF 1.121B; capex 222.0M; SBC 674.6M",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-EV-CF"
+    },
+    {
+      "claim": "The frozen cutoff price is $237.65 after the July 2026 four-for-one stock split.",
+      "source_type": "other",
+      "source": "runs/CRWD/company_context.json",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": "237.65",
+      "fact_or_estimate": "fact",
+      "evidence_id": "CRWD-EV-PRICE"
+    }
+  ],
+  "counterevidence": [
+    "Falcon Flex ARR grew 101% YoY to more than $2.29B, which could sustain wallet-share expansion beyond ordinary SaaS growth.",
+    "Q2 FCF was a record $377M and the company holds more than $5B of cash, so cash conversion is strong before the economic cost of SBC.",
+    "Module adoption continues rising, creating a plausible path to margin and retention upside.",
+    "AI security can expand the addressable market rather than merely redistribute endpoint-security share."
+  ],
+  "unknowns": [
+    "Normalized owner FCF/share after explicitly accounting for SBC over a full cycle.",
+    "Long-run ARR growth after Falcon Flex penetration matures.",
+    "Terminal dilution from RSUs/PSUs and acquisition equity.",
+    "How much July 19 incident risk remains economically unresolved."
+  ],
+  "falsifiers": [
+    "A multi-year period of >20% ARR growth with falling SBC/revenue and rising GAAP operating margins would justify a higher Base path.",
+    "If the price falls materially below Base value without thesis deterioration, expectation-gap score should rise.",
+    "If growth slows below mid-teens while SBC remains above ~15% of revenue, Base value should fall."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "conditional",
+      "rationale": "The current price is below but close to the locked Bull value; the stock does not literally exceed Bull, but requires execution much nearer Bull than Base."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "ARR growth",
+      "direction": "up",
+      "threshold": ">20% while scale increases",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "SBC / revenue",
+      "direction": "down",
+      "threshold": "clear multi-year decline",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "GAAP/owner FCF per diluted share",
+      "direction": "up",
+      "threshold": "compound materially faster than dilution",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 FY27 ARR and Flex adoption",
+    "SBC/revenue trajectory",
+    "July 19 incident legal/remediation developments"
+  ],
+  "verdict": "oppose",
+  "archetype_signals": {
+    "price_to_base_value": null,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.18
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 25,
+      "rationale": "Locked Base value is materially below current price, placing price/Base above 1.3 and requiring a path much closer to Bull."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 25,
+      "rationale": "At the cutoff price the Base DCF implies substantial overvaluation rather than a margin of safety."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 45,
+      "rationale": "Value is highly sensitive to long-duration owner-FCF growth and terminal assumptions, though strong net cash and ARR durability prevent the lowest score."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "SBC treatment can materially change owner-FCF normalization."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "critical",
+      "rationale": "Current price requires sustained growth and margin expansion over a long horizon."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "critical",
+      "rationale": "Base terminal value remains a large component and Bull economics are needed to approach market price."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.18,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          0.8,
+          1,
+          1.2,
+          1.4,
+          1.6,
+          1.8,
+          2,
+          2.2,
+          2.4,
+          2.6
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          1.5,
+          2.1,
+          2.8,
+          3.6,
+          4.5,
+          5.5,
+          6.6,
+          7.8,
+          9.1,
+          10.5
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          2,
+          3,
+          4.2,
+          5.6,
+          7.2,
+          9,
+          11,
+          13.2,
+          15.6,
+          18.2
+        ]
+      }
+    }
+  }
+}
