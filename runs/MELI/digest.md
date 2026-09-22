@@ -1,49 +1,62 @@
 # Digest — MELI (as of 2026-09-21)
 
-> Reconstructed v3.3 EV-stage output. The connected execution environment cannot replay the repository CLI against GitHub/EDGAR directly, so deterministic policy arithmetic is reproduced without claiming a literal local CLI run.
+> Reconstructed v3.3 triage output. Deterministic policy arithmetic is mirrored because the current connector environment cannot replay the repository CLI directly.
 
-score **55.5** (ex-val None, Reject) · archetype **non_fit** · veto **PENDING_REVIEW** · state **INCOMPLETE**
+score **62.93** (ex-valuation **68.50**, Starter / Watch) · archetype **non_fit** · veto **PENDING_REVIEW** · state **INCOMPLETE**
 
-signals: price/Base **0.9197x** · forward revenue CAGR **22%** · market cap **$92.29B** · reachable(raw) **['compounder', 'growth', 'outlier_growth']**
+signals: price/Base **0.9197x** · forward revenue CAGR **22%** · market cap **$92.29B** · reachable(raw) **['compounder']**
 
-## expectation_valuation — 55.5
+## Universal triage
 
-| Agent | Score | Bear–Bull | Confidence | Verdict |
-|---|---:|---:|---:|---|
-| EV | 55.5 | 35–80 | 0.88 | neutral |
+| Agent | Domain | Score | Bear–Bull | Result |
+|---|---|---:|---:|---|
+| EV | Expectation / Valuation | 55.50 | 35–80 | neutral |
+| AS | Asymmetry | 58.25 | 35–85 | neutral |
+| DI | Disruptive Innovation | 86.75 | 70–95 | support |
+| FS | Financial Survival | 78.75 | 60–90 | support |
 
-Locked DCF at the frozen $1,820.47 price:
-- Bear: **$138.09**
-- Base: **$1,979.43**
-- Bull: **$4,719.69**
-- Price/Base: **0.9197x**
+## What changed after triage
 
-The current price does not require a Bull-plus outcome, so the valuation Hard Veto is cleared. However, Base upside is modest and the model depends on a large recovery in owner FCF/share.
+**Compounder remains reachable.** It already clears:
+- price/Base 0.9197 <= 1.2
+- FS 78.75 >= 72
+- EV 55.5 >= 42
 
-## Operating tension
+It still needs MT >=76, RF >=76, MA >=72, incremental ROIC >=75 and reinvestment runway >=70.
 
-Q2 2026 revenue was **$10.169B (+49.8% YoY)**, GMV **$21.9B (+44%)**, and TPV **$101B (+56%)**. At the same time Q2 operating margin was only **6.7%**, while H1 adjusted FCF was **$158M** despite **$5.737B** of GAAP operating cash flow.
+**Growth** is no longer reachable because AS **58.25 < 65**.  
+**Outlier Growth** fails AS **58.25 < 65** and permanent_loss **25 < 50**.  
+**Buffett Value** fails price/Base and AS.  
+**Moonshot** fails market-cap and AS gates.
 
-The investment question is therefore cash conversion, not demand growth: whether credit, logistics and free-shipping investment produces durable risk-adjusted owner FCF/share.
+## Asymmetry
 
-## Stage 0
+Locked DCF: Bear **$138.09**, Base **$1,979.43**, Bull **$4,719.69** versus price **$1,820.47**.
 
-- latest annual: PASS
-- latest interim: PASS
-- trailing 10-Q coverage: PASS (6/6)
-- proxy: PASS
-- earnings release: PASS
-- September debt financing: PASS
-- advisory gaps: additional historical annuals, investor materials
+- Bull/current = **2.59x** with 3+ monetized paths -> upside_path **90**
+- Bear/current = **0.076x**, no net-cash modifier -> permanent_loss **25**
+- probability_calibration **60**
+- weighted AS = **58.25**
 
-Frozen geography from FY2025 revenue:
-- Brazil 52.6%
-- Mexico 22.4%
-- Argentina 20.6%
-- Other Latin America 4.4%
+MELI therefore has large upside optionality but also unusually wide permanent-value dispersion.
+
+## Disruptive innovation
+
+Q2 fintech MAUs reached **88M**, unique active buyers **89M**, and ecosystemic users grew **37% YoY**. Ecosystemic marketplace users generated **70% more GMV per user** than marketplace-only users. Credit exceeded **$16B** and advertising revenue grew **73% in USD**. The limiting issue is economic quality: credit-card NIMAL was **-2.5%**. citeturn663693view1turn455895search0
+
+## Financial survival
+
+At June 30, MELI reported **$13.176B total debt**, **$6.751B available liquidity** and **$6.425B net debt**. H1 adjusted FCF remained positive at **$158M** despite rapid credit investment. Diluted weighted-average shares were essentially unchanged YoY. citeturn651267view1turn651267view0turn335697view3
+
+FS-owned Hard Vetoes are cleared. Dilution watch is **normal**.
 
 ## Next plan
 
-`triage`: **AS, DI, FS**
+`domain_analysis`:
+- **SL** — Structural Leadership
+- **CP** — Customer / Product
+- **MT** — Moat Trajectory
+- **RF** — Reinvestment / FCF
+- **MA** — Management / Allocation
 
-No final investment state should be inferred from the 55.5 EV-only score. Universal triage and Hard Veto ownership remain incomplete.
+The key Compounder gate is likely to be RF: current ecosystem growth is strong, but the harness still needs evidence that incremental returns and owner FCF/share justify the current investment intensity.
