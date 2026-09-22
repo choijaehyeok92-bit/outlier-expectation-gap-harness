@@ -1,0 +1,146 @@
+{
+  "agent_id": "DI",
+  "ticker": "GOOGL",
+  "as_of_date": "2026-09-21",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 80.5,
+  "confidence_0_1": 0.86,
+  "bull_score": 90,
+  "bear_score": 65,
+  "bull_case": "Alphabet controls a full AI stack from TPU infrastructure through Gemini and billion-user distribution, while Cloud, TPU sales and autonomous driving create adjacent value pools. Adoption is already mainstream rather than pilot-stage.",
+  "bear_case": "Much of the AI transition may be sustaining innovation inside dominant franchises. Compute is capital intensive, rival hyperscalers and model vendors are well funded, and regulation can weaken bundling or distribution advantages.",
+  "thesis": "Alphabet is a strong disruptive-innovation platform because AI adoption is already embedded across products serving billions and has reached large-scale enterprise monetization. Cloud backlog and external TPU sales show value-chain expansion beyond internal use. The limiting factor is not adoption but proof of a 10x cost/performance economic advantage and durable value capture against well-capitalized hyperscalers, so DI is strong rather than near-perfect.",
+  "evidence": [
+    {
+      "evidence_id": "GOOGL-DI-GEMINI",
+      "economic_driver": "ai_distribution",
+      "claim": "Alphabet states all 15 of its half-billion-user products, including seven with two billion users, use Gemini models.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-21",
+      "value": 15,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "GOOGL-DI-CLOUD",
+      "economic_driver": "enterprise_ai_adoption",
+      "claim": "Q2 2026 Google Cloud revenue increased by $11.1B YoY and backlog reached $513.9B for Cloud, showing adoption well beyond pilot stage.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 513900000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "GOOGL-DI-TPU",
+      "economic_driver": "ai_compute_value_chain",
+      "claim": "Alphabet began recognizing revenue from sales of TPU systems to customers in Q2 2026, turning proprietary internal infrastructure into an external product value pool.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "GOOGL-DI-SEARCH",
+      "economic_driver": "self_disruption",
+      "claim": "Alphabet's 10-K describes Search being transformed by Gemini-powered AI experiences rather than preserving only the legacy link interface, evidence of self-cannibalization inside the core franchise.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-21",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "GOOGL-DI-FULLSTACK",
+      "economic_driver": "cost_performance_architecture",
+      "claim": "Alphabet describes a full-stack AI approach spanning its own TPUs, GPUs, Gemini models and products; however the filings do not establish a standardized 10x cost/performance advantage versus competing stacks.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-21",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "The filings do not prove a clean 10x economic cost/performance advantage for TPU/Gemini versus external alternatives.",
+    "Alphabet is the incumbent in Search and advertising, so much of AI deployment is sustaining self-disruption rather than classic low-end disruption.",
+    "Hyperscaler rivals and frontier-model vendors have comparable capital access and can build custom silicon or source GPUs.",
+    "The same infrastructure buildout that expands capability has compressed owner FCF and increases fixed commitments."
+  ],
+  "unknowns": [
+    "Independent cost per useful AI task for TPU/Gemini versus leading external stacks.",
+    "Long-run Search AI monetization per query after inference cost.",
+    "Revenue and margin contribution from external TPU-system sales as they scale."
+  ],
+  "falsifiers": [
+    "Gemini usage expands but Search/Cloud monetization does not cover incremental compute and depreciation costs.",
+    "External customers fail to adopt TPU systems beyond a limited number of specialized agreements.",
+    "Regulatory remedies materially remove distribution leverage and AI adoption ceases to translate into platform economics."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Cloud AI/backlog conversion",
+      "direction": "up",
+      "threshold": "continued growth with resilient operating economics",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "TPU external revenue/adoption",
+      "direction": "scale",
+      "threshold": "move beyond limited high-scale customer agreements",
+      "cadence": "semiannual"
+    },
+    {
+      "name": "AI product monetization",
+      "direction": "improve",
+      "threshold": "incremental revenue/engagement exceeds incremental compute burden",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Track external TPU customer count, product revenue and margin disclosure.",
+    "Compare Gemini/TPU economics with competing hyperscaler and GPU stacks where primary data become available.",
+    "Measure whether AI Search and Cloud growth produce improving owner FCF after the infrastructure buildout."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 80,
+      "rationale": "The full-stack TPU/Gemini architecture is structurally changing information retrieval and compute, stronger than the 75 structural-change anchor, but filings do not establish a 10x economic advantage required for 90."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 90,
+      "rationale": "Gemini is embedded across 15 products with >500M users and seven with >2B users, while Cloud AI demand/backlog is already commercial at very large scale. This matches mainstream adoption."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 70,
+      "rationale": "At least two adjacent monetized value pools are established beyond legacy Search—Cloud/AI infrastructure and external TPU systems, with additional Other Bets optionality. The observable table maps two clear adjacent value pools to 70; no 3+ standard-dominance claim is used."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Cross-stack cost/performance is not disclosed on a standardized economic basis."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "minor",
+      "rationale": "Adoption is clear; the main uncertainty is monetization quality rather than usage."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Several adjacent bets are real but their long-run standalone economics are not yet fully disclosed."
+    }
+  ]
+}
