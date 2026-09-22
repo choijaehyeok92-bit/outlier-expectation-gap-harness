@@ -1538,15 +1538,215 @@
     }
   ],
   "macro_geo_overlay": {
-    "financial_regime": {},
-    "geopolitical_regime": {},
-    "company_transmission": {},
-    "missing_or_stale_components": [
-      "credit_liquidity",
-      "financial_conditions",
-      "geopolitical_events",
-      "structural_trade"
-    ],
+    "financial_regime": {
+      "financial_conditions": {
+        "scope": "global",
+        "as_of_utc": "2026-09-20T23:59:00+00:00",
+        "summary": "Policy conditions are moderately restrictive after the September 16 Fed hike; inflation remains elevated, but reserves are described as ample.",
+        "evidence": [
+          {
+            "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+            "as_of_date": "2026-09-16",
+            "claim": "FOMC raised target to 3.75%-4.00%."
+          },
+          {
+            "source": "https://www.federalreserve.gov/releases/h15/",
+            "as_of_date": "2026-09-18",
+            "claim": "Effective federal funds rate was 3.88% on September 18."
+          }
+        ],
+        "risk_budget_multiplier": 0.8
+      },
+      "credit_liquidity": {
+        "scope": "global",
+        "as_of_utc": "2026-09-20T23:59:00+00:00",
+        "summary": "Credit markets remain liquid and spreads contained; there is no broad corporate-credit stress signal at the cutoff.",
+        "evidence": [
+          {
+            "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+            "as_of_date": "2026-09-18",
+            "claim": "US high-yield OAS 2.68%."
+          },
+          {
+            "source": "https://fred.stlouisfed.org/graph/?g=mn0G",
+            "as_of_date": "2026-09-18",
+            "claim": "US corporate OAS 0.77%."
+          }
+        ],
+        "risk_budget_multiplier": 1
+      }
+    },
+    "geopolitical_regime": {
+      "military_conflict": {
+        "level": "high",
+        "regions": [
+          "Middle East",
+          "Ukraine",
+          "Russia"
+        ],
+        "routes": [
+          "Strait of Hormuz",
+          "Red Sea",
+          "Bab el-Mandeb"
+        ],
+        "dependencies": [
+          "energy infrastructure"
+        ],
+        "structural_events": []
+      },
+      "energy_disruption": {
+        "level": "high",
+        "regions": [
+          "Persian Gulf",
+          "Russia",
+          "Europe"
+        ],
+        "routes": [
+          "Strait of Hormuz",
+          "Red Sea"
+        ],
+        "dependencies": [
+          "oil",
+          "diesel",
+          "LNG"
+        ],
+        "structural_events": []
+      },
+      "shipping_disruption": {
+        "level": "high",
+        "regions": [
+          "Middle East",
+          "Red Sea"
+        ],
+        "routes": [
+          "Strait of Hormuz",
+          "Bab el-Mandeb",
+          "Red Sea"
+        ],
+        "dependencies": [
+          "oil tankers",
+          "LNG carriers",
+          "container shipping"
+        ],
+        "structural_events": []
+      },
+      "sovereign_policy_instability": {
+        "level": "moderate",
+        "regions": [
+          "United States",
+          "Europe",
+          "Middle East"
+        ],
+        "routes": [],
+        "dependencies": [
+          "inflation policy",
+          "trade policy"
+        ],
+        "structural_events": []
+      },
+      "trade_fragmentation": {
+        "level": "high",
+        "regions": [
+          "United States",
+          "China",
+          "Russia",
+          "Europe"
+        ],
+        "routes": [],
+        "dependencies": [
+          "tariffs",
+          "critical minerals",
+          "technology supply chains"
+        ],
+        "structural_events": []
+      },
+      "export_controls": {
+        "level": "high",
+        "regions": [
+          "United States",
+          "China"
+        ],
+        "routes": [],
+        "dependencies": [
+          "advanced computing",
+          "semiconductors",
+          "AI accelerators"
+        ],
+        "structural_events": []
+      },
+      "sanctions": {
+        "level": "high",
+        "regions": [
+          "Russia",
+          "Iran"
+        ],
+        "routes": [],
+        "dependencies": [
+          "energy",
+          "defense",
+          "shipping"
+        ],
+        "structural_events": [
+          {
+            "event_id": "GLOBAL-RUSSIA-SANCTIONS-20260918",
+            "event_type": "sanctions",
+            "source": "https://www.reuters.com/world/us/trump-signs-russia-sanctions-bill-into-law-2026-09-18/",
+            "as_of_date": "2026-09-18",
+            "regions": [
+              "Russia"
+            ],
+            "routes": [],
+            "dependencies": [
+              "energy",
+              "defense",
+              "shadow fleet"
+            ]
+          }
+        ]
+      }
+    },
+    "company_transmission": {
+      "energy_disruption": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "high"
+      },
+      "export_controls": {
+        "status": "no_direct_match",
+        "matched_exposures": [],
+        "level": "high"
+      },
+      "military_conflict": {
+        "status": "no_direct_match",
+        "matched_exposures": [],
+        "level": "high"
+      },
+      "sanctions": {
+        "status": "no_direct_match",
+        "matched_exposures": [],
+        "level": "high"
+      },
+      "shipping_disruption": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "high"
+      },
+      "sovereign_policy_instability": {
+        "status": "exposed",
+        "matched_exposures": [
+          "europe"
+        ],
+        "level": "moderate"
+      },
+      "trade_fragmentation": {
+        "status": "exposed",
+        "matched_exposures": [
+          "europe"
+        ],
+        "level": "high"
+      }
+    },
+    "missing_or_stale_components": [],
     "reanalysis_requests": [],
     "pending_reanalysis_domains": [],
     "risk_budget_multiplier": 0.5,
@@ -2083,6 +2283,9 @@
     "AI infrastructure spending fails to produce durable revenue/FCF growth by 2028.",
     "Reality Labs losses rise materially without adoption or monetization evidence.",
     "A restatement, material weakness, auditor dispute or undisclosed related-party issue emerges.",
+    "Fed reverses the September tightening and long yields fall materially while inflation recedes.",
+    "High-yield OAS widens above crisis-like levels, converting contained credit risk into systemic stress.",
+    "Hormuz and Red Sea traffic normalize durably and energy prices retrace the conflict premium.",
     "DAP와 광고 가격이 동시에 지속 하락한다.",
     "AI 모델 개선이 광고 성과 개선으로 연결되지 않는 상태가 4개 분기 이상 지속된다.",
     "비즈니스·크리에이터가 경쟁 플랫폼으로 이동하면서 Meta 내 활동이 구조적으로 감소한다.",
