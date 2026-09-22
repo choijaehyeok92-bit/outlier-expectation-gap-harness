@@ -1,0 +1,17 @@
+{
+  "stage": "early_exit",
+  "agents": {},
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true
+  },
+  "execution_control": "stop",
+  "last_reachable_archetypes": ["growth", "outlier_growth"],
+  "statement": "No investable archetype remains reachable after universal triage. Downstream domain analysis and IC are intentionally not run.",
+  "reentry_triggers": [
+    "AS >= 65 and, for outlier_growth, upside_path >= 75",
+    "or FS >= 72 with compounder still optimistically reachable",
+    "or a new price/owner-FCF path materially changes valuation/asymmetry"
+  ]
+}
