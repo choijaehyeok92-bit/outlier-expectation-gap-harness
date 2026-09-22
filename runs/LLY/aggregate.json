@@ -500,12 +500,10 @@
     "pack_present": true
   },
   "next_plan": {
-    "stage": "ic",
-    "agents": {
-      "investment_committee": "IC"
-    },
-    "execution_control": "continue",
-    "statement": "Evidence audit and Red Team are complete; all Hard Vetoes are cleared. Run IC next."
+    "stage": "complete",
+    "agents": {},
+    "execution_control": "stop_complete",
+    "statement": "IC is complete. The analysis workflow is complete for the 2026-09-21 frozen snapshot."
   },
   "dispersion_review": {
     "metric": "scored domain mean downside skew",
@@ -515,5 +513,153 @@
     "widest_domain": "expectation_valuation",
     "position_before": "2-4%",
     "position_after": "2-4%"
+  },
+  "ic_verdict": {
+    "agent_id": "IC",
+    "ticker": "LLY",
+    "as_of_date": "2026-09-21",
+    "domain": "investment_committee",
+    "role": "chair",
+    "analysis_status": "complete",
+    "score_0_100": 76.66,
+    "confidence_0_1": 0.91,
+    "thesis": "LLY는 v3.3에서 Compounder 조건과 Hard Veto 9개를 모두 통과했다. 제품력·구조적 리더십·재투자 여력은 강하고 현재가는 locked Base 아래다. 그러나 EV 56.75와 AS 61.75가 낮고, Mounjaro/Zepbound 집중도 약 64.7%, Q2 realized price -13%, acquired IPR&D/M&A를 포함한 owner cash 정규화 불확실성이 남는다. 따라서 IC는 NORMAL 2-4%를 그대로 승인하지 않고 STARTER 1-2%로 낮추며 macro pacing 0.5x로 분할 집행한다.",
+    "evidence": [
+      {
+        "evidence_id": "LLY-IC-FIT",
+        "economic_driver": "deterministic_fit",
+        "claim": "Aggregate score is 76.66 with 100% core coverage; Compounder is the only eligible archetype and deterministic fit score is 82.875.",
+        "source_type": "other",
+        "source": "runs/LLY/aggregate.json",
+        "period": "2026-09-21 run",
+        "as_of_date": "2026-09-21",
+        "value": "76.66 / Compounder fit 82.875",
+        "fact_or_estimate": "interpretation"
+      },
+      {
+        "evidence_id": "LLY-IC-VETO",
+        "economic_driver": "hard_veto_gate",
+        "claim": "ED/RT review leaves all nine Hard Vetoes cleared, with no confirmed, unresolved or pending veto.",
+        "source_type": "other",
+        "source": "runs/LLY/aggregate.json",
+        "period": "2026-09-21 run",
+        "as_of_date": "2026-09-21",
+        "value": "CLEARED",
+        "fact_or_estimate": "interpretation"
+      },
+      {
+        "evidence_id": "LLY-IC-VAL",
+        "economic_driver": "valuation",
+        "claim": "Locked valuation is Bear $345.26, Base $1,282.74 and Bull $2,016.84 versus frozen price $1,164.89; price/Base is 0.9081x.",
+        "source_type": "other",
+        "source": "runs/LLY/aggregate.json",
+        "period": "10-year locked valuation",
+        "as_of_date": "2026-09-21",
+        "value": "$345.26 / $1,282.74 / $2,016.84; 0.9081x",
+        "fact_or_estimate": "estimate"
+      },
+      {
+        "evidence_id": "LLY-IC-QUALITY",
+        "economic_driver": "franchise_quality",
+        "claim": "Q2 revenue rose 48% with 60% volume growth; gross margin was 85.8%. These support strong product economics despite lower realized pricing.",
+        "source_type": "filing",
+        "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000077/q226lillysalesandearningsp.htm",
+        "period": "Q2 2026",
+        "as_of_date": "2026-08-05",
+        "value": "48% revenue growth / 60% volume / 85.8% gross margin",
+        "fact_or_estimate": "fact"
+      },
+      {
+        "evidence_id": "LLY-IC-RISK",
+        "economic_driver": "concentration_and_pricing",
+        "claim": "Mounjaro and Zepbound generated $14.871B, about 64.7% of Q2 revenue, while realized prices fell 13%, creating a common-factor franchise and reimbursement risk.",
+        "source_type": "filing",
+        "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+        "period": "Q2 2026",
+        "as_of_date": "2026-08-05",
+        "value": "64.7% concentration / -13% realized price",
+        "fact_or_estimate": "estimate"
+      },
+      {
+        "evidence_id": "LLY-IC-PACING",
+        "economic_driver": "deployment_pacing",
+        "claim": "Mechanical pre-IC state is NORMAL_CANDIDATE with a 2-4% band, while the fresh macro overlay applies a 0.5x purchase-pacing multiplier without changing the fundamental score.",
+        "source_type": "other",
+        "source": "runs/LLY/aggregate.json",
+        "period": "2026-09-21 run",
+        "as_of_date": "2026-09-21",
+        "value": "2-4% / 0.5x",
+        "fact_or_estimate": "interpretation"
+      }
+    ],
+    "counterevidence": [
+      "Current price is below locked Base, so valuation is not outright expensive under the frozen assumptions.",
+      "Orforglipron approval and positive retatrutide Phase 3 results reduce long-run dependence on existing tirzepatide brands.",
+      "TTM operating cash generation is very strong and share count is declining rather than diluting.",
+      "Management has been repurchasing shares at an estimated average price materially below frozen Base value."
+    ],
+    "unknowns": [
+      "Normalized maintenance versus growth capex after the current manufacturing buildout.",
+      "Full-cycle economic returns on 2025-26 acquired IPR&D and acquisitions.",
+      "Long-run realized net-price/rebate trajectory for metabolic medicines.",
+      "Commercial cannibalization versus market expansion among tirzepatide, orforglipron and retatrutide.",
+      "A clean issuer-reported incremental ROIC series."
+    ],
+    "falsifiers": [
+      "Owner FCF/share fails to progress toward the locked Base path as new manufacturing capacity matures.",
+      "Metabolic volume growth slows while realized pricing pressure persists and successor products fail to diversify franchise economics.",
+      "Acquired IPR&D/M&A spending continues rising without corresponding approvals, earnings or asset value creation."
+    ],
+    "hard_veto_flags": [],
+    "key_kpis": [
+      {
+        "name": "Owner FCF/share incl. external R&D normalization",
+        "direction": "up",
+        "threshold": "progress toward the locked Base path after recurring pharma reinvestment",
+        "cadence": "quarterly/annual"
+      },
+      {
+        "name": "Volume / realized price / gross margin",
+        "direction": "balanced",
+        "threshold": "volume and mix offset pricing pressure without structural margin deterioration",
+        "cadence": "quarterly"
+      },
+      {
+        "name": "Franchise concentration / successor contribution",
+        "direction": "diversify",
+        "threshold": "orforglipron, retatrutide and non-metabolic franchises reduce dependence on Mounjaro/Zepbound",
+        "cadence": "quarterly/clinical"
+      }
+    ],
+    "next_checks": [
+      "Q3 2026 pricing, volume and owner-cash conversion.",
+      "Orforglipron commercial ramp and retatrutide regulatory progress.",
+      "Acquired IPR&D/M&A milestones, capacity utilization and debt trajectory."
+    ],
+    "verdict": "support",
+    "ic_state": "STARTER",
+    "plain_language": {
+      "business": "Eli Lilly는 당뇨병·비만, 암, 면역질환 등 치료제를 개발·생산·판매하는 글로벌 제약회사다. 현재 성장의 중심은 Mounjaro와 Zepbound를 포함한 대사질환 치료제다.",
+      "opportunity": "비만·당뇨 치료 시장이 빠르게 커지고 있고, orforglipron과 retatrutide 같은 후속 제품이 성공하면 현재의 tirzepatide 중심 성장을 더 오래 이어갈 수 있다. 대규모 생산설비 투자도 수요를 매출로 전환할 여력을 높일 수 있다.",
+      "risk": "현재 매출이 대사질환 제품에 매우 집중돼 있고 실제 판매가격은 하락 중이다. 경쟁, 보험급여와 정부 가격정책, 파이프라인 실패, 대규모 설비·인수 투자 수익률 부진이 겹치면 주당 현금흐름과 가치가 크게 낮아질 수 있다.",
+      "decision_reason": "Compounder 조건과 모든 Hard Veto는 통과했지만 현재 가격의 안전마진은 크지 않고 하방 시나리오가 넓다. 그래서 2~4% 정상 비중 대신 1~2% Starter로 시작하고, 현재 거시환경에서는 평소보다 느리게 분할 집행한다."
+    },
+    "subscores": [],
+    "uncertainties": [],
+    "valuation_inputs": {
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": null,
+      "scenarios": {
+        "bear": {
+          "owner_fcf_per_share": []
+        },
+        "base": {
+          "owner_fcf_per_share": []
+        },
+        "bull": {
+          "owner_fcf_per_share": []
+        }
+      }
+    }
   }
 }
