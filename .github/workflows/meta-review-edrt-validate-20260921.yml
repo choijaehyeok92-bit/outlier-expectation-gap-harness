@@ -1,0 +1,42 @@
+name: META review ED RT validate 2026-09-21
+
+on:
+  push:
+    branches:
+      - work/meta-2026-09-21-v33
+    paths:
+      - ".github/workflows/meta-review-edrt-validate-20260921.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/meta-2026-09-21-v33
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Validate ED and RT, then advance planner
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/meta-review-edrt-validate.log) 2>&1
+          python harness.py validate META_REVIEW_20260921 ED RT
+          python harness.py aggregate META_REVIEW_20260921 | tee runlogs/meta-review-aggregate-after-edrt.json
+          python harness.py digest META_REVIEW_20260921
+          python harness.py plan META_REVIEW_20260921 | tee runlogs/meta-review-plan-after-edrt.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/META_REVIEW_20260921 runlogs
+          if ! git diff --cached --quiet; then
+            git commit -m "review: validate META ED RT 2026-09-21"
+            git push origin HEAD:work/meta-2026-09-21-v33
+          fi
