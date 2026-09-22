@@ -1,3 +1,6 @@
+AS: OK
+DI: OK
+FS: OK
 {
   "strategy_version": "3.3",
   "schema_version": "3.3",
@@ -1883,3 +1886,432 @@
     "statement": "IC was intentionally not run because no investable archetype remains reachable."
   }
 }
+runs/META/digest.md: 18820 bytes (reports 29578 chars -> digest 16449 chars)
+{
+  "stage": "early_exit",
+  "agents": {},
+  "early_exit_record": {
+    "stage": "triage",
+    "last_reachable_archetypes": [
+      "outlier_growth"
+    ],
+    "reachability_history_method": "Deterministic replay in manifest order; not a claim about wall-clock execution order.",
+    "eliminated_archetypes": {
+      "compounder": {
+        "failed_conditions": [
+          {
+            "field": "domain.financial_survival",
+            "op": ">=",
+            "value": 72
+          }
+        ],
+        "missing_conditions": [
+          "domain.moat_trajectory",
+          "domain.reinvestment_fcf",
+          "domain.management_allocation",
+          "criterion.reinvestment_fcf.incremental_roic",
+          "criterion.reinvestment_fcf.reinvestment_runway"
+        ],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      },
+      "outlier_growth": {
+        "failed_conditions": [
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 65
+          },
+          {
+            "field": "criterion.asymmetry.upside_path",
+            "op": ">=",
+            "value": 75
+          }
+        ],
+        "missing_conditions": [
+          "domain.long_term_growth",
+          "criterion.long_term_growth.opportunity_scale_5y",
+          "criterion.long_term_growth.growth_duration_10y",
+          "criterion.long_term_growth.culture_adaptability",
+          "criterion.long_term_growth.market_misperception",
+          "domain.customer_product",
+          "domain.moat_trajectory",
+          "domain.management_allocation"
+        ],
+        "gate_failed": true,
+        "blocking_vetoes": []
+      },
+      "growth": {
+        "failed_conditions": [
+          {
+            "field": "signal.price_to_base_value",
+            "op": "<=",
+            "value": 1.1
+          },
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 65
+          }
+        ],
+        "missing_conditions": [
+          "domain.structural_leadership",
+          "domain.customer_product",
+          "domain.moat_trajectory",
+          "domain.reinvestment_fcf",
+          "domain.management_allocation",
+          "criterion.reinvestment_fcf.fcf_per_share_quality"
+        ],
+        "gate_failed": true,
+        "blocking_vetoes": []
+      },
+      "buffett_value": {
+        "failed_conditions": [
+          {
+            "field": "signal.price_to_base_value",
+            "op": "<=",
+            "value": 0.85
+          },
+          {
+            "field": "domain.financial_survival",
+            "op": ">=",
+            "value": 75
+          },
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 65
+          }
+        ],
+        "missing_conditions": [
+          "criterion.reinvestment_fcf.fcf_per_share_quality",
+          "domain.management_allocation",
+          "domain.moat_trajectory"
+        ],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      },
+      "moonshot": {
+        "failed_conditions": [
+          {
+            "field": "signal.market_cap_usd",
+            "op": "<=",
+            "value": 50000000000
+          },
+          {
+            "field": "domain.disruptive_innovation",
+            "op": ">=",
+            "value": 78
+          },
+          {
+            "field": "domain.asymmetry",
+            "op": ">=",
+            "value": 72
+          }
+        ],
+        "missing_conditions": [
+          "domain.structural_leadership"
+        ],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      }
+    },
+    "confirmed_vetoes": [],
+    "unresolved_vetoes": [],
+    "pending_vetoes": [
+      {
+        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MA",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "MA",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "구조적으로 과도한 외부자본 조달 의존",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "FS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Operating activities generate substantial cash; H1 2026 OCF was $64.09B. Debt issuance supports discretionary acceleration of infrastructure rather than a business that cannot fund operations without repeated external capital."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "장기간 지속되는 과도한 희석",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "RF",
+          "FS"
+        ],
+        "assessments": [
+          {
+            "agent_id": "FS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "The veto's required elements are not met: H1 diluted weighted-average shares declined YoY, so long-duration excessive net dilution and per-share-value destruction are not established."
+          }
+        ],
+        "missing_reports": [
+          "RF"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "CP",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "증분 ROIC의 구조적 붕괴",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "RF",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "RF",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "해자의 지속적인 축소",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "MT",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "MT",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "EV",
+          "AS",
+          "RT"
+        ],
+        "assessments": [
+          {
+            "agent_id": "AS",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "$741.25 current price is below the locked Bull value of about $1,090.61; the sole veto element is false."
+          },
+          {
+            "agent_id": "EV",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "The frozen price of $741.25 remains below the harness-computed Bull value of about $1,091; the Bull-price veto is therefore not triggered."
+          }
+        ],
+        "missing_reports": [
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      },
+      {
+        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+        "status": "PENDING_REVIEW",
+        "owners": [
+          "CP",
+          "RT"
+        ],
+        "assessments": [],
+        "missing_reports": [
+          "CP",
+          "RT"
+        ],
+        "missing_assessments": [],
+        "non_owner_escalations": []
+      }
+    ],
+    "future_reentry": {
+      "required_conditions": {
+        "compounder": {
+          "failed_conditions": [
+            {
+              "field": "domain.financial_survival",
+              "op": ">=",
+              "value": 72
+            }
+          ],
+          "missing_conditions": [
+            "domain.moat_trajectory",
+            "domain.reinvestment_fcf",
+            "domain.management_allocation",
+            "criterion.reinvestment_fcf.incremental_roic",
+            "criterion.reinvestment_fcf.reinvestment_runway"
+          ],
+          "gate_failed": false,
+          "blocking_vetoes": []
+        },
+        "outlier_growth": {
+          "failed_conditions": [
+            {
+              "field": "domain.asymmetry",
+              "op": ">=",
+              "value": 65
+            },
+            {
+              "field": "criterion.asymmetry.upside_path",
+              "op": ">=",
+              "value": 75
+            }
+          ],
+          "missing_conditions": [
+            "domain.long_term_growth",
+            "criterion.long_term_growth.opportunity_scale_5y",
+            "criterion.long_term_growth.growth_duration_10y",
+            "criterion.long_term_growth.culture_adaptability",
+            "criterion.long_term_growth.market_misperception",
+            "domain.customer_product",
+            "domain.moat_trajectory",
+            "domain.management_allocation"
+          ],
+          "gate_failed": true,
+          "blocking_vetoes": []
+        },
+        "growth": {
+          "failed_conditions": [
+            {
+              "field": "signal.price_to_base_value",
+              "op": "<=",
+              "value": 1.1
+            },
+            {
+              "field": "domain.asymmetry",
+              "op": ">=",
+              "value": 65
+            }
+          ],
+          "missing_conditions": [
+            "domain.structural_leadership",
+            "domain.customer_product",
+            "domain.moat_trajectory",
+            "domain.reinvestment_fcf",
+            "domain.management_allocation",
+            "criterion.reinvestment_fcf.fcf_per_share_quality"
+          ],
+          "gate_failed": true,
+          "blocking_vetoes": []
+        },
+        "buffett_value": {
+          "failed_conditions": [
+            {
+              "field": "signal.price_to_base_value",
+              "op": "<=",
+              "value": 0.85
+            },
+            {
+              "field": "domain.financial_survival",
+              "op": ">=",
+              "value": 75
+            },
+            {
+              "field": "domain.asymmetry",
+              "op": ">=",
+              "value": 65
+            }
+          ],
+          "missing_conditions": [
+            "criterion.reinvestment_fcf.fcf_per_share_quality",
+            "domain.management_allocation",
+            "domain.moat_trajectory"
+          ],
+          "gate_failed": false,
+          "blocking_vetoes": []
+        },
+        "moonshot": {
+          "failed_conditions": [
+            {
+              "field": "signal.market_cap_usd",
+              "op": "<=",
+              "value": 50000000000
+            },
+            {
+              "field": "domain.disruptive_innovation",
+              "op": ">=",
+              "value": 78
+            },
+            {
+              "field": "domain.asymmetry",
+              "op": ">=",
+              "value": 72
+            }
+          ],
+          "missing_conditions": [
+            "domain.structural_leadership"
+          ],
+          "gate_failed": false,
+          "blocking_vetoes": []
+        }
+      },
+      "requirements": [
+        "New evidence must satisfy all gates for at least one archetype.",
+        "Complete core coverage, deterministic valuation and all veto ownership before any buy."
+      ]
+    },
+    "ic_intentionally_not_run": true,
+    "statement": "IC was intentionally not run because no investable archetype remains reachable."
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "proxy_compensation",
+      "earnings_release",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "execution_control": "stop_early",
+  "research": {
+    "questions": 17,
+    "pending": 17,
+    "decision_blocking": 7,
+    "deferred": 8,
+    "command": "python harness.py research-plan META"
+  }
+}
+STOP_EARLY: IC intentionally skipped; run aggregate and digest for META.
