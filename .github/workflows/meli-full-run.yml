@@ -1,0 +1,137 @@
+name: MELI full run 2026-09-17
+
+on:
+  push:
+    branches:
+      - run/meli-2026-09-17-sol-full
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Execute MELI full harness through IC
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/execution.log) 2>&1
+          python harness.py selftest
+          python harness.py init MELI --as-of 2026-09-17
+          mkdir -p runs/MELI/sources runs/MELI/prompts
+          cp .github/fixtures/MELI/source_README.md runs/MELI/sources/README.md
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("runs/MELI/company_context.json")
+          j=json.loads(p.read_text())
+          j.update({
+              "ticker":"MELI",
+              "company_name":"MercadoLibre, Inc.",
+              "as_of_date":"2026-09-17",
+              "currency":"USD",
+              "current_price":1825.21,
+              "shares_diluted":50697299,
+              "market_cap_usd":92532309978.42,
+              "enterprise_value":98957309978.42,
+              "net_cash_per_share":-126.73383224448753,
+              "valuation_percentile_5y":None,
+              "valuation_metric":"deterministic owner-FCF/share DCF",
+              "known_sources":[
+                  "FY2025 Form 10-K filed 2026-02-25",
+                  "FY2026 Q1 Form 10-Q filed 2026-05-08",
+                  "FY2026 Q2 Form 10-Q filed 2026-08-06",
+                  "Form 8-K filed 2026-09-14 for $1B 5.850% notes due 2036",
+                  "MELI 2026-09-17 Nasdaq historical close"
+              ],
+              "special_questions":[
+                  "Moonshot market-cap gate is expected to fail; does MELI qualify as a Compounder despite current margin/FCF pressure?",
+                  "Can commerce/fintech ecosystem growth convert back into durable adjusted FCF/share as logistics and credit investment mature?"
+              ]
+          })
+          p.write_text(json.dumps(j,ensure_ascii=False,indent=2)+"\n")
+          PY
+          python harness.py freeze MELI --provider openai --model gpt-5.6-sol --reasoning-effort high
+          python harness.py plan MELI
+          python harness.py prompt MELI EV --out runs/MELI/prompts/EV.md
+          cp .github/fixtures/MELI/EV.json runs/MELI/reports/EV.json
+          python harness.py validate MELI EV
+          cp .github/fixtures/MELI/AS.json runs/MELI/reports/AS.json
+          python harness.py validate MELI AS
+          cp .github/fixtures/MELI/DI.json runs/MELI/reports/DI.json
+          python harness.py validate MELI DI
+          cp .github/fixtures/MELI/TQ.json runs/MELI/reports/TQ.json
+          python harness.py validate MELI TQ
+          cp .github/fixtures/MELI/SL.json runs/MELI/reports/SL.json
+          python harness.py validate MELI SL
+          cp .github/fixtures/MELI/CP.json runs/MELI/reports/CP.json
+          python harness.py validate MELI CP
+          cp .github/fixtures/MELI/MT.json runs/MELI/reports/MT.json
+          python harness.py validate MELI MT
+          cp .github/fixtures/MELI/RF.json runs/MELI/reports/RF.json
+          python harness.py validate MELI RF
+          cp .github/fixtures/MELI/MA.json runs/MELI/reports/MA.json
+          python harness.py validate MELI MA
+          cp .github/fixtures/MELI/FS.json runs/MELI/reports/FS.json
+          python harness.py validate MELI FS
+          cp .github/fixtures/MELI/MO.json runs/MELI/reports/MO.json
+          python harness.py validate MELI MO
+          python harness.py cache-macro MELI
+          python harness.py digest MELI
+          cp .github/fixtures/MELI/ED.json runs/MELI/reports/ED.json
+          python harness.py validate MELI ED
+          cp .github/fixtures/MELI/RT.json runs/MELI/reports/RT.json
+          python harness.py validate MELI RT
+          python harness.py aggregate MELI
+          python harness.py digest MELI
+          cp .github/fixtures/MELI/IC.json runs/MELI/reports/IC.json
+          python harness.py validate MELI IC
+          cp .github/fixtures/MELI/one_page_investment_record.md runs/MELI/one_page_investment_record.md
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          run=Path("runs/MELI")
+          agg=json.loads((run/"aggregate.json").read_text())
+          mo=json.loads((run/"reports/MO.json").read_text())
+          ic=json.loads((run/"reports/IC.json").read_text())
+          fv={
+              "ticker":"MELI",
+              "as_of_date":"2026-09-17",
+              "score_100":agg["score_100"],
+              "classification":agg["classification"],
+              "disruptive_innovation_score":agg["disruptive_innovation_score"],
+              "turnaround_quality_score":agg.get("turnaround_quality_score"),
+              "archetype":"compounder",
+              "secondary_archetypes":agg["archetype"].get("secondary",[]),
+              "archetype_rationale":"IC retains the mechanical Compounder classification. MELI meets MT/RF/MA/FS/EV thresholds and all Hard Vetoes are cleared. DI is high, but frozen market cap is about $92.53B, so it is ineligible for Moonshot under the <=$20B rule.",
+              "hard_veto_status":agg["hard_veto_status"],
+              "ic_state":"NORMAL_CANDIDATE",
+              "position_range":"2-4% strategic range; initial 1.5-2.5% deployment with 0.80x macro pacing",
+              "domain_scores":agg["domain_scores"],
+              "disputes":agg["disputes"],
+              "falsifiers":ic["falsifiers"],
+              "macro_pacing_multiplier":mo["risk_budget_multiplier"]
+          }
+          required=["ticker","as_of_date","score_100","classification","disruptive_innovation_score","archetype","hard_veto_status","ic_state","position_range","domain_scores","disputes","falsifiers"]
+          assert not [k for k in required if k not in fv]
+          assert fv["archetype"]=="compounder"
+          assert fv["hard_veto_status"]=="CLEARED"
+          assert fv["ic_state"]=="NORMAL_CANDIDATE"
+          (run/"final_verdict.json").write_text(json.dumps(fv,ensure_ascii=False,indent=2))
+          print(json.dumps(fv,ensure_ascii=False,indent=2))
+          PY
+          python harness.py plan MELI
+          python harness.py digest MELI
+          python harness.py aggregate MELI
+          cat runs/MELI/aggregate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MELI-harness-IC-2026-09-17
+          path: |
+            runs/MELI
+            runs/_macro
+            runlogs/execution.log
