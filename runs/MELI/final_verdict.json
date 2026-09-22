@@ -6,10 +6,10 @@
   "ticker": "MELI",
   "reconstructed": true,
   "reconstruction_reason": "Connector execution cannot replay the repository CLI directly; current v3.3 rubric, valuation, reachability and planner arithmetic are mirrored deterministically.",
-  "score_100": 62.93,
-  "score_100_ex_valuation": 68.5,
-  "coverage_weight": 35,
-  "classification": "Starter / Watch",
+  "score_100": 72.79,
+  "score_100_ex_valuation": 75.84,
+  "coverage_weight": 100,
+  "classification": "Emerging Outlier",
   "disruptive_innovation_score": 86.75,
   "turnaround_quality_score": null,
   "axis_scores": {
@@ -18,112 +18,90 @@
     "long_term_growth": null
   },
   "archetype": "non_fit",
-  "reachable_archetypes_raw": [
-    "compounder"
-  ],
-  "early_exit": false,
+  "reachable_archetypes_raw": [],
+  "early_exit": true,
   "hard_veto_status": "PENDING_REVIEW",
-  "mechanical_pre_ic_state": "INCOMPLETE",
+  "mechanical_pre_ic_state": "EARLY_EXIT_NON_FIT",
   "position_range_pre_ic": null,
   "domain_scores": {
-    "expectation_valuation": {
-      "bull_score": 80,
-      "bear_score": 35,
+    "structural_leadership": {
+      "score": 86.25,
       "criteria": {
-        "reverse_dcf_burden": 60,
-        "base_return": 55,
-        "valuation_robustness": 50
-      },
-      "raw_weighted_median": 55.5,
-      "score": 55.5,
-      "spread": 45,
-      "avg_confidence": 0.88,
-      "unknown_penalty": 0,
-      "dispute_penalty": 0,
-      "domain_dispute": true,
-      "review_required": true,
-      "uncertainties": {
-        "critical": 1,
-        "material": 2,
-        "minor": 0
-      },
-      "score_source": "rubric_subscores"
+        "secular_durability": 90,
+        "category_leadership": 90,
+        "durability_risks": 75
+      }
+    },
+    "customer_product": {
+      "score": 83.75,
+      "criteria": {
+        "customer_roi": 90,
+        "retention_usage": 90,
+        "unit_economics": 65
+      }
+    },
+    "moat_trajectory": {
+      "score": 85,
+      "criteria": {
+        "switching_pricing": 85,
+        "network_data_ecosystem": 85,
+        "commoditization_resilience": 85
+      }
+    },
+    "reinvestment_fcf": {
+      "score": 59,
+      "criteria": {
+        "incremental_roic": 65,
+        "reinvestment_runway": 70,
+        "fcf_per_share_quality": 40
+      }
+    },
+    "management_allocation": {
+      "score": 78.5,
+      "criteria": {
+        "capital_allocation": 70,
+        "governance_integrity": 80,
+        "execution_adaptability": 90
+      }
     },
     "financial_survival": {
-      "bull_score": 90,
-      "bear_score": 60,
+      "score": 78.75,
       "criteria": {
         "liquidity_leverage": 75,
         "stress_survival": 75,
         "dilution_offbalance": 90
-      },
-      "raw_weighted_median": 78.75,
-      "score": 78.75,
-      "spread": 30,
-      "avg_confidence": 0.9,
-      "unknown_penalty": 0,
-      "dispute_penalty": 0,
-      "domain_dispute": true,
-      "review_required": true,
-      "uncertainties": {
-        "critical": 0,
-        "material": 2,
-        "minor": 1
-      },
-      "score_source": "rubric_subscores"
+      }
+    },
+    "expectation_valuation": {
+      "score": 55.5,
+      "criteria": {
+        "reverse_dcf_burden": 60,
+        "base_return": 55,
+        "valuation_robustness": 50
+      }
     },
     "asymmetry": {
-      "bull_score": 85,
-      "bear_score": 35,
+      "score": 58.25,
       "criteria": {
         "upside_path": 90,
         "permanent_loss": 25,
         "probability_calibration": 60
-      },
-      "raw_weighted_median": 58.25,
-      "score": 58.25,
-      "spread": 50,
-      "avg_confidence": 0.82,
-      "unknown_penalty": 0,
-      "dispute_penalty": 0,
-      "domain_dispute": true,
-      "review_required": true,
-      "uncertainties": {
-        "critical": 1,
-        "material": 2,
-        "minor": 0
-      },
-      "score_source": "rubric_subscores"
+      }
     },
     "disruptive_innovation": {
-      "bull_score": 95,
-      "bear_score": 70,
+      "score": 86.75,
       "criteria": {
         "cost_performance_shift": 85,
         "adoption_curve": 90,
         "optionality_incumbent_response": 85
-      },
-      "raw_weighted_median": 86.75,
-      "score": 86.75,
-      "spread": 25,
-      "avg_confidence": 0.89,
-      "unknown_penalty": 0,
-      "dispute_penalty": 0,
-      "domain_dispute": true,
-      "review_required": true,
-      "uncertainties": {
-        "critical": 0,
-        "material": 1,
-        "minor": 2
-      },
-      "score_source": "rubric_subscores"
+      }
     }
   },
   "confirmed_vetoes": [],
   "unresolved_vetoes": [],
   "veto_gate": {
     "overall": "PENDING_REVIEW",
-    "summary": "Completed owner assessments are cleared. MA/RF/CP/MT/RT ownership remains pending because downstream domains have not run."
+    "summary": "Completed domain-owner assessments are cleared. RT co-ownership remains pending but is intentionally not run after deterministic early exit."
   },
   "valuation_model": {
     "status": "COMPLETE",
@@ -134,25 +112,13 @@
     "current_price": 1820.47,
     "scenarios": {
       "bear": {
-        "value_per_share": 138.0932,
-        "pv_owner_fcf": 100.0868,
-        "pv_terminal": 164.7402,
-        "terminal_multiple": 15,
-        "terminal_fraction": 0.6221
+        "value_per_share": 138.0932
       },
       "base": {
-        "value_per_share": 1979.4314,
-        "pv_owner_fcf": 501.0042,
-        "pv_terminal": 1605.1611,
-        "terminal_multiple": 20,
-        "terminal_fraction": 0.7621
+        "value_per_share": 1979.4314
       },
       "bull": {
-        "value_per_share": 4719.6909,
-        "pv_owner_fcf": 886.3235,
-        "pv_terminal": 3960.1013,
-        "terminal_multiple": 25,
-        "terminal_fraction": 0.8171
+        "value_per_share": 4719.6909
       }
     },
     "signals": {
@@ -165,19 +131,16 @@
     "status": "normal",
     "annualized_dilution": -0.00000146,
     "position_cap": null,
-    "note": "Q2 diluted weighted-average shares were effectively flat/slightly lower YoY; no 3% dilution monitor trigger."
+    "note": "Diluted shares are effectively flat/slightly lower YoY."
   },
   "archetype_fit": {
     "compounder": {
       "eligible": false,
-      "failed_conditions": [],
-      "missing_conditions": [
-        "domain.moat_trajectory",
+      "failed_conditions": [
         "domain.reinvestment_fcf",
-        "domain.management_allocation",
-        "criterion.reinvestment_fcf.incremental_roic",
-        "criterion.reinvestment_fcf.reinvestment_runway"
+        "criterion.reinvestment_fcf.incremental_roic"
       ],
+      "missing_conditions": [],
       "blocking_vetoes": []
     },
     "outlier_growth": {
@@ -191,39 +154,28 @@
         "criterion.long_term_growth.opportunity_scale_5y",
         "criterion.long_term_growth.growth_duration_10y",
         "criterion.long_term_growth.culture_adaptability",
-        "criterion.long_term_growth.market_misperception",
-        "domain.customer_product",
-        "domain.moat_trajectory",
-        "domain.management_allocation"
+        "criterion.long_term_growth.market_misperception"
       ],
       "blocking_vetoes": []
     },
     "growth": {
       "eligible": false,
       "failed_conditions": [
-        "domain.asymmetry"
-      ],
-      "missing_conditions": [
-        "domain.structural_leadership",
-        "domain.customer_product",
-        "domain.moat_trajectory",
         "domain.reinvestment_fcf",
-        "domain.management_allocation",
+        "domain.asymmetry",
         "criterion.reinvestment_fcf.fcf_per_share_quality"
       ],
+      "missing_conditions": [],
       "blocking_vetoes": []
     },
     "buffett_value": {
       "eligible": false,
       "failed_conditions": [
         "signal.price_to_base_value",
+        "criterion.reinvestment_fcf.fcf_per_share_quality",
         "domain.asymmetry"
       ],
-      "missing_conditions": [
-        "criterion.reinvestment_fcf.fcf_per_share_quality",
-        "domain.management_allocation",
-        "domain.moat_trajectory"
-      ],
+      "missing_conditions": [],
       "blocking_vetoes": []
     },
     "moonshot": {
@@ -232,43 +184,97 @@
         "signal.market_cap_usd",
         "domain.asymmetry"
       ],
-      "missing_conditions": [
-        "domain.structural_leadership"
-      ],
+      "missing_conditions": [],
       "blocking_vetoes": []
     }
   },
-  "stage_0": {
-    "stage_0": "ready",
-    "enforced": true,
-    "pack_present": true
+  "early_exit_record": {
+    "stage": "pre_ic",
+    "last_reachable_archetypes": [
+      "compounder"
+    ],
+    "reachability_history_method": "Deterministic replay in manifest order; not a claim about wall-clock execution order.",
+    "eliminated_archetypes": {
+      "compounder": {
+        "failed_conditions": [
+          "reinvestment_fcf 59 < 76",
+          "incremental_roic 65 < 75"
+        ],
+        "missing_conditions": [],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      },
+      "growth": {
+        "failed_conditions": [
+          "reinvestment_fcf 59 < 65",
+          "asymmetry 58.25 < 65",
+          "fcf_per_share_quality 40 < 65"
+        ],
+        "missing_conditions": [],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      },
+      "outlier_growth": {
+        "failed_conditions": [
+          "asymmetry 58.25 < 65",
+          "permanent_loss 25 < 50"
+        ],
+        "missing_conditions": [
+          "LG not run because archetype was already unreachable"
+        ],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      },
+      "buffett_value": {
+        "failed_conditions": [
+          "price/base 0.9197 > 0.85",
+          "fcf_per_share_quality 40 < 75",
+          "asymmetry 58.25 < 65"
+        ],
+        "missing_conditions": [],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      },
+      "moonshot": {
+        "failed_conditions": [
+          "market cap $92.29B > $50B",
+          "asymmetry 58.25 < 72"
+        ],
+        "missing_conditions": [],
+        "gate_failed": false,
+        "blocking_vetoes": []
+      }
+    },
+    "confirmed_vetoes": [],
+    "unresolved_vetoes": [],
+    "pending_vetoes": "RT co-owner review remains unrun and is not decision-relevant after deterministic non-fit early exit.",
+    "future_reentry": {
+      "requirements": [
+        "Compounder re-entry requires RF >=76 and incremental_roic >=75 while MT, MA, FS and valuation gates remain satisfied.",
+        "Growth re-entry requires AS >=65, RF >=65 and fcf_per_share_quality >=65.",
+        "A materially lower price alone does not fix RF; new cash-conversion evidence is required."
+      ]
+    },
+    "ic_intentionally_not_run": true,
+    "statement": "IC is intentionally not run because no investable archetype remains reachable."
   },
   "next_plan": {
-    "stage": "domain_analysis",
-    "agents": {
-      "customer_product": "CP",
-      "management_allocation": "MA",
-      "moat_trajectory": "MT",
-      "reinvestment_fcf": "RF",
-      "structural_leadership": "SL"
-    },
-    "execution_control": "continue"
+    "stage": "early_exit",
+    "agents": {},
+    "execution_control": "stop",
+    "statement": "No investable archetype remains reachable. Do not run MO, ED, RT or IC for this snapshot."
   },
   "secondary_archetypes": [],
-  "archetype_rationale": "Compounder remains reachable but cannot be selected until the remaining core domains and Hard Veto owners are completed.",
-  "ic_state": "INCOMPLETE",
+  "archetype_rationale": "Full core coverage is complete, but no archetype satisfies all mandatory gates. Compounder is closest and fails on reinvestment_fcf and incremental_roic.",
+  "ic_state": "EARLY_EXIT_NON_FIT",
   "position_range": null,
   "ic_review_flags": [
-    "Core coverage 35/100",
-    "Compounder conditions MT/RF/MA unresolved",
-    "Hard Veto ownership incomplete"
+    "IC intentionally not run after deterministic early exit"
   ],
   "falsifiers": [
-    "Adjusted FCF/share fails to recover despite continued GMV and TPV growth.",
-    "Credit losses/funding costs remain elevated enough to prevent owner-cash-flow normalization.",
-    "Commerce and fintech growth both decelerate materially before new value pools become economically significant.",
-    "Cross-ecosystem users stop showing better engagement/economics than single-vertical users.",
-    "Adjusted FCF turns structurally negative while credit growth still requires external funding."
+    "TTM adjusted FCF/share fails to recover through 2027-2028.",
+    "Credit-card NIMAL remains below breakeven while the portfolio keeps scaling.",
+    "Ecosystem engagement gains fail to convert into incremental operating profit."
   ],
-  "decision_authority": "Deterministic eligibility and veto gates; IC has not run."
+  "decision_authority": "Deterministic eligibility and early-exit gates; IC intentionally not run."
 }
