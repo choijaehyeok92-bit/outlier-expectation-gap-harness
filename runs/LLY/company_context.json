@@ -1,0 +1,85 @@
+{
+  "ticker": "LLY",
+  "company_name": "Eli Lilly and Company",
+  "as_of_date": "2026-09-21",
+  "currency": "USD",
+  "current_price": 1164.89,
+  "shares_diluted": 893700000,
+  "market_cap_usd": 1041062193000,
+  "enterprise_value": 1083164193000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "Eli Lilly FY2025 Form 10-K filed 2026-02-18",
+    "Eli Lilly Q1 2026 Form 10-Q filed 2026-04-30",
+    "Eli Lilly Q2 2026 Form 10-Q filed 2026-08-05",
+    "Eli Lilly 2026 DEF 14A filed 2026-03-20",
+    "Eli Lilly May 2026 $9B debt financing 8-K",
+    "LLY 2026-09-21 close $1,164.89"
+  ],
+  "special_questions": [
+    "Can Mounjaro/Zepbound plus orforglipron/retatrutide sustain owner-FCF/share growth after current manufacturing capex normalizes?",
+    "How much single-franchise concentration risk exists when tirzepatide products represent roughly two-thirds of current revenue?",
+    "Do manufacturing capacity, pricing/reimbursement pressure, patent/regulatory risk and competing incretins justify the current trillion-dollar valuation?"
+  ],
+  "net_cash_per_share": -47.10976837865056,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "Conservative excess-cash convention: cash plus reported investments less short-term borrowings/current maturities and long-term debt. No value assigned to pipeline or other strategic assets outside forecast cash flows.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {
+      "United_States": 0.6203,
+      "Europe": 0.1814,
+      "China": 0.0382,
+      "Japan": 0.028,
+      "Rest_of_world": 0.132
+    },
+    "production_by_region": {
+      "United_States": "major",
+      "Ireland": "major",
+      "Europe": "major",
+      "Asia": "major"
+    },
+    "critical_supplier_regions": [
+      "United States",
+      "Puerto Rico",
+      "Ireland",
+      "France",
+      "Spain",
+      "Italy",
+      "China",
+      "Japan",
+      "Germany",
+      "Netherlands"
+    ],
+    "export_control_dependencies": [
+      "China-based pharmaceutical supply-chain inputs"
+    ],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": [
+      "U.S. Medicare/Medicaid and non-U.S. public reimbursement systems"
+    ],
+    "customer_exposure_estimate": {
+      "United_States": 0.6203,
+      "Europe": 0.1814,
+      "China": 0.0382,
+      "Japan": 0.028,
+      "Rest_of_world": 0.132
+    },
+    "note": "Revenue mix uses H1 2026 customer-location disclosure. Manufacturing/supplier regions use FY2025 10-K. Lilly depends on some single-source materials and China-based suppliers for portions of its supply chain."
+  }
+}
