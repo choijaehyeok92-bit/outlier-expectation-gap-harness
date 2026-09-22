@@ -1,0 +1,202 @@
+{
+  "financial_conditions": {
+    "scope": "global",
+    "as_of_utc": "2026-09-21T00:00:00+00:00",
+    "summary": "Global market pricing remains relatively loose, but the U.S. policy impulse turned tighter. The Fed raised the funds target to 3.75%-4.00% on Sep. 16 while Chicago Fed NFCI remained materially below zero and VIX closed at 14.87 on Sep. 21. Treat as moderate tightening risk rather than broad financial stress.",
+    "evidence": [
+      {
+        "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+        "as_of_date": "2026-09-16"
+      },
+      {
+        "source": "https://fred.stlouisfed.org/series/NFCI",
+        "as_of_date": "2026-09-16"
+      },
+      {
+        "source": "https://www.cboe.com/tradable-products/vix",
+        "as_of_date": "2026-09-21"
+      }
+    ],
+    "risk_budget_multiplier": 0.8
+  },
+  "credit_liquidity": {
+    "scope": "global",
+    "as_of_utc": "2026-09-21T00:00:00+00:00",
+    "summary": "Broad U.S. credit liquidity remains open: aggregate high-yield OAS was 2.68% on Sep. 18 and BB OAS 1.55%. Lower-quality credit is more fragile, with CCC-and-lower spreads above 10.7%. This is not a broad funding freeze.",
+    "evidence": [
+      {
+        "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+        "as_of_date": "2026-09-21"
+      },
+      {
+        "source": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB",
+        "as_of_date": "2026-09-21"
+      },
+      {
+        "source": "https://fred.stlouisfed.org/data/BAMLH0A3HYC",
+        "as_of_date": "2026-09-17"
+      }
+    ],
+    "risk_budget_multiplier": 0.8
+  },
+  "geopolitical_events": {
+    "scope": "global",
+    "as_of_utc": "2026-09-21T00:00:00+00:00",
+    "summary": "The active U.S.-Iran conflict and Houthi advances create high military, energy and maritime-shipping risk around Hormuz and Bab el-Mandeb. These are global pacing risks rather than a company-specific permanent market-access event.",
+    "evidence": [
+      {
+        "source": "https://www.reuters.com/world/middle-east/vessels-trickle-through-strait-hormuz-mideast-tension-persists-2026-09-21/",
+        "as_of_date": "2026-09-21"
+      },
+      {
+        "source": "https://www.reuters.com/world/eus-kallas-says-red-sea-naval-mission-needs-more-than-10-ships-2026-09-21/",
+        "as_of_date": "2026-09-21"
+      }
+    ],
+    "dimensions": {
+      "military_conflict": {
+        "level": "high",
+        "regions": [
+          "Middle East",
+          "Iran",
+          "Yemen",
+          "Saudi Arabia"
+        ],
+        "routes": [
+          "Strait of Hormuz",
+          "Bab el-Mandeb"
+        ],
+        "dependencies": [
+          "energy"
+        ],
+        "structural_events": []
+      },
+      "energy_disruption": {
+        "level": "high",
+        "regions": [
+          "Middle East",
+          "Iran",
+          "Saudi Arabia",
+          "Oman"
+        ],
+        "routes": [
+          "Strait of Hormuz",
+          "Red Sea"
+        ],
+        "dependencies": [
+          "oil",
+          "LNG"
+        ],
+        "structural_events": []
+      },
+      "shipping_disruption": {
+        "level": "high",
+        "regions": [
+          "Middle East"
+        ],
+        "routes": [
+          "Strait of Hormuz",
+          "Bab el-Mandeb",
+          "Red Sea"
+        ],
+        "dependencies": [
+          "oil shipping",
+          "container shipping"
+        ],
+        "structural_events": []
+      },
+      "sovereign_policy_instability": {
+        "level": "moderate",
+        "regions": [
+          "France"
+        ],
+        "routes": [],
+        "dependencies": [
+          "sovereign debt markets"
+        ],
+        "structural_events": []
+      }
+    }
+  },
+  "structural_trade": {
+    "scope": "global",
+    "as_of_utc": "2026-09-21T00:00:00+00:00",
+    "summary": "Trade fragmentation remains high. WTO fragmentation concerns persist and U.S.-China technology restrictions remain structural frictions. These raise global policy uncertainty but do not by themselves establish a durable market-access loss for a specific company.",
+    "evidence": [
+      {
+        "source": "https://www.reuters.com/world/africa/wto-says-global-trade-system-critical-juncture-urges-reform-2026-09-15/",
+        "as_of_date": "2026-09-15"
+      },
+      {
+        "source": "https://www.reuters.com/world/china/what-commodity-markets-can-expect-trump-xi-summit-2026-09-18/",
+        "as_of_date": "2026-09-18"
+      },
+      {
+        "source": "https://www.reuters.com/world/us/trump-signs-russia-sanctions-bill-into-law-2026-09-18/",
+        "as_of_date": "2026-09-18"
+      }
+    ],
+    "dimensions": {
+      "trade_fragmentation": {
+        "level": "high",
+        "regions": [
+          "Brazil",
+          "Mexico",
+          "United States",
+          "China",
+          "Canada"
+        ],
+        "routes": [],
+        "dependencies": [
+          "USMCA",
+          "cross-border trade"
+        ],
+        "structural_events": []
+      },
+      "export_controls": {
+        "level": "moderate",
+        "regions": [
+          "United States",
+          "China"
+        ],
+        "routes": [],
+        "dependencies": [
+          "advanced semiconductors",
+          "AI chips"
+        ],
+        "structural_events": []
+      },
+      "sanctions": {
+        "level": "high",
+        "regions": [
+          "Russia",
+          "Iran",
+          "United States",
+          "European Union"
+        ],
+        "routes": [],
+        "dependencies": [
+          "banking",
+          "energy"
+        ],
+        "structural_events": [
+          {
+            "event_id": "global-russia-iran-sanctions-2026-09",
+            "event_type": "sanctions",
+            "source": "https://www.reuters.com/world/us/trump-signs-russia-sanctions-bill-into-law-2026-09-18/",
+            "as_of_date": "2026-09-18",
+            "regions": [
+              "Russia",
+              "Iran"
+            ],
+            "routes": [],
+            "dependencies": [
+              "banking",
+              "energy"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
