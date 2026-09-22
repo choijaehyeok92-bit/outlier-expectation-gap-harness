@@ -1,0 +1,58 @@
+{
+ "fields": [
+  "cik",
+  "name",
+  "ticker",
+  "exchange"
+ ],
+ "data": [
+  [
+   789019,
+   "MICROSOFT CORP",
+   "MSFT",
+   "Nasdaq"
+  ],
+  [
+   1819994,
+   "Rocket Lab Corp",
+   "RKLB",
+   "Nasdaq"
+  ],
+  [
+   1067983,
+   "BERKSHIRE HATHAWAY INC",
+   "BRK-B",
+   "NYSE"
+  ],
+  [
+   1000045,
+   "NICHOLAS FINANCIAL INC",
+   "NICK",
+   "Nasdaq"
+  ],
+  [
+   1820302,
+   "Ajax Capital Acquisition Corp",
+   "AJAX",
+   "NYSE"
+  ],
+  [
+   1820302,
+   "Ajax Capital Acquisition Corp",
+   "AJAX-W",
+   "NYSE"
+  ],
+  [
+   1084765,
+   "SPDR S&P 500 ETF Trust",
+   "SPY",
+   "NYSE American"
+  ],
+  [
+   1090727,
+   "Some Company",
+   "SOMEC",
+   "OTC"
+  ]
+ ]
+}

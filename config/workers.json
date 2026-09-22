@@ -1,0 +1,301 @@
+{
+  "schema_version": "1.0",
+  "note": "job 테이블을 소비하는 워커 정책. 큐는 데이터베이스 자신이다 — 별도 브로커를 두지 않는다. 워커는 이미 존재하는 진입점을 부를 뿐이고, 점수·archetype·Hard Veto·ic_state·비중은 여전히 하네스가 정한다.",
+  "transport": {
+    "kind": "database",
+    "claim": "SELECT ... FOR UPDATE SKIP LOCKED (PostgreSQL) / 트랜잭션 내 조건부 UPDATE (SQLite)",
+    "why": "job 테이블에 이미 idempotency_key와 status가 있고, 배포에서 서비스를 하나 줄인다. 무엇보다 두 방언 모두에서 단위 테스트로 검증된다 — 검증되지 않는 큐는 큐가 아니다. 핸들러 계약은 transport와 독립이므로 나중에 브로커를 붙여도 핸들러는 그대로다."
+  },
+  "handler_contract": {
+    "must_be_idempotent": true,
+    "why": "워커가 죽으면 lease가 만료되고 그 작업은 다시 claim된다. 두 번 실행해도 같은 결과여야 안전하다. 실제로 등록된 핸들러는 전부 그렇다 — run_agent는 완료된 에이전트를 건너뛰고, db sync는 키로 upsert하며, 관측 로그는 같은 내용을 두 번 쓰지 않고, 불변 기록은 같은 내용이면 같은 id를 갖는다.",
+    "may_not": [
+      "점수·archetype·Hard Veto·ic_state·position_range를 바꾼다",
+      "payload가 지정했다는 이유로 allowed_providers 밖의 provider를 쓴다",
+      "freeze·Stage 0 게이트를 우회한다",
+      "실패를 성공으로 보고한다"
+    ]
+  },
+  "providers": {
+    "allowed": [
+      "placeholder",
+      "fixture"
+    ],
+    "default": "placeholder",
+    "allowed_note": "payload는 큐에 넣은 쪽이 쓴 값이다. 목록 밖의 provider를 요구하면 그 작업은 거부되고 실패로 기록된다 — 큐에 한 줄 넣는 것만으로 돈이 나가면 안 된다. 실제 모델을 돌리려면 운영자가 이 목록에 명시적으로 추가한다.",
+    "secrets_note": "API 키는 provider 클래스가 환경에서 읽는다. payload에 키를 넣지 않으며 job.payload는 그대로 API 응답에 실릴 수 있다."
+  },
+  "execution": {
+    "poll_interval_seconds": 5,
+    "lease_seconds": 900,
+    "lease_note": "claim한 워커가 죽으면 이 시간 뒤에 다른 워커가 가져갈 수 있다. 오래 도는 작업(full harness)은 kind별로 늘린다.",
+    "max_attempts": 3,
+    "backoff_seconds": [
+      30,
+      300,
+      1800
+    ],
+    "backoff_note": "재시도는 available_at을 미뤄서 한다. 같은 작업을 즉시 다시 잡으면 고장난 의존성을 상대로 초당 수십 번 재시도한다.",
+    "claim_batch": 1,
+    "concurrency": 1,
+    "concurrency_note": "워커 프로세스 하나가 한 번에 작업 하나를 처리한다. 병렬이 필요하면 프로세스를 늘린다 — SKIP LOCKED가 같은 작업을 두 번 주지 않는다.",
+    "claim_candidates": 25,
+    "claim_candidates_note": "claim 한 번에 살펴보는 queued 후보 수. 앞쪽 후보가 전부 lock에 막혀 있어도 뒤쪽의 돌릴 수 있는 작업을 찾는다. 이 수를 넘으면 그 회차는 비어 있다고 보고 다음 폴링을 기다린다."
+  },
+  "kinds": {
+    "universe_sync": {
+      "handler": "universe_sync",
+      "spends_money": false,
+      "lease_seconds": 3600,
+      "description": "규제기관에서 미국/한국 투자가능 유니버스를 다시 만든다",
+      "external_api_note": "SEC는 연락처가 담긴 User-Agent를, DART는 키를 요구한다. 둘 다 환경에서만 읽으며 payload로 받지 않는다. enrich_limit이 크면 DART 호출이 그만큼 늘어난다."
+    },
+    "ingest_pack": {
+      "handler": "ingest_pack",
+      "spends_money": false,
+      "lease_seconds": 7200,
+      "description": "지정한 기업들의 Stage 0 pack을 만들어 data/packs/에 쓴다",
+      "external_api_note": "기업당 규제기관 요청이 여러 번이다. 한 기업이 실패해도 배치는 계속되고 각 결과가 보고된다."
+    },
+    "db_sync": {
+      "handler": "db_sync",
+      "spends_money": false,
+      "lease_seconds": 900,
+      "description": "파일 아티팩트를 데이터베이스로 적재한다 (harness.py db sync와 같은 일)"
+    },
+    "screen_build": {
+      "handler": "screen_build",
+      "spends_money": false,
+      "lease_seconds": 1800,
+      "description": "결정론적 지표 창고를 만든다. LLM을 쓰지 않는다"
+    },
+    "market_fetch": {
+      "handler": "market_fetch",
+      "spends_money": false,
+      "lease_seconds": 900,
+      "description": "미국 시세를 bulk 호출 1회로 받아 data/market/US/에 쓴다. LLM을 쓰지 않는다",
+      "external_api_note": "LLM은 아니지만 외부 유료 서비스를 부른다. 종량 과금이 아니라 구독제라 호출 1회의 한계비용이 0이므로 spends_money=false로 두되, 키가 없으면 실행되지 않고 이유를 남기고 실패한다."
+    },
+    "monitor_status": {
+      "handler": "monitor_status",
+      "spends_money": false,
+      "lease_seconds": 600,
+      "description": "감시 항목을 관측과 대조하고 불변 스냅샷을 남긴다"
+    },
+    "monitor_ingest": {
+      "handler": "monitor_ingest",
+      "spends_money": false,
+      "lease_seconds": 600,
+      "description": "사람이 걸어 둔 링크를 따라 결정론적 창고에서 관측을 적재한다. 링크 없는 항목은 이름으로 맞추지 않는다"
+    },
+    "harness_triage": {
+      "handler": "harness_triage",
+      "spends_money": true,
+      "lease_seconds": 3600,
+      "description": "Stage 3 — 후보들에 EV·AS·DI·FS를 돌린다"
+    },
+    "harness_full": {
+      "handler": "harness_full",
+      "spends_money": true,
+      "lease_seconds": 10800,
+      "description": "Stage 4 — plan이 부르는 단계를 끝까지 따라간다"
+    },
+    "deep_dive": {
+      "handler": "deep_dive",
+      "spends_money": true,
+      "lease_seconds": 3600,
+      "description": "정성 딥다이브 4단계"
+    }
+  },
+  "reaper": {
+    "enabled": true,
+    "note": "lease가 만료된 running 작업을 queued로 되돌린다. 되돌릴 때 attempts는 이미 올라가 있으므로 max_attempts가 무한 부활을 막는다.",
+    "stuck_after_lease_grace_seconds": 60
+  },
+  "retention": {
+    "note": "완료된 작업은 자동으로 지우지 않는다. 무엇이 언제 돌았는지가 감사 기록이다. 정리는 운영자가 명시적으로 한다.",
+    "auto_delete": false
+  },
+  "locks": {
+    "enabled": true,
+    "note": "큐는 같은 '행'을 두 워커가 가져가는 것만 막는다. 서로 다른 두 행이 같은 runs/<ID>/를 쓰는 것은 막지 못하고, 실제로 그런 일이 생긴다 — full harness가 aggregate.json을 다시 쓰는 동안 deep dive가 그것을 읽고, harness_core.dump_json은 원자적 쓰기가 아니라서 절반만 읽힐 수 있다. 그래서 작업은 claim 전에 자기가 건드릴 자원을 선언하고, 이미 잡혀 있으면 claim되지 않는다.",
+    "guarantee": "(namespace, resource)가 UNIQUE다. 두 번째 보유자를 거부하는 것은 애플리케이션의 확인이 아니라 데이터베이스다.",
+    "wildcard": "*",
+    "wildcard_note": "대상이 실행 전에는 정해지지 않는 배치 작업(top N 선정)은 namespace 전체를 잡는다. resource='*'는 그 namespace의 어떤 자원과도 충돌한다.",
+    "release_on": [
+      "completed",
+      "failed",
+      "cancelled",
+      "lease_reaped"
+    ],
+    "release_note": "lease가 회수될 때도 반드시 푼다. 죽은 워커가 자원을 영원히 붙잡고 있으면 안 된다.",
+    "mode": "exclusive",
+    "mode_note": "읽기/쓰기 구분을 두지 않았다. 같은 자원을 읽기만 하는 두 작업을 직렬화하는 비용은 작고(둘 다 idempotent라 하나가 기다리면 된다), 모드 행렬을 추가하면 틀리기 쉬운 곳이 하나 늘어난다.",
+    "by_kind": {
+      "db_sync": {
+        "namespace": "run",
+        "from": "all",
+        "why": "모든 run의 aggregate.json·final_verdict.json을 읽는다. harness 작업이 그 파일들을 다시 쓴다."
+      },
+      "screen_build": {
+        "namespace": "warehouse",
+        "from": "field",
+        "field": "as_of_date",
+        "why": "Stage 0 pack만 읽는다. pack은 어떤 작업도 다시 쓰지 않으므로 run namespace와 충돌하지 않는다."
+      },
+      "monitor_status": {
+        "namespace": "run",
+        "from": "list_field",
+        "field": "tickers",
+        "why": "워치리스트를 만들며 runs/<T>/reports를 읽는다. 쓰는 중인 run을 읽으면 스냅샷에 찢어진 상태가 사실로 기록된다."
+      },
+      "harness_triage": {
+        "namespace": "run",
+        "from": "list_field",
+        "field": "run_ids",
+        "why": "runs/<ID>/reports와 aggregate.json을 쓴다."
+      },
+      "harness_full": {
+        "namespace": "run",
+        "from": "list_field",
+        "field": "run_ids",
+        "why": "runs/<ID>/ 전체를 쓴다."
+      },
+      "deep_dive": {
+        "namespace": "run",
+        "from": "field",
+        "field": "run_id",
+        "why": "runs/<ID>/를 읽어 harness_snapshot을 복사한다. 그 사이에 run이 바뀌면 스냅샷이 원본과 어긋난다."
+      },
+      "monitor_ingest": {
+        "namespace": "run",
+        "from": "list_field",
+        "field": "tickers",
+        "why": "관측 로그에 쓰고 워치리스트를 만들며 runs/<T>/reports를 읽는다."
+      },
+      "market_fetch": {
+        "namespace": "market",
+        "from": "field",
+        "field": "as_of_date",
+        "why": "data/market/US/<T>.csv를 같은 세션에 대해 두 워커가 동시에 읽고-병합-쓰기 하면 한쪽의 행이 사라진다. run namespace와는 충돌하지 않는다 — runs/를 건드리지 않는다."
+      },
+      "universe_sync": {
+        "namespace": "universe",
+        "from": "all",
+        "why": "data/universe/securities.json을 통째로 바꾼다. 두 sync가 겹치면 절반만 읽힌다."
+      },
+      "ingest_pack": {
+        "namespace": "pack",
+        "from": "list_field",
+        "field": "tickers",
+        "why": "data/packs/<T>.json을 쓴다. run namespace와 충돌하지 않는다 — frozen run의 sources를 건드리지 않는다."
+      }
+    },
+    "serialize_claim": {
+      "postgresql": "pg_advisory_xact_lock — claim 트랜잭션 동안만 잡히고 commit/rollback에서 자동으로 풀린다. wildcard와 특정 자원이 동시에 들어오는 경쟁을 닫는다.",
+      "sqlite": "쓰기가 하나뿐이므로 별도 조치가 필요 없다."
+    }
+  },
+  "schedules": {
+    "enabled": true,
+    "note": "되풀이되는 일의 주기를 crontab이 아니라 여기에 선언한다. cron은 `harness.py worker schedule` 한 줄만 부르면 되고, 무엇이 언제 도는지는 버전관리되는 이 파일이 안다.",
+    "no_daemon": true,
+    "no_daemon_note": "스케줄러 프로세스를 두지 않았다. `worker schedule`은 '지금 만기인 것'을 계산해 큐에 넣고 끝난다. 상시 프로세스가 하나 늘면 그것이 살아 있는지를 다시 감시해야 한다.",
+    "state": "job 테이블",
+    "state_note": "마지막 실행 시각을 따로 저장하지 않는다. idempotency_key에 '어느 회차인가'가 들어 있으므로, 같은 회차를 두 번 계산해도 enqueue가 기존 행을 돌려준다. 스케줄러의 상태는 큐 자신이다.",
+    "timezone": "UTC",
+    "timezone_note": "지역시간을 쓰지 않는다. DST 전환일에 같은 시각이 두 번 오거나 아예 없으며, 그것은 멱등성을 정확히 깨뜨리는 경우다.",
+    "catch_up": false,
+    "catch_up_note": "스케줄러가 사흘 쉬었다고 사흘치를 밀어 넣지 않는다. db_sync에 필요한 것은 최신 상태 하나지 백로그 세 개가 아니다. lookback 안에서 가장 최근 회차 하나만 넣는다.",
+    "lookback_hours": 48,
+    "lookback_hours_note": "이보다 오래된 회차는 놓친 것으로 보고 넣지 않는다. 사흘 꺼져 있던 기계가 깨어나 이틀 전 회차를 새 일인 양 시작하면 안 된다.",
+    "idempotency_key_template": "schedule:{schedule_id}:{occurrence}",
+    "payload_placeholders": {
+      "{date}": "회차의 날짜 (YYYY-MM-DD)",
+      "{occurrence}": "회차의 UTC 타임스탬프 (분 단위, 초 없음)"
+    },
+    "payload_placeholders_note": "치환은 이 두 개뿐이다. 표현식을 평가하지 않는다 — 설정 파일이 작은 언어가 되기 시작하면 그것도 테스트해야 한다.",
+    "expressions": {
+      "form": "5-field cron (minute hour day-of-month month day-of-week), UTC",
+      "aliases": [
+        "@hourly",
+        "@daily",
+        "@weekly",
+        "@monthly"
+      ],
+      "supported": [
+        "*",
+        "n",
+        "a-b",
+        "a,b",
+        "*/n",
+        "a-b/n"
+      ],
+      "day_of_week": "0-6, 0=Sunday. 7도 일요일로 받는다.",
+      "dom_dow_rule": "day-of-month와 day-of-week가 둘 다 *가 아니면 cron의 전통대로 OR로 친다 — 둘 중 하나만 맞아도 실행된다. 이것은 cron의 유명한 함정이므로 테스트로 고정해 두었다.",
+      "unsupported": "위 목록 밖의 문법(L, W, #, ? 등)은 해석하지 않고 거부한다. 추측해서 매일 도는 것보다 설정이 틀렸다고 말하는 편이 낫다."
+    },
+    "entries": [
+      {
+        "id": "nightly_us_prices",
+        "kind": "market_fetch",
+        "cron": "0 2 * * 2-6",
+        "payload": {
+          "as_of_date": "{date}"
+        },
+        "enabled": false,
+        "priority": 30,
+        "description": "전 거래일 미국 종가. 창고(30분 뒤)보다 먼저 돈다",
+        "enabled_note": "기본값은 꺼짐이다. 키가 설정되지 않은 기계에서 매일 밤 실패하는 작업을 만들지 않는다. $POLYGON_API_KEY를 넣은 뒤 운영자가 켠다.",
+        "cron_note": "UTC 화~토 02:00 = 미국 월~금 장 마감 이후다. 월요일에 돌리면 직전 세션이 금요일이라 같은 값을 다시 쓴다 — 틀리지는 않지만 의미가 없다."
+      },
+      {
+        "id": "nightly_db_sync",
+        "kind": "db_sync",
+        "cron": "0 3 * * *",
+        "payload": {},
+        "enabled": true,
+        "priority": 50,
+        "description": "파일 아티팩트를 DB 색인에 반영한다"
+      },
+      {
+        "id": "nightly_warehouse",
+        "kind": "screen_build",
+        "cron": "30 2 * * *",
+        "payload": {
+          "as_of_date": "{date}"
+        },
+        "enabled": true,
+        "priority": 40,
+        "description": "그날짜의 결정론적 지표 창고. monitor_ingest가 이것을 읽는다"
+      },
+      {
+        "id": "nightly_monitor_ingest",
+        "kind": "monitor_ingest",
+        "cron": "0 4 * * *",
+        "payload": {
+          "as_of_date": "{date}"
+        },
+        "enabled": true,
+        "priority": 60,
+        "description": "사람이 걸어 둔 링크를 따라 창고에서 관측을 적재한다"
+      },
+      {
+        "id": "nightly_monitor_status",
+        "kind": "monitor_status",
+        "cron": "30 4 * * *",
+        "payload": {},
+        "enabled": true,
+        "priority": 70,
+        "description": "적재된 관측을 임계값과 대조하고 불변 스냅샷을 남긴다"
+      }
+    ],
+    "entries_note": "priority는 큐 안의 순서다. 창고(40) -> 적재(60) -> 평가(70) 순서로 두었지만 이것은 힌트일 뿐 의존성 선언이 아니다 — 같은 밤에 창고가 실패하면 적재는 그냥 적재할 것이 없다고 보고한다. 작업 간 의존성 그래프는 두지 않았다.",
+    "never_scheduled": {
+      "harness_triage": "돈을 쓴다. 어떤 기업을 볼지는 사람이 정할 일이지 매일 밤 자동으로 정해질 일이 아니다.",
+      "harness_full": "같은 이유. 기업당 에이전트 호출이 13회 이상이다.",
+      "deep_dive": "같은 이유."
+    },
+    "never_scheduled_note": "기본 entries에 spends_money=true인 종류를 넣지 않았다. 넣을 수는 있지만 그것은 운영자가 이 파일에 명시적으로 적는 결정이어야 한다."
+  }
+}

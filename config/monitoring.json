@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0",
+  "note": "Phase 12 모니터링 정책. 이 계층은 관측을 기록하고 이미 선언된 임계값과 결정론적으로 비교한다. 임계값을 새로 쓰지 않고, 관측이 없는 항목을 추정하지 않으며, 점수·archetype·Hard Veto·ic_state·포지션을 바꾸지 않는다.",
+  "authority": {
+    "may": [
+      "출처가 붙은 관측을 append-only로 기록한다",
+      "이미 선언된 임계값과 결정론적으로 비교한다",
+      "cadence 대비 관측이 낡았는지 판정한다",
+      "harness run 사이에 무엇이 달라졌는지 보고한다",
+      "재검토 요청(review_required)을 발행한다"
+    ],
+    "may_not": [
+      "도메인 점수나 100점 스코어를 바꾼다",
+      "Hard Veto 상태를 바꾼다",
+      "archetype을 바꾼다",
+      "ic_state나 position_range를 바꾼다",
+      "보고서에 적힌 임계값을 다시 쓴다",
+      "관측이 없는 항목의 값을 추정한다",
+      "해석할 수 없는 임계값을 해석한 척한다"
+    ],
+    "statement": "thesis_break는 매도 신호가 아니라 재검토 요청이다. 무엇을 할지는 여전히 도메인 reviewer와 IC가 증거를 다시 보고 정한다. 전략 원칙 5 — 가격이 아니라 증거 변화에 따라 판단을 바꾼다 — 가 여기에도 그대로 적용된다."
+  },
+  "statuses": {
+    "ok": "관측이 임계값 안에 있다",
+    "warning": "경고 임계값을 넘었다",
+    "thesis_break": "가설 파기 임계값을 넘었다 — 재검토 요청",
+    "triggered": "falsifier가 발동했다고 사람이 기록했다 — 재검토 요청",
+    "not_triggered": "falsifier를 확인했고 발동하지 않았다",
+    "stale": "cadence 안에 관측이 없다 — 아무도 보고 있지 않다는 정보다",
+    "unknown": "관측이 한 번도 없다",
+    "unchecked": "falsifier를 아직 확인하지 않았다",
+    "not_machine_checkable": "임계값이 산문이라 결정론적으로 비교할 수 없다 — 원문을 그대로 남기고 사람이 본다"
+  },
+  "review_required_statuses": [
+    "thesis_break",
+    "triggered"
+  ],
+  "review_required_note": "warning은 재검토를 강제하지 않는다. 경고와 파기를 같은 무게로 올리면 둘 다 무시된다.",
+  "cadence_days": {
+    "monthly": 31,
+    "quarterly": 92,
+    "semiannual": 183,
+    "annual": 366,
+    "event_driven": null
+  },
+  "staleness": {
+    "grace_days": 30,
+    "grace_days_note": "공시는 기간 종료 직후에 나오지 않는다. cadence 주기에 이 유예를 더한 만큼 지나야 stale로 본다.",
+    "event_driven_never_stale": true,
+    "event_driven_note": "event_driven 항목은 주기가 없으므로 관측이 없다고 낡은 것이 아니다. 관측이 없으면 unknown으로 남는다."
+  },
+  "thresholds": {
+    "direction_operators": {
+      "increasing": ">=",
+      "above_threshold": ">=",
+      "decreasing": "<=",
+      "below_threshold": "<=",
+      "stable": null
+    },
+    "direction_operators_note": "임계값 문구 자체에 비교어(이상·이하·미만·초과·at least·below …)가 있으면 그것이 우선한다. 없으면 direction_required로 방향을 정한다. stable은 기준점 없이는 양방향 밴드를 만들 수 없으므로 not_machine_checkable이다.",
+    "agent_kpi_threshold_level": "warning",
+    "agent_kpi_threshold_level_note": "에이전트 보고서의 key_kpis는 임계값이 하나뿐이고 그것을 넘으면 가설이 깨진다고 말한 적이 없다. 경고로만 읽는다. thesis_break는 그렇게 선언된 임계값에만 쓴다.",
+    "parse_prose": false,
+    "parse_prose_note": "숫자와 비교어로 환원되지 않는 임계값은 추측하지 않는다. not_machine_checkable로 원문과 함께 남겨 사람이 읽는다. 스크리너의 unresolved_conditions와 같은 규칙이다.",
+    "agent_direction_map": {
+      "up": "increasing",
+      "increase": "increasing",
+      "increasing": "increasing",
+      "rising": "increasing",
+      "상승": "increasing",
+      "증가": "increasing",
+      "down": "decreasing",
+      "decrease": "decreasing",
+      "decreasing": "decreasing",
+      "falling": "decreasing",
+      "하락": "decreasing",
+      "감소": "decreasing",
+      "flat": "stable",
+      "stable": "stable",
+      "유지": "stable",
+      "횡보": "stable"
+    },
+    "agent_direction_map_note": "에이전트 보고서의 key_kpis.direction은 자유 문자열이다. 여기 목록에 없는 값은 방향을 추측하지 않고 비워 둔다 — 그러면 임계값 문구 자체에 비교어가 있어야 기계 판정이 되고, 없으면 not_machine_checkable이다."
+  },
+  "observations": {
+    "append_only": true,
+    "require_source": true,
+    "reject_future_as_of": true,
+    "supersede_instead_of_edit": true,
+    "note": "관측은 사실이므로 결정과 같은 규칙을 따른다. 한 번 쓰면 고치지 않고, 정정은 사유와 함께 새 관측으로 덮는다. 분석 기준일보다 앞선 관측은 지우지 않고 pre_analysis로 표시한다 — 오래된 숫자가 새 소식으로 읽히지 않게 한다."
+  },
+  "watch_id": {
+    "fields": [
+      "ticker",
+      "kind",
+      "source_kind",
+      "source_scope",
+      "normalized_name"
+    ],
+    "source_scope": {
+      "agent_report": "source_ref",
+      "deep_dive": null
+    },
+    "note": "관측이 watchlist 재생성 사이에 계속 붙어 있어야 한다. agent_id는 재실행해도 같으므로 id에 넣는다. deep_dive_id는 재실행마다 바뀌므로 넣지 않는다 — 넣으면 딥다이브를 다시 돌릴 때마다 그 KPI의 과거 관측이 전부 고아가 된다. 임계값은 어느 쪽에도 넣지 않는다. 관측은 세상에 대한 것이지 임계값에 대한 것이 아니다."
+  },
+  "drift": {
+    "tracked_fields": [
+      "core_score",
+      "ex_valuation_score",
+      "coverage_weight",
+      "classification",
+      "archetype",
+      "hard_veto_status",
+      "ic_state",
+      "position_range",
+      "price_to_base_value",
+      "early_exit"
+    ],
+    "comparability_fields": [
+      "strategy_version",
+      "decision_policy_version"
+    ],
+    "note": "두 run의 차이가 기업의 변화인지 정책의 변화인지는 다른 질문이다. strategy_version이나 decision_policy_version이 다르면 그 구간은 comparable=false로 표시하고, 차이는 보여주되 기업에 귀속시키지 않는다. 재현성 계약과 같은 규칙이다.",
+    "run_id_prefix_match": true,
+    "run_id_prefix_match_note": "한 기업의 재실행은 같은 run_id를 쓸 수 없다(init이 기존 디렉터리를 덮지 않는다). 그래서 저장소 관행대로 NVDA-2026-09-18, NVDA-V31-2026-09-19 같은 접두 규칙으로 같은 기업의 run을 모은다. 이것은 관행에 기댄 추론이므로 각 point에 matched_by로 어떻게 묶였는지 남기고, 명시적인 run_id 목록을 주면 추론하지 않는다."
+  },
+  "ingest": {
+    "note": "관측을 손으로만 넣어야 한다면 감시 항목 95개짜리 워치리스트는 영원히 비어 있다. 그런데 '이 KPI는 저 지표로 잰다'는 판단은 추측할 수 있는 것이 아니다. 그래서 링크는 사람이 한 번 명시적으로 걸고, 그 뒤의 적재는 전부 결정론적이다.",
+    "source": "screening_warehouse",
+    "source_note": "Phase 4의 결정론적 지표 창고. LLM이 개입하지 않고 값마다 method와 입력 fact id가 붙어 있다.",
+    "linking": {
+      "who": "operator",
+      "rule": "watch_id -> metric_id 는 사람이 건다. 시스템은 제안만 하고 스스로 걸지 않는다.",
+      "why": "이름이 비슷하다는 이유로 자동 연결하면 'Microsoft Cloud gross margin'에 전사 gross_margin(0.679)을 붙이고, 그 값이 >=66% 임계값을 통과해 ok로 보고된다. 재지 않은 것을 쟀다고 말하는 것이며, 임계값 산문을 추측 해석하던 실패와 같은 종류다.",
+      "suggest_rule": "정규화한 이름이 metric_id 또는 선언된 alias와 정확히 같을 때만 제안한다. 부분일치·유사도 점수는 쓰지 않는다.",
+      "name_match": [
+        "exact",
+        "operator_asserted"
+      ],
+      "name_match_note": "이름이 정확히 일치해서 건 링크와 사람이 '그래도 이게 맞다'고 단언한 링크를 구분해 기록한다. 관측 provenance에 그대로 실린다.",
+      "store": "monitoring/<TICKER>/links.json",
+      "editable": true,
+      "editable_note": "링크는 사실이 아니라 사람의 판단이므로 고칠 수 있다. 그 링크로 이미 기록된 관측은 append-only 로그에 그대로 남는다 — 무엇을 왜 그렇게 쟀는지가 사라지면 안 된다."
+    },
+    "aliases": {
+      "gross_margin": [
+        "gross margin",
+        "매출총이익률",
+        "gross profit margin"
+      ],
+      "operating_margin": [
+        "operating margin",
+        "영업이익률"
+      ],
+      "owner_fcf_margin": [
+        "owner fcf margin",
+        "fcf margin",
+        "owner earnings margin"
+      ],
+      "owner_fcf_per_share": [
+        "owner fcf per share",
+        "주당 owner fcf",
+        "fcf per share"
+      ],
+      "revenue_growth_yoy": [
+        "revenue growth",
+        "매출성장률",
+        "revenue growth yoy"
+      ],
+      "revenue_cagr_3y": [
+        "revenue cagr",
+        "3-year revenue cagr",
+        "매출 cagr"
+      ],
+      "diluted_shares": [
+        "diluted shares",
+        "희석주식수"
+      ],
+      "diluted_share_growth_yoy": [
+        "dilution",
+        "희석률",
+        "diluted share growth"
+      ],
+      "net_cash_per_share": [
+        "net cash per share",
+        "주당 순현금"
+      ],
+      "sbc_to_revenue": [
+        "sbc to revenue",
+        "sbc/revenue",
+        "주식보상비용 비중"
+      ],
+      "rnd_to_revenue": [
+        "r&d to revenue",
+        "rnd to revenue",
+        "연구개발비 비중"
+      ],
+      "capex_to_ocf": [
+        "capex to ocf",
+        "capex/ocf"
+      ],
+      "debt_to_ocf": [
+        "debt to ocf",
+        "debt/ocf"
+      ],
+      "price_to_owner_fcf": [
+        "price to owner fcf",
+        "p/fcf"
+      ],
+      "current_price": [
+        "current price",
+        "주가",
+        "share price"
+      ],
+      "market_cap": [
+        "market cap",
+        "시가총액"
+      ]
+    },
+    "aliases_note": "감시 이름과 지표를 잇는 유일한 자동 경로다. 여기 없는 이름은 제안되지 않고 사람이 직접 건다. 목록에 이름을 추가하는 것은 '이 두 가지는 같은 것을 잰다'는 선언이므로 가볍게 하지 않는다.",
+    "observation": {
+      "fact_or_estimate": "fact",
+      "fact_or_estimate_note": "공시된 숫자들로부터 판단 없이 재계산된 값이고 입력 fact id가 붙는다. 다만 method(latest_fy · fy_ytd_bridge · ratio …)를 source 문자열에 항상 실어, 어떤 정책으로 만들어진 값인지 읽는 사람이 보게 한다.",
+      "source_type_by_method": {
+        "market": "market",
+        "has_inputs": "filing",
+        "default": "other"
+      },
+      "as_of_date": "metric_period_end",
+      "as_of_date_note": "창고를 만든 날이 아니라 그 값이 해당하는 회계기간 종료일이다. staleness는 '그 숫자가 언제의 것인가'로 재야지 '언제 적재했는가'로 재면 낡은 값이 매번 새것처럼 보인다.",
+      "unit_by_metric_unit": {
+        "ratio": "ratio",
+        "default": "number"
+      },
+      "unit_note": "지표의 선언된 단위를 그대로 쓴다. 모호하면 비교하지 않는다는 규칙이 여기에도 적용되며, 단위가 붙은 관측은 모호하지 않다.",
+      "idempotent": true,
+      "idempotent_note": "observation_id는 (watch_id, value, period, as_of_date, source …)의 해시다. 같은 창고를 다시 적재하면 같은 id가 나오고 로그는 한 줄도 늘지 않는다. 그래서 source 문자열에 창고 빌드 시각 같은 휘발성 값을 넣지 않는다."
+    },
+    "refusals": [
+      "링크가 없는 감시 항목은 적재하지 않는다 — 비슷한 이름을 찾아 붙이지 않는다",
+      "창고에 값이 없는 지표(unavailable)는 관측을 만들지 않는다. 미상은 0이 아니다",
+      "falsifier는 적재하지 않는다 — 발동 여부는 산술이 아니라 증거로 정해진다",
+      "period_end가 없는 지표는 적재하지 않는다 — 언제의 값인지 모르는 관측은 staleness를 판정할 수 없다"
+    ]
+  }
+}

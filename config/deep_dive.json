@@ -1,0 +1,181 @@
+{
+  "schema_version": "1.0",
+  "note": "Deep-dive selection and domain coverage. Selection is config-driven; no ticker is ever named here to force a candidate through.",
+  "selection": {
+    "automatic": {
+      "require_full_harness_complete": true,
+      "require_hard_veto_status": [
+        "CLEARED"
+      ],
+      "min_core_score": 70,
+      "exclude_early_exit": true
+    },
+    "optional": {
+      "allow_user_selected": true,
+      "allow_states": [
+        "STARTER_OR_WATCH",
+        "WATCH",
+        "NORMAL_CANDIDATE",
+        "CORE_WINNER_CANDIDATE",
+        "EXCEPTIONAL_WINNER_CANDIDATE"
+      ],
+      "note": "A user may always request a deep dive on a run the automatic policy did not select. The route is recorded as `optional` so the report says why it exists."
+    },
+    "early_exit": {
+      "included_by_default": false,
+      "note": "Runs the planner terminated are excluded unless explicitly requested; the report then records route=early_exit."
+    }
+  },
+  "evidence_tiers": {
+    "0": "frozen local files (run sources, normalized financial pack, README)",
+    "1": "SEC / DART / other regulatory filing",
+    "2": "company IR, earnings call, official presentation",
+    "3": "government or official industry data",
+    "4": "high-quality independent sources",
+    "5": "secondary supporting sources"
+  },
+  "domains": [
+    {
+      "id": "business_model",
+      "title": "Business Model",
+      "prompt_focus": "어떻게 돈을 버는가. 수익 단위, 가격결정, 반복성, 매출 드라이버.",
+      "harness_domain": "structural_leadership"
+    },
+    {
+      "id": "industry",
+      "title": "Industry & Competitors",
+      "prompt_focus": "산업 구조, 경쟁자, 점유율 이동, 진입장벽의 실제 작동 방식.",
+      "harness_domain": "structural_leadership"
+    },
+    {
+      "id": "customer_product",
+      "title": "Customer & Product",
+      "prompt_focus": "고객이 왜 선택하고 왜 남는가. 채택, 유지, 확장 증거.",
+      "harness_domain": "customer_product"
+    },
+    {
+      "id": "moat",
+      "title": "Moat",
+      "prompt_focus": "어떤 해자가 어떤 메커니즘으로 보호하는가. switching cost, 네트워크, 규모, 규제.",
+      "harness_domain": "moat_trajectory"
+    },
+    {
+      "id": "moat_trajectory",
+      "title": "Moat Trajectory",
+      "prompt_focus": "해자가 강화되는가 약화되는가. 방향을 보여주는 관측값.",
+      "harness_domain": "moat_trajectory"
+    },
+    {
+      "id": "growth_runway",
+      "title": "Growth Runway (5y / 10y)",
+      "prompt_focus": "5년 성장 규모와 10년 성장 지속기간을 각각 분리해 평가한다.",
+      "harness_domain": "long_term_growth"
+    },
+    {
+      "id": "unit_economics",
+      "title": "Unit Economics",
+      "prompt_focus": "단위 경제성과 증분 수익률. 고객당·제품당 기여이익.",
+      "harness_domain": "reinvestment_fcf"
+    },
+    {
+      "id": "per_share_economics",
+      "title": "Per-Share Economics",
+      "prompt_focus": "주당 경제가치가 실제로 성장하는가. 희석 후 기준으로 본다.",
+      "harness_domain": "reinvestment_fcf"
+    },
+    {
+      "id": "financial_quality",
+      "title": "Financial Quality & Resilience",
+      "prompt_focus": "회계 품질, 현금전환, 위기 생존력, 부채 구조.",
+      "harness_domain": "financial_survival"
+    },
+    {
+      "id": "management",
+      "title": "Management & Governance",
+      "prompt_focus": "경영진 이력, 정직성, 보상 구조, 지배구조.",
+      "harness_domain": "management_allocation"
+    },
+    {
+      "id": "capital_allocation",
+      "title": "Capital Allocation & Reinvestment",
+      "prompt_focus": "재투자·인수·자사주·배당의 실제 수익률 기록.",
+      "harness_domain": "management_allocation"
+    },
+    {
+      "id": "technology_disruption",
+      "title": "Technology / AI / Disruption",
+      "prompt_focus": "기술 대체 위협과 회사의 대응. AI가 해자를 강화하는가 침식하는가.",
+      "harness_domain": "disruptive_innovation"
+    },
+    {
+      "id": "risk_analysis",
+      "title": "Risk: Regulatory & Geopolitical",
+      "prompt_focus": "규제·지정학 리스크가 현금흐름에 닿는 경로.",
+      "harness_domain": "macro_overlay"
+    },
+    {
+      "id": "valuation_interpretation",
+      "title": "Market Expectations & Valuation Interpretation",
+      "prompt_focus": "현재 가격이 이미 반영한 기대. 시장이 틀릴 수 있는 지점. 밸류에이션 공식은 하네스 것을 쓴다.",
+      "harness_domain": "expectation_valuation"
+    }
+  ],
+  "investment_questions": [
+    {
+      "id": "Q1",
+      "question": "이 기업의 핵심 가치창출 엔진은 무엇인가?"
+    },
+    {
+      "id": "Q2",
+      "question": "왜 5~10년 지속될 수 있는가?"
+    },
+    {
+      "id": "Q3",
+      "question": "어떤 해자가 보호하는가?"
+    },
+    {
+      "id": "Q4",
+      "question": "해자는 강화되고 있는가 약화되고 있는가?"
+    },
+    {
+      "id": "Q5",
+      "question": "높은 증분수익률로 재투자 가능한가?"
+    },
+    {
+      "id": "Q6",
+      "question": "주당 경제가치는 실제로 성장하는가?"
+    },
+    {
+      "id": "Q7",
+      "question": "시장은 무엇을 이미 가격에 반영하고 있는가?"
+    },
+    {
+      "id": "Q8",
+      "question": "시장이 틀릴 가능성이 있는 것은 무엇인가?"
+    },
+    {
+      "id": "Q9",
+      "question": "가장 강한 Bear Case는 무엇인가?"
+    },
+    {
+      "id": "Q10",
+      "question": "무엇이 발생하면 thesis를 폐기해야 하는가?"
+    }
+  ],
+  "red_team_mandate": [
+    "현재 투자논지가 틀렸다는 가장 강한 경로를 찾는다. strawman은 금지한다.",
+    "moat erosion / customer loss / industry structure change / technological disruption을 각각 검토한다.",
+    "management failure / capital allocation failure / accounting quality / dilution을 각각 검토한다.",
+    "regulatory risk / valuation expectation error / hidden dependency를 각각 검토한다.",
+    "Harness 결과는 수정하지 않는다. 불일치는 domains_with_material_disagreement에 보존한다."
+  ],
+  "report_invariants": {
+    "require_contradicting_evidence_or_unknowns": true,
+    "require_red_team": true,
+    "require_falsifiers": true,
+    "require_monitoring_kpis": true,
+    "forbid_new_composite_score": true,
+    "evidence_must_predate_as_of_date": true,
+    "min_red_team_vectors": 3
+  }
+}

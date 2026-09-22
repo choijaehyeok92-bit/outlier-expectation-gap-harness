@@ -1,0 +1,313 @@
+{
+  "executive_summary": "기계적 집계는 74.75점, valuation 제외 78.37점의 Emerging Outlier이며 Compounder 조건을 충족한다. Hard Veto는 모두 cleared다. 그러나 $493.78은 Base $500.13과 거의 같아 기대차가 작고, FY2026 owner FCF/share는 AI capex로 FY2024보다 낮다. 하방 편향 dispersion이 기본 비중을 0~2%로 낮추고 macro pacing 0.5가 매수 속도를 추가 제한하므로 IC 상태는 WATCH다.",
+  "harness_comparison": {
+    "strongest_supporting_evidence": [
+      "EV-ED-01",
+      "EV-ED-02",
+      "EV-ED-03"
+    ],
+    "strongest_contradicting_evidence": [
+      "CE-RT-01",
+      "CE-RT-02",
+      "CE-RT-03"
+    ],
+    "possible_harness_overstatement": [
+      "AI datacenter cohort별 utilization·ROIC.",
+      "OpenAI 관련 매출의 gross margin과 RPO 기여.",
+      "장기 lease·purchase 의무 중 취소 가능한 비중."
+    ],
+    "possible_harness_blind_spots": [
+      "datacenter cohort별 증분 ROIC.",
+      "maintenance와 growth capex의 구분.",
+      "OpenAI 관련 매출의 gross margin·RPO 기여."
+    ],
+    "unresolved_contradictions": [
+      "FY2027 Q1 capex·OCF·Azure·RPO",
+      "OpenAI AR·매출·투자 변화",
+      "lease·purchase commitments 갱신"
+    ],
+    "by_domain": [
+      {
+        "domain": "business_model",
+        "harness_score": 82.5,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent SL"
+      },
+      {
+        "domain": "industry",
+        "harness_score": 82.5,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent SL"
+      },
+      {
+        "domain": "customer_product",
+        "harness_score": 79.5,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent CP"
+      },
+      {
+        "domain": "moat",
+        "harness_score": 80.25,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent MT"
+      },
+      {
+        "domain": "moat_trajectory",
+        "harness_score": 80.25,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent MT"
+      },
+      {
+        "domain": "growth_runway",
+        "harness_score": null,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent CP"
+      },
+      {
+        "domain": "unit_economics",
+        "harness_score": 79.5,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent RF"
+      },
+      {
+        "domain": "per_share_economics",
+        "harness_score": 79.5,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent RF"
+      },
+      {
+        "domain": "financial_quality",
+        "harness_score": 83.25,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent FS"
+      },
+      {
+        "domain": "management",
+        "harness_score": 77.25,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent MA"
+      },
+      {
+        "domain": "capital_allocation",
+        "harness_score": 77.25,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent MA"
+      },
+      {
+        "domain": "technology_disruption",
+        "harness_score": 81.5,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent DI"
+      },
+      {
+        "domain": "risk_analysis",
+        "harness_score": null,
+        "qualitative_assessment": "mixed",
+        "agreement": "consistent",
+        "note": "replayed from harness agent MO"
+      },
+      {
+        "domain": "valuation_interpretation",
+        "harness_score": 54.25,
+        "qualitative_assessment": "mixed",
+        "agreement": "consistent",
+        "note": "replayed from harness agent EV"
+      }
+    ]
+  },
+  "falsifiers": [
+    {
+      "statement": "Bull/current가 1.2배 미만이면 upside_path를 30으로 낮춘다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "순현금이 사라지고 OCF/debt가 1배 미만이면 영구손실 방어를 낮춘다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "Azure 성장률이 20% 미만으로 두 분기 지속되면 독립 상승경로 수를 줄인다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "Azure 성장률이 20% 미만으로 두 분기 지속되면 고객 ROI 가설을 하향한다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "commercial RPO 증가율이 총매출 증가율보다 10%p 이상 낮은 상태가 2개 분기 지속되면 retention 판단을 하향한다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "Microsoft Cloud gross margin이 62% 미만으로 내려가 회복하지 못하면 unit economics 점수를 낮춘다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "Azure 성장률이 20% 미만으로 두 분기 지속되면 adoption을 낮춘다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "AI 제품이 FY2028에도 별도 매출·사용량을 입증하지 못하면 cost-performance를 낮춘다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    }
+  ],
+  "monitoring_kpis": [
+    {
+      "name": "Bull/current",
+      "why_it_matters": "asymmetry 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": ">=1.5x",
+      "thesis_break_threshold": ">=1.5x breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/MSFT/reports/AS.json"
+    },
+    {
+      "name": "Bear/current",
+      "why_it_matters": "asymmetry 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": ">=0.3x",
+      "thesis_break_threshold": ">=0.3x breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/MSFT/reports/AS.json"
+    },
+    {
+      "name": "OCF/debt",
+      "why_it_matters": "asymmetry 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": ">1.0x",
+      "thesis_break_threshold": ">1.0x breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/MSFT/reports/AS.json"
+    },
+    {
+      "name": "Azure growth",
+      "why_it_matters": "customer_product 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": ">=20%",
+      "thesis_break_threshold": ">=20% breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/MSFT/reports/CP.json"
+    },
+    {
+      "name": "commercial RPO growth",
+      "why_it_matters": "customer_product 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": ">=revenue growth",
+      "thesis_break_threshold": ">=revenue growth breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/MSFT/reports/CP.json"
+    },
+    {
+      "name": "Microsoft Cloud gross margin",
+      "why_it_matters": "customer_product 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": ">=66%",
+      "thesis_break_threshold": ">=66% breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/MSFT/reports/CP.json"
+    },
+    {
+      "name": "Azure growth",
+      "why_it_matters": "disruptive_innovation 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": ">=20%",
+      "thesis_break_threshold": ">=20% breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/MSFT/reports/DI.json"
+    },
+    {
+      "name": "Microsoft Cloud growth",
+      "why_it_matters": "disruptive_innovation 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": ">=15%",
+      "thesis_break_threshold": ">=15% breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/MSFT/reports/DI.json"
+    },
+    {
+      "name": "AI product revenue",
+      "why_it_matters": "disruptive_innovation 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": "quantified and rising",
+      "thesis_break_threshold": "quantified and rising breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/MSFT/reports/DI.json"
+    },
+    {
+      "name": "primary-source coverage",
+      "why_it_matters": "evidence_quality 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": "all decisive facts filing-backed",
+      "thesis_break_threshold": "all decisive facts filing-backed breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/MSFT/reports/ED.json"
+    }
+  ],
+  "remaining_unknowns": [
+    "5년 valuation percentile.",
+    "AI capex 정상화 시점.",
+    "AI compute 가격하락이 Azure margin에 미칠 영향.",
+    "AI datacenter cohort별 utilization·ROIC.",
+    "AI inference 가격 하락률.",
+    "AI infra 신규 cohort 수익률.",
+    "AI workload별 gross margin.",
+    "AI 데이터센터 전력비에 대한 에너지 충격의 전가율.",
+    "Agents 제품군의 독립 매출 규모.",
+    "Copilot 데이터 flywheel의 독점성."
+  ],
+  "evidence_quality": {
+    "tier_counts": {
+      "4": 7,
+      "1": 44,
+      "0": 55
+    },
+    "primary_share": 0.934,
+    "independent_origins": 25,
+    "concerns": [
+      "Fixture replay of one frozen run; it is not independent research and must not be read as external corroboration."
+    ]
+  },
+  "final_synthesis": {
+    "thesis": "기계적 집계는 74.75점, valuation 제외 78.37점의 Emerging Outlier이며 Compounder 조건을 충족한다. Hard Veto는 모두 cleared다. 그러나 $493.78은 Base $500.13과 거의 같아 기대차가 작고, FY2026 owner FCF/share는 AI capex로 FY2024보다 낮다. 하방 편향 dispersion이 기본 비중을 0~2%로 낮추고 macro pacing 0.5가 매수 속도를 추가 제한하므로 IC 상태는 WATCH다.",
+    "what_must_be_true": [
+      "owner FCF/share가 FY2028까지 FY2024 $8.48을 회복하지 못하면 Compounder 분류를 재검토한다.",
+      "Azure 성장률이 20% 미만으로 두 분기 지속되거나 RPO가 감소하면 moat·growth 판단을 하향한다.",
+      "price/Base가 1.2를 넘고 Base FCF 경로가 상향되지 않으면 신규매수를 중단한다."
+    ],
+    "what_would_change_our_mind": [
+      "FY2027~FY2028 owner FCF/share가 회복하고 capex/revenue가 안정되면 short thesis는 약화된다.",
+      "OpenAI 의존 매출이 25%에 접근하거나 관련 AR 손실이 발생하면 집중 리스크를 재판정한다.",
+      "Azure와 RPO 성장이 동시에 급락하면 해자·고객가치 판단을 하향한다."
+    ],
+    "agreement_with_harness": "consistent",
+    "decision_authority": "Harness 결정 권한은 그대로다. 이 보고서는 근거를 설명할 뿐 점수·Veto·포지션을 바꾸지 않는다."
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "executive_summary": "기계적 core score는 약 78.62로 Emerging Outlier이며 archetype은 Compounder다. OpenAI 보정 후 MT·RF·MA·FS·EV 조건이 모두 Compounder threshold를 통과하고 price/Base≈0.438이다. Hard Veto는 cleared. 기계적 상태는 NORMAL_CANDIDATE, 2–4%이며 macro pacing 0.7을 적용한다. 핵심 검증 포인트는 HBM 구조성장이 메모리 사이클 정상화 이후에도 높은 owner FCF/share로 남는지다.",
+  "harness_comparison": {
+    "strongest_supporting_evidence": [
+      "EV-ED-01",
+      "EV-ED-02",
+      "EV-ED-03"
+    ],
+    "strongest_contradicting_evidence": [
+      "CE-RT-01",
+      "CE-RT-02",
+      "CE-RT-03"
+    ],
+    "possible_harness_overstatement": [
+      "AI customer concentration",
+      "HBM4 contract duration",
+      "competitor yield trajectory"
+    ],
+    "possible_harness_blind_spots": [
+      "HBM4/HBM4E customer mix and ASP",
+      "normalized cycle FCF",
+      "reproducible 5y valuation percentile"
+    ],
+    "unresolved_contradictions": [
+      "Q3/Q4 2026 ASP and HBM mix",
+      "2027 capex plan",
+      "customer concentration disclosure"
+    ],
+    "by_domain": [
+      {
+        "domain": "business_model",
+        "harness_score": 81.67,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent SL"
+      },
+      {
+        "domain": "industry",
+        "harness_score": 81.67,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent SL"
+      },
+      {
+        "domain": "customer_product",
+        "harness_score": 75.0,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent CP"
+      },
+      {
+        "domain": "moat",
+        "harness_score": 81.67,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent MT"
+      },
+      {
+        "domain": "moat_trajectory",
+        "harness_score": 81.67,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent MT"
+      },
+      {
+        "domain": "growth_runway",
+        "harness_score": null,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent CP"
+      },
+      {
+        "domain": "unit_economics",
+        "harness_score": 76.67,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent RF"
+      },
+      {
+        "domain": "per_share_economics",
+        "harness_score": 76.67,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent RF"
+      },
+      {
+        "domain": "financial_quality",
+        "harness_score": 86.67,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent FS"
+      },
+      {
+        "domain": "management",
+        "harness_score": 76.67,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent MA"
+      },
+      {
+        "domain": "capital_allocation",
+        "harness_score": 76.67,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent MA"
+      },
+      {
+        "domain": "technology_disruption",
+        "harness_score": 81.67,
+        "qualitative_assessment": "favorable",
+        "agreement": "consistent",
+        "note": "replayed from harness agent DI"
+      },
+      {
+        "domain": "risk_analysis",
+        "harness_score": null,
+        "qualitative_assessment": "mixed",
+        "agreement": "consistent",
+        "note": "replayed from harness agent MO"
+      },
+      {
+        "domain": "valuation_interpretation",
+        "harness_score": 81.33,
+        "qualitative_assessment": "mixed",
+        "agreement": "consistent",
+        "note": "replayed from harness agent EV"
+      }
+    ]
+  },
+  "falsifiers": [
+    {
+      "statement": "HBM ASP·수요가 예상보다 빠르게 정상화되고 owner FCF/share가 2년 연속 감소하면 구조 성장 가설을 하향한다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "HBM ASP·수요가 예상보다 빠르게 정상화되고 owner FCF/share가 2년 연속 감소하면 구조 성장 가설을 하향한다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "HBM ASP·수요가 예상보다 빠르게 정상화되고 owner FCF/share가 2년 연속 감소하면 구조 성장 가설을 하향한다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "If source re-check changes any frozen fact, rerun affected domains.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "If Q3/Q4 cash flow contradicts normalized FCF, rerun EV/RF.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "HBM ASP·수요가 예상보다 빠르게 정상화되고 owner FCF/share가 2년 연속 감소하면 구조 성장 가설을 하향한다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "HBM ASP·수요가 예상보다 빠르게 정상화되고 owner FCF/share가 2년 연속 감소하면 구조 성장 가설을 하향한다.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    },
+    {
+      "statement": "If RF falls below 76 or price/Base rises above 1.2, Compounder status should be reconsidered.",
+      "observable": "as recorded by the domain analyst",
+      "would_break": "the domain judgement this falsifier belongs to"
+    }
+  ],
+  "monitoring_kpis": [
+    {
+      "name": "owner FCF/share",
+      "why_it_matters": "asymmetry 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": "cycle-normalized growth",
+      "thesis_break_threshold": "cycle-normalized growth breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/000660/reports/AS.json"
+    },
+    {
+      "name": "owner FCF/share",
+      "why_it_matters": "customer_product 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": "cycle-normalized growth",
+      "thesis_break_threshold": "cycle-normalized growth breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/000660/reports/CP.json"
+    },
+    {
+      "name": "owner FCF/share",
+      "why_it_matters": "disruptive_innovation 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": "cycle-normalized growth",
+      "thesis_break_threshold": "cycle-normalized growth breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/000660/reports/DI.json"
+    },
+    {
+      "name": "primary-source coverage",
+      "why_it_matters": "evidence_quality 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": "decision variables filing-backed",
+      "thesis_break_threshold": "decision variables filing-backed breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/000660/reports/ED.json"
+    },
+    {
+      "name": "owner FCF/share",
+      "why_it_matters": "expectation_valuation 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": "cycle-normalized growth",
+      "thesis_break_threshold": "cycle-normalized growth breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/000660/reports/EV.json"
+    },
+    {
+      "name": "owner FCF/share",
+      "why_it_matters": "financial_survival 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": "cycle-normalized growth",
+      "thesis_break_threshold": "cycle-normalized growth breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/000660/reports/FS.json"
+    },
+    {
+      "name": "RF score",
+      "why_it_matters": "investment_committee 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": ">=76",
+      "thesis_break_threshold": ">=76 breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/000660/reports/IC.json"
+    },
+    {
+      "name": "price/Base",
+      "why_it_matters": "investment_committee 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "decreasing",
+      "warning_threshold": "<1.0 preferred",
+      "thesis_break_threshold": "<1.0 preferred breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/000660/reports/IC.json"
+    },
+    {
+      "name": "HBM mix/ASP",
+      "why_it_matters": "investment_committee 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": "sustained premium",
+      "thesis_break_threshold": "sustained premium breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/000660/reports/IC.json"
+    },
+    {
+      "name": "owner FCF/share",
+      "why_it_matters": "management_allocation 판단의 핵심 관측값",
+      "current_value": null,
+      "direction_required": "increasing",
+      "warning_threshold": "cycle-normalized growth",
+      "thesis_break_threshold": "cycle-normalized growth breached for 2 consecutive periods",
+      "cadence": "quarterly",
+      "source": "runs/000660/reports/MA.json"
+    }
+  ],
+  "remaining_unknowns": [
+    "AI customer concentration",
+    "HBM4 contract duration",
+    "HBM4/HBM4E customer mix and ASP",
+    "HBM4/HBM4E 공급 확대 이후 ASP·수율·점유율과 전통 DRAM/NAND 정상화 마진.",
+    "competitor supply response",
+    "competitor yield trajectory",
+    "normalized 2027–2029 HBM margin",
+    "normalized cycle FCF",
+    "reproducible 5y valuation percentile",
+    "긴축 전환이 AI 인프라 투자 자금조달(특히 투자등급 미만 AI 클라우드)에 미치는 시차 효과."
+  ],
+  "evidence_quality": {
+    "tier_counts": {
+      "1": 40,
+      "0": 24,
+      "4": 3
+    },
+    "primary_share": 0.9552,
+    "independent_origins": 21,
+    "concerns": [
+      "Fixture replay of one frozen run; it is not independent research and must not be read as external corroboration."
+    ]
+  },
+  "final_synthesis": {
+    "thesis": "기계적 core score는 약 78.62로 Emerging Outlier이며 archetype은 Compounder다. OpenAI 보정 후 MT·RF·MA·FS·EV 조건이 모두 Compounder threshold를 통과하고 price/Base≈0.438이다. Hard Veto는 cleared. 기계적 상태는 NORMAL_CANDIDATE, 2–4%이며 macro pacing 0.7을 적용한다. 핵심 검증 포인트는 HBM 구조성장이 메모리 사이클 정상화 이후에도 높은 owner FCF/share로 남는지다.",
+    "what_must_be_true": [
+      "If RF falls below 76 or price/Base rises above 1.2, Compounder status should be reconsidered.",
+      "If HBM economics normalize sharply, rerun EV and MT."
+    ],
+    "what_would_change_our_mind": [
+      "Sustained HBM4 pricing and FCF would weaken the short thesis.",
+      "Sharp ASP decline plus rising capex would strengthen it."
+    ],
+    "agreement_with_harness": "consistent",
+    "decision_authority": "Harness 결정 권한은 그대로다. 이 보고서는 근거를 설명할 뿐 점수·Veto·포지션을 바꾸지 않는다."
+  }
+}

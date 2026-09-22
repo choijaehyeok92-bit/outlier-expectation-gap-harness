@@ -1,0 +1,200 @@
+# Korean disclosure line → normalized metric.
+#
+# The resolution chain is deterministic and ordered. An LLM never takes part:
+# a model asked to guess "이 계정은 매출인가?" gives a different answer on a
+# different day, and a financial series that changes when nobody changed the
+# filing is worthless.
+#
+#   1. by_account_id      XBRL element id, exact match. The strongest signal.
+#   2. by_label           normalized Korean label, within a statement context.
+#   3. by_statement_label label match allowed only in the named statement.
+#   4. heuristics         ordered substring rules, statement-scoped.
+#   5. (no match)         metric=other, metric_detail=원문 라벨, requires_review=true.
+#
+# Labels are normalized before matching: whitespace removed, full-width
+# parentheses folded to ASCII, and a trailing "(손실)" / "(비용)" dropped.
+#
+# `version` is part of the pack's provenance. Changing a mapping changes what
+# past facts would mean, so it gets a new version rather than an edit in place.
+version: "2026.09.1"
+effective_from: "2026-01-01"
+
+normalization:
+  strip_whitespace: true
+  fold_parentheses: true
+  drop_suffixes: ["(손실)", "(비용)", "(수익)", "(순액)"]
+
+# ---------------------------------------------------------------- 1. account_id
+by_account_id:
+  ifrs-full_Revenue: revenue
+  ifrs-full_RevenueFromContractsWithCustomers: revenue
+  ifrs-full_CostOfSales: cost_of_revenue
+  ifrs-full_GrossProfit: gross_profit
+  dart_OperatingIncomeLoss: operating_income
+  ifrs-full_ProfitLossFromOperatingActivities: operating_income
+  ifrs-full_ResearchAndDevelopmentExpense: r_and_d
+  ifrs-full_FinanceCosts: interest_expense
+  ifrs-full_IncomeTaxExpenseContinuingOperations: tax_expense
+  ifrs-full_ProfitLoss: net_income
+  ifrs-full_ProfitLossAttributableToOwnersOfParent: net_income
+  ifrs-full_DepreciationAndAmortisationExpense: d_and_a
+  ifrs-full_CashAndCashEquivalents: cash
+  ifrs-full_Inventories: inventory
+  ifrs-full_TradeAndOtherCurrentReceivables: accounts_receivable
+  ifrs-full_TradeAndOtherCurrentPayables: accounts_payable
+  ifrs-full_PropertyPlantAndEquipment: ppe_net
+  ifrs-full_Goodwill: goodwill
+  ifrs-full_IntangibleAssetsOtherThanGoodwill: intangibles
+  ifrs-full_Assets: total_assets
+  ifrs-full_Liabilities: total_liabilities
+  ifrs-full_Equity: total_equity
+  ifrs-full_EquityAttributableToOwnersOfParent: total_equity
+  ifrs-full_CurrentLeaseLiabilities: lease_liabilities
+  ifrs-full_NoncurrentLeaseLiabilities: lease_liabilities
+  ifrs-full_CashFlowsFromUsedInOperatingActivities: operating_cash_flow
+  ifrs-full_CashFlowsFromUsedInInvestingActivities: investing_cash_flow
+  ifrs-full_CashFlowsFromUsedInFinancingActivities: financing_cash_flow
+  ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities: capex
+  ifrs-full_EffectOfExchangeRateChangesOnCashAndCashEquivalents: fx_effect_on_cash
+  ifrs-full_WeightedAverageNumberOfDilutedOrdinarySharesOutstanding: diluted_weighted_average_shares
+  ifrs-full_WeightedAverageNumberOfOrdinarySharesOutstanding: basic_weighted_average_shares
+  dart_ShortTermBorrowings: short_term_debt
+  dart_LongTermBorrowingsGross: long_term_debt
+
+# ------------------------------------------------------------------- 2. label
+by_label:
+  매출액: revenue
+  수익: revenue
+  수익(매출액): revenue
+  영업수익: revenue
+  매출: revenue
+  매출원가: cost_of_revenue
+  영업비용: cost_of_revenue
+  매출총이익: gross_profit
+  영업이익: operating_income
+  법인세비용: tax_expense
+  법인세비용차감전순이익: other
+  금융원가: interest_expense
+  이자비용: interest_expense
+  연구개발비: r_and_d
+  경상연구개발비: r_and_d
+  당기순이익: net_income
+  분기순이익: net_income
+  반기순이익: net_income
+  현금및현금성자산: cash
+  단기금융상품: short_term_investments
+  장기금융상품: long_term_investments
+  재고자산: inventory
+  매출채권: accounts_receivable
+  매출채권및기타채권: accounts_receivable
+  매입채무: accounts_payable
+  매입채무및기타채무: accounts_payable
+  계약부채: deferred_revenue
+  유형자산: ppe_net
+  영업권: goodwill
+  무형자산: intangibles
+  자산총계: total_assets
+  부채총계: total_liabilities
+  자본총계: total_equity
+  단기차입금: short_term_debt
+  유동성장기부채: short_term_debt
+  장기차입금: long_term_debt
+  사채: long_term_debt
+  전환사채: convertible_debt
+  리스부채: lease_liabilities
+  감가상각비: d_and_a
+  무형자산상각비: d_and_a
+  주식보상비용: sbc
+  주식기준보상: sbc
+  희석주당이익계산에사용된가중평균유통보통주식수: diluted_weighted_average_shares
+  기본주당이익계산에사용된가중평균유통보통주식수: basic_weighted_average_shares
+
+# --------------------------------------------------- 3. statement-scoped label
+# Same words mean different things in different statements. "현금및현금성자산"
+# on the balance sheet is a stock; the same words at the foot of a cash-flow
+# statement are the period's closing balance.
+by_statement_label:
+  cash_flow:
+    영업활동현금흐름: operating_cash_flow
+    영업활동으로인한현금흐름: operating_cash_flow
+    영업활동으로인한순현금흐름: operating_cash_flow
+    투자활동현금흐름: investing_cash_flow
+    투자활동으로인한현금흐름: investing_cash_flow
+    재무활동현금흐름: financing_cash_flow
+    재무활동으로인한현금흐름: financing_cash_flow
+    기초현금및현금성자산: beginning_cash
+    기초의현금및현금성자산: beginning_cash
+    기말현금및현금성자산: ending_cash
+    기말의현금및현금성자산: ending_cash
+    현금및현금성자산의환율변동효과: fx_effect_on_cash
+    외화표시현금및현금성자산의환율변동효과: fx_effect_on_cash
+    유형자산의취득: capex
+    유형자산의증가: capex
+    자기주식의취득: stock_repurchases
+    사채의발행: debt_issuance
+    차입금의차입: debt_issuance
+    차입금의상환: debt_repayment
+    사채의상환: debt_repayment
+    유상증자: stock_issuance
+  income:
+    판매비와관리비: other
+  balance_sheet:
+    현금및현금성자산: cash
+
+# ---------------------------------------------------------------- 4. heuristics
+# Ordered. First match wins. `statements` scopes a rule; omit it for any
+# statement. These exist to catch a filer's own wording, not to be clever.
+heuristics:
+  - contains: ["영업활동", "현금흐름"]
+    statements: [cash_flow]
+    metric: operating_cash_flow
+  - contains: ["투자활동", "현금흐름"]
+    statements: [cash_flow]
+    metric: investing_cash_flow
+  - contains: ["재무활동", "현금흐름"]
+    statements: [cash_flow]
+    metric: financing_cash_flow
+  - contains: ["유형자산", "취득"]
+    statements: [cash_flow]
+    metric: capex
+  - contains: ["자기주식", "취득"]
+    statements: [cash_flow]
+    metric: stock_repurchases
+  - contains: ["감가상각"]
+    metric: d_and_a
+  - contains: ["연구개발"]
+    statements: [income]
+    metric: r_and_d
+  - contains: ["이자비용"]
+    statements: [income]
+    metric: interest_expense
+
+# ------------------------------------------------- explicit review escalations
+# Lines that a mapping would quietly distort. They are recorded as facts with
+# metric=other so nothing is lost, and flagged so a reviewer decides.
+review_required:
+  판매비와관리비:
+    metric: other
+    metric_detail: selling_general_and_administrative_combined
+    reason: >-
+      한국 공시는 판매비와관리비를 한 줄로 보고한다. 스키마의 s_and_m과 g_and_a로
+      쪼개려면 공시에 없는 배분을 만들어야 하므로 합계 그대로 other로 남기고
+      리뷰로 올린다.
+  기타수익:
+    metric: other
+    metric_detail: other_income
+    reason: 구성이 회사·기간마다 달라 정상화 판단이 필요하다.
+  기타비용:
+    metric: other
+    metric_detail: other_expense
+    reason: 구성이 회사·기간마다 달라 정상화 판단이 필요하다.
+  배당금지급:
+    metric: other
+    metric_detail: dividends_paid
+    reason: financial_pack metric enum에 배당 항목이 없어 other로 보존한다.
+  무형자산의취득:
+    metric: other
+    metric_detail: intangible_asset_purchases
+    reason: >-
+      owner FCF의 capex 정의에 무형자산 취득을 포함할지는 경제적 판단이다.
+      유형자산 취득과 합치지 않고 분리해 보존한다.

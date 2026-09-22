@@ -1,0 +1,319 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://outlier-harness/schemas/screening_spec.schema.json",
+  "title": "ScreeningSpec",
+  "description": "Executable contract between natural language and the deterministic screening compiler. An LLM may PRODUCE this document; it never produces SQL, never computes a metric and never decides a harness result. Every field identifier must exist in config/screening_fields.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "as_of_date",
+    "universe",
+    "filters",
+    "missing_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "spec_id": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "natural_language",
+            "manual",
+            "api"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "parser": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "provider": {
+              "type": "string"
+            },
+            "model": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "parsed_at_utc": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "lexicon_sha256": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "as_of_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "universe": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "jurisdictions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "US",
+              "KR"
+            ]
+          }
+        },
+        "exchanges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "industries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sectors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tickers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exclude_security_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "filters": {
+      "$ref": "#/definitions/group"
+    },
+    "fx_rates": {
+      "type": "object",
+      "description": "Explicit as-of FX rates, quoted as units of the named currency per 1 USD. The compiler never invents a rate: a cross-currency comparison with no rate here becomes an unresolved condition.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "per_usd",
+          "source"
+        ],
+        "properties": {
+          "per_usd": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "source": {
+            "type": "string"
+          },
+          "as_of_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "sort": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "field",
+          "direction"
+        ],
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "direction": {
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          }
+        }
+      }
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000
+    },
+    "missing_policy": {
+      "enum": [
+        "exclude",
+        "require_review",
+        "include"
+      ],
+      "description": "What happens to a row whose value for a filtered field is unknown. `exclude` is the default and the only safe one; a missing value is NEVER read as zero under any policy."
+    },
+    "requires_harness_run": {
+      "type": "boolean"
+    },
+    "unresolved_conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "text",
+          "reason"
+        ],
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "reason": {
+            "enum": [
+              "no_mapped_field",
+              "unsupported_operator",
+              "backend_unavailable",
+              "missing_fx_rate",
+              "ambiguous_threshold",
+              "requires_harness_run",
+              "unparsed_remainder"
+            ]
+          },
+          "suggested_field": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "detail": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "definitions": {
+    "group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "clauses"
+      ],
+      "properties": {
+        "op": {
+          "enum": [
+            "and",
+            "or"
+          ]
+        },
+        "clauses": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/filter"
+              },
+              {
+                "$ref": "#/definitions/group"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "filter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field",
+        "operator",
+        "value"
+      ],
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "operator": {
+          "enum": [
+            "=",
+            "==",
+            "!=",
+            "<",
+            "<=",
+            ">",
+            ">=",
+            "in",
+            "not_in",
+            "between"
+          ]
+        },
+        "value": {},
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rationale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "origin_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "converted_from": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Currency the value was written in before the compiler converted it with an explicitly supplied as-of FX rate."
+        }
+      }
+    }
+  }
+}

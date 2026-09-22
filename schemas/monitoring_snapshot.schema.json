@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Monitoring Snapshot",
+  "description": "한 시점의 모니터링 평가 결과. 판정을 만들지 않고 재검토 요청만 낸다. 점수·archetype·Hard Veto·ic_state·position은 이 문서에 존재하지 않는다.",
+  "type": "object",
+  "required": ["ticker", "run_id", "evaluated_as_of", "summary", "items", "authority"],
+  "properties": {
+    "monitoring_run_id": {"type": "string"},
+    "ticker": {"type": "string"},
+    "run_id": {"type": "string"},
+    "analysis_as_of_date": {"type": ["string", "null"]},
+    "evaluated_as_of": {"type": "string", "format": "date"},
+    "deep_dive_id": {"type": ["string", "null"]},
+    "summary": {
+      "type": "object",
+      "required": ["items", "by_status", "review_required"],
+      "properties": {
+        "items": {"type": "integer", "minimum": 0},
+        "by_status": {"type": "object", "additionalProperties": {"type": "integer"}},
+        "review_required": {"type": "integer", "minimum": 0},
+        "observed": {"type": "integer", "minimum": 0},
+        "never_observed": {"type": "integer", "minimum": 0},
+        "not_machine_checkable": {"type": "integer", "minimum": 0}
+      }
+    },
+    "review_required": {"type": "array", "items": {"type": "object"}},
+    "authority": {
+      "type": "object",
+      "required": ["may", "may_not", "statement"],
+      "description": "config/monitoring.json에서 그대로 복사한다. 결과를 읽는 사람이 이 계층의 권한을 함께 본다."
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["watch_id", "kind", "name", "status"],
+        "properties": {
+          "watch_id": {"type": "string"},
+          "kind": {"enum": ["kpi", "falsifier"]},
+          "name": {"type": "string"},
+          "status": {"enum": ["ok", "warning", "thesis_break", "stale", "unknown",
+                              "unchecked", "not_triggered", "triggered",
+                              "not_machine_checkable"]},
+          "review_required": {"type": "boolean"},
+          "observations": {"type": "integer", "minimum": 0},
+          "observed_value": {"type": ["number", "null"]},
+          "days_overdue": {"type": ["integer", "null"]},
+          "checked_levels": {"type": "array", "items": {"enum": ["warning", "thesis_break"]}},
+          "breached_levels": {"type": "array", "items": {"enum": ["warning", "thesis_break"]}},
+          "reason": {"type": ["string", "null"]},
+          "latest_observation": {"type": ["object", "null"]}
+        }
+      }
+    },
+    "integrity": {"type": "object"}
+  },
+  "not": {
+    "anyOf": [
+      {"required": ["score_100"]},
+      {"required": ["hard_veto_status"]},
+      {"required": ["archetype"]},
+      {"required": ["ic_state"]},
+      {"required": ["position_range"]}
+    ]
+  }
+}

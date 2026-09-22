@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0",
+  "note": "SEC EDGAR 적재 정책. 문서 수집은 harness_core/fetch.py를 그대로 재사용하고, 여기서는 XBRL companyfacts를 정규화 metric으로 옮기는 매핑과 유니버스 필터만 선언한다. 이 환경은 www.sec.gov / data.sec.gov 접근이 차단되어 있어 라이브 호출로 검증하지 않았다.",
+  "api_base": "https://data.sec.gov",
+  "endpoints": {
+    "company_facts": "/api/xbrl/companyfacts/CIK{cik:010d}.json",
+    "company_concept": "/api/xbrl/companyconcept/CIK{cik:010d}/us-gaap/{tag}.json",
+    "ticker_exchange_index": "https://www.sec.gov/files/company_tickers_exchange.json"
+  },
+  "user_agent_env": "SEC_USER_AGENT",
+  "user_agent_note": "SEC 공정이용 정책이 연락처가 담긴 User-Agent를 요구한다. 하네스가 임의로 개인 연락처를 외부로 보내지 않는다.",
+  "request_spacing_seconds": 0.12,
+  "period_spans": {
+    "instant_when_no_start": true,
+    "bands": [
+      {"min_months": 11, "max_months": 13, "period_kind": "fy"},
+      {"min_months": 8, "max_months": 10, "period_kind": "ytd"},
+      {"min_months": 5, "max_months": 7, "period_kind": "ytd"},
+      {"min_months": 2, "max_months": 4, "period_kind": "quarter"}
+    ],
+    "unmatched_policy": "ytd_with_review",
+    "note": "start/end 간격으로 기간 종류를 판정한다. 어느 구간에도 들어가지 않으면 만들어내지 않고 ytd + requires_review로 남긴다."
+  },
+  "restatement": {
+    "prefer": "latest_filed_at_or_before_cutoff",
+    "flag_when_value_changed": true,
+    "note": "같은 (tag, 기간, 단위)가 여러 제출물에 나오면 마감일 이전 가장 최근 제출을 쓴다. 이전 제출과 값이 다르면 is_restated=true로 남기고 원래 값을 지우지 않는다."
+  },
+  "consolidation_basis": "CFS",
+  "consolidation_note": "US GAAP 제출물은 연결 기준이 기본이므로 CFS로 기록한다. DART의 CFS/OFS 선택과 같은 필드를 쓰되 미국 쪽에는 선택지가 없다.",
+  "document_type_map": {
+    "10-K": "10-K", "10-K/A": "10-K", "10-Q": "10-Q", "10-Q/A": "10-Q",
+    "20-F": "20-F", "6-K": "other", "8-K": "earnings_release",
+    "DEF 14A": "proxy", "DEFA14A": "proxy"
+  },
+  "metric_statements": {
+    "revenue": "income", "cost_of_revenue": "income", "gross_profit": "income",
+    "operating_income": "income", "r_and_d": "income", "s_and_m": "income",
+    "g_and_a": "income", "sbc": "income", "d_and_a": "income",
+    "interest_expense": "income", "tax_expense": "income", "net_income": "income",
+    "cash": "balance_sheet", "short_term_investments": "balance_sheet",
+    "long_term_investments": "balance_sheet", "accounts_receivable": "balance_sheet",
+    "inventory": "balance_sheet", "accounts_payable": "balance_sheet",
+    "deferred_revenue": "balance_sheet", "ppe_net": "balance_sheet",
+    "goodwill": "balance_sheet", "intangibles": "balance_sheet",
+    "total_assets": "balance_sheet", "short_term_debt": "balance_sheet",
+    "long_term_debt": "balance_sheet", "convertible_debt": "balance_sheet",
+    "total_debt": "balance_sheet", "lease_liabilities": "balance_sheet",
+    "total_liabilities": "balance_sheet", "total_equity": "balance_sheet",
+    "operating_cash_flow": "cash_flow", "investing_cash_flow": "cash_flow",
+    "financing_cash_flow": "cash_flow", "capex": "cash_flow",
+    "acquisitions": "cash_flow", "asset_sales": "cash_flow",
+    "stock_repurchases": "cash_flow", "stock_issuance": "cash_flow",
+    "debt_issuance": "cash_flow", "debt_repayment": "cash_flow",
+    "fx_effect_on_cash": "cash_flow", "beginning_cash": "cash_flow",
+    "ending_cash": "cash_flow", "period_end_shares": "shares",
+    "basic_weighted_average_shares": "shares",
+    "diluted_weighted_average_shares": "shares", "other": "other"
+  },
+  "tag_map": {
+    "us-gaap": {
+      "Revenues": "revenue",
+      "RevenueFromContractWithCustomerExcludingAssessedTax": "revenue",
+      "RevenueFromContractWithCustomerIncludingAssessedTax": "revenue",
+      "SalesRevenueNet": "revenue",
+      "CostOfRevenue": "cost_of_revenue",
+      "CostOfGoodsAndServicesSold": "cost_of_revenue",
+      "GrossProfit": "gross_profit",
+      "OperatingIncomeLoss": "operating_income",
+      "ResearchAndDevelopmentExpense": "r_and_d",
+      "SellingAndMarketingExpense": "s_and_m",
+      "GeneralAndAdministrativeExpense": "g_and_a",
+      "ShareBasedCompensation": "sbc",
+      "AllocatedShareBasedCompensationExpense": "sbc",
+      "DepreciationDepletionAndAmortization": "d_and_a",
+      "DepreciationAmortizationAndAccretionNet": "d_and_a",
+      "InterestExpense": "interest_expense",
+      "InterestExpenseNonoperating": "interest_expense",
+      "IncomeTaxExpenseBenefit": "tax_expense",
+      "NetIncomeLoss": "net_income",
+      "CashAndCashEquivalentsAtCarryingValue": "cash",
+      "ShortTermInvestments": "short_term_investments",
+      "MarketableSecuritiesCurrent": "short_term_investments",
+      "MarketableSecuritiesNoncurrent": "long_term_investments",
+      "AccountsReceivableNetCurrent": "accounts_receivable",
+      "InventoryNet": "inventory",
+      "AccountsPayableCurrent": "accounts_payable",
+      "ContractWithCustomerLiabilityCurrent": "deferred_revenue",
+      "DeferredRevenueCurrent": "deferred_revenue",
+      "PropertyPlantAndEquipmentNet": "ppe_net",
+      "Goodwill": "goodwill",
+      "IntangibleAssetsNetExcludingGoodwill": "intangibles",
+      "FiniteLivedIntangibleAssetsNet": "intangibles",
+      "Assets": "total_assets",
+      "ShortTermBorrowings": "short_term_debt",
+      "CommercialPaper": "short_term_debt",
+      "LongTermDebtCurrent": "short_term_debt",
+      "LongTermDebtNoncurrent": "long_term_debt",
+      "ConvertibleDebtNoncurrent": "convertible_debt",
+      "DebtLongtermAndShorttermCombinedAmount": "total_debt",
+      "OperatingLeaseLiabilityNoncurrent": "lease_liabilities",
+      "Liabilities": "total_liabilities",
+      "StockholdersEquity": "total_equity",
+      "NetCashProvidedByUsedInOperatingActivities": "operating_cash_flow",
+      "NetCashProvidedByUsedInInvestingActivities": "investing_cash_flow",
+      "NetCashProvidedByUsedInFinancingActivities": "financing_cash_flow",
+      "PaymentsToAcquirePropertyPlantAndEquipment": "capex",
+      "PaymentsToAcquireProductiveAssets": "capex",
+      "PaymentsToAcquireBusinessesNetOfCashAcquired": "acquisitions",
+      "PaymentsForRepurchaseOfCommonStock": "stock_repurchases",
+      "ProceedsFromIssuanceOfCommonStock": "stock_issuance",
+      "ProceedsFromIssuanceOfLongTermDebt": "debt_issuance",
+      "RepaymentsOfLongTermDebt": "debt_repayment",
+      "EffectOfExchangeRateOnCashAndCashEquivalents": "fx_effect_on_cash",
+      "WeightedAverageNumberOfSharesOutstandingBasic": "basic_weighted_average_shares",
+      "WeightedAverageNumberOfDilutedSharesOutstanding": "diluted_weighted_average_shares",
+      "CommonStockSharesOutstanding": "period_end_shares"
+    },
+    "dei": {
+      "EntityCommonStockSharesOutstanding": "period_end_shares"
+    }
+  },
+  "review_required_tags": {
+    "SellingGeneralAndAdministrativeExpense": {
+      "metric": "other",
+      "metric_detail": "selling_general_and_administrative_combined",
+      "reason": "SG&A를 한 줄로 공시한 경우 s_and_m과 g_and_a로 쪼개려면 공시에 없는 배분을 만들어야 하므로 합계로 보존하고 리뷰로 올린다."
+    },
+    "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents": {
+      "metric": "other",
+      "metric_detail": "cash_including_restricted",
+      "reason": "제한현금이 섞여 있어 순현금 계산에 그대로 쓸 수 없다."
+    }
+  },
+  "unit_kinds": {
+    "USD": "currency", "shares": "shares", "USD/shares": "ratio", "pure": "ratio"
+  },
+  "universe": {
+    "exchanges": ["Nasdaq", "NYSE", "NYSE American"],
+    "exchange_aliases": {"NASDAQ": "Nasdaq", "NYSE American": "NYSE American", "NYSEAMERICAN": "NYSE American"},
+    "excluded_exchanges": ["OTC", "CBOE", ""],
+    "ticker_exclusions": [
+      {"pattern": "[-.](W|WS|WT)$", "security_type": "warrant", "reason": "warrant"},
+      {"pattern": "[-.]U$", "security_type": "unit", "reason": "unit"},
+      {"pattern": "[-.]R$", "security_type": "right", "reason": "right"},
+      {"pattern": "[-.]P[A-Z]?$", "security_type": "preferred", "reason": "preferred"}
+    ],
+    "name_exclusions": [
+      {"pattern": "\\bETF\\b|\\bIndex Fund\\b|\\bExchange[- ]Traded\\b", "security_type": "etf", "reason": "ETF"},
+      {"pattern": "\\bClosed[- ]End\\b|\\bMunicipal Income\\b|\\bIncome Trust\\b", "security_type": "cef", "reason": "closed-end fund"},
+      {"pattern": "\\bAcquisition Corp\\b|\\bAcquisition Company\\b", "security_type": "spac", "reason": "SPAC shell"},
+      {"pattern": "\\bWarrant", "security_type": "warrant", "reason": "warrant"},
+      {"pattern": "\\bPreferred\\b|\\bDepositary Share", "security_type": "preferred", "reason": "preferred"}
+    ],
+    "note": "SEC의 ticker 인덱스에는 증권 종류가 없다. 티커 접미사와 사명 패턴으로 거르되 확실하지 않은 것은 조용히 버리지 않고 requires_review로 남긴다."
+  }
+}

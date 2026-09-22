@@ -1,0 +1,58 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import './globals.css';
+
+export const metadata: Metadata = {
+  title: 'Outlier Expectation Gap — Research Platform',
+  description: 'US/KR screening, harness results and evidence-linked deep-dive research.',
+};
+
+const NAV = [
+  { href: '/pipeline', label: 'Pipeline' },
+  { href: '/universe', label: 'Universe' },
+  { href: '/screener', label: 'Screener' },
+  { href: '/market', label: 'Market Data' },
+  { href: '/runs', label: 'Harness Runs' },
+  { href: '/reports', label: 'Reports' },
+  { href: '/monitoring', label: 'Monitoring' },
+  { href: '/settings', label: 'Settings' },
+];
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="ko">
+      {/*
+        Grammarly and similar extensions write attributes onto <body>
+        (`data-gr-ext-installed`, `data-new-gr-c-s-check-loaded`) before React
+        hydrates, which React then reports as a server/client mismatch. It is
+        the extension, not this app: with no extension loaded, these pages
+        hydrate with zero warnings.
+
+        This suppresses the warning for <body>'s own attributes and nothing
+        else — it is one level deep, so a real mismatch anywhere inside still
+        surfaces. It is not a way to quiet hydration checking.
+      */}
+      <body suppressHydrationWarning>
+        <header className="border-b" style={{ borderColor: 'var(--border)' }}>
+          <div className="mx-auto flex max-w-7xl items-center gap-6 px-6 py-4">
+            <Link href="/" className="font-semibold no-underline" style={{ color: 'var(--text)' }}>
+              Outlier Expectation Gap
+            </Link>
+            <nav className="flex gap-4 text-sm">
+              {NAV.map((item) => (
+                <Link key={item.href} href={item.href} className="no-underline muted hover:opacity-80">
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </header>
+        <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>
+        <footer className="mx-auto max-w-7xl px-6 pb-10 text-xs muted">
+          점수·archetype·Hard Veto·밸류에이션·포지션은 모두 하네스가 결정한다. 이 화면은 그 결과를 읽어
+          보여줄 뿐이며 새로운 투자점수를 만들지 않는다.
+        </footer>
+      </body>
+    </html>
+  );
+}

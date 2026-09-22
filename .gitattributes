@@ -1,0 +1,10 @@
+# Windows launchers. CRLF because every Windows tool that touches them
+# expects it, and the .ps1 files must keep their UTF-8 BOM — Windows
+# PowerShell 5.1 decodes a BOM-less script in the system ANSI code page,
+# which corrupts every non-ASCII string in it.
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+# Generated icons are binary; never touch their bytes.
+*.ico binary
+*.png binary

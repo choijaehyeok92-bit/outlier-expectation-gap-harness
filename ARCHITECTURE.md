@@ -8,6 +8,13 @@ into `rubric.py`, `conditions.py`, `calibration.py`, `archetypes.py`, `veto.py`,
 `valuation.py`, `planner.py`, `evidence.py`, `macro_geo.py` and generated policy documentation.
 No new model runtime, cache service or database is required.
 
+The optional web research layer (`packages/`, `apps/`) sits above this and reads it. It adds no
+policy: screening filters are compiled deterministically over an allowlisted field registry, and a
+deep dive copies the harness result into `harness_snapshot` without being able to alter it. See
+[WEB_PLATFORM_ARCHITECTURE.md](docs/WEB_PLATFORM_ARCHITECTURE.md). `runtime.main()` gains one call
+to `register_application_commands`, which fails closed: a checkout without those packages keeps
+every existing command.
+
 Frozen company inputs → universal triage → optimistic reachable archetypes → remaining
 core score and veto coverage → global regime plus company transmission → ED/RT → eligible
 archetype fit ranking → veto/valuation/state gates → IC within deterministic caps → monitoring.

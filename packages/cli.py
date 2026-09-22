@@ -1,0 +1,844 @@
+"""Screening and deep-dive subcommands for the existing harness CLI.
+
+These are additive. `harness.py` keeps every command it had, with the same
+arguments and the same behaviour, and the modules those commands use keep their
+standard-library-only diet: everything in here is imported lazily, inside the
+handler, so running `harness.py aggregate` never loads the screening stack.
+"""
+import argparse
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def _print(payload):
+    print(json.dumps(payload, ensure_ascii=False, indent=2))
+
+
+def _write(path, text):
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    Path(path).write_text(text, encoding='utf-8')
+    print(path)
+
+
+def _fx_rates(pairs, as_of_date):
+    """--fx KRW=1380.2 → an explicit, attributed rate. Nothing is looked up."""
+    rates = {}
+    for pair in pairs or []:
+        if '=' not in pair:
+            raise SystemExit(f'--fx expects CODE=RATE_PER_USD, got {pair!r}')
+        code, value = pair.split('=', 1)
+        try:
+            rates[code.strip().upper()] = {'per_usd': float(value), 'source': 'operator-supplied (--fx)',
+                                           'as_of_date': as_of_date}
+        except ValueError:
+            raise SystemExit(f'--fx rate must be a number, got {value!r}')
+    return rates
+
+
+def _provider(name, model=None, fixtures=None):
+    from packages.llm import resolve_provider
+    if name == 'fixture':
+        return resolve_provider('fixture', model, root=fixtures) if fixtures else resolve_provider('fixture', model)
+    return resolve_provider(name, model)
+
+
+def cmd_screen_fields(args):
+    from packages.screening.fields import Registry
+    rows = Registry().describe()
+    if args.available_only:
+        rows = [r for r in rows if r['available']]
+    _print(rows)
+
+
+def cmd_screen_nl(args):
+    from packages.screening import nl
+    provider = _provider(args.provider, args.model, args.fixtures) if args.provider != 'lexicon' else None
+    spec = nl.parse(args.text, args.as_of, provider=provider, fx_rates=_fx_rates(args.fx, args.as_of))
+    if args.out:
+        _write(args.out, json.dumps(spec, ensure_ascii=False, indent=2) + '\n')
+    else:
+        _print(spec)
+
+
+def _warehouse_entries_from_runs(runs_dir=None, tickers=None, as_of=None):
+    """Stage 0 packs that existing runs already hold, with their frozen prices.
+
+    A completed run carries a preprocessed pack and a frozen market
+    observation. Reusing them means the warehouse can be built and checked
+    against real disclosures rather than only against fixtures.
+    """
+    import json as _json
+    from packages.screening import runs_index
+    base = Path(runs_dir or runs_index.RUNS_DIR)
+    entries, unreadable = [], []
+    for run_id in runs_index.run_ids(runs_dir):
+        run = base / run_id
+        pack_path = run / 'sources' / 'financials' / 'normalized_financials.json'
+        if not pack_path.exists():
+            continue
+        try:
+            pack = _json.loads(pack_path.read_text(encoding='utf-8'))
+            context = _json.loads((run / 'company_context.json').read_text(encoding='utf-8'))
+        except ValueError as error:
+            # A corrupt artifact is a finding, not something to pass over quietly.
+            unreadable.append(f'{run_id}: {type(error).__name__} in '
+                              f'{pack_path.relative_to(base)} ({error})')
+            continue
+        if not (pack.get('facts') or []):
+            continue
+        ticker = (context.get('ticker') or pack.get('ticker') or run_id).upper()
+        if tickers and ticker not in tickers:
+            continue
+        run_as_of = context.get('as_of_date') or ''
+        if as_of and run_as_of > as_of:
+            continue            # a run dated after the cutoff is not evidence this cutoff had
+        price, shares = context.get('current_price'), context.get('shares_diluted')
+        snapshot = {'as_of_date': context.get('as_of_date'),
+                    'source': f'runs/{run_id}/company_context.json (frozen)'}
+        if isinstance(price, (int, float)):
+            snapshot['close'] = float(price)
+        if isinstance(shares, (int, float)):
+            snapshot['shares_outstanding'] = float(shares)
+        entries.append({
+            'ticker': ticker, 'company_name': context.get('company_name'),
+            'jurisdiction': 'KR' if (context.get('currency') or '').upper() == 'KRW' else 'US',
+            'currency': context.get('currency') or pack.get('reporting_currency'),
+            'pack': pack, 'market_snapshot': snapshot, 'run_id': run_id,
+            'run_as_of': run_as_of})
+    # One entry per ticker: several runs of the same company differ by policy
+    # version, not by what the company disclosed.
+    newest = {}
+    for entry in sorted(entries, key=lambda e: (e['run_as_of'], e['run_id'])):
+        newest[entry['ticker']] = entry
+    return list(newest.values()), unreadable
+
+
+def _warehouse_entries_from_packs(directory):
+    import json as _json
+    entries = []
+    for path in sorted(Path(directory).glob('*.json')):
+        pack = _json.loads(path.read_text(encoding='utf-8'))
+        if not pack.get('facts'):
+            continue
+        entries.append({'ticker': (pack.get('ticker') or path.stem).upper(),
+                        'company_name': pack.get('company_name'),
+                        'jurisdiction': 'KR' if (pack.get('reporting_currency') or '') == 'KRW' else 'US',
+                        'currency': pack.get('reporting_currency'),
+                        'pack': pack, 'market_snapshot': {}, 'source_file': str(path)})
+    return entries
+
+
+def _attach_market_data(entries, root, as_of):
+    """Fill each entry's market snapshot from a market provider, not from a filing.
+
+    A regulator publishes what a company disclosed; a price is not one of those
+    things. So the snapshot arrives through `MarketDataProvider`, and an entry
+    with no market observation simply has no market-derived metric.
+    """
+    try:
+        from data_adapters.market_kr.provider import KrMarketCsvProvider
+        from data_adapters.market_us import UsMarketDataProvider
+    except Exception:
+        return 0
+    providers = {'US': UsMarketDataProvider(root=root), 'KR': KrMarketCsvProvider(root=root)}
+    attached = 0
+    for entry in entries:
+        if entry.get('market_snapshot'):
+            continue
+        provider = providers.get(entry.get('jurisdiction'))
+        if provider is None:
+            continue
+        security = provider.resolve_security(entry['ticker'])
+        snapshot = provider.get_snapshot(security, as_of)
+        if snapshot is None:
+            continue
+        entry['market_snapshot'] = {k: v for k, v in snapshot.to_dict().items() if v is not None}
+        attached += 1
+    return attached
+
+
+def cmd_screen_build(args):
+    """Stage 2: compute the deterministic metric warehouse. No LLM is involved."""
+    from packages.screening import warehouse
+    entries, unreadable = [], []
+    if args.packs:
+        entries.extend(_warehouse_entries_from_packs(args.packs))
+    if args.from_runs or not entries:
+        tickers = {t.strip().upper() for t in (args.tickers or '').split(',') if t.strip()}
+        from_runs, unreadable = _warehouse_entries_from_runs(tickers=tickers or None,
+                                                             as_of=args.as_of)
+        entries.extend(from_runs)
+    if not entries:
+        raise SystemExit('no Stage 0 packs found; pass --packs DIR or use --from-runs')
+    attached = _attach_market_data(entries, args.market_data, args.as_of) if args.market_data else 0
+    payload = warehouse.build(entries, args.as_of)
+    payload['market_snapshots_attached'] = attached
+    path = warehouse.save(payload, args.out)
+    print(path, file=sys.stderr)
+    coverage = {k: v for k, v in payload['coverage'].items()}
+    _print({'as_of_date': payload['as_of_date'], 'companies': payload['companies'],
+            'tickers': payload['tickers'], 'failures': payload['failures'],
+            'unreadable_artifacts': unreadable,
+            'market_snapshots_attached': attached, 'coverage': coverage})
+
+
+def _execute(spec, save, markdown_out=None, source='auto'):
+    from packages.screening import compiler, rows as row_source, store
+    fx = spec.get('fx_rates') or {}
+    rows = row_source.load_rows(spec.get('as_of_date'), fx_rates=fx, source=source)
+    result = compiler.run(spec, rows)
+    record = store.build_record(spec, result, rows_sha256=store.content_hash(
+        [{k: v for k, v in row.items() if k != 'match_explain'} for row in rows]))
+    record['backends'] = row_source.backend_summary(rows, source)
+    if save:
+        print(store.save(record), file=sys.stderr)
+    if markdown_out:
+        from packages.reporting import render_screen_markdown
+        _write(markdown_out, render_screen_markdown(record))
+    return record
+
+
+def cmd_screen_query(args):
+    from packages.screening import spec as spec_module
+    spec = spec_module.normalise(json.loads(Path(args.spec).read_text(encoding='utf-8')))
+    record = _execute(spec, args.save, args.markdown, getattr(args, 'source', 'auto'))
+    _print(record if args.full else {**record, 'results': [
+        {k: row.get(k) for k in ('ticker', 'company_name', 'jurisdiction', 'core_score', 'ex_valuation_score',
+                                 'archetype', 'hard_veto_status', 'price_to_base_value', 'ic_state')}
+        for row in record['results']]})
+
+
+def cmd_screen_run(args):
+    from packages.screening import nl
+    provider = _provider(args.provider, args.model, args.fixtures) if args.provider != 'lexicon' else None
+    spec = nl.parse(args.text, args.as_of, provider=provider, fx_rates=_fx_rates(args.fx, args.as_of))
+    record = _execute(spec, not args.no_save, args.markdown, getattr(args, 'source', 'auto'))
+    _print({'screen_run_id': record['screen_run_id'],
+            'unresolved_conditions': spec['unresolved_conditions'],
+            'requires_harness_run': spec['requires_harness_run'],
+            'matched_count': record['summary']['matched_count'],
+            'excluded_missing_data': record['summary']['excluded_missing_data'],
+            'results': [{k: row.get(k) for k in ('ticker', 'company_name', 'jurisdiction', 'core_score',
+                                                 'archetype', 'hard_veto_status', 'price_to_base_value')}
+                        for row in record['results']]})
+
+
+def _triage_provider(args):
+    """The provider a batch will use.
+
+    `placeholder` is offline and analyses nothing; it exists to exercise
+    sequencing, retry and idempotency. Any other provider is a real model and
+    the resulting reports are real analysis, for better or worse.
+    """
+    if args.provider == 'placeholder':
+        from packages.orchestration.fixtures import PlaceholderAgentProvider
+        return PlaceholderAgentProvider(mode=args.placeholder_mode)
+    from packages.llm import resolve_provider
+    return resolve_provider(args.provider, args.model)
+
+
+def _triage_rows(args):
+    """Candidate rows: a saved screen, a file, or the current row source."""
+    if args.screen_run:
+        from packages.screening import store as screen_store
+        record = screen_store.load(args.screen_run)
+        if record is None:
+            raise SystemExit(f'{args.screen_run}: no such screen run')
+        return record['results'], record.get('as_of_date')
+    if args.input:
+        payload = json.loads(Path(args.input).read_text(encoding='utf-8'))
+        if isinstance(payload, dict):
+            return payload.get('results') or payload.get('rows') or [], payload.get('as_of_date')
+        return payload, None
+    from packages.screening import rows as row_source
+    return row_source.load_rows(args.as_of, source=getattr(args, 'source', 'auto')), args.as_of
+
+
+def cmd_screen_triage(args):
+    """Stage 3: run the triage agents over the selected candidates."""
+    from packages.orchestration import batch, contracts, selection, store
+    config = contracts.load_config()
+    rows, rows_as_of = _triage_rows(args)
+    as_of = args.as_of or rows_as_of
+    candidates = selection.select_candidates(rows, config=config, top_n=args.top,
+                                             stage='triage')
+    eligible = [c for c in candidates if c.eligible]
+
+    if args.dry_run:
+        _print({'as_of_date': as_of, 'eligible': [c.to_dict() for c in eligible],
+                'not_eligible': [c.to_dict() for c in candidates if not c.eligible][:20],
+                'verification_scope': config['verification_scope']})
+        return
+    if not eligible:
+        _print({'as_of_date': as_of, 'eligible': 0,
+                'not_eligible': [c.to_dict() for c in candidates][:20],
+                'note': 'nothing to run; every candidate is already complete or blocked'})
+        return
+
+    result = batch.run_batch(eligible + [c for c in candidates if not c.eligible],
+                             _triage_provider(args), config=config, as_of_date=as_of,
+                             force=args.force)
+    record = store.build_record(result.to_dict(), config)
+    if not args.no_save:
+        print(store.save(record), file=sys.stderr)
+    _print({'triage_run_id': record['triage_run_id'], 'summary': record['summary'],
+            'verification_scope': record['verification_scope'],
+            'results': [{k: row[k] for k in ('run_id', 'ticker', 'status',
+                                             'execution_control', 'harness_snapshot')}
+                        for row in record['results']]})
+
+
+def cmd_screen_triage_runs(args):
+    from packages.orchestration import store
+    _print(store.list_runs(stage='triage'))
+
+
+def cmd_screen_full(args):
+    """Stage 4: the whole harness workflow, one company or a batch of them.
+
+    Where triage runs a fixed four agents, this follows `harness.py plan` round
+    after round and runs whatever it names, until the planner says `stop_early`
+    or `stop_complete`. A company the planner screens out after triage is
+    reported as `screened_out` — a conclusion, not a failure.
+    """
+    from packages.orchestration import batch, contracts, full, selection, store
+    config = contracts.load_config()
+
+    if args.run_id:
+        run_ids = [r.strip() for r in args.run_id.split(',') if r.strip()]
+        if args.dry_run:
+            _print({'stage': 'full', 'dry_run': True,
+                    'readiness': [{'run_id': run_id, **full.readiness(run_id)}
+                                  for run_id in run_ids],
+                    'verification_scope': config['verification_scope']})
+            return
+        provider = _triage_provider(args)
+        outcomes = [full.full_harness_company(run_id, provider, config=config,
+                                              force=args.force,
+                                              max_iterations=args.max_rounds)
+                    for run_id in run_ids]
+        _print({'stage': 'full', 'verification_scope': config['verification_scope'],
+                'results': [outcome.to_dict() for outcome in outcomes]})
+        return
+
+    rows, rows_as_of = _triage_rows(args)
+    as_of = args.as_of or rows_as_of
+    candidates = selection.select_candidates(rows, config=config, top_n=args.top, stage='full')
+    eligible = [c for c in candidates if c.eligible]
+
+    if args.dry_run:
+        _print({'as_of_date': as_of, 'stage': 'full',
+                'eligible': [c.to_dict() for c in eligible],
+                'not_eligible': [c.to_dict() for c in candidates if not c.eligible][:20],
+                'verification_scope': config['verification_scope']})
+        return
+    if not eligible:
+        _print({'as_of_date': as_of, 'stage': 'full', 'eligible': 0,
+                'not_eligible': [c.to_dict() for c in candidates][:20],
+                'note': 'nothing to run; every candidate is already complete or blocked'})
+        return
+
+    result = batch.run_batch(candidates, _triage_provider(args), config=config,
+                             as_of_date=as_of, force=args.force, stage='full')
+    record = store.build_record(result.to_dict(), config, stage='full')
+    if not args.no_save:
+        print(store.save(record), file=sys.stderr)
+    _print({'full_run_id': record['full_run_id'], 'summary': record['summary'],
+            'verification_scope': record['verification_scope'],
+            'results': [{k: row.get(k) for k in ('run_id', 'ticker', 'status', 'stage',
+                                                 'execution_control', 'stages_run',
+                                                 'harness_snapshot', 'artifacts', 'reason')}
+                        for row in record['results']]})
+
+
+def cmd_screen_full_runs(args):
+    from packages.orchestration import store
+    _print(store.list_runs(stage='full'))
+
+
+def cmd_screen_runs(args):
+    from packages.screening import store
+    _print(store.list_runs())
+
+
+def _resolve_watch_id(ticker, args):
+    """`--watch-id`, or an exact name match. Ambiguity is refused, never picked."""
+    from packages.monitoring import watchlist as watchlist_builder
+    if args.watch_id:
+        return [args.watch_id]
+    if not args.match:
+        raise SystemExit('pass --watch-id, or --match "<KPI name or falsifier text>"')
+    built = watchlist_builder.build(ticker, getattr(args, 'run_id', None))
+    wanted = watchlist_builder.normalize(args.match)
+    hits = [i for i in built['items'] if watchlist_builder.normalize(i['name']) == wanted]
+    if not hits:
+        hits = [i for i in built['items'] if wanted in watchlist_builder.normalize(i['name'])]
+    if not hits:
+        raise SystemExit(f'{args.match!r} matches nothing being watched for {ticker}. '
+                         f'`harness.py monitor watchlist {ticker}` lists the items.')
+    if len(hits) > 1 and not getattr(args, 'all_matches', False):
+        lines = '\n'.join(f"  {i['watch_id']}  {i['source_kind']}/{i['source_ref']}  {i['name'][:70]}"
+                           for i in hits[:10])
+        raise SystemExit(
+            f'{args.match!r} matches {len(hits)} watch items; pass --watch-id, or --all-matches '
+            f'if they really are the same observable:\n{lines}')
+    return [i['watch_id'] for i in hits] if getattr(args, 'all_matches', False) \
+        else [hits[0]['watch_id']]
+
+
+def cmd_monitor_watchlist(args):
+    """What this company has declared it is watching, and which of it is checkable."""
+    from packages.monitoring import watchlist as watchlist_builder
+    try:
+        built = watchlist_builder.build(args.ticker, args.run_id)
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
+    if args.full:
+        _print(built)
+        return
+    _print({k: built[k] for k in ('ticker', 'run_id', 'as_of_date', 'deep_dive_id',
+                                  'summary', 'reading_note')} |
+           {'items': [{k: item.get(k) for k in ('watch_id', 'kind', 'name', 'source_kind',
+                                                'source_ref', 'cadence', 'machine_checkable',
+                                                'checkable_levels')}
+                      for item in built['items']]})
+
+
+def cmd_monitor_observe(args):
+    """Record one observation. It needs a source and a date, and it is never edited."""
+    from packages.monitoring import observations as observation_log
+    from packages.monitoring import watchlist as watchlist_builder
+    ticker = args.ticker.upper() if not args.ticker.isdigit() else args.ticker
+    watch_ids = _resolve_watch_id(ticker, args)
+    triggered = None
+    if args.triggered is not None:
+        triggered = args.triggered.strip().lower() in ('true', 'yes', '1', 'y')
+    run_as_of = None
+    try:
+        run_as_of = watchlist_builder.build(ticker, args.run_id)['as_of_date']
+    except ValueError:
+        pass
+    rows = []
+    for watch_id in watch_ids:
+        try:
+            rows.append(observation_log.record(
+                ticker, watch_id, as_of_date=args.as_of, source=args.source,
+                source_type=args.source_type, value=args.value, unit=args.unit,
+                triggered=triggered, period=args.period,
+                fact_or_estimate=args.fact_or_estimate, note=args.note,
+                supersedes=args.supersedes, run_as_of_date=run_as_of))
+        except observation_log.ObservationRejected as error:
+            raise SystemExit(str(error)) from error
+    _print(rows[0] if len(rows) == 1 else {'recorded': len(rows), 'observations': rows})
+
+
+def cmd_monitor_suggest(args):
+    """Propose links by exact name. Proposals are not links; a person accepts one."""
+    from packages.monitoring import ingest
+    try:
+        payload = ingest.suggest(args.ticker, run_id=args.run_id)
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
+    _print(payload if args.full else
+           {k: payload[k] for k in ('ticker', 'run_id', 'summary', 'note')} |
+           {'proposed': payload['proposed'],
+            'unmatched': [row['name'] for row in payload['unmatched']][:30]})
+
+
+def cmd_monitor_link(args):
+    """Say that a watch item is measured by a warehouse metric."""
+    from packages.monitoring import ingest
+    ticker = args.ticker.upper() if not args.ticker.isdigit() else args.ticker
+    watch_ids = _resolve_watch_id(ticker, args)
+    if len(watch_ids) > 1 and not args.all_matches:
+        raise SystemExit('--match resolved to several items; pass --watch-id or --all-matches')
+    rows = []
+    for watch_id in watch_ids:
+        try:
+            rows.append(ingest.link(ticker, watch_id, args.metric, note=args.note,
+                                    linked_by=args.by, run_id=args.run_id))
+        except ingest.LinkRefused as error:
+            raise SystemExit(str(error)) from error
+    for row in rows:
+        if row.get('warning'):
+            print(row['warning'], file=sys.stderr)
+    _print(rows[0] if len(rows) == 1 else {'linked': len(rows), 'links': rows})
+
+
+def cmd_monitor_unlink(args):
+    from packages.monitoring import ingest
+    try:
+        _print(ingest.unlink(args.ticker, args.watch_id))
+    except ingest.LinkRefused as error:
+        raise SystemExit(str(error)) from error
+
+
+def cmd_monitor_links(args):
+    from packages.monitoring import ingest
+    _print(ingest.load_links(args.ticker))
+
+
+def cmd_monitor_ingest(args):
+    """Record observations for every linked item the warehouse can measure."""
+    from packages.monitoring import ingest
+    try:
+        _print(ingest.ingest(args.ticker, args.as_of, run_id=args.run_id))
+    except (ValueError, ingest.LinkRefused) as error:
+        raise SystemExit(str(error)) from error
+
+
+def cmd_monitor_status(args):
+    """Evaluate the watchlist against what has been observed."""
+    from packages.monitoring import evaluate as monitor_evaluate
+    from packages.monitoring import observations as observation_log
+    from packages.monitoring import store as monitoring_store
+    from packages.monitoring import watchlist as watchlist_builder
+
+    if args.ticker:
+        try:
+            result = monitor_evaluate.evaluate(args.ticker, args.as_of, args.run_id)
+        except ValueError as error:
+            raise SystemExit(str(error)) from error
+        if args.save:
+            record = monitoring_store.build_record(result)
+            print(monitoring_store.save(record), file=sys.stderr)
+            result = record
+        _print(result if args.full else
+               {k: result[k] for k in ('ticker', 'run_id', 'analysis_as_of_date',
+                                       'evaluated_as_of', 'summary', 'review_required',
+                                       'integrity')})
+        return
+
+    config = watchlist_builder.load_config()
+    tickers = args.tickers.split(',') if args.tickers else observation_log.tickers()
+    if not tickers:
+        _print({'companies': 0,
+                'note': 'nothing is being monitored yet. Record an observation with '
+                        '`harness.py monitor observe`, or pass --tickers to evaluate '
+                        'companies with no observations and see what is unwatched.'})
+        return
+    _print(monitor_evaluate.portfolio([t.strip() for t in tickers if t.strip()],
+                                      args.as_of, config))
+
+
+def cmd_monitor_drift(args):
+    """What changed between this company's harness runs, and whether it is the company."""
+    from packages.monitoring import drift
+    run_ids = [r.strip() for r in args.run_ids.split(',')] if args.run_ids else None
+    try:
+        _print(drift.series(args.ticker, run_ids=run_ids))
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
+
+
+def cmd_monitor_runs(args):
+    from packages.monitoring import store as monitoring_store
+    _print(monitoring_store.list_runs())
+
+
+def cmd_deep_plan(args):
+    from packages.research import deep_plan
+    plan = deep_plan.build(args.ticker.upper() if not args.ticker.isdigit() else args.ticker,
+                           user_requested=args.force)
+    if args.out:
+        _write(args.out, json.dumps(plan, ensure_ascii=False, indent=2) + '\n')
+    else:
+        _print(plan)
+
+
+def cmd_deep_run(args):
+    from packages.llm import LLMError
+    from packages.research import deep_run
+    run_id = args.ticker.upper() if not args.ticker.isdigit() else args.ticker
+    fixtures = args.fixtures or (ROOT / 'packages' / 'research' / 'fixtures' / run_id)
+    try:
+        report, _plan, path = deep_run.run(run_id, _provider(args.provider, args.model, fixtures),
+                                           user_requested=args.force)
+    except LLMError as error:
+        raise SystemExit(str(error))
+    print(path, file=sys.stderr)
+    if args.markdown:
+        from packages.reporting import render_markdown
+        _write(args.markdown, render_markdown(report))
+    _print({'deep_dive_id': report['metadata']['deep_dive_id'],
+            'ticker': report['metadata']['ticker'],
+            'harness_run': report['metadata']['harness_run']['run_id'],
+            'red_team_overall': report['red_team']['overall'],
+            'agreement_with_harness': report['final_synthesis']['agreement_with_harness'],
+            'evidence_count': len(report['evidence']),
+            'stages': report['metadata']['provenance']['stages']})
+
+
+def cmd_deep_report(args):
+    from packages.reporting import render_markdown
+    from packages.research import store
+    report = store.load(args.deep_dive_id)
+    if report is None:
+        raise SystemExit(f'{args.deep_dive_id}: no such deep dive')
+    text = render_markdown(report)
+    if args.out:
+        _write(args.out, text)
+    else:
+        print(text)
+
+
+def cmd_deep_list(args):
+    from packages.research import store
+    _print(store.list_reports())
+
+
+def register(sub):
+    """Attach the screening and deep-dive commands to an existing subparser set."""
+    screen = sub.add_parser('screen', help='US/KR screening over the completed harness run corpus')
+    screen_sub = screen.add_subparsers(dest='screen_cmd', required=True)
+
+    p = screen_sub.add_parser('fields', help='list the field identifiers a ScreeningSpec may name')
+    p.add_argument('--available-only', action='store_true')
+    p.set_defaults(func=cmd_screen_fields)
+
+    p = screen_sub.add_parser('nl', help='natural language -> validated ScreeningSpec (no SQL, no metrics)')
+    p.add_argument('text')
+    p.add_argument('--as-of', required=True)
+    p.add_argument('--provider', default='lexicon',
+                   help='lexicon (deterministic, offline) | fixture | anthropic | openai')
+    p.add_argument('--model')
+    p.add_argument('--fixtures')
+    p.add_argument('--fx', action='append', metavar='CODE=PER_USD',
+                   help='explicit as-of FX rate, e.g. --fx KRW=1380.2; never looked up automatically')
+    p.add_argument('--out')
+    p.set_defaults(func=cmd_screen_nl)
+
+    p = screen_sub.add_parser('query', help='execute a ScreeningSpec file')
+    p.add_argument('--spec', required=True)
+    p.add_argument('--save', action='store_true', help='persist an immutable screen run')
+    p.add_argument('--markdown')
+    p.add_argument('--full', action='store_true')
+    p.add_argument('--source', choices=['auto', 'files', 'db'], default='auto',
+                   help='where rows come from; db needs $HARNESS_DATABASE_URL')
+    p.set_defaults(func=cmd_screen_query)
+
+    p = screen_sub.add_parser('run', help='parse and execute in one step')
+    p.add_argument('text')
+    p.add_argument('--as-of', required=True)
+    p.add_argument('--provider', default='lexicon')
+    p.add_argument('--model')
+    p.add_argument('--fixtures')
+    p.add_argument('--fx', action='append', metavar='CODE=PER_USD')
+    p.add_argument('--markdown')
+    p.add_argument('--no-save', action='store_true')
+    p.add_argument('--source', choices=['auto', 'files', 'db'], default='auto',
+                   help='where rows come from; db needs $HARNESS_DATABASE_URL')
+    p.set_defaults(func=cmd_screen_run)
+
+    p = screen_sub.add_parser('build', help='stage 2: compute the deterministic metric warehouse')
+    p.add_argument('--as-of', required=True)
+    p.add_argument('--packs', help='directory of Stage 0 packs from `harness.py ingest --out`')
+    p.add_argument('--from-runs', action='store_true',
+                   help='use the packs completed runs already hold')
+    p.add_argument('--tickers', help='comma-separated subset')
+    p.add_argument('--market-data', help='market CSV root (data/market/<US|KR>/<TICKER>.csv); '
+                                         'prices never come from a regulator')
+    p.add_argument('--out')
+    p.set_defaults(func=cmd_screen_build)
+
+    p = screen_sub.add_parser('triage', help='stage 3: run EV/AS/DI/FS over the top candidates')
+    p.add_argument('--input', help='screen result JSON, or a list of rows')
+    p.add_argument('--screen-run', help='a persisted screen run id')
+    p.add_argument('--as-of')
+    p.add_argument('--top', type=int, help='how many eligible candidates to run')
+    p.add_argument('--provider', default='placeholder',
+                   help='placeholder (offline, analyses nothing) | anthropic | openai')
+    p.add_argument('--placeholder-mode', default='valid',
+                   choices=['valid', 'invalid', 'flaky', 'error'],
+                   help='what the offline provider should simulate')
+    p.add_argument('--model')
+    p.add_argument('--source', choices=['auto', 'files', 'db'], default='auto')
+    p.add_argument('--force', action='store_true', help='redo agents already complete')
+    p.add_argument('--dry-run', action='store_true', help='show the selection and stop')
+    p.add_argument('--no-save', action='store_true')
+    p.set_defaults(func=cmd_screen_triage)
+
+    p = screen_sub.add_parser('triage-runs', help='list persisted triage batches')
+    p.set_defaults(func=cmd_screen_triage_runs)
+
+    p = screen_sub.add_parser('full', help='stage 4: the whole harness workflow, driven by plan')
+    p.add_argument('--run-id', help='one run, or a comma-separated list; skips screen selection')
+    p.add_argument('--input', help='screen result JSON, or a list of rows')
+    p.add_argument('--screen-run', help='a persisted screen run id')
+    p.add_argument('--as-of')
+    p.add_argument('--top', type=int, help='how many eligible candidates to run')
+    p.add_argument('--max-rounds', type=int,
+                   help='stage-loop cap; defaults to full_harness.max_stage_iterations')
+    p.add_argument('--provider', default='placeholder',
+                   help='placeholder (offline, analyses nothing) | anthropic | openai')
+    p.add_argument('--placeholder-mode', default='valid',
+                   choices=['valid', 'invalid', 'flaky', 'error'],
+                   help='what the offline provider should simulate')
+    p.add_argument('--model')
+    p.add_argument('--source', choices=['auto', 'files', 'db'], default='auto')
+    p.add_argument('--force', action='store_true', help='redo agents already complete')
+    p.add_argument('--dry-run', action='store_true', help='show the selection and stop')
+    p.add_argument('--no-save', action='store_true')
+    p.set_defaults(func=cmd_screen_full)
+
+    p = screen_sub.add_parser('full-runs', help='list persisted full-harness batches')
+    p.set_defaults(func=cmd_screen_full_runs)
+
+    p = screen_sub.add_parser('runs', help='list persisted screen runs')
+    p.set_defaults(func=cmd_screen_runs)
+
+    monitor = sub.add_parser('monitor', help='track declared KPIs and falsifiers over time')
+    monitor_sub = monitor.add_subparsers(dest='monitor_cmd', required=True)
+
+    p = monitor_sub.add_parser('watchlist', help='what a company declared it is watching')
+    p.add_argument('ticker')
+    p.add_argument('--run-id')
+    p.add_argument('--full', action='store_true', help='include thresholds and comparisons')
+    p.set_defaults(func=cmd_monitor_watchlist)
+
+    p = monitor_sub.add_parser('observe', help='record one observation (append-only)')
+    p.add_argument('ticker')
+    p.add_argument('--watch-id')
+    p.add_argument('--match', help='resolve the watch item by name; ambiguity is refused')
+    p.add_argument('--all-matches', action='store_true',
+                   help='record against every match — several agents naming the same KPI')
+    p.add_argument('--run-id')
+    p.add_argument('--value', help="observed value, e.g. 71%% or 0.71")
+    p.add_argument('--unit', choices=['ratio', 'percent', 'percent_point', 'number'],
+                   help='say which scale the value is on; without it an ambiguous '
+                        'number is not compared')
+    p.add_argument('--triggered', help='falsifiers only: true|false')
+    p.add_argument('--as-of', required=True, metavar='YYYY-MM-DD')
+    p.add_argument('--source', required=True, help='where this came from')
+    p.add_argument('--source-type', required=True,
+                   choices=['filing', 'ir', 'industry', 'secondary', 'market', 'other'])
+    p.add_argument('--period')
+    p.add_argument('--fact-or-estimate', default='fact',
+                   choices=['fact', 'estimate', 'interpretation'])
+    p.add_argument('--note')
+    p.add_argument('--supersedes', help='observation_id this corrects; the original stays')
+    p.set_defaults(func=cmd_monitor_observe)
+
+    p = monitor_sub.add_parser(
+        'suggest', help='propose watch-item -> metric links by exact name only')
+    p.add_argument('ticker')
+    p.add_argument('--run-id')
+    p.add_argument('--full', action='store_true')
+    p.set_defaults(func=cmd_monitor_suggest)
+
+    p = monitor_sub.add_parser(
+        'link', help='record that a watch item is measured by a warehouse metric')
+    p.add_argument('ticker')
+    p.add_argument('--watch-id')
+    p.add_argument('--match', help='resolve the watch item by name')
+    p.add_argument('--all-matches', action='store_true')
+    p.add_argument('--metric', required=True, help='a screening_metrics.json metric id')
+    p.add_argument('--note', help='why this metric measures this KPI')
+    p.add_argument('--by', default='operator', help='who is asserting this link')
+    p.add_argument('--run-id')
+    p.set_defaults(func=cmd_monitor_link)
+
+    p = monitor_sub.add_parser('unlink', help='remove a link; recorded observations stay')
+    p.add_argument('ticker')
+    p.add_argument('watch_id')
+    p.set_defaults(func=cmd_monitor_unlink)
+
+    p = monitor_sub.add_parser('links', help='links recorded for this company')
+    p.add_argument('ticker')
+    p.set_defaults(func=cmd_monitor_links)
+
+    p = monitor_sub.add_parser(
+        'ingest', help='record observations from the deterministic warehouse')
+    p.add_argument('ticker')
+    p.add_argument('--as-of', help='warehouse build date; defaults to the latest')
+    p.add_argument('--run-id')
+    p.set_defaults(func=cmd_monitor_ingest)
+
+    p = monitor_sub.add_parser('status', help='evaluate observations against declared thresholds')
+    p.add_argument('ticker', nargs='?')
+    p.add_argument('--tickers', help='comma-separated, for the portfolio view')
+    p.add_argument('--as-of', help='evaluation cutoff; defaults to today')
+    p.add_argument('--run-id')
+    p.add_argument('--full', action='store_true', help='include every item, not just the summary')
+    p.add_argument('--save', action='store_true', help='persist an immutable snapshot')
+    p.set_defaults(func=cmd_monitor_status)
+
+    p = monitor_sub.add_parser('drift', help='what changed between this company\'s harness runs')
+    p.add_argument('ticker')
+    p.add_argument('--run-ids', help='comma-separated; turns off convention-based grouping')
+    p.set_defaults(func=cmd_monitor_drift)
+
+    p = monitor_sub.add_parser('runs', help='list persisted monitoring snapshots')
+    p.set_defaults(func=cmd_monitor_runs)
+
+    p = sub.add_parser('deep-plan', help='build a deep-dive plan from a completed harness run')
+    p.add_argument('ticker')
+    p.add_argument('--force', action='store_true', help='request a deep dive the automatic policy did not select')
+    p.add_argument('--out')
+    p.set_defaults(func=cmd_deep_plan)
+
+    p = sub.add_parser('deep-run', help='run research, qualitative analysis, red team and synthesis')
+    p.add_argument('ticker')
+    p.add_argument('--provider', default='fixture')
+    p.add_argument('--model')
+    p.add_argument('--fixtures')
+    p.add_argument('--force', action='store_true')
+    p.add_argument('--markdown')
+    p.set_defaults(func=cmd_deep_run)
+
+    p = sub.add_parser('deep-report', help='render a stored deep dive as markdown')
+    p.add_argument('deep_dive_id')
+    p.add_argument('--out')
+    p.set_defaults(func=cmd_deep_report)
+
+    p = sub.add_parser('deep-list', help='list stored deep dives')
+    p.set_defaults(func=cmd_deep_list)
+
+    _register_data_adapters(sub)
+    _register_database(sub)
+    _register_workers(sub)
+    return sub
+
+
+def _register_workers(sub):
+    """Worker commands, when the database layer is installed.
+
+    The queue is a table, so the worker has exactly the database's
+    dependencies and none of its own. Without them the rest of the CLI is
+    unaffected.
+    """
+    try:
+        from workers import cli as worker_cli
+    except Exception:
+        return None
+    return worker_cli.register(sub)
+
+
+def _register_database(sub):
+    """Database commands, when SQLAlchemy is installed.
+
+    The database is optional. A checkout without it keeps every other command,
+    and nothing else in the platform reads from it unless asked.
+    """
+    try:
+        from db import cli as database_cli
+    except Exception:
+        return None
+    return database_cli.register(sub)
+
+
+def _register_data_adapters(sub):
+    """SEC/DART ingestion commands, when the adapters are installed.
+
+    They carry their own dependencies (PyYAML for the Korean account map), so a
+    checkout without them keeps every other command rather than failing at
+    argument-parsing time.
+    """
+    try:
+        from data_adapters import cli as adapters_cli
+    except Exception:
+        return None
+    return adapters_cli.register(sub)
