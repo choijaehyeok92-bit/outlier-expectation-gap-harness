@@ -1,0 +1,175 @@
+{
+  "agent_id": "RT",
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 50,
+  "confidence_0_1": 0.95,
+  "thesis": "가장 강한 숏 논리는 '비만약 수요가 없다'가 아니라 시장이 현재 초과성장을 너무 오래 지속된다고 보는 위험이다. Mounjaro/Zepbound가 Q2 매출의 약 65%를 차지하는 가운데 realized price는 13% 하락했다. 동시에 대규모 제조 CAPEX, acquired IPR&D, M&A와 부채 증가가 진행된다. 경쟁·급여·안전성·용량 확대 실패가 겹치면 FCF와 멀티플이 함께 압축돼 60~70% 하락이 가능하다. 그러나 cutoff 현재 Hard Veto 요건은 충족되지 않는다.",
+  "evidence": [
+    {
+      "evidence_id": "LLY-RT-CONC",
+      "economic_driver": "franchise_concentration",
+      "claim": "Mounjaro $9.943B plus Zepbound $4.928B represented about 64.7% of Q2 2026 revenue, creating a common-factor metabolic-franchise exposure.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 0.6473,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-RT-PRICE",
+      "economic_driver": "pricing_pressure",
+      "claim": "Q2 revenue grew 48% with 60% volume growth but realized prices fell 13%; outside-U.S. realized prices fell more sharply, partly due to China reimbursement.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000077/q226lillysalesandearningsp.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": -0.13,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-RT-REINVEST",
+      "economic_driver": "capital_intensity",
+      "claim": "H1 2026 included $5.259B capex, $7.329B internal R&D, substantial acquired IPR&D charges and $9.805B cash acquisitions, so headline CFO-capex excludes important recurring pharma reinvestment.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-RT-DEBT",
+      "economic_driver": "balance_sheet",
+      "claim": "Total debt reached about $54.9B at June 30, 2026 after a large financing/acquisition cycle, while conservative net debt was about $42.1B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-05",
+      "value": 54908000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-RT-CONTROLS",
+      "economic_driver": "reporting_integrity",
+      "claim": "Against the short thesis, the FY2025 10-K states ICFR was effective and Ernst & Young issued unqualified opinions; no cutoff-valid restatement or material weakness was identified.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000013/lly-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-18",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-RT-VAL",
+      "economic_driver": "valuation_downside",
+      "claim": "Frozen harness values are about $345 Bear, $1,283 Base and $2,017 Bull versus $1,164.89 price, so a severe normalization scenario permits large equity downside without insolvency.",
+      "source_type": "other",
+      "source": "runs/LLY/aggregate.json",
+      "period": "valuation as of 2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 345.2555,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Q2 volume growth of 60%, 85.8% gross margin and strong earnings contradict a current economic-moat collapse.",
+    "Orforglipron approval and positive retatrutide Phase 3 evidence reduce dependence on a single existing product.",
+    "TTM operating cash flow is very large and committed liquidity remains ample relative to debt service.",
+    "Current price is below Base and far below Bull, so the valuation does not require an impossible Bull-plus outcome."
+  ],
+  "unknowns": [
+    "Full-cycle payer/rebate pressure after broad obesity reimbursement expands.",
+    "Long-run adherence and safety differentiation versus competing incretins.",
+    "Economic returns on the 2025-26 acquisition/IPR&D wave.",
+    "Normalized capex and capacity utilization after current plants ramp.",
+    "Commercial cannibalization among Lilly metabolic successors."
+  ],
+  "falsifiers": [
+    "Realized prices stabilize while volume, margin and owner FCF/share remain strong as capacity expands.",
+    "Orforglipron/retatrutide demonstrably add patients and value rather than merely cannibalizing tirzepatide.",
+    "External R&D/M&A milestones produce approvals and cash flows sufficient to validate current reinvestment returns."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "FY2025 ICFR was effective, EY issued unqualified opinions, and no cutoff-valid restatement, material weakness or auditor dispute was identified."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "LLY generates very large operating cash flow and has ample committed liquidity. Recent debt supports acquisitions/capacity rather than ordinary operating survival."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Strong clinical adoption, 60% Q2 volume growth and 85.8% gross margin demonstrate real product demand. Reimbursement affects economics but does not make growth subsidy-only."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "The RF proxy is noisy, but current earnings growth, margin resilience and cash generation contradict a structural return collapse. This remains a monitoring issue, not a veto."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Commercial scale, successor pipeline, clinical data and manufacturing capacity are expanding. Price pressure is real but does not yet establish persistent moat contraction."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Frozen price is below Base and far below Bull; a Bull-plus outcome is not required by current price."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Revenue concentration in metabolic therapy is high but spans multiple products, indications, geographies and additional therapeutic areas. No single customer or single approval event is shown to cause irrecoverable franchise failure."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Volume / realized price / gross margin",
+      "direction": "balanced",
+      "threshold": "price pressure does not overwhelm volume and margin economics",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Owner FCF/share incl. external R&D normalization",
+      "direction": "up",
+      "threshold": "cash growth survives after recurring pipeline/M&A reinvestment",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Metabolic concentration / successor mix",
+      "direction": "diversify",
+      "threshold": "new products and non-metabolic assets reduce common-factor dependence",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 pricing, volume and gross-margin bridge.",
+    "Acquired IPR&D/M&A milestone and impairment evidence.",
+    "Capacity utilization and debt trajectory as new plants ramp."
+  ],
+  "verdict": "oppose",
+  "subscores": [],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
