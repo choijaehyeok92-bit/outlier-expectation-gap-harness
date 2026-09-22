@@ -1,0 +1,44 @@
+name: META remaining core validate 2026-09-21
+
+on:
+  push:
+    branches:
+      - work/meta-2026-09-21-v33
+    paths:
+      - ".github/workflows/meta-core-validate-20260921.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/meta-2026-09-21-v33
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Validate remaining core reports
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runlogs
+          exec > >(tee runlogs/meta-core-validate.log) 2>&1
+          for a in SL CP MT RF MA LG; do
+            python harness.py validate META "$a"
+          done
+          python harness.py aggregate META | tee runlogs/aggregate-after-core.json
+          python harness.py digest META
+          python harness.py plan META | tee runlogs/plan-after-core.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/META runlogs
+          if ! git diff --cached --quiet; then
+            git commit -m "run: validate META remaining core 2026-09-21"
+            git push origin HEAD:work/meta-2026-09-21-v33
+          fi
