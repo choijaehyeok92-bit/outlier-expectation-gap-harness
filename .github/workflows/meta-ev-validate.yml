@@ -1,4 +1,4 @@
-name: META EV validate aggregate digest 2026-09-18
+name: META triage validate aggregate digest 2026-09-18
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 jobs:
-  ev:
+  triage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,30 +23,33 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install -r requirements-dev.txt
-      - name: Validate EV and aggregate
+      - name: Validate triage and recompute
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p runlogs
-          exec > >(tee runlogs/meta-ev-final.log) 2>&1
+          exec > >(tee runlogs/meta-triage-final.log) 2>&1
 
           python harness.py validate META EV | tee runlogs/validate-ev.txt
-          python harness.py aggregate META | tee runlogs/aggregate-after-ev.json
+          python harness.py validate META AS | tee runlogs/validate-as.txt
+          python harness.py validate META DI | tee runlogs/validate-di.txt
+          python harness.py validate META FS | tee runlogs/validate-fs.txt
+          python harness.py aggregate META | tee runlogs/aggregate-after-triage.json
           python harness.py digest META
-          python harness.py plan META | tee runlogs/plan-after-ev.txt
+          python harness.py plan META | tee runlogs/plan-after-triage.txt
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add runs/META runlogs
           if ! git diff --cached --quiet; then
-            git commit -m "run: validate and aggregate META EV 2026-09-18"
+            git commit -m "run: validate META triage and recompute"
             git push origin HEAD:work/meta-2026-09-18-v33
           fi
 
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: META-ev-validated-2026-09-18
+          name: META-triage-validated-2026-09-18
           path: |
             runs/META
             runlogs
