@@ -1,0 +1,27 @@
+{
+  "strategy_version": "3.3",
+  "schema_version": "3.3",
+  "decision_policy_version": "3.3",
+  "provider_calibration_mode": "shadow",
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "frozen": true,
+  "financial_pack_required": true,
+  "harness_commit": "bc34aa177cde5bf0f7d50a5e77782457a8aa03c6",
+  "runner": {
+    "provider": null,
+    "model": null,
+    "reasoning_effort": null
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "investor_materials"
+    ]
+  },
+  "review_only": false,
+  "reconstructed": true,
+  "reconstruction_reason": "The connected environment cannot replay the repository CLI/SEC fetch subprocess directly. Stage 0 and frozen inputs are reconstructed from cutoff-valid SEC filings and current v3.3 policy."
+}
