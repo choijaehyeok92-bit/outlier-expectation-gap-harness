@@ -1,68 +1,83 @@
 # Digest — LLY (as of 2026-09-21)
 
-> Reconstructed v3.3 triage output. Deterministic policy arithmetic is mirrored because the current connector environment cannot replay the repository CLI/EDGAR subprocess directly.
+> Reconstructed v3.3 full-core output. Pharmaceutical RF treats acquired IPR&D and acquisitions as economically meaningful reinvestment rather than automatically excluding them as one-time items.
 
-score **64.46** (ex-valuation **70.25**, Starter / Watch) · archetype **non_fit** · veto **PENDING_REVIEW** · state **INCOMPLETE**
+score **76.66** (ex-valuation **80.18**, Emerging Outlier) · archetype **compounder** · veto **PENDING_REVIEW** · state **WATCH**
 
-signals: price/Base **0.9081x** · forward revenue CAGR **24%** · market cap **$1.041T** · reachable(raw) **['compounder']**
+position pre-IC: **0% until veto cleared**
 
-## Universal triage
+## Core scorecard
 
-| Agent | Domain | Score | Bear–Bull | Result |
-|---|---|---:|---:|---|
-| EV | Expectation / Valuation | **56.75** | 35–80 | neutral |
-| AS | Asymmetry | **61.75** | 40–80 | neutral |
-| DI | Disruptive Innovation | **82.00** | 65–95 | support |
-| FS | Financial Survival | **78.75** | 60–90 | support |
+| Domain | Score |
+|---|---:|
+| SL — Structural Leadership | **86.25** |
+| CP — Customer / Product | **84.50** |
+| MT — Moat Trajectory | **79.75** |
+| RF — Reinvestment / FCF | **83.00** |
+| MA — Management / Allocation | **83.00** |
+| FS — Financial Survival | **78.75** |
+| EV — Expectation / Valuation | **56.75** |
+| AS — Asymmetry | **61.75** |
+| DI — Disruptive Innovation | **82.00** |
 
-## Reachability after triage
+## Archetype result
 
-**Compounder remains reachable.**
+**Compounder is eligible** and is the only reachable archetype.
 
-It already clears:
+It clears:
 - price/Base **0.9081 <= 1.2**
+- MT **79.75 >= 76**
+- RF **83 >= 76**
+- MA **83 >= 72**
 - FS **78.75 >= 72**
 - EV **56.75 >= 42**
+- incremental ROIC **80 >= 75**
+- reinvestment runway **90 >= 70**
 
-It still requires MT >=76, RF >=76, MA >=72, incremental ROIC >=75 and reinvestment runway >=70.
+Compounder deterministic fit score: **82.88**.
 
-**Growth** fails because AS **61.75 < 65**.  
-**Outlier Growth** also fails AS **61.75 < 65**.  
-**Buffett Value** fails price/Base **0.9081 > 0.85** and AS **61.75 < 65**.  
-**Moonshot** fails market cap and AS gates.
+Growth and Outlier Growth remain excluded because AS is **61.75 < 65**. Buffett Value misses price/Base and AS.
 
-## Asymmetry
+## Why RF passes
 
-Locked Bear/Base/Bull values are **$345.26 / $1,282.74 / $2,016.84** versus price **$1,164.89**.
+TTM through Q2 2026:
+- OCF ≈ **$28.08B**
+- capex ≈ **$9.89B**
+- internal R&D ≈ **$14.60B**
+- (capex + R&D) / OCF ≈ **87.2%**
 
-- Bull/current ≈ **1.73x** -> upside_path **75**
-- Bear/current ≈ **0.30x** -> permanent_loss **50**
-- probability calibration **60**
-- weighted AS = **61.75**
+That places reinvestment absorption above the rubric's 60% upper band. A rough FY2024→FY2025 incremental net-income / incremental debt+equity proxy is about **47.6%**, comfortably above twice the 9% required return, although it is not a formal ROIC measure.
 
-The business has several growth paths, but the starting market capitalization and low Bear/current ratio keep risk-adjusted asymmetry below the Growth/Outlier threshold.
+TTM CFO-capex is roughly **$18.19B**, about **$20.35/share**, versus FY2025 roughly **$9.98/share**. The cash improvement is real but partly reflects working-capital normalization.
 
-## Disruptive innovation
+The important restraint is pharmaceutical reinvestment outside standard FCF: TTM cash purchases of in-process R&D are roughly **$4.63B**, and H1 2026 acquisitions were **$9.81B**. These are economically meaningful and prevent headline CFO-capex from being treated as pure distributable owner cash.
 
-The metabolic franchise is already at mainstream scale. Q2 Mounjaro and Zepbound revenue totaled **$14.871B**. Orforglipron was FDA-approved and launched for obesity, while retatrutide Phase 3 obesity and type 2 diabetes trials met primary endpoints.
+## Management / allocation
 
-DI scores **82.0**: the clinical/adoption shift is substantial, but competing pharmaceutical companies are well capitalized and reimbursement can constrain value capture.
+The weighted-average repurchase price across Q3 2025 through Q2 2026 is approximately **$942.81/share**, or about **0.735x** the frozen Base value. This maps capital allocation to **80**.
 
-## Financial survival
+The 2026 proxy reports that incentive pay represented **94%** of CEO target compensation and **88%** on average for other named executive officers. Standing board committees are fully independent. Governance is scored 85, with a modest discount for the combined chair/CEO structure.
 
-At June 30, Lilly had **$8.95B cash + $3.856B investments**, **$54.908B total debt**, and **$10.1B unused committed bank facilities**.
+## Moat and concentration
 
-Estimated TTM operating cash flow is about **$28.08B**. H1 OCF was **$16.023B** against **$5.259B capex**.
+The moat is supported by patents/data exclusivity, large clinical programs, manufacturing capacity, regulatory know-how and successor molecules. It is not a classic network-effect moat.
 
-Q2 diluted shares fell about **0.68% YoY**, and H1 repurchases were about **$4.0B**. Identified off-balance commitments are well below 0.5x estimated TTM revenue.
+Q2 revenue mix remains concentrated:
+- cardiometabolic health: about **79.9%**
+- oncology: about **11.2%**
+
+Those are the only two independent therapeutic markets above 10%, so durability is strong but not fully diversified.
+
+## Why state is still WATCH
+
+Compounder gates are satisfied, but Hard Veto status remains **PENDING_REVIEW** because RT has not completed its independent co-owner review. The global macro overlay is also stale/missing.
+
+Therefore:
+
+`WATCH — 0% until veto cleared`
 
 ## Next plan
 
-`domain_analysis`
-- **SL** — Structural Leadership
-- **CP** — Customer / Product
-- **MT** — Moat Trajectory
-- **RF** — Reinvestment / FCF
-- **MA** — Management / Allocation
+`macro`: **MO**
 
-For LLY, RF is likely to be the binding domain: manufacturing capex, recurring acquired IPR&D, acquisitions and owner-FCF/share normalization must be evaluated together rather than treating pipeline investment as one-time noise.
+After MO: **ED + RT**, then **IC** if no blocking issue emerges.
