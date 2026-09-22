@@ -19,7 +19,8 @@
  */
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
-import { api, type PipelineStatus, type PipelineStep, type StageRunResult } from '@/lib/api';
+import { api, type PipelineStatus, type PipelineStep, type StageProviders,
+         type StageRunResult } from '@/lib/api';
 
 const CHAINABLE = ['universe', 'market', 'warehouse', 'screen'];
 const DEFAULT_QUERY = '순현금이고 hard veto 통과, 코어 점수 70 이상';
@@ -34,6 +35,13 @@ const STATE_COLOR: Record<string, string> = {
 export default function PipelinePage() {
   const [asOf, setAsOf] = useState('2026-09-21');
   const [status, setStatus] = useState<PipelineStatus | null>(null);
+  const [catalogue, setCatalogue] = useState<StageProviders | null>(null);
+  // Per stage, because the offline stand-ins differ: `placeholder` analyses
+  // nothing, `fixture` replays a recording, and offering the wrong one for a
+  // stage produces a run that looks finished and contains nothing.
+  const [providerFor, setProviderFor] = useState<Record<string, string>>({});
+  const [modelFor, setModelFor] = useState<Record<string, string>>({});
+  const [deepTicker, setDeepTicker] = useState('');
   const [query, setQuery] = useState(DEFAULT_QUERY);
   const [busy, setBusy] = useState<string | null>(null);
   const [log, setLog] = useState<string[]>([]);
@@ -44,6 +52,15 @@ export default function PipelinePage() {
     try { setStatus(await api.pipeline(date)); } catch (e) { setError(String((e as Error).message)); }
   }, []);
   useEffect(() => { refresh(asOf); }, [refresh, asOf]);
+  useEffect(() => {
+    api.pipelineProviders()
+      .then((payload) => {
+        setCatalogue(payload);
+        setProviderFor(Object.fromEntries(
+          Object.entries(payload.stages).map(([id, set]) => [id, set.default])));
+      })
+      .catch(() => setCatalogue(null));
+  }, []);
 
   const say = (line: string) => setLog((prev) => [...prev, line]);
 
@@ -94,16 +111,93 @@ export default function PipelinePage() {
     setBusy(null); await refresh(asOf);
   }
 
+  const chosen = (id: string) =>
+    catalogue?.stages[id]?.options.find((o) => o.name === providerFor[id]);
+
   async function paid(id: string, live: boolean) {
     setBusy(id); setError(null);
     try {
-      const body = { as_of_date: asOf, dry_run: !live, ...(live ? { provider: 'placeholder' } : {}) };
+      const option = chosen(id);
+      const model = modelFor[id]?.trim();
+      const body = {
+        as_of_date: asOf, dry_run: !live,
+        provider: providerFor[id] ?? catalogue?.stages[id]?.default ?? 'placeholder',
+        ...(option?.kind === 'api' && model ? { model } : {}),
+      };
       const result = id === 'triage' ? await api.triage(body) : await api.fullHarness(body);
       setDryRun((prev) => ({ ...prev, [id]: result }));
-      if (live) say(`${id}: 실행됨 — ${(result.results ?? []).length}건`);
+      if (live) say(`${id}: ${body.provider}로 실행됨 — ${(result.results ?? []).length}건`);
     } catch (e) { setError(String((e as Error).message)); }
     finally { setBusy(null); await refresh(asOf); }
   }
+
+  async function runDeepDive() {
+    if (!deepTicker) { setError('종목을 고르지 않았다'); return; }
+    setBusy('deep'); setError(null);
+    try {
+      const option = chosen('deep');
+      const model = modelFor.deep?.trim();
+      const r = await api.deepDiveRun(deepTicker, true,
+                                      providerFor.deep ?? 'fixture',
+                                      option?.kind === 'api' && model ? model : undefined);
+      say(`deep: ${deepTicker} → ${r.deep_dive_id} (${providerFor.deep})`);
+    } catch (e) { setError(String((e as Error).message)); }
+    finally { setBusy(null); await refresh(asOf); }
+  }
+
+  /** The provider picker, model box and cost line shared by the paid stages. */
+  const ProviderPicker = ({ id }: { id: string }) => {
+    const set = catalogue?.stages[id];
+    if (!set) return null;
+    const option = chosen(id);
+    return (
+      <div className="mt-3 space-y-2">
+        <div className="flex flex-wrap items-end gap-3 text-sm">
+          <label className="flex flex-col gap-1">
+            <span className="muted text-xs">공급자</span>
+            <select
+              value={providerFor[id] ?? set.default}
+              onChange={(e) => setProviderFor((p) => ({ ...p, [id]: e.target.value }))}
+              className="rounded-md bg-transparent px-2 py-1"
+              style={{ border: '1px solid var(--border)', color: 'var(--text)' }}
+            >
+              {set.options.map((o) => (
+                <option key={o.name} value={o.name} style={{ background: 'var(--surface)' }}>
+                  {o.name}{o.spends_money ? ' · 유료' : ' · 오프라인'}{o.configured ? '' : ' · 키 없음'}
+                </option>
+              ))}
+            </select>
+          </label>
+          {option?.kind === 'api' && (
+            <label className="flex flex-col gap-1">
+              <span className="muted text-xs">모델 (비우면 기본값)</span>
+              <input
+                value={modelFor[id] ?? ''}
+                onChange={(e) => setModelFor((p) => ({ ...p, [id]: e.target.value }))}
+                placeholder={option.default_model ?? ''}
+                className="rounded-md bg-transparent px-2 py-1"
+                style={{ border: '1px solid var(--border)', minWidth: '11rem' }}
+              />
+            </label>
+          )}
+        </div>
+        {option && <p className="muted text-xs">{option.note}</p>}
+        {option && !option.configured && (
+          <p className="text-xs" style={{ color: '#fbbf24' }}>
+            서버에 <code>{option.env_var}</code>가 없어 지금 고르면 실패한다. 키는 API 프로세스의
+            환경변수에 두고 재시작한다 — 브라우저로 전송되지 않으며 이 화면은 키를 알지 못한다.
+          </p>
+        )}
+        {option?.spends_money && option.configured && (
+          <p className="text-xs" style={{ color: '#fbbf24' }}>
+            실제 모델이다. 기업당 {set.calls_per_company}콜이 그대로 과금된다.
+            판정 계층은 영향받지 않는다 — 점수·archetype·Hard Veto·밸류에이션은 하네스가 계산한다.
+            {catalogue?.model_note && ` ${catalogue.model_note}`}
+          </p>
+        )}
+      </div>
+    );
+  };
 
   const cred = status?.credentials ?? [];
   const missing = cred.filter((c) => !c.configured);
@@ -159,19 +253,38 @@ export default function PipelinePage() {
                         style={{ border: `1px solid ${eligible.length ? '#fbbf24' : 'var(--border)'}`,
                                  color: eligible.length ? '#fbbf24' : undefined,
                                  opacity: eligible.length ? 1 : 0.5 }}>
-                  실행 — {eligible.length}개 × {step.calls_per_company}콜 = {eligible.length * (step.calls_per_company ?? 0)}콜
+                  {chosen(step.id)?.spends_money ? '유료 실행' : '실행'} — {eligible.length}개 × {step.calls_per_company}콜 = {eligible.length * (step.calls_per_company ?? 0)}콜
                 </button>
               )}
             </>
           )}
           {step.id === 'deep' && (
-            <Link href="/reports" className="rounded-md px-3 py-1.5 text-sm no-underline"
-                  style={{ border: '1px solid var(--border)', color: 'var(--text)' }}>
-              보고서 보기 →
-            </Link>
+            <>
+              <select value={deepTicker} onChange={(e) => setDeepTicker(e.target.value)}
+                      className="rounded-md bg-transparent px-2 py-1.5 text-sm"
+                      style={{ border: '1px solid var(--border)', color: 'var(--text)' }}>
+                <option value="" style={{ background: 'var(--surface)' }}>종목 선택…</option>
+                {(step.eligible ?? []).map((ticker) => (
+                  <option key={ticker} value={ticker} style={{ background: 'var(--surface)' }}>{ticker}</option>
+                ))}
+              </select>
+              <button onClick={runDeepDive} disabled={busy !== null || !deepTicker}
+                      className="rounded-md px-3 py-1.5 text-sm font-medium"
+                      style={{ border: `1px solid ${deepTicker ? '#fbbf24' : 'var(--border)'}`,
+                               color: deepTicker ? '#fbbf24' : undefined,
+                               opacity: deepTicker ? 1 : 0.5 }}>
+                {busy === 'deep' ? '작성 중…' : `보고서 작성 — ${step.calls_per_company}콜`}
+              </button>
+              <Link href="/reports" className="rounded-md px-3 py-1.5 text-sm no-underline"
+                    style={{ border: '1px solid var(--border)', color: 'var(--text)' }}>
+                보고서 보기 →
+              </Link>
+            </>
           )}
           <code className="muted text-xs">{step.action}</code>
         </div>
+
+        {step.spends_money && <ProviderPicker id={step.id} />}
 
         {plan && (
           <div className="mt-2 text-xs">
@@ -188,8 +301,7 @@ export default function PipelinePage() {
               </p>
             )}
             <p className="muted mt-1">
-              실행은 오프라인 placeholder 공급자로 돈다 — 실제 모델은 CLI에서{' '}
-              <code>--provider openai</code>로 명시한다. 큐에 한 줄 넣는 것만으로 돈이 나가면 안 된다.
+              공급자는 아래에서 고른다. 기본값은 오프라인 스텁이라 여기까지는 과금되지 않는다.
             </p>
           </div>
         )}

@@ -220,6 +220,49 @@ def ingest_packs(request: PackIngestRequest):
 
 
 
+def _stage_provider(stage: str, name: str, model: str | None, *, run_id: str | None = None):
+    """The provider a paid stage will run with, or a refusal that names what is missing.
+
+    Until now these routes called `resolve_provider` bare, so choosing a real
+    model without its key raised out of the handler as a 500. A page that lets
+    somebody pick `openai` has to be able to tell them which variable is unset,
+    and 500 does not tell them anything.
+    """
+    from packages import pipeline
+    stages = pipeline.providers()['stages']
+    options = {row['name']: row for row in (stages.get(stage) or {}).get('options', [])}
+    row = options.get(name)
+    if row is None:
+        raise HTTPException(422, f'{name!r} is not an option for {stage}; '
+                                 f'choose one of {sorted(options)}')
+    if not row['configured']:
+        raise HTTPException(422, f"{name} is selected but {row['env_var']} is not set on the "
+                                 "server. Set it in the API process's environment and restart; "
+                                 'the key stays on the server and is never sent to the browser.')
+    if name == 'placeholder':
+        from packages.orchestration.fixtures import PlaceholderAgentProvider
+        return PlaceholderAgentProvider()
+    kwargs = {}
+    if name == 'fixture' and run_id:
+        kwargs['root'] = ROOT / 'packages' / 'research' / 'fixtures' / run_id
+    try:
+        return resolve_provider(name, model, **kwargs)
+    except LLMError as error:
+        raise HTTPException(422, str(error)) from error
+
+
+@app.get('/api/pipeline/providers')
+def pipeline_providers():
+    """What each paid stage may be run with, and whether its key exists.
+
+    Never the key itself, its length or a prefix of it. The offline stand-in is
+    listed first and is every stage's default, so opening the page is not one
+    click away from spending money.
+    """
+    from packages import pipeline
+    return pipeline.providers()
+
+
 @app.get('/api/pipeline/status')
 def pipeline_status(as_of_date: str = Query(..., pattern=r'^\d{4}-\d{2}-\d{2}$')):
     """What is done, what is next, and which steps cost money.
@@ -502,12 +545,7 @@ def harness_triage(request: TriageRequest):
                 'not_eligible': [c.to_dict() for c in candidates if not c.eligible],
                 'verification_scope': config['verification_scope']}
 
-    if request.provider == 'placeholder':
-        from packages.orchestration.fixtures import PlaceholderAgentProvider
-        provider = PlaceholderAgentProvider()
-    else:
-        provider = resolve_provider(request.provider, request.model)
-
+    provider = _stage_provider('triage', request.provider, request.model)
     result = batch.run_batch(candidates, provider, config=config, as_of_date=as_of,
                              force=request.force, stage='triage')
     record = triage_store.build_record(result.to_dict(), config, stage='triage')
@@ -533,10 +571,7 @@ def harness_triage_run(triage_run_id: str):
 
 def _orchestration_provider(request):
     """Offline placeholder unless a real model was asked for by name."""
-    if request.provider == 'placeholder':
-        from packages.orchestration.fixtures import PlaceholderAgentProvider
-        return PlaceholderAgentProvider()
-    return resolve_provider(request.provider, request.model)
+    return _stage_provider('full', request.provider, request.model)
 
 
 @app.post('/api/harness/full')
@@ -850,10 +885,8 @@ def deep_dive_plan(request: DeepDivePlanRequest):
 
 @app.post('/api/deep-dive/run')
 def deep_dive_run(request: DeepDiveRunRequest):
-    fixtures = ROOT / 'packages' / 'research' / 'fixtures' / request.run_id
-    provider_kwargs = {'root': fixtures} if request.provider == 'fixture' else {}
+    provider = _stage_provider('deep', request.provider, request.model, run_id=request.run_id)
     try:
-        provider = resolve_provider(request.provider, request.model, **provider_kwargs)
         report, plan, _path = deep_run.run(request.run_id, provider,
                                            user_requested=request.user_requested)
     except ValueError as error:

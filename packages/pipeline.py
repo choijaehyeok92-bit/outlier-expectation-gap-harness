@@ -188,3 +188,61 @@ def estimate(step_id: str, companies: int) -> dict:
     return {'step': step_id, 'spends_money': True, 'companies': companies,
             'calls_per_company': per, 'calls': per * max(0, companies),
             'note': '에이전트 호출 수다. 토큰 비용은 모델과 보고서 길이에 따라 달라진다.'}
+
+
+# Each paid stage has its own offline stand-in, and they are not the same
+# thing: `placeholder` is an agent provider that analyses nothing and exists to
+# exercise the orchestration, while `fixture` replays a recorded deep-dive
+# response. Offering the wrong one for a stage would produce a run that looks
+# finished and contains nothing.
+OFFLINE_BY_STAGE = {
+    'triage': {'name': 'placeholder', 'kind': 'offline', 'spends_money': False,
+               'env_var': None, 'default_model': None,
+               'note': '오프라인 스텁이다. 아무것도 분석하지 않고 배선만 확인한다.'},
+    'full': {'name': 'placeholder', 'kind': 'offline', 'spends_money': False,
+             'env_var': None, 'default_model': None,
+             'note': '오프라인 스텁이다. 아무것도 분석하지 않고 배선만 확인한다.'},
+    'deep': {'name': 'fixture', 'kind': 'offline', 'spends_money': False,
+             'env_var': None, 'default_model': 'fixture-v1',
+             'note': '저장된 응답을 재생한다. 호출도 과금도 없다.'},
+}
+
+
+def providers(environ=None) -> dict:
+    """What each paid stage may be run with, and whether a key exists for it.
+
+    `configured` is a boolean and nothing else. The key, its length and any
+    prefix of it stay in the server process; this is served to a browser.
+
+    The offline option is listed first and is the default for every stage, so
+    the page opens on something that cannot spend money.
+    """
+    import os
+    from packages.llm.providers import CATALOGUE
+    env = environ if environ is not None else os.environ
+    paid = []
+    for name, meta in CATALOGUE.items():
+        if not meta['spends_money']:
+            continue
+        paid.append({'name': name, 'kind': meta['kind'],
+                     'spends_money': True, 'env_var': meta['env_var'],
+                     'default_model': meta['default_model'], 'note': meta['note'],
+                     'configured': bool((env.get(meta['env_var']) or '').strip())})
+    stages = {}
+    for step in STEPS:
+        if not step['spends_money']:
+            continue
+        offline = dict(OFFLINE_BY_STAGE[step['id']], configured=True)
+        stages[step['id']] = {
+            'title': step['title'],
+            'calls_per_company': step['calls_per_company'],
+            'default': offline['name'],
+            'options': [offline] + paid,
+        }
+    return {'stages': stages,
+            'note': ('기본값은 각 단계의 오프라인 스텁이다 — 화면을 여는 것만으로 돈이 나가지 '
+                     '않는다. 실제 모델은 이름으로 고르는 명시적 선택이며, 그때 호출 수는 '
+                     '기업당 에이전트 수만큼이다.'),
+            'model_note': ('모델 이름은 검증 없이 그대로 전달된다. 이 저장소는 공급자의 모델 '
+                           '목록을 들고 있지 않으므로, 없는 이름이면 공급자가 돌려준 오류가 '
+                           '그대로 보인다.')}

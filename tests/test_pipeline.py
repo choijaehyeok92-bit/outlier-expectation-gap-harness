@@ -120,5 +120,48 @@ class EstimateTests(unittest.TestCase):
         self.assertEqual(pipeline.estimate('nonexistent', 10)['calls'], 0)
 
 
+class ProviderTests(unittest.TestCase):
+    def test_every_paid_stage_defaults_to_something_offline(self):
+        """Opening the page must not be one click away from spending money."""
+        for stage, meta in pipeline.providers(environ={})['stages'].items():
+            default = next(o for o in meta['options'] if o['name'] == meta['default'])
+            self.assertFalse(default['spends_money'], stage)
+            self.assertEqual(meta['options'][0]['name'], meta['default'],
+                             'the offline option comes first')
+
+    def test_the_deep_dive_offline_stand_in_is_not_the_agent_placeholder(self):
+        """`placeholder` analyses nothing and `fixture` replays a recording.
+        Offering the wrong one produces a run that looks finished and is
+        empty."""
+        stages = pipeline.providers(environ={})['stages']
+        self.assertEqual(stages['triage']['default'], 'placeholder')
+        self.assertEqual(stages['full']['default'], 'placeholder')
+        self.assertEqual(stages['deep']['default'], 'fixture')
+
+    def test_the_catalogue_says_whether_a_key_exists_and_never_what_it_is(self):
+        secret = 'sk-live-DO-NOT-LEAK-abcdef0123456789'
+        payload = pipeline.providers(environ={'OPENAI_API_KEY': secret})
+        openai = next(o for o in payload['stages']['full']['options'] if o['name'] == 'openai')
+        self.assertTrue(openai['configured'])
+        self.assertEqual(openai['env_var'], 'OPENAI_API_KEY')
+        rendered = json.dumps(payload, ensure_ascii=False)
+        self.assertNotIn(secret, rendered)
+        self.assertNotIn(secret[:12], rendered, 'not even a prefix of the key')
+
+    def test_a_blank_key_is_not_configured(self):
+        payload = pipeline.providers(environ={'OPENAI_API_KEY': '   '})
+        openai = next(o for o in payload['stages']['full']['options'] if o['name'] == 'openai')
+        self.assertFalse(openai['configured'])
+
+    def test_each_stage_carries_its_own_per_company_cost(self):
+        stages = pipeline.providers(environ={})['stages']
+        self.assertEqual(stages['triage']['calls_per_company'], 4)
+        self.assertEqual(stages['full']['calls_per_company'], 15)
+
+    def test_only_paid_stages_have_a_provider_choice(self):
+        stages = pipeline.providers(environ={})['stages']
+        self.assertEqual(set(stages), {'triage', 'full', 'deep'})
+
+
 if __name__ == '__main__':
     unittest.main()

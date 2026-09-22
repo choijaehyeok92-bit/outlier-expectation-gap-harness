@@ -170,6 +170,48 @@ class ApiTests(unittest.TestCase):
         self.assertNotIn(secret, body)
         self.assertNotIn(secret[:12], body, 'not even a prefix of the key')
 
+    def test_picking_a_model_without_its_key_is_a_422_not_a_crash(self):
+        """These routes used to call `resolve_provider` bare, so choosing a
+        real model without its key raised out of the handler. A page that lets
+        somebody pick `openai` has to name the unset variable."""
+        import os
+        previous = os.environ.pop('ANTHROPIC_API_KEY', None)
+        if previous is not None:
+            self.addCleanup(os.environ.__setitem__, 'ANTHROPIC_API_KEY', previous)
+        calls = [
+            ('/api/harness/triage', {'as_of_date': '2026-09-21', 'dry_run': False,
+                                     'provider': 'anthropic', 'persist': False}),
+            ('/api/harness/full', {'as_of_date': '2026-09-21', 'dry_run': False,
+                                   'provider': 'anthropic', 'persist': False}),
+            ('/api/deep-dive/run', {'run_id': 'MSFT', 'provider': 'anthropic'}),
+        ]
+        for path, body in calls:
+            with self.subTest(path=path):
+                response = CLIENT.post(path, json=body)
+                self.assertEqual(response.status_code, 422, response.text)
+                self.assertIn('ANTHROPIC_API_KEY', response.json()['detail'])
+                self.assertIn('never sent to the browser', response.json()['detail'])
+
+    def test_the_stage_provider_catalogue_never_carries_a_key(self):
+        import os
+        secret = 'sk-live-DO-NOT-LEAK-abcdef0123456789'
+        previous = os.environ.get('OPENAI_API_KEY')
+        os.environ['OPENAI_API_KEY'] = secret
+        self.addCleanup(lambda: os.environ.__setitem__('OPENAI_API_KEY', previous)
+                        if previous is not None else os.environ.pop('OPENAI_API_KEY', None))
+        response = CLIENT.get('/api/pipeline/providers')
+        stages = response.json()['stages']
+        openai = next(o for o in stages['full']['options'] if o['name'] == 'openai')
+        self.assertTrue(openai['configured'])
+        self.assertNotIn(secret, response.text)
+        self.assertNotIn(secret[:12], response.text)
+
+    def test_every_paid_stage_offers_an_offline_default(self):
+        stages = CLIENT.get('/api/pipeline/providers').json()['stages']
+        for name, meta in stages.items():
+            default = next(o for o in meta['options'] if o['name'] == meta['default'])
+            self.assertFalse(default['spends_money'], name)
+
     def test_the_pipeline_status_is_read_only(self):
         """Asking where the funnel stands must not move it, or the next button
         press becomes unreadable."""

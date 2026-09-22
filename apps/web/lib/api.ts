@@ -50,8 +50,11 @@ export const api = {
   deepDive: (id: string) => request<{ report: DeepDiveReport; plan: DeepDivePlan | null }>(`/api/deep-dive/${encodeURIComponent(id)}`),
   deepDivePlan: (runId: string, userRequested: boolean) =>
     request<DeepDivePlan>('/api/deep-dive/plan', { method: 'POST', body: JSON.stringify({ run_id: runId, user_requested: userRequested }) }),
-  deepDiveRun: (runId: string, userRequested: boolean) =>
-    request<{ deep_dive_id: string }>('/api/deep-dive/run', { method: 'POST', body: JSON.stringify({ run_id: runId, user_requested: userRequested, provider: 'fixture' }) }),
+  deepDiveRun: (runId: string, userRequested: boolean, provider = 'fixture', model?: string) =>
+    request<{ deep_dive_id: string }>('/api/deep-dive/run', {
+      method: 'POST',
+      body: JSON.stringify({ run_id: runId, user_requested: userRequested, provider, model }),
+    }),
   report: (id: string) => request<DeepDiveReport>(`/api/reports/${encodeURIComponent(id)}`),
   monitoring: (tickers?: string) =>
     request<MonitoringPortfolio>(`/api/monitoring${tickers ? `?tickers=${encodeURIComponent(tickers)}` : ''}`),
@@ -74,6 +77,7 @@ export const api = {
   ingestPacks: (body: PackIngestBody) =>
     request<PackIngestResult>('/api/ingest/packs', { method: 'POST', body: JSON.stringify(body) }),
   pipeline: (asOf: string) => request<PipelineStatus>(`/api/pipeline/status?as_of_date=${encodeURIComponent(asOf)}`),
+  pipelineProviders: () => request<StageProviders>('/api/pipeline/providers'),
   warehouseBuild: (asOf: string) =>
     request<WarehouseBuildResult>('/api/warehouse/build', { method: 'POST', body: JSON.stringify({ as_of_date: asOf }) }),
   triage: (body: Record<string, unknown>) =>
@@ -680,6 +684,35 @@ export interface StageRunResult {
   results?: StageCandidate[];
   summary?: Record<string, unknown>;
   [key: string]: unknown;
+}
+
+/**
+ * What a paid stage may be run with. Each stage has its own offline stand-in —
+ * `placeholder` analyses nothing, `fixture` replays a recording — and it is
+ * listed first and chosen by default, so opening the page is not one click
+ * away from spending money.
+ */
+export interface StageProviderOption {
+  name: string;
+  kind: 'offline' | 'api';
+  spends_money: boolean;
+  env_var: string | null;
+  default_model: string | null;
+  note: string;
+  configured: boolean;
+}
+
+export interface StageProviderSet {
+  title: string;
+  calls_per_company: number;
+  default: string;
+  options: StageProviderOption[];
+}
+
+export interface StageProviders {
+  stages: Record<string, StageProviderSet>;
+  note: string;
+  model_note: string;
 }
 
 /** A missing value is unknown, not zero. The UI says so everywhere. */
