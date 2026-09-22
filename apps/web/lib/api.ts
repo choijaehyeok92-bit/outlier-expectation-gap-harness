@@ -75,6 +75,10 @@ export const api = {
     request<CandidateList>(`/api/universe/candidates?as_of_date=${encodeURIComponent(asOf)}`
       + `&markets=${encodeURIComponent(markets)}&limit=${limit}`
       + `&include_ingested=${includeIngested}`),
+  resolveSymbols: (symbols: string[]) =>
+    request<SymbolResolution>('/api/universe/resolve', {
+      method: 'POST', body: JSON.stringify({ symbols }),
+    }),
   ingestPacks: (body: PackIngestBody) =>
     request<PackIngestResult>('/api/ingest/packs', { method: 'POST', body: JSON.stringify(body) }),
   pipeline: (asOf: string) => request<PipelineStatus>(`/api/pipeline/status?as_of_date=${encodeURIComponent(asOf)}`),
@@ -762,6 +766,34 @@ export interface CredentialSaved {
   name: string;
   configured: boolean;
   cleared: boolean;
+  note: string;
+}
+
+/**
+ * One pasted symbol, reconciled against the regulator's universe.
+ *
+ * `near` exists so a declared rewrite (BRK.B for the regulator's BRK-B, a
+ * Korean code missing its leading zeros) is offered rather than applied. The
+ * company name is the real check: a mis-read character produces a real other
+ * company, and every stage after this one would analyse it without anything
+ * looking wrong.
+ */
+export interface ResolvedSymbol {
+  input: string;
+  status: 'matched' | 'near' | 'excluded' | 'unknown';
+  ticker?: string;
+  company_name?: string | null;
+  exchange?: string | null;
+  jurisdiction?: 'US' | 'KR';
+  requires_review?: boolean;
+  reason?: string | null;
+}
+
+export interface SymbolResolution {
+  universe_size: number;
+  requested: number;
+  counts: Record<string, number>;
+  rows: ResolvedSymbol[];
   note: string;
 }
 

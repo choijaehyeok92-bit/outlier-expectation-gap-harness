@@ -200,6 +200,77 @@ class RankTests(Base):
         self.assertIn('Hard Veto', result['is_not_evidence'])
 
 
+class ResolveTests(Base):
+    """Reconciling symbols somebody pasted with the regulator's own spelling.
+
+    The failure being prevented is silent. A mis-read character produces a real
+    other company, every stage after this one analyses it, and nothing looks
+    wrong — so a near match is reported for a person to confirm and never
+    adopted on its own.
+    """
+
+    def resolve(self, symbols):
+        return candidates.resolve_symbols(symbols, universe_path=self.universe)
+
+    def test_an_exact_symbol_comes_back_with_its_company_name(self):
+        """The name is the check. String validation cannot catch a digit that
+        turned one real company into another; a person reading the name can."""
+        row = self.resolve(['MSFT'])['rows'][0]
+        self.assertEqual(row['status'], 'matched')
+        self.assertTrue(row['company_name'])
+
+    def test_a_share_class_spelled_the_vendors_way_is_near_not_matched(self):
+        """SEC writes BRK-B, most screeners write BRK.B. Reported, not applied."""
+        row = self.resolve(['BRK.B'])['rows'][0]
+        self.assertEqual(row['status'], 'near')
+        self.assertEqual(row['ticker'], 'BRK-B')
+        self.assertIn('BERKSHIRE', (row['company_name'] or '').upper())
+
+    def test_a_korean_code_missing_its_leading_zeros_is_near(self):
+        row = self.resolve(['5930'])['rows'][0]
+        self.assertEqual(row['status'], 'near')
+        self.assertEqual(row['ticker'], '005930')
+        self.assertEqual(row['jurisdiction'], 'KR')
+
+    def test_an_excluded_listing_says_why_rather_than_not_found(self):
+        """'This is an ETF' is a better answer than 'no such symbol'."""
+        row = self.resolve(['SPY'])['rows'][0]
+        self.assertEqual(row['status'], 'excluded')
+        self.assertTrue(row['reason'])
+
+    def test_an_unknown_symbol_is_kept_by_name(self):
+        """A list that silently shrinks is the failure this module exists to
+        prevent."""
+        rows = self.resolve(['MSFT', 'NOT-A-REAL-TICKER'])
+        self.assertEqual(rows['requested'], 2)
+        unknown = next(r for r in rows['rows'] if r['status'] == 'unknown')
+        self.assertEqual(unknown['input'], 'NOT-A-REAL-TICKER')
+
+    def test_nothing_is_matched_by_similarity(self):
+        """Only declared rewrites resolve. A symbol one edit away from a real
+        one must not quietly become it."""
+        for symbol in ('MSF', 'MSFTT', 'NVDAX', '05930'):
+            rows = self.resolve([symbol])['rows']
+            self.assertIn(rows[0]['status'], ('unknown', 'near'), symbol)
+            if rows[0]['status'] == 'near':
+                # Only the zero-padding rule may fire, and only on digits.
+                self.assertTrue(symbol.isdigit(), symbol)
+
+    def test_duplicates_collapse_and_case_does_not_matter(self):
+        rows = self.resolve(['MSFT', 'msft', ' MSFT '])
+        self.assertEqual(rows['requested'], 1)
+        self.assertEqual(rows['rows'][0]['status'], 'matched')
+
+    def test_the_counts_add_up_to_what_was_asked(self):
+        result = self.resolve(['MSFT', 'BRK.B', 'SPY', 'NOPE'])
+        self.assertEqual(sum(result['counts'].values()), result['requested'])
+
+    def test_no_universe_file_is_a_refusal_not_an_empty_answer(self):
+        with self.assertRaises(AdapterError) as caught:
+            candidates.resolve_symbols(['MSFT'], universe_path=self.root / 'missing.json')
+        self.assertIn('universe sync', str(caught.exception))
+
+
 class IngestTests(Base):
     def provider(self):
         from data_adapters.sec import SecEdgarProvider

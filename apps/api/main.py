@@ -48,8 +48,8 @@ from apps.api.models import (CredentialRequest, DeepDivePlanRequest,  # noqa: E4
                              FullHarnessRequest, IngestRequest, JobRequest,
                              LinkRequest, MarketFetchRequest, ObservationRequest,
                              PackIngestRequest, ParseRequest, ScreenRunRequest,
-                             TriageRequest, UniverseSyncRequest,
-                             WarehouseBuildRequest)
+                             SymbolResolveRequest, TriageRequest,
+                             UniverseSyncRequest, WarehouseBuildRequest)
 from packages.llm import LLMError, resolve_provider  # noqa: E402
 from packages.reporting import render_markdown, render_screen_markdown  # noqa: E402
 from packages.research import deep_plan, deep_run  # noqa: E402
@@ -213,6 +213,25 @@ def universe_candidates(as_of_date: str = Query(..., pattern=r'^\d{4}-\d{2}-\d{2
     try:
         return candidate_store.rank(as_of_date, markets=wanted, limit=limit,
                                     include_ingested=include_ingested)
+    except AdapterError as error:
+        raise HTTPException(422, str(error)) from error
+
+
+
+@app.post('/api/universe/resolve')
+def universe_resolve(request: SymbolResolveRequest):
+    """Match pasted symbols to the synced universe. Nothing is adopted here.
+
+    A near match — `BRK.B` for the regulator's `BRK-B`, a Korean code missing
+    its leading zeros — comes back labelled as one, with the company name, for
+    a person to confirm. Accepting it is a separate act, because the failure
+    this prevents is silent: the wrong company analysed with nothing looking
+    out of place.
+    """
+    from data_adapters import candidates as candidate_store
+    from data_adapters.base import AdapterError
+    try:
+        return candidate_store.resolve_symbols(request.symbols)
     except AdapterError as error:
         raise HTTPException(422, str(error)) from error
 

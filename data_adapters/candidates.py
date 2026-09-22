@@ -256,3 +256,86 @@ def ingest_batch(tickers, market: str, as_of: str, *, out_dir=None, force=False,
             'skipped_existing': sum(1 for r in results if r['status'] == 'exists'),
             'failed': failed, 'pack_dir': str(Path(out_dir or DEFAULT_PACK_DIR)),
             'results': results}
+
+
+# ------------------------------------------------------------------ resolving
+# Rules for reconciling a symbol somebody typed, pasted or read off a screenshot
+# with the regulator's own spelling. Each is declared and bounded; none is a
+# similarity score. A near match is reported for a person to confirm and is
+# never adopted on its own, because the failure it prevents is silent: a
+# mis-read character produces a real other company, and every stage downstream
+# then analyses that company without anything looking wrong.
+def _variants(symbol: str) -> list:
+    seen, out = set(), []
+    def add(value):
+        if value and value not in seen:
+            seen.add(value)
+            out.append(value)
+    upper = symbol.strip().upper()
+    add(upper)
+    add(upper.replace('.', '-'))          # BRK.B  -> BRK-B  (SEC's spelling)
+    add(upper.replace('-', '.'))          # BRK-B  -> BRK.B  (vendor's spelling)
+    if upper.isdigit():                   # Korean codes are six digits, zero-padded
+        add(upper.zfill(6))
+        add(upper.lstrip('0').zfill(6))
+    add(upper.split('.')[0])              # AAPL.US -> AAPL
+    return out
+
+
+def resolve_symbols(symbols, *, universe_path=None) -> dict:
+    """Reconcile pasted symbols against the synced universe.
+
+    Three outcomes, kept apart on purpose:
+
+    `matched`  — the regulator lists this exact symbol. The company name comes
+                 back with it, which is the real check: a person reading
+                 "005930 → 삼성전자" catches a mis-read digit that no amount of
+                 string validation would.
+    `near`     — a declared rewrite finds it. Reported with what it would
+                 become; adopting it is a separate act.
+    `unknown`  — not in the universe under any declared spelling. Kept by name
+                 rather than dropped, because a list that silently shrinks is
+                 the failure this whole module exists to avoid.
+    """
+    rows = _universe_rows(universe_path)
+    by_ticker = {str(r.get('ticker') or '').upper(): r for r in rows}
+    # Excluded listings are still worth reporting: "this is an ETF" is a better
+    # answer than "not found".
+    from . import universe as universe_store
+    payload = universe_store.load(universe_path) or {}
+    every = {str(r.get('ticker') or '').upper(): r for r in payload.get('securities', [])}
+
+    out, counts = [], {'matched': 0, 'near': 0, 'excluded': 0, 'unknown': 0}
+    seen = set()
+    for raw in symbols:
+        symbol = str(raw).strip().upper()
+        if not symbol or symbol in seen:
+            continue
+        seen.add(symbol)
+        entry = {'input': symbol}
+        variants = _variants(symbol)
+        hit = next((v for v in variants if v in by_ticker), None)
+        if hit:
+            row = by_ticker[hit]
+            entry.update({'status': 'matched' if hit == symbol else 'near',
+                          'ticker': hit, 'company_name': row.get('name'),
+                          'exchange': row.get('exchange'),
+                          'jurisdiction': 'KR' if row.get('currency') == 'KRW' else 'US',
+                          'requires_review': bool(row.get('requires_review'))})
+        else:
+            blocked = next((v for v in variants if v in every), None)
+            if blocked:
+                row = every[blocked]
+                entry.update({'status': 'excluded', 'ticker': blocked,
+                              'company_name': row.get('name'),
+                              'exchange': row.get('exchange'),
+                              'reason': row.get('excluded_reason')})
+            else:
+                entry['status'] = 'unknown'
+        counts[entry['status']] += 1
+        out.append(entry)
+    return {'universe_size': len(rows), 'requested': len(out),
+            'counts': counts, 'rows': out,
+            'note': ('near는 선언된 표기 규칙(BRK.B↔BRK-B, 한국 6자리 0채움)으로 찾은 것이며 '
+                     '자동 채택하지 않는다. 회사명을 눈으로 확인하는 것이 오독을 잡는 실질적 '
+                     '장치다 — 한 글자만 틀려도 실재하는 다른 회사가 된다.')}

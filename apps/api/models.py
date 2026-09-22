@@ -111,6 +111,17 @@ class IngestRequest(BaseModel):
     as_of_date: str | None = Field(default=None, pattern=r'^\d{4}-\d{2}-\d{2}$')
 
 
+class SymbolResolveRequest(BaseModel):
+    """Reconcile pasted symbols against the regulator's own universe.
+
+    Read-only. Symbols arriving from a spreadsheet, a screenshot or somebody's
+    memory are unverified input, and the answer this returns is what makes them
+    safe to act on: the company name beside each one. A mis-read character
+    produces a real other company, and nothing downstream would look wrong.
+    """
+    symbols: list[str] = Field(min_length=1, max_length=2000)
+
+
 class WarehouseBuildRequest(BaseModel):
     """Recompute the deterministic metric warehouse.
 

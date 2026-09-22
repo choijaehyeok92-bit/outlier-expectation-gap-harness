@@ -19,7 +19,8 @@
  */
 import { useEffect, useState } from 'react';
 import { api, money, type Candidate, type CandidateList, type PackIngestResult,
-         type RegulatorCredential, type UniverseSyncResult } from '@/lib/api';
+         type RegulatorCredential, type ResolvedSymbol, type SymbolResolution,
+         type UniverseSyncResult } from '@/lib/api';
 
 // A fallback only. The real cap is declared on the request model and comes
 // back with the credentials, so this page and the route cannot drift apart.
@@ -39,6 +40,9 @@ export default function UniversePage() {
   const [ingest, setIngest] = useState<PackIngestResult | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
   const [progress, setProgress] = useState<string | null>(null);
+  const [pasted, setPasted] = useState('');
+  const [resolved, setResolved] = useState<SymbolResolution | null>(null);
+  const [takeNear, setTakeNear] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -94,8 +98,8 @@ export default function UniversePage() {
     setIngest(null);
   });
 
-  const doIngest = (market: 'US' | 'KR') => run('ingest', async () => {
-    const wanted = selectedIn(market);
+  const doIngest = (market: 'US' | 'KR', explicit?: string[]) => run('ingest', async () => {
+    const wanted = explicit ?? selectedIn(market);
     if (!wanted.length) throw new Error(`${market} 종목이 선택되지 않았다`);
 
     // The route caps a request at ten because each company is several requests
@@ -133,6 +137,18 @@ export default function UniversePage() {
   });
 
   const toggle = (ticker: string) => setPicked((prev) => ({ ...prev, [ticker]: !prev[ticker] }));
+
+  const doResolve = () => run('resolve', async () => {
+    const symbols = pasted.split(/[\s,;]+/).map((s) => s.trim()).filter(Boolean);
+    if (!symbols.length) throw new Error('붙여넣은 종목이 없다');
+    setResolved(await api.resolveSymbols(symbols));
+  });
+
+  /** Symbols a paste resolved to, for one market. `near` only when asked. */
+  const resolvedFor = (market: 'US' | 'KR') => (resolved?.rows ?? [])
+    .filter((r) => (r.status === 'matched' || (takeNear && r.status === 'near'))
+                   && r.jurisdiction === market && r.ticker)
+    .map((r) => r.ticker as string);
 
   const row = (c: Candidate) => (
     <tr key={c.ticker} className="border-t" style={{ borderColor: 'var(--border)' }}>
@@ -244,6 +260,113 @@ export default function UniversePage() {
           KR 세그먼트 조회는 발행사 1곳당 DART 호출 1회다. 0이면 조회하지 않는다. 500을 넘겨도
           500에서 멈춘다 — 요청 처리 중에 무한정 부르면 타임아웃과 반쯤 쓰인 파일이 남는다.
         </p>
+      </div>
+
+      <div className="card space-y-3 p-4">
+        <div>
+          <div className="text-sm font-medium">종목 목록 붙여넣기</div>
+          <p className="muted mt-1 text-xs">
+            스프레드시트·스크린샷·메모 어디서 온 목록이든, 규제기관이 실제로 등재한 것과 대조한
+            뒤에만 쓴다. <strong>확인은 회사명으로 한다</strong> — 한 글자만 틀려도 실재하는 다른
+            회사가 되고, 그 뒤로는 아무것도 이상해 보이지 않는다.
+          </p>
+        </div>
+        <textarea
+          value={pasted}
+          onChange={(e) => setPasted(e.target.value)}
+          rows={3}
+          placeholder="MSFT NVDA 005930 000660 …  (공백·쉼표·줄바꿈 아무거나)"
+          className="w-full rounded-md bg-transparent p-2 text-sm outline-none"
+          style={{ border: '1px solid var(--border)' }}
+        />
+        <div className="flex flex-wrap items-center gap-2 text-sm">
+          <button onClick={doResolve} disabled={busy !== null || !pasted.trim()}
+                  className="rounded-md px-3 py-1.5"
+                  style={{ border: '1px solid var(--border)' }}>
+            {busy === 'resolve' ? '대조 중…' : '유니버스와 대조'}
+          </button>
+          {resolved && (
+            <>
+              <span className="chip" style={{ color: 'var(--accent)' }}>일치 {resolved.counts.matched ?? 0}</span>
+              <span className="chip" style={{ color: '#fbbf24' }}>근접 {resolved.counts.near ?? 0}</span>
+              <span className="chip">제외됨 {resolved.counts.excluded ?? 0}</span>
+              <span className="chip">불명 {resolved.counts.unknown ?? 0}</span>
+            </>
+          )}
+        </div>
+
+        {resolved && (
+          <>
+            {(resolved.counts.near ?? 0) > 0 && (
+              <label className="flex items-center gap-2 text-xs">
+                <input type="checkbox" checked={takeNear}
+                       onChange={(e) => setTakeNear(e.target.checked)} />
+                <span style={{ color: '#fbbf24' }}>
+                  근접 일치도 포함한다 — 아래 회사명을 먼저 확인할 것
+                </span>
+              </label>
+            )}
+            <div className="overflow-x-auto" style={{ maxHeight: '22rem' }}>
+              <table className="w-full text-sm">
+                <thead className="muted text-left">
+                  <tr>
+                    <th className="px-3 py-2">입력</th>
+                    <th className="px-3 py-2">결과</th>
+                    <th className="px-3 py-2">티커</th>
+                    <th className="px-3 py-2">기업</th>
+                    <th className="px-3 py-2">시장</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {resolved.rows.map((r: ResolvedSymbol) => {
+                    const colour = r.status === 'matched' ? 'var(--accent)'
+                      : r.status === 'near' ? '#fbbf24'
+                      : r.status === 'excluded' ? 'var(--muted)' : '#f87171';
+                    const label = r.status === 'matched' ? '일치'
+                      : r.status === 'near' ? '근접' : r.status === 'excluded' ? '제외됨' : '불명';
+                    return (
+                      <tr key={r.input} className="border-t" style={{ borderColor: 'var(--border)' }}>
+                        <td className="px-3 py-1.5 font-medium">{r.input}</td>
+                        <td className="px-3 py-1.5" style={{ color: colour }}>{label}</td>
+                        <td className="px-3 py-1.5">
+                          {r.ticker && r.ticker !== r.input ? `→ ${r.ticker}` : r.ticker ?? '—'}
+                        </td>
+                        <td className="px-3 py-1.5">{r.company_name ?? r.reason ?? '—'}</td>
+                        <td className="px-3 py-1.5 muted">
+                          {r.jurisdiction ?? ''} {r.exchange ?? ''}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <p className="muted text-xs">{resolved.note}</p>
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              {(['US', 'KR'] as const).map((market) => {
+                const wanted = resolvedFor(market);
+                return (
+                  <button key={market} onClick={() => doIngest(market, wanted)}
+                          disabled={busy !== null || !wanted.length}
+                          className="rounded-md px-3 py-1.5"
+                          style={{ border: `1px solid ${wanted.length ? 'var(--accent)' : 'var(--border)'}`,
+                                   color: wanted.length ? 'var(--accent)' : undefined,
+                                   opacity: wanted.length ? 1 : 0.5 }}>
+                    확인된 {market} {wanted.length}종목 적재
+                    {wanted.length > 0 && ` — ${wanted.length * (credFor(market)?.requests ?? 0)}요청`}
+                  </button>
+                );
+              })}
+              {progress && <span className="muted text-xs">{progress}</span>}
+            </div>
+            {(resolved.counts.unknown ?? 0) > 0 && (
+              <p className="muted text-xs">
+                불명인 종목은 버리지 않고 위에 남겨 뒀다. 유니버스를 아직 동기화하지 않았거나,
+                이 거래소에 없거나, 잘못 읽은 것이다 — 셋은 다른 문제다.
+              </p>
+            )}
+          </>
+        )}
       </div>
 
       {sync && (
