@@ -4,16 +4,16 @@
   "decision_policy_version": "3.3",
   "provider_calibration_mode": "shadow",
   "ticker": "META",
-  "as_of_date": "2026-09-18",
+  "as_of_date": "2026-09-21",
   "frozen": true,
   "financial_pack_required": true,
-  "harness_commit": "586818886da4d9b0ccbe59af9c8eab219c444091",
+  "harness_commit": "188afb96ae54a0b425f2c8d1541630b9e46bf46d",
   "runner": {
     "provider": "openai",
-    "model": "gpt-5.6-sol",
-    "reasoning_effort": "high"
+    "model": "gpt-6-astra",
+    "reasoning_effort": null
   },
-  "frozen_at_utc": "2026-09-21T15:49:10.146686+00:00",
+  "frozen_at_utc": "2026-09-22T03:54:25.734638+00:00",
   "config_files": {
     "config/strategy.json": "040763050372dfc76d44615ec648cc6ab1b3f3fa061bf7f3f46da79a6beb7e96",
     "config/workflow.json": "48f16264ca67cd75e6b5b76800c437eb456e2a069e698c9cd2080997f086b301",
@@ -69,10 +69,11 @@
     "AGENTS.md": "6d45f84a937096b3042094bd5b119c7fe51c152cb8707edba96a1ec65de74509"
   },
   "input_files": {
-    "company_context.json": "cfcaa4e421f0b548e314e6f739d33199b4eda4ff2ede23a76c19e61385125e11",
-    "sources/financials/normalized_financials.json": "bb0112110c6b4afacd1a10db320f67d17c30bf6cceeb6f062aa625de479dfdb4"
+    "company_context.json": "5367528d50741409ecb8abb6513df4854b721ec399fde13655b3fd685d3c2efb",
+    "sources/financials/normalized_financials.json": "ab054faa8fb496a7b8b283010e14b3d939bfb1c659052e371b1f59c6a39ff794",
+    "sources/source_manifest.json": "b3314c5629ef72b582b63334ee3ca19f547efbeb507c222d23ae6e7110a7ee08"
   },
-  "input_snapshot_sha256": "45c41a16a7d78c22df36fce637ea5df756ae8e5e13edd692e5697e00b56d10ee",
+  "input_snapshot_sha256": "2a6feddafa99d9f374c65211606d6b168149d0a44050cf06fd2af7766bce99e9",
   "stage_0": {
     "stage_0": "ready",
     "enforced": true,

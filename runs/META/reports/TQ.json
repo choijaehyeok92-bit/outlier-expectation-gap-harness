@@ -1,7 +1,7 @@
 {
   "agent_id": "TQ",
   "ticker": "META",
-  "as_of_date": "2026-09-18",
+  "as_of_date": "2026-09-21",
   "domain": "turnaround_quality",
   "role": "optional_diagnostic",
   "analysis_status": "pending",

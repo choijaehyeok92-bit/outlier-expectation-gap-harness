@@ -1,7 +1,7 @@
 {
   "agent_id": "RT",
   "ticker": "META",
-  "as_of_date": "2026-09-18",
+  "as_of_date": "2026-09-21",
   "domain": "red_team",
   "role": "red_team",
   "analysis_status": "pending",

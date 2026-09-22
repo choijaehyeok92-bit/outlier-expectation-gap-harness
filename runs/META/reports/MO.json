@@ -1,7 +1,7 @@
 {
   "agent_id": "MO",
   "ticker": "META",
-  "as_of_date": "2026-09-18",
+  "as_of_date": "2026-09-21",
   "domain": "macro_overlay",
   "role": "overlay",
   "analysis_status": "pending",

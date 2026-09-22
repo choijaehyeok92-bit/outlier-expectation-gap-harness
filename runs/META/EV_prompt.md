@@ -1,10 +1,10 @@
-# 과제: META / 기준일 2026-09-18 / expectation_valuation (EV)
+# 과제: META / 기준일 2026-09-21 / expectation_valuation (EV)
 저장소: /home/runner/work/outlier-expectation-gap-harness/outlier-expectation-gap-harness. 작성할 파일: runs/META/reports/EV.json. 그 외 파일은 수정하지 않는다.
 웹 검색·페치 예산: 최대 15회. 아래 기준 정보와 검증된 사실은 다시 검색하지 않는다.
 자료 공백은 수동적으로 남기지 않는다. 점수·Veto·밸류에이션에 직접 영향을 주는 항목이 기준 정보와 1차 자료에 없으면 예산 내에서 웹 검색·IR·2차 자료로 보완을 시도한 뒤, 그래도 확보하지 못한 것만 unknowns에 남기고 무엇을 어디서 찾으려 했는지 함께 적는다. 확보한 자료는 evidence에 source_type과 함께 기록하고 EVIDENCE_POLICY.md의 출처 위계를 지킨다.
 
 ## 기업 기준 정보 (재검증 금지)
-{"ticker":"META","company_name":"Meta Platforms, Inc.","as_of_date":"2026-09-18","currency":"USD","current_price":665.75,"shares_diluted":2566000000,"market_cap_usd":1708314500000,"enterprise_value":1701718500000,"portfolio_context":{"existing_position_pct":0,"sector_exposure_pct":0},"known_sources":["Meta Platforms 2025 Form 10-K filed 2026-01-29","Meta Platforms Q1 2026 Form 10-Q filed 2026-04-30","Meta Platforms Q2 2026 Form 10-Q filed 2026-07-30","META 2026-09-18 closing price $665.75"],"special_questions":["Can AI-driven ad ranking and messaging monetization sustain durable per-share cash-flow growth despite sharply rising infrastructure spend?","How much of 2026-2030 capex is growth investment versus economically maintenance-like spending?","Does Reality Labs remain a tolerable option-like drag relative to Family of Apps economics and valuation?"],"net_cash_per_share":2.570537802,"valuation_metric":"No reproducible full 5-year valuation percentile frozen; use deterministic owner-FCF/share scenarios in EV.","valuation_overrides":{"terminal_multiples":{}},"diagnostics":{"turnaround_candidate":false},"geo_exposure":{"critical_supplier_regions":["United States","Taiwan","South Korea"],"export_control_dependencies":["Advanced AI accelerators and semiconductor supply chains"]}}
+{"ticker":"META","company_name":"Meta Platforms, Inc.","as_of_date":"2026-09-21","currency":"USD","current_price":741.25,"shares_diluted":2566000000,"market_cap_usd":1902047500000,"enterprise_value":1895451500000,"portfolio_context":{"existing_position_pct":0,"sector_exposure_pct":0},"known_sources":["https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm","https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm","https://www.sec.gov/Archives/edgar/data/1326801/000132680124000012/meta-20231231.htm","https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm","https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm","https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm","https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm","https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm","https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm","https://finance.yahoo.com/quote/META/history/","META 2026-09-21 closing price $741.25"],"special_questions":["Separate structural AI-driven monetization upside from expectations already embedded in the 2026-09-18 price.","Stress-test the return path against sharply higher AI infrastructure capex and Reality Labs losses.","Treat the Q3 2025 OBBBA tax charge as a normalization candidate, not an automatically excluded expense."],"net_cash_per_share":2.570538,"valuation_overrides":{"terminal_multiples":{}},"diagnostics":{"turnaround_candidate":false},"geo_exposure":{"revenue_by_region":{"United States and Canada":0.392435,"Europe":0.231726,"Asia-Pacific":0.267792,"Rest of World":0.108048}}}
 
 ## 독립성
 runs/META/reports/의 다른 에이전트 보고서는 읽지 않는다.
@@ -215,8 +215,8 @@ interpolation.mode=none인 표와 형용사 앵커 criterion은 보간하지 않
     }
   },
   "locked_context": {
-    "current_price": 665.75,
-    "net_cash_per_share": 2.570537802,
+    "current_price": 741.25,
+    "net_cash_per_share": 2.570538,
     "valuation_percentile_5y": null,
     "valuation_overrides": {
       "required_return": null,

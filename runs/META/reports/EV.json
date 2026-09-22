@@ -1,7 +1,7 @@
 {
   "agent_id": "EV",
   "ticker": "META",
-  "as_of_date": "2026-09-18",
+  "as_of_date": "2026-09-21",
   "domain": "expectation_valuation",
   "role": "domain_analyst",
   "analysis_status": "complete",
@@ -11,7 +11,7 @@
   "bear_score": 40,
   "bull_case": "AI-driven ad ranking sustains strong monetization while infrastructure investment converts into revenue and operating leverage. Owner FCF/share recovers from the 2026 investment trough and reaches $79 by year 10; the locked DCF yields about $1,091/share.",
   "bear_case": "AI infrastructure remains structurally capital-intensive, ad growth decelerates faster than expected, and Reality Labs keeps consuming roughly $20B annually. Owner FCF/share rises only to $26 by year 10; the locked DCF yields about $267/share.",
-  "thesis": "At $665.75, META is not priced above a realistic Bull case, but it is slightly above this analysis's Base value. The locked 9% owner-FCF/share DCF gives Bear/Base/Bull values of about $267/$638/$1,091, making price/Base 1.043x. Base deliberately starts below 2025 FCF/share because 2026 capex has surged, then assumes cash conversion recovers as AI capacity matures. The market therefore appears to discount essentially the full 10-year Base runway rather than a short-duration miss, leaving limited expectation gap unless capex normalizes faster or AI monetization exceeds Base.",
+  "thesis": "At $741.25, META remains below the locked Bull value (~$1,091) but is now materially above the unchanged Base value (~$638), with price/Base ≈ 1.161x. No new quarterly filing changed the owner-FCF scenario paths; the September 21 move therefore narrows the expectation gap versus the September 18 run.",
   "evidence": [
     {
       "evidence_id": "META-EV-2025-FCF",
@@ -20,7 +20,7 @@
       "source_type": "filing",
       "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
       "period": "FY2025",
-      "as_of_date": "2026-09-18",
+      "as_of_date": "2026-09-21",
       "value": 43585000000,
       "fact_or_estimate": "fact"
     },
@@ -31,7 +31,7 @@
       "source_type": "ir",
       "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
       "period": "Q2 2026",
-      "as_of_date": "2026-09-18",
+      "as_of_date": "2026-09-21",
       "value": 60801000000,
       "fact_or_estimate": "fact"
     },
@@ -42,7 +42,7 @@
       "source_type": "ir",
       "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
       "period": "Q2 2026 / FY2026 guidance",
-      "as_of_date": "2026-09-18",
+      "as_of_date": "2026-09-21",
       "value": 130000000000,
       "fact_or_estimate": "fact"
     },
@@ -53,29 +53,29 @@
       "source_type": "filing",
       "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
       "period": "Q2/H1 2026 and FY2025 comparison",
-      "as_of_date": "2026-09-18",
+      "as_of_date": "2026-09-21",
       "value": -8647000000,
       "fact_or_estimate": "fact"
     },
     {
       "evidence_id": "META-EV-PRICE",
       "economic_driver": "market_expectations",
-      "claim": "META closed at $665.75 on September 18, 2026, the frozen valuation price.",
+      "claim": "META closed at $741.25 on September 21, 2026, the frozen valuation price.",
       "source_type": "secondary",
-      "source": "https://finance.yahoo.com/quote/META/history/",
-      "period": "2026-09-18",
-      "as_of_date": "2026-09-18",
-      "value": 665.75,
+      "source": "https://www.investing.com/equities/facebook-inc-historical-data",
+      "period": "2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 741.25,
       "fact_or_estimate": "fact"
     },
     {
       "evidence_id": "META-EV-DCF",
       "economic_driver": "market_expectations",
-      "claim": "Using the harness-locked 9% required return and 15x/20x/25x terminal multiples, the submitted 10-year owner-FCF/share paths imply about $267 Bear, $638 Base and $1,091 Bull value. Price/Base is about 1.043x and Base terminal value is about 71.7% of operating value.",
+      "claim": "Using the harness-locked 9% required return and 15x/20x/25x terminal multiples, the unchanged 10-year owner-FCF/share paths imply about $267 Bear, $638 Base and $1,091 Bull value. At $741.25, price/Base is about 1.161x.",
       "source_type": "other",
       "source": "Harness locked owner-FCF/share DCF using frozen META inputs",
-      "period": "10-year forecast from 2026-09-18",
-      "as_of_date": "2026-09-18",
+      "period": "10-year forecast from 2026-09-21",
+      "as_of_date": "2026-09-21",
       "value": 638.42,
       "fact_or_estimate": "estimate"
     }
@@ -84,7 +84,7 @@
     "The Base path requires owner FCF/share to recover from $14 in year 1 to $54 in year 10 even while Meta is committing to exceptionally high AI infrastructure spending; sustained capex intensity would make Base too optimistic.",
     "Q2 2026 operating margin fell to 31% from 43% a year earlier as costs grew 55%, showing that revenue growth does not automatically translate into near-term owner cash flow.",
     "Reality Labs continues to absorb roughly $19B-$20B of annual operating profit with limited revenue, and management says the adverse financial impact may persist.",
-    "The current price is already about 4.3% above Base intrinsic value at the locked 9% hurdle, so upside depends more on cash-flow recovery or stronger monetization than on multiple expansion."
+    "The current price is about 16.1% above Base intrinsic value at the locked 9% hurdle, so the margin for Base-case execution error is smaller than on September 18."
   ],
   "unknowns": [
     "Meta does not disclose a decision-useful split of 2026-2030 infrastructure spending between economically maintenance-like capex and growth capex; Q2 filings/IR were reviewed, but this remains the largest uncertainty in owner-FCF normalization.",
@@ -116,7 +116,7 @@
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
       "status": "cleared",
-      "rationale": "The frozen price of $665.75 is materially below the harness-computed Bull value of about $1,091; the sole veto element 'current price exceeds Bull scenario value' is therefore false."
+      "rationale": "The frozen price of $741.25 remains below the harness-computed Bull value of about $1,091; the Bull-price veto is therefore not triggered."
     }
   ],
   "key_kpis": [

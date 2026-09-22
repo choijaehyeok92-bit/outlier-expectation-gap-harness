@@ -11,7 +11,6 @@
     "enforced": true,
     "pack_present": true,
     "advisory_gaps": [
-      "historical_annuals",
       "proxy_compensation",
       "earnings_release",
       "insider_ownership",

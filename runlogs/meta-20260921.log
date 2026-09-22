@@ -1,3 +1,91 @@
+/home/runner/work/outlier-expectation-gap-harness/outlier-expectation-gap-harness/runs/META
+META: EDGAR unreachable — https://www.sec.gov/files/company_tickers.json -> HTTP 403
+If this environment blocks sec.gov, download the filings listed by `harness.py intake META` and place them in runs/META/sources/ by hand.
+fetch_exit_code=1
+META: stage_0=ready | 문서 9 · fact 72 · 조정후보 1 · 경고 2 · 검토요망 fact 0 · 재작성 fact 0
+
+[OK ] latest_annual           required                3/1   연간 3개년 재무제표, segment, 고객집중, 부채, SBC, 약정, 회계정책
+[OK ] latest_interim          required                6/1   현재 TTM, 분기 추세, 운전자본, 현금흐름, 희석
+[OK ] trailing_quarters       required                6/6   TTM·YoY·FCF/share·증분 ROIC 추세
+[OK ] historical_annuals      strongly_recommended    3/3   정상화 이익, 반복 구조조정, 자본집약도, 장기 추세
+[GAP] proxy_compensation      near_required           0/1   경영진 보상, 주식보상, ownership, governance
+[GAP] earnings_release        recommended             0/1   GAAP/non-GAAP reconciliation, 최신 KPI
+[N/A] debt_and_financing      conditional_required    0/1   회사채, 전환사채, 증자, M&A, 대규모 자금조달
+[N/A] foreign_issuer_filings  conditional             0/1   미국 상장 외국기업의 10-K/10-Q 대체
+[GAP] insider_ownership       recommended             0/1   내부자 매매 · ownership 변화
+[GAP] investor_materials      recommended             0/1   TAM, capex plan, 장기 margin, 신규 사업
+[N/A] registration_statement  conditional             0/1   IPO · 상장 초기 기업의 장기 데이터 보강
+
+권고 공백:
+  - proxy_compensation (near_required): 0/1 — DEF 14A Proxy / 주주총회소집공고 · 사업보고서 임원보수 항목
+  - earnings_release (recommended): 0/1 — 실적 관련 8-K + earnings release / 잠정실적 · 영업실적 공시
+  - insider_ownership (recommended): 0/1 — Form 4 / 임원 · 주요주주 지분공시
+  - investor_materials (recommended): 0/1 — Investor Day / 공식 IR 자료 / IR · 기업설명회 자료
+
+조건부 (해당 여부는 사람이 판단):
+  - debt_and_financing: 회사채·전환사채·증자·대규모 M&A 등 자금조달 이벤트가 기준일 이전에 있었던 경우
+  - foreign_issuer_filings: 미국 상장 외국기업이라 10-K/10-Q 대신 20-F/6-K를 제출하는 경우
+  - registration_statement: IPO 또는 상장 초기라 장기 시계열이 부족한 경우
+runs/META/FP_prompt.md
+{
+  "documents": 9,
+  "facts": 72,
+  "adjustment_candidates": 1,
+  "extraction_warnings": 2,
+  "facts_requiring_review": 0,
+  "restated_facts": 0,
+  "facts_by_gaap_status": {
+    "gaap": 71,
+    "not_applicable": 1
+  }
+}
+
+OK
+{
+  "ticker": "META",
+  "input_snapshot_sha256": "2a6feddafa99d9f374c65211606d6b168149d0a44050cf06fd2af7766bce99e9",
+  "harness_commit": "188afb96ae54a0b425f2c8d1541630b9e46bf46d",
+  "runner": {
+    "provider": "openai",
+    "model": "gpt-6-astra",
+    "reasoning_effort": null
+  }
+}
+{
+  "stage": "triage",
+  "agents": {
+    "expectation_valuation": "EV",
+    "asymmetry": "AS",
+    "disruptive_innovation": "DI",
+    "financial_survival": "FS"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "proxy_compensation",
+      "earnings_release",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "execution_control": "continue",
+  "research": {
+    "questions": 12,
+    "pending": 12,
+    "decision_blocking": 12,
+    "deferred": 0,
+    "command": "python harness.py research-plan META"
+  }
+}
+python harness.py prompt META EV
+python harness.py prompt META AS
+python harness.py prompt META DI
+python harness.py prompt META FS
+CONTINUE: complete the listed agent work, validate it, then rerun aggregate, digest, and plan for META.
+runs/META/EV_prompt.md: 15659 chars
+EV: OK
 {
   "strategy_version": "3.3",
   "schema_version": "3.3",
@@ -1252,3 +1340,4 @@
   "ic_verdict": null,
   "early_exit_record": null
 }
+runs/META/digest.md: 7484 bytes (reports 9035 chars -> digest 7067 chars)

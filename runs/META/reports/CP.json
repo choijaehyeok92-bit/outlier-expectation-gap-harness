@@ -1,7 +1,7 @@
 {
   "agent_id": "CP",
   "ticker": "META",
-  "as_of_date": "2026-09-18",
+  "as_of_date": "2026-09-21",
   "domain": "customer_product",
   "role": "domain_analyst",
   "analysis_status": "pending",

@@ -1,16 +1,16 @@
-# 과제: META / 기준일 2026-09-18 / financial_preprocessor (FP) — Stage 0
+# 과제: META / 기준일 2026-09-21 / financial_preprocessor (FP) — Stage 0
 저장소: /home/runner/work/outlier-expectation-gap-harness/outlier-expectation-gap-harness. 작성할 파일: runs/META/sources/financials/normalized_financials.json. 그 외 파일은 수정하지 않는다.
 웹 검색을 하지 않는다. 사용자가 직접 제공한 공시·감사재무제표·IR 문서만 사용한다.
 
 ## Stage 0 문서 확보 현황
-문서 0건, 요건 충족 0/11.
-- [GAP] latest_annual · required · 0/1 — 최근 10-K / 최근 사업보고서
+문서 9건, 요건 충족 4/11.
+- [OK ] latest_annual · required · 3/1 — 최근 10-K / 최근 사업보고서
         용도: 연간 3개년 재무제표, segment, 고객집중, 부채, SBC, 약정, 회계정책
-- [GAP] latest_interim · required · 0/1 — 최신 10-Q (FPI는 6-K 중간 실적으로 대체) / 최신 분기/반기보고서
+- [OK ] latest_interim · required · 6/1 — 최신 10-Q (FPI는 6-K 중간 실적으로 대체) / 최신 분기/반기보고서
         용도: 현재 TTM, 분기 추세, 운전자본, 현금흐름, 희석
-- [GAP] trailing_quarters · required · 0/6 — 과거 6~8개 분기의 10-Q (FPI는 6-K 중간 실적으로 대체) / 과거 6~8개 분기보고서
+- [OK ] trailing_quarters · required · 6/6 — 과거 6~8개 분기의 10-Q (FPI는 6-K 중간 실적으로 대체) / 과거 6~8개 분기보고서
         용도: TTM·YoY·FCF/share·증분 ROIC 추세
-- [GAP] historical_annuals · strongly_recommended · 0/3 — 과거 3~5개년 10-K / 과거 3~5개년 사업보고서
+- [OK ] historical_annuals · strongly_recommended · 3/3 — 과거 3~5개년 10-K / 과거 3~5개년 사업보고서
         용도: 정상화 이익, 반복 구조조정, 자본집약도, 장기 추세
 - [GAP] proxy_compensation · near_required · 0/1 — DEF 14A Proxy / 주주총회소집공고 · 사업보고서 임원보수 항목
         용도: 경영진 보상, 주식보상, ownership, governance
