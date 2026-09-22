@@ -1,0 +1,169 @@
+{
+  "agent_id": "RF",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-21",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 59,
+  "confidence_0_1": 0.9,
+  "bull_score": 85,
+  "bear_score": 40,
+  "bull_case": "MELI has a long runway across commerce, fintech, credit, ads and logistics, with engagement evidence showing that recent investment is changing customer behavior and deepening the ecosystem.",
+  "bear_case": "Current reinvestment is consuming owner cash faster than it is producing incremental profit. Credit-card economics are negative and H1 operating income fell despite 49% revenue growth.",
+  "thesis": "RF is the binding weakness. MELI has a genuine long reinvestment runway, but current-cycle incremental returns are not yet good enough to call 'excellent.' TTM reinvestment absorption is about 29%, mapping to runway 70. TTM adjusted FCF is roughly $1.13B, or about $22/share, down from about $29/share in FY2025 despite flat shares. Until cash conversion and credit-card economics recover, Compounder-level RF is not demonstrated.",
+  "evidence": [
+    {
+      "evidence_id": "MELI-RF-TTM",
+      "economic_driver": "reinvestment_absorption",
+      "claim": "Using FY2025 plus H1 2026 less H1 2025, TTM CFO is about $13.905B, capex $1.496B and product/technology expense $2.579B; (capex + product/tech)/CFO is about 29.3%.",
+      "source_type": "filing",
+      "source": "FY2025 10-K plus Q2 2026 Form 10-Q",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 0.2931,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "MELI-RF-FCF",
+      "economic_driver": "owner_fcf_per_share",
+      "claim": "TTM adjusted FCF is approximately $1.127B = FY2025 $1.481B + H1 2026 $158M - H1 2025 $512M, about $22.2/share versus roughly $29.2/share in FY2025.",
+      "source_type": "filing",
+      "source": "FY2025 and Q2 2026 adjusted-FCF reconciliations",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 22.23,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "MELI-RF-MARGIN",
+      "economic_driver": "incremental_return",
+      "claim": "H1 2026 revenue grew 49.4% and gross profit 36.8%, yet operating income fell from $1.588B to $1.294B as provisions, marketing and product investment rose.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-21",
+      "value": -0.1851,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-RF-ENGAGE",
+      "economic_driver": "future_payback",
+      "claim": "Recent commerce investments improved conversion, retention, category breadth and ecosystemic-user growth, providing evidence of future value even though current cash returns are weak.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-RF-CREDIT",
+      "economic_driver": "credit_return",
+      "claim": "Credit-card NIMAL was -2.5% in Q2 2026 while the credit portfolio exceeded $16B, so a large current reinvestment pool is not yet earning clearly attractive risk-adjusted returns.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": -0.025,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "FY2025 adjusted FCF grew to $1.481B from $1.215B in 2024, so current compression follows a period of improving owner cash flow.",
+    "Recent free-shipping cohorts have higher retention and engagement, indicating some current spending is productive growth investment.",
+    "Share count is essentially flat, so successful reinvestment accrues to existing owners.",
+    "Ads and payments are scaling higher-margin monetization on the existing ecosystem."
+  ],
+  "unknowns": [
+    "Full-cycle risk-adjusted ROIC of credit cards.",
+    "Payback period on the latest logistics/free-shipping investments.",
+    "Normalized adjusted-FCF margin after the 2026 investment wave."
+  ],
+  "falsifiers": [
+    "TTM adjusted FCF/share fails to recover through 2027-2028.",
+    "Credit-card NIMAL remains below breakeven while the portfolio keeps scaling.",
+    "Logistics/marketing investment remains elevated without sustained cohort retention and share gains."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Current returns are weaker, but engagement gains, gross-profit growth and prior FCF improvement do not establish a structural collapse below capital cost."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Diluted shares are essentially flat/slightly lower YoY; reinvestment is not being funded through material equity dilution."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "TTM adjusted FCF/share",
+      "direction": "up",
+      "threshold": "recover above FY2025 ~$29/share before treating RF as Compounder quality",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Credit-card NIMAL",
+      "direction": "up",
+      "threshold": "sustainably positive",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Incremental operating profit vs growth spend",
+      "direction": "up",
+      "threshold": "operating-profit growth resumes while engagement remains strong",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3/Q4 adjusted FCF bridge.",
+    "Credit-card NIMAL and vintage losses.",
+    "Brazil free-shipping cohort payback."
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 65,
+      "rationale": "Recent investment is clearly producing usage and gross-profit growth, but operating income and adjusted FCF have deteriorated and credit-card NIMAL is negative. Returns are promising but not yet 'excellent'."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 70,
+      "rationale": "TTM internal reinvestment absorption is about 29.3%. Under the locked band-centre interpolation this rounds to 70, while multiple regional value pools support a long runway."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 40,
+      "rationale": "TTM adjusted FCF/share is roughly 24% below FY2025 despite flat shares. The decline is partly intentional growth investment, so 40 recognizes both real compression and normalization potential."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "critical",
+      "rationale": "Current investment cohorts have not seasoned enough to establish full-cycle risk-adjusted returns."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "minor",
+      "rationale": "The breadth and duration of potential reinvestment paths are well evidenced."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "critical",
+      "rationale": "Credit and customer-fund mechanics make cash conversion volatile, but adjusted FCF explicitly attempts to remove those distortions and is still down."
+    }
+  ],
+  "dilution_metrics": {
+    "annualized_dilution": -0.00000146,
+    "three_year_diluted_share_cagr": null,
+    "three_year_cumulative_dilution": null,
+    "consecutive_years_material_dilution": 0,
+    "per_share_value_proxy": "owner_fcf_per_share",
+    "per_share_value_growth": -0.239,
+    "structural_financing_need": false,
+    "rationale": "Shares are flat; the current per-share weakness comes from cash conversion, not dilution."
+  }
+}
