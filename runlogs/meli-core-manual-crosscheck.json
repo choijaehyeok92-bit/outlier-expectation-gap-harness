@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "reports": [
+    "EV",
+    "AS",
+    "DI",
+    "FS",
+    "SL",
+    "CP",
+    "MT",
+    "RF",
+    "MA"
+  ],
+  "validation_errors": [],
+  "score_100": 72.7875,
+  "score_ex_valuation": 75.8382352941,
+  "coverage_weight": 100,
+  "reachable_archetypes_raw": [],
+  "expected_state": "EARLY_EXIT_NON_FIT",
+  "binding_failures": {
+    "compounder": [
+      "reinvestment_fcf 59 < 76",
+      "incremental_roic 65 < 75"
+    ]
+  }
+}
