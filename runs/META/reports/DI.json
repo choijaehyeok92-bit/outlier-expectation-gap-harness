@@ -4,40 +4,142 @@
   "as_of_date": "2026-09-21",
   "domain": "disruptive_innovation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 73.5,
+  "confidence_0_1": 0.8,
+  "bull_score": 85,
+  "bear_score": 55,
+  "bull_case": "광고 랭킹·생성형 크리에이티브·비즈니스 에이전트·AI 글래스가 Meta의 기존 30억+ 사용자 배포망 위에서 결합되면 AI가 광고·커머스·웨어러블의 비용/성능 곡선을 동시에 바꾸는 플랫폼 전환이 가능하다.",
+  "bear_case": "광고 AI 개선은 강하지만 여전히 기존 광고 모델의 존속적 개선일 수 있다. Business Agent와 AI 글래스의 상업화는 초기이고, 모델·인프라 경쟁은 Google·OpenAI·Apple 등 자본력이 큰 경쟁자와 정면 대결이다.",
+  "thesis": "AI는 이미 광고 클릭·전환 성능을 측정 가능하게 개선했고, Business Agent는 100만+ 사업자 사용, AI 글래스는 수백만 대 판매로 파일럿 단계를 넘었다. 다만 '10배급' 단위경제 재편이나 신규 가치사슬 지배는 아직 입증되지 않았다. 따라서 비용·성능과 채택은 75, 인접 가치풀은 확실히 매출화된 두 축을 기준으로 70을 부여한다.",
+  "evidence": [
+    {
+      "evidence_id": "META-DI-ADAI",
+      "economic_driver": "ai_ad_monetization",
+      "claim": "Meta reported that its latest ads ranking improvements drove a 3.5% lift in ad clicks on Facebook, >1% conversion gain on Instagram, and another runtime model increased conversion rates by 3%.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/01/2026-ai-drives-performance/",
+      "period": "Q4 2025 metrics published 2026-01",
+      "as_of_date": "2026-09-21",
+      "value": 0.035,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-DI-BIZAGENT",
+      "economic_driver": "business_messaging_ai",
+      "claim": "More than one million businesses were using Meta Business Agent, with more than one billion active business threads per day across WhatsApp, Messenger and Instagram; Meta plans paid subscription offerings.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/06/meta-business-agent/",
+      "period": "2026-06-03",
+      "as_of_date": "2026-09-21",
+      "value": 1000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-DI-MSGREV",
+      "economic_driver": "business_messaging_ai",
+      "claim": "Meta said paid WhatsApp messaging crossed a $2B annual run-rate in Q4 2025 and click-to-message ads revenue growth in the US exceeded 50% YoY.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/01/2026-ai-drives-performance/",
+      "period": "Q4 2025",
+      "as_of_date": "2026-09-21",
+      "value": 2000000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-DI-GLASSES",
+      "economic_driver": "ai_wearables",
+      "claim": "Meta and EssilorLuxottica said their AI glasses had sold millions of units before the May 2026 Japan launch, showing commercial adoption beyond pilot scale.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/05/ray-ban-meta-ai-glasses-launch-in-japan/",
+      "period": "2026-05-21",
+      "as_of_date": "2026-09-21",
+      "value": "millions sold",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-DI-SUBS",
+      "economic_driver": "consumer_ai_subscription",
+      "claim": "Meta One launched in September 2026 with more than 50 features and 15 million subscriptions and trials to date, providing an additional consumer/creator monetization vector.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "period": "2026-09-15",
+      "as_of_date": "2026-09-21",
+      "value": 15000000,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "광고 성능 개선은 기존 광고 플랫폼의 강화로 해석할 수 있으며 독립적인 산업 파괴를 의미하지 않는다.",
+    "Business Agent 유료 구독은 2026년 6월 기준 향후 도입 계획으로, 사용량이 곧 수익성으로 이어진다고 볼 수 없다.",
+    "AI 글래스는 수백만 대 판매에도 Meta 전체 매출에서 아직 작은 비중이다.",
+    "AI 모델과 디바이스 경쟁자는 자본·배포력이 강해 장기 표준 지배는 미확정이다."
+  ],
+  "unknowns": [
+    "Business Agent의 유료 전환율과 ARPU가 아직 공시되지 않았다.",
+    "AI 글래스의 Meta 귀속 매출·총이익과 반복 서비스 수익 비중이 공시되지 않았다."
+  ],
+  "falsifiers": [
+    "광고 AI 제품군의 전환율·클릭 개선이 후속 분기에서 반복되지 않는다.",
+    "Business Agent 활성 사업자 수가 정체되고 유료 전환이 미미하다.",
+    "AI 글래스 판매 성장과 사용 빈도가 2027년 이전에 둔화된다."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "AI ads incremental conversion lift",
+      "direction": "sustain or expand",
+      "threshold": "positive measurable lift across multiple surfaces",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Business Agent active businesses",
+      "direction": "grow materially",
+      "threshold": ">1M and rising with paid conversion",
+      "cadence": "semiannual"
+    },
+    {
+      "name": "AI glasses unit adoption",
+      "direction": "continue scaling",
+      "threshold": "sustained multi-million unit growth",
+      "cadence": "annual/semiannual"
+    }
+  ],
+  "next_checks": [
+    "Look for paid Business Agent pricing and conversion disclosure.",
+    "Track Meta One paid-vs-trial mix after launch.",
+    "Reassess optionality if Meta discloses material AI-glasses service revenue."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "cost_performance_shift",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Measured ad-click and conversion lifts plus automated business-agent workflows support the 75 'structural change' anchor. The 90 anchor is excluded because company-wide 10x economics are not demonstrated."
     },
     {
       "criterion_id": "adoption_curve",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "AI features are deployed on billion-user surfaces, Business Agent is used by >1M businesses, and AI glasses have sold millions. This matches accelerating adoption with economics beginning to appear; 90 is excluded because the newer agent/subscription categories are not yet fully mainstream."
     },
     {
       "criterion_id": "optionality_incumbent_response",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "The observable table gives 70 for two established adjacent value pools. Business messaging/agent monetization and AI wearables have clear adoption/revenue evidence; consumer AI subscriptions are too new to count as a fully established third pool."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Advertiser ROI gains are measurable but the portion attributable to incremental AI infrastructure versus normal product iteration is not disclosed."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "The economic value captured by Meta from wearables and subscriptions remains small or insufficiently disclosed."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
@@ -52,5 +154,6 @@
         "owner_fcf_per_share": []
       }
     }
-  }
+  },
+  "geo_events_reviewed": []
 }
