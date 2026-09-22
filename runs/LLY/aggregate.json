@@ -38,9 +38,9 @@
     "compounder"
   ],
   "early_exit": false,
-  "hard_veto_status": "PENDING_REVIEW",
-  "mechanical_pre_ic_state": "WATCH",
-  "position_range_pre_ic": "0% until veto cleared",
+  "hard_veto_status": "CLEARED",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "position_range_pre_ic": "2-4%",
   "domain_scores": {
     "structural_leadership": {
       "bull_score": 95,
@@ -181,8 +181,12 @@
   "confirmed_vetoes": [],
   "unresolved_vetoes": [],
   "veto_gate": {
-    "overall": "PENDING_REVIEW",
-    "summary": "All completed domain-owner veto assessments are cleared. RT co-owner review remains pending, so automatic buy deployment is not allowed."
+    "overall": "CLEARED",
+    "confirmed": [],
+    "unresolved": [],
+    "pending": [],
+    "non_owner_escalations": [],
+    "summary": "All configured Hard Veto owners completed assessments; every veto is cleared."
   },
   "valuation_model": {
     "status": "COMPLETE",
@@ -496,12 +500,20 @@
     "pack_present": true
   },
   "next_plan": {
-    "stage": "evidence_and_red_team",
+    "stage": "ic",
     "agents": {
-      "evidence_quality": "ED",
-      "red_team": "RT"
+      "investment_committee": "IC"
     },
     "execution_control": "continue",
-    "statement": "Macro overlay is current and produced no company-specific structural reanalysis request. Run ED and RT next."
+    "statement": "Evidence audit and Red Team are complete; all Hard Vetoes are cleared. Run IC next."
+  },
+  "dispersion_review": {
+    "metric": "scored domain mean downside skew",
+    "mean_skew": 5.72,
+    "label": "balanced_or_upside_skew",
+    "reduce_bands": 0,
+    "widest_domain": "expectation_valuation",
+    "position_before": "2-4%",
+    "position_after": "2-4%"
   }
 }
