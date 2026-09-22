@@ -1,0 +1,143 @@
+{
+  "agent_id": "MT",
+  "ticker": "NU",
+  "as_of_date": "2026-09-21",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 85,
+  "confidence_0_1": 0.91,
+  "bull_score": 95,
+  "bear_score": 70,
+  "bull_case": "Nu's moat is widening through primary-bank data, direct deposits, low-cost distribution and AI underwriting. Deeper relationships improve both monetization and credit quality, reinforcing the flywheel.",
+  "bear_case": "Most products are economically substitutable and customers can multi-bank. Incumbents with large deposit bases can copy digital features, while regulation can constrain data and cross-sell advantages.",
+  "thesis": "NU's moat is widening, though it is behavioral and data-driven rather than contractual. Customer scale, deposits, credit balances and ARPAC all show sustained growth. Primary-bank customers have better credit outcomes, giving Nu more data and lower risk as engagement deepens. NuFormer extends that loop into underwriting and service. The main limit is easy multi-banking and the ability of incumbents to replicate individual digital products.",
+  "evidence": [
+    {
+      "evidence_id": "NU-MT-SCALE",
+      "economic_driver": "network_scale",
+      "claim": "Customers increased from 93.9M in 2023 to 114.2M in 2024, 131.0M in 2025 and 138.9M by Q2 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426002166/nuform20f_2025.htm",
+      "period": "2023-Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 138900000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-MT-DEPOSITS",
+      "economic_driver": "funding_network",
+      "claim": "Deposits grew from $23.7B in 2023 to $28.9B in 2024, $41.9B in 2025 and $45.3B by Q2 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426002166/nuform20f_2025.htm",
+      "period": "2023-Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 45300000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-MT-PBR",
+      "economic_driver": "data_feedback",
+      "claim": "Nu reported leadership in Brazilian primary banking relationships and delinquency around half the portfolio average for PBR customers, indicating engagement improves underwriting data and economics.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-MT-AI",
+      "economic_driver": "data_compounding",
+      "claim": "NuFormer is in production across Brazil and Mexico card portfolios and Brazil unsecured lending, while AI agents handle more than 60% of Brazil support conversations at or above human parity.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.6,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Customers can hold accounts at multiple banks, limiting hard switching costs.",
+    "Large banks and fintechs can copy individual features.",
+    "Deposit funding can be competed away through pricing.",
+    "Credit losses can overwhelm data advantages during stress."
+  ],
+  "unknowns": [
+    "Independent PBR market-share time series.",
+    "Customer multi-banking intensity by cohort.",
+    "Quantified underwriting uplift from NuFormer."
+  ],
+  "falsifiers": [
+    "PBR share declines while customer count still grows.",
+    "Deposit growth requires structurally uneconomic pricing.",
+    "NuFormer fails to improve loss-adjusted returns versus prior underwriting models."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Primary metrics show expanding customer scale, deposits, ARPAC and PBR depth rather than persistent moat erosion."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "PBR/activity share",
+      "direction": "up",
+      "threshold": "deepen primary relationship share",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Deposits and ARPAC",
+      "direction": "up",
+      "threshold": "funding and monetization compound together",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Risk-adjusted credit performance",
+      "direction": "stable or improve",
+      "threshold": "data advantage translates into better loss-adjusted returns",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "PBR market-share data.",
+    "NuFormer loss-adjusted uplift.",
+    "Deposit pricing versus peers."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 85,
+      "rationale": "Primary-bank relationships, rising ARPAC and direct deposits deepen wallet share and behavioral switching friction, though customers can still multi-bank."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 85,
+      "rationale": "Customers, deposits, credit balances and ARPAC provide 3+ primary scale metrics with clear multi-year growth trends. Hard contractual switching-cost evidence is insufficient for 90."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 85,
+      "rationale": "Low-cost distribution, deposits, proprietary data/AI and broad product relationships provide multiple defensive layers against commoditization of individual products."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "The moat depends on relationship depth rather than contractual lock-in."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "minor",
+      "rationale": "Multiple same-definition metrics show sustained scale growth."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Well-capitalized incumbents can imitate individual products and compete on deposit pricing."
+    }
+  ]
+}

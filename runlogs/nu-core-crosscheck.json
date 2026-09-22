@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "reports": [
+    "EV",
+    "AS",
+    "DI",
+    "FS",
+    "SL",
+    "CP",
+    "MT",
+    "RF",
+    "MA"
+  ],
+  "validation_errors": [],
+  "score_100": 78.6875,
+  "score_ex_valuation": 80.5735294118,
+  "coverage_weight": 100,
+  "archetype": "compounder",
+  "compounder_fit_score": 81.6,
+  "reachable_archetypes_raw": [
+    "compounder"
+  ],
+  "expected_state": "WATCH",
+  "expected_next_stage": "macro",
+  "methodological_note": "RF reinvestment_runway uses a bank-equivalent retained-capital/ROE framework because the industrial capex+R&D/OCF observable is not economically meaningful for regulated banks."
+}

@@ -1,0 +1,45 @@
+{
+  "validate_pack": {
+    "status": "PASS",
+    "blocking_gaps": [],
+    "invariant_errors": [],
+    "documents": 12,
+    "facts": 25,
+    "advisory_gaps": [
+      "proxy_compensation 0/1",
+      "insider_ownership 0/1"
+    ],
+    "required_and_relevant_coverage": [
+      "latest_annual",
+      "latest_interim",
+      "trailing_quarters",
+      "historical_annuals",
+      "foreign_issuer_filings",
+      "earnings_release",
+      "investor_materials"
+    ]
+  },
+  "validate_ev": {
+    "status": "PASS",
+    "declared_score": 68,
+    "rubric_score": 68,
+    "errors": []
+  },
+  "valuation": {
+    "bear": 4.7644,
+    "base": 18.563,
+    "bull": 34.8515,
+    "price_to_base": 0.7558,
+    "base_terminal_fraction": 0.7282,
+    "sanity": "PASS"
+  },
+  "plan_after_ev": {
+    "stage": "triage",
+    "agents": {
+      "asymmetry": "AS",
+      "disruptive_innovation": "DI",
+      "financial_survival": "FS"
+    },
+    "execution_control": "continue"
+  }
+}

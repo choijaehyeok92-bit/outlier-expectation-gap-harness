@@ -1,0 +1,148 @@
+{
+  "agent_id": "CP",
+  "ticker": "NU",
+  "as_of_date": "2026-09-21",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 88.75,
+  "confidence_0_1": 0.93,
+  "bull_score": 95,
+  "bear_score": 75,
+  "bull_case": "Customers get a low-friction primary financial account, transparent products and broadening credit/deposit services at very low service cost. Engagement and revenue per active customer continue to rise.",
+  "bear_case": "High activity may partly reflect attractive deposit yields or easy credit. Strong customer growth can still destroy value if risk-adjusted credit returns or funding economics deteriorate.",
+  "thesis": "Customer/product evidence is strong. Q2 activity was 83.5%, ARPAC rose to $17.1, and Brazil primary-bank customers show materially better credit behavior. Cost to serve remains tiny relative to ARPAC, supporting strong unit economics. The main caveat is that some engagement comes from credit and deposit pricing, so product strength must continue to show up in risk-adjusted NIM and loss-adjusted returns.",
+  "evidence": [
+    {
+      "evidence_id": "NU-CP-ACTIVITY",
+      "economic_driver": "retention_usage",
+      "claim": "Q2 2026 monthly activity rate was 83.5%, with Brazil above 86%, while customers reached 138.9M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.835,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-CP-ARPAC",
+      "economic_driver": "wallet_share",
+      "claim": "Monthly ARPAC reached $17.1 in Q2 2026, up 22% YoY FX-neutral, versus monthly cost to serve of about $1.0.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 17.1,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-CP-PBR",
+      "economic_driver": "customer_value",
+      "claim": "Management reported that customers using Nu as their primary bank have delinquency roughly half the portfolio average, linking deeper relationships with better economics.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-CP-UNIT",
+      "economic_driver": "unit_economics",
+      "claim": "Q2 risk-adjusted NIM reached 12.4%, ROE 33% and efficiency ratio 19.5%, indicating strong risk-adjusted monetization despite continued expansion investment.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.124,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Deposit promotions and credit availability can increase engagement without creating durable value.",
+    "90+ NPL rose to 6.9% in Q2.",
+    "High activity does not prove high switching costs.",
+    "Mexico deposit pricing must normalize without damaging customer growth."
+  ],
+  "unknowns": [
+    "Customer churn by cohort.",
+    "Product-level CAC/payback outside Brazil.",
+    "Long-run primary-bank penetration in Mexico and Colombia."
+  ],
+  "falsifiers": [
+    "ARPAC stops growing while cost to serve rises materially.",
+    "Primary-bank customers lose their credit-performance advantage.",
+    "Activity remains high only through increasingly expensive deposit or credit subsidies."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "High activity, rising ARPAC, low cost-to-serve and better economics for primary-bank customers show recurring utility beyond promotional acquisition."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Nu spans cards, deposits, loans, investments, SMEs and premium banking across Brazil, Mexico and Colombia with no single customer concentration."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Activity / ARPAC",
+      "direction": "up",
+      "threshold": "engagement and monetization deepen together",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Cost to serve",
+      "direction": "stable or down",
+      "threshold": "remain a small fraction of ARPAC",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "PBR customer economics",
+      "direction": "improve",
+      "threshold": "maintain superior retention and credit performance",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Mexico deposit/customer economics.",
+    "PBR share and credit performance.",
+    "Cost-to-serve trajectory."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 90,
+      "rationale": "Nu provides clear convenience, pricing and access benefits, with primary-bank relationships deepening across products."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 90,
+      "rationale": "Activity remains above 83% while ARPAC and purchase volume continue rising at large scale."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 85,
+      "rationale": "Very low service cost, 33% ROE and 12.4% risk-adjusted NIM demonstrate strong economics, tempered by rising 90+ NPL and international investment."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "minor",
+      "rationale": "Behavioral evidence is strong even without a single explicit customer ROI metric."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "minor",
+      "rationale": "Activity and ARPAC trends are clear."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "Credit-cycle and deposit-pricing economics can change faster than service-cost metrics."
+    }
+  ]
+}

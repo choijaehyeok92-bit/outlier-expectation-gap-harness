@@ -1,0 +1,17 @@
+{
+  "stage": "complete",
+  "agents": {},
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true
+  },
+  "execution_control": "stop_complete",
+  "archetype": "compounder",
+  "hard_veto_status": "CLEARED",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "ic_state": "STARTER",
+  "position_range": "1-2%",
+  "macro_purchase_pacing_multiplier": 0.5,
+  "statement": "IC is complete. Analysis workflow complete for the 2026-09-21 frozen NU snapshot."
+}

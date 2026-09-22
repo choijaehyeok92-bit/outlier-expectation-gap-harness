@@ -1,0 +1,70 @@
+{
+  "ticker": "NU",
+  "as_of_date": "2026-09-21",
+  "source": "SEC EDGAR",
+  "reconstructed": true,
+  "user_agent_supplied": "choijaehyeok92@gmail.com",
+  "note": "This manifest records the primary filings represented in the reconstructed Stage 0 pack. It is not a claim that the local fetch subprocess executed successfully.",
+  "filings": [
+    {
+      "form": "20-F",
+      "filing_date": "2026-04-08",
+      "period_end": "2025-12-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426002166/nuform20f_2025.htm"
+    },
+    {
+      "form": "20-F",
+      "filing_date": "2025-04-16",
+      "period_end": "2024-12-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/1691493/000129281425001517/nuform20f_2024.htm"
+    },
+    {
+      "form": "20-F",
+      "filing_date": "2024-04-19",
+      "period_end": "2023-12-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/1691493/000129281424001464/nuform20f_2023.htm"
+    },
+    {
+      "form": "6-K",
+      "filing_date": "2026-08-13",
+      "period_end": "2026-06-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm"
+    },
+    {
+      "form": "6-K",
+      "filing_date": "2026-05-14",
+      "period_end": "2026-03-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426003053/nufs1q26_6k.htm"
+    },
+    {
+      "form": "6-K",
+      "filing_date": "2025-11-13",
+      "period_end": "2025-09-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1691493/000129281425003943/nufs3q25_6k.htm"
+    },
+    {
+      "form": "6-K",
+      "filing_date": "2025-08-14",
+      "period_end": "2025-06-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1691493/000129281425003063/nufs2q25_6k.htm"
+    },
+    {
+      "form": "6-K",
+      "filing_date": "2025-05-14",
+      "period_end": "2025-03-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/1691493/000129281425002063/nufs1q25_6k.htm"
+    },
+    {
+      "form": "6-K",
+      "filing_date": "2024-11-13",
+      "period_end": "2024-09-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1691493/000129281424004195/nufs3q24_6k.htm"
+    },
+    {
+      "form": "6-K",
+      "filing_date": "2024-08-13",
+      "period_end": "2024-06-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/1691493/000129281424003125/nufs2q24_6k.htm"
+    }
+  ]
+}

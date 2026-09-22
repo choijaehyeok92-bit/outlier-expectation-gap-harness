@@ -1,0 +1,173 @@
+{
+  "agent_id": "RT",
+  "ticker": "NU",
+  "as_of_date": "2026-09-21",
+  "domain": "red_team",
+  "role": "red_team",
+  "analysis_status": "complete",
+  "score_0_100": 50,
+  "confidence_0_1": 0.95,
+  "thesis": "가장 강한 숏 논리는 '디지털은행 수요가 없다'가 아니라 신용과 자본의 질이다. NU는 33% ROE와 12.4% risk-adjusted NIM을 기록하지만 90+ NPL은 6.9%로 상승했고, 빠른 대출성장은 규제자본을 소모한다. Brazil 집중과 74.3% founder voting control도 tail risk다. 현실적 60~70% 주가하락은 대손 급증·ROE 하락·Mexico 자본흡수와 멀티플 압축의 조합으로 설명 가능하다. 그러나 cutoff 현재 7개 RT 소유 Hard Veto의 필수 구성요건은 충족되지 않는다.",
+  "evidence": [
+    {
+      "evidence_id": "NU-RT-CREDIT",
+      "economic_driver": "credit_cycle",
+      "claim": "Q2 90+ NPL increased to 6.9% while the credit portfolio reached $39.4B; the company explicitly expanded into higher-risk, higher-return segments.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-13",
+      "value": 0.069,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-RT-CAPITAL",
+      "economic_driver": "capital_consumption",
+      "claim": "Brazil CET1 fell from 13.0% at 2025 year-end to 11.9% at Q2 2026 and CAR from 16.6% to 15.7% as RWA expanded, though the subsidiary retained $1.848B excess capital margin.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm",
+      "period": "2025-12-31 to 2026-06-30",
+      "as_of_date": "2026-08-13",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-RT-GOV",
+      "economic_driver": "governance_concentration",
+      "claim": "The FY2025 20-F states David Vélez controlled 74.3% of combined voting power through the dual-class structure, allowing effective control of major corporate decisions.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426002166/nuform20f_2025.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-04-08",
+      "value": 0.743,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-RT-CONTROLS",
+      "economic_driver": "reporting_integrity",
+      "claim": "Against the short thesis, the FY2025 20-F states management concluded internal control over financial reporting was effective at year-end, and no current restatement/material-weakness evidence was identified for Nu.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426002166/nuform20f_2025.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-04-08",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-RT-ECON",
+      "economic_driver": "current_franchise_strength",
+      "claim": "Q2 net income reached $1.061B, ROE 33%, risk-adjusted NIM 12.4%, activity 83.5% and ARPAC $17.1; these contradict a present moat or customer-value collapse.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-13",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-RT-VAL",
+      "economic_driver": "valuation_downside",
+      "claim": "Frozen harness values are $4.76 Bear, $18.56 Base and $34.85 Bull against $14.03 price. A severe credit/capital normalization can therefore support large equity downside even without insolvency.",
+      "source_type": "other",
+      "source": "runs/NU/aggregate.json",
+      "period": "valuation as of 2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 4.7644,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Strong Q2 ROE, risk-adjusted NIM and per-share earnings growth directly contradict a current structural return collapse.",
+    "Brazil, Mexico and Colombia remain above local capital minima with meaningful buffers.",
+    "High activity, rising ARPAC and primary-bank credit performance contradict subsidy-only customer acquisition.",
+    "The frozen price is below Base and far below Bull, so current valuation does not require an impossible outcome."
+  ],
+  "unknowns": [
+    "Full-cycle vintage loss curves for the newer higher-risk cohorts.",
+    "Normalized Mexico/Colombia ROE after banking scale and promotional deposit pricing.",
+    "Explicit group target capital/payout framework.",
+    "Quantified economic impact if founder-controlled capital allocation diverges from minority preferences."
+  ],
+  "falsifiers": [
+    "90+ NPL stabilizes/declines while ROE stays high-20s+ and capital buffers remain comfortable, weakening the core short thesis.",
+    "Mexico/Colombia demonstrate durable returns above cost of equity without heavy subsidy or equity injections.",
+    "PBR share, deposits and ARPAC continue rising while cost-to-serve stays near current levels, weakening moat-compression claims."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "FY2025 20-F states ICFR was effective and no cutoff-valid restatement, material weakness, auditor dispute or accounting-integrity event was identified. Founder control is a governance risk but not evidence of dishonesty."
+    },
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Nu is profitable, primarily retail-deposit funded, and each core regulated subsidiary remains above minimum capital ratios. Banking deposits are operating funding, not evidence that ordinary operations require recurrent external equity."
+    },
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "83.5% activity, rising ARPAC, very low service cost and stronger credit performance among primary-bank customers show recurring customer value. Promotional deposit pricing is a monitor, not proof of value-free growth."
+    },
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Reported ROE 33%, risk-adjusted NIM 12.4% and sharply higher per-share net income contradict a current structural return collapse. The RF incremental-return proxy is noisy but not needed alone to clear this veto."
+    },
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Customer count, activity, ARPAC, deposits and primary-bank depth are expanding. Digital product copyability is a future threat, but there is no present persistent moat contraction."
+    },
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Frozen price $14.03 is below Base $18.56 and far below Bull $34.85. The veto's price-above-Bull condition is false."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Nu spans cards, deposits, loans, investments, SMEs and premium banking across three countries. Brazil concentration and banking regulation are material, but no single customer/product/regulatory event is shown to cause irrecoverable franchise failure."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "90+ NPL / risk-adjusted NIM",
+      "direction": "stable",
+      "threshold": "NPL does not rise persistently while loss-adjusted margin compresses",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "CET1/CAR excess margin",
+      "direction": "stable",
+      "threshold": "capital ratios remain comfortably above minima as RWA grows",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Mexico/Colombia ROE and deposit economics",
+      "direction": "improve",
+      "threshold": "international growth converges toward self-funded returns above cost of equity",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 vintage/NPL/ECL and capital-ratio bridge.",
+    "Mexico/Colombia funding cost and profitability after bank expansion.",
+    "Any control, regulatory-enforcement or founder-related governance event."
+  ],
+  "verdict": "oppose",
+  "subscores": [],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

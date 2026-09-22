@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "reports": [
+    "ED",
+    "RT"
+  ],
+  "validation_errors": [],
+  "hard_veto_status": "CLEARED",
+  "confirmed_vetoes": 0,
+  "unresolved_vetoes": 0,
+  "pending_vetoes": 0,
+  "score_100": 78.6875,
+  "archetype": "compounder",
+  "dispersion": {
+    "mean_skew": 6.22,
+    "label": "downside_skew",
+    "reduce_bands": 1
+  },
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "raw_position_band": "2-4%",
+  "position_range_pre_ic": "0-2%",
+  "macro_purchase_pacing_multiplier": 0.5,
+  "expected_next_stage": "ic"
+}

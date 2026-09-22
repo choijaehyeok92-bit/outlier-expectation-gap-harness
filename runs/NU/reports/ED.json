@@ -1,0 +1,137 @@
+{
+  "agent_id": "ED",
+  "ticker": "NU",
+  "as_of_date": "2026-09-21",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 86,
+  "confidence_0_1": 0.94,
+  "thesis": "핵심 결론은 대부분 cutoff-valid 20-F·6-K 1차 자료에 직접 연결된다. 고객·ARPAC·ROE·NPL·자본비율·자사주 수치는 정의와 기간이 확인된다. 가장 중요한 증거 한계는 은행형 RF다. 약 46% 증분수익률은 공시 ROIC가 아니라 분기 이익 증가와 자기자본 증가를 결합한 분석 proxy이므로 단독 gate 근거로 과잉해석하면 안 된다. 다만 보고된 ROE 33%, risk-adjusted NIM 12.4%, 주당이익 성장과 함께 보면 높은 재투자 수익성의 방향성은 지지된다.",
+  "evidence": [
+    {
+      "evidence_id": "NU-ED-Q2",
+      "economic_driver": "earnings_and_credit",
+      "claim": "Q2 2026 release directly reports 138.9M customers, ARPAC $17.1, risk-adjusted NIM 12.4%, net income $1.061B, ROE 33%, 90+ NPL 6.9%, deposits $45.3B and credit portfolio $39.4B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-13",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-ED-CAPITAL",
+      "economic_driver": "capital_adequacy",
+      "claim": "Q2 interim statements directly report Brazil CET1 11.9%, Tier 1 13.4%, CAR 15.7%, $1.848B excess capital margin, and Mexico/Colombia capital ratios above local minimums.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-13",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-ED-BUYBACK",
+      "economic_driver": "capital_allocation",
+      "claim": "The Q2 6-K directly reports 40,659,600 Class A shares repurchased for $500.393M; the ~$12.31 average price is an arithmetic estimate, not a company-reported valuation judgment.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-13",
+      "value": 500393000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-ED-CONTROLS",
+      "economic_driver": "reporting_integrity",
+      "claim": "The FY2025 20-F states management concluded internal control over financial reporting was effective at year-end; KPMG audited the annual financial statements.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426002166/nuform20f_2025.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-04-08",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-ED-CONTROL",
+      "economic_driver": "governance",
+      "claim": "The FY2025 20-F states David Vélez held 74.3% of combined voting power through Class B shares. This is a governance concentration fact, not evidence of accounting misconduct.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426002166/nuform20f_2025.htm",
+      "period": "2025 year-end disclosure",
+      "as_of_date": "2026-04-08",
+      "value": 0.743,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-ED-RFPROXY",
+      "economic_driver": "reinvestment_return",
+      "claim": "The ~46% incremental earnings/equity figure in RF is an analyst proxy derived from Q2 2025-2026 quarterly net-income and period-end equity changes. It is not reported ROIC and is sensitive to FX/OCI, timing and regulatory-capital composition.",
+      "source_type": "other",
+      "source": "runs/NU/reports/RF.json based on Q2 2025 and Q2 2026 primary filings",
+      "period": "Q2 2025-Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.461,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "The distributable owner-earnings DCF is a harness modeling convention rather than an issuer-reported cash-flow measure.",
+    "Managerial metrics are useful but must not replace accounting P&L; Q2 release provides a reconciliation and net income agrees at $1.061B.",
+    "90+ NPL rose to 6.9% and Stage 2/3 ECL balances remain material, so current ROE should not be extrapolated without credit-cycle monitoring.",
+    "Founder voting control materially weakens minority governance even though it does not currently undermine financial-reporting reliability."
+  ],
+  "unknowns": [
+    "Explicit target CET1/CAR and long-run distributable payout ratio by country.",
+    "Full-cycle loss-adjusted returns for newer higher-risk cohorts.",
+    "Independent quantitative uplift from NuFormer underwriting.",
+    "Normalized profitability of Mexico/Colombia after full banking scale."
+  ],
+  "falsifiers": [
+    "Future audited/interim filings reveal a restatement, material weakness or metric-definition inconsistency affecting core evidence.",
+    "Reported ROE and risk-adjusted NIM deteriorate while the RF proxy remains high only because of accounting/FX timing effects.",
+    "Primary-source values in the frozen pack materially diverge from subsequent source verification for the same cutoff."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "ROE + risk-adjusted NIM + NPL",
+      "direction": "quality maintained",
+      "threshold": "high returns must coexist with stable loss-adjusted credit economics",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "CET1/CAR excess margin",
+      "direction": "stable",
+      "threshold": "growth does not consume buffers toward minimums",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Per-share earnings vs diluted shares",
+      "direction": "up",
+      "threshold": "per-share economics grow without material dilution",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Reconcile Q3 reported metrics against the frozen definitions used here.",
+    "Obtain explicit capital targets/payout framework before raising RF confidence.",
+    "Track audit/control disclosures and any restatement or regulator action."
+  ],
+  "verdict": "support",
+  "subscores": [],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}

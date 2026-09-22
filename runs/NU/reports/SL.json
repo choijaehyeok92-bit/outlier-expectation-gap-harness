@@ -1,0 +1,138 @@
+{
+  "agent_id": "SL",
+  "ticker": "NU",
+  "as_of_date": "2026-09-21",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 86.25,
+  "confidence_0_1": 0.92,
+  "bull_score": 95,
+  "bear_score": 70,
+  "bull_case": "Nu is redefining mass-market banking in Latin America through branchless distribution, low cost-to-serve and primary-bank relationships, while Mexico and Colombia extend the model beyond Brazil.",
+  "bear_case": "Digital banking itself is no longer novel. Incumbents can copy interfaces, while regulation, deposit competition and credit cycles can limit how much of Nu's structural advantage becomes shareholder returns.",
+  "thesis": "NU is a structural leader. Its digital cost base, customer scale and primary-bank penetration have changed competitive standards in Brazil and are being exported to Mexico and Colombia. Q2 growth remains strong at large scale. Durability is somewhat lower than leadership because the economics still depend heavily on Brazil and because banking regulation, funding competition and credit cycles can affect several growth engines simultaneously.",
+  "evidence": [
+    {
+      "evidence_id": "NU-SL-COST",
+      "economic_driver": "structural_cost_curve",
+      "claim": "Nu estimated 2025 cost to serve at about $0.8 per active customer and roughly 85% below incumbent Brazilian financial institutions.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426002166/nuform20f_2025.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-21",
+      "value": 0.8,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-SL-BRAZIL",
+      "economic_driver": "category_leadership",
+      "claim": "By Q2 2026 Nu had almost 118M Brazil customers, monthly activity above 86%, and management stated it leads the Brazilian market in primary banking relationships.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 118000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-SL-INTL",
+      "economic_driver": "geographic_scaling",
+      "claim": "Mexico reached 15.8M customers in Q2 and 16M by July 2026, while Colombia surpassed 5M, showing the model is scaling outside Brazil.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 20800000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-SL-MONETIZE",
+      "economic_driver": "monetization_depth",
+      "claim": "Q2 ARPAC reached $17.1, up 22% YoY FX-neutral, while customers grew 13%, indicating rising wallet share rather than customer-count growth alone.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 17.1,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Large incumbent banks and fintechs can replicate many digital front-end features.",
+    "Brazil remains the dominant economic exposure.",
+    "Banking regulation can cap product economics and capital deployment.",
+    "Credit growth adds cyclicality to what began as a distribution disruption."
+  ],
+  "unknowns": [
+    "Independent country-level market-share time series.",
+    "Long-run profitability of Mexico after full-bank conversion.",
+    "The saturation point for Brazil primary-bank share."
+  ],
+  "falsifiers": [
+    "Nu loses primary-bank share in Brazil for multiple periods.",
+    "Mexico customer growth fails to translate into improving unit economics.",
+    "Cost-to-serve rises structurally toward incumbent levels without compensating monetization."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Primary-bank/activity share",
+      "direction": "up",
+      "threshold": "maintain leadership and >80% activity",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "ARPAC vs cost to serve",
+      "direction": "spread widening",
+      "threshold": "monetization grows faster than service cost",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Mexico/Colombia scale",
+      "direction": "up",
+      "threshold": "customer and product breadth continue converging toward Brazil economics",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Brazil PBR trend.",
+    "Mexico full-bank economics.",
+    "Cost-to-serve and ARPAC progression."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 90,
+      "rationale": "Digital primary banking, low-cost distribution and underpenetrated Latin American financial services remain long-duration structural shifts."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 90,
+      "rationale": "Nu sets competitive standards in branchless service, primary-bank engagement and low-cost scale in Brazil while leading digital-bank expansion in Mexico."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 75,
+      "rationale": "Multiple products and geographies provide buffers, but Brazil concentration and cross-cutting regulation/credit risks prevent an 85-90 resilience score."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "minor",
+      "rationale": "The structural shift is established; the pace of future share gain is less certain."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "minor",
+      "rationale": "Leadership is supported by scale and PBR evidence."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "Regulation, funding and credit cycles can affect multiple business lines simultaneously."
+    }
+  ]
+}

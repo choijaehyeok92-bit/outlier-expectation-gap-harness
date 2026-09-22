@@ -1,0 +1,147 @@
+{
+  "agent_id": "DI",
+  "ticker": "NU",
+  "as_of_date": "2026-09-21",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 86.75,
+  "confidence_0_1": 0.91,
+  "bull_score": 95,
+  "bear_score": 70,
+  "bull_case": "Nu combines a low-cost digital operating model, proprietary data/AI and mobile distribution to replace high-friction Latin American banking while expanding from cards into deposits, lending, investments and SME services.",
+  "bear_case": "The original disruption may mature into ordinary banking competition. Incumbents and other fintechs can match digital interfaces, while deposit pricing, regulation and credit losses can erode the cost advantage.",
+  "thesis": "Nu remains a scaled disruptive platform rather than a pilot-stage fintech. The digital model serves well over 100M customers at roughly $0.8 monthly cost-to-serve, while deposits and credit products deepen primary banking relationships. Adoption is mainstream. The strongest evidence is cost/distribution structure and continued share gains; the limiting factor is that banking products can be copied and regulatory/credit constraints eventually make parts of the model look more like conventional banking.",
+  "evidence": [
+    {
+      "evidence_id": "NU-DI-COST",
+      "economic_driver": "cost_performance_shift",
+      "claim": "Nu reported monthly average cost to serve per active customer of about $0.8 in 2025 while serving 131M customers, demonstrating a very low-cost digital service model at scale.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426002166/nuform20f_2025.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-21",
+      "value": 0.8,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-DI-ADOPTION",
+      "economic_driver": "mainstream_adoption",
+      "claim": "Q2 2026 customers reached 138.9M and monthly activity rate 83.5%, with Brazil above 86%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 138900000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-DI-FUNDING",
+      "economic_driver": "deposit_disruption",
+      "claim": "Deposits reached $45.3B in Q2 2026; the 20-F states the retail deposit franchise has grown steadily and more than covered funding needs.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426002166/nuform20f_2025.htm",
+      "period": "FY2025-Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 45300000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-DI-ADJACENT",
+      "economic_driver": "adjacent_value_pools",
+      "claim": "Nu has monetized multiple adjacent pools beyond the original credit card: deposits, personal/payroll loans, investments, SMEs and premium banking, with Mexico and Colombia adding geographic optionality.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426002166/nuform20f_2025.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-21",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-DI-AI",
+      "economic_driver": "underwriting_technology",
+      "claim": "Nu disclosed plans to expand its proprietary transformer-based NuFormer approach into Brazil lending and Mexico credit cards, extending data/AI into underwriting decisions.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426002166/nuform20f_2025.htm",
+      "period": "2026 strategy",
+      "as_of_date": "2026-09-21",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Digital banking interfaces are increasingly standard and can be copied by incumbents and other fintechs.",
+    "High deposit yields used to acquire customers can narrow the structural cost advantage.",
+    "Credit and regulatory capital requirements make scaling more capital intensive than pure software.",
+    "Brazil already has high Nu penetration, shifting future disruption toward wallet share and international execution."
+  ],
+  "unknowns": [
+    "Independent full-cycle cost advantage versus the most efficient incumbent banks.",
+    "How much NuFormer improves risk-adjusted credit returns after deployment.",
+    "Long-run profitability of Mexico and Colombia after full product breadth."
+  ],
+  "falsifiers": [
+    "Cost-to-serve rises materially as product complexity increases without offsetting monetization.",
+    "Activity and primary-bank share stop increasing despite customer growth.",
+    "International markets require sustained deposit subsidies without converging unit economics."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Cost to serve / active customer",
+      "direction": "stable or down",
+      "threshold": "retain a structural service-cost advantage",
+      "cadence": "annual"
+    },
+    {
+      "name": "Activity / primary bank share",
+      "direction": "up",
+      "threshold": "deepen engagement at scale",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "International unit economics",
+      "direction": "improve",
+      "threshold": "Mexico/Colombia progress toward self-funded profitable growth",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Track NuFormer underwriting deployment and loss outcomes.",
+    "Track Mexico bank launch economics and deposit cost.",
+    "Compare cost-to-serve and activity with leading regional competitors."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 85,
+      "rationale": "Nu's low-cost digital distribution and roughly $0.8 monthly service cost structurally change banking convenience and cost, but a universal 10x economic advantage versus all efficient banks is not established."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 90,
+      "rationale": "Nearly 139M customers, >83% monthly activity and large deposits/credit balances demonstrate mainstream adoption at regional scale."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 85,
+      "rationale": "Three or more adjacent value pools are already monetized—deposits, lending, investments/SME/premium services—and Nu is helping define the digital primary-bank model across its core markets."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "minor",
+      "rationale": "The low-cost model is directly evidenced; comparative full-cycle profitability versus efficient banks is less standardized."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "minor",
+      "rationale": "Adoption is clear; future monetization quality is the greater uncertainty."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Well-capitalized banks and fintechs can copy individual products even if the full ecosystem is harder to replicate."
+    }
+  ]
+}
