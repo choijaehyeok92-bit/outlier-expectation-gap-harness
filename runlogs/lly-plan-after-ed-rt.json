@@ -1,0 +1,21 @@
+{
+  "stage": "ic",
+  "agents": {
+    "investment_committee": "IC"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true
+  },
+  "execution_control": "continue",
+  "archetype": "compounder",
+  "reachable_archetypes_raw": [
+    "compounder"
+  ],
+  "hard_veto_status": "CLEARED",
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "position_range_pre_ic": "2-4%",
+  "macro_purchase_pacing_multiplier": 0.5,
+  "statement": "ED and RT are complete and all Hard Vetoes are cleared. Run IC next. IC may only maintain or reduce deterministic deployment."
+}
