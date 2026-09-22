@@ -1,0 +1,146 @@
+{
+  "agent_id": "DI",
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 82.25,
+  "confidence_0_1": 0.9,
+  "bull_score": 95,
+  "bear_score": 65,
+  "bull_case": "The incretin platform is shifting obesity and metabolic disease from chronic under-treatment toward scalable pharmacologic therapy, while oral and next-generation molecules expand reach and adjacent indications.",
+  "bear_case": "The innovation is clinically powerful but remains pharmaceutical rather than a new value-chain monopoly. Competitors can develop incretins, payers can ration access, and pricing pressure can shift value away from manufacturers.",
+  "thesis": "LLY is a major disruptive innovator in metabolic medicine. Tirzepatide has reached mainstream commercial scale, oral orforglipron reduces administration friction, and retatrutide extends efficacy/indication optionality. The platform changes patient behavior and treatment pathways, but it does not fully redefine the pharmaceutical value chain: Novo and other well-capitalized competitors can respond, and reimbursement/regulation constrain value capture.",
+  "evidence": [
+    {
+      "evidence_id": "LLY-DI-SCALE",
+      "economic_driver": "mainstream_adoption",
+      "claim": "Q2 2026 Mounjaro and Zepbound revenue totaled $14.871B, demonstrating mainstream adoption rather than pilot-stage demand.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/R20.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 14871000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-DI-ORAL",
+      "economic_driver": "convenience_shift",
+      "claim": "Orforglipron received FDA approval for obesity and launched in the U.S. in Q2 2026, adding an oral form factor to the incretin treatment pathway.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-DI-RETA",
+      "economic_driver": "performance_optionality",
+      "claim": "Retatrutide Phase 3 obesity trials and a Phase 3 type 2 diabetes trial met their primary endpoints, extending the platform into a next-generation triple-agonist path.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-DI-ADJ",
+      "economic_driver": "adjacent_indications",
+      "claim": "The metabolic portfolio spans diabetes and obesity and is expanding across additional obesity-related and cardiometabolic indications through multiple molecules and line extensions.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "2026 pipeline",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-DI-CAPACITY",
+      "economic_driver": "physical_scale",
+      "claim": "Lilly is undertaking significant global manufacturing expansion to support current and prospective products, indicating adoption is constrained partly by physical supply rather than lack of demand.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000013/lly-20251231.htm",
+      "period": "FY2025-2026",
+      "as_of_date": "2026-02-18",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Novo Nordisk and other pharmaceutical competitors can fund competing incretins and next-generation mechanisms.",
+    "Payer reimbursement and government pricing can constrain adoption and value capture despite clinical efficacy.",
+    "Manufacturing is capital intensive and highly regulated, limiting software-like scaling.",
+    "The innovation remains concentrated in a therapeutic class rather than creating a proprietary new distribution layer."
+  ],
+  "unknowns": [
+    "Long-run adherence and persistence across oral versus injectable obesity treatments.",
+    "Risk-adjusted comparative efficacy/safety of retatrutide at commercial scale.",
+    "How much payer coverage expands as obesity treatment becomes mainstream.",
+    "Whether metabolic platform economics remain exceptional after multi-player competition intensifies."
+  ],
+  "falsifiers": [
+    "Incretin adoption plateaus mainly because payers restrict economics rather than supply.",
+    "Orforglipron/retatrutide fail to expand the addressable market beyond cannibalizing existing Lilly products.",
+    "Competitors erase Lilly's efficacy, convenience or supply advantage without corresponding pipeline differentiation."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Metabolic franchise adoption",
+      "direction": "up",
+      "threshold": "volume growth remains mainstream and broadens access",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Successor molecule adoption",
+      "direction": "up",
+      "threshold": "orforglipron/retatrutide create incremental patients/value pools",
+      "cadence": "launch/clinical"
+    },
+    {
+      "name": "Manufacturing availability",
+      "direction": "improve",
+      "threshold": "capacity expansion converts unmet demand into supply",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Orforglipron prescription/coverage evidence.",
+    "Retatrutide filing/approval progress.",
+    "Competitive efficacy and payer coverage changes."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 80,
+      "rationale": "Incretin therapy materially changes obesity/diabetes treatment efficacy and convenience, while oral orforglipron lowers administration friction. It is a structural clinical shift but not a standardized 10x cost advantage."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 90,
+      "rationale": "Tirzepatide products are already generating nearly $15B quarterly revenue and capacity is being expanded to meet demand, consistent with mainstream S-curve adoption."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 75,
+      "rationale": "Lilly has multiple adjacent molecule/form-factor/indication options, but well-capitalized pharmaceutical incumbents can respond and value capture remains constrained by payer/regulatory structures."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "Clinical performance is strong but lifetime cost/value versus alternatives depends on adherence and reimbursement."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "minor",
+      "rationale": "Commercial adoption is directly evidenced at very large scale."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Competitors have capital and scientific capability to develop rival mechanisms."
+    }
+  ]
+}
