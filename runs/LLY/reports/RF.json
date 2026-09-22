@@ -1,0 +1,171 @@
+{
+  "agent_id": "RF",
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 83,
+  "confidence_0_1": 0.86,
+  "bull_score": 95,
+  "bear_score": 60,
+  "bull_case": "Lilly is reinvesting most operating cash into manufacturing and R&D while earnings and owner cash flow scale rapidly. Successor metabolic assets and other therapeutic areas provide a long runway.",
+  "bear_case": "Current returns are inflated by extraordinary tirzepatide growth. Acquired IPR&D and M&A are economically recurring, and future pipeline failures or pricing pressure could make today's high reinvestment look much less productive.",
+  "thesis": "RF clears Compounder thresholds but with important normalization caveats. TTM OCF is ~$28.08B, capex ~$9.89B and internal R&D ~$14.60B, so internal reinvestment absorption is ~87.2%. A rough 2024→2025 incremental net-income / incremental debt+equity proxy is ~48%, well above the 9% hurdle, though not a formal ROIC. TTM CFO-capex/share nearly doubled versus FY2025, but acquisitions and acquired IPR&D mean plain FCF overstates true owner economics.",
+  "evidence": [
+    {
+      "evidence_id": "LLY-RF-ABSORB",
+      "economic_driver": "reinvestment_absorption",
+      "claim": "TTM OCF is ~$28.083B, capex ~$9.893B and internal R&D ~$14.596B, giving (capex+R&D)/OCF of ~87.2%.",
+      "source_type": "other",
+      "source": "FY2025 10-K plus Q2 2026 10-Q; analyst calculation",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 0.872,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-RF-RET",
+      "economic_driver": "incremental_return",
+      "claim": "From 2024 to 2025 net income increased by ~$10.05B while debt plus equity increased by ~$21.12B; the simple incremental earnings/capital proxy is ~47.6%. This is directional, not formal ROIC.",
+      "source_type": "other",
+      "source": "FY2025 10-K; analyst calculation",
+      "period": "FY2024-FY2025",
+      "as_of_date": "2026-09-21",
+      "value": 0.4758,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-RF-FCF",
+      "economic_driver": "owner_fcf_per_share",
+      "claim": "TTM CFO-capex proxy is ~$18.19B, about $20.35/share, versus FY2025 ~$8.97B or ~$9.98/share. The jump includes working-capital normalization and should not be extrapolated mechanically.",
+      "source_type": "other",
+      "source": "FY2025 10-K plus Q2 2026 10-Q; analyst calculation",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 20.3536,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-RF-IPRD",
+      "economic_driver": "economic_reinvestment",
+      "claim": "TTM cash purchases of in-process R&D are roughly $4.63B and H1 2026 acquisitions were $9.805B, showing material pharmaceutical reinvestment occurs outside CFO-capex.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "TTM/H1 2026",
+      "as_of_date": "2026-08-05",
+      "value": 14435000000,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-RF-EARN",
+      "economic_driver": "return_quality",
+      "claim": "H1 2026 net income increased 72% to $14.491B while internal R&D rose 21% and gross margin percentage improved, evidence that current reinvestment is producing substantial earnings growth.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-08-05",
+      "value": 0.72,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "The incremental-return proxy mixes debt-funded acquisitions, working capital and retained earnings and is not a formal ROIC calculation.",
+    "Acquired IPR&D and acquisitions are economically recurring for pharma and reduce owner cash available beyond CFO-capex.",
+    "Current growth is unusually concentrated in tirzepatide and may normalize.",
+    "Manufacturing assets could be underutilized if obesity demand or reimbursement disappoints."
+  ],
+  "unknowns": [
+    "Normalized maintenance capex after capacity expansion.",
+    "Long-run return on 2025-26 acquisitions and acquired IPR&D.",
+    "Owner FCF/share after including a normalized external-R&D/M&A reinvestment charge.",
+    "Post-launch economics of orforglipron and retatrutide."
+  ],
+  "falsifiers": [
+    "Owner FCF/share fails to grow as capacity projects mature.",
+    "Pipeline/M&A spending rises without corresponding earnings or asset value creation.",
+    "Pricing/reimbursement pressure pushes incremental returns toward the cost of capital."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Reported earnings growth, gross-margin resilience and the rough incremental-capital proxy are well above the cost-of-capital hurdle. Measurement is noisy, but there is no evidence of structural return collapse."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Diluted shares are declining and buybacks more than offset current share issuance; long-duration dilution conditions are not met."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "TTM owner FCF/share",
+      "direction": "up",
+      "threshold": "sustain growth after working-capital normalization",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Reinvestment absorption / incremental returns",
+      "direction": "productive",
+      "threshold": "high internal reinvestment continues to earn well above cost of capital",
+      "cadence": "annual/TTM"
+    },
+    {
+      "name": "Acquired IPR&D + M&A returns",
+      "direction": "de-risk",
+      "threshold": "external pipeline spending produces approvals, launches or demonstrable asset value",
+      "cadence": "annual/clinical"
+    }
+  ],
+  "next_checks": [
+    "Q3 TTM cash conversion.",
+    "Manufacturing-capex normalization.",
+    "Post-acquisition pipeline milestones and impairment evidence."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 80,
+      "rationale": "The rough FY2024-2025 incremental earnings/capital proxy is ~48% and H1 earnings growth remains very strong, but attribution is noisy because acquisitions, debt and working capital distort invested-capital changes."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 90,
+      "rationale": "TTM internal reinvestment absorption is ~87.2%, above 60%, and available evidence supports returns comfortably above twice the 9% required return. Multiple manufacturing, R&D and pipeline paths remain."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 80,
+      "rationale": "CFO-capex/share has approximately doubled versus FY2025 with declining diluted shares, but acquired IPR&D and acquisitions outside CFO-capex make headline FCF less pristine than the cash figure suggests."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "critical",
+      "rationale": "Formal incremental ROIC cannot be cleanly isolated from acquisition and working-capital effects."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "material",
+      "rationale": "Absorption is clear, but some current capacity may be ahead of realized demand."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "External R&D/M&A are economically recurring and sit outside standard FCF."
+    }
+  ],
+  "dilution_metrics": {
+    "annualized_dilution": -0.0067793,
+    "three_year_diluted_share_cagr": null,
+    "three_year_cumulative_dilution": null,
+    "consecutive_years_material_dilution": 0,
+    "per_share_value_proxy": "owner_fcf_per_share",
+    "per_share_value_growth": 1.04,
+    "structural_financing_need": false,
+    "rationale": "Q2 diluted shares declined ~0.68% YoY while the TTM CFO-capex/share proxy rose sharply; no structural equity financing need is evident."
+  }
+}
