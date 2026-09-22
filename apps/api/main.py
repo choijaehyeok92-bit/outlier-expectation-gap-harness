@@ -531,6 +531,45 @@ def jobs_list(status: str | None = None, kind: str | None = None,
                 'jobs': job_queue.recent(session, limit, status, kind)}
 
 
+@app.get('/api/jobs/schedules')
+def jobs_schedules(now: str | None = None):
+    """The declared recurring work and what is currently due.
+
+    Read-only: seeing that something is due is not the same as queuing it, and
+    a GET must not do the second.
+    """
+    from workers import queue as job_queue
+    from workers import schedule as job_schedule
+    config = job_queue.load_config()
+    moment = None
+    if now:
+        from datetime import datetime, timezone
+        try:
+            moment = datetime.fromisoformat(now)
+        except ValueError as error:
+            raise HTTPException(422, f'now must be an ISO timestamp: {error}') from error
+        moment = moment if moment.tzinfo else moment.replace(tzinfo=timezone.utc)
+    policy = job_schedule.settings(config)
+    return {'timezone': policy.get('timezone'), 'catch_up': policy.get('catch_up'),
+            'lookback_hours': policy.get('lookback_hours'),
+            'problems': job_schedule.validate(config),
+            'schedules': job_schedule.plan(config, moment)}
+
+
+@app.post('/api/jobs/schedules/run')
+def jobs_schedules_run():
+    """Queue whatever is due. Calling it repeatedly queues nothing extra."""
+    from db.session import session_scope
+    from workers import queue as job_queue
+    from workers import schedule as job_schedule
+    config = job_queue.load_config()
+    with session_scope(_job_engine()) as session:
+        try:
+            return job_schedule.run(session, config)
+        except job_schedule.CronError as error:
+            raise HTTPException(422, str(error)) from error
+
+
 @app.get('/api/jobs/locks')
 def jobs_locks():
     """Resources held by running jobs, and the queued jobs waiting on them.

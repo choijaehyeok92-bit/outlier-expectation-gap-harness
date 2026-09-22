@@ -26,6 +26,12 @@ it stops two workers taking the same *row*, not two rows touching the same
 `runs/<ID>/` — so a claim also takes resource locks, and the lock tests are
 the ones that pin the case that motivated them: a full-harness job and a deep
 dive on the same company.
+
+**A schedule that fires twice queues once.** The idempotency key names the
+occurrence rather than the moment of the call, so a doubled cron, a late
+wake-up and an operator running the command by hand all collapse to one row.
+The cron reader is small and its one inherited trap — day-of-month and
+day-of-week being OR-ed — is pinned rather than left to be rediscovered.
 """
 import json
 import os
@@ -42,7 +48,7 @@ try:
 
     from db.models import Base, Job, JobLock
     from db.session import engine_for, session_scope
-    from workers import handlers, locks, queue, runner
+    from workers import handlers, locks, queue, runner, schedule
     AVAILABLE = True
     SKIP = ''
 except Exception as error:                              # pragma: no cover
@@ -474,6 +480,234 @@ class LockedRunnerTests(QueueCase):
                          'the second ran once the first released MSFT')
         with session_scope(self.engine) as session:
             self.assertEqual(session.scalars(select(JobLock)).all(), [])
+
+
+class CronTests(unittest.TestCase):
+    """The reader, before anything is scheduled with it."""
+
+    def setUp(self):
+        if not AVAILABLE:
+            self.skipTest(SKIP)
+
+    def fires(self, expression, moment):
+        return schedule.matches(schedule.parse(expression), moment)
+
+    def test_the_documented_subset_is_understood(self):
+        cases = {
+            '0 3 * * *': datetime(2026, 9, 22, 3, 0, tzinfo=timezone.utc),
+            '*/15 * * * *': datetime(2026, 9, 22, 7, 45, tzinfo=timezone.utc),
+            '0 2-4 * * *': datetime(2026, 9, 22, 3, 0, tzinfo=timezone.utc),
+            '0 0 1,15 * *': datetime(2026, 9, 15, 0, 0, tzinfo=timezone.utc),
+            '30 1 * * 2': datetime(2026, 9, 22, 1, 30, tzinfo=timezone.utc),   # a Tuesday
+            '@daily': datetime(2026, 9, 22, 0, 0, tzinfo=timezone.utc),
+            '@hourly': datetime(2026, 9, 22, 11, 0, tzinfo=timezone.utc),
+            '@weekly': datetime(2026, 9, 20, 0, 0, tzinfo=timezone.utc),       # a Sunday
+        }
+        for expression, moment in cases.items():
+            with self.subTest(cron=expression):
+                self.assertTrue(self.fires(expression, moment))
+
+    def test_a_minute_that_does_not_match_does_not_fire(self):
+        self.assertFalse(self.fires('0 3 * * *',
+                                    datetime(2026, 9, 22, 3, 1, tzinfo=timezone.utc)))
+        self.assertFalse(self.fires('*/15 * * * *',
+                                    datetime(2026, 9, 22, 7, 46, tzinfo=timezone.utc)))
+
+    def test_seven_is_sunday_as_cron_has_always_had_it(self):
+        sunday = datetime(2026, 9, 20, 0, 0, tzinfo=timezone.utc)
+        self.assertTrue(self.fires('0 0 * * 7', sunday))
+        self.assertTrue(self.fires('0 0 * * 0', sunday))
+
+    def test_day_of_month_and_day_of_week_are_or_ed_as_cron_does(self):
+        # The famous trap, kept deliberate: `0 0 1 * 1` runs on the 1st AND on
+        # every Monday, not only on a Monday the 1st.
+        parsed = schedule.parse('0 0 1 * 1')
+        first = datetime(2026, 9, 1, 0, 0, tzinfo=timezone.utc)        # Tuesday the 1st
+        monday = datetime(2026, 9, 21, 0, 0, tzinfo=timezone.utc)      # Monday the 21st
+        other = datetime(2026, 9, 22, 0, 0, tzinfo=timezone.utc)
+        self.assertTrue(schedule.matches(parsed, first))
+        self.assertTrue(schedule.matches(parsed, monday))
+        self.assertFalse(schedule.matches(parsed, other))
+
+    def test_only_one_restricted_day_field_still_ands(self):
+        parsed = schedule.parse('0 0 15 * *')
+        self.assertTrue(schedule.matches(
+            parsed, datetime(2026, 9, 15, 0, 0, tzinfo=timezone.utc)))
+        self.assertFalse(schedule.matches(
+            parsed, datetime(2026, 9, 16, 0, 0, tzinfo=timezone.utc)))
+
+    def test_syntax_outside_the_subset_is_refused_not_guessed(self):
+        # A misread `L` that quietly means "every day" is worse than a
+        # rejected config.
+        for expression in ('0 0 L * *', '0 0 * * 1#2', '0 0 ? * *', '0 0 * *',
+                           '0 0 * * * *', '99 * * * *', '0 0 32 * *', '0 5-2 * * *'):
+            with self.subTest(cron=expression):
+                with self.assertRaises(schedule.CronError):
+                    schedule.parse(expression)
+
+    def test_the_error_says_what_is_supported(self):
+        with self.assertRaises(schedule.CronError) as caught:
+            schedule.parse('0 0 L * *')
+        self.assertIn('*/n', str(caught.exception))
+
+    def test_the_last_occurrence_is_found_and_the_window_is_honoured(self):
+        now = datetime(2026, 9, 22, 4, 45, tzinfo=timezone.utc)
+        self.assertEqual(schedule.last_occurrence('0 3 * * *', now),
+                         datetime(2026, 9, 22, 3, 0, tzinfo=timezone.utc))
+        # Monthly, on the 1st: outside a 48h lookback on the 22nd.
+        self.assertIsNone(schedule.last_occurrence('0 0 1 * *', now, lookback_hours=48))
+        self.assertIsNotNone(schedule.last_occurrence('0 0 1 * *', now, lookback_hours=24 * 40))
+
+    def test_occurrences_since_lists_every_firing_in_order(self):
+        since = datetime(2026, 9, 22, 0, 0, tzinfo=timezone.utc)
+        now = datetime(2026, 9, 22, 3, 30, tzinfo=timezone.utc)
+        found = schedule.occurrences_since('0 * * * *', since, now)
+        self.assertEqual([m.hour for m in found], [1, 2, 3])
+
+    def test_a_naive_time_is_read_as_utc(self):
+        naive = datetime(2026, 9, 22, 3, 0)
+        self.assertTrue(schedule.matches(schedule.parse('0 3 * * *'), naive))
+        self.assertEqual(schedule.stamp(naive), '2026-09-22T03:00Z')
+
+
+class SchedulePlanTests(unittest.TestCase):
+    def setUp(self):
+        if not AVAILABLE:
+            self.skipTest(SKIP)
+        self.config = queue.load_config()
+
+    def test_the_shipped_schedules_are_readable_and_point_at_real_kinds(self):
+        self.assertEqual(schedule.validate(self.config), [])
+
+    def test_no_money_spending_kind_is_scheduled_by_default(self):
+        # Queueing a nightly harness_full because a config shipped that way is
+        # exactly the surprise the provider allowlist exists to prevent.
+        spends = {kind for kind, row in self.config['kinds'].items()
+                  if row.get('spends_money')}
+        scheduled = {entry['kind'] for entry in schedule.entries(self.config)}
+        self.assertEqual(spends & scheduled, set())
+        self.assertTrue(set(self.config['schedules']['never_scheduled']) <= spends)
+
+    def test_validate_catches_a_duplicate_id(self):
+        entry = dict(self.config['schedules']['entries'][0])
+        broken = {**self.config, 'schedules': {**self.config['schedules'],
+                                               'entries': [entry, dict(entry)]}}
+        problems = schedule.validate(broken)
+        self.assertTrue(any('duplicate schedule id' in p for p in problems))
+
+    def test_validate_catches_a_kind_nobody_declared(self):
+        broken = {**self.config, 'schedules': {**self.config['schedules'], 'entries': [
+            {'id': 'x', 'kind': 'screan_build', 'cron': '@daily'}]}}
+        self.assertTrue(any('not declared' in p for p in schedule.validate(broken)))
+
+    def test_validate_catches_a_payload_carrying_a_credential(self):
+        broken = {**self.config, 'schedules': {**self.config['schedules'], 'entries': [
+            {'id': 'x', 'kind': 'db_sync', 'cron': '@daily',
+             'payload': {'api_key': 'sk-x'}}]}}
+        self.assertTrue(any('payload carries' in p for p in schedule.validate(broken)))
+
+    def test_only_two_placeholders_are_substituted(self):
+        moment = datetime(2026, 9, 22, 3, 0, tzinfo=timezone.utc)
+        rendered = schedule.render_payload(
+            {'as_of_date': '{date}', 'tag': 'run-{occurrence}',
+             'nested': {'when': '{date}'}, 'list': ['{date}'],
+             'left_alone': '{today}', 'number': 5}, moment)
+        self.assertEqual(rendered['as_of_date'], '2026-09-22')
+        self.assertEqual(rendered['tag'], 'run-2026-09-22T03:00Z')
+        self.assertEqual(rendered['nested']['when'], '2026-09-22')
+        self.assertEqual(rendered['list'], ['2026-09-22'])
+        self.assertEqual(rendered['left_alone'], '{today}',
+                         'an unknown placeholder is left alone, not evaluated')
+        self.assertEqual(rendered['number'], 5)
+
+    def test_the_key_names_the_occurrence_not_the_moment_of_the_call(self):
+        moment = datetime(2026, 9, 22, 3, 0, tzinfo=timezone.utc)
+        self.assertEqual(schedule.idempotency_key('nightly_db_sync', moment, self.config),
+                         'schedule:nightly_db_sync:2026-09-22T03:00Z')
+
+    def test_a_missed_window_is_reported_rather_than_back_filled(self):
+        config = {**self.config, 'schedules': {
+            **self.config['schedules'], 'lookback_hours': 2,
+            'entries': [{'id': 'monthly', 'kind': 'db_sync', 'cron': '0 0 1 * *'}]}}
+        row = schedule.plan(config, datetime(2026, 9, 22, 4, 0, tzinfo=timezone.utc))[0]
+        self.assertFalse(row['due'])
+        self.assertIn('not', row['reason'])
+
+    def test_a_disabled_entry_is_not_planned(self):
+        config = {**self.config, 'schedules': {**self.config['schedules'], 'entries': [
+            {'id': 'off', 'kind': 'db_sync', 'cron': '@daily', 'enabled': False}]}}
+        self.assertEqual(schedule.plan(config), [])
+
+
+class ScheduleRunTests(QueueCase):
+    NOW = datetime(2026, 9, 22, 4, 45, tzinfo=timezone.utc)
+
+    def fire(self, now=None, only=None, config=None):
+        with session_scope(self.engine) as session:
+            return schedule.run(session, config or self.config, now or self.NOW, only)
+
+    def test_the_due_schedules_are_queued(self):
+        result = self.fire()
+        self.assertEqual(result['summary']['queued'], len(schedule.entries(self.config)))
+        with session_scope(self.engine) as session:
+            self.assertEqual(len(session.scalars(select(Job)).all()),
+                             result['summary']['queued'])
+
+    def test_firing_twice_for_the_same_occurrence_queues_nothing_extra(self):
+        # A doubled cron, a retried command, an operator being thorough.
+        first = self.fire()
+        second = self.fire()
+        self.assertEqual(second['summary']['queued'], 0)
+        self.assertEqual(second['summary']['already_queued'], first['summary']['queued'])
+        with session_scope(self.engine) as session:
+            self.assertEqual(len(session.scalars(select(Job)).all()),
+                             first['summary']['queued'])
+
+    def test_a_later_call_in_the_same_window_is_still_the_same_occurrence(self):
+        self.fire(self.NOW)
+        later = self.fire(self.NOW + timedelta(minutes=40))
+        self.assertEqual(later['summary']['queued'], 0)
+
+    def test_the_next_day_is_new_work(self):
+        self.fire(self.NOW)
+        tomorrow = self.fire(self.NOW + timedelta(days=1))
+        self.assertEqual(tomorrow['summary']['queued'], len(schedule.entries(self.config)))
+
+    def test_the_queue_is_the_only_state_the_scheduler_keeps(self):
+        # Nothing on disk, no extra table: deleting the jobs makes it due again.
+        self.fire()
+        with session_scope(self.engine) as session:
+            for job in session.scalars(select(Job)).all():
+                session.delete(job)
+        self.assertEqual(self.fire()['summary']['queued'],
+                         len(schedule.entries(self.config)))
+
+    def test_only_narrows_what_is_queued(self):
+        result = self.fire(only=['nightly_db_sync'])
+        self.assertEqual(result['summary']['queued'], 1)
+        self.assertEqual(result['queued'][0]['schedule_id'], 'nightly_db_sync')
+
+    def test_a_broken_schedule_stops_the_run_rather_than_queuing_half_of_it(self):
+        broken = {**self.config, 'schedules': {**self.config['schedules'], 'entries': [
+            {'id': 'good', 'kind': 'db_sync', 'cron': '@daily'},
+            {'id': 'bad', 'kind': 'db_sync', 'cron': '0 0 L * *'}]}}
+        with self.assertRaises(schedule.CronError):
+            self.fire(config=broken)
+        with session_scope(self.engine) as session:
+            self.assertEqual(session.scalars(select(Job)).all(), [])
+
+    def test_the_payload_reaches_the_job_with_its_date_filled_in(self):
+        self.fire(only=['nightly_warehouse'])
+        with session_scope(self.engine) as session:
+            job = session.scalars(select(Job)).one()
+            self.assertEqual(job.payload, {'as_of_date': '2026-09-22'})
+            self.assertEqual(job.priority, 40)
+
+    def test_a_scheduled_job_is_an_ordinary_job_a_worker_then_runs(self):
+        self.fire(only=['nightly_monitor_status'])
+        report = runner.run(self.engine, once=True, install_signals=False)
+        self.assertEqual(report.summary['completed'], 1)
+        self.assertEqual(report.processed[0]['kind'], 'monitor_status')
 
 
 class HandlerContractTests(unittest.TestCase):

@@ -154,6 +154,63 @@ def cmd_worker_cancel(args):
         _print(queue.to_dict(job))
 
 
+def _moment(args):
+    from datetime import datetime, timezone
+    if not getattr(args, 'now', None):
+        return None
+    try:
+        parsed = datetime.fromisoformat(args.now)
+    except ValueError:
+        raise SystemExit(f'--now must be an ISO timestamp, got {args.now!r}') from None
+    return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
+
+
+def cmd_worker_schedule(args):
+    """Queue whatever is due. Safe to call as often as you like.
+
+    This is the one line a crontab needs; the cadence lives in
+    `config/workers.json`. Running it twice for the same occurrence queues
+    nothing the second time, because the idempotency key names the occurrence
+    rather than the moment of the call.
+    """
+    from workers import queue, schedule
+    config = queue.load_config()
+    only = [s.strip() for s in args.only.split(',')] if args.only else None
+
+    problems = schedule.validate(config)
+    if problems:
+        raise SystemExit('config/workers.json schedules are not usable:\n  '
+                         + '\n  '.join(problems))
+    if args.dry_run:
+        rows = schedule.plan(config, _moment(args))
+        _print({'now': args.now or 'now', 'dry_run': True,
+                'schedules': [row for row in rows
+                              if not only or row['schedule_id'] in set(only)]})
+        return
+
+    from db.session import session_scope
+    engine = _engine(args)
+    _require_schema(engine)
+    try:
+        with session_scope(engine) as session:
+            result = schedule.run(session, config, _moment(args), only)
+    except schedule.CronError as error:
+        raise SystemExit(str(error)) from error
+    _print(result)
+
+
+def cmd_worker_schedules(args):
+    """The declared schedules, and whether they are readable."""
+    from workers import queue, schedule
+    config = queue.load_config()
+    policy = schedule.settings(config)
+    _print({'timezone': policy.get('timezone'), 'catch_up': policy.get('catch_up'),
+            'lookback_hours': policy.get('lookback_hours'),
+            'problems': schedule.validate(config),
+            'entries': policy.get('entries') or [],
+            'never_scheduled': policy.get('never_scheduled')})
+
+
 def cmd_worker_locks(args):
     """Which resources are held, and what is waiting on them."""
     from db.session import session_scope
@@ -225,6 +282,16 @@ def register(sub):
     p = shared(worker_sub.add_parser('cancel', help='cancel a job that has not finished'))
     p.add_argument('job_id', type=int)
     p.set_defaults(func=cmd_worker_cancel)
+
+    p = shared(worker_sub.add_parser(
+        'schedule', help='queue whatever is due; the one line a crontab needs'))
+    p.add_argument('--dry-run', action='store_true', help='show what would be queued')
+    p.add_argument('--only', help='comma-separated schedule ids')
+    p.add_argument('--now', help='evaluate as if it were this ISO time (UTC)')
+    p.set_defaults(func=cmd_worker_schedule)
+
+    p = shared(worker_sub.add_parser('schedules', help='the declared recurring work'))
+    p.set_defaults(func=cmd_worker_schedules)
 
     p = shared(worker_sub.add_parser(
         'locks', help='resources held by running jobs, and what is waiting on them'))

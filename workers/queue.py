@@ -117,6 +117,11 @@ def enqueue(session, kind: str, payload: dict, config: Optional[dict] = None,
     return job
 
 
+def find_by_key(session, idempotency_key: str) -> Optional[Job]:
+    """The job already holding this key, if any. Scheduling asks before it enqueues."""
+    return session.scalar(select(Job).where(Job.idempotency_key == idempotency_key))
+
+
 def _claimable(kinds: Optional[list]):
     condition = (Job.status == 'queued') & (Job.available_at <= _now())
     if kinds:

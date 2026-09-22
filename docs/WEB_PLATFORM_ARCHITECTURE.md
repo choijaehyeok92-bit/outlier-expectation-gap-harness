@@ -224,11 +224,12 @@ docs/MONITORING.md
 ```
 workers/
   queue.py                         job 테이블에서 claim — lease·백오프·reaper
+  schedule.py                      cron 선언 -> 만기 회차. 상태는 큐 자신이다
   locks.py                         자원 잠금 — 두 작업이 같은 runs/<ID>/를 쓰지 않는다
   handlers.py                      kind -> 이미 존재하는 진입점. provider 상한을 여기서 건다
   runner.py                        루프: reap -> claim -> 실행 -> 기록. SIGTERM은 graceful
   cli.py                           harness.py worker {enqueue,run,status,jobs,locks,retry,cancel,reap}
-config/workers.json                kinds · lease · 백오프 · providers.allowed · locks · 핸들러 계약
+config/workers.json                kinds · lease · 백오프 · providers.allowed · locks · schedules
 db/migrations/versions/0003_job_queue.py
 db/migrations/versions/0004_job_lock.py
 tests/test_workers.py
@@ -567,6 +568,8 @@ remaining_unknowns / evidence_quality / final_synthesis
 | POST | `/api/monitoring/links`, `/api/monitoring/ingest` | ✅ 링크 결정 · 창고에서 적재 |
 | GET | `/api/jobs[?status=&kind=]`, `/api/jobs/{id}` | ✅ 큐 요약 + 최근 작업 |
 | GET | `/api/jobs/locks` | ✅ 보유 중인 자원과 대기 중인 작업 |
+| GET | `/api/jobs/schedules[?now=]` | ✅ 선언된 주기와 현재 만기 (읽기 전용) |
+| POST | `/api/jobs/schedules/run` | ✅ 만기인 것을 큐에 넣는다 |
 | POST | `/api/jobs` | ✅ 작업 1건 enqueue (실행은 워커가 한다) |
 
 미구현 단계는 그럴듯한 답을 만들지 않고 501과 해당 Phase를 반환한다.
@@ -608,7 +611,8 @@ python harness.py monitor drift TICKER [--run-ids A,B]
 python harness.py monitor runs
 python harness.py worker enqueue KIND [--payload JSON|@file] [--set K=V] [--priority N]
 python harness.py worker run [--kinds A,B] [--follow] [--max-jobs N] [--max-seconds S]
-python harness.py worker {status,jobs,locks,retry,cancel,reap}
+python harness.py worker schedule [--dry-run] [--only IDS] [--now ISO]
+python harness.py worker {schedules,status,jobs,locks,retry,cancel,reap}
 ```
 
 이후 Phase에서 추가될 것: `screen deep-dive --input leaderboard.json --top 10`.
@@ -641,7 +645,8 @@ Phase 4가 붙으면서 `screening_warehouse` 백엔드가 조건부로 활성�
 Phase 2가 붙으면서 아티팩트 위에 선택적 PostgreSQL 색인이 생겼고, 스크리너는 `--source`로
 파일과 DB 중 어느 쪽에서든 **같은 행**을 읽는다. `job` 테이블에는 이제 소비자가 있고, 같은
 기업을 두 작업이 동시에 쓰지 못하게 하는 자원 잠금도 있다. 관측은 사람이 한 번 건 링크를 따라
-결정론적 창고에서 적재된다 — 이름으로 맞추는 자동 연결은 하지 않는다. Phase 7·8은 결정론이 아니므로 픽스처가 검증하는 범위가
+결정론적 창고에서 적재된다 — 이름으로 맞추는 자동 연결은 하지 않는다. 되풀이되는 일의 주기는
+`config/workers.json`에 선언되고 cron은 `worker schedule` 한 줄만 부른다. Phase 7·8은 결정론이 아니므로 픽스처가 검증하는 범위가
 좁아진다 — 무엇을 검증하고 무엇을 검증하지 않는지는 [ORCHESTRATION.md](ORCHESTRATION.md)와
 모든 배치 기록의 `verification_scope`에 적혀 있다.
 

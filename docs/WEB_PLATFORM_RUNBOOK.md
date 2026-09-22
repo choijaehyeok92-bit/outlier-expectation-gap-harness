@@ -186,6 +186,16 @@ python harness.py worker run --follow        # 데몬. SIGTERM은 진행 중 작
 python harness.py worker status
 python harness.py worker jobs --status failed
 python harness.py worker locks               # 누가 어느 기업을 잡고 있는가
+
+# 되풀이되는 일 — crontab에는 이 한 줄만 둔다
+python harness.py worker schedules           # 선언된 주기와 문법 검사
+python harness.py worker schedule --dry-run  # 지금 무엇이 만기인가
+python harness.py worker schedule            # 넣는다. 두 번 불러도 한 번만 들어간다
+```
+
+```cron
+5 * * * *  cd /srv/harness && python harness.py worker schedule
+* * * * *  cd /srv/harness && python harness.py worker run --max-seconds 55
 ```
 
 큐는 `job` 테이블이다. 브로커가 없고 Redis도 필요 없다. **payload에 API 키를 넣지 않는다** —

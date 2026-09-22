@@ -175,6 +175,20 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 501)
         self.assertIn('queue', response.json()['detail'])
 
+    def test_reading_the_schedules_does_not_queue_anything(self):
+        # A GET that fired the work would be a surprising GET, and it needs no
+        # database to answer because the schedules are config.
+        response = CLIENT.get('/api/jobs/schedules', params={'now': '2026-09-22T04:45:00Z'})
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertEqual(body['problems'], [])
+        self.assertEqual(body['timezone'], 'UTC')
+        self.assertTrue(any(row['due'] for row in body['schedules']))
+
+    def test_a_bad_now_is_refused_rather_than_ignored(self):
+        response = CLIENT.get('/api/jobs/schedules', params={'now': 'tuesday'})
+        self.assertEqual(response.status_code, 422)
+
     def test_the_lock_view_needs_a_database_too(self):
         import os
         if os.environ.get('HARNESS_DATABASE_URL'):
