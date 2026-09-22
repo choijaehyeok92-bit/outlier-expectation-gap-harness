@@ -1,0 +1,160 @@
+{
+  "agent_id": "AS",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-21",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 58.25,
+  "confidence_0_1": 0.82,
+  "bull_score": 85,
+  "bear_score": 35,
+  "bull_case": "Commerce, fintech, credit and advertising can compound through multiple value pools. The locked Bull value is about $4,720/share, 2.59x the frozen price, so upside does not require multiple expansion alone.",
+  "bear_case": "The locked Bear value is only about 7.6% of price. If credit losses, funding costs and logistics investment stay elevated while margins fail to normalize, equity value can be permanently impaired without bankruptcy.",
+  "thesis": "MELI has unusually strong upside optionality but a very wide downside distribution. Bull/current is 2.59x and there are at least three distinct economic paths, supporting a 90 upside-path score. Bear/current is only 0.076x and MELI is not net cash, so permanent-loss scores only 25. The business can survive stress, but the current valuation still embeds substantial long-duration execution risk.",
+  "evidence": [
+    {
+      "evidence_id": "MELI-AS-DCF",
+      "economic_driver": "market_expectations",
+      "claim": "Locked harness values are about $138 Bear, $1,979 Base and $4,720 Bull versus $1,820.47 current price; Bull/current is 2.59x and Bear/current 0.076x.",
+      "source_type": "other",
+      "source": "Harness locked owner-FCF/share DCF using frozen 2026-09-21 inputs",
+      "period": "10-year forecast from 2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 2.5926,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "MELI-AS-ECOSYSTEM",
+      "economic_driver": "multi_engine_growth",
+      "claim": "Q2 2026 GMV rose 44% YoY, TPV 56%, fintech MAUs reached 88M and unique active buyers 89M, showing multiple scaled growth engines.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.56,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-AS-AD-CREDIT",
+      "economic_driver": "adjacent_value_pools",
+      "claim": "Q2 advertising revenue grew 73% in USD while the credit portfolio exceeded $16B and grew 75% YoY, adding monetization paths beyond marketplace transaction growth.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 16000000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-AS-LIQUIDITY",
+      "economic_driver": "permanent_loss_buffer",
+      "claim": "At June 30, 2026 MELI reported $6.751B of available cash/investments/digital assets against $13.176B total debt, leaving $6.425B net debt rather than net cash.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000023/meli-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": -6425000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-AS-PROB",
+      "economic_driver": "probability_calibration",
+      "claim": "A cautious illustrative weighting of 25% Bear / 55% Base / 20% Bull gives about $2,067/share, modestly above the frozen price. This is sensitivity analysis, not a matched historical base rate.",
+      "source_type": "other",
+      "source": "Analyst probability calibration on frozen harness scenarios",
+      "period": "2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 2067.15,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "A $92B starting equity value makes a true 5x outcome require roughly $460B of equity value.",
+    "H1 2026 adjusted FCF fell to $158M despite very high ecosystem growth, showing that growth can absorb rather than release cash.",
+    "The credit portfolio adds correlated funding, loss and macro risk to what was historically a lighter marketplace model.",
+    "Brazil, Mexico and Argentina concentration creates significant FX and sovereign dispersion in USD outcomes."
+  ],
+  "unknowns": [
+    "Matched historical base rates for 3x-5x outcomes from companies starting near $100B market capitalization in emerging-market commerce/fintech.",
+    "Normalized adjusted-FCF margin after the current logistics and credit investment wave.",
+    "Long-run risk-adjusted profitability of the rapidly expanding credit-card portfolio."
+  ],
+  "falsifiers": [
+    "Adjusted FCF/share fails to recover despite continued double-digit GMV and TPV growth.",
+    "Credit losses/funding costs remain elevated enough to prevent owner-cash-flow normalization.",
+    "Commerce and fintech growth both decelerate materially before new value pools become economically significant."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "The frozen price is far below the locked Bull value; the required veto element is false."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "MELI has substantial liquidity, positive adjusted FCF and demonstrated debt-market access. Severe valuation downside does not by itself establish a material probability of business-value extinction."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Adjusted FCF/share",
+      "direction": "recover",
+      "threshold": "sustain multi-year recovery from the 2026 trough",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Credit NIMAL / NPL",
+      "direction": "stable or improve",
+      "threshold": "growth remains risk-adjusted profitable",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "GMV + TPV growth",
+      "direction": "remain structurally above market",
+      "threshold": "both engines continue scaling without simultaneous share loss",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Re-run asymmetry after Q3 2026 adjusted FCF and credit-loss data.",
+    "Build a matched large-cap multi-bagger base-rate set before raising probability calibration.",
+    "Separate ads, credit and payments contribution to owner FCF as disclosure improves."
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 90,
+      "rationale": "Bull/current is 2.59x and at least three monetized economic paths exist—commerce/logistics, fintech/credit/payments and advertising/subscriptions. This matches the >2.5x with 3+ paths observable row."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 25,
+      "rationale": "Bear/current is about 0.076x, below the 0.2 observable threshold. MELI is net debt rather than net cash, so the +10 liquidity modifier does not apply."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 60,
+      "rationale": "Explicit scenario sensitivity and probability weighting are used, but no matched historical base-rate dataset is frozen. This is above a purely narrative 50 and below the 75 base-rate anchor."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "The absolute equity value required for 3x-5x outcomes is large despite multiple engines."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "critical",
+      "rationale": "The locked Bear path implies very large permanent equity-value loss if cash conversion never normalizes."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Scenario weights remain judgmental without matched historical base rates."
+    }
+  ]
+}
