@@ -1,0 +1,153 @@
+{
+  "agent_id": "MA",
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "domain": "management_allocation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 83,
+  "confidence_0_1": 0.9,
+  "bull_score": 90,
+  "bear_score": 65,
+  "bull_case": "Management is funding capacity and R&D ahead of large demand, buying pipeline assets, and repurchasing shares below the frozen Base value while maintaining strong performance-linked compensation and independent board oversight.",
+  "bear_case": "The 2025-26 acquisition wave and debt build could prove procyclical near peak franchise economics. Combined chair/CEO leadership and aggressive capital deployment raise execution concentration risk.",
+  "thesis": "Management/allocation is strong. The last four reported quarters' repurchases average roughly $943/share, ~0.735x the frozen Base value, mapping to capital allocation 80. R&D/capacity execution has translated into rapid volume and earnings growth. Governance is solid: all standing committees are independent and 94% of CEO target compensation was incentive pay. The main restraint is the large debt-funded acquisition/manufacturing wave and combined chair/CEO structure.",
+  "evidence": [
+    {
+      "evidence_id": "LLY-MA-BUYBACK",
+      "economic_driver": "capital_allocation",
+      "claim": "Weighted across Q3 2025 through Q2 2026, Lilly repurchased about 6.49M shares at an estimated average ~$942.81/share, ~0.735x the frozen Base value of $1,282.74.",
+      "source_type": "other",
+      "source": "Q3/Q4 2025 and Q1/Q2 2026 SEC repurchase tables; analyst calculation",
+      "period": "Q3 2025-Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.735,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-MA-COMP",
+      "economic_driver": "incentive_alignment",
+      "claim": "The 2026 proxy states incentive pay represented 94% of CEO target compensation and 88% on average for other named executive officers in 2025.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000029/lly-20260317.htm",
+      "period": "2025 compensation",
+      "as_of_date": "2026-03-20",
+      "value": 0.94,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-MA-GOV",
+      "economic_driver": "governance",
+      "claim": "All standing board committees are composed solely of independent directors, with a lead independent director and regular executive sessions.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000029/lly-20260317.htm",
+      "period": "2026 proxy",
+      "as_of_date": "2026-03-20",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-MA-EXEC",
+      "economic_driver": "execution",
+      "claim": "Q2 volume rose 60%, gross margin percentage improved, orforglipron obtained FDA approval, retatrutide Phase 3 programs advanced, and Lilly continued capacity expansion.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000077/q226lillysalesandearningsp.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-MA-RISK",
+      "economic_driver": "allocation_risk",
+      "claim": "H1 2026 cash paid for acquisitions was $9.805B and total debt reached ~$54.9B, so current management is making unusually large capital-allocation commitments.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "H1/Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 9805000000,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Recent acquisitions and business-development spending have not seasoned enough for full-cycle return assessment.",
+    "Debt rose materially during the 2025-26 investment wave.",
+    "Chair and CEO roles remain combined, reducing formal separation of oversight and management.",
+    "Repurchasing shares below Base is attractive only if the Base valuation proves accurate."
+  ],
+  "unknowns": [
+    "Long-run returns on 2026 acquisitions.",
+    "Internal hurdle rates for manufacturing and business development.",
+    "Capital-priority tradeoffs among M&A, capacity, dividends, buybacks and deleveraging."
+  ],
+  "falsifiers": [
+    "Recent acquisitions lead to impairments or fail to produce valuable pipeline assets.",
+    "Debt continues rising while cash returns on new capacity/pipeline deteriorate.",
+    "Repurchases occur persistently above refrozen intrinsic value while leverage remains elevated."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
+      "status": "cleared",
+      "rationale": "Independent oversight, PCAOB-audited reporting and no current material control failure support accounting reliability. Current concerns are allocation magnitude, not integrity."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Acquisition/R&D milestone returns",
+      "direction": "de-risk",
+      "threshold": "external spending produces clinical/commercial value",
+      "cadence": "clinical/annual"
+    },
+    {
+      "name": "Repurchase price / Base value",
+      "direction": "below 1",
+      "threshold": "buybacks remain value-accretive",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Net debt / owner cash flow",
+      "direction": "stable or down",
+      "threshold": "large investment wave does not impair balance-sheet flexibility",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "2026 acquisition milestone outcomes.",
+    "Q3 buyback and debt activity.",
+    "Proxy/governance changes."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "capital_allocation",
+      "score_0_100": 80,
+      "rationale": "Recent four-quarter weighted-average repurchase price is ~0.735x the frozen Base value, directly mapping to the rubric's <0.8 row. Large M&A commitments keep the score from exceeding the observable anchor."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "score_0_100": 85,
+      "rationale": "Independent committees, lead-independent-director powers, performance-linked compensation and clean audited controls support high governance quality, with a modest discount for combined chair/CEO roles."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "score_0_100": 85,
+      "rationale": "Management has scaled supply, advanced successor metabolic assets and maintained strong operating economics, though the recent acquisition wave remains unseasoned."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "critical",
+      "rationale": "The largest recent acquisitions have not matured enough for ex-post return measurement."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "minor",
+      "rationale": "Oversight evidence is strong; combined chair/CEO structure is the main structural caveat."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "material",
+      "rationale": "Manufacturing and acquisition execution remain large forward commitments."
+    }
+  ]
+}
