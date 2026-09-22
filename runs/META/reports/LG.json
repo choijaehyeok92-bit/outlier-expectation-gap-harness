@@ -4,58 +4,154 @@
   "as_of_date": "2026-09-18",
   "domain": "long_term_growth",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 68,
+  "confidence_0_1": 0.72,
+  "bull_score": 82,
+  "bear_score": 50,
+  "bull_case": "AI improves the core ad engine while Threads, WhatsApp, subscriptions, agents and wearables create additional monetization vectors. A roughly 2x-plus 5-year economic expansion is possible without heroic margins.",
+  "bear_case": "Starting scale is enormous, advertising is already mature, and current valuation reflects much of the expected AI/ad runway. New businesses may remain too small while capex and regulation constrain cash compounding.",
+  "thesis": "META has a credible 5-10 year growth runway but does not clear the harness's outlier-growth expectation-gap bar at the cutoff. A roughly 2.2x five-year economic expansion is plausible if mid-teens growth persists and new monetization layers contribute, but the market already prices near the EV Base case. Culture/adaptability is strong; the weak link is a specific market misperception, not the size of the business opportunity.",
+  "evidence": [
+    {
+      "evidence_id": "META-LG-GROWTH",
+      "economic_driver": "core_growth_duration",
+      "claim": "FY2025 revenue grew 22% and Q2 2026 revenue grew 28%; EV's frozen next-3-year revenue CAGR estimate is 16%, which supports a multi-year growth runway.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025-Q2 2026",
+      "as_of_date": "2026-09-18",
+      "value": 0.16,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "META-LG-NEWPOOLS",
+      "economic_driver": "adjacent_growth_vectors",
+      "claim": "FoA other revenue grew 50% in 2025, driven mainly by WhatsApp paid messaging and Meta Verified; Reality Labs AI-glasses sales also contributed growth.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-18",
+      "value": 0.5,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-LG-METAONE",
+      "economic_driver": "adjacent_growth_vectors",
+      "claim": "Reuters reported on September 15, 2026 that Meta One had 15M subscribers and trial users during phased rollout, providing an early subscription growth vector.",
+      "source_type": "secondary",
+      "source": "https://www.reuters.com/business/meta-launches-subscriptions-with-enhanced-ai-features-2026-09-15/",
+      "period": "2026-09-15",
+      "as_of_date": "2026-09-18",
+      "value": 15000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-LG-EXPECTATION",
+      "economic_driver": "market_misperception",
+      "claim": "The harness EV Base value is about $638/share versus a frozen price of $665.75, so price/Base is about 1.043x. The market therefore already discounts roughly the Base growth path rather than a short-duration miss.",
+      "source_type": "other",
+      "source": "Harness META EV report",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 1.0428,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "META-LG-ADAPT",
+      "economic_driver": "culture_adaptability",
+      "claim": "Meta has shifted product and capital toward Reels, AI recommendation, Threads, subscriptions and a major AI infrastructure build while continuing to grow the core business.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "2025-2026",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "At roughly $1.7T market cap, maintaining mid-teens growth for many years is mathematically demanding.",
+    "Advertising remains roughly 98% of revenue, so new vectors are not yet economically independent at scale.",
+    "AI capex may remain structurally high and reduce owner-cash-flow conversion.",
+    "The frozen price is already above the EV Base value, weakening the expectation-gap thesis."
+  ],
+  "unknowns": [
+    "Meta does not provide long-term revenue guidance by Threads, WhatsApp, Meta One, agents or enterprise AI.",
+    "No matched consensus/reverse-DCF dataset was frozen beyond the harness EV scenarios to prove the market is underestimating duration."
+  ],
+  "falsifiers": [
+    "Revenue CAGR falls below 10% before new monetization pools become material.",
+    "New products remain below a few percent of revenue through 2029 while ad growth matures.",
+    "Price continues to require Base-or-better assumptions while owner FCF/share fails to recover."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
+  "key_kpis": [
+    {
+      "name": "3-year forward revenue CAGR",
+      "direction": "remain double digit",
+      "threshold": ">=10-15% while scale expands",
+      "cadence": "annual"
+    },
+    {
+      "name": "Non-ad/new-product revenue",
+      "direction": "increase share",
+      "threshold": "become material enough to diversify the growth engine",
+      "cadence": "annual"
+    },
+    {
+      "name": "Price/Base value",
+      "direction": "create gap",
+      "threshold": "prefer <=1.0 with improving fundamentals",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Update five-year expansion multiple after 2027 revenue/capex guidance.",
+    "Quantify revenue from Threads, WhatsApp, subscriptions and enterprise AI as disclosure improves.",
+    "Re-run market_misperception if price falls materially or owner FCF recovery exceeds Base."
+  ],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "opportunity_scale_5y",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "A roughly 2.2x five-year economic expansion is plausible with mid-teens growth plus new monetization vectors. Interpolation in the 2.0-3.0x band is around 70, below 75 because advertising concentration and starting scale limit confidence."
     },
     {
       "criterion_id": "growth_duration_10y",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "A 5-10 year runway is plausible from AI monetization, messaging and subscriptions, but 10+ years of high-value growth is not sufficiently proven at current scale. This places the score within, but below the center of, the 5-10 year band."
     },
     {
       "criterion_id": "culture_adaptability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Meta has repeatedly reallocated resources and self-disrupted across mobile, Stories/Reels, efficiency and AI. Founder control is not treated as proof by itself; observed product/capital pivots support a score above the 75 anchor but below 90."
     },
     {
       "criterion_id": "market_misperception",
       "score_0_100": 50,
-      "rationale": ""
+      "rationale": "A concrete underpriced expectation gap is weak: frozen price/Base is about 1.043x and EV concludes the market discounts essentially the Base runway. This fits the 50 plausible-disagreement anchor, not the 75 misperception threshold."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "opportunity_scale_5y",
+      "severity": "material",
+      "rationale": "The 2.2x path depends on sustaining mid-teens growth from a very large base."
+    },
+    {
+      "criterion_id": "growth_duration_10y",
+      "severity": "material",
+      "rationale": "New monetization vectors are not yet large enough to prove a decade-long runway."
+    },
+    {
+      "criterion_id": "culture_adaptability",
+      "severity": "minor",
+      "rationale": "Historical adaptability is strong; the newest AI-agent strategy has limited operating history."
+    },
+    {
+      "criterion_id": "market_misperception",
+      "severity": "material",
+      "rationale": "No external consensus distribution or independent reverse-DCF benchmark is frozen to establish a stronger expectation gap."
     }
-  }
+  ]
 }
