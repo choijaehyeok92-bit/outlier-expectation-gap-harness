@@ -1,71 +1,83 @@
 # Digest — LLY (as of 2026-09-21)
 
-> Reconstructed v3.3 output after ED + RT. Core score and archetype remain unchanged; evidence audit and Red Team determine evidence confidence and Hard Veto clearance.
+> Reconstructed v3.3 final output after IC. Core scores, archetype eligibility and Hard Veto decisions remain deterministic; IC may only maintain or reduce deployment.
 
-score **76.66** (ex-valuation **80.18**, Emerging Outlier) · archetype **compounder** · veto **CLEARED** · state **NORMAL_CANDIDATE**
+score **76.66** (ex-valuation **80.18**, Emerging Outlier) · archetype **compounder** · veto **CLEARED**
 
-pre-IC position band: **2-4%** · macro purchase pacing: **0.5x**
+mechanical pre-IC state **NORMAL_CANDIDATE** · final IC state **STARTER** · final position range **1-2%** · macro purchase pacing **0.5x**
 
 ## Core scorecard
 
 | Domain | Score |
 |---|---:|
-| SL | **86.25** |
-| CP | **84.50** |
-| MT | **79.75** |
-| RF | **83.00** |
-| MA | **83.00** |
-| FS | **78.75** |
-| EV | **56.75** |
-| AS | **61.75** |
-| DI | **82.00** |
+| SL — Structural Leadership | **86.25** |
+| CP — Customer / Product | **84.50** |
+| MT — Moat Trajectory | **79.75** |
+| RF — Reinvestment / FCF | **83.00** |
+| MA — Management / Allocation | **83.00** |
+| FS — Financial Survival | **78.75** |
+| EV — Expectation / Valuation | **56.75** |
+| AS — Asymmetry | **61.75** |
+| DI — Disruptive Innovation | **82.00** |
 
-Compounder remains the only eligible archetype; deterministic fit **82.88**.
+## Deterministic result
 
-## Evidence audit — ED 86
+**Compounder** is the only eligible archetype; fit score **82.88**.
 
-The core record is well tied to cutoff-valid 10-K, 10-Q and proxy filings.
+All **9 Hard Vetoes are CLEARED**.
 
-Strongly verified:
-- Q2 revenue, volume, realized-price decline and net income.
-- H1 OCF, capex, debt and liquidity.
-- Mounjaro/Zepbound revenue concentration.
-- FY2025 effective ICFR and clean audit opinion.
-- Proxy governance and compensation evidence.
+Locked valuation:
+- Bear **$345.26**
+- Base **$1,282.74**
+- Bull **$2,016.84**
+- frozen price **$1,164.89**
+- price/Base **0.9081x**
 
-Key methodological caution:
-- RF's ~47.6% incremental earnings/capital figure is an **analyst proxy**, not reported ROIC.
-- Standard CFO-capex excludes acquired IPR&D and M&A that are economically important recurring pharma reinvestment.
-- The RF conclusion therefore relies on the full evidence bundle rather than either proxy alone.
+Raw score 76.66 maps to `NORMAL_CANDIDATE` and **2-4%**. Dispersion does not reduce the band.
 
-## Red Team — strongest short thesis
+## IC decision — STARTER
 
-The most coherent short case is not weak demand; it is **over-extrapolation of current extraordinary growth**.
+IC does **not** maintain the full NORMAL 2-4% band.
 
+The positive case is strong:
+- Q2 revenue +48%
+- volume +60%
+- gross margin 85.8%
+- strong product/customer and structural-leadership scores
+- high reinvestment absorption
+- successor incretin assets
+- current price below locked Base
+- no Hard Veto
+
+The limiting evidence is also material:
+- EV **56.75** and AS **61.75** are the weakest core domains.
 - Mounjaro + Zepbound are about **64.7%** of Q2 revenue.
-- Q2 realized prices fell **13%** even as volume increased **60%**.
-- H1 included very large manufacturing capex, internal R&D, acquired IPR&D and **$9.805B** cash acquisitions.
-- Total debt reached about **$54.9B**.
-- A competition + reimbursement + capacity-utilization disappointment can compress both owner cash flow and valuation multiple.
+- realized prices fell **13%** in Q2.
+- acquired IPR&D and M&A are economically recurring and reduce the purity of standard CFO-capex owner cash.
+- total debt increased during the large manufacturing/acquisition cycle.
+- Bear value is only about **0.30x** current price.
 
-Counterevidence remains strong: Q2 gross margin was **85.8%**, volume growth was **60%**, successor assets continue to de-risk, and FY2025 ICFR was effective.
+Therefore IC selects **STARTER 1-2%**.
 
-## Hard Veto gate
+The fresh macro overlay applies **0.5x purchase pacing**. This does not halve the final 1-2% position cap; it means the approved position should be built more slowly and in smaller tranches while the overlay remains restrictive.
 
-**All 9 Hard Vetoes: CLEARED**
+## Evidence required for expansion
 
-There are no confirmed, unresolved or pending vetoes.
+A future increase should be tied to evidence rather than price appreciation:
+- owner FCF/share moves toward or above the locked Base path after recurring external R&D normalization;
+- realized pricing stabilizes while volume and gross margin remain strong;
+- orforglipron/retatrutide add incremental patients and economics rather than only cannibalizing existing products;
+- acquired IPR&D/M&A generate approvals, earnings or demonstrable asset value;
+- franchise concentration declines.
 
-## Position mechanics
+## Reconsideration triggers
 
-Raw score **76.66** maps to `NORMAL_CANDIDATE`, normally **2-4%** pre-IC.
+Re-run the thesis if:
+- metabolic volume growth slows while net-price pressure persists;
+- new manufacturing capacity fails to improve owner cash conversion;
+- external R&D/M&A spending grows without corresponding value creation;
+- a refrozen Base value falls to or below market price.
 
-The mean bull/bear downside skew is **5.72**, which stays in the v3.3 balanced/upside-skew band and does **not** reduce the position range.
+## Workflow
 
-Macro overlay separately limits **purchase pacing to 0.5x**; it does not change the 2-4% mechanical band.
-
-## Next plan
-
-`ic`: **IC — Investment Committee Chair**
-
-IC may maintain or reduce deployment but cannot enlarge the deterministic cap.
+`complete` — no further mandatory agent remains for this frozen snapshot.
