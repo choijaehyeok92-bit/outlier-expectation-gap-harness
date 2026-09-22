@@ -489,6 +489,24 @@ def jobs_list(status: str | None = None, kind: str | None = None,
                 'jobs': job_queue.recent(session, limit, status, kind)}
 
 
+@app.get('/api/jobs/locks')
+def jobs_locks():
+    """Resources held by running jobs, and the queued jobs waiting on them.
+
+    A queue that looks busy because everything is waiting on one long run is a
+    different situation from a queue with work nobody has started, and the
+    summary alone cannot tell them apart.
+    """
+    from db.session import session_scope
+    from workers import locks as job_locks
+    from workers import queue as job_queue
+    config = job_queue.load_config()
+    with session_scope(_job_engine()) as session:
+        return {'held': job_locks.held(session),
+                'blocked': job_queue.blocked(session, None, config),
+                'enabled': job_locks.enabled(config)}
+
+
 @app.get('/api/jobs/{job_id}')
 def jobs_get(job_id: int):
     from db.models import Job

@@ -125,21 +125,83 @@ POST /api/jobs                          {kind, payload, idempotency_key?, priori
 
 DB가 설정되지 않았으면 501로 **그렇게 말한다.** 빈 목록을 돌려주면 한가한 큐처럼 읽힌다.
 
-## 7. 병렬성
+## 7. 자원 잠금 — 두 작업이 같은 run을 쓰지 않는다
+
+큐는 **같은 행**을 두 워커가 가져가는 것만 막는다. **서로 다른 두 행**이 같은 `runs/<ID>/`를
+건드리는 것은 막지 못하고, 실제로 그런 조합이 있다:
+
+```
+harness_full {run_ids:[MSFT]}   runs/MSFT/reports/*.json, aggregate.json 을 다시 쓴다
+deep_dive    {run_id: MSFT}     그 aggregate.json 을 읽어 harness_snapshot 으로 복사한다
+```
+
+`harness_core.dump_json`은 `write_text` 한 줄이다 — **원자적이지 않다.** 읽는 쪽이 파일의
+절반을 볼 수 있고, 그렇게 읽힌 값이 불변 기록에 사실로 들어간다.
+
+그래서 작업은 claim 전에 자기가 건드릴 자원을 선언한다.
+
+| kind | 잡는 것 | 이유 |
+|---|---|---|
+| `harness_triage` · `harness_full` | `run:<ID>` (또는 `run:*`) | `runs/<ID>/`를 쓴다 |
+| `deep_dive` | `run:<ID>` | `runs/<ID>/`를 읽어 스냅샷을 복사한다 |
+| `monitor_status` | `run:<T>` (또는 `run:*`) | 워치리스트를 만들며 `runs/<T>/reports`를 읽는다 |
+| `db_sync` | `run:*` | 모든 run의 `aggregate.json`을 읽는다 |
+| `screen_build` | `warehouse:<as_of>` | Stage 0 pack만 읽는다 — **어떤 작업도 그것을 다시 쓰지 않으므로** run 정체에 끼지 않는다 |
+
+**보장은 이 코드의 확인이 아니라 UNIQUE 제약이다.** `(namespace, resource)`가 unique이고,
+두 워커가 동시에 비어 있다고 판단해도 `INSERT` 하나만 살아남는다. 진 쪽은 다음 후보로 넘어간다.
+
+막힌 작업은 **실패하지도 지연되지도 않는다. 그냥 건너뛴다.** claim은 후보를 앞에서부터 보며
+자원이 비어 있는 첫 작업을 가져간다 — 맨 앞의 막힌 작업에서 멈추면 할 수 있는 일이 뒤에 쌓인 채
+워커가 논다.
+
+```
+queued:  [1] harness_full MSFT   [2] deep_dive MSFT   [3] deep_dive NVDA
+worker-a -> 1 (run:MSFT 획득)
+worker-b -> 3 (2는 막혔으므로 건너뛴다)
+```
+
+`resource = '*'`는 namespace 전체다. `top: N`처럼 **대상이 실행 전에 정해지지 않는 배치**가
+쓴다. 너무 많이 잡으면 한 작업이 기다릴 뿐이고, 너무 적게 잡으면 run이 깨진다 — 안전한 방향은
+분명하다.
+
+잠금은 `completed`·`failed`·`cancelled`에서 풀리고, **lease가 회수될 때도 반드시 풀린다.**
+죽은 워커가 기업 하나를 영원히 붙잡고 있으면 안 된다. 보유자가 없는 잠금(`running`이 아닌
+작업의 행)은 매 pass의 reaper가 정리한다.
+
+`(run, *)`와 `(run, MSFT)`는 서로 다른 행이라 UNIQUE 제약이 둘의 충돌을 판단하지 못한다.
+그 경쟁만 PostgreSQL의 `pg_advisory_xact_lock`으로 닫는다 — claim 트랜잭션 동안만 잡히고
+commit/rollback에서 자동으로 풀리므로 정리할 것이 없다. SQLite는 쓰기가 하나뿐이라 필요 없다.
+
+읽기/쓰기 모드는 두지 않았다. 같은 자원을 읽기만 하는 두 작업을 직렬화하는 비용은 작고(둘 다
+idempotent라 하나가 기다리면 된다), 모드 행렬은 틀리기 쉬운 곳을 하나 늘린다.
+
+```bash
+python harness.py worker locks     # 누가 무엇을 잡고 있고 무엇이 기다리는가
+```
+
+```
+GET /api/jobs/locks
+```
+
+`worker status`의 `claimable_now`와 `ready_but_locked`는 다른 숫자다. **한 개의 긴 run 때문에
+전부 대기 중인 큐**와 **아무도 시작하지 않은 일이 쌓인 큐**는 다른 상황이고, 합계 하나로는
+구분되지 않는다.
+
+## 8. 병렬성
 
 워커 프로세스 하나가 한 번에 작업 하나를 처리한다. 병렬이 필요하면 **프로세스를 늘린다** —
-`SKIP LOCKED`가 같은 행을 두 번 주지 않는다. 한 프로세스 안의 스레드 풀은 그 보장을 스스로
-다시 구현해야 하므로 두지 않았다.
+`SKIP LOCKED`가 같은 행을 두 번 주지 않고, 자원 잠금이 같은 기업을 두 번 주지 않는다. 한
+프로세스 안의 스레드 풀은 그 보장을 스스로 다시 구현해야 하므로 두지 않았다.
 
-같은 run에 두 워커가 동시에 쓰면 `aggregate`가 중간 상태를 읽는다. 지금은 기업 단위 잠금이
-없으므로 **같은 기업에 대한 작업을 동시에 돌리지 않는 것은 운영자의 몫이다.** 서로 다른
-기업은 안전하다.
+## 9. 남은 것
 
-## 8. 남은 것
-
-- **기업 단위 잠금이 없다.** 같은 run_id에 대한 `harness_full` 두 개를 동시에 돌리면 두 워커가
-  같은 `runs/<ID>/`에 쓴다. idempotency key가 같은 payload는 막지만, payload가 다르면서 같은
-  run을 건드리는 조합은 막지 않는다
+- **잠금 단위가 run이지 파일이 아니다.** 같은 기업에 대한 작업은 서로 다른 파일을 건드려도
+  직렬화된다. 더 잘게 쪼갤 수는 있지만 경계를 틀리면 조용히 깨지므로, 지금은 거친 쪽을 택했다
+- **읽기 잠금이 없다.** `deep_dive`와 `monitor_status`는 run을 읽기만 하는데도 서로를 막는다.
+  비용은 대기시간뿐이다
+- **`screen_build`가 창고 파일을 잡지 run pack을 잡지 않는다.** Stage 0 pack을 다시 쓰는 작업이
+  생기면 이 가정이 깨지고, 그때는 `by_kind` 규칙을 고쳐야 한다
 - **heartbeat를 핸들러가 부르지 않는다.** 함수는 있지만 긴 작업이 중간에 lease를 갱신하지
   않는다. `harness_full`의 lease를 3시간으로 잡아 둔 것이 현재의 대응이다
 - **스케줄러가 없다.** 반복 실행(매일 `db_sync`)은 cron이나 상위 시스템이 `enqueue`를 부른다.

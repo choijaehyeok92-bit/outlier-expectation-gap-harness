@@ -154,6 +154,21 @@ def cmd_worker_cancel(args):
         _print(queue.to_dict(job))
 
 
+def cmd_worker_locks(args):
+    """Which resources are held, and what is waiting on them."""
+    from db.session import session_scope
+    from workers import locks, queue
+    engine = _engine(args)
+    _require_schema(engine)
+    config = queue.load_config()
+    with session_scope(engine) as session:
+        _print({'held': locks.held(session),
+                'blocked': queue.blocked(session, None, config),
+                'policy': {'enabled': locks.enabled(config),
+                           'by_kind': {k: v['namespace']
+                                       for k, v in (config['locks']['by_kind']).items()}}})
+
+
 def cmd_worker_reap(args):
     from db.session import session_scope
     from workers import queue
@@ -210,6 +225,10 @@ def register(sub):
     p = shared(worker_sub.add_parser('cancel', help='cancel a job that has not finished'))
     p.add_argument('job_id', type=int)
     p.set_defaults(func=cmd_worker_cancel)
+
+    p = shared(worker_sub.add_parser(
+        'locks', help='resources held by running jobs, and what is waiting on them'))
+    p.set_defaults(func=cmd_worker_locks)
 
     p = shared(worker_sub.add_parser('reap', help='return jobs with expired leases to the queue'))
     p.set_defaults(func=cmd_worker_reap)

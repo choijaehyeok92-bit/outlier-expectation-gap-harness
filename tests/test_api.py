@@ -154,6 +154,12 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 501)
         self.assertIn('queue', response.json()['detail'])
 
+    def test_the_lock_view_needs_a_database_too(self):
+        import os
+        if os.environ.get('HARNESS_DATABASE_URL'):
+            self.skipTest('a database is configured; the 501 path is not exercised')
+        self.assertEqual(CLIENT.get('/api/jobs/locks').status_code, 501)
+
     def test_deep_dive_plan_and_report_round_trip(self):
         plan = CLIENT.post('/api/deep-dive/plan', json={'run_id': 'MSFT'}).json()
         self.assertEqual(plan['ticker'], 'MSFT')

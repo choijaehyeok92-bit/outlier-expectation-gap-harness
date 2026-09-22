@@ -423,6 +423,38 @@ class Job(TimestampMixin, Base):
         DateTime(timezone=True), nullable=False, default=utcnow, onupdate=utcnow)
 
 
+class JobLock(TimestampMixin, Base):
+    """A resource one running job holds, so a second job cannot touch it.
+
+    The queue on its own stops two workers taking the same *row*. It says
+    nothing about two different rows writing the same `runs/<ID>/` — and they
+    do: a full-harness job rewrites `aggregate.json` while a deep dive reads
+    it, and `dump_json` is a plain `write_text`, so the reader can see half a
+    file.
+
+    A lock is `(namespace, resource)`, unique, which is the guarantee that
+    matters: the database itself refuses the second holder. `resource = '*'`
+    means the whole namespace, for a job whose targets are not known until it
+    selects them.
+
+    Rows belong to a job and are deleted when it stops — including when its
+    lease is reaped, because a dead worker must not hold a resource forever.
+    """
+    __tablename__ = 'job_lock'
+    __table_args__ = (
+        UniqueConstraint('namespace', 'resource', name='uq_job_lock_resource'),
+        Index('ix_job_lock_job', 'job_id'),
+    )
+
+    lock_id: Mapped[int] = mapped_column(primary_key=True)
+    namespace: Mapped[str] = mapped_column(Identifier, nullable=False)
+    resource: Mapped[str] = mapped_column(ShortText, nullable=False)
+    job_id: Mapped[int] = mapped_column(
+        ForeignKey('job.job_id', ondelete='CASCADE'), nullable=False)
+    acquired_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=utcnow)
+
+
 class SyncLog(Base):
     """What a sync did, so a surprising table has an explanation."""
     __tablename__ = 'sync_log'
@@ -440,4 +472,4 @@ class SyncLog(Base):
 
 ALL_TABLES = (Issuer, Security, Filing, FinancialFact, MarketSnapshot, ScreeningMetric,
               HarnessRun, ScreenRun, DeepDive, MonitoringWatchItem, MonitoringObservation,
-              Job, SyncLog)
+              Job, JobLock, SyncLog)

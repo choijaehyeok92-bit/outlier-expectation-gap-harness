@@ -13,7 +13,7 @@
 
 ---
 
-## 테이블 13개
+## 테이블 14개
 
 ```
 issuer ─┬─ security ─┬─ market_snapshot        시장 데이터 (규제기관과 분리)
@@ -23,11 +23,12 @@ issuer ─┬─ security ─┬─ market_snapshot        시장 데이터 (규
 screen_run    deep_dive                        실행된 스크린·딥다이브
 monitoring_watch_item                          보고서가 선언한 감시 항목 (Phase 12)
 monitoring_observation                         관측된 사실 (Phase 12)
-job           sync_log                         작업 큐·동기화 감사
+job ──────── job_lock                        작업 큐·자원 잠금 (UNIQUE로 보장)
+sync_log                                       동기화 감사
 ```
 
 `db/models.py`가 정의이고 `db/migrations/versions/`의 `0001_initial_schema.py`,
-`0002_monitoring.py`, `0003_job_queue.py`가 스키마다. `job`은 0003에서 `available_at`·
+`0002_monitoring.py`, `0003_job_queue.py`, `0004_job_lock.py`가 스키마다. `job`은 0003에서 `available_at`·
 `lease_expires_at`·`worker_id`·행별 `max_attempts`를 얻어 **기록용 테이블에서 실제 큐가**
 됐다 — 자세한 것은 [WORKERS.md](WORKERS.md).
 
@@ -179,8 +180,8 @@ warehouse   inserted=336  (14개 기업 × 24개 지표)
 
 ## 남은 것
 
-- 기업 단위 잠금이 없다. 서로 다른 payload를 가진 두 작업이 같은 `runs/<ID>/`를
-  동시에 건드릴 수 있다 ([WORKERS.md](WORKERS.md))
+- 자원 잠금 단위가 run이지 파일이 아니다. 같은 기업에 대한 두 작업은 서로 다른 파일을
+  건드려도 직렬화된다 ([WORKERS.md](WORKERS.md))
 - `financial_fact.supersedes_fact_id` 컬럼은 있으나 적재기가 아직 연결하지 않는다.
   정정 관계는 현재 pack의 `is_restated` 플래그와 provenance에만 있다
 - 증분 동기화 없음 — `db sync`는 전체를 훑고 변경분만 쓴다. 현재 규모(7천 행)에서는

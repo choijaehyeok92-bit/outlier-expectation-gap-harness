@@ -27,6 +27,10 @@ as the loop spins.
 
 **A job that is out of attempts stops.** It becomes `failed` with its error,
 not `queued` forever. Silence is not a retry policy.
+
+And one thing the queue alone cannot do: stop two *different* jobs writing the
+same `runs/<ID>/`. That is `locks.py`, and a claim consults it — a job whose
+resources are held is passed over rather than handed out.
 """
 import json
 import os
@@ -38,6 +42,8 @@ from typing import Optional
 from sqlalchemy import func, select, update
 
 from db.models import Job
+
+from . import locks
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / 'config' / 'workers.json'
@@ -120,35 +126,75 @@ def _claimable(kinds: Optional[list]):
 
 def claim(session, kinds: Optional[list] = None, config: Optional[dict] = None,
           owner: Optional[str] = None) -> Optional[Job]:
-    """Take one queued job, or None. Never hands the same row to two workers."""
+    """Take one queued job, or None. One worker, and one holder per resource.
+
+    Candidates are examined in order and the first whose resources are free is
+    taken. A job blocked by a lock is skipped, not failed and not delayed by a
+    timer: whoever holds the run will finish, and the next pass will find it.
+    """
     config = config or load_config()
     owner = owner or worker_id()
     dialect = session.get_bind().dialect.name
+    use_locks = locks.enabled(config)
+    if use_locks:
+        # Serialise the look-then-take, because a wildcard and a named
+        # resource are different rows and the unique constraint cannot see
+        # that they collide.
+        locks.serialize_claim(session)
 
+    limit = int(config['execution'].get('claim_candidates', 25)) if use_locks else 1
     statement = (select(Job).where(_claimable(kinds))
                  .order_by(Job.priority.asc(), Job.available_at.asc(), Job.job_id.asc())
-                 .limit(1))
+                 .limit(limit))
     if dialect == 'postgresql':
         statement = statement.with_for_update(skip_locked=True)
 
-    job = session.scalar(statement)
-    if job is None:
-        return None
+    for job in session.scalars(statement).all():
+        keys = locks.keys_for(job.kind, job.payload, config) if use_locks else []
+        if keys:
+            try:
+                locks.acquire(session, job.job_id, keys)
+            except locks.LockUnavailable:
+                continue
+        lease = lease_seconds(job.kind, config)
+        values = {'status': 'running', 'attempts': Job.attempts + 1, 'worker_id': owner,
+                  'started_at': _now(), 'finished_at': None, 'error': None,
+                  'lease_expires_at': _now() + timedelta(seconds=lease)}
+        # The `status == 'queued'` predicate is the claim on SQLite, where
+        # there is no SKIP LOCKED: whoever's UPDATE matches a row has it, and
+        # a second worker's UPDATE matches nothing.
+        result = session.execute(update(Job).where(Job.job_id == job.job_id,
+                                                   Job.status == 'queued').values(**values))
+        if result.rowcount != 1:
+            locks.release(session, job.job_id)
+            continue
+        session.flush()
+        session.refresh(job)
+        return job
+    return None
 
-    lease = lease_seconds(job.kind, config)
-    values = {'status': 'running', 'attempts': Job.attempts + 1, 'worker_id': owner,
-              'started_at': _now(), 'finished_at': None, 'error': None,
-              'lease_expires_at': _now() + timedelta(seconds=lease)}
-    # The `status == 'queued'` predicate is the claim on SQLite, where there is
-    # no SKIP LOCKED: whoever's UPDATE matches a row has it, and a second
-    # worker's UPDATE matches nothing.
-    result = session.execute(update(Job).where(Job.job_id == job.job_id,
-                                               Job.status == 'queued').values(**values))
-    if result.rowcount != 1:
-        return None
-    session.flush()
-    session.refresh(job)
-    return job
+
+def blocked(session, kinds: Optional[list] = None, config: Optional[dict] = None) -> list:
+    """Queued jobs that are ready to run but whose resources are held.
+
+    Worth naming separately from "queued": a queue that looks busy because
+    everything is waiting on one long run is a different situation from a
+    queue with work nobody has started.
+    """
+    config = config or load_config()
+    if not locks.enabled(config):
+        return []
+    rows = []
+    statement = (select(Job).where(_claimable(kinds))
+                 .order_by(Job.priority.asc(), Job.available_at.asc(), Job.job_id.asc()))
+    for job in session.scalars(statement).all():
+        keys = locks.keys_for(job.kind, job.payload, config)
+        held = locks.conflicts(session, keys, exclude_job_id=job.job_id) if keys else []
+        if held:
+            rows.append({'job_id': job.job_id, 'kind': job.kind,
+                         'needs': [f'{namespace}:{resource}' for namespace, resource in keys],
+                         'blocked_by': held})
+    return rows
 
 
 def heartbeat(session, job: Job, config: Optional[dict] = None) -> None:
@@ -159,6 +205,7 @@ def heartbeat(session, job: Job, config: Optional[dict] = None) -> None:
 
 
 def complete(session, job: Job, result: Optional[dict] = None) -> Job:
+    locks.release(session, job.job_id)
     job.status = 'completed'
     job.result = result
     job.error = None
@@ -172,6 +219,7 @@ def fail(session, job: Job, error: str, config: Optional[dict] = None,
          retryable: bool = True) -> Job:
     """Back off and retry, or stop and say why. Never a silent requeue."""
     config = config or load_config()
+    locks.release(session, job.job_id)
     job.error = str(error)[:4000]
     job.lease_expires_at = None
     if retryable and job.attempts < job.max_attempts:
@@ -190,6 +238,7 @@ def cancel(session, job_id: int) -> Optional[Job]:
     job = session.get(Job, job_id)
     if job is None or job.status in TERMINAL:
         return job
+    locks.release(session, job.job_id)
     job.status = 'cancelled'
     job.finished_at = _now()
     job.lease_expires_at = None
@@ -236,8 +285,13 @@ def reap(session, config: Optional[dict] = None) -> list:
         reaped.append({'job_id': job.job_id, 'kind': job.kind, 'attempts': job.attempts,
                        'worker_id': job.worker_id,
                        'lease_expired_at': expires.isoformat()})
+        # `fail` releases the locks: a dead worker must not hold a run forever.
         fail(session, job, 'lease expired; the worker holding this job stopped reporting',
              config)
+    # A lock whose job is no longer running is a resource with no holder.
+    orphans = locks.release_orphans(session)
+    if orphans:
+        reaped.append({'released_orphan_locks': orphans})
     return reaped
 
 
@@ -267,9 +321,14 @@ def summary(session) -> dict:
     overdue = session.scalars(select(Job).where(Job.status == 'running')).all()
     expired = [job.job_id for job in overdue
                if _aware(job.lease_expires_at) and _aware(job.lease_expires_at) < _now()]
+    ready = session.scalar(
+        select(func.count()).select_from(Job).where(_claimable(None))) or 0
+    waiting = blocked(session)
     return {'by_status': by_status, 'by_kind': by_kind,
-            'claimable_now': session.scalar(
-                select(func.count()).select_from(Job).where(_claimable(None))) or 0,
+            'claimable_now': ready - len(waiting),
+            'ready_but_locked': len(waiting),
+            'blocked': waiting[:10],
+            'held_locks': locks.held(session),
             'leases_expired': expired}
 
 

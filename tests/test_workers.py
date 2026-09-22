@@ -20,6 +20,12 @@ reclaiming can run one twice.
 **A payload cannot escalate.** A row naming a paid provider is refused, not
 billed, and a row carrying something that looks like a credential is refused
 before any handler sees it.
+
+**Two jobs do not write the same run.** The queue alone cannot promise that —
+it stops two workers taking the same *row*, not two rows touching the same
+`runs/<ID>/` — so a claim also takes resource locks, and the lock tests are
+the ones that pin the case that motivated them: a full-harness job and a deep
+dive on the same company.
 """
 import json
 import os
@@ -34,9 +40,9 @@ try:
     from sqlalchemy import select
     from sqlalchemy.exc import IntegrityError
 
-    from db.models import Base, Job
+    from db.models import Base, Job, JobLock
     from db.session import engine_for, session_scope
-    from workers import handlers, queue, runner
+    from workers import handlers, locks, queue, runner
     AVAILABLE = True
     SKIP = ''
 except Exception as error:                              # pragma: no cover
@@ -167,8 +173,10 @@ class ClaimTests(QueueCase):
             self.assertIsNotNone(queue.claim(session, ['db_sync'], self.config))
 
     def test_priority_then_age_decides_the_order(self):
-        low = self.enqueue(payload={'n': 1}, priority=200)
-        high = self.enqueue(payload={'n': 2}, priority=10)
+        # Distinct as_of dates, so the two take different warehouse locks and
+        # this stays a test about ordering rather than about locking.
+        low = self.enqueue(payload={'as_of_date': '2026-09-17'}, priority=200)
+        high = self.enqueue(payload={'as_of_date': '2026-09-18'}, priority=10)
         with session_scope(self.engine) as session:
             self.assertEqual(queue.claim(session, None, self.config).job_id, high['job_id'])
             self.assertEqual(queue.claim(session, None, self.config).job_id, low['job_id'])
@@ -279,6 +287,193 @@ class LifecycleTests(QueueCase):
         self.assertGreater(final['max_attempts'], final['attempts'])
         with session_scope(self.engine) as session:
             self.assertIsNotNone(queue.claim(session, None, self.config))
+
+
+class LockTests(QueueCase):
+    """The case that motivated this: two jobs, one company."""
+
+    def claim_as(self, owner, kinds=None):
+        with session_scope(self.engine) as session:
+            job = queue.claim(session, kinds, self.config, owner)
+            return queue.to_dict(job) if job else None
+
+    def test_a_deep_dive_waits_for_the_harness_job_on_the_same_company(self):
+        # `harness_full` rewrites runs/MSFT/aggregate.json while `deep_dive`
+        # reads it to copy a harness_snapshot, and dump_json is not atomic.
+        self.enqueue(kind='harness_full', payload={'run_ids': ['MSFT']})
+        self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'})
+        first = self.claim_as('worker-a')
+        self.assertEqual(first['kind'], 'harness_full')
+        self.assertIsNone(self.claim_as('worker-b'), 'MSFT is taken')
+
+    def test_a_different_company_is_not_blocked(self):
+        # The point of per-resource locks rather than one global one.
+        self.enqueue(kind='harness_full', payload={'run_ids': ['MSFT']})
+        self.enqueue(kind='deep_dive', payload={'run_id': 'NVDA'})
+        self.assertEqual(self.claim_as('worker-a')['kind'], 'harness_full')
+        second = self.claim_as('worker-b')
+        self.assertIsNotNone(second)
+        self.assertEqual(second['payload']['run_id'], 'NVDA')
+
+    def test_a_blocked_job_is_skipped_over_not_left_at_the_head(self):
+        # Priority puts the blocked job first; a queue that stopped there
+        # would idle while work it could do sat behind it.
+        self.enqueue(kind='harness_full', payload={'run_ids': ['MSFT']}, priority=1)
+        self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'}, priority=2)
+        self.enqueue(kind='deep_dive', payload={'run_id': 'NVDA'}, priority=3)
+        self.claim_as('worker-a')
+        skipped_to = self.claim_as('worker-b')
+        self.assertEqual(skipped_to['payload']['run_id'], 'NVDA')
+
+    def test_the_lock_is_released_when_the_job_completes(self):
+        self.enqueue(kind='harness_full', payload={'run_ids': ['MSFT']})
+        self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'})
+        first = self.claim_as('worker-a')
+        with session_scope(self.engine) as session:
+            queue.complete(session, session.get(Job, first['job_id']), {})
+        self.assertIsNotNone(self.claim_as('worker-b'))
+
+    def test_the_lock_is_released_when_the_job_fails(self):
+        self.enqueue(kind='harness_full', payload={'run_ids': ['MSFT']})
+        first = self.claim_as('worker-a')
+        with session_scope(self.engine) as session:
+            queue.fail(session, session.get(Job, first['job_id']), 'boom', self.config)
+        with session_scope(self.engine) as session:
+            self.assertEqual(session.scalars(select(JobLock)).all(), [])
+
+    def test_a_dead_worker_does_not_hold_a_company_forever(self):
+        self.enqueue(kind='harness_full', payload={'run_ids': ['MSFT']})
+        self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'})
+        first = self.claim_as('ghost')
+        with session_scope(self.engine) as session:
+            session.get(Job, first['job_id']).lease_expires_at = now() - timedelta(hours=2)
+        with session_scope(self.engine) as session:
+            queue.reap(session, self.config)
+        self.assertIsNotNone(self.claim_as('worker-b'),
+                             'the reaped job released MSFT on its way out')
+
+    def test_a_wildcard_and_a_named_resource_block_each_other(self):
+        # `db_sync` reads every run's aggregate, so it takes the namespace.
+        self.enqueue(kind='db_sync', payload={})
+        self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'})
+        self.assertEqual(self.claim_as('worker-a')['kind'], 'db_sync')
+        self.assertIsNone(self.claim_as('worker-b'))
+
+    def test_a_named_resource_blocks_a_later_wildcard(self):
+        self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'})
+        self.assertEqual(self.claim_as('worker-a')['kind'], 'deep_dive')
+        self.enqueue(kind='db_sync', payload={})
+        self.assertIsNone(self.claim_as('worker-b'))
+
+    def test_a_namespace_nobody_shares_does_not_block(self):
+        # screen_build reads Stage 0 packs, which no job rewrites, so it has
+        # its own namespace rather than joining the run traffic jam.
+        self.enqueue(kind='harness_full', payload={'run_ids': ['MSFT']})
+        self.enqueue(kind='screen_build', payload={'as_of_date': '2026-09-18'})
+        self.assertIsNotNone(self.claim_as('worker-a'))
+        self.assertIsNotNone(self.claim_as('worker-b'))
+
+    def test_a_batch_without_named_runs_takes_the_whole_namespace(self):
+        # Its targets are not known until it runs its own selection, and
+        # claiming too little corrupts a run while claiming too much only
+        # delays one.
+        self.assertEqual(locks.keys_for('harness_full', {'top': 5}, self.config),
+                         [('run', '*')])
+        self.assertEqual(locks.keys_for('harness_full', {'run_ids': ['msft']}, self.config),
+                         [('run', 'MSFT')])
+
+    def test_the_database_is_what_refuses_a_second_holder(self):
+        # Not this package's check: the unique constraint.
+        self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'})
+        claimed = self.claim_as('worker-a')
+        with self.assertRaises(IntegrityError):
+            with session_scope(self.engine) as session:
+                session.add(JobLock(namespace='run', resource='MSFT',
+                                    job_id=claimed['job_id']))
+
+    def test_blocked_names_what_is_waiting_and_on_whom(self):
+        self.enqueue(kind='harness_full', payload={'run_ids': ['MSFT']})
+        waiting = self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'})
+        holder = self.claim_as('worker-a')
+        with session_scope(self.engine) as session:
+            rows = queue.blocked(session, None, self.config)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]['job_id'], waiting['job_id'])
+        self.assertEqual(rows[0]['needs'], ['run:MSFT'])
+        self.assertEqual(rows[0]['blocked_by'][0]['job_id'], holder['job_id'])
+
+    def test_the_summary_separates_unstarted_work_from_work_that_is_waiting(self):
+        self.enqueue(kind='harness_full', payload={'run_ids': ['MSFT']})
+        self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'})
+        self.enqueue(kind='deep_dive', payload={'run_id': 'NVDA'})
+        self.claim_as('worker-a')
+        with session_scope(self.engine) as session:
+            payload = queue.summary(session)
+        self.assertEqual(payload['ready_but_locked'], 1)
+        self.assertEqual(payload['claimable_now'], 1)
+        self.assertEqual(len(payload['held_locks']), 1)
+
+    def test_an_orphaned_lock_is_released(self):
+        # A resource held by a job that is not running has no holder.
+        self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'})
+        claimed = self.claim_as('worker-a')
+        with session_scope(self.engine) as session:
+            job = session.get(Job, claimed['job_id'])
+            job.status = 'completed'                # finished without releasing
+        with session_scope(self.engine) as session:
+            released = locks.release_orphans(session)
+        self.assertEqual(len(released), 1)
+        self.assertEqual(released[0]['resource'], 'MSFT')
+
+    def test_locking_can_be_turned_off_and_then_nothing_blocks(self):
+        off = {**self.config, 'locks': {**self.config['locks'], 'enabled': False}}
+        self.enqueue(kind='harness_full', payload={'run_ids': ['MSFT']})
+        self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'})
+        with session_scope(self.engine) as session:
+            self.assertIsNotNone(queue.claim(session, None, off, 'worker-a'))
+            self.assertIsNotNone(queue.claim(session, None, off, 'worker-b'))
+
+    def test_every_kind_declares_where_its_writes_land(self):
+        # A kind with no rule takes no lock, which is silently unsafe. The
+        # config has to cover all of them.
+        for kind in self.config['kinds']:
+            with self.subTest(kind=kind):
+                self.assertIn(kind, self.config['locks']['by_kind'])
+                self.assertTrue(locks.keys_for(kind, {}, self.config))
+                self.assertTrue(self.config['locks']['by_kind'][kind].get('why'),
+                                'a lock rule has to say what it is protecting')
+
+
+class LockedRunnerTests(QueueCase):
+    def test_a_worker_runs_the_job_it_can_and_leaves_the_blocked_one(self):
+        # A second worker cannot be started inside one test, so MSFT is held
+        # by a claim that is never completed.
+        self.enqueue(kind='harness_full', payload={'run_ids': ['MSFT']}, priority=1)
+        self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'}, priority=2)
+        self.enqueue(kind='monitor_status', payload={'tickers': ['NVDA']}, priority=3)
+        with session_scope(self.engine) as session:
+            queue.claim(session, ['harness_full'], self.config, 'other-worker')
+        report = runner.run(self.engine, once=True, install_signals=False)
+        self.assertEqual([row['kind'] for row in report.processed], ['monitor_status'],
+                         'the blocked deep dive is passed over, not run and not failed')
+
+    def test_a_worker_with_nothing_unblocked_reports_empty_rather_than_spinning(self):
+        self.enqueue(kind='harness_full', payload={'run_ids': ['MSFT']})
+        self.enqueue(kind='deep_dive', payload={'run_id': 'MSFT'})
+        with session_scope(self.engine) as session:
+            queue.claim(session, ['harness_full'], self.config, 'other-worker')
+        report = runner.run(self.engine, once=True, install_signals=False)
+        self.assertEqual(report.summary['claimed'], 0)
+        self.assertEqual(report.stopped_by, 'queue empty')
+
+    def test_a_completed_job_frees_the_company_for_the_next_one(self):
+        self.enqueue(kind='monitor_status', payload={'tickers': ['MSFT']}, priority=1)
+        self.enqueue(kind='monitor_status', payload={'tickers': ['MSFT'], 'n': 2}, priority=2)
+        report = runner.run(self.engine, once=True, install_signals=False)
+        self.assertEqual(report.summary['claimed'], 2,
+                         'the second ran once the first released MSFT')
+        with session_scope(self.engine) as session:
+            self.assertEqual(session.scalars(select(JobLock)).all(), [])
 
 
 class HandlerContractTests(unittest.TestCase):

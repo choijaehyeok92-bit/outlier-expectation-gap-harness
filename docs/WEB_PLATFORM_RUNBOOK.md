@@ -176,12 +176,17 @@ python harness.py worker run                 # 큐를 비우고 종료
 python harness.py worker run --follow        # 데몬. SIGTERM은 진행 중 작업을 끝내고 나간다
 python harness.py worker status
 python harness.py worker jobs --status failed
+python harness.py worker locks               # 누가 어느 기업을 잡고 있는가
 ```
 
 큐는 `job` 테이블이다. 브로커가 없고 Redis도 필요 없다. **payload에 API 키를 넣지 않는다** —
 `job.payload`는 저장되고 `/api/jobs`로 나간다. payload가 `provider: anthropic`을 요구해도
-`config/workers.json`의 `providers.allowed`에 없으면 거부된다. 자세한 것은
-[WORKERS.md](WORKERS.md).
+`config/workers.json`의 `providers.allowed`에 없으면 거부된다.
+
+같은 기업을 건드리는 두 작업은 자원 잠금으로 직렬화된다 — `harness_full {run_ids:[MSFT]}`가
+도는 동안 `deep_dive {run_id: MSFT}`는 claim되지 않고 **건너뛰어진다**(실패가 아니다). 워커를
+여러 개 띄워도 안전하다. `worker status`의 `ready_but_locked`가 0이 아니면 긴 작업 뒤에서
+기다리는 일이 있다는 뜻이다. 자세한 것은 [WORKERS.md](WORKERS.md).
 
 ## 2. API
 

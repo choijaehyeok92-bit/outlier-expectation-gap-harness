@@ -1,13 +1,11 @@
 {
   "schema_version": "1.0",
   "note": "job 테이블을 소비하는 워커 정책. 큐는 데이터베이스 자신이다 — 별도 브로커를 두지 않는다. 워커는 이미 존재하는 진입점을 부를 뿐이고, 점수·archetype·Hard Veto·ic_state·비중은 여전히 하네스가 정한다.",
-
   "transport": {
     "kind": "database",
     "claim": "SELECT ... FOR UPDATE SKIP LOCKED (PostgreSQL) / 트랜잭션 내 조건부 UPDATE (SQLite)",
     "why": "job 테이블에 이미 idempotency_key와 status가 있고, 배포에서 서비스를 하나 줄인다. 무엇보다 두 방언 모두에서 단위 테스트로 검증된다 — 검증되지 않는 큐는 큐가 아니다. 핸들러 계약은 transport와 독립이므로 나중에 브로커를 붙여도 핸들러는 그대로다."
   },
-
   "handler_contract": {
     "must_be_idempotent": true,
     "why": "워커가 죽으면 lease가 만료되고 그 작업은 다시 claim된다. 두 번 실행해도 같은 결과여야 안전하다. 실제로 등록된 핸들러는 전부 그렇다 — run_agent는 완료된 에이전트를 건너뛰고, db sync는 키로 upsert하며, 관측 로그는 같은 내용을 두 번 쓰지 않고, 불변 기록은 같은 내용이면 같은 id를 갖는다.",
@@ -18,26 +16,32 @@
       "실패를 성공으로 보고한다"
     ]
   },
-
   "providers": {
-    "allowed": ["placeholder", "fixture"],
+    "allowed": [
+      "placeholder",
+      "fixture"
+    ],
     "default": "placeholder",
     "allowed_note": "payload는 큐에 넣은 쪽이 쓴 값이다. 목록 밖의 provider를 요구하면 그 작업은 거부되고 실패로 기록된다 — 큐에 한 줄 넣는 것만으로 돈이 나가면 안 된다. 실제 모델을 돌리려면 운영자가 이 목록에 명시적으로 추가한다.",
     "secrets_note": "API 키는 provider 클래스가 환경에서 읽는다. payload에 키를 넣지 않으며 job.payload는 그대로 API 응답에 실릴 수 있다."
   },
-
   "execution": {
     "poll_interval_seconds": 5,
     "lease_seconds": 900,
     "lease_note": "claim한 워커가 죽으면 이 시간 뒤에 다른 워커가 가져갈 수 있다. 오래 도는 작업(full harness)은 kind별로 늘린다.",
     "max_attempts": 3,
-    "backoff_seconds": [30, 300, 1800],
+    "backoff_seconds": [
+      30,
+      300,
+      1800
+    ],
     "backoff_note": "재시도는 available_at을 미뤄서 한다. 같은 작업을 즉시 다시 잡으면 고장난 의존성을 상대로 초당 수십 번 재시도한다.",
     "claim_batch": 1,
     "concurrency": 1,
-    "concurrency_note": "워커 프로세스 하나가 한 번에 작업 하나를 처리한다. 병렬이 필요하면 프로세스를 늘린다 — SKIP LOCKED가 같은 작업을 두 번 주지 않는다."
+    "concurrency_note": "워커 프로세스 하나가 한 번에 작업 하나를 처리한다. 병렬이 필요하면 프로세스를 늘린다 — SKIP LOCKED가 같은 작업을 두 번 주지 않는다.",
+    "claim_candidates": 25,
+    "claim_candidates_note": "claim 한 번에 살펴보는 queued 후보 수. 앞쪽 후보가 전부 lock에 막혀 있어도 뒤쪽의 돌릴 수 있는 작업을 찾는다. 이 수를 넘으면 그 회차는 비어 있다고 보고 다음 폴링을 기다린다."
   },
-
   "kinds": {
     "db_sync": {
       "handler": "db_sync",
@@ -76,15 +80,70 @@
       "description": "정성 딥다이브 4단계"
     }
   },
-
   "reaper": {
     "enabled": true,
     "note": "lease가 만료된 running 작업을 queued로 되돌린다. 되돌릴 때 attempts는 이미 올라가 있으므로 max_attempts가 무한 부활을 막는다.",
     "stuck_after_lease_grace_seconds": 60
   },
-
   "retention": {
     "note": "완료된 작업은 자동으로 지우지 않는다. 무엇이 언제 돌았는지가 감사 기록이다. 정리는 운영자가 명시적으로 한다.",
     "auto_delete": false
+  },
+  "locks": {
+    "enabled": true,
+    "note": "큐는 같은 '행'을 두 워커가 가져가는 것만 막는다. 서로 다른 두 행이 같은 runs/<ID>/를 쓰는 것은 막지 못하고, 실제로 그런 일이 생긴다 — full harness가 aggregate.json을 다시 쓰는 동안 deep dive가 그것을 읽고, harness_core.dump_json은 원자적 쓰기가 아니라서 절반만 읽힐 수 있다. 그래서 작업은 claim 전에 자기가 건드릴 자원을 선언하고, 이미 잡혀 있으면 claim되지 않는다.",
+    "guarantee": "(namespace, resource)가 UNIQUE다. 두 번째 보유자를 거부하는 것은 애플리케이션의 확인이 아니라 데이터베이스다.",
+    "wildcard": "*",
+    "wildcard_note": "대상이 실행 전에는 정해지지 않는 배치 작업(top N 선정)은 namespace 전체를 잡는다. resource='*'는 그 namespace의 어떤 자원과도 충돌한다.",
+    "release_on": [
+      "completed",
+      "failed",
+      "cancelled",
+      "lease_reaped"
+    ],
+    "release_note": "lease가 회수될 때도 반드시 푼다. 죽은 워커가 자원을 영원히 붙잡고 있으면 안 된다.",
+    "mode": "exclusive",
+    "mode_note": "읽기/쓰기 구분을 두지 않았다. 같은 자원을 읽기만 하는 두 작업을 직렬화하는 비용은 작고(둘 다 idempotent라 하나가 기다리면 된다), 모드 행렬을 추가하면 틀리기 쉬운 곳이 하나 늘어난다.",
+    "by_kind": {
+      "db_sync": {
+        "namespace": "run",
+        "from": "all",
+        "why": "모든 run의 aggregate.json·final_verdict.json을 읽는다. harness 작업이 그 파일들을 다시 쓴다."
+      },
+      "screen_build": {
+        "namespace": "warehouse",
+        "from": "field",
+        "field": "as_of_date",
+        "why": "Stage 0 pack만 읽는다. pack은 어떤 작업도 다시 쓰지 않으므로 run namespace와 충돌하지 않는다."
+      },
+      "monitor_status": {
+        "namespace": "run",
+        "from": "list_field",
+        "field": "tickers",
+        "why": "워치리스트를 만들며 runs/<T>/reports를 읽는다. 쓰는 중인 run을 읽으면 스냅샷에 찢어진 상태가 사실로 기록된다."
+      },
+      "harness_triage": {
+        "namespace": "run",
+        "from": "list_field",
+        "field": "run_ids",
+        "why": "runs/<ID>/reports와 aggregate.json을 쓴다."
+      },
+      "harness_full": {
+        "namespace": "run",
+        "from": "list_field",
+        "field": "run_ids",
+        "why": "runs/<ID>/ 전체를 쓴다."
+      },
+      "deep_dive": {
+        "namespace": "run",
+        "from": "field",
+        "field": "run_id",
+        "why": "runs/<ID>/를 읽어 harness_snapshot을 복사한다. 그 사이에 run이 바뀌면 스냅샷이 원본과 어긋난다."
+      }
+    },
+    "serialize_claim": {
+      "postgresql": "pg_advisory_xact_lock — claim 트랜잭션 동안만 잡히고 commit/rollback에서 자동으로 풀린다. wildcard와 특정 자원이 동시에 들어오는 경쟁을 닫는다.",
+      "sqlite": "쓰기가 하나뿐이므로 별도 조치가 필요 없다."
+    }
   }
 }
