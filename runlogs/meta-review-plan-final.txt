@@ -1,0 +1,24 @@
+{
+  "stage": "complete",
+  "agents": {},
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "proxy_compensation",
+      "earnings_release",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "execution_control": "stop_complete",
+  "research": {
+    "questions": 16,
+    "pending": 16,
+    "decision_blocking": 0,
+    "deferred": 48,
+    "command": "python harness.py research-plan META_REVIEW_20260921"
+  }
+}
+STOP_COMPLETE: analysis workflow complete for META_REVIEW_20260921.

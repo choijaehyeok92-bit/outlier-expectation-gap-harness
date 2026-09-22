@@ -1,3 +1,18 @@
+IC: OK
+AS: OK
+CP: OK
+DI: OK
+ED: OK
+EV: OK
+FS: OK
+IC: OK
+LG: OK
+MA: OK
+MO: OK
+MT: OK
+RF: OK
+RT: OK
+SL: OK
 {
   "strategy_version": "3.3",
   "schema_version": "3.3",
@@ -2167,3 +2182,29 @@
   },
   "early_exit_record": null
 }
+runs/META_REVIEW_20260921/digest.md: 24670 bytes (reports 93771 chars -> digest 19002 chars)
+{
+  "stage": "complete",
+  "agents": {},
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "proxy_compensation",
+      "earnings_release",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "execution_control": "stop_complete",
+  "research": {
+    "questions": 16,
+    "pending": 16,
+    "decision_blocking": 0,
+    "deferred": 48,
+    "command": "python harness.py research-plan META_REVIEW_20260921"
+  }
+}
+STOP_COMPLETE: analysis workflow complete for META_REVIEW_20260921.
+/home/runner/work/outlier-expectation-gap-harness/outlier-expectation-gap-harness/runs/META_REVIEW_20260921/easy_report.md

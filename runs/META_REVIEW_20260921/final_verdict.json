@@ -1653,13 +1653,188 @@
   "diagnostics": {
     "turnaround_candidate": false
   },
-  "ic_verdict": null,
+  "ic_verdict": {
+    "agent_id": "IC",
+    "ticker": "META_REVIEW_20260921",
+    "as_of_date": "2026-09-21",
+    "domain": "investment_committee",
+    "role": "chair",
+    "analysis_status": "complete",
+    "score_0_100": 50,
+    "confidence_0_1": 0.93,
+    "thesis": "Review-only 결론은 WATCH다. 핵심 사업의 고객가치·해자·혁신성은 강하지만, $741.25에서 price/Base 1.161x로 기대차가 작고 AI 인프라의 증분 ROIC·FCF/share 회복이 아직 검증되지 않았다. Hard Veto는 모두 해소됐지만 compounder·growth·outlier_growth·buffett_value·moonshot 어느 유형도 실행 조건을 충족하지 못한다. 현재 상태는 '비싸지만 지속기간이 과소평가됨'보다 '상당한 장기 성장이 이미 가격에 반영됨'에 가깝다.",
+    "evidence": [
+      {
+        "evidence_id": "META-IC-GATES",
+        "economic_driver": "archetype_eligibility",
+        "claim": "The deterministic aggregate scores META at 65.65/100 (67.0 ex-valuation), but every investable archetype has one or more failed conditions; primary state is non_fit.",
+        "source_type": "other",
+        "source": "runs/META_REVIEW_20260921/aggregate.json",
+        "period": "2026-09-21 review run",
+        "as_of_date": "2026-09-21",
+        "value": {
+          "score_100": 65.65,
+          "score_ex_valuation": 67,
+          "archetype": "non_fit"
+        },
+        "fact_or_estimate": "fact"
+      },
+      {
+        "evidence_id": "META-IC-VAL",
+        "economic_driver": "market_expectations",
+        "claim": "At $741.25, locked Bear/Base/Bull values are about $267/$638/$1,091 and price/Base is 1.1611x; valuation is below Bull but above Base.",
+        "source_type": "other",
+        "source": "runs/META_REVIEW_20260921/aggregate.json",
+        "period": "2026-09-21",
+        "as_of_date": "2026-09-21",
+        "value": {
+          "price": 741.25,
+          "bear": 267.3976,
+          "base": 638.4167,
+          "bull": 1090.6083,
+          "price_to_base": 1.1611
+        },
+        "fact_or_estimate": "estimate"
+      },
+      {
+        "evidence_id": "META-IC-RETURNS",
+        "economic_driver": "ai_reinvestment",
+        "claim": "RF is 59 with incremental_roic 50 and fcf_per_share_quality 50 because unprecedented AI investment absorbs very large cash resources while maintenance-versus-growth capex and realized incremental NOPAT remain unresolved.",
+        "source_type": "other",
+        "source": "runs/META_REVIEW_20260921/digest.md",
+        "period": "2026-09-21",
+        "as_of_date": "2026-09-21",
+        "value": {
+          "reinvestment_fcf": 59,
+          "incremental_roic": 50,
+          "fcf_per_share_quality": 50
+        },
+        "fact_or_estimate": "interpretation"
+      },
+      {
+        "evidence_id": "META-IC-VETO",
+        "economic_driver": "risk_gate",
+        "claim": "After domain reviewers and Red Team review, the aggregate Hard Veto status is CLEARED with no confirmed, unresolved or pending vetoes.",
+        "source_type": "other",
+        "source": "runs/META_REVIEW_20260921/aggregate.json",
+        "period": "2026-09-21 review run",
+        "as_of_date": "2026-09-21",
+        "value": "CLEARED",
+        "fact_or_estimate": "fact"
+      },
+      {
+        "evidence_id": "META-IC-EVIDENCE",
+        "economic_driver": "evidence_quality",
+        "claim": "ED identifies primary-source coverage as generally strong but flags concentrated reuse of AI ad-monetization evidence and the unobserved incremental return on AI infrastructure as the central evidence gap.",
+        "source_type": "other",
+        "source": "runs/META_REVIEW_20260921/reports/ED.json",
+        "period": "2026-09-21",
+        "as_of_date": "2026-09-21",
+        "value": "AI incremental ROIC unresolved",
+        "fact_or_estimate": "interpretation"
+      },
+      {
+        "evidence_id": "META-IC-MACRO",
+        "economic_driver": "macro_pacing",
+        "claim": "The macro overlay applies a 0.5 risk-budget and purchase-pacing multiplier because credit remains orderly but monetary and geopolitical conditions are restrictive/high-risk; fundamental company score effect is zero.",
+        "source_type": "other",
+        "source": "runs/META_REVIEW_20260921/aggregate.json",
+        "period": "cutoff 2026-09-21 00:00 UTC",
+        "as_of_date": "2026-09-21",
+        "value": 0.5,
+        "fact_or_estimate": "fact"
+      }
+    ],
+    "counterevidence": [
+      "Customer/product score 75 and moat trajectory 78.5 show the core advertising/network franchise remains strong.",
+      "Disruptive innovation score 73.5 reflects measured AI ad gains, Business Agent adoption and AI-glasses traction.",
+      "Financial survival score 70 and cleared vetoes make a solvency-driven permanent loss thesis weak.",
+      "Bull value remains materially above the current price, so a strong AI monetization outcome can still create upside."
+    ],
+    "unknowns": [
+      "The realized incremental ROIC on the 2025-26 AI infrastructure step-up remains unobserved.",
+      "A decision-useful maintenance-versus-growth split of long-run AI capex is unavailable.",
+      "The long-run margin and profit contribution of Business Agent, paid messaging and AI wearables are not yet disclosed."
+    ],
+    "falsifiers": [
+      "Owner FCF/share fails to recover above the 2025 level by 2028 despite continued double-digit revenue growth.",
+      "Ad pricing and impressions turn persistently negative together or AI conversion lifts fail to repeat.",
+      "AI infrastructure commitments keep rising without measurable incremental profit/FCF, confirming a structurally lower-return capital model."
+    ],
+    "hard_veto_flags": [],
+    "key_kpis": [
+      {
+        "name": "Owner FCF/share",
+        "direction": "recover",
+        "threshold": ">2025 level by 2028",
+        "cadence": "quarterly TTM/annual"
+      },
+      {
+        "name": "Incremental AI return evidence",
+        "direction": "strengthen",
+        "threshold": "observable profit/FCF bridge sufficient to lift incremental_roic above current 50 score",
+        "cadence": "annual/major guidance"
+      },
+      {
+        "name": "Price / Base value",
+        "direction": "fall via price or rise via fundamentals",
+        "threshold": "<=1.10x for growth gate; stronger margin for other value-sensitive archetypes",
+        "cadence": "quarterly and >15% price moves"
+      }
+    ],
+    "next_checks": [
+      "Re-run after Q3/FY2026 capex, OCF, FCF/share and 2027 infrastructure guidance.",
+      "Reassess market misperception and asymmetry if Base/Bull values change or price moves materially.",
+      "Track whether messaging/agents/wearables become material independent profit pools rather than optionality narratives."
+    ],
+    "verdict": "neutral",
+    "ic_state": "WATCH",
+    "subscores": [],
+    "uncertainties": [
+      {
+        "criterion_id": "archetype_fit",
+        "severity": "critical",
+        "rationale": "No investable archetype currently satisfies all deterministic gates, so review-only IC cannot authorize a new buy."
+      },
+      {
+        "criterion_id": "ai_incremental_roic",
+        "severity": "critical",
+        "rationale": "The largest capital-allocation program lacks a directly observable realized return bridge."
+      },
+      {
+        "criterion_id": "valuation_expectation_gap",
+        "severity": "material",
+        "rationale": "Price is above Base and market_misperception/upside-path scores remain below outlier-growth requirements."
+      }
+    ],
+    "valuation_inputs": {
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": null,
+      "scenarios": {
+        "bear": {
+          "owner_fcf_per_share": []
+        },
+        "base": {
+          "owner_fcf_per_share": []
+        },
+        "bull": {
+          "owner_fcf_per_share": []
+        }
+      }
+    },
+    "plain_language": {
+      "business": "Meta는 Facebook·Instagram·WhatsApp 같은 대규모 서비스에서 광고와 메시징으로 돈을 번다. AI는 추천과 광고 효율을 높이고 새 에이전트·웨어러블 사업으로 확장되는 중이다.",
+      "opportunity": "사용자 규모와 광고 네트워크는 강하고, AI가 광고 성과를 더 높이거나 메시징·웨어러블이 새 이익원이 되면 장기 가치가 커질 수 있다.",
+      "risk": "문제는 AI 인프라에 투입되는 돈이 매우 커졌는데 그 추가 투자수익률이 아직 명확히 증명되지 않았다는 점이다. 현재 주가도 하네스의 Base 가치보다 높아 실행 실수에 대한 여유가 크지 않다.",
+      "decision_reason": "Hard Veto는 없지만 어떤 투자 유형의 필수 조건도 모두 통과하지 못했다. 그래서 현재는 신규 매수보다 관찰이 맞고, FCF/share 회복과 AI 투자수익이 확인되거나 가격 대비 가치 여유가 커질 때 다시 평가한다."
+    }
+  },
   "early_exit_record": null,
   "archetype": "non_fit",
   "secondary_archetypes": [],
   "archetype_rationale": "No eligible archetype: see failed/missing conditions and vetoes",
   "ic_state": "WATCH",
-  "position_range": "0% until veto cleared",
+  "position_range": "0% new purchases; review existing holdings",
   "ic_review_flags": [],
   "falsifiers": [
     "광고 매출 성장률이 중기적으로 한 자릿수에 머물고 AI 기반 전환율·가격 개선 증거가 사라진다.",
@@ -1680,6 +1855,9 @@
     "TTM OCF가 $84B 총차입 아래로 하락한 상태가 지속된다.",
     "2027년 약정 지출을 위해 반복적 대규모 채권·주식 발행이 필요해진다.",
     "희석주식수 CAGR이 3년 연속 8% 이상으로 상승하면서 owner FCF/share가 정체된다.",
+    "Owner FCF/share fails to recover above the 2025 level by 2028 despite continued double-digit revenue growth.",
+    "Ad pricing and impressions turn persistently negative together or AI conversion lifts fail to repeat.",
+    "AI infrastructure commitments keep rising without measurable incremental profit/FCF, confirming a structurally lower-return capital model.",
     "5년 매출 CAGR이 10% 아래로 내려가 1.6배 미만 확장 경로가 된다.",
     "비즈니스 메시징·AI 디바이스가 2028년까지 의미 있는 독립 가치풀로 성장하지 못한다.",
     "시장 가격이 Bull 가치에 접근하는데 장기 FCF 경로가 상향되지 않는다.",
