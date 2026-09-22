@@ -16,11 +16,16 @@ formula over a pack. Recomputing it with a corrected definition should change
 it — that is the point of having the definition in config — so these are
 upserted on `(ticker, as_of_date, metric)`.
 
+Monitoring splits along the same line. A watch item is derived from a report,
+so it is upserted; an observation is a record of what somebody saw, so it is
+inserted once and never touched again.
+
 Nothing here writes back to a file. The artifacts remain the source of truth
 and this layer only ever reads them.
 """
 import hashlib
 import json
+import re
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Iterable, Optional
@@ -28,7 +33,8 @@ from typing import Iterable, Optional
 from sqlalchemy import select, update
 
 from .models import (DeepDive, Filing, FinancialFact, HarnessRun, Issuer, Job, MarketSnapshot,
-                     ScreenRun, ScreeningMetric, Security, SyncLog)
+                     MonitoringObservation, MonitoringWatchItem, ScreenRun, ScreeningMetric,
+                     Security, SyncLog)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -436,6 +442,96 @@ def sync_deep_dives(session, reports: Iterable[dict]) -> Counts:
         counts.bump('inserted')
     _log(session, 'deep_dives', None, counts)
     return counts
+
+
+def sync_watchlist(session, watchlist: dict) -> Counts:
+    """Watch items are derived from reports, so they are upserted, not appended."""
+    counts = Counts()
+    for item in watchlist.get('items') or []:
+        thresholds = item.get('thresholds') or {}
+        fields = {
+            'ticker': (item.get('ticker') or '').upper(), 'run_id': item.get('run_id'),
+            'kind': item['kind'], 'name': item['name'],
+            'source_kind': item['source_kind'], 'source_ref': item.get('source_ref'),
+            'as_of_date': _date(item.get('as_of_date')), 'cadence': item.get('cadence'),
+            'direction_required': item.get('direction_required'),
+            'warning_threshold': _text(thresholds.get('warning')),
+            'thesis_break_threshold': _text(thresholds.get('thesis_break')),
+            'comparison': item.get('comparison'),
+            'machine_checkable': bool(item.get('machine_checkable')),
+            'not_machine_checkable_reason': item.get('not_machine_checkable_reason'),
+        }
+        existing = session.get(MonitoringWatchItem, item['watch_id'])
+        if existing is None:
+            session.add(MonitoringWatchItem(watch_id=item['watch_id'], **fields))
+            counts.bump('inserted')
+        elif _changed(existing, fields):
+            for key, value in fields.items():
+                setattr(existing, key, value)
+            counts.bump('updated')
+        else:
+            counts.bump('skipped')
+    _log(session, 'monitoring_watchlist', watchlist.get('ticker'), counts)
+    return counts
+
+
+def sync_observations(session, rows: Iterable[dict]) -> Counts:
+    """Append-only: an observation already present is left exactly as it is."""
+    counts = Counts()
+    ticker = None
+    for row in rows:
+        observation_id = row.get('observation_id')
+        ticker = ticker or row.get('ticker')
+        if not observation_id or session.get(MonitoringObservation, observation_id) is not None:
+            counts.bump('skipped')
+            continue
+        value = row.get('value')
+        number, unit = _observed_scale(value, row.get('unit'))
+        session.add(MonitoringObservation(
+            observation_id=observation_id, ticker=(row.get('ticker') or '').upper(),
+            watch_id=row['watch_id'],
+            value_text=None if value is None else str(value),
+            value_number=number, unit=unit,
+            triggered=row.get('triggered'), period=row.get('period'),
+            as_of_date=_date(row.get('as_of_date')), source=row.get('source') or '',
+            source_type=row.get('source_type') or 'other',
+            fact_or_estimate=row.get('fact_or_estimate') or 'fact',
+            note=row.get('note'), supersedes=row.get('supersedes'),
+            pre_analysis=bool(row.get('pre_analysis')),
+            recorded_at_utc=row.get('recorded_at_utc')))
+        counts.bump('inserted')
+    _log(session, 'monitoring_observations', ticker, counts)
+    return counts
+
+
+def _text(value) -> Optional[str]:
+    return None if value is None else str(value)
+
+
+def _observed_scale(value, declared_unit) -> tuple:
+    """`(number, unit)` exactly as written — never rescaled on a guess.
+
+    The pair travels together and a NULL unit is meaningful: it says the
+    recorder did not state a scale, which is the same thing the evaluator
+    refuses to guess at. A query that reads `value_number` alone and ignores
+    `unit` is reading half a fact.
+    """
+    if value is None or isinstance(value, bool):
+        return None, declared_unit
+    if isinstance(value, (int, float)):
+        return float(value), declared_unit
+    text = str(value)
+    match = re.search(r'-?\d+(?:[.,]\d+)?', text)
+    if not match:
+        return None, declared_unit
+    number = float(match.group(0).replace(',', ''))
+    if declared_unit:
+        return number, declared_unit
+    if re.search(r'%\s*p|%p|퍼센트\s*포인트|\bpp\b', text, re.I):
+        return number, 'percent_point'
+    if re.search(r'%|퍼센트|percent|pct', text, re.I):
+        return number, 'percent'
+    return number, None
 
 
 def enqueue(session, kind: str, payload: dict, idempotency_key: Optional[str] = None) -> Job:

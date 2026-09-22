@@ -14,6 +14,11 @@ not resolve comes back in `unresolved_conditions` instead of quietly vanishing.
 It never returns a secret. Provider keys are read inside the provider classes
 from the environment; no route accepts one and no response echoes one.
 
+It never turns an observation into a decision. `/api/monitoring` compares
+what was observed against thresholds somebody already declared and reports
+`review_required`; no route here moves a score, an archetype, a Hard Veto
+status, an `ic_state` or a position range.
+
 It never decides the order of an analysis. `/api/harness/triage` runs the
 triage set `config/workflow.json` declares, and `/api/harness/full` follows
 `harness.py plan` one round at a time; neither route, and no request body,
@@ -35,8 +40,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from apps.api.models import (DeepDivePlanRequest, DeepDiveRunRequest,  # noqa: E402
-                             FullHarnessRequest, ParseRequest, ScreenRunRequest,
-                             TriageRequest)
+                             FullHarnessRequest, ObservationRequest, ParseRequest,
+                             ScreenRunRequest, TriageRequest)
 from packages.llm import LLMError, resolve_provider  # noqa: E402
 from packages.reporting import render_markdown, render_screen_markdown  # noqa: E402
 from packages.research import deep_plan, deep_run  # noqa: E402
@@ -384,6 +389,76 @@ def harness_full_run(full_run_id: str):
 @app.get('/api/harness/runs/{run_id}')
 def harness_run(run_id: str):
     return get_run(run_id)
+
+
+@app.get('/api/monitoring')
+def monitoring_portfolio(tickers: str | None = None, as_of_date: str | None = None):
+    """One row per monitored company: what needs a person, and what nobody is watching.
+
+    With no `tickers`, the companies someone has actually recorded an
+    observation for. Asking for a company with no observations is allowed and
+    useful — the answer is how much of its watchlist has never been looked at.
+    """
+    from packages.monitoring import evaluate as monitor_evaluate
+    from packages.monitoring import observations as observation_log
+    names = [t.strip() for t in tickers.split(',')] if tickers else observation_log.tickers()
+    if not names:
+        return {'companies': 0, 'rows': [], 'unreadable': [],
+                'note': 'no observations recorded yet; pass ?tickers= to see what is unwatched'}
+    return monitor_evaluate.portfolio([n for n in names if n], as_of_date)
+
+
+@app.get('/api/monitoring/{ticker}')
+def monitoring_company(ticker: str, as_of_date: str | None = None,
+                       run_id: str | None = None):
+    """Every declared KPI and falsifier for one company, with its current status."""
+    from packages.monitoring import evaluate as monitor_evaluate
+    try:
+        return monitor_evaluate.evaluate(ticker, as_of_date, run_id)
+    except ValueError as error:
+        raise HTTPException(404, str(error)) from error
+
+
+@app.get('/api/monitoring/{ticker}/watchlist')
+def monitoring_watchlist(ticker: str, run_id: str | None = None):
+    """What was declared, before any observation is applied to it."""
+    from packages.monitoring import watchlist as watchlist_builder
+    try:
+        return watchlist_builder.build(ticker, run_id)
+    except ValueError as error:
+        raise HTTPException(404, str(error)) from error
+
+
+@app.get('/api/monitoring/{ticker}/drift')
+def monitoring_drift(ticker: str, run_ids: str | None = None):
+    """What changed between this company's harness runs, and whether that is the company."""
+    from packages.monitoring import drift
+    names = [r.strip() for r in run_ids.split(',')] if run_ids else None
+    try:
+        return drift.series(ticker, run_ids=names)
+    except ValueError as error:
+        raise HTTPException(404, str(error)) from error
+
+
+@app.post('/api/monitoring/observations')
+def monitoring_observe(request: ObservationRequest):
+    """Append one observation. Nothing is edited; a correction sets `supersedes`."""
+    from packages.monitoring import observations as observation_log
+    from packages.monitoring import watchlist as watchlist_builder
+    run_as_of = None
+    try:
+        run_as_of = watchlist_builder.build(request.ticker)['as_of_date']
+    except ValueError:
+        pass
+    try:
+        return observation_log.record(
+            request.ticker, request.watch_id, as_of_date=request.as_of_date,
+            source=request.source, source_type=request.source_type, value=request.value,
+            unit=request.unit, triggered=request.triggered, period=request.period,
+            fact_or_estimate=request.fact_or_estimate, note=request.note,
+            supersedes=request.supersedes, run_as_of_date=run_as_of)
+    except observation_log.ObservationRejected as error:
+        raise HTTPException(422, str(error)) from error
 
 
 @app.post('/api/deep-dive/plan')

@@ -71,7 +71,8 @@ def cmd_db_sync(args):
     from packages.research import store as deep_store
 
     kinds = {k.strip() for k in (args.kinds or
-                                 'universe,runs,warehouse,screens,deep-dives,packs').split(',')}
+                                 'universe,runs,warehouse,screens,deep-dives,packs,'
+                                 'monitoring').split(',')}
     report = {}
     engine = _engine(args)
     _require_schema(engine, _url(args))
@@ -107,7 +108,36 @@ def cmd_db_sync(args):
             reports = [deep_store.load(row['deep_dive_id']) for row in deep_store.list_reports()]
             report['deep_dives'] = dict(sync_module.sync_deep_dives(
                 session, [r for r in reports if r]))
+        if 'monitoring' in kinds:
+            report['monitoring'] = _sync_monitoring(session, sync_module)
     _print(report)
+
+
+def _sync_monitoring(session, sync_module) -> dict:
+    """Watch items for every company with observations, and the observations themselves.
+
+    Only companies someone has actually recorded an observation for. Building
+    a watchlist for all twenty-five runs would fill the table with rows nobody
+    is watching, which is the opposite of what a monitoring table is for.
+    """
+    from packages.monitoring import observations as observation_log
+    from packages.monitoring import watchlist as watchlist_builder
+
+    items, rows, unreadable = sync_module.Counts(), sync_module.Counts(), []
+    for ticker in observation_log.tickers():
+        try:
+            watchlist = watchlist_builder.build(ticker)
+        except ValueError as error:
+            unreadable.append({'ticker': ticker, 'reason': str(error)})
+        else:
+            part = sync_module.sync_watchlist(session, watchlist)
+            for key in ('inserted', 'updated', 'skipped'):
+                items.bump(key, part[key])
+        part = sync_module.sync_observations(session, observation_log.load(ticker))
+        for key in ('inserted', 'updated', 'skipped'):
+            rows.bump(key, part[key])
+    return {'watch_items': dict(items), 'observations': dict(rows),
+            'tickers': observation_log.tickers(), 'unreadable': unreadable}
 
 
 def _read_pack(path):
@@ -198,7 +228,8 @@ def register(sub):
     p.set_defaults(func=cmd_db_status)
 
     p = shared(db_sub.add_parser('sync', help='load the file artifacts; safe to repeat'))
-    p.add_argument('--kinds', help='universe,runs,packs,warehouse,screens,deep-dives')
+    p.add_argument('--kinds',
+                   help='universe,runs,packs,warehouse,screens,deep-dives,monitoring')
     p.add_argument('--as-of', help='warehouse date to load')
     p.add_argument('--packs', help='directory of Stage 0 packs')
     p.add_argument('--universe', help='universe file path')

@@ -199,6 +199,25 @@ tests/test_orchestration_full.py
 에이전트 목록은 어디에도 없다. 단계 순서는 `harness_core/planner.py`가 갖고 있고 Stage 4는
 매 회차 그것을 다시 묻는다.
 
+### Phase 12에서 추가된 것
+
+```
+packages/monitoring/
+  thresholds.py                    산문 임계값 -> 비교, 또는 거부 (LLM 없음)
+  watchlist.py                     보고서에서 KPI·falsifier를 읽어 온다 (여기서 만들지 않는다)
+  observations.py                  append-only 관측 로그, 출처 필수
+  evaluate.py                      선언된 임계값과의 산술 + staleness
+  drift.py                         run 간 변화와 정책 귀속 여부
+  store.py                         불변 평가 스냅샷
+config/monitoring.json             authority(할 수 있는 것/없는 것) · cadence · 임계값 정책
+schemas/monitoring_observation.schema.json
+schemas/monitoring_snapshot.schema.json
+db/migrations/versions/0002_monitoring.py
+apps/web/app/monitoring/           포트폴리오 + 기업별
+tests/test_monitoring.py
+docs/MONITORING.md
+```
+
 ### 이후 Phase에서 추가될 것
 
 ```
@@ -225,7 +244,7 @@ workers/                                 ARQ 작업: universe sync, ingestion, m
 
 ---
 
-## 5. DB schema (Phase 2~4)
+## 5. DB schema (Phase 2~4, 12)
 
 vertical slice는 DB 없이 `runs/`를 읽는다. 아래는 US/KR 전체 유니버스가 들어올 때의 스키마다.
 
@@ -523,6 +542,11 @@ remaining_unknowns / evidence_quality / final_synthesis
 | POST | `/api/deep-dive/run` | ✅ |
 | GET | `/api/deep-dive`, `/api/deep-dive/{id}` | ✅ |
 | GET | `/api/reports/{id}?fmt=json\|markdown` | ✅ |
+| GET | `/api/monitoring[?tickers=]` | ✅ 포트폴리오 — 재검토 필요 순 |
+| GET | `/api/monitoring/{ticker}` | ✅ 항목별 상태 (판정 필드 없음) |
+| GET | `/api/monitoring/{ticker}/watchlist` | ✅ 관측 적용 전 선언 |
+| GET | `/api/monitoring/{ticker}/drift` | ✅ run 간 변화 + comparable |
+| POST | `/api/monitoring/observations` | ✅ 관측 1건 append |
 
 미구현 단계는 그럴듯한 답을 만들지 않고 501과 해당 Phase를 반환한다.
 
@@ -551,6 +575,14 @@ python harness.py screen triage-runs
 python harness.py screen full [--run-id A,B|--as-of …|--screen-run …] [--top N]
                               [--max-rounds N] [--dry-run]
 python harness.py screen full-runs
+python harness.py monitor watchlist TICKER [--full]
+python harness.py monitor observe TICKER (--watch-id ID | --match TEXT [--all-matches])
+                                 --as-of DATE --source S --source-type T
+                                 [--value V [--unit ratio|percent|percent_point|number]]
+                                 [--triggered true|false] [--supersedes ID]
+python harness.py monitor status [TICKER | --tickers A,B] [--as-of DATE] [--full] [--save]
+python harness.py monitor drift TICKER [--run-ids A,B]
+python harness.py monitor runs
 ```
 
 이후 Phase에서 추가될 것: `screen deep-dive --input leaderboard.json --top 10`.
@@ -575,14 +607,14 @@ python harness.py screen full-runs
 | 9 | Deep-Dive Research | ✅ 완료 (fixture provider로 검증) |
 | 10 | Red Team + synthesis | ✅ 완료 |
 | 11 | Report UI | ✅ 완료 |
-| 12 | Monitoring | ⏳ KPI 스키마·표시는 완료, 시계열 추적은 미구현 |
+| 12 | Monitoring | ✅ 관측 로그·결정론적 판정·staleness·drift 완료 (관측 수집 자동화는 미구현) |
 
 Phase 5·6·9·10·11이 먼저 완성된 것은 vertical slice를 먼저 관통시켰기 때문이다.
 Phase 4가 붙으면서 `screening_warehouse` 백엔드가 조건부로 활성화됐고, `backend_unavailable`로
 남던 조건들이 창고를 빌드한 뒤에는 그대로 컴파일된다 — spec 형식은 바뀌지 않았다.
 Phase 2가 붙으면서 아티팩트 위에 선택적 PostgreSQL 색인이 생겼고, 스크리너는 `--source`로
-파일과 DB 중 어느 쪽에서든 **같은 행**을 읽는다. 남은 것은 Phase 12(모니터링 시계열)와
-Phase 2의 `job` 테이블을 소비할 워커다. Phase 7·8은 결정론이 아니므로 픽스처가 검증하는 범위가
+파일과 DB 중 어느 쪽에서든 **같은 행**을 읽는다. 남은 것은 Phase 2의 `job` 테이블을 소비할
+워커와, 관측 수집 자동화다. Phase 7·8은 결정론이 아니므로 픽스처가 검증하는 범위가
 좁아진다 — 무엇을 검증하고 무엇을 검증하지 않는지는 [ORCHESTRATION.md](ORCHESTRATION.md)와
 모든 배치 기록의 `verification_scope`에 적혀 있다.
 

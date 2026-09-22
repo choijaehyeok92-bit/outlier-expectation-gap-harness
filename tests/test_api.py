@@ -106,6 +106,43 @@ class ApiTests(unittest.TestCase):
         self.assertTrue(body['dry_run'])
         self.assertIn('분석 품질', body['verification_scope']['not_verified'])
 
+    def test_monitoring_reports_ignorance_rather_than_health(self):
+        # No observations are committed for MSFT, so nothing may come back ok.
+        response = CLIENT.get('/api/monitoring/MSFT')
+        self.assertEqual(response.status_code, 200)
+        summary = response.json()['summary']
+        self.assertEqual(summary['by_status'].get('ok', 0), 0)
+        self.assertGreater(summary['never_observed'], 0)
+
+    def test_no_monitoring_route_returns_a_decision(self):
+        body = CLIENT.get('/api/monitoring/MSFT').text
+        for forbidden in ('"score_100"', '"hard_veto_status"', '"ic_state"',
+                          '"position_range"'):
+            self.assertNotIn(forbidden, body)
+
+    def test_an_observation_without_a_traceable_source_is_refused(self):
+        response = CLIENT.post('/api/monitoring/observations', json={
+            'ticker': 'MSFT', 'watch_id': 'a' * 16, 'as_of_date': '2026-09-01',
+            'source': '   ', 'source_type': 'filing', 'value': 1})
+        self.assertEqual(response.status_code, 422)
+
+    def test_an_observation_from_the_future_is_refused(self):
+        response = CLIENT.post('/api/monitoring/observations', json={
+            'ticker': 'MSFT', 'watch_id': 'a' * 16, 'as_of_date': '2099-01-01',
+            'source': '10-K', 'source_type': 'filing', 'value': 1})
+        self.assertEqual(response.status_code, 422)
+        self.assertIn('after the cutoff', response.json()['detail'])
+
+    def test_drift_says_when_a_change_is_the_policy_and_not_the_company(self):
+        # Every NVDA run in the corpus sits on a different policy version.
+        payload = CLIENT.get('/api/monitoring/NVDA/drift').json()
+        self.assertGreater(payload['runs'], 1)
+        self.assertEqual(payload['comparable_steps'], 0)
+        self.assertTrue(all(not step['comparable'] for step in payload['steps']))
+
+    def test_monitoring_a_company_with_no_run_is_a_404(self):
+        self.assertEqual(CLIENT.get('/api/monitoring/GHOST').status_code, 404)
+
     def test_deep_dive_plan_and_report_round_trip(self):
         plan = CLIENT.post('/api/deep-dive/plan', json={'run_id': 'MSFT'}).json()
         self.assertEqual(plan['ticker'], 'MSFT')

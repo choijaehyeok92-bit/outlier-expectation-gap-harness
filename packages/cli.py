@@ -364,6 +364,126 @@ def cmd_screen_runs(args):
     _print(store.list_runs())
 
 
+def _resolve_watch_id(ticker, args):
+    """`--watch-id`, or an exact name match. Ambiguity is refused, never picked."""
+    from packages.monitoring import watchlist as watchlist_builder
+    if args.watch_id:
+        return [args.watch_id]
+    if not args.match:
+        raise SystemExit('pass --watch-id, or --match "<KPI name or falsifier text>"')
+    built = watchlist_builder.build(ticker, getattr(args, 'run_id', None))
+    wanted = watchlist_builder.normalize(args.match)
+    hits = [i for i in built['items'] if watchlist_builder.normalize(i['name']) == wanted]
+    if not hits:
+        hits = [i for i in built['items'] if wanted in watchlist_builder.normalize(i['name'])]
+    if not hits:
+        raise SystemExit(f'{args.match!r} matches nothing being watched for {ticker}. '
+                         f'`harness.py monitor watchlist {ticker}` lists the items.')
+    if len(hits) > 1 and not getattr(args, 'all_matches', False):
+        lines = '\n'.join(f"  {i['watch_id']}  {i['source_kind']}/{i['source_ref']}  {i['name'][:70]}"
+                           for i in hits[:10])
+        raise SystemExit(
+            f'{args.match!r} matches {len(hits)} watch items; pass --watch-id, or --all-matches '
+            f'if they really are the same observable:\n{lines}')
+    return [i['watch_id'] for i in hits] if getattr(args, 'all_matches', False) \
+        else [hits[0]['watch_id']]
+
+
+def cmd_monitor_watchlist(args):
+    """What this company has declared it is watching, and which of it is checkable."""
+    from packages.monitoring import watchlist as watchlist_builder
+    try:
+        built = watchlist_builder.build(args.ticker, args.run_id)
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
+    if args.full:
+        _print(built)
+        return
+    _print({k: built[k] for k in ('ticker', 'run_id', 'as_of_date', 'deep_dive_id',
+                                  'summary', 'reading_note')} |
+           {'items': [{k: item.get(k) for k in ('watch_id', 'kind', 'name', 'source_kind',
+                                                'source_ref', 'cadence', 'machine_checkable',
+                                                'checkable_levels')}
+                      for item in built['items']]})
+
+
+def cmd_monitor_observe(args):
+    """Record one observation. It needs a source and a date, and it is never edited."""
+    from packages.monitoring import observations as observation_log
+    from packages.monitoring import watchlist as watchlist_builder
+    ticker = args.ticker.upper() if not args.ticker.isdigit() else args.ticker
+    watch_ids = _resolve_watch_id(ticker, args)
+    triggered = None
+    if args.triggered is not None:
+        triggered = args.triggered.strip().lower() in ('true', 'yes', '1', 'y')
+    run_as_of = None
+    try:
+        run_as_of = watchlist_builder.build(ticker, args.run_id)['as_of_date']
+    except ValueError:
+        pass
+    rows = []
+    for watch_id in watch_ids:
+        try:
+            rows.append(observation_log.record(
+                ticker, watch_id, as_of_date=args.as_of, source=args.source,
+                source_type=args.source_type, value=args.value, unit=args.unit,
+                triggered=triggered, period=args.period,
+                fact_or_estimate=args.fact_or_estimate, note=args.note,
+                supersedes=args.supersedes, run_as_of_date=run_as_of))
+        except observation_log.ObservationRejected as error:
+            raise SystemExit(str(error)) from error
+    _print(rows[0] if len(rows) == 1 else {'recorded': len(rows), 'observations': rows})
+
+
+def cmd_monitor_status(args):
+    """Evaluate the watchlist against what has been observed."""
+    from packages.monitoring import evaluate as monitor_evaluate
+    from packages.monitoring import observations as observation_log
+    from packages.monitoring import store as monitoring_store
+    from packages.monitoring import watchlist as watchlist_builder
+
+    if args.ticker:
+        try:
+            result = monitor_evaluate.evaluate(args.ticker, args.as_of, args.run_id)
+        except ValueError as error:
+            raise SystemExit(str(error)) from error
+        if args.save:
+            record = monitoring_store.build_record(result)
+            print(monitoring_store.save(record), file=sys.stderr)
+            result = record
+        _print(result if args.full else
+               {k: result[k] for k in ('ticker', 'run_id', 'analysis_as_of_date',
+                                       'evaluated_as_of', 'summary', 'review_required',
+                                       'integrity')})
+        return
+
+    config = watchlist_builder.load_config()
+    tickers = args.tickers.split(',') if args.tickers else observation_log.tickers()
+    if not tickers:
+        _print({'companies': 0,
+                'note': 'nothing is being monitored yet. Record an observation with '
+                        '`harness.py monitor observe`, or pass --tickers to evaluate '
+                        'companies with no observations and see what is unwatched.'})
+        return
+    _print(monitor_evaluate.portfolio([t.strip() for t in tickers if t.strip()],
+                                      args.as_of, config))
+
+
+def cmd_monitor_drift(args):
+    """What changed between this company's harness runs, and whether it is the company."""
+    from packages.monitoring import drift
+    run_ids = [r.strip() for r in args.run_ids.split(',')] if args.run_ids else None
+    try:
+        _print(drift.series(args.ticker, run_ids=run_ids))
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
+
+
+def cmd_monitor_runs(args):
+    from packages.monitoring import store as monitoring_store
+    _print(monitoring_store.list_runs())
+
+
 def cmd_deep_plan(args):
     from packages.research import deep_plan
     plan = deep_plan.build(args.ticker.upper() if not args.ticker.isdigit() else args.ticker,
@@ -514,6 +634,55 @@ def register(sub):
 
     p = screen_sub.add_parser('runs', help='list persisted screen runs')
     p.set_defaults(func=cmd_screen_runs)
+
+    monitor = sub.add_parser('monitor', help='track declared KPIs and falsifiers over time')
+    monitor_sub = monitor.add_subparsers(dest='monitor_cmd', required=True)
+
+    p = monitor_sub.add_parser('watchlist', help='what a company declared it is watching')
+    p.add_argument('ticker')
+    p.add_argument('--run-id')
+    p.add_argument('--full', action='store_true', help='include thresholds and comparisons')
+    p.set_defaults(func=cmd_monitor_watchlist)
+
+    p = monitor_sub.add_parser('observe', help='record one observation (append-only)')
+    p.add_argument('ticker')
+    p.add_argument('--watch-id')
+    p.add_argument('--match', help='resolve the watch item by name; ambiguity is refused')
+    p.add_argument('--all-matches', action='store_true',
+                   help='record against every match — several agents naming the same KPI')
+    p.add_argument('--run-id')
+    p.add_argument('--value', help="observed value, e.g. 71%% or 0.71")
+    p.add_argument('--unit', choices=['ratio', 'percent', 'percent_point', 'number'],
+                   help='say which scale the value is on; without it an ambiguous '
+                        'number is not compared')
+    p.add_argument('--triggered', help='falsifiers only: true|false')
+    p.add_argument('--as-of', required=True, metavar='YYYY-MM-DD')
+    p.add_argument('--source', required=True, help='where this came from')
+    p.add_argument('--source-type', required=True,
+                   choices=['filing', 'ir', 'industry', 'secondary', 'market', 'other'])
+    p.add_argument('--period')
+    p.add_argument('--fact-or-estimate', default='fact',
+                   choices=['fact', 'estimate', 'interpretation'])
+    p.add_argument('--note')
+    p.add_argument('--supersedes', help='observation_id this corrects; the original stays')
+    p.set_defaults(func=cmd_monitor_observe)
+
+    p = monitor_sub.add_parser('status', help='evaluate observations against declared thresholds')
+    p.add_argument('ticker', nargs='?')
+    p.add_argument('--tickers', help='comma-separated, for the portfolio view')
+    p.add_argument('--as-of', help='evaluation cutoff; defaults to today')
+    p.add_argument('--run-id')
+    p.add_argument('--full', action='store_true', help='include every item, not just the summary')
+    p.add_argument('--save', action='store_true', help='persist an immutable snapshot')
+    p.set_defaults(func=cmd_monitor_status)
+
+    p = monitor_sub.add_parser('drift', help='what changed between this company\'s harness runs')
+    p.add_argument('ticker')
+    p.add_argument('--run-ids', help='comma-separated; turns off convention-based grouping')
+    p.set_defaults(func=cmd_monitor_drift)
+
+    p = monitor_sub.add_parser('runs', help='list persisted monitoring snapshots')
+    p.set_defaults(func=cmd_monitor_runs)
 
     p = sub.add_parser('deep-plan', help='build a deep-dive plan from a completed harness run')
     p.add_argument('ticker')

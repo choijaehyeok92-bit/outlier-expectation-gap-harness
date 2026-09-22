@@ -143,6 +143,29 @@ Stage 4는 에이전트 목록을 갖고 있지 않다. 매 회차 `harness.py p
 이후 `harness_core`/`harness.py`가 움직인 것이다. 오케스트레이터는 게이트를 우회하지 않으므로
 사람이 검토 후 `python harness.py freeze <TICKER>`를 다시 해야 한다.
 
+## 1g. Monitoring (Phase 12)
+
+```bash
+# 무엇을 보고 있는지 — 기계 판정 가능 여부까지
+python harness.py monitor watchlist MSFT
+
+# 관측 기록. 출처와 날짜가 없으면 거부된다
+python harness.py monitor observe MSFT --match "Microsoft Cloud gross margin" \
+  --value "64%" --as-of 2026-09-20 --source "FY26 Q4 10-K p.40" --source-type filing
+
+# 평가와 포트폴리오
+python harness.py monitor status MSFT
+python harness.py monitor status --tickers MSFT,NVDA
+python harness.py monitor drift NVDA
+```
+
+`71`처럼 척도가 모호한 값은 비교하지 않고 거부한다. `"71%"`로 쓰거나 `--unit percent`를 준다.
+`thesis_break`는 매도 신호가 아니라 재검토 요청이며, 이 계층은 점수·archetype·Hard Veto·
+`ic_state`·비중을 바꾸지 않는다. 자세한 것은 [MONITORING.md](MONITORING.md).
+
+관측 로그는 `monitoring/<TICKER>/observations.jsonl`이고 `HARNESS_MONITORING_DIR`로 저장소 밖에
+둘 수 있다. **재생성이 불가능한 유일한 산출물이므로 gitignore하지 않았다.**
+
 ## 2. API
 
 ```bash

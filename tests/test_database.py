@@ -12,6 +12,7 @@ stopped being an index.
 """
 import json
 import os
+from datetime import date
 from pathlib import Path
 import tempfile
 import unittest
@@ -20,11 +21,12 @@ ROOT = Path(__file__).resolve().parents[1]
 AS_OF = '2026-09-18'
 
 try:
-    from sqlalchemy import select, text
+    from sqlalchemy import func, select, text
     from sqlalchemy.exc import IntegrityError
 
     from db import repository, sync as sync_module
-    from db.models import (Base, DeepDive, FinancialFact, HarnessRun, Job, ScreenRun,
+    from db.models import (Base, DeepDive, FinancialFact, HarnessRun, Job,
+                           MonitoringObservation, MonitoringWatchItem, ScreenRun,
                            ScreeningMetric, Security)
     from db.session import DatabaseNotConfigured, database_url, engine_for, session_scope
     from packages.screening import rows as row_source
@@ -302,6 +304,102 @@ class SyncTests(DatabaseCase):
         with session_scope(self.engine) as session:
             kinds = {row['kind'] for row in repository.status(session)['recent_syncs']}
             self.assertIn('runs', kinds)
+
+
+class MonitoringSyncTests(DatabaseCase):
+    """The two monitoring tables, which are governed differently on purpose."""
+
+    WATCHLIST = {
+        'ticker': 'ACME', 'run_id': 'ACME',
+        'items': [{
+            'watch_id': 'w' * 16, 'ticker': 'ACME', 'run_id': 'ACME', 'kind': 'kpi',
+            'name': 'Gross margin', 'source_kind': 'deep_dive', 'source_ref': 'D1',
+            'as_of_date': AS_OF, 'cadence': 'quarterly', 'direction_required': 'increasing',
+            'thresholds': {'warning': '70% 이상', 'thesis_break': '65% 이상'},
+            'comparison': {'warning': {'operator': '>=', 'value': 0.7, 'unit': 'ratio',
+                                       'source_text': '70% 이상'}, 'thesis_break': None},
+            'machine_checkable': True, 'not_machine_checkable_reason': None,
+        }],
+    }
+    OBSERVATION = {
+        'observation_id': 'o' * 16, 'ticker': 'ACME', 'watch_id': 'w' * 16, 'value': '68%',
+        'unit': None, 'triggered': None, 'period': 'FY26Q4', 'as_of_date': '2026-09-20',
+        'source': '10-Q p.4', 'source_type': 'filing', 'fact_or_estimate': 'fact',
+        'note': None, 'supersedes': None, 'recorded_at_utc': '2026-09-21T00:00:00+00:00',
+    }
+
+    def test_a_watch_item_is_derived_so_it_is_upserted(self):
+        with session_scope(self.engine) as session:
+            self.assertEqual(sync_module.sync_watchlist(session, self.WATCHLIST)['inserted'], 1)
+        revised = {**self.WATCHLIST, 'items': [
+            {**self.WATCHLIST['items'][0],
+             'thresholds': {'warning': '75% 이상', 'thesis_break': None}}]}
+        with session_scope(self.engine) as session:
+            self.assertEqual(sync_module.sync_watchlist(session, revised)['updated'], 1)
+        with session_scope(self.engine) as session:
+            row = session.get(MonitoringWatchItem, 'w' * 16)
+            self.assertEqual(row.warning_threshold, '75% 이상')
+            self.assertEqual(session.scalar(
+                select(func.count()).select_from(MonitoringWatchItem)), 1)
+
+    def test_an_unchanged_watchlist_updates_nothing(self):
+        with session_scope(self.engine) as session:
+            sync_module.sync_watchlist(session, self.WATCHLIST)
+        with session_scope(self.engine) as session:
+            counts = sync_module.sync_watchlist(session, self.WATCHLIST)
+        self.assertEqual((counts['inserted'], counts['updated']), (0, 0))
+
+    def test_an_observation_is_a_record_of_what_was_seen_so_it_is_appended(self):
+        with session_scope(self.engine) as session:
+            self.assertEqual(
+                sync_module.sync_observations(session, [self.OBSERVATION])['inserted'], 1)
+        mutated = {**self.OBSERVATION, 'value': '99%', 'source': 'somewhere else'}
+        with session_scope(self.engine) as session:
+            self.assertEqual(sync_module.sync_observations(session, [mutated])['skipped'], 1)
+        with session_scope(self.engine) as session:
+            row = session.get(MonitoringObservation, 'o' * 16)
+            self.assertEqual(row.value_text, '68%', 'an existing observation is never rewritten')
+
+    def test_an_observation_keeps_the_number_and_its_scale_together(self):
+        # `68%` survives as written for a reader and as (68.0, 'percent') for a
+        # query. The pair is the fact; the number alone is half of one.
+        with session_scope(self.engine) as session:
+            sync_module.sync_observations(session, [self.OBSERVATION])
+        with session_scope(self.engine) as session:
+            row = session.get(MonitoringObservation, 'o' * 16)
+            self.assertEqual((row.value_text, row.value_number, row.unit), ('68%', 68.0, 'percent'))
+
+    def test_a_scale_nobody_stated_is_stored_as_unstated(self):
+        with session_scope(self.engine) as session:
+            sync_module.sync_observations(session, [{**self.OBSERVATION,
+                                                     'observation_id': 'p' * 16, 'value': 68}])
+        with session_scope(self.engine) as session:
+            row = session.get(MonitoringObservation, 'p' * 16)
+            self.assertEqual((row.value_number, row.unit), (68.0, None))
+
+    def test_the_database_refuses_a_source_type_nobody_defined(self):
+        with self.assertRaises(IntegrityError):
+            with session_scope(self.engine) as session:
+                session.add(MonitoringObservation(
+                    observation_id='x' * 16, ticker='ACME', watch_id='w' * 16,
+                    as_of_date=date.fromisoformat(AS_OF), source='somewhere',
+                    source_type='rumour', fact_or_estimate='fact', pre_analysis=False))
+
+    def test_the_database_refuses_a_watch_item_that_is_neither_kind(self):
+        with self.assertRaises(IntegrityError):
+            with session_scope(self.engine) as session:
+                session.add(MonitoringWatchItem(
+                    watch_id='z' * 16, ticker='ACME', kind='vibe', name='x',
+                    source_kind='deep_dive', machine_checkable=False))
+
+    def test_status_counts_the_monitoring_tables(self):
+        with session_scope(self.engine) as session:
+            sync_module.sync_watchlist(session, self.WATCHLIST)
+            sync_module.sync_observations(session, [self.OBSERVATION])
+        with session_scope(self.engine) as session:
+            rows = repository.status(session)['rows']
+        self.assertEqual(rows['monitoring_watch_item'], 1)
+        self.assertEqual(rows['monitoring_observation'], 1)
 
 
 class RepositoryTests(DatabaseCase):

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Monitoring Observation",
+  "description": "하나의 관측 사실. append-only이며 수정되지 않는다. 정정은 supersedes를 채운 새 관측이다.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["observation_id", "ticker", "watch_id", "as_of_date", "source", "source_type",
+               "fact_or_estimate", "recorded_at_utc"],
+  "properties": {
+    "observation_id": {"type": "string", "minLength": 8},
+    "ticker": {"type": "string", "minLength": 1},
+    "watch_id": {"type": "string", "minLength": 8,
+                 "description": "watchlist 항목의 안정 식별자. 임계값이 바뀌어도 같다."},
+    "value": {"type": ["string", "number", "null"],
+              "description": "KPI 관측값. 문자열이면 단위 표기를 포함한다 ('71%')."},
+    "unit": {"type": ["string", "null"], "enum": ["ratio", "percent", "percent_point", "number", null],
+             "description": "값의 척도를 명시한다. 없으면 문자열의 단위 표기로만 판정하며, 모호하면 비교하지 않는다."},
+    "triggered": {"type": ["boolean", "null"],
+                  "description": "falsifier 전용. 발동 여부는 사람이 증거를 보고 기록한다."},
+    "period": {"type": ["string", "null"]},
+    "as_of_date": {"type": "string", "format": "date"},
+    "source": {"type": "string", "minLength": 1},
+    "source_type": {"enum": ["filing", "ir", "industry", "secondary", "market", "other"]},
+    "fact_or_estimate": {"enum": ["fact", "estimate", "interpretation"]},
+    "note": {"type": ["string", "null"]},
+    "supersedes": {"type": ["string", "null"],
+                   "description": "정정 대상 observation_id. 원본은 삭제되지 않는다."},
+    "pre_analysis": {"type": "boolean",
+                     "description": "분석 기준일보다 앞선 관측. 추세 맥락이지 새 소식이 아니다."},
+    "pre_analysis_note": {"type": "string"},
+    "recorded_at_utc": {"type": "string"}
+  }
+}

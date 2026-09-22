@@ -69,6 +69,27 @@ class FullHarnessRequest(BaseModel):
     persist: bool = True
 
 
+class ObservationRequest(BaseModel):
+    """One observation, recorded against a declared watch item.
+
+    `source` and `as_of_date` are required for the same reason every fact in
+    this system carries them: a number nobody can trace is not evidence. The
+    server refuses a date in the future rather than filtering it later.
+    """
+    ticker: str
+    watch_id: str
+    as_of_date: str = Field(pattern=r'^\d{4}-\d{2}-\d{2}$')
+    source: str = Field(min_length=1)
+    source_type: Literal['filing', 'ir', 'industry', 'secondary', 'market', 'other']
+    value: str | float | None = None
+    unit: Literal['ratio', 'percent', 'percent_point', 'number'] | None = None
+    triggered: bool | None = None
+    period: str | None = None
+    fact_or_estimate: Literal['fact', 'estimate', 'interpretation'] = 'fact'
+    note: str | None = None
+    supersedes: str | None = None
+
+
 class DeepDivePlanRequest(BaseModel):
     run_id: str
     user_requested: bool = False

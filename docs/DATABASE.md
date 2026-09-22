@@ -13,7 +13,7 @@
 
 ---
 
-## 테이블 11개
+## 테이블 13개
 
 ```
 issuer ─┬─ security ─┬─ market_snapshot        시장 데이터 (규제기관과 분리)
@@ -21,10 +21,13 @@ issuer ─┬─ security ─┬─ market_snapshot        시장 데이터 (규
         │            └─ harness_run            runs/ 위의 색인
         ├─ filing ───── financial_fact         공시 사실 (CFS/OFS 포함)
 screen_run    deep_dive                        실행된 스크린·딥다이브
+monitoring_watch_item                          보고서가 선언한 감시 항목 (Phase 12)
+monitoring_observation                         관측된 사실 (Phase 12)
 job           sync_log                         작업 큐·동기화 감사
 ```
 
-`db/models.py`가 정의이고 `db/migrations/versions/0001_initial_schema.py`가 스키마다.
+`db/models.py`가 정의이고 `db/migrations/versions/`의 `0001_initial_schema.py`와
+`0002_monitoring.py`가 스키마다.
 
 ---
 
@@ -36,8 +39,8 @@ job           sync_log                         작업 큐·동기화 감사
 
 | 종류 | 테이블 | 규칙 |
 |---|---|---|
-| **판정** | `harness_run`, `screen_run`, `deep_dive` | 덮어쓰지 않는다. run을 다시 집계하면 다른 `aggregate_sha256`을 가진 **새 행**이 들어가고 이전 행은 남는다. `is_current`만 움직인다 |
-| **계산** | `screening_metric` | upsert한다. 정의를 고쳐 다시 계산하면 값이 바뀌어야 한다 — config에 정의를 둔 이유가 그것이다 |
+| **판정·관측** | `harness_run`, `screen_run`, `deep_dive`, `monitoring_observation` | 덮어쓰지 않는다. run을 다시 집계하면 다른 `aggregate_sha256`을 가진 **새 행**이 들어가고 이전 행은 남는다. `is_current`만 움직인다. 관측도 같다 — 정정은 `supersedes`를 채운 새 행이다 |
+| **계산·파생** | `screening_metric`, `monitoring_watch_item` | upsert한다. 정의를 고쳐 다시 계산하면 값이 바뀌어야 한다 — config에 정의를 둔 이유가 그것이다. 워치아이템은 보고서에서 파생되므로 같은 규칙을 따른다 |
 
 제자리에서 update하는 테이블은 숫자가 바뀌었다는 사실 자체를 지운다. 리뷰어가 봐야 하는
 것이 정확히 그것이다.
@@ -159,6 +162,19 @@ warehouse   inserted=336  (14개 기업 × 24개 지표)
 
 ---
 
+## 관측의 숫자와 척도는 함께 저장된다
+
+`monitoring_observation`은 `value_text`(쓰인 그대로)와 `(value_number, unit)`을 함께 남긴다.
+**NULL인 `unit`은 의미가 있다** — 기록한 사람이 척도를 말하지 않았다는 뜻이고, 그것이 바로
+평가기가 추측하기를 거부하는 경우다. `value_number`만 읽고 `unit`을 무시하는 질의는 사실의
+절반만 읽는다. 71%를 `71`로 적고 0.73 임계값과 비교하면 위반이 ok로 보고되는데, 그 사고를
+막는 유일한 장치가 이 한 쌍이다.
+
+`source`가 NOT NULL인 이유도 같다. 추적할 수 없는 숫자는 증거가 아니고, 그것으로 계산한
+상태는 상태가 없는 것보다 나쁘다.
+
+---
+
 ## 남은 것
 
 - 워커 큐가 `job` 테이블을 실제로 소비하지 않는다. 테이블과 idempotency key는 있고
@@ -168,3 +184,5 @@ warehouse   inserted=336  (14개 기업 × 24개 지표)
 - 증분 동기화 없음 — `db sync`는 전체를 훑고 변경분만 쓴다. 현재 규모(7천 행)에서는
   충분하지만 유니버스 규모에서는 아니다
 - 읽기 전용 복제본·커넥션 풀 튜닝 등 운영 설정 없음
+- 모니터링 평가 스냅샷은 색인되지 않는다. `monitoring_runs/`의 파일로만 남고 DB에는
+  워치아이템과 관측만 들어간다

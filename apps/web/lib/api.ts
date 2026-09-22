@@ -52,7 +52,90 @@ export const api = {
   deepDiveRun: (runId: string, userRequested: boolean) =>
     request<{ deep_dive_id: string }>('/api/deep-dive/run', { method: 'POST', body: JSON.stringify({ run_id: runId, user_requested: userRequested, provider: 'fixture' }) }),
   report: (id: string) => request<DeepDiveReport>(`/api/reports/${encodeURIComponent(id)}`),
+  monitoring: (tickers?: string) =>
+    request<MonitoringPortfolio>(`/api/monitoring${tickers ? `?tickers=${encodeURIComponent(tickers)}` : ''}`),
+  monitoringCompany: (ticker: string) =>
+    request<MonitoringSnapshot>(`/api/monitoring/${encodeURIComponent(ticker)}`),
+  monitoringDrift: (ticker: string) =>
+    request<DriftSeries>(`/api/monitoring/${encodeURIComponent(ticker)}/drift`),
 };
+
+/** A status the monitoring layer computed. It is never a recommendation. */
+export type MonitorStatus =
+  | 'ok' | 'warning' | 'thesis_break' | 'stale' | 'unknown'
+  | 'unchecked' | 'not_triggered' | 'triggered' | 'not_machine_checkable';
+
+export interface MonitorSummary {
+  items: number;
+  by_status: Record<string, number>;
+  review_required: number;
+  observed: number;
+  never_observed: number;
+  not_machine_checkable: number;
+}
+
+export interface MonitorItem {
+  watch_id: string;
+  kind: 'kpi' | 'falsifier';
+  name: string;
+  source_kind: string;
+  source_ref: string | null;
+  cadence: string | null;
+  status: MonitorStatus;
+  reason: string | null;
+  review_required: boolean;
+  observations: number;
+  observed_value?: number | null;
+  days_overdue?: number | null;
+  checked_levels: string[];
+  breached_levels: string[];
+  latest_observation: Record<string, unknown> | null;
+}
+
+export interface MonitoringSnapshot {
+  ticker: string;
+  run_id: string;
+  analysis_as_of_date: string | null;
+  evaluated_as_of: string;
+  deep_dive_id: string | null;
+  summary: MonitorSummary;
+  review_required: { watch_id: string; kind: string; name: string; status: string; reason: string | null }[];
+  authority: { may: string[]; may_not: string[]; statement: string };
+  items: MonitorItem[];
+  integrity: { lines: number; unreadable: unknown[]; superseded: unknown[] };
+}
+
+export interface MonitoringPortfolio {
+  evaluated_as_of?: string;
+  companies: number;
+  needing_review?: number;
+  rows: { ticker: string; run_id: string; analysis_as_of_date: string | null; summary: MonitorSummary;
+          review_required: { name: string; status: string }[] }[];
+  unreadable: { ticker: string; reason: string }[];
+  note?: string;
+  authority?: { may: string[]; may_not: string[]; statement: string };
+}
+
+export interface DriftStep {
+  from_run: string;
+  to_run: string;
+  from_as_of: string | null;
+  to_as_of: string | null;
+  comparable: boolean;
+  not_comparable_reason: string | null;
+  policy_changes: Record<string, { before: unknown; after: unknown }>;
+  changes: { field: string; before: unknown; after: unknown; delta: number | null; attributable_to_company: boolean }[];
+}
+
+export interface DriftSeries {
+  ticker: string;
+  runs: number;
+  comparable_steps: number;
+  matched_by: string[];
+  points: Record<string, unknown>[];
+  steps: DriftStep[];
+  reading_note: string;
+}
 
 export interface Health { status: string; backends: string[]; runs: number; llm_provider_default: string }
 

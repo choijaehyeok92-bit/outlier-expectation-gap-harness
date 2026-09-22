@@ -14,7 +14,8 @@ from typing import Optional
 from sqlalchemy import func, select
 
 from .models import (DeepDive, Filing, FinancialFact, HarnessRun, Issuer, Job, MarketSnapshot,
-                     ScreenRun, ScreeningMetric, Security, SyncLog)
+                     MonitoringObservation, MonitoringWatchItem, ScreenRun, ScreeningMetric,
+                     Security, SyncLog)
 
 
 def _iso(value) -> Optional[str]:
@@ -133,7 +134,10 @@ def status(session) -> dict:
     tables = {'issuer': Issuer, 'security': Security, 'filing': Filing,
               'financial_fact': FinancialFact, 'market_snapshot': MarketSnapshot,
               'screening_metric': ScreeningMetric, 'harness_run': HarnessRun,
-              'screen_run': ScreenRun, 'deep_dive': DeepDive, 'job': Job, 'sync_log': SyncLog}
+              'screen_run': ScreenRun, 'deep_dive': DeepDive,
+              'monitoring_watch_item': MonitoringWatchItem,
+              'monitoring_observation': MonitoringObservation,
+              'job': Job, 'sync_log': SyncLog}
     counts = {name: session.scalar(select(func.count()).select_from(model)) or 0
               for name, model in tables.items()}
     recent = session.scalars(select(SyncLog).order_by(SyncLog.sync_id.desc()).limit(8)).all()

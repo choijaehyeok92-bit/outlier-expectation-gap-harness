@@ -311,6 +311,75 @@ class DeepDive(TimestampMixin, Base):
     content_sha256: Mapped[str | None] = mapped_column(Sha256)
 
 
+# ----------------------------------------------------------------- monitoring
+class MonitoringWatchItem(TimestampMixin, Base):
+    """What a company has declared it is watching. Derived, so upserted.
+
+    Every row is read back from an agent report or a deep dive; nothing here
+    is authored by the monitoring layer. `watch_id` is stable across a rebuild
+    on purpose — observations point at it, and an id that moved when a deep
+    dive was re-run would orphan a company's whole history.
+    """
+    __tablename__ = 'monitoring_watch_item'
+    __table_args__ = (
+        CheckConstraint("kind IN ('kpi','falsifier')", name='ck_watch_item_kind'),
+        Index('ix_watch_item_ticker', 'ticker', 'kind'),
+    )
+
+    watch_id: Mapped[str] = mapped_column(Identifier, primary_key=True)
+    ticker: Mapped[str] = mapped_column(Identifier, nullable=False)
+    run_id: Mapped[str | None] = mapped_column(Identifier)
+    kind: Mapped[str] = mapped_column(Identifier, nullable=False)
+    name: Mapped[str] = mapped_column(Text, nullable=False)
+    source_kind: Mapped[str] = mapped_column(Identifier, nullable=False)
+    source_ref: Mapped[str | None] = mapped_column(Identifier)
+    as_of_date: Mapped[str | None] = mapped_column(Date)
+    cadence: Mapped[str | None] = mapped_column(Identifier)
+    direction_required: Mapped[str | None] = mapped_column(Identifier)
+    warning_threshold: Mapped[str | None] = mapped_column(Text)
+    thesis_break_threshold: Mapped[str | None] = mapped_column(Text)
+    comparison: Mapped[dict | None] = mapped_column(JSONColumn)
+    machine_checkable: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    not_machine_checkable_reason: Mapped[str | None] = mapped_column(Text)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=utcnow, onupdate=utcnow)
+
+
+class MonitoringObservation(TimestampMixin, Base):
+    """One observed fact. Append-only, like every other record of what was seen.
+
+    A correction is a new row whose `supersedes` names the old one; the old row
+    stays. `source` is NOT NULL because a number nobody can trace is not
+    evidence, and a status computed from one would be worse than no status.
+    """
+    __tablename__ = 'monitoring_observation'
+    __table_args__ = (
+        CheckConstraint("source_type IN ('filing','ir','industry','secondary','market','other')",
+                        name='ck_observation_source_type'),
+        CheckConstraint("fact_or_estimate IN ('fact','estimate','interpretation')",
+                        name='ck_observation_fact_or_estimate'),
+        Index('ix_observation_watch', 'watch_id', 'as_of_date'),
+        Index('ix_observation_ticker', 'ticker', 'as_of_date'),
+    )
+
+    observation_id: Mapped[str] = mapped_column(Identifier, primary_key=True)
+    ticker: Mapped[str] = mapped_column(Identifier, nullable=False)
+    watch_id: Mapped[str] = mapped_column(Identifier, nullable=False)
+    value_text: Mapped[str | None] = mapped_column(Text)
+    value_number: Mapped[float | None] = mapped_column(MetricValue)
+    unit: Mapped[str | None] = mapped_column(Identifier)
+    triggered: Mapped[bool | None] = mapped_column(Boolean)
+    period: Mapped[str | None] = mapped_column(ShortText)
+    as_of_date: Mapped[str] = mapped_column(Date, nullable=False)
+    source: Mapped[str] = mapped_column(Text, nullable=False)
+    source_type: Mapped[str] = mapped_column(Identifier, nullable=False)
+    fact_or_estimate: Mapped[str] = mapped_column(Identifier, nullable=False, default='fact')
+    note: Mapped[str | None] = mapped_column(Text)
+    supersedes: Mapped[str | None] = mapped_column(Identifier)
+    pre_analysis: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    recorded_at_utc: Mapped[str | None] = mapped_column(ShortText)
+
+
 # ----------------------------------------------------------------- operations
 class Job(TimestampMixin, Base):
     """Queued work. `idempotency_key` is what makes a retry safe."""
@@ -350,4 +419,5 @@ class SyncLog(Base):
 
 
 ALL_TABLES = (Issuer, Security, Filing, FinancialFact, MarketSnapshot, ScreeningMetric,
-              HarnessRun, ScreenRun, DeepDive, Job, SyncLog)
+              HarnessRun, ScreenRun, DeepDive, MonitoringWatchItem, MonitoringObservation,
+              Job, SyncLog)
