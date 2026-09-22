@@ -1,0 +1,70 @@
+{
+  "ticker": "META",
+  "as_of_date": "2026-09-18",
+  "status": "manual_deterministic_crosscheck",
+  "note": "This file mirrors the configured rubric/condition arithmetic from the frozen branch inputs. It is not a substitute for `python harness.py aggregate/plan`; the workflow is prepared to produce canonical outputs when executed.",
+  "phase1_reports": [
+    "EV",
+    "AS",
+    "DI",
+    "FS",
+    "SL",
+    "CP",
+    "MT",
+    "RF",
+    "MA",
+    "LG"
+  ],
+  "validation": "all_phase1_reports_passed_manual_schema_rubric_checks",
+  "core_score_0_100": 69.35,
+  "signals": {
+    "price_to_base_value": 1.0428,
+    "revenue_cagr_next_3y": 0.16,
+    "market_cap_usd": 1708314500000
+  },
+  "archetype_gate_crosscheck": {
+    "compounder": {
+      "eligible": false,
+      "failed": [
+        "domain.reinvestment_fcf 65 < 76",
+        "domain.management_allocation 66.75 < 72",
+        "domain.financial_survival 70 < 72",
+        "criterion.reinvestment_fcf.incremental_roic 65 < 75"
+      ]
+    },
+    "outlier_growth": {
+      "eligible": false,
+      "failed": [
+        "domain.long_term_growth 68 < 70",
+        "criterion.long_term_growth.opportunity_scale_5y 70 < 75",
+        "criterion.long_term_growth.market_misperception 50 < 65"
+      ]
+    },
+    "growth": {
+      "eligible": false,
+      "failed": [
+        "criterion.reinvestment_fcf.fcf_per_share_quality 50 < 65"
+      ]
+    },
+    "buffett_value": {
+      "eligible": false,
+      "failed": [
+        "signal.price_to_base_value 1.0428 > 0.85",
+        "criterion.reinvestment_fcf.fcf_per_share_quality 50 < 75",
+        "domain.financial_survival 70 < 75",
+        "domain.management_allocation 66.75 < 70"
+      ]
+    },
+    "moonshot": {
+      "eligible": false,
+      "failed": [
+        "signal.market_cap_usd 1708314500000 > 50000000000",
+        "domain.disruptive_innovation 71.75 < 78",
+        "domain.structural_leadership 71 < 72",
+        "domain.asymmetry 67.25 < 72"
+      ]
+    }
+  },
+  "expected_next_planner_state": "early_exit_non_fit",
+  "rationale": "All core and currently relevant archetype conditions are observed; every investable archetype has at least one failed mandatory condition. Growth is nearest, failing only FCF/share quality."
+}
