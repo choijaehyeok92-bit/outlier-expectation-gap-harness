@@ -1,0 +1,159 @@
+{
+  "agent_id": "CP",
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 84.5,
+  "confidence_0_1": 0.89,
+  "bull_score": 95,
+  "bear_score": 70,
+  "bull_case": "Clinically differentiated metabolic medicines address large unmet need, while oral and next-generation options broaden access. High gross margins and accelerating volume show strong product economics.",
+  "bear_case": "Patient demand can be strong while payer economics deteriorate. Chronic adherence, reimbursement restrictions and lower realized prices can reduce lifetime value and limit usage.",
+  "thesis": "Customer/product strength is high. Q2 volume rose 60% while gross margin reached 85.8%, showing strong demand and operating leverage despite lower realized prices. The products address mission-critical diabetes/obesity outcomes, but direct retention/adherence evidence is less complete than revenue evidence. Payers and governments are major economic customers, so lower realized pricing prevents a maximum customer-ROI score.",
+  "evidence": [
+    {
+      "evidence_id": "LLY-CP-VOLUME",
+      "economic_driver": "usage",
+      "claim": "Q2 revenue rose 48% as volume increased 60%, partially offset by a 13% decline in realized prices.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000077/q226lillysalesandearningsp.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 0.6,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-CP-GM",
+      "economic_driver": "unit_economics",
+      "claim": "Q2 gross margin was $19.7B, or 85.8% of revenue, up 1.5 percentage points YoY despite lower realized prices.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000077/q226lillysalesandearningsp.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 0.858,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-CP-MOUNJARO",
+      "economic_driver": "product_demand",
+      "claim": "Mounjaro revenue rose 91% YoY to $9.943B in Q2, with both U.S. and international volume expansion.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 9943000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-CP-ZEP",
+      "economic_driver": "product_demand",
+      "claim": "Zepbound revenue rose 46% YoY to $4.928B in Q2 despite lower realized prices, indicating strong patient/prescriber demand.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 4928000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-CP-ORAL",
+      "economic_driver": "convenience",
+      "claim": "FDA approval of oral orforglipron for obesity adds a lower-friction form factor that can expand access beyond injections.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Q2 realized prices fell 13%, highlighting payer and reimbursement bargaining power.",
+    "Long-term adherence and persistence data are not captured by revenue growth alone.",
+    "Competing incretins may narrow efficacy and convenience differentiation.",
+    "Government reimbursement decisions can reduce economics even when clinical demand is strong."
+  ],
+  "unknowns": [
+    "Long-run adherence/persistence by product and indication.",
+    "Net lifetime value after rebates and payer mix shifts.",
+    "Orforglipron patient expansion versus cannibalization."
+  ],
+  "falsifiers": [
+    "Volume growth slows while realized pricing continues to decline sharply.",
+    "Successor products fail to improve access or adherence.",
+    "Gross-margin expansion reverses structurally as competition and rebates intensify."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Large volume growth, regulatory approvals and very high gross margins demonstrate clinically demanded products rather than subsidy-only growth."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "Revenue is concentrated in metabolic therapy but spans multiple molecules, indications, geographies and other therapeutic areas; no single customer is existential."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Volume / realized price",
+      "direction": "volume-led",
+      "threshold": "volume growth offsets price/rebate pressure",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Gross margin",
+      "direction": "stable or up",
+      "threshold": "remain structurally high despite capacity and pricing changes",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Adherence / access",
+      "direction": "improve",
+      "threshold": "broader reimbursement and oral options expand durable use",
+      "cadence": "launch/annual"
+    }
+  ],
+  "next_checks": [
+    "Orforglipron launch/access data.",
+    "U.S. and international net-price trend.",
+    "Persistence/adherence evidence as available."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 85,
+      "rationale": "The medicines address major health outcomes and demand is strong, but payer/reimbursement pressure means economic ROI is shared among patients, providers and payers rather than fully captured by Lilly."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 80,
+      "rationale": "Volume is expanding rapidly at scale, but direct same-cohort adherence/retention evidence is less complete than commercial usage evidence."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 90,
+      "rationale": "Q2 gross margin of 85.8% expanded despite lower realized pricing and large-scale volume growth, indicating powerful product economics."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "material",
+      "rationale": "Payer willingness to reimburse at scale is the binding economic customer question."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "material",
+      "rationale": "Commercial growth is clear but chronic persistence is less directly evidenced."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "minor",
+      "rationale": "Current gross-margin economics are strongly evidenced."
+    }
+  ]
+}
