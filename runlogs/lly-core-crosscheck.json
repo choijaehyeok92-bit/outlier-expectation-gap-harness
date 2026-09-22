@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "reports": [
+    "EV",
+    "AS",
+    "DI",
+    "FS",
+    "SL",
+    "CP",
+    "MT",
+    "RF",
+    "MA"
+  ],
+  "validation_errors": [],
+  "score_100": 76.6625,
+  "score_ex_valuation": 80.1764705882,
+  "coverage_weight": 100,
+  "archetype": "compounder",
+  "compounder_fit_score": 82.875,
+  "reachable_archetypes_raw": [
+    "compounder"
+  ],
+  "expected_state": "WATCH",
+  "expected_next_stage": "macro",
+  "methodological_note": "RF counts internal R&D and manufacturing capex in the locked absorption metric and separately treats acquired IPR&D/M&A as recurring economic reinvestment when judging owner cash quality."
+}
