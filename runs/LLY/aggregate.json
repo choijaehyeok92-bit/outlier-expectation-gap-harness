@@ -276,15 +276,213 @@
     }
   },
   "macro_geo_overlay": {
-    "financial_regime": {},
-    "geopolitical_regime": {},
-    "company_transmission": {},
-    "missing_or_stale_components": [
-      "credit_liquidity",
-      "financial_conditions",
-      "geopolitical_events",
-      "structural_trade"
-    ],
+    "financial_regime": {
+      "financial_conditions": {
+        "scope": "global",
+        "as_of_utc": "2026-09-21T00:00:00+00:00",
+        "summary": "The Fed raised the target range to 3.75%-4.00% on Sep. 16 while broader market conditions remained relatively loose.",
+        "evidence": [
+          {
+            "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+            "as_of_date": "2026-09-16"
+          },
+          {
+            "source": "https://fred.stlouisfed.org/series/NFCI",
+            "as_of_date": "2026-09-16"
+          },
+          {
+            "source": "https://www.cboe.com/tradable-products/vix",
+            "as_of_date": "2026-09-21"
+          }
+        ],
+        "risk_budget_multiplier": 0.8
+      },
+      "credit_liquidity": {
+        "scope": "global",
+        "as_of_utc": "2026-09-21T00:00:00+00:00",
+        "summary": "Broad U.S. credit markets remain open; HY/BB spreads are tight while the lowest-quality tier is more fragile.",
+        "evidence": [
+          {
+            "source": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+            "as_of_date": "2026-09-21"
+          },
+          {
+            "source": "https://fred.stlouisfed.org/series/BAMLH0A1HYBB",
+            "as_of_date": "2026-09-21"
+          }
+        ],
+        "risk_budget_multiplier": 0.8
+      }
+    },
+    "geopolitical_regime": {
+      "military_conflict": {
+        "level": "high",
+        "regions": [
+          "Middle East",
+          "Iran",
+          "Yemen",
+          "Saudi Arabia"
+        ],
+        "routes": [
+          "Strait of Hormuz",
+          "Bab el-Mandeb"
+        ],
+        "dependencies": [
+          "energy"
+        ],
+        "structural_events": []
+      },
+      "energy_disruption": {
+        "level": "high",
+        "regions": [
+          "Middle East",
+          "Iran",
+          "Saudi Arabia",
+          "Oman"
+        ],
+        "routes": [
+          "Strait of Hormuz",
+          "Red Sea"
+        ],
+        "dependencies": [
+          "oil",
+          "LNG"
+        ],
+        "structural_events": []
+      },
+      "shipping_disruption": {
+        "level": "high",
+        "regions": [
+          "Middle East"
+        ],
+        "routes": [
+          "Strait of Hormuz",
+          "Bab el-Mandeb",
+          "Red Sea"
+        ],
+        "dependencies": [
+          "oil shipping",
+          "container shipping"
+        ],
+        "structural_events": []
+      },
+      "sovereign_policy_instability": {
+        "level": "moderate",
+        "regions": [
+          "France"
+        ],
+        "routes": [],
+        "dependencies": [
+          "sovereign debt markets"
+        ],
+        "structural_events": []
+      },
+      "trade_fragmentation": {
+        "level": "high",
+        "regions": [
+          "Brazil",
+          "Mexico",
+          "United States",
+          "China",
+          "Canada"
+        ],
+        "routes": [],
+        "dependencies": [
+          "USMCA",
+          "cross-border trade"
+        ],
+        "structural_events": []
+      },
+      "export_controls": {
+        "level": "moderate",
+        "regions": [
+          "United States",
+          "China"
+        ],
+        "routes": [],
+        "dependencies": [
+          "advanced semiconductors",
+          "AI chips"
+        ],
+        "structural_events": []
+      },
+      "sanctions": {
+        "level": "high",
+        "regions": [
+          "Russia",
+          "Iran",
+          "United States",
+          "European Union"
+        ],
+        "routes": [],
+        "dependencies": [
+          "banking",
+          "energy"
+        ],
+        "structural_events": [
+          {
+            "event_id": "global-russia-iran-sanctions-2026-09",
+            "event_type": "sanctions",
+            "source": "https://www.reuters.com/world/us/trump-signs-russia-sanctions-bill-into-law-2026-09-18/",
+            "as_of_date": "2026-09-18",
+            "regions": [
+              "Russia",
+              "Iran"
+            ],
+            "routes": [],
+            "dependencies": [
+              "banking",
+              "energy"
+            ]
+          }
+        ]
+      }
+    },
+    "company_transmission": {
+      "energy_disruption": {
+        "status": "no_direct_match",
+        "matched_exposures": [],
+        "level": "high"
+      },
+      "export_controls": {
+        "status": "exposed",
+        "matched_exposures": [
+          "china",
+          "united states"
+        ],
+        "level": "moderate"
+      },
+      "military_conflict": {
+        "status": "no_direct_match",
+        "matched_exposures": [],
+        "level": "high"
+      },
+      "sanctions": {
+        "status": "exposed",
+        "matched_exposures": [
+          "united states"
+        ],
+        "level": "high"
+      },
+      "shipping_disruption": {
+        "status": "unknown",
+        "matched_exposures": [],
+        "level": "high"
+      },
+      "sovereign_policy_instability": {
+        "status": "no_direct_match",
+        "matched_exposures": [],
+        "level": "moderate"
+      },
+      "trade_fragmentation": {
+        "status": "exposed",
+        "matched_exposures": [
+          "china"
+        ],
+        "level": "high"
+      }
+    },
+    "missing_or_stale_components": [],
     "reanalysis_requests": [],
     "pending_reanalysis_domains": [],
     "risk_budget_multiplier": 0.5,
@@ -298,11 +496,12 @@
     "pack_present": true
   },
   "next_plan": {
-    "stage": "macro",
+    "stage": "evidence_and_red_team",
     "agents": {
-      "macro_overlay": "MO"
+      "evidence_quality": "ED",
+      "red_team": "RT"
     },
     "execution_control": "continue",
-    "statement": "Full core coverage is complete and Compounder is eligible. Refresh the macro overlay before ED/RT and IC."
+    "statement": "Macro overlay is current and produced no company-specific structural reanalysis request. Run ED and RT next."
   }
 }
