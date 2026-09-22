@@ -4,59 +4,139 @@
   "as_of_date": "2026-09-18",
   "domain": "moat_trajectory",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 78.5,
+  "confidence_0_1": 0.81,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Meta's user graph, creator inventory, advertiser demand, conversion data and AI ranking reinforce each other across billions of daily users. Rising ad price and impressions suggest the moat is currently strengthening.",
+  "bear_case": "Users and advertisers can multi-home, frontier models may commoditize, and regulation can restrict data advantages. TikTok, Google and new AI-native interfaces can intercept discovery and advertiser intent.",
+  "thesis": "The moat is strengthening on observable monetization and ecosystem metrics, not merely narrative. Meta has scale, growth and multiple feedback loops between users, creators, advertisers and ranking data. The network/data criterion reaches 85 because several primary metrics show scale and trend, but there is no hard switching-cost lock. Commoditization risk is moderated by distribution and proprietary interaction data rather than eliminated.",
+  "evidence": [
+    {
+      "evidence_id": "META-MT-SCALE",
+      "economic_driver": "network_effects",
+      "claim": "Family DAP averaged 3.60B in June 2026, up 3% YoY, providing massive user and content-network scale.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-18",
+      "value": 3600000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-MT-MONETIZATION",
+      "economic_driver": "pricing_power",
+      "claim": "Ad impressions rose 12% and average price per ad 9% in FY2025; Q2 2026 showed 14% impressions and 12% price growth, indicating simultaneous inventory and monetization expansion.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025/Q2 2026",
+      "as_of_date": "2026-09-18",
+      "value": 0.12,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-MT-AI-ROI",
+      "economic_driver": "data_feedback_loop",
+      "claim": "Meta reported AI ranking changes that increased Facebook ad clicks 8.3% and conversions 15.7%, demonstrating that interaction and ad data can be converted into measurable performance improvements.",
+      "source_type": "secondary",
+      "source": "https://stockanalysis.com/stocks/meta/transcripts/657318-q2-2026/",
+      "period": "Q2 2026 earnings call",
+      "as_of_date": "2026-09-18",
+      "value": 0.157,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-MT-COMPETITION",
+      "economic_driver": "substitution_risk",
+      "claim": "Meta's 10-Q states that competing products have reduced engagement for some users, particularly younger demographics, and that Reels monetizes below Feed/Stories, confirming real substitution pressure.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "User and advertiser switching costs are behavioral rather than contractual; both groups can multi-home.",
+    "Generative and frontier AI models may become broadly available, reducing differentiation at the model layer.",
+    "Privacy and competition regulation can directly weaken targeting and data-combination advantages.",
+    "Attention competition remains intense, especially among younger users."
+  ],
+  "unknowns": [
+    "No frozen third-party market-share series quantifies Meta's share of global digital advertising through 2026.",
+    "The durability of Meta's proprietary-data advantage as synthetic data and general-purpose models improve is not directly measurable."
+  ],
+  "falsifiers": [
+    "DAP, impression growth and price per ad all weaken while competitors gain engagement.",
+    "Advertiser conversion uplift from proprietary ranking models disappears as industry models commoditize.",
+    "A major privacy or platform rule materially reduces targeting performance and persists without recovery."
+  ],
   "hard_veto_flags": [
     {
       "veto": "해자의 지속적인 축소",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Current observable moat metrics are not shrinking: DAP, ad impressions, price per ad and reported AI conversion performance are all positive. Future substitution risk is monitored in score/uncertainty rather than treated as present persistent shrinkage."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "DAP and engagement",
+      "direction": "stable/growing",
+      "threshold": "no sustained YoY decline",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Ad price and conversion uplift",
+      "direction": "maintain pricing/performance",
+      "threshold": "positive pricing with measurable advertiser ROI",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Non-ad/adjacent monetization",
+      "direction": "expand ecosystem",
+      "threshold": "material Threads/WhatsApp/AI monetization",
+      "cadence": "semiannual"
+    }
+  ],
+  "next_checks": [
+    "Add third-party digital-ad market share to distinguish industry growth from moat-driven share gain.",
+    "Track advertiser adoption and performance of Meta's AI stack versus competing ad platforms.",
+    "Reassess data/network advantages after material privacy or AI regulation."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "switching_pricing",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Pricing and impression growth are both positive, supporting a strengthening monetization position. Low contractual switching costs and intense competition keep the score at the 75 strengthening anchor rather than 90."
     },
     {
       "criterion_id": "network_data_ecosystem",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Primary metrics provide at least three ecosystem-scale/trend observations: 3.60B DAP, rising impressions and rising ad price, with additional measured AI conversion uplift. The observable row is 85 because scale plus same-definition growth is confirmed, but concrete hard switching costs are not."
     },
     {
       "criterion_id": "commoditization_resilience",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Distribution, social graphs, advertiser relationships and proprietary interaction data create multiple defensive layers against model commoditization, matching the 75 anchor; regulation and multi-homing prevent 90."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "minor",
+      "rationale": "Pricing power is observable, but direct advertiser switching-cost data are not disclosed."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "minor",
+      "rationale": "Several scale metrics are visible; causal attribution from data scale to future model edge remains imperfect."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Frontier-model commoditization and regulation could shift value away from Meta's model/data layer."
     }
-  }
+  ]
 }
