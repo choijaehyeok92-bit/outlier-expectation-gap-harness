@@ -1,0 +1,170 @@
+{
+  "agent_id": "RF",
+  "ticker": "NU",
+  "as_of_date": "2026-09-21",
+  "domain": "reinvestment_fcf",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 82,
+  "confidence_0_1": 0.85,
+  "bull_score": 95,
+  "bear_score": 60,
+  "bull_case": "Nu is reinvesting high-return equity into Brazil wallet share, Mexico/Colombia, credit and AI while sustaining 30%+ ROE. Per-share earnings are rising and dilution is negligible.",
+  "bear_case": "Bank growth consumes regulatory equity. High reported ROE can reverse quickly if NPL/ECL rise, deposit costs increase or new geographies require more capital than expected.",
+  "thesis": "RF is strong on a bank-adjusted basis. Q2 net income rose to $1.06B and ROE to 33% while equity expanded materially and shares stayed flat. A rough YoY incremental earnings-to-equity proxy is above 40%, well over the 9% required return. H1 buybacks consumed about 26% of H1 net income, implying high retained capital for growth. Because the harness's industrial capex/OCF runway metric is not valid for banks, runway is conservatively scored 75 rather than mechanically 90.",
+  "evidence": [
+    {
+      "evidence_id": "NU-RF-ROE",
+      "economic_driver": "incremental_return",
+      "claim": "Q2 2026 net income was $1.061B and ROE 33%, versus $637M and 28% in Q2 2025.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026 vs Q2 2025",
+      "as_of_date": "2026-09-21",
+      "value": 0.33,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-RF-INCREMENTAL",
+      "economic_driver": "incremental_roic",
+      "claim": "Quarter-end equity rose from about $9.575B in Q2 2025 to $13.252B in Q2 2026 while quarterly net income rose by about $424M; annualizing the incremental earnings against incremental equity gives a rough ~46% incremental return proxy.",
+      "source_type": "other",
+      "source": "Q2 2025/Q2 2026 Nu financial statements; analyst calculation",
+      "period": "Q2 2025-Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.461,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "NU-RF-RETENTION",
+      "economic_driver": "reinvestment_runway",
+      "claim": "H1 2026 net income was about $1.933B and share repurchases were $500.4M; absent dividends, roughly 74% of H1 earnings remained available to support capital growth before OCI/SBC effects.",
+      "source_type": "other",
+      "source": "Q2 2026 financial statements; analyst calculation",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.741,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "NU-RF-PERSHARE",
+      "economic_driver": "per_share_value",
+      "claim": "Q2 net income per diluted share proxy rose from about $0.13 in Q2 2025 to $0.216 in Q2 2026 while diluted shares were essentially flat.",
+      "source_type": "other",
+      "source": "Q2 2025/Q2 2026 net income and diluted share counts; analyst calculation",
+      "period": "Q2 2026 vs Q2 2025",
+      "as_of_date": "2026-09-21",
+      "value": 0.216,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "NU-RF-CREDIT",
+      "economic_driver": "return_quality",
+      "claim": "Risk-adjusted NIM improved to 12.4% in Q2, but 90+ NPL increased to 6.9%, so high growth returns remain exposed to credit-cycle seasoning.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.124,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Bank earnings require retained equity and cannot be treated as freely distributable FCF.",
+    "90+ NPL rose as Nu expanded into higher-risk segments.",
+    "Mexico and Colombia have not yet demonstrated full-cycle Brazil-like returns.",
+    "FX/OCI and regulatory capital rules make simple incremental-equity calculations noisy."
+  ],
+  "unknowns": [
+    "Country-level normalized ROE after full bank conversion.",
+    "Long-run payout ratio consistent with target capital buffers.",
+    "Full-cycle loss-adjusted returns for newer risk cohorts."
+  ],
+  "falsifiers": [
+    "ROE falls below the mid-20s without a compensating drop in capital intensity.",
+    "Per-share earnings stagnate while equity and RWA continue expanding rapidly.",
+    "Mexico/Colombia fail to generate returns above the cost of equity after scaling."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "증분 ROIC의 구조적 붕괴",
+      "status": "cleared",
+      "rationale": "Current incremental return proxies, ROE and risk-adjusted NIM remain well above the required-return hurdle; rising NPL is a monitor, not evidence of structural collapse."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Diluted shares are nearly flat YoY and the company is actively repurchasing shares."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "ROE / incremental equity return",
+      "direction": "maintain",
+      "threshold": "remain materially above cost of equity",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Per-share net/distributable earnings",
+      "direction": "up",
+      "threshold": "grow faster than diluted share count and required capital",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "NPL / risk-adjusted NIM",
+      "direction": "stable or improve",
+      "threshold": "credit growth preserves loss-adjusted return",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 incremental equity return.",
+    "Mexico/Colombia ROE and capital needs.",
+    "Explicit target payout/capital ratios."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "incremental_roic",
+      "score_0_100": 85,
+      "rationale": "A rough YoY incremental earnings-to-equity proxy is above 40%, while consolidated ROE is 33%. This is strong evidence of high returns at scale, discounted for FX/OCI and bank-capital measurement noise."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "score_0_100": 75,
+      "rationale": "The industrial capex+R&D/OCF observable is not economically valid for banks. Using retained-capital absorption, geography and product runway instead, Nu retains most earnings while still earning 30%+ ROE; 75 is conservative because Mexico/Colombia are not fully seasoned."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "score_0_100": 85,
+      "rationale": "Bank-adjusted owner-earnings/share proxy is compounding strongly: Q2 net income per diluted-share proxy rose about 66% YoY with negligible dilution and active buybacks."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "Incremental equity return is an analytical proxy, not a company-reported metric, and is affected by FX/OCI."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "critical",
+      "rationale": "The locked industrial observable is inapplicable to banking, requiring an explicitly disclosed economic substitution."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "Reported net income is not fully distributable because regulatory capital must be retained."
+    }
+  ],
+  "dilution_metrics": {
+    "annualized_dilution": 0.0010345,
+    "three_year_diluted_share_cagr": null,
+    "three_year_cumulative_dilution": null,
+    "consecutive_years_material_dilution": 0,
+    "per_share_value_proxy": "economic_value_per_share_proxy",
+    "per_share_value_growth": 0.664,
+    "structural_financing_need": false,
+    "rationale": "Q2 net-income-per-diluted-share proxy increased roughly 66% YoY while diluted shares were essentially flat."
+  }
+}
