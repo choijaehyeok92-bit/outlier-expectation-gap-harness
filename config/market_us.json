@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "note": "미국 시세 설정. 미국 주가는 여기서만 가져오고 SEC에서 가져오지 않는다 — 규제기관은 기업이 공시한 것을 발행하고 주가는 그중 하나가 아니다. 주식수는 반대로 SEC(dei:EntityCommonStockSharesOutstanding)에서 오며 이 파일의 어떤 공급자도 주식수를 만들어내지 않는다. 엔드포인트·파라미터·응답 필드명은 코드가 아니라 이 파일에서 바꾼다. 이 환경은 외부 망이 차단되어 라이브 호출로 검증하지 않았다 — 응답 파싱은 기록된 픽스처로만 검증했다.",
+  "default_provider": "polygon",
+  "request_spacing_seconds": 0.2,
+  "snapshot_lookback_start": "1990-01-01",
+  "max_session_lookback_days": 7,
+  "max_session_lookback_note": "요청한 날짜가 주말·휴장일이면 빈 응답이 온다. 그때는 직전 거래일까지만 거슬러 올라간다. 앞으로는 절대 가지 않는다 — 기준일 이후의 가격을 쓰는 것은 소급 사용이다.",
+  "providers": {
+    "polygon": {
+      "label": "Polygon.io",
+      "api_base": "https://api.polygon.io",
+      "api_key_env": "POLYGON_API_KEY",
+      "signup": "https://polygon.io/dashboard/api-keys",
+      "auth": {
+        "kind": "bearer_header",
+        "header": "Authorization",
+        "prefix": "Bearer "
+      },
+      "auth_note": "키를 쿼리스트링이 아니라 헤더로 보낸다. URL에 들어간 키는 프록시 로그·브라우저 히스토리·오류 메시지에 그대로 남는다.",
+      "endpoints": {
+        "grouped_daily": "/v2/aggs/grouped/locale/us/market/stocks/{date}",
+        "ticker_range": "/v2/aggs/ticker/{ticker}/range/1/day/{start}/{end}"
+      },
+      "static_params": {
+        "adjusted": "true"
+      },
+      "rows_path": [
+        "results"
+      ],
+      "response_fields": {
+        "ticker": "T",
+        "close": "c",
+        "date": null,
+        "market_cap": null,
+        "shares_outstanding": null
+      },
+      "date_from_request": true,
+      "date_from_request_note": "grouped 응답의 t는 epoch ms이고 세션 날짜는 요청이 이미 알고 있다. epoch을 지역시간으로 되돌리며 하루가 밀리는 고전적인 실수를 피한다.",
+      "epoch_ms_field": "t",
+      "bulk": true,
+      "bulk_note": "하루치 미국 전 종목이 호출 1회로 온다. 종목별 루프가 없어 6,000콜이 1콜이 된다.",
+      "empty_is_holiday": true,
+      "cost_note": "무료 티어도 종가(EOD)를 주며 분당 5콜 제한이다. 기준일 하나면 1콜이라 무료로 충분하다. 넓은 히스토리나 잦은 갱신이 필요하면 유료 플랜이 필요하다.",
+      "ticker_range_params": {},
+      "ticker_range_rows_path": [
+        "results"
+      ],
+      "ticker_suffix": null,
+      "ticker_suffix_note": "polygon은 거래소 접미사를 붙이지 않는다. 점이 들어간 티커(BRK.B)를 자르면 다른 종목이 되므로 접미사는 선언된 것만 제거한다."
+    },
+    "eodhd": {
+      "label": "EOD Historical Data",
+      "api_base": "https://eodhd.com",
+      "api_key_env": "EODHD_API_KEY",
+      "signup": "https://eodhd.com/cp/dashboard",
+      "auth": {
+        "kind": "query_param",
+        "param": "api_token"
+      },
+      "auth_note": "이 서비스는 헤더 인증을 받지 않아 키가 URL에 실린다. 로그가 남는 프록시 뒤에서는 polygon을 쓰는 편이 낫다.",
+      "endpoints": {
+        "grouped_daily": "/api/eod-bulk-last-day/US",
+        "ticker_range": "/api/eod/{ticker}.US"
+      },
+      "static_params": {
+        "fmt": "json"
+      },
+      "date_param": "date",
+      "rows_path": [],
+      "response_fields": {
+        "ticker": "code",
+        "close": "adjusted_close",
+        "date": "date",
+        "market_cap": null,
+        "shares_outstanding": null
+      },
+      "date_from_request": false,
+      "bulk": true,
+      "empty_is_holiday": true,
+      "cost_note": "월 구독제이며 bulk 엔드포인트가 있다. polygon이 막히거나 미국 외 거래소가 필요할 때의 대안이다.",
+      "ticker_range_params": {
+        "start": "from",
+        "end": "to"
+      },
+      "ticker_range_rows_path": [],
+      "ticker_suffix": ".US"
+    }
+  },
+  "rejected_providers": {
+    "yfinance": "무료지만 비공식 스크래핑이다. 필드가 예고 없이 바뀌고 이용약관 문제가 있으며, source_type과 as_of_date를 남기는 이 저장소의 증거정책·재현성 계약을 만족시킬 수 없다.",
+    "alpha_vantage_free": "무료 티어가 일 25콜이라 유니버스 적재가 불가능하다."
+  },
+  "shares_outstanding": {
+    "source": "stage0_pack",
+    "metric": "period_end_shares",
+    "note": "주식수는 시세 공급자가 아니라 Stage 0 pack(SEC dei:EntityCommonStockSharesOutstanding)에서 온다. 기준일 이전의 가장 최근 instant fact를 쓰고, 없으면 비워 둔다. 0으로 채우지 않는다 — 시가총액이 0이 되는 것보다 미상인 편이 정확하다."
+  },
+  "output": {
+    "root": "data/market",
+    "path_template": "{root}/US/{ticker}.csv",
+    "columns": [
+      "date",
+      "close",
+      "shares_outstanding"
+    ],
+    "merge_policy": "upsert_by_date",
+    "merge_note": "같은 날짜가 다시 오면 덮어쓴다(조정종가는 분할 이후 소급 변경된다). 다른 날짜는 보존하고 날짜순으로 다시 쓴다."
+  }
+}

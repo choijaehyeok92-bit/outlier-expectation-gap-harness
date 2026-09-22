@@ -52,6 +52,7 @@ python harness.py screen run "미국과 한국에서 시총 1조 이상, 순현�
 python harness.py deep-run MSFT --markdown /tmp/MSFT.md
 python harness.py universe sync --markets US,KR --as-of 2026-09-18 --fixtures
 python harness.py ingest 267260 --market KR --as-of 2026-09-18 --api-key TEST --fixtures
+python scripts/fetch_us_prices.py --as-of 2026-09-18   # 미국 종가 (POLYGON_API_KEY)
 python harness.py screen build --as-of 2026-09-18 --from-runs
 python harness.py screen triage --as-of 2026-09-18 --top 20 --dry-run
 ```

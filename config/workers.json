@@ -55,6 +55,13 @@
       "lease_seconds": 1800,
       "description": "결정론적 지표 창고를 만든다. LLM을 쓰지 않는다"
     },
+    "market_fetch": {
+      "handler": "market_fetch",
+      "spends_money": false,
+      "lease_seconds": 900,
+      "description": "미국 시세를 bulk 호출 1회로 받아 data/market/US/에 쓴다. LLM을 쓰지 않는다",
+      "external_api_note": "LLM은 아니지만 외부 유료 서비스를 부른다. 종량 과금이 아니라 구독제라 호출 1회의 한계비용이 0이므로 spends_money=false로 두되, 키가 없으면 실행되지 않고 이유를 남기고 실패한다."
+    },
     "monitor_status": {
       "handler": "monitor_status",
       "spends_money": false,
@@ -151,6 +158,12 @@
         "from": "list_field",
         "field": "tickers",
         "why": "관측 로그에 쓰고 워치리스트를 만들며 runs/<T>/reports를 읽는다."
+      },
+      "market_fetch": {
+        "namespace": "market",
+        "from": "field",
+        "field": "as_of_date",
+        "why": "data/market/US/<T>.csv를 같은 세션에 대해 두 워커가 동시에 읽고-병합-쓰기 하면 한쪽의 행이 사라진다. run namespace와는 충돌하지 않는다 — runs/를 건드리지 않는다."
       }
     },
     "serialize_claim": {
@@ -198,6 +211,19 @@
       "unsupported": "위 목록 밖의 문법(L, W, #, ? 등)은 해석하지 않고 거부한다. 추측해서 매일 도는 것보다 설정이 틀렸다고 말하는 편이 낫다."
     },
     "entries": [
+      {
+        "id": "nightly_us_prices",
+        "kind": "market_fetch",
+        "cron": "0 2 * * 2-6",
+        "payload": {
+          "as_of_date": "{date}"
+        },
+        "enabled": false,
+        "priority": 30,
+        "description": "전 거래일 미국 종가. 창고(30분 뒤)보다 먼저 돈다",
+        "enabled_note": "기본값은 꺼짐이다. 키가 설정되지 않은 기계에서 매일 밤 실패하는 작업을 만들지 않는다. $POLYGON_API_KEY를 넣은 뒤 운영자가 켠다.",
+        "cron_note": "UTC 화~토 02:00 = 미국 월~금 장 마감 이후다. 월요일에 돌리면 직전 세션이 금요일이라 같은 값을 다시 쓴다 — 틀리지는 않지만 의미가 없다."
+      },
       {
         "id": "nightly_db_sync",
         "kind": "db_sync",

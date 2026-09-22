@@ -149,6 +149,70 @@ frozen run은 frozen이다.
 
 ---
 
+## 시세 (미국)
+
+주가는 공시가 아니므로 SEC에서 오지 않는다. 주식수는 반대로 공시이므로 시세 공급자에게 묻지
+않는다 — `dei:EntityCommonStockSharesOutstanding`이 이미 모든 Stage 0 pack에 들어 있다.
+**시가총액은 그 둘의 곱이며, 어느 쪽이든 빠지면 미상이다.** 0으로 채우지 않는다.
+
+```bash
+export POLYGON_API_KEY=...                       # 인자로 받지 않는다
+python scripts/fetch_us_prices.py --as-of 2026-09-21
+python harness.py screen build --as-of 2026-09-21 --packs <dir> --market-data data/market
+```
+
+### 왜 필요한가
+
+`config/screening_metrics.json`에서 `market_cap`·`current_price`·`price_to_owner_fcf`는
+`kind: market`이고, `missing_policy: exclude`는 판정할 수 없는 조건을 가진 기업을 버린다.
+디스크에 미국 종가가 없으면 **시총이나 밸류에이션을 언급하는 모든 스크린에서 미국 종목이 전부
+빠진다** — 조건에 걸려서가 아니라 조건을 판정할 수 없어서다. 기업 15개는
+`company_context.json`에 손으로 넣은 가격으로 버틸 수 있지만 유니버스는 그럴 수 없다.
+
+### 설계
+
+- **bulk 우선.** `config/market_us.json`의 기본값 polygon은 한 세션 전 종목을 호출 1회로 준다.
+  종목별 루프였다면 6,000콜이 될 일이 1콜이 된다. 대안 eodhd도 bulk 엔드포인트를 쓴다.
+- **뒤로만 걷는다.** 요청한 날짜가 휴장이면 빈 응답이 오고, 그때는 직전 거래일까지 거슬러
+  올라간다(`max_session_lookback_days`). 앞으로는 가지 않는다 — 기준일 이후의 가격을 쓰는 것이
+  바로 전략이 금지하는 소급 사용이다.
+- **기본 범위는 `packs`.** Stage 0 pack이 있는 종목만 쓴다. 재무 없는 가격은 스크리닝 행이
+  되지 못하므로, 1만 개 파일을 떨어뜨려 디스크만 채울 이유가 없다. `--scope universe`,
+  `--scope all`, `--tickers`로 넓힌다.
+- **사라지는 종목은 이름을 남긴다.** pack은 있는데 공급자가 시세를 주지 않은 종목은
+  `missing_price`에 이름이 남는다. 실패가 아니다 — 공급자가 모든 상장을 다루지는 않는다.
+  다만 유니버스가 조용히 줄어드는 것이 더 나쁘다.
+- **병합은 날짜 기준 upsert.** 같은 날짜가 다시 오면 덮어쓴다(분할 이후 조정종가는 소급
+  변경된다). 다른 날짜는 보존한다. 그래서 워커가 같은 작업을 두 번 해도 파일이 같다.
+- **점을 함부로 자르지 않는다.** `BRK.B`를 `BRK`로 자르면 다른 증권이 되고 아래 단계는
+  아무것도 눈치채지 못한다. 제거하는 접미사는 공급자가 선언한 것(`ticker_suffix`)뿐이다.
+
+### 키
+
+키는 공급자 클래스가 **환경에서만** 읽는다. 스크립트도 API 라우트도 job payload도 키를 받지
+않는다 — 받을 수 있으면 언젠가 job payload에 들어가고, 이 저장소는 job payload를 API로 되돌려
+준다. polygon은 헤더 인증이라 URL에 키가 남지 않고, eodhd는 쿼리 인증뿐이라 그 사실을 설정
+파일이 적어 둔다.
+
+`GET /api/market/providers`는 키의 **존재 여부**만 돌려준다. 값도, 길이도, 접두사도 돌려주지
+않으며 테스트가 이것을 검사한다.
+
+### 조작
+
+- 웹: `/market` — 공급자·기준일·범위를 고르고 받아보기/쓰기. 커버리지(pack 대비 가격 보유)를
+  함께 보여준다.
+- CLI: `scripts/fetch_us_prices.py`
+- 워커: `market_fetch` kind. 야간 스케줄 `nightly_us_prices`는 **기본이 꺼짐**이다 — 키가 없는
+  기계에서 매일 밤 실패하는 작업을 만들지 않는다. 키를 넣은 뒤 운영자가 켠다.
+
+### 한국은 이미 붙어 있다
+
+`KrxMarketDataProvider`(`config/market_kr.json`)가 KRX 호환 시세 서비스를 부른다. 다만 그
+엔드포인트는 KRX 웹 화면 내부용이라 차단될 수 있다. 정식 대안(KIS OpenAPI 등)으로 바꾸는 것은
+설정 파일 한 개를 고치는 일이다.
+
+---
+
 ## 오프라인 실행과 픽스처 갱신
 
 ```bash
@@ -164,15 +228,22 @@ from data_adapters.testing import RecordingTransport
 DartProvider(transport=RecordingTransport('data_adapters/fixtures/dart'))
 ```
 
-`fixture_key`는 파일명을 만들 때 `crtfc_key`를 제거하므로 기록된 픽스처가 API 키를 저장소로
-끌고 들어올 수 없다. 테스트가 이것도 검사한다.
+`fixture_key`는 파일명을 만들 때 모든 공급자의 키 파라미터(`crtfc_key`, `api_token`,
+`apiKey`, `token`)를 제거하므로 기록된 픽스처가 API 키를 저장소로 끌고 들어올 수 없다.
+저장소 히스토리는 되돌릴 수 없으므로 이것은 편의가 아니라 경계다. 테스트가 검사한다.
+
+미국 시세 픽스처는 `data_adapters/fixtures/market_us`에 있고, **숫자는 지어낸 것**이다.
+이 환경은 어느 벤더에도 닿은 적이 없어 진짜 시세를 기록할 수 없었다. 픽스처가 고정하는 것은
+값이 아니라 파싱이다 — 필드명, epoch→세션 날짜 변환, `.US` 접미사, 그리고 빈 응답이
+"데이터 없음"이 아니라 "휴장"을 뜻한다는 것.
 
 ---
 
 ## 남은 것
 
-- 라이브 API 검증 (키와 egress 필요)
+- 라이브 API 검증 (키와 egress 필요) — SEC·DART·polygon·eodhd·KRX 모두 해당한다
 - `financial_fact` 등 Phase 2 DB 테이블로의 적재 (현재는 파일)
+- 미국 외 시세의 bulk 경로 (현재 KR은 종목별 조회다)
 - 결정론적 screening metric 계산 (Phase 4) — 이게 붙으면 `screening_warehouse` 백엔드가 켜지고
   지금 `backend_unavailable`로 남는 `revenue_cagr_3y` 같은 조건이 그대로 동작한다
 - KRX 세그먼트 대량 enrich (현재는 issuer당 `company.json` 1회, `--enrich-limit`로 제한)

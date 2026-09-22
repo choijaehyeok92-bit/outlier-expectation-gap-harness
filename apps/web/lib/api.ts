@@ -59,6 +59,11 @@ export const api = {
     request<MonitoringSnapshot>(`/api/monitoring/${encodeURIComponent(ticker)}`),
   monitoringDrift: (ticker: string) =>
     request<DriftSeries>(`/api/monitoring/${encodeURIComponent(ticker)}/drift`),
+  marketProviders: () => request<MarketCatalogue>('/api/market/providers'),
+  marketCoverage: (asOf: string) =>
+    request<MarketCoverage>(`/api/market/coverage?as_of_date=${encodeURIComponent(asOf)}`),
+  marketFetch: (body: MarketFetchBody) =>
+    request<MarketFetchResult>('/api/market/fetch', { method: 'POST', body: JSON.stringify(body) }),
 };
 
 /** A status the monitoring layer computed. It is never a recommendation. */
@@ -406,6 +411,72 @@ export interface ProviderOption {
 }
 
 export interface ProviderCatalogue { default: string; providers: ProviderOption[] }
+
+/**
+ * US quote vendors. `configured` says a key exists; it never says what it is,
+ * and no field here ever carries one.
+ */
+export interface MarketProviderOption {
+  name: string;
+  label: string;
+  env_var: string | null;
+  configured: boolean;
+  bulk: boolean;
+  signup: string | null;
+  note: string | null;
+  auth_note: string | null;
+  is_default: boolean;
+}
+
+export interface MarketCatalogue {
+  default: string;
+  jurisdiction: string;
+  providers: MarketProviderOption[];
+  rejected: Record<string, string>;
+  shares_note: string | null;
+}
+
+export interface MarketPricedRow {
+  ticker: string;
+  observed_date: string;
+  close: number | null;
+  shares_outstanding: number | null;
+}
+
+export interface MarketCoverage {
+  as_of_date: string;
+  market_root: string;
+  packs: number;
+  priced: number;
+  unpriced: string[];
+  without_shares: string[];
+  older_than_cutoff: MarketPricedRow[];
+  rows: MarketPricedRow[];
+}
+
+export interface MarketFetchBody {
+  as_of_date: string;
+  provider?: string;
+  scope?: 'packs' | 'universe' | 'all';
+  tickers?: string[];
+  dry_run?: boolean;
+}
+
+export interface MarketFetchResult {
+  as_of_date: string;
+  session_date: string | null;
+  sessions_tried: string[];
+  provider: string;
+  selection_reason: string;
+  vendor_rows: number;
+  requested: number;
+  written_count: number;
+  written: { ticker: string; date: string; close: number; shares_outstanding: number | null; shares_as_of: string | null }[];
+  missing_price: string[];
+  missing_shares_outstanding: string[];
+  wrote_files: boolean;
+  note: string;
+}
 
 /** A missing value is unknown, not zero. The UI says so everywhere. */
 export function show(value: unknown, digits = 2): string {

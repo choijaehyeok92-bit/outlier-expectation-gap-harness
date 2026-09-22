@@ -111,6 +111,24 @@ class IngestRequest(BaseModel):
     as_of_date: str | None = Field(default=None, pattern=r'^\d{4}-\d{2}-\d{2}$')
 
 
+class MarketFetchRequest(BaseModel):
+    """Fetch one US trading session's closes into `data/market/US/`.
+
+    No credential field, by design. The vendor key is read from the API
+    process's environment inside the provider; a route that accepted one would
+    put it in a request body, a proxy log and this service's own error text.
+
+    `scope` decides which listings get written. The default writes only the
+    ones a Stage 0 pack exists for, because a price with no financials beside
+    it cannot become a screenable row.
+    """
+    as_of_date: str = Field(pattern=r'^\d{4}-\d{2}-\d{2}$')
+    provider: str | None = Field(default=None, max_length=64)
+    scope: Literal['packs', 'universe', 'all'] = 'packs'
+    tickers: list[str] | None = Field(default=None, max_length=500)
+    dry_run: bool = False
+
+
 class JobRequest(BaseModel):
     """Queue one background job.
 

@@ -15,6 +15,10 @@ import urllib.parse
 from pathlib import Path
 
 
+# OpenDART, EODHD and Polygon respectively. A vendor added later adds its own.
+SECRET_PARAMS = ('crtfc_key', 'api_token', 'apiKey', 'apikey', 'token')
+
+
 class FixtureMissing(RuntimeError):
     pass
 
@@ -22,8 +26,10 @@ class FixtureMissing(RuntimeError):
 def fixture_key(url: str) -> str:
     """A stable filename for a URL: endpoint plus the query that identifies it.
 
-    Secrets never reach a filename — `crtfc_key` is dropped before the key is
-    built, so a recorded fixture cannot leak an API key into the repository.
+    Secrets never reach a filename. Every vendor's key parameter is dropped
+    before the key is built, so a recorded fixture cannot carry an API key into
+    the repository — where it would be committed, pushed and impossible to
+    recall.
     """
     parsed = urllib.parse.urlparse(url)
     # The whole path, not just its last segment: EDGAR serves
@@ -31,7 +37,8 @@ def fixture_key(url: str) -> str:
     # which share a filename and are entirely different documents.
     endpoint = parsed.path.strip('/').replace('/', '__') or 'root'
     params = urllib.parse.parse_qs(parsed.query)
-    params.pop('crtfc_key', None)
+    for secret in SECRET_PARAMS:
+        params.pop(secret, None)
     parts = [endpoint]
     for name in sorted(params):
         value = ','.join(params[name])

@@ -219,9 +219,44 @@ def deep_dive(payload: dict, config: dict) -> dict:
             'path': str(Path(path).relative_to(ROOT))}
 
 
+def market_fetch(payload: dict, config: dict) -> dict:
+    """Write one session's US closes into `data/market/US/`.
+
+    Idempotent for the reason that matters: the same session written twice
+    produces the same CSV, because the merge is an upsert keyed on the trading
+    date rather than an append.
+
+    The quote vendor is not an LLM provider, so `providers.allowed` does not
+    govern it; what governs it is that its key is only ever read from the
+    worker's environment. A payload naming a vendor selects a *declared* entry
+    in `config/market_us.json` and nothing else — with no key set for that
+    vendor, the job fails saying which variable is missing, which is the right
+    outcome for a row anybody could queue.
+    """
+    from data_adapters.base import AdapterError
+    from data_adapters.market_us import bulk
+
+    as_of = payload.get('as_of_date') or date.today().isoformat()
+    tickers = payload.get('tickers')
+    try:
+        result = bulk.fetch_day(
+            as_of, provider_name=payload.get('market_provider'),
+            tickers=[str(t).upper() for t in tickers] if tickers else None,
+            scope=payload.get('scope', 'packs'), packs_dir=payload.get('packs_dir'),
+            write=not payload.get('dry_run'))
+    except AdapterError as error:
+        raise HandlerRefused(str(error)) from error
+    if result['session_date'] is None:
+        raise HandlerRefused(f"no trading session on or before {as_of}; nothing was written")
+    # The per-row detail is dropped: a job result is stored and served back,
+    # and thousands of rows in a queue table is a log, not a result.
+    return {k: v for k, v in result.items() if k not in ('written', 'files')}
+
+
 REGISTRY: dict = {
     'db_sync': db_sync,
     'screen_build': screen_build,
+    'market_fetch': market_fetch,
     'monitor_status': monitor_status,
     'monitor_ingest': monitor_ingest,
     'harness_triage': harness_triage,

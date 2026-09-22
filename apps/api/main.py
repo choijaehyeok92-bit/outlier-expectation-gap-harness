@@ -45,8 +45,8 @@ if str(ROOT) not in sys.path:
 
 from apps.api.models import (DeepDivePlanRequest, DeepDiveRunRequest,  # noqa: E402
                              FullHarnessRequest, IngestRequest, JobRequest,
-                             LinkRequest, ObservationRequest, ParseRequest,
-                             ScreenRunRequest, TriageRequest)
+                             LinkRequest, MarketFetchRequest, ObservationRequest,
+                             ParseRequest, ScreenRunRequest, TriageRequest)
 from packages.llm import LLMError, resolve_provider  # noqa: E402
 from packages.reporting import render_markdown, render_screen_markdown  # noqa: E402
 from packages.research import deep_plan, deep_run  # noqa: E402
@@ -159,6 +159,69 @@ def warehouse_company(ticker: str, as_of_date: str | None = None):
     if row is None:
         raise HTTPException(404, f'{ticker}: not in the warehouse at {payload["as_of_date"]}')
     return row
+
+
+
+# --------------------------------------------------------------------- market
+# A price is not a disclosure, so it does not arrive with the filings. These
+# three routes exist because without US closes on disk, `market_cap`,
+# `current_price` and `price_to_owner_fcf` are null for every US listing, and
+# `missing_policy: exclude` then drops those companies out of any screen that
+# mentions size or valuation — not for failing a test, but for having none.
+
+
+@app.get('/api/market/providers')
+def market_providers():
+    """Declared quote vendors and whether a key exists for each.
+
+    `configured` is a boolean and nothing more. The key itself, its length and
+    any prefix of it stay in the server process; this response is read by a
+    browser.
+    """
+    from data_adapters.market_us import bulk as market_bulk
+    config = market_bulk.load_config()
+    return {'default': config.get('default_provider'),
+            'jurisdiction': 'US',
+            'providers': market_bulk.describe(config),
+            'rejected': config.get('rejected_providers', {}),
+            'shares_note': (config.get('shares_outstanding') or {}).get('note')}
+
+
+@app.get('/api/market/coverage')
+def market_coverage(as_of_date: str = Query(..., pattern=r'^\d{4}-\d{2}-\d{2}$')):
+    """Which US listings have a usable close on disk at that cutoff.
+
+    Counted against the Stage 0 packs rather than against the vendor: the
+    question a screen actually asks is "can this company be judged", and that
+    needs financials and a price together.
+    """
+    from data_adapters.market_us import bulk as market_bulk
+    return market_bulk.coverage(as_of_date)
+
+
+@app.post('/api/market/fetch')
+def market_fetch(request: MarketFetchRequest):
+    """One bulk call for one session, merged with disclosed share counts.
+
+    Run inline rather than queued: it is a single request to the vendor, the
+    same shape ofexternal call `/api/screen/run` already makes with a real parser.
+    For a nightly schedule use the `market_fetch` job kind instead.
+    """
+    from data_adapters.base import AdapterError
+    from data_adapters.market_us import bulk as market_bulk
+    try:
+        result = market_bulk.fetch_day(
+            request.as_of_date, provider_name=request.provider, scope=request.scope,
+            tickers=[t.upper() for t in request.tickers] if request.tickers else None,
+            write=not request.dry_run)
+    except AdapterError as error:
+        # A missing key, an unknown vendor and a dead endpoint are all the
+        # operator's to fix, and the message says which one it is.
+        raise HTTPException(422, str(error)) from error
+    if result['session_date'] is None:
+        raise HTTPException(422, f'no trading session on or before {request.as_of_date} '
+                                 f'within the configured lookback; nothing was written')
+    return {k: v for k, v in result.items() if k != 'files'}
 
 
 @app.get('/api/screen/fields')

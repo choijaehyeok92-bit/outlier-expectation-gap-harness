@@ -76,8 +76,38 @@ python harness.py screen run "매출총이익률 70% 이상이고 영업이익�
 ```
 
 시세 CSV는 `data/market/<US|KR>/<TICKER>.csv` (`date,close,shares_outstanding[,market_cap]`).
-가격은 `MarketDataProvider`에서만 오고 규제기관에서 오지 않는다.
+가격은 `MarketDataProvider`에서만 오고 규제기관에서 오지 않는다. 미국 CSV를 손으로 만들지 않고
+채우는 방법은 바로 아래 1c-1에 있다.
 지표 정의와 계산하지 않는 경우는 [SCREENING_WAREHOUSE.md](SCREENING_WAREHOUSE.md)에 있다.
+
+## 1c-1. 미국 시세 채우기
+
+`market_cap`·`current_price`·`price_to_owner_fcf`는 시장 지표이고 `missing_policy: exclude`는
+판정할 수 없는 조건을 가진 기업을 버린다. **디스크에 미국 종가가 없으면 시총이나 밸류에이션을
+언급하는 스크린에서 미국 종목이 전부 빠진다.** 조건에 걸려서가 아니라 조건을 판정할 수 없어서다.
+
+```powershell
+setx POLYGON_API_KEY "..."        # 새 창을 열고 API를 재시작
+```
+```bash
+python scripts/fetch_us_prices.py --as-of 2026-09-21 --dry-run   # 먼저 확인
+python scripts/fetch_us_prices.py --as-of 2026-09-21
+python harness.py screen build --as-of 2026-09-21 --packs <dir> --market-data data/market
+```
+
+한 세션 전 종목이 **호출 1회**로 온다. 무료 티어로도 기준일 하나는 충분하다(분당 5콜).
+기준일이 휴장이면 직전 거래일까지 **뒤로만** 거슬러 올라간다. 기본 범위는 Stage 0 pack이 있는
+종목이며 `--scope universe` / `--scope all` / `--tickers`로 넓힌다.
+
+주식수는 시세 공급자가 아니라 Stage 0 pack(`dei:EntityCommonStockSharesOutstanding`)에서 온다.
+둘 중 하나라도 없으면 시가총액은 미상이고 0으로 채우지 않는다.
+
+웹에서는 `/market` 화면에서 같은 일을 한다 — 공급자·기준일·범위를 고르고, 먼저 「받아보기」로
+확인한 뒤 쓴다. 커버리지(Stage 0 pack 대비 가격 보유 수, 가격 없는 종목 이름)를 함께 보여준다.
+야간 자동화는 `market_fetch` 작업 종류이고 `nightly_us_prices` 스케줄은 **기본이 꺼짐**이다 —
+키가 없는 기계에서 매일 밤 실패하는 작업을 만들지 않는다.
+
+공급자 선택과 그 이유, 쓰지 않기로 한 공급자는 [DATA_ADAPTERS.md](DATA_ADAPTERS.md)에 있다.
 
 ## 1d. 데이터베이스 (Phase 2, 선택)
 

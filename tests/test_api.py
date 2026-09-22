@@ -170,6 +170,49 @@ class ApiTests(unittest.TestCase):
         self.assertNotIn(secret, body)
         self.assertNotIn(secret[:12], body, 'not even a prefix of the key')
 
+    def test_the_market_catalogue_never_carries_a_quote_vendor_key(self):
+        import os
+        secret = 'polygon-live-DO-NOT-LEAK-abcdef0123456789'
+        previous = os.environ.get('POLYGON_API_KEY')
+        os.environ['POLYGON_API_KEY'] = secret
+        self.addCleanup(lambda: os.environ.__setitem__('POLYGON_API_KEY', previous)
+                        if previous is not None else os.environ.pop('POLYGON_API_KEY', None))
+        response = CLIENT.get('/api/market/providers')
+        row = next(r for r in response.json()['providers'] if r['name'] == 'polygon')
+        self.assertTrue(row['configured'])
+        self.assertEqual(row['env_var'], 'POLYGON_API_KEY')
+        self.assertNotIn(secret, response.text)
+        self.assertNotIn(secret[:16], response.text, 'not even a prefix of the key')
+
+    def test_fetching_prices_without_a_key_says_which_variable_is_missing(self):
+        import os
+        previous = os.environ.pop('POLYGON_API_KEY', None)
+        if previous is not None:
+            self.addCleanup(os.environ.__setitem__, 'POLYGON_API_KEY', previous)
+        response = CLIENT.post('/api/market/fetch',
+                               json={'as_of_date': '2026-09-21', 'provider': 'polygon'})
+        self.assertEqual(response.status_code, 422)
+        self.assertIn('POLYGON_API_KEY', response.json()['detail'])
+
+    def test_the_market_fetch_route_accepts_no_credential_field(self):
+        """A route that took a key would put it in a body, a proxy log and an
+        error message. The model forbids the field outright."""
+        from apps.api.models import MarketFetchRequest
+        fields = set(MarketFetchRequest.model_fields)
+        self.assertFalse({'api_key', 'key', 'token', 'secret', 'credential'} & fields)
+
+    def test_market_coverage_counts_against_the_stage_0_packs(self):
+        body = CLIENT.get('/api/market/coverage',
+                          params={'as_of_date': '2026-09-21'}).json()
+        self.assertEqual(body['as_of_date'], '2026-09-21')
+        self.assertGreater(body['packs'], 0)
+        self.assertEqual(body['packs'], body['priced'] + len(body['unpriced']))
+
+    def test_market_coverage_rejects_a_malformed_cutoff(self):
+        self.assertEqual(
+            CLIENT.get('/api/market/coverage', params={'as_of_date': 'yesterday'}).status_code,
+            422)
+
     def test_choosing_a_parser_with_no_key_says_which_variable_is_missing(self):
         import os
         previous = os.environ.pop('ANTHROPIC_API_KEY', None)
