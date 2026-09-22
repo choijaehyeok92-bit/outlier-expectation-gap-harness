@@ -8,7 +8,7 @@
   "low": 346.12,
   "close": 349.62,
   "adjusted_close": 349.62,
-  "volume": 1000000
+  "volume": 31700000
  },
  {
   "code": "BRK.B.US",
@@ -19,7 +19,7 @@
   "low": 493.13,
   "close": 498.11,
   "adjusted_close": 498.11,
-  "volume": 1000000
+  "volume": 3900000
  },
  {
   "code": "CRWD.US",
@@ -30,7 +30,7 @@
   "low": 465.52,
   "close": 470.22,
   "adjusted_close": 470.22,
-  "volume": 1000000
+  "volume": 4300000
  },
  {
   "code": "FIX.US",
@@ -41,7 +41,7 @@
   "low": 804.28,
   "close": 812.4,
   "adjusted_close": 812.4,
-  "volume": 1000000
+  "volume": 410000
  },
  {
   "code": "IOT.US",
@@ -52,7 +52,7 @@
   "low": 41.46,
   "close": 41.88,
   "adjusted_close": 41.88,
-  "volume": 1000000
+  "volume": 6200000
  },
  {
   "code": "MSFT.US",
@@ -63,7 +63,7 @@
   "low": 506.13,
   "close": 511.24,
   "adjusted_close": 511.24,
-  "volume": 1000000
+  "volume": 22400000
  },
  {
   "code": "NOW.US",
@@ -74,7 +74,7 @@
   "low": 896.13,
   "close": 905.18,
   "adjusted_close": 905.18,
-  "volume": 1000000
+  "volume": 1500000
  },
  {
   "code": "NVDA.US",
@@ -85,7 +85,7 @@
   "low": 181.22,
   "close": 183.05,
   "adjusted_close": 183.05,
-  "volume": 1000000
+  "volume": 198300000
  },
  {
   "code": "PWR.US",
@@ -96,7 +96,7 @@
   "low": 398.74,
   "close": 402.77,
   "adjusted_close": 402.77,
-  "volume": 1000000
+  "volume": 1800000
  },
  {
   "code": "QQQ.US",
@@ -107,7 +107,7 @@
   "low": 595.44,
   "close": 601.45,
   "adjusted_close": 601.45,
-  "volume": 1000000
+  "volume": 41200000
  },
  {
   "code": "RBRK.US",
@@ -118,7 +118,7 @@
   "low": 91.43,
   "close": 92.35,
   "adjusted_close": 92.35,
-  "volume": 1000000
+  "volume": 2400000
  },
  {
   "code": "SHOP.US",
@@ -129,7 +129,7 @@
   "low": 157.31,
   "close": 158.9,
   "adjusted_close": 158.9,
-  "volume": 1000000
+  "volume": 9100000
  },
  {
   "code": "SPY.US",
@@ -140,7 +140,7 @@
   "low": 661.62,
   "close": 668.3,
   "adjusted_close": 668.3,
-  "volume": 1000000
+  "volume": 74500000
  },
  {
   "code": "TMDX.US",
@@ -151,7 +151,7 @@
   "low": 127.16,
   "close": 128.44,
   "adjusted_close": 128.44,
-  "volume": 1000000
+  "volume": 780000
  },
  {
   "code": "VRT.US",
@@ -162,6 +162,6 @@
   "low": 139.65,
   "close": 141.06,
   "adjusted_close": 141.06,
-  "volume": 1000000
+  "volume": 12600000
  }
 ]

@@ -61,6 +61,34 @@ python harness.py ingest 267260 --market KR --as-of 2026-09-18 --out /tmp/pack.j
 `--out` 없이 실행하면 pack을 어디에 놓아야 할지만 알려준다. 적재기는 run의 sources를 덮어쓰지
 않는다. 자세한 계약과 한국 특유의 처리는 [DATA_ADAPTERS.md](DATA_ADAPTERS.md)에 있다.
 
+## 1b-1. 적재 대상 고르기 (웹: `/universe`)
+
+```powershell
+setx SEC_USER_AGENT "Your Name you@example.com"    # SEC는 키가 아니라 연락처를 요구한다
+setx OPENDART_API_KEY "..."
+```
+
+`/universe` 화면이 세 단계다: ① 유니버스 동기화 ② 후보 순위 ③ 선택한 종목 적재.
+
+**시가총액으로 자르지 않는다.** 시총은 종가 × 주식수이고 주식수는 공시에서 오므로, 적재 전에
+시총으로 자르려면 아끼려던 적재를 먼저 해야 한다. 순위는 한 번의 bulk 호출로 얻는
+**거래대금**이며, 이것은 다음 호출을 어디에 쓸지만 정한다 — 점수·archetype·Hard Veto·
+밸류에이션 어디에도 들어가지 않는다.
+
+한국 상장은 순위 없이 나열된다(KRX는 종목별 조회라 대조할 세션이 없다). 미국 시세 공급자가
+죽어도 목록은 그대로 나오고, 이미 받아 둔 `data/market/US/*.csv`가 있으면 그것으로 순위를
+매긴 뒤 출처를 밝힌다.
+
+적재는 한 요청에 10개까지다 — 기업마다 규제기관 요청이 여러 번이라 더 넣으면 요청이
+타임아웃되고 반쯤 쓰인 디렉터리가 남는다. 더 큰 배치는 워커 큐의 `ingest_pack`에 넣는다.
+이미 있는 pack은 덮어쓰지 않는다.
+
+```bash
+# 같은 일을 CLI로
+python harness.py universe sync --markets US,KR --as-of 2026-09-21 --enrich-limit 200
+python harness.py ingest MSFT --market US --as-of 2026-09-21 --out data/packs/MSFT.json
+```
+
 ## 1c. 스크리닝 창고 (Phase 4)
 
 ```bash

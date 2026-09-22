@@ -46,7 +46,8 @@ if str(ROOT) not in sys.path:
 from apps.api.models import (DeepDivePlanRequest, DeepDiveRunRequest,  # noqa: E402
                              FullHarnessRequest, IngestRequest, JobRequest,
                              LinkRequest, MarketFetchRequest, ObservationRequest,
-                             ParseRequest, ScreenRunRequest, TriageRequest)
+                             PackIngestRequest, ParseRequest, ScreenRunRequest,
+                             TriageRequest, UniverseSyncRequest)
 from packages.llm import LLMError, resolve_provider  # noqa: E402
 from packages.reporting import render_markdown, render_screen_markdown  # noqa: E402
 from packages.research import deep_plan, deep_run  # noqa: E402
@@ -135,6 +136,86 @@ def universe_securities(market: str | None = None, investable_only: bool = True,
     return {'synced_at_utc': payload['synced_at_utc'], 'as_of_date': payload.get('as_of_date'),
             'summary': payload['summary'], 'markets': payload.get('markets', {}),
             'count': len(rows), 'securities': rows[:limit]}
+
+
+
+# ------------------------------------------------------------------- intake
+# Between `universe sync` (every listing) and `screen build` (every metric)
+# sits the question nothing else answers: of thousands of listings, which few
+# hundred get an ingest call spent on them? These routes are that decision and
+# the work that follows it.
+
+
+@app.get('/api/universe/credentials')
+def universe_credentials():
+    """Whether each regulator credential exists. Never its value.
+
+    SEC wants a contact in the User-Agent rather than a key; it is still the
+    operator's to set, and this service will not invent one.
+    """
+    from data_adapters import credentials
+    return {'credentials': credentials.describe()}
+
+
+@app.post('/api/universe/sync')
+def universe_sync(request: UniverseSyncRequest):
+    """Rebuild the universe from the regulators, inline.
+
+    Inline rather than queued because the bounded form of this call is short:
+    the US listing index is a single request, and Korean enrichment is capped
+    by `enrich_limit`. A wide enrichment belongs in the `universe_sync` job.
+    """
+    from data_adapters import universe as universe_store
+    from data_adapters.base import AdapterError
+    try:
+        built = universe_store.sync_live(
+            request.markets, as_of=request.as_of_date, enrich_limit=request.enrich_limit,
+            refresh_corp_codes=request.refresh_corp_codes)
+    except AdapterError as error:
+        raise HTTPException(422, str(error)) from error
+    except ValueError as error:
+        raise HTTPException(422, str(error)) from error
+    return {k: v for k, v in built.items() if k != 'securities'}
+
+
+@app.get('/api/universe/candidates')
+def universe_candidates(as_of_date: str = Query(..., pattern=r'^\d{4}-\d{2}-\d{2}$'),
+                        markets: str = 'US,KR',
+                        limit: int = Query(100, ge=1, le=1000),
+                        include_ingested: bool = False):
+    """Investable listings ordered by the session's dollar volume.
+
+    Not a market-cap cut, and the response says so: market cap needs a share
+    count that only an ingest produces, so cutting by it before ingesting costs
+    exactly what it was meant to save. The rank decides where the next call
+    goes and reaches nothing else — not a score, not an archetype, not a veto,
+    not a valuation, not a pack.
+    """
+    from data_adapters import candidates as candidate_store
+    from data_adapters.base import AdapterError
+    wanted = [m.strip().upper() for m in markets.split(',') if m.strip()]
+    try:
+        return candidate_store.rank(as_of_date, markets=wanted, limit=limit,
+                                    include_ingested=include_ingested)
+    except AdapterError as error:
+        raise HTTPException(422, str(error)) from error
+
+
+@app.post('/api/ingest/packs')
+def ingest_packs(request: PackIngestRequest):
+    """Build Stage 0 packs for a few companies. One outcome per company.
+
+    A company that fails does not fail the batch: a regulator times out on one
+    issuer often enough that an all-or-nothing batch would rarely finish, and
+    the failure is more useful named than thrown.
+    """
+    from data_adapters import candidates as candidate_store
+    from data_adapters.base import AdapterError
+    try:
+        return candidate_store.ingest_batch(request.tickers, request.market,
+                                            request.as_of_date, force=request.force)
+    except AdapterError as error:
+        raise HTTPException(422, str(error)) from error
 
 
 @app.get('/api/warehouse')

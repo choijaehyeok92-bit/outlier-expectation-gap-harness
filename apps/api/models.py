@@ -111,6 +111,38 @@ class IngestRequest(BaseModel):
     as_of_date: str | None = Field(default=None, pattern=r'^\d{4}-\d{2}-\d{2}$')
 
 
+class UniverseSyncRequest(BaseModel):
+    """Rebuild the investable universe from SEC and DART.
+
+    Credentials are read from the API process's environment, never from here:
+    SEC wants a contact in its User-Agent and DART wants a key, and a route
+    that accepted either would put it in a request body and an error message.
+
+    `enrich_limit` is bounded because each enriched Korean issuer is one more
+    metered DART request, and an unbounded number inside a request handler is
+    a timeout with a half-written universe behind it.
+    """
+    markets: list[Literal['US', 'KR']] = Field(default_factory=lambda: ['US', 'KR'],
+                                               min_length=1, max_length=2)
+    as_of_date: str | None = Field(default=None, pattern=r'^\d{4}-\d{2}-\d{2}$')
+    enrich_limit: int = Field(default=0, ge=0, le=500)
+    refresh_corp_codes: bool = False
+
+
+class PackIngestRequest(BaseModel):
+    """Build Stage 0 packs for a few named companies, synchronously.
+
+    Capped at ten. Each company is several requests to a regulator that meters
+    access; a handler walking five thousand listings would time out and leave a
+    half-finished directory. Larger batches go to the `ingest_pack` job kind,
+    which has a lease and a retry policy.
+    """
+    tickers: list[str] = Field(min_length=1, max_length=10)
+    market: Literal['US', 'KR'] = 'US'
+    as_of_date: str = Field(pattern=r'^\d{4}-\d{2}-\d{2}$')
+    force: bool = False
+
+
 class MarketFetchRequest(BaseModel):
     """Fetch one US trading session's closes into `data/market/US/`.
 

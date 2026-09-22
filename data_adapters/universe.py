@@ -88,3 +88,39 @@ def load(path=None) -> Optional[dict]:
 def investable(payload: dict) -> list:
     """Rows that survived every exclusion. Review-flagged rows are still in."""
     return [row for row in (payload or {}).get('securities', []) if not row.get('excluded_reason')]
+
+
+def sync_live(markets=('US', 'KR'), as_of: Optional[str] = None, *, enrich_limit: int = 0,
+              out=None, transport=None, environ=None, refresh_corp_codes: bool = False,
+              max_enrich: int = 500) -> dict:
+    """Sync from the regulators using credentials in the environment, and persist.
+
+    The same call the CLI makes, reachable from a worker and from the API so
+    there is one description of "sync the universe" rather than three.
+
+    `enrich_limit` is capped, because each enriched Korean issuer is one more
+    metered DART request and an unbounded number in a request handler is a
+    timeout with a half-written file behind it.
+    """
+    from .credentials import regulator_provider
+    wanted = [str(m).upper() for m in markets]
+    unknown = [m for m in wanted if m not in ('US', 'KR')]
+    if unknown:
+        raise ValueError(f'unknown market(s) {unknown}; use US and/or KR')
+    if not wanted:
+        raise ValueError('no market named; use US and/or KR')
+    enrich = max(0, min(int(enrich_limit or 0), int(max_enrich)))
+
+    providers, kwargs = {}, {}
+    for market in wanted:
+        providers[market] = regulator_provider(
+            market, transport=transport, environ=environ,
+            refresh_corp_codes=refresh_corp_codes)
+        if market == 'KR':
+            kwargs['KR'] = {'enrich_limit': enrich}
+    payload = sync(providers, as_of=as_of, **kwargs)
+    payload['enrich_limit'] = enrich
+    if enrich != int(enrich_limit or 0):
+        payload['enrich_limit_note'] = (f'requested {enrich_limit}, capped at {max_enrich}')
+    payload['path'] = str(save(payload, out))
+    return payload

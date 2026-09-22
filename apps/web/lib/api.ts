@@ -64,6 +64,15 @@ export const api = {
     request<MarketCoverage>(`/api/market/coverage?as_of_date=${encodeURIComponent(asOf)}`),
   marketFetch: (body: MarketFetchBody) =>
     request<MarketFetchResult>('/api/market/fetch', { method: 'POST', body: JSON.stringify(body) }),
+  regulatorCredentials: () => request<{ credentials: RegulatorCredential[] }>('/api/universe/credentials'),
+  universeSync: (body: UniverseSyncBody) =>
+    request<UniverseSyncResult>('/api/universe/sync', { method: 'POST', body: JSON.stringify(body) }),
+  candidates: (asOf: string, markets: string, limit: number, includeIngested: boolean) =>
+    request<CandidateList>(`/api/universe/candidates?as_of_date=${encodeURIComponent(asOf)}`
+      + `&markets=${encodeURIComponent(markets)}&limit=${limit}`
+      + `&include_ingested=${includeIngested}`),
+  ingestPacks: (body: PackIngestBody) =>
+    request<PackIngestResult>('/api/ingest/packs', { method: 'POST', body: JSON.stringify(body) }),
 };
 
 /** A status the monitoring layer computed. It is never a recommendation. */
@@ -476,6 +485,119 @@ export interface MarketFetchResult {
   missing_shares_outstanding: string[];
   wrote_files: boolean;
   note: string;
+}
+
+/**
+ * Regulator credentials. SEC wants a contact in its User-Agent rather than a
+ * key; either way `configured` is a boolean and the value never leaves the
+ * server.
+ */
+export interface RegulatorCredential {
+  market: 'US' | 'KR';
+  regulator: 'SEC' | 'DART';
+  env_var: string;
+  configured: boolean;
+  note: string;
+  signup: string;
+}
+
+export interface UniverseSyncBody {
+  markets: ('US' | 'KR')[];
+  as_of_date?: string;
+  enrich_limit?: number;
+  refresh_corp_codes?: boolean;
+}
+
+export interface UniverseSummary {
+  total: number;
+  included: number;
+  excluded: number;
+  requires_review: number;
+  by_exchange: Record<string, number>;
+  by_security_type: Record<string, number>;
+  excluded_by_reason: Record<string, number>;
+}
+
+export interface UniverseSyncResult {
+  as_of_date: string | null;
+  synced_at_utc: string;
+  summary: UniverseSummary;
+  markets: Record<string, UniverseSummary>;
+  errors: Record<string, string>;
+  enrich_limit: number;
+  enrich_limit_note?: string;
+  path: string;
+}
+
+/**
+ * One listing considered for ingest. `dollar_volume` decides where the next
+ * regulator call goes and nothing else — it is not a score, and a listing
+ * without one is unranked rather than ranked last.
+ */
+export interface Candidate {
+  ticker: string;
+  company_name: string | null;
+  exchange: string | null;
+  currency: string | null;
+  jurisdiction: 'US' | 'KR';
+  requires_review: boolean;
+  already_ingested: boolean;
+  quoted_as?: string;
+  close?: number;
+  volume?: number;
+  dollar_volume?: number;
+  rank?: number;
+  reason_unranked?: string;
+}
+
+export interface CandidateList {
+  as_of_date: string;
+  session_date: string | null;
+  sessions_tried: string[];
+  markets: string[];
+  ranked_by: string | null;
+  quote_source: 'vendor' | 'local_csv' | null;
+  ranked_by_note: string | null;
+  is_not_evidence: string | null;
+  quote_error: string | null;
+  universe_size: number;
+  already_ingested: number;
+  ranked_count: number;
+  unranked_count: number;
+  limit: number;
+  candidates: Candidate[];
+  unranked: Candidate[];
+}
+
+export interface PackIngestBody {
+  tickers: string[];
+  market: 'US' | 'KR';
+  as_of_date: string;
+  force?: boolean;
+}
+
+export interface PackResult {
+  ticker: string;
+  company_name?: string | null;
+  status: 'ok' | 'exists' | 'validation_errors' | 'failed';
+  facts?: number;
+  documents?: number;
+  requires_review?: number;
+  validation_errors?: string[];
+  error?: string;
+  path?: string;
+  note?: string;
+}
+
+export interface PackIngestResult {
+  as_of_date: string;
+  market: string;
+  requested: number;
+  written: number;
+  skipped_existing: number;
+  failed: number;
+  pack_dir: string;
+  results: PackResult[];
 }
 
 /** A missing value is unknown, not zero. The UI says so everywhere. */

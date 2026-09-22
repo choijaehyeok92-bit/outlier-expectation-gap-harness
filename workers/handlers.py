@@ -253,10 +253,59 @@ def market_fetch(payload: dict, config: dict) -> dict:
     return {k: v for k, v in result.items() if k not in ('written', 'files')}
 
 
+def universe_sync(payload: dict, config: dict) -> dict:
+    """Rebuild the investable US/KR universe from the regulators.
+
+    Idempotent in the way that matters: the file is replaced wholesale, so a
+    second run against the same regulators produces the same universe. It is
+    not append-only because a delisting has to be able to leave.
+    """
+    from data_adapters import universe as universe_store
+    from data_adapters.base import AdapterError
+    markets = payload.get('markets') or ['US', 'KR']
+    try:
+        built = universe_store.sync_live(
+            markets, as_of=payload.get('as_of_date'),
+            enrich_limit=int(payload.get('enrich_limit') or 0),
+            refresh_corp_codes=bool(payload.get('refresh_corp_codes')))
+    except (AdapterError, ValueError) as error:
+        raise HandlerRefused(str(error)) from error
+    # `securities` is thousands of rows; a job result is stored and served back.
+    return {k: v for k, v in built.items() if k != 'securities'}
+
+
+def ingest_pack(payload: dict, config: dict) -> dict:
+    """Build Stage 0 packs for named companies, one regulator per job.
+
+    Re-running skips a pack that already exists unless the payload says to
+    force it: re-ingesting silently would replace facts a frozen run may cite.
+    One company failing does not fail the batch — each outcome is reported.
+    """
+    from data_adapters import candidates
+    from data_adapters.base import AdapterError
+    tickers = payload.get('tickers') or ([payload['ticker']] if payload.get('ticker') else [])
+    if not tickers:
+        raise HandlerRefused('ingest_pack needs tickers (or a ticker) in its payload')
+    market = str(payload.get('market') or 'US').upper()
+    if market not in ('US', 'KR'):
+        raise HandlerRefused(f'unknown market {market!r}; use US or KR')
+    try:
+        return candidates.ingest_batch(
+            tickers, market, payload.get('as_of_date') or date.today().isoformat(),
+            force=bool(payload.get('force')),
+            # A worker has a lease and a retry policy, so it may take a real
+            # batch; the API route, which has neither, keeps its own low cap.
+            max_companies=int(payload.get('max_companies') or 100))
+    except AdapterError as error:
+        raise HandlerRefused(str(error)) from error
+
+
 REGISTRY: dict = {
     'db_sync': db_sync,
     'screen_build': screen_build,
     'market_fetch': market_fetch,
+    'universe_sync': universe_sync,
+    'ingest_pack': ingest_pack,
     'monitor_status': monitor_status,
     'monitor_ingest': monitor_ingest,
     'harness_triage': harness_triage,

@@ -170,6 +170,47 @@ class ApiTests(unittest.TestCase):
         self.assertNotIn(secret, body)
         self.assertNotIn(secret[:12], body, 'not even a prefix of the key')
 
+    def test_the_credentials_route_never_carries_a_regulator_key(self):
+        import os
+        secret = 'dart-live-DO-NOT-LEAK-0123456789'
+        previous = os.environ.get('OPENDART_API_KEY')
+        os.environ['OPENDART_API_KEY'] = secret
+        self.addCleanup(lambda: os.environ.__setitem__('OPENDART_API_KEY', previous)
+                        if previous is not None else os.environ.pop('OPENDART_API_KEY', None))
+        response = CLIENT.get('/api/universe/credentials')
+        dart = next(r for r in response.json()['credentials'] if r['regulator'] == 'DART')
+        self.assertTrue(dart['configured'])
+        self.assertNotIn(secret, response.text)
+        self.assertNotIn(secret[:12], response.text)
+
+    def test_syncing_the_universe_without_a_contact_names_the_variable(self):
+        import os
+        previous = os.environ.pop('SEC_USER_AGENT', None)
+        if previous is not None:
+            self.addCleanup(os.environ.__setitem__, 'SEC_USER_AGENT', previous)
+        response = CLIENT.post('/api/universe/sync', json={'markets': ['US']})
+        self.assertEqual(response.status_code, 422)
+        self.assertIn('SEC_USER_AGENT', response.json()['detail'])
+
+    def test_the_sync_route_caps_enrichment(self):
+        """Each enriched Korean issuer is one more metered DART request, and an
+        unbounded number inside a request handler is a timeout."""
+        response = CLIENT.post('/api/universe/sync',
+                               json={'markets': ['KR'], 'enrich_limit': 10_000})
+        self.assertEqual(response.status_code, 422)
+
+    def test_the_intake_routes_accept_no_credential_field(self):
+        from apps.api.models import PackIngestRequest, UniverseSyncRequest
+        for model in (UniverseSyncRequest, PackIngestRequest):
+            fields = set(model.model_fields)
+            self.assertFalse({'api_key', 'key', 'token', 'user_agent', 'secret'} & fields,
+                             model.__name__)
+
+    def test_an_ingest_batch_over_the_cap_is_rejected_by_the_schema(self):
+        response = CLIENT.post('/api/ingest/packs', json={
+            'tickers': [f'T{n}' for n in range(11)], 'as_of_date': '2026-09-21'})
+        self.assertEqual(response.status_code, 422)
+
     def test_the_market_catalogue_never_carries_a_quote_vendor_key(self):
         import os
         secret = 'polygon-live-DO-NOT-LEAK-abcdef0123456789'

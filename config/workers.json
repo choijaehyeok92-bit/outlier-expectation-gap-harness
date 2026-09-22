@@ -43,6 +43,20 @@
     "claim_candidates_note": "claim 한 번에 살펴보는 queued 후보 수. 앞쪽 후보가 전부 lock에 막혀 있어도 뒤쪽의 돌릴 수 있는 작업을 찾는다. 이 수를 넘으면 그 회차는 비어 있다고 보고 다음 폴링을 기다린다."
   },
   "kinds": {
+    "universe_sync": {
+      "handler": "universe_sync",
+      "spends_money": false,
+      "lease_seconds": 3600,
+      "description": "규제기관에서 미국/한국 투자가능 유니버스를 다시 만든다",
+      "external_api_note": "SEC는 연락처가 담긴 User-Agent를, DART는 키를 요구한다. 둘 다 환경에서만 읽으며 payload로 받지 않는다. enrich_limit이 크면 DART 호출이 그만큼 늘어난다."
+    },
+    "ingest_pack": {
+      "handler": "ingest_pack",
+      "spends_money": false,
+      "lease_seconds": 7200,
+      "description": "지정한 기업들의 Stage 0 pack을 만들어 data/packs/에 쓴다",
+      "external_api_note": "기업당 규제기관 요청이 여러 번이다. 한 기업이 실패해도 배치는 계속되고 각 결과가 보고된다."
+    },
     "db_sync": {
       "handler": "db_sync",
       "spends_money": false,
@@ -164,6 +178,17 @@
         "from": "field",
         "field": "as_of_date",
         "why": "data/market/US/<T>.csv를 같은 세션에 대해 두 워커가 동시에 읽고-병합-쓰기 하면 한쪽의 행이 사라진다. run namespace와는 충돌하지 않는다 — runs/를 건드리지 않는다."
+      },
+      "universe_sync": {
+        "namespace": "universe",
+        "from": "all",
+        "why": "data/universe/securities.json을 통째로 바꾼다. 두 sync가 겹치면 절반만 읽힌다."
+      },
+      "ingest_pack": {
+        "namespace": "pack",
+        "from": "list_field",
+        "field": "tickers",
+        "why": "data/packs/<T>.json을 쓴다. run namespace와 충돌하지 않는다 — frozen run의 sources를 건드리지 않는다."
       }
     },
     "serialize_claim": {

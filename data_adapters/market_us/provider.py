@@ -106,7 +106,7 @@ def parse_row(row: dict, fields: dict, fallback_date: Optional[str],
     if len(stamp) != 10 or close is None:
         return None
     parsed = {'date': stamp, 'close': close}
-    for extra in ('market_cap', 'shares_outstanding'):
+    for extra in ('market_cap', 'shares_outstanding', 'volume'):
         field = fields.get(extra)
         parsed[extra] = _number(row.get(field)) if field else None
     ticker = str(row.get(fields.get('ticker')) or '').strip().upper()

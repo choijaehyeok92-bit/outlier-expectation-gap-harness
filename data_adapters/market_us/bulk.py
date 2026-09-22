@@ -28,12 +28,13 @@ from pathlib import Path
 from typing import Iterable, Optional
 
 from ..base import AdapterError
+from ..marketdata import _number
 from .provider import (UsHttpMarketDataProvider, api_key, load_config,  # noqa: F401
                        provider_settings)
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_RUNS_DIR = ROOT / 'runs'
-COLUMNS = ('date', 'close', 'shares_outstanding')
+COLUMNS = ('date', 'close', 'shares_outstanding', 'volume')
 
 
 # ------------------------------------------------------------------ packs
@@ -156,6 +157,33 @@ def _existing(path: Path) -> dict:
                 if len(str(row.get('date') or '').strip()) == 10}
 
 
+def local_session(as_of: str, root=None) -> dict:
+    """Closes and volumes already on disk for the last session at or before the cutoff.
+
+    The point is to rank without calling the vendor again. One `fetch_day` call
+    already wrote both numbers for the whole market; re-fetching them to sort a
+    list would spend a request to learn something the disk knows.
+    """
+    base = (Path(root) if root else ROOT / 'data' / 'market') / 'US'
+    if not base.exists():
+        return {'session_date': None, 'rows': {}}
+    rows, newest = {}, None
+    for path in sorted(base.glob('*.csv')):
+        eligible = [row for row in _existing(path).values()
+                    if row.get('date') and row['date'] <= as_of]
+        if not eligible:
+            continue
+        row = max(eligible, key=lambda r: r['date'])
+        close, volume = _number(row.get('close')), _number(row.get('volume'))
+        if close is None:
+            continue
+        ticker = path.stem.upper()
+        rows[ticker] = {'ticker': ticker, 'date': row['date'], 'close': close,
+                        'volume': volume}
+        newest = row['date'] if newest is None or row['date'] > newest else newest
+    return {'session_date': newest, 'rows': rows}
+
+
 def write_csv(ticker: str, row: dict, root=None) -> Path:
     """Upsert one dated close. Other dates in the file are preserved.
 
@@ -166,7 +194,8 @@ def write_csv(ticker: str, row: dict, root=None) -> Path:
     path = csv_path(ticker, root)
     merged = _existing(path)
     merged[row['date']] = {'date': row['date'], 'close': row['close'],
-                           'shares_outstanding': row.get('shares_outstanding')}
+                           'shares_outstanding': row.get('shares_outstanding'),
+                           'volume': row.get('volume')}
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open('w', encoding='utf-8', newline='') as handle:
         writer = csv.DictWriter(handle, fieldnames=list(COLUMNS))
@@ -231,7 +260,8 @@ def fetch_day(as_of: str, *, provider=None, provider_name=None, config=None,
         if disclosed is None:
             missing_shares.append(ticker)
         record = {'date': row['date'], 'close': row['close'],
-                  'shares_outstanding': disclosed['shares_outstanding'] if disclosed else None}
+                  'shares_outstanding': disclosed['shares_outstanding'] if disclosed else None,
+                  'volume': row.get('volume')}
         if write:
             files.append(str(write_csv(ticker, record, root)))
         written.append({'ticker': ticker, **record,
