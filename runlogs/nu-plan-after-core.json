@@ -1,0 +1,17 @@
+{
+  "stage": "macro",
+  "agents": {
+    "macro_overlay": "MO"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true
+  },
+  "execution_control": "continue",
+  "reachable_archetypes_raw": [
+    "compounder"
+  ],
+  "archetype": "compounder",
+  "statement": "Full core analysis is complete and Compounder is eligible. Refresh macro overlay next; then run evidence audit/red team and IC if no blocking issue emerges."
+}
