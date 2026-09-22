@@ -1,10 +1,10 @@
 # Digest — NU (as of 2026-09-21)
 
-> Reconstructed v3.3 full-core output. The bank-specific RF adaptation is explicit because the industrial capex/OCF observable is not economically valid for a regulated bank.
+> Reconstructed v3.3 output after macro overlay. Fundamental scores are unchanged; macro affects pacing and reanalysis only.
 
 score **78.69** (ex-valuation **80.57**, Emerging Outlier) · archetype **compounder** · veto **PENDING_REVIEW** · state **WATCH**
 
-position pre-IC: **0% until veto cleared**
+position pre-IC: **0% until veto cleared** · macro purchase pacing: **0.5x**
 
 ## Core scorecard
 
@@ -20,52 +20,36 @@ position pre-IC: **0% until veto cleared**
 | AS — Asymmetry | **63.50** |
 | DI — Disruptive Innovation | **86.75** |
 
-## Archetype result
+Compounder remains eligible with deterministic fit **81.6**.
 
-**Compounder is eligible** and is the only reachable archetype.
+## Macro overlay
 
-It clears:
-- price/Base **0.7558 <= 1.2**
-- MT **85 >= 76**
-- RF **82 >= 76**
-- MA **79 >= 72**
-- FS **73.75 >= 72**
-- EV **68 >= 42**
-- incremental ROIC **85 >= 75**
-- reinvestment runway **75 >= 70**
+Macro does **not** change the 78.69 fundamental score.
 
-Compounder deterministic fit score: **81.6**.
+Financial conditions are mixed. The Fed raised the funds target to **3.75%-4.00%** on Sep. 16, while Chicago Fed NFCI was **-0.560** for the week ending Sep. 11 and VIX was **14.87** on Sep. 21. This is a tightening policy impulse without broad market stress.
 
-Growth and Outlier Growth remain excluded because AS is **63.5 < 65**. Buffett Value misses FS/AS despite the attractive valuation.
+Credit markets remain open: aggregate U.S. HY OAS was **2.68%** on Sep. 18 and BB OAS **1.55%**, though CCC-and-lower spreads remained above **10.7%**. The overlay assigns **0.8x** to both financial conditions and credit liquidity.
 
-## Why RF passes
+Geopolitical pacing is more restrictive. Active U.S.-Iran conflict and Houthi advances have materially disrupted **Strait of Hormuz / Bab el-Mandeb / Red Sea** shipping and energy flows. Military conflict, energy disruption and shipping disruption are therefore **high**, mapping to **0.5x** pacing.
 
-For a bank, industrial FCF is not a valid owner-economics measure. The RF report therefore uses regulatory-equity economics:
+Structural trade fragmentation is also high: Brazil-U.S. tariff negotiations and the USMCA review remain active, while U.S.-China chip controls and Russia/Iran sanctions persist. No durable NU-specific market-access loss, sanction or nationalization event was identified.
 
-- Q2 net income **$1.061B** and ROE **33%**, versus **$637M / 28%** in Q2 2025.
-- Q2 equity increased from roughly **$9.575B to $13.252B** YoY.
-- A rough annualized incremental-earnings / incremental-equity proxy is about **46%**.
-- H1 net income was about **$1.933B** and buybacks **$500.4M**, leaving roughly **74%** of earnings retained before OCI/SBC effects.
-- Q2 net-income-per-diluted-share proxy rose from about **$0.13 to $0.216** with negligible share dilution.
+### NU transmission
 
-Because the standard capex+R&D/OCF runway formula is invalid for a bank, reinvestment runway is conservatively scored **75**, not mechanically 90.
+The deterministic geo matcher finds **no direct match** between NU's frozen Brazil/Mexico/Colombia critical-region exposure and current Middle East conflict, energy disruption, export-control or sanctions targets. Shipping/trade/sovereign transmission is **unknown** because the frozen context intentionally leaves revenue-by-region and shipping-route fields blank.
 
-## Management and capital allocation
+There are **no pending fundamental reanalysis domains** from structural events.
 
-Nu repurchased **40.66M shares for $500.4M**, or about **$12.31/share**. That is roughly **0.663x** the frozen Base value of $18.56, mapping capital allocation to **80**.
-
-Governance is deliberately discounted: the dual-class structure gives founder David Vélez dominant voting control, so governance_integrity is only **70** despite strong execution and long-term equity compensation.
-
-## Why state is still WATCH
-
-The Compounder gates are satisfied, but the Hard Veto gate is still **PENDING_REVIEW** because RT has not performed its independent co-owner review. The global macro overlay is also missing/stale.
-
-Therefore the deterministic state remains:
+## State
 
 `WATCH — 0% until veto cleared`
 
+The reason is now **not stale macro**. Macro has been refreshed. The remaining decision blocker is independent Hard Veto review by RT.
+
 ## Next plan
 
-`macro`: **MO**
+`evidence_and_red_team`
+- **ED — Evidence Auditor**
+- **RT — Red Team**
 
-After MO: **ED + RT**, then **IC** if no blocking issue emerges.
+If ED/RT leave all deterministic gates intact and Hard Veto status clears, the following stage is IC.
