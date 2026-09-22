@@ -4,64 +4,145 @@
   "as_of_date": "2026-09-18",
   "domain": "customer_product",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 80.75,
+  "confidence_0_1": 0.84,
+  "bull_score": 90,
+  "bear_score": 65,
+  "bull_case": "Advertisers receive measurable conversion gains from Meta's AI systems while 3.6B daily users provide massive reach. Pricing and impression growth indicate willingness to pay without subsidies.",
+  "bear_case": "Advertisers can shift budgets to Google, TikTok and retail media, while user attention can migrate quickly. Infrastructure costs are rising faster than near-term monetization, and some newer surfaces monetize below legacy feeds.",
+  "thesis": "Customer evidence is strong. Meta has direct advertiser ROI data, a large Advantage+ revenue run-rate and rising price per ad, while user engagement remains global and growing. The main limitation is unit economics at the consolidated level: FoA is highly profitable, but AI infrastructure and Reality Labs absorb substantial cash. This supports a strong CP score without treating current capex as a customer-value failure.",
+  "evidence": [
+    {
+      "evidence_id": "META-CP-ROI",
+      "economic_driver": "advertiser_roi",
+      "claim": "Meta reported AI ad-ranking improvements that increased Facebook ad clicks 8.3% and conversions 15.7%; Advantage+ reached more than $75B annual revenue run-rate and more than 9M small businesses used at least one GenAI creative tool.",
+      "source_type": "secondary",
+      "source": "https://stockanalysis.com/stocks/meta/transcripts/657318-q2-2026/",
+      "period": "Q2 2026 earnings call",
+      "as_of_date": "2026-09-18",
+      "value": 0.157,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-CP-PRICE",
+      "economic_driver": "advertiser_willingness_to_pay",
+      "claim": "Average price per ad increased 9% in FY2025 and 12% YoY in Q2 2026 while impression volumes also increased, indicating demand did not require price concessions.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025/Q2 2026",
+      "as_of_date": "2026-09-18",
+      "value": 0.12,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-CP-USAGE",
+      "economic_driver": "user_engagement",
+      "claim": "Family DAP averaged 3.60B in June 2026, up 3% YoY, while Q2 ad impressions increased 14%, showing large and still-growing usage inventory.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-18",
+      "value": 3600000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-CP-FOA-MARGIN",
+      "economic_driver": "unit_economics",
+      "claim": "FoA generated $102.47B operating income on $198.76B revenue in 2025, a 52% segment operating margin, demonstrating high gross economics before corporate AI buildout and Reality Labs losses.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-18",
+      "value": 0.52,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Reels monetizes below Feed and Stories, so engagement growth does not always carry equal revenue quality.",
+    "Advertiser ROI evidence is company-reported and not independently audited at customer cohort level.",
+    "Q2 2026 total operating margin fell to 31% as infrastructure, legal and severance costs rose.",
+    "Users and advertisers face low contractual switching costs and can multi-home across competing platforms."
+  ],
+  "unknowns": [
+    "Meta does not disclose standardized advertiser retention, CAC/payback or net revenue retention.",
+    "The proportion of Advantage+ revenue that is incremental versus reclassified existing ad spend is not separately disclosed."
+  ],
+  "falsifiers": [
+    "Price per ad falls while advertiser conversion metrics deteriorate for several quarters.",
+    "Family DAP or time spent declines materially despite higher recommendation spending.",
+    "FoA margins structurally compress without corresponding incremental advertiser ROI or new revenue."
+  ],
   "hard_veto_flags": [
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Advertisers pay rising prices while reported conversion performance and FoA profitability remain strong; customer value is not absent and growth is not subsidy-dependent."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Meta is concentrated in advertising but distributes it across multiple global apps and millions of advertisers, with no single disclosed customer or single product whose loss alone would irreversibly destroy the business. Revenue-model concentration remains a score risk, not this veto."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "Advertiser conversion uplift",
+      "direction": "remain positive",
+      "threshold": "sustained measurable lift from AI products",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Average price per ad",
+      "direction": "stable/growing",
+      "threshold": "positive through normal demand cycles",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Family DAP / engagement",
+      "direction": "stable/growing",
+      "threshold": "avoid sustained YoY decline",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Seek third-party advertiser ROI studies to corroborate company-reported lift.",
+    "Track monetization of Reels, Threads and WhatsApp versus Feed/Stories.",
+    "Watch whether AI infrastructure costs begin to translate into improved FoA incremental margins."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "customer_roi",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Direct conversion and click uplifts, a >$75B Advantage+ run-rate and rising ad prices demonstrate ROI and willingness to pay. The score stops below 90 because advertiser outcomes are company-reported and alternatives exist."
     },
     {
       "criterion_id": "retention_usage",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Family DAP is 3.60B and still growing, with strong impression growth and reported engagement gains. This is stronger than the 75 cohort-improvement anchor, but low switching costs and demographic competition prevent 90."
     },
     {
       "criterion_id": "unit_economics",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "FoA's 52% FY2025 operating margin demonstrates scale economics, but the current AI-capex cycle and Reality Labs losses prevent a 90 operating-leverage assessment."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "minor",
+      "rationale": "The strongest ROI metrics are company-reported rather than independently audited."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "minor",
+      "rationale": "DAP is broad and does not reveal every product-level cohort or younger-user trend."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "The return on incremental AI infrastructure is not yet separable from legacy FoA economics."
     }
-  }
+  ]
 }
