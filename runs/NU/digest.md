@@ -1,55 +1,73 @@
 # Digest — NU (as of 2026-09-21)
 
-> Reconstructed v3.3 output after macro overlay. Fundamental scores are unchanged; macro affects pacing and reanalysis only.
+> Reconstructed v3.3 output after ED + RT. Core score and archetype remain unchanged; evidence audit and Red Team determine evidence confidence and Hard Veto clearance.
 
-score **78.69** (ex-valuation **80.57**, Emerging Outlier) · archetype **compounder** · veto **PENDING_REVIEW** · state **WATCH**
+score **78.69** (ex-valuation **80.57**, Emerging Outlier) · archetype **compounder** · veto **CLEARED** · state **NORMAL_CANDIDATE**
 
-position pre-IC: **0% until veto cleared** · macro purchase pacing: **0.5x**
+pre-IC position band: **0-2%** after dispersion reduction · macro purchase pacing: **0.5x**
 
 ## Core scorecard
 
 | Domain | Score |
 |---|---:|
-| SL — Structural Leadership | **86.25** |
-| CP — Customer / Product | **88.75** |
-| MT — Moat Trajectory | **85.00** |
-| RF — Reinvestment / FCF | **82.00** |
-| MA — Management / Allocation | **79.00** |
-| FS — Financial Survival | **73.75** |
-| EV — Expectation / Valuation | **68.00** |
-| AS — Asymmetry | **63.50** |
-| DI — Disruptive Innovation | **86.75** |
+| SL | **86.25** |
+| CP | **88.75** |
+| MT | **85.00** |
+| RF | **82.00** |
+| MA | **79.00** |
+| FS | **73.75** |
+| EV | **68.00** |
+| AS | **63.50** |
+| DI | **86.75** |
 
-Compounder remains eligible with deterministic fit **81.6**.
+Compounder remains the only eligible archetype; deterministic fit **81.6**.
 
-## Macro overlay
+## Evidence audit — ED 86
 
-Macro does **not** change the 78.69 fundamental score.
+ED found the core factual record substantially source-bound to cutoff-valid 20-F/6-K filings.
 
-Financial conditions are mixed. The Fed raised the funds target to **3.75%-4.00%** on Sep. 16, while Chicago Fed NFCI was **-0.560** for the week ending Sep. 11 and VIX was **14.87** on Sep. 21. This is a tightening policy impulse without broad market stress.
+Strongly verified:
+- Q2 customers, ARPAC, ROE, risk-adjusted NIM, NPL, deposits and credit balances.
+- Brazil/Mexico/Colombia capital-ratio disclosures.
+- H1 repurchase amount and share count.
+- FY2025 ICFR effectiveness and founder voting-control disclosure.
 
-Credit markets remain open: aggregate U.S. HY OAS was **2.68%** on Sep. 18 and BB OAS **1.55%**, though CCC-and-lower spreads remained above **10.7%**. The overlay assigns **0.8x** to both financial conditions and credit liquidity.
+Key methodological caution:
+- RF's ~46% incremental earnings/equity figure is an **analyst proxy**, not reported ROIC.
+- Bank distributable-owner-earnings DCF is a harness convention, not literal FCF.
+- Therefore the RF conclusion should rest on the full bundle: reported **33% ROE**, **12.4% risk-adjusted NIM**, per-share earnings growth, capital buffers and the proxy—not the proxy alone.
 
-Geopolitical pacing is more restrictive. Active U.S.-Iran conflict and Houthi advances have materially disrupted **Strait of Hormuz / Bab el-Mandeb / Red Sea** shipping and energy flows. Military conflict, energy disruption and shipping disruption are therefore **high**, mapping to **0.5x** pacing.
+## Red Team — strongest short thesis
 
-Structural trade fragmentation is also high: Brazil-U.S. tariff negotiations and the USMCA review remain active, while U.S.-China chip controls and Russia/Iran sanctions persist. No durable NU-specific market-access loss, sanction or nationalization event was identified.
+The strongest short case is credit/capital quality rather than lack of demand.
 
-### NU transmission
+- 90+ NPL rose to **6.9%** while the credit portfolio reached **$39.4B**.
+- Brazil CET1 fell **13.0% -> 11.9%** and CAR **16.6% -> 15.7%** as RWA expanded.
+- David Vélez controls **74.3%** of combined voting power, limiting minority influence.
+- A severe credit-loss + ROE compression + international-capital-absorption scenario is consistent with the frozen Bear value around **$4.76**.
 
-The deterministic geo matcher finds **no direct match** between NU's frozen Brazil/Mexico/Colombia critical-region exposure and current Middle East conflict, energy disruption, export-control or sanctions targets. Shipping/trade/sovereign transmission is **unknown** because the frozen context intentionally leaves revenue-by-region and shipping-route fields blank.
+Counterevidence is currently stronger than veto thresholds: Q2 ROE **33%**, risk-adjusted NIM **12.4%**, strong activity/ARPAC, excess regulatory capital and effective FY2025 ICFR.
 
-There are **no pending fundamental reanalysis domains** from structural events.
+## Hard Veto gate
 
-## State
+**All 9 vetoes: CLEARED**
 
-`WATCH — 0% until veto cleared`
+RT independently cleared all seven vetoes it co-owns. FS/AS and RF/FS had already completed the remaining ownership assessments.
 
-The reason is now **not stale macro**. Macro has been refreshed. The remaining decision blocker is independent Hard Veto review by RT.
+There are no confirmed, unresolved or pending Hard Vetoes.
+
+## Position mechanics
+
+Raw score **78.69** maps to `NORMAL_CANDIDATE`, normally **2-4%** pre-IC.
+
+Bull/bear dispersion has mean downside skew **6.22**, which triggers the v3.3 one-band reduction:
+- before dispersion: **2-4%**
+- after dispersion: **0-2%**
+
+Macro overlay separately limits **purchase pacing to 0.5x**; it does not change the fundamental score or the position band.
 
 ## Next plan
 
-`evidence_and_red_team`
-- **ED — Evidence Auditor**
-- **RT — Red Team**
+`ic`: **IC — Investment Committee Chair**
 
-If ED/RT leave all deterministic gates intact and Hard Veto status clears, the following stage is IC.
+IC may reduce deployment or choose a non-buy state, but cannot override deterministic eligibility, position caps or Hard Veto rules upward.
