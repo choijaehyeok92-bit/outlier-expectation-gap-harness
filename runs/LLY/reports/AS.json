@@ -1,0 +1,160 @@
+{
+  "agent_id": "AS",
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 61.75,
+  "confidence_0_1": 0.82,
+  "bull_score": 80,
+  "bear_score": 40,
+  "bull_case": "Global tirzepatide expansion, oral orforglipron, retatrutide and manufacturing leverage can compound value well above Base; the locked Bull value is about 1.73x the frozen price.",
+  "bear_case": "The locked Bear value is only about 30% of price. Concentration in tirzepatide economics, pricing/reimbursement pressure, competition and heavy reinvestment create substantial permanent equity-value downside without requiring insolvency.",
+  "thesis": "LLY has meaningful but not exceptional mega-cap asymmetry. Bull/current is ~1.73x with multiple independent growth paths, supporting upside_path 75. Bear/current is ~0.30x, mapping to permanent_loss 50. The company has strong cash generation and franchise value, but negative net cash prevents the liquidity modifier. The result is an attractive operating franchise with a wide valuation distribution rather than a power-law setup.",
+  "evidence": [
+    {
+      "evidence_id": "LLY-AS-DCF",
+      "economic_driver": "scenario_distribution",
+      "claim": "Locked Bear/Base/Bull values are about $345.26/$1,282.74/$2,016.84 versus $1,164.89; Bull/current is ~1.73x and Bear/current ~0.30x.",
+      "source_type": "other",
+      "source": "runs/LLY/aggregate.json locked valuation inputs",
+      "period": "10-year model from 2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 1.7314,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-AS-TIRZ",
+      "economic_driver": "core_franchise_growth",
+      "claim": "Q2 Mounjaro revenue was $9.943B and Zepbound $4.928B, with strong year-over-year growth and expanding international contribution.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/R20.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 14871000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-AS-SUCCESSORS",
+      "economic_driver": "pipeline_optionality",
+      "claim": "Orforglipron was FDA-approved for obesity and retatrutide Phase 3 obesity and type 2 diabetes trials met primary endpoints, creating independent successor paths beyond current tirzepatide brands.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026 pipeline update",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-AS-CASH",
+      "economic_driver": "downside_buffer",
+      "claim": "TTM CFO less capex proxy is about $18.19B, but conservative net debt is about $42.1B after the May debt issuance and acquisition spending.",
+      "source_type": "other",
+      "source": "FY2025 10-K plus Q2 2026 10-Q; analyst calculation",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 18190000000,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-AS-CONCENTRATION",
+      "economic_driver": "permanent_loss_path",
+      "claim": "Mounjaro and Zepbound together represented about 64.7% of Q2 revenue, so a common pricing, safety, competitive or reimbursement shock can hit multiple headline products simultaneously.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/R20.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 0.6473,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "The Bear case still assigns substantial franchise value and does not imply business extinction.",
+    "Orforglipron and retatrutide diversify molecule/form-factor exposure within the metabolic franchise.",
+    "Manufacturing capacity expansion can convert latent demand into volume if execution succeeds.",
+    "A broad oncology, immunology and neuroscience portfolio provides value outside obesity/diabetes."
+  ],
+  "unknowns": [
+    "Matched base rates for 2x-5x outcomes from pharmaceutical companies starting above $1T market capitalization.",
+    "Long-run net price/rebate trajectory for obesity medicines.",
+    "Commercial cannibalization versus market expansion among tirzepatide, orforglipron and retatrutide.",
+    "Normalized maintenance capex after the current capacity build."
+  ],
+  "falsifiers": [
+    "Successor incretins fail to broaden value while tirzepatide growth and pricing weaken.",
+    "Owner FCF/share fails to scale as manufacturing constraints ease.",
+    "A refrozen Bear/Base distribution shifts materially lower after new safety, reimbursement or competitive evidence."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "Current price is below the locked Bull value; Bull-plus execution is not required."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Permanent equity-value downside is meaningful, but strong operating cash flow, access to capital, diversified assets and substantial franchise value keep extinction/insolvency risk below veto level."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Bull/Base value versus price",
+      "direction": "up",
+      "threshold": "upside improves through owner-FCF evidence rather than multiple expansion",
+      "cadence": "quarterly/refreeze"
+    },
+    {
+      "name": "Tirzepatide + successor franchise",
+      "direction": "broaden",
+      "threshold": "successor products reduce concentration while preserving economics",
+      "cadence": "quarterly/clinical"
+    },
+    {
+      "name": "Owner FCF/share",
+      "direction": "up",
+      "threshold": "progress toward Base path",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Q3 owner-cash conversion and pricing.",
+    "Orforglipron launch trajectory.",
+    "Retatrutide regulatory and commercial de-risking."
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "Bull/current is ~1.73x and there are at least three economic paths: tirzepatide global/indication growth, oral orforglipron, and retatrutide/pipeline plus manufacturing leverage. This maps to the 1.6-2.5x / 2+ paths row."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 50,
+      "rationale": "Bear/current is ~0.296. Band-centre interpolation within the 0.2-0.4 range rounds to 50. The +10 liquidity modifier does not apply because conservative net cash is negative."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 60,
+      "rationale": "The scenario sensitivity is explicit, but no matched >$1T pharmaceutical base-rate dataset is frozen; probability calibration remains partly judgmental."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "The starting market capitalization makes 3x-5x outcomes economically demanding."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Product concentration can create permanent equity-value impairment even without solvency risk."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "No matched mega-cap pharma outcome base rate is available in the run."
+    }
+  ]
+}
