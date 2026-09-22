@@ -4,46 +4,136 @@
   "as_of_date": "2026-09-21",
   "domain": "management_allocation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 58.25,
+  "confidence_0_1": 0.82,
+  "bull_score": 75,
+  "bear_score": 45,
+  "bull_case": "경영진은 Reels·AI 전환과 비용 구조 재설계로 2023~26 성장을 재가속했고, 2025년까지 대규모 자사주·배당을 병행했다. 광고 AI의 성과와 비즈니스 메시징 확장은 자본 재배치의 결과를 보여준다.",
+  "bear_case": "Zuckerberg가 약 60.8% 의결권을 통제해 외부 주주의 견제가 제한된다. 2026년 초대형 AI 인프라·장기 리스 약정과 Reality Labs 손실은 성공 시 큰 옵션이지만 실패 시 자본배분 오류의 규모도 매우 크다.",
+  "thesis": "실행 적응력은 75지만 자본배분과 거버넌스가 총점을 제한한다. 최근 4개 분기 중 실질 자사주 매입은 Q3 2025에 집중됐고 평균 약 $711/주로 EV Base $638 대비 약 1.11배여서 관측표 55점이다. 2026 proxy에서 Zuckerberg의 총 의결권이 60.8%로 확인돼 governance는 50점으로 둔다. 회계 재작성·감사인 이견 같은 신뢰성 훼손 사건은 확인되지 않아 Hard Veto는 clear다.",
+  "evidence": [
+    {
+      "evidence_id": "META-MA-BUYBACK",
+      "economic_driver": "capital_allocation",
+      "claim": "In Q3 2025 Meta repurchased 4.444M shares for about $3.16B, an average near $711/share; there were no repurchases in H1 2026. Versus locked Base value $638.42, the observed buyback price/Base ratio is ~1.11x.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm",
+      "period": "Q3 2025 through Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 1.114,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "META-MA-GOV",
+      "economic_driver": "governance",
+      "claim": "The 2026 proxy reports Mark Zuckerberg with approximately 60.8% of total voting power, reflecting a material dual-class governance concentration.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/meta-20260416.htm",
+      "period": "2026 proxy",
+      "as_of_date": "2026-09-21",
+      "value": 0.608,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-MA-EXEC",
+      "economic_driver": "execution_adaptability",
+      "claim": "2025 revenue grew 22%, DAP grew 7% in December, ad impressions rose 12% and average price per ad rose 9% as Meta scaled Reels and AI-driven recommendation/ads.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-21",
+      "value": 0.22,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-MA-CAPCOMMIT",
+      "economic_driver": "capital_allocation_risk",
+      "claim": "At Q2 2026 Meta disclosed $349.31B of non-cancelable contractual commitments and $278.99B of uncommenced leases, making current AI infrastructure allocation unusually large and path-dependent.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 349310000000,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Dual-class control limits shareholder discipline.",
+    "Reality Labs losses remain near a $20B annual run-rate.",
+    "AI infrastructure commitments are unprecedented relative to historical balance sheet flexibility.",
+    "Recent buybacks were not at a clear discount to the harness Base value."
+  ],
+  "unknowns": [
+    "The long-run realized return on 2026 AI infrastructure commitments cannot yet be observed."
+  ],
+  "falsifiers": [
+    "AI infrastructure spending fails to produce durable revenue/FCF growth by 2028.",
+    "Reality Labs losses rise materially without adoption or monetization evidence.",
+    "A restatement, material weakness, auditor dispute or undisclosed related-party issue emerges."
+  ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "The reviewed filings and 2026 proxy do not identify a restatement, auditor disagreement/change, material internal-control weakness or undisclosed related-party event that establishes an integrity/accounting-reliability breach."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
+  "key_kpis": [
+    {
+      "name": "Buyback price / intrinsic Base",
+      "direction": "<1.0x",
+      "threshold": "<1.0x",
+      "cadence": "quarterly when repurchases occur"
+    },
+    {
+      "name": "AI capex return evidence",
+      "direction": "increase",
+      "threshold": "revenue/FCF bridge visible by 2028",
+      "cadence": "annual"
+    },
+    {
+      "name": "Reality Labs operating loss",
+      "direction": "stabilize/decline",
+      "threshold": "not materially above ~$20B annual run-rate",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Update buyback-price test if repurchases resume.",
+    "Review 2027 proxy for governance/compensation changes.",
+    "Track realized returns on infrastructure commitments."
+  ],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "capital_allocation",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 55,
+      "rationale": "Recent repurchases averaged roughly $711/share, about 1.11x the locked Base value of $638.42. Band-centre interpolation in the 1.0~1.2 row rounds to 55, so capital allocation is not credited as value-accretive at a clear discount."
     },
     {
       "criterion_id": "governance_integrity",
       "score_0_100": 50,
-      "rationale": ""
+      "rationale": "The 50 'ordinary risk' anchor captures unusually concentrated 60.8% founder voting control without evidence of accounting unreliability. 75 is excluded because minority-shareholder checks are structurally weak; 25 is excluded because no integrity breach is established."
     },
     {
       "criterion_id": "execution_adaptability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Reels/AI product shifts and 2025-26 monetization growth demonstrate successful adaptation, matching 75. 90 is excluded because Reality Labs and the new AI-capex program have not yet proven long-run returns."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "critical",
+      "rationale": "The return on unprecedented AI infrastructure commitments will dominate the future capital-allocation verdict."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "Founder voting control reduces external corrective mechanisms even absent an integrity breach."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
@@ -58,5 +148,6 @@
         "owner_fcf_per_share": []
       }
     }
-  }
+  },
+  "geo_events_reviewed": []
 }
