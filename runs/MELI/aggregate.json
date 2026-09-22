@@ -1,0 +1,170 @@
+{
+  "strategy_version": "3.3",
+  "schema_version": "3.3",
+  "decision_policy_version": "3.3",
+  "as_of_date": "2026-09-21",
+  "ticker": "MELI",
+  "reconstructed": true,
+  "reconstruction_reason": "The current execution environment cannot replay the repository CLI against GitHub/EDGAR directly; Stage 0, validation and deterministic valuation were reconstructed against the current v3.3 policies.",
+  "score_100": 55.5,
+  "score_100_ex_valuation": null,
+  "coverage_weight": 15,
+  "classification": "Reject",
+  "disruptive_innovation_score": null,
+  "turnaround_quality_score": null,
+  "axis_scores": {
+    "asymmetry": null,
+    "disruptive_innovation": null,
+    "long_term_growth": null
+  },
+  "archetype": {
+    "id": "non_fit",
+    "label": "비적합",
+    "label_en": "Non-fit",
+    "reason": "No archetype can be selected yet because universal triage and core domains are incomplete.",
+    "gate_score": null,
+    "secondary": [],
+    "position_guidance": null,
+    "position_cap": null,
+    "signals": {
+      "price_to_base_value": 0.9197,
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": 0.22,
+      "market_cap_usd": 92292007136.94
+    }
+  },
+  "reachable_archetypes_raw": [
+    "compounder",
+    "growth",
+    "outlier_growth"
+  ],
+  "early_exit": false,
+  "hard_veto_status": "PENDING_REVIEW",
+  "mechanical_pre_ic_state": "INCOMPLETE",
+  "position_range_pre_ic": null,
+  "domain_scores": {
+    "expectation_valuation": {
+      "bull_score": 80,
+      "bear_score": 35,
+      "criteria": {
+        "reverse_dcf_burden": 60,
+        "base_return": 55,
+        "valuation_robustness": 50
+      },
+      "raw_weighted_median": 55.5,
+      "score": 55.5,
+      "spread": 45,
+      "avg_confidence": 0.88,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 1,
+        "material": 2,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores"
+    }
+  },
+  "confirmed_vetoes": [],
+  "unresolved_vetoes": [],
+  "veto_gate": {
+    "overall": "PENDING_REVIEW",
+    "summary": "EV owner cleared the price-above-Bull veto; remaining Hard Veto owners have not run yet."
+  },
+  "valuation_model": {
+    "status": "COMPLETE",
+    "method": "locked owner-FCF/share DCF",
+    "required_return": 0.09,
+    "horizon_years": 10,
+    "net_cash_per_share": -126.73383224448753,
+    "current_price": 1820.47,
+    "scenarios": {
+      "bear": {
+        "value_per_share": 138.0932,
+        "pv_owner_fcf": 100.0868,
+        "pv_terminal": 164.7402,
+        "terminal_multiple": 15,
+        "terminal_fraction": 0.6221
+      },
+      "base": {
+        "value_per_share": 1979.4314,
+        "pv_owner_fcf": 501.0042,
+        "pv_terminal": 1605.1611,
+        "terminal_multiple": 20,
+        "terminal_fraction": 0.7621
+      },
+      "bull": {
+        "value_per_share": 4719.6909,
+        "pv_owner_fcf": 886.3235,
+        "pv_terminal": 3960.1013,
+        "terminal_multiple": 25,
+        "terminal_fraction": 0.8171
+      }
+    },
+    "signals": {
+      "price_to_base_value": 0.9197,
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": 0.22
+    },
+    "sanity": {
+      "status": "PASS",
+      "blocking": false,
+      "checks": [
+        {
+          "id": "yearly_scenario_order",
+          "status": "PASS",
+          "detail": "bear <= base <= bull for every forecast year"
+        },
+        {
+          "id": "scenario_value_order",
+          "status": "PASS",
+          "detail": "Bear <= Base <= Bull intrinsic values"
+        },
+        {
+          "id": "terminal_value_concentration",
+          "status": "PASS",
+          "detail": "Base terminal fraction 76.2%"
+        },
+        {
+          "id": "price_above_bull_value",
+          "status": "PASS",
+          "detail": "current price does not exceed Bull value"
+        }
+      ]
+    }
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "pack_summary": {
+      "documents": 11,
+      "facts": 21,
+      "adjustment_candidates": 1,
+      "extraction_warnings": 2
+    },
+    "required_coverage": {
+      "latest_annual": "PASS",
+      "latest_interim": "PASS",
+      "trailing_quarters": "PASS 6/6",
+      "proxy_compensation": "PASS",
+      "earnings_release": "PASS",
+      "debt_and_financing": "PASS"
+    },
+    "advisory_gaps": [
+      "historical_annuals 1/3",
+      "investor_materials 0/1"
+    ]
+  },
+  "next_plan": {
+    "stage": "triage",
+    "agents": {
+      "asymmetry": "AS",
+      "disruptive_innovation": "DI",
+      "financial_survival": "FS"
+    },
+    "execution_control": "continue"
+  }
+}
