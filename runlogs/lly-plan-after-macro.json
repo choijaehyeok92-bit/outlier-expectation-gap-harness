@@ -1,0 +1,24 @@
+{
+  "stage": "evidence_and_red_team",
+  "agents": {
+    "evidence_quality": "ED",
+    "red_team": "RT"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true
+  },
+  "execution_control": "continue",
+  "archetype": "compounder",
+  "reachable_archetypes_raw": [
+    "compounder"
+  ],
+  "macro": {
+    "status": "fresh",
+    "purchase_pacing_multiplier": 0.5,
+    "pending_reanalysis_domains": [],
+    "fundamental_score_effect": 0
+  },
+  "statement": "Macro overlay is fresh and produces no structural company reanalysis request. Run ED and RT next; IC remains gated until Hard Veto review is cleared."
+}
