@@ -50,6 +50,25 @@ class TriageRequest(BaseModel):
     persist: bool = True
 
 
+class FullHarnessRequest(BaseModel):
+    """Stage 4: the whole workflow, over named runs or over a screen's top rows.
+
+    Same defaults as triage and for the same reason: a dry run, and the offline
+    placeholder. This stage spends more than triage does — every agent in the
+    manifest, per company — so starting it is an explicit act.
+    """
+    run_ids: list[str] | None = Field(default=None, max_length=25)
+    screen_run_id: str | None = None
+    as_of_date: str | None = Field(default=None, pattern=r'^\d{4}-\d{2}-\d{2}$')
+    top: int | None = Field(default=None, ge=1, le=50)
+    max_rounds: int | None = Field(default=None, ge=1, le=40)
+    provider: Literal['placeholder', 'anthropic', 'openai'] = 'placeholder'
+    model: str | None = None
+    dry_run: bool = True
+    force: bool = False
+    persist: bool = True
+
+
 class DeepDivePlanRequest(BaseModel):
     run_id: str
     user_requested: bool = False

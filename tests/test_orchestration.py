@@ -12,6 +12,8 @@ The same boundary is recorded in `config/triage.json` and stamped onto every
 batch record, so a reader of a result never has to guess which one they hold.
 """
 import argparse
+import contextlib
+import io
 import json
 from pathlib import Path
 import shutil
@@ -63,16 +65,19 @@ class IsolatedHarness(unittest.TestCase):
         self.addCleanup(patcher.stop)
 
     def make_run(self, run_id: str, as_of: str = AS_OF, freeze: bool = True) -> Path:
-        h.cmd_init(argparse.Namespace(ticker=run_id, as_of=as_of))
-        run = self.root / 'runs' / run_id.upper()
-        context = h.load_json(run / 'company_context.json')
-        context.update(current_price=100, net_cash_per_share=5, market_cap_usd=50e9)
-        h.dump_json(run / 'company_context.json', context)
-        h.dump_json(run / h.FINANCIAL_PACK, minimal_pack(run_id.upper(), as_of))
-        if freeze:
-            h.cmd_freeze(argparse.Namespace(ticker=run_id, provider='placeholder',
-                                            model='placeholder-v1', reasoning_effort=None,
-                                            review_only=False))
+        # `init` and `freeze` are CLI commands and report on stdout; a test
+        # setup is not a command line.
+        with contextlib.redirect_stdout(io.StringIO()):
+            h.cmd_init(argparse.Namespace(ticker=run_id, as_of=as_of))
+            run = self.root / 'runs' / run_id.upper()
+            context = h.load_json(run / 'company_context.json')
+            context.update(current_price=100, net_cash_per_share=5, market_cap_usd=50e9)
+            h.dump_json(run / 'company_context.json', context)
+            h.dump_json(run / h.FINANCIAL_PACK, minimal_pack(run_id.upper(), as_of))
+            if freeze:
+                h.cmd_freeze(argparse.Namespace(ticker=run_id, provider='placeholder',
+                                                model='placeholder-v1', reasoning_effort=None,
+                                                review_only=False))
         return run
 
     def reports(self, run_id: str) -> dict:
@@ -241,9 +246,10 @@ class IdempotencyTests(IsolatedHarness):
         context = h.load_json(run / 'company_context.json')
         context['current_price'] = 111
         h.dump_json(run / 'company_context.json', context)
-        h.cmd_freeze(argparse.Namespace(ticker='REFREEZE', provider='placeholder',
-                                        model='placeholder-v1', reasoning_effort=None,
-                                        review_only=False))
+        with contextlib.redirect_stdout(io.StringIO()):
+            h.cmd_freeze(argparse.Namespace(ticker='REFREEZE', provider='placeholder',
+                                            model='placeholder-v1', reasoning_effort=None,
+                                            review_only=False))
         after = agent_step.build_step('REFREEZE', 'EV').idempotency_key
         self.assertNotEqual(before, after, 'a new snapshot is new work')
         self.assertIsNone(agent_step.already_done('REFREEZE', 'EV',

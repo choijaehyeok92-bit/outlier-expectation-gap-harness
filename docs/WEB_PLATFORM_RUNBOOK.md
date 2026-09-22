@@ -115,6 +115,34 @@ python harness.py screen triage-runs
 자리표시자 provider는 분석하지 않으며 Hard Veto를 절대 clear하지 않는다. 무엇이 검증되고
 무엇이 검증되지 않는지는 [ORCHESTRATION.md](ORCHESTRATION.md)에 있다.
 
+## 1f. Stage 4 full harness (Phase 8)
+
+```bash
+# 무엇이 돌 것인지만 본다
+python harness.py screen full --as-of 2026-09-18 --top 5 --dry-run
+
+# 한 기업 (스크린 선정을 건너뛴다)
+python harness.py screen full --run-id MSFT
+
+# 실제 모델: 기업당 에이전트 호출이 13회 이상이다
+export ANTHROPIC_API_KEY=...
+python harness.py screen full --as-of 2026-09-18 --top 3 --provider anthropic
+
+python harness.py screen full-runs
+```
+
+Stage 4는 에이전트 목록을 갖고 있지 않다. 매 회차 `harness.py plan`에게 다음 단계를 묻고
+그 답을 실행하며, `stop_early`(조기 종료 = `screened_out`)나 `stop_complete`에서 멈춘다.
+진전 없이 같은 단계가 반복되면 `stalled`로 멈추고 어느 단계가 막았는지 남긴다.
+
+종료 시 하네스의 `digest`·`report`를 불러 `digest.md`·`easy_report.md`를 만든다.
+`cache-macro`와 `one_page_investment_record.md`는 자동으로 만들지 않는다 — 전자는 전역 캐시를
+오염시키고 후자는 IC 의장이 손으로 쓰는 문서다.
+
+**저장된 run이 `blocked: frozen policy or harness changed`로 나오면** 그 run은 마지막 freeze
+이후 `harness_core`/`harness.py`가 움직인 것이다. 오케스트레이터는 게이트를 우회하지 않으므로
+사람이 검토 후 `python harness.py freeze <TICKER>`를 다시 해야 한다.
+
 ## 2. API
 
 ```bash

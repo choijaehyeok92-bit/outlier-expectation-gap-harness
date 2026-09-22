@@ -73,7 +73,15 @@ def schema_errors(report: dict, schema: Optional[dict] = None) -> list:
 
 
 def policy_errors(report: dict) -> list:
-    """The harness's own verdict on a report. Never relaxed here."""
+    """The harness's own verdict on a report. Never relaxed here.
+
+    `veto_element_errors` is asked for separately even though the current
+    `validate_report` already calls it: the element rule is the one that stops
+    a `confirmed` veto being asserted rather than answered, and it should not
+    go quiet if that internal call ever moves. The two overlap today, so the
+    result is de-duplicated — a retry prompt carrying the same sentence twice
+    reads like two problems.
+    """
     runtime = harness()
     try:
         errors = list(runtime.validate_report(report))
@@ -85,7 +93,12 @@ def policy_errors(report: dict) -> list:
             errors.extend(element_errors(report))
         except Exception as error:
             errors.append(f'veto_element_errors raised {type(error).__name__}: {error}')
-    return errors
+    seen, unique = set(), []
+    for error in errors:
+        if error not in seen:
+            seen.add(error)
+            unique.append(error)
+    return unique
 
 
 def validate(report: dict, schema: Optional[dict] = None) -> list:

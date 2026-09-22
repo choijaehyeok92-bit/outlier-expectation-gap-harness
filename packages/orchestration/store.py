@@ -1,8 +1,13 @@
-"""Immutable triage batch records.
+"""Immutable orchestration batch records.
 
 Same rule as a harness run, a screen run and a deep dive: written once, named
 by content, never rewritten. A batch is a record of what was attempted and what
 the harness then said, and re-running produces a new record beside the old one.
+
+Triage batches and full-harness batches are kept in separate directories with
+separate id fields. They answer different questions — "which of these thirty
+survive the first four agents" and "what did the committee conclude about these
+ten" — and a listing that mixed them would invite reading one as the other.
 
 Every record carries the verification scope from `config/triage.json`, so a
 reader of a batch result never has to go looking for what the fixtures did and
@@ -17,10 +22,20 @@ from typing import Optional
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def default_base() -> Path:
+STAGES = {'triage': {'directory': 'triage_runs', 'id_field': 'triage_run_id'},
+          'full': {'directory': 'full_harness_runs', 'id_field': 'full_run_id'}}
+
+
+def stage_spec(stage: str) -> dict:
+    if stage not in STAGES:
+        raise ValueError(f'unknown stage {stage!r}; known: {sorted(STAGES)}')
+    return STAGES[stage]
+
+
+def default_base(stage: str = 'triage') -> Path:
     """Beside the runs the harness writes, so an isolated test stays isolated."""
     from . import contracts
-    return contracts.harness().ROOT / 'triage_runs'
+    return contracts.harness().ROOT / stage_spec(stage)['directory']
 
 
 def content_hash(payload) -> str:
@@ -38,20 +53,26 @@ def code_commit_sha() -> str:
         return os.environ.get('HARNESS_COMMIT', 'unknown')
 
 
-def build_record(body: dict, config: dict) -> dict:
+def build_record(body: dict, config: dict, stage: str = 'triage') -> dict:
+    spec = stage_spec(stage)
     digest = content_hash(body)
-    return {**body,
-            'triage_run_id': f"{body.get('as_of_date') or 'undated'}-{digest[:12]}",
+    return {**body, 'stage': stage,
+            spec['id_field']: f"{body.get('as_of_date') or 'undated'}-{digest[:12]}",
             'content_sha256': digest,
             'verification_scope': config['verification_scope'],
             'provenance': {'code_commit_sha': code_commit_sha(),
                            'created_at_utc': datetime.now(timezone.utc).isoformat()}}
 
 
-def save(record: dict, base=None) -> Path:
-    directory = Path(base) if base else default_base()
-    directory = directory / record['triage_run_id']
-    path = directory / 'triage_run.json'
+def record_id(record: dict) -> str:
+    return record.get('triage_run_id') or record['full_run_id']
+
+
+def save(record: dict, base=None, stage: Optional[str] = None) -> Path:
+    stage = stage or record.get('stage', 'triage')
+    spec = stage_spec(stage)
+    directory = (Path(base) if base else default_base(stage)) / record[spec['id_field']]
+    path = directory / f'{stage}_run.json'
     if path.exists():
         return path
     directory.mkdir(parents=True, exist_ok=True)
@@ -59,21 +80,25 @@ def save(record: dict, base=None) -> Path:
     return path
 
 
-def load(triage_run_id: str, base=None) -> Optional[dict]:
-    path = (Path(base) if base else default_base()) / triage_run_id / 'triage_run.json'
+def load(run_id: str, base=None, stage: str = 'triage') -> Optional[dict]:
+    stage_spec(stage)
+    path = (Path(base) if base else default_base(stage)) / run_id / f'{stage}_run.json'
     return json.loads(path.read_text(encoding='utf-8')) if path.exists() else None
 
 
-def list_runs(base=None) -> list:
-    directory = Path(base) if base else default_base()
+def list_runs(base=None, stage: str = 'triage') -> list:
+    spec = stage_spec(stage)
+    directory = Path(base) if base else default_base(stage)
     if not directory.exists():
         return []
     rows = []
-    for path in sorted(directory.glob('*/triage_run.json')):
+    for path in sorted(directory.glob(f'*/{stage}_run.json')):
         record = json.loads(path.read_text(encoding='utf-8'))
-        rows.append({'triage_run_id': record['triage_run_id'],
+        summary = record.get('summary', {})
+        rows.append({spec['id_field']: record[spec['id_field']], 'stage': stage,
                      'as_of_date': record.get('as_of_date'),
-                     'attempted': record['summary'].get('attempted'),
-                     'completed': record['summary'].get('completed'),
+                     'attempted': summary.get('attempted'),
+                     'completed': summary.get('completed'),
+                     'screened_out': summary.get('screened_out'),
                      'created_at_utc': record['provenance']['created_at_utc']})
     return sorted(rows, key=lambda r: r['created_at_utc'], reverse=True)

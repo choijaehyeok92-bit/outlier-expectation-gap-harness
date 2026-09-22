@@ -263,7 +263,8 @@ def cmd_screen_triage(args):
     config = contracts.load_config()
     rows, rows_as_of = _triage_rows(args)
     as_of = args.as_of or rows_as_of
-    candidates = selection.select_candidates(rows, config=config, top_n=args.top)
+    candidates = selection.select_candidates(rows, config=config, top_n=args.top,
+                                             stage='triage')
     eligible = [c for c in candidates if c.eligible]
 
     if args.dry_run:
@@ -292,7 +293,70 @@ def cmd_screen_triage(args):
 
 def cmd_screen_triage_runs(args):
     from packages.orchestration import store
-    _print(store.list_runs())
+    _print(store.list_runs(stage='triage'))
+
+
+def cmd_screen_full(args):
+    """Stage 4: the whole harness workflow, one company or a batch of them.
+
+    Where triage runs a fixed four agents, this follows `harness.py plan` round
+    after round and runs whatever it names, until the planner says `stop_early`
+    or `stop_complete`. A company the planner screens out after triage is
+    reported as `screened_out` — a conclusion, not a failure.
+    """
+    from packages.orchestration import batch, contracts, full, selection, store
+    config = contracts.load_config()
+
+    if args.run_id:
+        run_ids = [r.strip() for r in args.run_id.split(',') if r.strip()]
+        if args.dry_run:
+            _print({'stage': 'full', 'dry_run': True,
+                    'readiness': [{'run_id': run_id, **full.readiness(run_id)}
+                                  for run_id in run_ids],
+                    'verification_scope': config['verification_scope']})
+            return
+        provider = _triage_provider(args)
+        outcomes = [full.full_harness_company(run_id, provider, config=config,
+                                              force=args.force,
+                                              max_iterations=args.max_rounds)
+                    for run_id in run_ids]
+        _print({'stage': 'full', 'verification_scope': config['verification_scope'],
+                'results': [outcome.to_dict() for outcome in outcomes]})
+        return
+
+    rows, rows_as_of = _triage_rows(args)
+    as_of = args.as_of or rows_as_of
+    candidates = selection.select_candidates(rows, config=config, top_n=args.top, stage='full')
+    eligible = [c for c in candidates if c.eligible]
+
+    if args.dry_run:
+        _print({'as_of_date': as_of, 'stage': 'full',
+                'eligible': [c.to_dict() for c in eligible],
+                'not_eligible': [c.to_dict() for c in candidates if not c.eligible][:20],
+                'verification_scope': config['verification_scope']})
+        return
+    if not eligible:
+        _print({'as_of_date': as_of, 'stage': 'full', 'eligible': 0,
+                'not_eligible': [c.to_dict() for c in candidates][:20],
+                'note': 'nothing to run; every candidate is already complete or blocked'})
+        return
+
+    result = batch.run_batch(candidates, _triage_provider(args), config=config,
+                             as_of_date=as_of, force=args.force, stage='full')
+    record = store.build_record(result.to_dict(), config, stage='full')
+    if not args.no_save:
+        print(store.save(record), file=sys.stderr)
+    _print({'full_run_id': record['full_run_id'], 'summary': record['summary'],
+            'verification_scope': record['verification_scope'],
+            'results': [{k: row.get(k) for k in ('run_id', 'ticker', 'status', 'stage',
+                                                 'execution_control', 'stages_run',
+                                                 'harness_snapshot', 'artifacts', 'reason')}
+                        for row in record['results']]})
+
+
+def cmd_screen_full_runs(args):
+    from packages.orchestration import store
+    _print(store.list_runs(stage='full'))
 
 
 def cmd_screen_runs(args):
@@ -424,6 +488,29 @@ def register(sub):
 
     p = screen_sub.add_parser('triage-runs', help='list persisted triage batches')
     p.set_defaults(func=cmd_screen_triage_runs)
+
+    p = screen_sub.add_parser('full', help='stage 4: the whole harness workflow, driven by plan')
+    p.add_argument('--run-id', help='one run, or a comma-separated list; skips screen selection')
+    p.add_argument('--input', help='screen result JSON, or a list of rows')
+    p.add_argument('--screen-run', help='a persisted screen run id')
+    p.add_argument('--as-of')
+    p.add_argument('--top', type=int, help='how many eligible candidates to run')
+    p.add_argument('--max-rounds', type=int,
+                   help='stage-loop cap; defaults to full_harness.max_stage_iterations')
+    p.add_argument('--provider', default='placeholder',
+                   help='placeholder (offline, analyses nothing) | anthropic | openai')
+    p.add_argument('--placeholder-mode', default='valid',
+                   choices=['valid', 'invalid', 'flaky', 'error'],
+                   help='what the offline provider should simulate')
+    p.add_argument('--model')
+    p.add_argument('--source', choices=['auto', 'files', 'db'], default='auto')
+    p.add_argument('--force', action='store_true', help='redo agents already complete')
+    p.add_argument('--dry-run', action='store_true', help='show the selection and stop')
+    p.add_argument('--no-save', action='store_true')
+    p.set_defaults(func=cmd_screen_full)
+
+    p = screen_sub.add_parser('full-runs', help='list persisted full-harness batches')
+    p.set_defaults(func=cmd_screen_full_runs)
 
     p = screen_sub.add_parser('runs', help='list persisted screen runs')
     p.set_defaults(func=cmd_screen_runs)

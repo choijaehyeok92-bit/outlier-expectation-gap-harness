@@ -186,6 +186,19 @@ tests/test_orchestration.py
 docs/ORCHESTRATION.md
 ```
 
+### Phase 8에서 추가된 것
+
+```
+packages/orchestration/
+  full.py                          한 기업 전체: plan이 부르는 단계를 끝까지 따라간다
+  attachments.py                   프롬프트가 지정한 입력 파일을 데이터 블록으로 첨부
+config/triage.json                 full_harness 절 (루프 상한·강제 재실행·첨부·finalize)
+tests/test_orchestration_full.py
+```
+
+에이전트 목록은 어디에도 없다. 단계 순서는 `harness_core/planner.py`가 갖고 있고 Stage 4는
+매 회차 그것을 다시 묻는다.
+
 ### 이후 Phase에서 추가될 것
 
 ```
@@ -503,7 +516,8 @@ remaining_unknowns / evidence_quality / final_synthesis
 | GET | `/api/screen/runs`, `/api/screen/runs/{id}`, `…/markdown` | ✅ |
 | POST | `/api/harness/triage` | ✅ 기본 dry_run·placeholder |
 | GET | `/api/harness/triage/runs`, `/api/harness/triage/{id}` | ✅ 배치 기록 |
-| POST | `/api/harness/full` | ⏸ 501 (Phase 8) |
+| POST | `/api/harness/full` | ✅ 기본 dry_run·placeholder, `plan` 주도 단계 루프 |
+| GET | `/api/harness/full/runs`, `/api/harness/full/{id}` | ✅ 배치 기록 |
 | GET | `/api/harness/runs/{id}` | ✅ |
 | POST | `/api/deep-dive/plan` | ✅ |
 | POST | `/api/deep-dive/run` | ✅ |
@@ -531,9 +545,15 @@ python harness.py deep-report <deep_dive_id> [--out report.md]
 python harness.py deep-list
 ```
 
-이후 Phase에서 추가될 것: `universe sync --markets US,KR`, `screen build --as-of …`,
-`screen triage --input results.json --top 100`, `screen full --input triage.json --top 30`,
-`screen deep-dive --input leaderboard.json --top 10`.
+```
+python harness.py screen triage [--as-of …|--screen-run …|--input …] [--top N] [--dry-run]
+python harness.py screen triage-runs
+python harness.py screen full [--run-id A,B|--as-of …|--screen-run …] [--top N]
+                              [--max-rounds N] [--dry-run]
+python harness.py screen full-runs
+```
+
+이후 Phase에서 추가될 것: `screen deep-dive --input leaderboard.json --top 10`.
 
 **지연 import**: 새 커맨드의 구현은 핸들러 안에서 import된다. `harness.py aggregate`는 스크리닝
 스택을 로드하지 않으며, `packages/`가 없는 체크아웃에서도 기존 CLI가 전부 동작한다.
@@ -551,7 +571,7 @@ python harness.py deep-list
 | 5 | ScreeningSpec | ✅ 완료 |
 | 6 | NL screener | ✅ 완료 (lexicon + LLM 양쪽) |
 | 7 | Harness triage orchestration | ✅ 순서·재시도·idempotency 완료 (분석 품질은 미검증) |
-| 8 | Full Harness orchestration | ⏸ 501 |
+| 8 | Full Harness orchestration | ✅ `plan` 주도 루프·stall 감지·입력 첨부 완료 (분석 품질은 미검증) |
 | 9 | Deep-Dive Research | ✅ 완료 (fixture provider로 검증) |
 | 10 | Red Team + synthesis | ✅ 완료 |
 | 11 | Report UI | ✅ 완료 |
@@ -561,8 +581,8 @@ Phase 5·6·9·10·11이 먼저 완성된 것은 vertical slice를 먼저 관통
 Phase 4가 붙으면서 `screening_warehouse` 백엔드가 조건부로 활성화됐고, `backend_unavailable`로
 남던 조건들이 창고를 빌드한 뒤에는 그대로 컴파일된다 — spec 형식은 바뀌지 않았다.
 Phase 2가 붙으면서 아티팩트 위에 선택적 PostgreSQL 색인이 생겼고, 스크리너는 `--source`로
-파일과 DB 중 어느 쪽에서든 **같은 행**을 읽는다. 남은 것은 Phase 7·8(오케스트레이션)과
-Phase 12(모니터링 시계열)다. Phase 7부터는 결정론이 아니므로 픽스처가 검증하는 범위가
+파일과 DB 중 어느 쪽에서든 **같은 행**을 읽는다. 남은 것은 Phase 12(모니터링 시계열)와
+Phase 2의 `job` 테이블을 소비할 워커다. Phase 7·8은 결정론이 아니므로 픽스처가 검증하는 범위가
 좁아진다 — 무엇을 검증하고 무엇을 검증하지 않는지는 [ORCHESTRATION.md](ORCHESTRATION.md)와
 모든 배치 기록의 `verification_scope`에 적혀 있다.
 

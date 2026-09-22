@@ -76,10 +76,26 @@ class ApiTests(unittest.TestCase):
             'persist': False})
         self.assertEqual(response.status_code, 422)
 
-    def test_an_unbuilt_stage_answers_501_with_a_pointer(self):
-        response = CLIENT.post('/api/harness/full')
-        self.assertEqual(response.status_code, 501)
-        self.assertIn('Phase', response.json()['detail'])
+    def test_the_full_harness_stage_also_defaults_to_a_dry_run(self):
+        # The full workflow is every agent in the manifest, per company. An
+        # empty POST must not start it.
+        response = CLIENT.post('/api/harness/full', json={'as_of_date': '2026-09-18'})
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertTrue(body['dry_run'])
+        self.assertEqual(body['stage'], 'full')
+        self.assertIn('IC 판정의 타당성', body['verification_scope']['not_verified'])
+
+    def test_a_named_run_is_checked_for_readiness_before_anything_is_spent(self):
+        response = CLIENT.post('/api/harness/full', json={'run_ids': ['NOSUCHRUN']})
+        self.assertEqual(response.status_code, 200)
+        readiness = response.json()['readiness'][0]
+        self.assertFalse(readiness['ready'])
+        self.assertIn('init', readiness['reason'])
+
+    def test_an_unknown_full_run_id_is_a_404_not_an_empty_result(self):
+        response = CLIENT.get('/api/harness/full/2026-01-01-000000000000')
+        self.assertEqual(response.status_code, 404)
 
     def test_triage_defaults_to_a_dry_run_and_states_its_scope(self):
         # Neither spending money nor writing reports a person will read as

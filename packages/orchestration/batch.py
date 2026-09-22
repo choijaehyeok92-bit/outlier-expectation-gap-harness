@@ -1,4 +1,9 @@
-"""Stage 3 over many candidates: retries, idempotency and a stop condition.
+"""A stage over many candidates: retries, idempotency and a stop condition.
+
+The same loop runs Stage 3 and Stage 4. What differs is the per-company runner
+— four triage agents, or the whole planner-driven workflow — and that is a
+parameter, because the guards below are about the batch and not about which
+agents it happens to be running.
 
 A batch is a loop with three guards.
 
@@ -24,6 +29,10 @@ from . import contracts
 from .selection import Candidate
 from .triage import TriageOutcome, triage_company
 
+# Statuses that mean this company produced no usable result. A repeated run of
+# them is the signal that the problem is shared rather than per-company.
+FAILURE_STATUSES = ('failed', 'partial', 'stalled')
+
 
 @dataclass
 class BatchResult:
@@ -34,6 +43,7 @@ class BatchResult:
     stop_reason: Optional[str] = None
     started_at_utc: Optional[str] = None
     finished_at_utc: Optional[str] = None
+    stage: str = 'triage'
 
     @property
     def summary(self) -> dict:
@@ -48,10 +58,13 @@ class BatchResult:
         return {
             'attempted': len(self.outcomes),
             'completed': by_status.get('completed', 0),
+            'screened_out': by_status.get('screened_out', 0),
             'partial': by_status.get('partial', 0),
             'blocked': by_status.get('blocked', 0),
+            'stalled': by_status.get('stalled', 0),
             'failed': by_status.get('failed', 0),
             'not_eligible': len(self.skipped),
+            'by_status': by_status,
             'by_execution_control': by_control,
             'agent_attempts': attempts,
             'steps_needing_retry': retried,
@@ -62,36 +75,52 @@ class BatchResult:
         }
 
     def to_dict(self) -> dict:
-        return {'as_of_date': self.as_of_date, 'summary': self.summary,
+        return {'as_of_date': self.as_of_date, 'stage': self.stage, 'summary': self.summary,
                 'started_at_utc': self.started_at_utc, 'finished_at_utc': self.finished_at_utc,
                 'results': [outcome.to_dict() for outcome in self.outcomes],
                 'not_eligible': [candidate.to_dict() for candidate in self.skipped]}
 
 
+def _triage_runner(run_id, provider, config, force):
+    return triage_company(run_id, provider, config=config, force=force,
+                          agents=contracts.triage_agents(config))
+
+
+def _full_runner(run_id, provider, config, force):
+    from .full import full_harness_company
+    return full_harness_company(run_id, provider, config=config, force=force)
+
+
+RUNNERS = {'triage': _triage_runner, 'full': _full_runner}
+
+
 def run_batch(candidates: list, provider, config: Optional[dict] = None,
               as_of_date: Optional[str] = None, force: bool = False,
-              on_result: Optional[Callable[[TriageOutcome], None]] = None) -> BatchResult:
-    """Run Stage 3 across the eligible candidates, in order."""
+              on_result: Optional[Callable[[TriageOutcome], None]] = None,
+              stage: str = 'triage') -> BatchResult:
+    """Run one orchestration stage across the eligible candidates, in order."""
     config = config or contracts.load_config()
     execution = config['execution']
     limit = int(execution.get('stop_batch_after_consecutive_failures', 5) or 0)
-    agents = contracts.triage_agents(config)
+    if stage not in RUNNERS:
+        raise ValueError(f'unknown batch stage {stage!r}; known: {sorted(RUNNERS)}')
+    runner = RUNNERS[stage]
 
-    result = BatchResult(as_of_date=as_of_date,
+    result = BatchResult(as_of_date=as_of_date, stage=stage,
                          started_at_utc=datetime.now(timezone.utc).isoformat())
     result.skipped = [c for c in candidates if not c.eligible]
     consecutive = 0
 
     for candidate in [c for c in candidates if c.eligible]:
-        outcome = triage_company(candidate.run_id, provider, config=config, force=force,
-                                 agents=agents)
+        outcome = runner(candidate.run_id, provider, config, force)
         result.outcomes.append(outcome)
         if on_result is not None:
             on_result(outcome)
 
         # A block is an input problem, not a provider problem, so it does not
-        # count toward the circuit breaker.
-        if outcome.status in ('failed', 'partial'):
+        # count toward the circuit breaker. A stall does: one company that
+        # cannot converge is a puzzle, five in a row is a defect.
+        if outcome.status in FAILURE_STATUSES:
             consecutive += 1
         else:
             consecutive = 0

@@ -11,6 +11,15 @@ That last property is the important one. A placeholder that cleared a veto
 would let a test suite show a green run that no analyst had looked at. Here the
 harness's own gate refuses, and a test pins it.
 
+Two other agents could each undo that on their own, so each is handled
+deliberately. **IC never asks for a state.** `ic_state` is the one field in the
+whole schema by which a report requests a buy, and this provider omits it, so
+`reconcile_ic` returns the mechanical state untouched. **MO declares every
+macro component unknown.** Its global components are well-formed — otherwise
+the planner would ask for MO again forever — but every severity is `unknown`
+and every risk budget multiplier is the policy's own missing-component value,
+which halves the pacing rather than relaxing it.
+
 What this provider is for: proving that the orchestrator sequences the agents,
 retries a rejected document, skips work already done, and never writes
 something the harness would refuse. It establishes nothing whatsoever about
@@ -100,6 +109,16 @@ def placeholder_report(agent_id: str, ticker: str, as_of_date: str,
          'rationale': '[PLACEHOLDER] 평가하지 않았다. 자리표시자는 Veto를 해소할 수 없다.'}
         for veto in owned]
 
+    if domain == runtime.MACRO_DOMAIN:
+        report['global_components'] = _global_components(as_of_date)
+        report['cache_scope'] = 'global_components_only'
+
+    if domain == runtime.IC_DOMAIN:
+        # `ic_state` is deliberately absent. It is the only field by which a
+        # report can ask for a buy state, and a document that analysed nothing
+        # must not ask for one. `reconcile_ic` then keeps the mechanical state.
+        report.pop('ic_state', None)
+
     if domain == runtime.SIGNAL_DOMAIN:
         years = int(runtime.VAL_POLICY['horizon_years'])
         report['valuation_inputs'] = {
@@ -110,6 +129,39 @@ def placeholder_report(agent_id: str, ticker: str, as_of_date: str,
                                        'valuation_percentile_5y': None,
                                        'revenue_cagr_next_3y': None}
     return report
+
+
+def _global_components(as_of_date: str) -> dict:
+    """Well-formed macro components that assert nothing.
+
+    The planner keeps asking for MO until its components are valid and fresh,
+    so a placeholder that emitted none would spin the loop rather than test it.
+    What they say is the honest thing for a document that observed nothing:
+    every geopolitical severity is `unknown`, and every risk budget multiplier
+    is `missing_component_multiplier` — the number the policy itself uses when
+    a component is absent. Both tighten pacing; neither relaxes it.
+    """
+    runtime = contracts.harness()
+    policy = runtime.OVERLAY_POLICY
+    stamp = f'{as_of_date}T00:00:00+00:00'
+    evidence = [{'source': 'packages/orchestration/fixtures.py (placeholder provider)',
+                 'as_of_date': as_of_date,
+                 'claim': '[PLACEHOLDER] 관측되지 않았다. 자리표시자는 매크로를 판단하지 않는다.'}]
+    unknown_multiplier = float(policy['missing_component_multiplier'])
+
+    components = {}
+    for name in policy['component_ttl_hours']:
+        row = {'scope': 'global', 'as_of_utc': stamp,
+               'summary': '[PLACEHOLDER] 평가되지 않은 구성요소.',
+               'evidence': [dict(item) for item in evidence]}
+        if name in policy['geopolitical_dimensions']:
+            row['dimensions'] = {dimension: {'level': 'unknown', 'regions': [], 'routes': [],
+                                             'dependencies': [], 'structural_events': []}
+                                 for dimension in policy['geopolitical_dimensions'][name]}
+        else:
+            row['risk_budget_multiplier'] = unknown_multiplier
+        components[name] = row
+    return components
 
 
 class PlaceholderAgentProvider:

@@ -20,6 +20,13 @@ validator's own error strings and nothing else. "score_0_100 does not equal the
 rubric weighted score" is a defect in the document; "your score is too low"
 would be steering the analysis, and this orchestrator never says it.
 
+**The harness's prompt is sent verbatim.** Where that prompt names a file as
+the agent's input — `digest.md` for ED and RT, plus `aggregate.json` for IC —
+the file is appended afterwards as a labelled, delimited data block, because a
+provider reached over HTTP cannot open a path. Nothing in the harness's own
+text is reworded, and `provenance` keeps both shas so the two can be compared.
+See `attachments.py`.
+
 **A step already done is not redone.** The idempotency key includes the run's
 frozen input snapshot, so re-freezing correctly invalidates earlier agent work
 while an unchanged run is simply skipped.
@@ -180,7 +187,9 @@ def provenance(run_id: str, agent_id: str) -> Optional[dict]:
         return None
 
 
-def write_provenance(outcome: StepOutcome, prompt_sha256: str) -> Path:
+def write_provenance(outcome: StepOutcome, prompt_sha256: str,
+                     harness_prompt_sha256: Optional[str] = None,
+                     attached: Optional[list] = None) -> Path:
     """Orchestration metadata, beside the report rather than inside it.
 
     The agent report keeps exactly the shape a human analyst would write. Who
@@ -191,7 +200,9 @@ def write_provenance(outcome: StepOutcome, prompt_sha256: str) -> Path:
     path.write_text(json.dumps({
         **outcome.step.to_dict(), 'status': outcome.status, 'attempts': outcome.attempts,
         'provider': outcome.provider, 'model': outcome.model,
-        'prompt_sha256': prompt_sha256, 'validation_errors': outcome.errors[:6],
+        'prompt_sha256': prompt_sha256, 'harness_prompt_sha256': harness_prompt_sha256,
+        'attachments': list(attached or []),
+        'validation_errors': outcome.errors[:6],
         'finished_at_utc': outcome.finished_at_utc,
         'note': 'Orchestration metadata. The harness scored the report; this records how it '
                 'was produced, and nothing about whether its analysis is right.',
@@ -278,6 +289,17 @@ def run_agent(run_id: str, agent_id: str, provider, config: Optional[dict] = Non
         outcome.status, outcome.reason = 'blocked', str(error)
         outcome.finished_at_utc = _now()
         return outcome
+    harness_sha = hashlib.sha256(prompt.encode('utf-8')).hexdigest()
+
+    from . import attachments as attachment_policy
+    try:
+        prompt, attached = attachment_policy.attach(prompt, run_id, agent_id, config)
+    except attachment_policy.AttachmentProblem as error:
+        # An input the harness named is missing or too big. Sending the prompt
+        # anyway would have the agent decide on nothing and never say so.
+        outcome.status, outcome.reason = 'blocked', str(error)
+        outcome.finished_at_utc = _now()
+        return outcome
     prompt_sha = hashlib.sha256(prompt.encode('utf-8')).hexdigest()
 
     attempts = int(execution.get('max_attempts_per_agent', 3))
@@ -307,7 +329,7 @@ def run_agent(run_id: str, agent_id: str, provider, config: Optional[dict] = Non
             outcome.errors = []
             outcome.report_path = str(path.relative_to(repo_root()))
             outcome.finished_at_utc = _now()
-            write_provenance(outcome, prompt_sha)
+            write_provenance(outcome, prompt_sha, harness_sha, attached)
             return outcome
 
         outcome.errors = errors
@@ -317,5 +339,5 @@ def run_agent(run_id: str, agent_id: str, provider, config: Optional[dict] = Non
     outcome.status = 'failed'
     outcome.reason = f'did not pass validation in {outcome.attempts} attempt(s)'
     outcome.finished_at_utc = _now()
-    write_provenance(outcome, prompt_sha)
+    write_provenance(outcome, prompt_sha, harness_sha, attached)
     return outcome

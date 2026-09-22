@@ -14,9 +14,13 @@ not resolve comes back in `unresolved_conditions` instead of quietly vanishing.
 It never returns a secret. Provider keys are read inside the provider classes
 from the environment; no route accepts one and no response echoes one.
 
-The stages that Phase 3 and beyond will add — SEC/DART ingestion, the metric
-warehouse, batch triage and full-harness orchestration — answer 501 with what
-is missing rather than pretending.
+It never decides the order of an analysis. `/api/harness/triage` runs the
+triage set `config/workflow.json` declares, and `/api/harness/full` follows
+`harness.py plan` one round at a time; neither route, and no request body,
+holds a list of what the workflow is.
+
+A stage that is not built yet answers 501 naming what is missing, rather than
+returning an empty result that reads like an answer.
 """
 import os
 import sys
@@ -31,7 +35,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from apps.api.models import (DeepDivePlanRequest, DeepDiveRunRequest,  # noqa: E402
-                             ParseRequest, ScreenRunRequest, TriageRequest)
+                             FullHarnessRequest, ParseRequest, ScreenRunRequest,
+                             TriageRequest)
 from packages.llm import LLMError, resolve_provider  # noqa: E402
 from packages.reporting import render_markdown, render_screen_markdown  # noqa: E402
 from packages.research import deep_plan, deep_run  # noqa: E402
@@ -52,10 +57,6 @@ app.add_middleware(
         'WEB_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000').split(',') if o.strip()],
     allow_methods=['GET', 'POST'],
     allow_headers=['*'])
-
-PHASE_NOTE = ('This stage is not implemented yet. See docs/WEB_PLATFORM_ARCHITECTURE.md '
-              'for the phase that introduces it.')
-
 
 def _fx(rates, as_of_date):
     return {code.upper(): {'per_usd': float(value), 'source': 'client-supplied', 'as_of_date': as_of_date}
@@ -266,7 +267,8 @@ def harness_triage(request: TriageRequest):
         as_of = request.as_of_date
         rows = _rows(as_of)
 
-    candidates = selection.select_candidates(rows, config=config, top_n=request.top)
+    candidates = selection.select_candidates(rows, config=config, top_n=request.top,
+                                             stage='triage')
     eligible = [c for c in candidates if c.eligible]
     if request.dry_run:
         return {'as_of_date': as_of, 'dry_run': True,
@@ -281,8 +283,8 @@ def harness_triage(request: TriageRequest):
         provider = resolve_provider(request.provider, request.model)
 
     result = batch.run_batch(candidates, provider, config=config, as_of_date=as_of,
-                             force=request.force)
-    record = triage_store.build_record(result.to_dict(), config)
+                             force=request.force, stage='triage')
+    record = triage_store.build_record(result.to_dict(), config, stage='triage')
     if request.persist:
         triage_store.save(record)
     return record
@@ -291,21 +293,92 @@ def harness_triage(request: TriageRequest):
 @app.get('/api/harness/triage/runs')
 def harness_triage_runs():
     from packages.orchestration import store as triage_store
-    return triage_store.list_runs()
+    return triage_store.list_runs(stage='triage')
 
 
 @app.get('/api/harness/triage/{triage_run_id}')
 def harness_triage_run(triage_run_id: str):
     from packages.orchestration import store as triage_store
-    record = triage_store.load(triage_run_id)
+    record = triage_store.load(triage_run_id, stage='triage')
     if record is None:
         raise HTTPException(404, f'{triage_run_id}: no such triage run')
     return record
 
 
+def _orchestration_provider(request):
+    """Offline placeholder unless a real model was asked for by name."""
+    if request.provider == 'placeholder':
+        from packages.orchestration.fixtures import PlaceholderAgentProvider
+        return PlaceholderAgentProvider()
+    return resolve_provider(request.provider, request.model)
+
+
 @app.post('/api/harness/full')
-def harness_full():
-    raise HTTPException(501, f'Full harness orchestration arrives in Phase 8. {PHASE_NOTE}')
+def harness_full(request: FullHarnessRequest):
+    """Stage 4: the whole harness workflow, one round of `plan` at a time.
+
+    The agent order is not set here or in the request. Each round asks
+    `harness.py plan` what comes next and runs exactly that, so the stage
+    machine stays in `harness_core.planner`. `screened_out` in a result means
+    the planner reached an early exit — a conclusion, not an error.
+    """
+    from packages.orchestration import batch, contracts, full as full_stage, selection
+    from packages.orchestration import store as batch_store
+    config = contracts.load_config()
+
+    if request.run_ids:
+        if request.dry_run:
+            return {'stage': 'full', 'dry_run': True, 'run_ids': request.run_ids,
+                    'readiness': [{'run_id': run_id, **full_stage.readiness(run_id)}
+                                  for run_id in request.run_ids],
+                    'verification_scope': config['verification_scope']}
+        provider = _orchestration_provider(request)
+        outcomes = [full_stage.full_harness_company(run_id, provider, config=config,
+                                                    force=request.force,
+                                                    max_iterations=request.max_rounds)
+                    for run_id in request.run_ids]
+        return {'stage': 'full', 'verification_scope': config['verification_scope'],
+                'results': [outcome.to_dict() for outcome in outcomes]}
+
+    if request.screen_run_id:
+        record = screen_store.load(request.screen_run_id)
+        if record is None:
+            raise HTTPException(404, f'{request.screen_run_id}: no such screen run')
+        rows, as_of = record['results'], record.get('as_of_date')
+    else:
+        as_of = request.as_of_date
+        rows = _rows(as_of)
+
+    candidates = selection.select_candidates(rows, config=config, top_n=request.top,
+                                             stage='full')
+    eligible = [c for c in candidates if c.eligible]
+    if request.dry_run:
+        return {'as_of_date': as_of, 'stage': 'full', 'dry_run': True,
+                'eligible': [c.to_dict() for c in eligible],
+                'not_eligible': [c.to_dict() for c in candidates if not c.eligible],
+                'verification_scope': config['verification_scope']}
+
+    result = batch.run_batch(candidates, _orchestration_provider(request), config=config,
+                             as_of_date=as_of, force=request.force, stage='full')
+    record = batch_store.build_record(result.to_dict(), config, stage='full')
+    if request.persist:
+        batch_store.save(record)
+    return record
+
+
+@app.get('/api/harness/full/runs')
+def harness_full_runs():
+    from packages.orchestration import store as batch_store
+    return batch_store.list_runs(stage='full')
+
+
+@app.get('/api/harness/full/{full_run_id}')
+def harness_full_run(full_run_id: str):
+    from packages.orchestration import store as batch_store
+    record = batch_store.load(full_run_id, stage='full')
+    if record is None:
+        raise HTTPException(404, f'{full_run_id}: no such full-harness run')
+    return record
 
 
 @app.get('/api/harness/runs/{run_id}')

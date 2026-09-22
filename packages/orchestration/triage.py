@@ -59,16 +59,29 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def refresh_harness_view(run_id: str) -> dict:
+def persist_harness_view(run_id: str) -> None:
+    """Let the harness rewrite `aggregate.json` and `final_verdict.json`.
+
+    Separated from reading because writing is not free of consequence: an
+    agent about to run may read `aggregate.json`, so it must be current before
+    a round starts — and a check that finds nothing to do should leave the run
+    exactly as it found it.
+    """
+    runtime = contracts.harness()
+    with contextlib.redirect_stdout(io.StringIO()):
+        runtime.cmd_aggregate(argparse.Namespace(ticker=run_id))
+
+
+def refresh_harness_view(run_id: str, write: bool = True) -> dict:
     """Run aggregate and plan, as a person would, and read back what they said.
 
     `aggregate` is the harness writing its own artifacts; this module does not
-    compute or store a score of its own.
+    compute or store a score of its own. `write=False` asks the same question
+    without leaving a trace, for a caller that may find there is nothing to do.
     """
     runtime = contracts.harness()
-    sink = io.StringIO()
-    with contextlib.redirect_stdout(sink):
-        runtime.cmd_aggregate(argparse.Namespace(ticker=run_id))
+    if write:
+        persist_harness_view(run_id)
     reports = runtime.load_reports(run_id)
     result = runtime.compute_aggregate(run_id, reports)
     step = runtime.plan(run_id, reports, result)
