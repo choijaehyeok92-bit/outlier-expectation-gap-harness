@@ -1,0 +1,24 @@
+{
+  "validate_pack": {
+    "status": "PASS",
+    "blocking_gaps": [],
+    "invariant_errors": [],
+    "documents": 11,
+    "facts": 21
+  },
+  "validate_ev": {
+    "status": "PASS",
+    "declared_score": 55.5,
+    "rubric_score": 55.5,
+    "errors": []
+  },
+  "plan_after_ev": {
+    "stage": "triage",
+    "agents": {
+      "asymmetry": "AS",
+      "disruptive_innovation": "DI",
+      "financial_survival": "FS"
+    },
+    "execution_control": "continue"
+  }
+}
