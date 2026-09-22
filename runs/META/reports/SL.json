@@ -4,53 +4,133 @@
   "as_of_date": "2026-09-18",
   "domain": "structural_leadership",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 71,
+  "confidence_0_1": 0.82,
+  "bull_score": 85,
+  "bear_score": 55,
+  "bull_case": "Meta combines a 3.6B-person daily network, global advertiser demand and AI-driven ranking/monetization at a scale few peers can match. The core ad engine is still growing both impressions and price.",
+  "bear_case": "Revenue remains overwhelmingly advertising-driven, while younger-user competition, regulation and platform shifts can hit the same demand engine across multiple apps. Starting scale also limits category growth.",
+  "thesis": "Meta is a structural leader in global social discovery and performance advertising. Scale, distribution and AI-enhanced monetization support durable category leadership, but the business still has one dominant final demand engine: advertising. Under the harness durability-risks observable, that concentration caps the diversification score at 45. Leadership is therefore strong, not fully diversified.",
+  "evidence": [
+    {
+      "evidence_id": "META-SL-2025-ADS",
+      "economic_driver": "advertising_demand",
+      "claim": "FY2025 advertising revenue was $196.18B of $200.97B total revenue, up 22% YoY; ad impressions rose 12% and average price per ad rose 9%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-18",
+      "value": 196175000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-SL-Q2-SCALE",
+      "economic_driver": "distribution_scale",
+      "claim": "Family daily active people averaged 3.60B in June 2026, while Q2 ad impressions grew 14% and price per ad 12% YoY.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-18",
+      "value": 3600000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-SL-FOA",
+      "economic_driver": "platform_economics",
+      "claim": "Family of Apps generated $102.47B of 2025 operating income at a 52% operating margin, demonstrating category-scale economics even while Reality Labs lost $19.19B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-18",
+      "value": 102469000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-SL-COMPETITION",
+      "economic_driver": "durability_risk",
+      "claim": "Meta's 10-K explicitly identifies intense competition for users, advertisers, developers and frontier AI, including weaker engagement in some demographics; this is the main structural counterweight to scale.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025 risk factors",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Advertising represented roughly 98% of 2025 revenue, so independent final-market diversification is limited despite multiple apps.",
+    "Meta itself reports stronger competition among younger users and lower monetization on Reels than Feed/Stories.",
+    "AI leadership is contested by other frontier-model developers and hyperscalers with comparable capital access.",
+    "Regulatory restrictions can affect targeting, data use, app distribution or monetization across multiple products simultaneously."
+  ],
+  "unknowns": [
+    "Meta does not disclose advertiser concentration or wallet share in a way that permits a clean cross-platform switching-cost estimate.",
+    "The long-run revenue contribution of subscriptions, business messaging, AI agents and Reality Labs remains too small or insufficiently disclosed to count as separate >10% final markets."
+  ],
+  "falsifiers": [
+    "Family DAP declines for multiple quarters while ad impressions and price per ad also weaken.",
+    "Advertising growth falls structurally below global digital-ad growth without offsetting new revenue pools.",
+    "A regulatory or platform-access shock causes sustained double-digit FoA revenue decline."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "Family DAP",
+      "direction": "stable/growing",
+      "threshold": "avoid sustained YoY decline",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Ad impressions + price per ad",
+      "direction": "both positive over cycle",
+      "threshold": "combined monetization growth remains clearly positive",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Non-ad revenue share",
+      "direction": "increase",
+      "threshold": "move toward a decision-useful second revenue engine",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Track Threads, WhatsApp, subscriptions and enterprise AI as potential independent demand engines.",
+    "Compare Meta ad growth with global digital-ad growth to distinguish category growth from share gain.",
+    "Reassess durability after major privacy, app-distribution or AI regulatory changes."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "secular_durability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Long-term demand and willingness to pay are demonstrated by 22% FY2025 ad growth and continued Q2 2026 growth in both impressions and pricing. This fits the 75 anchor; concentration and regulation prevent 90."
     },
     {
       "criterion_id": "category_leadership",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 85,
+      "rationale": "Meta operates at 3.60B Family DAP with >$196B annual advertising revenue and a 52% FoA operating margin. Multiple primary metrics establish category leadership; competition from Google/TikTok and frontier-AI peers prevents a 90."
     },
     {
       "criterion_id": "durability_risks",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 45,
+      "rationale": "The observable rubric assigns 45 when a single demand driver accounts for >=80% of revenue. Advertising was about 98% of FY2025 revenue, so multiple apps do not qualify as independent final markets."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "minor",
+      "rationale": "Advertising demand is well evidenced, but the exact 5-10 year effect of AI-mediated discovery is still evolving."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "minor",
+      "rationale": "Scale is clear; relative share against other ad platforms is not frozen in the run."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "New revenue pools exist but are not yet large enough to reduce the observable advertising-concentration penalty."
     }
-  }
+  ]
 }
