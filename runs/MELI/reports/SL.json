@@ -1,0 +1,137 @@
+{
+  "agent_id": "SL",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-21",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 86.25,
+  "confidence_0_1": 0.91,
+  "bull_score": 95,
+  "bear_score": 70,
+  "bull_case": "Latin American commerce and financial services remain structurally underpenetrated, while MELI increasingly defines the integrated regional standard across marketplace, logistics and fintech.",
+  "bear_case": "Penetration can rise while competitors capture incremental economics. Country macro, regulation and credit cycles can interrupt the structural trend and compress returns.",
+  "thesis": "MELI is a structural leader rather than a cyclical beneficiary. Commerce and fintech are both scaling at large absolute size, and the ecosystem is changing regional expectations around fulfillment, payments and credit. Category leadership is strong. Durability is somewhat lower than leadership because commerce and fintech are the two main demand pools and both remain exposed to regional macro, regulation and credit conditions.",
+  "evidence": [
+    {
+      "evidence_id": "MELI-SL-GROWTH",
+      "economic_driver": "secular_digitization",
+      "claim": "Q2 2026 GMV grew 44% YoY to $21.9B and TPV grew 56% to $101B at already-large scale.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.56,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-SL-LEADERSHIP",
+      "economic_driver": "category_leadership",
+      "claim": "MercadoLibre identifies itself as Latin America's leading e-commerce and fintech company, while acquiring TPV continues to gain share across markets.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-SL-USERS",
+      "economic_driver": "market_expansion",
+      "claim": "Fintech MAUs reached 88M and unique active buyers 89M in Q2 2026, both materially above prior-year levels.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000023/meli-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 88000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-SL-AD",
+      "economic_driver": "adjacent_demand_pool",
+      "claim": "Advertising surpassed 10% share of Latin American digital advertising for the first time while FX-neutral ad revenue grew 62% YoY.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.62,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Amazon, Shopee, Nubank and banks can attack individual layers with substantial capital.",
+    "Credit expansion adds cyclicality and regulatory exposure to the ecosystem.",
+    "Brazil, Mexico and Argentina concentration makes structural growth sensitive to local macro and FX.",
+    "Long-run penetration can continue even if incremental economics become more competitive."
+  ],
+  "unknowns": [
+    "Independent market-share time series by country and vertical.",
+    "Long-run saturation point for digital commerce in core countries.",
+    "Regulatory limits on fintech cross-sell and credit expansion."
+  ],
+  "falsifiers": [
+    "MELI loses meaningful share simultaneously in Brazil and Mexico.",
+    "GMV and TPV growth converge to market without offsetting margin gains.",
+    "Regulation structurally blocks major ecosystem cross-sell in a core country."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "GMV / TPV growth and share",
+      "direction": "up",
+      "threshold": "sustain category outgrowth in core markets",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Active buyers / fintech MAUs",
+      "direction": "up",
+      "threshold": "continue broadening at scale",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Advertising share",
+      "direction": "up",
+      "threshold": "maintain or expand >10% regional digital-ad share",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Brazil/Mexico category-share disclosures.",
+    "Fintech MAU and acquiring share trend.",
+    "Regulatory changes in core markets."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 90,
+      "rationale": "Commerce, payments and digital financial-services adoption continue to expand rapidly at large scale, consistent with a long-duration regional structural shift."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 90,
+      "rationale": "MELI sets integrated commerce/fintech expectations across fulfillment, payments and cross-sell and reports continued acquiring share gains."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 75,
+      "rationale": "Commerce and fintech are two independent >10% demand pools, mapping to the observable two-market row. Macro, regulation and credit remain material cross-cutting risks."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "minor",
+      "rationale": "The secular direction is clear; the uncertainty is the pace and monetization."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "minor",
+      "rationale": "Leadership is strongly evidenced, though independent country-by-country share data are incomplete."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "Regional macro, fintech regulation and credit cycles can affect both major demand pools."
+    }
+  ]
+}
