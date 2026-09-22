@@ -1,0 +1,209 @@
+{
+  "agent_id": "EV",
+  "ticker": "GOOGL",
+  "as_of_date": "2026-09-21",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 53,
+  "confidence_0_1": 0.84,
+  "bull_score": 75,
+  "bear_score": 30,
+  "bull_case": "Search monetization remains resilient while Cloud backlog converts, AI products expand wallet share, and the 2026 infrastructure buildout normalizes into much higher owner FCF/share. Excluded strategic equity holdings add unmodeled upside.",
+  "bear_case": "AI search economics require persistently higher compute cost, capex remains structurally near operating cash flow, external financing continues, and regulation weakens distribution or ad monetization.",
+  "thesis": "At $354.97, Alphabet trades modestly above the locked Base DCF of $335.36 while remaining well below the $543.99 Bull value. The core valuation issue is whether owner FCF/share can recover from the 2026 AI-capex trough; H1 operating cash flow of $84.9B was nearly absorbed by $80.6B of capex. Cloud growth/backlog make recovery plausible, but current price already requires roughly Base execution and the model remains sensitive to capex normalization.",
+  "evidence": [
+    {
+      "evidence_id": "GOOGL-EV-H1-CASH",
+      "economic_driver": "cash_conversion_after_ai_capex",
+      "claim": "H1 2026 operating cash flow was $84.859B while purchases of property and equipment were $80.598B, showing unusually compressed owner cash flow during the AI infrastructure buildout.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-21",
+      "value": 4261000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "GOOGL-EV-Q2-GROWTH",
+      "economic_driver": "cloud_ai_growth",
+      "claim": "Q2 2026 revenue was $119.796B, up 24% YoY, and Google Cloud revenue growth was 82% YoY.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 119796000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "GOOGL-EV-BACKLOG",
+      "economic_driver": "cloud_ai_growth",
+      "claim": "Revenue backlog reached about $519.5B in Q2 2026, with the large majority tied to Google Cloud and just over half expected to be recognized over the next 24 months.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 519500000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "GOOGL-EV-FINANCING",
+      "economic_driver": "capital_intensity",
+      "claim": "Alphabet raised large amounts of equity/preferred capital in June 2026 and completed an additional $25B senior-note offering in August, consistent with a step-up in AI infrastructure financing.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526342390/0001193125-26-342390-index.html",
+      "period": "2026 financing",
+      "as_of_date": "2026-09-21",
+      "value": 25000000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "GOOGL-EV-DCF",
+      "economic_driver": "market_expectations",
+      "claim": "Using the locked 9% required return, 15x/20x/25x terminal multiples and $4.411 net cash/share, the submitted 10-year owner-FCF/share paths imply about $95.57 Bear, $335.36 Base and $543.99 Bull value; $354.97 price/Base is 1.0585x.",
+      "source_type": "other",
+      "source": "Harness locked owner-FCF/share DCF using frozen 2026-09-21 GOOGL inputs",
+      "period": "10-year forecast from 2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 335.3629,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "The DCF excludes substantial strategic equity holdings from conservative net cash, potentially understating asset value.",
+    "Cloud backlog above $500B provides unusually strong contracted-demand visibility, although backlog is not equivalent to profit or free cash flow.",
+    "A meaningful portion of current capex is likely growth investment; if utilization and AI monetization scale, present FCF compression can reverse sharply.",
+    "Search, YouTube, Cloud, subscriptions and Other Bets create several independent value pools rather than a single AI outcome."
+  ],
+  "unknowns": [
+    "Normalized maintenance versus growth capex after the current AI infrastructure buildout.",
+    "Incremental return on 2025-2027 AI infrastructure investment.",
+    "Long-run Search margin after AI inference costs and changing answer formats.",
+    "Economic value realizable from SpaceX and other strategic equity holdings."
+  ],
+  "falsifiers": [
+    "Capex remains near or above operating cash flow for several years without corresponding acceleration in Cloud/Search owner earnings.",
+    "Cloud backlog converts at materially lower margins or utilization than assumed while financing continues.",
+    "Regulatory remedies structurally impair Search distribution or ad monetization enough that normalized owner FCF/share cannot approach the Base path."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "The frozen $354.97 price is materially below the locked Bull value of about $543.99; the required veto element is false."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Owner FCF/share",
+      "direction": "recover",
+      "threshold": "move toward the Base path as 2026-27 infrastructure enters service",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Capex / operating cash flow",
+      "direction": "decline",
+      "threshold": "fall materially from the H1 2026 near-100% level",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Google Cloud backlog conversion",
+      "direction": "up",
+      "threshold": "backlog converts with resilient operating economics",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 operating cash flow, capex and Cloud operating margin.",
+    "Updated 2027 capex/AI infrastructure guidance.",
+    "Share issuance/ATM usage and debt balances after the August financing."
+  ],
+  "verdict": "neutral",
+  "archetype_signals": {
+    "price_to_base_value": 1.0585,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.16
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "Price/Base is 1.0585x, which falls in the locked 0.9-1.1 signal-map band and therefore scores 60."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "Price/Base is 1.0585x, which falls in the locked 0.9-1.1 signal-map band and therefore scores 55."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 40,
+      "rationale": "Base terminal fraction is about 74%, below the 80% review threshold, but near-term owner FCF is extraordinarily sensitive to the AI-capex normalization path and strategic equity value is deliberately excluded. This remains a high-sensitivity valuation rather than a robust one."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "Current price requires a substantial owner-FCF recovery from the H1 2026 capex trough."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Base value is below current price, so expected return is highly sensitive to cash-conversion normalization."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "critical",
+      "rationale": "Infrastructure intensity and the treatment of strategic equity holdings can move valuation materially even though terminal concentration itself is below the harness review threshold."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.16,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          0.5,
+          1.5,
+          2.5,
+          3.5,
+          4.5,
+          5.5,
+          6.5,
+          7.5,
+          8.5,
+          10
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          2,
+          5,
+          8,
+          11,
+          14,
+          17,
+          20,
+          23,
+          26,
+          29
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          40
+        ]
+      }
+    }
+  }
+}
