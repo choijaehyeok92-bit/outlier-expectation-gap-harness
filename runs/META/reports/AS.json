@@ -4,64 +4,156 @@
   "as_of_date": "2026-09-18",
   "domain": "asymmetry",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 67.25,
+  "confidence_0_1": 0.75,
+  "bull_score": 80,
+  "bear_score": 50,
+  "bull_case": "AI-driven ad monetization, messaging/Threads monetization and new agent/enterprise products create more than one earnings path. The locked Bull value is about $1,091/share, 1.64x the frozen price.",
+  "bear_case": "A prolonged AI-capex cycle, weaker ad growth, regulation and persistent Reality Labs losses can compress owner FCF for years. The locked Bear value is about $267/share, roughly 40% of the frozen price.",
+  "thesis": "META has meaningful but not classic power-law asymmetry at its current scale. The harness Bull/current ratio is about 1.64x and there are at least two economically distinct upside paths, supporting a 75 upside-path score. A credible 5x path would require roughly an $8.5T equity value and is not treated as realistic. Balance-sheet strength lowers business-extinction risk, but valuation downside remains material and external large-cap base-rate evidence is limited.",
+  "evidence": [
+    {
+      "evidence_id": "META-AS-DCF",
+      "economic_driver": "market_expectations",
+      "claim": "Locked harness scenarios imply approximately $267 Bear, $638 Base and $1,091 Bull per share versus a frozen $665.75 price; Bull/current is about 1.64x and Bear/current about 0.40x.",
+      "source_type": "other",
+      "source": "Harness locked owner-FCF/share DCF in META EV report",
+      "period": "10-year forecast from 2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 1.639,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "META-AS-Q2-MONETIZATION",
+      "economic_driver": "ai_ad_monetization",
+      "claim": "Q2 2026 revenue grew 28% YoY while ad impressions rose 14% and average price per ad rose 12%, providing two operating drivers rather than a pure multiple-expansion thesis.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-18",
+      "value": 0.28,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-AS-LIQUIDITY",
+      "economic_driver": "permanent_loss_buffer",
+      "claim": "At June 30, 2026 Meta held about $90.26B of cash and marketable securities versus about $83.66B of long-term debt, while Q2 operating cash flow was $31.86B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-18",
+      "value": 6596000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-AS-CAPEX",
+      "economic_driver": "cash_conversion_after_ai_capex",
+      "claim": "Q2 2026 free cash flow was only $0.784B and full-year capex guidance was $130B-$145B, showing that the downside path can be driven by sustained cash-investment intensity even with strong revenue growth.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
+      "period": "Q2/FY2026 guidance",
+      "as_of_date": "2026-09-18",
+      "value": 145000000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-AS-PROB",
+      "economic_driver": "probability_calibration",
+      "claim": "A deliberately conservative illustrative probability set of 25% Bear / 55% Base / 20% Bull applied to the locked scenario values produces an expected value near $636/share, approximately the Base value and slightly below the frozen price; no external matched large-cap base rate was used.",
+      "source_type": "other",
+      "source": "Analyst probability calibration applied to frozen harness scenarios",
+      "period": "2026-09-18",
+      "as_of_date": "2026-09-18",
+      "value": 635.85,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "A 5x equity-value outcome from the frozen market capitalization would require roughly $8.5T, so the classic outlier-return path is constrained by starting scale.",
+    "Q2 2026 FCF fell to $0.784B as infrastructure spending accelerated, making owner-cash-flow recovery the key assumption behind Base and Bull.",
+    "Advertising remains the dominant economic engine; messaging, subscriptions, agents and enterprise AI are not yet large enough to diversify downside fully.",
+    "Regulatory or platform-access shocks could reduce monetization without creating bankruptcy risk, so business survival and investment return are distinct."
+  ],
+  "unknowns": [
+    "No clean historical base rate was frozen for how often companies starting above roughly $1.5T market capitalization compound to 3x or 5x within 5-10 years.",
+    "The maintenance-versus-growth split of 2026-2030 AI infrastructure spending remains undisclosed and materially affects the probability of FCF normalization."
+  ],
+  "falsifiers": [
+    "Owner FCF remains structurally below $30B through 2028 despite double-digit revenue growth.",
+    "Ad impressions and price per ad both decelerate to low-single-digit growth for several quarters without offsetting messaging or new-product revenue.",
+    "Net liquidity turns materially negative while committed infrastructure spending continues to rise and operating cash flow weakens."
+  ],
   "hard_veto_flags": [
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Frozen price $665.75 is well below the locked Bull value of about $1,091; the required veto element is false."
     },
     {
       "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Meta has positive net cash versus long-term debt, very large operating cash flow and positive Bear-case owner FCF. Valuation drawdown is material but is not business-value extinction under the veto definition."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
+  "key_kpis": [
+    {
+      "name": "Owner FCF / free cash flow",
+      "direction": "recover after AI buildout",
+      "threshold": "> $30B annualized by 2028",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Ad impressions and price per ad",
+      "direction": "remain jointly positive",
+      "threshold": "neither metric persistently low-single-digit or negative",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Net cash versus debt",
+      "direction": "remain non-stressed",
+      "threshold": "cash + marketable securities broadly cover debt or OCF remains clearly above refinancing needs",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Recompute Bear/Base/Bull probabilities after Q3 2026 capex, FCF and 2027 infrastructure guidance.",
+    "Collect an external large-cap 3x/5x base-rate dataset before raising probability_calibration.",
+    "Separate realized revenue from Threads, WhatsApp, subscriptions and enterprise AI to test whether upside paths are genuinely independent."
+  ],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "upside_path",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Bull/current is about 1.64x and at least two independent economic paths exist (core AI ad monetization and incremental messaging/new AI products). This matches the 1.6-2.5 with 2+ paths observable row. A 5x path is not assumed."
     },
     {
       "criterion_id": "permanent_loss",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "Bear/current is about 0.40x, near the lower boundary of the 0.4-0.6 band; band-centre interpolation is about 60 after 5-point rounding. Meta is net cash versus long-term debt and operating cash flow exceeds debt on an annual basis, adding the rubric +10 modifier."
     },
     {
       "criterion_id": "probability_calibration",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 55,
+      "rationale": "Scenario probabilities and sensitivity are explicit, but no matched historical base-rate dataset was frozen. This is above purely narrative 50 but below the 75 anchor requiring base-rate/sensitivity support."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Starting market capitalization makes a true 5x path unusually demanding even though a 1.6x Bull path is credible."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Large committed AI infrastructure spending can impair owner FCF for years without threatening solvency."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Matched large-cap historical outcome frequencies were not available in the frozen evidence set."
     }
-  }
+  ]
 }
