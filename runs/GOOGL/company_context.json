@@ -1,0 +1,55 @@
+{
+  "ticker": "GOOGL",
+  "company_name": "Alphabet Inc.",
+  "as_of_date": "2026-09-21",
+  "currency": "USD",
+  "current_price": 354.97,
+  "shares_diluted": 12230000000,
+  "market_cap_usd": 4341283100000,
+  "enterprise_value": 4287336570000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "Alphabet 2025 Form 10-K filed 2026-02-05",
+    "Alphabet Q1 2026 Form 10-Q filed 2026-04-30",
+    "Alphabet Q2 2026 Form 10-Q filed 2026-07-30",
+    "Alphabet 2026-08-10 Form 8-K senior notes financing",
+    "GOOGL 2026-09-21 closing price $354.97"
+  ],
+  "special_questions": [
+    "Can Search and Google Cloud convert the 2026 AI infrastructure buildout into durable owner FCF/share growth?",
+    "How should Cloud backlog, strategic equity holdings including SpaceX, and rising debt/equity financing affect valuation?",
+    "How much permanent value risk comes from antitrust remedies, AI search economics and distribution changes?"
+  ],
+  "net_cash_per_share": 4.411,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "No reproducible full 5-year valuation percentile frozen; use deterministic owner-FCF/share scenarios in EV.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {},
+    "production_by_region": {},
+    "critical_supplier_regions": [
+      "United States",
+      "Taiwan"
+    ],
+    "export_control_dependencies": [
+      "Advanced AI accelerators and semiconductor supply chains"
+    ],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": []
+  }
+}
