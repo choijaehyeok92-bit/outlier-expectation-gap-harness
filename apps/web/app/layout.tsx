@@ -21,7 +21,18 @@ const NAV = [
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body>
+      {/*
+        Grammarly and similar extensions write attributes onto <body>
+        (`data-gr-ext-installed`, `data-new-gr-c-s-check-loaded`) before React
+        hydrates, which React then reports as a server/client mismatch. It is
+        the extension, not this app: with no extension loaded, these pages
+        hydrate with zero warnings.
+
+        This suppresses the warning for <body>'s own attributes and nothing
+        else — it is one level deep, so a real mismatch anywhere inside still
+        surfaces. It is not a way to quiet hydration checking.
+      */}
+      <body suppressHydrationWarning>
         <header className="border-b" style={{ borderColor: 'var(--border)' }}>
           <div className="mx-auto flex max-w-7xl items-center gap-6 px-6 py-4">
             <Link href="/" className="font-semibold no-underline" style={{ color: 'var(--text)' }}>
