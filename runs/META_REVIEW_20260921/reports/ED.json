@@ -4,20 +4,129 @@
   "as_of_date": "2026-09-21",
   "domain": "evidence_quality",
   "role": "evidence_auditor",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 70,
+  "confidence_0_1": 0.9,
+  "thesis": "핵심 재무·사용자·광고·자본약정 수치는 대부분 SEC 10-K/10-Q 또는 회사 IR로 직접 추적 가능해 출처 품질은 높다. 다만 SEC 직접 fetch가 GitHub Actions에서 403으로 막혀 원문을 외부에서 재구성했고, AI 광고 성과가 여러 긍정 도메인에 반복 사용된다. 가장 중요한 미확인 변수는 2025~26 AI 인프라 지출의 유지성/성장성 분해와 그 증분 ROIC다. 따라서 현재 점수 자체보다 향후 FCF/share 회복과 AI 투자수익 검증이 핵심이다.",
+  "evidence": [
+    {
+      "evidence_id": "META-ED-PACK",
+      "economic_driver": "source_quality",
+      "claim": "The validated financial pack contains 9 primary SEC filings and 72 facts, with zero facts requiring review; 71 facts are GAAP and one is not-applicable.",
+      "source_type": "other",
+      "source": "runs/META_REVIEW_20260921/sources/financials/normalized_financials.json",
+      "period": "2023-2026 filings",
+      "as_of_date": "2026-09-21",
+      "value": {
+        "documents": 9,
+        "facts": 72,
+        "facts_requiring_review": 0
+      },
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-ED-WARN",
+      "economic_driver": "source_quality",
+      "claim": "The pack records a medium-severity extraction warning because direct SEC fetch from GitHub Actions returned HTTP 403; the filings were reconstructed from public SEC filing text without economic normalization.",
+      "source_type": "other",
+      "source": "runs/META_REVIEW_20260921/sources/financials/normalized_financials.json",
+      "period": "Stage 0",
+      "as_of_date": "2026-09-21",
+      "value": "SEC direct fetch 403; reconstructed primary-source pack",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-ED-YTD",
+      "economic_driver": "definition_consistency",
+      "claim": "Quarterly cash-flow facts are kept as YTD where Meta reports them YTD; the preprocessor explicitly did not synthesize standalone quarterly cash flow, reducing period-definition distortion.",
+      "source_type": "other",
+      "source": "runs/META_REVIEW_20260921/sources/financials/normalized_financials.json",
+      "period": "2024-2026 quarterlies",
+      "as_of_date": "2026-09-21",
+      "value": "no synthetic quarterly cash flow",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-ED-CONCENTRATION",
+      "economic_driver": "ai_ad_monetization",
+      "claim": "The aggregate flags ai_ad_monetization as a shared positive economic driver across disruptive_innovation and structural_leadership; this is evidence concentration to audit, not an automatic score penalty.",
+      "source_type": "other",
+      "source": "runs/META_REVIEW_20260921/aggregate.json",
+      "period": "2026-09-21 review run",
+      "as_of_date": "2026-09-21",
+      "value": [
+        "disruptive_innovation",
+        "structural_leadership"
+      ],
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-ED-CAPEX",
+      "economic_driver": "ai_reinvestment",
+      "claim": "The same filing set documents very high capex/contract commitments but does not disclose a decision-useful maintenance-versus-growth split or incremental NOPAT attributable to AI infrastructure; RF therefore correctly treats incremental ROIC as uncertain rather than observed.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "H1/Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": null,
+      "fact_or_estimate": "interpretation"
+    }
+  ],
+  "counterevidence": [
+    "Several product-adoption and AI-performance claims come from Meta corporate posts rather than audited filing metrics.",
+    "The frozen share price is sourced from a secondary market-data page, although the valuation arithmetic is deterministic once price is fixed.",
+    "The OBBBA tax charge is only an adjustment candidate; treating it as economically nonrecurring still requires analyst judgment.",
+    "Repeated reuse of AI ad-performance evidence can make independent domains appear more corroborated than the underlying number of distinct economic facts."
+  ],
+  "unknowns": [
+    "A primary-source split of AI infrastructure capex between maintenance-like and growth investment is unavailable.",
+    "Incremental NOPAT/ROIC directly attributable to the 2025-26 AI infrastructure step-up is not disclosed."
+  ],
+  "falsifiers": [
+    "A later filing restates a material financial fact used in the pack or changes the definition/period basis enough to invalidate cross-period comparisons.",
+    "AI ad-performance lifts fail to repeat while the same evidence continues to support multiple domains.",
+    "FCF/share remains structurally below 2025 levels through 2028 despite strong revenue growth, invalidating the assumed cash-conversion recovery."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
+  "key_kpis": [
+    {
+      "name": "TTM owner FCF per share",
+      "direction": "recover after AI buildout",
+      "threshold": ">2025 level by 2028",
+      "cadence": "quarterly TTM/annual"
+    },
+    {
+      "name": "AI capex return bridge",
+      "direction": "become directly observable",
+      "threshold": "disclosed or inferable incremental profit/FCF sufficient to support >cost-of-capital returns",
+      "cadence": "annual"
+    },
+    {
+      "name": "Ad monetization corroboration",
+      "direction": "repeat across independent metrics",
+      "threshold": "positive ad price/impression plus measured conversion lift",
+      "cadence": "quarterly/semiannual"
+    }
+  ],
+  "next_checks": [
+    "Reconcile Q3 2026 filing against the current 72-fact pack and refresh any changed definitions.",
+    "Audit capex, finance leases and contractual commitments against realized OCF/FCF after Q3 and FY2026.",
+    "Reduce evidence concentration by seeking independent advertiser/commerce economics rather than reusing the same AI ranking metrics."
+  ],
   "verdict": "neutral",
   "subscores": [],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "source_reconstruction",
+      "severity": "minor",
+      "rationale": "SEC-hosted-runner access failed, although source URLs and filing periods are explicit and validate-pack found no invariant failures."
+    },
+    {
+      "criterion_id": "ai_incremental_roic",
+      "severity": "critical",
+      "rationale": "The central return on unprecedented AI investment remains economically inferred rather than directly reported."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
