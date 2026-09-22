@@ -1,62 +1,46 @@
 # Digest — MELI (as of 2026-09-21)
 
-> Reconstructed v3.3 triage output. Deterministic policy arithmetic is mirrored because the current connector environment cannot replay the repository CLI directly.
+> Reconstructed v3.3 full-core output. Deterministic policy arithmetic is mirrored because the current connector environment cannot replay the repository CLI directly.
 
-score **62.93** (ex-valuation **68.50**, Starter / Watch) · archetype **non_fit** · veto **PENDING_REVIEW** · state **INCOMPLETE**
+score **72.79** (ex-valuation **75.84**, Emerging Outlier) · archetype **non_fit** · state **EARLY_EXIT_NON_FIT**
 
-signals: price/Base **0.9197x** · forward revenue CAGR **22%** · market cap **$92.29B** · reachable(raw) **['compounder']**
+## Core scorecard
 
-## Universal triage
+| Domain | Score |
+|---|---:|
+| SL — Structural Leadership | **86.25** |
+| CP — Customer / Product | **83.75** |
+| MT — Moat Trajectory | **85.00** |
+| RF — Reinvestment / FCF | **59.00** |
+| MA — Management / Allocation | **78.50** |
+| FS — Financial Survival | **78.75** |
+| EV — Expectation / Valuation | **55.50** |
+| AS — Asymmetry | **58.25** |
+| DI — Disruptive Innovation | **86.75** |
 
-| Agent | Domain | Score | Bear–Bull | Result |
-|---|---|---:|---:|---|
-| EV | Expectation / Valuation | 55.50 | 35–80 | neutral |
-| AS | Asymmetry | 58.25 | 35–85 | neutral |
-| DI | Disruptive Innovation | 86.75 | 70–95 | support |
-| FS | Financial Survival | 78.75 | 60–90 | support |
+## Why Compounder fails
 
-## What changed after triage
+MELI clears the price, moat, management, financial-survival and EV conditions, but fails the two binding reinvestment gates:
 
-**Compounder remains reachable.** It already clears:
-- price/Base 0.9197 <= 1.2
-- FS 78.75 >= 72
-- EV 55.5 >= 42
+- **RF 59 < 76**
+- **incremental ROIC 65 < 75**
 
-It still needs MT >=76, RF >=76, MA >=72, incremental ROIC >=75 and reinvestment runway >=70.
+TTM reinvestment absorption is about **29.3%**, producing a locked runway score of **70**. The problem is return quality, not lack of opportunity. TTM adjusted FCF is approximately **$1.127B**, about **$22.2/share**, versus roughly **$29.2/share** in FY2025. Shares are flat, so the deterioration is cash conversion rather than dilution.
 
-**Growth** is no longer reachable because AS **58.25 < 65**.  
-**Outlier Growth** fails AS **58.25 < 65** and permanent_loss **25 < 50**.  
-**Buffett Value** fails price/Base and AS.  
-**Moonshot** fails market-cap and AS gates.
+H1 2026 revenue rose **49.4%** and gross profit **36.8%**, but operating income fell from **$1.588B to $1.294B**. Q2 credit-card NIMAL was **-2.5%**. At the same time, post-shipping-threshold cohorts show better retention and ecosystem engagement, so the evidence supports a productive investment thesis but not yet Compounder-level realized incremental returns.
 
-## Asymmetry
+## Strong areas
 
-Locked DCF: Bear **$138.09**, Base **$1,979.43**, Bull **$4,719.69** versus price **$1,820.47**.
+Customer/product, structural leadership and moat remain strong. Q2 ecosystemic users grew 37% YoY, generated 70% more GMV per user than marketplace-only users, and MELI continued scaling commerce, payments, credit, advertising and subscriptions.
 
-- Bull/current = **2.59x** with 3+ monetized paths -> upside_path **90**
-- Bear/current = **0.076x**, no net-cash modifier -> permanent_loss **25**
-- probability_calibration **60**
-- weighted AS = **58.25**
+Management also scores well: the 2026 proxy reports the vast majority of executive target compensation as performance-based/long-term, and board-led CEO succession plus audit oversight support governance quality.
 
-MELI therefore has large upside optionality but also unusually wide permanent-value dispersion.
+## Planner
 
-## Disruptive innovation
+`EARLY_EXIT_NON_FIT`
 
-Q2 fintech MAUs reached **88M**, unique active buyers **89M**, and ecosystemic users grew **37% YoY**. Ecosystemic marketplace users generated **70% more GMV per user** than marketplace-only users. Credit exceeded **$16B** and advertising revenue grew **73% in USD**. The limiting issue is economic quality: credit-card NIMAL was **-2.5%**. citeturn663693view1turn455895search0
+MO, ED, RT and IC are intentionally not run for this snapshot.
 
-## Financial survival
+### Re-entry gate
 
-At June 30, MELI reported **$13.176B total debt**, **$6.751B available liquidity** and **$6.425B net debt**. H1 adjusted FCF remained positive at **$158M** despite rapid credit investment. Diluted weighted-average shares were essentially unchanged YoY. citeturn651267view1turn651267view0turn335697view3
-
-FS-owned Hard Vetoes are cleared. Dilution watch is **normal**.
-
-## Next plan
-
-`domain_analysis`:
-- **SL** — Structural Leadership
-- **CP** — Customer / Product
-- **MT** — Moat Trajectory
-- **RF** — Reinvestment / FCF
-- **MA** — Management / Allocation
-
-The key Compounder gate is likely to be RF: current ecosystem growth is strong, but the harness still needs evidence that incremental returns and owner FCF/share justify the current investment intensity.
+The cleanest Compounder re-entry condition is **RF >=76 and incremental ROIC >=75**. In practical terms, adjusted FCF/share must recover materially while credit-card economics and operating-profit conversion improve. Price decline alone is insufficient.
