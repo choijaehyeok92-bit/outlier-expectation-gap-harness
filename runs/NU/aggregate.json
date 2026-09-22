@@ -502,12 +502,10 @@
     "pack_present": true
   },
   "next_plan": {
-    "stage": "ic",
-    "agents": {
-      "investment_committee": "IC"
-    },
-    "execution_control": "continue",
-    "statement": "Evidence audit and Red Team are complete; all Hard Vetoes are cleared. Run IC next."
+    "stage": "complete",
+    "agents": {},
+    "execution_control": "stop_complete",
+    "statement": "IC is complete. The analysis workflow is complete for the 2026-09-21 frozen snapshot."
   },
   "dispersion_review": {
     "metric": "scored domain mean downside skew",
@@ -518,5 +516,153 @@
     "most_downside_skewed": "reinvestment_fcf",
     "position_before": "2-4%",
     "position_after": "0-2%"
+  },
+  "ic_verdict": {
+    "agent_id": "IC",
+    "ticker": "NU",
+    "as_of_date": "2026-09-21",
+    "domain": "investment_committee",
+    "role": "chair",
+    "analysis_status": "complete",
+    "score_0_100": 78.69,
+    "confidence_0_1": 0.91,
+    "thesis": "NU는 v3.3에서 Compounder 조건과 Hard Veto 9개를 모두 통과했다. 고객가치·해자·재투자 수익성은 강하고 가격도 Base 아래다. 그러나 AS 63.5, FS 73.75, 90+ NPL 6.9%, 하락한 자본비율, founder voting control과 은행형 RF 방법론 불확실성이 남아 있다. 하방분산으로 mechanical band가 0-2%까지 축소된 만큼 IC는 NORMAL로 올리지 않고 STARTER 1-2%만 승인하며 macro pacing 0.5x로 분할 집행한다.",
+    "evidence": [
+      {
+        "evidence_id": "NU-IC-FIT",
+        "economic_driver": "deterministic_fit",
+        "claim": "Aggregate score is 78.69 with 100% core coverage; Compounder is the only eligible archetype and deterministic fit score is 81.6.",
+        "source_type": "other",
+        "source": "runs/NU/aggregate.json",
+        "period": "2026-09-21 run",
+        "as_of_date": "2026-09-21",
+        "value": "78.69 / Compounder fit 81.6",
+        "fact_or_estimate": "interpretation"
+      },
+      {
+        "evidence_id": "NU-IC-VETO",
+        "economic_driver": "hard_veto_gate",
+        "claim": "ED/RT review leaves all nine Hard Vetoes cleared, with no confirmed, unresolved or pending veto.",
+        "source_type": "other",
+        "source": "runs/NU/aggregate.json",
+        "period": "2026-09-21 run",
+        "as_of_date": "2026-09-21",
+        "value": "CLEARED",
+        "fact_or_estimate": "interpretation"
+      },
+      {
+        "evidence_id": "NU-IC-VAL",
+        "economic_driver": "valuation",
+        "claim": "Locked bank-adjusted valuation is Bear $4.76, Base $18.56 and Bull $34.85 versus frozen price $14.03; price/Base is 0.7558x.",
+        "source_type": "other",
+        "source": "runs/NU/aggregate.json",
+        "period": "10-year locked valuation",
+        "as_of_date": "2026-09-21",
+        "value": "$4.76 / $18.56 / $34.85; 0.7558x",
+        "fact_or_estimate": "estimate"
+      },
+      {
+        "evidence_id": "NU-IC-QUALITY",
+        "economic_driver": "franchise_quality",
+        "claim": "Q2 reported net income was $1.061B, ROE 33%, risk-adjusted NIM 12.4%, activity 83.5% and ARPAC $17.1, supporting strong customer economics and reinvestment capacity.",
+        "source_type": "filing",
+        "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+        "period": "Q2 2026",
+        "as_of_date": "2026-08-13",
+        "value": "33% ROE / 12.4% risk-adjusted NIM",
+        "fact_or_estimate": "fact"
+      },
+      {
+        "evidence_id": "NU-IC-RISK",
+        "economic_driver": "credit_and_capital_risk",
+        "claim": "Q2 90+ NPL was 6.9%; Brazil CET1 declined to 11.9% and CAR to 15.7% as risk-weighted assets grew, although capital remained above minimums with $1.848B excess margin.",
+        "source_type": "filing",
+        "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm",
+        "period": "Q2 2026",
+        "as_of_date": "2026-08-13",
+        "value": "6.9% / 11.9% / 15.7%",
+        "fact_or_estimate": "fact"
+      },
+      {
+        "evidence_id": "NU-IC-PACING",
+        "economic_driver": "deployment_pacing",
+        "claim": "Dispersion review reduces the mechanical 2-4% band to 0-2%, and the fresh macro overlay applies a 0.5x purchase-pacing multiplier without changing the fundamental score.",
+        "source_type": "other",
+        "source": "runs/NU/aggregate.json",
+        "period": "2026-09-21 run",
+        "as_of_date": "2026-09-21",
+        "value": "0-2% / 0.5x",
+        "fact_or_estimate": "interpretation"
+      }
+    ],
+    "counterevidence": [
+      "Current price is materially below the locked Base value, so valuation support is stronger than the final STARTER state alone suggests.",
+      "ROE, risk-adjusted NIM, ARPAC and per-share earnings are improving despite continued international and product investment.",
+      "All local regulated subsidiaries remain above minimum capital requirements and retail deposits provide the dominant funding base.",
+      "The H1 buyback was executed at an average price well below the frozen Base value, supporting capital-allocation discipline."
+    ],
+    "unknowns": [
+      "Full-cycle loss rates on newly expanded higher-risk credit cohorts.",
+      "Normalized Mexico/Colombia ROE and capital intensity after full banking scale.",
+      "Explicit group target capital ratios and sustainable payout ratio.",
+      "How much of the current 33% ROE persists through a weaker Latin American credit cycle.",
+      "Quantified NuFormer contribution to loss-adjusted underwriting returns."
+    ],
+    "falsifiers": [
+      "ROE falls below the mid-20s for multiple periods while 90+ NPL/ECL rises and capital buffers continue shrinking.",
+      "Mexico/Colombia fail to earn returns above cost of equity after scaling, forcing recurrent equity or high-cost funding support.",
+      "A refrozen Base value falls to or below market price because distributable earnings/share no longer tracks the locked Base path."
+    ],
+    "hard_veto_flags": [],
+    "key_kpis": [
+      {
+        "name": "ROE + risk-adjusted NIM + 90+ NPL",
+        "direction": "quality maintained",
+        "threshold": "high-20s+ ROE with stable loss-adjusted margin and no persistent NPL deterioration",
+        "cadence": "quarterly"
+      },
+      {
+        "name": "CET1/CAR excess margin",
+        "direction": "stable",
+        "threshold": "remain comfortably above regulatory minima as RWA expands",
+        "cadence": "quarterly"
+      },
+      {
+        "name": "Per-share distributable earnings proxy",
+        "direction": "up",
+        "threshold": "remain on or above the locked Base path without material dilution",
+        "cadence": "quarterly/annual"
+      }
+    ],
+    "next_checks": [
+      "Q3 2026 NPL/ECL, ROE and capital-ratio bridge.",
+      "Mexico/Colombia profitability, deposit pricing and capital absorption.",
+      "Refreeze valuation after new capital/payout evidence or material price change."
+    ],
+    "verdict": "support",
+    "ic_state": "STARTER",
+    "plain_language": {
+      "business": "Nu는 브라질·멕시코·콜롬비아에서 신용카드, 예금, 대출, 투자와 기업금융 서비스를 모바일 중심으로 제공하는 디지털 은행이다. 지점망 비용이 낮고 고객 활동률이 높다는 점이 핵심 경쟁력이다.",
+      "opportunity": "브라질에서 고객당 금융상품 사용을 늘리고, 멕시코와 콜롬비아를 브라질과 비슷한 수익구조로 키우는 것이 가장 큰 기회다. 현재 높은 자기자본이익률과 낮은 서비스 비용이 유지되면 장기간 복리성장이 가능하다.",
+      "risk": "가장 큰 위험은 빠르게 커진 대출에서 연체와 대손이 예상보다 커지는 것이다. 성장에 필요한 규제자본이 늘거나 멕시코·콜롬비아가 충분한 수익을 내지 못하면 높은 자기자본이익률과 주당 가치 성장이 동시에 둔화될 수 있다.",
+      "decision_reason": "사업 품질과 Compounder 조건은 통과했고 현재 가격도 Base 가치보다 낮지만, 신용사이클·자본비율·하방 시나리오 폭과 은행형 가치평가의 불확실성이 남아 있다. 그래서 최종 상태는 Starter 1~2%로 제한하고, 현 거시환경에서는 평소의 절반 속도로 나누어 집행한다."
+    },
+    "subscores": [],
+    "uncertainties": [],
+    "valuation_inputs": {
+      "valuation_percentile_5y": null,
+      "revenue_cagr_next_3y": null,
+      "scenarios": {
+        "bear": {
+          "owner_fcf_per_share": []
+        },
+        "base": {
+          "owner_fcf_per_share": []
+        },
+        "bull": {
+          "owner_fcf_per_share": []
+        }
+      }
+    }
   }
 }
