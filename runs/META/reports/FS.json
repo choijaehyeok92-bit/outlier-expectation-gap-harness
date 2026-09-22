@@ -4,56 +4,170 @@
   "as_of_date": "2026-09-21",
   "domain": "financial_survival",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 70,
+  "confidence_0_1": 0.88,
+  "bull_score": 85,
+  "bear_score": 55,
+  "bull_case": "$90B+ 현금·유가증권과 연환산 기준 강한 영업현금흐름이 대규모 AI 투자를 자체적으로 상당 부분 흡수한다. 장기 고정금리 채권 만기가 분산돼 있어 신용경색에서도 핵심 사업과 AI 투자를 계속할 수 있다.",
+  "bear_case": "2026년 들어 현금창출보다 인프라 의무가 훨씬 빠르게 커졌다. 미개시 리스와 비취소 약정이 수천억 달러이며, 2026~27년 현금지출 집중과 법률 비용이 겹치면 순현금 쿠션이 빠르게 줄고 추가 차입 의존도가 높아질 수 있다.",
+  "thesis": "Meta의 단기 생존위험은 낮다. 6월말 현금·유가증권 $90.26B, Notes $84B, H1 OCF $64.09B로 영업 자체가 자금을 만든다. 반면 비취소 계약 $349.31B와 미개시 리스 $278.99B(+7월 추가 $68B)는 향후 현금흐름 변동성을 크게 높인다. H1 희석주식수는 전년보다 감소했지만 약정/TTM 매출 비율이 약 1.53배여서 dilution_offbalance 관측표의 낮은 축 55점이 구속한다.",
+  "evidence": [
+    {
+      "evidence_id": "META-FS-LIQ",
+      "economic_driver": "liquidity",
+      "claim": "At June 30, 2026 cash, cash equivalents and marketable securities were $90.26B; aggregate principal of notes was $84.0B, with maturities from 2027 through 2066.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": {
+        "liquid_assets": 90260000000,
+        "notes": 84000000000
+      },
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-FS-OCF",
+      "economic_driver": "cash_generation",
+      "claim": "H1 2026 operating cash flow was $64.09B; FY2025 OCF was $115.8B, demonstrating that the operating business remains strongly internally funded despite rising capex.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-21",
+      "value": 64088000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-FS-COMMIT",
+      "economic_driver": "infrastructure_commitments",
+      "claim": "Meta disclosed $349.31B of non-cancelable contractual commitments at June 30, 2026, with $53.52B and $81.65B due in 2026 and 2027; uncommenced lease obligations were $278.99B and July added about $68B of data-center leases.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "2026-06-30 and July 2026 subsequent event",
+      "as_of_date": "2026-09-21",
+      "value": 349310000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-FS-DILUTION",
+      "economic_driver": "share_dilution",
+      "claim": "H1 diluted weighted-average shares were 2.565B versus 2.580B in H1 2025, even though H1 share-based compensation expense was $13.626B; there were no share repurchases in H1 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "H1 2026 vs H1 2025",
+      "as_of_date": "2026-09-21",
+      "value": -0.0058,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-FS-LEGAL",
+      "economic_driver": "legal_commitments",
+      "claim": "The August 2026 bipartisan attorneys-general agreement contemplates about $18B of payments over ten years and an expected ~$10B Q3 2026 legal expense accrual; July operating guidance was otherwise unchanged.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Metas-Agreement-With-Bipartisan-Attorneys-General-Calling-on-TikTok-and-YouTube-to-Join-Us-in-Supporting-Teens/default.aspx",
+      "period": "2026-08-26",
+      "as_of_date": "2026-09-21",
+      "value": 18000000000,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "H1 2026 free cash flow was compressed by extraordinary AI capex, including just $0.784B in Q2.",
+    "미개시 리스와 비취소 계약이 현재 유동자산보다 훨씬 커 장기 재무 유연성은 과거보다 낮다.",
+    "2026년 5월 $24.91B 순채권 발행으로 현금쿠션을 보강해 외부조달 사용이 이미 증가했다.",
+    "RSU 미인식 보상비용과 예약 주식 수는 크므로 주가가 하락할 경우 경제적 SBC 부담이 커질 수 있다."
+  ],
+  "unknowns": [
+    "$349.31B 계약 중 실제 현금지출 시점·취소 가능성·상대방별 재협상 가능성의 세부 내역은 공시가 제한적이다."
+  ],
+  "falsifiers": [
+    "TTM OCF가 $84B 총차입 아래로 하락한 상태가 지속된다.",
+    "2027년 약정 지출을 위해 반복적 대규모 채권·주식 발행이 필요해진다.",
+    "희석주식수 CAGR이 3년 연속 8% 이상으로 상승하면서 owner FCF/share가 정체된다."
+  ],
   "hard_veto_flags": [
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Operating activities generate substantial cash; H1 2026 OCF was $64.09B. Debt issuance supports discretionary acceleration of infrastructure rather than a business that cannot fund operations without repeated external capital."
     },
     {
       "veto": "장기간 지속되는 과도한 희석",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "The veto's required elements are not met: H1 diluted weighted-average shares declined YoY, so long-duration excessive net dilution and per-share-value destruction are not established."
     },
     {
       "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Cash and marketable securities roughly match notes, operating cash generation is very strong, and Bear valuation still assumes meaningful owner FCF rather than business-value extinction."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "TTM operating cash flow / notes",
+      "direction": "remain above 1x",
+      "threshold": ">1.0x",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Contractual commitments / TTM revenue",
+      "direction": "stabilize or decline",
+      "threshold": "<1.5x over time",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Diluted weighted-average shares",
+      "direction": "flat to down",
+      "threshold": "<=1% annual net dilution",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Update commitments and uncommenced lease obligations after Q3 filing.",
+    "Recalculate TTM OCF/debt and capex/OCF after Q3 2026.",
+    "Track net share count against rising SBC and the absence/resumption of buybacks."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "liquidity_leverage",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "The 75 'strong liquidity' anchor fits $90.26B liquid securities against ~$84B notes plus strong OCF. The 90 'net cash/very strong' anchor is excluded because the net-cash cushion is small relative to rapidly rising infrastructure commitments."
     },
     {
       "criterion_id": "stress_survival",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "The 75 anchor fits a business able to fund itself from internal cash generation through stress. The 90 anchor is excluded because 2026-27 infrastructure commitments are large enough that continued investment may still use external debt markets."
     },
     {
       "criterion_id": "dilution_offbalance",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 55,
+      "rationale": "Share dilution is favorable (H1 diluted shares -0.6% YoY), but the two-axis observable uses the lower score. TTM revenue is about $228.25B (FY2025 $200.97B + H1 2026 $117.11B - H1 2025 $89.83B); $349.31B non-cancelable commitments are ~1.53x TTM revenue, placing the off-balance axis in the 1~2x row = 55."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "Long-dated infrastructure obligations have increased far faster than historical balance-sheet debt."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "material",
+      "rationale": "The contractual-commitment ratio is high even though accounting share dilution is currently contained."
+    }
+  ],
+  "dilution_metrics": {
+    "annualized_dilution": -0.0058,
+    "three_year_diluted_share_cagr": null,
+    "three_year_cumulative_dilution": null,
+    "consecutive_years_material_dilution": 0,
+    "per_share_value_proxy": "owner_fcf_per_share",
+    "per_share_value_growth": null,
+    "structural_financing_need": false,
+    "rationale": "H1 diluted weighted-average shares fell from 2.580B to 2.565B YoY. SBC is high, but net dilution is not currently persistent or excessive."
+  },
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
@@ -68,5 +182,6 @@
         "owner_fcf_per_share": []
       }
     }
-  }
+  },
+  "geo_events_reviewed": []
 }
