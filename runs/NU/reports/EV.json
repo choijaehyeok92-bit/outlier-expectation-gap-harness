@@ -1,0 +1,209 @@
+{
+  "agent_id": "EV",
+  "ticker": "NU",
+  "as_of_date": "2026-09-21",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 68,
+  "confidence_0_1": 0.8,
+  "bull_score": 85,
+  "bear_score": 45,
+  "bull_case": "Nu sustains high-teens/20%+ growth with 30%+ ROE, Mexico and Colombia scale toward Brazil-like economics, and data/AI improves underwriting enough to support materially higher distributable earnings per share.",
+  "bear_case": "Credit growth outruns underwriting, NPL/ECL and funding costs rise, Brazil matures faster than expected, and required capital retention prevents reported earnings growth from becoming distributable owner earnings.",
+  "thesis": "At $14.03, NU trades at about 0.756x the locked Base value of $18.56. Q2 2026 delivered $1.06B net income and 33% ROE while customers reached 139M, but banking cash cannot be treated as excess cash. The key valuation issue is how much earnings can be distributed after retaining capital for 20%+ growth. Current price allows Base execution with a meaningful, not extreme, margin of safety.",
+  "evidence": [
+    {
+      "evidence_id": "NU-EV-Q2",
+      "economic_driver": "earnings_power",
+      "claim": "Q2 2026 accounting revenue was $5.513B and net income $1.061B; managerial ROE was 33%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 1061089000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-EV-GROWTH",
+      "economic_driver": "customer_monetization",
+      "claim": "Q2 customers reached 138.9M, ARPAC $17.1, and managerial revenue $5.876B; revenue grew 39% YoY on an FX-neutral basis.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 138900000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-EV-CREDIT",
+      "economic_driver": "credit_risk",
+      "claim": "The Q2 credit portfolio was $39.4B, up 37% YoY, while 15-90 NPL improved to 4.8% and 90+ NPL rose to 6.9%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 39400000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-EV-CAPITAL",
+      "economic_driver": "capital_retention",
+      "claim": "Q2 total equity was $13.252B and diluted weighted-average shares were 4.904837B; NU also repurchased $500.4M of shares in H1.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-09-21",
+      "value": 13251721000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-EV-DCF",
+      "economic_driver": "market_expectations",
+      "claim": "Using the locked 9%/10-year policy and a bank-specific distributable owner-earnings/share proxy, Bear/Base/Bull values are about $4.76/$18.56/$34.85; price/Base is 0.7558x.",
+      "source_type": "other",
+      "source": "Harness locked owner-FCF/share DCF using bank-specific distributable owner-earnings proxy",
+      "period": "10-year model from 2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 18.563,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "The valuation proxy is structurally less direct than industrial FCF because distributable earnings depend on capital requirements and local regulatory buffers.",
+    "Q2 90+ NPL rose to 6.9% as the portfolio intentionally moved into higher-risk/higher-return segments.",
+    "Brazil remains the dominant exposure, so BRL, rates and regulation materially affect USD shareholder outcomes.",
+    "The $1B repurchase authorization improves per-share economics only if shares are bought below intrinsic value and capital remains comfortably above requirements."
+  ],
+  "unknowns": [
+    "Long-run target capital ratios and excess capital available for distribution by geography.",
+    "Normalized loss rates as unsecured and higher-risk cohorts season.",
+    "Sustainable ROE after Mexico/Colombia reach larger scale and Brazil matures.",
+    "A reproducible five-year valuation percentile for a bank-appropriate metric."
+  ],
+  "falsifiers": [
+    "ROE falls structurally below the mid-20s while revenue growth remains capital intensive.",
+    "90+ NPL/ECL rises persistently enough to compress risk-adjusted NIM and capital generation.",
+    "Mexico/Colombia require substantially more capital than assumed without converging toward attractive unit economics."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "The frozen $14.03 price is below the locked Base value and far below the $34.85 Bull value; the veto element is false."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "ROE / risk-adjusted NIM",
+      "direction": "maintain",
+      "threshold": "ROE remains high-20s or better with resilient risk-adjusted NIM",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "90+ NPL / ECL intensity",
+      "direction": "stable or down",
+      "threshold": "credit growth does not produce persistent loss deterioration",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Distributable earnings/share proxy",
+      "direction": "up",
+      "threshold": "grow toward the Base path after required capital retention",
+      "cadence": "annual/quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 ROE, NPL and risk-adjusted NIM.",
+    "Capital ratios and excess capital after the H1 buyback.",
+    "Mexico bank economics after full banking launch."
+  ],
+  "verdict": "support",
+  "archetype_signals": {
+    "price_to_base_value": 0.7558,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.2
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 75,
+      "rationale": "Price/Base is 0.7558x, which falls in the locked 0.7-0.9 signal-map band and therefore scores 75."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 70,
+      "rationale": "Price/Base is 0.7558x, which falls in the locked 0.7-0.9 signal-map band and therefore scores 70."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 55,
+      "rationale": "Base terminal concentration is about 72.8%, below the review threshold, but distributable earnings depend on regulatory capital retention, loss rates and country-level funding. This is more sensitive than a plain industrial FCF model."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "The current price appears discounted to Base, but the Base itself depends on a bank-specific payout-capacity assumption."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Expected return is sensitive to how much high ROE must be retained to fund growth rather than distributed."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "critical",
+      "rationale": "Capital regulation and credit-cycle assumptions can materially change distributable owner earnings even if reported net income remains strong."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.2,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          0.2,
+          0.22,
+          0.24,
+          0.27,
+          0.3,
+          0.33,
+          0.36,
+          0.39,
+          0.42,
+          0.45
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          0.32,
+          0.4,
+          0.5,
+          0.62,
+          0.76,
+          0.92,
+          1.08,
+          1.25,
+          1.42,
+          1.6
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          0.4,
+          0.52,
+          0.68,
+          0.87,
+          1.08,
+          1.33,
+          1.6,
+          1.9,
+          2.23,
+          2.6
+        ]
+      }
+    }
+  }
+}
