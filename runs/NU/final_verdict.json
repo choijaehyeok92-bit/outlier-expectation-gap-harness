@@ -5,24 +5,21 @@
   "as_of_date": "2026-09-21",
   "ticker": "NU",
   "reconstructed": true,
-  "reconstruction_reason": "The current execution environment cannot replay the repository CLI/EDGAR fetch subprocess directly; Stage 0, validation and deterministic valuation are reconstructed against current v3.3 policy.",
-  "score_100": 68,
-  "score_100_ex_valuation": null,
-  "coverage_weight": 15,
+  "reconstruction_reason": "Connector execution cannot replay the repository CLI/EDGAR subprocess directly; current v3.3 rubric, valuation, reachability and planner arithmetic are mirrored deterministically.",
+  "score_100": 68.36,
+  "score_100_ex_valuation": 68.63,
+  "coverage_weight": 35,
   "classification": "Starter / Watch",
-  "disruptive_innovation_score": null,
+  "disruptive_innovation_score": 86.75,
   "turnaround_quality_score": null,
   "axis_scores": {
-    "asymmetry": null,
-    "disruptive_innovation": null,
+    "asymmetry": 63.5,
+    "disruptive_innovation": 86.75,
     "long_term_growth": null
   },
   "archetype": "non_fit",
   "reachable_archetypes_raw": [
-    "buffett_value",
-    "compounder",
-    "growth",
-    "outlier_growth"
+    "compounder"
   ],
   "early_exit": false,
   "hard_veto_status": "PENDING_REVIEW",
@@ -51,17 +48,86 @@
         "minor": 0
       },
       "score_source": "rubric_subscores"
+    },
+    "financial_survival": {
+      "bull_score": 90,
+      "bear_score": 55,
+      "criteria": {
+        "liquidity_leverage": 80,
+        "stress_survival": 80,
+        "dilution_offbalance": 55
+      },
+      "raw_weighted_median": 73.75,
+      "score": 73.75,
+      "spread": 35,
+      "avg_confidence": 0.93,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores"
+    },
+    "asymmetry": {
+      "bull_score": 85,
+      "bear_score": 40,
+      "criteria": {
+        "upside_path": 75,
+        "permanent_loss": 55,
+        "probability_calibration": 60
+      },
+      "raw_weighted_median": 63.5,
+      "score": 63.5,
+      "spread": 45,
+      "avg_confidence": 0.82,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 3,
+        "minor": 0
+      },
+      "score_source": "rubric_subscores"
+    },
+    "disruptive_innovation": {
+      "bull_score": 95,
+      "bear_score": 70,
+      "criteria": {
+        "cost_performance_shift": 85,
+        "adoption_curve": 90,
+        "optionality_incumbent_response": 85
+      },
+      "raw_weighted_median": 86.75,
+      "score": 86.75,
+      "spread": 25,
+      "avg_confidence": 0.91,
+      "unknown_penalty": 0,
+      "dispute_penalty": 0,
+      "domain_dispute": true,
+      "review_required": true,
+      "uncertainties": {
+        "critical": 0,
+        "material": 1,
+        "minor": 2
+      },
+      "score_source": "rubric_subscores"
     }
   },
   "confirmed_vetoes": [],
   "unresolved_vetoes": [],
   "veto_gate": {
     "overall": "PENDING_REVIEW",
-    "summary": "EV owner cleared the price-above-Bull veto. Other Hard Veto owners have not run yet."
+    "summary": "Completed EV/AS/FS owner assessments are cleared. MA/RF/CP/MT/RT ownership remains pending because downstream domains have not run."
   },
   "valuation_model": {
     "status": "COMPLETE",
-    "method": "locked owner-FCF/share DCF using a bank-specific distributable owner-earnings/share proxy",
+    "method": "locked owner-FCF/share DCF using bank-specific distributable owner-earnings/share proxy",
     "required_return": 0.09,
     "horizon_years": 10,
     "net_cash_per_share": 0,
@@ -93,89 +159,113 @@
       "price_to_base_value": 0.7558,
       "valuation_percentile_5y": null,
       "revenue_cagr_next_3y": 0.2
+    }
+  },
+  "dilution_watch": {
+    "status": "normal",
+    "annualized_dilution": 0.0010345,
+    "position_cap": null,
+    "note": "Q2 diluted weighted-average shares rose only ~0.10% YoY; H1 repurchases totaled about $500M."
+  },
+  "archetype_fit": {
+    "compounder": {
+      "eligible": false,
+      "failed_conditions": [],
+      "missing_conditions": [
+        "domain.moat_trajectory",
+        "domain.reinvestment_fcf",
+        "domain.management_allocation",
+        "criterion.reinvestment_fcf.incremental_roic",
+        "criterion.reinvestment_fcf.reinvestment_runway"
+      ],
+      "blocking_vetoes": []
     },
-    "sanity": {
-      "status": "PASS",
-      "blocking": false,
-      "checks": [
-        {
-          "id": "yearly_scenario_order",
-          "status": "PASS",
-          "detail": "bear <= base <= bull for every forecast year"
-        },
-        {
-          "id": "scenario_value_order",
-          "status": "PASS",
-          "detail": "Bear <= Base <= Bull intrinsic values"
-        },
-        {
-          "id": "terminal_value_concentration",
-          "status": "PASS",
-          "detail": "Base terminal fraction 72.8% is below the 80% review threshold"
-        },
-        {
-          "id": "price_above_bull_value",
-          "status": "PASS",
-          "detail": "current price is below Bull value"
-        }
-      ]
+    "outlier_growth": {
+      "eligible": false,
+      "failed_conditions": [
+        "domain.asymmetry"
+      ],
+      "missing_conditions": [
+        "domain.long_term_growth",
+        "criterion.long_term_growth.opportunity_scale_5y",
+        "criterion.long_term_growth.growth_duration_10y",
+        "criterion.long_term_growth.culture_adaptability",
+        "criterion.long_term_growth.market_misperception",
+        "domain.customer_product",
+        "domain.moat_trajectory",
+        "domain.management_allocation"
+      ],
+      "blocking_vetoes": []
     },
-    "banking_convention": {
-      "conventional_net_cash_disabled": true,
-      "rationale": "Cash, securities, deposits and funding liabilities are operating capital for a regulated financial institution. net_cash_per_share is frozen at zero to avoid double-counting.",
-      "owner_fcf_interpretation": "Distributable owner-earnings/share proxy after assumed capital retention; not literal industrial free cash flow."
+    "growth": {
+      "eligible": false,
+      "failed_conditions": [
+        "domain.asymmetry"
+      ],
+      "missing_conditions": [
+        "domain.structural_leadership",
+        "domain.customer_product",
+        "domain.moat_trajectory",
+        "domain.reinvestment_fcf",
+        "domain.management_allocation",
+        "criterion.reinvestment_fcf.fcf_per_share_quality"
+      ],
+      "blocking_vetoes": []
+    },
+    "buffett_value": {
+      "eligible": false,
+      "failed_conditions": [
+        "domain.financial_survival",
+        "domain.asymmetry"
+      ],
+      "missing_conditions": [
+        "criterion.reinvestment_fcf.fcf_per_share_quality",
+        "domain.management_allocation",
+        "domain.moat_trajectory"
+      ],
+      "blocking_vetoes": []
+    },
+    "moonshot": {
+      "eligible": false,
+      "failed_conditions": [
+        "signal.market_cap_usd",
+        "domain.asymmetry"
+      ],
+      "missing_conditions": [
+        "domain.structural_leadership"
+      ],
+      "blocking_vetoes": []
     }
   },
   "stage_0": {
     "stage_0": "ready",
     "enforced": true,
-    "pack_present": true,
-    "pack_summary": {
-      "documents": 12,
-      "facts": 25,
-      "adjustment_candidates": 1,
-      "extraction_warnings": 3
-    },
-    "required_coverage": {
-      "latest_annual": "PASS — 20-F represented as annual_report for current intake compatibility",
-      "latest_interim": "PASS — financial 6-K equivalents",
-      "trailing_quarters": "PASS 7/6 — only 6-Ks with extracted quarter/YTD facts count",
-      "historical_annuals": "PASS 3/3",
-      "foreign_issuer_filings": "PASS",
-      "earnings_release": "PASS",
-      "investor_materials": "PASS"
-    },
-    "advisory_gaps": [
-      "proxy_compensation 0/1",
-      "insider_ownership 0/1"
-    ],
-    "conditional_unverified": [
-      "debt_and_financing",
-      "registration_statement"
-    ]
+    "pack_present": true
   },
   "next_plan": {
-    "stage": "triage",
+    "stage": "domain_analysis",
     "agents": {
-      "asymmetry": "AS",
-      "disruptive_innovation": "DI",
-      "financial_survival": "FS"
+      "customer_product": "CP",
+      "management_allocation": "MA",
+      "moat_trajectory": "MT",
+      "reinvestment_fcf": "RF",
+      "structural_leadership": "SL"
     },
     "execution_control": "continue"
   },
   "secondary_archetypes": [],
-  "archetype_rationale": "Universal triage and the remaining core domains are incomplete; no final archetype is selected at the EV-only stage.",
+  "archetype_rationale": "Compounder remains reachable but cannot be selected until the remaining core domains and Hard Veto owners are completed.",
   "ic_state": "INCOMPLETE",
   "position_range": null,
   "ic_review_flags": [
-    "Universal triage incomplete",
-    "Core coverage 15/100",
+    "Core coverage 35/100",
+    "Compounder MT/RF/MA conditions unresolved",
     "Hard Veto ownership incomplete"
   ],
   "falsifiers": [
-    "ROE falls structurally below the mid-20s while revenue growth remains capital intensive.",
-    "90+ NPL/ECL rises persistently enough to compress risk-adjusted NIM and capital generation.",
-    "Mexico/Colombia require substantially more capital than assumed without converging toward attractive unit economics."
+    "ROE falls structurally below the mid-20s while credit growth remains capital intensive.",
+    "Capital ratios approach regulatory minima while credit losses rise.",
+    "Mexico and Colombia fail to converge toward profitable primary-bank economics."
   ],
   "decision_authority": "Deterministic eligibility and veto gates; IC has not run."
 }
