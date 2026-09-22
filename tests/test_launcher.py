@@ -138,14 +138,15 @@ class EnvFileTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, 'git does not ignore .env')
 
     def test_the_template_holds_no_value(self):
-        """A template with a real key in it is a key in the repository."""
+        """A template with a real key in it is a key in the repository — and a
+        placeholder contact is worse than empty: copying the template would
+        make the harness send `Your Name your@email.com` to SEC, which is
+        exactly what it promises not to do."""
         for line in (ROOT / '.env.example').read_text(encoding='utf-8').splitlines():
             stripped = line.strip()
             if not stripped or stripped.startswith('#'):
                 continue
             name, _, value = stripped.partition('=')
-            if name.strip() == 'SEC_USER_AGENT':
-                continue            # a contact placeholder, not a credential
             self.assertEqual(value.strip(), '', f'{name} carries a value')
 
     def test_the_template_names_every_variable_the_app_reads(self):
@@ -220,6 +221,101 @@ class EnvLoaderTests(unittest.TestCase):
     def test_the_powershell_loader_strips_the_bom_too(self):
         text = (SCRIPTS / 'start.ps1').read_text(encoding='utf-8-sig')
         self.assertIn('TrimStart([char]0xFEFF)', text)
+
+
+class SetKeyTests(unittest.TestCase):
+    """Putting a credential into .env without it reaching the shell's history.
+
+    The reason this is Python and not a PowerShell one-liner: a key typed as
+    part of a command is written by PSReadLine to a plain text file that
+    survives reboots. Here the command carries the variable's name and the
+    value is typed at a prompt.
+    """
+
+    def setUp(self):
+        import shutil, tempfile
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.home = Path(self.tmp.name)
+        (self.home / 'scripts').mkdir()
+        shutil.copy(SCRIPTS / 'set_key.py', self.home / 'scripts' / 'set_key.py')
+        shutil.copy(ROOT / '.env.example', self.home / '.env.example')
+
+    def run_tool(self, args, stdin=None):
+        return subprocess.run([sys.executable, str(self.home / 'scripts' / 'set_key.py'), *args],
+                              cwd=self.home, input=stdin, capture_output=True, text=True)
+
+    def env_text(self):
+        return (self.home / '.env').read_text(encoding='utf-8')
+
+    def test_a_key_lands_in_the_file(self):
+        result = self.run_tool(['OPENDART_API_KEY', '--stdin'], stdin='abc123def456')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('OPENDART_API_KEY=abc123def456', self.env_text())
+
+    def test_the_template_comments_survive(self):
+        """The line that explains a key is the line somebody reads when it
+        stops working."""
+        self.run_tool(['POLYGON_API_KEY', '--stdin'], stdin='pk_test')
+        self.assertIn('polygon.io', self.env_text())
+
+    def test_setting_it_twice_replaces_rather_than_duplicates(self):
+        self.run_tool(['POLYGON_API_KEY', '--stdin'], stdin='first')
+        self.run_tool(['POLYGON_API_KEY', '--stdin'], stdin='second')
+        text = self.env_text()
+        self.assertEqual(text.count('POLYGON_API_KEY='), 1)
+        self.assertIn('POLYGON_API_KEY=second', text)
+
+    def test_surrounding_whitespace_is_dropped(self):
+        self.run_tool(['POLYGON_API_KEY', '--stdin'], stdin='   pk_test   ')
+        self.assertIn('POLYGON_API_KEY=pk_test\n', self.env_text().replace('\r\n', '\n'))
+
+    def test_an_unknown_variable_is_refused(self):
+        result = self.run_tool(['OPENDART_KEY', '--stdin'], stdin='x')
+        self.assertEqual(result.returncode, 2)
+        self.assertFalse((self.home / '.env').exists())
+
+    def test_an_empty_value_changes_nothing(self):
+        result = self.run_tool(['POLYGON_API_KEY', '--stdin'], stdin='   ')
+        self.assertEqual(result.returncode, 1)
+        self.assertFalse((self.home / '.env').exists())
+
+    def test_a_pasted_newline_is_refused(self):
+        result = self.run_tool(['POLYGON_API_KEY', '--stdin'], stdin='good\nbad')
+        self.assertEqual(result.returncode, 1)
+
+    def test_a_value_is_never_printed_back(self):
+        secret = 'polygon-DO-NOT-ECHO-0123456789'
+        written = self.run_tool(['POLYGON_API_KEY', '--stdin'], stdin=secret)
+        listed = self.run_tool(['--list'])
+        for result in (written, listed):
+            self.assertNotIn(secret, result.stdout)
+            self.assertNotIn(secret, result.stderr)
+        self.assertIn('설정됨', listed.stdout)
+
+    def test_a_value_cannot_be_passed_on_the_command_line(self):
+        """By construction: no flag takes one, because a flag that did would
+        put the key in the shell's history."""
+        text = (SCRIPTS / 'set_key.py').read_text(encoding='utf-8')
+        self.assertNotIn("'--value'", text)
+        self.assertNotIn("'--key'", text)
+        self.assertIn('getpass', text)
+
+    def test_a_notepad_written_file_is_updated_cleanly(self):
+        (self.home / '.env').write_bytes(
+            b'\xef\xbb\xbf# keys\r\nPOLYGON_API_KEY=old\r\n')
+        self.run_tool(['POLYGON_API_KEY', '--stdin'], stdin='new')
+        raw = (self.home / '.env').read_bytes()
+        self.assertNotEqual(raw[:3], b'\xef\xbb\xbf', 'the BOM is dropped')
+        self.assertIn('POLYGON_API_KEY=new', raw.decode('utf-8'))
+
+    def test_listing_an_absent_file_reports_nothing_as_set(self):
+        """With no .env, `lines` is the template — whose placeholders are not
+        values. Calling them set would send somebody hunting for a key they
+        never supplied."""
+        result = self.run_tool(['--list'])
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertNotIn('설정됨', result.stdout)
 
 
 class IconTests(unittest.TestCase):

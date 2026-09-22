@@ -31,7 +31,19 @@
   보이는 이유로 실패한다.
 - **Python 3.10+ / Node 18.18+ 를 확인하고** 무엇을 설치하면 되는지 말한다. `node_modules`가
   없으면 `npm ci`를 한 번 돌린다.
-- **`.env`를 읽는다.** `.env.example`를 `.env`로 복사해 채우면 되고, `.env`는 커밋되지 않는다.
+- **`.env`를 읽는다.** 키를 넣는 가장 안전한 방법은 이것이다:
+
+  ```powershell
+  python scripts\set_key.py OPENDART_API_KEY     # 값은 프롬프트에 붙여넣는다
+  python scripts\set_key.py POLYGON_API_KEY
+  python scripts\set_key.py --list               # 무엇이 설정됐는지만 본다
+  ```
+
+  **명령줄에 키를 적지 않는다.** PSReadLine이 입력한 명령을 평문 파일
+  (`$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt`)에
+  남기고 그 파일은 재부팅해도 사라지지 않는다. 이 도구는 명령줄로 값을 받는 옵션 자체를
+  두지 않았고, 값은 프롬프트에서 화면에 보이지 않게 입력받는다. 값을 되돌려 출력하지도 않는다.
+  `.env.example`를 `.env`로 복사해 직접 편집해도 되며, `.env`는 커밋되지 않는다.
   값은 API 프로세스의 환경변수로만 들어가며 브라우저로 전송되지 않는다. 비워 둬도 앱은 뜬다 —
   없는 자격증명은 그 단계만 막고, 화면이 어느 변수가 비었는지 말해 준다.
 
