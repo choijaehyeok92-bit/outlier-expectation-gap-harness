@@ -4,56 +4,184 @@
   "as_of_date": "2026-09-21",
   "domain": "red_team",
   "role": "red_team",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 45,
+  "confidence_0_1": 0.9,
+  "thesis": "가장 강한 공매도 논리는 '좋은 광고 사업'이 아니라 '자본집약적 AI 인프라 기업으로의 구조 변화'다. $741.25는 Base 가치 $638보다 약 16% 높고, AI·리스 약정이 급증한 반면 Q2 FCF는 거의 0이었다. Reality Labs·규제·창업자 지배까지 겹치면 큰 가격 하락은 가능하다. 그러나 현재 증거는 회계 신뢰성 훼손, 생존용 외부자본 의존, 고객가치 부재, 지속적 해자 축소, Bull 초과 가격 등 Hard Veto의 구성요건을 충족하지 않는다.",
+  "evidence": [
+    {
+      "evidence_id": "META-RT-VAL",
+      "economic_driver": "valuation_risk",
+      "claim": "At the frozen price $741.25, deterministic Base value is about $638.42 and Bull value about $1,090.61; price/Base is 1.1611x.",
+      "source_type": "other",
+      "source": "runs/META_REVIEW_20260921/aggregate.json",
+      "period": "2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": {
+        "price": 741.25,
+        "base": 638.4167,
+        "bull": 1090.6083
+      },
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "META-RT-CAPITAL",
+      "economic_driver": "ai_capital_intensity",
+      "claim": "At June 30, 2026 Meta reported $349.31B of non-cancelable contractual commitments and $278.99B of uncommenced lease obligations, while Q2 company-defined FCF was only $0.784B after $31.08B of capex.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-09-21",
+      "value": {
+        "commitments": 349310000000,
+        "uncommenced_leases": 278990000000,
+        "q2_fcf": 784000000
+      },
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-RT-LIQ",
+      "economic_driver": "financial_resilience",
+      "claim": "The same Q2 filing shows $90.26B cash and marketable securities, about $84B notes and H1 OCF of $64.09B, contradicting a near-term solvency or survival-funding thesis.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "H1/Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": {
+        "liquid_assets": 90260000000,
+        "notes": 84000000000,
+        "h1_ocf": 64088000000
+      },
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-RT-DEMAND",
+      "economic_driver": "advertiser_value",
+      "claim": "Q2 2026 ad impressions rose 14% and average price per ad rose 12%; measured AI ranking tests also reported positive click/conversion lifts, contradicting growth without customer value.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": {
+        "impressions_yoy": 0.14,
+        "price_yoy": 0.12
+      },
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-RT-MOAT",
+      "economic_driver": "network_scale",
+      "claim": "Family DAP reached 3.60B in Q2 2026, up 3% YoY, while ad price and impressions also increased; observable moat indicators do not show persistent shrinkage.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 3600000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-RT-GOV",
+      "economic_driver": "governance_risk",
+      "claim": "The 2026 proxy reports Mark Zuckerberg with about 60.8% total voting power, limiting minority-shareholder corrective influence if large AI or Reality Labs capital-allocation bets disappoint.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/meta-20260416.htm",
+      "period": "2026 proxy",
+      "as_of_date": "2026-09-21",
+      "value": 0.608,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Measured advertiser ROI, user scale and rising ad pricing argue that the core franchise is not deteriorating today.",
+    "Liquidity and OCF remain strong enough that infrastructure financing is not currently a survival necessity.",
+    "Bull intrinsic value remains well above the frozen price, so valuation is demanding versus Base but not Bull-plus.",
+    "Net diluted shares declined YoY, so high SBC has not translated into persistent net share-count expansion in the latest period."
+  ],
+  "unknowns": [
+    "The maintenance-like versus growth portion of 2026-30 AI infrastructure spending remains undisclosed.",
+    "The realized incremental ROIC on the $100B+ annual infrastructure buildout cannot yet be measured directly."
+  ],
+  "falsifiers": [
+    "AI infrastructure produces sustained owner-FCF/share recovery while ad monetization remains double-digit, defeating the capital-intensity short thesis.",
+    "Business messaging/agents or wearables become material high-margin profit pools, reducing advertising concentration.",
+    "Reality Labs losses stabilize or decline while meaningful recurring revenue emerges."
+  ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "No reviewed filing/proxy evidence establishes a restatement, auditor disagreement/change, material control failure, or undisclosed related-party event; the required integrity-breach element is not met."
     },
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "H1 OCF was $64.09B and the core business funds itself; recent debt supports accelerated discretionary infrastructure rather than a business unable to operate without repeated external financing."
     },
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Rising ad prices and impressions plus measured click/conversion gains directly evidence advertiser value; the mandatory absence-of-customer-value element is false."
     },
     {
       "veto": "증분 ROIC의 구조적 붕괴",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Full AI incremental ROIC is unverified, but below-cost incremental ROIC and structural persistence are not established; uncertainty is not a confirmed collapse."
     },
     {
       "veto": "해자의 지속적인 축소",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "DAP, ad impressions and ad pricing were maintained or improving through Q2 2026, so actual and persistent moat shrinkage is not established."
     },
     {
       "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "$741.25 is below the deterministic Bull value of about $1,090.61, so the sole veto element is false."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Advertising concentration is high, but demand is distributed across many advertisers, apps and jurisdictions; no single customer/product/regulatory loss is evidenced as causing unrecoverable business economics."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "Owner FCF/share",
+      "direction": "recover despite AI capex",
+      "threshold": ">2025 level by 2028",
+      "cadence": "quarterly TTM/annual"
+    },
+    {
+      "name": "Contractual commitments / TTM revenue",
+      "direction": "decline",
+      "threshold": "<1.5x and falling",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Advertising price and impressions",
+      "direction": "remain jointly positive",
+      "threshold": ">0% YoY for both",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Re-run the short thesis after Q3/FY2026 capex, OCF and 2027 infrastructure guidance.",
+    "Check for any accounting-control/auditor developments and updated legal contingencies.",
+    "Reprice the Bull-veto and expectation gap after any >15% share-price move or EV scenario revision."
+  ],
+  "verdict": "oppose",
   "subscores": [],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "ai_capital_intensity",
+      "severity": "critical",
+      "rationale": "The bull case depends on a return profile for AI infrastructure that is not yet directly observable."
+    },
+    {
+      "criterion_id": "advertising_concentration",
+      "severity": "material",
+      "rationale": "Substantially all revenue still comes from advertising even though no single customer or regulation is currently fatal."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
