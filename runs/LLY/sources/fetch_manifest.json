@@ -1,0 +1,82 @@
+{
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "source": "SEC EDGAR",
+  "reconstructed": true,
+  "user_agent_supplied": "choijaehyeok92@gmail.com",
+  "note": "Records cutoff-valid primary filings represented in the reconstructed Stage 0 pack. It is not a claim that the local fetch subprocess executed.",
+  "filings": [
+    {
+      "form": "10-K",
+      "filing_date": "2026-02-18",
+      "period_end": "2025-12-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000013/lly-20251231.htm"
+    },
+    {
+      "form": "10-K",
+      "filing_date": "2025-02-19",
+      "period_end": "2024-12-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947825000067/lly-20241231.htm"
+    },
+    {
+      "form": "10-K",
+      "filing_date": "2024-02-21",
+      "period_end": "2023-12-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947824000065/lly-20231231.htm"
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2026-08-05",
+      "period_end": "2026-06-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm"
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2026-04-30",
+      "period_end": "2026-03-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000045/lly-20260331.htm"
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2025-10-30",
+      "period_end": "2025-09-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947825000254/lly-20250930.htm"
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2025-08-07",
+      "period_end": "2025-06-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947825000204/lly-20250630.htm"
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2025-05-01",
+      "period_end": "2025-03-31",
+      "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947825000132/lly-20250331.htm"
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2024-10-30",
+      "period_end": "2024-09-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947824000245/lly-20240930.htm"
+    },
+    {
+      "form": "10-Q",
+      "filing_date": "2024-08-08",
+      "period_end": "2024-06-30",
+      "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947824000187/lly-20240630.htm"
+    },
+    {
+      "form": "DEF 14A",
+      "filing_date": "2026-03-20",
+      "period_end": null,
+      "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000029/lly-20260317.htm"
+    },
+    {
+      "form": "8-K",
+      "filing_date": "2026-05-20",
+      "period_end": null,
+      "url": "https://www.sec.gov/Archives/edgar/data/59478/000119312526232707/d148580d8k.htm"
+    }
+  ]
+}
