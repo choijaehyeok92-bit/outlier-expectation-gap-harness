@@ -1,0 +1,153 @@
+{
+  "agent_id": "MT",
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 79.75,
+  "confidence_0_1": 0.88,
+  "bull_score": 90,
+  "bear_score": 65,
+  "bull_case": "Patents, clinical data, manufacturing know-how, physician familiarity, payer relationships and global capacity reinforce one another as Lilly launches successive metabolic medicines.",
+  "bear_case": "Pharmaceutical moats expire and are contestable. Realized prices are already declining, patients can switch therapies, and well-funded rivals can close efficacy or convenience gaps.",
+  "thesis": "LLY's moat is strengthening, but it is not a classic network-effect moat. Patent/data exclusivity, large clinical programs, regulatory know-how, manufacturing capacity and prescriber familiarity create multiple defenses. Successor molecules reduce cliff risk. However, Q2 realized prices fell 13%, customers can switch therapies, and competitors have strong balance sheets. The moat is therefore high-quality but dependent on continuous innovation.",
+  "evidence": [
+    {
+      "evidence_id": "LLY-MT-SCALE",
+      "economic_driver": "franchise_scale",
+      "claim": "Mounjaro and Zepbound generated $14.871B in Q2 revenue while overall Q2 volume increased 60%, providing large-scale commercial and prescriber adoption evidence.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000077/q226lillysalesandearningsp.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 14871000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-MT-PIPE",
+      "economic_driver": "pipeline_continuity",
+      "claim": "Orforglipron approval and positive retatrutide Phase 3 results create successor assets that can preserve franchise relevance as individual products mature.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-MT-CAPACITY",
+      "economic_driver": "manufacturing_barrier",
+      "claim": "Lilly is committing billions to global manufacturing capacity, including another $4.5B in Indiana, creating a physical scale/quality barrier for high-volume complex medicines.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000077/q226lillysalesandearningsp.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 4500000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-MT-PRICE",
+      "economic_driver": "pricing_pressure",
+      "claim": "Q2 revenue volume rose 60% but realized prices fell 13%, showing the moat does not translate into unconstrained pricing power.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000077/q226lillysalesandearningsp.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": -0.13,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-MT-DATA",
+      "economic_driver": "clinical_data",
+      "claim": "Large Phase 3 programs and multiple approved/late-stage indications create cumulative clinical and regulatory evidence that is expensive and time-consuming for rivals to replicate.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "2026 pipeline",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Patients and prescribers can switch among competing drugs; contractual switching costs are low.",
+    "Novo Nordisk and other competitors have ample capital and scientific capability.",
+    "Patent/data exclusivity is finite and can be challenged.",
+    "Payers can use formularies and rebates to redirect volume."
+  ],
+  "unknowns": [
+    "Long-run comparative efficacy/safety versus future competitors.",
+    "Patent/exclusivity durability by successor molecule.",
+    "How much manufacturing scale remains scarce once rivals expand capacity."
+  ],
+  "falsifiers": [
+    "Lilly loses metabolic volume share while successors fail to differentiate.",
+    "Realized-price declines overwhelm scale and cost improvements.",
+    "Competitors match efficacy/convenience and supply at similar scale without Lilly preserving superior pipeline cadence."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Commercial scale, clinical pipeline depth and manufacturing capacity are expanding; current pricing pressure is material but does not establish persistent moat contraction."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Metabolic market share / volume",
+      "direction": "stable or up",
+      "threshold": "retain category leadership",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Successor pipeline cadence",
+      "direction": "strong",
+      "threshold": "new molecules/indications arrive before current exclusivity fades",
+      "cadence": "clinical/regulatory"
+    },
+    {
+      "name": "Realized price vs gross margin",
+      "direction": "economics resilient",
+      "threshold": "pricing pressure does not structurally compress returns",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Competitor efficacy/launch evidence.",
+    "Net-price and formulary changes.",
+    "Manufacturing capacity utilization."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 80,
+      "rationale": "Clinical differentiation, patents, prescriber familiarity and capacity strengthen the franchise, but 13% realized-price decline and easy therapy switching cap the score."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 75,
+      "rationale": "Multiple primary metrics support very large ecosystem scale—product revenue, volume, pipeline and capacity—but this is not a classic network effect with hard switching costs, so the observable is capped conservatively."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 85,
+      "rationale": "Patents, clinical data, regulatory expertise, manufacturing scale and multiple successor molecules provide several independent defenses against commoditization."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "Payer power limits monetization even when clinical demand is strong."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "material",
+      "rationale": "The evidence is scale/data advantage rather than self-reinforcing user network effects."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "Defenses require continuous pipeline renewal as patents and clinical standards evolve."
+    }
+  ]
+}
