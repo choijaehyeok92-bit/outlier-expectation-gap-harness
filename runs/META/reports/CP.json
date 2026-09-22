@@ -4,51 +4,144 @@
   "as_of_date": "2026-09-21",
   "domain": "customer_product",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 75,
+  "confidence_0_1": 0.86,
+  "bull_score": 85,
+  "bear_score": 60,
+  "bull_case": "광고주는 측정 가능한 클릭·전환 개선에 비용을 지불하고, 사용자 측은 36억 DAP 규모로 사용량이 유지된다. AI 추천·창작도구·비즈니스 메시징이 광고주 ROI와 사용자 체류를 동시에 강화한다.",
+  "bear_case": "광고주의 ROI는 경기와 측정 신호 품질에 민감하며, 사용자 제품은 무료이므로 소비자 지불의사를 직접 측정하기 어렵다. 규제·OS 제한이 데이터 신호를 약화시키면 광고 단위경제도 훼손될 수 있다.",
+  "thesis": "고객가치는 보조금이 아니라 광고 성과와 대규모 사용으로 확인된다. 2025 광고 노출 +12%, 가격 +9%, 2026 Q2 노출 +14%, 가격 +12%가 동시에 상승했고 AI 모델은 클릭·전환율 개선을 정량적으로 보였다. 따라서 ROI·사용량·단위경제는 모두 strong(75)로 평가한다. 높은 광고 집중도는 리스크지만 단일 고객이나 단일 규제 상실로 사업가치가 회복 불가하게 훼손된다는 구성요건은 성립하지 않는다.",
+  "evidence": [
+    {
+      "evidence_id": "META-CP-ROI",
+      "economic_driver": "advertiser_roi",
+      "claim": "AI ad ranking improvements lifted Facebook clicks 3.5%, Instagram conversions >1%, and a runtime model improved conversions 3%, providing direct advertiser-value evidence.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/01/2026-ai-drives-performance/",
+      "period": "Q4 2025",
+      "as_of_date": "2026-09-21",
+      "value": 0.035,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-CP-PRICE",
+      "economic_driver": "advertiser_willingness_to_pay",
+      "claim": "In 2025 ad impressions rose 12% and average price per ad rose 9%; in Q2 2026 impressions rose 14% and average price per ad rose 12%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "Q2 2026 / FY2025 comparison",
+      "as_of_date": "2026-09-21",
+      "value": {
+        "impressions_yoy": 0.14,
+        "price_yoy": 0.12
+      },
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-CP-USAGE",
+      "economic_driver": "consumer_engagement",
+      "claim": "Family DAP was 3.60B in Q2 2026, up 3% YoY, following 3.58B average DAP in December 2025.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 3600000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-CP-MSG",
+      "economic_driver": "business_messaging",
+      "claim": "Paid WhatsApp messaging crossed a $2B annual run-rate in Q4 2025 and U.S. click-to-message ads revenue growth exceeded 50% YoY.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/01/2026-ai-drives-performance/",
+      "period": "Q4 2025",
+      "as_of_date": "2026-09-21",
+      "value": 2000000000,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "광고 매출은 거시 경기와 마케팅 예산에 민감하다.",
+    "사용자는 무료 제품을 사용하므로 소비자 지불의사 자체는 직접 관측하기 어렵다.",
+    "Apple/브라우저/규제의 데이터 신호 제한은 측정 ROI를 약화시킬 수 있다.",
+    "광고 외 수익의 절대 규모는 아직 전체 매출 대비 작다."
+  ],
+  "unknowns": [
+    "광고주 코호트별 NRR·churn·CAC/payback은 공시되지 않는다."
+  ],
+  "falsifiers": [
+    "광고 가격과 노출이 동시에 감소하는 분기가 반복된다.",
+    "DAP가 지속 감소하고 Reels/추천 사용량 개선이 이를 상쇄하지 못한다.",
+    "AI 광고 개선이 광고주 전환·ROAS 개선으로 재현되지 않는다."
+  ],
   "hard_veto_flags": [
     {
       "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Customer value is directly evidenced by rising ad prices/impressions and measured click/conversion improvements; the mandatory 'customer value absent' element is false."
     },
     {
       "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Revenue is concentrated in advertising, but it is diversified across millions of advertisers, multiple apps and jurisdictions; no single customer or single regulation is shown to cause unrecoverable business economics if lost."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "Average price per ad",
+      "direction": "grow",
+      "threshold": ">0% YoY",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Family DAP",
+      "direction": "stable/grow",
+      "threshold": ">=0% YoY",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Paid messaging run-rate",
+      "direction": "grow",
+      "threshold": ">20% YoY",
+      "cadence": "semiannual"
+    }
+  ],
+  "next_checks": [
+    "Seek advertiser retention/ROAS disclosures.",
+    "Track WhatsApp/Business Agent paid conversion.",
+    "Monitor user engagement after major AI-feed changes."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "customer_roi",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Measured click/conversion lifts and simultaneous ad-price growth fit the 75 ROI/pricing-power anchor. 90 is excluded because Meta ads are valuable but not universally mission-critical and ROI is cyclical."
     },
     {
       "criterion_id": "retention_usage",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "3.60B DAP with continued YoY growth and expanding ad impressions support sustained usage. 90 is excluded because cohort retention/NRR is not disclosed and DAP growth has slowed."
     },
     {
       "criterion_id": "unit_economics",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "High-margin advertising and rising price plus impressions show scale economics. 90 is excluded because AI infrastructure costs are rising sharply and consolidated cash conversion is temporarily compressed."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "retention_usage",
+      "severity": "minor",
+      "rationale": "Public KPIs show aggregate engagement, not cohort retention."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "material",
+      "rationale": "Incremental AI infrastructure cost per unit of ad performance is not disclosed."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
@@ -63,5 +156,6 @@
         "owner_fcf_per_share": []
       }
     }
-  }
+  },
+  "geo_events_reviewed": []
 }
