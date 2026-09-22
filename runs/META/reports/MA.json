@@ -4,59 +4,150 @@
   "as_of_date": "2026-09-18",
   "domain": "management_allocation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 66.75,
+  "confidence_0_1": 0.8,
+  "bull_score": 80,
+  "bear_score": 50,
+  "bull_case": "Management has repeatedly reallocated resources toward winning surfaces and AI, maintained buybacks/dividends, and preserved strong FoA economics. Cost cuts and product pivots show adaptability.",
+  "bear_case": "Founder voting control weakens external discipline, 2025 buybacks were near or above Base value, Reality Labs consumes ~$19B annual operating losses, and the AI capex program is too new to prove capital returns.",
+  "thesis": "Meta's execution adaptability is strong, but capital allocation is mixed. The company has pivoted effectively toward Reels and AI and maintains effective financial controls, yet 2025 repurchases occurred around the harness Base value rather than at a clear discount, while Reality Labs and AI infrastructure require very large capital. Zuckerberg's 60.8% voting control is a governance discount, not an accounting-integrity veto.",
+  "evidence": [
+    {
+      "evidence_id": "META-MA-BUYBACK",
+      "economic_driver": "capital_allocation",
+      "claim": "Meta repurchased 40M Class A shares for about $26.26B in 2025, implying an average price near $656.5 versus the harness Base value of about $638.4.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-18",
+      "value": 1.028,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "META-MA-RL",
+      "economic_driver": "capital_allocation",
+      "claim": "Reality Labs produced only $2.21B of 2025 revenue while recording a $19.19B operating loss, demonstrating a large long-duration capital allocation bet outside the proven FoA engine.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-18",
+      "value": -19193000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-MA-GOV",
+      "economic_driver": "governance",
+      "claim": "The 2026 proxy reported Mark Zuckerberg controlled about 60.8% of total voting power, creating unusually strong founder control despite much lower economic ownership.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/meta-20260416.htm",
+      "period": "2026 proxy",
+      "as_of_date": "2026-09-18",
+      "value": 0.608,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-MA-CONTROLS",
+      "economic_driver": "integrity",
+      "claim": "Ernst & Young issued an unqualified opinion on Meta's 2025 financial statements and concluded internal control over financial reporting was effective in all material respects.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025 audit",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-MA-ADAPT",
+      "economic_driver": "execution_adaptability",
+      "claim": "Q2 2026 revenue grew 28% and management simultaneously cut headcount through a May restructuring while continuing to scale AI recommendation and monetization systems.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-18",
+      "value": 0.28,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "2025 buybacks were executed near the harness Base value rather than at a clear margin of safety.",
+    "Reality Labs losses increased to $19.19B in 2025 with limited revenue.",
+    "The 2026 AI infrastructure program requires very large debt and capital commitments before returns are proven.",
+    "Founder control reduces the practical power of outside shareholders to change strategic direction."
+  ],
+  "unknowns": [
+    "The long-run project-level returns on AI infrastructure and Reality Labs are not yet measurable.",
+    "The exact average repurchase price over the most recent four quarters is approximated from 2025 aggregate repurchases because no Q2 2026 repurchases occurred."
+  ],
+  "falsifiers": [
+    "Management continues large buybacks materially above Base value while leverage and capex rise.",
+    "Reality Labs losses keep growing without measurable revenue or strategic option value.",
+    "AI capex rises for several years without corresponding incremental FoA profit or owner FCF."
+  ],
   "hard_veto_flags": [
     {
       "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "The 2025 audit was unqualified and internal control over financial reporting was effective in all material respects. No restatement, auditor dispute or material weakness establishing the veto was identified at the cutoff."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
+  "key_kpis": [
+    {
+      "name": "Buyback price / Base value",
+      "direction": "prefer <1.0",
+      "threshold": "avoid persistent repurchases above intrinsic Base",
+      "cadence": "annual"
+    },
+    {
+      "name": "Reality Labs operating loss",
+      "direction": "stabilize or earn option value",
+      "threshold": "no sustained loss escalation without adoption/revenue milestones",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "AI capex incremental return",
+      "direction": "improve",
+      "threshold": "incremental operating cash flow begins covering buildout",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Recompute average buyback price if repurchases resume in H2 2026.",
+    "Track whether 2027 capital spending slows after the current AI buildout.",
+    "Review proxy changes for governance, compensation and succession risk."
+  ],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "capital_allocation",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 60,
+      "rationale": "2025 repurchase average price/Base value is about 1.03x. Under band-centre interpolation, this maps near 60 between the 1.0 boundary and 1.1 centre. Large RL/AI bets add uncertainty, and no clear exit modifier is applied."
     },
     {
       "criterion_id": "governance_integrity",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 65,
+      "rationale": "Financial controls and audit quality are strong, but Zuckerberg's 60.8% voting control creates a material governance asymmetry. This is above ordinary 50 risk but below the 75 'good alignment' anchor."
     },
     {
       "criterion_id": "execution_adaptability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Meta has repeatedly shifted resources toward Reels, AI ranking and efficiency while sustaining high growth. This is stronger than the 75 consistent-execution anchor, but massive unproven AI/RL bets prevent 90."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "capital_allocation",
+      "severity": "material",
+      "rationale": "The largest current capital bets have not matured enough for reliable ex-post returns."
+    },
+    {
+      "criterion_id": "governance_integrity",
+      "severity": "material",
+      "rationale": "Founder control is explicit, but its future economic cost or benefit is inherently difficult to quantify."
+    },
+    {
+      "criterion_id": "execution_adaptability",
+      "severity": "minor",
+      "rationale": "Past pivots are visible; the current superintelligence/agent pivot is still early."
     }
-  }
+  ]
 }
