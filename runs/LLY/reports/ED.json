@@ -1,0 +1,137 @@
+{
+  "agent_id": "ED",
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "domain": "evidence_quality",
+  "role": "evidence_auditor",
+  "analysis_status": "complete",
+  "score_0_100": 86,
+  "confidence_0_1": 0.95,
+  "thesis": "핵심 수치는 대부분 cutoff-valid 10-K·10-Q·proxy에 직접 연결된다. 제품매출·volume/price·OCF·capex·R&D·부채·자사주·내부통제는 1차 자료로 확인된다. 가장 중요한 한계는 RF다. 약 47.6% 증분수익률은 공시 ROIC가 아니라 순이익 증가와 debt+equity 증가를 결합한 분석 proxy이며, acquired IPR&D·M&A·운전자본의 시차가 섞인다. 따라서 공식 ROIC처럼 단독 사용하면 안 된다.",
+  "evidence": [
+    {
+      "evidence_id": "LLY-ED-Q2",
+      "economic_driver": "operating_evidence",
+      "claim": "Q2 2026 revenue increased 48% to about $23.0B, driven by 60% volume growth and partly offset by a 13% realized-price decline; reported net income was about $7.1B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000077/q226lillysalesandearningsp.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-ED-CASH",
+      "economic_driver": "cash_conversion",
+      "claim": "Q2 10-Q directly reports H1 2026 OCF of $16.023B, capex of $5.259B, cash/investments of $12.806B and debt of $54.908B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "H1/Q2 2026",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-ED-CONCENTRATION",
+      "economic_driver": "franchise_concentration",
+      "claim": "Q2 Mounjaro and Zepbound revenue totaled $14.871B, about 64.7% of consolidated revenue; this concentration calculation is arithmetic on issuer-reported product revenue.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 0.6473,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-ED-CONTROLS",
+      "economic_driver": "reporting_integrity",
+      "claim": "FY2025 10-K states management concluded ICFR was effective at year-end and Ernst & Young issued an unqualified audit opinion on the financial statements and ICFR.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000013/lly-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-02-18",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-ED-RFPROXY",
+      "economic_driver": "reinvestment_return",
+      "claim": "RF's ~47.6% incremental earnings/capital figure is an analyst proxy using FY2024-2025 net-income change divided by change in debt plus equity. It is not company-reported ROIC and is sensitive to acquisitions, IPR&D, financing and working capital.",
+      "source_type": "other",
+      "source": "runs/LLY/reports/RF.json based on FY2025 10-K",
+      "period": "FY2024-FY2025",
+      "as_of_date": "2026-09-21",
+      "value": 0.4758,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-ED-GOV",
+      "economic_driver": "governance",
+      "claim": "The 2026 proxy documents independent standing committees and performance-linked executive compensation, supporting the governance evidence used by MA.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000021/lly-20260306.htm",
+      "period": "2026 proxy",
+      "as_of_date": "2026-03-06",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Standard CFO-capex overstates distributable owner cash if acquired IPR&D and M&A are economically recurring reinvestment.",
+    "Q2 revenue growth is unusually strong and should not be extrapolated linearly into the 10-year Base path.",
+    "Product concentration calculations are robust, but the economic correlation among tirzepatide, orforglipron and retatrutide remains judgmental.",
+    "Manufacturing capex normalization timing is not directly observable from current filings."
+  ],
+  "unknowns": [
+    "Normalized maintenance versus growth capex after the current manufacturing buildout.",
+    "Full-cycle returns on 2025-26 acquired IPR&D and acquisitions.",
+    "Long-run realized net-price trajectory for metabolic products.",
+    "Independent adherence/persistence data by product and payer cohort.",
+    "A clean company-reported incremental ROIC series."
+  ],
+  "falsifiers": [
+    "Future filings reveal a restatement, material weakness or source-definition change affecting core evidence.",
+    "Reported cash conversion weakens after capacity comes online while RF proxies remain high only because of acquisition/accounting timing.",
+    "Product-price or volume figures used in the frozen analysis materially diverge from source-verified values for the same cutoff."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Owner FCF/share + acquired IPR&D",
+      "direction": "quality maintained",
+      "threshold": "cash conversion improves without external R&D/M&A rising faster than value creation",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Volume / realized price / gross margin",
+      "direction": "balanced",
+      "threshold": "volume growth offsets net-price pressure without structural margin erosion",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Product concentration",
+      "direction": "down",
+      "threshold": "successors and non-metabolic franchises reduce dependence on Mounjaro/Zepbound",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Reconcile Q3 cash-flow and product-price metrics to the same definitions.",
+    "Track acquired IPR&D/M&A milestones and impairment evidence.",
+    "Update normalized manufacturing-capex assumptions."
+  ],
+  "verdict": "support",
+  "subscores": [],
+  "uncertainties": [],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  }
+}
