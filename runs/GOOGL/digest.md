@@ -1,28 +1,46 @@
 # Digest — GOOGL (as of 2026-09-21)
 
-> Reconstructed v3.3 EV-stage output. The connected GitHub environment could not auto-trigger Actions, so this mirrors the deterministic harness arithmetic rather than claiming a literal local CLI replay.
+> Reconstructed v3.3 triage output. The deterministic policy arithmetic is mirrored here because connector commits do not trigger the repository workflow in this environment.
 
-score 53.0 (ex-val None, Reject) · archetype non_fit · veto PENDING_REVIEW · state INCOMPLETE
+score **59.36** (ex-valuation **64.13**, Reject) · archetype **non_fit** · veto **PENDING_REVIEW** · state **EARLY_EXIT_NON_FIT**
 
-signals {'price_to_base_value': 1.0585, 'valuation_percentile_5y': None, 'revenue_cagr_next_3y': 0.16, 'market_cap_usd': 4341283100000} · reachable(raw) ['compounder', 'growth', 'outlier_growth']
+signals: price/Base **1.0585x** · forward revenue CAGR **16%** · market cap **$4.34T** · reachable(raw) **[]**
 
-## expectation_valuation — 53.0
-| agent | score (bear–bull) | conf | verdict | vetoes |
-|---|---:|---:|---|---|
-| EV | 53 (30–75) | 0.84 | neutral | V7=cleared |
+## Universal triage
 
-At $354.97, GOOGL is modestly above the locked Base value and materially below Bull. Locked DCF: Bear $95.57 / Base $335.36 / Bull $543.99. Price/Base = 1.0585x.
+| Agent | Domain | Score | Bear–Bull | Result |
+|---|---|---:|---:|---|
+| EV | Expectation / Valuation | 53.00 | 30–75 | neutral |
+| AS | Asymmetry | 58.25 | 40–75 | neutral |
+| DI | Disruptive Innovation | 80.50 | 65–90 | support |
+| FS | Financial Survival | 70.00 | 55–85 | support |
 
-The key valuation variable is owner-FCF/share recovery after the 2026 AI infrastructure buildout. H1 2026 OCF of $84.859B was almost fully absorbed by $80.598B of capex, while Q2 revenue growth and Google Cloud growth/backlog support a credible recovery path.
+### Why the run stops
 
-## Stage 0
-- financial pack: present
-- required coverage: latest annual PASS, latest interim PASS, trailing 6+ quarters PASS
-- advisory gaps: historical annuals, proxy compensation, earnings release, investor materials
-- financing evidence: August 2026 senior-note filing included
-- insider evidence: September 16, 2026 Form 4 included
+**Growth** fails because AS **58.25 < 65**.  
+**Outlier Growth** fails because AS **58.25 < 65** and upside_path **60 < 75**.  
+**Compounder** fails because FS **70 < 72**.  
+**Buffett Value** fails price/Base, FS and AS gates.  
+**Moonshot** fails the market-cap gate and AS gate.
 
-## Next plan
-`triage`: AS, DI, FS
+The strongest positive finding is disruptive innovation: Gemini is already embedded across products with billions of users, Cloud backlog is above $500B and external TPU-system revenue has begun. The limiting factor is not technological adoption but investment asymmetry at the frozen price and scale.
 
-The run is not eligible for an automatic investment state until universal triage and Hard Veto ownership are completed.
+### Asymmetry
+
+Locked DCF: Bear **$95.57**, Base **$335.36**, Bull **$543.99** versus price **$354.97**.
+
+- Bull/current ≈ **1.53x** → upside_path **60**
+- Bear/current ≈ **0.27x**; liquidity modifier applied → permanent_loss **55**
+- probability calibration **60**
+
+This is not enough for the 65 AS floor used by growth/outlier-growth.
+
+### Financial survival
+
+Alphabet remains strongly liquid and self-funding at the operating-company level, but Q2 2026 filings disclose **$707B** of future fixed/guaranteed commitments. Q2 diluted shares were about **0.9%** above the prior year after new common/preferred financing. These facts reduce FS to **70**, while all three FS-owned Hard Vetoes remain cleared.
+
+### Planner
+
+`EARLY_EXIT_NON_FIT`
+
+Downstream SL / CP / MT / RF / MA / LG, MO, ED, RT and IC are intentionally not run for this snapshot. Re-entry requires new evidence or a materially different price/valuation path that restores at least one archetype's reachability.
