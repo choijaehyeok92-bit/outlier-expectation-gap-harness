@@ -1,0 +1,149 @@
+{
+  "agent_id": "DI",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-21",
+  "domain": "disruptive_innovation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 86.75,
+  "confidence_0_1": 0.89,
+  "bull_score": 95,
+  "bear_score": 70,
+  "bull_case": "MELI is becoming a regional digital operating system spanning marketplace, logistics, payments, savings, credit and advertising. Cross-ecosystem engagement is still accelerating at mainstream scale.",
+  "bear_case": "The model may increasingly resemble capital-intensive scale execution rather than fresh disruption. Banks, Nubank, Amazon, Shopee and local specialists can attack individual layers while credit and logistics dilute returns.",
+  "thesis": "MELI remains a proven disruptive platform rather than a narrative-stage innovator. Commerce and fintech adoption are mainstream, and ecosystemic users show materially higher engagement than single-vertical users. Credit, ads and payments create monetized adjacent value pools. The remaining constraint is economics: credit-card NIMAL is negative and logistics/credit investment is suppressing current cash conversion.",
+  "evidence": [
+    {
+      "evidence_id": "MELI-DI-ADOPTION",
+      "economic_driver": "mainstream_adoption",
+      "claim": "Q2 2026 fintech MAUs reached 88M and unique active buyers 89M; GMV was $21.9B and TPV $101B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 88000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-DI-ENGAGEMENT",
+      "economic_driver": "ecosystem_flywheel",
+      "claim": "Ecosystemic users grew 37% YoY and generated 70% more GMV per user than marketplace-only users; MELI+ subscribers grew 72% YoY.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.7,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-DI-CREDIT",
+      "economic_driver": "fintech_value_chain",
+      "claim": "The credit portfolio exceeded $16B, up 75% YoY, while total fintech MAUs and AUM continued to scale across core markets.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 16000000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-DI-ADS",
+      "economic_driver": "advertising_value_pool",
+      "claim": "Advertising net revenue grew 73% YoY in USD, demonstrating a monetized adjacent value pool built on marketplace demand and seller data.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.73,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-DI-UNITECON",
+      "economic_driver": "unit_economics",
+      "claim": "Consolidated NIMAL was 20.7%, but credit-card NIMAL was -2.5% in Q2 2026, showing that adoption is proven while some newer financial products still require economic maturation.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": -0.025,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Individual layers face well-capitalized competitors including banks, Nubank, Amazon and Shopee.",
+    "Credit growth increases capital intensity and exposes the ecosystem to underwriting and funding cycles.",
+    "Free-shipping and logistics investment can improve adoption while depressing near-term margin and cash conversion.",
+    "At current scale, part of the original disruption has already become incumbent execution."
+  ],
+  "unknowns": [
+    "Long-run contribution margins of credit cards after acquisition and funding costs.",
+    "Independent market-share data across commerce, acquiring and digital banking in each core country.",
+    "Long-run incremental ROIC of logistics, MELI+ and advertising as the ecosystem matures."
+  ],
+  "falsifiers": [
+    "Cross-ecosystem users stop showing better engagement/economics than single-vertical users.",
+    "GMV/TPV growth converges to market while margins and adjusted FCF remain depressed.",
+    "Credit or logistics scale destroys enough capital efficiency that adjacent value pools no longer add economic value."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Ecosystemic user growth",
+      "direction": "up",
+      "threshold": "remain the fastest-growing user cohort with superior engagement",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "GMV / TPV / fintech MAUs",
+      "direction": "up",
+      "threshold": "sustain structural outgrowth in core markets",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Credit-card NIMAL",
+      "direction": "improve",
+      "threshold": "move sustainably above breakeven",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Track credit-card NIMAL and NPL as portfolio growth continues.",
+    "Track ads and MELI+ monetization versus incremental acquisition/logistics cost.",
+    "Compare commerce and fintech share trends with major local competitors."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "score_0_100": 85,
+      "rationale": "Integrated marketplace, logistics and fintech materially replace fragmented regional workflows and change convenience/cost structure. The score stops below 90 because a universal 10x economic advantage is not established."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "score_0_100": 90,
+      "rationale": "Usage is mainstream at tens of millions of buyers and fintech MAUs, with GMV and TPV still growing above 40%-50%. This meets the 90 mainstream-adoption anchor."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "score_0_100": 85,
+      "rationale": "At least three monetized adjacent pools—payments/acquiring, credit/savings and advertising/subscription/logistics services—are integrated around the regional marketplace, and MELI effectively defines the cross-vertical ecosystem standard in core markets."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "minor",
+      "rationale": "Customer behavior change is clear; the precise cost advantage versus each local alternative is less standardized."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "minor",
+      "rationale": "Adoption is well established; the primary question is profitability rather than usage."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Well-funded competitors can attack individual verticals even if replicating the whole ecosystem is harder."
+    }
+  ]
+}
