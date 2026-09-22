@@ -1,0 +1,23 @@
+{
+  "stage": "triage",
+  "agents": {
+    "asymmetry": "AS",
+    "disruptive_innovation": "DI",
+    "financial_survival": "FS"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "investor_materials"
+    ]
+  },
+  "execution_control": "continue",
+  "reachable_archetypes_raw": [
+    "compounder",
+    "outlier_growth",
+    "growth"
+  ],
+  "statement": "EV is complete. Run universal triage AS, DI and FS next."
+}
