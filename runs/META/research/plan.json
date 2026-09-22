@@ -1,0 +1,373 @@
+{
+  "schema_version": "1.0",
+  "ticker": "META",
+  "as_of_date": "2026-09-21",
+  "inputs": [
+    {
+      "path": "company_context.json",
+      "exists": true,
+      "sha256": "5367528d50741409ecb8abb6513df4854b721ec399fde13655b3fd685d3c2efb"
+    },
+    {
+      "path": "run_manifest.json",
+      "exists": true,
+      "sha256": "e3eb66128142f0f5613f6179b9412dc9f9a309ba14f3bcab458ea2ec81903cb6"
+    },
+    {
+      "path": "sources/README.md",
+      "exists": false,
+      "sha256": null
+    },
+    {
+      "path": "sources/financials/normalized_financials.json",
+      "exists": true,
+      "sha256": "ab054faa8fb496a7b8b283010e14b3d939bfb1c659052e371b1f59c6a39ff794"
+    },
+    {
+      "path": "sources/financials/derived_metrics.json",
+      "exists": false,
+      "sha256": null
+    },
+    {
+      "path": "sources/financials/adjustment_candidates.json",
+      "exists": false,
+      "sha256": null
+    },
+    {
+      "path": "sources/financials/qa_report.json",
+      "exists": false,
+      "sha256": null
+    },
+    {
+      "path": "reports/EV.json",
+      "exists": true,
+      "sha256": "6a4254010212cd6ce9990e41068955dfaef5d5aa943c2ee6ff8eb72075de5c98"
+    },
+    {
+      "path": "digest.md",
+      "exists": true,
+      "sha256": "a0f72f697ab30df4b9d1cd20e4e1fcce13f27bed5030b48c06afbf927da224b9"
+    },
+    {
+      "path": "aggregate.json",
+      "exists": true,
+      "sha256": "b7370fc3b4925f04fb72e4a8210fad0d0061247474b105274370ed93fb880283"
+    }
+  ],
+  "input_snapshot_sha256": "2a6feddafa99d9f374c65211606d6b168149d0a44050cf06fd2af7766bce99e9",
+  "harness_plan": {
+    "stage": "triage",
+    "agents": {
+      "asymmetry": "AS",
+      "disruptive_innovation": "DI",
+      "financial_survival": "FS"
+    },
+    "stage_0": {
+      "stage_0": "ready",
+      "enforced": true,
+      "pack_present": true,
+      "advisory_gaps": [
+        "proxy_compensation",
+        "earnings_release",
+        "insider_ownership",
+        "investor_materials"
+      ]
+    },
+    "execution_control": "continue"
+  },
+  "questions": [
+    {
+      "research_question_id": "RQ-AS-002207DFD6",
+      "question": "criterion.asymmetry.permanent_loss 평가에 필요한 누락 관측값은 무엇인가?",
+      "agent_id": "AS",
+      "domain": "asymmetry",
+      "triggers": [
+        "missing_observable"
+      ],
+      "priority": 1,
+      "research_class": "decision_blocking",
+      "required_for_decision": true,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-AS-A0707AD5EB",
+      "question": "criterion.asymmetry.upside_path 평가에 필요한 누락 관측값은 무엇인가?",
+      "agent_id": "AS",
+      "domain": "asymmetry",
+      "triggers": [
+        "missing_observable"
+      ],
+      "priority": 1,
+      "research_class": "decision_blocking",
+      "required_for_decision": true,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-LG-5E0E39D754",
+      "question": "criterion.long_term_growth.market_misperception 평가에 필요한 누락 관측값은 무엇인가?",
+      "agent_id": "LG",
+      "domain": "long_term_growth",
+      "triggers": [
+        "missing_observable"
+      ],
+      "priority": 1,
+      "research_class": "decision_blocking",
+      "required_for_decision": true,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-LG-66C590FF4B",
+      "question": "criterion.long_term_growth.opportunity_scale_5y 평가에 필요한 누락 관측값은 무엇인가?",
+      "agent_id": "LG",
+      "domain": "long_term_growth",
+      "triggers": [
+        "missing_observable"
+      ],
+      "priority": 1,
+      "research_class": "decision_blocking",
+      "required_for_decision": true,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-LG-AAD656A9A3",
+      "question": "criterion.long_term_growth.growth_duration_10y 평가에 필요한 누락 관측값은 무엇인가?",
+      "agent_id": "LG",
+      "domain": "long_term_growth",
+      "triggers": [
+        "missing_observable"
+      ],
+      "priority": 1,
+      "research_class": "decision_blocking",
+      "required_for_decision": true,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-LG-F38B6B85D7",
+      "question": "criterion.long_term_growth.culture_adaptability 평가에 필요한 누락 관측값은 무엇인가?",
+      "agent_id": "LG",
+      "domain": "long_term_growth",
+      "triggers": [
+        "missing_observable"
+      ],
+      "priority": 1,
+      "research_class": "decision_blocking",
+      "required_for_decision": true,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-RF-4CDA2DE093",
+      "question": "criterion.reinvestment_fcf.fcf_per_share_quality 평가에 필요한 누락 관측값은 무엇인가?",
+      "agent_id": "RF",
+      "domain": "reinvestment_fcf",
+      "triggers": [
+        "missing_observable"
+      ],
+      "priority": 1,
+      "research_class": "decision_blocking",
+      "required_for_decision": true,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-RF-76E6A7CC08",
+      "question": "criterion.reinvestment_fcf.incremental_roic 평가에 필요한 누락 관측값은 무엇인가?",
+      "agent_id": "RF",
+      "domain": "reinvestment_fcf",
+      "triggers": [
+        "missing_observable"
+      ],
+      "priority": 1,
+      "research_class": "decision_blocking",
+      "required_for_decision": true,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-RF-D323B05CAF",
+      "question": "criterion.reinvestment_fcf.reinvestment_runway 평가에 필요한 누락 관측값은 무엇인가?",
+      "agent_id": "RF",
+      "domain": "reinvestment_fcf",
+      "triggers": [
+        "missing_observable"
+      ],
+      "priority": 1,
+      "research_class": "decision_blocking",
+      "required_for_decision": true,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-EV-E3E78D303A",
+      "question": "Meta does not disclose a decision-useful split of 2026-2030 infrastructure spending between economically maintenance-like capex and growth capex; Q2 filings/IR were reviewed, but this remains the largest uncertainty in owner-FCF normalization.",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "research_class": "thesis_monitor",
+      "required_for_decision": false,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-EV-FF1A1374FE",
+      "question": "A reproducible 5-year self-valuation percentile was not frozen, so valuation_percentile_5y remains null rather than being inferred from a secondary chart.",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "unknowns"
+      ],
+      "priority": 2,
+      "research_class": "thesis_monitor",
+      "required_for_decision": false,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-EV-8143445DEE",
+      "question": "Reassess the Base path if Reality Labs losses diverge materially from the approximately $20B annual level.",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "research_class": "optional",
+      "required_for_decision": false,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    },
+    {
+      "research_question_id": "RQ-EV-91A63C72B3",
+      "question": "Track whether Meta begins disclosing AI monetization or business-messaging revenue sufficient to attribute returns to incremental infrastructure spending.",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "research_class": "optional",
+      "required_for_decision": false,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending"
+    }
+  ],
+  "deferred_questions": [
+    {
+      "research_question_id": "RQ-EV-DAC5D63E1F",
+      "question": "Rebuild the owner-FCF path after Q3 2026 results using actual capex, OCF and 2027 infrastructure guidance.",
+      "agent_id": "EV",
+      "domain": "expectation_valuation",
+      "triggers": [
+        "next_checks"
+      ],
+      "priority": 2,
+      "research_class": "optional",
+      "required_for_decision": false,
+      "search_order": [
+        "existing_files",
+        "regulatory_filings",
+        "company_ir",
+        "official_industry",
+        "secondary"
+      ],
+      "status": "pending",
+      "deferred_reason": "max_nonblocking_per_domain"
+    }
+  ],
+  "research_budget": {
+    "configured_max_active": 24,
+    "active_count": 13,
+    "decision_blocking_count": 9,
+    "thesis_monitor_count": 2,
+    "optional_count": 2,
+    "deferred_count": 1,
+    "blocking_overflow": 0,
+    "rule": "decision blockers are never hidden by a research budget"
+  }
+}
