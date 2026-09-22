@@ -1,0 +1,175 @@
+{
+  "agent_id": "FS",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-21",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 78.75,
+  "confidence_0_1": 0.9,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "MELI has $6.75B of available liquidity, positive discretionary cash generation, negligible dilution and demonstrated access to long-duration debt. Fintech funding is part of the business model rather than evidence of operating insolvency.",
+  "bear_case": "Net debt, rapid credit growth and Latin American funding/FX shocks can compress liquidity quickly. H1 adjusted FCF of only $158M leaves less discretionary cushion than GAAP CFO suggests.",
+  "thesis": "Financial survival is strong but balance-sheet complexity matters. June net debt was $6.425B, yet available liquidity was $6.751B and the company accessed the bond market again in September. Diluted shares were essentially unchanged YoY, and identified uncommenced leases/purchase commitments are well below 0.5x TTM revenue. The main stress risk is a simultaneous credit-loss, funding and FX shock, not routine refinancing.",
+  "evidence": [
+    {
+      "evidence_id": "MELI-FS-LIQUIDITY",
+      "economic_driver": "liquidity",
+      "claim": "At June 30, 2026 MELI reported $6.751B of available cash, investments and digital assets against $13.176B total debt, for $6.425B net debt.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000023/meli-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": -6425000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-FS-FCF",
+      "economic_driver": "self_funding_capacity",
+      "claim": "H1 2026 GAAP operating cash flow was $5.737B and adjusted FCF $158M after customer funds, credit receivables, fintech funding and capex adjustments; adjusted FCF remained positive.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000023/meli-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-21",
+      "value": 158000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-FS-SHARES",
+      "economic_driver": "dilution",
+      "claim": "Q2 2026 diluted weighted-average shares were 50,697,301 versus 50,697,375 in Q2 2025, effectively flat to slightly lower YoY.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000023/meli-20260630.htm",
+      "period": "Q2 2026 vs Q2 2025",
+      "as_of_date": "2026-09-21",
+      "value": -0.00000146,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-FS-COMMITMENTS",
+      "economic_driver": "off_balance_commitments",
+      "claim": "At year-end 2025 disclosed remaining logistics/purchase commitments plus not-yet-commenced warehouse leases were roughly $4.9B, well below 0.5x estimated TTM revenue of about $35.2B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000006/meli-20251231.htm",
+      "period": "2025-12-31 / TTM through 2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 0.14,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "MELI-FS-NOTES",
+      "economic_driver": "market_access",
+      "claim": "MELI completed a $1.0B 5.850% senior-note issuance due 2036 in September 2026, demonstrating access to long-duration debt markets.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000114036126036495/ef20081942_8k.htm",
+      "period": "2026-09-14",
+      "as_of_date": "2026-09-21",
+      "value": 1000000000,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Net debt increased from $4.682B at year-end 2025 to $6.425B at June 2026 as credit and fintech balances expanded.",
+    "H1 adjusted FCF was only $158M, so discretionary cash coverage is far weaker than raw GAAP CFO implies.",
+    "The credit portfolio exceeded $16B and grew 75% YoY, increasing sensitivity to funding markets and credit losses.",
+    "Brazil, Mexico and Argentina expose liquidity and debt economics to FX, rates and sovereign volatility."
+  ],
+  "unknowns": [
+    "Stress liquidity under a simultaneous Brazil/Mexico credit deterioration and FX shock.",
+    "Exact cancellation flexibility of warehouse/logistics commitments.",
+    "Use of proceeds from the September 2036 notes after settlement."
+  ],
+  "falsifiers": [
+    "Adjusted FCF turns structurally negative while credit growth still requires external funding.",
+    "Available liquidity falls sharply and short-term funding needs rise simultaneously.",
+    "Equity issuance or dilution becomes recurrent because debt/fintech funding cannot support the operating model."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "The company remains adjusted-FCF positive, has substantial liquidity and raises debt against a scaled operating business. Financing supports credit/logistics growth rather than proving ordinary operations cannot survive without repeated equity capital."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Diluted shares are essentially flat to slightly lower YoY, so the long-duration and excessive-dilution elements are false."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Net debt and macro risk are material, but available liquidity, positive adjusted FCF and debt-market access do not support a meaningful probability of insolvency or business-value extinction at the cutoff."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Available liquidity / net debt",
+      "direction": "remain resilient",
+      "threshold": "liquidity remains ample relative to corporate and commerce debt",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Adjusted FCF",
+      "direction": "recover",
+      "threshold": "move materially above the H1 2026 level",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Credit NPL / NIMAL / funding",
+      "direction": "stable or improve",
+      "threshold": "avoid a funding-loss spiral",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Update liquidity and net debt after Q3 2026 and the September bond proceeds.",
+    "Track credit-card NIMAL, NPL and fintech funding mix.",
+    "Update logistics/warehouse commitments against TTM revenue annually."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 75,
+      "rationale": "MELI has meaningful net debt but $6.75B of available liquidity, positive cash generation and long-duration market access. This fits the 75 strong-liquidity anchor rather than 90 net-cash."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 75,
+      "rationale": "The company can defend operations internally and has multiple funding channels, but a severe credit/FX shock would likely require investment and credit-growth moderation, so 90 is not justified."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 90,
+      "rationale": "Diluted shares are slightly lower YoY and identified uncommenced/purchase commitments are roughly 0.14x TTM revenue, placing both observable axes in the strongest row."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "Fintech liabilities and credit receivables make simple corporate net-debt ratios incomplete."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "A correlated regional credit, funding and FX stress has not been observed at the current portfolio scale."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "minor",
+      "rationale": "Share dilution is clear; commitment estimates rely on disclosed aggregate contracts and TTM revenue approximation."
+    }
+  ],
+  "dilution_metrics": {
+    "annualized_dilution": -0.00000146,
+    "three_year_diluted_share_cagr": null,
+    "three_year_cumulative_dilution": null,
+    "consecutive_years_material_dilution": 0,
+    "per_share_value_proxy": "owner_fcf_per_share",
+    "per_share_value_growth": null,
+    "structural_financing_need": false,
+    "rationale": "Q2 diluted weighted-average shares were effectively unchanged YoY and period-end shares also remain near 50.7M. The run therefore has no dilution watch despite ordinary equity compensation."
+  }
+}
