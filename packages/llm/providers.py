@@ -151,6 +151,39 @@ class OpenAIProvider(LLMProvider):
 
 PROVIDERS = {'fixture': FixtureProvider, 'anthropic': AnthropicProvider, 'openai': OpenAIProvider}
 
+# What each provider is, and which environment variable holds its credential.
+# `default_model` is the class default; it is a starting point, not a list of
+# what the vendor offers — this package deliberately holds no model catalogue,
+# so a model string it has never heard of is passed through unchanged.
+CATALOGUE = {
+    'fixture': {'kind': 'offline', 'spends_money': False, 'env_var': None,
+                'default_model': 'fixture-v1',
+                'note': '디스크에 저장된 응답을 재생한다. 호출도 과금도 없다.'},
+    'anthropic': {'kind': 'api', 'spends_money': True, 'env_var': 'ANTHROPIC_API_KEY',
+                  'default_model': 'claude-opus-5',
+                  'note': '실제 모델. 호출마다 과금된다.'},
+    'openai': {'kind': 'api', 'spends_money': True, 'env_var': 'OPENAI_API_KEY',
+               'default_model': 'gpt-5.6',
+               'note': '실제 모델. 호출마다 과금된다.'},
+}
+
+
+def describe() -> list:
+    """Each provider, and whether its credential is present.
+
+    **Never returns a key, a prefix of one, or its length** — only whether one
+    is set. A UI needs to know that picking `anthropic` will fail before
+    somebody picks it; it does not need the secret in order to know that, and
+    this value is served to a browser.
+    """
+    rows = []
+    for name, meta in CATALOGUE.items():
+        env_var = meta['env_var']
+        rows.append({'name': name, **{k: v for k, v in meta.items() if k != 'env_var'},
+                     'env_var': env_var,
+                     'configured': True if env_var is None else bool(os.environ.get(env_var))})
+    return rows
+
 
 def resolve_provider(name, model=None, **kwargs):
     if name not in PROVIDERS:

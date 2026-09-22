@@ -547,7 +547,8 @@ remaining_unknowns / evidence_quality / final_synthesis
 | GET | `/api/screen/fields` | ✅ field registry |
 | GET | `/api/runs`, `/api/runs/{run_id}` | ✅ 읽기 전용 |
 | GET | `/api/companies/{ticker}` | ✅ 기본정보 + 하네스 이력 + 딥다이브 목록 |
-| POST | `/api/screen/parse` | ✅ 자연어 → ScreeningSpec (+ unresolved) |
+| GET | `/api/screen/providers` | ✅ 해석기 목록 + 키 설정 여부 (키 자체는 절대 미전송) |
+| POST | `/api/screen/parse` | ✅ 자연어 → ScreeningSpec (+ unresolved). `provider`·`model` 지정 |
 | POST | `/api/screen/run` | ✅ spec 또는 text 실행 + 불변 저장 |
 | GET | `/api/screen/runs`, `/api/screen/runs/{id}`, `…/markdown` | ✅ |
 | POST | `/api/harness/triage` | ✅ 기본 dry_run·placeholder |

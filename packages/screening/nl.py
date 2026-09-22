@@ -191,6 +191,26 @@ class LLMParser:
                                         lexicon_sha256(self.lexicon))
 
 
+LEXICON_OPTION = {
+    'name': 'lexicon', 'kind': 'deterministic', 'spends_money': False, 'env_var': None,
+    'default_model': None, 'configured': True,
+    'note': ('config/screening_lexicon.json의 어휘로 파싱한다. 모델을 부르지 않으며 같은 문장은 '
+             '언제나 같은 spec이 된다. 해석하지 못한 조건은 unresolved_conditions로 남는다.'),
+}
+
+
+def catalogue() -> list:
+    """The parsers this screener can use, and which are usable right now.
+
+    `lexicon` first and always available: the deterministic parser is the
+    default, so opening the page never depends on a credential. The rest come
+    from `packages.llm.providers.describe()`, which reports whether a key is
+    set and never what it is.
+    """
+    from packages.llm import providers
+    return [dict(LEXICON_OPTION)] + providers.describe()
+
+
 def parse(text, as_of_date, provider=None, lexicon=None, registry=None, fx_rates=None):
     """Parse and normalise in one step. Returns an executable, audited spec."""
     registry = registry or Registry()

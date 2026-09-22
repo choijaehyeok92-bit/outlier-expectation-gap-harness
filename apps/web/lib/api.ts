@@ -43,6 +43,7 @@ export const api = {
   fields: () => request<FieldRow[]>('/api/screen/fields'),
   parse: (body: ParseBody) => request<ScreeningSpec>('/api/screen/parse', { method: 'POST', body: JSON.stringify(body) }),
   screen: (body: ScreenBody) => request<ScreenRecord>('/api/screen/run', { method: 'POST', body: JSON.stringify(body) }),
+  screenProviders: () => request<ProviderCatalogue>('/api/screen/providers'),
   screenRuns: () => request<ScreenRunSummary[]>('/api/screen/runs'),
   screenRun: (id: string) => request<ScreenRecord>(`/api/screen/runs/${encodeURIComponent(id)}`),
   deepDives: () => request<DeepDiveSummary[]>('/api/deep-dive'),
@@ -366,8 +367,45 @@ export interface DeepDivePlan {
   red_team_mandate: string[];
 }
 
-export interface ParseBody { text: string; as_of_date: string; provider?: string; fx_rates?: Record<string, number> }
-export interface ScreenBody { text?: string; spec?: ScreeningSpec; as_of_date?: string; fx_rates?: Record<string, number>; persist?: boolean }
+export interface ParseBody {
+  text: string;
+  as_of_date: string;
+  provider?: string;
+  model?: string;
+  fx_rates?: Record<string, number>;
+}
+export interface ScreenBody {
+  text?: string;
+  spec?: ScreeningSpec;
+  as_of_date?: string;
+  provider?: string;
+  model?: string;
+  fx_rates?: Record<string, number>;
+  persist?: boolean;
+}
+
+/**
+ * A parser the screener can use.
+ *
+ * `configured` says whether the server holds the credential. It never says
+ * what the credential is — the key stays on the backend and no field here
+ * carries it, or a prefix of it, or its length.
+ *
+ * `default_model` is a starting point, not a catalogue. The backend holds no
+ * list of what a vendor offers, so any model string is passed through and the
+ * vendor decides whether it exists.
+ */
+export interface ProviderOption {
+  name: string;
+  kind: 'deterministic' | 'offline' | 'api';
+  spends_money: boolean;
+  env_var: string | null;
+  default_model: string | null;
+  configured: boolean;
+  note: string;
+}
+
+export interface ProviderCatalogue { default: string; providers: ProviderOption[] }
 
 /** A missing value is unknown, not zero. The UI says so everywhere. */
 export function show(value: unknown, digits = 2): string {

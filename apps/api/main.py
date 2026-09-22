@@ -197,10 +197,39 @@ def get_company(ticker: str):
             'latest': rows[0], 'harness_history': rows, 'deep_dives': deep_dives}
 
 
+@app.get('/api/screen/providers')
+def screen_providers():
+    """Which parsers the screener can use, and which are usable on this server.
+
+    `configured` says whether the credential is present. It never says what the
+    credential is — no key, no prefix, no length. A browser needs to know that
+    picking `anthropic` will fail; it does not need the secret to know that.
+
+    `default_model` is a starting point, not a catalogue. This service holds no
+    list of what a vendor offers, so a model string it has never heard of is
+    passed through unchanged and the vendor decides.
+    """
+    return {'default': 'lexicon', 'providers': nl.catalogue()}
+
+
+def _screen_provider(name: str, model: str | None):
+    """The parser for this request, or a refusal that says what is missing."""
+    if name == 'lexicon':
+        return None
+    row = next((r for r in nl.catalogue() if r['name'] == name), None)
+    if row and not row['configured']:
+        raise HTTPException(422, f"{name} is selected but {row['env_var']} is not set on the "
+                                 'server. Set it in the API process\'s environment and restart; '
+                                 'the key stays on the server and is never sent to the browser.')
+    try:
+        return resolve_provider(name, model)
+    except LLMError as error:
+        raise HTTPException(422, str(error)) from error
+
+
 @app.post('/api/screen/parse')
 def screen_parse(request: ParseRequest):
-    provider = (resolve_provider(request.provider, request.model)
-                if request.provider != 'lexicon' else None)
+    provider = _screen_provider(request.provider, request.model)
     try:
         return nl.parse(request.text, request.as_of_date, provider=provider,
                         fx_rates=_fx(request.fx_rates, request.as_of_date))
@@ -216,8 +245,7 @@ def screen_run(request: ScreenRunRequest):
         elif request.text:
             if not request.as_of_date:
                 raise HTTPException(422, 'as_of_date is required when screening from text')
-            provider = (resolve_provider(request.provider, request.model)
-                        if request.provider != 'lexicon' else None)
+            provider = _screen_provider(request.provider, request.model)
             spec = nl.parse(request.text, request.as_of_date, provider=provider,
                             fx_rates=_fx(request.fx_rates, request.as_of_date))
         else:

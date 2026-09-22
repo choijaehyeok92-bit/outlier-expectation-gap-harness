@@ -143,6 +143,72 @@ class ApiTests(unittest.TestCase):
     def test_monitoring_a_company_with_no_run_is_a_404(self):
         self.assertEqual(CLIENT.get('/api/monitoring/GHOST').status_code, 404)
 
+    def test_the_screener_lists_its_parsers_and_which_are_usable(self):
+        payload = CLIENT.get('/api/screen/providers').json()
+        self.assertEqual(payload['default'], 'lexicon')
+        names = [row['name'] for row in payload['providers']]
+        self.assertEqual(names[0], 'lexicon', 'the offline parser is default and comes first')
+        self.assertIn('openai', names)
+        lexicon = payload['providers'][0]
+        self.assertTrue(lexicon['configured'])
+        self.assertFalse(lexicon['spends_money'])
+
+    def test_the_catalogue_says_whether_a_key_exists_and_never_what_it_is(self):
+        # This payload is served to a browser. It must carry enough to grey out
+        # an unusable option and nothing more.
+        import os
+        secret = 'sk-test-DO-NOT-LEAK-abcdef0123456789'
+        previous = os.environ.get('OPENAI_API_KEY')
+        os.environ['OPENAI_API_KEY'] = secret
+        self.addCleanup(lambda: os.environ.__setitem__('OPENAI_API_KEY', previous)
+                        if previous is not None else os.environ.pop('OPENAI_API_KEY', None))
+        body = CLIENT.get('/api/screen/providers').text
+        row = next(r for r in CLIENT.get('/api/screen/providers').json()['providers']
+                   if r['name'] == 'openai')
+        self.assertTrue(row['configured'])
+        self.assertEqual(row['env_var'], 'OPENAI_API_KEY')
+        self.assertNotIn(secret, body)
+        self.assertNotIn(secret[:12], body, 'not even a prefix of the key')
+
+    def test_choosing_a_parser_with_no_key_says_which_variable_is_missing(self):
+        import os
+        previous = os.environ.pop('ANTHROPIC_API_KEY', None)
+        if previous is not None:
+            self.addCleanup(os.environ.__setitem__, 'ANTHROPIC_API_KEY', previous)
+        response = CLIENT.post('/api/screen/parse', json={
+            'text': '순현금인 종목', 'as_of_date': '2026-09-18', 'provider': 'anthropic'})
+        self.assertEqual(response.status_code, 422)
+        detail = response.json()['detail']
+        self.assertIn('ANTHROPIC_API_KEY', detail)
+        self.assertIn('never sent to the browser', detail)
+
+    def test_an_unknown_model_string_is_passed_through_not_rejected(self):
+        # The backend holds no catalogue of what a vendor offers, so it must
+        # not invent one. The vendor decides whether the name exists.
+        import os
+        from packages.llm import providers as provider_module
+        os.environ['OPENAI_API_KEY'] = 'sk-test-key'
+        self.addCleanup(lambda: os.environ.pop('OPENAI_API_KEY', None))
+        seen = {}
+
+        def transport(url, headers, body, timeout=120):
+            seen['model'] = body['model']
+            raise provider_module.LLMError('stopped before the network')
+
+        original = provider_module.OpenAIProvider.__init__
+
+        def patched(self, model='gpt-5.6', api_key=None, transport=None, **kwargs):
+            original(self, model=model, api_key=api_key, transport=None)
+            self.transport = _recording
+
+        _recording = transport
+        provider_module.OpenAIProvider.__init__ = patched
+        self.addCleanup(setattr, provider_module.OpenAIProvider, '__init__', original)
+        CLIENT.post('/api/screen/parse', json={
+            'text': '순현금인 종목', 'as_of_date': '2026-09-18',
+            'provider': 'openai', 'model': 'gpt-6-astra'})
+        self.assertEqual(seen.get('model'), 'gpt-6-astra')
+
     def test_a_link_is_proposed_only_on_an_exact_name(self):
         payload = CLIENT.get('/api/monitoring/MSFT/links', params={'suggest': True}).json()
         unmatched = {row['name'] for row in payload['unmatched']}

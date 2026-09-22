@@ -207,6 +207,36 @@ python harness.py worker schedule            # 넣는다. 두 번 불러도 한 
 여러 개 띄워도 안전하다. `worker status`의 `ready_but_locked`가 0이 아니면 긴 작업 뒤에서
 기다리는 일이 있다는 뜻이다. 자세한 것은 [WORKERS.md](WORKERS.md).
 
+## 1i. 스크리너에서 해석기·모델 고르기
+
+웹 `/screener` 화면의 **해석기(parser)** 드롭다운에서 고른다. 기본값은 `lexicon`(결정론적,
+오프라인)이라 **화면을 여는 것만으로 돈이 나가지 않는다.**
+
+| 선택지 | 하는 일 |
+|---|---|
+| `lexicon` | `config/screening_lexicon.json` 어휘로 파싱. 모델 호출 없음 |
+| `fixture` | 저장된 응답 재생 |
+| `anthropic` · `openai` | 실제 모델. **호출마다 과금** |
+
+`anthropic`/`openai`를 고르면 **모델 입력칸**이 나타난다. 비우면 기본값, 채우면 그 문자열이
+**검증 없이 그대로 공급자에게 전달**된다 — 이 저장소는 모델 목록을 들고 있지 않으므로, 없는
+이름이면 공급자가 돌려준 오류가 화면에 그대로 보인다.
+
+키는 **API 프로세스의 환경변수**에 둔다:
+
+```powershell
+setx OPENAI_API_KEY "sk-..."      # 새 창을 열고 API를 재시작
+setx ANTHROPIC_API_KEY "sk-ant-..."
+```
+
+키가 없는 해석기는 드롭다운에 `· 키 없음`으로 표시되고, 고르면 **어느 환경변수가 비었는지**
+알려준다. 서버는 키가 있는지 여부만 브라우저에 알려주며 **키 자체나 그 앞자리는 절대 보내지
+않는다**(`GET /api/screen/providers`, 테스트로 고정).
+
+모델을 바꿔도 **판정 계층은 영향받지 않는다.** 모델이 하는 일은 문장을 ScreeningSpec으로
+옮기는 것뿐이고, 점수·archetype·Hard Veto·밸류에이션은 하네스가 계산한다. 해석하지 못한
+조건은 지어내지 않고 `unresolved_conditions`로 남는다.
+
 ## 2. API
 
 ```bash
