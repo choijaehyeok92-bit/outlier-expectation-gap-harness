@@ -1,0 +1,160 @@
+{
+  "agent_id": "AS",
+  "ticker": "NU",
+  "as_of_date": "2026-09-21",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 63.5,
+  "confidence_0_1": 0.82,
+  "bull_score": 85,
+  "bear_score": 40,
+  "bull_case": "Nu can compound through Brazil wallet-share expansion, Mexico/Colombia scaling and broader lending/investment/SME products. The locked Bull value is about $34.85/share, roughly 2.48x the frozen price.",
+  "bear_case": "The locked Bear value is only about 34% of price. A credit-cycle shock, weaker underwriting or heavier capital retention could compress distributable earnings materially even if the franchise remains solvent.",
+  "thesis": "NU offers strong but not exceptional large-cap asymmetry. Bull/current is about 2.48x with several independent growth paths, supporting a 75 upside score. Bear/current is about 0.34x, mapping to a 55 permanent-loss score under the observable anchor. The bank remains well capitalized, so business-extinction risk is low, but equity-value dispersion remains wide because credit losses and capital retention can materially change distributable earnings.",
+  "evidence": [
+    {
+      "evidence_id": "NU-AS-DCF",
+      "economic_driver": "market_expectations",
+      "claim": "Locked values are about $4.76 Bear, $18.56 Base and $34.85 Bull versus $14.03 current price; Bull/current is about 2.48x and Bear/current about 0.34x.",
+      "source_type": "other",
+      "source": "Harness locked distributable owner-earnings/share DCF",
+      "period": "10-year model from 2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 2.484,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "NU-AS-BRAZIL",
+      "economic_driver": "wallet_share_growth",
+      "claim": "Nu reached almost 118M customers in Brazil with activity above 86%, leaving further monetization through primary-bank status, upmarket products and SMEs.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 118000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-AS-INTL",
+      "economic_driver": "international_scaling",
+      "claim": "Mexico and Colombia together exceeded 20M customers by Q2 2026, providing a second growth path outside mature Brazil.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 20000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-AS-CREDIT",
+      "economic_driver": "credit_monetization",
+      "claim": "The credit portfolio reached $39.4B, up 37% YoY, creating a third monetization path but also increasing loss and capital sensitivity.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004222/nupr2q26_6k.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 39400000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-AS-CAPITAL",
+      "economic_driver": "permanent_loss_buffer",
+      "claim": "Brazil CET1 was 11.9% and CAR 15.7%, with $1.848B of excess capital margin; Mexico and Colombia capital ratios were 14.9% and 15.3%, all above local minimums.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 0.157,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "A regulated bank cannot distribute all reported earnings because high growth consumes equity capital.",
+    "90+ NPL increased to 6.9% in Q2 as the portfolio expanded into higher-risk segments.",
+    "Brazil remains the dominant earnings exposure, so country, rate and FX shocks are correlated rather than independent.",
+    "The Bull case requires sustained high ROE while scaling international operations and credit simultaneously."
+  ],
+  "unknowns": [
+    "Matched base rates for 2.5x-5x outcomes from financial firms starting near a $70B market capitalization.",
+    "Long-run capital payout capacity once Brazil growth moderates and Mexico becomes a full bank.",
+    "Normalized credit losses as newer risk cohorts season."
+  ],
+  "falsifiers": [
+    "ROE falls structurally below the mid-20s while credit growth remains capital intensive.",
+    "90+ NPL and ECL rise enough to break the Base distributable-earnings path.",
+    "Mexico and Colombia fail to converge toward profitable primary-bank economics."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "The frozen price is far below the locked Bull value, so a Bull-plus outcome is not required."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Local regulated subsidiaries remain above capital minima with meaningful excess capital and diversified retail deposits. Valuation downside is substantial but does not establish a high probability of franchise extinction."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "ROE / capital retention",
+      "direction": "maintain",
+      "threshold": "high-20s+ ROE without consuming excess capital excessively",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "90+ NPL / ECL",
+      "direction": "stable or down",
+      "threshold": "credit loss trends remain consistent with Base distributable earnings",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Mexico/Colombia customers and monetization",
+      "direction": "up",
+      "threshold": "international economics converge toward Brazil",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Re-run asymmetry after Q3 2026 NPL, ROE and capital ratios.",
+    "Build a financial-sector large-cap multi-bagger base-rate set.",
+    "Estimate distributable earnings under explicit capital-ratio targets."
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 75,
+      "rationale": "Bull/current is about 2.48x and there are at least three independent economic paths: Brazil wallet-share, international scaling, and broader credit/financial-product monetization. This maps to the 1.6-2.5x / 2+ paths observable row."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 55,
+      "rationale": "Bear/current is about 0.34x. Band-centre interpolation of the 0.2-0.4 row rounds to 55. The net-cash modifier does not apply to the bank-specific valuation convention."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 60,
+      "rationale": "Scenario sensitivity is explicit, but no matched bank/fintech historical base-rate dataset is frozen. This is stronger than narrative-only calibration and below the 75 base-rate anchor."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "Large absolute scale raises the hurdle for 3x+ equity outcomes."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "severity": "material",
+      "rationale": "Credit losses and capital retention can create large permanent equity-value impairment without insolvency."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Scenario probabilities remain judgmental without matched historical base rates."
+    }
+  ]
+}
