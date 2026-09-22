@@ -76,11 +76,19 @@ class ApiTests(unittest.TestCase):
             'persist': False})
         self.assertEqual(response.status_code, 422)
 
-    def test_unbuilt_stages_answer_501_with_a_pointer(self):
-        for path in ('/api/harness/triage', '/api/harness/full'):
-            response = CLIENT.post(path)
-            self.assertEqual(response.status_code, 501)
-            self.assertIn('Phase', response.json()['detail'])
+    def test_an_unbuilt_stage_answers_501_with_a_pointer(self):
+        response = CLIENT.post('/api/harness/full')
+        self.assertEqual(response.status_code, 501)
+        self.assertIn('Phase', response.json()['detail'])
+
+    def test_triage_defaults_to_a_dry_run_and_states_its_scope(self):
+        # Neither spending money nor writing reports a person will read as
+        # research should happen because somebody POSTed an empty body.
+        response = CLIENT.post('/api/harness/triage', json={'as_of_date': '2026-09-18'})
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertTrue(body['dry_run'])
+        self.assertIn('분석 품질', body['verification_scope']['not_verified'])
 
     def test_deep_dive_plan_and_report_round_trip(self):
         plan = CLIENT.post('/api/deep-dive/plan', json={'run_id': 'MSFT'}).json()

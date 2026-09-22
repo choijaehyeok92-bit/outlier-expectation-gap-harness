@@ -31,7 +31,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from apps.api.models import (DeepDivePlanRequest, DeepDiveRunRequest,  # noqa: E402
-                             ParseRequest, ScreenRunRequest)
+                             ParseRequest, ScreenRunRequest, TriageRequest)
 from packages.llm import LLMError, resolve_provider  # noqa: E402
 from packages.reporting import render_markdown, render_screen_markdown  # noqa: E402
 from packages.research import deep_plan, deep_run  # noqa: E402
@@ -246,8 +246,61 @@ def screen_run_markdown(screen_run_id: str):
 
 
 @app.post('/api/harness/triage')
-def harness_triage():
-    raise HTTPException(501, f'Batch harness triage orchestration arrives in Phase 7. {PHASE_NOTE}')
+def harness_triage(request: TriageRequest):
+    """Stage 3: the triage agents over the selected candidates.
+
+    Defaults to a dry run and to the offline placeholder provider, because
+    both alternatives — spending money and writing reports a person will read
+    as research — should be asked for rather than stumbled into.
+    """
+    from packages.orchestration import batch, contracts, selection
+    from packages.orchestration import store as triage_store
+    config = contracts.load_config()
+
+    if request.screen_run_id:
+        record = screen_store.load(request.screen_run_id)
+        if record is None:
+            raise HTTPException(404, f'{request.screen_run_id}: no such screen run')
+        rows, as_of = record['results'], record.get('as_of_date')
+    else:
+        as_of = request.as_of_date
+        rows = _rows(as_of)
+
+    candidates = selection.select_candidates(rows, config=config, top_n=request.top)
+    eligible = [c for c in candidates if c.eligible]
+    if request.dry_run:
+        return {'as_of_date': as_of, 'dry_run': True,
+                'eligible': [c.to_dict() for c in eligible],
+                'not_eligible': [c.to_dict() for c in candidates if not c.eligible],
+                'verification_scope': config['verification_scope']}
+
+    if request.provider == 'placeholder':
+        from packages.orchestration.fixtures import PlaceholderAgentProvider
+        provider = PlaceholderAgentProvider()
+    else:
+        provider = resolve_provider(request.provider, request.model)
+
+    result = batch.run_batch(candidates, provider, config=config, as_of_date=as_of,
+                             force=request.force)
+    record = triage_store.build_record(result.to_dict(), config)
+    if request.persist:
+        triage_store.save(record)
+    return record
+
+
+@app.get('/api/harness/triage/runs')
+def harness_triage_runs():
+    from packages.orchestration import store as triage_store
+    return triage_store.list_runs()
+
+
+@app.get('/api/harness/triage/{triage_run_id}')
+def harness_triage_run(triage_run_id: str):
+    from packages.orchestration import store as triage_store
+    record = triage_store.load(triage_run_id)
+    if record is None:
+        raise HTTPException(404, f'{triage_run_id}: no such triage run')
+    return record
 
 
 @app.post('/api/harness/full')

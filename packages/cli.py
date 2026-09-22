@@ -226,6 +226,75 @@ def cmd_screen_run(args):
                         for row in record['results']]})
 
 
+def _triage_provider(args):
+    """The provider a batch will use.
+
+    `placeholder` is offline and analyses nothing; it exists to exercise
+    sequencing, retry and idempotency. Any other provider is a real model and
+    the resulting reports are real analysis, for better or worse.
+    """
+    if args.provider == 'placeholder':
+        from packages.orchestration.fixtures import PlaceholderAgentProvider
+        return PlaceholderAgentProvider(mode=args.placeholder_mode)
+    from packages.llm import resolve_provider
+    return resolve_provider(args.provider, args.model)
+
+
+def _triage_rows(args):
+    """Candidate rows: a saved screen, a file, or the current row source."""
+    if args.screen_run:
+        from packages.screening import store as screen_store
+        record = screen_store.load(args.screen_run)
+        if record is None:
+            raise SystemExit(f'{args.screen_run}: no such screen run')
+        return record['results'], record.get('as_of_date')
+    if args.input:
+        payload = json.loads(Path(args.input).read_text(encoding='utf-8'))
+        if isinstance(payload, dict):
+            return payload.get('results') or payload.get('rows') or [], payload.get('as_of_date')
+        return payload, None
+    from packages.screening import rows as row_source
+    return row_source.load_rows(args.as_of, source=getattr(args, 'source', 'auto')), args.as_of
+
+
+def cmd_screen_triage(args):
+    """Stage 3: run the triage agents over the selected candidates."""
+    from packages.orchestration import batch, contracts, selection, store
+    config = contracts.load_config()
+    rows, rows_as_of = _triage_rows(args)
+    as_of = args.as_of or rows_as_of
+    candidates = selection.select_candidates(rows, config=config, top_n=args.top)
+    eligible = [c for c in candidates if c.eligible]
+
+    if args.dry_run:
+        _print({'as_of_date': as_of, 'eligible': [c.to_dict() for c in eligible],
+                'not_eligible': [c.to_dict() for c in candidates if not c.eligible][:20],
+                'verification_scope': config['verification_scope']})
+        return
+    if not eligible:
+        _print({'as_of_date': as_of, 'eligible': 0,
+                'not_eligible': [c.to_dict() for c in candidates][:20],
+                'note': 'nothing to run; every candidate is already complete or blocked'})
+        return
+
+    result = batch.run_batch(eligible + [c for c in candidates if not c.eligible],
+                             _triage_provider(args), config=config, as_of_date=as_of,
+                             force=args.force)
+    record = store.build_record(result.to_dict(), config)
+    if not args.no_save:
+        print(store.save(record), file=sys.stderr)
+    _print({'triage_run_id': record['triage_run_id'], 'summary': record['summary'],
+            'verification_scope': record['verification_scope'],
+            'results': [{k: row[k] for k in ('run_id', 'ticker', 'status',
+                                             'execution_control', 'harness_snapshot')}
+                        for row in record['results']]})
+
+
+def cmd_screen_triage_runs(args):
+    from packages.orchestration import store
+    _print(store.list_runs())
+
+
 def cmd_screen_runs(args):
     from packages.screening import store
     _print(store.list_runs())
@@ -335,6 +404,26 @@ def register(sub):
                                          'prices never come from a regulator')
     p.add_argument('--out')
     p.set_defaults(func=cmd_screen_build)
+
+    p = screen_sub.add_parser('triage', help='stage 3: run EV/AS/DI/FS over the top candidates')
+    p.add_argument('--input', help='screen result JSON, or a list of rows')
+    p.add_argument('--screen-run', help='a persisted screen run id')
+    p.add_argument('--as-of')
+    p.add_argument('--top', type=int, help='how many eligible candidates to run')
+    p.add_argument('--provider', default='placeholder',
+                   help='placeholder (offline, analyses nothing) | anthropic | openai')
+    p.add_argument('--placeholder-mode', default='valid',
+                   choices=['valid', 'invalid', 'flaky', 'error'],
+                   help='what the offline provider should simulate')
+    p.add_argument('--model')
+    p.add_argument('--source', choices=['auto', 'files', 'db'], default='auto')
+    p.add_argument('--force', action='store_true', help='redo agents already complete')
+    p.add_argument('--dry-run', action='store_true', help='show the selection and stop')
+    p.add_argument('--no-save', action='store_true')
+    p.set_defaults(func=cmd_screen_triage)
+
+    p = screen_sub.add_parser('triage-runs', help='list persisted triage batches')
+    p.set_defaults(func=cmd_screen_triage_runs)
 
     p = screen_sub.add_parser('runs', help='list persisted screen runs')
     p.set_defaults(func=cmd_screen_runs)

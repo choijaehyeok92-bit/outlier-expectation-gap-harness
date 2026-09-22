@@ -172,10 +172,24 @@ tests/test_database.py             SQLite + PostgreSQL 양쪽
 docs/DATABASE.md
 ```
 
+### Phase 7에서 추가된 것
+
+```
+packages/orchestration/
+  contracts.py                     두 겹 검증 (JSON Schema → 하네스 validate_report)
+  agent_step.py                    한 에이전트: prompt → provider → 검증 → 원자적 쓰기
+  triage.py                        한 기업: 4개 에이전트 → aggregate → plan
+  batch.py selection.py store.py   배치·후보선정·불변 기록
+  fixtures.py                      분석하지 않는 자리표시자 provider
+config/triage.json                 배치 정책 + verification_scope (무엇을 검증하지 않는지)
+tests/test_orchestration.py
+docs/ORCHESTRATION.md
+```
+
 ### 이후 Phase에서 추가될 것
 
 ```
-workers/                                 ARQ 작업: universe sync, ingestion, metric build, triage, full, deep research
+workers/                                 ARQ 작업: universe sync, ingestion, metric build, full harness, deep research
 ```
 
 ---
@@ -487,7 +501,8 @@ remaining_unknowns / evidence_quality / final_synthesis
 | POST | `/api/screen/parse` | ✅ 자연어 → ScreeningSpec (+ unresolved) |
 | POST | `/api/screen/run` | ✅ spec 또는 text 실행 + 불변 저장 |
 | GET | `/api/screen/runs`, `/api/screen/runs/{id}`, `…/markdown` | ✅ |
-| POST | `/api/harness/triage` | ⏸ 501 (Phase 7) |
+| POST | `/api/harness/triage` | ✅ 기본 dry_run·placeholder |
+| GET | `/api/harness/triage/runs`, `/api/harness/triage/{id}` | ✅ 배치 기록 |
 | POST | `/api/harness/full` | ⏸ 501 (Phase 8) |
 | GET | `/api/harness/runs/{id}` | ✅ |
 | POST | `/api/deep-dive/plan` | ✅ |
@@ -535,7 +550,7 @@ python harness.py deep-list
 | 4 | screening warehouse (결정론적 지표 계산) | ✅ 24개 지표·provenance·조건부 백엔드 완료 |
 | 5 | ScreeningSpec | ✅ 완료 |
 | 6 | NL screener | ✅ 완료 (lexicon + LLM 양쪽) |
-| 7 | Harness triage orchestration | ⏸ 501 |
+| 7 | Harness triage orchestration | ✅ 순서·재시도·idempotency 완료 (분석 품질은 미검증) |
 | 8 | Full Harness orchestration | ⏸ 501 |
 | 9 | Deep-Dive Research | ✅ 완료 (fixture provider로 검증) |
 | 10 | Red Team + synthesis | ✅ 완료 |
@@ -547,7 +562,9 @@ Phase 4가 붙으면서 `screening_warehouse` 백엔드가 조건부로 활성�
 남던 조건들이 창고를 빌드한 뒤에는 그대로 컴파일된다 — spec 형식은 바뀌지 않았다.
 Phase 2가 붙으면서 아티팩트 위에 선택적 PostgreSQL 색인이 생겼고, 스크리너는 `--source`로
 파일과 DB 중 어느 쪽에서든 **같은 행**을 읽는다. 남은 것은 Phase 7·8(오케스트레이션)과
-Phase 12(모니터링 시계열)다.
+Phase 12(모니터링 시계열)다. Phase 7부터는 결정론이 아니므로 픽스처가 검증하는 범위가
+좁아진다 — 무엇을 검증하고 무엇을 검증하지 않는지는 [ORCHESTRATION.md](ORCHESTRATION.md)와
+모든 배치 기록의 `verification_scope`에 적혀 있다.
 
 ---
 

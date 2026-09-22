@@ -96,6 +96,25 @@ python harness.py db upgrade --sqlite
 `HARNESS_DATABASE_URL`이 없으면 모든 것이 지금까지처럼 파일로 동작한다.
 계약과 발견 사항은 [DATABASE.md](DATABASE.md)에 있다.
 
+## 1e. Stage 3 triage (Phase 7)
+
+```bash
+# 무엇이 돌 것인지만 본다
+python harness.py screen triage --as-of 2026-09-18 --top 20 --dry-run
+
+# 오프라인 자리표시자 — 배선만 확인하고 분석하지 않는다
+python harness.py screen triage --as-of 2026-09-18 --top 20
+
+# 실제 모델: 돈을 쓰고 사람이 리서치로 읽을 보고서를 만든다
+export ANTHROPIC_API_KEY=...
+python harness.py screen triage --as-of 2026-09-18 --top 10 --provider anthropic
+
+python harness.py screen triage-runs
+```
+
+자리표시자 provider는 분석하지 않으며 Hard Veto를 절대 clear하지 않는다. 무엇이 검증되고
+무엇이 검증되지 않는지는 [ORCHESTRATION.md](ORCHESTRATION.md)에 있다.
+
 ## 2. API
 
 ```bash
@@ -153,6 +172,7 @@ python -m pytest tests/test_deep_dive.py -q
 python -m pytest tests/test_api.py -q           # FastAPI 미설치 시 자동 skip
 python -m pytest tests/test_data_adapters.py -q # PyYAML 미설치 시 자동 skip
 python -m pytest tests/test_warehouse.py -q     # 창고 유무와 무관하게 통과해야 한다
+python -m pytest tests/test_orchestration.py -q # 순서·재시도·idempotency (분석 품질 아님)
 python -m pytest tests/test_database.py -q      # SQLite
 HARNESS_TEST_DATABASE_URL=postgresql+psycopg://user@host/db \
   python -m pytest tests/test_database.py -q    # PostgreSQL

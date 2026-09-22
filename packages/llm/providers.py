@@ -63,7 +63,9 @@ class FixtureProvider(LLMProvider):
         if stage in self.responses:
             payload = self.responses[stage]
         elif self.root is not None:
-            path = self.root / f'{stage}.json'
+            # `agent:EV` is a fine stage name and a hostile filename; keep the
+            # two apart rather than committing colons to a repository.
+            path = self.root / f"{str(stage).replace(':', '_')}.json"
             if not path.exists():
                 raise LLMError(f'{stage}: no fixture at {path}')
             payload = json.loads(path.read_text(encoding='utf-8'))

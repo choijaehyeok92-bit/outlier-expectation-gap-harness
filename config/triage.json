@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "note": "Stage 3 배치 오케스트레이션 정책. 이 파일은 '언제 무엇을 실행하는가'만 정한다. 점수·archetype·Hard Veto·밸류에이션·포지션은 여전히 하네스가 결정하며 오케스트레이터는 순서만 맡는다.",
+
+  "verification_scope": {
+    "verified_by_fixtures": [
+      "에이전트 실행 순서와 단계 전이",
+      "실패 시 재시도와 재시도 상한",
+      "idempotency — 같은 배치를 다시 돌려도 아무것도 새로 만들지 않는다",
+      "검증 실패 보고서가 저장소에 기록되지 않는 것",
+      "freeze·Stage 0 게이트를 우회하지 않는 것",
+      "plan.execution_control 존중 (continue / stop_early / stop_complete / blocked)"
+    ],
+    "not_verified": [
+      "분석 품질",
+      "점수의 타당성",
+      "증거의 진위",
+      "Hard Veto 판정의 옳음"
+    ],
+    "statement": "픽스처는 파이프라인이 도는 것을 검증하며 분석이 옳은 것을 검증하지 않는다. 실제 판단 품질은 지정된 provider와 실제 자료로만 확인할 수 있고, 그 확인은 이 테스트의 범위가 아니다."
+  },
+
+  "triage_agents": ["EV", "AS", "DI", "FS"],
+  "triage_agents_note": "config/workflow.json의 execution.triage_domains에서 파생된다. 여기 목록은 실행 순서이며, 어떤 도메인이 triage인지는 여전히 workflow.json이 정한다.",
+
+  "selection": {
+    "top_n": 30,
+    "require_frozen_run": true,
+    "skip_when_triage_complete": true,
+    "skip_when_early_exit": true,
+    "order_by": "screen_rank",
+    "note": "후보는 스크린 결과에서 온다. frozen run이 없는 후보는 조용히 건너뛰지 않고 blocked로 사유와 함께 기록한다 — Stage 0을 우회하지 않는다."
+  },
+
+  "execution": {
+    "max_attempts_per_agent": 3,
+    "retry_on": ["provider_error", "schema_invalid", "harness_invalid"],
+    "retry_feedback": "validator_errors_only",
+    "retry_feedback_note": "재시도 프롬프트에는 검증기가 낸 오류 문자열만 덧붙인다. 형식을 고치라는 것이지 결론을 바꾸라는 것이 아니다. 모델에게 어떤 판정을 내리라고 지시하지 않는다.",
+    "stop_batch_after_consecutive_failures": 5,
+    "concurrency": 1,
+    "concurrency_note": "현재는 순차 실행이다. 에이전트 간 독립성 규칙은 같은 run 안에서 다른 에이전트의 보고서를 읽지 않는 것이며 병렬성과 무관하지만, 같은 run에 동시에 쓰면 aggregate가 중간 상태를 읽는다."
+  },
+
+  "idempotency": {
+    "key_fields": ["run_id", "agent_id", "input_snapshot_sha256", "policy_version"],
+    "note": "freeze가 바뀌면 이전 에이전트 작업은 낡은 것이 되므로 키에 input_snapshot_sha256이 들어간다. 정책 버전이 바뀌어도 마찬가지다.",
+    "skip_complete_and_valid": true,
+    "overwrite_requires_force": true
+  },
+
+  "gates": {
+    "respect_execution_control": true,
+    "terminal_states": ["stop_early", "stop_complete"],
+    "blocked_is_not_done": true,
+    "blocked_note": "blocked는 분석 종료가 아니라 입력/검증이 막힌 상태다. 원인을 기록하고 배치를 계속하되 완료로 세지 않는다."
+  }
+}

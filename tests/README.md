@@ -37,6 +37,15 @@ refusal being distinguishable from a metric never attempted, and the property th
 for: the same rows from the database as from the files. It runs on SQLite by default and on
 PostgreSQL when `HARNESS_TEST_DATABASE_URL` is set.
 
+`test_orchestration.py` covers Stage 3 sequencing only, and says so: a placeholder provider that
+analyses nothing drives the four triage agents so the suite can check ordering, retry on a
+transient failure, retry on a rejected document, that a rejected document never reaches
+`reports/`, that agent identity comes from the manifest rather than from the model, that retry
+feedback carries the validator's words and no steering, idempotency across a re-run and its
+invalidation by a re-freeze, the Stage 0 and freeze gates, and the batch circuit breaker. It
+establishes nothing about analysis quality, and a test asserts that the placeholder can never
+clear a Hard Veto — so the suite cannot show a green run nobody analysed.
+
 `test_api.py` skips itself when `apps/api/requirements.txt` is not installed and
 `test_data_adapters.py` when `data_adapters/requirements.txt` is not; the rest need only
 `jsonschema`.

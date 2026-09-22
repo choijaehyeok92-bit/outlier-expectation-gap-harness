@@ -33,6 +33,23 @@ class ScreenRunRequest(BaseModel):
     persist: bool = True
 
 
+class TriageRequest(BaseModel):
+    """Stage 3 over the top candidates.
+
+    `provider` defaults to the offline placeholder, which analyses nothing. A
+    real model is an explicit choice because it spends money and produces
+    reports a person will read as research.
+    """
+    screen_run_id: str | None = None
+    as_of_date: str | None = Field(default=None, pattern=r'^\d{4}-\d{2}-\d{2}$')
+    top: int | None = Field(default=None, ge=1, le=200)
+    provider: Literal['placeholder', 'anthropic', 'openai'] = 'placeholder'
+    model: str | None = None
+    dry_run: bool = True
+    force: bool = False
+    persist: bool = True
+
+
 class DeepDivePlanRequest(BaseModel):
     run_id: str
     user_requested: bool = False

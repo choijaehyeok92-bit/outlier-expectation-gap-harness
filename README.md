@@ -34,6 +34,7 @@
 | Data adapters | `data_adapters/{sec,dart,market_us,market_kr}` | SEC/DART가 같은 인터페이스로 `financial_pack` 호환 출력을 만든다. 시장 데이터는 규제기관과 분리 |
 | Screening warehouse | `packages/screening/{facts,metrics,warehouse,rows}.py` | 적재된 재무에서 24개 지표를 결정론적으로 계산한다. 값싼 사전 스크린 |
 | Quantitative filter | `harness_core` (무변경) | 기존 정책 엔진이 판정한다 |
+| Stage 3 orchestration | `packages/orchestration` | triage 에이전트를 순서대로 돌린다. 판단은 하지 않고 순서만 맡는다 |
 | Qualitative deep dive | `packages/research` | 증거 수집 → 독립 정성판단 → 독립 Red Team → 종합 |
 | Report / Monitoring UI | `apps/api`, `apps/web` | FastAPI + Next.js |
 | Index (선택) | `db/` | 아티팩트 위의 PostgreSQL 색인. `runs/`가 여전히 source of truth다 |
@@ -42,7 +43,8 @@
 [WEB_PLATFORM_RUNBOOK.md](docs/WEB_PLATFORM_RUNBOOK.md), SEC/DART 적재 계약은
 [DATA_ADAPTERS.md](docs/DATA_ADAPTERS.md), 지표 계산 규칙은
 [SCREENING_WAREHOUSE.md](docs/SCREENING_WAREHOUSE.md), 선택적 DB 색인은
-[DATABASE.md](docs/DATABASE.md)에 있다.
+[DATABASE.md](docs/DATABASE.md), Stage 3 오케스트레이션과 그 검증 범위는
+[ORCHESTRATION.md](docs/ORCHESTRATION.md)에 있다.
 
 ```bash
 python harness.py screen run "미국과 한국에서 시총 1조 이상, 순현금이고 해자가 강한 종목" \
@@ -51,6 +53,7 @@ python harness.py deep-run MSFT --markdown /tmp/MSFT.md
 python harness.py universe sync --markets US,KR --as-of 2026-09-18 --fixtures
 python harness.py ingest 267260 --market KR --as-of 2026-09-18 --api-key TEST --fixtures
 python harness.py screen build --as-of 2026-09-18 --from-runs
+python harness.py screen triage --as-of 2026-09-18 --top 20 --dry-run
 ```
 
 기존 20개 서브커맨드는 인자·동작 모두 변하지 않았다. 새 커맨드의 구현은 지연 import되므로
