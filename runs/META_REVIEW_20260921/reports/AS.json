@@ -1,0 +1,172 @@
+{
+  "agent_id": "AS",
+  "ticker": "META",
+  "as_of_date": "2026-09-21",
+  "domain": "asymmetry",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 58.75,
+  "confidence_0_1": 0.78,
+  "bull_score": 75,
+  "bear_score": 45,
+  "bull_case": "광고 AI 효율 향상, 비즈니스 메시징·에이전트 유료화, AI 글래스/구독이 서로 다른 가치풀로 확장되면 5~10년 동안 주당 FCF가 Base를 웃돌 수 있다. 다만 현재 시총이 이미 약 1.9조달러라 5배는 현실적 기본경로가 아니다.",
+  "bear_case": "AI 인프라 지출이 구조적으로 높은 수준에 고착되고 광고 성장 둔화·규제비용·Reality Labs 손실이 겹치면 현 주가에서 큰 가치 훼손이 가능하다. 다만 FoA의 현금창출력과 순현금에 가까운 재무구조는 사업가치의 완전 소멸 가능성을 낮춘다.",
+  "thesis": "Bull 가치/현재가는 약 1.47배로, 1.2~1.6배 구간에서 광고 AI와 비즈니스 메시징·에이전트라는 최소 두 개의 독립 상승경로가 있어 upside_path는 60점이다. Bear 가치/현재가는 약 0.361배이며 순현금이고 TTM OCF가 총차입을 웃돌아 permanent_loss는 보간 55점에 +10 modifier를 적용해 65점이다. 명시적 대형주 5배 base rate는 확보하지 못해 probability_calibration은 50점으로 제한한다.",
+  "evidence": [
+    {
+      "evidence_id": "META-AS-VAL",
+      "economic_driver": "market_expectations",
+      "claim": "Harness locked valuation is Bear/Base/Bull $267.40/$638.42/$1,090.61 per share versus $741.25 current price; Bull/current ≈1.47x and Bear/current ≈0.361x.",
+      "source_type": "other",
+      "source": "runs/META/aggregate.json",
+      "period": "2026-09-21 locked valuation",
+      "as_of_date": "2026-09-21",
+      "value": {
+        "bull_to_price": 1.4712,
+        "bear_to_price": 0.3607
+      },
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "META-AS-ADS",
+      "economic_driver": "ai_ad_monetization",
+      "claim": "Q2 2026 revenue rose 28% YoY; ad impressions rose 14% and average price per ad rose 12%, supporting a monetization path independent of multiple expansion.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.28,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-AS-BIZAGENT",
+      "economic_driver": "business_messaging_ai",
+      "claim": "Meta said more than one million businesses were already using Meta Business Agent and there were more than one billion active business threads per day across WhatsApp, Messenger and Instagram; paid subscription offerings were planned.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/06/meta-business-agent/",
+      "period": "2026-06-03",
+      "as_of_date": "2026-09-21",
+      "value": 1000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-AS-LIQ",
+      "economic_driver": "financial_resilience",
+      "claim": "At June 30, 2026 Meta had $90.26B cash and marketable securities and $84.0B notes; TTM operating cash flow is approximately $130.3B using FY2025 OCF plus H1 2026 less H1 2025.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 130301000000,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "META-AS-LEGAL",
+      "economic_driver": "regulatory_cash_drag",
+      "claim": "Meta's August 2026 attorneys-general agreement includes about $18B of payments over ten years and an expected ~$10B Q3 2026 legal expense accrual, adding a durable but manageable cash and earnings drag.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Metas-Agreement-With-Bipartisan-Attorneys-General-Calling-on-TikTok-and-YouTube-to-Join-Us-in-Supporting-Teens/default.aspx",
+      "period": "2026-08-26",
+      "as_of_date": "2026-09-21",
+      "value": 18000000000,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "현재 가격은 Base 내재가치보다 약 16% 높아 Base 실행만으로는 충분한 기대수익이 보장되지 않는다.",
+    "Q2 2026 capex는 $31.08B였고 2026년 가이던스는 $130B-$145B로, AI 인프라의 유지성 지출 비중이 높아지면 Bull 경로가 훼손된다.",
+    "Reality Labs는 H1 2026에 약 $8.65B 영업손실을 냈고 2025년 연간 손실도 $19.19B였다.",
+    "5배 경제가치 경로는 현재 시총 규모상 광고·메시징·신규 플랫폼이 동시에 크게 성공해야 하며 단일 사업선만으로는 현실성이 낮다."
+  ],
+  "unknowns": [
+    "동일 규모의 글로벌 플랫폼 기업이 5~10년 내 3배·5배 경제가치에 도달한 객관적 base-rate 데이터셋을 확보하지 못했다."
+  ],
+  "falsifiers": [
+    "광고 매출 성장률이 중기적으로 한 자릿수에 머물고 AI 기반 전환율·가격 개선 증거가 사라진다.",
+    "Business Agent·WhatsApp 유료 메시징이 의미 있는 매출 기여 없이 비용만 증가한다.",
+    "TTM 영업현금흐름이 총차입 아래로 내려가고 외부조달 없이는 약정된 인프라 지출을 감당하기 어려워진다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "$741.25 current price is below the locked Bull value of about $1,090.61; the sole veto element is false."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Meta remains approximately net-cash on cash+marketable-securities versus notes, and TTM OCF exceeds total notes; the business continues to generate substantial owner cash flow even though valuation downside is material."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Bull value / current price",
+      "direction": "remain comfortably above 1.2x",
+      "threshold": ">1.2x",
+      "cadence": "quarterly valuation refresh"
+    },
+    {
+      "name": "TTM operating cash flow / total debt",
+      "direction": "remain above 1x",
+      "threshold": ">1.0x",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Business messaging/agent monetization",
+      "direction": "convert usage into recurring revenue",
+      "threshold": "sustained double-digit growth and disclosed material revenue contribution",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Rebuild AS after Q3 2026 actual capex and legal-settlement accrual.",
+    "Track paid Business Agent and WhatsApp messaging revenue disclosures.",
+    "Re-estimate Bull/current if the stock price moves >15% or EV scenario paths change."
+  ],
+  "verdict": "neutral",
+  "subscores": [
+    {
+      "criterion_id": "upside_path",
+      "score_0_100": 60,
+      "rationale": "Bull/current ≈1.47x is in the 1.2~1.6 band. At least two economically distinct paths are evidenced—AI ad monetization and business messaging/agent monetization—so the observable table fixes the score at 60 rather than 50."
+    },
+    {
+      "criterion_id": "permanent_loss",
+      "score_0_100": 65,
+      "rationale": "Bear/current ≈0.361. Band-centre interpolation within 0.2~0.4 gives ~55 after 5-point rounding. Meta is net-cash on cash+marketable securities versus notes and estimated TTM OCF (~$130.3B) exceeds ~$84B notes, so the +10 modifier applies, producing 65."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "score_0_100": 50,
+      "rationale": "Scenario sensitivity is explicit, but a directly comparable large-cap 3x/5x base-rate dataset was not secured. This matches the 50 'limited evidence' anchor; 75 is excluded because external base-rate calibration is incomplete."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "upside_path",
+      "severity": "material",
+      "rationale": "The business has multiple growth vectors, but at a ~$1.9T market cap a true 5x economic-value outcome requires extraordinary absolute cash-flow expansion."
+    },
+    {
+      "criterion_id": "probability_calibration",
+      "severity": "material",
+      "rationale": "Base-rate evidence for firms of comparable scale is not sufficiently quantified."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  },
+  "geo_events_reviewed": []
+}

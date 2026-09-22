@@ -1,0 +1,151 @@
+{
+  "agent_id": "MT",
+  "ticker": "META",
+  "as_of_date": "2026-09-21",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 78.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "Meta의 36억 DAP, 광고주 데이터·추천 신호, 크리에이터·비즈니스 배포망이 AI 모델의 성능 개선과 상호 강화된다. Reels·메시징·AI 에이전트가 기존 네트워크 안에서 확장되며 경쟁자가 복제해야 할 규모와 데이터 피드백이 커진다.",
+  "bear_case": "사용자는 멀티호밍이 쉽고, 생성형 AI 모델 자체는 범용화될 수 있다. 모바일 OS·검색·AI 인터페이스를 장악한 경쟁자가 데이터 접근과 사용자 시간을 재배분하면 Meta의 현재 네트워크 우위가 약해질 수 있다.",
+  "thesis": "현재 해자는 대규모 사용자·광고주·콘텐츠 네트워크와 데이터 피드백이다. 궤적도 아직 강화 방향이다: DAP·광고 노출·가격이 동시에 증가하고 AI 개선이 전환율을 높인다. network_data_ecosystem은 검증 가능한 규모·추세 수치 3개 이상이 있어 관측표 85점, switching/pricing과 commoditization 방어는 각각 75점이다. 구체적 고객 전환비용은 약해 90은 주지 않는다.",
+  "evidence": [
+    {
+      "evidence_id": "META-MT-DAP",
+      "economic_driver": "network_scale",
+      "claim": "Family DAP was 3.60B in Q2 2026, up 3% YoY; December 2025 DAP averaged 3.58B, up 7% YoY.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 3600000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-MT-MON",
+      "economic_driver": "monetization_feedback",
+      "claim": "Q2 2026 ad impressions increased 14% and average price per ad increased 12%, indicating that scale and monetization were rising together.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": {
+        "impressions": 0.14,
+        "price": 0.12
+      },
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-MT-AI",
+      "economic_driver": "data_model_feedback",
+      "claim": "Meta disclosed multiple measured AI-ranking improvements, including +3.5% Facebook ad clicks and +3% conversion from a runtime model, showing data/model feedback translating into product economics.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/01/2026-ai-drives-performance/",
+      "period": "Q4 2025 metrics",
+      "as_of_date": "2026-09-21",
+      "value": 0.035,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-MT-BIZ",
+      "economic_driver": "ecosystem_expansion",
+      "claim": "More than one million businesses were already using Meta Business Agent on WhatsApp and Messenger, adding another participant layer to the existing social graph.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/06/meta-business-agent/",
+      "period": "2026-06-03",
+      "as_of_date": "2026-09-21",
+      "value": 1000000,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "사용자 멀티호밍과 콘텐츠 복제 비용은 낮다.",
+    "광고 타기팅 데이터는 OS·브라우저·규제 정책에 영향을 받는다.",
+    "기초 AI 모델은 경쟁사와 오픈소스 확산으로 범용화될 수 있다.",
+    "AI 인프라 규모가 커져도 수익률이 같은 속도로 개선된다는 보장은 없다."
+  ],
+  "unknowns": [
+    "광고주 전환비용이나 멀티플랫폼 광고 예산의 wallet-share 시계열은 공시되지 않는다."
+  ],
+  "falsifiers": [
+    "DAP와 광고 가격이 동시에 지속 하락한다.",
+    "AI 모델 개선이 광고 성과 개선으로 연결되지 않는 상태가 4개 분기 이상 지속된다.",
+    "비즈니스·크리에이터가 경쟁 플랫폼으로 이동하면서 Meta 내 활동이 구조적으로 감소한다."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Observed moat metrics—DAP, ad impressions, ad price and measured AI ad performance—were maintained or improving through Q2 2026; actual and persistent shrinkage is not established."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Family DAP",
+      "direction": "grow",
+      "threshold": ">0% YoY",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Ad price and impressions",
+      "direction": "both positive",
+      "threshold": ">0% YoY",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "AI performance lift",
+      "direction": "repeat across surfaces",
+      "threshold": "positive measured conversion/click lift",
+      "cadence": "semiannual"
+    }
+  ],
+  "next_checks": [
+    "Track same-definition DAP trend.",
+    "Monitor advertiser pricing power after privacy changes.",
+    "Check Business Agent adoption and monetization."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 75,
+      "rationale": "Rising ad prices alongside volume and engagement support strengthening pricing power, matching 75. 90 is excluded because end-user switching costs are low and advertisers can multi-home."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 85,
+      "rationale": "The observable table is met by 3+ primary-source scale/trend measures: 3.60B DAP with YoY growth, ad impressions +14%, ad price +12%, plus measured AI conversion gains. Same-definition growth is observed; no concrete hard switching-cost case is established, so 90 is excluded."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 75,
+      "rationale": "Distribution, social graph, advertiser tooling and first-party engagement data provide multiple defense layers, fitting 75. 90 is excluded because AI models and user interfaces can commoditize and mobile OS owners remain powerful."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "material",
+      "rationale": "The degree to which standalone AI assistants substitute for social-feed discovery is not yet observable over a long period."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": null,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": []
+      },
+      "base": {
+        "owner_fcf_per_share": []
+      },
+      "bull": {
+        "owner_fcf_per_share": []
+      }
+    }
+  },
+  "geo_events_reviewed": []
+}

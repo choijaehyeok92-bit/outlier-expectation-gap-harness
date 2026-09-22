@@ -1,0 +1,219 @@
+{
+  "agent_id": "EV",
+  "ticker": "META",
+  "as_of_date": "2026-09-21",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 58,
+  "confidence_0_1": 0.78,
+  "bull_score": 75,
+  "bear_score": 40,
+  "bull_case": "AI-driven ad ranking sustains strong monetization while infrastructure investment converts into revenue and operating leverage. Owner FCF/share recovers from the 2026 investment trough and reaches $79 by year 10; the locked DCF yields about $1,091/share.",
+  "bear_case": "AI infrastructure remains structurally capital-intensive, ad growth decelerates faster than expected, and Reality Labs keeps consuming roughly $20B annually. Owner FCF/share rises only to $26 by year 10; the locked DCF yields about $267/share.",
+  "thesis": "At $741.25, META remains below the locked Bull value (~$1,091) but is now materially above the unchanged Base value (~$638), with price/Base ≈ 1.161x. No new quarterly filing changed the owner-FCF scenario paths; the September 21 move therefore narrows the expectation gap versus the September 18 run.",
+  "evidence": [
+    {
+      "evidence_id": "META-EV-2025-FCF",
+      "economic_driver": "cash_conversion_after_ai_capex",
+      "claim": "Meta reported 2025 operating cash flow of $115.8B and free cash flow of $43.585B versus $52.103B in 2024; the decline in FCF despite higher revenue establishes a real reinvestment burden rather than a purely accounting concern.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-21",
+      "value": 43585000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-EV-Q2-ADS",
+      "economic_driver": "ai_ad_monetization",
+      "claim": "Q2 2026 revenue was $60.801B, up 28% YoY; ad impressions rose 14% and average price per ad rose 12%, indicating that both engagement/inventory and monetization were contributing to growth.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 60801000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-EV-Q2-CAPEX",
+      "economic_driver": "cash_conversion_after_ai_capex",
+      "claim": "Q2 2026 operating cash flow was $31.862B but company-defined FCF was only $0.784B after $31.08B of capex including finance-lease principal; full-year 2026 capex guidance was $130B-$145B.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
+      "period": "Q2 2026 / FY2026 guidance",
+      "as_of_date": "2026-09-21",
+      "value": 130000000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-EV-RL-LOSS",
+      "economic_driver": "reality_labs_drag",
+      "claim": "Reality Labs lost $4.619B from operations in Q2 2026 and $8.647B in H1 2026; the 2025 10-K reported a $19.193B full-year RL operating loss and expected 2026 losses to remain similar.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "Q2/H1 2026 and FY2025 comparison",
+      "as_of_date": "2026-09-21",
+      "value": -8647000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-EV-PRICE",
+      "economic_driver": "market_expectations",
+      "claim": "META closed at $741.25 on September 21, 2026, the frozen valuation price.",
+      "source_type": "secondary",
+      "source": "https://www.investing.com/equities/facebook-inc-historical-data",
+      "period": "2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 741.25,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-EV-DCF",
+      "economic_driver": "market_expectations",
+      "claim": "Using the harness-locked 9% required return and 15x/20x/25x terminal multiples, the unchanged 10-year owner-FCF/share paths imply about $267 Bear, $638 Base and $1,091 Bull value. At $741.25, price/Base is about 1.161x.",
+      "source_type": "other",
+      "source": "Harness locked owner-FCF/share DCF using frozen META inputs",
+      "period": "10-year forecast from 2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 638.42,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "The Base path requires owner FCF/share to recover from $14 in year 1 to $54 in year 10 even while Meta is committing to exceptionally high AI infrastructure spending; sustained capex intensity would make Base too optimistic.",
+    "Q2 2026 operating margin fell to 31% from 43% a year earlier as costs grew 55%, showing that revenue growth does not automatically translate into near-term owner cash flow.",
+    "Reality Labs continues to absorb roughly $19B-$20B of annual operating profit with limited revenue, and management says the adverse financial impact may persist.",
+    "The current price is about 16.1% above Base intrinsic value at the locked 9% hurdle, so the margin for Base-case execution error is smaller than on September 18."
+  ],
+  "unknowns": [
+    "Meta does not disclose a decision-useful split of 2026-2030 infrastructure spending between economically maintenance-like capex and growth capex; Q2 filings/IR were reviewed, but this remains the largest uncertainty in owner-FCF normalization.",
+    "A reproducible 5-year self-valuation percentile was not frozen, so valuation_percentile_5y remains null rather than being inferred from a secondary chart."
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "minor",
+      "rationale": "Current price is only modestly above Base value, but the implied burden still depends on the durability of the assumed post-2026 FCF recovery."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "The 9% hurdle Base value is below market price; small changes in the owner-FCF recovery path materially alter the expectation gap."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "material",
+      "rationale": "Base terminal concentration is below the harness review threshold, but the maintenance-versus-growth character of AI capex is unresolved."
+    }
+  ],
+  "falsifiers": [
+    "Company-defined FCF remains below roughly $30B through 2028 despite continued double-digit revenue growth, indicating the assumed cash-conversion recovery is not occurring.",
+    "Advertising growth falls to low-single digits while average price per ad and impressions both stagnate for several quarters.",
+    "Reality Labs losses materially exceed the roughly $20B annual run-rate without evidence of a credible revenue or strategic payoff."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "The frozen price of $741.25 remains below the harness-computed Bull value of about $1,091; the Bull-price veto is therefore not triggered."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Company-defined free cash flow",
+      "direction": "recover from 2026 trough",
+      "threshold": "> $30B annualized by 2028 and rising thereafter",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Advertising revenue growth",
+      "direction": "remain structurally above mature-platform growth",
+      "threshold": "> 10% YoY through the medium term",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Capital expenditures / operating cash flow",
+      "direction": "decline after AI buildout",
+      "threshold": "clear downward trend by 2028",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Rebuild the owner-FCF path after Q3 2026 results using actual capex, OCF and 2027 infrastructure guidance.",
+    "Track whether Meta begins disclosing AI monetization or business-messaging revenue sufficient to attribute returns to incremental infrastructure spending.",
+    "Reassess the Base path if Reality Labs losses diverge materially from the approximately $20B annual level."
+  ],
+  "verdict": "neutral",
+  "archetype_signals": {
+    "price_to_base_value": null,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.16
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "Locked DCF price/Base is approximately 1.043x, within the 0.9-1.1 signal-map band. The table therefore maps this criterion to 60; the market requires roughly Base-plus execution, not Bull-plus execution."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "Locked DCF price/Base is approximately 1.043x, within the 0.9-1.1 signal-map band. The table therefore maps Base return to 55 because current price is near but modestly above Base value."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 60,
+      "rationale": "Base terminal fraction is about 71.7%, below the 80% harness review threshold, and year-by-year Bear/Base/Bull paths remain ordered. This supports a mixed-to-adequate 60 rather than 75 because AI capex normalization is still a material assumption; 50 is too low because value is not dominated by a >80% terminal fraction."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.16,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          22,
+          24,
+          26
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          14,
+          17,
+          20,
+          23,
+          27,
+          31,
+          36,
+          41,
+          47,
+          54
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          18,
+          22,
+          27,
+          32,
+          38,
+          45,
+          52,
+          60,
+          69,
+          79
+        ]
+      }
+    }
+  },
+  "geo_events_reviewed": []
+}

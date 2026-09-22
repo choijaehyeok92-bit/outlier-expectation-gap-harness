@@ -1,0 +1,61 @@
+{
+  "ticker": "META",
+  "company_name": "Meta Platforms, Inc.",
+  "as_of_date": "2026-09-21",
+  "currency": "USD",
+  "current_price": 741.25,
+  "shares_diluted": 2566000000,
+  "market_cap_usd": 1902047500000,
+  "enterprise_value": 1895451500000,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+    "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm",
+    "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000012/meta-20231231.htm",
+    "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm",
+    "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm",
+    "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm",
+    "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm",
+    "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm",
+    "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+    "https://finance.yahoo.com/quote/META/history/",
+    "META 2026-09-21 closing price $741.25"
+  ],
+  "special_questions": [
+    "Separate structural AI-driven monetization upside from expectations already embedded in the 2026-09-18 price.",
+    "Stress-test the return path against sharply higher AI infrastructure capex and Reality Labs losses.",
+    "Treat the Q3 2025 OBBBA tax charge as a normalization candidate, not an automatically excluded expense."
+  ],
+  "net_cash_per_share": 2.570538,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {
+      "United States and Canada": 0.392435,
+      "Europe": 0.231726,
+      "Asia-Pacific": 0.267792,
+      "Rest of World": 0.108048
+    },
+    "production_by_region": {},
+    "critical_supplier_regions": [],
+    "export_control_dependencies": [],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": []
+  }
+}
