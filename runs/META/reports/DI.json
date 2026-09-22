@@ -4,53 +4,132 @@
   "as_of_date": "2026-09-18",
   "domain": "disruptive_innovation",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 71.75,
+  "confidence_0_1": 0.73,
+  "bull_score": 85,
+  "bear_score": 55,
+  "bull_case": "LLM-native recommendation and ad systems improve both engagement and advertiser conversion at billions-user scale, while Meta can distribute new AI, messaging and subscription products through existing networks at very low incremental distribution cost.",
+  "bear_case": "Most AI gains may be sustaining innovation inside an established ad platform. New agents, APIs, subscriptions and Reality Labs can absorb capital without creating a durable new value chain, while rivals can buy similar models and compute.",
+  "thesis": "Meta is already applying AI at mainstream scale rather than running pilots: engagement, ad impressions and pricing show measurable adoption. That supports a strong adoption score, but much of the innovation strengthens an incumbent advertising model rather than replacing an external industry cost curve. Optionality is real across Threads/WhatsApp monetization and AI products, yet new enterprise-agent economics remain early, keeping DI below the moonshot gate.",
+  "evidence": [
+    {
+      "evidence_id": "META-DI-Q2-ADOPTION",
+      "economic_driver": "ai_recommendation_adoption",
+      "claim": "Family DAP averaged 3.60B in June 2026; Q2 ad impressions increased 14% YoY and average price per ad increased 12%, showing large-scale usage and monetization rather than pilot adoption.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-18",
+      "value": 3600000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-DI-10Q-AI",
+      "economic_driver": "ai_recommendation_adoption",
+      "claim": "Meta's Q2 2026 10-Q states that investments in Reels and AI-powered discovery have already improved user engagement and monetization, while also acknowledging intense competition and lower Reels monetization than Feed/Stories.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-DI-AI-PERFORMANCE",
+      "economic_driver": "ai_content_creation",
+      "claim": "Meta reported that AI dubbing was used by hundreds of millions of viewers and that daily actives generating media in Meta AI tripled YoY in Q4 2025, evidence of adoption beyond ad-ranking infrastructure.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/01/2026-ai-drives-performance/",
+      "period": "Q4 2025 / published 2026-01",
+      "as_of_date": "2026-09-18",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-DI-METAONE",
+      "economic_driver": "ai_product_monetization",
+      "claim": "By September 15, 2026, Reuters reported Meta One had 15M subscribers and trial users in a phased rollout, providing early evidence that AI-enhanced subscription monetization can extend beyond advertising.",
+      "source_type": "secondary",
+      "source": "https://www.reuters.com/business/meta-launches-subscriptions-with-enhanced-ai-features-2026-09-15/",
+      "period": "2026-09-15",
+      "as_of_date": "2026-09-18",
+      "value": 15000000,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "AI recommendation is primarily sustaining innovation inside Meta's existing ad auction and social graph rather than a clean low-end disruption of a separate incumbent industry.",
+    "Q2 operating margin fell to 31% from 43% and FCF to $0.784B as infrastructure spending surged, so better model performance has not yet translated into better near-term capital efficiency.",
+    "Reels still monetizes below Feed and Stories, demonstrating that engagement innovation can initially dilute monetization quality.",
+    "Enterprise agents, APIs and compute sales were described as opportunities but were not yet decision-useful revenue pools at the cutoff."
+  ],
+  "unknowns": [
+    "Meta does not yet disclose stand-alone revenue or contribution margin for its new AI agents/API offerings.",
+    "The proportion of engagement and conversion uplift that is uniquely attributable to proprietary models rather than industry-wide model improvements is not observable."
+  ],
+  "falsifiers": [
+    "AI-driven recommendation improvements stop producing measurable engagement or advertiser-conversion gains for several quarters.",
+    "New AI/subscription/messaging products fail to reach material revenue despite distribution to Meta's existing user base.",
+    "Infrastructure and model costs grow faster than incremental gross profit for multiple years, preventing unit-economic improvement."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "AI-attributed ad conversion/engagement uplift",
+      "direction": "increase or remain material",
+      "threshold": "repeated measurable uplift, not isolated pilots",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Non-core AI/messaging/subscription revenue",
+      "direction": "scale",
+      "threshold": "become decision-useful and separately disclosed or inferable",
+      "cadence": "semiannual"
+    },
+    {
+      "name": "Capex versus incremental operating profit",
+      "direction": "improve",
+      "threshold": "post-buildout incremental profit growth catches up with infrastructure spending",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Track disclosed conversion uplift from generative ad/recommendation systems and whether gains persist at broader deployment.",
+    "Quantify Threads, WhatsApp, Meta One and enterprise-AI monetization as separate value pools when disclosure permits.",
+    "Reassess whether proprietary model/data/distribution advantages remain differentiated as competitor models improve."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "cost_performance_shift",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "AI materially changes recommendation, creative and ad-matching performance at massive scale, but the evidence is stronger for sustaining economics inside Meta's incumbent platform than for a 10x industry-wide cost-curve reset. This sits between the 50 and 75 anchors."
     },
     {
       "criterion_id": "adoption_curve",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "AI-enhanced recommendation and monetization operate across a 3.60B-DAP family, with 14% impression growth and 12% price growth plus broad AI-media usage. Adoption and economics are measurable at mainstream scale, matching the 75 anchor."
     },
     {
       "criterion_id": "optionality_incumbent_response",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 70,
+      "rationale": "At least two adjacent value pools have real distribution/monetization evidence (newer social/messaging surfaces and AI subscription/products), while enterprise-agent economics remain early. The observable table maps two value pools to 70."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "cost_performance_shift",
+      "severity": "material",
+      "rationale": "The exact advertiser ROI advantage attributable to Meta's proprietary AI stack versus broadly available models is not fully disclosed."
+    },
+    {
+      "criterion_id": "adoption_curve",
+      "severity": "minor",
+      "rationale": "Core recommendation adoption is clear, but adoption of stand-alone agents and enterprise AI is earlier."
+    },
+    {
+      "criterion_id": "optionality_incumbent_response",
+      "severity": "material",
+      "rationale": "Several adjacent opportunities are distributed but not yet large enough to establish durable standalone economics."
     }
-  }
+  ]
 }
