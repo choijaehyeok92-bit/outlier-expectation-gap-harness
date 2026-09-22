@@ -4,64 +4,157 @@
   "as_of_date": "2026-09-18",
   "domain": "reinvestment_fcf",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 65,
+  "confidence_0_1": 0.8,
+  "bull_score": 80,
+  "bear_score": 45,
+  "bull_case": "Meta can absorb extraordinary AI capex and R&D because its core ad engine still grows at high rates. If infrastructure intensity peaks, owner FCF/share can reaccelerate while share count remains controlled.",
+  "bear_case": "The 2026 AI buildout may be economically maintenance-like rather than high-return growth capex. FCF/share already fell in 2025 and Q2 2026 FCF nearly vanished, so high reinvestment could dilute returns without visible payback.",
+  "thesis": "META has a long reinvestment runway but the current incremental return is not yet proven. FY2025 FCF/share fell despite strong revenue and operating-income growth, and H1 2026 capex plus R&D exceeded operating cash flow. This supports an 80 runway score but only 65 incremental-ROIC and 50 FCF/share-quality scores. The dilution veto remains cleared because diluted shares have declined rather than compounded upward.",
+  "evidence": [
+    {
+      "evidence_id": "META-RF-2025-FCF",
+      "economic_driver": "owner_fcf_quality",
+      "claim": "FY2025 operating cash flow was $115.80B and free cash flow $43.585B versus $52.103B in 2024, while diluted shares fell from 2.614B to 2.574B. FCF/share declined from about $19.93 to $16.93.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2024-FY2025",
+      "as_of_date": "2026-09-18",
+      "value": -0.1505,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-RF-ABSORPTION",
+      "economic_driver": "reinvestment_runway",
+      "claim": "H1 2026 operating cash flow was $64.09B, property-and-equipment capex $49.11B and R&D $39.36B from the frozen financial pack, implying an internal reinvestment absorption ratio above 100%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": 1.38,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-RF-CORE-RETURNS",
+      "economic_driver": "incremental_returns",
+      "claim": "FY2025 revenue increased 22% and operating income increased 20%, while Q2 2026 revenue still grew 28%; the operating engine remains productive even as the marginal return on the newest AI infrastructure is not separately disclosed.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025/Q2 2026",
+      "as_of_date": "2026-09-18",
+      "value": 0.2,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-RF-Q2-FCF",
+      "economic_driver": "cash_conversion_after_ai_capex",
+      "claim": "Q2 2026 operating cash flow was $31.86B but company-defined FCF was only $0.784B; full-year capex guidance was $130B-$145B.",
+      "source_type": "ir",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/",
+      "period": "Q2/FY2026 guidance",
+      "as_of_date": "2026-09-18",
+      "value": 784000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-RF-SHARES",
+      "economic_driver": "per_share_compounding",
+      "claim": "Diluted weighted-average shares fell from 2.629B in 2023 to 2.614B in 2024 and 2.574B in 2025; Q2 2026 diluted shares were 2.566B versus 2.570B a year earlier.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "2023-Q2 2026",
+      "as_of_date": "2026-09-18",
+      "value": -0.0209,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "The return on 2026-2030 AI infrastructure is not separately disclosed, so incremental ROIC cannot be measured cleanly.",
+    "FY2025 FCF/share fell about 15% despite strong revenue growth.",
+    "Q2 2026 FCF was only $0.784B because of the capex surge.",
+    "Reality Labs continued to lose roughly $19B annually, consuming reinvestment capacity outside the proven ad engine."
+  ],
+  "unknowns": [
+    "Maintenance-like versus growth capex within AI infrastructure is not disclosed.",
+    "A clean incremental NOPAT/incremental invested-capital series for the 2025-2026 AI buildout is unavailable.",
+    "The timing of infrastructure utilization and corresponding revenue contribution is not sufficiently disclosed to calculate project-level ROIC."
+  ],
+  "falsifiers": [
+    "Revenue continues growing double digits but owner FCF/share remains below the 2024 level through 2028.",
+    "Capex remains above $130B annually without a visible increase in incremental operating profit or cash conversion.",
+    "Diluted shares begin rising materially despite continued high SBC and buybacks remain uneconomic."
+  ],
   "hard_veto_flags": [
     {
       "veto": "장기간 지속되는 과도한 희석",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Diluted shares declined across 2023-2025 and were slightly lower YoY in Q2 2026. The long-duration excessive-dilution condition is false even though SBC is economically large."
     },
     {
       "veto": "증분 ROIC의 구조적 붕괴",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Recent marginal returns are uncertain, but FY2025 revenue and operating income still grew 22% and 20%, and Q2 revenue grew 28%. Evidence does not establish ROIC below cost of capital on a structural basis."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
+  "key_kpis": [
+    {
+      "name": "Owner FCF/share",
+      "direction": "recover and compound",
+      "threshold": "exceed FY2024 level on normalized basis by 2028",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Capex + R&D / OCF",
+      "direction": "normalize after buildout",
+      "threshold": "decline from >100% while growth remains healthy",
+      "cadence": "annual"
+    },
+    {
+      "name": "Incremental operating profit per incremental capital",
+      "direction": "improve",
+      "threshold": "clear evidence AI investment earns above cost of capital",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Rebuild TTM reinvestment absorption and owner FCF/share after Q3/Q4 2026.",
+    "Separate AI infrastructure maintenance and growth components if management provides enough disclosure.",
+    "Compare incremental FoA operating profit with cumulative AI capex to estimate realized ROIC."
+  ],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "incremental_roic",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 65,
+      "rationale": "Core economics remain strong, but the newest AI infrastructure return is not measurable. This is above the 50 uncertainty anchor because revenue/operating income continue to expand, but below the 75 'superior' anchor without clean marginal-return evidence."
     },
     {
       "criterion_id": "reinvestment_runway",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 80,
+      "rationale": "Using the permitted H1 2026 fallback because a clean TTM series is not frozen, (capex + R&D)/OCF is about 138%, showing very high internal absorption. The >60%/90 row additionally requires incremental ROIC >=2x cost of capital, which is not established, so one lower observable band at 80 is used."
     },
     {
       "criterion_id": "fcf_per_share_quality",
       "score_0_100": 50,
-      "rationale": ""
+      "rationale": "FCF/share fell from roughly $19.93 in 2024 to $16.93 in 2025 and was heavily compressed in H1 2026, but share count is declining and the distortion is plausibly investment-driven. This fits the 50 'distortion large' anchor rather than 25 structural decline."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "incremental_roic",
+      "severity": "material",
+      "rationale": "Project-level returns on the AI buildout are not disclosed."
+    },
+    {
+      "criterion_id": "reinvestment_runway",
+      "severity": "minor",
+      "rationale": "The runway is obvious, but the H1 fallback rather than exact TTM is used."
+    },
+    {
+      "criterion_id": "fcf_per_share_quality",
+      "severity": "material",
+      "rationale": "Normalization depends on whether current capex is temporary growth investment or a persistently higher maintenance burden."
     }
-  }
+  ]
 }
