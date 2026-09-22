@@ -16,7 +16,7 @@
   },
   "reachable_archetypes_raw": [],
   "early_exit": false,
-  "hard_veto_status": "PENDING_REVIEW",
+  "hard_veto_status": "CLEARED",
   "mechanical_pre_ic_state": "WATCH",
   "position_range_pre_ic": "0% until veto cleared",
   "domain_scores": {
@@ -639,11 +639,11 @@
   "confirmed_vetoes": [],
   "unresolved_vetoes": [],
   "veto_gate": {
-    "overall": "PENDING_REVIEW",
+    "overall": "CLEARED",
     "items": [
       {
         "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "MA",
           "RT"
@@ -654,17 +654,21 @@
             "owner": true,
             "status": "cleared",
             "rationale": "The reviewed filings and 2026 proxy do not identify a restatement, auditor disagreement/change, material internal-control weakness or undisclosed related-party event that establishes an integrity/accounting-reliability breach."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "No reviewed filing/proxy evidence establishes a restatement, auditor disagreement/change, material control failure, or undisclosed related-party event; the required integrity-breach element is not met."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "FS",
           "RT"
@@ -675,11 +679,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Operating activities generate substantial cash; H1 2026 OCF was $64.09B. Debt issuance supports discretionary acceleration of infrastructure rather than a business that cannot fund operations without repeated external capital."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "H1 OCF was $64.09B and the core business funds itself; recent debt supports accelerated discretionary infrastructure rather than a business unable to operate without repeated external financing."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
@@ -710,7 +718,7 @@
       },
       {
         "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -721,17 +729,21 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Customer value is directly evidenced by rising ad prices/impressions and measured click/conversion improvements; the mandatory 'customer value absent' element is false."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Rising ad prices and impressions plus measured click/conversion gains directly evidence advertiser value; the mandatory absence-of-customer-value element is false."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "RF",
           "RT"
@@ -742,17 +754,21 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Incremental ROIC is uncertain, but revenue, ad pricing and measured AI conversion outcomes are improving; neither below-cost incremental ROIC nor its structural persistence is established."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Full AI incremental ROIC is unverified, but below-cost incremental ROIC and structural persistence are not established; uncertainty is not a confirmed collapse."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "MT",
           "RT"
@@ -763,17 +779,21 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Observed moat metrics—DAP, ad impressions, ad price and measured AI ad performance—were maintained or improving through Q2 2026; actual and persistent shrinkage is not established."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "DAP, ad impressions and ad pricing were maintained or improving through Q2 2026, so actual and persistent moat shrinkage is not established."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "EV",
           "AS",
@@ -791,17 +811,21 @@
             "owner": true,
             "status": "cleared",
             "rationale": "The frozen price of $741.25 remains below the harness-computed Bull value of about $1,091; the Bull-price veto is therefore not triggered."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "$741.25 is below the deterministic Bull value of about $1,090.61, so the sole veto element is false."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
       {
         "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
+        "status": "CLEARED",
         "owners": [
           "CP",
           "RT"
@@ -812,11 +836,15 @@
             "owner": true,
             "status": "cleared",
             "rationale": "Revenue is concentrated in advertising, but it is diversified across millions of advertisers, multiple apps and jurisdictions; no single customer or single regulation is shown to cause unrecoverable business economics if lost."
+          },
+          {
+            "agent_id": "RT",
+            "owner": true,
+            "status": "cleared",
+            "rationale": "Advertising concentration is high, but demand is distributed across many advertisers, apps and jurisdictions; no single customer/product/regulatory loss is evidenced as causing unrecoverable business economics."
           }
         ],
-        "missing_reports": [
-          "RT"
-        ],
+        "missing_reports": [],
         "missing_assessments": [],
         "non_owner_escalations": []
       },
@@ -848,162 +876,7 @@
     ],
     "confirmed": [],
     "unresolved": [],
-    "pending": [
-      {
-        "veto": "경영진 정직성 또는 회계 신뢰성 훼손",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MA",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "MA",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "The reviewed filings and 2026 proxy do not identify a restatement, auditor disagreement/change, material internal-control weakness or undisclosed related-party event that establishes an integrity/accounting-reliability breach."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "구조적으로 과도한 외부자본 조달 의존",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "FS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "FS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Operating activities generate substantial cash; H1 2026 OCF was $64.09B. Debt issuance supports discretionary acceleration of infrastructure rather than a business that cannot fund operations without repeated external capital."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Customer value is directly evidenced by rising ad prices/impressions and measured click/conversion improvements; the mandatory 'customer value absent' element is false."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "증분 ROIC의 구조적 붕괴",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "RF",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "RF",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Incremental ROIC is uncertain, but revenue, ad pricing and measured AI conversion outcomes are improving; neither below-cost incremental ROIC nor its structural persistence is established."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "해자의 지속적인 축소",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "MT",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "MT",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Observed moat metrics—DAP, ad impressions, ad price and measured AI ad performance—were maintained or improving through Q2 2026; actual and persistent shrinkage is not established."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "EV",
-          "AS",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "AS",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "$741.25 current price is below the locked Bull value of about $1,090.61; the sole veto element is false."
-          },
-          {
-            "agent_id": "EV",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "The frozen price of $741.25 remains below the harness-computed Bull value of about $1,091; the Bull-price veto is therefore not triggered."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      },
-      {
-        "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
-        "status": "PENDING_REVIEW",
-        "owners": [
-          "CP",
-          "RT"
-        ],
-        "assessments": [
-          {
-            "agent_id": "CP",
-            "owner": true,
-            "status": "cleared",
-            "rationale": "Revenue is concentrated in advertising, but it is diversified across millions of advertisers, multiple apps and jurisdictions; no single customer or single regulation is shown to cause unrecoverable business economics if lost."
-          }
-        ],
-        "missing_reports": [
-          "RT"
-        ],
-        "missing_assessments": [],
-        "non_owner_escalations": []
-      }
-    ],
+    "pending": [],
     "non_owner_escalations": []
   },
   "valuation_model": {
@@ -1798,6 +1671,9 @@
     "광고 AI 제품군의 전환율·클릭 개선이 후속 분기에서 반복되지 않는다.",
     "Business Agent 활성 사업자 수가 정체되고 유료 전환이 미미하다.",
     "AI 글래스 판매 성장과 사용 빈도가 2027년 이전에 둔화된다.",
+    "A later filing restates a material financial fact used in the pack or changes the definition/period basis enough to invalidate cross-period comparisons.",
+    "AI ad-performance lifts fail to repeat while the same evidence continues to support multiple domains.",
+    "FCF/share remains structurally below 2025 levels through 2028 despite strong revenue growth, invalidating the assumed cash-conversion recovery.",
     "Company-defined FCF remains below roughly $30B through 2028 despite continued double-digit revenue growth, indicating the assumed cash-conversion recovery is not occurring.",
     "Advertising growth falls to low-single digits while average price per ad and impressions both stagnate for several quarters.",
     "Reality Labs losses materially exceed the roughly $20B annual run-rate without evidence of a credible revenue or strategic payoff.",
@@ -1819,6 +1695,9 @@
     "FCF remains below $30B through 2028 despite double-digit revenue growth.",
     "AI-driven ad conversion gains fade while capex remains above $100B annually.",
     "Owner FCF/share fails to recover even as net share count stays flat/down.",
+    "AI infrastructure produces sustained owner-FCF/share recovery while ad monetization remains double-digit, defeating the capital-intensity short thesis.",
+    "Business messaging/agents or wearables become material high-margin profit pools, reducing advertising concentration.",
+    "Reality Labs losses stabilize or decline while meaningful recurring revenue emerges.",
     "DAP가 2개 이상 분기 연속 감소하고 광고 노출·가격도 동시에 악화된다.",
     "광고 ROI 개선이 정체된 상태에서 광고 매출 성장률이 한 자릿수로 고착된다.",
     "메시징·웨어러블 신사업이 2028년까지 의미 있는 매출 축으로 성장하지 못한다."

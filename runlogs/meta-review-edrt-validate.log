@@ -1,3 +1,5 @@
+ED: OK
+RT: OK
 {
   "strategy_version": "3.3",
   "schema_version": "3.3",
@@ -1992,3 +1994,31 @@
   "ic_verdict": null,
   "early_exit_record": null
 }
+runs/META_REVIEW_20260921/digest.md: 24042 bytes (reports 86868 chars -> digest 18500 chars)
+{
+  "stage": "ic",
+  "agents": {
+    "investment_committee": "IC"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true,
+    "advisory_gaps": [
+      "proxy_compensation",
+      "earnings_release",
+      "insider_ownership",
+      "investor_materials"
+    ]
+  },
+  "execution_control": "continue",
+  "research": {
+    "questions": 16,
+    "pending": 16,
+    "decision_blocking": 0,
+    "deferred": 42,
+    "command": "python harness.py research-plan META_REVIEW_20260921"
+  }
+}
+python harness.py prompt META_REVIEW_20260921 IC
+CONTINUE: complete the listed agent work, validate it, then rerun aggregate, digest, and plan for META_REVIEW_20260921.

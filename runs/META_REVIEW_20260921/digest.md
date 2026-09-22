@@ -1,5 +1,5 @@
 # Digest — META_REVIEW_20260921 (as of 2026-09-21)
-score 65.65 (ex-val 67.0, Starter / Watch) · DI 73.5 · TQ None · archetype non_fit — No eligible archetype: see failed/missing conditions and vetoes · veto PENDING_REVIEW · state WATCH
+score 65.65 (ex-val 67.0, Starter / Watch) · DI 73.5 · TQ None · archetype non_fit — No eligible archetype: see failed/missing conditions and vetoes · veto CLEARED · state WATCH
 signals {'price_to_base_value': 1.1611, 'valuation_percentile_5y': None, 'revenue_cagr_next_3y': 0.16, 'market_cap_usd': 1902047500000.0} · reachable(raw) []
 veto codes: V1 경영진 정직성 또는 회계 신뢰성 훼손 / V2 구조적으로 과도한 외부자본 조달 의존 / V3 장기간 지속되는 과도한 희석 / V4 고객가치 없이 마케팅·보조금에 의존하는 성장 / V5 증분 ROIC의 구조적 붕괴 / V6 해자의 지속적인 축소 / V7 현재가격이 비현실적인 Bull Case 이상을 요구 / V8 단일 제품·단일 고객·단일 규제에 대한 치명적 종속성 / V9 파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음
 
@@ -72,6 +72,18 @@ unknowns: Business Agent의 유료 전환율과 ARPU가 아직 공시되지 않�
 | LG | 65.5 (50–80) | 0.72 | neutral | – | 향후 5년의 현실적 확장 배수는 약 1.9배로 본다: EV의 3년 Base 매출 CAGR 16% 이후 성장률이 완만히 둔화되는 경로다. 관측표 보간상 opportunity_scale은 60점. 고부가 성장 활주로는 약 7.5년으로 잡아 growth_duration 75점, Reels·… |
 bull: 광고 AI, 비즈니스 메시징·에이전트, AI 글래스·구독이 독립적으로 확장되면 5~10년 성장 활주로가 이어질 수 있다. 36억 사용자 분배망 때문에 새 제품의 초기 배포 비용이 낮고, 조직은 Reels·AI 전환을 이미 수행했다. / bear: 현재 시총 약 $1.9T와 price/Base 1.16x는 상당한 성장 지속을 이미 요구한다. 5년 매출 2배 이상은 가능하지만 필수는 아니며, 인프라 자본집약도와 광고 집중 때문에 10년 이상의 아웃라이어 성장과 명확한 시장 기대오류는 아직 입증되지 않았다.
 unknowns: Meta는 5년 매출 목표나 10년 성장 활주로를 공식 가이던스로 제공하지 않는다. · 웨어러블·Business Agent의 장기 영업이익률은 공개되지 않는다.
+
+## evidence_quality
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| ED | 70 | 0.9 | neutral | – | 핵심 재무·사용자·광고·자본약정 수치는 대부분 SEC 10-K/10-Q 또는 회사 IR로 직접 추적 가능해 출처 품질은 높다. 다만 SEC 직접 fetch가 GitHub Actions에서 403으로 막혀 원문을 외부에서 재구성했고, AI 광고 성과가 여러 긍정 도메인에 반복 사용된다.… |
+unknowns: A primary-source split of AI infrastructure capex between maintenance-like and growth inv… · Incremental NOPAT/ROIC directly attributable to the 2025-26 AI infrastructure step-up is …
+
+## red_team
+| agent | score (bear–bull) | conf | verdict | vetoes | thesis |
+|---|---|---|---|---|---|
+| RT | 45 | 0.9 | oppose | V1=cleared, V2=cleared, V4=cleared, V5=cleared, V6=cleared, V7=cleared, V8=cleared | 가장 강한 공매도 논리는 '좋은 광고 사업'이 아니라 '자본집약적 AI 인프라 기업으로의 구조 변화'다. $741.25는 Base 가치 $638보다 약 16% 높고, AI·리스 약정이 급증한 반면 Q2 FCF는 거의 0이었다. Reality Labs·규제·창업자 지배까지 겹치면 큰 가… |
+unknowns: The maintenance-like versus growth portion of 2026-30 AI infrastructure spending remains … · The realized incremental ROIC on the $100B+ annual infrastructure buildout cannot yet be …
 
 ## macro_overlay
 | agent | score (bear–bull) | conf | verdict | vetoes | thesis |
