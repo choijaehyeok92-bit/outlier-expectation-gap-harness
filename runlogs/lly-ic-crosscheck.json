@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "ic_validation_errors": [],
+  "ic_request": "STARTER",
+  "request_rank": 1,
+  "mechanical_pre_ic_state": "NORMAL_CANDIDATE",
+  "mechanical_cap_rank": 2,
+  "deterministic_gates_safe": true,
+  "ic_request_accepted": true,
+  "final_ic_state": "STARTER",
+  "final_position_range": "1-2%",
+  "macro_purchase_pacing_multiplier": 0.5,
+  "hard_veto_status": "CLEARED",
+  "archetype": "compounder",
+  "score_100": 76.6625,
+  "coverage_weight": 100,
+  "expected_plan_stage": "complete"
+}
