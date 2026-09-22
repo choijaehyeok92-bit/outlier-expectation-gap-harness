@@ -1,0 +1,209 @@
+{
+  "agent_id": "EV",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-21",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 55.5,
+  "confidence_0_1": 0.88,
+  "bull_score": 80,
+  "bear_score": 35,
+  "bull_case": "Commerce, fintech, credit, ads and logistics keep compounding while investment intensity normalizes, allowing owner FCF/share to scale sharply without relying on multiple expansion.",
+  "bear_case": "Credit losses, free-shipping/logistics investment, funding costs and FX pressure keep margins and adjusted FCF weak even while GMV and TPV continue growing.",
+  "thesis": "At $1,820.47, MELI trades below the locked Base DCF of about $1,979 but without a large conventional margin of safety. Q2 revenue grew 50%, GMV 44% and TPV 56%, yet H1 adjusted FCF fell to $158M. The valuation therefore depends on converting ecosystem growth into durable owner FCF/share as credit and logistics investment mature.",
+  "evidence": [
+    {
+      "evidence_id": "MELI-EV-PRICE",
+      "economic_driver": "market_expectations",
+      "claim": "MELI closed at $1,820.47 on 2026-09-21; with 50.697M shares the frozen equity value is about $92.3B.",
+      "source_type": "secondary",
+      "source": "StockAnalysis historical price plus Q2 2026 10-Q share count",
+      "period": "2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 1820.47,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-EV-GROWTH",
+      "economic_driver": "ecosystem_growth",
+      "claim": "Q2 2026 net revenues and financial income were $10.169B, up 49.8% YoY; GMV rose 44% and TPV 56%.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 10169000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-EV-FCF",
+      "economic_driver": "cash_conversion",
+      "claim": "H1 2026 operating cash flow was $5.737B but company-defined adjusted FCF was only $158M after customer-fund, lending, fintech-funding and capex adjustments.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000023/meli-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-21",
+      "value": 158000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-EV-MARGIN",
+      "economic_driver": "margin_normalization",
+      "claim": "Q2 2026 operating income was $683M, down 17.3% YoY, with a 6.7% operating margin despite nearly 50% revenue growth.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000023/meli-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.067,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-EV-DCF",
+      "economic_driver": "market_expectations",
+      "claim": "The locked 9% DCF with -$126.73 net cash/share implies about $138 Bear, $1,979 Base and $4,720 Bull; price/Base is 0.9197x.",
+      "source_type": "other",
+      "source": "Harness locked owner-FCF/share DCF",
+      "period": "10-year model from 2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 0.9197,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "FY2025 adjusted FCF was $1.481B, so H1 2026 cash compression may reflect a deliberate investment wave rather than permanent deterioration.",
+    "GMV and TPV are growing much faster than mature-market commerce/payment benchmarks, leaving significant operating leverage if investment intensity normalizes.",
+    "Credit and fintech funding complicate raw CFO interpretation; neither GAAP CFO nor simple capex subtraction is a clean owner-FCF proxy.",
+    "A large share of revenue is generated in Brazil, Mexico and Argentina, making USD valuation sensitive to FX and sovereign conditions."
+  ],
+  "unknowns": [
+    "Normalized adjusted FCF margin after the current logistics and credit investment wave.",
+    "Steady-state credit loss ratio and risk-adjusted return on the loan book.",
+    "Long-run shipping subsidy/free-delivery economics in Brazil and Mexico.",
+    "Consistent five-year valuation percentile on a reproducible metric."
+  ],
+  "falsifiers": [
+    "Adjusted FCF/share fails to recover despite continued GMV and TPV growth.",
+    "Credit losses and funding costs rise faster than financial income for several quarters.",
+    "A realistic Bull owner-FCF/share path no longer values shares above market."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "The frozen price is below the locked Base value and far below Bull; the market does not require an outcome beyond Bull."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Adjusted FCF/share",
+      "direction": "up",
+      "threshold": "recover materially from the H1 2026 trough",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Operating margin",
+      "direction": "up",
+      "threshold": "recover without sacrificing GMV/TPV growth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Credit provision intensity",
+      "direction": "stabilize/down",
+      "threshold": "risk-adjusted credit economics improve",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 adjusted FCF and margin bridge.",
+    "Credit portfolio loss/provision and funding trends.",
+    "Brazil free-shipping/logistics unit economics."
+  ],
+  "verdict": "neutral",
+  "archetype_signals": {
+    "price_to_base_value": 0.9197,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.22
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "Price/Base is 0.9197x, inside the locked 0.9-1.1 signal-map band, so the criterion score is 60."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "Price/Base is 0.9197x, inside the locked 0.9-1.1 signal-map band, so the criterion score is 55."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 50,
+      "rationale": "Base terminal value is about 76% of operating value and valuation is highly sensitive to normalized FCF/margin recovery. This fits the 50 high-sensitivity anchor."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "Current price requires durable long-run FCF normalization rather than today's depressed cash yield."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Base upside is modest, so small changes in normalized cash conversion materially change expected return."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "critical",
+      "rationale": "Credit economics and normalized adjusted FCF are the dominant valuation uncertainties."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.22,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          22,
+          24,
+          26
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          15,
+          25,
+          38,
+          55,
+          75,
+          95,
+          118,
+          142,
+          166,
+          190
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          20,
+          35,
+          60,
+          90,
+          125,
+          165,
+          210,
+          260,
+          315,
+          375
+        ]
+      }
+    }
+  }
+}
