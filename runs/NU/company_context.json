@@ -1,0 +1,64 @@
+{
+  "ticker": "NU",
+  "company_name": "Nu Holdings Ltd.",
+  "as_of_date": "2026-09-21",
+  "currency": "USD",
+  "current_price": 14.03,
+  "shares_diluted": 4904837000,
+  "market_cap_usd": 68814863110,
+  "enterprise_value": null,
+  "portfolio_context": {
+    "existing_position_pct": 0,
+    "sector_exposure_pct": 0,
+    "overlap_notes": ""
+  },
+  "known_sources": [
+    "Nu Holdings FY2025 Form 20-F filed 2026-04-08",
+    "Nu Holdings Q1 2026 interim Form 6-K filed 2026-05-14",
+    "Nu Holdings Q2 2026 interim Form 6-K filed 2026-08-13",
+    "NU 2026-09-21 closing price $14.03"
+  ],
+  "special_questions": [
+    "Can Nu sustain 20%+ multi-year revenue/earnings growth while preserving 30%+ ROE as credit expands?",
+    "How much of the current valuation is justified by Mexico/Colombia scaling versus mature Brazil monetization?",
+    "Does rapid unsecured-credit expansion create a permanent-loss path despite strong deposits, capital and underwriting data?"
+  ],
+  "net_cash_per_share": 0,
+  "valuation_percentile_5y": null,
+  "valuation_metric": "Bank-like financial business: net_cash/share is set to 0 to avoid double-counting operating cash, securities, deposits and funding liabilities. EV uses a distributable owner-earnings/share proxy within the locked owner-FCF field.",
+  "valuation_overrides": {
+    "required_return": null,
+    "terminal_multiples": {
+      "bear": null,
+      "base": null,
+      "bull": null
+    }
+  },
+  "diagnostics": {
+    "turnaround_candidate": false
+  },
+  "geo_exposure": {
+    "revenue_by_region": {},
+    "production_by_region": {},
+    "critical_supplier_regions": [
+      "Brazil",
+      "Mexico",
+      "Colombia"
+    ],
+    "export_control_dependencies": [],
+    "sanctions_exposure": [],
+    "critical_shipping_routes": [],
+    "government_customer_exposure": [],
+    "customer_exposure_estimate": {
+      "Brazil": 0.849,
+      "Mexico": 0.114,
+      "Colombia": 0.036
+    },
+    "deposit_exposure_estimate": {
+      "Brazil": 0.804,
+      "Mexico": 0.126,
+      "Colombia": 0.073
+    },
+    "note": "Customer/deposit exposure uses Q2 2026 disclosed counts/balances. Revenue-by-region is left blank because disclosed geography revenue in the 20-F does not cleanly reconcile to consolidated total revenue."
+  }
+}
