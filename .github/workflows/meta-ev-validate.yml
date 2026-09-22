@@ -1,4 +1,4 @@
-name: META triage validate aggregate digest 2026-09-18
+name: META phase1 validate aggregate digest 2026-09-18
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 jobs:
-  triage:
+  phase1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,33 +23,33 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install -r requirements-dev.txt
-      - name: Validate triage and recompute
+      - name: Validate phase 1 and recompute
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p runlogs
-          exec > >(tee runlogs/meta-triage-final.log) 2>&1
+          exec > >(tee runlogs/meta-phase1-final.log) 2>&1
 
-          python harness.py validate META EV | tee runlogs/validate-ev.txt
-          python harness.py validate META AS | tee runlogs/validate-as.txt
-          python harness.py validate META DI | tee runlogs/validate-di.txt
-          python harness.py validate META FS | tee runlogs/validate-fs.txt
-          python harness.py aggregate META | tee runlogs/aggregate-after-triage.json
+          for AGENT in EV AS DI FS SL CP MT RF MA LG; do
+            LOWER=$(echo "$AGENT" | tr '[:upper:]' '[:lower:]')
+            python harness.py validate META "$AGENT" | tee "runlogs/validate-$LOWER.txt"
+          done
+          python harness.py aggregate META | tee runlogs/aggregate-after-phase1.json
           python harness.py digest META
-          python harness.py plan META | tee runlogs/plan-after-triage.txt
+          python harness.py plan META | tee runlogs/plan-after-phase1.txt
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add runs/META runlogs
           if ! git diff --cached --quiet; then
-            git commit -m "run: validate META triage and recompute"
+            git commit -m "run: validate META phase1 and recompute"
             git push origin HEAD:work/meta-2026-09-18-v33
           fi
 
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: META-triage-validated-2026-09-18
+          name: META-phase1-validated-2026-09-18
           path: |
             runs/META
             runlogs
