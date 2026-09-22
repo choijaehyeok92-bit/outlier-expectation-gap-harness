@@ -1,56 +1,62 @@
 # Digest — NU (as of 2026-09-21)
 
-> Reconstructed v3.3 EV-stage output. The current connected execution environment cannot replay the local EDGAR/CLI subprocess, so deterministic Stage 0, validation and valuation arithmetic are reproduced without claiming a literal CLI run.
+> Reconstructed v3.3 triage output. Deterministic policy arithmetic is mirrored because the current connector environment cannot replay the repository CLI/EDGAR subprocess directly.
 
-score **68.0** (ex-val None, Starter / Watch) · archetype **non_fit** · veto **PENDING_REVIEW** · state **INCOMPLETE**
+score **68.36** (ex-valuation **68.63**, Starter / Watch) · archetype **non_fit** · veto **PENDING_REVIEW** · state **INCOMPLETE**
 
-signals: price/Base **0.7558x** · forward revenue CAGR **20%** · market cap **$68.81B** · reachable(raw) **['buffett_value', 'compounder', 'growth', 'outlier_growth']**
+signals: price/Base **0.7558x** · forward revenue CAGR **20%** · market cap **$68.81B** · reachable(raw) **['compounder']**
 
-## Stage 0
+## Universal triage
 
-NU is a foreign private issuer, so the pack uses 20-F annual reports and quarter/YTD-bearing 6-K interim statements.
+| Agent | Domain | Score | Bear–Bull | Result |
+|---|---|---:|---:|---|
+| EV | Expectation / Valuation | **68.00** | 45–85 | support |
+| AS | Asymmetry | **63.50** | 40–85 | neutral |
+| DI | Disruptive Innovation | **86.75** | 70–95 | support |
+| FS | Financial Survival | **73.75** | 55–90 | support |
 
-- latest annual: PASS
-- latest interim: PASS
-- trailing interim series: PASS **7/6**
-- historical annuals: PASS **3/3**
-- foreign-issuer filing coverage: PASS
-- earnings release / investor materials: PASS
-- pack invariant errors: **0**
-- advisory gaps: proxy compensation, insider ownership
+## Reachability after triage
 
-## Bank-specific valuation convention
+**Compounder remains reachable.** It already clears:
+- price/Base **0.7558 <= 1.2**
+- FS **73.75 >= 72**
+- EV **68 >= 42**
 
-Conventional industrial-company net cash is not used. Customer deposits, securities, cash and wholesale funding are operating balance-sheet items for a bank, so frozen **net_cash_per_share = $0.00**.
+It still requires MT >=76, RF >=76, MA >=72, incremental ROIC >=75 and reinvestment runway >=70.
 
-The locked `owner_fcf_per_share` field is interpreted as a **distributable owner-earnings/share proxy after required capital retention**, not literal industrial FCF.
+**Growth** fails because AS **63.5 < 65**.  
+**Outlier Growth** also fails AS **63.5 < 65**.  
+**Buffett Value** fails FS **73.75 < 75** and AS **63.5 < 65**, despite the attractive price/Base.  
+**Moonshot** fails market cap and AS gates.
 
-## Expectation / Valuation — 68.0
+## Asymmetry
 
-| Agent | Score | Bear–Bull | Confidence | Verdict |
-|---|---:|---:|---:|---|
-| EV | **68.0** | 45–85 | 0.80 | support |
+Locked Bear/Base/Bull values are **$4.76 / $18.56 / $34.85** versus price **$14.03**.
 
-Locked valuation at the frozen **$14.03** price:
+- Bull/current ≈ **2.48x** -> upside_path **75**
+- Bear/current ≈ **0.34x** -> permanent_loss **55**
+- probability calibration **60**
+- weighted AS = **63.5**
 
-- Bear: **$4.76**
-- Base: **$18.56**
-- Bull: **$34.85**
-- Price/Base: **0.7558x**
+NU therefore has substantial upside but not enough risk-adjusted asymmetry to clear the 65 Growth/Outlier floor.
 
-Subscores:
-- reverse DCF burden: **75**
-- Base return: **70**
-- valuation robustness: **55**
+## Disruptive innovation
 
-The price-above-Bull Hard Veto is **cleared**.
+NU's 2025 monthly cost to serve was about **$0.8 per active customer** while the platform served 131M customers. By Q2 2026 customers reached roughly **139M** and activity was **83.5%**. Deposits reached **$45.3B** and the product suite now spans cards, deposits, lending, investments, SMEs and premium banking. This supports mainstream adoption and a structural digital-cost advantage. citeturn839760search0turn839760search1
 
-## Current operating picture
+## Financial survival
 
-Q2 2026 shows strong scale and profitability: roughly **139M customers**, accounting revenue of **$5.51B**, net income of **$1.06B**, and **33% ROE**. The credit portfolio was **$39.4B** against **$45.3B deposits**. The main valuation uncertainty is not demand growth but how much of high reported earnings can ultimately be distributed after retaining capital for growth and credit risk.
+At June 30, Brazil CET1 was **11.9%**, Tier 1 **13.4%**, CAR **15.7%**, and excess capital margin **$1.848B**. Mexico and Colombia capital ratios were **14.9%** and **15.3%**, each above 10.5% local minimums. citeturn478742view0turn478742view1
+
+Nu also held substantial liquid assets and funded 87% of its primary funding base through retail deposits/bank receipts. The mechanical drag is **$38.2B of unused credit limits**, roughly 1.97x estimated TTM revenue. Q2 diluted shares increased only ~0.10% YoY, so dilution itself is normal. citeturn478742view3turn631495view0turn631495view2
 
 ## Next plan
 
-`triage`: **AS, DI, FS**
+`domain_analysis`:
+- **SL** — Structural Leadership
+- **CP** — Customer / Product
+- **MT** — Moat Trajectory
+- **RF** — Reinvestment / FCF
+- **MA** — Management / Allocation
 
-The 68.0 score is an EV-only partial score, not a final investment state. Universal triage and Hard Veto ownership remain incomplete.
+For NU, RF must be interpreted through bank economics: incremental ROE, capital absorption, per-share distributable earnings, credit losses and capital requirements rather than industrial FCF.
