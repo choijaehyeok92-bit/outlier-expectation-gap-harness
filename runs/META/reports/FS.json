@@ -4,69 +4,171 @@
   "as_of_date": "2026-09-18",
   "domain": "financial_survival",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 70,
+  "confidence_0_1": 0.84,
+  "bull_score": 85,
+  "bear_score": 55,
+  "bull_case": "Meta's $90B-plus cash/securities pool and very large operating cash flow allow it to fund AI investment, debt service and dividends without equity issuance. Share count has declined despite high SBC.",
+  "bear_case": "AI infrastructure commitments, restricted cash and rising debt create a much larger fixed-capital burden. If ad cash generation weakens while $130B-$145B annual capex persists, financial flexibility can compress quickly even without near-term insolvency.",
+  "thesis": "META's solvency is strong but no longer balance-sheet-light. Cash and marketable securities roughly cover long-term debt and H1 2026 operating cash flow was $64.1B, clearing external-capital dependence. The offset is a very large infrastructure commitment stack: 2025 disclosed uncommenced leases plus contractual commitments exceeded one year of revenue, which drives the dilution/off-balance criterion to 55. Share dilution itself is currently benign and the dilution Hard Veto is cleared.",
+  "evidence": [
+    {
+      "evidence_id": "META-FS-LIQUIDITY",
+      "economic_driver": "liquidity",
+      "claim": "At June 30, 2026 Meta had $90.26B of cash, cash equivalents and marketable securities and $83.66B of long-term debt.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-18",
+      "value": 6596000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-FS-OCF",
+      "economic_driver": "self_funding_capacity",
+      "claim": "H1 2026 operating cash flow was $64.09B against $49.11B of property-and-equipment capex in the normalized filing pack; Q2 alone generated $31.86B of OCF.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "H1 2026",
+      "as_of_date": "2026-09-18",
+      "value": 64088000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-FS-COMMITMENTS",
+      "economic_driver": "fixed_capital_commitments",
+      "claim": "At year-end 2025 Meta disclosed about $103.77B of leases not yet commenced and $131.05B of contractual commitments, together about 1.17x FY2025 revenue; these are substantial even though they are supported by operating cash generation.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "2025-12-31",
+      "as_of_date": "2026-09-18",
+      "value": 1.1685,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-FS-RESTRICTED",
+      "economic_driver": "fixed_capital_commitments",
+      "claim": "By June 30, 2026 $10.80B of money-market funds had been reclassified as restricted cash equivalents under infrastructure purchase agreements, and Meta also disclosed up to $14.72B of contingent cloud-capacity purchase obligations.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-18",
+      "value": 10800000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-FS-SHARES",
+      "economic_driver": "dilution",
+      "claim": "Diluted weighted-average shares were 2.566B in Q2 2026 versus 2.570B in Q2 2025; FY2025 diluted shares were 2.574B versus 2.614B in 2024 and 2.629B in 2023, so SBC has not produced persistent net dilution.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "2023-Q2 2026",
+      "as_of_date": "2026-09-18",
+      "value": -0.00156,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Full-year 2026 capex guidance of $130B-$145B is extremely large relative to historical FCF and can reduce liquidity rapidly if operating cash flow disappoints.",
+    "Long-term debt rose materially from $59B at year-end 2025 to roughly $84B principal by June 2026 as infrastructure financing expanded.",
+    "Large future lease and purchase commitments reduce the economic meaning of headline net cash.",
+    "SBC remained $20.4B in FY2025 and $13.7B in H1 2026 even though repurchases and net settlement have so far prevented net share-count expansion."
+  ],
+  "unknowns": [
+    "The exact cancellation flexibility and timing profile of all post-2025 AI infrastructure commitments is not fully observable from aggregate disclosures.",
+    "A decision-useful split between maintenance-like and discretionary/growth AI capex is not disclosed."
+  ],
+  "falsifiers": [
+    "Operating cash flow falls below mandatory capex, debt service and non-cancellable commitments for a sustained period.",
+    "Cash plus marketable securities fall materially below near-term debt/commitment needs while new debt continues to rise.",
+    "Diluted share count begins growing above 3% annually for multiple periods without corresponding per-share economic-value growth."
+  ],
   "hard_veto_flags": [
     {
       "veto": "구조적으로 과도한 외부자본 조달 의존",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Operating cash flow remains very large and exceeds core operating funding needs; debt issuance supports an aggressive discretionary infrastructure program rather than demonstrating that the underlying business cannot self-fund."
     },
     {
       "veto": "장기간 지속되는 과도한 희석",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Diluted share count declined from 2023 through 2025 and was slightly lower YoY in Q2 2026. The long-duration and excessive-dilution elements are therefore false even though SBC remains economically material."
     },
     {
       "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
-      "status": "candidate",
-      "rationale": "미평가 — 완료 시 cleared/conditional/confirmed로 변경"
+      "status": "cleared",
+      "rationale": "Cash and marketable securities approximately cover long-term debt and operating cash flow is very large. The evidence does not support a meaningful bankruptcy or business-extinction probability at the cutoff."
     }
   ],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "Cash + marketable securities / debt",
+      "direction": "remain resilient",
+      "threshold": "avoid sustained material deficit without matching OCF growth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "OCF less capex and finance-lease principal",
+      "direction": "recover",
+      "threshold": "clear positive annual free cash flow after the 2026 buildout",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Diluted share growth",
+      "direction": "remain <= 0-3%",
+      "threshold": "monitor at >=3% annualized; severe at >=8%",
+      "cadence": "quarterly/annual"
+    }
+  ],
+  "next_checks": [
+    "Update debt, restricted cash, capex and commitment schedule after Q3 2026 and the next 10-K.",
+    "Track whether 2027 capex guidance shows a peak or continued acceleration in infrastructure intensity.",
+    "Recompute SBC, buyback offset and diluted-share CAGR annually rather than treating SBC expense alone as dilution."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "liquidity_leverage",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Cash and marketable securities slightly exceed long-term debt and OCF is very strong, supporting the 75 'strong liquidity' anchor. The score is not 90 because debt and restricted/committed infrastructure obligations have risen sharply."
     },
     {
       "criterion_id": "stress_survival",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Even after aggressive investment, the core ad business generates enough operating cash to fund operations and absorb stress without equity issuance. Large fixed commitments prevent a 90 'invest through stress with little constraint' assessment."
     },
     {
       "criterion_id": "dilution_offbalance",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 55,
+      "rationale": "Diluted shares are flat-to-down, which is strong on the dilution axis, but disclosed uncommenced leases plus contractual commitments were about 1.17x FY2025 revenue. The observable rubric takes the lower axis, mapping 1-2x off-balance commitments/revenue to 55."
     }
   ],
-  "uncertainties": [],
-  "valuation_inputs": {
-    "valuation_percentile_5y": null,
-    "revenue_cagr_next_3y": null,
-    "scenarios": {
-      "bear": {
-        "owner_fcf_per_share": []
-      },
-      "base": {
-        "owner_fcf_per_share": []
-      },
-      "bull": {
-        "owner_fcf_per_share": []
-      }
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "minor",
+      "rationale": "Headline liquidity is clear; uncertainty is mainly the future pace of additional debt-funded infrastructure."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "The ability to slow AI capex without impairing strategic position is not directly observable."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "material",
+      "rationale": "Aggregate commitment disclosures do not fully separate cancellable, contingent and effectively fixed obligations."
     }
+  ],
+  "dilution_metrics": {
+    "annualized_dilution": -0.00156,
+    "three_year_diluted_share_cagr": -0.01052,
+    "three_year_cumulative_dilution": -0.02092,
+    "consecutive_years_material_dilution": 0,
+    "per_share_value_proxy": "owner_fcf_per_share",
+    "per_share_value_growth": null,
+    "structural_financing_need": false,
+    "rationale": "Diluted weighted-average shares declined from 2.629B in 2023 to 2.574B in 2025 and were 2.566B in Q2 2026 versus 2.570B in Q2 2025. SBC is large, but buybacks/net settlement have prevented persistent net dilution; watch remains normal on share growth."
   }
 }
