@@ -1,10 +1,10 @@
 # Digest — LLY (as of 2026-09-21)
 
-> Reconstructed v3.3 output after macro overlay. Fundamental scores are unchanged; macro affects pacing and reanalysis only.
+> Reconstructed v3.3 output after ED + RT. Core score and archetype remain unchanged; evidence audit and Red Team determine evidence confidence and Hard Veto clearance.
 
-score **76.66** (ex-valuation **80.18**, Emerging Outlier) · archetype **compounder** · veto **PENDING_REVIEW** · state **WATCH**
+score **76.66** (ex-valuation **80.18**, Emerging Outlier) · archetype **compounder** · veto **CLEARED** · state **NORMAL_CANDIDATE**
 
-position pre-IC: **0% until veto cleared** · macro purchase pacing: **0.5x**
+pre-IC position band: **2-4%** · macro purchase pacing: **0.5x**
 
 ## Core scorecard
 
@@ -20,47 +20,52 @@ position pre-IC: **0% until veto cleared** · macro purchase pacing: **0.5x**
 | AS | **61.75** |
 | DI | **82.00** |
 
-Compounder remains eligible with deterministic fit **82.88**.
+Compounder remains the only eligible archetype; deterministic fit **82.88**.
 
-## Macro overlay
+## Evidence audit — ED 86
 
-Macro does **not** change the 76.66 fundamental score.
+The core record is well tied to cutoff-valid 10-K, 10-Q and proxy filings.
 
-Financial conditions are mixed. The Fed raised the funds target to **3.75%-4.00%** on Sep. 16, while broad market conditions remained relatively loose. Credit markets also remain open, so financial conditions and credit liquidity each carry **0.8x**.
+Strongly verified:
+- Q2 revenue, volume, realized-price decline and net income.
+- H1 OCF, capex, debt and liquidity.
+- Mounjaro/Zepbound revenue concentration.
+- FY2025 effective ICFR and clean audit opinion.
+- Proxy governance and compensation evidence.
 
-Geopolitical pacing is more restrictive. The active U.S.-Iran conflict and Houthi advances keep **military conflict, energy disruption and shipping disruption** at **high**, which maps to **0.5x** pacing.
+Key methodological caution:
+- RF's ~47.6% incremental earnings/capital figure is an **analyst proxy**, not reported ROIC.
+- Standard CFO-capex excludes acquired IPR&D and M&A that are economically important recurring pharma reinvestment.
+- The RF conclusion therefore relies on the full evidence bundle rather than either proxy alone.
 
-Structural trade fragmentation is also high. LLY's frozen exposure has:
-- U.S. revenue ~**62%**
-- Europe ~**18%**
-- China ~**3.8%**
-- manufacturing across the U.S., Ireland, Europe and Asia
-- China-based pharmaceutical supply-chain inputs
+## Red Team — strongest short thesis
 
-The deterministic transmission matcher therefore marks **trade_fragmentation** and **export_controls** as directly exposed.
+The most coherent short case is not weak demand; it is **over-extrapolation of current extraordinary growth**.
 
-## Structural reanalysis
+- Mounjaro + Zepbound are about **64.7%** of Q2 revenue.
+- Q2 realized prices fell **13%** even as volume increased **60%**.
+- H1 included very large manufacturing capex, internal R&D, acquired IPR&D and **$9.805B** cash acquisitions.
+- Total debt reached about **$54.9B**.
+- A competition + reimbursement + capacity-utilization disappointment can compress both owner cash flow and valuation multiple.
 
-Despite the direct trade exposure, there is **no structural reanalysis request**.
+Counterevidence remains strong: Q2 gross margin was **85.8%**, volume growth was **60%**, successor assets continue to de-risk, and FY2025 ICFR was effective.
 
-The currently recorded structural sanction event targets **Russia/Iran**. Those targets do not overlap LLY's frozen critical supplier/revenue exposure, so no durable market-access-loss/sanctions route is triggered.
+## Hard Veto gate
 
-Result:
-- pending reanalysis domains: **none**
-- fundamental score effect: **0**
-- purchase pacing multiplier: **0.5x**
-- monitoring urgency: **high**
+**All 9 Hard Vetoes: CLEARED**
 
-## State
+There are no confirmed, unresolved or pending vetoes.
 
-`WATCH — 0% until veto cleared`
+## Position mechanics
 
-Macro is now fresh. The remaining blocker is independent Hard Veto review by **RT**.
+Raw score **76.66** maps to `NORMAL_CANDIDATE`, normally **2-4%** pre-IC.
+
+The mean bull/bear downside skew is **5.72**, which stays in the v3.3 balanced/upside-skew band and does **not** reduce the position range.
+
+Macro overlay separately limits **purchase pacing to 0.5x**; it does not change the 2-4% mechanical band.
 
 ## Next plan
 
-`evidence_and_red_team`
-- **ED — Evidence Auditor**
-- **RT — Red Team**
+`ic`: **IC — Investment Committee Chair**
 
-If ED/RT preserve the Compounder gates and clear the remaining Hard Veto ownership, the following stage is IC.
+IC may maintain or reduce deployment but cannot enlarge the deterministic cap.
