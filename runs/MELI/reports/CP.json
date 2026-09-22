@@ -1,0 +1,148 @@
+{
+  "agent_id": "CP",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-21",
+  "domain": "customer_product",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 83.75,
+  "confidence_0_1": 0.92,
+  "bull_score": 95,
+  "bear_score": 65,
+  "bull_case": "Buyers gain selection, convenience and financing; merchants gain demand, logistics, payments, ads and credit. Cross-ecosystem usage materially deepens engagement and wallet share.",
+  "bear_case": "Free shipping and credit can transfer economics to customers faster than MELI earns them back. Strong usage alone does not guarantee attractive unit economics in every product.",
+  "thesis": "Customer value is very strong. Post-threshold cohorts show higher retention, items and category breadth, while ecosystemic users generate substantially more GMV than marketplace-only users. The main weakness is unit economics: Q2 margin remains compressed and credit-card NIMAL is negative. Demand is not subsidy-only, but the current engagement investments still need full cash-payback proof.",
+  "evidence": [
+    {
+      "evidence_id": "MELI-CP-RETENTION",
+      "economic_driver": "retention_usage",
+      "claim": "After Brazil's free-shipping threshold change, new buyer cohorts purchased more items across more categories with higher retention than prior cohorts.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-CP-ECOSYSTEM",
+      "economic_driver": "wallet_share",
+      "claim": "Ecosystemic users generated 70% more GMV and 55% more items per user than marketplace-only users in Q2 2026.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.7,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-CP-USAGE",
+      "economic_driver": "usage_growth",
+      "claim": "Items per buyer rose 14% YoY and the share of users buying three or more categories reached an all-time high.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.14,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-CP-UNIT",
+      "economic_driver": "unit_economics",
+      "claim": "Q2 operating margin was 6.7% and credit-card NIMAL was -2.5%, showing that some engagement investments have not yet reached attractive steady-state economics.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": -0.025,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Free shipping is an explicit economic subsidy and can mask weak payback if cohort gains fade.",
+    "Credit-card economics remain below breakeven on NIMAL.",
+    "Merchants and consumers can multi-home across competing platforms.",
+    "Adjusted FCF remains compressed despite strong engagement."
+  ],
+  "unknowns": [
+    "CAC/payback by core market.",
+    "Credit-card lifetime value after losses and funding costs.",
+    "Merchant multi-homing rates and incremental ad ROI."
+  ],
+  "falsifiers": [
+    "Post-threshold cohort retention converges back to pre-change levels.",
+    "Credit-card NIMAL remains negative without offsetting ecosystem economics.",
+    "Usage growth persists while adjusted FCF/share fails to recover for multiple years."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "고객가치 없이 마케팅·보조금에 의존하는 성장",
+      "status": "cleared",
+      "rationale": "Higher retention, multi-category usage and cross-ecosystem wallet share show recurring customer utility beyond the free-shipping subsidy itself."
+    },
+    {
+      "veto": "단일 제품·단일 고객·단일 규제에 대한 치명적 종속성",
+      "status": "cleared",
+      "rationale": "MELI spans commerce, payments, credit, logistics and ads across multiple countries; no single customer or single product is existential."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Post-investment cohort retention",
+      "direction": "up",
+      "threshold": "remain above pre-threshold cohorts",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Ecosystemic user wallet share",
+      "direction": "up",
+      "threshold": "retain material GMV/items uplift versus single-vertical users",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Credit-card NIMAL",
+      "direction": "improve",
+      "threshold": "move sustainably above breakeven",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Brazil free-shipping cohort payback.",
+    "Credit-card NIMAL and NPL.",
+    "Merchant ad ROI and multi-homing."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "customer_roi",
+      "score_0_100": 90,
+      "rationale": "MELI solves multiple regional frictions and post-investment cohorts show durable behavior change, consistent with very strong willingness to use and pay."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "score_0_100": 90,
+      "rationale": "Retention, items per buyer, category breadth and cross-ecosystem wallet share are all improving at large scale."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "score_0_100": 65,
+      "rationale": "Scale benefits are visible, but current margin compression, low adjusted FCF and negative credit-card NIMAL prevent a 75+ unit-economics score."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "customer_roi",
+      "severity": "minor",
+      "rationale": "Behavioral evidence is strong even though direct monetary ROI differs by user type."
+    },
+    {
+      "criterion_id": "retention_usage",
+      "severity": "minor",
+      "rationale": "Multiple cohort and engagement measures support improvement."
+    },
+    {
+      "criterion_id": "unit_economics",
+      "severity": "critical",
+      "rationale": "Current engagement growth is not yet matched by normalized owner-cash-flow conversion."
+    }
+  ]
+}
