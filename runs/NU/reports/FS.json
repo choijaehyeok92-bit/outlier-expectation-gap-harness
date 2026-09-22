@@ -1,0 +1,175 @@
+{
+  "agent_id": "FS",
+  "ticker": "NU",
+  "as_of_date": "2026-09-21",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 73.75,
+  "confidence_0_1": 0.93,
+  "bull_score": 90,
+  "bear_score": 55,
+  "bull_case": "Nu has diversified retail deposits, substantial liquid assets, positive excess regulatory capital in every core country and high profitability. The franchise can fund growth internally while maintaining capital buffers.",
+  "bear_case": "Deposit funding is largely short-term and the credit book is expanding rapidly. A severe regional credit/FX shock could hit asset quality, liquidity and capital simultaneously, while unused credit limits create large contingent exposure.",
+  "thesis": "Financial survival is strong but the bank-specific balance sheet must be judged conservatively. Brazil CAR is 15.7% with $1.85B excess capital margin; Mexico and Colombia also exceed minimum capital ratios. Retail deposits dominate funding and liquid assets are substantial. The main mechanical penalty is off-balance credit commitments: $38.2B of unused limits are nearly 2x TTM revenue, while diluted shares are roughly flat YoY.",
+  "evidence": [
+    {
+      "evidence_id": "NU-FS-CAPITAL",
+      "economic_driver": "capital_adequacy",
+      "claim": "At June 30, 2026 Brazil CET1 was 11.9%, Tier 1 13.4% and CAR 15.7%, with $1.848B excess margin; Mexico and Colombia capital ratios were 14.9% and 15.3%, each above 10.5% minima.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 1848040000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-FS-LIQUID",
+      "economic_driver": "liquidity",
+      "claim": "June 2026 financial assets included $13.55B cash, $19.18B securities and $9.15B compulsory/central-bank deposits, providing a substantial liquidity cushion against deposit funding.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 41882000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-FS-FUNDING",
+      "economic_driver": "funding_stability",
+      "claim": "Primary funding totaled $40.8B at June 30, with 87% from customer bank receipts/deposits and only 11% borrowings/financing; Nu monitors severe-stress liquidity daily and maintains contingency funding plans.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 0.87,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "NU-FS-COMMIT",
+      "economic_driver": "off_balance_commitments",
+      "claim": "Unused credit-card limits were $38.164B at June 30, 2026. They are not fully expected liquidity needs but are off-balance credit exposure and roughly 1.97x estimated TTM accounting revenue.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm",
+      "period": "2026-06-30 / TTM",
+      "as_of_date": "2026-09-21",
+      "value": 1.97,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "NU-FS-DILUTION",
+      "economic_driver": "dilution",
+      "claim": "Q2 2026 diluted weighted-average shares were 4.904837B versus 4.899768B in Q2 2025, an increase of only about 0.10% YoY; H1 repurchases totaled $500.4M.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1691493/000129281426004225/nufs2q26_6k.htm",
+      "period": "Q2 2026 vs Q2 2025",
+      "as_of_date": "2026-09-21",
+      "value": 0.0010345,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Most deposit funding is contractually redeemable within 12 months, so confidence shocks matter.",
+    "Brazil CET1 and CAR declined from year-end 2025 as risk-weighted assets grew faster than capital.",
+    "The credit portfolio is expanding into higher-risk segments and 90+ NPL rose to 6.9%.",
+    "Unused credit limits increased materially, raising contingent ECL and stress exposure."
+  ],
+  "unknowns": [
+    "Liquidity-buffer performance under a simultaneous Brazil/Mexico depositor and credit stress.",
+    "Capital consumption after Mexico transitions to a full banking model.",
+    "Full-cycle loss rates on recently expanded higher-risk cohorts."
+  ],
+  "falsifiers": [
+    "Capital ratios approach regulatory minima while credit growth remains high.",
+    "Retail deposit outflows force expensive wholesale funding or emergency capital actions.",
+    "Equity issuance becomes necessary to support ordinary credit growth or absorb losses."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "Nu is profitable, deposit-funded and above regulatory capital minima with positive excess capital; ordinary operations do not require recurrent equity funding."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Diluted shares increased only about 0.1% YoY and the company is actively repurchasing stock, so long-duration excessive dilution is not present."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Capital, liquidity and profitability are strong enough that insolvency/franchise-extinction risk is below veto level despite material credit-cycle exposure."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "CET1 / CAR excess margin",
+      "direction": "stable",
+      "threshold": "remain comfortably above local minima as RWA grows",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Deposit growth / liquidity cushion",
+      "direction": "stable or up",
+      "threshold": "retail funding remains resilient without costly wholesale substitution",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "90+ NPL / ECL",
+      "direction": "stable or down",
+      "threshold": "loss absorption does not erode capital generation",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Update Q3 2026 capital ratios and excess margin.",
+    "Track deposit beta/outflows and Mexico loan-to-deposit ratio.",
+    "Recalculate off-balance commitments versus TTM revenue and ECL."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 80,
+      "rationale": "Nu has strong liquid assets, diversified retail deposits and meaningful capital buffers. The score is above the 75 strong-liquidity anchor but below 90 because deposit funding is short-duration and capital ratios declined as RWA grew."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 80,
+      "rationale": "High profitability, daily stress-liquidity monitoring and excess regulatory capital support survival through stress, but a correlated regional credit/deposit shock would still require balance-sheet moderation."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 55,
+      "rationale": "Dilution is only about +0.1% YoY, mapping to the 0-3% row. Unused credit commitments are about 1.97x TTM revenue, also mapping to the 1-2x row. The rubric takes the lower axis, so 55."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "Bank liquidity depends on depositor behavior and regulatory definitions rather than simple cash-minus-debt."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "Current capital is strong, but recent higher-risk lending cohorts have not seasoned through a severe credit cycle."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "material",
+      "rationale": "Unused credit limits are ordinary banking commitments and not equivalent to industrial purchase obligations, but the locked rubric still penalizes their size mechanically."
+    }
+  ],
+  "dilution_metrics": {
+    "annualized_dilution": 0.0010345,
+    "three_year_diluted_share_cagr": null,
+    "three_year_cumulative_dilution": null,
+    "consecutive_years_material_dilution": 0,
+    "per_share_value_proxy": "economic_value_per_share_proxy",
+    "per_share_value_growth": null,
+    "structural_financing_need": false,
+    "rationale": "Diluted shares are effectively flat. The H1 2026 buyback further supports the conclusion that equity issuance is not structurally funding growth."
+  }
+}
