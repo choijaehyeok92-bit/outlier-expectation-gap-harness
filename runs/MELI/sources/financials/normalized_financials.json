@@ -79,10 +79,18 @@
     },
     {
       "document_id": "DOC-010",
-      "source_document": "https://www.sec.gov/Archives/edgar/data/1099590/000114036126036495/ef20081942_8k.htm",
+      "source_document": "Form 8-K 2026-09-14 — https://www.sec.gov/Archives/edgar/data/1099590/000114036126036495/ef20081942_8k.htm",
       "document_type": "other",
       "filing_date": "2026-09-14",
       "period_end": "2026-09-14",
+      "is_amendment": false
+    },
+    {
+      "document_id": "DOC-011",
+      "source_document": "Form 4 2026-06-12 — https://www.sec.gov/Archives/edgar/data/1099590/000162828026042978/0001628280-26-042978-index.htm",
+      "document_type": "other",
+      "filing_date": "2026-06-12",
+      "period_end": "2026-06-12",
       "is_amendment": false
     }
   ],
@@ -685,7 +693,7 @@
       "fiscal_quarter": 3,
       "segment": null,
       "filing_date": "2026-09-14",
-      "source_document": "https://www.sec.gov/Archives/edgar/data/1099590/000114036126036495/ef20081942_8k.htm",
+      "source_document": "Form 8-K 2026-09-14 — https://www.sec.gov/Archives/edgar/data/1099590/000114036126036495/ef20081942_8k.htm",
       "source_page": null,
       "source_section": "Item 8.01 Other Events",
       "source_locator": null,
