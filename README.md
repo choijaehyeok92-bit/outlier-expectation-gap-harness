@@ -57,6 +57,10 @@ python harness.py screen build --as-of 2026-09-18 --from-runs
 python harness.py screen triage --as-of 2026-09-18 --top 20 --dry-run
 ```
 
+실행은 아이콘 하나로 한다 — `scripts/install-shortcut.ps1`(Windows) 한 번이면 바탕화면
+아이콘이 생기고, 이후 더블클릭이면 API·웹이 함께 뜨고 브라우저가 열린다. 터미널에서는
+`scripts/start.cmd`(Windows) 또는 `./scripts/start.sh`(macOS·Linux).
+
 웹에서는 `/pipeline` 화면이 이 순서를 단계별 버튼으로 보여준다. 무료 구간(명단·시세·지표·
 스크리닝)은 한 번에 묶어 돌고, 모델을 부르는 triage·full harness·심층 보고서는 묶지 않으며
 각각 dry run으로 대상과 예상 호출 수를 먼저 보여준다.
