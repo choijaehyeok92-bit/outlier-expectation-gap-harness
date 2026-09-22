@@ -709,7 +709,22 @@ def register(sub):
 
     _register_data_adapters(sub)
     _register_database(sub)
+    _register_workers(sub)
     return sub
+
+
+def _register_workers(sub):
+    """Worker commands, when the database layer is installed.
+
+    The queue is a table, so the worker has exactly the database's
+    dependencies and none of its own. Without them the rest of the CLI is
+    unaffected.
+    """
+    try:
+        from workers import cli as worker_cli
+    except Exception:
+        return None
+    return worker_cli.register(sub)
 
 
 def _register_database(sub):

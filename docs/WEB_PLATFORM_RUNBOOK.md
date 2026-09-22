@@ -166,6 +166,23 @@ python harness.py monitor drift NVDA
 관측 로그는 `monitoring/<TICKER>/observations.jsonl`이고 `HARNESS_MONITORING_DIR`로 저장소 밖에
 둘 수 있다. **재생성이 불가능한 유일한 산출물이므로 gitignore하지 않았다.**
 
+## 1h. Workers
+
+```bash
+python harness.py db upgrade                 # 0003까지 (job 테이블에 lease·백오프)
+
+python harness.py worker enqueue screen_build --set as_of_date=2026-09-18
+python harness.py worker run                 # 큐를 비우고 종료
+python harness.py worker run --follow        # 데몬. SIGTERM은 진행 중 작업을 끝내고 나간다
+python harness.py worker status
+python harness.py worker jobs --status failed
+```
+
+큐는 `job` 테이블이다. 브로커가 없고 Redis도 필요 없다. **payload에 API 키를 넣지 않는다** —
+`job.payload`는 저장되고 `/api/jobs`로 나간다. payload가 `provider: anthropic`을 요구해도
+`config/workers.json`의 `providers.allowed`에 없으면 거부된다. 자세한 것은
+[WORKERS.md](WORKERS.md).
+
 ## 2. API
 
 ```bash

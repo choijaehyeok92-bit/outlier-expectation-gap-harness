@@ -218,11 +218,24 @@ tests/test_monitoring.py
 docs/MONITORING.md
 ```
 
-### 이후 Phase에서 추가될 것
+### 워커 계층에서 추가된 것
 
 ```
-workers/                                 ARQ 작업: universe sync, ingestion, metric build, full harness, deep research
+workers/
+  queue.py                         job 테이블에서 claim — lease·백오프·reaper
+  handlers.py                      kind -> 이미 존재하는 진입점. provider 상한을 여기서 건다
+  runner.py                        루프: reap -> claim -> 실행 -> 기록. SIGTERM은 graceful
+  cli.py                           harness.py worker {enqueue,run,status,jobs,retry,cancel,reap}
+config/workers.json                kinds · lease · 백오프 · providers.allowed · 핸들러 계약
+db/migrations/versions/0003_job_queue.py
+tests/test_workers.py
+docs/WORKERS.md
 ```
+
+**브로커를 두지 않았다.** 큐는 `job` 테이블이고 claim은 `FOR UPDATE SKIP LOCKED`다.
+`job`에 이미 `idempotency_key`·`status`·`attempts`가 있었고, 배포에서 서비스가 하나 줄고,
+무엇보다 두 방언 모두에서 서비스 없이 단위 테스트가 된다 — 검증되지 않는 큐는 큐가 아니다.
+핸들러 계약에 transport가 등장하지 않으므로 나중에 브로커를 앞에 붙여도 핸들러는 그대로다.
 
 ---
 
@@ -244,7 +257,7 @@ workers/                                 ARQ 작업: universe sync, ingestion, m
 
 ---
 
-## 5. DB schema (Phase 2~4, 12)
+## 5. DB schema (Phase 2~4, 12, workers)
 
 vertical slice는 DB 없이 `runs/`를 읽는다. 아래는 US/KR 전체 유니버스가 들어올 때의 스키마다.
 
@@ -547,6 +560,8 @@ remaining_unknowns / evidence_quality / final_synthesis
 | GET | `/api/monitoring/{ticker}/watchlist` | ✅ 관측 적용 전 선언 |
 | GET | `/api/monitoring/{ticker}/drift` | ✅ run 간 변화 + comparable |
 | POST | `/api/monitoring/observations` | ✅ 관측 1건 append |
+| GET | `/api/jobs[?status=&kind=]`, `/api/jobs/{id}` | ✅ 큐 요약 + 최근 작업 |
+| POST | `/api/jobs` | ✅ 작업 1건 enqueue (실행은 워커가 한다) |
 
 미구현 단계는 그럴듯한 답을 만들지 않고 501과 해당 Phase를 반환한다.
 
@@ -583,6 +598,9 @@ python harness.py monitor observe TICKER (--watch-id ID | --match TEXT [--all-ma
 python harness.py monitor status [TICKER | --tickers A,B] [--as-of DATE] [--full] [--save]
 python harness.py monitor drift TICKER [--run-ids A,B]
 python harness.py monitor runs
+python harness.py worker enqueue KIND [--payload JSON|@file] [--set K=V] [--priority N]
+python harness.py worker run [--kinds A,B] [--follow] [--max-jobs N] [--max-seconds S]
+python harness.py worker {status,jobs,retry,cancel,reap}
 ```
 
 이후 Phase에서 추가될 것: `screen deep-dive --input leaderboard.json --top 10`.
@@ -613,8 +631,8 @@ Phase 5·6·9·10·11이 먼저 완성된 것은 vertical slice를 먼저 관통
 Phase 4가 붙으면서 `screening_warehouse` 백엔드가 조건부로 활성화됐고, `backend_unavailable`로
 남던 조건들이 창고를 빌드한 뒤에는 그대로 컴파일된다 — spec 형식은 바뀌지 않았다.
 Phase 2가 붙으면서 아티팩트 위에 선택적 PostgreSQL 색인이 생겼고, 스크리너는 `--source`로
-파일과 DB 중 어느 쪽에서든 **같은 행**을 읽는다. 남은 것은 Phase 2의 `job` 테이블을 소비할
-워커와, 관측 수집 자동화다. Phase 7·8은 결정론이 아니므로 픽스처가 검증하는 범위가
+파일과 DB 중 어느 쪽에서든 **같은 행**을 읽는다. `job` 테이블에는 이제 소비자가 있다.
+남은 것은 관측 수집 자동화와 기업 단위 잠금이다. Phase 7·8은 결정론이 아니므로 픽스처가 검증하는 범위가
 좁아진다 — 무엇을 검증하고 무엇을 검증하지 않는지는 [ORCHESTRATION.md](ORCHESTRATION.md)와
 모든 배치 기록의 `verification_scope`에 적혀 있다.
 

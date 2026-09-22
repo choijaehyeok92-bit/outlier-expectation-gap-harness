@@ -143,6 +143,17 @@ class ApiTests(unittest.TestCase):
     def test_monitoring_a_company_with_no_run_is_a_404(self):
         self.assertEqual(CLIENT.get('/api/monitoring/GHOST').status_code, 404)
 
+    def test_the_job_queue_says_it_needs_a_database_rather_than_pretending(self):
+        # No HARNESS_DATABASE_URL in the test environment, so the queue has
+        # nowhere to live and the route says so instead of returning an empty
+        # list that reads like an idle queue.
+        import os
+        if os.environ.get('HARNESS_DATABASE_URL'):
+            self.skipTest('a database is configured; the 501 path is not exercised')
+        response = CLIENT.get('/api/jobs')
+        self.assertEqual(response.status_code, 501)
+        self.assertIn('queue', response.json()['detail'])
+
     def test_deep_dive_plan_and_report_round_trip(self):
         plan = CLIENT.post('/api/deep-dive/plan', json={'run_id': 'MSFT'}).json()
         self.assertEqual(plan['ticker'], 'MSFT')

@@ -14,6 +14,10 @@ not resolve comes back in `unresolved_conditions` instead of quietly vanishing.
 It never returns a secret. Provider keys are read inside the provider classes
 from the environment; no route accepts one and no response echoes one.
 
+It never runs background work in a request. `/api/jobs` writes a row; a
+worker process picks it up. Which providers that worker may use is its own
+configuration, so a queued payload cannot spend money by naming a model.
+
 It never turns an observation into a decision. `/api/monitoring` compares
 what was observed against thresholds somebody already declared and reports
 `review_required`; no route here moves a score, an archetype, a Hard Veto
@@ -40,8 +44,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from apps.api.models import (DeepDivePlanRequest, DeepDiveRunRequest,  # noqa: E402
-                             FullHarnessRequest, ObservationRequest, ParseRequest,
-                             ScreenRunRequest, TriageRequest)
+                             FullHarnessRequest, JobRequest, ObservationRequest,
+                             ParseRequest, ScreenRunRequest, TriageRequest)
 from packages.llm import LLMError, resolve_provider  # noqa: E402
 from packages.reporting import render_markdown, render_screen_markdown  # noqa: E402
 from packages.research import deep_plan, deep_run  # noqa: E402
@@ -459,6 +463,66 @@ def monitoring_observe(request: ObservationRequest):
             supersedes=request.supersedes, run_as_of_date=run_as_of)
     except observation_log.ObservationRejected as error:
         raise HTTPException(422, str(error)) from error
+
+
+def _job_engine():
+    """The queue is a table, so no database means no queue — said, not guessed."""
+    from db.session import DatabaseNotConfigured, engine_for
+    try:
+        engine = engine_for()
+    except DatabaseNotConfigured as error:
+        raise HTTPException(501, f'{error} The job queue lives in that database.') from error
+    from sqlalchemy import inspect
+    if 'job' not in set(inspect(engine).get_table_names()):
+        raise HTTPException(501, 'no job table; run `python harness.py db upgrade` first')
+    return engine
+
+
+@app.get('/api/jobs')
+def jobs_list(status: str | None = None, kind: str | None = None,
+              limit: int = Query(20, ge=1, le=200)):
+    """Recent jobs, newest first, with the queue's own summary."""
+    from db.session import session_scope
+    from workers import queue as job_queue
+    with session_scope(_job_engine()) as session:
+        return {'summary': job_queue.summary(session),
+                'jobs': job_queue.recent(session, limit, status, kind)}
+
+
+@app.get('/api/jobs/{job_id}')
+def jobs_get(job_id: int):
+    from db.models import Job
+    from db.session import session_scope
+    from workers import queue as job_queue
+    with session_scope(_job_engine()) as session:
+        job = session.get(Job, job_id)
+        if job is None:
+            raise HTTPException(404, f'no job {job_id}')
+        return job_queue.to_dict(job)
+
+
+@app.post('/api/jobs')
+def jobs_enqueue(request: JobRequest):
+    """Queue work. Enqueueing is not running: a worker has to pick it up.
+
+    The same `idempotency_key` twice returns the row that already exists, so a
+    client retrying a timed-out POST does not queue the work twice.
+    """
+    from db.session import session_scope
+    from workers import handlers, queue as job_queue
+    config = job_queue.load_config()
+    problem = handlers.payload_is_safe(request.payload)
+    if problem:
+        raise HTTPException(422, problem)
+    with session_scope(_job_engine()) as session:
+        try:
+            job = job_queue.enqueue(session, request.kind, request.payload, config,
+                                    idempotency_key=request.idempotency_key,
+                                    priority=request.priority,
+                                    max_attempts=request.max_attempts)
+        except ValueError as error:
+            raise HTTPException(422, str(error)) from error
+        return job_queue.to_dict(job)
 
 
 @app.post('/api/deep-dive/plan')

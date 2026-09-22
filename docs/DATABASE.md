@@ -26,8 +26,10 @@ monitoring_observation                         관측된 사실 (Phase 12)
 job           sync_log                         작업 큐·동기화 감사
 ```
 
-`db/models.py`가 정의이고 `db/migrations/versions/`의 `0001_initial_schema.py`와
-`0002_monitoring.py`가 스키마다.
+`db/models.py`가 정의이고 `db/migrations/versions/`의 `0001_initial_schema.py`,
+`0002_monitoring.py`, `0003_job_queue.py`가 스키마다. `job`은 0003에서 `available_at`·
+`lease_expires_at`·`worker_id`·행별 `max_attempts`를 얻어 **기록용 테이블에서 실제 큐가**
+됐다 — 자세한 것은 [WORKERS.md](WORKERS.md).
 
 ---
 
@@ -177,8 +179,8 @@ warehouse   inserted=336  (14개 기업 × 24개 지표)
 
 ## 남은 것
 
-- 워커 큐가 `job` 테이블을 실제로 소비하지 않는다. 테이블과 idempotency key는 있고
-  (`enqueue`가 같은 키로 중복 작업을 만들지 않는 것은 테스트됨) 소비자가 없다
+- 기업 단위 잠금이 없다. 서로 다른 payload를 가진 두 작업이 같은 `runs/<ID>/`를
+  동시에 건드릴 수 있다 ([WORKERS.md](WORKERS.md))
 - `financial_fact.supersedes_fact_id` 컬럼은 있으나 적재기가 아직 연결하지 않는다.
   정정 관계는 현재 pack의 `is_restated` 플래그와 provenance에만 있다
 - 증분 동기화 없음 — `db sync`는 전체를 훑고 변경분만 쓴다. 현재 규모(7천 행)에서는

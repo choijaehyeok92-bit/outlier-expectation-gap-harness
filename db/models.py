@@ -382,13 +382,25 @@ class MonitoringObservation(TimestampMixin, Base):
 
 # ----------------------------------------------------------------- operations
 class Job(TimestampMixin, Base):
-    """Queued work. `idempotency_key` is what makes a retry safe."""
+    """Queued work, claimed out of this table rather than out of a broker.
+
+    `idempotency_key` is what makes enqueueing safe; `available_at` and
+    `lease_expires_at` are what make *claiming* safe. A worker that dies mid
+    job leaves the row `running` forever unless the lease can expire, and a
+    failed job that returns to `queued` immediately will hammer whatever broke
+    it — so a retry moves `available_at` forward instead.
+
+    Reclaiming an expired lease can run a handler twice. Every registered
+    handler is required to be idempotent for exactly that reason; the contract
+    is written down in `config/workers.json`.
+    """
     __tablename__ = 'job'
     __table_args__ = (
         UniqueConstraint('idempotency_key', name='uq_job_idempotency'),
         CheckConstraint("status IN ('queued','running','completed','failed','cancelled')",
                         name='ck_job_status'),
         Index('ix_job_status_kind', 'status', 'kind'),
+        Index('ix_job_claimable', 'status', 'available_at'),
     )
 
     job_id: Mapped[int] = mapped_column(primary_key=True)
@@ -399,6 +411,14 @@ class Job(TimestampMixin, Base):
     result: Mapped[dict | None] = mapped_column(JSONColumn)
     error: Mapped[str | None] = mapped_column(Text)
     attempts: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    max_attempts: Mapped[int] = mapped_column(Integer, nullable=False, default=3)
+    priority: Mapped[int] = mapped_column(Integer, nullable=False, default=100)
+    available_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=utcnow)
+    lease_expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    worker_id: Mapped[str | None] = mapped_column(ShortText)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, default=utcnow, onupdate=utcnow)
 

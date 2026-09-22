@@ -90,6 +90,22 @@ class ObservationRequest(BaseModel):
     supersedes: str | None = None
 
 
+class JobRequest(BaseModel):
+    """Queue one background job.
+
+    `kind` is checked against `config/workers.json` rather than accepted as
+    written, and the provider a job may use is the worker's decision, not this
+    request's — a payload naming a paid model is refused when the worker runs
+    it. Credentials never belong here: job payloads are stored and served back
+    by this same API.
+    """
+    kind: str = Field(min_length=1, max_length=64)
+    payload: dict = Field(default_factory=dict)
+    idempotency_key: str | None = Field(default=None, max_length=128)
+    priority: int = Field(default=100, ge=0, le=1000)
+    max_attempts: int | None = Field(default=None, ge=1, le=10)
+
+
 class DeepDivePlanRequest(BaseModel):
     run_id: str
     user_requested: bool = False
