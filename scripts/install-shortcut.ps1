@@ -1,4 +1,6 @@
-<#
+﻿<#
+    THIS FILE MUST STAY UTF-8 **WITH BOM** — see the note in start.ps1.
+
 .SYNOPSIS
     Put a launcher icon on the Desktop (and optionally the Start menu).
 

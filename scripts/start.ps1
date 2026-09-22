@@ -1,4 +1,13 @@
-<#
+﻿<#
+    THIS FILE MUST STAY UTF-8 **WITH BOM**.
+
+    Windows PowerShell 5.1 — which start.cmd runs — decodes a BOM-less .ps1 as
+    the system ANSI code page. On Korean Windows that is CP949, where the third
+    byte of 중 (EC A4 91) is a valid lead byte and swallows the ' that follows
+    it. The string then never closes and the parse fails many lines later, at a
+    brace that has nothing wrong with it. tests/test_launcher.py asserts the BOM
+    so an editor cannot quietly drop it again.
+
 .SYNOPSIS
     Run the whole app — API, web, browser — from one command.
 
@@ -37,10 +46,24 @@ Set-Location $root
 function Say($text) { Write-Host $text }
 function Die($text) { Write-Host "오류: $text" -ForegroundColor Red; exit 1 }
 
+function Invoke-Native([string]$File, [string[]]$Arguments) {
+    # Windows PowerShell turns a native command's *stderr* into a terminating
+    # error when $ErrorActionPreference is 'Stop'. pip, npm and python all
+    # write perfectly ordinary progress there, so every external call goes
+    # through here with the preference relaxed and the exit code checked
+    # explicitly — which is the thing we actually care about.
+    $previous = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    try {
+        & $File @Arguments 2>&1 | Out-Null
+        return $LASTEXITCODE
+    } finally { $ErrorActionPreference = $previous }
+}
+
 function Get-FreePort([int]$start) {
     foreach ($port in $start..($start + 40)) {
         $listener = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Loopback, $port)
-        try { $listener.Start(); $listener.Stop(); return $port } catch { } finally { }
+        try { $listener.Start(); $listener.Stop(); return $port } catch { }
     }
     Die "$start 부근에 빈 포트가 없다."
 }
@@ -65,27 +88,37 @@ if (Test-Path $envFile) {
 $python = Get-Command python -ErrorAction SilentlyContinue
 if (-not $python) { $python = Get-Command python3 -ErrorAction SilentlyContinue }
 if (-not $python) { Die 'python이 없다. 3.10 이상을 설치한다: winget install Python.Python.3.12' }
-& $python.Source -c "import sys; sys.exit(0 if sys.version_info >= (3, 10) else 1)"
-if ($LASTEXITCODE -ne 0) { Die 'Python 3.10 이상이 필요하다.' }
+if ((Invoke-Native $python.Source @('-c', 'import sys; sys.exit(0 if sys.version_info >= (3, 10) else 1)')) -ne 0) {
+    Die 'Python 3.10 이상이 필요하다: winget install Python.Python.3.12'
+}
 
 if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
     Die 'node가 없다. LTS를 설치한다: winget install OpenJS.NodeJS.LTS'
 }
-$nodeVersion = [version]((node --version).TrimStart('v'))
+$nodeRaw = (node --version).Trim().TrimStart('v')
+$nodeVersion = $null
+# A nightly or release-candidate build carries a suffix [version] refuses.
+[void][version]::TryParse(($nodeRaw -split '-')[0], [ref]$nodeVersion)
+if (-not $nodeVersion) { Die "Node 버전을 읽지 못했다: $nodeRaw" }
 $nodeOk = ($nodeVersion -ge [version]'20.0.0') -or
           ($nodeVersion -ge [version]'18.18.0' -and $nodeVersion -lt [version]'19.0.0') -or
           ($nodeVersion -ge [version]'19.8.0' -and $nodeVersion -lt [version]'20.0.0')
 if (-not $nodeOk) {
-    Die "Node $nodeVersion 는 Next.js가 받지 않는다. 20 LTS 이상을 설치한다: winget install OpenJS.NodeJS.LTS"
+    Die "Node $nodeRaw 는 Next.js가 받지 않는다. 20 LTS 이상을 설치한다: winget install OpenJS.NodeJS.LTS"
 }
 
-& $python.Source -c "import fastapi, uvicorn" 2>$null
-if ($LASTEXITCODE -ne 0) { Die 'API 의존성이 없다: pip install -r apps/api/requirements.txt' }
+if ((Invoke-Native $python.Source @('-c', 'import fastapi, uvicorn')) -ne 0) {
+    Die 'API 의존성이 없다: pip install -r apps/api/requirements.txt'
+}
 
 if (-not (Test-Path (Join-Path $root 'apps/web/node_modules'))) {
     Say '· 웹 의존성 설치 (npm ci) — 처음 한 번만 걸린다'
     Push-Location (Join-Path $root 'apps/web')
-    try { npm ci } finally { Pop-Location }
+    try {
+        $npmExe = (Get-Command npm -ErrorAction SilentlyContinue)
+        if (-not $npmExe) { Die 'npm이 없다. Node LTS를 설치하면 함께 들어온다.' }
+        if ((Invoke-Native $npmExe.Source @('ci')) -ne 0) { Die 'npm ci 실패 — 위 로그를 본다.' }
+    } finally { Pop-Location }
 }
 
 # --- ports -------------------------------------------------------------------
@@ -104,7 +137,7 @@ $web = $null
 function Stop-Tree($process) {
     if (-not $process -or $process.HasExited) { return }
     # /T because `npx next dev` runs the server in a child of its own.
-    & taskkill /PID $process.Id /T /F *> $null
+    Invoke-Native 'taskkill' @('/PID', "$($process.Id)", '/T', '/F') | Out-Null
 }
 
 try {
@@ -123,7 +156,9 @@ try {
     if (-not $ready) { Die 'API가 60초 안에 응답하지 않았다.' }
 
     Say "· 웹    $webUrl"
-    $web = Start-Process -FilePath 'npx.cmd' -PassThru -NoNewWindow `
+    $npx = Get-Command npx -ErrorAction SilentlyContinue
+    if (-not $npx) { Die 'npx가 없다. Node LTS를 설치하면 함께 들어온다.' }
+    $web = Start-Process -FilePath $npx.Source -PassThru -NoNewWindow `
         -WorkingDirectory (Join-Path $root 'apps/web') `
         -ArgumentList 'next', 'dev', '-p', "$WebPort"
 

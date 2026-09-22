@@ -38,6 +38,30 @@
 아이콘은 `scripts/make_icon.py`가 표준 라이브러리만으로 그린다. 아무도 다시 만들 수 없는
 바이너리는 아무도 고칠 수 없는 바이너리다.
 
+### `.ps1` 파일 인코딩 — 건드리면 안 되는 것
+
+**`scripts/*.ps1`은 UTF-8 BOM 있는 상태를 유지해야 한다.** Windows PowerShell 5.1은
+BOM 없는 `.ps1`을 시스템 ANSI 코드페이지로 읽는다. 한국어 Windows에서는 CP949이고,
+`중`의 UTF-8 세 번째 바이트 `0x91`이 CP949에서 유효한 선행 바이트라 **바로 뒤의 작은따옴표를
+삼킨다.** 문자열이 닫히지 않고, 파싱은 한참 뒤의 멀쩡한 중괄호에서 실패한다:
+
+```
+위치 ...\start.ps1:61 문자:1
++ }
+식 또는 문에서 예기치 않은 '}' 토큰입니다.
+```
+
+이 저장소에서 실제로 겪은 오류다. 에디터가 BOM을 떼지 못하도록 `tests/test_launcher.py`가
+검사하고, `.gitattributes`가 CRLF를 고정한다. `start.cmd`는 아예 ASCII만 쓴다 — cmd.exe는
+또 다른 코드페이지(OEM)로 읽기 때문이다.
+
+증상이 다시 보이면 파일이 BOM을 잃은 것이다:
+
+```powershell
+python -c "p=open('scripts/start.ps1','rb').read(); print(p[:3] == b'\xef\xbb\xbf')"
+git checkout -- scripts/start.ps1      # 되돌리는 가장 빠른 방법
+```
+
 ## 0. 의존성
 
 ```bash

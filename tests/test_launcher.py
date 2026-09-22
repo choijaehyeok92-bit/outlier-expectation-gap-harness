@@ -44,6 +44,56 @@ class LauncherTests(unittest.TestCase):
                          if not line.strip().startswith('#'))
         self.assertNotRegex(code, r'\?\?')
 
+    def test_every_powershell_script_keeps_its_utf8_bom(self):
+        """Windows PowerShell 5.1 decodes a BOM-less .ps1 in the system ANSI
+        code page. On Korean Windows that is CP949, and this file's own Korean
+        strings are what it mis-decodes — the third byte of 중 (EC A4 91) is a
+        valid CP949 lead byte, so it swallows the closing quote after it. The
+        string then runs on and the parse fails at a brace many lines later
+        that has nothing wrong with it. This exact failure has happened."""
+        for name in ('start.ps1', 'install-shortcut.ps1'):
+            raw = (SCRIPTS / name).read_bytes()
+            self.assertEqual(raw[:3], b'\xef\xbb\xbf', f'{name} lost its BOM')
+
+    def test_the_bom_is_what_stands_between_the_scripts_and_that_failure(self):
+        """Names the hazard rather than trusting a comment about it: if a
+        quote-swallowing sequence is present, a BOM must be too."""
+        def swallows_a_quote(raw: bytes) -> bool:
+            i = 0
+            while i < len(raw) - 1:
+                if 0x81 <= raw[i] <= 0xFE:
+                    if raw[i + 1] in (0x27, 0x22):        # ' or "
+                        return True
+                    i += 2
+                    continue
+                i += 1
+            return False
+
+        for name in ('start.ps1', 'install-shortcut.ps1'):
+            raw = (SCRIPTS / name).read_bytes()
+            body = raw[3:] if raw[:3] == b'\xef\xbb\xbf' else raw
+            if swallows_a_quote(body):
+                self.assertEqual(raw[:3], b'\xef\xbb\xbf',
+                                 f'{name} has a byte pair that eats a quote under CP949 '
+                                 'and no BOM to stop it being read that way')
+
+    def test_the_batch_wrapper_is_ascii(self):
+        """cmd.exe decodes a .cmd in the console's OEM code page — a third
+        encoding nobody chose. A mis-decoded batch file fails in ways that look
+        like something else entirely."""
+        raw = (SCRIPTS / 'start.cmd').read_bytes()
+        raw.decode('ascii')                      # raises if anything is not
+
+    def test_the_windows_files_are_crlf(self):
+        for name in ('start.ps1', 'install-shortcut.ps1', 'start.cmd'):
+            raw = (SCRIPTS / name).read_bytes()
+            self.assertNotIn(b'\n', raw.replace(b'\r\n', b''), f'{name} has a bare LF')
+
+    def test_git_keeps_the_windows_line_endings(self):
+        attrs = (ROOT / '.gitattributes').read_text(encoding='utf-8')
+        for pattern in ('*.ps1', '*.cmd'):
+            self.assertRegex(attrs, re.escape(pattern) + r'\s+text\s+eol=crlf')
+
     def test_the_cmd_wrapper_does_not_change_the_machines_policy(self):
         """Asking somebody to loosen a security setting to launch an app is not
         a reasonable thing to ask, so the bypass is scoped to the one call."""
