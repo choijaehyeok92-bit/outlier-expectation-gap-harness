@@ -1,0 +1,18 @@
+{
+  "stage": "early_exit",
+  "agents": {},
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true
+  },
+  "execution_control": "stop",
+  "last_reachable_archetypes": [
+    "compounder"
+  ],
+  "statement": "Full core analysis eliminates the last reachable archetype. Do not run macro, evidence/red-team or IC for this snapshot.",
+  "reentry_triggers": [
+    "RF >= 76 and incremental_roic >= 75 while the other Compounder gates remain satisfied",
+    "or materially new evidence changes the owner-FCF/share and incremental-return assessment"
+  ]
+}
