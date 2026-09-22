@@ -4,45 +4,136 @@
   "as_of_date": "2026-09-21",
   "domain": "long_term_growth",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 65.5,
+  "confidence_0_1": 0.72,
+  "bull_score": 80,
+  "bear_score": 50,
+  "bull_case": "광고 AI, 비즈니스 메시징·에이전트, AI 글래스·구독이 독립적으로 확장되면 5~10년 성장 활주로가 이어질 수 있다. 36억 사용자 분배망 때문에 새 제품의 초기 배포 비용이 낮고, 조직은 Reels·AI 전환을 이미 수행했다.",
+  "bear_case": "현재 시총 약 $1.9T와 price/Base 1.16x는 상당한 성장 지속을 이미 요구한다. 5년 매출 2배 이상은 가능하지만 필수는 아니며, 인프라 자본집약도와 광고 집중 때문에 10년 이상의 아웃라이어 성장과 명확한 시장 기대오류는 아직 입증되지 않았다.",
+  "thesis": "향후 5년의 현실적 확장 배수는 약 1.9배로 본다: EV의 3년 Base 매출 CAGR 16% 이후 성장률이 완만히 둔화되는 경로다. 관측표 보간상 opportunity_scale은 60점. 고부가 성장 활주로는 약 7.5년으로 잡아 growth_duration 75점, Reels·AI로의 실제 전환을 근거로 culture 75점이다. 그러나 현 주가가 Base 가치보다 16% 높아 시장이 성장 지속을 명백히 과소평가한다는 증거가 약해 misperception은 50점이다.",
+  "evidence": [
+    {
+      "evidence_id": "META-LG-REV",
+      "economic_driver": "growth_scale",
+      "claim": "2025 revenue grew 22% to $200.966B and Q2 2026 revenue grew 28% YoY, providing a high current growth base at very large scale.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "FY2025/Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.28,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-LG-VECTORS",
+      "economic_driver": "new_value_pools",
+      "claim": "Paid WhatsApp messaging crossed a $2B annual run-rate in Q4 2025 and more than one million businesses were using Meta Business Agent by June 2026, giving a growth vector outside conventional feed advertising.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/06/meta-business-agent/",
+      "period": "Q4 2025 to Jun 2026",
+      "as_of_date": "2026-09-21",
+      "value": 1000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-LG-WEAR",
+      "economic_driver": "ai_wearables",
+      "claim": "Meta and EssilorLuxottica said AI glasses had sold millions of units by May 2026, adding a second emerging value pool.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/05/ray-ban-meta-ai-glasses-launch-in-japan/",
+      "period": "2026-05-21",
+      "as_of_date": "2026-09-21",
+      "value": "millions sold",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-LG-EXPECT",
+      "economic_driver": "market_expectations",
+      "claim": "At $741.25 the locked harness Base value is $638.42 and Bull value $1,090.61, so price/Base is ~1.161x; the market is not pricing a clear Base-case discount.",
+      "source_type": "other",
+      "source": "runs/META/aggregate.json",
+      "period": "2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 1.1611,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "광고가 여전히 substantially all revenue를 차지한다.",
+    "AI 인프라 지출은 성장의 자본효율을 낮출 수 있다.",
+    "Business Agent·웨어러블의 전체 회사 매출 기여는 아직 작다.",
+    "현재 가격은 하네스 Base 가치보다 높아 기대차가 명확하지 않다."
+  ],
+  "unknowns": [
+    "Meta는 5년 매출 목표나 10년 성장 활주로를 공식 가이던스로 제공하지 않는다.",
+    "웨어러블·Business Agent의 장기 영업이익률은 공개되지 않는다."
+  ],
+  "falsifiers": [
+    "5년 매출 CAGR이 10% 아래로 내려가 1.6배 미만 확장 경로가 된다.",
+    "비즈니스 메시징·AI 디바이스가 2028년까지 의미 있는 독립 가치풀로 성장하지 못한다.",
+    "시장 가격이 Bull 가치에 접근하는데 장기 FCF 경로가 상향되지 않는다."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
+  "key_kpis": [
+    {
+      "name": "5-year revenue/economic-value expansion",
+      "direction": "toward ~2x",
+      "threshold": ">=1.8x",
+      "cadence": "annual refresh"
+    },
+    {
+      "name": "Growth runway",
+      "direction": "remain >5 years",
+      "threshold": ">5 years",
+      "cadence": "annual"
+    },
+    {
+      "name": "Price/Base",
+      "direction": "fall or Base rise",
+      "threshold": "<=1.0x for clear expectation gap",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Refresh 5-year expansion after 2027 guidance.",
+    "Track Business Agent/WhatsApp and wearables revenue separately.",
+    "Re-run market-misperception test after material price or Base-value change."
+  ],
   "verdict": "neutral",
   "subscores": [
     {
       "criterion_id": "opportunity_scale_5y",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 60,
+      "rationale": "A ~1.9x five-year expansion is plausible: applying 16% near-term growth then fading toward ~10% gives just under 2x. In the 1.5~2.0 band, band-centre interpolation near the upper end rounds to 60; the 2x/75 row is not claimed because it requires sustained execution beyond current guidance."
     },
     {
       "criterion_id": "growth_duration_10y",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "A ~7.5-year high-value growth runway is supported by ads AI, messaging/agents and wearables. 7.5 years is the centre of the 5~10-year observable band, so score=75. >10 years/90 is excluded because advertising concentration and capital intensity remain material."
     },
     {
       "criterion_id": "culture_adaptability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "The 75 anchor fits demonstrated self-disruption through Reels and rapid AI resource reallocation with business results. 90 is excluded because repeated successful reinvention across multiple completed cycles is not yet established and founder concentration is not itself a positive."
     },
     {
       "criterion_id": "market_misperception",
       "score_0_100": 50,
-      "rationale": ""
+      "rationale": "There is a plausible debate about AI monetization duration, but price/Base ~1.16x shows no clear reverse-DCF discount. This matches the 50 anchor; 75 is excluded because a specific underpriced duration/TAM mismatch is not demonstrated."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "opportunity_scale_5y",
+      "severity": "material",
+      "rationale": "The 1.9x path is an analyst estimate, not management guidance."
+    },
+    {
+      "criterion_id": "market_misperception",
+      "severity": "critical",
+      "rationale": "At the frozen price the market already capitalizes substantial growth, making expectation-gap evidence weak."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
@@ -57,5 +148,6 @@
         "owner_fcf_per_share": []
       }
     }
-  }
+  },
+  "geo_events_reviewed": []
 }
