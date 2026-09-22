@@ -1,0 +1,176 @@
+{
+  "agent_id": "FS",
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "domain": "financial_survival",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 78.75,
+  "confidence_0_1": 0.94,
+  "bull_score": 90,
+  "bear_score": 60,
+  "bull_case": "LLY generates enough operating cash to fund elevated R&D and manufacturing capex while maintaining access to large committed facilities and public debt markets; share count is declining rather than diluting.",
+  "bear_case": "Net debt and acquisition spending have risen quickly. A simultaneous metabolic-franchise slowdown, heavy capex commitments and adverse pricing could force slower investment or balance-sheet repair, though not near-term external-equity dependence.",
+  "thesis": "Financial survival is strong despite negative net cash. TTM OCF is roughly $28.1B, total debt $54.9B, and Lilly has $12.8B cash/investments plus $10.1B unused committed bank facilities. H1 capex and acquisitions are large, but internally generated cash remains substantial. Diluted shares fell ~0.7% YoY, and identified off-balance commitments are well below 0.5x TTM revenue, supporting a high dilution/off-balance score.",
+  "evidence": [
+    {
+      "evidence_id": "LLY-FS-CASH",
+      "economic_driver": "liquidity",
+      "claim": "At June 30, Lilly held $8.95B cash and $3.856B investments versus $54.908B short/current and long-term debt; it also had $10.1B of unused committed bank facilities.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-05",
+      "value": 10100000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-FS-CFO",
+      "economic_driver": "internal_funding",
+      "claim": "TTM operating cash flow is about $28.08B using FY2025 plus H1 2026 less H1 2025; H1 2026 CFO alone was $16.023B against $5.259B capex.",
+      "source_type": "other",
+      "source": "FY2025 10-K and Q2 2026 10-Q; analyst calculation",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 28083000000,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-FS-DEBT",
+      "economic_driver": "leverage",
+      "claim": "Total debt was $54.9B at June 30, up $12.4B from year-end after May 2026 debt financing and acquisition funding; management states liquidity and borrowing access are sufficient for planned capital requirements.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-08-05",
+      "value": 54900000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-FS-DILUTION",
+      "economic_driver": "dilution",
+      "claim": "Q2 2026 diluted weighted-average shares were 893.7M versus 899.8M in Q2 2025, a decline of about 0.68%; H1 share repurchases were about $4.0B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-05",
+      "value": -0.0067793,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-FS-COMMIT",
+      "economic_driver": "off_balance_commitments",
+      "claim": "Identified development/supply potential payments of roughly $10B plus ~$0.8B unfunded venture commitments are about 0.14x estimated TTM revenue of ~$79.7B, below the rubric's 0.5x threshold.",
+      "source_type": "other",
+      "source": "FY2025 10-K and Q2 2026 10-Q; analyst calculation",
+      "period": "cutoff 2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 0.136,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Total debt increased sharply in 2026 as Lilly financed acquisitions and commercial paper repayment.",
+    "Manufacturing capex will remain meaningfully elevated in the near term.",
+    "H1 2026 included $13.3B of business-development cash payments and July added further acquisition spending.",
+    "A concentrated metabolic revenue shock could coincide with underutilized manufacturing capacity and fixed financial obligations."
+  ],
+  "unknowns": [
+    "Exact future contractual manufacturing/supply commitments beyond disclosed development-payment estimates.",
+    "Normalized capex after current capacity projects reach steady state.",
+    "Acquisition spending cadence after the 2026 business-development wave.",
+    "Debt reduction priority versus buybacks/dividends and further M&A."
+  ],
+  "falsifiers": [
+    "TTM OCF falls materially while capex, acquisition spending and debt continue rising.",
+    "Net debt/owner-cash generation rises persistently above a level that requires equity or distressed refinancing.",
+    "Share repurchases cease and sustained equity issuance becomes necessary to fund ordinary operations."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "구조적으로 과도한 외부자본 조달 의존",
+      "status": "cleared",
+      "rationale": "LLY generates very large positive operating cash flow and has committed liquidity; 2026 debt was used partly for acquisitions and balance-sheet funding rather than to keep ordinary operations solvent."
+    },
+    {
+      "veto": "장기간 지속되는 과도한 희석",
+      "status": "cleared",
+      "rationale": "Diluted shares declined about 0.7% YoY and the company repurchased roughly $4B of shares in H1; persistence/excessiveness/per-share destruction conditions are not met."
+    },
+    {
+      "veto": "파산 또는 영구손실 확률이 기대수익에 비해 지나치게 높음",
+      "status": "cleared",
+      "rationale": "Net debt is material but covered by strong recurring operating cash flow, diversified access to liquidity and a large profitable franchise; insolvency risk remains below veto level."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Net debt / TTM OCF",
+      "direction": "stable or down",
+      "threshold": "delever as acquisition/capacity spending normalizes",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "OCF less capex",
+      "direction": "up",
+      "threshold": "remain strongly positive through manufacturing expansion",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Diluted shares",
+      "direction": "flat or down",
+      "threshold": "buybacks at least offset SBC/issuance",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Q3 cash conversion and debt balance.",
+    "Manufacturing capex commitments.",
+    "2026-27 acquisition/deleveraging cadence."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "score_0_100": 75,
+      "rationale": "Negative net cash and higher debt prevent a 90 score, but ~$28B TTM OCF, $12.8B cash/investments and $10.1B committed facilities support strong liquidity."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "score_0_100": 75,
+      "rationale": "The company can internally fund core R&D and substantial capex under a meaningful slowdown, though a severe franchise shock would require slower M&A/buybacks/capacity spending."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "score_0_100": 90,
+      "rationale": "Diluted shares declined YoY and identified off-balance commitments are below 0.5x TTM revenue, so both observable axes map to the strongest 90 row."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "liquidity_leverage",
+      "severity": "material",
+      "rationale": "2026 acquisition and financing activity changed leverage rapidly."
+    },
+    {
+      "criterion_id": "stress_survival",
+      "severity": "material",
+      "rationale": "Stress resilience depends partly on the ability to pace discretionary acquisitions and capacity expansion."
+    },
+    {
+      "criterion_id": "dilution_offbalance",
+      "severity": "minor",
+      "rationale": "Share-count evidence is clear; commitment totals are less comprehensive than the diluted-share evidence."
+    }
+  ],
+  "dilution_metrics": {
+    "annualized_dilution": -0.0067793,
+    "three_year_diluted_share_cagr": null,
+    "three_year_cumulative_dilution": null,
+    "consecutive_years_material_dilution": 0,
+    "per_share_value_proxy": "owner_fcf_per_share",
+    "per_share_value_growth": null,
+    "structural_financing_need": false,
+    "rationale": "Q2 diluted weighted-average shares declined approximately 0.68% YoY, while H1 repurchases exceeded $3.9B."
+  }
+}
