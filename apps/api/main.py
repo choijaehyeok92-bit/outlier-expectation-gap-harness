@@ -47,7 +47,8 @@ from apps.api.models import (DeepDivePlanRequest, DeepDiveRunRequest,  # noqa: E
                              FullHarnessRequest, IngestRequest, JobRequest,
                              LinkRequest, MarketFetchRequest, ObservationRequest,
                              PackIngestRequest, ParseRequest, ScreenRunRequest,
-                             TriageRequest, UniverseSyncRequest)
+                             TriageRequest, UniverseSyncRequest,
+                             WarehouseBuildRequest)
 from packages.llm import LLMError, resolve_provider  # noqa: E402
 from packages.reporting import render_markdown, render_screen_markdown  # noqa: E402
 from packages.research import deep_plan, deep_run  # noqa: E402
@@ -216,6 +217,49 @@ def ingest_packs(request: PackIngestRequest):
                                             request.as_of_date, force=request.force)
     except AdapterError as error:
         raise HTTPException(422, str(error)) from error
+
+
+
+@app.get('/api/pipeline/status')
+def pipeline_status(as_of_date: str = Query(..., pattern=r'^\d{4}-\d{2}-\d{2}$')):
+    """What is done, what is next, and which steps cost money.
+
+    Read-only on purpose. Asking where the funnel stands must not move it, or
+    the next button press becomes unreadable.
+    """
+    from packages import pipeline
+    return pipeline.status(as_of_date)
+
+
+@app.post('/api/warehouse/build')
+def warehouse_build(request: WarehouseBuildRequest):
+    """Recompute the deterministic metric warehouse. No model is involved.
+
+    Closes come from `data/market` for packs that carry no frozen observation;
+    a completed run keeps the price its freeze recorded, because a frozen run
+    is frozen.
+    """
+    from packages.cli import (_attach_market_data, _warehouse_entries_from_packs,
+                              _warehouse_entries_from_runs)
+    from packages.screening import warehouse as warehouse_store
+    entries, unreadable = [], []
+    if request.include_packs and (ROOT / 'data' / 'packs').is_dir():
+        entries.extend(_warehouse_entries_from_packs(ROOT / 'data' / 'packs'))
+    if request.include_runs:
+        from_runs, unreadable = _warehouse_entries_from_runs(as_of=request.as_of_date)
+        entries.extend(from_runs)
+    if not entries:
+        raise HTTPException(422, 'no Stage 0 pack could be read; ingest a company first '
+                                 '(POST /api/ingest/packs)')
+    attached = _attach_market_data(entries, str(ROOT / 'data' / 'market'), request.as_of_date)
+    built = warehouse_store.build(entries, request.as_of_date)
+    built['market_snapshots_attached'] = attached
+    path = warehouse_store.save(built)
+    return {'as_of_date': built['as_of_date'], 'companies': built['companies'],
+            'tickers': built['tickers'], 'failures': built['failures'],
+            'unreadable_artifacts': unreadable,
+            'market_snapshots_attached': attached,
+            'coverage': built['coverage'], 'path': str(Path(path).relative_to(ROOT))}
 
 
 @app.get('/api/warehouse')

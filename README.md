@@ -57,6 +57,10 @@ python harness.py screen build --as-of 2026-09-18 --from-runs
 python harness.py screen triage --as-of 2026-09-18 --top 20 --dry-run
 ```
 
+웹에서는 `/pipeline` 화면이 이 순서를 단계별 버튼으로 보여준다. 무료 구간(명단·시세·지표·
+스크리닝)은 한 번에 묶어 돌고, 모델을 부르는 triage·full harness·심층 보고서는 묶지 않으며
+각각 dry run으로 대상과 예상 호출 수를 먼저 보여준다.
+
 기존 20개 서브커맨드는 인자·동작 모두 변하지 않았다. 새 커맨드의 구현은 지연 import되므로
 `harness.py aggregate`는 스크리닝 스택을 로드하지 않는다.
 

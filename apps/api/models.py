@@ -111,6 +111,19 @@ class IngestRequest(BaseModel):
     as_of_date: str | None = Field(default=None, pattern=r'^\d{4}-\d{2}-\d{2}$')
 
 
+class WarehouseBuildRequest(BaseModel):
+    """Recompute the deterministic metric warehouse.
+
+    No directory fields. The sources are the two places the rest of the
+    pipeline already writes — `data/packs` and the completed runs, with closes
+    from `data/market` — and a route that accepted a path would be a route that
+    reads whatever path it is given.
+    """
+    as_of_date: str = Field(pattern=r'^\d{4}-\d{2}-\d{2}$')
+    include_packs: bool = True
+    include_runs: bool = True
+
+
 class UniverseSyncRequest(BaseModel):
     """Rebuild the investable universe from SEC and DART.
 

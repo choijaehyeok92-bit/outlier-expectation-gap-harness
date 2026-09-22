@@ -73,6 +73,13 @@ export const api = {
       + `&include_ingested=${includeIngested}`),
   ingestPacks: (body: PackIngestBody) =>
     request<PackIngestResult>('/api/ingest/packs', { method: 'POST', body: JSON.stringify(body) }),
+  pipeline: (asOf: string) => request<PipelineStatus>(`/api/pipeline/status?as_of_date=${encodeURIComponent(asOf)}`),
+  warehouseBuild: (asOf: string) =>
+    request<WarehouseBuildResult>('/api/warehouse/build', { method: 'POST', body: JSON.stringify({ as_of_date: asOf }) }),
+  triage: (body: Record<string, unknown>) =>
+    request<StageRunResult>('/api/harness/triage', { method: 'POST', body: JSON.stringify(body) }),
+  fullHarness: (body: Record<string, unknown>) =>
+    request<StageRunResult>('/api/harness/full', { method: 'POST', body: JSON.stringify(body) }),
 };
 
 /** A status the monitoring layer computed. It is never a recommendation. */
@@ -598,6 +605,81 @@ export interface PackIngestResult {
   failed: number;
   pack_dir: string;
   results: PackResult[];
+}
+
+/**
+ * One step of the funnel. `spends_money` is the whole reason this type exists:
+ * the free steps may be chained behind one click and the paid ones may not.
+ */
+export interface PipelineStep {
+  id: string;
+  title: string;
+  what: string;
+  action: string;
+  page: string;
+  spends_money: boolean;
+  calls_per_company?: number;
+  state: 'done' | 'partial' | 'todo' | 'blocked';
+  count: number;
+  detail: string;
+  blocked: string | null;
+  latest_id?: string | null;
+  eligible?: string[];
+  synced_at_utc?: string | null;
+}
+
+export interface PipelineCredential {
+  market: string;
+  regulator: string;
+  env_var: string | null;
+  configured: boolean;
+  note: string | null;
+  signup: string | null;
+}
+
+export interface PipelineStatus {
+  as_of_date: string;
+  next_step: string | null;
+  free_steps: string[];
+  credentials: PipelineCredential[];
+  money_note: string;
+  steps: PipelineStep[];
+}
+
+export interface WarehouseBuildResult {
+  as_of_date: string;
+  companies: number;
+  tickers: string[];
+  failures: unknown[];
+  market_snapshots_attached: number;
+  path: string;
+}
+
+/**
+ * A triage or full-harness batch. A dry run reports the selection and stops —
+ * which is the default, because both stages call a model per agent per
+ * company and starting one is an explicit act.
+ */
+export interface StageCandidate {
+  run_id?: string;
+  ticker?: string;
+  rank?: number;
+  eligible?: boolean;
+  reason?: string;
+  core_score?: number | null;
+  hard_veto_status?: string | null;
+  status?: string;
+}
+
+export interface StageRunResult {
+  as_of_date?: string;
+  stage?: string;
+  dry_run?: boolean;
+  eligible?: StageCandidate[];
+  not_eligible?: StageCandidate[];
+  results?: StageCandidate[];
+  summary?: Record<string, unknown>;
+  [key: string]: unknown;
 }
 
 /** A missing value is unknown, not zero. The UI says so everywhere. */

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 };
 
 const NAV = [
+  { href: '/pipeline', label: 'Pipeline' },
   { href: '/universe', label: 'Universe' },
   { href: '/screener', label: 'Screener' },
   { href: '/market', label: 'Market Data' },

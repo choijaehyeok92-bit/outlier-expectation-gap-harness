@@ -170,6 +170,42 @@ class ApiTests(unittest.TestCase):
         self.assertNotIn(secret, body)
         self.assertNotIn(secret[:12], body, 'not even a prefix of the key')
 
+    def test_the_pipeline_status_is_read_only(self):
+        """Asking where the funnel stands must not move it, or the next button
+        press becomes unreadable."""
+        first = CLIENT.get('/api/pipeline/status', params={'as_of_date': '2026-09-21'}).json()
+        second = CLIENT.get('/api/pipeline/status', params={'as_of_date': '2026-09-21'}).json()
+        self.assertEqual(first, second)
+        self.assertEqual(len(first['steps']), 8)
+
+    def test_the_pipeline_status_marks_the_money_boundary(self):
+        body = CLIENT.get('/api/pipeline/status', params={'as_of_date': '2026-09-21'}).json()
+        paid = [s['id'] for s in body['steps'] if s['spends_money']]
+        self.assertEqual(paid, ['triage', 'full', 'deep'])
+        self.assertEqual(body['free_steps'],
+                         ['universe', 'intake', 'market', 'warehouse', 'screen'])
+
+    def test_the_warehouse_build_route_takes_no_directory(self):
+        """A route that accepted a path would read whatever path it is given."""
+        from apps.api.models import WarehouseBuildRequest
+        fields = set(WarehouseBuildRequest.model_fields)
+        self.assertFalse({'packs_dir', 'path', 'out', 'market_data', 'root'} & fields)
+
+    def test_building_the_warehouse_computes_and_reports_coverage(self):
+        response = CLIENT.post('/api/warehouse/build', json={'as_of_date': '2026-09-21'})
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertGreater(body['companies'], 0)
+        self.assertIn('market_cap', body['coverage'])
+
+    def test_the_paid_stages_default_to_a_dry_run(self):
+        """Both stages call a model per agent per company, so starting one is
+        an explicit act rather than the default of a request body."""
+        from apps.api.models import FullHarnessRequest, TriageRequest
+        for model in (TriageRequest, FullHarnessRequest):
+            self.assertTrue(model(as_of_date='2026-09-21').dry_run, model.__name__)
+            self.assertEqual(model(as_of_date='2026-09-21').provider, 'placeholder')
+
     def test_the_credentials_route_never_carries_a_regulator_key(self):
         import os
         secret = 'dart-live-DO-NOT-LEAK-0123456789'
