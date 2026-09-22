@@ -5,11 +5,11 @@
   "as_of_date": "2026-09-21",
   "ticker": "LLY",
   "reconstructed": true,
-  "reconstruction_reason": "Connector execution cannot replay the repository CLI/EDGAR subprocess directly; current v3.3 rubric, valuation, reachability and planner arithmetic are mirrored deterministically.",
-  "score_100": 64.46,
-  "score_100_ex_valuation": 70.25,
-  "coverage_weight": 35,
-  "classification": "Starter / Watch",
+  "reconstruction_reason": "Connector execution cannot replay the repository CLI/EDGAR subprocess directly; current v3.3 rubric, reachability and planner arithmetic are mirrored explicitly.",
+  "score_100": 76.66,
+  "score_100_ex_valuation": 80.18,
+  "coverage_weight": 100,
+  "classification": "Emerging Outlier",
   "disruptive_innovation_score": 82,
   "turnaround_quality_score": null,
   "axis_scores": {
@@ -18,14 +18,15 @@
     "long_term_growth": null
   },
   "archetype": {
-    "id": "non_fit",
-    "label": "비적합",
-    "label_en": "Non-fit",
-    "reason": "Compounder remains reachable but cannot be selected until MT, RF and MA conditions and full core coverage are observed.",
-    "gate_score": null,
+    "id": "compounder",
+    "label": "컴파운더",
+    "label_en": "Compounder",
+    "reason": "Highest eligible deterministic fit; Compounder is the only archetype that clears all completed mandatory gates.",
+    "gate_score": 76.66,
     "secondary": [],
-    "position_guidance": null,
+    "position_guidance": "장기 보유가 기본이다. 밸류에이션 과열 시 매도보다 추가매수 속도를 조절한다.",
     "position_cap": null,
+    "fit_score": 82.875,
     "signals": {
       "price_to_base_value": 0.9081,
       "valuation_percentile_5y": null,
@@ -38,30 +39,82 @@
   ],
   "early_exit": false,
   "hard_veto_status": "PENDING_REVIEW",
-  "mechanical_pre_ic_state": "INCOMPLETE",
-  "position_range_pre_ic": null,
+  "mechanical_pre_ic_state": "WATCH",
+  "position_range_pre_ic": "0% until veto cleared",
   "domain_scores": {
-    "expectation_valuation": {
-      "bull_score": 80,
-      "bear_score": 35,
+    "structural_leadership": {
+      "bull_score": 95,
+      "bear_score": 70,
       "criteria": {
-        "reverse_dcf_burden": 60,
-        "base_return": 55,
-        "valuation_robustness": 55
+        "secular_durability": 90,
+        "category_leadership": 90,
+        "durability_risks": 75
       },
-      "raw_weighted_median": 56.75,
-      "score": 56.75,
-      "spread": 45,
-      "avg_confidence": 0.82,
-      "unknown_penalty": 0,
-      "dispute_penalty": 0,
+      "score": 86.25,
+      "spread": 25,
+      "avg_confidence": 0.92,
       "domain_dispute": true,
       "review_required": true,
-      "uncertainties": {
-        "critical": 1,
-        "material": 2,
-        "minor": 0
+      "score_source": "rubric_subscores"
+    },
+    "customer_product": {
+      "bull_score": 95,
+      "bear_score": 70,
+      "criteria": {
+        "customer_roi": 85,
+        "retention_usage": 80,
+        "unit_economics": 90
       },
+      "score": 84.5,
+      "spread": 25,
+      "avg_confidence": 0.89,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    },
+    "moat_trajectory": {
+      "bull_score": 90,
+      "bear_score": 65,
+      "criteria": {
+        "switching_pricing": 80,
+        "network_data_ecosystem": 75,
+        "commoditization_resilience": 85
+      },
+      "score": 79.75,
+      "spread": 25,
+      "avg_confidence": 0.88,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    },
+    "reinvestment_fcf": {
+      "bull_score": 95,
+      "bear_score": 60,
+      "criteria": {
+        "incremental_roic": 80,
+        "reinvestment_runway": 90,
+        "fcf_per_share_quality": 80
+      },
+      "score": 83,
+      "spread": 35,
+      "avg_confidence": 0.86,
+      "domain_dispute": true,
+      "review_required": true,
+      "score_source": "rubric_subscores"
+    },
+    "management_allocation": {
+      "bull_score": 90,
+      "bear_score": 65,
+      "criteria": {
+        "capital_allocation": 80,
+        "governance_integrity": 85,
+        "execution_adaptability": 85
+      },
+      "score": 83,
+      "spread": 25,
+      "avg_confidence": 0.9,
+      "domain_dispute": true,
+      "review_required": true,
       "score_source": "rubric_subscores"
     },
     "financial_survival": {
@@ -72,19 +125,26 @@
         "stress_survival": 75,
         "dilution_offbalance": 90
       },
-      "raw_weighted_median": 78.75,
       "score": 78.75,
       "spread": 30,
       "avg_confidence": 0.94,
-      "unknown_penalty": 0,
-      "dispute_penalty": 0,
       "domain_dispute": true,
       "review_required": true,
-      "uncertainties": {
-        "critical": 0,
-        "material": 2,
-        "minor": 1
+      "score_source": "rubric_subscores"
+    },
+    "expectation_valuation": {
+      "bull_score": 80,
+      "bear_score": 35,
+      "criteria": {
+        "reverse_dcf_burden": 60,
+        "base_return": 55,
+        "valuation_robustness": 55
       },
+      "score": 56.75,
+      "spread": 45,
+      "avg_confidence": 0.82,
+      "domain_dispute": true,
+      "review_required": true,
       "score_source": "rubric_subscores"
     },
     "asymmetry": {
@@ -95,19 +155,11 @@
         "permanent_loss": 50,
         "probability_calibration": 60
       },
-      "raw_weighted_median": 61.75,
       "score": 61.75,
       "spread": 40,
       "avg_confidence": 0.82,
-      "unknown_penalty": 0,
-      "dispute_penalty": 0,
       "domain_dispute": true,
       "review_required": true,
-      "uncertainties": {
-        "critical": 0,
-        "material": 3,
-        "minor": 0
-      },
       "score_source": "rubric_subscores"
     },
     "disruptive_innovation": {
@@ -118,19 +170,11 @@
         "adoption_curve": 90,
         "optionality_incumbent_response": 75
       },
-      "raw_weighted_median": 82,
       "score": 82,
       "spread": 30,
       "avg_confidence": 0.9,
-      "unknown_penalty": 0,
-      "dispute_penalty": 0,
       "domain_dispute": true,
       "review_required": true,
-      "uncertainties": {
-        "critical": 0,
-        "material": 2,
-        "minor": 1
-      },
       "score_source": "rubric_subscores"
     }
   },
@@ -138,7 +182,7 @@
   "unresolved_vetoes": [],
   "veto_gate": {
     "overall": "PENDING_REVIEW",
-    "summary": "Completed EV/AS/FS owner assessments are cleared. MA/RF/CP/MT/RT ownership remains pending because downstream domains have not run."
+    "summary": "All completed domain-owner veto assessments are cleared. RT co-owner review remains pending, so automatic buy deployment is not allowed."
   },
   "valuation_model": {
     "status": "COMPLETE",
@@ -180,19 +224,22 @@
     "status": "normal",
     "annualized_dilution": -0.0067793,
     "position_cap": null,
-    "note": "Q2 diluted weighted-average shares declined about 0.68% YoY; H1 share repurchases were about $4.0B."
+    "note": "Q2 diluted weighted-average shares declined ~0.68% YoY; H1 repurchases were ~$4.0B."
   },
   "archetype_fit": {
     "compounder": {
-      "eligible": false,
+      "eligible": true,
+      "fit_score": 82.875,
       "failed_conditions": [],
-      "missing_conditions": [
-        "domain.moat_trajectory",
-        "domain.reinvestment_fcf",
-        "domain.management_allocation",
-        "criterion.reinvestment_fcf.incremental_roic",
-        "criterion.reinvestment_fcf.reinvestment_runway"
+      "missing_conditions": [],
+      "blocking_vetoes": []
+    },
+    "growth": {
+      "eligible": false,
+      "failed_conditions": [
+        "domain.asymmetry"
       ],
+      "missing_conditions": [],
       "blocking_vetoes": []
     },
     "outlier_growth": {
@@ -205,25 +252,7 @@
         "criterion.long_term_growth.opportunity_scale_5y",
         "criterion.long_term_growth.growth_duration_10y",
         "criterion.long_term_growth.culture_adaptability",
-        "criterion.long_term_growth.market_misperception",
-        "domain.customer_product",
-        "domain.moat_trajectory",
-        "domain.management_allocation"
-      ],
-      "blocking_vetoes": []
-    },
-    "growth": {
-      "eligible": false,
-      "failed_conditions": [
-        "domain.asymmetry"
-      ],
-      "missing_conditions": [
-        "domain.structural_leadership",
-        "domain.customer_product",
-        "domain.moat_trajectory",
-        "domain.reinvestment_fcf",
-        "domain.management_allocation",
-        "criterion.reinvestment_fcf.fcf_per_share_quality"
+        "criterion.long_term_growth.market_misperception"
       ],
       "blocking_vetoes": []
     },
@@ -233,11 +262,7 @@
         "signal.price_to_base_value",
         "domain.asymmetry"
       ],
-      "missing_conditions": [
-        "criterion.reinvestment_fcf.fcf_per_share_quality",
-        "domain.management_allocation",
-        "domain.moat_trajectory"
-      ],
+      "missing_conditions": [],
       "blocking_vetoes": []
     },
     "moonshot": {
@@ -246,11 +271,26 @@
         "signal.market_cap_usd",
         "domain.asymmetry"
       ],
-      "missing_conditions": [
-        "domain.structural_leadership"
-      ],
+      "missing_conditions": [],
       "blocking_vetoes": []
     }
+  },
+  "macro_geo_overlay": {
+    "financial_regime": {},
+    "geopolitical_regime": {},
+    "company_transmission": {},
+    "missing_or_stale_components": [
+      "credit_liquidity",
+      "financial_conditions",
+      "geopolitical_events",
+      "structural_trade"
+    ],
+    "reanalysis_requests": [],
+    "pending_reanalysis_domains": [],
+    "risk_budget_multiplier": 0.5,
+    "purchase_pacing_multiplier": 0.5,
+    "monitoring_urgency": "high",
+    "fundamental_score_effect": 0
   },
   "stage_0": {
     "stage_0": "ready",
@@ -258,14 +298,11 @@
     "pack_present": true
   },
   "next_plan": {
-    "stage": "domain_analysis",
+    "stage": "macro",
     "agents": {
-      "customer_product": "CP",
-      "management_allocation": "MA",
-      "moat_trajectory": "MT",
-      "reinvestment_fcf": "RF",
-      "structural_leadership": "SL"
+      "macro_overlay": "MO"
     },
-    "execution_control": "continue"
+    "execution_control": "continue",
+    "statement": "Full core coverage is complete and Compounder is eligible. Refresh the macro overlay before ED/RT and IC."
   }
 }
