@@ -4,40 +4,125 @@
   "as_of_date": "2026-09-21",
   "domain": "structural_leadership",
   "role": "domain_analyst",
-  "analysis_status": "pending",
-  "score_0_100": 50,
-  "confidence_0_1": 0.5,
-  "bull_score": null,
-  "bear_score": null,
-  "bull_case": "",
-  "bear_case": "",
-  "thesis": "",
-  "evidence": [],
-  "counterevidence": [],
-  "unknowns": [],
-  "falsifiers": [],
+  "analysis_status": "complete",
+  "score_0_100": 67.5,
+  "confidence_0_1": 0.84,
+  "bull_score": 80,
+  "bear_score": 50,
+  "bull_case": "AI 기반 광고 효율, 30억명대 배포망, 메시징 상업화가 결합돼 디지털 광고의 성능 기준을 계속 높일 수 있다. Meta는 Reels·추천·생성형 광고로 포맷 변화에도 대규모 배포와 수익화를 반복했다.",
+  "bear_case": "매출의 대부분이 여전히 Facebook·Instagram 광고라는 하나의 최종 수요에 묶여 있다. 개인정보 규제·OS 정책·광고 경기의 동시 충격을 완충할 독립적인 10%+ 매출 축은 아직 없다.",
+  "thesis": "2023~2026의 사용자·광고 단가·노출·매출 증가는 구조적 수요와 배포 리더십을 지지한다. 다만 2025 10-K가 'substantially all revenue'가 Facebook·Instagram 광고에서 발생한다고 명시해 durability_risks 관측표상 독립 최종시장 0개=45점이다. 장기 구조 변화와 카테고리 리더십은 각각 75지만 단일 광고경제 의존이 총점을 제한한다.",
+  "evidence": [
+    {
+      "evidence_id": "META-SL-REV",
+      "economic_driver": "digital_ad_scale",
+      "claim": "2025 revenue was $200.966B, up 22% from 2024; advertising revenue rose $35.54B as both ad impressions (+12%) and average price per ad (+9%) increased.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-21",
+      "value": 200966000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-SL-DAP",
+      "economic_driver": "distribution_scale",
+      "claim": "Family daily active people averaged 3.58B in December 2025, up 7% YoY; Q2 2026 DAP reached 3.60B, up 3% YoY.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 3600000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-SL-ADAI",
+      "economic_driver": "ai_ad_monetization",
+      "claim": "Meta reported AI ranking changes that lifted Facebook ad clicks 3.5%, Instagram conversions by more than 1%, and another runtime model lifted conversion rates 3%.",
+      "source_type": "company",
+      "source": "https://about.fb.com/news/2026/01/2026-ai-drives-performance/",
+      "period": "Q4 2025 metrics",
+      "as_of_date": "2026-09-21",
+      "value": 0.035,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "META-SL-CONCENTRATION",
+      "economic_driver": "revenue_concentration",
+      "claim": "Meta states that substantially all revenue is generated from advertising on Facebook and Instagram.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+      "period": "FY2025",
+      "as_of_date": "2026-09-21",
+      "value": "substantially all revenue",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "광고는 경기와 마케팅 예산에 민감하다.",
+    "개인정보 규제와 모바일 OS 정책은 광고 타기팅·측정 신호를 제약할 수 있다.",
+    "Reality Labs와 유료 메시징은 아직 광고 의존도를 10%+ 수준으로 낮추지 못했다.",
+    "AI 경쟁은 Google·OpenAI·Apple 등 대규모 자본을 가진 사업자와 겹친다."
+  ],
+  "unknowns": [
+    "광고 외 사업이 향후 5년 내 각각 매출 10%를 넘길 수 있는지에 대한 회사의 정량 장기 가이던스는 없다."
+  ],
+  "falsifiers": [
+    "DAP가 2개 이상 분기 연속 감소하고 광고 노출·가격도 동시에 악화된다.",
+    "광고 ROI 개선이 정체된 상태에서 광고 매출 성장률이 한 자릿수로 고착된다.",
+    "메시징·웨어러블 신사업이 2028년까지 의미 있는 매출 축으로 성장하지 못한다."
+  ],
   "hard_veto_flags": [],
-  "key_kpis": [],
-  "next_checks": [],
-  "verdict": "neutral",
+  "key_kpis": [
+    {
+      "name": "Family DAP",
+      "direction": "grow",
+      "threshold": "positive YoY growth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Ad impressions and price per ad",
+      "direction": "both remain positive",
+      "threshold": ">0% YoY each",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Non-ad revenue share",
+      "direction": "rise",
+      "threshold": ">10% for at least one independent final market",
+      "cadence": "annual"
+    }
+  ],
+  "next_checks": [
+    "Reassess revenue concentration after FY2026.",
+    "Track business messaging and subscription revenue disclosure.",
+    "Monitor privacy/OS changes for realized monetization impairment."
+  ],
+  "verdict": "support",
   "subscores": [
     {
       "criterion_id": "secular_durability",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "Multi-year revenue, user and advertiser monetization growth supports the 75 long-duration demand/willingness-to-pay anchor. 90 is excluded because digital advertising remains cyclical and regulation/OS changes can alter the cost curve."
     },
     {
       "criterion_id": "category_leadership",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 75,
+      "rationale": "3.6B DAP, measurable AI ad-performance gains and cross-surface distribution establish leadership. 90 is excluded because Meta does not unilaterally define mobile OS, AI-model or advertising standards."
     },
     {
       "criterion_id": "durability_risks",
-      "score_0_100": 50,
-      "rationale": ""
+      "score_0_100": 45,
+      "rationale": "The observable table is binding: substantially all revenue is still advertising on Facebook/Instagram, so there are zero independent final markets each contributing >=10% of revenue. No +10 modifier is used because prior privacy/OS shocks were not absorbed without any revenue decline."
     }
   ],
-  "uncertainties": [],
+  "uncertainties": [
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "Economic diversification is much weaker than product diversification."
+    }
+  ],
   "valuation_inputs": {
     "valuation_percentile_5y": null,
     "revenue_cagr_next_3y": null,
@@ -52,5 +137,6 @@
         "owner_fcf_per_share": []
       }
     }
-  }
+  },
+  "geo_events_reviewed": []
 }
