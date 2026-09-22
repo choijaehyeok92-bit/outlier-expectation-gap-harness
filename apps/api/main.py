@@ -35,7 +35,7 @@ import os
 import sys
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import PlainTextResponse
 
@@ -43,7 +43,8 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from apps.api.models import (DeepDivePlanRequest, DeepDiveRunRequest,  # noqa: E402
+from apps.api.models import (CredentialRequest, DeepDivePlanRequest,  # noqa: E402
+                             DeepDiveRunRequest,
                              FullHarnessRequest, IngestRequest, JobRequest,
                              LinkRequest, MarketFetchRequest, ObservationRequest,
                              PackIngestRequest, ParseRequest, ScreenRunRequest,
@@ -263,6 +264,79 @@ def _stage_provider(stage: str, name: str, model: str | None, *, run_id: str | N
         return resolve_provider(name, model, **kwargs)
     except LLMError as error:
         raise HTTPException(422, str(error)) from error
+
+
+
+# --------------------------------------------------------------- credentials
+# The one place in this service that accepts a secret, and the boundary is
+# drawn tightly around it: write-only, loopback-only, never echoed.
+#
+# Everything else still holds. No other route takes a credential, `configured`
+# stays a boolean everywhere, and nothing here reads a value back out — the
+# only reader is the provider class that needs it.
+
+LOOPBACK = {'127.0.0.1', '::1', 'localhost', '::ffff:127.0.0.1'}
+
+
+def _is_local(request) -> bool:
+    """Whether this request came from the machine the service runs on.
+
+    The real control on key-setting. A page served to a browser on the same
+    machine is the intended use; the same page reachable from a network is not,
+    and binding to 0.0.0.0 is one flag away.
+    """
+    host = (request.client.host if request.client else '') or ''
+    return host in LOOPBACK
+
+
+def _key_writes_allowed(request) -> None:
+    if os.environ.get('HARNESS_DISABLE_KEY_WRITES'):
+        raise HTTPException(403, 'HARNESS_DISABLE_KEY_WRITES가 설정돼 있다. '
+                                 '자격증명은 .env를 직접 편집하거나 '
+                                 '`python scripts/set_key.py NAME`으로 넣는다.')
+    if not _is_local(request):
+        client = (request.client.host if request.client else 'unknown')
+        raise HTTPException(
+            403, f'자격증명 설정은 로컬에서만 허용된다 (요청 출처: {client}). '
+                 '이 API가 외부에 열려 있다면 키를 HTTP로 보내지 않는다 — '
+                 '서버에서 .env를 직접 편집한다.')
+
+
+@app.get('/api/settings/credentials')
+def settings_credentials(request: Request):
+    """Every credential the app reads, and whether each is set.
+
+    Never a value, its length or a prefix of one — the same contract the
+    provider catalogues already keep. `writable` says whether this client may
+    set them, so the page can explain itself rather than fail on save.
+    """
+    from packages import env_file
+    writable, reason = True, None
+    try:
+        _key_writes_allowed(request)
+    except HTTPException as error:
+        writable, reason = False, error.detail
+    return {'credentials': env_file.describe(),
+            'writable': writable, 'not_writable_reason': reason,
+            'env_path': str(env_file.env_path()),
+            'note': ('값은 이 서버의 .env와 실행 중인 프로세스 환경에만 들어간다. '
+                     '어떤 라우트도 값을 돌려주지 않으며, 저장 후 재시작이 필요 없다.')}
+
+
+@app.post('/api/settings/credentials')
+def settings_set_credential(request: Request, body: CredentialRequest):
+    """Write one credential. Returns whether it is now set — never the value."""
+    from packages import env_file
+    _key_writes_allowed(request)
+    try:
+        env_file.write(body.name, body.value)
+    except ValueError as error:
+        # The message names the variable, never the value that failed.
+        raise HTTPException(422, str(error)) from error
+    row = next(r for r in env_file.describe() if r['name'] == body.name)
+    return {'name': row['name'], 'configured': row['configured'],
+            'cleared': not row['configured'],
+            'note': '즉시 반영된다. 재시작하지 않아도 된다.'}
 
 
 @app.get('/api/pipeline/providers')

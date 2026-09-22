@@ -124,6 +124,22 @@ class WarehouseBuildRequest(BaseModel):
     include_runs: bool = True
 
 
+class CredentialRequest(BaseModel):
+    """Set one credential from the settings page.
+
+    This is the single route in the service that accepts a secret, and it is
+    write-only: the value goes into .env and into this process's environment,
+    and no route ever returns it. `name` is checked against the catalogue of
+    variables the app actually reads, so a typo is a refusal rather than a line
+    nothing will look at.
+
+    An empty `value` clears the variable — the way to remove a key without
+    editing a file by hand.
+    """
+    name: str = Field(min_length=1, max_length=64)
+    value: str = Field(default='', max_length=4096)
+
+
 class UniverseSyncRequest(BaseModel):
     """Rebuild the investable universe from SEC and DART.
 

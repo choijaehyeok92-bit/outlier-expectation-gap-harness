@@ -79,6 +79,11 @@ export const api = {
     request<PackIngestResult>('/api/ingest/packs', { method: 'POST', body: JSON.stringify(body) }),
   pipeline: (asOf: string) => request<PipelineStatus>(`/api/pipeline/status?as_of_date=${encodeURIComponent(asOf)}`),
   pipelineProviders: () => request<StageProviders>('/api/pipeline/providers'),
+  credentials: () => request<CredentialSettings>('/api/settings/credentials'),
+  setCredential: (name: string, value: string) =>
+    request<CredentialSaved>('/api/settings/credentials', {
+      method: 'POST', body: JSON.stringify({ name, value }),
+    }),
   warehouseBuild: (asOf: string) =>
     request<WarehouseBuildResult>('/api/warehouse/build', { method: 'POST', body: JSON.stringify({ as_of_date: asOf }) }),
   triage: (body: Record<string, unknown>) =>
@@ -718,6 +723,46 @@ export interface StageProviders {
   stages: Record<string, StageProviderSet>;
   note: string;
   model_note: string;
+}
+
+/**
+ * A credential the app reads. Two facts, kept apart because they disagree in
+ * ways somebody needs to see: `configured` is live in the running API process,
+ * `in_file` is written to .env. A value saved from this page is both; one
+ * exported in a shell is only the first; one written by the CLI while the app
+ * was running is only the second.
+ *
+ * No field here ever carries a value. There is nowhere for one to come from —
+ * no route returns it.
+ */
+export interface Credential {
+  name: string;
+  group: 'regulator' | 'market' | 'model' | 'optional';
+  label: string;
+  secret: boolean;
+  unblocks: string;
+  note: string;
+  placeholder?: string;
+  signup: string | null;
+  configured: boolean;
+  in_file: boolean;
+  needs_restart: boolean;
+  source: 'process' | 'file' | 'file_pending' | null;
+}
+
+export interface CredentialSettings {
+  credentials: Credential[];
+  writable: boolean;
+  not_writable_reason: string | null;
+  env_path: string;
+  note: string;
+}
+
+export interface CredentialSaved {
+  name: string;
+  configured: boolean;
+  cleared: boolean;
+  note: string;
 }
 
 /** A missing value is unknown, not zero. The UI says so everywhere. */

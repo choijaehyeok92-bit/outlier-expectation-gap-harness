@@ -233,20 +233,24 @@ class SetKeyTests(unittest.TestCase):
     """
 
     def setUp(self):
-        import shutil, tempfile
+        import tempfile
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.home = Path(self.tmp.name)
-        (self.home / 'scripts').mkdir()
-        shutil.copy(SCRIPTS / 'set_key.py', self.home / 'scripts' / 'set_key.py')
-        shutil.copy(ROOT / '.env.example', self.home / '.env.example')
+        # HARNESS_ENV_FILE points the whole module at a scratch file, so the
+        # real script runs against the real template without touching the
+        # checkout's own .env.
+        self.env = self.home / '.env'
 
     def run_tool(self, args, stdin=None):
-        return subprocess.run([sys.executable, str(self.home / 'scripts' / 'set_key.py'), *args],
-                              cwd=self.home, input=stdin, capture_output=True, text=True)
+        import os
+        environment = {**os.environ, 'HARNESS_ENV_FILE': str(self.env)}
+        return subprocess.run([sys.executable, str(SCRIPTS / 'set_key.py'), *args],
+                              cwd=ROOT, input=stdin, capture_output=True, text=True,
+                              env=environment)
 
     def env_text(self):
-        return (self.home / '.env').read_text(encoding='utf-8')
+        return self.env.read_text(encoding='utf-8')
 
     def test_a_key_lands_in_the_file(self):
         result = self.run_tool(['OPENDART_API_KEY', '--stdin'], stdin='abc123def456')
@@ -273,12 +277,12 @@ class SetKeyTests(unittest.TestCase):
     def test_an_unknown_variable_is_refused(self):
         result = self.run_tool(['OPENDART_KEY', '--stdin'], stdin='x')
         self.assertEqual(result.returncode, 2)
-        self.assertFalse((self.home / '.env').exists())
+        self.assertFalse(self.env.exists())
 
     def test_an_empty_value_changes_nothing(self):
         result = self.run_tool(['POLYGON_API_KEY', '--stdin'], stdin='   ')
         self.assertEqual(result.returncode, 1)
-        self.assertFalse((self.home / '.env').exists())
+        self.assertFalse(self.env.exists())
 
     def test_a_pasted_newline_is_refused(self):
         result = self.run_tool(['POLYGON_API_KEY', '--stdin'], stdin='good\nbad')
@@ -302,10 +306,10 @@ class SetKeyTests(unittest.TestCase):
         self.assertIn('getpass', text)
 
     def test_a_notepad_written_file_is_updated_cleanly(self):
-        (self.home / '.env').write_bytes(
+        self.env.write_bytes(
             b'\xef\xbb\xbf# keys\r\nPOLYGON_API_KEY=old\r\n')
         self.run_tool(['POLYGON_API_KEY', '--stdin'], stdin='new')
-        raw = (self.home / '.env').read_bytes()
+        raw = self.env.read_bytes()
         self.assertNotEqual(raw[:3], b'\xef\xbb\xbf', 'the BOM is dropped')
         self.assertIn('POLYGON_API_KEY=new', raw.decode('utf-8'))
 

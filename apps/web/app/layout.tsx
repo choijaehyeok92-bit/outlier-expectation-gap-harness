@@ -15,6 +15,7 @@ const NAV = [
   { href: '/runs', label: 'Harness Runs' },
   { href: '/reports', label: 'Reports' },
   { href: '/monitoring', label: 'Monitoring' },
+  { href: '/settings', label: 'Settings' },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

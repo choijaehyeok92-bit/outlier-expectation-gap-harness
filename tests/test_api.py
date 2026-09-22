@@ -4,7 +4,9 @@ The two things worth asserting at this layer are that the API cannot be talked
 into doing the harness's job, and that the stages which do not exist yet answer
 501 with a pointer rather than something that looks like an answer.
 """
+import contextlib
 import json
+import tempfile
 from pathlib import Path
 import unittest
 
@@ -14,9 +16,36 @@ try:
     from fastapi.testclient import TestClient
     from apps.api.main import app
     CLIENT = TestClient(app)
+    # The credential routes refuse a non-local caller, and TestClient's default
+    # host is 'testclient'. This one presents as loopback so the happy path can
+    # be exercised; CLIENT still proves the refusal.
+    LOCAL = TestClient(app, client=('127.0.0.1', 50000))
 except Exception as error:                      # pragma: no cover - optional dependency
     CLIENT = None
     REASON = f'FastAPI test client unavailable: {error}'
+
+
+
+@contextlib.contextmanager
+def _temporary_env_file():
+    """Point packages.env_file at a scratch .env for the duration of a test.
+
+    Through the module's own override rather than by reassigning a constant,
+    so the test exercises the path a user would take to move their .env.
+    """
+    import os
+    from packages import env_file
+    with tempfile.TemporaryDirectory() as tmp:
+        target = Path(tmp) / '.env'
+        previous = os.environ.get(env_file.ENV_OVERRIDE)
+        os.environ[env_file.ENV_OVERRIDE] = str(target)
+        try:
+            yield target
+        finally:
+            if previous is None:
+                os.environ.pop(env_file.ENV_OVERRIDE, None)
+            else:
+                os.environ[env_file.ENV_OVERRIDE] = previous
 
 
 @unittest.skipIf(CLIENT is None, 'apps/api requirements are not installed')
@@ -247,6 +276,80 @@ class ApiTests(unittest.TestCase):
         for model in (TriageRequest, FullHarnessRequest):
             self.assertTrue(model(as_of_date='2026-09-21').dry_run, model.__name__)
             self.assertEqual(model(as_of_date='2026-09-21').provider, 'placeholder')
+
+    def test_setting_a_credential_is_refused_from_a_non_local_caller(self):
+        """The real control on key-setting: a page served to a browser on the
+        same machine is the intended use, and binding to 0.0.0.0 is one flag
+        away from that page being reachable from a network."""
+        response = CLIENT.post('/api/settings/credentials',
+                               json={'name': 'POLYGON_API_KEY', 'value': 'x'})
+        self.assertEqual(response.status_code, 403)
+        self.assertIn('로컬', response.json()['detail'])
+        self.assertFalse(CLIENT.get('/api/settings/credentials').json()['writable'])
+
+    def test_a_saved_credential_is_never_returned(self):
+        import os
+        secret = 'pk-live-DO-NOT-LEAK-abcdef0123456789'
+        previous = os.environ.get('POLYGON_API_KEY')
+        self.addCleanup(lambda: os.environ.__setitem__('POLYGON_API_KEY', previous)
+                        if previous is not None else os.environ.pop('POLYGON_API_KEY', None))
+        with _temporary_env_file() as path:
+            saved = LOCAL.post('/api/settings/credentials',
+                               json={'name': 'POLYGON_API_KEY', 'value': secret})
+            self.assertEqual(saved.status_code, 200, saved.text)
+            self.assertTrue(saved.json()['configured'])
+            self.assertNotIn(secret, saved.text)
+            listed = LOCAL.get('/api/settings/credentials')
+            self.assertNotIn(secret, listed.text)
+            self.assertNotIn(secret[:12], listed.text, 'not even a prefix')
+            # It did reach the file and the process, which is the point.
+            self.assertIn(secret, path.read_text(encoding='utf-8'))
+            self.assertEqual(os.environ.get('POLYGON_API_KEY'), secret)
+
+    def test_saving_takes_effect_without_a_restart(self):
+        """A key that is saved and does not work until somebody restarts is a
+        difference nobody should have to know about."""
+        import os
+        previous = os.environ.pop('OPENAI_API_KEY', None)
+        self.addCleanup(lambda: os.environ.__setitem__('OPENAI_API_KEY', previous)
+                        if previous is not None else os.environ.pop('OPENAI_API_KEY', None))
+        with _temporary_env_file():
+            before = LOCAL.get('/api/pipeline/providers').json()['stages']['full']['options']
+            self.assertFalse(next(o for o in before if o['name'] == 'openai')['configured'])
+            LOCAL.post('/api/settings/credentials',
+                       json={'name': 'OPENAI_API_KEY', 'value': 'sk-test-not-real'})
+            after = LOCAL.get('/api/pipeline/providers').json()['stages']['full']['options']
+            self.assertTrue(next(o for o in after if o['name'] == 'openai')['configured'])
+
+    def test_clearing_a_credential_removes_it_from_the_process(self):
+        import os
+        previous = os.environ.get('EODHD_API_KEY')
+        self.addCleanup(lambda: os.environ.__setitem__('EODHD_API_KEY', previous)
+                        if previous is not None else os.environ.pop('EODHD_API_KEY', None))
+        with _temporary_env_file():
+            LOCAL.post('/api/settings/credentials',
+                       json={'name': 'EODHD_API_KEY', 'value': 'temp'})
+            self.assertEqual(os.environ.get('EODHD_API_KEY'), 'temp')
+            cleared = LOCAL.post('/api/settings/credentials',
+                                 json={'name': 'EODHD_API_KEY', 'value': ''})
+            self.assertTrue(cleared.json()['cleared'])
+            self.assertIsNone(os.environ.get('EODHD_API_KEY'))
+
+    def test_an_unknown_variable_cannot_be_written(self):
+        """A typo would otherwise become a line nothing will ever read."""
+        with _temporary_env_file():
+            response = LOCAL.post('/api/settings/credentials',
+                                  json={'name': 'AWS_SECRET_ACCESS_KEY', 'value': 'x'})
+            self.assertEqual(response.status_code, 422)
+
+    def test_key_writes_can_be_disabled_outright(self):
+        import os
+        os.environ['HARNESS_DISABLE_KEY_WRITES'] = '1'
+        self.addCleanup(os.environ.pop, 'HARNESS_DISABLE_KEY_WRITES', None)
+        response = LOCAL.post('/api/settings/credentials',
+                              json={'name': 'POLYGON_API_KEY', 'value': 'x'})
+        self.assertEqual(response.status_code, 403)
+        self.assertFalse(LOCAL.get('/api/settings/credentials').json()['writable'])
 
     def test_the_credentials_route_never_carries_a_regulator_key(self):
         import os
