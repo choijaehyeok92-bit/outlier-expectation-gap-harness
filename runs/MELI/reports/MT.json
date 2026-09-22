@@ -1,0 +1,142 @@
+{
+  "agent_id": "MT",
+  "ticker": "MELI",
+  "as_of_date": "2026-09-21",
+  "domain": "moat_trajectory",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 85,
+  "confidence_0_1": 0.9,
+  "bull_score": 95,
+  "bear_score": 70,
+  "bull_case": "Marketplace liquidity, logistics density, payments, credit data, MELI+ and ads reinforce one another. Each additional layer deepens engagement and raises the cost of replacing the ecosystem.",
+  "bear_case": "Competitors can subsidize individual layers, financial regulation can weaken cross-sell, and credit/logistics capital intensity can turn a network advantage into lower returns.",
+  "thesis": "MELI's moat is widening through ecosystem density rather than a single product. Buyers, fintech MAUs, GMV, TPV and ecosystemic-user engagement are all rising, and users engaging with both commerce and fintech show materially greater activity. The network evidence is strong. Direct contractual switching costs are limited, so the moat rests more on accumulated convenience, data and cross-vertical habit than lock-in.",
+  "evidence": [
+    {
+      "evidence_id": "MELI-MT-SCALE",
+      "economic_driver": "network_scale",
+      "claim": "Q2 2026 unique active buyers were 89M, fintech MAUs 88M, GMV $21.9B and TPV $101B, each materially above prior-year levels.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000023/meli-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-MT-FLYWHEEL",
+      "economic_driver": "ecosystem_feedback",
+      "claim": "Ecosystemic users grew 37% YoY and generated 70% more GMV per user than marketplace-only users; Mercado Pago cardholders were 2-3x more likely to remain ecosystemic.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.7,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-MT-ADS",
+      "economic_driver": "monetization_density",
+      "claim": "Advertising exceeded 10% Latin American digital-ad market share for the first time while revenue grew 62% FX-neutral, showing seller demand compounding on marketplace traffic.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "value": 0.1,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "MELI-MT-ACQ",
+      "economic_driver": "share_gain",
+      "claim": "MELI reported continued acquiring share gains across all markets, including growth above market in Brazil in-store payments.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/1099590/000109959026000021/meli-20260805xex991.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-09-21",
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Consumers and merchants can still multi-home, so contractual switching costs are modest.",
+    "Amazon, Shopee, Nubank and banks can subsidize individual verticals.",
+    "Credit losses and logistics intensity can offset data/network advantages economically.",
+    "Regulatory separation of financial and commerce activities could weaken cross-sell."
+  ],
+  "unknowns": [
+    "Merchant multi-homing rate.",
+    "Independent market-share trends by country and vertical.",
+    "Retention differential after controlling for customer selection effects."
+  ],
+  "falsifiers": [
+    "GMV and TPV share gains stop together.",
+    "Ecosystemic users lose their engagement advantage over single-vertical users.",
+    "Competitors successfully unbundle payments/logistics without reducing MELI retention."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "해자의 지속적인 축소",
+      "status": "cleared",
+      "rationale": "Primary metrics show expanding scale, engagement and cross-sell rather than persistent moat contraction."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Ecosystemic-user share",
+      "direction": "up",
+      "threshold": "continue expanding within total user base",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "GMV/TPV share and usage",
+      "direction": "up",
+      "threshold": "sustain category outgrowth",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Ads / MELI+ cross-sell",
+      "direction": "up",
+      "threshold": "monetize ecosystem density without weakening retention",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Merchant multi-homing evidence.",
+    "Country-level commerce/acquiring share.",
+    "Ecosystemic cohort retention through 2027."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "switching_pricing",
+      "score_0_100": 85,
+      "rationale": "Cross-vertical habit, logistics and payment integration are strengthening, while direct contractual switching costs remain limited."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "score_0_100": 85,
+      "rationale": "At least four scale metrics have same-definition positive trends, satisfying the observable 3+ metrics plus trend row. Concrete hard switching-cost evidence is insufficient for 90."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "score_0_100": 85,
+      "rationale": "Commerce, logistics, payments, credit, subscriptions and ads provide multiple mutually reinforcing defenses against commoditization of any one layer."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "switching_pricing",
+      "severity": "material",
+      "rationale": "The moat is behavioral/ecosystem-based rather than contractually locked."
+    },
+    {
+      "criterion_id": "network_data_ecosystem",
+      "severity": "minor",
+      "rationale": "The positive feedback is supported by multiple primary metrics and cohort data."
+    },
+    {
+      "criterion_id": "commoditization_resilience",
+      "severity": "minor",
+      "rationale": "Several independent layers reduce single-product replacement risk."
+    }
+  ]
+}
