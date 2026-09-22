@@ -67,7 +67,8 @@ export const api = {
     request<MarketCoverage>(`/api/market/coverage?as_of_date=${encodeURIComponent(asOf)}`),
   marketFetch: (body: MarketFetchBody) =>
     request<MarketFetchResult>('/api/market/fetch', { method: 'POST', body: JSON.stringify(body) }),
-  regulatorCredentials: () => request<{ credentials: RegulatorCredential[] }>('/api/universe/credentials'),
+  regulatorCredentials: () =>
+    request<{ credentials: RegulatorCredential[]; max_per_request: number }>('/api/universe/credentials'),
   universeSync: (body: UniverseSyncBody) =>
     request<UniverseSyncResult>('/api/universe/sync', { method: 'POST', body: JSON.stringify(body) }),
   candidates: (asOf: string, markets: string, limit: number, includeIngested: boolean) =>
@@ -510,6 +511,10 @@ export interface RegulatorCredential {
   configured: boolean;
   note: string;
   signup: string;
+  /** Requests one company's Stage 0 pack costs this regulator. Measured, and
+   *  re-measured by a test, because the page shows it before queueing work. */
+  requests: number;
+  requests_note: string;
 }
 
 export interface UniverseSyncBody {

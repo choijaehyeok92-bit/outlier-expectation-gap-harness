@@ -261,6 +261,24 @@ class ApiTests(unittest.TestCase):
         self.assertNotIn(secret, response.text)
         self.assertNotIn(secret[:12], response.text)
 
+    def test_the_credentials_route_publishes_the_batch_cap(self):
+        """The page splits a larger selection into requests of this size. A
+        second copy of the number would drift, and the first sign of that
+        would be a selection silently losing its tail."""
+        from apps.api.models import PackIngestRequest
+        declared = next(c.max_length for c in PackIngestRequest.model_fields['tickers'].metadata
+                        if getattr(c, 'max_length', None) is not None)
+        body = CLIENT.get('/api/universe/credentials').json()
+        self.assertEqual(body['max_per_request'], declared)
+
+    def test_the_credentials_route_states_what_one_company_costs(self):
+        rows = CLIENT.get('/api/universe/credentials').json()['credentials']
+        by_market = {row['market']: row for row in rows}
+        self.assertEqual(by_market['US']['requests'], 3)
+        self.assertEqual(by_market['KR']['requests'], 36)
+        for row in rows:
+            self.assertNotEqual(row['note'], row['requests_note'])
+
     def test_syncing_the_universe_without_a_contact_names_the_variable(self):
         import os
         previous = os.environ.pop('SEC_USER_AGENT', None)

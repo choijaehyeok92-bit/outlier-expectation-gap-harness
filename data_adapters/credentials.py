@@ -17,6 +17,20 @@ from .base import AdapterError
 SEC_ENV = 'SEC_USER_AGENT'
 DART_ENV = 'OPENDART_API_KEY'
 
+# Requests one company's Stage 0 pack costs its regulator. These are measured,
+# not guessed: `tests/test_candidates.py` counts the calls a fixture transport
+# actually receives and fails if either number drifts. A caller that is about
+# to queue two hundred companies deserves to know what that is before it
+# starts, and DART meters by key.
+REQUESTS_PER_COMPANY = {
+    'US': {'requests': 3,
+           'requests_note': ('티커 인덱스·제출목록·companyfacts. SEC는 키가 없고 일일 한도도 없다 — '
+                    '초당 10회의 공정이용 제한과 companyfacts의 용량이 실제 제약이다.')},
+    'KR': {'requests': 36,
+           'requests_note': ('years=4 기준이며 조회 연수 1년마다 8회씩 늘고 준다. OpenDART는 키당 '
+                    '일일 호출 한도가 있으므로 이 수가 하루에 적재할 수 있는 기업 수를 정한다.')},
+}
+
 
 def sec_user_agent(environ=None) -> str:
     value = ((environ if environ is not None else os.environ).get(SEC_ENV) or '').strip()
@@ -43,11 +57,13 @@ def describe(environ=None) -> list:
         {'market': 'US', 'regulator': 'SEC', 'env_var': SEC_ENV,
          'configured': bool((env.get(SEC_ENV) or '').strip()),
          'note': 'SEC 공정이용 정책이 연락처가 담긴 User-Agent를 요구한다. 키가 아니라 연락처다.',
-         'signup': 'https://www.sec.gov/os/webmaster-faq#developers'},
+         'signup': 'https://www.sec.gov/os/webmaster-faq#developers',
+         **REQUESTS_PER_COMPANY['US']},
         {'market': 'KR', 'regulator': 'DART', 'env_var': DART_ENV,
          'configured': bool((env.get(DART_ENV) or '').strip()),
          'note': 'OpenDART 인증키. 발급은 무료이고 키당 일일 호출 한도가 있다.',
-         'signup': 'https://opendart.fss.or.kr/'},
+         'signup': 'https://opendart.fss.or.kr/',
+         **REQUESTS_PER_COMPANY['KR']},
     ]
 
 

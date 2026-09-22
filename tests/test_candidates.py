@@ -258,6 +258,67 @@ class IngestTests(Base):
             candidates.ingest_batch([], 'US', '2026-09-18', environ=ENV)
 
 
+class RequestCostTests(unittest.TestCase):
+    """The declared per-company request counts, re-measured.
+
+    A page that is about to queue two hundred companies shows these numbers, so
+    they cannot be a comment that drifted. Each test counts what a fixture
+    transport actually receives and fails if the adapter's shape changes.
+    """
+
+    def test_a_us_pack_costs_what_the_catalogue_says(self):
+        from data_adapters.sec import SecEdgarProvider
+        transport = FixtureTransport(FIXTURES / 'sec')
+        provider = SecEdgarProvider(user_agent=ENV['SEC_USER_AGENT'], transport=transport)
+        provider.build_financial_pack('MSFT', '2026-09-18')
+        self.assertEqual(len(transport.calls),
+                         credentials.REQUESTS_PER_COMPANY['US']['requests'])
+
+    def test_a_kr_pack_costs_what_the_catalogue_says(self):
+        import tempfile
+        from data_adapters.dart import DartProvider
+        from data_adapters.dart.corpcode import CorpCodeCache
+        transport = FixtureTransport(FIXTURES / 'dart',
+                                     default={'status': '013', 'message': 'empty'})
+        with tempfile.TemporaryDirectory() as tmp:
+            provider = DartProvider(api_key='TEST', transport=transport,
+                                    corp_codes=CorpCodeCache(path=Path(tmp) / 'cc.json'))
+            provider.corp_codes.refresh(provider.client.get(
+                provider._url('corp_code'), {'crtfc_key': 'TEST'}))
+            before = len(transport.calls)          # corpCode is fetched once, not per company
+            provider.build_financial_pack('267260', '2026-09-18')
+        self.assertEqual(len(transport.calls) - before,
+                         credentials.REQUESTS_PER_COMPANY['KR']['requests'])
+
+    def test_the_korean_cost_scales_with_the_years_requested(self):
+        """The note says 8 requests per extra year; a caller trimming years to
+        stay inside a daily quota is relying on that being true."""
+        import tempfile
+        from data_adapters.dart import DartProvider
+        from data_adapters.dart.corpcode import CorpCodeCache
+        counted = {}
+        for years in (2, 3, 4):
+            transport = FixtureTransport(FIXTURES / 'dart',
+                                         default={'status': '013', 'message': 'empty'})
+            with tempfile.TemporaryDirectory() as tmp:
+                provider = DartProvider(api_key='TEST', transport=transport,
+                                        corp_codes=CorpCodeCache(path=Path(tmp) / 'cc.json'))
+                provider.corp_codes.refresh(provider.client.get(
+                    provider._url('corp_code'), {'crtfc_key': 'TEST'}))
+                before = len(transport.calls)
+                provider.build_financial_pack('267260', '2026-09-18', years=years)
+                counted[years] = len(transport.calls) - before
+        self.assertEqual(counted[3] - counted[2], 8)
+        self.assertEqual(counted[4] - counted[3], 8)
+
+    def test_the_counts_reach_the_credential_description(self):
+        for row in credentials.describe(environ={}):
+            self.assertGreater(row['requests'], 0, row['market'])
+            self.assertTrue(row['requests_note'], row['market'])
+            self.assertNotEqual(row['note'], row['requests_note'],
+                                'the credential note and the cost note are different sentences')
+
+
 class CredentialTests(unittest.TestCase):
     def test_the_description_says_whether_each_exists_and_never_what_it_is(self):
         secret = 'dart-live-DO-NOT-LEAK-0123456789'

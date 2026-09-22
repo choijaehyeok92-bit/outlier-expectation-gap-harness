@@ -147,15 +147,29 @@ def universe_securities(market: str | None = None, investable_only: bool = True,
 # the work that follows it.
 
 
+def _ingest_cap() -> int:
+    """The batch cap, read off the request model rather than restated.
+
+    The page splits a larger selection into requests of this size. A second
+    copy of the number would drift, and the first sign of that would be a
+    selection silently losing its tail.
+    """
+    for constraint in PackIngestRequest.model_fields['tickers'].metadata:
+        if getattr(constraint, 'max_length', None) is not None:
+            return constraint.max_length
+    raise RuntimeError('PackIngestRequest.tickers has no declared max_length')
+
+
 @app.get('/api/universe/credentials')
 def universe_credentials():
-    """Whether each regulator credential exists. Never its value.
+    """Whether each regulator credential exists, and what one company costs.
 
-    SEC wants a contact in the User-Agent rather than a key; it is still the
-    operator's to set, and this service will not invent one.
+    Never a credential's value. SEC wants a contact in the User-Agent rather
+    than a key; it is still the operator's to set, and this service will not
+    invent one.
     """
     from data_adapters import credentials
-    return {'credentials': credentials.describe()}
+    return {'credentials': credentials.describe(), 'max_per_request': _ingest_cap()}
 
 
 @app.post('/api/universe/sync')
