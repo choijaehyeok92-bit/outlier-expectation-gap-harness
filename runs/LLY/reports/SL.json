@@ -1,0 +1,137 @@
+{
+  "agent_id": "SL",
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "domain": "structural_leadership",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 86.25,
+  "confidence_0_1": 0.92,
+  "bull_score": 95,
+  "bear_score": 70,
+  "bull_case": "Lilly is defining the obesity/diabetes treatment standard through tirzepatide and a successor incretin platform, while global manufacturing expansion and adjacent therapeutic areas extend the structural runway.",
+  "bear_case": "The franchise is highly concentrated in cardiometabolic demand. Pricing, reimbursement, safety or superior rival drugs could compress the economics of several headline products at once.",
+  "thesis": "LLY is a structural leader in metabolic medicine. Tirzepatide has shifted obesity treatment into a mainstream pharmaceutical category, and orforglipron/retatrutide extend the platform. Leadership is reinforced by manufacturing scale and global distribution. Durability is lower than headline growth because cardiometabolic products are ~80% of Q2 revenue; oncology is the only other therapeutic area above 10%, leaving meaningful common-factor concentration.",
+  "evidence": [
+    {
+      "evidence_id": "LLY-SL-METABOLIC",
+      "economic_driver": "category_leadership",
+      "claim": "Q2 2026 cardiometabolic revenue was $18.353B of $22.974B total revenue, led by Mounjaro $9.943B and Zepbound $4.928B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 0.7989,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-SL-ONC",
+      "economic_driver": "second_demand_pool",
+      "claim": "Q2 oncology revenue was $2.570B, about 11.2% of total revenue, providing a second independent final market above the rubric's 10% threshold.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 0.1119,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-SL-SUCCESSORS",
+      "economic_driver": "platform_duration",
+      "claim": "Orforglipron was FDA-approved for obesity and retatrutide Phase 3 obesity and type 2 diabetes programs met primary endpoints, extending Lilly's metabolic leadership beyond tirzepatide.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026 pipeline update",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-SL-CAPACITY",
+      "economic_driver": "supply_scale",
+      "claim": "Lilly is investing globally in manufacturing capacity, including an additional $4.5B Indiana commitment announced with Q2 results, to support current and prospective medicines.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000077/q226lillysalesandearningsp.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 4500000000,
+      "fact_or_estimate": "fact"
+    }
+  ],
+  "counterevidence": [
+    "Cardiometabolic health represented roughly 80% of Q2 revenue.",
+    "Novo Nordisk and other large pharmaceutical firms can fund competing incretins and novel obesity mechanisms.",
+    "Payer reimbursement and government pricing can alter category economics even when clinical demand remains strong.",
+    "Manufacturing intensity creates physical execution risk not present in asset-light platforms."
+  ],
+  "unknowns": [
+    "Long-run obesity-treatment penetration at reimbursed prices.",
+    "Commercial overlap among tirzepatide, orforglipron and retatrutide.",
+    "Whether oncology or immunology can become another >10% independent demand pool."
+  ],
+  "falsifiers": [
+    "Lilly loses meaningful metabolic share without an offsetting successor product.",
+    "Successor incretins mostly cannibalize Lilly's existing franchise without expanding patients or economics.",
+    "Oncology and other non-metabolic businesses shrink while the metabolic franchise faces common pricing or safety pressure."
+  ],
+  "hard_veto_flags": [],
+  "key_kpis": [
+    {
+      "name": "Cardiometabolic share / growth",
+      "direction": "durable",
+      "threshold": "retain category leadership without dependence on price inflation",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Successor pipeline",
+      "direction": "de-risk",
+      "threshold": "orforglipron/retatrutide broaden patients and indications",
+      "cadence": "clinical/regulatory"
+    },
+    {
+      "name": "Non-metabolic revenue pools",
+      "direction": "up",
+      "threshold": "maintain at least one second >10% independent therapeutic market",
+      "cadence": "quarterly"
+    }
+  ],
+  "next_checks": [
+    "Metabolic market-share evidence.",
+    "Retatrutide regulatory path.",
+    "Oncology/immunology growth versus total revenue."
+  ],
+  "verdict": "support",
+  "subscores": [
+    {
+      "criterion_id": "secular_durability",
+      "score_0_100": 90,
+      "rationale": "Obesity and metabolic treatment is undergoing a durable clinical and demand shift, with multiple molecules and indications supporting a 5-10 year runway."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "score_0_100": 90,
+      "rationale": "Lilly is defining efficacy, product-form and manufacturing standards in the current incretin market at very large commercial scale."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "score_0_100": 75,
+      "rationale": "Two independent therapeutic final markets exceed 10% of revenue—cardiometabolic and oncology—mapping to the observable score of 75. Metabolic concentration remains high."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "secular_durability",
+      "severity": "minor",
+      "rationale": "Demand is established; future reimbursement and competitive intensity determine monetization."
+    },
+    {
+      "criterion_id": "category_leadership",
+      "severity": "minor",
+      "rationale": "Commercial and pipeline leadership is directly visible."
+    },
+    {
+      "criterion_id": "durability_risks",
+      "severity": "material",
+      "rationale": "A common metabolic pricing, reimbursement or safety shock would affect most current revenue."
+    }
+  ]
+}
