@@ -77,12 +77,15 @@ $envFile = Join-Path $root '.env'
 if (Test-Path $envFile) {
     Say '· .env 읽는 중'
     foreach ($line in Get-Content $envFile) {
-        $trimmed = $line.Trim()
+        # Notepad saves UTF-8 with a BOM; strip it rather than let it become
+        # part of the first variable's name.
+        $trimmed = $line.Trim().TrimStart([char]0xFEFF)
         if (-not $trimmed -or $trimmed.StartsWith('#')) { continue }
         $split = $trimmed.IndexOf('=')
         if ($split -lt 1) { continue }
         $name = $trimmed.Substring(0, $split).Trim()
         $value = $trimmed.Substring($split + 1).Trim().Trim('"').Trim("'")
+        if ($name -notmatch '^[A-Za-z_][A-Za-z0-9_]*$') { continue }
         [Environment]::SetEnvironmentVariable($name, $value, 'Process')
     }
 }

@@ -30,10 +30,29 @@ die() { say "오류: $*"; exit 1; }
 # reach the API process only; nothing here prints or forwards a value.
 if [ -f .env ]; then
   say "· .env 읽는 중"
-  set -a
-  # shellcheck disable=SC1091
-  . ./.env
-  set +a
+  # Parsed, not sourced. A .env written on Windows arrives with CRLF line
+  # endings and often a UTF-8 BOM: sourcing it makes the first line a command
+  # that does not exist, and every value keeps a trailing carriage return — an
+  # API key with \r on the end is rejected by the vendor as simply wrong,
+  # which is a long way from the actual cause. It also means a .env can only
+  # set variables, never run anything.
+  while IFS= read -r line || [ -n "$line" ]; do
+    line="${line%$'\r'}"
+    line="${line#$'\xef\xbb\xbf'}"
+    case "$line" in ''|'#'*) continue ;; esac
+    name="${line%%=*}"
+    value="${line#*=}"
+    [ "$name" = "$line" ] && continue
+    name="$(printf '%s' "$name" | tr -d '[:space:]')"
+    case "$name" in ''|*[!A-Za-z0-9_]*) continue ;; esac
+    value="${value#"${value%%[![:space:]]*}"}"
+    value="${value%"${value##*[![:space:]]}"}"
+    case "$value" in
+      \"*\") value="${value#\"}"; value="${value%\"}" ;;
+      \'*\') value="${value#\'}"; value="${value%\'}" ;;
+    esac
+    export "$name=$value"
+  done < .env
 fi
 
 # --- prerequisites -----------------------------------------------------------

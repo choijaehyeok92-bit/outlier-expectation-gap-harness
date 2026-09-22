@@ -155,6 +155,73 @@ class EnvFileTests(unittest.TestCase):
             self.assertIn(variable, text, variable)
 
 
+class EnvLoaderTests(unittest.TestCase):
+    """A .env written on Windows, read by the shell launcher.
+
+    Notepad saves UTF-8 with a BOM and CRLF endings. Sourced, that file makes
+    its first line a command that does not exist and leaves every value with a
+    trailing carriage return — and an API key with \r on the end comes back
+    from the vendor as simply invalid, which is a long way from the cause.
+    """
+
+    NOTEPAD = (b'\xef\xbb\xbf# keys\r\n'
+               b'OPENDART_API_KEY=abc123def456\r\n'
+               b'\r\n'
+               b'POLYGON_API_KEY="pk_test_xyz"\r\n'
+               b'SEC_USER_AGENT=Jane Doe jane@example.com\r\n'
+               b'  SPACED   =  padded  \r\n'
+               b'not a variable\r\n')
+
+    def load(self, payload: bytes) -> dict:
+        import tempfile
+        loader = re.search(r'^if \[ -f \.env \]; then$.*?^fi$',
+                           (SCRIPTS / 'start.sh').read_text(encoding='utf-8'),
+                           re.MULTILINE | re.DOTALL)
+        self.assertIsNotNone(loader, 'the .env block moved')
+        with tempfile.TemporaryDirectory() as tmp:
+            (Path(tmp) / '.env').write_bytes(payload)
+            script = ('say() { :; }\n' + loader.group(0)
+                      + '\npython3 -c "import json,os; print(json.dumps(dict(os.environ)))"')
+            result = subprocess.run(['bash', '-c', script], cwd=tmp,
+                                    capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        import json
+        return json.loads(result.stdout)
+
+    def test_a_notepad_written_file_is_read_exactly(self):
+        env = self.load(self.NOTEPAD)
+        self.assertEqual(env.get('OPENDART_API_KEY'), 'abc123def456')
+        self.assertEqual(env.get('POLYGON_API_KEY'), 'pk_test_xyz')
+        self.assertEqual(env.get('SEC_USER_AGENT'), 'Jane Doe jane@example.com')
+
+    def test_no_value_keeps_a_carriage_return(self):
+        for name, value in self.load(self.NOTEPAD).items():
+            self.assertNotIn('\r', value, name)
+
+    def test_the_bom_does_not_become_part_of_a_name(self):
+        env = self.load(self.NOTEPAD)
+        self.assertFalse([k for k in env if k.startswith('\ufeff')])
+
+    def test_surrounding_space_is_dropped_and_inner_space_is_kept(self):
+        env = self.load(self.NOTEPAD)
+        self.assertEqual(env.get('SPACED'), 'padded')
+
+    def test_a_line_that_is_not_an_assignment_is_skipped(self):
+        env = self.load(self.NOTEPAD)
+        self.assertNotIn('not a variable', env)
+
+    def test_the_file_cannot_run_anything(self):
+        """Parsed, not sourced: a .env sets variables and does nothing else."""
+        env = self.load(b'GOOD=yes\n$(touch pwned)\n`touch pwned2`\n')
+        self.assertEqual(env.get('GOOD'), 'yes')
+        self.assertFalse((ROOT / 'pwned').exists())
+        self.assertFalse((ROOT / 'pwned2').exists())
+
+    def test_the_powershell_loader_strips_the_bom_too(self):
+        text = (SCRIPTS / 'start.ps1').read_text(encoding='utf-8-sig')
+        self.assertIn('TrimStart([char]0xFEFF)', text)
+
+
 class IconTests(unittest.TestCase):
     def test_the_icon_regenerates_byte_for_byte(self):
         """A committed binary nobody can regenerate is one nobody can change."""
