@@ -94,6 +94,25 @@ class LauncherTests(unittest.TestCase):
         for pattern in ('*.ps1', '*.cmd'):
             self.assertRegex(attrs, re.escape(pattern) + r'\s+text\s+eol=crlf')
 
+    def test_node_tools_are_launched_through_cmd_not_a_resolved_path(self):
+        """Node ships both `npx` (an extensionless shim) and `npx.cmd`.
+        `Get-Command npx` returns the first, and `Start-Process` cannot execute
+        it — "%1은(는) 올바른 Win32 응용 프로그램이 아닙니다". cmd.exe applies
+        PATHEXT and finds the .cmd. This has broken once."""
+        text = (SCRIPTS / 'start.ps1').read_text(encoding='utf-8-sig')
+        for name in ('npm', 'npx'):
+            self.assertNotRegex(text, rf'\${name}\w*\.Source',
+                                f'{name} must not be invoked by resolved path')
+        for match in re.finditer(r'(?:Start-Process|Invoke-Native)\s+(?:-FilePath\s+)?(\S+)', text):
+            launcher = match.group(1)
+            self.assertNotIn('npx', launcher)
+            self.assertNotIn('npm', launcher)
+
+    def test_the_web_server_is_started_via_the_command_processor(self):
+        text = (SCRIPTS / 'start.ps1').read_text(encoding='utf-8-sig')
+        self.assertRegex(text, r'Start-Process -FilePath \$env:ComSpec')
+        self.assertRegex(text, r"'/c',\s*'npx',\s*'next',\s*'dev'")
+
     def test_the_cmd_wrapper_does_not_change_the_machines_policy(self):
         """Asking somebody to loosen a security setting to launch an app is not
         a reasonable thing to ask, so the bypass is scoped to the one call."""

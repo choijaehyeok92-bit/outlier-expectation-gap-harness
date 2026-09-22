@@ -119,6 +119,10 @@ for _ in $(seq 1 90); do
   kill -0 "$WEB_PID" 2>/dev/null || die "웹이 시작하지 못했다. 위 로그를 본다."
   sleep 1
 done
+# Announcing a URL that never came up reads as the app being broken rather
+# than as the build still failing.
+curl -sf --noproxy '*' "$WEB_URL" >/dev/null 2>&1 \
+  || die "웹이 90초 안에 응답하지 않았다. 위 로그를 본다."
 
 say ""
 say "  열림: ${WEB_URL}/pipeline"

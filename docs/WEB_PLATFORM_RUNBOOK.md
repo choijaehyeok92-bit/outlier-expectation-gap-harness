@@ -55,6 +55,19 @@ BOM 없는 `.ps1`을 시스템 ANSI 코드페이지로 읽는다. 한국어 Wind
 검사하고, `.gitattributes`가 CRLF를 고정한다. `start.cmd`는 아예 ASCII만 쓴다 — cmd.exe는
 또 다른 코드페이지(OEM)로 읽기 때문이다.
 
+### Windows에서 Node 도구를 부르는 법
+
+Node는 `npx`(확장자 없는 셸 shim)와 `npx.cmd`를 **둘 다** 설치한다.
+`Get-Command npx`는 앞의 것을 돌려주고, `Start-Process`는 그것을 실행하지 못한다:
+
+```
+Start-Process : %1은(는) 올바른 Win32 응용 프로그램이 아닙니다
+```
+
+그래서 런처는 `npm`·`npx`를 **항상 `cmd.exe /c`로** 부른다. cmd.exe가 PATHEXT를 적용해
+`.cmd`를 찾고, `taskkill /T`는 그 아래의 node 프로세스까지 정리한다. 테스트가
+`Start-Process`에 npm/npx 경로가 직접 들어가는 것을 막는다.
+
 증상이 다시 보이면 파일이 BOM을 잃은 것이다:
 
 ```powershell

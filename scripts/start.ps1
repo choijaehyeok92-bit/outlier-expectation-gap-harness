@@ -46,16 +46,20 @@ Set-Location $root
 function Say($text) { Write-Host $text }
 function Die($text) { Write-Host "오류: $text" -ForegroundColor Red; exit 1 }
 
-function Invoke-Native([string]$File, [string[]]$Arguments) {
+function Invoke-Native([string]$File, [string[]]$Arguments, [switch]$Show) {
     # Windows PowerShell turns a native command's *stderr* into a terminating
     # error when $ErrorActionPreference is 'Stop'. pip, npm and python all
     # write perfectly ordinary progress there, so every external call goes
     # through here with the preference relaxed and the exit code checked
     # explicitly — which is the thing we actually care about.
+    #
+    # -Show keeps the output. A silent `npm ci` looks like a hung launcher for
+    # the several minutes it takes the first time.
     $previous = $ErrorActionPreference
     $ErrorActionPreference = 'Continue'
     try {
-        & $File @Arguments 2>&1 | Out-Null
+        if ($Show) { & $File @Arguments 2>&1 | Out-Host }
+        else { & $File @Arguments 2>&1 | Out-Null }
         return $LASTEXITCODE
     } finally { $ErrorActionPreference = $previous }
 }
@@ -115,9 +119,12 @@ if (-not (Test-Path (Join-Path $root 'apps/web/node_modules'))) {
     Say '· 웹 의존성 설치 (npm ci) — 처음 한 번만 걸린다'
     Push-Location (Join-Path $root 'apps/web')
     try {
-        $npmExe = (Get-Command npm -ErrorAction SilentlyContinue)
-        if (-not $npmExe) { Die 'npm이 없다. Node LTS를 설치하면 함께 들어온다.' }
-        if ((Invoke-Native $npmExe.Source @('ci')) -ne 0) { Die 'npm ci 실패 — 위 로그를 본다.' }
+        if (-not (Get-Command npm -ErrorAction SilentlyContinue)) {
+            Die 'npm이 없다. Node LTS를 설치하면 함께 들어온다.'
+        }
+        if ((Invoke-Native $env:ComSpec @('/c', 'npm', 'ci') -Show) -ne 0) {
+            Die 'npm ci 실패 — 위 로그를 본다.'
+        }
     } finally { Pop-Location }
 }
 
@@ -156,19 +163,30 @@ try {
     if (-not $ready) { Die 'API가 60초 안에 응답하지 않았다.' }
 
     Say "· 웹    $webUrl"
-    $npx = Get-Command npx -ErrorAction SilentlyContinue
-    if (-not $npx) { Die 'npx가 없다. Node LTS를 설치하면 함께 들어온다.' }
-    $web = Start-Process -FilePath $npx.Source -PassThru -NoNewWindow `
+    if (-not (Get-Command npx -ErrorAction SilentlyContinue)) {
+        Die 'npx가 없다. Node LTS를 설치하면 함께 들어온다.'
+    }
+    # Through cmd.exe, never through a resolved path. Node ships both `npx`
+    # (an extensionless shim) and `npx.cmd`; Get-Command returns the first,
+    # and Start-Process cannot execute it — "올바른 Win32 응용 프로그램이 아닙니다".
+    # cmd.exe applies PATHEXT and finds the .cmd, and taskkill /T still reaches
+    # the node process underneath it.
+    $web = Start-Process -FilePath $env:ComSpec -PassThru -NoNewWindow `
         -WorkingDirectory (Join-Path $root 'apps/web') `
-        -ArgumentList 'next', 'dev', '-p', "$WebPort"
+        -ArgumentList '/c', 'npx', 'next', 'dev', '-p', "$WebPort"
 
+    $webReady = $false
     foreach ($attempt in 1..90) {
         if ($web.HasExited) { Die '웹이 시작하지 못했다. 위 로그를 본다.' }
         try {
             Invoke-WebRequest -UseBasicParsing -TimeoutSec 2 $webUrl | Out-Null
-            break
+            $webReady = $true; break
         } catch { Start-Sleep -Seconds 1 }
     }
+    # Without this the script would announce the URL and open a browser at a
+    # page that never came up, which reads as the app being broken rather than
+    # as the build still failing.
+    if (-not $webReady) { Die '웹이 90초 안에 응답하지 않았다. 위 로그를 본다.' }
 
     Say ''
     Say "  열림: $webUrl/pipeline"
