@@ -1,0 +1,220 @@
+{
+  "agent_id": "EV",
+  "ticker": "LLY",
+  "as_of_date": "2026-09-21",
+  "domain": "expectation_valuation",
+  "role": "domain_analyst",
+  "analysis_status": "complete",
+  "score_0_100": 56.75,
+  "confidence_0_1": 0.82,
+  "bull_score": 80,
+  "bear_score": 35,
+  "bull_case": "Mounjaro/Zepbound continue global expansion while orforglipron and retatrutide extend the incretin franchise, manufacturing constraints ease, and owner FCF/share compounds toward $150 by year 10.",
+  "bear_case": "Tirzepatide growth decelerates sharply under competition and pricing pressure, pipeline successors underperform, and elevated manufacturing/R&D/acquisition reinvestment keeps owner FCF well below current market expectations.",
+  "thesis": "At $1,164.89, LLY trades at about 0.91x the locked Base value of $1,282.74. The price does not require the Bull case, but Base itself assumes a long runway of high-teens owner-FCF/share compounding from a ~$20 TTM proxy toward $113 by year 10. Mounjaro/Zepbound concentration and pharmaceutical reinvestment make the valuation less robust than the headline price/Base discount suggests.",
+  "evidence": [
+    {
+      "evidence_id": "LLY-EV-Q2",
+      "economic_driver": "current_earnings_power",
+      "claim": "Q2 2026 revenue was $22.974B, up 48% YoY, and net income was $7.095B; H1 revenue was $42.773B and net income $14.491B.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2/H1 2026",
+      "as_of_date": "2026-08-05",
+      "value": 22974000000,
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-EV-FCF",
+      "economic_driver": "owner_fcf",
+      "claim": "FY2025 CFO-capex was about $8.97B. Using FY2025 plus H1 2026 less H1 2025 gives a TTM CFO-capex proxy of about $18.19B, or ~$20.35/share on Q2 diluted shares.",
+      "source_type": "other",
+      "source": "FY2025 10-K and Q2 2026 10-Q; analyst calculation",
+      "period": "TTM through 2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": 20.3536,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-EV-CONCENTRATION",
+      "economic_driver": "franchise_concentration",
+      "claim": "Q2 Mounjaro revenue was $9.943B and Zepbound $4.928B, together about 64.7% of quarterly revenue.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/R20.htm",
+      "period": "Q2 2026",
+      "as_of_date": "2026-08-05",
+      "value": 0.6473,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-EV-PIPELINE",
+      "economic_driver": "growth_duration",
+      "claim": "Q2 filing states orforglipron was FDA-approved for obesity and retatrutide Phase 3 obesity and type 2 diabetes trials met primary endpoints, extending the potential metabolic pipeline beyond tirzepatide.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "Q2 2026 pipeline update",
+      "as_of_date": "2026-08-05",
+      "fact_or_estimate": "fact"
+    },
+    {
+      "evidence_id": "LLY-EV-BALANCE",
+      "economic_driver": "net_debt",
+      "claim": "At June 30, cash plus investments were $12.806B versus $54.908B short/current and long-term debt, giving conservative net debt of about $42.10B or $47.11/share.",
+      "source_type": "filing",
+      "source": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000081/lly-20260630.htm",
+      "period": "2026-06-30",
+      "as_of_date": "2026-09-21",
+      "value": -47.1098,
+      "fact_or_estimate": "estimate"
+    },
+    {
+      "evidence_id": "LLY-EV-DCF",
+      "economic_driver": "market_expectations",
+      "claim": "Locked 9%/10-year DCF values are about $345.26 Bear, $1,282.74 Base and $2,016.84 Bull; price/Base is 0.9081x.",
+      "source_type": "other",
+      "source": "Harness locked owner-FCF/share DCF using frozen 2026-09-21 inputs",
+      "period": "10-year model from 2026-09-21",
+      "as_of_date": "2026-09-21",
+      "value": 1282.7357,
+      "fact_or_estimate": "estimate"
+    }
+  ],
+  "counterevidence": [
+    "Q2/H1 growth is unusually strong and current manufacturing expansion may create substantial future operating leverage once capacity catches demand.",
+    "Orforglipron approval and positive retatrutide Phase 3 results reduce dependence on tirzepatide as a single molecule over the long run.",
+    "H1 2026 operating cash flow rebounded sharply, suggesting current owner-cash conversion may be inflecting faster than the FY2025 base indicates.",
+    "Current price remains below the locked Base value and far below Bull, so the market is not explicitly pricing a Bull-plus outcome."
+  ],
+  "unknowns": [
+    "Normalized maintenance versus growth capex after the current manufacturing buildout.",
+    "Long-run realized pricing and rebate intensity for incretins in the U.S. and major reimbursed markets.",
+    "Commercial cannibalization versus expansion among tirzepatide, orforglipron and retatrutide.",
+    "Full economic return on acquired IPR&D and recent acquisitions.",
+    "A reproducible five-year valuation percentile using a consistent owner-earnings metric."
+  ],
+  "falsifiers": [
+    "Owner FCF/share fails to move toward the Base path as major new manufacturing capacity comes online.",
+    "Tirzepatide volume growth slows materially while realized pricing pressure accelerates and successor assets fail to offset it.",
+    "A refrozen valuation using updated pipeline/cash-flow evidence produces Base value materially below market price."
+  ],
+  "hard_veto_flags": [
+    {
+      "veto": "현재가격이 비현실적인 Bull Case 이상을 요구",
+      "status": "cleared",
+      "rationale": "The frozen $1,164.89 price is below the locked Bull value of about $2,016.84 and slightly below Base; the price-above-Bull veto element is false."
+    }
+  ],
+  "key_kpis": [
+    {
+      "name": "Owner FCF/share",
+      "direction": "up",
+      "threshold": "progress toward the locked Base path as manufacturing capex normalizes",
+      "cadence": "quarterly/annual"
+    },
+    {
+      "name": "Mounjaro + Zepbound volume/pricing",
+      "direction": "durable",
+      "threshold": "volume growth offsets realized-price pressure without margin collapse",
+      "cadence": "quarterly"
+    },
+    {
+      "name": "Pipeline successor economics",
+      "direction": "de-risk",
+      "threshold": "orforglipron/retatrutide approvals and launch evidence broaden value beyond tirzepatide",
+      "cadence": "clinical/regulatory"
+    }
+  ],
+  "next_checks": [
+    "Q3 2026 revenue, pricing and owner-cash conversion.",
+    "Manufacturing-capacity and capex normalization timeline.",
+    "Orforglipron launch and retatrutide regulatory/Phase 3 follow-through."
+  ],
+  "verdict": "neutral",
+  "archetype_signals": {
+    "price_to_base_value": 0.9081,
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.24
+  },
+  "subscores": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "score_0_100": 60,
+      "rationale": "Price/Base is 0.9081x, which falls in the locked 0.9-1.1 signal-map band and therefore scores 60."
+    },
+    {
+      "criterion_id": "base_return",
+      "score_0_100": 55,
+      "rationale": "Price/Base is 0.9081x, which falls in the locked 0.9-1.1 signal-map band and therefore scores 55."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "score_0_100": 55,
+      "rationale": "Base terminal concentration is about 71.8%, below the 80% review threshold, but Base requires sustained high-teens owner-FCF/share compounding and depends heavily on the incretin franchise, pricing, pipeline execution and capex normalization."
+    }
+  ],
+  "uncertainties": [
+    {
+      "criterion_id": "reverse_dcf_burden",
+      "severity": "material",
+      "rationale": "The price is modestly below Base, but the Base path embeds substantial long-duration growth."
+    },
+    {
+      "criterion_id": "base_return",
+      "severity": "material",
+      "rationale": "Expected return is sensitive to normalization of unusually high manufacturing investment and pharmaceutical reinvestment."
+    },
+    {
+      "criterion_id": "valuation_robustness",
+      "severity": "critical",
+      "rationale": "Product concentration and the long cash-flow duration make valuation highly sensitive to pricing, competition and pipeline outcomes."
+    }
+  ],
+  "valuation_inputs": {
+    "valuation_percentile_5y": null,
+    "revenue_cagr_next_3y": 0.24,
+    "scenarios": {
+      "bear": {
+        "owner_fcf_per_share": [
+          18,
+          20,
+          22,
+          24,
+          26,
+          28,
+          30,
+          32,
+          34,
+          36
+        ]
+      },
+      "base": {
+        "owner_fcf_per_share": [
+          24,
+          31,
+          39,
+          48,
+          58,
+          69,
+          80,
+          91,
+          102,
+          113
+        ]
+      },
+      "bull": {
+        "owner_fcf_per_share": [
+          28,
+          38,
+          49,
+          61,
+          74,
+          88,
+          103,
+          118,
+          134,
+          150
+        ]
+      }
+    }
+  }
+}
