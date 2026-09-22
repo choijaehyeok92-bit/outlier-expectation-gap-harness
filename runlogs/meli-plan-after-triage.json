@@ -1,0 +1,20 @@
+{
+  "stage": "domain_analysis",
+  "agents": {
+    "customer_product": "CP",
+    "management_allocation": "MA",
+    "moat_trajectory": "MT",
+    "reinvestment_fcf": "RF",
+    "structural_leadership": "SL"
+  },
+  "stage_0": {
+    "stage_0": "ready",
+    "enforced": true,
+    "pack_present": true
+  },
+  "execution_control": "continue",
+  "reachable_archetypes_raw": [
+    "compounder"
+  ],
+  "statement": "Universal triage is complete. Compounder remains reachable, so complete all remaining core domains and veto-owning domain analysts before macro/evidence/red-team/IC."
+}
