@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "reports": [
+    "EV",
+    "AS",
+    "DI",
+    "FS"
+  ],
+  "validation_errors": [],
+  "score_100": 64.4642857143,
+  "score_ex_valuation": 70.25,
+  "coverage_weight": 35,
+  "reachable_archetypes_raw": [
+    "compounder"
+  ],
+  "expected_next_stage": "domain_analysis"
+}
