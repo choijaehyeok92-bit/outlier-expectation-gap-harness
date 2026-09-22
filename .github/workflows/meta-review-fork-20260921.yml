@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install -r requirements-dev.txt
-      - name: Fork META into review-only run
+      - name: Fork META into review-only run and emit ED/RT prompts
         shell: bash
         run: |
           set -euo pipefail
@@ -32,15 +32,30 @@ jobs:
           python harness.py fork-run META META_REVIEW_20260921 --carry-domain-reports
           python harness.py validate-pack META_REVIEW_20260921
           python harness.py freeze META_REVIEW_20260921 --provider openai --model gpt-6-astra --review-only
-          python harness.py aggregate META_REVIEW_20260921 > runlogs/meta-review-aggregate-initial.json
+
+          # fork-run deliberately does not carry overlay/audit/red-team/IC.
+          # Reuse the already validated global MO observation from the source run.
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          src=Path("runs/META/reports/MO.json")
+          dst=Path("runs/META_REVIEW_20260921/reports/MO.json")
+          d=json.loads(src.read_text())
+          d["ticker"]="META_REVIEW_20260921"
+          dst.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n")
+          PY
+
+          python harness.py validate META_REVIEW_20260921 MO
+          python harness.py aggregate META_REVIEW_20260921 > runlogs/meta-review-aggregate-after-mo.json
           python harness.py digest META_REVIEW_20260921
-          python harness.py plan META_REVIEW_20260921 | tee runlogs/meta-review-plan-initial.txt
+          python harness.py plan META_REVIEW_20260921 | tee runlogs/meta-review-plan-after-mo.txt
           python harness.py prompt META_REVIEW_20260921 ED --out runs/META_REVIEW_20260921/ED_prompt.md
           python harness.py prompt META_REVIEW_20260921 RT --out runs/META_REVIEW_20260921/RT_prompt.md
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add runs/META_REVIEW_20260921 runlogs
           if ! git diff --cached --quiet; then
-            git commit -m "review: fork META 2026-09-21 for ED RT IC"
+            git commit -m "review: fork META 2026-09-21 and prepare ED RT"
             git push origin HEAD:work/meta-2026-09-21-v33
           fi
