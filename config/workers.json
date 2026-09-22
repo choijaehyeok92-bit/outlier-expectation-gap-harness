@@ -61,6 +61,12 @@
       "lease_seconds": 600,
       "description": "감시 항목을 관측과 대조하고 불변 스냅샷을 남긴다"
     },
+    "monitor_ingest": {
+      "handler": "monitor_ingest",
+      "spends_money": false,
+      "lease_seconds": 600,
+      "description": "사람이 걸어 둔 링크를 따라 결정론적 창고에서 관측을 적재한다. 링크 없는 항목은 이름으로 맞추지 않는다"
+    },
     "harness_triage": {
       "handler": "harness_triage",
       "spends_money": true,
@@ -139,6 +145,12 @@
         "from": "field",
         "field": "run_id",
         "why": "runs/<ID>/를 읽어 harness_snapshot을 복사한다. 그 사이에 run이 바뀌면 스냅샷이 원본과 어긋난다."
+      },
+      "monitor_ingest": {
+        "namespace": "run",
+        "from": "list_field",
+        "field": "tickers",
+        "why": "관측 로그에 쓰고 워치리스트를 만들며 runs/<T>/reports를 읽는다."
       }
     },
     "serialize_claim": {

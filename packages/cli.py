@@ -435,6 +435,61 @@ def cmd_monitor_observe(args):
     _print(rows[0] if len(rows) == 1 else {'recorded': len(rows), 'observations': rows})
 
 
+def cmd_monitor_suggest(args):
+    """Propose links by exact name. Proposals are not links; a person accepts one."""
+    from packages.monitoring import ingest
+    try:
+        payload = ingest.suggest(args.ticker, run_id=args.run_id)
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
+    _print(payload if args.full else
+           {k: payload[k] for k in ('ticker', 'run_id', 'summary', 'note')} |
+           {'proposed': payload['proposed'],
+            'unmatched': [row['name'] for row in payload['unmatched']][:30]})
+
+
+def cmd_monitor_link(args):
+    """Say that a watch item is measured by a warehouse metric."""
+    from packages.monitoring import ingest
+    ticker = args.ticker.upper() if not args.ticker.isdigit() else args.ticker
+    watch_ids = _resolve_watch_id(ticker, args)
+    if len(watch_ids) > 1 and not args.all_matches:
+        raise SystemExit('--match resolved to several items; pass --watch-id or --all-matches')
+    rows = []
+    for watch_id in watch_ids:
+        try:
+            rows.append(ingest.link(ticker, watch_id, args.metric, note=args.note,
+                                    linked_by=args.by, run_id=args.run_id))
+        except ingest.LinkRefused as error:
+            raise SystemExit(str(error)) from error
+    for row in rows:
+        if row.get('warning'):
+            print(row['warning'], file=sys.stderr)
+    _print(rows[0] if len(rows) == 1 else {'linked': len(rows), 'links': rows})
+
+
+def cmd_monitor_unlink(args):
+    from packages.monitoring import ingest
+    try:
+        _print(ingest.unlink(args.ticker, args.watch_id))
+    except ingest.LinkRefused as error:
+        raise SystemExit(str(error)) from error
+
+
+def cmd_monitor_links(args):
+    from packages.monitoring import ingest
+    _print(ingest.load_links(args.ticker))
+
+
+def cmd_monitor_ingest(args):
+    """Record observations for every linked item the warehouse can measure."""
+    from packages.monitoring import ingest
+    try:
+        _print(ingest.ingest(args.ticker, args.as_of, run_id=args.run_id))
+    except (ValueError, ingest.LinkRefused) as error:
+        raise SystemExit(str(error)) from error
+
+
 def cmd_monitor_status(args):
     """Evaluate the watchlist against what has been observed."""
     from packages.monitoring import evaluate as monitor_evaluate
@@ -666,6 +721,41 @@ def register(sub):
     p.add_argument('--note')
     p.add_argument('--supersedes', help='observation_id this corrects; the original stays')
     p.set_defaults(func=cmd_monitor_observe)
+
+    p = monitor_sub.add_parser(
+        'suggest', help='propose watch-item -> metric links by exact name only')
+    p.add_argument('ticker')
+    p.add_argument('--run-id')
+    p.add_argument('--full', action='store_true')
+    p.set_defaults(func=cmd_monitor_suggest)
+
+    p = monitor_sub.add_parser(
+        'link', help='record that a watch item is measured by a warehouse metric')
+    p.add_argument('ticker')
+    p.add_argument('--watch-id')
+    p.add_argument('--match', help='resolve the watch item by name')
+    p.add_argument('--all-matches', action='store_true')
+    p.add_argument('--metric', required=True, help='a screening_metrics.json metric id')
+    p.add_argument('--note', help='why this metric measures this KPI')
+    p.add_argument('--by', default='operator', help='who is asserting this link')
+    p.add_argument('--run-id')
+    p.set_defaults(func=cmd_monitor_link)
+
+    p = monitor_sub.add_parser('unlink', help='remove a link; recorded observations stay')
+    p.add_argument('ticker')
+    p.add_argument('watch_id')
+    p.set_defaults(func=cmd_monitor_unlink)
+
+    p = monitor_sub.add_parser('links', help='links recorded for this company')
+    p.add_argument('ticker')
+    p.set_defaults(func=cmd_monitor_links)
+
+    p = monitor_sub.add_parser(
+        'ingest', help='record observations from the deterministic warehouse')
+    p.add_argument('ticker')
+    p.add_argument('--as-of', help='warehouse build date; defaults to the latest')
+    p.add_argument('--run-id')
+    p.set_defaults(func=cmd_monitor_ingest)
 
     p = monitor_sub.add_parser('status', help='evaluate observations against declared thresholds')
     p.add_argument('ticker', nargs='?')

@@ -18,6 +18,13 @@ reports ok for a breach. Both directions of that mistake are tested.
 contain no score, no archetype, no Hard Veto status, no `ic_state` and no
 position range, and `review_required` is checked to be raised only by a thesis
 break or a triggered falsifier — never by the layer's own opinion.
+
+**A KPI is never matched to a metric by resemblance.** The third refusal is
+the same shape as the first two, and the real corpus shows why: "Microsoft
+Cloud gross margin" against a company-wide `gross_margin` of 0.679 would sail
+past a 66% threshold on a number that was never measured. Only exact name
+equality is ever *proposed*, and accepting a proposal is a person's recorded
+act.
 """
 import json
 import os
@@ -27,7 +34,8 @@ import unittest
 
 import jsonschema
 
-from packages.monitoring import drift, evaluate, observations, store, thresholds, watchlist
+from packages.monitoring import (drift, evaluate, ingest, observations, store, thresholds,
+                                 watchlist)
 
 ROOT = Path(__file__).resolve().parents[1]
 AS_OF = '2026-09-18'
@@ -445,6 +453,202 @@ class EvaluationTests(WatchlistCase):
                                     self.log)
         self.assertEqual(result['companies'], 0)
         self.assertEqual(result['unreadable'][0]['ticker'], 'GHOST')
+
+
+WAREHOUSE = {
+    'as_of_date': AS_OF,
+    'rows': [{
+        'ticker': 'ACME',
+        'metrics': {'gross_margin': 0.62, 'revenue_growth_yoy': 0.11,
+                    'current_price': 100.0, 'owner_fcf_margin': None},
+        'provenance': {
+            'gross_margin': {'metric_id': 'gross_margin', 'value': 0.62, 'method': 'ratio',
+                             'inputs': ['FACT-1', 'FACT-2'], 'period_end': '2026-06-30'},
+            'revenue_growth_yoy': {'metric_id': 'revenue_growth_yoy', 'method': 'growth:ttm',
+                                   'inputs': ['FACT-3'], 'period_end': '2026-06-30'},
+            'current_price': {'metric_id': 'current_price', 'method': 'market',
+                              'period_end': AS_OF},
+            'owner_fcf_margin': {'metric_id': 'owner_fcf_margin', 'method': 'ratio'},
+        },
+    }],
+}
+
+
+class IngestTests(WatchlistCase):
+    """Linking is a person's act; everything after it is arithmetic."""
+
+    MARGIN = {'name': 'Gross margin', 'why_it_matters': 'unit economics',
+              'current_value': '65%', 'direction_required': 'increasing',
+              'warning_threshold': '60% 이상', 'thesis_break_threshold': '55% 이상',
+              'cadence': 'quarterly', 'source': '10-Q'}
+
+    def setUp(self):
+        super().setUp()
+        self.log = Path(self.tmp.name) / 'monitoring'
+        self.build()
+        self.deep_dive('ACME-2026-09-18-aaaaaaaaaaaa', kpis=[self.MARGIN], falsifiers=[
+            {'statement': 'Retention falls.', 'observable': 'NRR', 'would_break': 'the moat'}])
+
+    def item(self, name='Gross margin', kind='kpi'):
+        return next(i for i in self.watchlist_for()['items']
+                    if i['kind'] == kind and (kind != 'kpi' or i['name'] == name))
+
+    def suggest(self):
+        return ingest.suggest('ACME', self.config, self.log,
+                              runs_dir=self.runs, deep_dive_base=self.dives)
+
+    def link(self, metric_id, watch_id=None, **kwargs):
+        return ingest.link('ACME', watch_id or self.item()['watch_id'], metric_id,
+                           self.config, base=self.log, runs_dir=self.runs,
+                           deep_dive_base=self.dives, **kwargs)
+
+    def ingest(self, payload=None):
+        return ingest.ingest('ACME', config=self.config, base=self.log,
+                             warehouse_payload=payload or WAREHOUSE,
+                             runs_dir=self.runs, deep_dive_base=self.dives)
+
+    def test_only_an_exact_name_is_proposed(self):
+        payload = self.suggest()
+        self.assertEqual([row['metric_id'] for row in payload['proposed']], ['gross_margin'])
+        self.assertEqual(payload['proposed'][0]['name_match'], 'exact')
+
+    def test_a_proposal_is_not_a_link(self):
+        self.suggest()
+        self.assertEqual(ingest.load_links('ACME', self.log), {},
+                         'suggesting must not link anything by itself')
+        self.assertEqual(self.ingest()['recorded'], 0)
+
+    def test_a_metric_that_does_not_exist_is_refused(self):
+        with self.assertRaises(ingest.LinkRefused) as caught:
+            self.link('gross_margarine')
+        self.assertIn('not a warehouse metric', str(caught.exception))
+
+    def test_a_falsifier_cannot_be_linked_to_a_metric(self):
+        with self.assertRaises(ingest.LinkRefused) as caught:
+            self.link('gross_margin', watch_id=self.item(kind='falsifier')['watch_id'])
+        self.assertIn('evidence, not by a metric', str(caught.exception))
+
+    def test_a_link_records_whether_the_names_actually_matched(self):
+        exact = self.link('gross_margin')
+        self.assertEqual(exact['name_match'], 'exact')
+        self.assertIsNone(exact['warning'])
+
+        asserted = self.link('revenue_growth_yoy')
+        self.assertEqual(asserted['name_match'], 'operator_asserted')
+        self.assertIn('does not match', asserted['warning'])
+
+    def test_an_observation_carries_the_metric_provenance(self):
+        self.link('gross_margin')
+        row = self.ingest()['rows'][0]
+        self.assertEqual(row['value'], 0.62)
+        self.assertEqual(row['unit'], 'ratio', 'the metric declares its own scale')
+        self.assertEqual(row['as_of_date'], '2026-06-30',
+                         'dated to the period it measures, not the build')
+        stored = observations.load('ACME', row['watch_id'], base=self.log)[-1]
+        self.assertIn('method=ratio', stored['source'])
+        self.assertIn('FACT-1,FACT-2', stored['source'])
+        self.assertEqual(stored['source_type'], 'filing')
+
+    def test_a_market_metric_is_recorded_as_market_not_as_a_filing(self):
+        self.link('current_price')
+        row = self.ingest()['rows'][0]
+        stored = observations.load('ACME', row['watch_id'], base=self.log)[-1]
+        self.assertEqual(stored['source_type'], 'market')
+
+    def test_re_ingesting_the_same_build_writes_nothing(self):
+        self.link('gross_margin')
+        first = self.ingest()
+        second = self.ingest()
+        self.assertEqual((first['recorded'], first['already_present']), (1, 0))
+        self.assertEqual((second['recorded'], second['already_present']), (0, 1))
+        self.assertEqual(len(observations.load('ACME', base=self.log)), 1)
+
+    def test_a_metric_the_warehouse_could_not_compute_is_skipped_not_zeroed(self):
+        self.link('owner_fcf_margin')
+        result = self.ingest()
+        self.assertEqual(result['recorded'], 0)
+        self.assertIn('could not compute', result['skipped'][0]['reason'])
+        self.assertEqual(observations.load('ACME', base=self.log), [])
+
+    def test_a_metric_with_no_period_end_is_skipped(self):
+        payload = {**WAREHOUSE, 'rows': [{
+            **WAREHOUSE['rows'][0],
+            'metrics': {'gross_margin': 0.62},
+            'provenance': {'gross_margin': {'method': 'ratio', 'inputs': ['FACT-1']}}}]}
+        self.link('gross_margin')
+        result = self.ingest(payload)
+        self.assertEqual(result['recorded'], 0)
+        self.assertIn('cannot be judged stale', result['skipped'][0]['reason'])
+
+    def test_an_asserted_link_says_so_on_every_observation_it_makes(self):
+        self.link('revenue_growth_yoy', note='closest available proxy')
+        row = self.ingest()['rows'][0]
+        stored = observations.load('ACME', row['watch_id'], base=self.log)[-1]
+        self.assertIn('operator_asserted', stored['note'])
+        self.assertIn('Gross margin', stored['note'])
+
+    def test_an_ingested_observation_is_what_the_evaluation_then_judges(self):
+        self.link('gross_margin')
+        self.ingest()
+        result = evaluate.evaluate('ACME', '2026-09-25', None, self.config, self.runs,
+                                   self.dives, self.log)
+        row = next(r for r in result['items'] if r['watch_id'] == self.item()['watch_id'])
+        self.assertEqual(row['status'], 'ok')
+        self.assertEqual(row['observed_value'], 0.62)
+
+    def test_an_ingested_breach_reaches_review_exactly_as_a_typed_one_would(self):
+        self.link('gross_margin')
+        self.ingest({**WAREHOUSE, 'rows': [{
+            **WAREHOUSE['rows'][0], 'metrics': {'gross_margin': 0.50}}]})
+        result = evaluate.evaluate('ACME', '2026-09-25', None, self.config, self.runs,
+                                   self.dives, self.log)
+        self.assertEqual(result['summary']['review_required'], 1)
+        self.assertEqual(result['review_required'][0]['status'], 'thesis_break')
+
+    def test_unlinking_keeps_the_observations_already_recorded(self):
+        watch_id = self.item()['watch_id']
+        self.link('gross_margin')
+        self.ingest()
+        ingest.unlink('ACME', watch_id, self.log)
+        self.assertEqual(ingest.load_links('ACME', self.log), {})
+        self.assertEqual(len(observations.load('ACME', base=self.log)), 1,
+                         'the log is append-only; a changed judgement does not erase history')
+
+    def test_ingest_with_nothing_linked_says_how_to_link(self):
+        result = self.ingest()
+        self.assertEqual(result['recorded'], 0)
+        self.assertIn('monitor link', result['note'])
+
+    def test_a_warehouse_that_does_not_hold_this_company_is_refused(self):
+        self.link('gross_margin')
+        with self.assertRaises(ingest.LinkRefused) as caught:
+            self.ingest({'as_of_date': AS_OF, 'rows': []})
+        self.assertIn('not in the warehouse', str(caught.exception))
+
+
+class IngestRealCorpusTests(unittest.TestCase):
+    """The case that decided the design, against the committed reports."""
+
+    def test_a_segment_kpi_is_never_proposed_a_company_wide_metric(self):
+        # "Microsoft Cloud gross margin" warns below 66%. Company-wide
+        # gross_margin is 0.679, so an automatic match would report ok for a
+        # number that was never measured.
+        payload = ingest.suggest('MSFT', base=Path(tempfile.mkdtemp()))
+        proposed = {row['name'] for row in payload['proposed']}
+        unmatched = {row['name'] for row in payload['unmatched']}
+        self.assertIn('Microsoft Cloud gross margin', unmatched)
+        self.assertNotIn('Microsoft Cloud gross margin', proposed)
+
+    def test_most_of_the_corpus_needs_a_person_and_the_summary_says_so(self):
+        payload = ingest.suggest('MSFT', base=Path(tempfile.mkdtemp()))
+        self.assertGreater(payload['summary']['unmatched'], payload['summary']['proposed'])
+        self.assertIn('제안이지 링크가 아니다', payload['note'])
+
+    def test_every_proposal_is_a_metric_the_warehouse_defines(self):
+        definitions = ingest.metric_definitions()
+        payload = ingest.suggest('MSFT', base=Path(tempfile.mkdtemp()))
+        for row in payload['proposed']:
+            self.assertIn(row['metric_id'], definitions)
 
 
 class DriftTests(unittest.TestCase, FixtureRuns):

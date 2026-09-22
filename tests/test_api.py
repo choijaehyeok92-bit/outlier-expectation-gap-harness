@@ -143,6 +143,27 @@ class ApiTests(unittest.TestCase):
     def test_monitoring_a_company_with_no_run_is_a_404(self):
         self.assertEqual(CLIENT.get('/api/monitoring/GHOST').status_code, 404)
 
+    def test_a_link_is_proposed_only_on_an_exact_name(self):
+        payload = CLIENT.get('/api/monitoring/MSFT/links', params={'suggest': True}).json()
+        unmatched = {row['name'] for row in payload['unmatched']}
+        proposed = {row['name'] for row in payload['proposed']}
+        self.assertIn('Microsoft Cloud gross margin', unmatched,
+                      'a segment KPI must not be proposed the company-wide metric')
+        self.assertNotIn('Microsoft Cloud gross margin', proposed)
+        # Suggesting does not link: the stored set is still what it was.
+        self.assertEqual(CLIENT.get('/api/monitoring/MSFT/links').json()['links'], {})
+
+    def test_linking_to_a_metric_nobody_defined_is_refused(self):
+        response = CLIENT.post('/api/monitoring/links', json={
+            'ticker': 'MSFT', 'watch_id': 'a' * 16, 'metric_id': 'gross_margarine'})
+        self.assertEqual(response.status_code, 422)
+        self.assertIn('not a warehouse metric', response.json()['detail'])
+
+    def test_ingesting_with_nothing_linked_records_nothing(self):
+        response = CLIENT.post('/api/monitoring/ingest', json={'ticker': 'MSFT'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['recorded'], 0)
+
     def test_the_job_queue_says_it_needs_a_database_rather_than_pretending(self):
         # No HARNESS_DATABASE_URL in the test environment, so the queue has
         # nowhere to live and the route says so instead of returning an empty

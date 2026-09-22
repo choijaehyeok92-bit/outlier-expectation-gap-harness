@@ -135,6 +135,31 @@ def monitor_status(payload: dict, config: dict) -> dict:
     return {'companies': len(tickers), 'review_required': review, 'results': saved}
 
 
+def monitor_ingest(payload: dict, config: dict) -> dict:
+    """Record observations from the warehouse for every linked watch item.
+
+    Only links a person already made. An unlinked item is reported, never
+    matched by name — the whole reason linking is a separate act.
+    """
+    from packages.monitoring import ingest as monitor_ingest_module
+    from packages.monitoring import observations as observation_log
+
+    tickers = payload.get('tickers') or observation_log.tickers()
+    if not tickers:
+        return {'companies': 0,
+                'note': 'no company has an observation log yet; link a metric first'}
+    rows = []
+    for ticker in tickers:
+        try:
+            rows.append(monitor_ingest_module.ingest(ticker, payload.get('as_of_date')))
+        except (ValueError, monitor_ingest_module.LinkRefused) as error:
+            rows.append({'ticker': ticker, 'error': str(error)})
+    return {'companies': len(tickers),
+            'recorded': sum(row.get('recorded', 0) for row in rows),
+            'already_present': sum(row.get('already_present', 0) for row in rows),
+            'results': rows}
+
+
 def _batch(stage: str, payload: dict, config: dict) -> dict:
     from packages.orchestration import batch, contracts, selection
     from packages.orchestration import store as batch_store
@@ -198,6 +223,7 @@ REGISTRY: dict = {
     'db_sync': db_sync,
     'screen_build': screen_build,
     'monitor_status': monitor_status,
+    'monitor_ingest': monitor_ingest,
     'harness_triage': harness_triage,
     'harness_full': harness_full,
     'deep_dive': deep_dive,

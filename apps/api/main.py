@@ -44,8 +44,9 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from apps.api.models import (DeepDivePlanRequest, DeepDiveRunRequest,  # noqa: E402
-                             FullHarnessRequest, JobRequest, ObservationRequest,
-                             ParseRequest, ScreenRunRequest, TriageRequest)
+                             FullHarnessRequest, IngestRequest, JobRequest,
+                             LinkRequest, ObservationRequest, ParseRequest,
+                             ScreenRunRequest, TriageRequest)
 from packages.llm import LLMError, resolve_provider  # noqa: E402
 from packages.reporting import render_markdown, render_screen_markdown  # noqa: E402
 from packages.research import deep_plan, deep_run  # noqa: E402
@@ -440,6 +441,47 @@ def monitoring_drift(ticker: str, run_ids: str | None = None):
     names = [r.strip() for r in run_ids.split(',')] if run_ids else None
     try:
         return drift.series(ticker, run_ids=names)
+    except ValueError as error:
+        raise HTTPException(404, str(error)) from error
+
+
+@app.get('/api/monitoring/{ticker}/links')
+def monitoring_links(ticker: str, suggest: bool = False, run_id: str | None = None):
+    """Links recorded for this company, or proposals when `suggest=true`.
+
+    A proposal is not a link. Only an exact name match is ever proposed, and
+    accepting one is a separate, recorded act.
+    """
+    from packages.monitoring import ingest as monitor_ingest
+    if not suggest:
+        return {'ticker': ticker.upper(), 'links': monitor_ingest.load_links(ticker)}
+    try:
+        return monitor_ingest.suggest(ticker, run_id=run_id)
+    except ValueError as error:
+        raise HTTPException(404, str(error)) from error
+
+
+@app.post('/api/monitoring/links')
+def monitoring_link(request: LinkRequest):
+    """Record a link. The response says whether the names matched or it was asserted."""
+    from packages.monitoring import ingest as monitor_ingest
+    try:
+        return monitor_ingest.link(request.ticker, request.watch_id, request.metric_id,
+                                   note=request.note, linked_by=request.linked_by)
+    except monitor_ingest.LinkRefused as error:
+        raise HTTPException(422, str(error)) from error
+    except ValueError as error:
+        raise HTTPException(404, str(error)) from error
+
+
+@app.post('/api/monitoring/ingest')
+def monitoring_ingest(request: IngestRequest):
+    """Observations from the deterministic warehouse, for linked items only."""
+    from packages.monitoring import ingest as monitor_ingest
+    try:
+        return monitor_ingest.ingest(request.ticker, request.as_of_date)
+    except monitor_ingest.LinkRefused as error:
+        raise HTTPException(422, str(error)) from error
     except ValueError as error:
         raise HTTPException(404, str(error)) from error
 

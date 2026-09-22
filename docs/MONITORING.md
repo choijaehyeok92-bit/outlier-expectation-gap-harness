@@ -161,7 +161,59 @@ run_id를 ticker로 갖는다. ticker로만 묶으면 네 번 돌린 기업이 1
 ticker **또는** 저장소의 `<TICKER>-…` 명명 관행으로 묶고, 각 point에 `matched_by`를 남긴다.
 명시적인 `--run-ids`를 주면 추론하지 않는다.
 
-## 7. 실행
+## 7. 관측 적재 — 사람이 한 번 잇고, 그 뒤는 산술
+
+95개 감시 항목을 손으로만 채워야 한다면 워치리스트는 영원히 비어 있다. 그렇다고 KPI 이름을
+지표에 자동으로 맞추면 **1절과 2절에서 막은 것과 정확히 같은 실수**가 세 번째로 나온다.
+
+```
+감시 항목 : "Microsoft Cloud gross margin", 경고 >= 66%
+지표      : gross_margin = 0.679          ← 전사, 모든 세그먼트 포함
+상태      : ok
+```
+
+재지 않은 숫자를, 속하지 않는 임계값에 대고, 괜찮다고 보고한다.
+
+그래서 둘로 나눈다.
+
+**링크는 사람이 건다.** 시스템은 정규화한 이름이 `metric_id` 또는 선언된 alias와 **정확히**
+같을 때만 *제안*한다. 부분일치도 유사도 점수도 없다. MSFT 실측: KPI 48개 중 제안 4개,
+나머지 44개는 `unmatched`로 남고 "Microsoft Cloud gross margin"은 그 안에 있다.
+
+**링크 뒤는 전부 산술이다.** 창고 행에서 값을 읽고, `method`와 입력 fact id를 출처로 달고,
+그 지표의 회계기간 종료일로 날짜를 찍는다.
+
+```
+value       0.62
+unit        ratio                      ← 지표가 선언한 단위. 모호하지 않다
+as_of_date  2026-06-30                 ← 창고를 만든 날이 아니라 그 값이 해당하는 기간
+source      screening_warehouse/gross_margin method=ratio facts=FACT-1,FACT-2
+source_type filing                     ← method가 market이면 market
+```
+
+`source`에 창고 빌드 시각 같은 휘발성 값을 넣지 않으므로 **같은 창고를 다시 적재하면
+observation_id가 같고 로그는 한 줄도 늘지 않는다** (`already_present`로 센다).
+
+### 이름이 다른데도 걸었다면 그렇게 기록된다
+
+사람이 "그래도 이게 맞다"고 판단할 수 있다. 그 링크는 `name_match: operator_asserted`로
+저장되고, **그 링크로 만든 모든 관측의 note에 그 사실이 실린다.**
+
+```
+note: linked by operator as operator_asserted: the watch item
+      'Microsoft Cloud gross margin' is not this metric's name
+```
+
+시스템이 막지는 않는다 — 사람의 판단이다. 다만 숨기지도 않는다.
+
+### 적재하지 않는 네 가지
+
+- **링크가 없는 항목** — 비슷한 이름을 찾아 붙이지 않는다
+- **창고가 계산하지 못한 지표**(`unavailable`) — 미상은 0이 아니다
+- **falsifier** — 발동 여부는 산술이 아니라 증거로 정해진다
+- **period_end가 없는 지표** — 언제의 값인지 모르면 staleness를 판정할 수 없다
+
+## 8. 실행
 
 ```bash
 # 무엇을 보고 있는지 (기계 판정 가능 여부 포함)
@@ -179,6 +231,17 @@ python harness.py monitor observe MSFT --match "Microsoft Cloud gross margin" \
 # 정정은 수정이 아니라 새 관측이다:
 #   --supersedes <observation_id> --note "10-K에서 재작성됨"
 
+# 지표와 잇기 — 제안을 보고, 사람이 건다
+python harness.py monitor suggest MSFT                 # 정확히 일치하는 것만 제안
+python harness.py monitor link MSFT --match "capex/OCF" --all-matches --metric capex_to_ocf
+python harness.py monitor link MSFT --watch-id ea22... --metric gross_margin \
+  --note "전사 지표로 대용" --by jaehyeok      # 이름이 다르면 operator_asserted로 기록된다
+python harness.py monitor links MSFT
+python harness.py monitor unlink MSFT <watch_id>       # 이미 기록된 관측은 남는다
+
+# 결정론적 창고에서 관측 적재 (링크된 항목만)
+python harness.py monitor ingest MSFT --as-of 2026-09-18
+
 # 평가
 python harness.py monitor status MSFT                  # 요약
 python harness.py monitor status MSFT --full --save    # 전체 + 불변 스냅샷
@@ -195,12 +258,15 @@ GET  /api/monitoring/{ticker}               항목별 상태
 GET  /api/monitoring/{ticker}/watchlist     관측 적용 전 선언 그대로
 GET  /api/monitoring/{ticker}/drift         run 간 변화와 comparable 여부
 POST /api/monitoring/observations           관측 1건 append
+GET  /api/monitoring/{ticker}/links[?suggest=true]
+POST /api/monitoring/links                  링크 1건 (제안이 아니라 결정)
+POST /api/monitoring/ingest                 링크된 항목만 창고에서 적재
 ```
 
 웹: `/monitoring`(포트폴리오), `/monitoring/[ticker]`(항목별 + drift). 항목은 출처가 아니라
 **읽는 사람에게 무엇을 요구하는지**로 묶는다.
 
-## 8. DB
+## 9. DB
 
 `db upgrade`가 `0002_monitoring`으로 테이블 둘을 만든다. 수명주기가 의도적으로 다르다.
 
@@ -213,14 +279,16 @@ POST /api/monitoring/observations           관측 1건 append
 사람이 척도를 말하지 않았다는 뜻이고, 이는 평가기가 추측하기를 거부하는 바로 그 경우다.
 `value_number`만 읽고 `unit`을 무시하는 질의는 사실의 절반만 읽는 것이다.
 
+링크(`monitoring/<TICKER>/links.json`)는 DB에 색인되지 않는다. 사람의 판단이고 파일로 남는다.
+
 `db sync --kinds monitoring`은 **관측이 기록된 기업만** 적재한다. 25개 run 전부의 워치리스트를
 넣으면 아무도 보고 있지 않은 행으로 테이블이 찬다.
 
-## 9. 남은 것
+## 10. 남은 것
 
-- **관측 수집은 자동화되어 있지 않다.** 사람이나 상위 시스템이 `observe`를 부른다. 공시에서
-  KPI를 자동 추출하려면 KPI 이름과 공시 항목을 잇는 매핑이 필요하고, 그것은 LLM 판단이거나
-  또 하나의 결정론적 매핑 계층이다 — 전자는 이 저장소의 경계를 넘고, 후자는 별도 작업이다
+- **창고가 계산하는 24개 지표 밖은 여전히 손으로 넣는다.** 세그먼트 매출, RPO, 개발자 수
+  같은 것은 Stage 0 pack의 atomic fact에 없거나 표준 지표가 아니다. 공시 원문에서 자동으로
+  뽑으려면 KPI와 공시 항목을 잇는 판단이 필요하고, 그것은 LLM의 일이며 이 계층의 경계 밖이다
 - **`for 2 consecutive periods` 같은 지속성 규칙을 평가하지 않는다.** 로그에 이력이 있으므로
   구현할 수 있지만, 규칙을 파싱하는 순간 다시 산문 해석이 된다. 딥다이브가 지속성을 구조화된
   필드로 쓰게 하는 편이 옳다

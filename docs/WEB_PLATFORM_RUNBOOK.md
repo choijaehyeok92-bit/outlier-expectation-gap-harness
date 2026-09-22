@@ -153,11 +153,20 @@ python harness.py monitor watchlist MSFT
 python harness.py monitor observe MSFT --match "Microsoft Cloud gross margin" \
   --value "64%" --as-of 2026-09-20 --source "FY26 Q4 10-K p.40" --source-type filing
 
+# 지표와 잇기 — 제안은 정확히 일치할 때만 나오고, 거는 것은 사람이다
+python harness.py monitor suggest MSFT
+python harness.py monitor link MSFT --match "capex/OCF" --all-matches --metric capex_to_ocf
+python harness.py monitor ingest MSFT --as-of 2026-09-18
+
 # 평가와 포트폴리오
 python harness.py monitor status MSFT
 python harness.py monitor status --tickers MSFT,NVDA
 python harness.py monitor drift NVDA
 ```
+
+이름이 비슷하다는 이유로 자동 연결하지 않는다 — "Microsoft Cloud gross margin"에 전사
+`gross_margin`을 붙이면 재지 않은 숫자가 임계값을 통과해 ok로 보고된다. 사람이 그래도 맞다고
+판단하면 `operator_asserted`로 기록되고 그 사실이 모든 관측에 실린다.
 
 `71`처럼 척도가 모호한 값은 비교하지 않고 거부한다. `"71%"`로 쓰거나 `--unit percent`를 준다.
 `thesis_break`는 매도 신호가 아니라 재검토 요청이며, 이 계층은 점수·archetype·Hard Veto·

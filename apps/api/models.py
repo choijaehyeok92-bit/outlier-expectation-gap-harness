@@ -90,6 +90,27 @@ class ObservationRequest(BaseModel):
     supersedes: str | None = None
 
 
+class LinkRequest(BaseModel):
+    """Say that a watch item is measured by a warehouse metric.
+
+    This is a person's judgement, not a lookup: linking "Microsoft Cloud gross
+    margin" to the company-wide `gross_margin` would report a number that was
+    never measured as passing a threshold it does not belong to. The server
+    records whether the names matched exactly or the operator asserted it, and
+    that travels into every observation made through the link.
+    """
+    ticker: str
+    watch_id: str
+    metric_id: str = Field(min_length=1, max_length=64)
+    note: str | None = None
+    linked_by: str = Field(default='operator', max_length=64)
+
+
+class IngestRequest(BaseModel):
+    ticker: str
+    as_of_date: str | None = Field(default=None, pattern=r'^\d{4}-\d{2}-\d{2}$')
+
+
 class JobRequest(BaseModel):
     """Queue one background job.
 

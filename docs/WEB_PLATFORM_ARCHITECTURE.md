@@ -208,6 +208,7 @@ packages/monitoring/
   observations.py                  append-only 관측 로그, 출처 필수
   evaluate.py                      선언된 임계값과의 산술 + staleness
   drift.py                         run 간 변화와 정책 귀속 여부
+  ingest.py                        사람이 건 링크를 따라 결정론적 창고에서 관측 적재
   store.py                         불변 평가 스냅샷
 config/monitoring.json             authority(할 수 있는 것/없는 것) · cadence · 임계값 정책
 schemas/monitoring_observation.schema.json
@@ -562,6 +563,8 @@ remaining_unknowns / evidence_quality / final_synthesis
 | GET | `/api/monitoring/{ticker}/watchlist` | ✅ 관측 적용 전 선언 |
 | GET | `/api/monitoring/{ticker}/drift` | ✅ run 간 변화 + comparable |
 | POST | `/api/monitoring/observations` | ✅ 관측 1건 append |
+| GET | `/api/monitoring/{ticker}/links[?suggest=]` | ✅ 링크 / 정확일치 제안 |
+| POST | `/api/monitoring/links`, `/api/monitoring/ingest` | ✅ 링크 결정 · 창고에서 적재 |
 | GET | `/api/jobs[?status=&kind=]`, `/api/jobs/{id}` | ✅ 큐 요약 + 최근 작업 |
 | GET | `/api/jobs/locks` | ✅ 보유 중인 자원과 대기 중인 작업 |
 | POST | `/api/jobs` | ✅ 작업 1건 enqueue (실행은 워커가 한다) |
@@ -599,6 +602,8 @@ python harness.py monitor observe TICKER (--watch-id ID | --match TEXT [--all-ma
                                  [--value V [--unit ratio|percent|percent_point|number]]
                                  [--triggered true|false] [--supersedes ID]
 python harness.py monitor status [TICKER | --tickers A,B] [--as-of DATE] [--full] [--save]
+python harness.py monitor {suggest,link,unlink,links} TICKER …
+python harness.py monitor ingest TICKER [--as-of DATE]
 python harness.py monitor drift TICKER [--run-ids A,B]
 python harness.py monitor runs
 python harness.py worker enqueue KIND [--payload JSON|@file] [--set K=V] [--priority N]
@@ -628,14 +633,15 @@ python harness.py worker {status,jobs,locks,retry,cancel,reap}
 | 9 | Deep-Dive Research | ✅ 완료 (fixture provider로 검증) |
 | 10 | Red Team + synthesis | ✅ 완료 |
 | 11 | Report UI | ✅ 완료 |
-| 12 | Monitoring | ✅ 관측 로그·결정론적 판정·staleness·drift 완료 (관측 수집 자동화는 미구현) |
+| 12 | Monitoring | ✅ 관측 로그·결정론적 판정·staleness·drift·창고 적재 완료 (창고 밖 지표는 수동) |
 
 Phase 5·6·9·10·11이 먼저 완성된 것은 vertical slice를 먼저 관통시켰기 때문이다.
 Phase 4가 붙으면서 `screening_warehouse` 백엔드가 조건부로 활성화됐고, `backend_unavailable`로
 남던 조건들이 창고를 빌드한 뒤에는 그대로 컴파일된다 — spec 형식은 바뀌지 않았다.
 Phase 2가 붙으면서 아티팩트 위에 선택적 PostgreSQL 색인이 생겼고, 스크리너는 `--source`로
 파일과 DB 중 어느 쪽에서든 **같은 행**을 읽는다. `job` 테이블에는 이제 소비자가 있고, 같은
-기업을 두 작업이 동시에 쓰지 못하게 하는 자원 잠금도 있다. 남은 것은 관측 수집 자동화다. Phase 7·8은 결정론이 아니므로 픽스처가 검증하는 범위가
+기업을 두 작업이 동시에 쓰지 못하게 하는 자원 잠금도 있다. 관측은 사람이 한 번 건 링크를 따라
+결정론적 창고에서 적재된다 — 이름으로 맞추는 자동 연결은 하지 않는다. Phase 7·8은 결정론이 아니므로 픽스처가 검증하는 범위가
 좁아진다 — 무엇을 검증하고 무엇을 검증하지 않는지는 [ORCHESTRATION.md](ORCHESTRATION.md)와
 모든 배치 기록의 `verification_scope`에 적혀 있다.
 

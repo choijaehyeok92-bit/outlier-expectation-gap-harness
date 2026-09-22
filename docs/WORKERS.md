@@ -76,6 +76,7 @@ API 키는 payload에 넣지 않는다. `job.payload`는 저장되고 `/api/jobs
 | `db_sync` | 파일 아티팩트를 DB로 적재 | | 15분 |
 | `screen_build` | 결정론적 지표 창고 | | 30분 |
 | `monitor_status` | 감시 항목 평가 + 불변 스냅샷 | | 10분 |
+| `monitor_ingest` | 링크된 항목을 창고에서 적재 | | 10분 |
 | `harness_triage` | Stage 3 (EV·AS·DI·FS) | ✅ | 1시간 |
 | `harness_full` | Stage 4 (plan이 부르는 대로) | ✅ | 3시간 |
 | `deep_dive` | 정성 딥다이브 4단계 | ✅ | 1시간 |
@@ -144,7 +145,7 @@ deep_dive    {run_id: MSFT}     그 aggregate.json 을 읽어 harness_snapshot �
 |---|---|---|
 | `harness_triage` · `harness_full` | `run:<ID>` (또는 `run:*`) | `runs/<ID>/`를 쓴다 |
 | `deep_dive` | `run:<ID>` | `runs/<ID>/`를 읽어 스냅샷을 복사한다 |
-| `monitor_status` | `run:<T>` (또는 `run:*`) | 워치리스트를 만들며 `runs/<T>/reports`를 읽는다 |
+| `monitor_status` · `monitor_ingest` | `run:<T>` (또는 `run:*`) | 워치리스트를 만들며 `runs/<T>/reports`를 읽는다 |
 | `db_sync` | `run:*` | 모든 run의 `aggregate.json`을 읽는다 |
 | `screen_build` | `warehouse:<as_of>` | Stage 0 pack만 읽는다 — **어떤 작업도 그것을 다시 쓰지 않으므로** run 정체에 끼지 않는다 |
 
