@@ -40,6 +40,8 @@ jobs:
           AS_OF: ${{ inputs.as_of }}
           MODE: ${{ inputs.mode }}
           WORKERS: ${{ inputs.workers }}
+          # Stage 0 EDGAR fetch needs a contact; set the repository secret SEC_USER_AGENT ("Name email").
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
         run: |
           set -euo pipefail
           mkdir -p runlogs
