@@ -201,3 +201,4 @@ a universe score that differs from the verdict; a deep report whose state/positi
 | 3 | batch runner, early exit, resume/retry, dry run | `universe_runner.py`, `tests/test_universe_runner.py` |
 | 4 | Report Agent, deep report, report validation | `agents/16_report/AGENTS.md`, `report_builder.py`, `report_validator.py`, `universe_reports.py`, `tests/test_report.py` |
 | 5 | universe dashboards, history CLI, parallel workers, docs | `universe_reports.py` dashboards, `tests/test_universe_dashboards.py`, README/RUNBOOK/ARCHITECTURE |
+| follow-up | `universe context` lock-field intake, `scripts/agent_cmd.py` model-CLI wrapper, manual `universe-batch.yml` workflow | `universe_context.py`, `tests/test_universe_context.py` |

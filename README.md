@@ -130,6 +130,24 @@ import는 ticker를 대문자·공백 제거·`$`/`NASDAQ:` 접두 제거·`BRK-
 2. MO는 해당 기준일의 신선한 전역 macro cache (`init`과 같은 재사용)
 3. `--agent-cmd "codex exec ... {prompt} ... {output}"` — 프롬프트 파일을 읽어 `{output}`에 보고서를 쓰는 명령. 쓰인 보고서는 `harness.py validate`를 통과해야 한다
 
+모델 CLI를 쓰려면 범용 래퍼를 쓴다. 모델이 파일을 직접 쓰면 그대로 두고, 아니면 stdout의 마지막 JSON을 `{output}`에 기록한다 (내용은 수정하지 않으며 하네스가 validate한다).
+
+```bash
+python harness.py universe run --triage-only --agent-cmd \
+  "python scripts/agent_cmd.py --prompt {prompt} --output {output} -- claude -p"
+```
+
+Stage 0 잠금 필드(가격·순현금/주)는 운영자가 넣는다. 하네스는 가격을 조회·추정하지 않는다.
+
+```bash
+python harness.py universe context --template ctx.csv       # 대기 중인 ticker 목록
+# ctx.csv에 current_price, net_cash_per_share (선택: shares_diluted, market_cap_usd, currency, company_name) 기입
+python harness.py universe context ctx.csv --source "broker close 2026-09-21"
+python harness.py universe context --ticker LLY --price 1164.89 --net-cash-per-share -47.11
+```
+
+run이 있고 미동결이면 `runs/<RUN>/company_context.json`을, run이 없으면 `.harness_inputs/<RUN>/company_context.json`을 쓴다. 동결된 run은 수정하지 않는다. 수동 CI 실행용 [`.github/workflows/universe-batch.yml`](.github/workflows/universe-batch.yml)(workflow_dispatch 전용)도 있다.
+
 어느 것도 없으면 `runs/<RUN>/<AID>_prompt.md`를 쓰고 그 종목을 `BLOCKED (awaiting ...)`로 둔다. 보고서를 만들어 내지 않는다. `--user-agent`(또는 `SEC_USER_AGENT`)를 주면 Stage 0에서 EDGAR fetch도 실행한다.
 
 ### 상태, 재개, 실패 격리

@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 from . import universe as U
-from . import universe_reports, universe_runner
+from . import universe_context, universe_reports, universe_runner
 from .report_validator import validate_run_report
 from .universe_store import RunReader, Store, load_policy, sync_many, sync_ticker_from_run, utcnow
 
@@ -303,4 +303,5 @@ def register(sub):
     p = us.add_parser('snapshot', help='copy the index to universe/snapshots/'); p.add_argument('--label'); p.set_defaults(func=cmd_snapshot)
     universe_runner.register(us, load_policy(_runtime().ROOT)['statuses']['stages'])
     universe_reports.register(us)
+    universe_context.register(us)
     return top
