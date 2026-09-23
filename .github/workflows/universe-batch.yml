@@ -18,6 +18,14 @@ on:
         description: "Parallel tickers"
         required: false
         default: "2"
+      context_csv:
+        description: "Optional CSV of operator-supplied closes (universe context --template format)"
+        required: false
+        default: ""
+      agent_cmd:
+        description: "Optional model command template, e.g. python scripts/agent_cmd.py --prompt {prompt} --output {output} -- claude -p"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -42,17 +50,26 @@ jobs:
           WORKERS: ${{ inputs.workers }}
           # Stage 0 EDGAR fetch needs a contact; set the repository secret SEC_USER_AGENT ("Name email").
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+          # KRX Stage 0 (OpenDART). Never echoed; the harness strips it from every URL it records.
+          OPENDART_API_KEY: ${{ secrets.OPENDART_API_KEY }}
+          # Only needed when agent_cmd calls a hosted model.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CONTEXT_CSV: ${{ inputs.context_csv }}
+          AGENT_CMD: ${{ inputs.agent_cmd }}
         run: |
           set -euo pipefail
           mkdir -p runlogs
           exec > >(tee runlogs/universe-batch.log) 2>&1
           python harness.py selftest
           python harness.py universe import "$TICKERS_FILE" --as-of "$AS_OF"
+          if [ -n "$CONTEXT_CSV" ]; then python harness.py universe context "$CONTEXT_CSV" || true; fi
           python harness.py universe run --dry-run
+          EXTRA=()
+          if [ -n "$AGENT_CMD" ]; then EXTRA+=(--agent-cmd "$AGENT_CMD"); fi
           case "$MODE" in
-            triage-only)   python harness.py universe run --triage-only --workers "$WORKERS" ;;
-            eligible-only) python harness.py universe continue --eligible-only --workers "$WORKERS" ;;
-            full)          python harness.py universe run --workers "$WORKERS" ;;
+            triage-only)   python harness.py universe run --triage-only --workers "$WORKERS" "${EXTRA[@]}" ;;
+            eligible-only) python harness.py universe continue --eligible-only --workers "$WORKERS" "${EXTRA[@]}" ;;
+            full)          python harness.py universe run --workers "$WORKERS" "${EXTRA[@]}" ;;
             *) echo "unknown mode $MODE"; exit 2 ;;
           esac
           python harness.py universe report

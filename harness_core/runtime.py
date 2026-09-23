@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from datetime import date, datetime, timedelta, timezone
 import argparse, hashlib, json, os, re, statistics, shutil, subprocess, sys, threading
-from . import rubric, calibration, archetypes, macro_geo, planner, intake, fetch, research, plain_report, context, dilution
+from . import rubric, calibration, archetypes, macro_geo, planner, intake, fetch, research, plain_report, context, dilution, fetch_dart
 from .conditions import check_condition, number
 from .evidence import concentration_flags
 from .state import dispersion_review, narrowed_position
@@ -834,10 +834,12 @@ def financial_preprocessor_prompt(ticker):
 
 
 def cmd_fetch(args):
-    """Stage 0 acquisition: pull the filings the checklist asks for from EDGAR."""
+    """Stage 0 acquisition: pull the filings the checklist asks for from EDGAR (DART for KRX codes)."""
     t=args.ticker.upper(); run=run_dir(t)
     if not (run/'company_context.json').exists(): raise SystemExit(f'{t}: run not found; use init first')
     as_of=load_json(run/'company_context.json')['as_of_date']
+    if fetch_dart.stock_code_of(t) and not args.cik:
+        return fetch_from_dart(args,t,run,as_of)
     ua=args.user_agent or os.environ.get('SEC_USER_AGENT')
     if not ua:
         raise SystemExit('SEC fair-access requires a contact in the User-Agent. '
@@ -867,6 +869,41 @@ def cmd_fetch(args):
     dump_json(run/'sources/fetch_manifest.json',
         {'schema_version':'1.0','ticker':t,'cik':cik,'filer':filer or name,'as_of_date':as_of,
          'source':'SEC EDGAR','fetched_at_utc':datetime.now(timezone.utc).isoformat(),
+         'excluded_post_cutoff':plan_rows['excluded_post_cutoff'],
+         'shortfalls':[{k:r[k] for k in ('requirement','importance','form','shortfall')} for r in plan_rows['shortfalls']],
+         'documents':saved})
+    print(f"\nsaved {len(saved)} document(s) -> runs/{t}/sources/ (manifest: sources/fetch_manifest.json)")
+    print(f"next: python harness.py prompt {t} FP")
+
+
+def fetch_from_dart(args,t,run,as_of):
+    code=fetch_dart.stock_code_of(t)
+    key=args.dart_key or os.environ.get('OPENDART_API_KEY')
+    if not key:
+        raise SystemExit(f'{t}: KRX filings come from OpenDART; pass --dart-key or set OPENDART_API_KEY. '
+                         'The key is never written to the run.')
+    try:
+        corp,name=fetch_dart.resolve_corp_code(code,key)
+        rows=fetch_dart.list_filings(corp,as_of,key)
+    except fetch.FetchError as e:
+        raise SystemExit(f'{t}: DART unreachable — {e}\nIf this environment blocks opendart.fss.or.kr, place the '
+                         f'filings listed by `harness.py intake {t}` in runs/{t}/sources/ by hand.')
+    plan_rows=fetch_dart.plan(rows,INTAKE_POLICY,as_of)
+    print(f"{t}: DART corp_code {corp} ({name}) | as-of {as_of} | "
+          f"eligible {plan_rows['eligible_filings']} | after cutoff, skipped {plan_rows['excluded_post_cutoff']}")
+    for row in plan_rows['download']:
+        print(f"  + {row['report_base']:<24} {row['filing_date']}  {row['requirement']}")
+    for row in plan_rows['shortfalls']:
+        print(f"  ! {row['form'][:24]:<24} short by {row['shortfall']} for {row['requirement']} ({row['importance']})")
+    if args.dry_run:
+        print('\ndry run; nothing downloaded'); return
+    try:
+        saved=fetch_dart.download(plan_rows['download'],run/'sources',key)
+    except fetch.FetchError as e:
+        raise SystemExit(f'{t}: download failed — {e}')
+    dump_json(run/'sources/fetch_manifest.json',
+        {'schema_version':'1.0','ticker':t,'stock_code':code,'dart_corp_code':corp,'filer':name,'as_of_date':as_of,
+         'source':'OpenDART','fetched_at_utc':datetime.now(timezone.utc).isoformat(),
          'excluded_post_cutoff':plan_rows['excluded_post_cutoff'],
          'shortfalls':[{k:r[k] for k in ('requirement','importance','form','shortfall')} for r in plan_rows['shortfalls']],
          'documents':saved})
@@ -1135,6 +1172,7 @@ def main():
     p.add_argument('run_a'); p.add_argument('run_b'); p.add_argument('--out'); p.set_defaults(func=cmd_calibrate)
     p=sub.add_parser('fetch',help='stage 0: download the required filings from SEC EDGAR')
     p.add_argument('ticker'); p.add_argument('--cik'); p.add_argument('--user-agent')
+    p.add_argument('--dart-key',help='OpenDART API key for KRX codes (or OPENDART_API_KEY); never stored')
     p.add_argument('--dry-run',action='store_true'); p.set_defaults(func=cmd_fetch)
     p=sub.add_parser('intake',help='stage 0: required raw documents vs what the financial pack holds')
     p.add_argument('ticker'); p.set_defaults(func=cmd_intake)

@@ -62,6 +62,7 @@ class Options:
     dry_run: bool = False
     agent_cmd: str | None = None
     user_agent: str | None = None
+    dart_key: str | None = None
     provider: str | None = None
     model: str | None = None
     reasoning_effort: str | None = None
@@ -140,9 +141,9 @@ class Harness:
     def __init__(self, root, log, timeout):
         self.root, self.log, self.timeout = Path(root), log, timeout
 
-    def run(self, *args, timeout=None):
+    def run(self, *args, timeout=None, env=None):
         start = time.monotonic()
-        env = {**os.environ, 'PYTHONIOENCODING': 'utf-8'}
+        env = {**os.environ, 'PYTHONIOENCODING': 'utf-8', **(env or {})}
         try:
             done = subprocess.run([sys.executable, 'harness.py', *args], cwd=self.root, capture_output=True,
                                   text=True, encoding='utf-8', errors='replace', timeout=timeout or self.timeout,
@@ -155,8 +156,8 @@ class Harness:
         self.log.command(args, rc, time.monotonic() - start, out, err)
         return rc, out, err
 
-    def must(self, stage, *args, retryable=True, timeout=None):
-        rc, out, err = self.run(*args, timeout=timeout)
+    def must(self, stage, *args, retryable=True, timeout=None, env=None):
+        rc, out, err = self.run(*args, timeout=timeout, env=env)
         if rc != 0:
             raise StepFailed(stage, 'harness.py ' + ' '.join(args), rc, _tail(err or out), retryable,
                              f"`harness.py {' '.join(args)}` exited {rc}: {(err or out).strip().splitlines()[-1:] or ['']}"[:400])
@@ -488,17 +489,27 @@ class TickerJob:
         self.log.stage('stage0', 'PASS', step='freeze')
 
     def _fetch(self, run_id):
+        """Stage 0 retrieval. Credentials travel in the environment only, never as logged arguments."""
+        from .fetch_dart import stock_code_of
+        if stock_code_of(run_id):
+            key = self.options.dart_key or os.environ.get('OPENDART_API_KEY')
+            if not key:
+                self.log.stage('stage0', 'SKIPPED', step='fetch', reason='KRX code: no OPENDART_API_KEY')
+                return
+            self.harness.must('stage0', 'fetch', run_id, retryable=True, env={'OPENDART_API_KEY': key})
+            self.log.stage('stage0', 'PASS', step='fetch', source='OpenDART')
+            return
         ua = self.options.user_agent or os.environ.get('SEC_USER_AGENT')
         if not ua:
             self.log.stage('stage0', 'SKIPPED', step='fetch', reason='no --user-agent / SEC_USER_AGENT')
             return
-        args = ['fetch', run_id, '--user-agent', ua]
+        args = ['fetch', run_id]
         if run_id != self.ticker:
             cik = self._known_cik()
             if cik:
                 args += ['--cik', str(cik)]
-        self.harness.must('stage0', *args, retryable=True)
-        self.log.stage('stage0', 'PASS', step='fetch')
+        self.harness.must('stage0', *args, retryable=True, env={'SEC_USER_AGENT': ua})
+        self.log.stage('stage0', 'PASS', step='fetch', source='SEC EDGAR')
 
     def _known_cik(self):
         """A dated run id cannot be resolved by EDGAR; reuse the CIK recorded by the ticker's own run."""
@@ -596,8 +607,9 @@ class BatchRunner:
     def _options_record(self):
         record = dataclasses.asdict(self.options)
         record['tickers'] = list(record['tickers'])
-        if record.get('user_agent'):
-            record['user_agent'] = '(set)'
+        for secret in ('user_agent', 'dart_key'):
+            if record.get(secret):
+                record[secret] = '(set)'
         return record
 
     # ---------------------------------------------------------------- run
@@ -705,7 +717,8 @@ def _options(args, **overrides):
                    include_funds=getattr(args, 'include_funds', False),
                    tickers=tuple(overrides.pop('tickers', ()) or ()), workers=workers,
                    dry_run=getattr(args, 'dry_run', False), agent_cmd=getattr(args, 'agent_cmd', None),
-                   user_agent=getattr(args, 'user_agent', None), provider=getattr(args, 'provider', None),
+                   user_agent=getattr(args, 'user_agent', None), dart_key=getattr(args, 'dart_key', None),
+                   provider=getattr(args, 'provider', None),
                    model=getattr(args, 'model', None), reasoning_effort=getattr(args, 'reasoning_effort', None),
                    git_mode=git_mode, report=not getattr(args, 'no_report', False),
                    agent_timeout=getattr(args, 'agent_timeout', None) or runner.get('agent_timeout_seconds', 3600),
@@ -801,6 +814,7 @@ def _runner_flags(p, stage_choices):
     p.add_argument('--agent-cmd', help='command template producing one agent report: {prompt} {output} {agent} {run_id} {ticker} {as_of} {root}')
     p.add_argument('--agent-timeout', type=float)
     p.add_argument('--user-agent', help='SEC EDGAR contact for Stage 0 fetch (or SEC_USER_AGENT)')
+    p.add_argument('--dart-key', help='OpenDART key for KRX tickers (or OPENDART_API_KEY); never logged')
     p.add_argument('--provider'); p.add_argument('--model'); p.add_argument('--reasoning-effort')
     p.add_argument('--git', choices=['none', 'per-ticker', 'batch'], help='commit mode (default none; never pushes)')
     p.add_argument('--no-report', action='store_true', help='skip `report` after a ticker completes')

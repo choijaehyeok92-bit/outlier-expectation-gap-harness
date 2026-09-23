@@ -148,6 +148,8 @@ python harness.py universe context --ticker LLY --price 1164.89 --net-cash-per-s
 
 run이 있고 미동결이면 `runs/<RUN>/company_context.json`을, run이 없으면 `.harness_inputs/<RUN>/company_context.json`을 쓴다. 동결된 run은 수정하지 않는다. 수동 CI 실행용 [`.github/workflows/universe-batch.yml`](.github/workflows/universe-batch.yml)(workflow_dispatch 전용)도 있다.
 
+**한국 종목(KRX 6자리 코드)**은 Stage 0에서 SEC 대신 OpenDART로 사업·반기·분기보고서, 주주총회소집공고, 잠정실적 공시 원문을 받는다. 키는 `OPENDART_API_KEY` 환경변수(또는 `--dart-key`)로만 넘기며 manifest·로그·universe 파일에 기록하지 않는다. SEC 연락처도 `SEC_USER_AGENT`로 넘기면 로그에 남지 않는다. TXT의 `000660  # SK하이닉스`처럼 `#` 뒤 이름은 회사명으로 저장된다.
+
 어느 것도 없으면 `runs/<RUN>/<AID>_prompt.md`를 쓰고 그 종목을 `BLOCKED (awaiting ...)`로 둔다. 보고서를 만들어 내지 않는다. `--user-agent`(또는 `SEC_USER_AGENT`)를 주면 Stage 0에서 EDGAR fetch도 실행한다.
 
 ### 상태, 재개, 실패 격리

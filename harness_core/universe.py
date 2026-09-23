@@ -139,7 +139,8 @@ def parse_txt(text):
     """
     entries = []
     for number, raw in enumerate(text.splitlines(), 1):
-        line = raw.split('#', 1)[0].strip()
+        line, _, comment = raw.partition('#')
+        line, comment = line.strip(), comment.strip()
         if not line:
             continue
         parts = [p.strip() for p in re.split(r'[,;]', line) if p.strip()]
@@ -150,8 +151,8 @@ def parse_txt(text):
                 line_entries[-1].setdefault('company_name', part)   # "LLY, Eli Lilly"
                 continue
             entry = {'raw': ticker, 'line': number}
-            if name:
-                entry['company_name'] = name
+            if name or (comment and len(parts) == 1):     # `000660  # SK하이닉스` keeps the name
+                entry['company_name'] = name or comment
             line_entries.append(entry)
         entries += line_entries
     return entries

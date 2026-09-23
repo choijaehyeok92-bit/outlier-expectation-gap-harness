@@ -1,0 +1,124 @@
+# Universe as of 2026-09-22 (close). US tickers, then KRX codes with names.
+ACAD
+ADBE
+ADMA
+AEM
+AGI
+AGYS
+ALNY
+ANET
+AOS
+APH
+APP
+APPF
+ARGX
+ARM
+ARQT
+ASND
+ATAT
+AUPH
+AVGO
+AWI
+AXON
+AYI
+B
+BKNG
+BLBD
+BSX
+BWA
+BWAY
+CDNS
+CGAU
+CMG
+COP
+CRDO
+CRON
+CROX
+CVSA
+CW
+DASH
+DAVE
+DECK
+DFIN
+DOCU
+DOX
+DRD
+DUOL
+DXCM
+EAT
+EBAY
+ENS
+EOG
+ERO
+EVER
+EXLS
+FDS
+FELE
+FHI
+FIX
+FLYW
+FNV
+FSLR
+FSS
+G
+GFI
+GLBE
+GMED
+GNTX
+GOOGL
+GRND
+GTLB
+HALO
+HEI
+HEI.A
+HMY
+HRB
+HRMY
+HSY
+HUBS
+IA
+IAG
+INOD
+INTU
+INVA
+IOT
+IT
+KGC
+KNSA
+LAUR
+LIF
+LII
+LLY
+MAS
+MCO
+META
+MNDY
+MPC
+
+000660  # SK하이닉스
+003230  # 삼양식품
+005930  # 삼성전자
+018290  # 브이티
+031980  # PSK홀딩스
+039200  # 오스코텍
+042700  # 한미반도체
+045340  # 토탈소프트뱅크
+062040  # 산일전기
+067160  # SOOP
+071970  # HD현대마린엔진
+114840  # 아이패밀리에스씨
+145020  # 휴젤
+196170  # 알테오젠
+204620  # 글로벌텍스프리
+207940  # 삼성바이오로직스
+213420  # 덕산네오룩스
+214150  # 클래시스
+259960  # 크래프톤
+263750  # 펄어비스
+278470  # APR
+298830  # 슈어소프트테크
+300080  # 플리토
+418470  # kt밀리의서재
+443060  # HD현대마린솔루션
+451250  # BBIA
+461300  # 아이스크림미디어
