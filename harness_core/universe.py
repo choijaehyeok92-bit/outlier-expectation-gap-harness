@@ -524,6 +524,63 @@ def apply_sync(row, summary, state, now):
     return row
 
 
+def stage_index(stage, stages):
+    return stages.index(stage) if stage in stages else len(stages)
+
+
+def determine_next_universe_action(art, inspection, statuses, stop_after=None, lead_agents=()):
+    """What the batch runner does next for one ticker. Pure.
+
+    The planner stays authoritative: agents come only from `inspection['plan']`.
+    This function adds the lifecycle around it (init, Stage 0, finalization,
+    blocks and the operator's stop boundary). `lead_agents` only orders work
+    inside one planner step: a lead agent that the planner already requests runs
+    first, then the planner is consulted again.
+
+    kinds: init | stage0 | agents | finalize | pause | complete | blocked
+    """
+    stages = statuses['stages']
+    stage_map = statuses['planner_stage_map']
+    lead = statuses['triage_lead_stage']['agent']
+    if not art.get('exists'):
+        return {'kind': 'init', 'stage': 'stage0'}
+    state = derive_run_state(art, inspection, stage_map, lead)
+    if state['run_status'] == 'COMPLETE':
+        return {'kind': 'complete', 'stage': 'complete', 'early_exit': bool((art.get('final') or {}).get('early_exit'))}
+    if state['run_status'] == 'BLOCKED':
+        return {'kind': 'blocked', 'stage': state['stage'], 'reason': state['blocked_reason']}
+    if state['needs_aggregate']:
+        return {'kind': 'finalize', 'stage': state['stage']}
+    if not (art.get('freeze') or {}).get('frozen'):
+        return {'kind': 'stage0', 'stage': 'stage0'}
+    step = (inspection or {}).get('plan') or {}
+    if step.get('execution_control') == 'blocked':
+        return {'kind': 'blocked', 'stage': 'stage0',
+                'reason': 'Stage 0 incomplete after freeze: ' + ', '.join(step.get('blocking_gaps') or [])}
+    if step.get('stage') in ('early_exit', 'complete'):
+        return {'kind': 'finalize', 'stage': 'complete', 'early_exit': step.get('stage') == 'early_exit'}
+    ustage = planner_stage(inspection, stage_map, lead) or 'stage0'
+    if stop_after and stage_index(ustage, stages) > stage_index(stop_after, stages):
+        return {'kind': 'pause', 'stage': ustage, 'reason': f'stop boundary {stop_after} reached; next is {ustage}'}
+    agents = list((step.get('agents') or {}).values())
+    if not agents:
+        return {'kind': 'blocked', 'stage': ustage, 'reason': f"planner returned stage {step.get('stage')} with no agents"}
+    first = [a for a in agents if a in lead_agents]
+    batch = first if first and len(agents) > len(first) else agents
+    return {'kind': 'agents', 'stage': ustage, 'planner_stage': step.get('stage'), 'agents': batch,
+            'requested': agents}
+
+
+def eligible_for_full_run(row, inspection):
+    """`--eligible-only`: triage finished and at least one archetype still reachable."""
+    if row.get('run_status') == 'COMPLETE':
+        return False
+    if row.get('stage') in ('domain_analysis', 'macro', 'evidence_and_red_team', 'ic'):
+        return True
+    return bool(inspection and inspection.get('triage_complete') and inspection.get('reachable')
+                and not inspection.get('early_exit'))
+
+
 # ---------------------------------------------------------------- presentation
 
 def display_status(row):

@@ -2,7 +2,7 @@
 from __future__ import annotations
 from pathlib import Path
 from datetime import date, datetime, timedelta, timezone
-import argparse, hashlib, json, os, re, statistics, shutil, subprocess, sys
+import argparse, hashlib, json, os, re, statistics, shutil, subprocess, sys, threading
 from . import rubric, calibration, archetypes, macro_geo, planner, intake, fetch, research, plain_report, context, dilution
 from .conditions import check_condition, number
 from .evidence import concentration_flags
@@ -71,7 +71,12 @@ if ARCHETYPES['fit_policy']['method']=='weighted_fit_axes':
 
 
 def load_json(p:Path): return json.loads(p.read_text(encoding='utf-8'))
-def dump_json(p:Path,obj): p.parent.mkdir(parents=True,exist_ok=True); p.write_text(json.dumps(obj,ensure_ascii=False,indent=2),encoding='utf-8')
+def dump_json(p:Path,obj):
+    # Same bytes as before, written atomically so an interrupted batch never leaves a partial verdict.
+    p.parent.mkdir(parents=True,exist_ok=True)
+    tmp=p.with_name(f'.{p.name}.{os.getpid()}.{threading.get_ident()}.tmp')
+    tmp.write_text(json.dumps(obj,ensure_ascii=False,indent=2),encoding='utf-8')
+    os.replace(tmp,p)
 def run_dir(ticker):
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*', ticker): raise ValueError('Invalid run identifier')
     return ROOT/'runs'/ticker.upper()
@@ -199,6 +204,15 @@ def enrich_archetype_signals(signals,ctx):
     if m is not None: out['market_cap_usd']=round(m,2)
     return out
 
+def cached_macro_report(agent,ticker,as_of,cached):
+    """MO report built only from fresh cached global components; transmission is recomputed per run."""
+    rpt=load_json(ROOT/'templates/agent_report.json')
+    rpt.update(agent_id=agent['agent_id'],ticker=ticker,as_of_date=as_of,domain=agent['domain'],role=agent['role'],
+               analysis_status='complete',global_components=cached,cache_scope='global_components_only')
+    rpt['thesis']='Reused fresh global components; company transmission is recomputed separately.'
+    rpt['evidence']=[row['evidence'][0] for row in cached.values()]
+    return rpt
+
 def cmd_init(args):
     ticker=args.ticker.upper(); run=run_dir(ticker)
     if run.exists(): raise SystemExit('run already exists; init never overwrites existing artifacts')
@@ -217,11 +231,7 @@ def cmd_init(args):
     cached=macro_cache_source(args.as_of)
     for a in MANIFEST:
         if a['domain']==MACRO_DOMAIN and len(cached)==len(OVERLAY_POLICY['component_ttl_hours']):
-            rpt=load_json(ROOT/'templates/agent_report.json')
-            rpt.update(agent_id=a['agent_id'],ticker=ticker,as_of_date=args.as_of,domain=a['domain'],role=a['role'],
-                       analysis_status='complete',global_components=cached,cache_scope='global_components_only')
-            rpt['thesis']='Reused fresh global components; company transmission is recomputed separately.'
-            rpt['evidence']=[row['evidence'][0] for row in cached.values()]
+            rpt=cached_macro_report(a,ticker,args.as_of,cached)
         else:
             rpt=load_json(ROOT/'templates/agent_report.json')
             rpt.update(agent_id=a['agent_id'],ticker=ticker,as_of_date=args.as_of,domain=a['domain'],role=a['role'])

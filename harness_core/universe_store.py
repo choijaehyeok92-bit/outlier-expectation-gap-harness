@@ -320,10 +320,11 @@ def needs_inspection(art):
     return not (ic_done and final.get('ic_verdict'))
 
 
-def sync_ticker_from_run(store, reader, ticker, now=None, inspect=True):
+def sync_ticker_from_run(store, reader, ticker, now=None, inspect=True, runner_owned=False):
     """Refresh one row from its run artifacts; append a history record when tracked fields change.
 
-    Returns (row, art, inspection). Never writes inside runs/.
+    Returns (row, art, inspection). Never writes inside runs/. `runner_owned` is set by
+    the runner that holds this ticker's lock and wants the real derived status.
     """
     now = now or utcnow()
     current = store.load()['tickers'].get(ticker)
@@ -350,7 +351,8 @@ def sync_ticker_from_run(store, reader, ticker, now=None, inspect=True):
         # (whose row was reset on import) still shows what moved since the previous date.
         recorded = [e for e in store.history(ticker) if e.get('snapshot') and not e.get('event')]
         before = recorded[-1]['snapshot'] if recorded else None
-        if store.lock_held(ticker) and row.get('run_status') == 'RUNNING' and state['run_status'] != 'COMPLETE':
+        if (not runner_owned and store.lock_held(ticker) and row.get('run_status') == 'RUNNING'
+                and state['run_status'] != 'COMPLETE'):
             state = {**state, 'run_status': 'RUNNING'}
         U.apply_sync(row, summary, state, now)
         row['run_id'] = run_id

@@ -6,7 +6,8 @@ import sys
 from pathlib import Path
 
 from . import universe as U
-from .universe_store import RunReader, Store, sync_ticker_from_run, utcnow
+from . import universe_runner
+from .universe_store import RunReader, Store, load_policy, sync_ticker_from_run, utcnow
 
 
 def _runtime():
@@ -302,4 +303,5 @@ def register(sub):
     p = us.add_parser('history', help='decision-field changes across snapshots'); p.add_argument('ticker')
     p.add_argument('--json', action='store_true'); p.set_defaults(func=cmd_history)
     p = us.add_parser('snapshot', help='copy the index to universe/snapshots/'); p.add_argument('--label'); p.set_defaults(func=cmd_snapshot)
+    universe_runner.register(us, load_policy(_runtime().ROOT)['statuses']['stages'])
     return top

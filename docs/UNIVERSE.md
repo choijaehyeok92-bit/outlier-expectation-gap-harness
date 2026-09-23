@@ -114,6 +114,24 @@ Failure isolation: each ticker runs under its own lock; an exception is recorded
 `retry` re-queues failed tickers; completed stages are never re-run because the planner only asks
 for incomplete agents.
 
+Executors, in order: staged `.harness_inputs/<RUN>/reports/<AID>.json` (identity-checked: ticker and
+as-of must match the run; IC also brings `one_page_investment_record.md`), the global macro cache for
+MO (the same reuse `init` performs), then `--agent-cmd` if given. The agent command is a template
+with `{prompt} {output} {agent} {run_id} {ticker} {as_of} {root}`; it must write `{output}`, which the
+runner then validates with `harness.py validate`. After MO validates, `cache-macro` publishes the
+global components under a lock; tickers that waited only for MO in a parallel batch get one more
+pass once the cache is complete.
+
+Other guards: a repeated planner request with no change in reports is `BLOCKED (no progress)` rather
+than looped; a stale freeze is `BLOCKED` and never re-frozen; ETF/fund rows are skipped unless
+`--include-funds`. `--dry-run` writes nothing and runs nothing.
+
+Logs: `runlogs/universe/<UTC date>/universe-run.json` (one entry per batch) and `<TICKER>.json`
+(structured stages per invocation) plus `<TICKER>.log` (every command with its output).
+Git: `--git none` (default, matching local use), `per-ticker` (one commit per processed ticker) or
+`batch` (one `universe: complete batch ...` commit). Only `runs/<RUN>` of processed tickers, `universe/`,
+`runlogs/universe/`, `reports/universe/` and `runs/_macro/` are added; the runner never pushes.
+
 ## 6. Report tiers
 
 `EARLY_EXIT_NON_FIT` → no deep report · `REJECT` → summary · `WATCH` (and hold/trim/exit review states)
@@ -134,6 +152,6 @@ a universe score that differs from the verdict; a deep report whose state/positi
 |---|---|---|
 | 1 | design, data model | this document, `config/universe.json`, `harness_core/universe.py` |
 | 2 | import / export / status / sync / validate | `universe_store.py`, `universe_cli.py`, `tests/test_universe.py` |
-| 3 | batch runner, early exit, resume/retry, dry run | pending |
+| 3 | batch runner, early exit, resume/retry, dry run | `universe_runner.py`, `tests/test_universe_runner.py` |
 | 4 | Report Agent, deep report, report validation | pending |
 | 5 | universe dashboards, history CLI, parallel workers, docs | pending |
