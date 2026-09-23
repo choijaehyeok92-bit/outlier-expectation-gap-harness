@@ -8,7 +8,7 @@ from pathlib import Path
 from . import universe as U
 from . import universe_reports, universe_runner
 from .report_validator import validate_run_report
-from .universe_store import RunReader, Store, load_policy, sync_ticker_from_run, utcnow
+from .universe_store import RunReader, Store, load_policy, sync_many, sync_ticker_from_run, utcnow
 
 
 def _runtime():
@@ -124,13 +124,7 @@ def cmd_reset(args):
 # ------------------------------------------------------------------ sync / show / status / export
 
 def refresh(store, reader, tickers=None):
-    universe = store.load()
-    names = tickers or list(universe['tickers'])
-    rows = []
-    for ticker in names:
-        row, _, _ = sync_ticker_from_run(store, reader, ticker)
-        rows.append(row)
-    return rows
+    return sync_many(store, reader, tickers)
 
 
 def cmd_sync(args):
@@ -221,10 +215,11 @@ def cmd_export(args):
 def cmd_validate(args):
     store, reader = _store()
     h = _runtime()
-    tickers = _tickers(store, args.tickers) if args.tickers else list(store.load()['tickers'])
+    rows = store.load()['tickers']
+    tickers = _tickers(store, args.tickers) if args.tickers else list(rows)
     findings = []
     for ticker in tickers:
-        row = store.load()['tickers'][ticker]
+        row = rows[ticker]
         art = reader.artifacts(row.get('run_id') or ticker)
         findings += U.validate_row(row, art, h.STATE_POLICY)
         if art['exists']:

@@ -15,7 +15,7 @@ from pathlib import Path
 
 from . import universe as U
 from .report_builder import write_deep_report
-from .universe_store import RunReader, Store, atomic_write_text, sync_ticker_from_run, utcnow
+from .universe_store import RunReader, Store, atomic_write_text, sync_many, utcnow
 
 
 def _runtime():
@@ -25,19 +25,20 @@ def _runtime():
 
 def generate_reports(store, reader, tickers=None, existing_runs=False, force=False):
     h = reader.h
-    rows = Store.ordered(store.load())
-    results = []
-    for row in rows:
-        ticker = row['ticker']
-        if tickers and ticker not in tickers:
+    wanted = [r['ticker'] for r in Store.ordered(store.load()) if not tickers or r['ticker'] in tickers]
+    rows = {r['ticker']: r for r in sync_many(store, reader, wanted)}
+    results, touched, failed = [], [], []
+    for ticker in wanted:
+        row = rows.get(ticker)
+        if row is None:
             continue
-        row, art, _ = sync_ticker_from_run(store, reader, ticker)
         run_id = row.get('run_id') or ticker
         if row.get('run_status') != 'COMPLETE':
             results.append({'ticker': ticker, 'status': 'SKIPPED', 'reason': f"run_status {row.get('run_status')}"})
             continue
-        current = art['freeze'].get('config_current') and art['freeze'].get('inputs_current')
-        mode = 'fresh' if current and not existing_runs else 'existing-run'
+        freeze = reader.artifacts(run_id)['freeze']
+        mode = 'fresh' if freeze.get('config_current') and freeze.get('inputs_current') and not existing_runs \
+            else 'existing-run'
         try:
             if mode == 'fresh':
                 with contextlib.redirect_stdout(io.StringIO()):
@@ -46,10 +47,13 @@ def generate_reports(store, reader, tickers=None, existing_runs=False, force=Fal
             result.update(ticker=ticker, mode=mode)
         except (SystemExit, ValueError) as error:
             result = {'ticker': ticker, 'run_id': run_id, 'status': 'ERROR', 'mode': mode, 'reason': str(error)}
+            failed.append(ticker)
         results.append(result)
-        sync_ticker_from_run(store, reader, ticker)
-        if result['status'] == 'ERROR':
-            store.update_row(ticker, lambda r: r.update(report_status='ERROR'))
+        touched.append(ticker)
+    if touched:
+        sync_many(store, reader, touched)
+    for ticker in failed:
+        store.update_row(ticker, lambda r: r.update(report_status='ERROR'))
     return results
 
 
@@ -180,8 +184,7 @@ def cmd_dashboard(args):
     h = _runtime()
     store, reader = Store(h.ROOT), RunReader(h)
     if not args.no_sync:
-        for ticker in list(store.load()['tickers']):
-            sync_ticker_from_run(store, reader, ticker)
+        sync_many(store, reader)
     for path in write_dashboards(store):
         print(path)
 

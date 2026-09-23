@@ -338,6 +338,47 @@ def needs_inspection(art):
     return not (ic_done and final.get('ic_verdict'))
 
 
+def _prepare(reader, row, ticker, inspect):
+    """Read-only work for one row, done outside the index lock."""
+    run_id = row.get('run_id') or ticker
+    art = reader.artifacts(run_id)
+    inspection = reader.inspect(run_id) if inspect and needs_inspection(art) else None
+    return run_id, art, inspection
+
+
+def _apply(store, reader, universe, ticker, run_id, art, inspection, now, runner_owned):
+    row = universe['tickers'].get(ticker)
+    if row is None:
+        raise KeyError(ticker)
+    if (row.get('run_id') or ticker) != run_id:
+        raise RuntimeError(f'{ticker}: run id changed during sync ({run_id} -> {row.get("run_id")})')
+    statuses = store.policy['statuses']
+    summary = U.summarize_run(art, domain_agent_map(reader.h), reader.h.STATE_POLICY)
+    state = U.derive_run_state(art, inspection, statuses['planner_stage_map'],
+                               statuses['triage_lead_stage']['agent'])
+    if inspection and inspection.get('reachable') is not None and not summary.get('verdict_source'):
+        summary['reachable_archetypes'] = inspection['reachable']
+    fields = store.policy['history_fields']
+    # Changes are measured against the last recorded snapshot, so a new as-of run
+    # (whose row was reset on import) still shows what moved since the previous date.
+    recorded = [e for e in store.history(ticker) if e.get('snapshot') and not e.get('event')] \
+        if summary.get('verdict_source') else []
+    before = recorded[-1]['snapshot'] if recorded else None
+    if (not runner_owned and row.get('run_status') == 'RUNNING' and state['run_status'] != 'COMPLETE'
+            and store.lock_held(ticker)):
+        state = {**state, 'run_status': 'RUNNING'}
+    U.apply_sync(row, summary, state, now)
+    row['run_id'] = run_id
+    after = {k: row.get(k) for k in fields}
+    changes = U.history_changes(before, after, fields)
+    if summary.get('verdict_source') and changes:
+        store.append_history(ticker, {'ticker': ticker, 'recorded_at': now, 'run_id': run_id,
+                                      'verdict_source': summary['verdict_source'],
+                                      'source_hashes': summary['source_hashes'],
+                                      'snapshot': after, 'changes': changes})
+    return json.loads(json.dumps(row))
+
+
 def sync_ticker_from_run(store, reader, ticker, now=None, inspect=True, runner_owned=False):
     """Refresh one row from its run artifacts; append a history record when tracked fields change.
 
@@ -348,37 +389,26 @@ def sync_ticker_from_run(store, reader, ticker, now=None, inspect=True, runner_o
     current = store.load()['tickers'].get(ticker)
     if current is None:
         raise KeyError(ticker)
-    run_id = current.get('run_id') or ticker
     # Reading and planning happen outside the index lock so parallel workers do not serialize on it.
-    art = reader.artifacts(run_id)
-    inspection = reader.inspect(run_id) if inspect and needs_inspection(art) else None
+    run_id, art, inspection = _prepare(reader, current, ticker, inspect)
     with store.transaction() as universe:
-        row = universe['tickers'].get(ticker)
-        if row is None:
-            raise KeyError(ticker)
-        if (row.get('run_id') or ticker) != run_id:
-            raise RuntimeError(f'{ticker}: run id changed during sync ({run_id} -> {row.get("run_id")})')
-        statuses = store.policy['statuses']
-        summary = U.summarize_run(art, domain_agent_map(reader.h), reader.h.STATE_POLICY)
-        state = U.derive_run_state(art, inspection, statuses['planner_stage_map'],
-                                   statuses['triage_lead_stage']['agent'])
-        if inspection and inspection.get('reachable') is not None and not summary.get('verdict_source'):
-            summary['reachable_archetypes'] = inspection['reachable']
-        fields = store.policy['history_fields']
-        # Changes are measured against the last recorded snapshot, so a new as-of run
-        # (whose row was reset on import) still shows what moved since the previous date.
-        recorded = [e for e in store.history(ticker) if e.get('snapshot') and not e.get('event')]
-        before = recorded[-1]['snapshot'] if recorded else None
-        if (not runner_owned and store.lock_held(ticker) and row.get('run_status') == 'RUNNING'
-                and state['run_status'] != 'COMPLETE'):
-            state = {**state, 'run_status': 'RUNNING'}
-        U.apply_sync(row, summary, state, now)
-        row['run_id'] = run_id
-        after = {k: row.get(k) for k in fields}
-        changes = U.history_changes(before, after, fields)
-        if summary.get('verdict_source') and changes:
-            store.append_history(ticker, {'ticker': ticker, 'recorded_at': now, 'run_id': run_id,
-                                          'verdict_source': summary['verdict_source'],
-                                          'source_hashes': summary['source_hashes'],
-                                          'snapshot': after, 'changes': changes})
-        return json.loads(json.dumps(row)), art, inspection
+        row = _apply(store, reader, universe, ticker, run_id, art, inspection, now, runner_owned)
+    return row, art, inspection
+
+
+def sync_many(store, reader, tickers=None, now=None, inspect=True):
+    """Refresh many rows with one index read and one write. Returns the refreshed rows in order."""
+    now = now or utcnow()
+    snapshot = store.load()['tickers']
+    names = [t for t in (tickers or list(snapshot)) if t in snapshot]
+    prepared = {t: _prepare(reader, snapshot[t], t, inspect) for t in names}
+    rows = []
+    with store.transaction() as universe:
+        for ticker in names:
+            if ticker not in universe['tickers']:
+                continue      # removed concurrently
+            run_id, art, inspection = prepared[ticker]
+            if (universe['tickers'][ticker].get('run_id') or ticker) != run_id:
+                continue      # re-imported for another as-of meanwhile; the next sync picks it up
+            rows.append(_apply(store, reader, universe, ticker, run_id, art, inspection, now, False))
+    return rows
