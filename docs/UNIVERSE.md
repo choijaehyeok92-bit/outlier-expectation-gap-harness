@@ -132,10 +132,33 @@ Git: `--git none` (default, matching local use), `per-ticker` (one commit per pr
 `batch` (one `universe: complete batch ...` commit). Only `runs/<RUN>` of processed tickers, `universe/`,
 `runlogs/universe/`, `reports/universe/` and `runs/_macro/` are added; the runner never pushes.
 
-## 6. Report tiers
+## 6. Report Agent (RP) and report tiers
 
-`EARLY_EXIT_NON_FIT` → no deep report · `REJECT` → summary · `WATCH` (and hold/trim/exit review states)
-→ concise · `STARTER` and above → full. `--force` overrides the tier, never the content.
+`agents/16_report/AGENTS.md` is the contract; `harness_core/report_builder.py` builds the deterministic
+report and `harness_core/report_validator.py` checks it. RP is not a planner agent and never writes
+into `runs/<RUN>/reports/`.
+
+* `report T` — unchanged legacy step (fresh verdict + `easy_report.md`, refuses a stale freeze), then
+  the deep report for the tier. `report T --existing-run` — deep report from recorded artifacts only
+  (no fetch, no agent, no recomputation; works on runs frozen under an older harness and says so).
+  `report T --force` — full report regardless of tier. `report validate T`. `report T --prompt` —
+  RP prompt for an optional model-written narrative.
+* Output: `runs/<RUN>/deep_report.md` (22 sections, 00–21) and `deep_report.json` (authority block,
+  source paths + sha256, freeze status, derived ratios, sections). The markdown embeds the same
+  authority block as an HTML comment so edits to either file are detectable.
+* Every decision field comes from `final_verdict.json` via one function (`authority_from_final`)
+  shared with the validator; every block names its source (`runs/LLY/reports/SL.json#thesis`).
+  The only arithmetic is Bull/current and Bear/current, labelled as ratios of two recorded numbers.
+  A report that disagrees with the verdict is never written.
+* Tiers: `EARLY_EXIT_NON_FIT` → none · `REJECT` → summary (00, 01, 16, 21) · `WATCH` and review states
+  → concise (00, 01, 11–13, 15, 16, 18–21) · `STARTER` and above → full. A run whose IC is not complete
+  gets none. `--force` overrides the tier, never the content.
+* Optional narrative (`deep_report_narrative.json`, written by a model from the RP prompt) is merged
+  only if it cites recorded artifacts of this run, uses no number absent from them (years and small
+  integers excepted), carries no decision keys and none of the forbidden phrases (target price,
+  Top Pick, strong buy, recommended position ...). Otherwise it is rejected and the reasons recorded.
+* `universe report` generates reports for COMPLETE rows (fresh mode when the freeze is current,
+  recorded-artifact mode otherwise or with `--existing-runs`) and updates `report_status/report_tier`.
 
 ## 7. Invariants (`universe validate`, `report validate`)
 
@@ -153,5 +176,5 @@ a universe score that differs from the verdict; a deep report whose state/positi
 | 1 | design, data model | this document, `config/universe.json`, `harness_core/universe.py` |
 | 2 | import / export / status / sync / validate | `universe_store.py`, `universe_cli.py`, `tests/test_universe.py` |
 | 3 | batch runner, early exit, resume/retry, dry run | `universe_runner.py`, `tests/test_universe_runner.py` |
-| 4 | Report Agent, deep report, report validation | pending |
+| 4 | Report Agent, deep report, report validation | `agents/16_report/AGENTS.md`, `report_builder.py`, `report_validator.py`, `universe_reports.py`, `tests/test_report.py` |
 | 5 | universe dashboards, history CLI, parallel workers, docs | pending |

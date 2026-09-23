@@ -11,26 +11,160 @@
   "import": {
     "default_source": "stockanalysis_screener",
     "screenshot_source": "stockanalysis_screenshot",
-    "ticker_columns": ["ticker", "symbol", "code", "stock", "티커", "종목코드"],
-    "screen_columns": ["screen", "screen_name", "screener", "screens", "list", "스크린"],
-    "name_columns": ["company_name", "company name", "company", "name", "종목명", "회사명"],
-    "type_columns": ["security_type", "type", "asset_type", "asset type", "quote_type", "instrument"],
-    "exchange_columns": ["exchange", "market", "거래소"],
+    "ticker_columns": [
+      "ticker",
+      "symbol",
+      "code",
+      "stock",
+      "티커",
+      "종목코드"
+    ],
+    "screen_columns": [
+      "screen",
+      "screen_name",
+      "screener",
+      "screens",
+      "list",
+      "스크린"
+    ],
+    "name_columns": [
+      "company_name",
+      "company name",
+      "company",
+      "name",
+      "종목명",
+      "회사명"
+    ],
+    "type_columns": [
+      "security_type",
+      "type",
+      "asset_type",
+      "asset type",
+      "quote_type",
+      "instrument"
+    ],
+    "exchange_columns": [
+      "exchange",
+      "market",
+      "거래소"
+    ],
     "ticker_patterns": [
       "^[A-Z][A-Z0-9]{0,5}(?:\\.[A-Z0-9]{1,3})?$",
       "^[0-9]{6}(?:\\.(?:KS|KQ))?$",
       "^[0-9]{4,5}\\.[A-Z]{1,3}$"
     ],
-    "exchange_prefixes": ["NASDAQ", "NYSE", "NYSEARCA", "NYSEAMERICAN", "AMEX", "ARCA", "BATS", "OTC", "OTCMKTS", "KRX", "KOSPI", "KOSDAQ", "TSX", "LSE", "TSE", "HKEX"],
-    "fund_type_values": ["etf", "etn", "fund", "mutual fund", "mutualfund", "closed-end fund", "cef", "index"],
+    "exchange_prefixes": [
+      "NASDAQ",
+      "NYSE",
+      "NYSEARCA",
+      "NYSEAMERICAN",
+      "AMEX",
+      "ARCA",
+      "BATS",
+      "OTC",
+      "OTCMKTS",
+      "KRX",
+      "KOSPI",
+      "KOSDAQ",
+      "TSX",
+      "LSE",
+      "TSE",
+      "HKEX"
+    ],
+    "fund_type_values": [
+      "etf",
+      "etn",
+      "fund",
+      "mutual fund",
+      "mutualfund",
+      "closed-end fund",
+      "cef",
+      "index"
+    ],
     "fund_name_pattern": "\\b(ETFS?|ETNS?|FUNDS?|ISHARES|SPDR|PROSHARES|DIREXION|VANECK|WISDOMTREE)\\b",
-    "known_funds": ["SPY", "VOO", "IVV", "VTI", "QQQ", "QQQM", "DIA", "IWM", "VEA", "VWO", "EFA", "EEM", "AGG", "BND", "TLT", "IEF", "SHY", "LQD", "HYG", "GLD", "SLV", "USO", "ARKK", "ARKG", "ARKW", "SCHD", "VIG", "VYM", "JEPI", "JEPQ", "XLK", "XLF", "XLE", "XLV", "XLY", "XLP", "XLI", "XLU", "XLB", "XLRE", "XLC", "SMH", "SOXX", "SOXL", "TQQQ", "SQQQ", "SPXL", "UPRO", "VGT", "VNQ", "IBIT", "FBTC", "KWEB", "FXI", "EWJ", "EWY", "INDA", "MCHI"],
+    "known_funds": [
+      "SPY",
+      "VOO",
+      "IVV",
+      "VTI",
+      "QQQ",
+      "QQQM",
+      "DIA",
+      "IWM",
+      "VEA",
+      "VWO",
+      "EFA",
+      "EEM",
+      "AGG",
+      "BND",
+      "TLT",
+      "IEF",
+      "SHY",
+      "LQD",
+      "HYG",
+      "GLD",
+      "SLV",
+      "USO",
+      "ARKK",
+      "ARKG",
+      "ARKW",
+      "SCHD",
+      "VIG",
+      "VYM",
+      "JEPI",
+      "JEPQ",
+      "XLK",
+      "XLF",
+      "XLE",
+      "XLV",
+      "XLY",
+      "XLP",
+      "XLI",
+      "XLU",
+      "XLB",
+      "XLRE",
+      "XLC",
+      "SMH",
+      "SOXX",
+      "SOXL",
+      "TQQQ",
+      "SQQQ",
+      "SPXL",
+      "UPRO",
+      "VGT",
+      "VNQ",
+      "IBIT",
+      "FBTC",
+      "KWEB",
+      "FXI",
+      "EWJ",
+      "EWY",
+      "INDA",
+      "MCHI"
+    ],
     "note": "Screen names are the investor's own screener labels. They are provenance only and are never used as an archetype, a score or a filter inside the harness."
   },
   "statuses": {
-    "run_status": ["QUEUED", "RUNNING", "FAILED", "BLOCKED", "COMPLETE"],
-    "display_only": {"EARLY_EXIT": "run_status=COMPLETE with early_exit=true; shown as EARLY_EXIT in dashboards and CSV"},
-    "stages": ["stage0", "ev", "triage", "domain_analysis", "macro", "evidence_and_red_team", "ic", "complete"],
+    "run_status": [
+      "QUEUED",
+      "RUNNING",
+      "FAILED",
+      "BLOCKED",
+      "COMPLETE"
+    ],
+    "display_only": {
+      "EARLY_EXIT": "run_status=COMPLETE with early_exit=true; shown as EARLY_EXIT in dashboards and CSV"
+    },
+    "stages": [
+      "stage0",
+      "ev",
+      "triage",
+      "domain_analysis",
+      "macro",
+      "evidence_and_red_team",
+      "ic",
+      "complete"
+    ],
     "planner_stage_map": {
       "intake": "stage0",
       "triage": "triage",
@@ -42,21 +176,44 @@
       "early_exit": "complete",
       "complete": "complete"
     },
-    "triage_lead_stage": {"agent": "EV", "stage": "ev", "note": "A triage step that still needs EV is reported as stage `ev`; the planner still decides which agents run."}
+    "triage_lead_stage": {
+      "agent": "EV",
+      "stage": "ev",
+      "note": "A triage step that still needs EV is reported as stage `ev`; the planner still decides which agents run."
+    }
   },
   "runner": {
     "default_workers": 1,
     "max_workers": 8,
     "default_git_mode": "none",
-    "git_modes": ["none", "per-ticker", "batch"],
+    "git_modes": [
+      "none",
+      "per-ticker",
+      "batch"
+    ],
     "agent_timeout_seconds": 3600,
     "command_timeout_seconds": 900,
     "lock_stale_seconds": 21600,
     "max_cycles_per_ticker": 40,
-    "lead_agents": ["EV"],
+    "lead_agents": [
+      "EV"
+    ],
     "lead_agents_note": "Agents executed alone ahead of the rest of a planner step, followed by aggregate/digest/plan, so a failed EV stops a ticker before AS/DI/FS are spent. The planner still decides which agents are due; this only orders work inside one planner step."
   },
-  "history_fields": ["as_of_date", "run_id", "score", "score_ex_valuation", "archetype", "archetype_fit", "price_to_base", "hard_veto_status", "mechanical_pre_ic_state", "ic_state", "position_range", "early_exit"],
+  "history_fields": [
+    "as_of_date",
+    "run_id",
+    "score",
+    "score_ex_valuation",
+    "archetype",
+    "archetype_fit",
+    "price_to_base",
+    "hard_veto_status",
+    "mechanical_pre_ic_state",
+    "ic_state",
+    "position_range",
+    "early_exit"
+  ],
   "report_policy": {
     "note": "Which completed runs get which report. The Report Agent explains a final verdict; it never makes one.",
     "tiers": {
@@ -74,6 +231,88 @@
     },
     "default_tier": "none",
     "requires_ic_complete": true,
-    "forced_tier": "full"
+    "forced_tier": "full",
+    "tier_sections": {
+      "full": [
+        "00",
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21"
+      ],
+      "concise": [
+        "00",
+        "01",
+        "11",
+        "12",
+        "13",
+        "15",
+        "16",
+        "18",
+        "19",
+        "20",
+        "21"
+      ],
+      "summary": [
+        "00",
+        "01",
+        "16",
+        "21"
+      ]
+    },
+    "evidence_per_domain": {
+      "full": 4,
+      "concise": 2,
+      "summary": 0
+    },
+    "narrative": {
+      "file": "deep_report_narrative.json",
+      "max_chars_per_section": 1500,
+      "allowed_top_level_keys": [
+        "ticker",
+        "run_id",
+        "as_of_date",
+        "sections",
+        "notes"
+      ],
+      "forbidden_terms": [
+        "목표주가",
+        "목표 주가",
+        "target price",
+        "price target",
+        "top pick",
+        "best stock",
+        "강력 매수",
+        "strong buy",
+        "매수 추천",
+        "buy recommendation",
+        "추천 비중",
+        "recommended position",
+        "recommended allocation"
+      ],
+      "number_tolerance_relative": 0.005,
+      "free_integers_up_to": 10,
+      "free_year_range": [
+        1990,
+        2100
+      ]
+    }
   }
 }

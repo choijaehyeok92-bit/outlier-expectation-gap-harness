@@ -51,7 +51,7 @@ SYNCED_FIELDS = ('score', 'score_ex_valuation', 'coverage_weight', 'classificati
                  'mechanical_pre_ic_state', 'ic_state', 'ic_complete', 'position_range', 'position_range_source',
                  'position_range_pre_ic', 'macro_pacing', 'price_to_base', 'current_price', 'valuation',
                  'early_exit', 'review_only', 'reconstructed', 'decision_policy_version', 'verdict_source',
-                 'source_files', 'source_hashes')
+                 'source_files', 'source_hashes', 'report_status', 'report_tier')
 
 
 class ImportError_(ValueError):
@@ -388,6 +388,9 @@ def summarize_run(art, domain_agents, state_policy):
     out['source_hashes'] = dict(art.get('hashes') or {})
     ic = art.get('ic_report') or {}
     out['ic_complete'] = ic.get('analysis_status') == 'complete'
+    deep = art.get('deep_report') or {}
+    out['report_status'] = 'COMPLETE' if deep else 'NONE'
+    out['report_tier'] = deep.get('tier') if deep else None
     if not verdict:
         return out
     archetype = verdict.get('archetype')

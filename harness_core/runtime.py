@@ -1086,6 +1086,11 @@ def cmd_report(args):
     print(run/'easy_report.md')
 
 
+def cmd_report_entry(args):
+    from .report_builder import cmd_report_entry as entry
+    entry(args)
+
+
 def cmd_fork_run(args):
     source, dest = run_dir(args.source), run_dir(args.ticker)
     if dest.exists(): raise SystemExit('destination exists; fork-run never overwrites a run')
@@ -1148,8 +1153,12 @@ def main():
     p.add_argument('ticker'); p.add_argument('--out'); p.set_defaults(func=cmd_research_prompt)
     p=sub.add_parser('research-ingest',help='validate and archive supplemental evidence without editing frozen facts')
     p.add_argument('ticker'); p.add_argument('packet'); p.set_defaults(func=cmd_research_ingest)
-    p=sub.add_parser('report',help='write easy_report.md from a fresh deterministic verdict')
-    p.add_argument('ticker'); p.set_defaults(func=cmd_report)
+    p=sub.add_parser('report',help='write easy_report.md from a fresh deterministic verdict, then the tiered deep report; `report validate TICKER` checks it')
+    p.add_argument('ticker'); p.add_argument('subject',nargs='?',help='with `report validate TICKER`: the ticker to check')
+    p.add_argument('--existing-run',action='store_true',help='deep report from recorded artifacts only: no fetch, no agents, no recomputation')
+    p.add_argument('--force',action='store_true',help='override the report tier (never the content)')
+    p.add_argument('--prompt',action='store_true',help='write the Report Agent (RP) narrative prompt'); p.add_argument('--out')
+    p.set_defaults(func=cmd_report_entry)
     p=sub.add_parser('fork-run',help='copy a verified historical snapshot into a new unfrozen run')
     p.add_argument('source'); p.add_argument('ticker'); p.add_argument('--carry-domain-reports',action='store_true'); p.set_defaults(func=cmd_fork_run)
     p=sub.add_parser('aggregate'); p.add_argument('ticker'); p.set_defaults(func=cmd_aggregate)

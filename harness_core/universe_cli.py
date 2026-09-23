@@ -6,7 +6,8 @@ import sys
 from pathlib import Path
 
 from . import universe as U
-from . import universe_runner
+from . import universe_reports, universe_runner
+from .report_validator import validate_run_report
 from .universe_store import RunReader, Store, load_policy, sync_ticker_from_run, utcnow
 
 
@@ -226,6 +227,8 @@ def cmd_validate(args):
         row = store.load()['tickers'][ticker]
         art = reader.artifacts(row.get('run_id') or ticker)
         findings += U.validate_row(row, art, h.STATE_POLICY)
+        if art['exists']:
+            findings += validate_run_report(h, row.get('run_id') or ticker, reader, row)
     errors = [m for lvl, m in findings if lvl == 'ERROR']
     warnings = [m for lvl, m in findings if lvl == 'WARNING']
     for lvl, message in findings:
@@ -304,4 +307,5 @@ def register(sub):
     p.add_argument('--json', action='store_true'); p.set_defaults(func=cmd_history)
     p = us.add_parser('snapshot', help='copy the index to universe/snapshots/'); p.add_argument('--label'); p.set_defaults(func=cmd_snapshot)
     universe_runner.register(us, load_policy(_runtime().ROOT)['statuses']['stages'])
+    universe_reports.register(us)
     return top
