@@ -1,2 +1,7 @@
 __pycache__/
 *.py[cod]
+# universe runtime locks and atomic-write temp files
+universe/locks/
+universe/.universe.lock
+universe/history/*.lock
+.*.tmp

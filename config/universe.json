@@ -1,0 +1,79 @@
+{
+  "universe_schema_version": "1.0",
+  "note": "Universe, batch-runner and report presentation policy. Nothing here is read by aggregate, plan, veto, archetype, valuation or IC reconciliation; the decision policy stays in strategy/workflow/calibration/intake. This file is intentionally not in the freeze hash set: changing how the universe is displayed or scheduled never invalidates a frozen analysis.",
+  "paths": {
+    "universe_dir": "universe",
+    "logs_dir": "runlogs/universe",
+    "reports_dir": "reports/universe",
+    "staged_inputs_dir": ".harness_inputs",
+    "macro_cache_dir": "runs/_macro"
+  },
+  "import": {
+    "default_source": "stockanalysis_screener",
+    "screenshot_source": "stockanalysis_screenshot",
+    "ticker_columns": ["ticker", "symbol", "code", "stock", "티커", "종목코드"],
+    "screen_columns": ["screen", "screen_name", "screener", "screens", "list", "스크린"],
+    "name_columns": ["company_name", "company name", "company", "name", "종목명", "회사명"],
+    "type_columns": ["security_type", "type", "asset_type", "asset type", "quote_type", "instrument"],
+    "exchange_columns": ["exchange", "market", "거래소"],
+    "ticker_patterns": [
+      "^[A-Z][A-Z0-9]{0,5}(?:\\.[A-Z0-9]{1,3})?$",
+      "^[0-9]{6}(?:\\.(?:KS|KQ))?$",
+      "^[0-9]{4,5}\\.[A-Z]{1,3}$"
+    ],
+    "exchange_prefixes": ["NASDAQ", "NYSE", "NYSEARCA", "NYSEAMERICAN", "AMEX", "ARCA", "BATS", "OTC", "OTCMKTS", "KRX", "KOSPI", "KOSDAQ", "TSX", "LSE", "TSE", "HKEX"],
+    "fund_type_values": ["etf", "etn", "fund", "mutual fund", "mutualfund", "closed-end fund", "cef", "index"],
+    "fund_name_pattern": "\\b(ETFS?|ETNS?|FUNDS?|ISHARES|SPDR|PROSHARES|DIREXION|VANECK|WISDOMTREE)\\b",
+    "known_funds": ["SPY", "VOO", "IVV", "VTI", "QQQ", "QQQM", "DIA", "IWM", "VEA", "VWO", "EFA", "EEM", "AGG", "BND", "TLT", "IEF", "SHY", "LQD", "HYG", "GLD", "SLV", "USO", "ARKK", "ARKG", "ARKW", "SCHD", "VIG", "VYM", "JEPI", "JEPQ", "XLK", "XLF", "XLE", "XLV", "XLY", "XLP", "XLI", "XLU", "XLB", "XLRE", "XLC", "SMH", "SOXX", "SOXL", "TQQQ", "SQQQ", "SPXL", "UPRO", "VGT", "VNQ", "IBIT", "FBTC", "KWEB", "FXI", "EWJ", "EWY", "INDA", "MCHI"],
+    "note": "Screen names are the investor's own screener labels. They are provenance only and are never used as an archetype, a score or a filter inside the harness."
+  },
+  "statuses": {
+    "run_status": ["QUEUED", "RUNNING", "FAILED", "BLOCKED", "COMPLETE"],
+    "display_only": {"EARLY_EXIT": "run_status=COMPLETE with early_exit=true; shown as EARLY_EXIT in dashboards and CSV"},
+    "stages": ["stage0", "ev", "triage", "domain_analysis", "macro", "evidence_and_red_team", "ic", "complete"],
+    "planner_stage_map": {
+      "intake": "stage0",
+      "triage": "triage",
+      "fundamental_reanalysis": "domain_analysis",
+      "domain_analysis": "domain_analysis",
+      "macro": "macro",
+      "evidence_and_red_team": "evidence_and_red_team",
+      "ic": "ic",
+      "early_exit": "complete",
+      "complete": "complete"
+    },
+    "triage_lead_stage": {"agent": "EV", "stage": "ev", "note": "A triage step that still needs EV is reported as stage `ev`; the planner still decides which agents run."}
+  },
+  "runner": {
+    "default_workers": 1,
+    "max_workers": 8,
+    "default_git_mode": "none",
+    "git_modes": ["none", "per-ticker", "batch"],
+    "agent_timeout_seconds": 3600,
+    "command_timeout_seconds": 900,
+    "lock_stale_seconds": 21600,
+    "max_cycles_per_ticker": 40,
+    "lead_agents": ["EV"],
+    "lead_agents_note": "Agents executed alone ahead of the rest of a planner step, followed by aggregate/digest/plan, so a failed EV stops a ticker before AS/DI/FS are spent. The planner still decides which agents are due; this only orders work inside one planner step."
+  },
+  "history_fields": ["as_of_date", "run_id", "score", "score_ex_valuation", "archetype", "archetype_fit", "price_to_base", "hard_veto_status", "mechanical_pre_ic_state", "ic_state", "position_range", "early_exit"],
+  "report_policy": {
+    "note": "Which completed runs get which report. The Report Agent explains a final verdict; it never makes one.",
+    "tiers": {
+      "EARLY_EXIT_NON_FIT": "none",
+      "REJECT": "summary",
+      "WATCH": "concise",
+      "HOLD_REVIEW": "concise",
+      "TRIM_THESIS_RISK": "concise",
+      "EXIT_THESIS_BROKEN": "concise",
+      "STARTER": "full",
+      "NORMAL": "full",
+      "HIGH_CONVICTION": "full",
+      "CORE_WINNER": "full",
+      "EXCEPTIONAL_WINNER": "full"
+    },
+    "default_tier": "none",
+    "requires_ic_complete": true,
+    "forced_tier": "full"
+  }
+}

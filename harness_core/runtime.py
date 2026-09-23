@@ -1143,5 +1143,7 @@ def main():
     p=sub.add_parser('fork-run',help='copy a verified historical snapshot into a new unfrozen run')
     p.add_argument('source'); p.add_argument('ticker'); p.add_argument('--carry-domain-reports',action='store_true'); p.set_defaults(func=cmd_fork_run)
     p=sub.add_parser('aggregate'); p.add_argument('ticker'); p.set_defaults(func=cmd_aggregate)
+    from . import universe_cli
+    universe_cli.register(sub)
     args=ap.parse_args(); args.func(args)
 if __name__=='__main__': main()
