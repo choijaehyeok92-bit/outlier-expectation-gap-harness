@@ -99,3 +99,24 @@ python -m unittest discover -s tests -v
 ```
 
 동일 commit·동일 input snapshot에서 provider를 비교한다. 기본 shadow에서는 보정 연구값과 decision score를 구분한다. active를 실험하려면 `provider_calibration.mode`를 명시적으로 바꾸고 별도 run을 freeze한다. 기존 manifest의 명시적인 provider_calibration_mode가 우선한다. 과거 정확한 의사결정 재현에는 해당 run의 원본 commit/config를 사용한다.
+
+## 7. Universe batch (선택)
+
+단일 종목 절차를 여러 종목에 그대로 적용한다. runner는 각 종목에서 `plan → 요청된 에이전트 → validate → aggregate → digest → plan`을 반복할 뿐 단계 순서를 스스로 정하지 않는다.
+
+```bash
+python harness.py universe import tickers.csv --as-of YYYY-MM-DD
+python harness.py universe run --dry-run
+python harness.py universe run --triage-only [--workers N] [--agent-cmd "..."] [--user-agent "Name email"]
+python harness.py universe status
+python harness.py universe continue --eligible-only [--workers N]
+python harness.py universe report [--existing-runs]
+python harness.py universe validate
+```
+
+- 에이전트 보고서는 `.harness_inputs/<RUN>/reports/<AID>.json`(CI와 같은 규칙), 신선한 macro cache(MO), `--agent-cmd` 순으로 얻는다. 없으면 prompt를 쓰고 `BLOCKED (awaiting ...)`로 멈춘다. 보고서를 채워 넣은 뒤 `universe continue`로 재개한다.
+- Stage 0 잠금 필드(current_price, net_cash_per_share)는 `.harness_inputs/<RUN>/company_context.json`에 staging하거나 run의 파일을 직접 채운다. 하네스가 가격을 추정하지 않는다.
+- 조기 종료 종목에는 core·macro·ED/RT·IC를 실행하지 않는다. stale freeze는 `BLOCKED`로 남기며 자동 재고정하지 않는다 — 변경을 검토한 뒤 사람이 freeze 또는 fork-run한다.
+- `FAILED` 종목은 원인을 고친 뒤 `universe retry TICKER`. 같은 종목은 lock 때문에 동시에 두 번 실행되지 않는다.
+- 기존 frozen run이 있는 종목을 import하면 runner는 재계산 없이 index에 동기화만 한다. 다른 기준일로 다시 분석하려면 새 `--as-of`로 import한다(새 run은 `runs/<TICKER>-<AS_OF>`).
+- 심층 보고서: `report TICKER`(freeze가 현재 하네스와 일치할 때) 또는 `report TICKER --existing-run`(기록된 판정만 설명). `report validate TICKER`가 보고서와 final_verdict의 일치를 검사한다.

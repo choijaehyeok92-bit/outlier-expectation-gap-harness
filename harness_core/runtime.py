@@ -2,7 +2,7 @@
 from __future__ import annotations
 from pathlib import Path
 from datetime import date, datetime, timedelta, timezone
-import argparse, hashlib, json, os, re, statistics, shutil, subprocess, sys
+import argparse, hashlib, json, os, re, statistics, shutil, subprocess, sys, threading
 from . import rubric, calibration, archetypes, macro_geo, planner, intake, fetch, research, plain_report, context, dilution
 from .conditions import check_condition, number
 from .evidence import concentration_flags
@@ -71,7 +71,12 @@ if ARCHETYPES['fit_policy']['method']=='weighted_fit_axes':
 
 
 def load_json(p:Path): return json.loads(p.read_text(encoding='utf-8'))
-def dump_json(p:Path,obj): p.parent.mkdir(parents=True,exist_ok=True); p.write_text(json.dumps(obj,ensure_ascii=False,indent=2),encoding='utf-8')
+def dump_json(p:Path,obj):
+    # Same bytes as before, written atomically so an interrupted batch never leaves a partial verdict.
+    p.parent.mkdir(parents=True,exist_ok=True)
+    tmp=p.with_name(f'.{p.name}.{os.getpid()}.{threading.get_ident()}.tmp')
+    tmp.write_text(json.dumps(obj,ensure_ascii=False,indent=2),encoding='utf-8')
+    os.replace(tmp,p)
 def run_dir(ticker):
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*', ticker): raise ValueError('Invalid run identifier')
     return ROOT/'runs'/ticker.upper()
@@ -199,6 +204,15 @@ def enrich_archetype_signals(signals,ctx):
     if m is not None: out['market_cap_usd']=round(m,2)
     return out
 
+def cached_macro_report(agent,ticker,as_of,cached):
+    """MO report built only from fresh cached global components; transmission is recomputed per run."""
+    rpt=load_json(ROOT/'templates/agent_report.json')
+    rpt.update(agent_id=agent['agent_id'],ticker=ticker,as_of_date=as_of,domain=agent['domain'],role=agent['role'],
+               analysis_status='complete',global_components=cached,cache_scope='global_components_only')
+    rpt['thesis']='Reused fresh global components; company transmission is recomputed separately.'
+    rpt['evidence']=[row['evidence'][0] for row in cached.values()]
+    return rpt
+
 def cmd_init(args):
     ticker=args.ticker.upper(); run=run_dir(ticker)
     if run.exists(): raise SystemExit('run already exists; init never overwrites existing artifacts')
@@ -217,11 +231,7 @@ def cmd_init(args):
     cached=macro_cache_source(args.as_of)
     for a in MANIFEST:
         if a['domain']==MACRO_DOMAIN and len(cached)==len(OVERLAY_POLICY['component_ttl_hours']):
-            rpt=load_json(ROOT/'templates/agent_report.json')
-            rpt.update(agent_id=a['agent_id'],ticker=ticker,as_of_date=args.as_of,domain=a['domain'],role=a['role'],
-                       analysis_status='complete',global_components=cached,cache_scope='global_components_only')
-            rpt['thesis']='Reused fresh global components; company transmission is recomputed separately.'
-            rpt['evidence']=[row['evidence'][0] for row in cached.values()]
+            rpt=cached_macro_report(a,ticker,args.as_of,cached)
         else:
             rpt=load_json(ROOT/'templates/agent_report.json')
             rpt.update(agent_id=a['agent_id'],ticker=ticker,as_of_date=args.as_of,domain=a['domain'],role=a['role'])
@@ -1076,6 +1086,11 @@ def cmd_report(args):
     print(run/'easy_report.md')
 
 
+def cmd_report_entry(args):
+    from .report_builder import cmd_report_entry as entry
+    entry(args)
+
+
 def cmd_fork_run(args):
     source, dest = run_dir(args.source), run_dir(args.ticker)
     if dest.exists(): raise SystemExit('destination exists; fork-run never overwrites a run')
@@ -1138,10 +1153,16 @@ def main():
     p.add_argument('ticker'); p.add_argument('--out'); p.set_defaults(func=cmd_research_prompt)
     p=sub.add_parser('research-ingest',help='validate and archive supplemental evidence without editing frozen facts')
     p.add_argument('ticker'); p.add_argument('packet'); p.set_defaults(func=cmd_research_ingest)
-    p=sub.add_parser('report',help='write easy_report.md from a fresh deterministic verdict')
-    p.add_argument('ticker'); p.set_defaults(func=cmd_report)
+    p=sub.add_parser('report',help='write easy_report.md from a fresh deterministic verdict, then the tiered deep report; `report validate TICKER` checks it')
+    p.add_argument('ticker'); p.add_argument('subject',nargs='?',help='with `report validate TICKER`: the ticker to check')
+    p.add_argument('--existing-run',action='store_true',help='deep report from recorded artifacts only: no fetch, no agents, no recomputation')
+    p.add_argument('--force',action='store_true',help='override the report tier (never the content)')
+    p.add_argument('--prompt',action='store_true',help='write the Report Agent (RP) narrative prompt'); p.add_argument('--out')
+    p.set_defaults(func=cmd_report_entry)
     p=sub.add_parser('fork-run',help='copy a verified historical snapshot into a new unfrozen run')
     p.add_argument('source'); p.add_argument('ticker'); p.add_argument('--carry-domain-reports',action='store_true'); p.set_defaults(func=cmd_fork_run)
     p=sub.add_parser('aggregate'); p.add_argument('ticker'); p.set_defaults(func=cmd_aggregate)
+    from . import universe_cli
+    universe_cli.register(sub)
     args=ap.parse_args(); args.func(args)
 if __name__=='__main__': main()

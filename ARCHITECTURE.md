@@ -90,3 +90,18 @@ New manifests record hash_format=sha256-lf-text-v1: JSON/Markdown/Python/text/YA
 
 ## v3.2 — 장기 아웃라이어 성장 유형
 다섯 번째 투자 가능 유형 `outlier_growth`와 독립 평가축 `long_term_growth`(LG)를 추가했다. LG는 DI와 같이 100점 핵심 점수에 합산하지 않으며 유형 적격 판정과 IC 해석에만 쓰인다. archetype 집합과 tie-breaker는 config 주도이고 런타임은 개수를 고정하지 않는다 — 중복 없는 비어 있지 않은 집합인지, fallback이 투자 유형에 섞이지 않았는지, tie-breaker가 각 유형을 정확히 한 번 호명하는지만 검사한다. `final_verdict.schema.json`은 버전 조건부다: v3.1 산출물은 네 유형 fit만으로도 유효하고, schema_version이 3.2일 때만 다섯 유형 fit을 요구한다. 과거 run은 마이그레이션하지 않는다.
+
+## Universe layer, batch runner and Report Agent (non-decisional)
+
+`universe.py` (pure), `universe_store.py` (atomic JSON, lock files, history), `universe_runner.py`
+(planner-driven batch execution), `universe_reports.py` (tiered deep reports, dashboards),
+`report_builder.py` / `report_validator.py` (Report Agent RP) and `universe_cli.py` sit on top of the
+decision modules and never replace them. They read `final_verdict.json` / `aggregate.json`, call the
+existing CLI commands for every mutation (`init`, `freeze`, `prompt`, `validate`, `aggregate`, `digest`,
+`cache-macro`, `report`), and never write `final_verdict.json` or a report under `runs/<RUN>/reports/`.
+RP is intentionally absent from `agents_manifest.json` so that init, the planner and the veto gate are
+unchanged. `config/universe.json` holds presentation/scheduling policy only and is outside the freeze
+hash set; the new Python modules and `agents/16_report/` are inside it, like every other harness file,
+so in-flight frozen runs must re-freeze after upgrading (the runner reports this as a stale freeze and
+never re-freezes). `runtime.dump_json` now writes atomically (same bytes) and `init`'s macro-cache
+reuse is exposed as `cached_macro_report` (same output). Details: [docs/UNIVERSE.md](docs/UNIVERSE.md).
