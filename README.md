@@ -94,3 +94,81 @@ aggregate와 report는 최신 계산에서 easy_report.md를 생성한다. IC �
 과거 실행을 새 정책으로 검토하려면 `python harness.py fork-run OLD_RUN NEW_RUN --carry-domain-reports` 후 새 run을 freeze한다. 원본 입력은 바이트 그대로 보존하고, 재사용한 도메인 보고서의 출처를 기록하며 ED·RT·MO·IC는 새로 수행한다. 재사용 점수도 현재 루브릭으로 검토해야 한다. 과거 run 자체를 새 정책으로 재고정하지 않는다.
 
 IC 검토를 명시적으로 요청받았지만 유형 조건을 충족하지 못한 경우 새 실행을 freeze --review-only로 고정할 수 있다. 이 실행은 매수 승인을 차단하며 미확인 macro를 그대로 표시한다. 기본 분석의 조기 종료·위험 게이트는 유지된다.
+
+## Universe — 스크리너 기반 다종목 파이프라인
+
+StockAnalysis Screener 결과(또는 스크린샷에서 추출한 ticker 목록)를 universe로 가져와 수십~수백 종목을 같은 하네스로 반복 분석한다. 설계와 충돌 해결은 [docs/UNIVERSE.md](docs/UNIVERSE.md)에 있다.
+
+**Harness decides. Report explains.** universe 계층은 점수·유형·Hard Veto·상태·비중·밸류에이션을 계산하지 않는다. 모든 숫자는 `runs/<RUN>/final_verdict.json`(확정 전에는 `aggregate.json`)에서 출처와 함께 복사하며, `runs/` 아래 판정 산출물을 직접 쓰지 않는다. 단계 순서는 항상 `plan`이 정한다. 스크린 이름(예: "compounder")은 출처 표시일 뿐 archetype이 아니다.
+
+### Workflow A — StockAnalysis 스크린샷/스크리너
+
+1. StockAnalysis에서 screen을 실행한다.
+2. CSV로 내보내거나, 스크린샷에서 ChatGPT/Codex vision으로 ticker를 추출한다.
+3. `tickers.csv`(또는 `.txt`/`.json`)로 저장한다. 예: [examples/universe_example.csv](examples/universe_example.csv)
+4. universe에 import → triage만 실행 → 도달 가능한 유형이 있는 종목만 Full Run → 보고서.
+
+```bash
+python harness.py universe import stockanalysis.csv --as-of 2026-09-21      # TXT/CSV/JSON
+python harness.py universe import-screen screenshot_tickers.txt --as-of 2026-09-21
+python harness.py universe run --dry-run                                     # 아무것도 쓰지 않고 계획만
+python harness.py universe run --triage-only --workers 4                     # Stage 0 + EV + AS/DI/FS + early exit
+python harness.py universe status
+python harness.py universe continue --eligible-only --workers 4              # reachable archetype이 있는 종목만
+python harness.py universe report                                            # STARTER 이상 full, WATCH concise, REJECT summary
+python harness.py universe export universe.csv
+python harness.py universe validate
+```
+
+import는 ticker를 대문자·공백 제거·`$`/`NASDAQ:` 접두 제거·`BRK-B`→`BRK.B`로 정규화하고, 중복을 합치며, 여러 screen에 나온 ticker는 `screens[]`에 모두 남긴다. ticker 모양이 아닌 입력은 거부하고 ETF/펀드는 표시한 뒤 실행하지 않는다. TXT는 한 줄에 ticker 하나(뒤에 회사명 허용), 한 줄에 여러 개는 쉼표/세미콜론으로 구분한다.
+
+### 에이전트 출력은 어디서 오는가
+
+하네스는 모델을 직접 호출하지 않는다. batch runner는 `plan`이 요청한 에이전트의 보고서를 다음 순서로 얻는다.
+
+1. `.harness_inputs/<RUN>/reports/<AID>.json` — 기존 CI workflow와 같은 staging 규칙 (ticker·기준일 일치 검사). Stage 0는 `.harness_inputs/<RUN>/company_context.json`, `sources/`, `sources/financials/normalized_financials.json`
+2. MO는 해당 기준일의 신선한 전역 macro cache (`init`과 같은 재사용)
+3. `--agent-cmd "codex exec ... {prompt} ... {output}"` — 프롬프트 파일을 읽어 `{output}`에 보고서를 쓰는 명령. 쓰인 보고서는 `harness.py validate`를 통과해야 한다
+
+어느 것도 없으면 `runs/<RUN>/<AID>_prompt.md`를 쓰고 그 종목을 `BLOCKED (awaiting ...)`로 둔다. 보고서를 만들어 내지 않는다. `--user-agent`(또는 `SEC_USER_AGENT`)를 주면 Stage 0에서 EDGAR fetch도 실행한다.
+
+### 상태, 재개, 실패 격리
+
+| run_status | 의미 |
+|---|---|
+| `QUEUED` | 대기 또는 `--triage-only` 등으로 멈춤 (`stage`가 다음 단계) |
+| `RUNNING` | 이 ticker의 lock을 가진 runner가 실행 중 |
+| `BLOCKED` | 입력 대기(보고서·company_context·FP), stale freeze, 확정되지 않은 run 등 — `blocked_reason` |
+| `FAILED` | 명령 실패 — `last_error{command, stage, exception_type, stderr, retryable, timestamp}` |
+| `COMPLETE` | `final_verdict.json` 확정. 조기 종료면 `early_exit=true`, 화면에는 `EARLY_EXIT` |
+
+`stage`: `stage0 → ev → triage → domain_analysis → macro → evidence_and_red_team → ic → complete`. 한 종목이 실패해도 batch는 계속된다. `universe continue`는 시작된 종목을 재개하고, `universe retry XYZ`는 실패 종목을 다시 큐에 넣어 실행한다. 이미 끝난 단계는 planner가 요청하지 않으므로 다시 실행되지 않는다. stale freeze는 자동으로 재고정하지 않는다.
+
+기타: `universe add LLY NU --as-of D`, `universe remove XYZ`, `universe reset XYZ`, `universe show LLY`, `universe sync`, `universe history LLY`, `universe snapshot`, `universe dashboard`. `--git none|per-ticker|batch`(기본 none, push하지 않음), `--stage stage0|triage|...`, `--workers N`(같은 ticker의 단계는 항상 순차), `--no-report`.
+
+### 조회와 내보내기 (설명용 정렬만)
+
+```bash
+python harness.py universe status --archetype compounder --min-fit 80 --max-price-base 0.9 --veto CLEARED
+python harness.py universe status --state STARTER --sort score --desc
+python harness.py universe export universe.json
+```
+
+CSV 열: `ticker,score,score_ex_ev,archetype,fit,ev,as,di,fs,price_to_base,hard_veto,mechanical_state,ic_state,position_range,macro_pacing,status,as_of`. "Top Pick" 같은 새 순위는 만들지 않는다.
+
+`reports/universe/`에 `universe_summary.md`, `compounders.md`, `growth.md`, `outlier_growth.md`, `buffett_value.md`, `moonshots.md`, `watchlist.md`, `early_exit.md`가 batch·report 뒤에 자동 갱신된다. 로그는 `runlogs/universe/<날짜>/universe-run.json`과 `<TICKER>.json`/`<TICKER>.log`.
+
+### Deep Research Report (Report Agent RP)
+
+```bash
+python harness.py report LLY                  # 기존 easy_report.md 갱신 + tier에 따른 deep report
+python harness.py report LLY --existing-run   # 재계산·fetch·에이전트 없이 기록된 판정만 설명
+python harness.py report XYZ --force          # tier 무시 (내용은 그대로)
+python harness.py report validate LLY
+```
+
+`runs/<RUN>/deep_report.md`·`deep_report.json`은 00 Executive Summary부터 21 Final Conclusion까지 22개 섹션이며, 모든 판정 값은 `final_verdict.json`에서 복사되고 각 문단에 출처 경로가 붙는다. 보고서는 새 목표주가·밸류에이션·점수·유형·비중·IC 판정을 만들지 않고, 판정과 다르면 쓰이지 않는다. `one_page_investment_record.md`는 빠른 IC 기록, `deep_report.md`는 심층 리서치로 역할을 나눈다. 보고서는 동결 기준일에만 유효하며 새 실적이 나오면 새 기준일로 import → refreeze → rerun → 새 보고서를 만든다 (이전 run은 `runs/<TICKER>`에 그대로 두고 새 run은 `runs/<TICKER>-<AS_OF>`).
+
+### Workflow B — 단일 종목
+
+기존 단일 종목 CLI(`init`·`fetch`·`intake`·`freeze`·`plan`·`prompt`·`validate`·`aggregate`·`digest`·`report`)는 그대로 동작한다. universe는 선택 사항이다.

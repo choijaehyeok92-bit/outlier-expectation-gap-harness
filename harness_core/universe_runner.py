@@ -43,6 +43,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import universe as U
+from .universe_reports import write_dashboards
 from .universe_store import (LockBusy, RunReader, Store, atomic_dump_json, file_lock, sha256_of,
                              sync_ticker_from_run, utcnow)
 
@@ -626,6 +627,7 @@ class BatchRunner:
         summary['counts'] = counts
         self._write_batch_log(summary)
         self.store.write_snapshot()
+        summary['dashboards'] = write_dashboards(self.store)
         if self.options.git_mode == 'batch':
             self._git_commit(f"universe: complete batch {self.batch_id[:8]}", self._git_paths(self.touched_runs))
         return summary

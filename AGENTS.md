@@ -124,3 +124,6 @@
 ## Research Orchestrator and plain reporting
 Research Orchestrator는 docs/RESEARCH_ORCHESTRATOR.md를 따른다. frozen facts를 보존하고 질문·증거·충돌만 반환한다. 점수·유형·정상화·veto·비중 판정은 domain reviewer와 IC의 책임이다. 모든 추가 자료의 공개일을 cutoff와 비교한다. 최종 aggregate는 easy_report.md를 함께 생성하며 보고서가 새로운 투자판정을 만들지 않는다.
 질문은 `decision_blocking` / `thesis_monitor` / `optional` 세 계층으로 나눈다. 조사 예산은 비차단 질문에만 적용한다. `decision_blocking` 질문은 cap을 초과하더라도 숨기지 않고 `blocking_overflow`로 기록한다. 예산으로 보류된 질문은 삭제하지 않고 이유와 함께 `deferred_questions`에 남긴다.
+
+## Universe batch and Report Agent
+여러 종목을 `harness.py universe ...`로 처리할 때도 위 계약은 그대로다. runner는 `plan`이 요청한 에이전트만 실행하고, 조기 종료 종목에 core·macro·ED/RT·IC를 실행하지 않으며, stale freeze를 재고정하지 않는다. Report Agent(RP, [`agents/16_report/AGENTS.md`](agents/16_report/AGENTS.md))는 확정된 `final_verdict.json`을 설명할 뿐이며 점수·유형·Hard Veto·상태·비중·밸류에이션을 바꾸거나 새 목표주가·추천을 만들지 않는다.

@@ -160,7 +160,29 @@ into `runs/<RUN>/reports/`.
 * `universe report` generates reports for COMPLETE rows (fresh mode when the freeze is current,
   recorded-artifact mode otherwise or with `--existing-runs`) and updates `report_status/report_tier`.
 
-## 7. Invariants (`universe validate`, `report validate`)
+## 7. Dashboards, history and parallel execution
+
+`reports/universe/` is rewritten after every batch, `universe report` and `universe dashboard`:
+`universe_summary.md` (every row with the brief's columns plus a deep-report link, blocked/failed reasons
+and a provenance table of final_verdict hashes), one file per archetype (`compounders.md`, `growth.md`,
+`outlier_growth.md`, `buffett_value.md`, `moonshots.md` — primary rows ordered by the recorded fit, and
+secondary rows), `watchlist.md` (completed runs in WATCH / hold-review states) and `early_exit.md`
+(exit stage and last reachable archetypes from the recorded early_exit_record). These are descriptive:
+no row is called a pick and no new ranking is computed.
+
+History: every sync that changes a tracked field (score, ex-EV score, archetype, fit, Price/Base, Hard
+Veto, mechanical state, IC state, position range, early exit, as-of, run id) appends a record to
+`universe/history/<T>.jsonl`, measured against the previous record, so a new as-of run shows what moved
+since the last date. `universe history T` prints it; `universe/snapshots/<date>.json` is written after
+each batch.
+
+Parallelism: `--workers N` runs different tickers in threads; each ticker holds `universe/locks/<T>.lock`
+(O_EXCL, stale when the holding process is gone) and every mutation of that ticker is a sequential
+`harness.py` subprocess in its own run directory. The index is only modified inside a lock-file
+transaction with atomic replace, and the global macro cache is read and published under
+`runs/_macro/.universe-macro.lock`.
+
+## 8. Invariants (`universe validate`, `report validate`)
 
 COMPLETE without `final_verdict.json`; a buy state with Hard Veto ≠ CLEARED, coverage ≠ 100, a pending
 structural re-analysis, `non_fit` or review-only; an IC state above the deterministic cap for the
@@ -169,7 +191,7 @@ that disagrees with the recorded state/position; an early exit with a completed 
 a universe score that differs from the verdict; a deep report whose state/position differs from
 `final_verdict.json`.
 
-## 8. Implementation status
+## 9. Implementation status
 
 | Phase | Scope | Status |
 |---|---|---|
@@ -177,4 +199,4 @@ a universe score that differs from the verdict; a deep report whose state/positi
 | 2 | import / export / status / sync / validate | `universe_store.py`, `universe_cli.py`, `tests/test_universe.py` |
 | 3 | batch runner, early exit, resume/retry, dry run | `universe_runner.py`, `tests/test_universe_runner.py` |
 | 4 | Report Agent, deep report, report validation | `agents/16_report/AGENTS.md`, `report_builder.py`, `report_validator.py`, `universe_reports.py`, `tests/test_report.py` |
-| 5 | universe dashboards, history CLI, parallel workers, docs | pending |
+| 5 | universe dashboards, history CLI, parallel workers, docs | `universe_reports.py` dashboards, `tests/test_universe_dashboards.py`, README/RUNBOOK/ARCHITECTURE |

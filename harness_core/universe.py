@@ -37,7 +37,8 @@ ROW_DEFAULTS = {
     'hard_veto_status': None, 'mechanical_pre_ic_state': None, 'ic_state': None, 'ic_complete': False,
     'position_range': None, 'position_range_source': None, 'position_range_pre_ic': None,
     'macro_pacing': None, 'price_to_base': None, 'current_price': None,
-    'valuation': None, 'early_exit': False, 'review_only': False, 'reconstructed': False,
+    'valuation': None, 'early_exit': False, 'early_exit_stage': None, 'last_reachable_archetypes': None,
+    'review_only': False, 'reconstructed': False,
     'decision_policy_version': None, 'verdict_source': None,
     'report_status': 'NONE', 'report_tier': None,
     'blocked_reason': None, 'awaiting': [], 'last_error': None, 'attempts': 0,
@@ -50,8 +51,9 @@ SYNCED_FIELDS = ('score', 'score_ex_valuation', 'coverage_weight', 'classificati
                  'secondary_archetypes', 'reachable_archetypes', 'domain_scores', 'hard_veto_status',
                  'mechanical_pre_ic_state', 'ic_state', 'ic_complete', 'position_range', 'position_range_source',
                  'position_range_pre_ic', 'macro_pacing', 'price_to_base', 'current_price', 'valuation',
-                 'early_exit', 'review_only', 'reconstructed', 'decision_policy_version', 'verdict_source',
-                 'source_files', 'source_hashes', 'report_status', 'report_tier')
+                 'early_exit', 'early_exit_stage', 'last_reachable_archetypes', 'review_only', 'reconstructed',
+                 'decision_policy_version', 'verdict_source', 'source_files', 'source_hashes', 'report_status',
+                 'report_tier')
 
 
 class ImportError_(ValueError):
@@ -434,6 +436,8 @@ def summarize_run(art, domain_agents, state_policy):
                       **{k: _num((scenarios.get(k) or {}).get('value_per_share')) for k in ('bear', 'base', 'bull')}}
                      if model else None,
         'early_exit': bool(verdict.get('early_exit')),
+        'early_exit_stage': (verdict.get('early_exit_record') or {}).get('stage'),
+        'last_reachable_archetypes': (verdict.get('early_exit_record') or {}).get('last_reachable_archetypes'),
         'review_only': bool(verdict.get('review_only')),
         'reconstructed': bool(verdict.get('reconstructed')),
         'decision_policy_version': verdict.get('decision_policy_version'),

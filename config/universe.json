@@ -314,5 +314,22 @@
         2100
       ]
     }
+  },
+  "dashboards": {
+    "note": "Descriptive dashboards over the universe index. Ordering uses the harness's own recorded numbers and never implies a merit ranking or a selection.",
+    "archetype_files": {
+      "compounders.md": "compounder",
+      "growth.md": "growth",
+      "outlier_growth.md": "outlier_growth",
+      "buffett_value.md": "buffett_value",
+      "moonshots.md": "moonshot"
+    },
+    "watch_states": [
+      "WATCH",
+      "HOLD_REVIEW",
+      "TRIM_THESIS_RISK",
+      "EXIT_THESIS_BROKEN",
+      "STARTER_OR_WATCH"
+    ]
   }
 }
