@@ -177,7 +177,8 @@ since the last date. `universe history T` prints it; `universe/snapshots/<date>.
 each batch.
 
 Parallelism: `--workers N` runs different tickers in threads; each ticker holds `universe/locks/<T>.lock`
-(O_EXCL, stale when the holding process is gone) and every mutation of that ticker is a sequential
+(an OS advisory lock — `flock` on POSIX, `msvcrt.locking` on Windows — released by the kernel if the
+holder dies, so no staleness guess and no lock-file deletion race) and every mutation of that ticker is a sequential
 `harness.py` subprocess in its own run directory. The index is only modified inside a lock-file
 transaction with atomic replace, and the global macro cache is read and published under
 `runs/_macro/.universe-macro.lock`.

@@ -193,7 +193,6 @@
     ],
     "agent_timeout_seconds": 3600,
     "command_timeout_seconds": 900,
-    "lock_stale_seconds": 21600,
     "max_cycles_per_ticker": 40,
     "lead_agents": [
       "EV"

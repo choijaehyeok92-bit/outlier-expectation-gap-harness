@@ -8,7 +8,7 @@ artifacts (never writes them) and maintains the universe index next to them:
     universe/queue.json         derived processing order and pending work, rewritten on every save
     universe/history/<T>.jsonl  append-only change log of decision fields per synced snapshot
     universe/snapshots/<D>.json copy of the index at the end of a batch or on request
-    universe/locks/<T>.lock     one runner per ticker at a time
+    universe/locks/<T>.lock     one runner per ticker at a time (OS advisory lock)
 
 Writes go through a temp file and os.replace so a reader never sees a partial
 file, and the index is only modified inside `transaction()`, which holds a
@@ -60,61 +60,81 @@ def sha256_of(path):
     return hashlib.sha256(data).hexdigest()
 
 
-def _pid_alive(pid):
-    try:
-        os.kill(int(pid), 0)
-    except (OSError, ValueError, TypeError):
-        return False
-    return True
+try:  # OS-level advisory locks: released by the kernel when the holder exits, so no staleness guessing.
+    import fcntl
+except ImportError:  # Windows
+    fcntl = None
+    import msvcrt
 
 
 class LockBusy(RuntimeError):
     pass
 
 
+def _try_lock(fd):
+    try:
+        if fcntl:
+            fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        else:
+            os.lseek(fd, 0, os.SEEK_SET)
+            msvcrt.locking(fd, msvcrt.LK_NBLCK, 1)
+        return True
+    except OSError:
+        return False
+
+
+def _unlock(fd):
+    if fcntl:
+        fcntl.flock(fd, fcntl.LOCK_UN)
+    else:
+        os.lseek(fd, 0, os.SEEK_SET)
+        msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
+
+
 @contextlib.contextmanager
-def file_lock(path, timeout=30.0, stale_after=120.0, poll=0.05, owner=None):
-    """Exclusive lock file created with O_EXCL. A lock whose process is gone on this
-    host, or older than `stale_after`, is broken; otherwise waits up to `timeout`."""
+def file_lock(path, timeout=30.0, poll=0.05, owner=None):
+    """Exclusive advisory lock on `path` (flock / msvcrt). Waits up to `timeout`, then LockBusy.
+
+    The lock file is never deleted: removing lock files is what makes lock-file
+    schemes racy. Another open of the same file, even from this process or thread,
+    conflicts, so one lock serializes threads and processes alike.
+    """
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    deadline = time.monotonic() + timeout
-    info = {'pid': os.getpid(), 'host': socket.gethostname(), 'acquired_at': utcnow(),
-            'acquired_epoch': time.time(), 'owner': owner}
-    while True:
-        try:
-            fd = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
-        except FileExistsError:
-            if _stale(path, stale_after):
-                with contextlib.suppress(FileNotFoundError):
-                    path.unlink()
-                continue
+    fd = os.open(path, os.O_RDWR | os.O_CREAT, 0o644)
+    try:
+        deadline = time.monotonic() + timeout
+        while not _try_lock(fd):
             if time.monotonic() >= deadline:
                 raise LockBusy(f'lock busy: {path}')
             time.sleep(poll)
-            continue
-        with os.fdopen(fd, 'w', encoding='utf-8') as handle:
-            json.dump(info, handle)
-        break
-    try:
-        yield info
-    finally:
-        with contextlib.suppress(FileNotFoundError):
-            path.unlink()
-
-
-def _stale(path, stale_after):
-    try:
-        held = json.loads(path.read_text(encoding='utf-8') or '{}')
-    except (OSError, ValueError):
-        # Being written right now, or unreadable: judge by age only.
+        info = {'pid': os.getpid(), 'host': socket.gethostname(), 'acquired_at': utcnow(), 'owner': owner}
+        try:  # diagnostics only
+            os.ftruncate(fd, 0)
+            os.lseek(fd, 0, os.SEEK_SET)
+            os.write(fd, json.dumps(info).encode('utf-8'))
+        except OSError:
+            pass
         try:
-            return time.time() - path.stat().st_mtime > stale_after
-        except FileNotFoundError:
-            return True
-    if held.get('host') == socket.gethostname() and held.get('pid') and not _pid_alive(held['pid']):
+            yield info
+        finally:
+            _unlock(fd)
+    finally:
+        os.close(fd)
+
+
+def lock_is_held(path):
+    path = Path(path)
+    if not path.exists():
+        return False
+    fd = os.open(path, os.O_RDWR | os.O_CREAT, 0o644)
+    try:
+        if _try_lock(fd):
+            _unlock(fd)
+            return False
         return True
-    return time.time() - float(held.get('acquired_epoch') or 0) > stale_after
+    finally:
+        os.close(fd)
 
 
 class Store:
@@ -169,7 +189,7 @@ class Store:
                 finally:
                     self._depth -= 1
                 return
-            with file_lock(self.dir/'.universe.lock', timeout=60, stale_after=300):
+            with file_lock(self.dir/'.universe.lock', timeout=120):
                 self._current = self.load()
                 self._depth = 1
                 try:
@@ -210,12 +230,10 @@ class Store:
         return dest
 
     def ticker_lock(self, ticker, timeout=0.0):
-        stale = float(self.policy['runner'].get('lock_stale_seconds', 21600))
-        return file_lock(self.dir/'locks'/f'{ticker}.lock', timeout=timeout, stale_after=stale, owner=ticker)
+        return file_lock(self.dir/'locks'/f'{ticker}.lock', timeout=timeout, owner=ticker)
 
     def lock_held(self, ticker):
-        path = self.dir/'locks'/f'{ticker}.lock'
-        return path.exists() and not _stale(path, float(self.policy['runner'].get('lock_stale_seconds', 21600)))
+        return lock_is_held(self.dir/'locks'/f'{ticker}.lock')
 
 
 # -------------------------------------------------------------------- run artifacts (read-only)

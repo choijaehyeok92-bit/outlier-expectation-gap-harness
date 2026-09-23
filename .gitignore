@@ -4,4 +4,6 @@ __pycache__/
 universe/locks/
 universe/.universe.lock
 universe/history/*.lock
+runlogs/universe/**/*.lock
+runs/_macro/.universe-macro.lock
 .*.tmp
